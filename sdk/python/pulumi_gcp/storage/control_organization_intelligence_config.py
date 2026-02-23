@@ -26,7 +26,6 @@ class ControlOrganizationIntelligenceConfigArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ControlOrganizationIntelligenceConfig resource.
-
         :param pulumi.Input[_builtins.str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED, TRIAL and STANDARD.
         :param pulumi.Input['ControlOrganizationIntelligenceConfigFilterArgs'] filter: Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
                Structure is documented below.
@@ -88,7 +87,6 @@ class _ControlOrganizationIntelligenceConfigState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ControlOrganizationIntelligenceConfig resources.
-
         :param pulumi.Input[_builtins.str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED, TRIAL and STANDARD.
         :param pulumi.Input[Sequence[pulumi.Input['ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs']]] effective_intelligence_configs: The Intelligence config that is effective for the resource.
                Structure is documented below.
@@ -247,7 +245,6 @@ class ControlOrganizationIntelligenceConfig(pulumi.CustomResource):
         $ pulumi import gcp:storage/controlOrganizationIntelligenceConfig:ControlOrganizationIntelligenceConfig default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED, TRIAL and STANDARD.
@@ -309,7 +306,6 @@ class ControlOrganizationIntelligenceConfig(pulumi.CustomResource):
         $ pulumi import gcp:storage/controlOrganizationIntelligenceConfig:ControlOrganizationIntelligenceConfig default organizations/{{name}}/locations/global/intelligenceConfig
         $ pulumi import gcp:storage/controlOrganizationIntelligenceConfig:ControlOrganizationIntelligenceConfig default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ControlOrganizationIntelligenceConfigArgs args: The arguments to use to populate this resource's properties.

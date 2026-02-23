@@ -25,7 +25,6 @@ class SitemapArgs:
                  uri: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Sitemap resource.
-
         :param pulumi.Input[_builtins.str] data_store_id: The unique id of the data store.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
@@ -103,7 +102,6 @@ class _SitemapState:
                  uri: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Sitemap resources.
-
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the sitemap was created.
         :param pulumi.Input[_builtins.str] data_store_id: The unique id of the data store.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
@@ -276,7 +274,6 @@ class Sitemap(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/sitemap:Sitemap default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_store_id: The unique id of the data store.
@@ -334,7 +331,6 @@ class Sitemap(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:discoveryengine/sitemap:Sitemap default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SitemapArgs args: The arguments to use to populate this resource's properties.

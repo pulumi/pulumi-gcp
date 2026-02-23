@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Kms
     ///         DeletionProtection = false,
     ///     });
     /// 
-    ///     var projectSuffix = new Random.Index.Id("project_suffix", new()
+    ///     var projectSuffix = new Random.RandomId("project_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
@@ -56,8 +56,8 @@ namespace Pulumi.Gcp.Kms
     ///     // Create a project for enabling KMS API.
     ///     var kmsProject = new Gcp.Organizations.Project("kms_project", new()
     ///     {
-    ///         ProjectId = $"kms-api-project{projectSuffix.Hex}",
-    ///         Name = $"kms-api-project{projectSuffix.Hex}",
+    ///         ProjectId = projectSuffix.Hex.Apply(hex =&gt; $"kms-api-project{hex}"),
+    ///         Name = projectSuffix.Hex.Apply(hex =&gt; $"kms-api-project{hex}"),
     ///         FolderId = kajFolder.FolderId,
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",

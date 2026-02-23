@@ -28,7 +28,6 @@ class UserArgs:
                  password_wo_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
-
         :param pulumi.Input[_builtins.str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input[_builtins.str] user_id: The database role name of the user.
@@ -163,7 +162,6 @@ class _UserState:
                  user_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
-
         :param pulumi.Input[_builtins.str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: List of database roles this database user has.
@@ -429,7 +427,6 @@ class User(pulumi.CustomResource):
         $ pulumi import gcp:alloydb/user:User default {{location}}/{{cluster}}/{{user_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster: Identifies the alloydb cluster. Must be in the format
@@ -565,7 +562,6 @@ class User(pulumi.CustomResource):
         $ pulumi import gcp:alloydb/user:User default {{project}}/{{location}}/{{cluster}}/{{user_id}}
         $ pulumi import gcp:alloydb/user:User default {{location}}/{{cluster}}/{{user_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

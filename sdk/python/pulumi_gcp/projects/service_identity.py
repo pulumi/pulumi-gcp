@@ -23,7 +23,6 @@ class ServiceIdentityArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceIdentity resource.
-
         :param pulumi.Input[_builtins.str] service: The service to generate identity for.
                
                - - -
@@ -71,7 +70,6 @@ class _ServiceIdentityState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceIdentity resources.
-
         :param pulumi.Input[_builtins.str] email: The email address of the Google managed service account.
         :param pulumi.Input[_builtins.str] member: The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -189,7 +187,6 @@ class ServiceIdentity(pulumi.CustomResource):
 
         This resource does not support import.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -242,7 +239,6 @@ class ServiceIdentity(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
-
 
         :param str resource_name: The name of the resource.
         :param ServiceIdentityArgs args: The arguments to use to populate this resource's properties.

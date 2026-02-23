@@ -27,7 +27,6 @@ class KeyRingIAMMemberArgs:
                  condition: Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a KeyRingIAMMember resource.
-
         :param pulumi.Input[_builtins.str] key_ring_id: The key ring ID, in the form
                `{project_id}/{location_name}/{key_ring_name}` or
                `{location_name}/{key_ring_name}`. In the second form, the provider's
@@ -124,7 +123,6 @@ class _KeyRingIAMMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyRingIAMMember resources.
-
         :param pulumi.Input['KeyRingIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the key ring's IAM policy.
@@ -410,7 +408,6 @@ class KeyRingIAMMember(pulumi.CustomResource):
 
         ## Import
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['KeyRingIAMMemberConditionArgs', 'KeyRingIAMMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -606,7 +603,6 @@ class KeyRingIAMMember(pulumi.CustomResource):
         ```
 
         ## Import
-
 
         :param str resource_name: The name of the resource.
         :param KeyRingIAMMemberArgs args: The arguments to use to populate this resource's properties.

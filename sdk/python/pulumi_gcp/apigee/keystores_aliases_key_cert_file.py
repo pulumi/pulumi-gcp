@@ -31,7 +31,6 @@ class KeystoresAliasesKeyCertFileArgs:
                  timeouts: Optional[pulumi.Input['KeystoresAliasesKeyCertFileTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a KeystoresAliasesKeyCertFile resource.
-
         :param pulumi.Input[_builtins.str] alias: Alias Name
         :param pulumi.Input[_builtins.str] cert: Cert content
                
@@ -167,7 +166,6 @@ class _KeystoresAliasesKeyCertFileState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeystoresAliasesKeyCertFile resources.
-
         :param pulumi.Input[_builtins.str] alias: Alias Name
         :param pulumi.Input[_builtins.str] cert: Cert content
                
@@ -363,7 +361,6 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
         $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alias: Alias Name
@@ -405,7 +402,6 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
         $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
         $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param KeystoresAliasesKeyCertFileArgs args: The arguments to use to populate this resource's properties.

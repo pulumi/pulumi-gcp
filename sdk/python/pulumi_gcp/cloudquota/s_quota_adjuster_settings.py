@@ -23,7 +23,6 @@ class SQuotaAdjusterSettingsArgs:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SQuotaAdjusterSettings resource.
-
         :param pulumi.Input[_builtins.str] enablement: Required. The configured value of the enablement at the given resource.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[_builtins.str] parent: The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
@@ -69,7 +68,6 @@ class _SQuotaAdjusterSettingsState:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SQuotaAdjusterSettings resources.
-
         :param pulumi.Input[_builtins.str] effective_container: (Deprecated)
                The resource container that determines if the quota adjuster is set for this project.
                Expect this field to be empty currently.
@@ -231,7 +229,6 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
         $ pulumi import gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings default {{parent}}/locations/global/quotaAdjusterSettings
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] enablement: Required. The configured value of the enablement at the given resource.
@@ -280,7 +277,6 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings default {{parent}}/locations/global/quotaAdjusterSettings
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SQuotaAdjusterSettingsArgs args: The arguments to use to populate this resource's properties.

@@ -25,7 +25,6 @@ class HostingVersionArgs:
                  config: Optional[pulumi.Input['HostingVersionConfigArgs']] = None):
         """
         The set of arguments for constructing a HostingVersion resource.
-
         :param pulumi.Input[_builtins.str] site_id: Required. The ID of the site in which to create this Version.
         :param pulumi.Input['HostingVersionConfigArgs'] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
                Structure is documented below.
@@ -69,7 +68,6 @@ class _HostingVersionState:
                  version_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostingVersion resources.
-
         :param pulumi.Input['HostingVersionConfigArgs'] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The fully-qualified resource name for the version, in the format:
@@ -355,7 +353,6 @@ class HostingVersion(pulumi.CustomResource):
         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default {{site_id}}/{{version_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict']] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
@@ -576,7 +573,6 @@ class HostingVersion(pulumi.CustomResource):
         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default sites/{{site_id}}/versions/{{version_id}}
         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default {{site_id}}/{{version_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param HostingVersionArgs args: The arguments to use to populate this resource's properties.

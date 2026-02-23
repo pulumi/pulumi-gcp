@@ -49,7 +49,6 @@ class RouterNatArgs:
                  udp_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a RouterNat resource.
-
         :param pulumi.Input[_builtins.str] router: The name of the Cloud Router in which this NAT will be configured.
         :param pulumi.Input[_builtins.str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured per Subnetwork.
                If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
@@ -578,7 +577,6 @@ class _RouterNatState:
                  udp_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RouterNat resources.
-
         :param pulumi.Input[_builtins.str] auto_network_tier: The network tier to use when automatically reserving NAT IP addresses.
                Must be one of: PREMIUM, STANDARD. If not specified, then the current
                project-level default tier is used.
@@ -1279,7 +1277,6 @@ class RouterNat(pulumi.CustomResource):
         $ pulumi import gcp:compute/routerNat:RouterNat default {{router}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auto_network_tier: The network tier to use when automatically reserving NAT IP addresses.
@@ -1535,7 +1532,6 @@ class RouterNat(pulumi.CustomResource):
         $ pulumi import gcp:compute/routerNat:RouterNat default {{region}}/{{router}}/{{name}}
         $ pulumi import gcp:compute/routerNat:RouterNat default {{router}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RouterNatArgs args: The arguments to use to populate this resource's properties.

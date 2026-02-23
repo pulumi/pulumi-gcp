@@ -30,7 +30,6 @@ class AuthorizationPolicyArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]]] = None):
         """
         The set of arguments for constructing a AuthorizationPolicy resource.
-
         :param pulumi.Input[_builtins.str] action: The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
@@ -168,7 +167,6 @@ class _AuthorizationPolicyState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthorizationPolicy resources.
-
         :param pulumi.Input[_builtins.str] action: The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[_builtins.str] create_time: Time the AuthorizationPolicy was created in UTC.
@@ -445,7 +443,6 @@ class AuthorizationPolicy(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
@@ -546,7 +543,6 @@ class AuthorizationPolicy(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AuthorizationPolicyArgs args: The arguments to use to populate this resource's properties.

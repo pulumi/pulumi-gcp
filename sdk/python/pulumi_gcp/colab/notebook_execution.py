@@ -36,7 +36,6 @@ class NotebookExecutionArgs:
                  service_account: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NotebookExecution resource.
-
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Notebook Execution.
         :param pulumi.Input[_builtins.str] gcs_output_uri: The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
         :param pulumi.Input[_builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
@@ -260,7 +259,6 @@ class _NotebookExecutionState:
                  service_account: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NotebookExecution resources.
-
         :param pulumi.Input['NotebookExecutionCustomEnvironmentSpecArgs'] custom_environment_spec: Compute configuration to use for an execution job
                Structure is documented below.
         :param pulumi.Input['NotebookExecutionDataformRepositorySourceArgs'] dataform_repository_source: The Dataform Repository containing the input notebook.
@@ -833,7 +831,6 @@ class NotebookExecution(pulumi.CustomResource):
         $ pulumi import gcp:colab/notebookExecution:NotebookExecution default {{location}}/{{notebook_execution_job_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NotebookExecutionCustomEnvironmentSpecArgs', 'NotebookExecutionCustomEnvironmentSpecArgsDict']] custom_environment_spec: Compute configuration to use for an execution job
@@ -1204,7 +1201,6 @@ class NotebookExecution(pulumi.CustomResource):
         $ pulumi import gcp:colab/notebookExecution:NotebookExecution default {{project}}/{{location}}/{{notebook_execution_job_id}}
         $ pulumi import gcp:colab/notebookExecution:NotebookExecution default {{location}}/{{notebook_execution_job_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param NotebookExecutionArgs args: The arguments to use to populate this resource's properties.

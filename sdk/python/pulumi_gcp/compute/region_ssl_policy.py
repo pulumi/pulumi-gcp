@@ -28,7 +28,6 @@ class RegionSslPolicyArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionSslPolicy resource.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_features: A list of features enabled when the selected profile is CUSTOM. The
                method returns the set of features that can be specified in this
                list. This field must be empty if the profile is not CUSTOM.
@@ -207,7 +206,6 @@ class _RegionSslPolicyState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionSslPolicy resources.
-
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_features: A list of features enabled when the selected profile is CUSTOM. The
                method returns the set of features that can be specified in this
@@ -474,7 +472,6 @@ class RegionSslPolicy(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionSslPolicy:RegionSslPolicy default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_features: A list of features enabled when the selected profile is CUSTOM. The
@@ -545,7 +542,6 @@ class RegionSslPolicy(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionSslPolicy:RegionSslPolicy default {{region}}/{{name}}
         $ pulumi import gcp:compute/regionSslPolicy:RegionSslPolicy default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RegionSslPolicyArgs args: The arguments to use to populate this resource's properties.

@@ -38,7 +38,6 @@ class MigrationJobArgs:
                  vpc_peering_connectivity: Optional[pulumi.Input['MigrationJobVpcPeeringConnectivityArgs']] = None):
         """
         The set of arguments for constructing a MigrationJob resource.
-
         :param pulumi.Input[_builtins.str] destination: The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
         :param pulumi.Input[_builtins.str] migration_job_id: The ID of the migration job.
         :param pulumi.Input[_builtins.str] source: The name of the source connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{sourceConnectionProfile}.
@@ -322,7 +321,6 @@ class _MigrationJobState:
                  vpc_peering_connectivity: Optional[pulumi.Input['MigrationJobVpcPeeringConnectivityArgs']] = None):
         """
         Input properties used for looking up and filtering MigrationJob resources.
-
         :param pulumi.Input[_builtins.str] create_time: Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
         :param pulumi.Input[_builtins.str] destination: The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
         :param pulumi.Input[_builtins.str] display_name: The migration job display name.
@@ -1006,7 +1004,6 @@ class MigrationJob(pulumi.CustomResource):
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{location}}/{{migration_job_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] destination: The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
@@ -1338,7 +1335,6 @@ class MigrationJob(pulumi.CustomResource):
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{project}}/{{location}}/{{migration_job_id}}
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{location}}/{{migration_job_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param MigrationJobArgs args: The arguments to use to populate this resource's properties.

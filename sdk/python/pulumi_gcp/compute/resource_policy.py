@@ -32,7 +32,6 @@ class ResourcePolicyArgs:
                  workload_policy: Optional[pulumi.Input['ResourcePolicyWorkloadPolicyArgs']] = None):
         """
         The set of arguments for constructing a ResourcePolicy resource.
-
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs'] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
                Structure is documented below.
@@ -210,7 +209,6 @@ class _ResourcePolicyState:
                  workload_policy: Optional[pulumi.Input['ResourcePolicyWorkloadPolicyArgs']] = None):
         """
         Input properties used for looking up and filtering ResourcePolicy resources.
-
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs'] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
                Structure is documented below.
@@ -642,7 +640,6 @@ class ResourcePolicy(pulumi.CustomResource):
         $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -910,7 +907,6 @@ class ResourcePolicy(pulumi.CustomResource):
         $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{region}}/{{name}}
         $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ResourcePolicyArgs args: The arguments to use to populate this resource's properties.

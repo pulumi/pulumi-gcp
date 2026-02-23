@@ -24,7 +24,6 @@ class ControlPlaneAccessArgs:
                  synchronizer_identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ControlPlaneAccess resource.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] analytics_publisher_identities: Array of service accounts authorized to publish analytics data to the control plane, each specified using the following format: `serviceAccount:service-account-name`.
                The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
@@ -91,7 +90,6 @@ class _ControlPlaneAccessState:
                  synchronizer_identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ControlPlaneAccess resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] analytics_publisher_identities: Array of service accounts authorized to publish analytics data to the control plane, each specified using the following format: `serviceAccount:service-account-name`.
                The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
@@ -218,7 +216,6 @@ class ControlPlaneAccess(pulumi.CustomResource):
         $ pulumi import gcp:apigee/controlPlaneAccess:ControlPlaneAccess default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] analytics_publisher_identities: Array of service accounts authorized to publish analytics data to the control plane, each specified using the following format: `serviceAccount:service-account-name`.
@@ -293,7 +290,6 @@ class ControlPlaneAccess(pulumi.CustomResource):
         $ pulumi import gcp:apigee/controlPlaneAccess:ControlPlaneAccess default organizations/{{name}}/controlPlaneAccess
         $ pulumi import gcp:apigee/controlPlaneAccess:ControlPlaneAccess default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ControlPlaneAccessArgs args: The arguments to use to populate this resource's properties.

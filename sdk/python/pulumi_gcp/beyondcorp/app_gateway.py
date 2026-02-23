@@ -30,7 +30,6 @@ class AppGatewayArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppGateway resource.
-
         :param pulumi.Input[_builtins.str] display_name: An arbitrary user-provided name for the AppGateway.
         :param pulumi.Input[_builtins.str] host_type: The type of hosting used by the AppGateway.
                Default value is `HOST_TYPE_UNSPECIFIED`.
@@ -172,7 +171,6 @@ class _AppGatewayState:
                  uri: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppGateway resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['AppGatewayAllocatedConnectionArgs']]] allocated_connections: A list of connections allocated for the Gateway.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: An arbitrary user-provided name for the AppGateway.
@@ -451,7 +449,6 @@ class AppGateway(pulumi.CustomResource):
         $ pulumi import gcp:beyondcorp/appGateway:AppGateway default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: An arbitrary user-provided name for the AppGateway.
@@ -536,7 +533,6 @@ class AppGateway(pulumi.CustomResource):
         $ pulumi import gcp:beyondcorp/appGateway:AppGateway default {{region}}/{{name}}
         $ pulumi import gcp:beyondcorp/appGateway:AppGateway default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AppGatewayArgs args: The arguments to use to populate this resource's properties.

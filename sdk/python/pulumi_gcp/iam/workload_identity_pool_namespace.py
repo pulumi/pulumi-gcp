@@ -28,7 +28,6 @@ class WorkloadIdentityPoolNamespaceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkloadIdentityPoolNamespace resource.
-
         :param pulumi.Input[_builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
@@ -140,7 +139,6 @@ class _WorkloadIdentityPoolNamespaceState:
                  workload_identity_pool_namespace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkloadIdentityPoolNamespace resources.
-
         :param pulumi.Input[_builtins.str] description: A description of the namespace. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the namespace is disabled. If disabled, credentials may no longer be issued for
                identities within this namespace, however existing credentials will still be accepted until
@@ -375,7 +373,6 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
         $ pulumi import gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace default {{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the namespace. Cannot exceed 256 characters.
@@ -461,7 +458,6 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
         $ pulumi import gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}
         $ pulumi import gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace default {{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param WorkloadIdentityPoolNamespaceArgs args: The arguments to use to populate this resource's properties.

@@ -33,7 +33,6 @@ class OrganizationSinkArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrganizationSink resource.
-
         :param pulumi.Input[_builtins.str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
                
                - `storage.googleapis.com/[GCS_BUCKET]`
@@ -225,7 +224,6 @@ class _OrganizationSinkState:
                  writer_identity: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationSink resources.
-
         :param pulumi.Input['OrganizationSinkBigqueryOptionsArgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[_builtins.str] description: A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[_builtins.str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
@@ -476,7 +474,6 @@ class OrganizationSink(pulumi.CustomResource):
         $ pulumi import gcp:logging/organizationSink:OrganizationSink default organizations/{{organization_id}}/sinks/{{sink_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OrganizationSinkBigqueryOptionsArgs', 'OrganizationSinkBigqueryOptionsArgsDict']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -546,7 +543,6 @@ class OrganizationSink(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/organizationSink:OrganizationSink default organizations/{{organization_id}}/sinks/{{sink_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param OrganizationSinkArgs args: The arguments to use to populate this resource's properties.

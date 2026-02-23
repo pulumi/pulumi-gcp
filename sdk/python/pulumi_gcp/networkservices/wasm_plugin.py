@@ -31,7 +31,6 @@ class WasmPluginArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WasmPlugin resource.
-
         :param pulumi.Input[_builtins.str] main_version_id: The ID of the WasmPluginVersion resource that is the currently serving one. The version referred to must be a child of this WasmPlugin resource and should be listed in the "versions" field.
         :param pulumi.Input[Sequence[pulumi.Input['WasmPluginVersionArgs']]] versions: All versions of this WasmPlugin resource in the key-value format. The key is the resource ID, and the value is the VersionDetails object.
                Structure is documented below.
@@ -183,7 +182,6 @@ class _WasmPluginState:
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input['WasmPluginVersionArgs']]]] = None):
         """
         Input properties used for looking up and filtering WasmPlugin resources.
-
         :param pulumi.Input[_builtins.str] create_time: Output only. The timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] description: Optional. A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -497,7 +495,6 @@ class WasmPlugin(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/wasmPlugin:WasmPlugin default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Optional. A human-readable description of the resource.
@@ -604,7 +601,6 @@ class WasmPlugin(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/wasmPlugin:WasmPlugin default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networkservices/wasmPlugin:WasmPlugin default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param WasmPluginArgs args: The arguments to use to populate this resource's properties.

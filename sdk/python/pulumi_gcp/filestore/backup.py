@@ -29,7 +29,6 @@ class BackupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Backup resource.
-
         :param pulumi.Input[_builtins.str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[_builtins.str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.
         :param pulumi.Input[_builtins.str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
@@ -198,7 +197,6 @@ class _BackupState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Backup resources.
-
         :param pulumi.Input[_builtins.str] capacity_gb: The amount of bytes needed to allocate a full copy of the snapshot content.
         :param pulumi.Input[_builtins.str] create_time: The time when the snapshot was created in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
@@ -559,7 +557,6 @@ class Backup(pulumi.CustomResource):
         $ pulumi import gcp:filestore/backup:Backup default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
@@ -648,7 +645,6 @@ class Backup(pulumi.CustomResource):
         $ pulumi import gcp:filestore/backup:Backup default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:filestore/backup:Backup default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param BackupArgs args: The arguments to use to populate this resource's properties.

@@ -41,7 +41,6 @@ class NodePoolArgs:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NodePool resource.
-
         :param pulumi.Input[_builtins.str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
                
                - - -
@@ -420,7 +419,6 @@ class _NodePoolState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NodePool resources.
-
         :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
@@ -921,7 +919,6 @@ class NodePool(pulumi.CustomResource):
         $ pulumi import gcp:container/nodePool:NodePool default {{location}}/{{cluster_id}}/{{pool_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']] autoscaling: Configuration required by cluster autoscaler to adjust
@@ -1069,7 +1066,6 @@ class NodePool(pulumi.CustomResource):
 
         $ pulumi import gcp:container/nodePool:NodePool default {{location}}/{{cluster_id}}/{{pool_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param NodePoolArgs args: The arguments to use to populate this resource's properties.

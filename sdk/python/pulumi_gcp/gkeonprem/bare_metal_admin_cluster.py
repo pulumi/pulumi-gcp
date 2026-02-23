@@ -39,7 +39,6 @@ class BareMetalAdminClusterArgs:
                  storage: Optional[pulumi.Input['BareMetalAdminClusterStorageArgs']] = None):
         """
         The set of arguments for constructing a BareMetalAdminCluster resource.
-
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the Bare Metal Admin Cluster.
                This field has the same restrictions as Kubernetes annotations.
@@ -358,7 +357,6 @@ class _BareMetalAdminClusterState:
                  validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckArgs']]]] = None):
         """
         Input properties used for looking up and filtering BareMetalAdminCluster resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the Bare Metal Admin Cluster.
                This field has the same restrictions as Kubernetes annotations.
                The total size of all keys and values combined is limited to 256k.
@@ -1147,7 +1145,6 @@ class BareMetalAdminCluster(pulumi.CustomResource):
         $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the Bare Metal Admin Cluster.
@@ -1432,7 +1429,6 @@ class BareMetalAdminCluster(pulumi.CustomResource):
         $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param BareMetalAdminClusterArgs args: The arguments to use to populate this resource's properties.

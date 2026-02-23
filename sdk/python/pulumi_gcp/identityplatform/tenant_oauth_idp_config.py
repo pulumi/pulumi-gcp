@@ -29,7 +29,6 @@ class TenantOauthIdpConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TenantOauthIdpConfig resource.
-
         :param pulumi.Input[_builtins.str] client_id: The client id of an OAuth client.
         :param pulumi.Input[_builtins.str] display_name: Human friendly display name.
         :param pulumi.Input[_builtins.str] issuer: For OIDC Idps, the issuer identifier.
@@ -164,7 +163,6 @@ class _TenantOauthIdpConfigState:
                  tenant: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TenantOauthIdpConfig resources.
-
         :param pulumi.Input[_builtins.str] client_id: The client id of an OAuth client.
         :param pulumi.Input[_builtins.str] client_secret: The client secret of the OAuth client, to enable OIDC code flow.
         :param pulumi.Input[_builtins.str] display_name: Human friendly display name.
@@ -347,7 +345,6 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
         $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{tenant}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] client_id: The client id of an OAuth client.
@@ -407,7 +404,6 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
         $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{project}}/{{tenant}}/{{name}}
         $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{tenant}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param TenantOauthIdpConfigArgs args: The arguments to use to populate this resource's properties.

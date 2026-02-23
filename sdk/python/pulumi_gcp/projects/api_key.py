@@ -28,7 +28,6 @@ class ApiKeyArgs:
                  service_account_email: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiKey resource.
-
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of this API key. Modifiable by user.
         :param pulumi.Input[_builtins.str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
                
@@ -127,7 +126,6 @@ class _ApiKeyState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiKey resources.
-
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of this API key. Modifiable by user.
         :param pulumi.Input[_builtins.str] key_string: Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         :param pulumi.Input[_builtins.str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
@@ -386,7 +384,6 @@ class ApiKey(pulumi.CustomResource):
         $ pulumi import gcp:projects/apiKey:ApiKey default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of this API key. Modifiable by user.
@@ -534,7 +531,6 @@ class ApiKey(pulumi.CustomResource):
         $ pulumi import gcp:projects/apiKey:ApiKey default {{project}}/{{name}}
         $ pulumi import gcp:projects/apiKey:ApiKey default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ApiKeyArgs args: The arguments to use to populate this resource's properties.

@@ -38,7 +38,6 @@ class RuntimeTemplateArgs:
                  software_config: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']] = None):
         """
         The set of arguments for constructing a RuntimeTemplate resource.
-
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Runtime Template.
         :param pulumi.Input[_builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
         :param pulumi.Input['RuntimeTemplateDataPersistentDiskSpecArgs'] data_persistent_disk_spec: The configuration for the data disk of the runtime.
@@ -309,7 +308,6 @@ class _RuntimeTemplateState:
                  software_config: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']] = None):
         """
         Input properties used for looking up and filtering RuntimeTemplate resources.
-
         :param pulumi.Input['RuntimeTemplateDataPersistentDiskSpecArgs'] data_persistent_disk_spec: The configuration for the data disk of the runtime.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: The description of the Runtime Template.
@@ -741,7 +739,6 @@ class RuntimeTemplate(pulumi.CustomResource):
         $ pulumi import gcp:colab/runtimeTemplate:RuntimeTemplate default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RuntimeTemplateDataPersistentDiskSpecArgs', 'RuntimeTemplateDataPersistentDiskSpecArgsDict']] data_persistent_disk_spec: The configuration for the data disk of the runtime.
@@ -903,7 +900,6 @@ class RuntimeTemplate(pulumi.CustomResource):
         $ pulumi import gcp:colab/runtimeTemplate:RuntimeTemplate default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:colab/runtimeTemplate:RuntimeTemplate default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RuntimeTemplateArgs args: The arguments to use to populate this resource's properties.

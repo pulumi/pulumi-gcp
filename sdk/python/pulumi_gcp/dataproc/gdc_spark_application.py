@@ -39,7 +39,6 @@ class GdcSparkApplicationArgs:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GdcSparkApplication resource.
-
         :param pulumi.Input[_builtins.str] location: The location of the spark application.
         :param pulumi.Input[_builtins.str] serviceinstance: The id of the service instance to which this spark application belongs.
         :param pulumi.Input[_builtins.str] spark_application_id: The id of the application
@@ -331,7 +330,6 @@ class _GdcSparkApplicationState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GdcSparkApplication resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: The annotations to associate with this application. Annotations may be used to store client information, but are not used by the server.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -983,7 +981,6 @@ class GdcSparkApplication(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{location}}/{{serviceinstance}}/{{spark_application_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: The annotations to associate with this application. Annotations may be used to store client information, but are not used by the server.
@@ -1186,7 +1183,6 @@ class GdcSparkApplication(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{location}}/{{serviceinstance}}/{{spark_application_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param GdcSparkApplicationArgs args: The arguments to use to populate this resource's properties.

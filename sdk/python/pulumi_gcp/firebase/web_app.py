@@ -25,7 +25,6 @@ class WebAppArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WebApp resource.
-
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[_builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
@@ -110,7 +109,6 @@ class _WebAppState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebApp resources.
-
         :param pulumi.Input[_builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
@@ -336,7 +334,6 @@ class WebApp(pulumi.CustomResource):
         $ pulumi import gcp:firebase/webApp:WebApp default {{app_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
@@ -446,7 +443,6 @@ class WebApp(pulumi.CustomResource):
         $ pulumi import gcp:firebase/webApp:WebApp default webApps/{{app_id}}
         $ pulumi import gcp:firebase/webApp:WebApp default {{app_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param WebAppArgs args: The arguments to use to populate this resource's properties.

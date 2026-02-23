@@ -46,7 +46,6 @@ class FlexTemplateJobArgs:
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FlexTemplateJob resource.
-
         :param pulumi.Input[_builtins.str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
                
@@ -489,7 +488,6 @@ class _FlexTemplateJobState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlexTemplateJob resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_pipeline_options: List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
         :param pulumi.Input[_builtins.str] autoscaling_algorithm: The algorithm to use for autoscaling.
@@ -1066,14 +1064,14 @@ class FlexTemplateJob(pulumi.CustomResource):
         big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
         if big_data_job_subscription_id is None:
             big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.index.Id("big_data_job_name_suffix",
+        big_data_job_name_suffix = random.RandomId("big_data_job_name_suffix",
             byte_length=4,
             keepers={
-                region: region,
-                subscriptionId: big_data_job_subscription_id,
+                "region": region,
+                "subscription_id": big_data_job_subscription_id,
             })
         big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
-            name=f"dataflow-flextemplates-job-{big_data_job_name_suffix['dec']}",
+            name=big_data_job_name_suffix.dec.apply(lambda dec: f"dataflow-flextemplates-job-{dec}"),
             region=region,
             container_spec_gcs_path="gs://my-bucket/templates/template.json",
             skip_wait_on_job_termination=True,
@@ -1085,7 +1083,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1197,14 +1194,14 @@ class FlexTemplateJob(pulumi.CustomResource):
         big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
         if big_data_job_subscription_id is None:
             big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.index.Id("big_data_job_name_suffix",
+        big_data_job_name_suffix = random.RandomId("big_data_job_name_suffix",
             byte_length=4,
             keepers={
-                region: region,
-                subscriptionId: big_data_job_subscription_id,
+                "region": region,
+                "subscription_id": big_data_job_subscription_id,
             })
         big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
-            name=f"dataflow-flextemplates-job-{big_data_job_name_suffix['dec']}",
+            name=big_data_job_name_suffix.dec.apply(lambda dec: f"dataflow-flextemplates-job-{dec}"),
             region=region,
             container_spec_gcs_path="gs://my-bucket/templates/template.json",
             skip_wait_on_job_termination=True,
@@ -1216,7 +1213,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
-
 
         :param str resource_name: The name of the resource.
         :param FlexTemplateJobArgs args: The arguments to use to populate this resource's properties.

@@ -25,7 +25,6 @@ class FolderSettingsArgs:
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FolderSettings resource.
-
         :param pulumi.Input[_builtins.str] folder: The folder for which to retrieve settings.
         :param pulumi.Input[_builtins.bool] disable_default_sink: If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
         :param pulumi.Input[_builtins.str] kms_key_name: The resource name for the configured Cloud KMS key.
@@ -100,7 +99,6 @@ class _FolderSettingsState:
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FolderSettings resources.
-
         :param pulumi.Input[_builtins.bool] disable_default_sink: If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
         :param pulumi.Input[_builtins.str] folder: The folder for which to retrieve settings.
         :param pulumi.Input[_builtins.str] kms_key_name: The resource name for the configured Cloud KMS key.
@@ -268,7 +266,6 @@ class FolderSettings(pulumi.CustomResource):
         $ pulumi import gcp:logging/folderSettings:FolderSettings default {{folder}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disable_default_sink: If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
@@ -329,7 +326,6 @@ class FolderSettings(pulumi.CustomResource):
         $ pulumi import gcp:logging/folderSettings:FolderSettings default folders/{{folder}}/settings
         $ pulumi import gcp:logging/folderSettings:FolderSettings default {{folder}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param FolderSettingsArgs args: The arguments to use to populate this resource's properties.

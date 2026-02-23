@@ -35,7 +35,6 @@ class SecurityActionArgs:
                  ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityAction resource.
-
         :param pulumi.Input['SecurityActionConditionConfigArgs'] condition_config: A valid SecurityAction must contain at least one condition.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment that this security action applies to.
@@ -259,7 +258,6 @@ class _SecurityActionState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityAction resources.
-
         :param pulumi.Input['SecurityActionAllowArgs'] allow: Allow a request through if it matches this SecurityAction.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_proxies: If unset, this would apply to all proxies in the environment.
                If set, this action is enforced only if at least one proxy in the repeated
@@ -611,7 +609,6 @@ class SecurityAction(pulumi.CustomResource):
         $ pulumi import gcp:apigee/securityAction:SecurityAction default {{org_id}}/{{env_id}}/{{security_action_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SecurityActionAllowArgs', 'SecurityActionAllowArgsDict']] allow: Allow a request through if it matches this SecurityAction.
@@ -730,7 +727,6 @@ class SecurityAction(pulumi.CustomResource):
         $ pulumi import gcp:apigee/securityAction:SecurityAction default organizations/{{org_id}}/environments/{{env_id}}/securityActions/{{security_action_id}}
         $ pulumi import gcp:apigee/securityAction:SecurityAction default {{org_id}}/{{env_id}}/{{security_action_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SecurityActionArgs args: The arguments to use to populate this resource's properties.

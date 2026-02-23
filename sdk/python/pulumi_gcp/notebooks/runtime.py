@@ -30,7 +30,6 @@ class RuntimeArgs:
                  virtual_machine: Optional[pulumi.Input['RuntimeVirtualMachineArgs']] = None):
         """
         The set of arguments for constructing a Runtime resource.
-
         :param pulumi.Input[_builtins.str] location: A reference to the zone where the machine resides.
         :param pulumi.Input['RuntimeAccessConfigArgs'] access_config: The config settings for accessing runtime.
                Structure is documented below.
@@ -179,7 +178,6 @@ class _RuntimeState:
                  virtual_machine: Optional[pulumi.Input['RuntimeVirtualMachineArgs']] = None):
         """
         Input properties used for looking up and filtering Runtime resources.
-
         :param pulumi.Input['RuntimeAccessConfigArgs'] access_config: The config settings for accessing runtime.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -602,7 +600,6 @@ class Runtime(pulumi.CustomResource):
         $ pulumi import gcp:notebooks/runtime:Runtime default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']] access_config: The config settings for accessing runtime.
@@ -821,7 +818,6 @@ class Runtime(pulumi.CustomResource):
         $ pulumi import gcp:notebooks/runtime:Runtime default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:notebooks/runtime:Runtime default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RuntimeArgs args: The arguments to use to populate this resource's properties.

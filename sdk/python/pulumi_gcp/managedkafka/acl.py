@@ -28,7 +28,6 @@ class AclArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Acl resource.
-
         :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The acl entries that apply to the resource pattern. The maximum number of allowed entries is 100.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] acl_id: The ID to use for the acl, which will become the final component of the acl's name. The structure of `aclId` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. `aclId` is structured like one of the following:
@@ -130,7 +129,6 @@ class _AclState:
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Acl resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The acl entries that apply to the resource pattern. The maximum number of allowed entries is 100.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] acl_id: The ID to use for the acl, which will become the final component of the acl's name. The structure of `aclId` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. `aclId` is structured like one of the following:
@@ -376,7 +374,6 @@ class Acl(pulumi.CustomResource):
         $ pulumi import gcp:managedkafka/acl:Acl default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/acls/{{acl_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict']]]] acl_entries: The acl entries that apply to the resource pattern. The maximum number of allowed entries is 100.
@@ -454,7 +451,6 @@ class Acl(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:managedkafka/acl:Acl default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/acls/{{acl_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AclArgs args: The arguments to use to populate this resource's properties.

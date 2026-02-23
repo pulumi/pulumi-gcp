@@ -36,7 +36,6 @@ class SearchEngineArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SearchEngine resource.
-
         :param pulumi.Input[_builtins.str] collection_id: The collection ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
@@ -272,7 +271,6 @@ class _SearchEngineState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SearchEngine resources.
-
         :param pulumi.Input[_builtins.str] app_type: This is the application type this engine resource represents.
                The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID.
@@ -639,7 +637,6 @@ class SearchEngine(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{location}}/{{collection_id}}/{{engine_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_type: This is the application type this engine resource represents.
@@ -747,7 +744,6 @@ class SearchEngine(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}
         $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{location}}/{{collection_id}}/{{engine_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SearchEngineArgs args: The arguments to use to populate this resource's properties.

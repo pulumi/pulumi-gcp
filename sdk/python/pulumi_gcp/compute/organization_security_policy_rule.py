@@ -33,7 +33,6 @@ class OrganizationSecurityPolicyRuleArgs:
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a OrganizationSecurityPolicyRule resource.
-
         :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny" or "goto_next".
         :param pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
@@ -220,7 +219,6 @@ class _OrganizationSecurityPolicyRuleState:
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering OrganizationSecurityPolicyRule resources.
-
         :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny" or "goto_next".
         :param pulumi.Input[_builtins.str] description: A description of the rule.
@@ -474,7 +472,6 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Can currently be either
@@ -565,7 +562,6 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param OrganizationSecurityPolicyRuleArgs args: The arguments to use to populate this resource's properties.

@@ -23,7 +23,6 @@ class ServicePerimeterResourceArgs:
                  resource: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ServicePerimeterResource resource.
-
         :param pulumi.Input[_builtins.str] perimeter_name: The name of the Service Perimeter to add this resource to.
         :param pulumi.Input[_builtins.str] resource: A GCP resource that is inside of the service perimeter.
                Currently only projects are allowed.
@@ -68,7 +67,6 @@ class _ServicePerimeterResourceState:
                  resource: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeterResource resources.
-
         :param pulumi.Input[_builtins.str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input[_builtins.str] etag: The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
         :param pulumi.Input[_builtins.str] perimeter_name: The name of the Service Perimeter to add this resource to.
@@ -203,7 +201,6 @@ class ServicePerimeterResource(pulumi.CustomResource):
         $ pulumi import gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource default {{perimeter_name}}/{{resource}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] perimeter_name: The name of the Service Perimeter to add this resource to.
@@ -274,7 +271,6 @@ class ServicePerimeterResource(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource default {{perimeter_name}}/{{resource}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ServicePerimeterResourceArgs args: The arguments to use to populate this resource's properties.

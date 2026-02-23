@@ -43,7 +43,6 @@ class WorkstationConfigArgs:
                  running_timeout: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkstationConfig resource.
-
         :param pulumi.Input[_builtins.str] location: The location where the workstation cluster config should reside.
         :param pulumi.Input[_builtins.str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[_builtins.str] workstation_config_id: The ID to be assigned to the workstation cluster config.
@@ -414,7 +413,6 @@ class _WorkstationConfigState:
                  workstation_config_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkstationConfig resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigAllowedPortArgs']]] allowed_ports: A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Client-specified annotations. This is distinct from labels.
@@ -1393,7 +1391,6 @@ class WorkstationConfig(pulumi.CustomResource):
         $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigAllowedPortArgs', 'WorkstationConfigAllowedPortArgsDict']]]] allowed_ports: A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
@@ -1911,7 +1908,6 @@ class WorkstationConfig(pulumi.CustomResource):
         $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
         $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param WorkstationConfigArgs args: The arguments to use to populate this resource's properties.

@@ -30,7 +30,6 @@ class SecurityGatewayApplicationArgs:
                  upstreams: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationUpstreamArgs']]]] = None):
         """
         The set of arguments for constructing a SecurityGatewayApplication resource.
-
         :param pulumi.Input[_builtins.str] application_id: User-settable Application resource ID.
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
@@ -188,7 +187,6 @@ class _SecurityGatewayApplicationState:
                  upstreams: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationUpstreamArgs']]]] = None):
         """
         Input properties used for looking up and filtering SecurityGatewayApplication resources.
-
         :param pulumi.Input[_builtins.str] application_id: User-settable Application resource ID.
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
@@ -544,7 +542,6 @@ class SecurityGatewayApplication(pulumi.CustomResource):
         $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default {{security_gateway_id}}/{{application_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: User-settable Application resource ID.
@@ -730,7 +727,6 @@ class SecurityGatewayApplication(pulumi.CustomResource):
         $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default {{project}}/{{security_gateway_id}}/{{application_id}}
         $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default {{security_gateway_id}}/{{application_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SecurityGatewayApplicationArgs args: The arguments to use to populate this resource's properties.

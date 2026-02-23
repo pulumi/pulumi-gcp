@@ -33,7 +33,6 @@ class ApiConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiConfig resource.
-
         :param pulumi.Input[_builtins.str] api: The API to attach the config to.
         :param pulumi.Input[_builtins.str] api_config_id: Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
         :param pulumi.Input[_builtins.str] api_config_id_prefix: Creates a unique name beginning with the
@@ -227,7 +226,6 @@ class _ApiConfigState:
                  service_config_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiConfig resources.
-
         :param pulumi.Input[_builtins.str] api: The API to attach the config to.
         :param pulumi.Input[_builtins.str] api_config_id: Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
         :param pulumi.Input[_builtins.str] api_config_id_prefix: Creates a unique name beginning with the
@@ -512,7 +510,6 @@ class ApiConfig(pulumi.CustomResource):
         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{api_config_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api: The API to attach the config to.
@@ -572,7 +569,6 @@ class ApiConfig(pulumi.CustomResource):
         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{api_config_id}}
         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{api_config_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ApiConfigArgs args: The arguments to use to populate this resource's properties.

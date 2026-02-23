@@ -30,7 +30,6 @@ class MulticastConsumerAssociationArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MulticastConsumerAssociation resource.
-
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] multicast_consumer_association_id: A unique name for the multicast consumer association.
                The name is restricted to letters, numbers, and hyphen, with the first
@@ -177,7 +176,6 @@ class _MulticastConsumerAssociationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MulticastConsumerAssociation resources.
-
         :param pulumi.Input[_builtins.str] create_time: [Output only] The timestamp when the multicast consumer association was
                created.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast consumer association.
@@ -540,7 +538,6 @@ class MulticastConsumerAssociation(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/multicastConsumerAssociation:MulticastConsumerAssociation default {{location}}/{{multicast_consumer_association_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast consumer association.
@@ -623,7 +620,6 @@ class MulticastConsumerAssociation(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/multicastConsumerAssociation:MulticastConsumerAssociation default {{project}}/{{location}}/{{multicast_consumer_association_id}}
         $ pulumi import gcp:networkservices/multicastConsumerAssociation:MulticastConsumerAssociation default {{location}}/{{multicast_consumer_association_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param MulticastConsumerAssociationArgs args: The arguments to use to populate this resource's properties.

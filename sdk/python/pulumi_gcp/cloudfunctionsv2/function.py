@@ -32,7 +32,6 @@ class FunctionArgs:
                  service_config: Optional[pulumi.Input['FunctionServiceConfigArgs']] = None):
         """
         The set of arguments for constructing a Function resource.
-
         :param pulumi.Input[_builtins.str] location: The location of this cloud function.
         :param pulumi.Input['FunctionBuildConfigArgs'] build_config: Describes the Build step of the function that builds a container
                from the given source.
@@ -212,7 +211,6 @@ class _FunctionState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Function resources.
-
         :param pulumi.Input['FunctionBuildConfigArgs'] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
@@ -1291,7 +1289,6 @@ class Function(pulumi.CustomResource):
         $ pulumi import gcp:cloudfunctionsv2/function:Function default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']] build_config: Describes the Build step of the function that builds a container
@@ -2130,7 +2127,6 @@ class Function(pulumi.CustomResource):
         $ pulumi import gcp:cloudfunctionsv2/function:Function default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:cloudfunctionsv2/function:Function default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param FunctionArgs args: The arguments to use to populate this resource's properties.

@@ -32,7 +32,6 @@ class WidgetConfigArgs:
                  widget_config_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WidgetConfig resource.
-
         :param pulumi.Input[_builtins.str] engine_id: The engine ID.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
@@ -200,7 +199,6 @@ class _WidgetConfigState:
                  widget_config_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WidgetConfig resources.
-
         :param pulumi.Input['WidgetConfigAccessSettingsArgs'] access_settings: Describes widget access settings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID.
@@ -453,7 +451,6 @@ class WidgetConfig(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/widgetConfig:WidgetConfig default {{location}}/{{collection_id}}/{{engine_id}}/{{widget_config_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['WidgetConfigAccessSettingsArgs', 'WidgetConfigAccessSettingsArgsDict']] access_settings: Describes widget access settings.
@@ -544,7 +541,6 @@ class WidgetConfig(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/widgetConfig:WidgetConfig default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{widget_config_id}}
         $ pulumi import gcp:discoveryengine/widgetConfig:WidgetConfig default {{location}}/{{collection_id}}/{{engine_id}}/{{widget_config_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param WidgetConfigArgs args: The arguments to use to populate this resource's properties.

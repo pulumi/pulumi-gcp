@@ -31,7 +31,6 @@ class MessageBusArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MessageBus resource.
-
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] message_bus_id: Required. The user-provided ID to be assigned to the MessageBus. It should match the
                format `^a-z?$`.
@@ -196,7 +195,6 @@ class _MessageBusState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MessageBus resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Resource annotations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -536,7 +534,6 @@ class MessageBus(pulumi.CustomResource):
         $ pulumi import gcp:eventarc/messageBus:MessageBus default {{location}}/{{message_bus_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Resource annotations.
@@ -613,7 +610,6 @@ class MessageBus(pulumi.CustomResource):
         $ pulumi import gcp:eventarc/messageBus:MessageBus default {{project}}/{{location}}/{{message_bus_id}}
         $ pulumi import gcp:eventarc/messageBus:MessageBus default {{location}}/{{message_bus_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param MessageBusArgs args: The arguments to use to populate this resource's properties.

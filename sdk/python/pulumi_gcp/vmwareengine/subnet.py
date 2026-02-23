@@ -26,7 +26,6 @@ class SubnetArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Subnet resource.
-
         :param pulumi.Input[_builtins.str] ip_cidr_range: The IP address range of the subnet in CIDR format.
         :param pulumi.Input[_builtins.str] parent: The resource name of the private cloud to create a new subnet in.
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -97,7 +96,6 @@ class _SubnetState:
                  vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Subnet resources.
-
         :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -379,7 +377,6 @@ class Subnet(pulumi.CustomResource):
         $ pulumi import gcp:vmwareengine/subnet:Subnet default {{parent}}/subnets/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The IP address range of the subnet in CIDR format.
@@ -449,7 +446,6 @@ class Subnet(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:vmwareengine/subnet:Subnet default {{parent}}/subnets/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SubnetArgs args: The arguments to use to populate this resource's properties.

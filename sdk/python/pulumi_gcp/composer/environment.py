@@ -29,7 +29,6 @@ class EnvironmentArgs:
                  storage_config: Optional[pulumi.Input['EnvironmentStorageConfigArgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
-
         :param pulumi.Input['EnvironmentConfigArgs'] config: Configuration parameters for this environment.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
                
@@ -142,7 +141,6 @@ class _EnvironmentState:
                  storage_config: Optional[pulumi.Input['EnvironmentStorageConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Environment resources.
-
         :param pulumi.Input['EnvironmentConfigArgs'] config: Configuration parameters for this environment.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
@@ -845,7 +843,6 @@ class Environment(pulumi.CustomResource):
           SQL_REGION
           SQL_USER
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']] config: Configuration parameters for this environment.
@@ -1423,7 +1420,6 @@ class Environment(pulumi.CustomResource):
           SQL_PROJECT
           SQL_REGION
           SQL_USER
-
 
         :param str resource_name: The name of the resource.
         :param EnvironmentArgs args: The arguments to use to populate this resource's properties.

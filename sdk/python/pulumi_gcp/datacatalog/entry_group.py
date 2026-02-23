@@ -26,7 +26,6 @@ class EntryGroupArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EntryGroup resource.
-
         :param pulumi.Input[_builtins.str] entry_group_id: The id of the entry group to create. The id must begin with a letter or underscore,
                contain only English letters, numbers and underscores, and be at most 64 characters.
         :param pulumi.Input[_builtins.str] description: Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
@@ -119,7 +118,6 @@ class _EntryGroupState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EntryGroup resources.
-
         :param pulumi.Input[_builtins.str] description: Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
         :param pulumi.Input[_builtins.str] display_name: A short name to identify the entry group, for example, "analytics data - jan 2011".
         :param pulumi.Input[_builtins.str] entry_group_id: The id of the entry group to create. The id must begin with a letter or underscore,
@@ -274,7 +272,6 @@ class EntryGroup(pulumi.CustomResource):
         $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
@@ -335,7 +332,6 @@ class EntryGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param EntryGroupArgs args: The arguments to use to populate this resource's properties.

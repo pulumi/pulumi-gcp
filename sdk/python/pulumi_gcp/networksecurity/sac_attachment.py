@@ -32,7 +32,6 @@ class SacAttachmentArgs:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SacAttachment resource.
-
         :param pulumi.Input[_builtins.str] location: The location of the SACAttachment resource. eg us-central1
         :param pulumi.Input[_builtins.str] ncc_gateway: NCC Gateway associated with the attachment. This can be input as an ID or a full resource name.
         :param pulumi.Input[_builtins.str] sac_realm: SAC Realm which owns the attachment. This can be input as an ID or a full resource name.
@@ -197,7 +196,6 @@ class _SacAttachmentState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SacAttachment resources.
-
         :param pulumi.Input[_builtins.str] country: Case-insensitive ISO-3166 alpha-2 country code used for localization. Only valid for Symantec attachments.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the realm was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -485,7 +483,6 @@ class SacAttachment(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] country: Case-insensitive ISO-3166 alpha-2 country code used for localization. Only valid for Symantec attachments.
@@ -554,7 +551,6 @@ class SacAttachment(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SacAttachmentArgs args: The arguments to use to populate this resource's properties.

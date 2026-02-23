@@ -33,7 +33,6 @@ class RouterArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Router resource.
-
         :param pulumi.Input['RouterBgpArgs'] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -226,7 +225,6 @@ class _RouterState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Router resources.
-
         :param pulumi.Input['RouterBgpArgs'] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -575,7 +573,6 @@ class Router(pulumi.CustomResource):
         $ pulumi import gcp:compute/router:Router default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RouterBgpArgs', 'RouterBgpArgsDict']] bgp: BGP information specific to this router.
@@ -731,7 +728,6 @@ class Router(pulumi.CustomResource):
         $ pulumi import gcp:compute/router:Router default {{region}}/{{name}}
         $ pulumi import gcp:compute/router:Router default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RouterArgs args: The arguments to use to populate this resource's properties.

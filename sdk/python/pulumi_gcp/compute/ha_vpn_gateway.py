@@ -33,7 +33,6 @@ class HaVpnGatewayArgs:
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]] = None):
         """
         The set of arguments for constructing a HaVpnGateway resource.
-
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] gateway_ip_version: The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
@@ -243,7 +242,6 @@ class _HaVpnGatewayState:
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]] = None):
         """
         Input properties used for looking up and filtering HaVpnGateway resources.
-
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] gateway_ip_version: The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
@@ -645,7 +643,6 @@ class HaVpnGateway(pulumi.CustomResource):
         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -806,7 +803,6 @@ class HaVpnGateway(pulumi.CustomResource):
         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{region}}/{{name}}
         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param HaVpnGatewayArgs args: The arguments to use to populate this resource's properties.

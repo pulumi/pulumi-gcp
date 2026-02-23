@@ -27,7 +27,6 @@ class AiDeploymentResourcePoolArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiDeploymentResourcePool resource.
-
         :param pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesArgs'] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
@@ -105,7 +104,6 @@ class _AiDeploymentResourcePoolState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiDeploymentResourcePool resources.
-
         :param pulumi.Input[_builtins.str] create_time: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesArgs'] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
                Structure is documented below.
@@ -251,7 +249,6 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
         $ pulumi import gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
@@ -318,7 +315,6 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
         $ pulumi import gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool default {{region}}/{{name}}
         $ pulumi import gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AiDeploymentResourcePoolArgs args: The arguments to use to populate this resource's properties.

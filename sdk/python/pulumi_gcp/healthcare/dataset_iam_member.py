@@ -27,7 +27,6 @@ class DatasetIamMemberArgs:
                  condition: Optional[pulumi.Input['DatasetIamMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a DatasetIamMember resource.
-
         :param pulumi.Input[_builtins.str] dataset_id: The dataset ID, in the form
                `{project_id}/{location_name}/{dataset_name}` or
                `{location_name}/{dataset_name}`. In the second form, the provider's
@@ -118,7 +117,6 @@ class _DatasetIamMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatasetIamMember resources.
-
         :param pulumi.Input[_builtins.str] dataset_id: The dataset ID, in the form
                `{project_id}/{location_name}/{dataset_name}` or
                `{location_name}/{dataset_name}`. In the second form, the provider's
@@ -310,7 +308,6 @@ class DatasetIamMember(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dataset_id: The dataset ID, in the form
@@ -416,7 +413,6 @@ class DatasetIamMember(pulumi.CustomResource):
 
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-
 
         :param str resource_name: The name of the resource.
         :param DatasetIamMemberArgs args: The arguments to use to populate this resource's properties.

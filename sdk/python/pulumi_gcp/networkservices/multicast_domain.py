@@ -32,7 +32,6 @@ class MulticastDomainArgs:
                  ull_multicast_domain: Optional[pulumi.Input['MulticastDomainUllMulticastDomainArgs']] = None):
         """
         The set of arguments for constructing a MulticastDomain resource.
-
         :param pulumi.Input[_builtins.str] admin_network: The resource name of the multicast admin VPC network.
                Use the following format:
                `projects/{project}/locations/global/networks/{network}`.
@@ -212,7 +211,6 @@ class _MulticastDomainState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MulticastDomain resources.
-
         :param pulumi.Input[_builtins.str] admin_network: The resource name of the multicast admin VPC network.
                Use the following format:
                `projects/{project}/locations/global/networks/{network}`.
@@ -580,7 +578,6 @@ class MulticastDomain(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{location}}/{{multicast_domain_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] admin_network: The resource name of the multicast admin VPC network.
@@ -662,7 +659,6 @@ class MulticastDomain(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{project}}/{{location}}/{{multicast_domain_id}}
         $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{location}}/{{multicast_domain_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param MulticastDomainArgs args: The arguments to use to populate this resource's properties.

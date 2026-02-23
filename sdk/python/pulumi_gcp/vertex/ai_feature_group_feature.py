@@ -28,7 +28,6 @@ class AiFeatureGroupFeatureArgs:
                  version_column_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiFeatureGroupFeature resource.
-
         :param pulumi.Input[_builtins.str] feature_group: The name of the Feature Group.
         :param pulumi.Input[_builtins.str] region: The region for the resource. It should be the same as the feature group's region.
         :param pulumi.Input[_builtins.str] description: The description of the FeatureGroup.
@@ -157,7 +156,6 @@ class _AiFeatureGroupFeatureState:
                  version_column_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureGroupFeature resources.
-
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the FeatureGroup was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] description: The description of the FeatureGroup.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -438,7 +436,6 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
         $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{feature_group}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the FeatureGroup.
@@ -547,7 +544,6 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
         $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{region}}/{{feature_group}}/{{name}}
         $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{feature_group}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AiFeatureGroupFeatureArgs args: The arguments to use to populate this resource's properties.

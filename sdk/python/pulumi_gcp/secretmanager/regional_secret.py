@@ -37,7 +37,6 @@ class RegionalSecretArgs:
                  version_destroy_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionalSecret resource.
-
         :param pulumi.Input[_builtins.str] location: The location of the regional secret. eg us-central1
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Custom metadata about the regional secret.
@@ -367,7 +366,6 @@ class _RegionalSecretState:
                  version_destroy_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionalSecret resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Custom metadata about the regional secret.
                Annotations are distinct from various forms of labels. Annotations exist to allow
                client tools to store their own state information without requiring a database.
@@ -922,7 +920,6 @@ class RegionalSecret(pulumi.CustomResource):
         $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default {{location}}/{{secret_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Custom metadata about the regional secret.
@@ -1139,7 +1136,6 @@ class RegionalSecret(pulumi.CustomResource):
         $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default {{project}}/{{location}}/{{secret_id}}
         $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default {{location}}/{{secret_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RegionalSecretArgs args: The arguments to use to populate this resource's properties.

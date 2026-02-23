@@ -28,7 +28,6 @@ class LoggingSettingBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoggingSettingBinding resource.
-
         :param pulumi.Input[_builtins.str] logging_setting_id: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] setting_binding_id: Id of the setting binding.
         :param pulumi.Input[_builtins.str] target: Target of the binding.
@@ -159,7 +158,6 @@ class _LoggingSettingBindingState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoggingSettingBinding resources.
-
         :param pulumi.Input[_builtins.str] create_time: Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
@@ -414,7 +412,6 @@ class LoggingSettingBinding(pulumi.CustomResource):
         $ pulumi import gcp:gemini/loggingSettingBinding:LoggingSettingBinding default {{location}}/{{logging_setting_id}}/{{setting_binding_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
@@ -479,7 +476,6 @@ class LoggingSettingBinding(pulumi.CustomResource):
         $ pulumi import gcp:gemini/loggingSettingBinding:LoggingSettingBinding default {{project}}/{{location}}/{{logging_setting_id}}/{{setting_binding_id}}
         $ pulumi import gcp:gemini/loggingSettingBinding:LoggingSettingBinding default {{location}}/{{logging_setting_id}}/{{setting_binding_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param LoggingSettingBindingArgs args: The arguments to use to populate this resource's properties.

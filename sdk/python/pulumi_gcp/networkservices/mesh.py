@@ -27,7 +27,6 @@ class MeshArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Mesh resource.
-
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[_builtins.int] interception_port: Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the
                specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to
@@ -151,7 +150,6 @@ class _MeshState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Mesh resources.
-
         :param pulumi.Input[_builtins.str] create_time: Time the Mesh was created in UTC.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -414,7 +412,6 @@ class Mesh(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/mesh:Mesh default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
@@ -501,7 +498,6 @@ class Mesh(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networkservices/mesh:Mesh default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param MeshArgs args: The arguments to use to populate this resource's properties.

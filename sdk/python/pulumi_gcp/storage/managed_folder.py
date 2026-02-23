@@ -24,7 +24,6 @@ class ManagedFolderArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ManagedFolder resource.
-
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket that contains the managed folder.
         :param pulumi.Input[_builtins.bool] force_destroy: Allows the deletion of a managed folder even if contains
                objects. If a non-empty managed folder is deleted, any objects
@@ -92,7 +91,6 @@ class _ManagedFolderState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManagedFolder resources.
-
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket that contains the managed folder.
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which this managed folder was created.
         :param pulumi.Input[_builtins.bool] force_destroy: Allows the deletion of a managed folder even if contains
@@ -270,7 +268,6 @@ class ManagedFolder(pulumi.CustomResource):
         $ pulumi import gcp:storage/managedFolder:ManagedFolder default {{bucket}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket that contains the managed folder.
@@ -337,7 +334,6 @@ class ManagedFolder(pulumi.CustomResource):
         $ pulumi import gcp:storage/managedFolder:ManagedFolder default {{bucket}}/managedFolders/{{name}}
         $ pulumi import gcp:storage/managedFolder:ManagedFolder default {{bucket}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ManagedFolderArgs args: The arguments to use to populate this resource's properties.

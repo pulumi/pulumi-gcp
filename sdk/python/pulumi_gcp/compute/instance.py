@@ -56,7 +56,6 @@ class InstanceArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-
         :param pulumi.Input['InstanceBootDiskArgs'] boot_disk: The boot disk for the instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
@@ -720,7 +719,6 @@ class _InstanceState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-
         :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
         :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -1638,7 +1636,6 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:compute/instance:Instance default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceAdvancedMachineFeaturesArgs', 'InstanceAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
@@ -1849,7 +1846,6 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:compute/instance:Instance default {{project}}/{{zone}}/{{name}}
         $ pulumi import gcp:compute/instance:Instance default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

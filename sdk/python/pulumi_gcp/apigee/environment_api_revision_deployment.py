@@ -28,7 +28,6 @@ class EnvironmentApiRevisionDeploymentArgs:
                  service_account: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvironmentApiRevisionDeployment resource.
-
         :param pulumi.Input[_builtins.str] api: Apigee API proxy name.
         :param pulumi.Input[_builtins.str] environment: Apigee environment name.
         :param pulumi.Input[_builtins.str] org_id: Apigee organization ID.
@@ -148,7 +147,6 @@ class _EnvironmentApiRevisionDeploymentState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvironmentApiRevisionDeployment resources.
-
         :param pulumi.Input[_builtins.str] api: Apigee API proxy name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] basepaths: Basepaths associated with the deployed proxy.
         :param pulumi.Input[_builtins.str] deploy_start_time: RFC3339 timestamp when deployment started.
@@ -358,7 +356,6 @@ class EnvironmentApiRevisionDeployment(pulumi.CustomResource):
         $ pulumi import gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment default {{id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api: Apigee API proxy name.
@@ -416,7 +413,6 @@ class EnvironmentApiRevisionDeployment(pulumi.CustomResource):
         $ pulumi import gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment default {{org_id}}/{{environment}}/{{api}}/{{revision}}
         $ pulumi import gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment default {{id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param EnvironmentApiRevisionDeploymentArgs args: The arguments to use to populate this resource's properties.

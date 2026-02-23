@@ -34,7 +34,6 @@ class CxFlowArgs:
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]] = None):
         """
         The set of arguments for constructing a CxFlow resource.
-
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the flow.
         :param pulumi.Input['CxFlowAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
@@ -273,7 +272,6 @@ class _CxFlowState:
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]] = None):
         """
         Input properties used for looking up and filtering CxFlow resources.
-
         :param pulumi.Input['CxFlowAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
@@ -1048,7 +1046,6 @@ class CxFlow(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
@@ -1612,7 +1609,6 @@ class CxFlow(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/flows/{{name}}
         $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param CxFlowArgs args: The arguments to use to populate this resource's properties.

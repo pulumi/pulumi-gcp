@@ -35,7 +35,6 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs:
                  tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a NetworkFirewallPolicyPacketMirroringRule resource.
-
         :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
         :param pulumi.Input[_builtins.str] direction: The direction in which this rule applies.
                Possible values are: `INGRESS`, `EGRESS`.
@@ -260,7 +259,6 @@ class _NetworkFirewallPolicyPacketMirroringRuleState:
                  tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering NetworkFirewallPolicyPacketMirroringRule resources.
-
         :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description for this resource.
@@ -629,7 +627,6 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
         $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default {{firewall_policy}}/{{priority}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
@@ -758,7 +755,6 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
         $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default {{project}}/{{firewall_policy}}/{{priority}}
         $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default {{firewall_policy}}/{{priority}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param NetworkFirewallPolicyPacketMirroringRuleArgs args: The arguments to use to populate this resource's properties.

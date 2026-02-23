@@ -23,7 +23,6 @@ class DefaultObjectACLArgs:
                  role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DefaultObjectACL resource.
-
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket it applies to.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`.
                See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
@@ -67,7 +66,6 @@ class _DefaultObjectACLState:
                  role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DefaultObjectACL resources.
-
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket it applies to.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`.
                See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
@@ -152,7 +150,6 @@ class DefaultObjectACL(pulumi.CustomResource):
 
         This resource does not support import.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket it applies to.
@@ -203,7 +200,6 @@ class DefaultObjectACL(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
-
 
         :param str resource_name: The name of the resource.
         :param DefaultObjectACLArgs args: The arguments to use to populate this resource's properties.

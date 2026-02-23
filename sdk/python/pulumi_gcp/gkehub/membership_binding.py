@@ -29,7 +29,6 @@ class MembershipBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MembershipBinding resource.
-
         :param pulumi.Input[_builtins.str] location: Location of the membership
         :param pulumi.Input[_builtins.str] membership_binding_id: The client-provided identifier of the membership binding.
         :param pulumi.Input[_builtins.str] membership_id: Id of the membership
@@ -148,7 +147,6 @@ class _MembershipBindingState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MembershipBinding resources.
-
         :param pulumi.Input[_builtins.str] create_time: Time the MembershipBinding was created in UTC.
         :param pulumi.Input[_builtins.str] delete_time: Time the MembershipBinding was deleted in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -454,7 +452,6 @@ class MembershipBinding(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default {{location}}/{{membership_id}}/{{membership_binding_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for this Membership binding.
@@ -539,7 +536,6 @@ class MembershipBinding(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default {{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}
         $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default {{location}}/{{membership_id}}/{{membership_binding_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param MembershipBindingArgs args: The arguments to use to populate this resource's properties.

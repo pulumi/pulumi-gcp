@@ -34,7 +34,6 @@ class EnvironmentArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Environment resource.
-
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee environment,
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[_builtins.str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
@@ -252,7 +251,6 @@ class _EnvironmentState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
-
         :param pulumi.Input[_builtins.str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
                the Environment and cannot be changed.
                Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
@@ -534,7 +532,6 @@ class Environment(pulumi.CustomResource):
         $ pulumi import gcp:apigee/environment:Environment default {{org_id}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
@@ -632,7 +629,6 @@ class Environment(pulumi.CustomResource):
         $ pulumi import gcp:apigee/environment:Environment default {{org_id}}/environments/{{name}}
         $ pulumi import gcp:apigee/environment:Environment default {{org_id}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param EnvironmentArgs args: The arguments to use to populate this resource's properties.

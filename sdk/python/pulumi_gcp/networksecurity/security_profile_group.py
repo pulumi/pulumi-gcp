@@ -30,7 +30,6 @@ class SecurityProfileGroupArgs:
                  url_filtering_profile: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityProfileGroup resource.
-
         :param pulumi.Input[_builtins.str] custom_intercept_profile: Reference to a SecurityProfile with the CustomIntercept configuration.
         :param pulumi.Input[_builtins.str] custom_mirroring_profile: Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
         :param pulumi.Input[_builtins.str] description: An optional description of the profile. The Max length is 512 characters.
@@ -200,7 +199,6 @@ class _SecurityProfileGroupState:
                  url_filtering_profile: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityProfileGroup resources.
-
         :param pulumi.Input[_builtins.str] create_time: Time the security profile group was created in UTC.
         :param pulumi.Input[_builtins.str] custom_intercept_profile: Reference to a SecurityProfile with the CustomIntercept configuration.
         :param pulumi.Input[_builtins.str] custom_mirroring_profile: Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
@@ -586,7 +584,6 @@ class SecurityProfileGroup(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/securityProfileGroup:SecurityProfileGroup default {{parent}}/locations/{{location}}/securityProfileGroups/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_intercept_profile: Reference to a SecurityProfile with the CustomIntercept configuration.
@@ -748,7 +745,6 @@ class SecurityProfileGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:networksecurity/securityProfileGroup:SecurityProfileGroup default {{parent}}/locations/{{location}}/securityProfileGroups/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SecurityProfileGroupArgs args: The arguments to use to populate this resource's properties.

@@ -45,7 +45,6 @@ class DatabaseInstanceArgs:
                  settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None):
         """
         The set of arguments for constructing a DatabaseInstance resource.
-
         :param pulumi.Input[_builtins.str] database_version: The MySQL, PostgreSQL or
                SQL Server version to use. Supported values include `MYSQL_5_6`,
                `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -503,7 +502,6 @@ class _DatabaseInstanceState:
                  settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: The list of all maintenance versions applicable on the instance.
         :param pulumi.Input[_builtins.str] backupdr_backup: The backupdr_backup needed to restore the database to a backup run. This field will
                cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
@@ -1179,9 +1177,9 @@ class DatabaseInstance(pulumi.CustomResource):
             network=private_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_address.name])
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         instance = gcp.sql.DatabaseInstance("instance",
-            name=f"private-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"private-instance-{hex}"),
             region="us-central1",
             database_version="MYSQL_5_7",
             settings={
@@ -1419,7 +1417,6 @@ class DatabaseInstance(pulumi.CustomResource):
         config and set on the server.
         When importing, double-check that your config has all the fields set that you expect- just seeing
         no diff isn't sufficient to know that your config could reproduce the imported resource.
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1546,9 +1543,9 @@ class DatabaseInstance(pulumi.CustomResource):
             network=private_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_address.name])
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         instance = gcp.sql.DatabaseInstance("instance",
-            name=f"private-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"private-instance-{hex}"),
             region="us-central1",
             database_version="MYSQL_5_7",
             settings={
@@ -1786,7 +1783,6 @@ class DatabaseInstance(pulumi.CustomResource):
         config and set on the server.
         When importing, double-check that your config has all the fields set that you expect- just seeing
         no diff isn't sufficient to know that your config could reproduce the imported resource.
-
 
         :param str resource_name: The name of the resource.
         :param DatabaseInstanceArgs args: The arguments to use to populate this resource's properties.

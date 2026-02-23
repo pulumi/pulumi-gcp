@@ -25,7 +25,6 @@ class ObjectACLArgs:
                  role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ObjectACL resource.
-
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket the object is stored in.
         :param pulumi.Input[_builtins.str] object: The name of the object to apply the acl to.
                
@@ -102,7 +101,6 @@ class _ObjectACLState:
                  role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ObjectACL resources.
-
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket the object is stored in.
         :param pulumi.Input[_builtins.str] object: The name of the object to apply the acl to.
                
@@ -224,7 +222,6 @@ class ObjectACL(pulumi.CustomResource):
 
         This resource does not support import.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket the object is stored in.
@@ -281,7 +278,6 @@ class ObjectACL(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
-
 
         :param str resource_name: The name of the resource.
         :param ObjectACLArgs args: The arguments to use to populate this resource's properties.

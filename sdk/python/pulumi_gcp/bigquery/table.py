@@ -50,7 +50,6 @@ class TableArgs:
                  view: Optional[pulumi.Input['TableViewArgs']] = None):
         """
         The set of arguments for constructing a Table resource.
-
         :param pulumi.Input[_builtins.str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] table_id: A unique ID for the resource.
@@ -583,7 +582,6 @@ class _TableState:
                  view: Optional[pulumi.Input['TableViewArgs']] = None):
         """
         Input properties used for looking up and filtering Table resources.
-
         :param pulumi.Input['TableBiglakeConfigurationArgs'] biglake_configuration: Specifies the configuration of a BigLake managed table. Structure is documented below
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] clusterings: Specifies column names to use for data clustering.
                Up to four top-level columns are allowed, and should be specified in
@@ -1397,7 +1395,6 @@ class Table(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/table:Table default {{dataset_id}}/{{table_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TableBiglakeConfigurationArgs', 'TableBiglakeConfigurationArgsDict']] biglake_configuration: Specifies the configuration of a BigLake managed table. Structure is documented below
@@ -1551,7 +1548,6 @@ class Table(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/table:Table default {{project}}/{{dataset_id}}/{{table_id}}
         $ pulumi import gcp:bigquery/table:Table default {{dataset_id}}/{{table_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param TableArgs args: The arguments to use to populate this resource's properties.

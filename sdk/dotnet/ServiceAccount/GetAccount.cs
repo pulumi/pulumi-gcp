@@ -55,21 +55,18 @@ namespace Pulumi.Gcp.ServiceAccount
         ///         ServiceAccountId = myaccount.Apply(getAccountResult =&gt; getAccountResult.Name),
         ///     });
         /// 
-        ///     var google_application_credentials = new Kubernetes.Index.Secret("google-application-credentials", new()
+        ///     var google_application_credentials = new Kubernetes.Core.V1.Secret("google-application-credentials", new()
         ///     {
-        ///         Metadata = new[]
+        ///         Metadata = new Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs
         ///         {
-        ///             
-        ///             {
-        ///                 { "name", "google-application-credentials" },
-        ///             },
+        ///             Name = "google-application-credentials",
         ///         },
         ///         Data = 
         ///         {
         ///             { "json", Std.Base64decode.Invoke(new()
         ///             {
         ///                 Input = mykey.PrivateKey,
-        ///             }).Result },
+        ///             }).Apply(invoke =&gt; invoke.Result) },
         ///         },
         ///     });
         /// 
@@ -123,21 +120,18 @@ namespace Pulumi.Gcp.ServiceAccount
         ///         ServiceAccountId = myaccount.Apply(getAccountResult =&gt; getAccountResult.Name),
         ///     });
         /// 
-        ///     var google_application_credentials = new Kubernetes.Index.Secret("google-application-credentials", new()
+        ///     var google_application_credentials = new Kubernetes.Core.V1.Secret("google-application-credentials", new()
         ///     {
-        ///         Metadata = new[]
+        ///         Metadata = new Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs
         ///         {
-        ///             
-        ///             {
-        ///                 { "name", "google-application-credentials" },
-        ///             },
+        ///             Name = "google-application-credentials",
         ///         },
         ///         Data = 
         ///         {
         ///             { "json", Std.Base64decode.Invoke(new()
         ///             {
         ///                 Input = mykey.PrivateKey,
-        ///             }).Result },
+        ///             }).Apply(invoke =&gt; invoke.Result) },
         ///         },
         ///     });
         /// 
@@ -191,21 +185,18 @@ namespace Pulumi.Gcp.ServiceAccount
         ///         ServiceAccountId = myaccount.Apply(getAccountResult =&gt; getAccountResult.Name),
         ///     });
         /// 
-        ///     var google_application_credentials = new Kubernetes.Index.Secret("google-application-credentials", new()
+        ///     var google_application_credentials = new Kubernetes.Core.V1.Secret("google-application-credentials", new()
         ///     {
-        ///         Metadata = new[]
+        ///         Metadata = new Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs
         ///         {
-        ///             
-        ///             {
-        ///                 { "name", "google-application-credentials" },
-        ///             },
+        ///             Name = "google-application-credentials",
         ///         },
         ///         Data = 
         ///         {
         ///             { "json", Std.Base64decode.Invoke(new()
         ///             {
         ///                 Input = mykey.PrivateKey,
-        ///             }).Result },
+        ///             }).Apply(invoke =&gt; invoke.Result) },
         ///         },
         ///     });
         /// 

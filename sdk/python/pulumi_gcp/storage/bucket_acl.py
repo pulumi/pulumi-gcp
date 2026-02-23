@@ -25,7 +25,6 @@ class BucketACLArgs:
                  role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a BucketACL resource.
-
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket it applies to.
                
                - - -
@@ -101,7 +100,6 @@ class _BucketACLState:
                  role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering BucketACL resources.
-
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket it applies to.
                
                - - -
@@ -215,7 +213,6 @@ class BucketACL(pulumi.CustomResource):
 
         This resource does not support import.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket it applies to.
@@ -265,7 +262,6 @@ class BucketACL(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
-
 
         :param str resource_name: The name of the resource.
         :param BucketACLArgs args: The arguments to use to populate this resource's properties.

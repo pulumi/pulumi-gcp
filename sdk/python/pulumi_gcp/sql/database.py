@@ -27,7 +27,6 @@ class DatabaseArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
-
         :param pulumi.Input[_builtins.str] instance: The name of the Cloud SQL instance. This does not include the project
                ID.
         :param pulumi.Input[_builtins.str] charset: The charset value. See MySQL's
@@ -160,7 +159,6 @@ class _DatabaseState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
-
         :param pulumi.Input[_builtins.str] charset: The charset value. See MySQL's
                [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
                and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
@@ -374,7 +372,6 @@ class Database(pulumi.CustomResource):
         $ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] charset: The charset value. See MySQL's
@@ -467,7 +464,6 @@ class Database(pulumi.CustomResource):
         $ pulumi import gcp:sql/database:Database default {{project}}/{{instance}}/{{name}}
         $ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.

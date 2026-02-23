@@ -34,7 +34,6 @@ class AuthzExtensionArgs:
                  wire_format: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthzExtension resource.
-
         :param pulumi.Input[_builtins.str] authority: The :authority header in the gRPC request sent from Envoy to the extension service.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] service: The service that runs the extension.
@@ -315,7 +314,6 @@ class _AuthzExtensionState:
                  wire_format: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthzExtension resources.
-
         :param pulumi.Input[_builtins.str] authority: The :authority header in the gRPC request sent from Envoy to the extension service.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
@@ -752,7 +750,6 @@ class AuthzExtension(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authority: The :authority header in the gRPC request sent from Envoy to the extension service.
@@ -898,7 +895,6 @@ class AuthzExtension(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default {{location}}/{{name}}
         $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AuthzExtensionArgs args: The arguments to use to populate this resource's properties.

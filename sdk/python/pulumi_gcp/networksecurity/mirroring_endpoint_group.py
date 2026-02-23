@@ -31,7 +31,6 @@ class MirroringEndpointGroupArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MirroringEndpointGroup resource.
-
         :param pulumi.Input[_builtins.str] location: The cloud location of the endpoint group, currently restricted to `global`.
         :param pulumi.Input[_builtins.str] mirroring_endpoint_group_id: The ID to use for the endpoint group, which will become the final component
                of the endpoint group's resource name.
@@ -203,7 +202,6 @@ class _MirroringEndpointGroupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MirroringEndpointGroup resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupAssociationArgs']]] associations: List of associations to this endpoint group.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupArgs']]] connected_deployment_groups: List of details about the connected deployment groups to this endpoint
@@ -616,7 +614,6 @@ class MirroringEndpointGroup(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{location}}/{{mirroring_endpoint_group_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User-provided description of the endpoint group.
@@ -724,7 +721,6 @@ class MirroringEndpointGroup(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{project}}/{{location}}/{{mirroring_endpoint_group_id}}
         $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{location}}/{{mirroring_endpoint_group_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param MirroringEndpointGroupArgs args: The arguments to use to populate this resource's properties.

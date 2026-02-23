@@ -26,7 +26,6 @@ class IAMAuditConfigArgs:
                  service: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a IAMAuditConfig resource.
-
         :param pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The project id of the target project. This is not
                inferred from the provider.
@@ -83,7 +82,6 @@ class _IAMAuditConfigState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IAMAuditConfig resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the project's IAM policy.
         :param pulumi.Input[_builtins.str] project: The project id of the target project. This is not
@@ -424,7 +422,6 @@ class IAMAuditConfig(pulumi.CustomResource):
         > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
          to include the title of condition, e.g. `terraform import google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IAMAuditConfigAuditLogConfigArgs', 'IAMAuditConfigAuditLogConfigArgsDict']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
@@ -702,7 +699,6 @@ class IAMAuditConfig(pulumi.CustomResource):
 
         > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
          to include the title of condition, e.g. `terraform import google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
-
 
         :param str resource_name: The name of the resource.
         :param IAMAuditConfigArgs args: The arguments to use to populate this resource's properties.

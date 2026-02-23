@@ -23,7 +23,6 @@ class EgressPolicyArgs:
                  resource: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a EgressPolicy resource.
-
         :param pulumi.Input[_builtins.str] egress_policy_name: The name of the Service Perimeter to add this resource to.
         :param pulumi.Input[_builtins.str] resource: A GCP resource that is inside of the service perimeter.
         """
@@ -63,7 +62,6 @@ class _EgressPolicyState:
                  resource: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EgressPolicy resources.
-
         :param pulumi.Input[_builtins.str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input[_builtins.str] egress_policy_name: The name of the Service Perimeter to add this resource to.
         :param pulumi.Input[_builtins.str] resource: A GCP resource that is inside of the service perimeter.
@@ -140,7 +138,6 @@ class EgressPolicy(pulumi.CustomResource):
         $ pulumi import gcp:accesscontextmanager/egressPolicy:EgressPolicy default {{egress_policy_name}}/{{resource}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] egress_policy_name: The name of the Service Perimeter to add this resource to.
@@ -170,7 +167,6 @@ class EgressPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:accesscontextmanager/egressPolicy:EgressPolicy default {{egress_policy_name}}/{{resource}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param EgressPolicyArgs args: The arguments to use to populate this resource's properties.

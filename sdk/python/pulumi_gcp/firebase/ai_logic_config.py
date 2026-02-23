@@ -27,7 +27,6 @@ class AiLogicConfigArgs:
                  telemetry_config: Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']] = None):
         """
         The set of arguments for constructing a AiLogicConfig resource.
-
         :param pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs'] generative_language_config: Configuration for using the Gemini Developer API via Firebase AI Logic.
                When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
                API key is stored in this configuration *on the server* so that you do
@@ -117,7 +116,6 @@ class _AiLogicConfigState:
                  telemetry_config: Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']] = None):
         """
         Input properties used for looking up and filtering AiLogicConfig resources.
-
         :param pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs'] generative_language_config: Configuration for using the Gemini Developer API via Firebase AI Logic.
                When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
                API key is stored in this configuration *on the server* so that you do
@@ -339,7 +337,6 @@ class AiLogicConfig(pulumi.CustomResource):
         $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default {{location}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict']] generative_language_config: Configuration for using the Gemini Developer API via Firebase AI Logic.
@@ -474,7 +471,6 @@ class AiLogicConfig(pulumi.CustomResource):
         $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default {{project}}/{{location}}
         $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default {{location}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AiLogicConfigArgs args: The arguments to use to populate this resource's properties.

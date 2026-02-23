@@ -37,7 +37,6 @@ class ConnectionArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Connection resource.
-
         :param pulumi.Input[_builtins.str] connection_id: Required. Id of the requesting object
                If auto-generating Id server-side, remove this field and
                connection_id from the method_signature of Create RPC
@@ -316,7 +315,6 @@ class _ConnectionState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -1043,7 +1041,6 @@ class Connection(pulumi.CustomResource):
         $ pulumi import gcp:developerconnect/connection:Connection default {{location}}/{{connection_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
@@ -1377,7 +1374,6 @@ class Connection(pulumi.CustomResource):
         $ pulumi import gcp:developerconnect/connection:Connection default {{project}}/{{location}}/{{connection_id}}
         $ pulumi import gcp:developerconnect/connection:Connection default {{location}}/{{connection_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ConnectionArgs args: The arguments to use to populate this resource's properties.

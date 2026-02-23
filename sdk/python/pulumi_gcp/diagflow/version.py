@@ -23,7 +23,6 @@ class VersionArgs:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Version resource.
-
         :param pulumi.Input[_builtins.str] description: The developer-provided description of this version.
         :param pulumi.Input[_builtins.str] parent: The Flow to create an Version for.
                Format: projects/<Project ID>/agent.
@@ -69,7 +68,6 @@ class _VersionState:
                  version_number: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Version resources.
-
         :param pulumi.Input[_builtins.str] description: The developer-provided description of this version.
         :param pulumi.Input[_builtins.str] name: The unique identifier of this agent version.
         :param pulumi.Input[_builtins.str] parent: The Flow to create an Version for.
@@ -218,7 +216,6 @@ class Version(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/version:Version default {{parent}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The developer-provided description of this version.
@@ -289,7 +286,6 @@ class Version(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/version:Version default {{parent}}/versions/{{name}}
         $ pulumi import gcp:diagflow/version:Version default {{parent}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param VersionArgs args: The arguments to use to populate this resource's properties.

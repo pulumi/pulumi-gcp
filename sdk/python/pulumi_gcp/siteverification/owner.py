@@ -23,7 +23,6 @@ class OwnerArgs:
                  web_resource_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Owner resource.
-
         :param pulumi.Input[_builtins.str] email: The email of the user to be added as an owner.
                
                - - -
@@ -68,7 +67,6 @@ class _OwnerState:
                  web_resource_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Owner resources.
-
         :param pulumi.Input[_builtins.str] email: The email of the user to be added as an owner.
                
                - - -
@@ -202,7 +200,6 @@ class Owner(pulumi.CustomResource):
         > **Note:** While verified owners can be successfully imported, attempting to later delete the imported resource will fail. The only way to remove
         verified owners is to delete the web resource itself.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email: The email of the user to be added as an owner.
@@ -301,7 +298,6 @@ class Owner(pulumi.CustomResource):
 
         > **Note:** While verified owners can be successfully imported, attempting to later delete the imported resource will fail. The only way to remove
         verified owners is to delete the web resource itself.
-
 
         :param str resource_name: The name of the resource.
         :param OwnerArgs args: The arguments to use to populate this resource's properties.

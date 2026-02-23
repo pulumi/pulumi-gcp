@@ -47,7 +47,6 @@ class InstanceArgs:
                  zone_distribution_config: Optional[pulumi.Input['InstanceZoneDistributionConfigArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
-
         :param pulumi.Input[_builtins.str] instance_id: Required. The ID to use for the instance, which will become the final component of
                the instance's resource name.
                This value is subject to the following restrictions:
@@ -523,7 +522,6 @@ class _InstanceState:
                  zone_distribution_config: Optional[pulumi.Input['InstanceZoneDistributionConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH
@@ -1597,7 +1595,6 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:memorystore/instance:Instance default {{location}}/{{instance_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
@@ -1959,7 +1956,6 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:memorystore/instance:Instance default {{project}}/{{location}}/{{instance_id}}
         $ pulumi import gcp:memorystore/instance:Instance default {{location}}/{{instance_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

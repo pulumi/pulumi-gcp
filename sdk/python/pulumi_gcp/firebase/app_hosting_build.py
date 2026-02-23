@@ -31,7 +31,6 @@ class AppHostingBuildArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppHostingBuild resource.
-
         :param pulumi.Input[_builtins.str] backend: The ID of the Backend that this Build applies to
         :param pulumi.Input[_builtins.str] build_id: The user-specified ID of the build being created.
         :param pulumi.Input[_builtins.str] location: The location of the Backend that this Build applies to
@@ -196,7 +195,6 @@ class _AppHostingBuildState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppHostingBuild resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Unstructured key value map that may be set by external tools to
                store and arbitrary metadata. They are not queryable and should be
                preserved when modifying objects.
@@ -778,7 +776,6 @@ class AppHostingBuild(pulumi.CustomResource):
         $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{location}}/{{backend}}/{{build_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Unstructured key value map that may be set by external tools to
@@ -967,7 +964,6 @@ class AppHostingBuild(pulumi.CustomResource):
         $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{project}}/{{location}}/{{backend}}/{{build_id}}
         $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{location}}/{{backend}}/{{build_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AppHostingBuildArgs args: The arguments to use to populate this resource's properties.

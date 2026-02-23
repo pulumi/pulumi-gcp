@@ -33,7 +33,6 @@ class DatabaseArgs:
                  version_retention_period: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
-
         :param pulumi.Input[_builtins.str] instance: The instance to create the database on.
         :param pulumi.Input[_builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
@@ -250,7 +249,6 @@ class _DatabaseState:
                  version_retention_period: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
-
         :param pulumi.Input[_builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
                Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
@@ -541,7 +539,6 @@ class Database(pulumi.CustomResource):
         $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
@@ -641,7 +638,6 @@ class Database(pulumi.CustomResource):
         $ pulumi import gcp:spanner/database:Database default {{project}}/{{instance}}/{{name}}
         $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.

@@ -40,7 +40,6 @@ class ConnectionArgs:
                  suspended: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
-
         :param pulumi.Input[_builtins.str] connector_version: connectorVersion of the Connector.
         :param pulumi.Input[_builtins.str] location: Location in which Connection needs to be created.
         :param pulumi.Input['ConnectionAuthConfigArgs'] auth_config: authConfig for the connection.
@@ -356,7 +355,6 @@ class _ConnectionState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
-
         :param pulumi.Input['ConnectionAuthConfigArgs'] auth_config: authConfig for the connection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArgs']]] config_variables: Config Variables for the connection.
@@ -1127,7 +1125,6 @@ class Connection(pulumi.CustomResource):
         $ pulumi import gcp:integrationconnectors/connection:Connection default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict']] auth_config: authConfig for the connection.
@@ -1451,7 +1448,6 @@ class Connection(pulumi.CustomResource):
         $ pulumi import gcp:integrationconnectors/connection:Connection default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:integrationconnectors/connection:Connection default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ConnectionArgs args: The arguments to use to populate this resource's properties.

@@ -27,7 +27,6 @@ class FolderCustomModuleArgs:
                  folder: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a FolderCustomModule resource.
-
         :param pulumi.Input['FolderCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Security Health Analytics custom module. This
@@ -112,7 +111,6 @@ class _FolderCustomModuleState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FolderCustomModule resources.
-
         :param pulumi.Input[_builtins.str] ancestor_module: If empty, indicates that the custom module was created in the organization, folder,
                or project in which you are viewing the custom module. Otherwise, ancestor_module
                specifies the organization or folder from which the custom module is inherited.
@@ -365,7 +363,6 @@ class FolderCustomModule(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/folderCustomModule:FolderCustomModule default {{folder}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FolderCustomModuleCustomConfigArgs', 'FolderCustomModuleCustomConfigArgsDict']] custom_config: The user specified custom configuration for the module.
@@ -480,7 +477,6 @@ class FolderCustomModule(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/folderCustomModule:FolderCustomModule default folders/{{folder}}/securityHealthAnalyticsSettings/customModules/{{name}}
         $ pulumi import gcp:securitycenter/folderCustomModule:FolderCustomModule default {{folder}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param FolderCustomModuleArgs args: The arguments to use to populate this resource's properties.

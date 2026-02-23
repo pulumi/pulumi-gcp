@@ -29,7 +29,6 @@ class AppVersionArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppVersion resource.
-
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] app_version_id: The ID to use for the app version, which will become the final component
                of the app version's resource name. If not provided, a unique ID will be
@@ -142,7 +141,6 @@ class _AppVersionState:
                  snapshots: Optional[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotArgs']]]] = None):
         """
         Input properties used for looking up and filtering AppVersion resources.
-
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] app_version_id: The ID to use for the app version, which will become the final component
                of the app version's resource name. If not provided, a unique ID will be
@@ -388,7 +386,6 @@ class AppVersion(pulumi.CustomResource):
         $ pulumi import gcp:ces/appVersion:AppVersion default {{location}}/{{app}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -448,7 +445,6 @@ class AppVersion(pulumi.CustomResource):
         $ pulumi import gcp:ces/appVersion:AppVersion default {{project}}/{{location}}/{{app}}/{{name}}
         $ pulumi import gcp:ces/appVersion:AppVersion default {{location}}/{{app}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AppVersionArgs args: The arguments to use to populate this resource's properties.

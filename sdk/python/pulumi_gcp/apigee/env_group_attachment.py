@@ -23,7 +23,6 @@ class EnvGroupAttachmentArgs:
                  environment: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a EnvGroupAttachment resource.
-
         :param pulumi.Input[_builtins.str] envgroup_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
@@ -65,7 +64,6 @@ class _EnvGroupAttachmentState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvGroupAttachment resources.
-
         :param pulumi.Input[_builtins.str] envgroup_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
@@ -150,7 +148,6 @@ class EnvGroupAttachment(pulumi.CustomResource):
         $ pulumi import gcp:apigee/envGroupAttachment:EnvGroupAttachment default {{envgroup_id}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] envgroup_id: The Apigee environment group associated with the Apigee environment,
@@ -187,7 +184,6 @@ class EnvGroupAttachment(pulumi.CustomResource):
         $ pulumi import gcp:apigee/envGroupAttachment:EnvGroupAttachment default {{envgroup_id}}/attachments/{{name}}
         $ pulumi import gcp:apigee/envGroupAttachment:EnvGroupAttachment default {{envgroup_id}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param EnvGroupAttachmentArgs args: The arguments to use to populate this resource's properties.

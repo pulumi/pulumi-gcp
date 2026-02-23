@@ -29,7 +29,6 @@ class OrganizationPolicyArgs:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a OrganizationPolicy resource.
-
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
                - - -
@@ -148,7 +147,6 @@ class _OrganizationPolicyState:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering OrganizationPolicy resources.
-
         :param pulumi.Input['OrganizationPolicyBooleanPolicyArgs'] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
@@ -389,7 +387,6 @@ class OrganizationPolicy(pulumi.CustomResource):
         $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy default {{project_id}}:{{constraint}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
@@ -501,7 +498,6 @@ class OrganizationPolicy(pulumi.CustomResource):
         $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy default {{project_id}}:constraints/{{constraint}}
         $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy default {{project_id}}:{{constraint}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param OrganizationPolicyArgs args: The arguments to use to populate this resource's properties.

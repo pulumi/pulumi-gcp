@@ -25,7 +25,6 @@ class ApiDeploymentArgs:
                  revision: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ApiDeployment resource.
-
         :param pulumi.Input[_builtins.str] environment: The Apigee Environment associated with the Apigee API deployment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee API deployment.
         :param pulumi.Input[_builtins.str] proxy_id: The Apigee API associated with the Apigee API deployment.
@@ -94,7 +93,6 @@ class _ApiDeploymentState:
                  revision: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiDeployment resources.
-
         :param pulumi.Input[_builtins.str] environment: The Apigee Environment associated with the Apigee API deployment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee API deployment.
         :param pulumi.Input[_builtins.str] proxy_id: The Apigee API associated with the Apigee API deployment.
@@ -198,7 +196,6 @@ class ApiDeployment(pulumi.CustomResource):
         $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default {{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] environment: The Apigee Environment associated with the Apigee API deployment.
@@ -240,7 +237,6 @@ class ApiDeployment(pulumi.CustomResource):
         $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default {{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}/deployments
         $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default {{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ApiDeploymentArgs args: The arguments to use to populate this resource's properties.

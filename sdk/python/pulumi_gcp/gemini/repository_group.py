@@ -29,7 +29,6 @@ class RepositoryGroupArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RepositoryGroup resource.
-
         :param pulumi.Input[_builtins.str] code_repository_index: Required. Id of the Code Repository Index.
         :param pulumi.Input[_builtins.str] location: The location of the Code Repository Index, for example `us-central1`.
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryGroupRepositoryArgs']]] repositories: Required. List of repositories to group.
@@ -143,7 +142,6 @@ class _RepositoryGroupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RepositoryGroup resources.
-
         :param pulumi.Input[_builtins.str] code_repository_index: Required. Id of the Code Repository Index.
         :param pulumi.Input[_builtins.str] create_time: Output only. Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -379,7 +377,6 @@ class RepositoryGroup(pulumi.CustomResource):
         $ pulumi import gcp:gemini/repositoryGroup:RepositoryGroup default {{location}}/{{code_repository_index}}/{{repository_group_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] code_repository_index: Required. Id of the Code Repository Index.
@@ -442,7 +439,6 @@ class RepositoryGroup(pulumi.CustomResource):
         $ pulumi import gcp:gemini/repositoryGroup:RepositoryGroup default {{project}}/{{location}}/{{code_repository_index}}/{{repository_group_id}}
         $ pulumi import gcp:gemini/repositoryGroup:RepositoryGroup default {{location}}/{{code_repository_index}}/{{repository_group_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RepositoryGroupArgs args: The arguments to use to populate this resource's properties.

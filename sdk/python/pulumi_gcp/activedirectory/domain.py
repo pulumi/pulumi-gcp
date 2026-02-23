@@ -29,7 +29,6 @@ class DomainArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Domain resource.
-
         :param pulumi.Input[_builtins.str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
                of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] locations: Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
@@ -193,7 +192,6 @@ class _DomainState:
                  reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
-
         :param pulumi.Input[_builtins.str] admin: The name of delegated administrator account used to perform Active Directory operations.
                If not specified, setupadmin will be used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
@@ -462,7 +460,6 @@ class Domain(pulumi.CustomResource):
         $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] admin: The name of delegated administrator account used to perform Active Directory operations.
@@ -532,7 +529,6 @@ class Domain(pulumi.CustomResource):
         $ terraform import google_active_directory_domain.default "{{project}} {{name}}"
         $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

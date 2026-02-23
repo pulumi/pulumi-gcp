@@ -31,7 +31,6 @@ class EngineModelArgs:
                  regions: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EngineModel resource.
-
         :param pulumi.Input['EngineModelDefaultVersionArgs'] default_version: The default version of the model. This version will be used to handle
                prediction requests that do not specify a version.
                Structure is documented below.
@@ -182,7 +181,6 @@ class _EngineModelState:
                  regions: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EngineModel resources.
-
         :param pulumi.Input['EngineModelDefaultVersionArgs'] default_version: The default version of the model. This version will be used to handle
                prediction requests that do not specify a version.
                Structure is documented below.
@@ -425,7 +423,6 @@ class EngineModel(pulumi.CustomResource):
         $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict']] default_version: The default version of the model. This version will be used to handle
@@ -508,7 +505,6 @@ class EngineModel(pulumi.CustomResource):
         $ pulumi import gcp:ml/engineModel:EngineModel default {{project}}/{{name}}
         $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param EngineModelArgs args: The arguments to use to populate this resource's properties.

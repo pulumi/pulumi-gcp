@@ -29,7 +29,6 @@ class AiTensorboardArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiTensorboard resource.
-
         :param pulumi.Input[_builtins.str] display_name: User provided name of this Tensorboard.
         :param pulumi.Input[_builtins.str] description: Description of this Tensorboard.
         :param pulumi.Input['AiTensorboardEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
@@ -150,7 +149,6 @@ class _AiTensorboardState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiTensorboard resources.
-
         :param pulumi.Input[_builtins.str] blob_storage_path_prefix: Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] description: Description of this Tensorboard.
@@ -443,7 +441,6 @@ class AiTensorboard(pulumi.CustomResource):
         $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of this Tensorboard.
@@ -532,7 +529,6 @@ class AiTensorboard(pulumi.CustomResource):
         $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{region}}/{{name}}
         $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AiTensorboardArgs args: The arguments to use to populate this resource's properties.

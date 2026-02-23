@@ -31,7 +31,6 @@ class OauthIdpConfigArgs:
                  response_type: Optional[pulumi.Input['OauthIdpConfigResponseTypeArgs']] = None):
         """
         The set of arguments for constructing a OauthIdpConfig resource.
-
         :param pulumi.Input[_builtins.str] client_id: The client id of an OAuth client.
         :param pulumi.Input[_builtins.str] issuer: For OIDC Idps, the issuer identifier.
         :param pulumi.Input[_builtins.str] client_secret: The client secret of the OAuth client, to enable OIDC code flow.
@@ -174,7 +173,6 @@ class _OauthIdpConfigState:
                  response_type: Optional[pulumi.Input['OauthIdpConfigResponseTypeArgs']] = None):
         """
         Input properties used for looking up and filtering OauthIdpConfig resources.
-
         :param pulumi.Input[_builtins.str] client_id: The client id of an OAuth client.
         :param pulumi.Input[_builtins.str] client_secret: The client secret of the OAuth client, to enable OIDC code flow.
         :param pulumi.Input[_builtins.str] display_name: Human friendly display name.
@@ -365,7 +363,6 @@ class OauthIdpConfig(pulumi.CustomResource):
         $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] client_id: The client id of an OAuth client.
@@ -430,7 +427,6 @@ class OauthIdpConfig(pulumi.CustomResource):
         $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{project}}/{{name}}
         $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param OauthIdpConfigArgs args: The arguments to use to populate this resource's properties.

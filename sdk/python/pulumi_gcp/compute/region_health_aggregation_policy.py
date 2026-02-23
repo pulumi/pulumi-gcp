@@ -28,7 +28,6 @@ class RegionHealthAggregationPolicyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionHealthAggregationPolicy resource.
-
         :param pulumi.Input[_builtins.str] region: URL of the region where the health aggregation policy resides.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you
                create the resource.
@@ -219,7 +218,6 @@ class _RegionHealthAggregationPolicyState:
                  self_link_with_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionHealthAggregationPolicy resources.
-
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you
                create the resource.
@@ -512,7 +510,6 @@ class RegionHealthAggregationPolicy(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you
@@ -607,7 +604,6 @@ class RegionHealthAggregationPolicy(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy default {{region}}/{{name}}
         $ pulumi import gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RegionHealthAggregationPolicyArgs args: The arguments to use to populate this resource's properties.

@@ -32,7 +32,6 @@ class BackupScheduleArgs:
                  spec: Optional[pulumi.Input['BackupScheduleSpecArgs']] = None):
         """
         The set of arguments for constructing a BackupSchedule resource.
-
         :param pulumi.Input[_builtins.str] database: The database to create the backup schedule on.
         :param pulumi.Input[_builtins.str] instance: The instance to create the database on.
         :param pulumi.Input[_builtins.str] retention_duration: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
@@ -194,7 +193,6 @@ class _BackupScheduleState:
                  spec: Optional[pulumi.Input['BackupScheduleSpecArgs']] = None):
         """
         Input properties used for looking up and filtering BackupSchedule resources.
-
         :param pulumi.Input[_builtins.str] database: The database to create the backup schedule on.
         :param pulumi.Input['BackupScheduleEncryptionConfigArgs'] encryption_config: Configuration for the encryption of the backup schedule.
                Structure is documented below.
@@ -467,7 +465,6 @@ class BackupSchedule(pulumi.CustomResource):
         $ pulumi import gcp:spanner/backupSchedule:BackupSchedule default {{instance}}/{{database}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database: The database to create the backup schedule on.
@@ -597,7 +594,6 @@ class BackupSchedule(pulumi.CustomResource):
         $ pulumi import gcp:spanner/backupSchedule:BackupSchedule default {{project}}/{{instance}}/{{database}}/{{name}}
         $ pulumi import gcp:spanner/backupSchedule:BackupSchedule default {{instance}}/{{database}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param BackupScheduleArgs args: The arguments to use to populate this resource's properties.

@@ -30,7 +30,6 @@ class DataAssetArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataAsset resource.
-
         :param pulumi.Input[_builtins.str] data_asset_id: The ID of the data asset.
         :param pulumi.Input[_builtins.str] data_product_id: The ID of the parent data product.
         :param pulumi.Input[_builtins.str] location: The location for the data asset.
@@ -158,7 +157,6 @@ class _DataAssetState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataAsset resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['DataAssetAccessGroupConfigArgs']]] access_group_configs: Access groups configurations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_asset_id: The ID of the data asset.
@@ -461,7 +459,6 @@ class DataAsset(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{location}}/{{data_product_id}}/{{data_asset_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict']]]] access_group_configs: Access groups configurations.
@@ -606,7 +603,6 @@ class DataAsset(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}
         $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{location}}/{{data_product_id}}/{{data_asset_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DataAssetArgs args: The arguments to use to populate this resource's properties.

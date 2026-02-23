@@ -43,7 +43,6 @@ class AgentArgs:
                  toolsets: Optional[pulumi.Input[Sequence[pulumi.Input['AgentToolsetArgs']]]] = None):
         """
         The set of arguments for constructing a Agent resource.
-
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] display_name: Display name of the agent.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -460,7 +459,6 @@ class _AgentState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Agent resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['AgentAfterAgentCallbackArgs']]] after_agent_callbacks: The callbacks to execute after the agent is called.
                The provided callbacks are executed sequentially in the exact order they
                are given in the list. If a callback returns an overridden response,
@@ -1180,7 +1178,6 @@ class Agent(pulumi.CustomResource):
         $ pulumi import gcp:ces/agent:Agent default {{location}}/{{app}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AgentAfterAgentCallbackArgs', 'AgentAfterAgentCallbackArgsDict']]]] after_agent_callbacks: The callbacks to execute after the agent is called.
@@ -1472,7 +1469,6 @@ class Agent(pulumi.CustomResource):
         $ pulumi import gcp:ces/agent:Agent default {{project}}/{{location}}/{{app}}/{{name}}
         $ pulumi import gcp:ces/agent:Agent default {{location}}/{{app}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AgentArgs args: The arguments to use to populate this resource's properties.

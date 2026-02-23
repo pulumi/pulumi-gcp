@@ -45,7 +45,6 @@ class VMwareClusterArgs:
                  vm_tracking_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a VMwareCluster resource.
-
         :param pulumi.Input[_builtins.str] admin_cluster_membership: The admin cluster this VMware User Cluster belongs to.
                This is the full resource name of the admin cluster's hub membership.
                In the future, references to other resource types might be allowed if
@@ -469,7 +468,6 @@ class _VMwareClusterState:
                  vm_tracking_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering VMwareCluster resources.
-
         :param pulumi.Input[_builtins.str] admin_cluster_membership: The admin cluster this VMware User Cluster belongs to.
                This is the full resource name of the admin cluster's hub membership.
                In the future, references to other resource types might be allowed if
@@ -1367,7 +1365,6 @@ class VMwareCluster(pulumi.CustomResource):
         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] admin_cluster_membership: The admin cluster this VMware User Cluster belongs to.
@@ -1675,7 +1672,6 @@ class VMwareCluster(pulumi.CustomResource):
         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param VMwareClusterArgs args: The arguments to use to populate this resource's properties.

@@ -31,7 +31,6 @@ class GdcServiceInstanceArgs:
                  spark_service_instance_config: Optional[pulumi.Input['GdcServiceInstanceSparkServiceInstanceConfigArgs']] = None):
         """
         The set of arguments for constructing a GdcServiceInstance resource.
-
         :param pulumi.Input[_builtins.str] location: Location of the resource.
         :param pulumi.Input[_builtins.str] service_instance_id: Id of the service instance.
         :param pulumi.Input[_builtins.str] display_name: User-provided human-readable name to be used in user interfaces.
@@ -185,7 +184,6 @@ class _GdcServiceInstanceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GdcServiceInstance resources.
-
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] display_name: User-provided human-readable name to be used in user interfaces.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -582,7 +580,6 @@ class GdcServiceInstance(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{location}}/{{service_instance_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: User-provided human-readable name to be used in user interfaces.
@@ -650,7 +647,6 @@ class GdcServiceInstance(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{project}}/{{location}}/{{service_instance_id}}
         $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{location}}/{{service_instance_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param GdcServiceInstanceArgs args: The arguments to use to populate this resource's properties.

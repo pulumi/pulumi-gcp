@@ -42,7 +42,6 @@ class ActiveDirectoryArgs:
                  site: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ActiveDirectory resource.
-
         :param pulumi.Input[_builtins.str] dns: Comma separated list of DNS server IP addresses for the Active Directory domain.
         :param pulumi.Input[_builtins.str] domain: Fully qualified domain name for the Active Directory domain.
         :param pulumi.Input[_builtins.str] location: Name of the region for the policy to apply to.
@@ -406,7 +405,6 @@ class _ActiveDirectoryState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ActiveDirectory resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] administrators: Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
         :param pulumi.Input[_builtins.bool] aes_encryption: Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_operators: Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
@@ -917,7 +915,6 @@ class ActiveDirectory(pulumi.CustomResource):
         $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] administrators: Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
@@ -1024,7 +1021,6 @@ class ActiveDirectory(pulumi.CustomResource):
         $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ActiveDirectoryArgs args: The arguments to use to populate this resource's properties.

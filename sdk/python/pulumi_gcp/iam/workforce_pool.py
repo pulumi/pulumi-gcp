@@ -31,7 +31,6 @@ class WorkforcePoolArgs:
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkforcePool resource.
-
         :param pulumi.Input[_builtins.str] location: The location for the resource.
         :param pulumi.Input[_builtins.str] parent: Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
         :param pulumi.Input[_builtins.str] workforce_pool_id: The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
@@ -185,7 +184,6 @@ class _WorkforcePoolState:
                  workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkforcePool resources.
-
         :param pulumi.Input['WorkforcePoolAccessRestrictionsArgs'] access_restrictions: Configure access restrictions on the workforce pool users. This is an optional field. If specified web
                sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
                Structure is documented below.
@@ -454,7 +452,6 @@ class WorkforcePool(pulumi.CustomResource):
         $ pulumi import gcp:iam/workforcePool:WorkforcePool default {{location}}/{{workforce_pool_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['WorkforcePoolAccessRestrictionsArgs', 'WorkforcePoolAccessRestrictionsArgsDict']] access_restrictions: Configure access restrictions on the workforce pool users. This is an optional field. If specified web
@@ -542,7 +539,6 @@ class WorkforcePool(pulumi.CustomResource):
         $ pulumi import gcp:iam/workforcePool:WorkforcePool default locations/{{location}}/workforcePools/{{workforce_pool_id}}
         $ pulumi import gcp:iam/workforcePool:WorkforcePool default {{location}}/{{workforce_pool_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param WorkforcePoolArgs args: The arguments to use to populate this resource's properties.

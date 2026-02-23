@@ -27,7 +27,6 @@ class DocumentAiWarehouseLocationArgs:
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DocumentAiWarehouseLocation resource.
-
         :param pulumi.Input[_builtins.str] access_control_mode: The access control mode for accessing the customer data.
                Possible values are: `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI`, `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID`, `ACL_MODE_UNIVERSAL_ACCESS`.
         :param pulumi.Input[_builtins.str] database_type: The type of database used to store customer data.
@@ -142,7 +141,6 @@ class _DocumentAiWarehouseLocationState:
                  project_number: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DocumentAiWarehouseLocation resources.
-
         :param pulumi.Input[_builtins.str] access_control_mode: The access control mode for accessing the customer data.
                Possible values are: `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI`, `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID`, `ACL_MODE_UNIVERSAL_ACCESS`.
         :param pulumi.Input[_builtins.str] database_type: The type of database used to store customer data.
@@ -294,7 +292,6 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
 
         This resource does not support import.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_control_mode: The access control mode for accessing the customer data.
@@ -347,7 +344,6 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
-
 
         :param str resource_name: The name of the resource.
         :param DocumentAiWarehouseLocationArgs args: The arguments to use to populate this resource's properties.

@@ -28,7 +28,6 @@ class SecurityMonitoringConditionArgs:
                  include_all_resources: Optional[pulumi.Input['SecurityMonitoringConditionIncludeAllResourcesArgs']] = None):
         """
         The set of arguments for constructing a SecurityMonitoringCondition resource.
-
         :param pulumi.Input[_builtins.str] condition_id: Resource ID of the security monitoring condition.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee Security Monitoring Condition,
                in the format `organizations/{{org_name}}`.
@@ -120,7 +119,6 @@ class _SecurityMonitoringConditionState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityMonitoringCondition resources.
-
         :param pulumi.Input[_builtins.str] condition_id: Resource ID of the security monitoring condition.
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which this profile was created.
         :param pulumi.Input['SecurityMonitoringConditionIncludeAllResourcesArgs'] include_all_resources: A nested object resource.
@@ -359,7 +357,6 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
         $ pulumi import gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition default {{org_id}}/{{condition_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] condition_id: Resource ID of the security monitoring condition.
@@ -443,7 +440,6 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
         $ pulumi import gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition default {{org_id}}/securityMonitoringConditions/{{condition_id}}
         $ pulumi import gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition default {{org_id}}/{{condition_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SecurityMonitoringConditionArgs args: The arguments to use to populate this resource's properties.

@@ -41,7 +41,6 @@ class InstanceArgs:
                  read_pool_config: Optional[pulumi.Input['InstanceReadPoolConfigArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
-
         :param pulumi.Input[_builtins.str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input[_builtins.str] instance_id: The ID of the alloydb instance.
@@ -417,7 +416,6 @@ class _InstanceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-
         :param pulumi.Input[_builtins.str] activation_policy: 'Specifies whether an instance needs to spin up. Once the instance is
                active, the activation policy can be updated to the `NEVER` to stop the
                instance. Likewise, the activation policy can be updated to `ALWAYS` to
@@ -1103,7 +1101,6 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:alloydb/instance:Instance default {{location}}/{{cluster}}/{{instance_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] activation_policy: 'Specifies whether an instance needs to spin up. Once the instance is
@@ -1292,7 +1289,6 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:alloydb/instance:Instance default {{project}}/{{location}}/{{cluster}}/{{instance_id}}
         $ pulumi import gcp:alloydb/instance:Instance default {{location}}/{{cluster}}/{{instance_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

@@ -29,7 +29,6 @@ class FeatureArgs:
                  spec: Optional[pulumi.Input['FeatureSpecArgs']] = None):
         """
         The set of arguments for constructing a Feature resource.
-
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input['FeatureFleetDefaultMemberConfigArgs'] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
                Structure is documented below.
@@ -150,7 +149,6 @@ class _FeatureState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Feature resources.
-
         :param pulumi.Input[_builtins.str] create_time: Output only. When the Feature resource was created.
         :param pulumi.Input[_builtins.str] delete_time: Output only. When the Feature resource was deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -716,7 +714,6 @@ class Feature(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/feature:Feature default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
@@ -1070,7 +1067,6 @@ class Feature(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/feature:Feature default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:gkehub/feature:Feature default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param FeatureArgs args: The arguments to use to populate this resource's properties.

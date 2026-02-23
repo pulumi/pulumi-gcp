@@ -26,7 +26,6 @@ class InstanceGroupNamedPortInitArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceGroupNamedPort resource.
-
         :param pulumi.Input[_builtins.str] group: The name of the instance group.
         :param pulumi.Input[_builtins.int] port: The port number, which can be a value between 1 and 65535.
         :param pulumi.Input[_builtins.str] name: The name for this named port. The name must be 1-63 characters
@@ -117,7 +116,6 @@ class _InstanceGroupNamedPortState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceGroupNamedPort resources.
-
         :param pulumi.Input[_builtins.str] group: The name of the instance group.
         :param pulumi.Input[_builtins.str] name: The name for this named port. The name must be 1-63 characters
                long, and comply with RFC1035.
@@ -281,7 +279,6 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{group}}/{{port}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group: The name of the instance group.
@@ -366,7 +363,6 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{zone}}/{{group}}/{{port}}/{{name}}
         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{group}}/{{port}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param InstanceGroupNamedPortInitArgs args: The arguments to use to populate this resource's properties.

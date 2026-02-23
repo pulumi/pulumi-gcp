@@ -33,7 +33,6 @@ class AssistantArgs:
                  web_grounding_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Assistant resource.
-
         :param pulumi.Input[_builtins.str] assistant_id: The unique id of the assistant.
         :param pulumi.Input[_builtins.str] collection_id: The unique id of the collection.
         :param pulumi.Input[_builtins.str] display_name: The assistant display name.
@@ -212,7 +211,6 @@ class _AssistantState:
                  web_grounding_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Assistant resources.
-
         :param pulumi.Input[_builtins.str] assistant_id: The unique id of the assistant.
         :param pulumi.Input[_builtins.str] collection_id: The unique id of the collection.
         :param pulumi.Input['AssistantCustomerPolicyArgs'] customer_policy: Customer policy for the assistant.
@@ -487,7 +485,6 @@ class Assistant(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/assistant:Assistant default {{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assistant_id: The unique id of the assistant.
@@ -582,7 +579,6 @@ class Assistant(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/assistant:Assistant default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}
         $ pulumi import gcp:discoveryengine/assistant:Assistant default {{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AssistantArgs args: The arguments to use to populate this resource's properties.

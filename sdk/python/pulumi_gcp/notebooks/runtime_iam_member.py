@@ -29,7 +29,6 @@ class RuntimeIamMemberArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RuntimeIamMember resource.
-
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -160,7 +159,6 @@ class _RuntimeIamMemberState:
                  runtime_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RuntimeIamMember resources.
-
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] location: A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -466,7 +464,6 @@ class RuntimeIamMember(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] location: A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -652,7 +649,6 @@ class RuntimeIamMember(pulumi.CustomResource):
 
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-
 
         :param str resource_name: The name of the resource.
         :param RuntimeIamMemberArgs args: The arguments to use to populate this resource's properties.

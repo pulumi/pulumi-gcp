@@ -109,7 +109,8 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes"
+//	corev1 "github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes/core/v1"
+//	metav1 "github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes/meta/v1"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -132,16 +133,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kubernetes.NewSecret(ctx, "google-application-credentials", &kubernetes.SecretArgs{
-//				Metadata: []map[string]interface{}{
-//					map[string]interface{}{
-//						"name": "google-application-credentials",
-//					},
+//			_, err = corev1.NewSecret(ctx, "google-application-credentials", &corev1.SecretArgs{
+//				Metadata: &metav1.ObjectMetaArgs{
+//					Name: pulumi.String("google-application-credentials"),
 //				},
-//				Data: map[string]interface{}{
-//					"credentials.json": std.Base64decode(ctx, &std.Base64decodeArgs{
+//				Data: pulumi.StringMap{
+//					"credentials.json": pulumi.String(std.Base64decodeOutput(ctx, std.Base64decodeOutputArgs{
 //						Input: mykey.PrivateKey,
-//					}, nil).Result,
+//					}, nil).ApplyT(func(invoke std.Base64decodeResult) (*string, error) {
+//						return invoke.Result, nil
+//					}).(pulumi.StringPtrOutput)),
 //				},
 //			})
 //			if err != nil {

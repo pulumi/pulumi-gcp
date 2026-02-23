@@ -26,7 +26,6 @@ class UserWorkloadsSecretArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserWorkloadsSecret resource.
-
         :param pulumi.Input[_builtins.str] environment: Environment where the Kubernetes Secret will be stored and used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: The "data" field of Kubernetes Secret, organized in key-value pairs,
                which can contain sensitive values such as a password, a token, or a key.
@@ -130,7 +129,6 @@ class _UserWorkloadsSecretState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserWorkloadsSecret resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: The "data" field of Kubernetes Secret, organized in key-value pairs,
                which can contain sensitive values such as a password, a token, or a key.
                Content of this field will not be displayed in CLI output,
@@ -284,7 +282,6 @@ class UserWorkloadsSecret(pulumi.CustomResource):
         $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{environment}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: The "data" field of Kubernetes Secret, organized in key-value pairs,
@@ -353,7 +350,6 @@ class UserWorkloadsSecret(pulumi.CustomResource):
         $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{project}}/{{region}}/{{environment}}/{{name}}
         $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{environment}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param UserWorkloadsSecretArgs args: The arguments to use to populate this resource's properties.

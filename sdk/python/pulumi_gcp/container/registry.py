@@ -23,7 +23,6 @@ class RegistryArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Registry resource.
-
         :param pulumi.Input[_builtins.str] location: The location of the registry. One of `ASIA`, `EU`, `US` or not specified. See [the official documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry) for more information on registry locations.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         """
@@ -65,7 +64,6 @@ class _RegistryState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Registry resources.
-
         :param pulumi.Input[_builtins.str] bucket_self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] location: The location of the registry. One of `ASIA`, `EU`, `US` or not specified. See [the official documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry) for more information on registry locations.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
@@ -160,7 +158,6 @@ class Registry(pulumi.CustomResource):
 
         This resource does not support import.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] location: The location of the registry. One of `ASIA`, `EU`, `US` or not specified. See [the official documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry) for more information on registry locations.
@@ -208,7 +205,6 @@ class Registry(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
-
 
         :param str resource_name: The name of the resource.
         :param RegistryArgs args: The arguments to use to populate this resource's properties.

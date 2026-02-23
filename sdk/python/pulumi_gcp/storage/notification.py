@@ -27,7 +27,6 @@ class NotificationArgs:
                  object_name_prefix: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Notification resource.
-
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[_builtins.str] payload_format: The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
         :param pulumi.Input[_builtins.str] topic: The Cloud PubSub topic to which this subscription publishes. Expects either the
@@ -141,7 +140,6 @@ class _NotificationState:
                  topic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Notification resources.
-
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] event_types: List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
@@ -349,7 +347,6 @@ class Notification(pulumi.CustomResource):
         $ pulumi import gcp:storage/notification:Notification default {{bucket_name}}/notificationConfigs/{{id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
@@ -430,7 +427,6 @@ class Notification(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:storage/notification:Notification default {{bucket_name}}/notificationConfigs/{{id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param NotificationArgs args: The arguments to use to populate this resource's properties.

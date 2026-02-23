@@ -30,7 +30,6 @@ class LiteTopicArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LiteTopic resource.
-
         :param pulumi.Input[_builtins.str] name: Name of the topic.
         :param pulumi.Input['LiteTopicPartitionConfigArgs'] partition_config: The settings for this topic's partitions.
                Structure is documented below.
@@ -159,7 +158,6 @@ class _LiteTopicState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LiteTopic resources.
-
         :param pulumi.Input[_builtins.str] name: Name of the topic.
         :param pulumi.Input['LiteTopicPartitionConfigArgs'] partition_config: The settings for this topic's partitions.
                Structure is documented below.
@@ -350,7 +348,6 @@ class LiteTopic(pulumi.CustomResource):
         $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Name of the topic.
@@ -430,7 +427,6 @@ class LiteTopic(pulumi.CustomResource):
         $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{zone}}/{{name}}
         $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param LiteTopicArgs args: The arguments to use to populate this resource's properties.

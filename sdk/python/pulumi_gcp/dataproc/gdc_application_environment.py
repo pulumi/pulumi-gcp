@@ -32,7 +32,6 @@ class GdcApplicationEnvironmentArgs:
                  spark_application_environment_config: Optional[pulumi.Input['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs']] = None):
         """
         The set of arguments for constructing a GdcApplicationEnvironment resource.
-
         :param pulumi.Input[_builtins.str] location: The location of the application environment
         :param pulumi.Input[_builtins.str] serviceinstance: The id of the service instance to which this application environment belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
@@ -202,7 +201,6 @@ class _GdcApplicationEnvironmentState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GdcApplicationEnvironment resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -543,7 +541,6 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default {{location}}/{{serviceinstance}}/{{application_environment_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
@@ -634,7 +631,6 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default {{project}}/{{location}}/{{serviceinstance}}/{{application_environment_id}}
         $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default {{location}}/{{serviceinstance}}/{{application_environment_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param GdcApplicationEnvironmentArgs args: The arguments to use to populate this resource's properties.

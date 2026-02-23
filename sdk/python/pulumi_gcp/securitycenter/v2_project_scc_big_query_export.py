@@ -27,7 +27,6 @@ class V2ProjectSccBigQueryExportArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2ProjectSccBigQueryExport resource.
-
         :param pulumi.Input[_builtins.str] big_query_export_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] dataset: The dataset to write findings' updates to.
                Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
@@ -178,7 +177,6 @@ class _V2ProjectSccBigQueryExportState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V2ProjectSccBigQueryExport resources.
-
         :param pulumi.Input[_builtins.str] big_query_export_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] create_time: The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -474,7 +472,6 @@ class V2ProjectSccBigQueryExport(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/v2ProjectSccBigQueryExport:V2ProjectSccBigQueryExport default {{location}}/{{big_query_export_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] big_query_export_id: This must be unique within the organization.
@@ -568,7 +565,6 @@ class V2ProjectSccBigQueryExport(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/v2ProjectSccBigQueryExport:V2ProjectSccBigQueryExport default {{project}}/{{location}}/{{big_query_export_id}}
         $ pulumi import gcp:securitycenter/v2ProjectSccBigQueryExport:V2ProjectSccBigQueryExport default {{location}}/{{big_query_export_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param V2ProjectSccBigQueryExportArgs args: The arguments to use to populate this resource's properties.

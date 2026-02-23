@@ -6,7 +6,7 @@ toolchain go1.24.1
 
 require (
 	github.com/pulumi/pulumi-gcp/sdk/v9 v9.0.0-alpha.0
-	github.com/pulumi/pulumi/sdk/v3 v3.218.0
+	github.com/pulumi/pulumi/sdk/v3 v3.220.0
 )
 
 replace github.com/pulumi/pulumi-gcp/sdk/v9 => ../../sdk

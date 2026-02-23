@@ -34,7 +34,6 @@ class RegionCommitmentArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionCommitment resource.
-
         :param pulumi.Input[_builtins.str] plan: The plan for this commitment, which determines duration and discount rate.
                The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
                Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
@@ -267,7 +266,6 @@ class _RegionCommitmentState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionCommitment resources.
-
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable automatic renewal for the commitment.
                The default value is false if not specified.
                If the field is set to true, the commitment will be automatically renewed for either
@@ -681,7 +679,6 @@ class RegionCommitment(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionCommitment:RegionCommitment default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable automatic renewal for the commitment.
@@ -800,7 +797,6 @@ class RegionCommitment(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionCommitment:RegionCommitment default {{region}}/{{name}}
         $ pulumi import gcp:compute/regionCommitment:RegionCommitment default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RegionCommitmentArgs args: The arguments to use to populate this resource's properties.

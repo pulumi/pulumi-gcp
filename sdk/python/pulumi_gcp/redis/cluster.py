@@ -44,7 +44,6 @@ class ClusterArgs:
                  zone_distribution_config: Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
-
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the Redis cluster.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
@@ -456,7 +455,6 @@ class _ClusterState:
                  zone_distribution_config: Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
-
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
                Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1661,7 +1659,6 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import gcp:redis/cluster:Cluster default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
@@ -2259,7 +2256,6 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import gcp:redis/cluster:Cluster default {{region}}/{{name}}
         $ pulumi import gcp:redis/cluster:Cluster default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

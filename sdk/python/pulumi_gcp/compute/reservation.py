@@ -34,7 +34,6 @@ class ReservationArgs:
                  specific_reservation_required: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Reservation resource.
-
         :param pulumi.Input['ReservationSpecificReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] zone: The zone where the reservation is made.
@@ -257,7 +256,6 @@ class _ReservationState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Reservation resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] block_names: List of all reservation block names in the parent reservation.
         :param pulumi.Input[_builtins.str] commitment: Full or partial URL to a parent commitment. This field displays for
                reservations that are tied to a commitment.
@@ -804,7 +802,6 @@ class Reservation(pulumi.CustomResource):
         $ pulumi import gcp:compute/reservation:Reservation default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']] delete_after_duration: Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
@@ -1013,7 +1010,6 @@ class Reservation(pulumi.CustomResource):
         $ pulumi import gcp:compute/reservation:Reservation default {{zone}}/{{name}}
         $ pulumi import gcp:compute/reservation:Reservation default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ReservationArgs args: The arguments to use to populate this resource's properties.

@@ -33,7 +33,6 @@ class ZoneArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Zone resource.
-
         :param pulumi.Input['ZoneDiscoverySpecArgs'] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[_builtins.str] lake: The lake for the resource
         :param pulumi.Input[_builtins.str] location: The location for the resource
@@ -210,7 +209,6 @@ class _ZoneState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['ZoneAssetStatusArgs']]] asset_statuses: Output only. Aggregated status of the underlying assets of the zone.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the zone was created.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the zone.
@@ -544,7 +542,6 @@ class Zone(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/zone:Zone default {{location}}/{{lake}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the zone.
@@ -618,7 +615,6 @@ class Zone(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/zone:Zone default {{project}}/{{location}}/{{lake}}/{{name}}
         $ pulumi import gcp:dataplex/zone:Zone default {{location}}/{{lake}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ZoneArgs args: The arguments to use to populate this resource's properties.

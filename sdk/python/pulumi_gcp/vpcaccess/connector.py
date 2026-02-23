@@ -34,7 +34,6 @@ class ConnectorArgs:
                  subnet: Optional[pulumi.Input['ConnectorSubnetArgs']] = None):
         """
         The set of arguments for constructing a Connector resource.
-
         :param pulumi.Input[_builtins.str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[_builtins.str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
         :param pulumi.Input[_builtins.int] max_instances: Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
@@ -238,7 +237,6 @@ class _ConnectorState:
                  subnet: Optional[pulumi.Input['ConnectorSubnetArgs']] = None):
         """
         Input properties used for looking up and filtering Connector resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connected_projects: List of projects using the connector.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[_builtins.str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
@@ -549,7 +547,6 @@ class Connector(pulumi.CustomResource):
         $ pulumi import gcp:vpcaccess/connector:Connector default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
@@ -640,7 +637,6 @@ class Connector(pulumi.CustomResource):
         $ pulumi import gcp:vpcaccess/connector:Connector default {{region}}/{{name}}
         $ pulumi import gcp:vpcaccess/connector:Connector default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ConnectorArgs args: The arguments to use to populate this resource's properties.

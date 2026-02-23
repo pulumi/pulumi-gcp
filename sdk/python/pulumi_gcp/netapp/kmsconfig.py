@@ -27,7 +27,6 @@ class KmsconfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Kmsconfig resource.
-
         :param pulumi.Input[_builtins.str] crypto_key_name: Resource name of the KMS key to use. Only regional keys are supported. Format: `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{key}}`.
         :param pulumi.Input[_builtins.str] location: Name of the policy location. CMEK policies apply to the whole region.
         :param pulumi.Input[_builtins.str] description: Description for the CMEK policy.
@@ -142,7 +141,6 @@ class _KmsconfigState:
                  service_account: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Kmsconfig resources.
-
         :param pulumi.Input[_builtins.str] crypto_key_name: Resource name of the KMS key to use. Only regional keys are supported. Format: `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{key}}`.
         :param pulumi.Input[_builtins.str] description: Description for the CMEK policy.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -363,7 +361,6 @@ class Kmsconfig(pulumi.CustomResource):
         $ pulumi import gcp:netapp/kmsconfig:Kmsconfig default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] crypto_key_name: Resource name of the KMS key to use. Only regional keys are supported. Format: `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{key}}`.
@@ -424,7 +421,6 @@ class Kmsconfig(pulumi.CustomResource):
         $ pulumi import gcp:netapp/kmsconfig:Kmsconfig default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:netapp/kmsconfig:Kmsconfig default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param KmsconfigArgs args: The arguments to use to populate this resource's properties.

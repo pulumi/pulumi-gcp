@@ -56,7 +56,6 @@ class InstanceArgs:
                  vm_image: Optional[pulumi.Input['InstanceVmImageArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
-
         :param pulumi.Input[_builtins.str] location: A reference to the zone where the machine resides.
         :param pulumi.Input[_builtins.str] machine_type: A reference to a machine type which defines VM kind.
         :param pulumi.Input['InstanceAcceleratorConfigArgs'] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
@@ -679,7 +678,6 @@ class _InstanceState:
                  vm_image: Optional[pulumi.Input['InstanceVmImageArgs']] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-
         :param pulumi.Input['InstanceAcceleratorConfigArgs'] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
                make sure that your configuration has enough vCPUs and memory to support the
                machineType you have selected.
@@ -1519,7 +1517,6 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:notebooks/instance:Instance default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceAcceleratorConfigArgs', 'InstanceAcceleratorConfigArgsDict']] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
@@ -1752,7 +1749,6 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:notebooks/instance:Instance default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:notebooks/instance:Instance default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

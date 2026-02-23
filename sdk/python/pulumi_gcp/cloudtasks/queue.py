@@ -32,7 +32,6 @@ class QueueArgs:
                  stackdriver_logging_config: Optional[pulumi.Input['QueueStackdriverLoggingConfigArgs']] = None):
         """
         The set of arguments for constructing a Queue resource.
-
         :param pulumi.Input[_builtins.str] location: The location of the queue
         :param pulumi.Input['QueueAppEngineRoutingOverrideArgs'] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
@@ -217,7 +216,6 @@ class _QueueState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Queue resources.
-
         :param pulumi.Input['QueueAppEngineRoutingOverrideArgs'] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
                Structure is documented below.
@@ -572,7 +570,6 @@ class Queue(pulumi.CustomResource):
         $ pulumi import gcp:cloudtasks/queue:Queue default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
@@ -759,7 +756,6 @@ class Queue(pulumi.CustomResource):
         $ pulumi import gcp:cloudtasks/queue:Queue default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:cloudtasks/queue:Queue default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param QueueArgs args: The arguments to use to populate this resource's properties.

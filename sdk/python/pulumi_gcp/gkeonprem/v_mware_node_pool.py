@@ -32,7 +32,6 @@ class VMwareNodePoolArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VMwareNodePool resource.
-
         :param pulumi.Input['VMwareNodePoolConfigArgs'] config: The node configuration of the node pool.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
@@ -217,7 +216,6 @@ class _VMwareNodePoolState:
                  vmware_cluster: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VMwareNodePool resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the node Pool.
                This field has the same restrictions as Kubernetes annotations.
                The total size of all keys and values combined is limited to 256k.
@@ -718,7 +716,6 @@ class VMwareNodePool(pulumi.CustomResource):
         $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default {{location}}/{{vmware_cluster}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the node Pool.
@@ -922,7 +919,6 @@ class VMwareNodePool(pulumi.CustomResource):
         $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default {{project}}/{{location}}/{{vmware_cluster}}/{{name}}
         $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default {{location}}/{{vmware_cluster}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param VMwareNodePoolArgs args: The arguments to use to populate this resource's properties.

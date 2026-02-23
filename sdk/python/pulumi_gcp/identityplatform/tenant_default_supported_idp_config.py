@@ -27,7 +27,6 @@ class TenantDefaultSupportedIdpConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TenantDefaultSupportedIdpConfig resource.
-
         :param pulumi.Input[_builtins.str] client_id: OAuth client ID
         :param pulumi.Input[_builtins.str] client_secret: OAuth client secret
         :param pulumi.Input[_builtins.str] idp_id: ID of the IDP. Possible values include:
@@ -151,7 +150,6 @@ class _TenantDefaultSupportedIdpConfigState:
                  tenant: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TenantDefaultSupportedIdpConfig resources.
-
         :param pulumi.Input[_builtins.str] client_id: OAuth client ID
         :param pulumi.Input[_builtins.str] client_secret: OAuth client secret
         :param pulumi.Input[_builtins.bool] enabled: If this IDP allows the user to sign in
@@ -335,7 +333,6 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{tenant}}/{{idp_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] client_id: OAuth client ID
@@ -401,7 +398,6 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{project}}/{{tenant}}/{{idp_id}}
         $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{tenant}}/{{idp_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param TenantDefaultSupportedIdpConfigArgs args: The arguments to use to populate this resource's properties.

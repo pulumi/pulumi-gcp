@@ -28,7 +28,6 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs:
                  location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ManagementOrganizationSecurityHealthAnalyticsCustomModule resource.
-
         :param pulumi.Input[_builtins.str] organization: Numerical ID of the parent organization.
         :param pulumi.Input['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
@@ -132,7 +131,6 @@ class _ManagementOrganizationSecurityHealthAnalyticsCustomModuleState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManagementOrganizationSecurityHealthAnalyticsCustomModule resources.
-
         :param pulumi.Input[_builtins.str] ancestor_module: If empty, indicates that the custom module was created in the organization, folder,
                or project in which you are viewing the custom module. Otherwise, ancestor_module
                specifies the organization or folder from which the custom module is inherited.
@@ -395,7 +393,6 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
         $ pulumi import gcp:securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule:ManagementOrganizationSecurityHealthAnalyticsCustomModule default {{organization}}/{{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs', 'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict']] custom_config: The user specified custom configuration for the module.
@@ -505,7 +502,6 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
         $ pulumi import gcp:securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule:ManagementOrganizationSecurityHealthAnalyticsCustomModule default organizations/{{organization}}/locations/{{location}}/securityHealthAnalyticsCustomModules/{{name}}
         $ pulumi import gcp:securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule:ManagementOrganizationSecurityHealthAnalyticsCustomModule default {{organization}}/{{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs args: The arguments to use to populate this resource's properties.

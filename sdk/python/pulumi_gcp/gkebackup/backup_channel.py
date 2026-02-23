@@ -27,7 +27,6 @@ class BackupChannelArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupChannel resource.
-
         :param pulumi.Input[_builtins.str] destination_project: The project where Backups are allowed to be stored.
                The format is `projects/{project}`.
                {project} can be project number or project id.
@@ -151,7 +150,6 @@ class _BackupChannelState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupChannel resources.
-
         :param pulumi.Input[_builtins.str] description: User specified descriptive string for this BackupChannel.
         :param pulumi.Input[_builtins.str] destination_project: The project where Backups are allowed to be stored.
                The format is `projects/{project}`.
@@ -409,7 +407,6 @@ class BackupChannel(pulumi.CustomResource):
         $ pulumi import gcp:gkebackup/backupChannel:BackupChannel default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User specified descriptive string for this BackupChannel.
@@ -478,7 +475,6 @@ class BackupChannel(pulumi.CustomResource):
         $ pulumi import gcp:gkebackup/backupChannel:BackupChannel default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:gkebackup/backupChannel:BackupChannel default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param BackupChannelArgs args: The arguments to use to populate this resource's properties.

@@ -28,7 +28,6 @@ class InstanceIamMemberArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceIamMember resource.
-
         :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance to manage IAM policies for.
                
                For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
@@ -139,7 +138,6 @@ class _InstanceIamMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceIamMember resources.
-
         :param pulumi.Input['InstanceIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the instances's IAM policy.
         :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance to manage IAM policies for.
@@ -365,7 +363,6 @@ class InstanceIamMember(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceIamMemberConditionArgs', 'InstanceIamMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
@@ -487,7 +484,6 @@ class InstanceIamMember(pulumi.CustomResource):
 
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-
 
         :param str resource_name: The name of the resource.
         :param InstanceIamMemberArgs args: The arguments to use to populate this resource's properties.

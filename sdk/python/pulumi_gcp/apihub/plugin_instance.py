@@ -31,7 +31,6 @@ class PluginInstanceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PluginInstance resource.
-
         :param pulumi.Input[_builtins.str] display_name: The display name for this plugin instance. Max length is 255 characters.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] plugin: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -189,7 +188,6 @@ class _PluginInstanceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PluginInstance resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionArgs']]] actions: The action status for the plugin instance.
                Structure is documented below.
         :param pulumi.Input['PluginInstanceAuthConfigArgs'] auth_config: AuthConfig represents the authentication information.
@@ -487,7 +485,6 @@ class PluginInstance(pulumi.CustomResource):
         $ pulumi import gcp:apihub/pluginInstance:PluginInstance default {{location}}/{{plugin}}/{{plugin_instance_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PluginInstanceActionArgs', 'PluginInstanceActionArgsDict']]]] actions: The action status for the plugin instance.
@@ -552,7 +549,6 @@ class PluginInstance(pulumi.CustomResource):
         $ pulumi import gcp:apihub/pluginInstance:PluginInstance default {{project}}/{{location}}/{{plugin}}/{{plugin_instance_id}}
         $ pulumi import gcp:apihub/pluginInstance:PluginInstance default {{location}}/{{plugin}}/{{plugin_instance_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param PluginInstanceArgs args: The arguments to use to populate this resource's properties.

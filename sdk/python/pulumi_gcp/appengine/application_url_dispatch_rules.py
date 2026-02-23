@@ -25,7 +25,6 @@ class ApplicationUrlDispatchRulesArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationUrlDispatchRules resource.
-
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -69,7 +68,6 @@ class _ApplicationUrlDispatchRulesState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationUrlDispatchRules resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -184,7 +182,6 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules default {{project}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
@@ -265,7 +262,6 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules default {{project}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ApplicationUrlDispatchRulesArgs args: The arguments to use to populate this resource's properties.

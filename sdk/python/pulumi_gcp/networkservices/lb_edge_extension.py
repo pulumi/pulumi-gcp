@@ -31,7 +31,6 @@ class LbEdgeExtensionArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LbEdgeExtension resource.
-
         :param pulumi.Input[Sequence[pulumi.Input['LbEdgeExtensionExtensionChainArgs']]] extension_chains: A set of ordered extension chains that contain the match conditions and extensions to execute.
                Match conditions for each extension chain are evaluated in sequence for a given request.
                The first extension chain that has a condition that matches the request is executed.
@@ -184,7 +183,6 @@ class _LbEdgeExtensionState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering LbEdgeExtension resources.
-
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['LbEdgeExtensionExtensionChainArgs']]] extension_chains: A set of ordered extension chains that contain the match conditions and extensions to execute.
@@ -483,7 +481,6 @@ class LbEdgeExtension(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/lbEdgeExtension:LbEdgeExtension default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
@@ -619,7 +616,6 @@ class LbEdgeExtension(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/lbEdgeExtension:LbEdgeExtension default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networkservices/lbEdgeExtension:LbEdgeExtension default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param LbEdgeExtensionArgs args: The arguments to use to populate this resource's properties.

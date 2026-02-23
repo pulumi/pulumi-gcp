@@ -36,7 +36,6 @@ class InstanceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-
         :param pulumi.Input[_builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
                are from `18000` to `954000`, in increments of 9000.
         :param pulumi.Input[_builtins.str] filesystem: The filesystem name for this instance. This name is used by client-side
@@ -289,7 +288,6 @@ class _InstanceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-
         :param pulumi.Input['InstanceAccessRulesOptionsArgs'] access_rules_options: Access control rules for the Lustre instance. Configures default root
                squashing behavior and specific access rules based on IP addresses.
                Structure is documented below.
@@ -721,7 +719,6 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:lustre/instance:Instance default {{location}}/{{instance_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']] access_rules_options: Access control rules for the Lustre instance. Configures default root
@@ -815,7 +812,6 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:lustre/instance:Instance default {{project}}/{{location}}/{{instance_id}}
         $ pulumi import gcp:lustre/instance:Instance default {{location}}/{{instance_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

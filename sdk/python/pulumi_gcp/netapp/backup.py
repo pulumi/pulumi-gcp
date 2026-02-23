@@ -29,7 +29,6 @@ class BackupArgs:
                  source_volume: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Backup resource.
-
         :param pulumi.Input[_builtins.str] location: Location of the backup.
         :param pulumi.Input[_builtins.str] vault_name: Name of the backup vault to store the backup in.
         :param pulumi.Input[_builtins.str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
@@ -185,7 +184,6 @@ class _BackupState:
                  volume_usage_bytes: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Backup resources.
-
         :param pulumi.Input[_builtins.str] backup_region: Region in which backup is stored.
         :param pulumi.Input[_builtins.str] backup_type: Type of backup, manually created or created by a backup policy. Possible Values : [TYPE_UNSPECIFIED, MANUAL, SCHEDULED]
         :param pulumi.Input[_builtins.str] chain_storage_bytes: Backups of a volume build incrementally on top of each other. They form a "backup chain".
@@ -549,7 +547,6 @@ class Backup(pulumi.CustomResource):
         $ pulumi import gcp:netapp/backup:Backup default {{location}}/{{vault_name}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
@@ -646,7 +643,6 @@ class Backup(pulumi.CustomResource):
         $ pulumi import gcp:netapp/backup:Backup default {{project}}/{{location}}/{{vault_name}}/{{name}}
         $ pulumi import gcp:netapp/backup:Backup default {{location}}/{{vault_name}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param BackupArgs args: The arguments to use to populate this resource's properties.

@@ -27,7 +27,6 @@ class DatabaseArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
-
         :param pulumi.Input[_builtins.str] catalog: The parent catalog.
         :param pulumi.Input['DatabaseHiveOptionsArgs'] hive_options: Options of a Hive database.
                Structure is documented below.
@@ -103,7 +102,6 @@ class _DatabaseState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
-
         :param pulumi.Input[_builtins.str] catalog: The parent catalog.
         :param pulumi.Input[_builtins.str] create_time: Output only. The creation time of the database. A timestamp in RFC3339
                UTC "Zulu" format, with nanosecond resolution and up to nine fractional
@@ -321,7 +319,6 @@ class Database(pulumi.CustomResource):
         $ pulumi import gcp:biglake/database:Database default {{catalog}}/databases/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] catalog: The parent catalog.
@@ -392,7 +389,6 @@ class Database(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:biglake/database:Database default {{catalog}}/databases/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.

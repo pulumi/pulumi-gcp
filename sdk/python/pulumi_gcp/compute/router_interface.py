@@ -32,7 +32,6 @@ class RouterInterfaceArgs:
                  vpn_tunnel: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterInterface resource.
-
         :param pulumi.Input[_builtins.str] router: The name of the router this interface will be attached to.
                Changing this forces a new interface to be created.
                
@@ -248,7 +247,6 @@ class _RouterInterfaceState:
                  vpn_tunnel: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterInterface resources.
-
         :param pulumi.Input[_builtins.str] interconnect_attachment: The name or resource link to the
                VLAN interconnect for this interface. Changing this forces a new interface to
                be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
@@ -501,7 +499,6 @@ class RouterInterface(pulumi.CustomResource):
         $ pulumi import gcp:compute/routerInterface:RouterInterface default {{region}}/{{router}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] interconnect_attachment: The name or resource link to the
@@ -571,7 +568,6 @@ class RouterInterface(pulumi.CustomResource):
         $ pulumi import gcp:compute/routerInterface:RouterInterface default {{project_id}}/{{region}}/{{router}}/{{name}}
         $ pulumi import gcp:compute/routerInterface:RouterInterface default {{region}}/{{router}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RouterInterfaceArgs args: The arguments to use to populate this resource's properties.

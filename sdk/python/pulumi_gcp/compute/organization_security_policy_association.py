@@ -24,7 +24,6 @@ class OrganizationSecurityPolicyAssociationArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrganizationSecurityPolicyAssociation resource.
-
         :param pulumi.Input[_builtins.str] attachment_id: The resource that the security policy is attached to.
         :param pulumi.Input[_builtins.str] policy_id: The security policy ID of the association.
         :param pulumi.Input[_builtins.str] name: The name for an association.
@@ -80,7 +79,6 @@ class _OrganizationSecurityPolicyAssociationState:
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationSecurityPolicyAssociation resources.
-
         :param pulumi.Input[_builtins.str] attachment_id: The resource that the security policy is attached to.
         :param pulumi.Input[_builtins.str] display_name: The display name of the security policy of the association.
         :param pulumi.Input[_builtins.str] name: The name for an association.
@@ -197,7 +195,6 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/association/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] attachment_id: The resource that the security policy is attached to.
@@ -252,7 +249,6 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/association/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param OrganizationSecurityPolicyAssociationArgs args: The arguments to use to populate this resource's properties.

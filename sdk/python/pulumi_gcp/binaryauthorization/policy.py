@@ -29,7 +29,6 @@ class PolicyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Policy resource.
-
         :param pulumi.Input['PolicyDefaultAdmissionRuleArgs'] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
@@ -169,7 +168,6 @@ class _PolicyState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an
                image's name matches a whitelist pattern, the image's admission
                requests will always be permitted regardless of your admission rules.
@@ -397,7 +395,6 @@ class Policy(pulumi.CustomResource):
         $ pulumi import gcp:binaryauthorization/policy:Policy default {{project}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an
@@ -515,7 +512,6 @@ class Policy(pulumi.CustomResource):
         $ pulumi import gcp:binaryauthorization/policy:Policy default projects/{{project}}
         $ pulumi import gcp:binaryauthorization/policy:Policy default {{project}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

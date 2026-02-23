@@ -27,7 +27,6 @@ class GroupArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
-
         :param pulumi.Input[_builtins.str] group_id: Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
         :param pulumi.Input[_builtins.str] location: The location of the group.
         :param pulumi.Input[_builtins.str] description: Optional. The description of the group.
@@ -141,7 +140,6 @@ class _GroupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
-
         :param pulumi.Input[_builtins.str] create_time: Output only. The timestamp when the group was created.
         :param pulumi.Input[_builtins.str] description: Optional. The description of the group.
         :param pulumi.Input[_builtins.str] display_name: Optional. User-friendly display name.
@@ -368,7 +366,6 @@ class Group(pulumi.CustomResource):
         $ pulumi import gcp:migrationcenter/group:Group default {{location}}/{{group_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Optional. The description of the group.
@@ -423,7 +420,6 @@ class Group(pulumi.CustomResource):
         $ pulumi import gcp:migrationcenter/group:Group default {{project}}/{{location}}/{{group_id}}
         $ pulumi import gcp:migrationcenter/group:Group default {{location}}/{{group_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

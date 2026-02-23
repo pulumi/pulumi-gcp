@@ -32,7 +32,6 @@ class TableArgs:
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Table resource.
-
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input['TableAutomatedBackupPolicyArgs'] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automated_backup_policy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automated_backup_policy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
                
@@ -204,7 +203,6 @@ class _TableState:
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Table resources.
-
         :param pulumi.Input['TableAutomatedBackupPolicyArgs'] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automated_backup_policy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automated_backup_policy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
                
                -----
@@ -456,7 +454,6 @@ class Table(pulumi.CustomResource):
         $ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automated_backup_policy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automated_backup_policy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
@@ -561,7 +558,6 @@ class Table(pulumi.CustomResource):
         $ pulumi import gcp:bigtable/table:Table default {{project}}/{{instance_name}}/{{name}}
         $ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param TableArgs args: The arguments to use to populate this resource's properties.

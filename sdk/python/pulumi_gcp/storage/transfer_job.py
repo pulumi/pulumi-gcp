@@ -34,7 +34,6 @@ class TransferJobArgs:
                  transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None):
         """
         The set of arguments for constructing a TransferJob resource.
-
         :param pulumi.Input[_builtins.str] description: Unique description to identify the Transfer Job.
         :param pulumi.Input['TransferJobEventStreamArgs'] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
         :param pulumi.Input['TransferJobLoggingConfigArgs'] logging_config: Logging configuration. Structure documented below.
@@ -227,7 +226,6 @@ class _TransferJobState:
                  transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None):
         """
         Input properties used for looking up and filtering TransferJob resources.
-
         :param pulumi.Input[_builtins.str] creation_time: When the Transfer Job was created.
         :param pulumi.Input[_builtins.str] deletion_time: When the Transfer Job was deleted.
         :param pulumi.Input[_builtins.str] description: Unique description to identify the Transfer Job.
@@ -577,7 +575,6 @@ class TransferJob(pulumi.CustomResource):
         $ pulumi import gcp:storage/transferJob:TransferJob default {{project_id}}/123456789
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Unique description to identify the Transfer Job.
@@ -712,7 +709,6 @@ class TransferJob(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:storage/transferJob:TransferJob default {{project_id}}/123456789
         ```
-
 
         :param str resource_name: The name of the resource.
         :param TransferJobArgs args: The arguments to use to populate this resource's properties.

@@ -25,7 +25,6 @@ class RegionDiskResourcePolicyAttachmentArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionDiskResourcePolicyAttachment resource.
-
         :param pulumi.Input[_builtins.str] disk: The name of the regional disk in which the resource policies are attached to.
         :param pulumi.Input[_builtins.str] name: The resource policy to be attached to the disk for scheduling snapshot
                creation. Do not specify the self link.
@@ -101,7 +100,6 @@ class _RegionDiskResourcePolicyAttachmentState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionDiskResourcePolicyAttachment resources.
-
         :param pulumi.Input[_builtins.str] disk: The name of the regional disk in which the resource policies are attached to.
         :param pulumi.Input[_builtins.str] name: The resource policy to be attached to the disk for scheduling snapshot
                creation. Do not specify the self link.
@@ -251,7 +249,6 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{disk}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] disk: The name of the regional disk in which the resource policies are attached to.
@@ -337,7 +334,6 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{region}}/{{disk}}/{{name}}
         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{disk}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RegionDiskResourcePolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

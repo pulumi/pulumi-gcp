@@ -30,7 +30,6 @@ class AddressGroupArgs:
                  purposes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AddressGroup resource.
-
         :param pulumi.Input[_builtins.int] capacity: Capacity of the Address Group.
         :param pulumi.Input[_builtins.str] location: The location of the gateway security policy.
                The default value is `global`.
@@ -200,7 +199,6 @@ class _AddressGroupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddressGroup resources.
-
         :param pulumi.Input[_builtins.int] capacity: Capacity of the Address Group.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -523,7 +521,6 @@ class AddressGroup(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/addressGroup:AddressGroup default {{parent}}/locations/{{location}}/addressGroups/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] capacity: Capacity of the Address Group.
@@ -631,7 +628,6 @@ class AddressGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:networksecurity/addressGroup:AddressGroup default {{parent}}/locations/{{location}}/addressGroups/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AddressGroupArgs args: The arguments to use to populate this resource's properties.

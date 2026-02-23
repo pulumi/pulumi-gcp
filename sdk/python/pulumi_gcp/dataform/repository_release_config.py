@@ -31,7 +31,6 @@ class RepositoryReleaseConfigArgs:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RepositoryReleaseConfig resource.
-
         :param pulumi.Input[_builtins.str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
         :param pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs'] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
@@ -172,7 +171,6 @@ class _RepositoryReleaseConfigState:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RepositoryReleaseConfig resources.
-
         :param pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs'] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
@@ -414,7 +412,6 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{repository}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
@@ -515,7 +512,6 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{region}}/{{repository}}/{{name}}
         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{repository}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RepositoryReleaseConfigArgs args: The arguments to use to populate this resource's properties.

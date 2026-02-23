@@ -26,7 +26,6 @@ class VariableArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Variable resource.
-
         :param pulumi.Input[_builtins.str] parent: The name of the RuntimeConfig resource containing this
                variable.
         :param pulumi.Input[_builtins.str] name: The name of the variable to manage. Note that variable
@@ -127,7 +126,6 @@ class _VariableState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Variable resources.
-
         :param pulumi.Input[_builtins.str] name: The name of the variable to manage. Note that variable
                names can be hierarchical using slashes (e.g. "prod-variables/hostname").
         :param pulumi.Input[_builtins.str] parent: The name of the RuntimeConfig resource containing this
@@ -309,7 +307,6 @@ class Variable(pulumi.CustomResource):
         ```
         When importing using only the name, the provider project must be set.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the variable to manage. Note that variable
@@ -390,7 +387,6 @@ class Variable(pulumi.CustomResource):
         $ pulumi import gcp:runtimeconfig/variable:Variable default {{config_id}}/{{name}}
         ```
         When importing using only the name, the provider project must be set.
-
 
         :param str resource_name: The name of the resource.
         :param VariableArgs args: The arguments to use to populate this resource's properties.

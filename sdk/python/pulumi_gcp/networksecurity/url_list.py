@@ -26,7 +26,6 @@ class UrlListArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a UrlList resource.
-
         :param pulumi.Input[_builtins.str] location: The location of the url lists.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: FQDNs and URLs.
         :param pulumi.Input[_builtins.str] description: Free-text description of the resource.
@@ -119,7 +118,6 @@ class _UrlListState:
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering UrlList resources.
-
         :param pulumi.Input[_builtins.str] create_time: Output only. Time when the security policy was created.
                A timestamp in RFC3339 UTC 'Zulu' format, with nanosecond resolution and up to nine fractional digits.
                Examples: '2014-10-02T15:01:23Z' and '2014-10-02T15:01:23.045123456Z'
@@ -307,7 +305,6 @@ class UrlList(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/urlList:UrlList default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Free-text description of the resource.
@@ -378,7 +375,6 @@ class UrlList(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/urlList:UrlList default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networksecurity/urlList:UrlList default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param UrlListArgs args: The arguments to use to populate this resource's properties.

@@ -29,7 +29,6 @@ class FirewallEndpointArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallEndpoint resource.
-
         :param pulumi.Input[_builtins.str] billing_project_id: Project to bill on endpoint uptime usage.
         :param pulumi.Input[_builtins.str] location: The location (zone) of the firewall endpoint.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this firewall endpoint belongs to.
@@ -149,7 +148,6 @@ class _FirewallEndpointState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallEndpoint resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] associated_networks: List of networks that are associated with this endpoint in the local zone.
                This is a projection of the FirewallEndpointAssociations pointing at this
                endpoint. A network will only appear in this list after traffic routing is
@@ -442,7 +440,6 @@ class FirewallEndpoint(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/firewallEndpoint:FirewallEndpoint default {{parent}}/locations/{{location}}/firewallEndpoints/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_project_id: Project to bill on endpoint uptime usage.
@@ -510,7 +507,6 @@ class FirewallEndpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:networksecurity/firewallEndpoint:FirewallEndpoint default {{parent}}/locations/{{location}}/firewallEndpoints/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param FirewallEndpointArgs args: The arguments to use to populate this resource's properties.

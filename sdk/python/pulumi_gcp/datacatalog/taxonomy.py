@@ -26,7 +26,6 @@ class TaxonomyArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Taxonomy resource.
-
         :param pulumi.Input[_builtins.str] display_name: User defined name of this taxonomy.
                The taxonomy display name must be unique within an organization.
                It must: contain only unicode letters, numbers, underscores, dashes
@@ -133,7 +132,6 @@ class _TaxonomyState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Taxonomy resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] activated_policy_types: A list of policy types that are activated for this taxonomy. If not set,
                defaults to an empty list.
                Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
@@ -294,7 +292,6 @@ class Taxonomy(pulumi.CustomResource):
         $ pulumi import gcp:datacatalog/taxonomy:Taxonomy default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] activated_policy_types: A list of policy types that are activated for this taxonomy. If not set,
@@ -352,7 +349,6 @@ class Taxonomy(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:datacatalog/taxonomy:Taxonomy default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param TaxonomyArgs args: The arguments to use to populate this resource's properties.

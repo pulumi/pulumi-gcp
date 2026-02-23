@@ -25,7 +25,6 @@ class ServicePerimetersArgs:
                  service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]] = None):
         """
         The set of arguments for constructing a ServicePerimeters resource.
-
         :param pulumi.Input[_builtins.str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
@@ -69,7 +68,6 @@ class _ServicePerimetersState:
                  service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeters resources.
-
         :param pulumi.Input[_builtins.str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
@@ -192,7 +190,6 @@ class ServicePerimeters(pulumi.CustomResource):
         $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] parent: The AccessPolicy this ServicePerimeter lives in.
@@ -281,7 +278,6 @@ class ServicePerimeters(pulumi.CustomResource):
         $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}/servicePerimeters
         $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ServicePerimetersArgs args: The arguments to use to populate this resource's properties.

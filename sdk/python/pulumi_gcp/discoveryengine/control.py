@@ -37,7 +37,6 @@ class ControlArgs:
                  use_cases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Control resource.
-
         :param pulumi.Input[_builtins.str] control_id: The unique id of the control.
         :param pulumi.Input[_builtins.str] display_name: The display name of the control. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
@@ -288,7 +287,6 @@ class _ControlState:
                  use_cases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Control resources.
-
         :param pulumi.Input['ControlBoostActionArgs'] boost_action: Changes the returned order of results.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID. Currently only accepts "default_collection".
@@ -631,7 +629,6 @@ class Control(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/control:Control default {{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ControlBoostActionArgs', 'ControlBoostActionArgsDict']] boost_action: Changes the returned order of results.
@@ -730,7 +727,6 @@ class Control(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/control:Control default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}
         $ pulumi import gcp:discoveryengine/control:Control default {{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ControlArgs args: The arguments to use to populate this resource's properties.

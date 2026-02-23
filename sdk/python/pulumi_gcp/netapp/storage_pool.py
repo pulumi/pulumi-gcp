@@ -42,7 +42,6 @@ class StoragePoolArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StoragePool resource.
-
         :param pulumi.Input[_builtins.str] capacity_gib: Capacity of the storage pool (in GiB).
         :param pulumi.Input[_builtins.str] location: Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         :param pulumi.Input[_builtins.str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
@@ -429,7 +428,6 @@ class _StoragePoolState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StoragePool resources.
-
         :param pulumi.Input[_builtins.str] active_directory: Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
                The policy needs to be in the same location as the storage pool.
         :param pulumi.Input[_builtins.bool] allow_auto_tiering: Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
@@ -1023,7 +1021,6 @@ class StoragePool(pulumi.CustomResource):
         $ pulumi import gcp:netapp/storagePool:StoragePool default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] active_directory: Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
@@ -1159,7 +1156,6 @@ class StoragePool(pulumi.CustomResource):
         $ pulumi import gcp:netapp/storagePool:StoragePool default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:netapp/storagePool:StoragePool default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param StoragePoolArgs args: The arguments to use to populate this resource's properties.

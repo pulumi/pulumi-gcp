@@ -27,7 +27,6 @@ class TableArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Table resource.
-
         :param pulumi.Input[_builtins.str] database: The id of the parent database.
         :param pulumi.Input['TableHiveOptionsArgs'] hive_options: Options of a Hive table.
                Structure is documented below.
@@ -111,7 +110,6 @@ class _TableState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Table resources.
-
         :param pulumi.Input[_builtins.str] create_time: Output only. The creation time of the table. A timestamp in RFC3339 UTC
                "Zulu" format, with nanosecond resolution and up to nine fractional
                digits. Examples: "2014-10-02T15:01:23Z" and
@@ -384,7 +382,6 @@ class Table(pulumi.CustomResource):
         $ pulumi import gcp:biglake/table:Table default {{database}}/tables/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database: The id of the parent database.
@@ -487,7 +484,6 @@ class Table(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:biglake/table:Table default {{database}}/tables/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param TableArgs args: The arguments to use to populate this resource's properties.

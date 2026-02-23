@@ -31,7 +31,6 @@ class DestinationArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Destination resource.
-
         :param pulumi.Input[Sequence[pulumi.Input['DestinationEndpointArgs']]] endpoints: The list of DestinationEndpoint resources configured for the IP prefix.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] ip_prefix: The IP prefix that represents your workload on another CSP.
@@ -181,7 +180,6 @@ class _DestinationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Destination resources.
-
         :param pulumi.Input[_builtins.str] create_time: Time when the `Destination` resource was created.
         :param pulumi.Input[_builtins.str] description: A description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -505,7 +503,6 @@ class Destination(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/destination:Destination default {{location}}/{{multicloud_data_transfer_config}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of this resource.
@@ -579,7 +576,6 @@ class Destination(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/destination:Destination default {{project}}/{{location}}/{{multicloud_data_transfer_config}}/{{name}}
         $ pulumi import gcp:networkconnectivity/destination:Destination default {{location}}/{{multicloud_data_transfer_config}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DestinationArgs args: The arguments to use to populate this resource's properties.

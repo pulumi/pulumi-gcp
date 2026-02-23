@@ -31,7 +31,6 @@ class BatchOperationsJobArgs:
                  rewrite_object: Optional[pulumi.Input['BatchOperationsJobRewriteObjectArgs']] = None):
         """
         The set of arguments for constructing a BatchOperationsJob resource.
-
         :param pulumi.Input['BatchOperationsJobBucketListArgs'] bucket_list: List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned
                Structure is documented below.
         :param pulumi.Input['BatchOperationsJobDeleteObjectArgs'] delete_object: allows batch operations to delete objects in bucket
@@ -185,7 +184,6 @@ class _BatchOperationsJobState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BatchOperationsJob resources.
-
         :param pulumi.Input['BatchOperationsJobBucketListArgs'] bucket_list: List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned
                Structure is documented below.
         :param pulumi.Input[_builtins.str] complete_time: The time that the job was completed.
@@ -462,7 +460,6 @@ class BatchOperationsJob(pulumi.CustomResource):
         $ pulumi import gcp:storage/batchOperationsJob:BatchOperationsJob default {{job_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['BatchOperationsJobBucketListArgs', 'BatchOperationsJobBucketListArgsDict']] bucket_list: List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned
@@ -536,7 +533,6 @@ class BatchOperationsJob(pulumi.CustomResource):
         $ pulumi import gcp:storage/batchOperationsJob:BatchOperationsJob default {{project}}/{{job_id}}
         $ pulumi import gcp:storage/batchOperationsJob:BatchOperationsJob default {{job_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param BatchOperationsJobArgs args: The arguments to use to populate this resource's properties.

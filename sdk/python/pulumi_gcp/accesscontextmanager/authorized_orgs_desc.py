@@ -27,7 +27,6 @@ class AuthorizedOrgsDescArgs:
                  orgs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AuthorizedOrgsDesc resource.
-
         :param pulumi.Input[_builtins.str] parent: Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
         :param pulumi.Input[_builtins.str] asset_type: The type of entities that need to use the authorization relationship during
                evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
@@ -181,7 +180,6 @@ class _AuthorizedOrgsDescState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthorizedOrgsDesc resources.
-
         :param pulumi.Input[_builtins.str] asset_type: The type of entities that need to use the authorization relationship during
                evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
                "ASSET_TYPE_CREDENTIAL_STRENGTH".
@@ -420,7 +418,6 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         $ pulumi import gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] asset_type: The type of entities that need to use the authorization relationship during
@@ -513,7 +510,6 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AuthorizedOrgsDescArgs args: The arguments to use to populate this resource's properties.

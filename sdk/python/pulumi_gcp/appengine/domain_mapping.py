@@ -27,7 +27,6 @@ class DomainMappingArgs:
                  ssl_settings: Optional[pulumi.Input['DomainMappingSslSettingsArgs']] = None):
         """
         The set of arguments for constructing a DomainMapping resource.
-
         :param pulumi.Input[_builtins.str] domain_name: Relative name of the domain serving the application. Example: example.com.
         :param pulumi.Input[_builtins.str] override_strategy: Whether the domain creation should override any existing mappings for this domain.
                By default, overrides are rejected.
@@ -111,7 +110,6 @@ class _DomainMappingState:
                  ssl_settings: Optional[pulumi.Input['DomainMappingSslSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering DomainMapping resources.
-
         :param pulumi.Input[_builtins.str] domain_name: Relative name of the domain serving the application. Example: example.com.
         :param pulumi.Input[_builtins.str] name: Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         :param pulumi.Input[_builtins.str] override_strategy: Whether the domain creation should override any existing mappings for this domain.
@@ -270,7 +268,6 @@ class DomainMapping(pulumi.CustomResource):
         $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{domain_name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain_name: Relative name of the domain serving the application. Example: example.com.
@@ -328,7 +325,6 @@ class DomainMapping(pulumi.CustomResource):
         $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{project}}/{{domain_name}}
         $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{domain_name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DomainMappingArgs args: The arguments to use to populate this resource's properties.

@@ -31,7 +31,6 @@ class ExascaleDbStorageVaultArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExascaleDbStorageVault resource.
-
         :param pulumi.Input[_builtins.str] display_name: The display name for the ExascaleDbStorageVault. The name does not have to
                be unique within your project. The name must be 1-255 characters long and
                can only contain alphanumeric characters.
@@ -193,7 +192,6 @@ class _ExascaleDbStorageVaultState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ExascaleDbStorageVault resources.
-
         :param pulumi.Input[_builtins.str] create_time: The date and time when the ExascaleDbStorageVault was created.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: The display name for the ExascaleDbStorageVault. The name does not have to
@@ -505,7 +503,6 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
         $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default {{location}}/{{exascale_db_storage_vault_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
@@ -600,7 +597,6 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
         $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default {{project}}/{{location}}/{{exascale_db_storage_vault_id}}
         $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default {{location}}/{{exascale_db_storage_vault_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ExascaleDbStorageVaultArgs args: The arguments to use to populate this resource's properties.

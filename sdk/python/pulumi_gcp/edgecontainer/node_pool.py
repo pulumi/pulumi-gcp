@@ -33,7 +33,6 @@ class NodePoolArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NodePool resource.
-
         :param pulumi.Input[_builtins.str] cluster: The name of the target Distributed Cloud Edge Cluster.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the pool.
@@ -217,7 +216,6 @@ class _NodePoolState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NodePool resources.
-
         :param pulumi.Input[_builtins.str] cluster: The name of the target Distributed Cloud Edge Cluster.
         :param pulumi.Input[_builtins.str] create_time: The time when the node pool was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -545,7 +543,6 @@ class NodePool(pulumi.CustomResource):
         $ pulumi import gcp:edgecontainer/nodePool:NodePool default {{location}}/{{cluster}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster: The name of the target Distributed Cloud Edge Cluster.
@@ -637,7 +634,6 @@ class NodePool(pulumi.CustomResource):
         $ pulumi import gcp:edgecontainer/nodePool:NodePool default {{project}}/{{location}}/{{cluster}}/{{name}}
         $ pulumi import gcp:edgecontainer/nodePool:NodePool default {{location}}/{{cluster}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param NodePoolArgs args: The arguments to use to populate this resource's properties.

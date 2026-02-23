@@ -31,7 +31,6 @@ class NetworkPeeringArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkPeering resource.
-
         :param pulumi.Input[_builtins.str] peer_network: The relative resource name of the network to peer with a standard VMware Engine network.
                The provided network can be a consumer VPC network or another standard VMware Engine network.
         :param pulumi.Input[_builtins.str] peer_network_type: The type of the network to peer with the VMware Engine network.
@@ -213,7 +212,6 @@ class _NetworkPeeringState:
                  vmware_engine_network_canonical: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkPeering resources.
-
         :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -567,7 +565,6 @@ class NetworkPeering(pulumi.CustomResource):
         $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User-provided description for this network peering.
@@ -660,7 +657,6 @@ class NetworkPeering(pulumi.CustomResource):
         $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default {{project}}/{{name}}
         $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param NetworkPeeringArgs args: The arguments to use to populate this resource's properties.

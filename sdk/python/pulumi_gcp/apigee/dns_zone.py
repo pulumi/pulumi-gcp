@@ -28,7 +28,6 @@ class DnsZoneArgs:
                  peering_config: pulumi.Input['DnsZonePeeringConfigArgs']):
         """
         The set of arguments for constructing a DnsZone resource.
-
         :param pulumi.Input[_builtins.str] description: Description for the zone.
         :param pulumi.Input[_builtins.str] dns_zone_id: ID of the dns zone.
         :param pulumi.Input[_builtins.str] domain: Doamin for the zone.
@@ -117,7 +116,6 @@ class _DnsZoneState:
                  peering_config: Optional[pulumi.Input['DnsZonePeeringConfigArgs']] = None):
         """
         Input properties used for looking up and filtering DnsZone resources.
-
         :param pulumi.Input[_builtins.str] description: Description for the zone.
         :param pulumi.Input[_builtins.str] dns_zone_id: ID of the dns zone.
         :param pulumi.Input[_builtins.str] domain: Doamin for the zone.
@@ -278,7 +276,6 @@ class DnsZone(pulumi.CustomResource):
         $ pulumi import gcp:apigee/dnsZone:DnsZone default {{org_id}}/{{dns_zone_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description for the zone.
@@ -343,7 +340,6 @@ class DnsZone(pulumi.CustomResource):
         $ pulumi import gcp:apigee/dnsZone:DnsZone default {{org_id}}/dnsZones/{{dns_zone_id}}
         $ pulumi import gcp:apigee/dnsZone:DnsZone default {{org_id}}/{{dns_zone_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DnsZoneArgs args: The arguments to use to populate this resource's properties.

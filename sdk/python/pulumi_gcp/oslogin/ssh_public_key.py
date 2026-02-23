@@ -25,7 +25,6 @@ class SshPublicKeyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SshPublicKey resource.
-
         :param pulumi.Input[_builtins.str] key: Public key text in SSH format, defined by RFC4253 section 6.6.
         :param pulumi.Input[_builtins.str] user: The user email.
         :param pulumi.Input[_builtins.str] expiration_time_usec: An expiration time in microseconds since epoch.
@@ -97,7 +96,6 @@ class _SshPublicKeyState:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SshPublicKey resources.
-
         :param pulumi.Input[_builtins.str] expiration_time_usec: An expiration time in microseconds since epoch.
         :param pulumi.Input[_builtins.str] fingerprint: The SHA-256 fingerprint of the SSH public key.
         :param pulumi.Input[_builtins.str] key: Public key text in SSH format, defined by RFC4253 section 6.6.
@@ -225,7 +223,6 @@ class SshPublicKey(pulumi.CustomResource):
         $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default {{user}}/{{fingerprint}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] expiration_time_usec: An expiration time in microseconds since epoch.
@@ -276,7 +273,6 @@ class SshPublicKey(pulumi.CustomResource):
         $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default users/{{user}}/sshPublicKeys/{{fingerprint}}
         $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default {{user}}/{{fingerprint}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SshPublicKeyArgs args: The arguments to use to populate this resource's properties.

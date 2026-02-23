@@ -28,7 +28,6 @@ class CodeToolsSettingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CodeToolsSetting resource.
-
         :param pulumi.Input[_builtins.str] code_tools_setting_id: Id of the Code Tools Setting.
         :param pulumi.Input[Sequence[pulumi.Input['CodeToolsSettingEnabledToolArgs']]] enabled_tools: Represents the full set of enabled tools.
                Structure is documented below.
@@ -128,7 +127,6 @@ class _CodeToolsSettingState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CodeToolsSetting resources.
-
         :param pulumi.Input[_builtins.str] code_tools_setting_id: Id of the Code Tools Setting.
         :param pulumi.Input[_builtins.str] create_time: Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -351,7 +349,6 @@ class CodeToolsSetting(pulumi.CustomResource):
         $ pulumi import gcp:gemini/codeToolsSetting:CodeToolsSetting default {{location}}/{{code_tools_setting_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] code_tools_setting_id: Id of the Code Tools Setting.
@@ -414,7 +411,6 @@ class CodeToolsSetting(pulumi.CustomResource):
         $ pulumi import gcp:gemini/codeToolsSetting:CodeToolsSetting default {{project}}/{{location}}/{{code_tools_setting_id}}
         $ pulumi import gcp:gemini/codeToolsSetting:CodeToolsSetting default {{location}}/{{code_tools_setting_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param CodeToolsSettingArgs args: The arguments to use to populate this resource's properties.

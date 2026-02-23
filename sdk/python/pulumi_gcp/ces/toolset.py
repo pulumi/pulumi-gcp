@@ -32,7 +32,6 @@ class ToolsetArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Toolset resource.
-
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] toolset_id: The ID to use for the toolset, which will become the final component of
@@ -204,7 +203,6 @@ class _ToolsetState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Toolset resources.
-
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the toolset was created.
         :param pulumi.Input[_builtins.str] description: The description of the toolset.
@@ -984,7 +982,6 @@ class Toolset(pulumi.CustomResource):
         $ pulumi import gcp:ces/toolset:Toolset default {{location}}/{{app}}/{{toolset_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -1550,7 +1547,6 @@ class Toolset(pulumi.CustomResource):
         $ pulumi import gcp:ces/toolset:Toolset default {{project}}/{{location}}/{{app}}/{{toolset_id}}
         $ pulumi import gcp:ces/toolset:Toolset default {{location}}/{{app}}/{{toolset_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ToolsetArgs args: The arguments to use to populate this resource's properties.

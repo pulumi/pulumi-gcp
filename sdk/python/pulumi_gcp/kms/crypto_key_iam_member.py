@@ -27,7 +27,6 @@ class CryptoKeyIAMMemberArgs:
                  condition: Optional[pulumi.Input['CryptoKeyIAMMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a CryptoKeyIAMMember resource.
-
         :param pulumi.Input[_builtins.str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
                `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -122,7 +121,6 @@ class _CryptoKeyIAMMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CryptoKeyIAMMember resources.
-
         :param pulumi.Input['CryptoKeyIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] crypto_key_id: The crypto key ID, in the form
@@ -340,7 +338,6 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
 
         ## Import
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['CryptoKeyIAMMemberConditionArgs', 'CryptoKeyIAMMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -469,7 +466,6 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
         ```
 
         ## Import
-
 
         :param str resource_name: The name of the resource.
         :param CryptoKeyIAMMemberArgs args: The arguments to use to populate this resource's properties.

@@ -24,7 +24,6 @@ class SslCertArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SslCert resource.
-
         :param pulumi.Input[_builtins.str] common_name: The common name to be used in the certificate to identify the
                client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] instance: The name of the Cloud SQL instance. Changing this
@@ -92,7 +91,6 @@ class _SslCertState:
                  sha1_fingerprint: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SslCert resources.
-
         :param pulumi.Input[_builtins.str] cert: The actual certificate data for this client certificate.
         :param pulumi.Input[_builtins.str] cert_serial_number: The serial number extracted from the certificate data.
         :param pulumi.Input[_builtins.str] common_name: The common name to be used in the certificate to identify the
@@ -280,9 +278,9 @@ class SslCert(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
-            name=f"main-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="MYSQL_5_7",
             settings={
                 "tier": "db-f1-micro",
@@ -295,7 +293,6 @@ class SslCert(pulumi.CustomResource):
         ## Import
 
         Since the contents of the certificate cannot be accessed after its creation, this resource cannot be imported.
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -326,9 +323,9 @@ class SslCert(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
-            name=f"main-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="MYSQL_5_7",
             settings={
                 "tier": "db-f1-micro",
@@ -341,7 +338,6 @@ class SslCert(pulumi.CustomResource):
         ## Import
 
         Since the contents of the certificate cannot be accessed after its creation, this resource cannot be imported.
-
 
         :param str resource_name: The name of the resource.
         :param SslCertArgs args: The arguments to use to populate this resource's properties.

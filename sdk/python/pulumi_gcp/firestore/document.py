@@ -26,7 +26,6 @@ class DocumentArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Document resource.
-
         :param pulumi.Input[_builtins.str] collection: The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
         :param pulumi.Input[_builtins.str] document_id: The client-assigned document ID to use for this document during creation.
         :param pulumi.Input[_builtins.str] fields: The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
@@ -118,7 +117,6 @@ class _DocumentState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Document resources.
-
         :param pulumi.Input[_builtins.str] collection: The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
         :param pulumi.Input[_builtins.str] create_time: Creation timestamp in RFC3339 format.
         :param pulumi.Input[_builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
@@ -381,7 +379,6 @@ class Document(pulumi.CustomResource):
         $ pulumi import gcp:firestore/document:Document default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] collection: The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
@@ -504,7 +501,6 @@ class Document(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:firestore/document:Document default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DocumentArgs args: The arguments to use to populate this resource's properties.

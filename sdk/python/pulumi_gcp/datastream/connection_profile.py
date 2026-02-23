@@ -40,7 +40,6 @@ class ConnectionProfileArgs:
                  sql_server_profile: Optional[pulumi.Input['ConnectionProfileSqlServerProfileArgs']] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
-
         :param pulumi.Input[_builtins.str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[_builtins.str] location: The name of the location this connection profile is located in.
@@ -351,7 +350,6 @@ class _ConnectionProfileState:
                  sql_server_profile: Optional[pulumi.Input['ConnectionProfileSqlServerProfileArgs']] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
-
         :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[_builtins.str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[_builtins.bool] create_without_validation: Create the connection profile without validating it.
@@ -777,13 +775,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.index.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd["result"])
+            password=pwd.result)
         nat_vm = gcp.compute.Instance("nat_vm",
             name="nat-vm",
             machine_type="e2-medium",
@@ -905,13 +903,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.index.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd["result"])
+            password=pwd.result)
         default = gcp.datastream.ConnectionProfile("default",
             display_name="Connection profile",
             location="us-central1",
@@ -1005,13 +1003,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.index.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd["result"])
+            password=pwd.result)
         client_cert = gcp.sql.SslCert("client_cert",
             common_name="client-name",
             instance=instance.name)
@@ -1023,7 +1021,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "hostname": instance.public_ip_address,
                 "port": 5432,
                 "username": "user",
-                "password": pwd["result"],
+                "password": pwd.result,
                 "database": db.name,
                 "ssl_config": {
                     "server_and_client_verification": {
@@ -1127,7 +1125,6 @@ class ConnectionProfile(pulumi.CustomResource):
         $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
         $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1236,13 +1233,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.index.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd["result"])
+            password=pwd.result)
         nat_vm = gcp.compute.Instance("nat_vm",
             name="nat-vm",
             machine_type="e2-medium",
@@ -1364,13 +1361,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.index.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd["result"])
+            password=pwd.result)
         default = gcp.datastream.ConnectionProfile("default",
             display_name="Connection profile",
             location="us-central1",
@@ -1464,13 +1461,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.index.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd["result"])
+            password=pwd.result)
         client_cert = gcp.sql.SslCert("client_cert",
             common_name="client-name",
             instance=instance.name)
@@ -1482,7 +1479,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "hostname": instance.public_ip_address,
                 "port": 5432,
                 "username": "user",
-                "password": pwd["result"],
+                "password": pwd.result,
                 "database": db.name,
                 "ssl_config": {
                     "server_and_client_verification": {
@@ -1586,7 +1583,6 @@ class ConnectionProfile(pulumi.CustomResource):
         $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
         $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ConnectionProfileArgs args: The arguments to use to populate this resource's properties.

@@ -28,7 +28,6 @@ class DocumentAiWarehouseDocumentSchemaArgs:
                  document_is_folder: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DocumentAiWarehouseDocumentSchema resource.
-
         :param pulumi.Input[_builtins.str] display_name: Name of the schema given by the user.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] project_number: The unique identifier of the project.
@@ -116,7 +115,6 @@ class _DocumentAiWarehouseDocumentSchemaState:
                  property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] = None):
         """
         Input properties used for looking up and filtering DocumentAiWarehouseDocumentSchema resources.
-
         :param pulumi.Input[_builtins.str] display_name: Name of the schema given by the user.
         :param pulumi.Input[_builtins.bool] document_is_folder: Tells whether the document is a folder or a typical document.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
@@ -278,7 +276,6 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         $ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema default {{project_number}}/{{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Name of the schema given by the user.
@@ -347,7 +344,6 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         $ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema default projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}
         $ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema default {{project_number}}/{{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DocumentAiWarehouseDocumentSchemaArgs args: The arguments to use to populate this resource's properties.

@@ -25,7 +25,6 @@ class AppCheckRecaptchaEnterpriseConfigArgs:
                  token_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppCheckRecaptchaEnterpriseConfig resource.
-
         :param pulumi.Input[_builtins.str] app_id: The ID of an
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
         :param pulumi.Input[_builtins.str] site_key: The score-based site key created in reCAPTCHA Enterprise used to invoke reCAPTCHA and generate the reCAPTCHA tokens for your application.
@@ -107,7 +106,6 @@ class _AppCheckRecaptchaEnterpriseConfigState:
                  token_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppCheckRecaptchaEnterpriseConfig resources.
-
         :param pulumi.Input[_builtins.str] app_id: The ID of an
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
         :param pulumi.Input[_builtins.str] name: The relative resource name of the reCAPTCHA Enterprise configuration object
@@ -260,7 +258,6 @@ class AppCheckRecaptchaEnterpriseConfig(pulumi.CustomResource):
         $ pulumi import gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig default {{app_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID of an
@@ -331,7 +328,6 @@ class AppCheckRecaptchaEnterpriseConfig(pulumi.CustomResource):
         $ pulumi import gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig default {{project}}/{{app_id}}
         $ pulumi import gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig default {{app_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AppCheckRecaptchaEnterpriseConfigArgs args: The arguments to use to populate this resource's properties.

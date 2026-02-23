@@ -29,7 +29,6 @@ class PrincipalAccessBoundaryPolicyArgs:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrincipalAccessBoundaryPolicy resource.
-
         :param pulumi.Input[_builtins.str] location: The location the principal access boundary policy is in.
         :param pulumi.Input[_builtins.str] organization: The parent organization of the principal access boundary policy.
         :param pulumi.Input[_builtins.str] principal_access_boundary_policy_id: The ID to use to create the principal access boundary policy.
@@ -149,7 +148,6 @@ class _PrincipalAccessBoundaryPolicyState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrincipalAccessBoundaryPolicy resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User defined annotations. See https://google.aip.dev/148#annotations
                for more details such as format and size limitations
                
@@ -428,7 +426,6 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
         $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default {{organization}}/{{location}}/{{principal_access_boundary_policy_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User defined annotations. See https://google.aip.dev/148#annotations
@@ -517,7 +514,6 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
         $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default organizations/{{organization}}/locations/{{location}}/principalAccessBoundaryPolicies/{{principal_access_boundary_policy_id}}
         $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default {{organization}}/{{location}}/{{principal_access_boundary_policy_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param PrincipalAccessBoundaryPolicyArgs args: The arguments to use to populate this resource's properties.

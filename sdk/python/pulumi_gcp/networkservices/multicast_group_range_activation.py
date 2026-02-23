@@ -31,7 +31,6 @@ class MulticastGroupRangeActivationArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MulticastGroupRangeActivation resource.
-
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] multicast_domain_activation: The resource name of a multicast domain activation that is in the
                same zone as this multicast group.
@@ -197,7 +196,6 @@ class _MulticastGroupRangeActivationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MulticastGroupRangeActivation resources.
-
         :param pulumi.Input[_builtins.str] create_time: [Output only] The timestamp when the multicast group range activation was
                created.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast group range activation.
@@ -603,7 +601,6 @@ class MulticastGroupRangeActivation(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation default {{location}}/{{multicast_group_range_activation_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast group range activation.
@@ -702,7 +699,6 @@ class MulticastGroupRangeActivation(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation default {{project}}/{{location}}/{{multicast_group_range_activation_id}}
         $ pulumi import gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation default {{location}}/{{multicast_group_range_activation_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param MulticastGroupRangeActivationArgs args: The arguments to use to populate this resource's properties.

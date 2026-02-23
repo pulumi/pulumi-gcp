@@ -26,7 +26,6 @@ class UserWorkloadsConfigMapArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserWorkloadsConfigMap resource.
-
         :param pulumi.Input[_builtins.str] environment: Environment where the Kubernetes ConfigMap will be stored and used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
                For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
@@ -118,7 +117,6 @@ class _UserWorkloadsConfigMapState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserWorkloadsConfigMap resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
                For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
         :param pulumi.Input[_builtins.str] environment: Environment where the Kubernetes ConfigMap will be stored and used.
@@ -276,7 +274,6 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
         $ pulumi import gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap default {{environment}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
@@ -355,7 +352,6 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
         $ pulumi import gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap default {{region}}/{{environment}}/{{name}}
         $ pulumi import gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap default {{environment}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param UserWorkloadsConfigMapArgs args: The arguments to use to populate this resource's properties.

@@ -30,7 +30,6 @@ class ScopeRbacRoleBindingArgs:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ScopeRbacRoleBinding resource.
-
         :param pulumi.Input['ScopeRbacRoleBindingRoleArgs'] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] scope_id: Id of the scope
@@ -176,7 +175,6 @@ class _ScopeRbacRoleBindingState:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ScopeRbacRoleBinding resources.
-
         :param pulumi.Input[_builtins.str] create_time: Time the RBAC Role Binding was created in UTC.
         :param pulumi.Input[_builtins.str] delete_time: Time the RBAC Role Binding was deleted in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -516,7 +514,6 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{scope_id}}/{{scope_rbac_role_binding_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group: Principal that is be authorized in the cluster (at least of one the oneof
@@ -615,7 +612,6 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{scope_id}}/{{scope_rbac_role_binding_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ScopeRbacRoleBindingArgs args: The arguments to use to populate this resource's properties.

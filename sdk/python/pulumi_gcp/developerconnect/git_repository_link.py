@@ -29,7 +29,6 @@ class GitRepositoryLinkArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GitRepositoryLink resource.
-
         :param pulumi.Input[_builtins.str] clone_uri: Required. Git Clone URI.
         :param pulumi.Input[_builtins.str] git_repository_link_id: Required. The ID to use for the repository, which will become the final component of
                the repository's resource name. This ID should be unique in the connection.
@@ -189,7 +188,6 @@ class _GitRepositoryLinkState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GitRepositoryLink resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -553,7 +551,6 @@ class GitRepositoryLink(pulumi.CustomResource):
         $ pulumi import gcp:developerconnect/gitRepositoryLink:GitRepositoryLink default {{location}}/{{parent_connection}}/{{git_repository_link_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
@@ -645,7 +642,6 @@ class GitRepositoryLink(pulumi.CustomResource):
         $ pulumi import gcp:developerconnect/gitRepositoryLink:GitRepositoryLink default {{project}}/{{location}}/{{parent_connection}}/{{git_repository_link_id}}
         $ pulumi import gcp:developerconnect/gitRepositoryLink:GitRepositoryLink default {{location}}/{{parent_connection}}/{{git_repository_link_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param GitRepositoryLinkArgs args: The arguments to use to populate this resource's properties.

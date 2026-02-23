@@ -29,7 +29,6 @@ class CustomConstraintArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomConstraint resource.
-
         :param pulumi.Input[_builtins.str] action_type: The action to take if the condition is met.
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[_builtins.str] condition: A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
@@ -164,7 +163,6 @@ class _CustomConstraintState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomConstraint resources.
-
         :param pulumi.Input[_builtins.str] action_type: The action to take if the condition is met.
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[_builtins.str] condition: A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
@@ -389,7 +387,6 @@ class CustomConstraint(pulumi.CustomResource):
         $ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint default {{parent}}/customConstraints/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action_type: The action to take if the condition is met.
@@ -476,7 +473,6 @@ class CustomConstraint(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint default {{parent}}/customConstraints/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param CustomConstraintArgs args: The arguments to use to populate this resource's properties.

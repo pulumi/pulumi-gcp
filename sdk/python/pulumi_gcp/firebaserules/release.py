@@ -24,7 +24,6 @@ class ReleaseArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Release resource.
-
         :param pulumi.Input[_builtins.str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
                
                
@@ -91,7 +90,6 @@ class _ReleaseState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Release resources.
-
         :param pulumi.Input[_builtins.str] create_time: Output only. Time the release was created.
         :param pulumi.Input[_builtins.bool] disabled: Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
         :param pulumi.Input[_builtins.str] name: Format: `projects/{project_id}/releases/{release_id}`\\Firestore Rules Releases will **always** have the name 'cloud.firestore'
@@ -257,7 +255,6 @@ class Release(pulumi.CustomResource):
         $ pulumi import gcp:firebaserules/release:Release default projects/{{project}}/releases/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Format: `projects/{project_id}/releases/{release_id}`\\Firestore Rules Releases will **always** have the name 'cloud.firestore'
@@ -327,7 +324,6 @@ class Release(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:firebaserules/release:Release default projects/{{project}}/releases/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ReleaseArgs args: The arguments to use to populate this resource's properties.

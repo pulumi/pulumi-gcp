@@ -26,7 +26,6 @@ class ExtensionsInstanceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExtensionsInstance resource.
-
         :param pulumi.Input['ExtensionsInstanceConfigArgs'] config: The current Config of the Extension Instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance_id: The ID to use for the Extension Instance, which will become the final
@@ -97,7 +96,6 @@ class _ExtensionsInstanceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExtensionsInstance resources.
-
         :param pulumi.Input['ExtensionsInstanceConfigArgs'] config: The current Config of the Extension Instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time at which the Extension Instance was created.
@@ -396,7 +394,6 @@ class ExtensionsInstance(pulumi.CustomResource):
         $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default {{instance_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']] config: The current Config of the Extension Instance.
@@ -481,7 +478,6 @@ class ExtensionsInstance(pulumi.CustomResource):
         $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default {{project}}/{{instance_id}}
         $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default {{instance_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ExtensionsInstanceArgs args: The arguments to use to populate this resource's properties.

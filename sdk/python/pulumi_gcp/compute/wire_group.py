@@ -31,7 +31,6 @@ class WireGroupArgs:
                  wire_properties: Optional[pulumi.Input['WireGroupWirePropertiesArgs']] = None):
         """
         The set of arguments for constructing a WireGroup resource.
-
         :param pulumi.Input[_builtins.str] cross_site_network: Required cross site network to which wire group belongs.
         :param pulumi.Input[_builtins.bool] admin_enabled: Indicates whether the wire group is administratively enabled.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -188,7 +187,6 @@ class _WireGroupState:
                  wires: Optional[pulumi.Input[Sequence[pulumi.Input['WireGroupWireArgs']]]] = None):
         """
         Input properties used for looking up and filtering WireGroup resources.
-
         :param pulumi.Input[_builtins.bool] admin_enabled: Indicates whether the wire group is administratively enabled.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] cross_site_network: Required cross site network to which wire group belongs.
@@ -469,7 +467,6 @@ class WireGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/wireGroup:WireGroup default {{cross_site_network}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_enabled: Indicates whether the wire group is administratively enabled.
@@ -570,7 +567,6 @@ class WireGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/wireGroup:WireGroup default {{project}}/{{cross_site_network}}/{{name}}
         $ pulumi import gcp:compute/wireGroup:WireGroup default {{cross_site_network}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param WireGroupArgs args: The arguments to use to populate this resource's properties.

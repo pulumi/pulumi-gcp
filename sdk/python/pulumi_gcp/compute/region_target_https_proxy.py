@@ -31,7 +31,6 @@ class RegionTargetHttpsProxyArgs:
                  ssl_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionTargetHttpsProxy resource.
-
         :param pulumi.Input[_builtins.str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the RegionBackendService.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
@@ -264,7 +263,6 @@ class _RegionTargetHttpsProxyState:
                  url_map: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionTargetHttpsProxy resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
                sslCertificates and certificateManagerCertificates can't be defined together.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
@@ -777,7 +775,6 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
@@ -1062,7 +1059,6 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default {{region}}/{{name}}
         $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RegionTargetHttpsProxyArgs args: The arguments to use to populate this resource's properties.

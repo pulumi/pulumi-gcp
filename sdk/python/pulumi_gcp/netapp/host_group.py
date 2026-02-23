@@ -29,7 +29,6 @@ class HostGroupArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostGroup resource.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: The list of hosts associated with the host group
         :param pulumi.Input[_builtins.str] location: Location (region) of the Host Group.
         :param pulumi.Input[_builtins.str] os_type: The OS type of the host group. It indicates the type of operating system
@@ -182,7 +181,6 @@ class _HostGroupState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostGroup resources.
-
         :param pulumi.Input[_builtins.str] create_time: Create time of the host group. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -441,7 +439,6 @@ class HostGroup(pulumi.CustomResource):
         $ pulumi import gcp:netapp/hostGroup:HostGroup default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -508,7 +505,6 @@ class HostGroup(pulumi.CustomResource):
         $ pulumi import gcp:netapp/hostGroup:HostGroup default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:netapp/hostGroup:HostGroup default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param HostGroupArgs args: The arguments to use to populate this resource's properties.

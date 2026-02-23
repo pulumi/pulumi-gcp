@@ -32,7 +32,6 @@ class KeystoresAliasesSelfSignedCertArgs:
                  subject_alternative_dns_names: Optional[pulumi.Input['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs']] = None):
         """
         The set of arguments for constructing a KeystoresAliasesSelfSignedCert resource.
-
         :param pulumi.Input[_builtins.str] alias: Alias for the key/certificate pair. Values must match the regular expression [\\w\\s-.]{1,255}.
                This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
                this parameter or the JSON body.
@@ -189,7 +188,6 @@ class _KeystoresAliasesSelfSignedCertState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeystoresAliasesSelfSignedCert resources.
-
         :param pulumi.Input[_builtins.str] alias: Alias for the key/certificate pair. Values must match the regular expression [\\w\\s-.]{1,255}.
                This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
                this parameter or the JSON body.
@@ -484,7 +482,6 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         $ pulumi import gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alias: Alias for the key/certificate pair. Values must match the regular expression [\\w\\s-.]{1,255}.
@@ -606,7 +603,6 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         $ pulumi import gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
         $ pulumi import gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param KeystoresAliasesSelfSignedCertArgs args: The arguments to use to populate this resource's properties.

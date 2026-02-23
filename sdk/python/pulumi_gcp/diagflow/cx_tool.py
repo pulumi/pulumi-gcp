@@ -30,7 +30,6 @@ class CxToolArgs:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CxTool resource.
-
         :param pulumi.Input[_builtins.str] description: High level description of the Tool and its usage.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the tool, unique within the agent.
         :param pulumi.Input['CxToolConnectorSpecArgs'] connector_spec: (Optional, Beta)
@@ -171,7 +170,6 @@ class _CxToolState:
                  tool_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CxTool resources.
-
         :param pulumi.Input['CxToolConnectorSpecArgs'] connector_spec: (Optional, Beta)
                Integration connectors tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
@@ -615,7 +613,6 @@ class CxTool(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxTool:CxTool default {{parent}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']] connector_spec: (Optional, Beta)
@@ -910,7 +907,6 @@ class CxTool(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxTool:CxTool default {{parent}}/tools/{{name}}
         $ pulumi import gcp:diagflow/cxTool:CxTool default {{parent}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param CxToolArgs args: The arguments to use to populate this resource's properties.

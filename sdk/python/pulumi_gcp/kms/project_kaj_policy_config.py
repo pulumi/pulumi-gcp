@@ -25,7 +25,6 @@ class ProjectKajPolicyConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectKajPolicyConfig resource.
-
         :param pulumi.Input['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs'] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
                created in this project. This is only used when a Key Access Justifications
                policy is not provided in the CreateCryptoKeyRequest.
@@ -74,7 +73,6 @@ class _ProjectKajPolicyConfigState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectKajPolicyConfig resources.
-
         :param pulumi.Input['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs'] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
                created in this project. This is only used when a Key Access Justifications
                policy is not provided in the CreateCryptoKeyRequest.
@@ -191,7 +189,6 @@ class ProjectKajPolicyConfig(pulumi.CustomResource):
         $ pulumi import gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig default {{project}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
@@ -272,7 +269,6 @@ class ProjectKajPolicyConfig(pulumi.CustomResource):
         $ pulumi import gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig default projects/{{project}}/kajPolicyConfig
         $ pulumi import gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig default {{project}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ProjectKajPolicyConfigArgs args: The arguments to use to populate this resource's properties.

@@ -24,7 +24,6 @@ class AppCheckAppAttestConfigArgs:
                  token_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppCheckAppAttestConfig resource.
-
         :param pulumi.Input[_builtins.str] app_id: The ID of an
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -89,7 +88,6 @@ class _AppCheckAppAttestConfigState:
                  token_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppCheckAppAttestConfig resources.
-
         :param pulumi.Input[_builtins.str] app_id: The ID of an
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
         :param pulumi.Input[_builtins.str] name: The relative resource name of the App Attest configuration object
@@ -243,7 +241,6 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
         $ pulumi import gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig default {{app_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID of an
@@ -331,7 +328,6 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
         $ pulumi import gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig default {{project}}/{{app_id}}
         $ pulumi import gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig default {{app_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AppCheckAppAttestConfigArgs args: The arguments to use to populate this resource's properties.

@@ -26,7 +26,6 @@ class DatabaseInstanceArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatabaseInstance resource.
-
         :param pulumi.Input[_builtins.str] instance_id: The globally unique identifier of the Firebase Realtime Database instance.
                Instance IDs cannot be reused after deletion.
         :param pulumi.Input[_builtins.str] region: A reference to the region where the Firebase Realtime database resides.
@@ -132,7 +131,6 @@ class _DatabaseInstanceState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
-
         :param pulumi.Input[_builtins.str] database_url: The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
                or https://{instance-id}.{region}.firebasedatabase.app in other regions.
         :param pulumi.Input[_builtins.str] desired_state: The intended database state. Possible values: ACTIVE, DISABLED.
@@ -381,7 +379,6 @@ class DatabaseInstance(pulumi.CustomResource):
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{instance_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] desired_state: The intended database state. Possible values: ACTIVE, DISABLED.
@@ -492,7 +489,6 @@ class DatabaseInstance(pulumi.CustomResource):
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{region}}/{{instance_id}}
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{instance_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DatabaseInstanceArgs args: The arguments to use to populate this resource's properties.

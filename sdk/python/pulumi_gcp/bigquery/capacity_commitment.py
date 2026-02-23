@@ -29,7 +29,6 @@ class CapacityCommitmentArgs:
                  renewal_plan: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CapacityCommitment resource.
-
         :param pulumi.Input[_builtins.str] plan: Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
         :param pulumi.Input[_builtins.int] slot_count: Number of slots in this commitment.
         :param pulumi.Input[_builtins.str] capacity_commitment_id: The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is
@@ -178,7 +177,6 @@ class _CapacityCommitmentState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CapacityCommitment resources.
-
         :param pulumi.Input[_builtins.str] capacity_commitment_id: The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is
                empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character
                cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
@@ -430,7 +428,6 @@ class CapacityCommitment(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{location}}/{{capacity_commitment_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] capacity_commitment_id: The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is
@@ -495,7 +492,6 @@ class CapacityCommitment(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{project}}/{{location}}/{{capacity_commitment_id}}
         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{location}}/{{capacity_commitment_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param CapacityCommitmentArgs args: The arguments to use to populate this resource's properties.

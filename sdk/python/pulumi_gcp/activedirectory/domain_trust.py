@@ -29,7 +29,6 @@ class DomainTrustArgs:
                  selective_authentication: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DomainTrust resource.
-
         :param pulumi.Input[_builtins.str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
                of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_dns_ip_addresses: The target DNS server IP addresses which can resolve the remote domain involved in the trust.
@@ -170,7 +169,6 @@ class _DomainTrustState:
                  trust_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DomainTrust resources.
-
         :param pulumi.Input[_builtins.str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
                of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -362,7 +360,6 @@ class DomainTrust(pulumi.CustomResource):
         $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{domain}}/{{target_domain_name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
@@ -427,7 +424,6 @@ class DomainTrust(pulumi.CustomResource):
         $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{project}}/{{domain}}/{{target_domain_name}}
         $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{domain}}/{{target_domain_name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DomainTrustArgs args: The arguments to use to populate this resource's properties.

@@ -31,7 +31,6 @@ class V2PolicyOrchestratorForFolderArgs:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2PolicyOrchestratorForFolder resource.
-
         :param pulumi.Input[_builtins.str] action: Action to be done by the orchestrator in
                `projects/{project_id}/zones/{zone_id}` locations defined by the
                `orchestration_scope`. Allowed values:
@@ -214,7 +213,6 @@ class _V2PolicyOrchestratorForFolderState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V2PolicyOrchestratorForFolder resources.
-
         :param pulumi.Input[_builtins.str] action: Action to be done by the orchestrator in
                `projects/{project_id}/zones/{zone_id}` locations defined by the
                `orchestration_scope`. Allowed values:
@@ -639,7 +637,6 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
         $ pulumi import gcp:osconfig/v2PolicyOrchestratorForFolder:V2PolicyOrchestratorForFolder default {{folder_id}}/{{policy_orchestrator_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: Action to be done by the orchestrator in
@@ -785,7 +782,6 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
         $ pulumi import gcp:osconfig/v2PolicyOrchestratorForFolder:V2PolicyOrchestratorForFolder default folders/{{folder_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}
         $ pulumi import gcp:osconfig/v2PolicyOrchestratorForFolder:V2PolicyOrchestratorForFolder default {{folder_id}}/{{policy_orchestrator_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param V2PolicyOrchestratorForFolderArgs args: The arguments to use to populate this resource's properties.

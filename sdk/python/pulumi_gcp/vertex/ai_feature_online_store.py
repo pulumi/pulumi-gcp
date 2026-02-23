@@ -33,7 +33,6 @@ class AiFeatureOnlineStoreArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiFeatureOnlineStore resource.
-
         :param pulumi.Input['AiFeatureOnlineStoreBigtableArgs'] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs'] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
@@ -232,7 +231,6 @@ class _AiFeatureOnlineStoreState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureOnlineStore resources.
-
         :param pulumi.Input['AiFeatureOnlineStoreBigtableArgs'] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -615,7 +613,6 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         $ pulumi import gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
@@ -740,7 +737,6 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         $ pulumi import gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore default {{region}}/{{name}}
         $ pulumi import gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AiFeatureOnlineStoreArgs args: The arguments to use to populate this resource's properties.

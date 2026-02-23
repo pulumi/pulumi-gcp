@@ -30,7 +30,6 @@ class ClusterArgs:
                  virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
-
         :param pulumi.Input['ClusterClusterConfigArgs'] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
         :param pulumi.Input[_builtins.str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
@@ -171,7 +170,6 @@ class _ClusterState:
                  virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
-
         :param pulumi.Input['ClusterClusterConfigArgs'] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: The list of labels (key/value pairs) to be applied to
@@ -456,7 +454,6 @@ class Cluster(pulumi.CustomResource):
 
         This resource does not support import.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']] cluster_config: Allows you to configure various aspects of the cluster.
@@ -591,7 +588,6 @@ class Cluster(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
-
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

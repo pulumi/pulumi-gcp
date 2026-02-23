@@ -24,7 +24,6 @@ class AccessPolicyArgs:
                  scopes: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessPolicy resource.
-
         :param pulumi.Input[_builtins.str] parent: The parent of this AccessPolicy in the Cloud Resource Hierarchy.
                Format: 'organizations/{{organization_id}}'
         :param pulumi.Input[_builtins.str] title: Human readable title. Does not affect behavior.
@@ -86,7 +85,6 @@ class _AccessPolicyState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessPolicy resources.
-
         :param pulumi.Input[_builtins.str] create_time: Time the AccessPolicy was created in UTC.
         :param pulumi.Input[_builtins.str] name: Resource name of the AccessPolicy. Format: '{{policy_id}}'
         :param pulumi.Input[_builtins.str] parent: The parent of this AccessPolicy in the Cloud Resource Hierarchy.
@@ -254,7 +252,6 @@ class AccessPolicy(pulumi.CustomResource):
         $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] parent: The parent of this AccessPolicy in the Cloud Resource Hierarchy.
@@ -328,7 +325,6 @@ class AccessPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AccessPolicyArgs args: The arguments to use to populate this resource's properties.

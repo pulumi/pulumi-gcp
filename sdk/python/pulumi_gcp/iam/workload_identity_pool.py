@@ -31,7 +31,6 @@ class WorkloadIdentityPoolArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkloadIdentityPool resource.
-
         :param pulumi.Input[_builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
@@ -235,7 +234,6 @@ class _WorkloadIdentityPoolState:
                  workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkloadIdentityPool resources.
-
         :param pulumi.Input[_builtins.str] description: A description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
                existing tokens to access resources. If the pool is re-enabled, existing tokens grant
@@ -589,7 +587,6 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{workload_identity_pool_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the pool. Cannot exceed 256 characters.
@@ -740,7 +737,6 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{project}}/{{workload_identity_pool_id}}
         $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{workload_identity_pool_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param WorkloadIdentityPoolArgs args: The arguments to use to populate this resource's properties.

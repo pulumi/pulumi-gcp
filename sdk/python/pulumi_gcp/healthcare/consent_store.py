@@ -26,7 +26,6 @@ class ConsentStoreArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConsentStore resource.
-
         :param pulumi.Input[_builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input[_builtins.str] default_consent_ttl: Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
@@ -142,7 +141,6 @@ class _ConsentStoreState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ConsentStore resources.
-
         :param pulumi.Input[_builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input[_builtins.str] default_consent_ttl: Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
@@ -367,7 +365,6 @@ class ConsentStore(pulumi.CustomResource):
         $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/consentStores/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
@@ -470,7 +467,6 @@ class ConsentStore(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/consentStores/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ConsentStoreArgs args: The arguments to use to populate this resource's properties.

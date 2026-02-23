@@ -27,7 +27,6 @@ class IcebergCatalogArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IcebergCatalog resource.
-
         :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
                Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
@@ -117,7 +116,6 @@ class _IcebergCatalogState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IcebergCatalog resources.
-
         :param pulumi.Input[_builtins.str] biglake_service_account: Output only. The service account used for credential vending. It might be empty if credential vending was never enabled for the catalog.
         :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
                Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
@@ -345,7 +343,6 @@ class IcebergCatalog(pulumi.CustomResource):
         $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
@@ -413,7 +410,6 @@ class IcebergCatalog(pulumi.CustomResource):
         $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{project}}/{{name}}
         $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param IcebergCatalogArgs args: The arguments to use to populate this resource's properties.

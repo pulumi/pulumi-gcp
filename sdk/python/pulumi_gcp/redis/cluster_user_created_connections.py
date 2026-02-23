@@ -27,7 +27,6 @@ class ClusterUserCreatedConnectionsArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClusterUserCreatedConnections resource.
-
         :param pulumi.Input[_builtins.str] region: The name of the region of the Redis cluster these endpoints should be added to.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]] cluster_endpoints: A list of cluster endpoints
                Structure is documented below.
@@ -103,7 +102,6 @@ class _ClusterUserCreatedConnectionsState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClusterUserCreatedConnections resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]] cluster_endpoints: A list of cluster endpoints
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Redis cluster these endpoints should be added to.
@@ -443,7 +441,6 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterUserCreatedConnectionsClusterEndpointArgs', 'ClusterUserCreatedConnectionsClusterEndpointArgsDict']]]] cluster_endpoints: A list of cluster endpoints
@@ -719,7 +716,6 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default {{region}}/{{name}}
         $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ClusterUserCreatedConnectionsArgs args: The arguments to use to populate this resource's properties.

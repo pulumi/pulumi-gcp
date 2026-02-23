@@ -33,7 +33,6 @@ class PipelineArgs:
                  workload: Optional[pulumi.Input['PipelineWorkloadArgs']] = None):
         """
         The set of arguments for constructing a Pipeline resource.
-
         :param pulumi.Input[_builtins.str] state: The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
                Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
@@ -229,7 +228,6 @@ class _PipelineState:
                  workload: Optional[pulumi.Input['PipelineWorkloadArgs']] = None):
         """
         Input properties used for looking up and filtering Pipeline resources.
-
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the pipeline was initially created. Set by the Data Pipelines service.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] display_name: The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
@@ -557,7 +555,6 @@ class Pipeline(pulumi.CustomResource):
         $ pulumi import gcp:dataflow/pipeline:Pipeline default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
@@ -671,7 +668,6 @@ class Pipeline(pulumi.CustomResource):
         $ pulumi import gcp:dataflow/pipeline:Pipeline default {{region}}/{{name}}
         $ pulumi import gcp:dataflow/pipeline:Pipeline default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param PipelineArgs args: The arguments to use to populate this resource's properties.

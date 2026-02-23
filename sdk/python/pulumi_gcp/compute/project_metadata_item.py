@@ -24,7 +24,6 @@ class ProjectMetadataItemArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectMetadataItem resource.
-
         :param pulumi.Input[_builtins.str] key: The metadata key to set.
         :param pulumi.Input[_builtins.str] value: The value to set for the given metadata key.
                
@@ -85,7 +84,6 @@ class _ProjectMetadataItemState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectMetadataItem resources.
-
         :param pulumi.Input[_builtins.str] key: The metadata key to set.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -181,7 +179,6 @@ class ProjectMetadataItem(pulumi.CustomResource):
         $ pulumi import gcp:compute/projectMetadataItem:ProjectMetadataItem default projects/{{project}}/meta-data/{{key}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key: The metadata key to set.
@@ -227,7 +224,6 @@ class ProjectMetadataItem(pulumi.CustomResource):
         $ pulumi import gcp:compute/projectMetadataItem:ProjectMetadataItem default {{key}}
         $ pulumi import gcp:compute/projectMetadataItem:ProjectMetadataItem default projects/{{project}}/meta-data/{{key}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ProjectMetadataItemArgs args: The arguments to use to populate this resource's properties.

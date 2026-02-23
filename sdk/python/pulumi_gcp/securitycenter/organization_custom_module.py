@@ -27,7 +27,6 @@ class OrganizationCustomModuleArgs:
                  organization: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a OrganizationCustomModule resource.
-
         :param pulumi.Input['OrganizationCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Security Health Analytics custom module. This
@@ -112,7 +111,6 @@ class _OrganizationCustomModuleState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationCustomModule resources.
-
         :param pulumi.Input[_builtins.str] ancestor_module: If empty, indicates that the custom module was created in the organization, folder,
                or project in which you are viewing the custom module. Otherwise, ancestor_module
                specifies the organization or folder from which the custom module is inherited.
@@ -357,7 +355,6 @@ class OrganizationCustomModule(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/organizationCustomModule:OrganizationCustomModule default {{organization}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OrganizationCustomModuleCustomConfigArgs', 'OrganizationCustomModuleCustomConfigArgsDict']] custom_config: The user specified custom configuration for the module.
@@ -464,7 +461,6 @@ class OrganizationCustomModule(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/organizationCustomModule:OrganizationCustomModule default organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}
         $ pulumi import gcp:securitycenter/organizationCustomModule:OrganizationCustomModule default {{organization}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param OrganizationCustomModuleArgs args: The arguments to use to populate this resource's properties.

@@ -41,7 +41,6 @@ class JobArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Job resource.
-
         :param pulumi.Input[_builtins.str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
                
                - - -
@@ -385,7 +384,6 @@ class _JobState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_streaming_engine: Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
@@ -874,14 +872,14 @@ class Job(pulumi.CustomResource):
         big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
         if big_data_job_subscription_id is None:
             big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.index.Id("big_data_job_name_suffix",
+        big_data_job_name_suffix = random.RandomId("big_data_job_name_suffix",
             byte_length=4,
             keepers={
-                region: region,
-                subscriptionId: big_data_job_subscription_id,
+                "region": region,
+                "subscription_id": big_data_job_subscription_id,
             })
         big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
-            name=f"dataflow-flextemplates-job-{big_data_job_name_suffix['dec']}",
+            name=big_data_job_name_suffix.dec.apply(lambda dec: f"dataflow-flextemplates-job-{dec}"),
             region=region,
             container_spec_gcs_path="gs://my-bucket/templates/template.json",
             skip_wait_on_job_termination=True,
@@ -901,7 +899,6 @@ class Job(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:dataflow/job:Job default {{id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1009,14 +1006,14 @@ class Job(pulumi.CustomResource):
         big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
         if big_data_job_subscription_id is None:
             big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.index.Id("big_data_job_name_suffix",
+        big_data_job_name_suffix = random.RandomId("big_data_job_name_suffix",
             byte_length=4,
             keepers={
-                region: region,
-                subscriptionId: big_data_job_subscription_id,
+                "region": region,
+                "subscription_id": big_data_job_subscription_id,
             })
         big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
-            name=f"dataflow-flextemplates-job-{big_data_job_name_suffix['dec']}",
+            name=big_data_job_name_suffix.dec.apply(lambda dec: f"dataflow-flextemplates-job-{dec}"),
             region=region,
             container_spec_gcs_path="gs://my-bucket/templates/template.json",
             skip_wait_on_job_termination=True,
@@ -1036,7 +1033,6 @@ class Job(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:dataflow/job:Job default {{id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.

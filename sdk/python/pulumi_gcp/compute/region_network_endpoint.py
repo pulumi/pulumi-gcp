@@ -29,7 +29,6 @@ class RegionNetworkEndpointArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionNetworkEndpoint resource.
-
         :param pulumi.Input[_builtins.int] port: Port number of network endpoint.
         :param pulumi.Input[_builtins.str] region_network_endpoint_group: The network endpoint group this endpoint is part of.
         :param pulumi.Input[_builtins.int] client_destination_port: Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
@@ -173,7 +172,6 @@ class _RegionNetworkEndpointState:
                  region_network_endpoint_group: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionNetworkEndpoint resources.
-
         :param pulumi.Input[_builtins.int] client_destination_port: Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
         :param pulumi.Input[_builtins.str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
@@ -452,7 +450,6 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint default {{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] client_destination_port: Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
@@ -590,7 +587,6 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint default {{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
         $ pulumi import gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint default {{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RegionNetworkEndpointArgs args: The arguments to use to populate this resource's properties.

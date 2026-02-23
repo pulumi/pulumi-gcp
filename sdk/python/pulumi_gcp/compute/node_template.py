@@ -34,7 +34,6 @@ class NodeTemplateArgs:
                  server_binding: Optional[pulumi.Input['NodeTemplateServerBindingArgs']] = None):
         """
         The set of arguments for constructing a NodeTemplate resource.
-
         :param pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]] accelerators: List of the type and count of accelerator cards attached to the
                node template
                Structure is documented below.
@@ -253,7 +252,6 @@ class _NodeTemplateState:
                  server_binding: Optional[pulumi.Input['NodeTemplateServerBindingArgs']] = None):
         """
         Input properties used for looking up and filtering NodeTemplate resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]] accelerators: List of the type and count of accelerator cards attached to the
                node template
                Structure is documented below.
@@ -596,7 +594,6 @@ class NodeTemplate(pulumi.CustomResource):
         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict']]]] accelerators: List of the type and count of accelerator cards attached to the
@@ -726,7 +723,6 @@ class NodeTemplate(pulumi.CustomResource):
         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{region}}/{{name}}
         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param NodeTemplateArgs args: The arguments to use to populate this resource's properties.

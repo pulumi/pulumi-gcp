@@ -29,7 +29,6 @@ class SecretVersionArgs:
                  secret_data_wo_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a SecretVersion resource.
-
         :param pulumi.Input[_builtins.str] secret: Secret Manager secret resource
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
                to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
@@ -193,7 +192,6 @@ class _SecretVersionState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecretVersion resources.
-
         :param pulumi.Input[_builtins.str] create_time: The time at which the Secret was created.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
                to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
@@ -571,7 +569,6 @@ class SecretVersion(pulumi.CustomResource):
         $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
@@ -753,7 +750,6 @@ class SecretVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SecretVersionArgs args: The arguments to use to populate this resource's properties.

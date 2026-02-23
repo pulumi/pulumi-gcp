@@ -33,7 +33,6 @@ class EntryTypeArgs:
                  type_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EntryType resource.
-
         :param pulumi.Input[_builtins.str] description: Description of the EntryType.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
         :param pulumi.Input[_builtins.str] entry_type_id: The entry type id of the entry type.
@@ -218,7 +217,6 @@ class _EntryTypeState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EntryType resources.
-
         :param pulumi.Input[_builtins.str] create_time: The time when the EntryType was created.
         :param pulumi.Input[_builtins.str] description: Description of the EntryType.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
@@ -578,7 +576,6 @@ class EntryType(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/entryType:EntryType default {{location}}/{{entry_type_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the EntryType.
@@ -689,7 +686,6 @@ class EntryType(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/entryType:EntryType default {{project}}/{{location}}/{{entry_type_id}}
         $ pulumi import gcp:dataplex/entryType:EntryType default {{location}}/{{entry_type_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param EntryTypeArgs args: The arguments to use to populate this resource's properties.

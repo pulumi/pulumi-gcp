@@ -28,7 +28,6 @@ class NotificationConfigArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NotificationConfig resource.
-
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] organization: The organization whose Cloud Security Command Center the Notification
                Config lives in.
@@ -121,7 +120,6 @@ class _NotificationConfigState:
                  streaming_config: Optional[pulumi.Input['NotificationConfigStreamingConfigArgs']] = None):
         """
         Input properties used for looking up and filtering NotificationConfig resources.
-
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] description: The description of the notification config (max of 1024 characters).
         :param pulumi.Input[_builtins.str] name: The resource name of this notification config, in the format
@@ -298,7 +296,6 @@ class NotificationConfig(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the organization.
@@ -361,7 +358,6 @@ class NotificationConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param NotificationConfigArgs args: The arguments to use to populate this resource's properties.

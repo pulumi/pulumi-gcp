@@ -29,7 +29,6 @@ class AutoscalerArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Autoscaler resource.
-
         :param pulumi.Input['AutoscalerAutoscalingPolicyArgs'] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
@@ -154,7 +153,6 @@ class _AutoscalerState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Autoscaler resources.
-
         :param pulumi.Input['AutoscalerAutoscalingPolicyArgs'] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
@@ -457,7 +455,6 @@ class Autoscaler(pulumi.CustomResource):
         $ pulumi import gcp:compute/autoscaler:Autoscaler default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AutoscalerAutoscalingPolicyArgs', 'AutoscalerAutoscalingPolicyArgsDict']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
@@ -628,7 +625,6 @@ class Autoscaler(pulumi.CustomResource):
         $ pulumi import gcp:compute/autoscaler:Autoscaler default {{zone}}/{{name}}
         $ pulumi import gcp:compute/autoscaler:Autoscaler default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AutoscalerArgs args: The arguments to use to populate this resource's properties.

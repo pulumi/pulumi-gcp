@@ -25,7 +25,6 @@ class PolicyTagArgs:
                  parent_policy_tag: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PolicyTag resource.
-
         :param pulumi.Input[_builtins.str] display_name: User defined name of this policy tag. It must: be unique within the parent
                taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces;
                not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
@@ -112,7 +111,6 @@ class _PolicyTagState:
                  taxonomy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyTag resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] child_policy_tags: Resource names of child policy tags of this policy tag.
         :param pulumi.Input[_builtins.str] description: Description of this policy tag. It must: contain only unicode characters, tabs,
                newlines, carriage returns and page breaks; and be at most 2000 bytes long when
@@ -298,7 +296,6 @@ class PolicyTag(pulumi.CustomResource):
         $ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of this policy tag. It must: contain only unicode characters, tabs,
@@ -383,7 +380,6 @@ class PolicyTag(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param PolicyTagArgs args: The arguments to use to populate this resource's properties.

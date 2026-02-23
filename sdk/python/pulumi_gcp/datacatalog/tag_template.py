@@ -29,7 +29,6 @@ class TagTemplateArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TagTemplate resource.
-
         :param pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] tag_template_id: The id of the tag template to create.
@@ -137,7 +136,6 @@ class _TagTemplateState:
                  tag_template_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TagTemplate resources.
-
         :param pulumi.Input[_builtins.str] display_name: The display name for this template.
         :param pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
                Structure is documented below.
@@ -338,7 +336,6 @@ class TagTemplate(pulumi.CustomResource):
         $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name for this template.
@@ -430,7 +427,6 @@ class TagTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param TagTemplateArgs args: The arguments to use to populate this resource's properties.

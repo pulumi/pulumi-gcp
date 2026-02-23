@@ -30,7 +30,6 @@ class NetworkPeeringArgs:
                  update_strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkPeering resource.
-
         :param pulumi.Input[_builtins.str] network: The primary network of the peering.
         :param pulumi.Input[_builtins.str] peer_network: The peer network in the peering. The peer network
                may belong to a different project.
@@ -185,7 +184,6 @@ class _NetworkPeeringState:
                  update_strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkPeering resources.
-
         :param pulumi.Input[_builtins.bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
         :param pulumi.Input[_builtins.bool] import_custom_routes: Whether to import the custom routes from the peer network. Defaults to `false`.
@@ -419,7 +417,6 @@ class NetworkPeering(pulumi.CustomResource):
         $ pulumi import gcp:compute/networkPeering:NetworkPeering default {{project_id}}/{{network_id}}/{{peering_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
@@ -483,7 +480,6 @@ class NetworkPeering(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:compute/networkPeering:NetworkPeering default {{project_id}}/{{network_id}}/{{peering_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param NetworkPeeringArgs args: The arguments to use to populate this resource's properties.

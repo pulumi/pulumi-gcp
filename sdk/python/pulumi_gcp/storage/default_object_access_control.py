@@ -27,7 +27,6 @@ class DefaultObjectAccessControlArgs:
                  object: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DefaultObjectAccessControl resource.
-
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[_builtins.str] entity: The entity holding the permission, in one of the following forms:
                * user-{{userId}}
@@ -120,7 +119,6 @@ class _DefaultObjectAccessControlState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DefaultObjectAccessControl resources.
-
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[_builtins.str] domain: The domain associated with the entity.
         :param pulumi.Input[_builtins.str] email: The email address associated with the entity.
@@ -340,7 +338,6 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
@@ -412,7 +409,6 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DefaultObjectAccessControlArgs args: The arguments to use to populate this resource's properties.

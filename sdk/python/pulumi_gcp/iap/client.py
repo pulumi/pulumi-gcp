@@ -23,7 +23,6 @@ class ClientArgs:
                  display_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Client resource.
-
         :param pulumi.Input[_builtins.str] brand: Identifier of the brand to which this client
                is attached to. The format is
                `projects/{project_number}/brands/{brand_id}`.
@@ -68,7 +67,6 @@ class _ClientState:
                  secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Client resources.
-
         :param pulumi.Input[_builtins.str] brand: Identifier of the brand to which this client
                is attached to. The format is
                `projects/{project_number}/brands/{brand_id}`.
@@ -201,7 +199,6 @@ class Client(pulumi.CustomResource):
         $ pulumi import gcp:iap/client:Client default {{brand}}/{{client_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] brand: Identifier of the brand to which this client
@@ -268,7 +265,6 @@ class Client(pulumi.CustomResource):
         $ pulumi import gcp:iap/client:Client default {{brand}}/identityAwareProxyClients/{{client_id}}
         $ pulumi import gcp:iap/client:Client default {{brand}}/{{client_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ClientArgs args: The arguments to use to populate this resource's properties.

@@ -29,7 +29,6 @@ class DeveloperArgs:
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input['DeveloperAttributeArgs']]]] = None):
         """
         The set of arguments for constructing a Developer resource.
-
         :param pulumi.Input[_builtins.str] email: Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
         :param pulumi.Input[_builtins.str] first_name: First name of the developer.
         :param pulumi.Input[_builtins.str] last_name: Last name of the developer.
@@ -137,7 +136,6 @@ class _DeveloperState:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Developer resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['DeveloperAttributeArgs']]] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] created_at: Time at which the developer was created in milliseconds since epoch.
@@ -416,7 +414,6 @@ class Developer(pulumi.CustomResource):
         $ pulumi import gcp:apigee/developer:Developer default {{org_id}}/{{email}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeveloperAttributeArgs', 'DeveloperAttributeArgsDict']]]] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
@@ -541,7 +538,6 @@ class Developer(pulumi.CustomResource):
         $ pulumi import gcp:apigee/developer:Developer default {{org_id}}/developers/{{email}}
         $ pulumi import gcp:apigee/developer:Developer default {{org_id}}/{{email}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DeveloperArgs args: The arguments to use to populate this resource's properties.

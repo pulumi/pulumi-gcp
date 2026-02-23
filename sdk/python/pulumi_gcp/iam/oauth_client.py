@@ -31,7 +31,6 @@ class OauthClientArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OauthClient resource.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_grant_types: Required. The list of OAuth grant types is allowed for the OauthClient.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_redirect_uris: Required. The list of redirect uris that is allowed to redirect back
                when authorization process is completed.
@@ -239,7 +238,6 @@ class _OauthClientState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OauthClient resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_grant_types: Required. The list of OAuth grant types is allowed for the OauthClient.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_redirect_uris: Required. The list of redirect uris that is allowed to redirect back
                when authorization process is completed.
@@ -569,7 +567,6 @@ class OauthClient(pulumi.CustomResource):
         $ pulumi import gcp:iam/oauthClient:OauthClient default {{location}}/{{oauth_client_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_grant_types: Required. The list of OAuth grant types is allowed for the OauthClient.
@@ -655,7 +652,6 @@ class OauthClient(pulumi.CustomResource):
         $ pulumi import gcp:iam/oauthClient:OauthClient default {{project}}/{{location}}/{{oauth_client_id}}
         $ pulumi import gcp:iam/oauthClient:OauthClient default {{location}}/{{oauth_client_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param OauthClientArgs args: The arguments to use to populate this resource's properties.

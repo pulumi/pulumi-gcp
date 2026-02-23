@@ -28,7 +28,6 @@ class RegionalSecretVersionArgs:
                  is_secret_data_base64: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RegionalSecretVersion resource.
-
         :param pulumi.Input[_builtins.str] secret: Secret Manager regional secret resource.
         :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -133,7 +132,6 @@ class _RegionalSecretVersionState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionalSecretVersion resources.
-
         :param pulumi.Input[_builtins.str] create_time: The time at which the regional secret version was created.
         :param pulumi.Input[Sequence[pulumi.Input['RegionalSecretVersionCustomerManagedEncryptionArgs']]] customer_managed_encryptions: The customer-managed encryption configuration of the regional secret.
                Structure is documented below.
@@ -430,7 +428,6 @@ class RegionalSecretVersion(pulumi.CustomResource):
         $ pulumi import gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion default projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
@@ -550,7 +547,6 @@ class RegionalSecretVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion default projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RegionalSecretVersionArgs args: The arguments to use to populate this resource's properties.

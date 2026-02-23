@@ -33,7 +33,6 @@ class LicenseConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LicenseConfig resource.
-
         :param pulumi.Input[_builtins.str] license_config_id: The unique id of the license config.
         :param pulumi.Input[_builtins.int] license_count: Number of licenses purchased.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
@@ -209,7 +208,6 @@ class _LicenseConfigState:
                  subscription_tier: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LicenseConfig resources.
-
         :param pulumi.Input[_builtins.bool] auto_renew: Whether the license config should be auto renewed when it reaches the end date.
         :param pulumi.Input['LicenseConfigEndDateArgs'] end_date: The planned end date.
                Structure is documented below.
@@ -458,7 +456,6 @@ class LicenseConfig(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/licenseConfig:LicenseConfig default {{location}}/{{license_config_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether the license config should be auto renewed when it reaches the end date.
@@ -532,7 +529,6 @@ class LicenseConfig(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/licenseConfig:LicenseConfig default {{project}}/{{location}}/{{license_config_id}}
         $ pulumi import gcp:discoveryengine/licenseConfig:LicenseConfig default {{location}}/{{license_config_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param LicenseConfigArgs args: The arguments to use to populate this resource's properties.

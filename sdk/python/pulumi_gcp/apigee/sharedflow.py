@@ -27,7 +27,6 @@ class SharedflowArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Sharedflow resource.
-
         :param pulumi.Input[_builtins.str] config_bundle: Path to the config zip bundle.
                
                - - -
@@ -106,7 +105,6 @@ class _SharedflowState:
                  revisions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Sharedflow resources.
-
         :param pulumi.Input[_builtins.str] config_bundle: Path to the config zip bundle.
                
                - - -
@@ -270,7 +268,6 @@ class Sharedflow(pulumi.CustomResource):
         $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_bundle: Path to the config zip bundle.
@@ -308,7 +305,6 @@ class Sharedflow(pulumi.CustomResource):
         $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/sharedflows/{{name}}
         $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SharedflowArgs args: The arguments to use to populate this resource's properties.

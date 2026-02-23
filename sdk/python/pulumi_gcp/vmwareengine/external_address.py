@@ -25,7 +25,6 @@ class ExternalAddressArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExternalAddress resource.
-
         :param pulumi.Input[_builtins.str] internal_ip: The internal IP address of a workload VM.
         :param pulumi.Input[_builtins.str] parent: The resource name of the private cloud to create a new external address in.
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -105,7 +104,6 @@ class _ExternalAddressState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExternalAddress resources.
-
         :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -327,7 +325,6 @@ class ExternalAddress(pulumi.CustomResource):
         $ pulumi import gcp:vmwareengine/externalAddress:ExternalAddress default {{parent}}/externalAddresses/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User-provided description for this resource.
@@ -402,7 +399,6 @@ class ExternalAddress(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:vmwareengine/externalAddress:ExternalAddress default {{parent}}/externalAddresses/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ExternalAddressArgs args: The arguments to use to populate this resource's properties.

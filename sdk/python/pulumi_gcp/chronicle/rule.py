@@ -31,7 +31,6 @@ class RuleArgs:
                  text: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Rule resource.
-
         :param pulumi.Input[_builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[_builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the rule should be deleted forcefully.
@@ -217,7 +216,6 @@ class _RuleState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_run_frequencies: Output only. The run frequencies that are allowed for the rule.
                Populated in BASIC view and FULL view.
         :param pulumi.Input[_builtins.str] author: Output only. The author of the rule. Extracted from the meta section of text.
@@ -749,7 +747,6 @@ class Rule(pulumi.CustomResource):
         $ pulumi import gcp:chronicle/rule:Rule default {{location}}/{{instance}}/{{rule_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the rule should be deleted forcefully.
@@ -856,7 +853,6 @@ class Rule(pulumi.CustomResource):
         $ pulumi import gcp:chronicle/rule:Rule default {{project}}/{{location}}/{{instance}}/{{rule_id}}
         $ pulumi import gcp:chronicle/rule:Rule default {{location}}/{{instance}}/{{rule_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RuleArgs args: The arguments to use to populate this resource's properties.

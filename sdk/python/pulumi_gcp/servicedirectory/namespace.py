@@ -25,7 +25,6 @@ class NamespaceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
-
         :param pulumi.Input[_builtins.str] location: The location for the Namespace.
         :param pulumi.Input[_builtins.str] namespace_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
@@ -113,7 +112,6 @@ class _NamespaceState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels associated with this Namespace. No more than 64 user
                labels can be associated with a given resource. Label keys and values can
@@ -294,7 +292,6 @@ class Namespace(pulumi.CustomResource):
         $ pulumi import gcp:servicedirectory/namespace:Namespace default {{location}}/{{namespace_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels associated with this Namespace. No more than 64 user
@@ -357,7 +354,6 @@ class Namespace(pulumi.CustomResource):
         $ pulumi import gcp:servicedirectory/namespace:Namespace default {{project}}/{{location}}/{{namespace_id}}
         $ pulumi import gcp:servicedirectory/namespace:Namespace default {{location}}/{{namespace_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param NamespaceArgs args: The arguments to use to populate this resource's properties.

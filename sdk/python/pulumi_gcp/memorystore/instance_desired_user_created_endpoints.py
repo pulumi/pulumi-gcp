@@ -27,7 +27,6 @@ class InstanceDesiredUserCreatedEndpointsArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceDesiredUserCreatedEndpoints resource.
-
         :param pulumi.Input[_builtins.str] region: The name of the region of the Memorystore instance these endpoints should be added to.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]] desired_user_created_endpoints: A list of desired user endpoints
                Structure is documented below.
@@ -103,7 +102,6 @@ class _InstanceDesiredUserCreatedEndpointsState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceDesiredUserCreatedEndpoints resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]] desired_user_created_endpoints: A list of desired user endpoints
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Memorystore instance these endpoints should be added to.
@@ -442,7 +440,6 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict']]]] desired_user_created_endpoints: A list of desired user endpoints
@@ -717,7 +714,6 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{region}}/{{name}}
         $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param InstanceDesiredUserCreatedEndpointsArgs args: The arguments to use to populate this resource's properties.

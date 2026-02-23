@@ -26,7 +26,6 @@ class AiFeatureStoreEntityTypeFeatureArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiFeatureStoreEntityTypeFeature resource.
-
         :param pulumi.Input[_builtins.str] entitytype: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
         :param pulumi.Input[_builtins.str] value_type: Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
         :param pulumi.Input[_builtins.str] description: Description of the feature.
@@ -125,7 +124,6 @@ class _AiFeatureStoreEntityTypeFeatureState:
                  value_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureStoreEntityTypeFeature resources.
-
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] description: Description of the feature.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -408,7 +406,6 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         $ pulumi import gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature default {{entitytype}}/features/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the feature.
@@ -519,7 +516,6 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature default {{entitytype}}/features/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AiFeatureStoreEntityTypeFeatureArgs args: The arguments to use to populate this resource's properties.

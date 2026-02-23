@@ -23,7 +23,6 @@ class Hl7StoreIamPolicyArgs:
                  policy_data: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Hl7StoreIamPolicy resource.
-
         :param pulumi.Input[_builtins.str] hl7_v2_store_id: The HL7v2 store ID, in the form
                `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
                `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
@@ -71,7 +70,6 @@ class _Hl7StoreIamPolicyState:
                  policy_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Hl7StoreIamPolicy resources.
-
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the HL7v2 store's IAM policy.
         :param pulumi.Input[_builtins.str] hl7_v2_store_id: The HL7v2 store ID, in the form
                `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
@@ -219,7 +217,6 @@ class Hl7StoreIamPolicy(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] hl7_v2_store_id: The HL7v2 store ID, in the form
@@ -316,7 +313,6 @@ class Hl7StoreIamPolicy(pulumi.CustomResource):
 
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-
 
         :param str resource_name: The name of the resource.
         :param Hl7StoreIamPolicyArgs args: The arguments to use to populate this resource's properties.

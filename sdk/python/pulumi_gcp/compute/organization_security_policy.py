@@ -26,7 +26,6 @@ class OrganizationSecurityPolicyArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrganizationSecurityPolicy resource.
-
         :param pulumi.Input[_builtins.str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
         :param pulumi.Input[_builtins.str] description: A textual description for the organization security policy.
@@ -122,7 +121,6 @@ class _OrganizationSecurityPolicyState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationSecurityPolicy resources.
-
         :param pulumi.Input[_builtins.str] description: A textual description for the organization security policy.
         :param pulumi.Input[_builtins.str] display_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. This field is used internally during
@@ -288,7 +286,6 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default {{policy_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A textual description for the organization security policy.
@@ -342,7 +339,6 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default locations/global/securityPolicies/{{policy_id}}
         $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default {{policy_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param OrganizationSecurityPolicyArgs args: The arguments to use to populate this resource's properties.

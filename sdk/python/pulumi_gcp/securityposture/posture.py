@@ -29,7 +29,6 @@ class PostureArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Posture resource.
-
         :param pulumi.Input[_builtins.str] location: Location of the resource, eg: global.
         :param pulumi.Input[_builtins.str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[Sequence[pulumi.Input['PosturePolicySetArgs']]] policy_sets: List of policy sets for the posture.
@@ -141,7 +140,6 @@ class _PostureState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Posture resources.
-
         :param pulumi.Input[_builtins.str] create_time: Time the Posture was created in UTC.
         :param pulumi.Input[_builtins.str] description: Description of the posture.
         :param pulumi.Input[_builtins.str] etag: For Resource freshness validation (https://google.aip.dev/154)
@@ -479,7 +477,6 @@ class Posture(pulumi.CustomResource):
         $ pulumi import gcp:securityposture/posture:Posture default {{parent}}/locations/{{location}}/postures/{{posture_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the posture.
@@ -632,7 +629,6 @@ class Posture(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:securityposture/posture:Posture default {{parent}}/locations/{{location}}/postures/{{posture_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param PostureArgs args: The arguments to use to populate this resource's properties.

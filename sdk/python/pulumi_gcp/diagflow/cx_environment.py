@@ -27,7 +27,6 @@ class CxEnvironmentArgs:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CxEnvironment resource.
-
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
                Structure is documented below.
@@ -104,7 +103,6 @@ class _CxEnvironmentState:
                  version_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering CxEnvironment resources.
-
         :param pulumi.Input[_builtins.str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         :param pulumi.Input[_builtins.str] name: The name of the environment.
@@ -276,7 +274,6 @@ class CxEnvironment(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxEnvironment:CxEnvironment default {{parent}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -354,7 +351,6 @@ class CxEnvironment(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxEnvironment:CxEnvironment default {{parent}}/environments/{{name}}
         $ pulumi import gcp:diagflow/cxEnvironment:CxEnvironment default {{parent}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param CxEnvironmentArgs args: The arguments to use to populate this resource's properties.

@@ -27,7 +27,6 @@ class ServicePerimeterDryRunIngressPolicyArgs:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServicePerimeterDryRunIngressPolicy resource.
-
         :param pulumi.Input[_builtins.str] perimeter: The name of the Service Perimeter to add this resource to.
         :param pulumi.Input['ServicePerimeterDryRunIngressPolicyIngressFromArgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
@@ -109,7 +108,6 @@ class _ServicePerimeterDryRunIngressPolicyState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeterDryRunIngressPolicy resources.
-
         :param pulumi.Input[_builtins.str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input[_builtins.str] etag: The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
         :param pulumi.Input['ServicePerimeterDryRunIngressPolicyIngressFromArgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
@@ -248,7 +246,6 @@ class ServicePerimeterDryRunIngressPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServicePerimeterDryRunIngressPolicyIngressFromArgs', 'ServicePerimeterDryRunIngressPolicyIngressFromArgsDict']] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
@@ -291,7 +288,6 @@ class ServicePerimeterDryRunIngressPolicy(pulumi.CustomResource):
             * [Guide to Ingress and Egress Rules](https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules)
 
         ## Example Usage
-
 
         :param str resource_name: The name of the resource.
         :param ServicePerimeterDryRunIngressPolicyArgs args: The arguments to use to populate this resource's properties.

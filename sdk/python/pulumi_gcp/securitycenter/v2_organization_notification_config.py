@@ -29,7 +29,6 @@ class V2OrganizationNotificationConfigArgs:
                  location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2OrganizationNotificationConfig resource.
-
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] organization: The organization whose Cloud Security Command Center the Notification
                Config lives in.
@@ -138,7 +137,6 @@ class _V2OrganizationNotificationConfigState:
                  streaming_config: Optional[pulumi.Input['V2OrganizationNotificationConfigStreamingConfigArgs']] = None):
         """
         Input properties used for looking up and filtering V2OrganizationNotificationConfig resources.
-
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] description: The description of the notification config (max of 1024 characters).
         :param pulumi.Input[_builtins.str] location: location Id is provided by organization. If not provided, Use global as default.
@@ -326,7 +324,6 @@ class V2OrganizationNotificationConfig(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the organization.
@@ -385,7 +382,6 @@ class V2OrganizationNotificationConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param V2OrganizationNotificationConfigArgs args: The arguments to use to populate this resource's properties.

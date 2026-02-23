@@ -35,7 +35,6 @@ class IntentArgs:
                  webhook_state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Intent resource.
-
         :param pulumi.Input[_builtins.str] display_name: The name of this intent to be displayed on the console.
         :param pulumi.Input[_builtins.str] action: The name of the action associated with the intent.
                Note: The action name must not contain whitespaces.
@@ -272,7 +271,6 @@ class _IntentState:
                  webhook_state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Intent resources.
-
         :param pulumi.Input[_builtins.str] action: The name of the action associated with the intent.
                Note: The action name must not contain whitespaces.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
@@ -644,7 +642,6 @@ class Intent(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/intent:Intent default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The name of the action associated with the intent.
@@ -762,7 +759,6 @@ class Intent(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:diagflow/intent:Intent default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param IntentArgs args: The arguments to use to populate this resource's properties.

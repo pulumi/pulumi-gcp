@@ -30,7 +30,6 @@ class Hl7StoreArgs:
                  reject_duplicate_message: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Hl7Store resource.
-
         :param pulumi.Input[_builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-supplied key-value pairs used to organize HL7v2 stores.
@@ -197,7 +196,6 @@ class _Hl7StoreState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Hl7Store resources.
-
         :param pulumi.Input[_builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -573,7 +571,6 @@ class Hl7Store(pulumi.CustomResource):
         $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
@@ -771,7 +768,6 @@ class Hl7Store(pulumi.CustomResource):
         $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/hl7V2Stores/{{name}}
         $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param Hl7StoreArgs args: The arguments to use to populate this resource's properties.

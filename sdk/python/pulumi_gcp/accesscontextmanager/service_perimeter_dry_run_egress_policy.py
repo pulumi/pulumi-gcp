@@ -27,7 +27,6 @@ class ServicePerimeterDryRunEgressPolicyArgs:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServicePerimeterDryRunEgressPolicy resource.
-
         :param pulumi.Input[_builtins.str] perimeter: The name of the Service Perimeter to add this resource to.
         :param pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
@@ -107,7 +106,6 @@ class _ServicePerimeterDryRunEgressPolicyState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeterDryRunEgressPolicy resources.
-
         :param pulumi.Input[_builtins.str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
@@ -243,7 +241,6 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressFromArgs', 'ServicePerimeterDryRunEgressPolicyEgressFromArgsDict']] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
@@ -284,7 +281,6 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
             * [Guide to Ingress and Egress Rules](https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules)
 
         ## Example Usage
-
 
         :param str resource_name: The name of the resource.
         :param ServicePerimeterDryRunEgressPolicyArgs args: The arguments to use to populate this resource's properties.

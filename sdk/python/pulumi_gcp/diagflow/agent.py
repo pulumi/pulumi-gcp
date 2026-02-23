@@ -33,7 +33,6 @@ class AgentArgs:
                  tier: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Agent resource.
-
         :param pulumi.Input[_builtins.str] default_language_code: The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
                for a list of the currently supported language codes. This field cannot be updated after creation.
         :param pulumi.Input[_builtins.str] display_name: The name of this agent.
@@ -282,7 +281,6 @@ class _AgentState:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Agent resources.
-
         :param pulumi.Input[_builtins.str] api_version: API version displayed in Dialogflow console. If not specified, V2 API is assumed. Clients are free to query
                different service endpoints for different API versions. However, bots connectors and webhook calls will follow
                the specified API version.
@@ -617,7 +615,6 @@ class Agent(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/agent:Agent default {{project}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_version: API version displayed in Dialogflow console. If not specified, V2 API is assumed. Clients are free to query
@@ -728,7 +725,6 @@ class Agent(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:diagflow/agent:Agent default {{project}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AgentArgs args: The arguments to use to populate this resource's properties.

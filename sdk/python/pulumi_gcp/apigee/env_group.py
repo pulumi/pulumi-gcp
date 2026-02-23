@@ -24,7 +24,6 @@ class EnvGroupArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvGroup resource.
-
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee environment group,
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Hostnames of the environment group.
@@ -82,7 +81,6 @@ class _EnvGroupState:
                  org_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvGroup resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Hostnames of the environment group.
         :param pulumi.Input[_builtins.str] name: The resource ID of the environment group.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee environment group,
@@ -197,7 +195,6 @@ class EnvGroup(pulumi.CustomResource):
         $ pulumi import gcp:apigee/envGroup:EnvGroup default {{org_id}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Hostnames of the environment group.
@@ -264,7 +261,6 @@ class EnvGroup(pulumi.CustomResource):
         $ pulumi import gcp:apigee/envGroup:EnvGroup default {{org_id}}/envgroups/{{name}}
         $ pulumi import gcp:apigee/envGroup:EnvGroup default {{org_id}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param EnvGroupArgs args: The arguments to use to populate this resource's properties.

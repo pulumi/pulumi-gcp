@@ -44,7 +44,6 @@ class BucketObjectArgs:
                  temporary_hold: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BucketObject resource.
-
         :param pulumi.Input[_builtins.str] bucket: The name of the containing bucket.
         :param pulumi.Input[_builtins.str] cache_control: [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
                directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
@@ -417,7 +416,6 @@ class _BucketObjectState:
                  temporary_hold: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering BucketObject resources.
-
         :param pulumi.Input[_builtins.str] bucket: The name of the containing bucket.
         :param pulumi.Input[_builtins.str] cache_control: [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
                directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
@@ -959,7 +957,6 @@ class BucketObject(pulumi.CustomResource):
 
         This resource does not support import.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the containing bucket.
@@ -1066,7 +1063,6 @@ class BucketObject(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
-
 
         :param str resource_name: The name of the resource.
         :param BucketObjectArgs args: The arguments to use to populate this resource's properties.

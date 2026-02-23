@@ -41,7 +41,6 @@ class SubscriptionArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Subscription resource.
-
         :param pulumi.Input[_builtins.str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
                (as in the id property of a google_pubsub_topic), or just a topic name if
                the topic is in the same project as the subscription.
@@ -489,7 +488,6 @@ class _SubscriptionState:
                  topic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Subscription resources.
-
         :param pulumi.Input[_builtins.int] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message
                before the subscriber should acknowledge the message. After message
                delivery but before the ack deadline expires and before the message is
@@ -1396,7 +1394,6 @@ class Subscription(pulumi.CustomResource):
         $ pulumi import gcp:pubsub/subscription:Subscription default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message
@@ -1924,7 +1921,6 @@ class Subscription(pulumi.CustomResource):
         $ pulumi import gcp:pubsub/subscription:Subscription default {{project}}/{{name}}
         $ pulumi import gcp:pubsub/subscription:Subscription default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SubscriptionArgs args: The arguments to use to populate this resource's properties.

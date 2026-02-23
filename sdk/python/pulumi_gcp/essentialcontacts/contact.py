@@ -25,7 +25,6 @@ class ContactArgs:
                  parent: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Contact resource.
-
         :param pulumi.Input[_builtins.str] email: The email address to send notifications to. This does not need to be a Google account.
         :param pulumi.Input[_builtins.str] language_tag: The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_category_subscriptions: The categories of notifications that the contact will receive communications for.
@@ -95,7 +94,6 @@ class _ContactState:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Contact resources.
-
         :param pulumi.Input[_builtins.str] email: The email address to send notifications to. This does not need to be a Google account.
         :param pulumi.Input[_builtins.str] language_tag: The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
         :param pulumi.Input[_builtins.str] name: The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
@@ -228,7 +226,6 @@ class Contact(pulumi.CustomResource):
         $ pulumi import gcp:essentialcontacts/contact:Contact default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email: The email address to send notifications to. This does not need to be a Google account.
@@ -284,7 +281,6 @@ class Contact(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:essentialcontacts/contact:Contact default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ContactArgs args: The arguments to use to populate this resource's properties.

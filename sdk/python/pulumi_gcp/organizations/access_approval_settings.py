@@ -27,7 +27,6 @@ class AccessApprovalSettingsArgs:
                  notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AccessApprovalSettings resource.
-
         :param pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
                Access requests for the resource given by name against any of these services contained here will be required
                to have explicit approval. Enrollment can be done for individual services.
@@ -116,7 +115,6 @@ class _AccessApprovalSettingsState:
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessApprovalSettings resources.
-
         :param pulumi.Input[_builtins.str] active_key_version: The asymmetric crypto key version to use for signing approval requests.
                Empty active_key_version indicates that a Google-managed key should be used for signing.
         :param pulumi.Input[_builtins.bool] ancestor_has_active_key_version: This field will always be unset for the organization since organizations do not have ancestors.
@@ -351,7 +349,6 @@ class AccessApprovalSettings(pulumi.CustomResource):
         $ pulumi import gcp:organizations/accessApprovalSettings:AccessApprovalSettings default {{organization_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] active_key_version: The asymmetric crypto key version to use for signing approval requests.
@@ -453,7 +450,6 @@ class AccessApprovalSettings(pulumi.CustomResource):
         $ pulumi import gcp:organizations/accessApprovalSettings:AccessApprovalSettings default organizations/{{organization_id}}/accessApprovalSettings
         $ pulumi import gcp:organizations/accessApprovalSettings:AccessApprovalSettings default {{organization_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AccessApprovalSettingsArgs args: The arguments to use to populate this resource's properties.

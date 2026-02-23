@@ -28,7 +28,6 @@ class MangedSslCertificateArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MangedSslCertificate resource.
-
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input['MangedSslCertificateManagedArgs'] managed: Properties relevant to a managed certificate.  These will be used if the
                certificate is managed (as indicated by a value of `MANAGED` in `type`).
@@ -148,7 +147,6 @@ class _MangedSslCertificateState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MangedSslCertificate resources.
-
         :param pulumi.Input[_builtins.int] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -437,7 +435,6 @@ class MangedSslCertificate(pulumi.CustomResource):
         $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -556,7 +553,6 @@ class MangedSslCertificate(pulumi.CustomResource):
         $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default {{project}}/{{name}}
         $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param MangedSslCertificateArgs args: The arguments to use to populate this resource's properties.

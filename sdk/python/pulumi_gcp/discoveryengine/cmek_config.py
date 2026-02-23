@@ -29,7 +29,6 @@ class CmekConfigArgs:
                  single_region_keys: Optional[pulumi.Input[Sequence[pulumi.Input['CmekConfigSingleRegionKeyArgs']]]] = None):
         """
         The set of arguments for constructing a CmekConfig resource.
-
         :param pulumi.Input[_builtins.str] cmek_config_id: The unique id of the cmek config.
         :param pulumi.Input[_builtins.str] kms_key: KMS key resource name which will be used to encrypt resources
                `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
@@ -147,7 +146,6 @@ class _CmekConfigState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CmekConfig resources.
-
         :param pulumi.Input[_builtins.str] cmek_config_id: The unique id of the cmek config.
         :param pulumi.Input[_builtins.bool] is_default: The default CmekConfig for the Customer.
         :param pulumi.Input[_builtins.str] kms_key: KMS key resource name which will be used to encrypt resources
@@ -406,7 +404,6 @@ class CmekConfig(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/cmekConfig:CmekConfig default {{location}}/{{cmek_config_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cmek_config_id: The unique id of the cmek config.
@@ -470,7 +467,6 @@ class CmekConfig(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/cmekConfig:CmekConfig default {{project}}/{{location}}/{{cmek_config_id}}
         $ pulumi import gcp:discoveryengine/cmekConfig:CmekConfig default {{location}}/{{cmek_config_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param CmekConfigArgs args: The arguments to use to populate this resource's properties.

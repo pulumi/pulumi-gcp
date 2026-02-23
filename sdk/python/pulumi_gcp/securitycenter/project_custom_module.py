@@ -27,7 +27,6 @@ class ProjectCustomModuleArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectCustomModule resource.
-
         :param pulumi.Input['ProjectCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Security Health Analytics custom module. This
@@ -115,7 +114,6 @@ class _ProjectCustomModuleState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectCustomModule resources.
-
         :param pulumi.Input[_builtins.str] ancestor_module: If empty, indicates that the custom module was created in the organization,folder,
                or project in which you are viewing the custom module. Otherwise, ancestor_module
                specifies the organization or folder from which the custom module is inherited.
@@ -362,7 +360,6 @@ class ProjectCustomModule(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict']] custom_config: The user specified custom configuration for the module.
@@ -470,7 +467,6 @@ class ProjectCustomModule(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default {{project}}/{{name}}
         $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ProjectCustomModuleArgs args: The arguments to use to populate this resource's properties.

@@ -34,7 +34,6 @@ class RegionSecurityPolicyRuleInitArgs:
                  rate_limit_options: Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']] = None):
         """
         The set of arguments for constructing a RegionSecurityPolicyRule resource.
-
         :param pulumi.Input[_builtins.str] action: The Action to perform when the rule is matched. The following are the valid actions:
                * allow: allow access to target.
                * deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for STATUS are 403, 404, and 502.
@@ -257,7 +256,6 @@ class _RegionSecurityPolicyRuleState:
                  security_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionSecurityPolicyRule resources.
-
         :param pulumi.Input[_builtins.str] action: The Action to perform when the rule is matched. The following are the valid actions:
                * allow: allow access to target.
                * deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for STATUS are 403, 404, and 502.
@@ -725,7 +723,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule default {{security_policy}}/{{priority}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The Action to perform when the rule is matched. The following are the valid actions:
@@ -1005,7 +1002,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule default {{region}}/{{security_policy}}/{{priority}}
         $ pulumi import gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule default {{security_policy}}/{{priority}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RegionSecurityPolicyRuleInitArgs args: The arguments to use to populate this resource's properties.

@@ -27,7 +27,6 @@ class NetworkEndpointListArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkEndpointList resource.
-
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group these endpoints are part of.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
@@ -107,7 +106,6 @@ class _NetworkEndpointListState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkEndpointList resources.
-
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group these endpoints are part of.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
@@ -292,7 +290,6 @@ class NetworkEndpointList(pulumi.CustomResource):
         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{network_endpoint_group}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group these endpoints are part of.
@@ -411,7 +408,6 @@ class NetworkEndpointList(pulumi.CustomResource):
         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{zone}}/{{network_endpoint_group}}
         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{network_endpoint_group}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param NetworkEndpointListArgs args: The arguments to use to populate this resource's properties.

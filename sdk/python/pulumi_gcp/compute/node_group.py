@@ -34,7 +34,6 @@ class NodeGroupArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NodeGroup resource.
-
         :param pulumi.Input[_builtins.str] node_template: The URL of the node template to which this node group belongs.
         :param pulumi.Input['NodeGroupAutoscalingPolicyArgs'] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
@@ -241,7 +240,6 @@ class _NodeGroupState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NodeGroup resources.
-
         :param pulumi.Input['NodeGroupAutoscalingPolicyArgs'] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
                One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
@@ -618,7 +616,6 @@ class NodeGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict']] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
@@ -773,7 +770,6 @@ class NodeGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{zone}}/{{name}}
         $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param NodeGroupArgs args: The arguments to use to populate this resource's properties.

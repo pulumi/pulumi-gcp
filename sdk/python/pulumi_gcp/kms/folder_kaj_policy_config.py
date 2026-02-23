@@ -25,7 +25,6 @@ class FolderKajPolicyConfigArgs:
                  default_key_access_justification_policy: Optional[pulumi.Input['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None):
         """
         The set of arguments for constructing a FolderKajPolicyConfig resource.
-
         :param pulumi.Input[_builtins.str] folder: The numeric folder number for which to retrieve config.
         :param pulumi.Input['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs'] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
                created in this folder. This is only used when a Key Access Justifications
@@ -71,7 +70,6 @@ class _FolderKajPolicyConfigState:
                  folder: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FolderKajPolicyConfig resources.
-
         :param pulumi.Input['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs'] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
                created in this folder. This is only used when a Key Access Justifications
                policy is not provided in the CreateCryptoKeyRequest.
@@ -152,11 +150,11 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
             display_name="folder-kajc",
             parent="organizations/123456789",
             deletion_protection=False)
-        project_suffix = random.index.Id("project_suffix", byte_length=4)
+        project_suffix = random.RandomId("project_suffix", byte_length=4)
         # Create a project for enabling KMS API.
         kms_project = gcp.organizations.Project("kms_project",
-            project_id=f"kms-api-project{project_suffix['hex']}",
-            name=f"kms-api-project{project_suffix['hex']}",
+            project_id=project_suffix.hex.apply(lambda hex: f"kms-api-project{hex}"),
+            name=project_suffix.hex.apply(lambda hex: f"kms-api-project{hex}"),
             folder_id=kaj_folder.folder_id,
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE",
@@ -194,7 +192,6 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
         $ pulumi import gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig default folders/{{folder}}/kajPolicyConfig
         $ pulumi import gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig default {{folder}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -242,11 +239,11 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
             display_name="folder-kajc",
             parent="organizations/123456789",
             deletion_protection=False)
-        project_suffix = random.index.Id("project_suffix", byte_length=4)
+        project_suffix = random.RandomId("project_suffix", byte_length=4)
         # Create a project for enabling KMS API.
         kms_project = gcp.organizations.Project("kms_project",
-            project_id=f"kms-api-project{project_suffix['hex']}",
-            name=f"kms-api-project{project_suffix['hex']}",
+            project_id=project_suffix.hex.apply(lambda hex: f"kms-api-project{hex}"),
+            name=project_suffix.hex.apply(lambda hex: f"kms-api-project{hex}"),
             folder_id=kaj_folder.folder_id,
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE",
@@ -284,7 +281,6 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
         $ pulumi import gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig default folders/{{folder}}/kajPolicyConfig
         $ pulumi import gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig default {{folder}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param FolderKajPolicyConfigArgs args: The arguments to use to populate this resource's properties.

@@ -34,7 +34,6 @@ class UserArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
-
         :param pulumi.Input[_builtins.str] instance: The name of the Cloud SQL instance. Changing this
                forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user.
@@ -270,7 +269,6 @@ class _UserState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user.
                This option is only available for MySQL 8+ and PostgreSQL instances. You
                can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
@@ -548,9 +546,9 @@ class User(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
-            name=f"main-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="MYSQL_5_7",
             settings={
                 "tier": "db-f1-micro",
@@ -570,9 +568,9 @@ class User(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
-            name=f"main-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="POSTGRES_15",
             settings={
                 "tier": "db-f1-micro",
@@ -593,9 +591,9 @@ class User(pulumi.CustomResource):
         import pulumi_random as random
         import pulumi_std as std
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
-            name=f"main-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="POSTGRES_15",
             settings={
                 "tier": "db-f1-micro",
@@ -622,9 +620,9 @@ class User(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
-            name=f"main-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="MYSQL_8_0",
             settings={
                 "tier": "db-f1-micro",
@@ -672,7 +670,6 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:sql/user:User default {{project_id}}/{{instance}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -735,9 +732,9 @@ class User(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
-            name=f"main-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="MYSQL_5_7",
             settings={
                 "tier": "db-f1-micro",
@@ -757,9 +754,9 @@ class User(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
-            name=f"main-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="POSTGRES_15",
             settings={
                 "tier": "db-f1-micro",
@@ -780,9 +777,9 @@ class User(pulumi.CustomResource):
         import pulumi_random as random
         import pulumi_std as std
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
-            name=f"main-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="POSTGRES_15",
             settings={
                 "tier": "db-f1-micro",
@@ -809,9 +806,9 @@ class User(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
-            name=f"main-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="MYSQL_8_0",
             settings={
                 "tier": "db-f1-micro",
@@ -859,7 +856,6 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:sql/user:User default {{project_id}}/{{instance}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

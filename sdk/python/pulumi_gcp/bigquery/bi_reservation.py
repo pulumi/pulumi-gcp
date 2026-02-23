@@ -27,7 +27,6 @@ class BiReservationArgs:
                  size: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a BiReservation resource.
-
         :param pulumi.Input[_builtins.str] location: LOCATION_DESCRIPTION
         :param pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]] preferred_tables: Preferred tables to use BI capacity for.
                Structure is documented below.
@@ -105,7 +104,6 @@ class _BiReservationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BiReservation resources.
-
         :param pulumi.Input[_builtins.str] location: LOCATION_DESCRIPTION
         :param pulumi.Input[_builtins.str] name: The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
         :param pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]] preferred_tables: Preferred tables to use BI capacity for.
@@ -254,7 +252,6 @@ class BiReservation(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/biReservation:BiReservation default {{location}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] location: LOCATION_DESCRIPTION
@@ -307,7 +304,6 @@ class BiReservation(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/biReservation:BiReservation default {{project}}/{{location}}
         $ pulumi import gcp:bigquery/biReservation:BiReservation default {{location}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param BiReservationArgs args: The arguments to use to populate this resource's properties.

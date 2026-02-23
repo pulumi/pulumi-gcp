@@ -36,7 +36,6 @@ class RestoreWorkloadArgs:
                  request_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RestoreWorkload resource.
-
         :param pulumi.Input[_builtins.str] backup_id: Required. The ID of the backup to restore from.
         :param pulumi.Input[_builtins.str] backup_vault_id: Required. The ID of the backup vault.
         :param pulumi.Input[_builtins.str] data_source_id: Required. The ID of the data source.
@@ -276,7 +275,6 @@ class _RestoreWorkloadState:
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadTargetResourceArgs']]]] = None):
         """
         Input properties used for looking up and filtering RestoreWorkload resources.
-
         :param pulumi.Input[_builtins.str] backup_id: Required. The ID of the backup to restore from.
         :param pulumi.Input[_builtins.str] backup_vault_id: Required. The ID of the backup vault.
         :param pulumi.Input[_builtins.str] clear_overrides_field_mask: Optional. A field mask used to clear server-side default values during restore.
@@ -747,7 +745,6 @@ class RestoreWorkload(pulumi.CustomResource):
         $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_id: Required. The ID of the backup to restore from.
@@ -989,7 +986,6 @@ class RestoreWorkload(pulumi.CustomResource):
         $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default /{{name}}
         $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RestoreWorkloadArgs args: The arguments to use to populate this resource's properties.

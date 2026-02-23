@@ -33,7 +33,6 @@ class ExternalAccessRuleArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExternalAccessRule resource.
-
         :param pulumi.Input[_builtins.str] action: The action that the external access rule performs.
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[Sequence[pulumi.Input['ExternalAccessRuleDestinationIpRangeArgs']]] destination_ip_ranges: If destination ranges are specified, the external access rule applies only to
@@ -212,7 +211,6 @@ class _ExternalAccessRuleState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExternalAccessRule resources.
-
         :param pulumi.Input[_builtins.str] action: The action that the external access rule performs.
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
@@ -569,7 +567,6 @@ class ExternalAccessRule(pulumi.CustomResource):
         $ pulumi import gcp:vmwareengine/externalAccessRule:ExternalAccessRule default {{parent}}/externalAccessRules/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The action that the external access rule performs.
@@ -699,7 +696,6 @@ class ExternalAccessRule(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:vmwareengine/externalAccessRule:ExternalAccessRule default {{parent}}/externalAccessRules/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ExternalAccessRuleArgs args: The arguments to use to populate this resource's properties.

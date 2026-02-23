@@ -29,7 +29,6 @@ class V2FolderNotificationConfigArgs:
                  location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2FolderNotificationConfig resource.
-
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] folder: Numerical ID of the parent folder.
         :param pulumi.Input[_builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
@@ -136,7 +135,6 @@ class _V2FolderNotificationConfigState:
                  streaming_config: Optional[pulumi.Input['V2FolderNotificationConfigStreamingConfigArgs']] = None):
         """
         Input properties used for looking up and filtering V2FolderNotificationConfig resources.
-
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] description: The description of the notification config (max of 1024 characters).
         :param pulumi.Input[_builtins.str] folder: Numerical ID of the parent folder.
@@ -327,7 +325,6 @@ class V2FolderNotificationConfig(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig default {{folder}}/{{location}}/{{config_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the organization.
@@ -390,7 +387,6 @@ class V2FolderNotificationConfig(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig default folders/{{folder}}/locations/{{location}}/notificationConfigs/{{config_id}}
         $ pulumi import gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig default {{folder}}/{{location}}/{{config_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param V2FolderNotificationConfigArgs args: The arguments to use to populate this resource's properties.

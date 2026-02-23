@@ -27,7 +27,6 @@ class V2FolderMuteConfigArgs:
                  location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2FolderMuteConfig resource.
-
         :param pulumi.Input[_builtins.str] filter: An expression that defines the filter to apply across create/update
                events of findings. While creating a filter string, be mindful of
                the scope in which the mute configuration is being created. E.g.,
@@ -142,7 +141,6 @@ class _V2FolderMuteConfigState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V2FolderMuteConfig resources.
-
         :param pulumi.Input[_builtins.str] create_time: The time at which the mute config was created. This field is set by
                the server and will be ignored if provided on config creation.
         :param pulumi.Input[_builtins.str] description: A description of the mute config.
@@ -379,7 +377,6 @@ class V2FolderMuteConfig(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig default {{folder}}/{{location}}/{{mute_config_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the mute config.
@@ -443,7 +440,6 @@ class V2FolderMuteConfig(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig default folders/{{folder}}/locations/{{location}}/muteConfigs/{{mute_config_id}}
         $ pulumi import gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig default {{folder}}/{{location}}/{{mute_config_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param V2FolderMuteConfigArgs args: The arguments to use to populate this resource's properties.

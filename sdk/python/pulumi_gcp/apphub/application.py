@@ -30,7 +30,6 @@ class ApplicationArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Application resource.
-
         :param pulumi.Input[_builtins.str] application_id: Required. The Application identifier.
         :param pulumi.Input[_builtins.str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input['ApplicationScopeArgs'] scope: Scope of an application.
@@ -159,7 +158,6 @@ class _ApplicationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Application resources.
-
         :param pulumi.Input[_builtins.str] application_id: Required. The Application identifier.
         :param pulumi.Input['ApplicationAttributesArgs'] attributes: Consumer provided attributes.
                Structure is documented below.
@@ -458,7 +456,6 @@ class Application(pulumi.CustomResource):
         $ pulumi import gcp:apphub/application:Application default {{location}}/{{application_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: Required. The Application identifier.
@@ -560,7 +557,6 @@ class Application(pulumi.CustomResource):
         $ pulumi import gcp:apphub/application:Application default {{project}}/{{location}}/{{application_id}}
         $ pulumi import gcp:apphub/application:Application default {{location}}/{{application_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ApplicationArgs args: The arguments to use to populate this resource's properties.

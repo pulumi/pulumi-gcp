@@ -31,7 +31,6 @@ class InsightsReportConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InsightsReportConfig resource.
-
         :param pulumi.Input[_builtins.str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
         :param pulumi.Input['InsightsReportConfigCsvOptionsArgs'] csv_options: Options for configuring the format of the inventory report CSV file.
@@ -178,7 +177,6 @@ class _InsightsReportConfigState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InsightsReportConfig resources.
-
         :param pulumi.Input['InsightsReportConfigCsvOptionsArgs'] csv_options: Options for configuring the format of the inventory report CSV file.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
@@ -423,7 +421,6 @@ class InsightsReportConfig(pulumi.CustomResource):
         $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InsightsReportConfigCsvOptionsArgs', 'InsightsReportConfigCsvOptionsArgsDict']] csv_options: Options for configuring the format of the inventory report CSV file.
@@ -526,7 +523,6 @@ class InsightsReportConfig(pulumi.CustomResource):
         $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param InsightsReportConfigArgs args: The arguments to use to populate this resource's properties.

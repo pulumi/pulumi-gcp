@@ -25,7 +25,6 @@ class LiteReservationArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LiteReservation resource.
-
         :param pulumi.Input[_builtins.int] throughput_capacity: The reserved throughput capacity. Every unit of throughput capacity is
                equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed
                messages.
@@ -103,7 +102,6 @@ class _LiteReservationState:
                  throughput_capacity: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering LiteReservation resources.
-
         :param pulumi.Input[_builtins.str] name: Name of the reservation.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -228,7 +226,6 @@ class LiteReservation(pulumi.CustomResource):
         $ pulumi import gcp:pubsub/liteReservation:LiteReservation default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Name of the reservation.
@@ -288,7 +285,6 @@ class LiteReservation(pulumi.CustomResource):
         $ pulumi import gcp:pubsub/liteReservation:LiteReservation default {{region}}/{{name}}
         $ pulumi import gcp:pubsub/liteReservation:LiteReservation default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param LiteReservationArgs args: The arguments to use to populate this resource's properties.

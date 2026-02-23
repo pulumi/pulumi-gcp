@@ -33,7 +33,6 @@ class DeveloperAppArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DeveloperApp resource.
-
         :param pulumi.Input[_builtins.str] callback_url: Callback URL used by OAuth 2.0 authorization servers to communicate
                authorization codes back to developer apps.
         :param pulumi.Input[_builtins.str] developer_email: Email address of the developer.
@@ -222,7 +221,6 @@ class _DeveloperAppState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DeveloperApp resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_products: List of API products associated with the developer app.
         :param pulumi.Input[_builtins.str] app_family: Developer app family.
         :param pulumi.Input[_builtins.str] app_id: ID of the developer app. This ID is not user specified but is
@@ -623,7 +621,6 @@ class DeveloperApp(pulumi.CustomResource):
         $ pulumi import gcp:apigee/developerApp:DeveloperApp default {{org_id}}/{{developer_email}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_products: List of API products associated with the developer app.
@@ -782,7 +779,6 @@ class DeveloperApp(pulumi.CustomResource):
         $ pulumi import gcp:apigee/developerApp:DeveloperApp default {{org_id}}/developers/{{developer_email}}/apps/{{name}}
         $ pulumi import gcp:apigee/developerApp:DeveloperApp default {{org_id}}/{{developer_email}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DeveloperAppArgs args: The arguments to use to populate this resource's properties.

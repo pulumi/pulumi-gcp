@@ -37,7 +37,6 @@ class AzureClusterArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AzureCluster resource.
-
         :param pulumi.Input['AzureClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[_builtins.str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
         :param pulumi.Input['AzureClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
@@ -278,7 +277,6 @@ class _AzureClusterState:
                  workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering AzureCluster resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -772,7 +770,6 @@ class AzureCluster(pulumi.CustomResource):
         $ pulumi import gcp:container/azureCluster:AzureCluster default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
@@ -916,7 +913,6 @@ class AzureCluster(pulumi.CustomResource):
         $ pulumi import gcp:container/azureCluster:AzureCluster default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:container/azureCluster:AzureCluster default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AzureClusterArgs args: The arguments to use to populate this resource's properties.

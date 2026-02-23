@@ -25,7 +25,6 @@ class AppCheckDebugTokenArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppCheckDebugToken resource.
-
         :param pulumi.Input[_builtins.str] app_id: The ID of a
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
@@ -116,7 +115,6 @@ class _AppCheckDebugTokenState:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppCheckDebugToken resources.
-
         :param pulumi.Input[_builtins.str] app_id: The ID of a
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
@@ -278,7 +276,6 @@ class AppCheckDebugToken(pulumi.CustomResource):
         $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default {{app_id}}/{{debug_token_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID of a
@@ -353,7 +350,6 @@ class AppCheckDebugToken(pulumi.CustomResource):
         $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default {{project}}/{{app_id}}/{{debug_token_id}}
         $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default {{app_id}}/{{debug_token_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AppCheckDebugTokenArgs args: The arguments to use to populate this resource's properties.

@@ -27,7 +27,6 @@ class HostingChannelArgs:
                  ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostingChannel resource.
-
         :param pulumi.Input[_builtins.str] channel_id: Required. Immutable. A unique ID within the site that identifies the channel.
         :param pulumi.Input[_builtins.str] site_id: Required. The ID of the site in which to create this channel.
         :param pulumi.Input[_builtins.str] expire_time: The time at which the channel will be automatically deleted. If null, the channel
@@ -147,7 +146,6 @@ class _HostingChannelState:
                  ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostingChannel resources.
-
         :param pulumi.Input[_builtins.str] channel_id: Required. Immutable. A unique ID within the site that identifies the channel.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] expire_time: The time at which the channel will be automatically deleted. If null, the channel
@@ -379,7 +377,6 @@ class HostingChannel(pulumi.CustomResource):
         $ pulumi import gcp:firebase/hostingChannel:HostingChannel default {{site_id}}/{{channel_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] channel_id: Required. Immutable. A unique ID within the site that identifies the channel.
@@ -463,7 +460,6 @@ class HostingChannel(pulumi.CustomResource):
         $ pulumi import gcp:firebase/hostingChannel:HostingChannel default sites/{{site_id}}/channels/{{channel_id}}
         $ pulumi import gcp:firebase/hostingChannel:HostingChannel default {{site_id}}/{{channel_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param HostingChannelArgs args: The arguments to use to populate this resource's properties.

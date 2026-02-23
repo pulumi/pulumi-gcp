@@ -31,7 +31,6 @@ class WorkerPoolArgs:
                  worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None):
         """
         The set of arguments for constructing a WorkerPool resource.
-
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
                
@@ -185,7 +184,6 @@ class _WorkerPoolState:
                  worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None):
         """
         Input properties used for looking up and filtering WorkerPool resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -498,7 +496,6 @@ class WorkerPool(pulumi.CustomResource):
         $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
@@ -593,7 +590,6 @@ class WorkerPool(pulumi.CustomResource):
         $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param WorkerPoolArgs args: The arguments to use to populate this resource's properties.

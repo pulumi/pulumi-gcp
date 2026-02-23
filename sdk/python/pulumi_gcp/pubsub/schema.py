@@ -25,7 +25,6 @@ class SchemaArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Schema resource.
-
         :param pulumi.Input[_builtins.str] definition: The definition of the schema.
                This should contain a string representing the full definition of the schema
                that is a valid schema definition of the type specified in type. Changes
@@ -116,7 +115,6 @@ class _SchemaState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Schema resources.
-
         :param pulumi.Input[_builtins.str] definition: The definition of the schema.
                This should contain a string representing the full definition of the schema
                that is a valid schema definition of the type specified in type. Changes
@@ -287,7 +285,6 @@ class Schema(pulumi.CustomResource):
         $ pulumi import gcp:pubsub/schema:Schema default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] definition: The definition of the schema.
@@ -387,7 +384,6 @@ class Schema(pulumi.CustomResource):
         $ pulumi import gcp:pubsub/schema:Schema default {{project}}/{{name}}
         $ pulumi import gcp:pubsub/schema:Schema default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SchemaArgs args: The arguments to use to populate this resource's properties.

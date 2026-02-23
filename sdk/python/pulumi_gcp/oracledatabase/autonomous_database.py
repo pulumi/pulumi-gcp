@@ -37,7 +37,6 @@ class AutonomousDatabaseArgs:
                  source_config: Optional[pulumi.Input['AutonomousDatabaseSourceConfigArgs']] = None):
         """
         The set of arguments for constructing a AutonomousDatabase resource.
-
         :param pulumi.Input[_builtins.str] autonomous_database_id: The ID of the Autonomous Database to create. This value is restricted
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
@@ -311,7 +310,6 @@ class _AutonomousDatabaseState:
                  source_config: Optional[pulumi.Input['AutonomousDatabaseSourceConfigArgs']] = None):
         """
         Input properties used for looking up and filtering AutonomousDatabase resources.
-
         :param pulumi.Input[_builtins.str] admin_password: The password for the default ADMIN user.
         :param pulumi.Input[_builtins.str] autonomous_database_id: The ID of the Autonomous Database to create. This value is restricted
                to (^a-z?$) and must be a maximum of 63
@@ -833,7 +831,6 @@ class AutonomousDatabase(pulumi.CustomResource):
         $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{location}}/{{autonomous_database_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] admin_password: The password for the default ADMIN user.
@@ -1014,7 +1011,6 @@ class AutonomousDatabase(pulumi.CustomResource):
         $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{project}}/{{location}}/{{autonomous_database_id}}
         $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{location}}/{{autonomous_database_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AutonomousDatabaseArgs args: The arguments to use to populate this resource's properties.

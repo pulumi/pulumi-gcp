@@ -33,7 +33,6 @@ class BitbucketServerConfigArgs:
                  ssl_ca: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BitbucketServerConfig resource.
-
         :param pulumi.Input[_builtins.str] api_key: Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
                Changing this field will result in deleting/ recreating the resource.
         :param pulumi.Input[_builtins.str] config_id: The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
@@ -214,7 +213,6 @@ class _BitbucketServerConfigState:
                  webhook_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BitbucketServerConfig resources.
-
         :param pulumi.Input[_builtins.str] api_key: Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
                Changing this field will result in deleting/ recreating the resource.
         :param pulumi.Input[_builtins.str] config_id: The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
@@ -548,7 +546,6 @@ class BitbucketServerConfig(pulumi.CustomResource):
         $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default {{location}}/{{config_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_key: Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
@@ -692,7 +689,6 @@ class BitbucketServerConfig(pulumi.CustomResource):
         $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default {{project}}/{{location}}/{{config_id}}
         $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default {{location}}/{{config_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param BitbucketServerConfigArgs args: The arguments to use to populate this resource's properties.

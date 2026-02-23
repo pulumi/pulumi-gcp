@@ -29,7 +29,6 @@ class FrameworkArgs:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Framework resource.
-
         :param pulumi.Input[_builtins.str] framework_id: ID of the framework.
                This is not the full name of the framework.
                This is the last part of the full name of the framework.
@@ -146,7 +145,6 @@ class _FrameworkState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Framework resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] categories: The category of the framework.
         :param pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]] cloud_control_details: The details of the cloud controls directly added without any grouping in
                the framework.
@@ -460,7 +458,6 @@ class Framework(pulumi.CustomResource):
         $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{organization}}/{{location}}/{{framework_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]] cloud_control_details: The details of the cloud controls directly added without any grouping in
@@ -563,7 +560,6 @@ class Framework(pulumi.CustomResource):
         $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default organizations/{{organization}}/locations/{{location}}/frameworks/{{framework_id}}
         $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{organization}}/{{location}}/{{framework_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param FrameworkArgs args: The arguments to use to populate this resource's properties.

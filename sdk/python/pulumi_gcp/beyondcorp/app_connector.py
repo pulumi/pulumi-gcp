@@ -29,7 +29,6 @@ class AppConnectorArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppConnector resource.
-
         :param pulumi.Input['AppConnectorPrincipalInfoArgs'] principal_info: Principal information about the Identity of the AppConnector.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: An arbitrary user-provided name for the AppConnector.
@@ -146,7 +145,6 @@ class _AppConnectorState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppConnector resources.
-
         :param pulumi.Input[_builtins.str] display_name: An arbitrary user-provided name for the AppConnector.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user provided metadata.
@@ -383,7 +381,6 @@ class AppConnector(pulumi.CustomResource):
         $ pulumi import gcp:beyondcorp/appConnector:AppConnector default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: An arbitrary user-provided name for the AppConnector.
@@ -476,7 +473,6 @@ class AppConnector(pulumi.CustomResource):
         $ pulumi import gcp:beyondcorp/appConnector:AppConnector default {{region}}/{{name}}
         $ pulumi import gcp:beyondcorp/appConnector:AppConnector default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AppConnectorArgs args: The arguments to use to populate this resource's properties.

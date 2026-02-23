@@ -28,7 +28,6 @@ class CustomServiceArgs:
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CustomService resource.
-
         :param pulumi.Input[_builtins.str] display_name: Name used for UI elements listing this Service.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -134,7 +133,6 @@ class _CustomServiceState:
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CustomService resources.
-
         :param pulumi.Input[_builtins.str] display_name: Name used for UI elements listing this Service.
         :param pulumi.Input[_builtins.str] name: The full resource name for this service. The syntax is:
                projects/[PROJECT_ID]/services/[SERVICE_ID].
@@ -308,7 +306,6 @@ class CustomService(pulumi.CustomResource):
         $ pulumi import gcp:monitoring/customService:CustomService default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Name used for UI elements listing this Service.
@@ -380,7 +377,6 @@ class CustomService(pulumi.CustomResource):
         $ terraform import google_monitoring_custom_service.default "{{project}} {{name}}"
         $ pulumi import gcp:monitoring/customService:CustomService default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param CustomServiceArgs args: The arguments to use to populate this resource's properties.

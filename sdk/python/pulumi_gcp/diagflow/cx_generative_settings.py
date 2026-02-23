@@ -29,7 +29,6 @@ class CxGenerativeSettingsArgs:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CxGenerativeSettings resource.
-
         :param pulumi.Input[_builtins.str] language_code: Language for this settings.
         :param pulumi.Input['CxGenerativeSettingsFallbackSettingsArgs'] fallback_settings: Settings for Generative Fallback.
                Structure is documented below.
@@ -144,7 +143,6 @@ class _CxGenerativeSettingsState:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CxGenerativeSettings resources.
-
         :param pulumi.Input['CxGenerativeSettingsFallbackSettingsArgs'] fallback_settings: Settings for Generative Fallback.
                Structure is documented below.
         :param pulumi.Input['CxGenerativeSettingsGenerativeSafetySettingsArgs'] generative_safety_settings: Settings for Generative Safety.
@@ -347,7 +345,6 @@ class CxGenerativeSettings(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings default {{parent}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['CxGenerativeSettingsFallbackSettingsArgs', 'CxGenerativeSettingsFallbackSettingsArgsDict']] fallback_settings: Settings for Generative Fallback.
@@ -436,7 +433,6 @@ class CxGenerativeSettings(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings default {{parent}}/generativeSettings
         $ pulumi import gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings default {{parent}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param CxGenerativeSettingsArgs args: The arguments to use to populate this resource's properties.

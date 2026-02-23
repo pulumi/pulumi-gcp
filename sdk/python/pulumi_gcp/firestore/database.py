@@ -38,7 +38,6 @@ class DatabaseArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Database resource.
-
         :param pulumi.Input[_builtins.str] location_id: The location of the database. Available locations are listed at
                https://cloud.google.com/firestore/docs/locations.
         :param pulumi.Input[_builtins.str] type: The type of the database.
@@ -376,7 +375,6 @@ class _DatabaseState:
                  version_retention_period: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
-
         :param pulumi.Input[_builtins.str] app_engine_integration_mode: The App Engine integration mode to use for this database.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input['DatabaseCmekConfigArgs'] cmek_config: The CMEK (Customer Managed Encryption Key) configuration for a Firestore
@@ -1041,7 +1039,6 @@ class Database(pulumi.CustomResource):
         $ pulumi import gcp:firestore/database:Database default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_engine_integration_mode: The App Engine integration mode to use for this database.
@@ -1312,7 +1309,6 @@ class Database(pulumi.CustomResource):
         $ pulumi import gcp:firestore/database:Database default {{project}}/{{name}}
         $ pulumi import gcp:firestore/database:Database default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.

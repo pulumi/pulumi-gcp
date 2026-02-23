@@ -23,7 +23,6 @@ class ProjectDefaultNetworkTierArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectDefaultNetworkTier resource.
-
         :param pulumi.Input[_builtins.str] network_tier: The default network tier to be configured for the project.
                This field can take the following values: `PREMIUM` or `STANDARD`.
                
@@ -71,7 +70,6 @@ class _ProjectDefaultNetworkTierState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectDefaultNetworkTier resources.
-
         :param pulumi.Input[_builtins.str] network_tier: The default network tier to be configured for the project.
                This field can take the following values: `PREMIUM` or `STANDARD`.
                
@@ -151,7 +149,6 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
         $ pulumi import gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier default {{project_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_tier: The default network tier to be configured for the project.
@@ -195,7 +192,6 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier default {{project_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ProjectDefaultNetworkTierArgs args: The arguments to use to populate this resource's properties.

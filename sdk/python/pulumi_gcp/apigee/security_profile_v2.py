@@ -27,7 +27,6 @@ class SecurityProfileV2Args:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityProfileV2 resource.
-
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee Security Profile V2,
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityProfileV2ProfileAssessmentConfigArgs']]] profile_assessment_configs: A map of the assessment name and the assessment config.
@@ -104,7 +103,6 @@ class _SecurityProfileV2State:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityProfileV2 resources.
-
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which this profile was created.
         :param pulumi.Input[_builtins.str] description: Description of the security profile.
         :param pulumi.Input[_builtins.str] name: Name of the security profile v2 resource,
@@ -306,7 +304,6 @@ class SecurityProfileV2(pulumi.CustomResource):
         $ pulumi import gcp:apigee/securityProfileV2:SecurityProfileV2 default {{org_id}}/{{profile_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the security profile.
@@ -397,7 +394,6 @@ class SecurityProfileV2(pulumi.CustomResource):
         $ pulumi import gcp:apigee/securityProfileV2:SecurityProfileV2 default {{org_id}}/securityProfilesV2/{{profile_id}}
         $ pulumi import gcp:apigee/securityProfileV2:SecurityProfileV2 default {{org_id}}/{{profile_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SecurityProfileV2Args args: The arguments to use to populate this resource's properties.

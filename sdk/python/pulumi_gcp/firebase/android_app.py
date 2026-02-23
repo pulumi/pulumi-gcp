@@ -28,7 +28,6 @@ class AndroidAppArgs:
                  sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AndroidApp resource.
-
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[_builtins.str] package_name: The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
@@ -162,7 +161,6 @@ class _AndroidAppState:
                  sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AndroidApp resources.
-
         :param pulumi.Input[_builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
@@ -422,7 +420,6 @@ class AndroidApp(pulumi.CustomResource):
         $ pulumi import gcp:firebase/androidApp:AndroidApp default {{app_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
@@ -518,7 +515,6 @@ class AndroidApp(pulumi.CustomResource):
         $ pulumi import gcp:firebase/androidApp:AndroidApp default androidApps/{{app_id}}
         $ pulumi import gcp:firebase/androidApp:AndroidApp default {{app_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AndroidAppArgs args: The arguments to use to populate this resource's properties.

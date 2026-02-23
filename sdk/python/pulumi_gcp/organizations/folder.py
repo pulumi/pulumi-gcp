@@ -25,7 +25,6 @@ class FolderArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Folder resource.
-
         :param pulumi.Input[_builtins.str] display_name: The folder’s display name.
                A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
         :param pulumi.Input[_builtins.str] parent: The resource name of the parent Folder or Organization.
@@ -106,7 +105,6 @@ class _FolderState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Folder resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] configured_capabilities: Optional capabilities configured for this folder.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the Folder was created. Assigned by the server.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -308,7 +306,6 @@ class Folder(pulumi.CustomResource):
         $ pulumi import gcp:organizations/folder:Folder default folders/{{folder_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
@@ -354,7 +351,6 @@ class Folder(pulumi.CustomResource):
         $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}
         $ pulumi import gcp:organizations/folder:Folder default folders/{{folder_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param FolderArgs args: The arguments to use to populate this resource's properties.

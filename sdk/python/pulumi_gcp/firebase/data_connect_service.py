@@ -28,7 +28,6 @@ class DataConnectServiceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataConnectService resource.
-
         :param pulumi.Input[_builtins.str] location: The region in which the service resides, e.g. "us-central1" or "asia-east1".
         :param pulumi.Input[_builtins.str] service_id: Required. The ID to use for the service, which will become the final component of the
                service's resource name.
@@ -176,7 +175,6 @@ class _DataConnectServiceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataConnectService resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Stores small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -549,7 +547,6 @@ class DataConnectService(pulumi.CustomResource):
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{location}}/{{service_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Stores small amounts of arbitrary data.
@@ -646,7 +643,6 @@ class DataConnectService(pulumi.CustomResource):
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{project}}/{{location}}/{{service_id}}
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{location}}/{{service_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DataConnectServiceArgs args: The arguments to use to populate this resource's properties.

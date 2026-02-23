@@ -29,7 +29,6 @@ class MirroringDeploymentGroupArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MirroringDeploymentGroup resource.
-
         :param pulumi.Input[_builtins.str] location: The cloud location of the deployment group, currently restricted to `global`.
         :param pulumi.Input[_builtins.str] mirroring_deployment_group_id: The ID to use for the new deployment group, which will become the final
                component of the deployment group's resource name.
@@ -154,7 +153,6 @@ class _MirroringDeploymentGroupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MirroringDeploymentGroup resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['MirroringDeploymentGroupConnectedEndpointGroupArgs']]] connected_endpoint_groups: The list of endpoint groups that are connected to this resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
@@ -490,7 +488,6 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default {{location}}/{{mirroring_deployment_group_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User-provided description of the deployment group.
@@ -560,7 +557,6 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default {{project}}/{{location}}/{{mirroring_deployment_group_id}}
         $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default {{location}}/{{mirroring_deployment_group_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param MirroringDeploymentGroupArgs args: The arguments to use to populate this resource's properties.

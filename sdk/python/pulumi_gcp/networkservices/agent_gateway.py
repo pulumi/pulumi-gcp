@@ -33,7 +33,6 @@ class AgentGatewayArgs:
                  self_managed: Optional[pulumi.Input['AgentGatewaySelfManagedArgs']] = None):
         """
         The set of arguments for constructing a AgentGateway resource.
-
         :param pulumi.Input[_builtins.str] location: The location of the agent gateway.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of protocols supported by an Agent Gateway.
                Each value may be one of: `MCP`.
@@ -230,7 +229,6 @@ class _AgentGatewayState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AgentGateway resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['AgentGatewayAgentGatewayCardArgs']]] agent_gateway_cards: AgentGatewayOutputCard contains informational output-only fields.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
@@ -609,7 +607,6 @@ class AgentGateway(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/agentGateway:AgentGateway default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
@@ -724,7 +721,6 @@ class AgentGateway(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/agentGateway:AgentGateway default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networkservices/agentGateway:AgentGateway default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AgentGatewayArgs args: The arguments to use to populate this resource's properties.

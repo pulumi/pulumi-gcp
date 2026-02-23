@@ -25,7 +25,6 @@ class GoogleChannelConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GoogleChannelConfig resource.
-
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[_builtins.str] name: Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
@@ -100,7 +99,6 @@ class _GoogleChannelConfigState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GoogleChannelConfig resources.
-
         :param pulumi.Input[_builtins.str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
@@ -241,7 +239,6 @@ class GoogleChannelConfig(pulumi.CustomResource):
         $ pulumi import gcp:eventarc/googleChannelConfig:GoogleChannelConfig default {{location}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -304,7 +301,6 @@ class GoogleChannelConfig(pulumi.CustomResource):
         $ pulumi import gcp:eventarc/googleChannelConfig:GoogleChannelConfig default {{project}}/{{location}}
         $ pulumi import gcp:eventarc/googleChannelConfig:GoogleChannelConfig default {{location}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param GoogleChannelConfigArgs args: The arguments to use to populate this resource's properties.

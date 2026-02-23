@@ -28,7 +28,6 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs:
                  location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ManagementFolderSecurityHealthAnalyticsCustomModule resource.
-
         :param pulumi.Input[_builtins.str] folder: Numerical ID of the parent folder.
         :param pulumi.Input['ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
@@ -132,7 +131,6 @@ class _ManagementFolderSecurityHealthAnalyticsCustomModuleState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManagementFolderSecurityHealthAnalyticsCustomModule resources.
-
         :param pulumi.Input[_builtins.str] ancestor_module: If empty, indicates that the custom module was created in the organization, folder,
                or project in which you are viewing the custom module. Otherwise, ancestor_module
                specifies the organization or folder from which the custom module is inherited.
@@ -403,7 +401,6 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
         $ pulumi import gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule default {{folder}}/{{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigArgs', 'ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict']] custom_config: The user specified custom configuration for the module.
@@ -521,7 +518,6 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
         $ pulumi import gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule default folders/{{folder}}/locations/{{location}}/securityHealthAnalyticsCustomModules/{{name}}
         $ pulumi import gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule default {{folder}}/{{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ManagementFolderSecurityHealthAnalyticsCustomModuleArgs args: The arguments to use to populate this resource's properties.

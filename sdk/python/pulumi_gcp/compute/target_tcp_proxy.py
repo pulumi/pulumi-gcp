@@ -27,7 +27,6 @@ class TargetTCPProxyArgs:
                  proxy_header: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TargetTCPProxy resource.
-
         :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -156,7 +155,6 @@ class _TargetTCPProxyState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TargetTCPProxy resources.
-
         :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -382,7 +380,6 @@ class TargetTCPProxy(pulumi.CustomResource):
         $ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource.
@@ -460,7 +457,6 @@ class TargetTCPProxy(pulumi.CustomResource):
         $ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default {{project}}/{{name}}
         $ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param TargetTCPProxyArgs args: The arguments to use to populate this resource's properties.

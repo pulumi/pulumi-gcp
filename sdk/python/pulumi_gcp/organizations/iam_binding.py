@@ -27,7 +27,6 @@ class IAMBindingArgs:
                  condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a IAMBinding resource.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization in which you want to create a custom role.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
@@ -98,7 +97,6 @@ class _IAMBindingState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IAMBinding resources.
-
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the organization's IAM policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization in which you want to create a custom role.
@@ -223,7 +221,6 @@ class IAMBinding(pulumi.CustomResource):
         > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
@@ -272,7 +269,6 @@ class IAMBinding(pulumi.CustomResource):
 
         > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-
 
         :param str resource_name: The name of the resource.
         :param IAMBindingArgs args: The arguments to use to populate this resource's properties.

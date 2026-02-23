@@ -31,7 +31,6 @@ class InsightsConfigArgs:
                  target_projects: Optional[pulumi.Input['InsightsConfigTargetProjectsArgs']] = None):
         """
         The set of arguments for constructing a InsightsConfig resource.
-
         :param pulumi.Input[_builtins.str] insights_config_id: ID of the requesting InsightsConfig.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/148#annotations
@@ -196,7 +195,6 @@ class _InsightsConfigState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InsightsConfig resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/148#annotations
                for more details such as format and size limitations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -781,7 +779,6 @@ class InsightsConfig(pulumi.CustomResource):
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{location}}/{{insights_config_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/148#annotations
@@ -1050,7 +1047,6 @@ class InsightsConfig(pulumi.CustomResource):
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{project}}/{{location}}/{{insights_config_id}}
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{location}}/{{insights_config_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param InsightsConfigArgs args: The arguments to use to populate this resource's properties.

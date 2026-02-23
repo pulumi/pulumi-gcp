@@ -31,7 +31,6 @@ class CollectionArgs:
                  vector_schemas: Optional[pulumi.Input[Sequence[pulumi.Input['CollectionVectorSchemaArgs']]]] = None):
         """
         The set of arguments for constructing a Collection resource.
-
         :param pulumi.Input[_builtins.str] collection_id: ID of the Collection to create.
                The id must be 1-63 characters long, and comply with
                [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
@@ -197,7 +196,6 @@ class _CollectionState:
                  vector_schemas: Optional[pulumi.Input[Sequence[pulumi.Input['CollectionVectorSchemaArgs']]]] = None):
         """
         Input properties used for looking up and filtering Collection resources.
-
         :param pulumi.Input[_builtins.str] collection_id: ID of the Collection to create.
                The id must be 1-63 characters long, and comply with
                [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
@@ -503,7 +501,6 @@ class Collection(pulumi.CustomResource):
         $ pulumi import gcp:vectorsearch/collection:Collection default {{location}}/{{collection_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] collection_id: ID of the Collection to create.
@@ -597,7 +594,6 @@ class Collection(pulumi.CustomResource):
         $ pulumi import gcp:vectorsearch/collection:Collection default {{project}}/{{location}}/{{collection_id}}
         $ pulumi import gcp:vectorsearch/collection:Collection default {{location}}/{{collection_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param CollectionArgs args: The arguments to use to populate this resource's properties.

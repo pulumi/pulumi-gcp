@@ -25,7 +25,6 @@ class RegionalParameterVersionArgs:
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RegionalParameterVersion resource.
-
         :param pulumi.Input[_builtins.str] parameter: Parameter Manager Regional Parameter resource.
         :param pulumi.Input[_builtins.str] parameter_data: The Regional Parameter data.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -102,7 +101,6 @@ class _RegionalParameterVersionState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionalParameterVersion resources.
-
         :param pulumi.Input[_builtins.str] create_time: The time at which the Regional Parameter Version was created.
         :param pulumi.Input[_builtins.bool] disabled: The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
         :param pulumi.Input[_builtins.str] kms_key_version: The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
@@ -361,7 +359,6 @@ class RegionalParameterVersion(pulumi.CustomResource):
         $ pulumi import gcp:parametermanager/regionalParameterVersion:RegionalParameterVersion default projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}/versions/{{parameter_version_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disabled: The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
@@ -478,7 +475,6 @@ class RegionalParameterVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:parametermanager/regionalParameterVersion:RegionalParameterVersion default projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}/versions/{{parameter_version_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RegionalParameterVersionArgs args: The arguments to use to populate this resource's properties.

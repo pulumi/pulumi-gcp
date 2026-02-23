@@ -33,7 +33,6 @@ class AlertPolicyArgs:
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AlertPolicy resource.
-
         :param pulumi.Input[_builtins.str] combiner: How to combine the results of multiple conditions to
                determine if an incident should be opened.
                Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
@@ -259,7 +258,6 @@ class _AlertPolicyState:
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AlertPolicy resources.
-
         :param pulumi.Input['AlertPolicyAlertStrategyArgs'] alert_strategy: Control over how this alert policy's notification channels are notified.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] combiner: How to combine the results of multiple conditions to
@@ -681,7 +679,6 @@ class AlertPolicy(pulumi.CustomResource):
         $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict']] alert_strategy: Control over how this alert policy's notification channels are notified.
@@ -884,7 +881,6 @@ class AlertPolicy(pulumi.CustomResource):
         $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{project}}/{{name}}
         $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AlertPolicyArgs args: The arguments to use to populate this resource's properties.

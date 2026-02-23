@@ -32,7 +32,6 @@ class ProjectBucketConfigArgs:
                  retention_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ProjectBucketConfig resource.
-
         :param pulumi.Input[_builtins.str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
         :param pulumi.Input[_builtins.str] location: The location of the bucket.
         :param pulumi.Input[_builtins.str] project: The parent resource that contains the logging bucket.
@@ -184,7 +183,6 @@ class _ProjectBucketConfigState:
                  retention_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectBucketConfig resources.
-
         :param pulumi.Input[_builtins.str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
         :param pulumi.Input['ProjectBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
         :param pulumi.Input[_builtins.str] description: Describes this bucket.
@@ -478,7 +476,6 @@ class ProjectBucketConfig(pulumi.CustomResource):
         $ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig default projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -605,7 +602,6 @@ class ProjectBucketConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig default projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ProjectBucketConfigArgs args: The arguments to use to populate this resource's properties.

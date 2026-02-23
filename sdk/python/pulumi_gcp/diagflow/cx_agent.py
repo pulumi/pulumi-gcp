@@ -46,7 +46,6 @@ class CxAgentArgs:
                  text_to_speech_settings: Optional[pulumi.Input['CxAgentTextToSpeechSettingsArgs']] = None):
         """
         The set of arguments for constructing a CxAgent resource.
-
         :param pulumi.Input[_builtins.str] default_language_code: The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
                for a list of the currently supported language codes. This field cannot be updated after creation.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the agent, unique within the location.
@@ -489,7 +488,6 @@ class _CxAgentState:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CxAgent resources.
-
         :param pulumi.Input['CxAgentAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
@@ -1135,7 +1133,6 @@ class CxAgent(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxAgent:CxAgent default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
@@ -1339,7 +1336,6 @@ class CxAgent(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxAgent:CxAgent default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:diagflow/cxAgent:CxAgent default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param CxAgentArgs args: The arguments to use to populate this resource's properties.

@@ -32,7 +32,6 @@ class GoogleApiSourceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GoogleApiSource resource.
-
         :param pulumi.Input[_builtins.str] destination: Destination is the message bus that the GoogleApiSource is delivering to.
                It must be point to the full resource name of a MessageBus. Format:
                "projects/{PROJECT_ID}/locations/{region}/messagesBuses/{MESSAGE_BUS_ID)
@@ -216,7 +215,6 @@ class _GoogleApiSourceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GoogleApiSource resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Resource annotations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -580,7 +578,6 @@ class GoogleApiSource(pulumi.CustomResource):
         $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default {{location}}/{{google_api_source_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Resource annotations.
@@ -664,7 +661,6 @@ class GoogleApiSource(pulumi.CustomResource):
         $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default {{project}}/{{location}}/{{google_api_source_id}}
         $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default {{location}}/{{google_api_source_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param GoogleApiSourceArgs args: The arguments to use to populate this resource's properties.

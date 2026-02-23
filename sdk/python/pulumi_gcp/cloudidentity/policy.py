@@ -26,7 +26,6 @@ class PolicyArgs:
                  setting: pulumi.Input['PolicySettingArgs']):
         """
         The set of arguments for constructing a Policy resource.
-
         :param pulumi.Input[_builtins.str] customer: The customer that the Policy belongs to. Format: `customers/{customer_id}`.
         :param pulumi.Input['PolicyPolicyQueryArgs'] policy_query: The PolicyQuery the Setting applies to.
                Structure is documented below.
@@ -85,7 +84,6 @@ class _PolicyState:
                  setting: Optional[pulumi.Input['PolicySettingArgs']] = None):
         """
         Input properties used for looking up and filtering Policy resources.
-
         :param pulumi.Input[_builtins.str] customer: The customer that the Policy belongs to. Format: `customers/{customer_id}`.
         :param pulumi.Input[_builtins.str] name: The resource name of the Policy. Format: `policies/{policy_id}`.
         :param pulumi.Input['PolicyPolicyQueryArgs'] policy_query: The PolicyQuery the Setting applies to.
@@ -214,7 +212,6 @@ class Policy(pulumi.CustomResource):
         $ pulumi import gcp:cloudidentity/policy:Policy default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] customer: The customer that the Policy belongs to. Format: `customers/{customer_id}`.
@@ -279,7 +276,6 @@ class Policy(pulumi.CustomResource):
         $ pulumi import gcp:cloudidentity/policy:Policy default policies/{{name}}
         $ pulumi import gcp:cloudidentity/policy:Policy default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

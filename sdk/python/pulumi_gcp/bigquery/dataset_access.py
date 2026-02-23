@@ -35,7 +35,6 @@ class DatasetAccessInitArgs:
                  view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None):
         """
         The set of arguments for constructing a DatasetAccess resource.
-
         :param pulumi.Input[_builtins.str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
@@ -292,7 +291,6 @@ class _DatasetAccessState:
                  view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None):
         """
         Input properties used for looking up and filtering DatasetAccess resources.
-
         :param pulumi.Input[_builtins.bool] api_updated_member: If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
         :param pulumi.Input['DatasetAccessAuthorizedDatasetArgs'] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
                Structure is documented below.
@@ -690,7 +688,6 @@ class DatasetAccess(pulumi.CustomResource):
 
         This resource does not support import.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
@@ -863,7 +860,6 @@ class DatasetAccess(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
-
 
         :param str resource_name: The name of the resource.
         :param DatasetAccessInitArgs args: The arguments to use to populate this resource's properties.

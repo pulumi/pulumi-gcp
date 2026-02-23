@@ -27,7 +27,6 @@ class MirroringEndpointArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MirroringEndpoint resource.
-
         :param pulumi.Input[_builtins.str] location: The cloud location of the endpoint, e.g. `us-central1-a` or `asia-south1-b`.
         :param pulumi.Input[_builtins.str] mirroring_endpoint_group: The endpoint group that this endpoint belongs to.
                Format is:
@@ -150,7 +149,6 @@ class _MirroringEndpointState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MirroringEndpoint resources.
-
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
                See https://google.aip.dev/148#timestamps.
         :param pulumi.Input[_builtins.str] description: User-provided description of the endpoint.
@@ -460,7 +458,6 @@ class MirroringEndpoint(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default {{location}}/{{mirroring_endpoint_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User-provided description of the endpoint.
@@ -534,7 +531,6 @@ class MirroringEndpoint(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default {{project}}/{{location}}/{{mirroring_endpoint_id}}
         $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default {{location}}/{{mirroring_endpoint_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param MirroringEndpointArgs args: The arguments to use to populate this resource's properties.

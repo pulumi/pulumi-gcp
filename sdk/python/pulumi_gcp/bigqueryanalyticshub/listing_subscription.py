@@ -28,7 +28,6 @@ class ListingSubscriptionArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ListingSubscription resource.
-
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input['ListingSubscriptionDestinationDatasetArgs'] destination_dataset: The destination dataset for this subscription.
                Structure is documented below.
@@ -130,7 +129,6 @@ class _ListingSubscriptionState:
                  subscription_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ListingSubscription resources.
-
         :param pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoArgs']]] commercial_infos: Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_time: Timestamp when the subscription was created.
@@ -532,7 +530,6 @@ class ListingSubscription(pulumi.CustomResource):
         $ pulumi import gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription default {{location}}/{{subscription_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -652,7 +649,6 @@ class ListingSubscription(pulumi.CustomResource):
         $ pulumi import gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription default {{project}}/{{location}}/{{subscription_id}}
         $ pulumi import gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription default {{location}}/{{subscription_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ListingSubscriptionArgs args: The arguments to use to populate this resource's properties.

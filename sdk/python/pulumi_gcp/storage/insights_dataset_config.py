@@ -40,7 +40,6 @@ class InsightsDatasetConfigArgs:
                  source_projects: Optional[pulumi.Input['InsightsDatasetConfigSourceProjectsArgs']] = None):
         """
         The set of arguments for constructing a InsightsDatasetConfig resource.
-
         :param pulumi.Input[_builtins.str] dataset_config_id: The user-defined ID of the DatasetConfig
         :param pulumi.Input['InsightsDatasetConfigIdentityArgs'] identity: Identity used by DatasetConfig.
                Structure is documented below.
@@ -349,7 +348,6 @@ class _InsightsDatasetConfigState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InsightsDatasetConfig resources.
-
         :param pulumi.Input[_builtins.int] activity_data_retention_period_days: Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
         :param pulumi.Input[_builtins.str] create_time: The UTC time at which the DatasetConfig was created. This is auto-populated.
         :param pulumi.Input[_builtins.str] dataset_config_id: The user-defined ID of the DatasetConfig
@@ -844,7 +842,6 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default {{location}}/{{dataset_config_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] activity_data_retention_period_days: Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
@@ -977,7 +974,6 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default {{project}}/{{location}}/{{dataset_config_id}}
         $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default {{location}}/{{dataset_config_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param InsightsDatasetConfigArgs args: The arguments to use to populate this resource's properties.

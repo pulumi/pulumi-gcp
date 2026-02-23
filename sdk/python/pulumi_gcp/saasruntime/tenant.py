@@ -28,7 +28,6 @@ class TenantArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Tenant resource.
-
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] saas: A reference to the Saas that defines the product (managed service) that
                the producer wants to manage with SaaS Runtime. Part of the
@@ -181,7 +180,6 @@ class _TenantState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tenant resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations is an unstructured key-value map stored with a resource that
                may be set by external tools to store and retrieve arbitrary metadata.
                They are not queryable and should be preserved when modifying objects.
@@ -498,7 +496,6 @@ class Tenant(pulumi.CustomResource):
         $ pulumi import gcp:saasruntime/tenant:Tenant default {{location}}/{{tenant_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations is an unstructured key-value map stored with a resource that
@@ -571,7 +568,6 @@ class Tenant(pulumi.CustomResource):
         $ pulumi import gcp:saasruntime/tenant:Tenant default {{project}}/{{location}}/{{tenant_id}}
         $ pulumi import gcp:saasruntime/tenant:Tenant default {{location}}/{{tenant_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param TenantArgs args: The arguments to use to populate this resource's properties.

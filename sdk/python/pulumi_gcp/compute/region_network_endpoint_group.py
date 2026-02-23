@@ -36,7 +36,6 @@ class RegionNetworkEndpointGroupArgs:
                  subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionNetworkEndpointGroup resource.
-
         :param pulumi.Input[_builtins.str] region: A reference to the region where the regional NEGs reside.
         :param pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs'] app_engine: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
@@ -303,7 +302,6 @@ class _RegionNetworkEndpointGroupState:
                  subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionNetworkEndpointGroup resources.
-
         :param pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs'] app_engine: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
@@ -879,7 +877,6 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict']] app_engine: This field is only used for SERVERLESS NEGs.
@@ -1218,7 +1215,6 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{region}}/{{name}}
         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RegionNetworkEndpointGroupArgs args: The arguments to use to populate this resource's properties.

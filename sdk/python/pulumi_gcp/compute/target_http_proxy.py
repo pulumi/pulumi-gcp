@@ -27,7 +27,6 @@ class TargetHttpProxyArgs:
                  proxy_bind: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a TargetHttpProxy resource.
-
         :param pulumi.Input[_builtins.str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -169,7 +168,6 @@ class _TargetHttpProxyState:
                  url_map: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TargetHttpProxy resources.
-
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
@@ -534,7 +532,6 @@ class TargetHttpProxy(pulumi.CustomResource):
         $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -722,7 +719,6 @@ class TargetHttpProxy(pulumi.CustomResource):
         $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{project}}/{{name}}
         $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param TargetHttpProxyArgs args: The arguments to use to populate this resource's properties.

@@ -49,7 +49,6 @@ class ForwardingRuleArgs:
                  target: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ForwardingRule resource.
-
         :param pulumi.Input[_builtins.bool] all_ports: The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
                Only packets addressed to ports in the specified range will be forwarded
                to the backends configured with this forwarding rule.
@@ -834,7 +833,6 @@ class _ForwardingRuleState:
                  target: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ForwardingRule resources.
-
         :param pulumi.Input[_builtins.bool] all_ports: The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
                Only packets addressed to ports in the specified range will be forwarded
                to the backends configured with this forwarding rule.
@@ -2449,7 +2447,6 @@ class ForwardingRule(pulumi.CustomResource):
         $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] all_ports: The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
@@ -3341,7 +3338,6 @@ class ForwardingRule(pulumi.CustomResource):
         $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{region}}/{{name}}
         $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param ForwardingRuleArgs args: The arguments to use to populate this resource's properties.

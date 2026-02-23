@@ -33,7 +33,6 @@ class RegistrationArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Registration resource.
-
         :param pulumi.Input['RegistrationContactSettingsArgs'] contact_settings: Required. Settings for contact information linked to the Registration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] domain_name: Required. The domain name. Unicode domain names must be expressed in Punycode format.
@@ -223,7 +222,6 @@ class _RegistrationState:
                  yearly_price: Optional[pulumi.Input['RegistrationYearlyPriceArgs']] = None):
         """
         Input properties used for looking up and filtering Registration resources.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_notices: The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
         :param pulumi.Input['RegistrationContactSettingsArgs'] contact_settings: Required. Settings for contact information linked to the Registration.
                Structure is documented below.
@@ -645,7 +643,6 @@ class Registration(pulumi.CustomResource):
         $ pulumi import gcp:clouddomains/registration:Registration default {{location}}/{{domain_name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_notices: The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
@@ -770,7 +767,6 @@ class Registration(pulumi.CustomResource):
         $ pulumi import gcp:clouddomains/registration:Registration default {{project}}/{{location}}/{{domain_name}}
         $ pulumi import gcp:clouddomains/registration:Registration default {{location}}/{{domain_name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RegistrationArgs args: The arguments to use to populate this resource's properties.

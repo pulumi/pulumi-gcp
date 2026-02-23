@@ -29,7 +29,6 @@ class PolicyArgs:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Policy resource.
-
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
                - - -
@@ -150,7 +149,6 @@ class _PolicyState:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
-
         :param pulumi.Input['PolicyBooleanPolicyArgs'] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented
                below.
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
@@ -391,7 +389,6 @@ class Policy(pulumi.CustomResource):
 
         It is all right if the constraint contains a slash, as in the example above.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PolicyBooleanPolicyArgs', 'PolicyBooleanPolicyArgsDict']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented
@@ -502,7 +499,6 @@ class Policy(pulumi.CustomResource):
         ```
 
         It is all right if the constraint contains a slash, as in the example above.
-
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

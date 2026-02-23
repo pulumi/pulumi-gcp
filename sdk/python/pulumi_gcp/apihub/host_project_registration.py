@@ -25,7 +25,6 @@ class HostProjectRegistrationArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostProjectRegistration resource.
-
         :param pulumi.Input[_builtins.str] gcp_project: Required. Immutable. Google cloud project name in the format: "projects/abc" or "projects/123".
                As input, project name with either project id or number are accepted.
                As output, this field will contain project number.
@@ -109,7 +108,6 @@ class _HostProjectRegistrationState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostProjectRegistration resources.
-
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which the host project registration was created.
         :param pulumi.Input[_builtins.str] gcp_project: Required. Immutable. Google cloud project name in the format: "projects/abc" or "projects/123".
                As input, project name with either project id or number are accepted.
@@ -282,7 +280,6 @@ class HostProjectRegistration(pulumi.CustomResource):
         $ pulumi import gcp:apihub/hostProjectRegistration:HostProjectRegistration default {{location}}/{{host_project_registration_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] gcp_project: Required. Immutable. Google cloud project name in the format: "projects/abc" or "projects/123".
@@ -353,7 +350,6 @@ class HostProjectRegistration(pulumi.CustomResource):
         $ pulumi import gcp:apihub/hostProjectRegistration:HostProjectRegistration default {{project}}/{{location}}/{{host_project_registration_id}}
         $ pulumi import gcp:apihub/hostProjectRegistration:HostProjectRegistration default {{location}}/{{host_project_registration_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param HostProjectRegistrationArgs args: The arguments to use to populate this resource's properties.

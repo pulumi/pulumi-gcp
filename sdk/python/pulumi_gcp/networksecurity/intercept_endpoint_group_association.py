@@ -29,7 +29,6 @@ class InterceptEndpointGroupAssociationInitArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InterceptEndpointGroupAssociation resource.
-
         :param pulumi.Input[_builtins.str] intercept_endpoint_group: The endpoint group that this association is connected to, for example:
                `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
                See https://google.aip.dev/124.
@@ -158,7 +157,6 @@ class _InterceptEndpointGroupAssociationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InterceptEndpointGroupAssociation resources.
-
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
                See https://google.aip.dev/148#timestamps.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -517,7 +515,6 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default {{location}}/{{intercept_endpoint_group_association_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] intercept_endpoint_group: The endpoint group that this association is connected to, for example:
@@ -598,7 +595,6 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default {{project}}/{{location}}/{{intercept_endpoint_group_association_id}}
         $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default {{location}}/{{intercept_endpoint_group_association_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param InterceptEndpointGroupAssociationInitArgs args: The arguments to use to populate this resource's properties.

@@ -23,7 +23,6 @@ class AccountIamPolicyArgs:
                  policy_data: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AccountIamPolicy resource.
-
         :param pulumi.Input[_builtins.str] billing_account_id: The billing account id.
                
                For `billing.AccountIamMember` or `billing.AccountIamBinding`:
@@ -71,7 +70,6 @@ class _AccountIamPolicyState:
                  policy_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountIamPolicy resources.
-
         :param pulumi.Input[_builtins.str] billing_account_id: The billing account id.
                
                For `billing.AccountIamMember` or `billing.AccountIamBinding`:
@@ -231,7 +229,6 @@ class AccountIamPolicy(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `organizations/my-org-id/roles/my-custom-role`.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_account_id: The billing account id.
@@ -340,7 +337,6 @@ class AccountIamPolicy(pulumi.CustomResource):
 
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `organizations/my-org-id/roles/my-custom-role`.
-
 
         :param str resource_name: The name of the resource.
         :param AccountIamPolicyArgs args: The arguments to use to populate this resource's properties.

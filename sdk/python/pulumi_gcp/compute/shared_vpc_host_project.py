@@ -22,7 +22,6 @@ class SharedVPCHostProjectArgs:
                  project: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SharedVPCHostProject resource.
-
         :param pulumi.Input[_builtins.str] project: The ID of the project that will serve as a Shared VPC host project
         """
         pulumi.set(__self__, "project", project)
@@ -46,7 +45,6 @@ class _SharedVPCHostProjectState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SharedVPCHostProject resources.
-
         :param pulumi.Input[_builtins.str] project: The ID of the project that will serve as a Shared VPC host project
         """
         if project is not None:
@@ -112,7 +110,6 @@ class SharedVPCHostProject(pulumi.CustomResource):
         $ pulumi import gcp:compute/sharedVPCHostProject:SharedVPCHostProject default {{project_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project that will serve as a Shared VPC host project
@@ -161,7 +158,6 @@ class SharedVPCHostProject(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:compute/sharedVPCHostProject:SharedVPCHostProject default {{project_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param SharedVPCHostProjectArgs args: The arguments to use to populate this resource's properties.

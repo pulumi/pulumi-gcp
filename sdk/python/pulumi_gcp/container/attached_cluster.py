@@ -39,7 +39,6 @@ class AttachedClusterArgs:
                  security_posture_config: Optional[pulumi.Input['AttachedClusterSecurityPostureConfigArgs']] = None):
         """
         The set of arguments for constructing a AttachedCluster resource.
-
         :param pulumi.Input[_builtins.str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks", "generic". The generic distribution provides the ability to register
                or migrate any CNCF conformant cluster.
@@ -375,7 +374,6 @@ class _AttachedClusterState:
                  workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering AttachedCluster resources.
-
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same
                restrictions as Kubernetes annotations. The total size of all keys and
                values combined is limited to 256k. Key can have 2 segments: prefix (optional)
@@ -1006,7 +1004,6 @@ class AttachedCluster(pulumi.CustomResource):
         $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{location}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same
@@ -1198,7 +1195,6 @@ class AttachedCluster(pulumi.CustomResource):
         $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{location}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param AttachedClusterArgs args: The arguments to use to populate this resource's properties.

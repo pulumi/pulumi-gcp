@@ -54,7 +54,6 @@ class DiskArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Disk resource.
-
         :param pulumi.Input[_builtins.str] access_mode: The access mode of the disk.
                For example:
                * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
@@ -776,7 +775,6 @@ class _DiskState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Disk resources.
-
         :param pulumi.Input[_builtins.str] access_mode: The access mode of the disk.
                For example:
                * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
@@ -1825,7 +1823,6 @@ class Disk(pulumi.CustomResource):
         $ pulumi import gcp:compute/disk:Disk default {{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_mode: The access mode of the disk.
@@ -2072,7 +2069,6 @@ class Disk(pulumi.CustomResource):
         $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
         $ pulumi import gcp:compute/disk:Disk default {{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param DiskArgs args: The arguments to use to populate this resource's properties.

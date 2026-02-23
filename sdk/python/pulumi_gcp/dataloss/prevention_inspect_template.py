@@ -28,7 +28,6 @@ class PreventionInspectTemplateArgs:
                  template_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PreventionInspectTemplate resource.
-
         :param pulumi.Input[_builtins.str] parent: The parent of the inspect template in any of the following formats:
                * `projects/{{project}}`
                * `projects/{{project}}/locations/{{location}}`
@@ -131,7 +130,6 @@ class _PreventionInspectTemplateState:
                  template_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PreventionInspectTemplate resources.
-
         :param pulumi.Input[_builtins.str] description: A description of the inspect template.
         :param pulumi.Input[_builtins.str] display_name: User set display name of the inspect template.
         :param pulumi.Input['PreventionInspectTemplateInspectConfigArgs'] inspect_config: The core content of the template.
@@ -542,7 +540,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/{{name}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the inspect template.
@@ -854,7 +851,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/inspectTemplates/{{name}}
         $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/{{name}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param PreventionInspectTemplateArgs args: The arguments to use to populate this resource's properties.

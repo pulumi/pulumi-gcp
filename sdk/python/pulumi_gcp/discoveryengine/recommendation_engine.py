@@ -31,7 +31,6 @@ class RecommendationEngineArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RecommendationEngine resource.
-
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[_builtins.str] engine_id: Unique ID to use for Recommendation Engine.
@@ -181,7 +180,6 @@ class _RecommendationEngineState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RecommendationEngine resources.
-
         :param pulumi.Input['RecommendationEngineCommonConfigArgs'] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp the Engine was created at.
@@ -471,7 +469,6 @@ class RecommendationEngine(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/recommendationEngine:RecommendationEngine default {{location}}/{{engine_id}}
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RecommendationEngineCommonConfigArgs', 'RecommendationEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
@@ -583,7 +580,6 @@ class RecommendationEngine(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/recommendationEngine:RecommendationEngine default {{project}}/{{location}}/{{engine_id}}
         $ pulumi import gcp:discoveryengine/recommendationEngine:RecommendationEngine default {{location}}/{{engine_id}}
         ```
-
 
         :param str resource_name: The name of the resource.
         :param RecommendationEngineArgs args: The arguments to use to populate this resource's properties.
