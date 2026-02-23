@@ -380,22 +380,14 @@ import (
 // HttpRoute can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/global/httpRoutes/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, HttpRoute can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/httpRoute:HttpRoute default projects/{{project}}/locations/global/httpRoutes/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/httpRoute:HttpRoute default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/httpRoute:HttpRoute default {{name}}
 // ```
 type HttpRoute struct {
@@ -426,7 +418,7 @@ type HttpRoute struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -503,7 +495,7 @@ type httpRouteState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -540,7 +532,7 @@ type HttpRouteState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -747,7 +739,8 @@ func (o HttpRouteOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o HttpRouteOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HttpRoute) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

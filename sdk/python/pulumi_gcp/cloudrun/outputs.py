@@ -150,6 +150,8 @@ class DomainMappingMetadata(dict):
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param Mapping[str, _builtins.str] effective_annotations: (Output)
+               All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param Mapping[str, _builtins.str] effective_labels: (Output)
                All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param _builtins.int generation: (Output)
@@ -160,9 +162,8 @@ class DomainMappingMetadata(dict):
                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param Mapping[str, _builtins.str] pulumi_labels: (Output)
-               The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+        :param Mapping[str, _builtins.str] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
         :param _builtins.str resource_version: (Output)
                An opaque value that represents the internal version of this object that
                can be used by clients to determine when objects have changed. May be used
@@ -225,6 +226,10 @@ class DomainMappingMetadata(dict):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Output)
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
@@ -262,9 +267,8 @@ class DomainMappingMetadata(dict):
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        (Output)
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -701,6 +705,8 @@ class ServiceMetadata(dict):
                - `run.googleapis.com/manualInstanceCount` sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param Mapping[str, _builtins.str] effective_annotations: (Output)
+               All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param Mapping[str, _builtins.str] effective_labels: (Output)
                All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param _builtins.int generation: (Output)
@@ -712,9 +718,8 @@ class ServiceMetadata(dict):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param _builtins.str namespace: In Cloud Run the namespace must be equal to either the
                project ID or project number.
-        :param Mapping[str, _builtins.str] pulumi_labels: (Output)
-               The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+        :param Mapping[str, _builtins.str] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
         :param _builtins.str resource_version: (Output)
                An opaque value that represents the internal version of this object that
                can be used by clients to determine when objects have changed. May be used
@@ -781,6 +786,10 @@ class ServiceMetadata(dict):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Output)
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
@@ -826,9 +835,8 @@ class ServiceMetadata(dict):
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        (Output)
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -3568,6 +3576,35 @@ class GetServiceMetadataResult(dict):
                  self_link: _builtins.str,
                  uid: _builtins.str):
         """
+        :param Mapping[str, _builtins.str] annotations: Annotations is a key value map stored with a resource that
+               may be set by external tools to store and retrieve arbitrary metadata.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+               
+               **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+               If terraform plan shows a diff where a server-side annotation is added, you can add it to your config
+               or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+               
+               Annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted. Use the following annotation
+               keys to configure features on a Service:
+               
+               - 'run.googleapis.com/binary-authorization-breakglass' sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
+               - 'run.googleapis.com/binary-authorization' sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
+               - 'run.googleapis.com/client-name' sets the client name calling the Cloud Run API.
+               - 'run.googleapis.com/custom-audiences' sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
+                 that can be used in the audience field of ID token for authenticated requests.
+               - 'run.googleapis.com/description' sets a user defined description for the Service.
+               - 'run.googleapis.com/ingress' sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+                 for the Service. For example, '"run.googleapis.com/ingress" = "all"'.
+               - 'run.googleapis.com/launch-stage' sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
+                 when a preview feature is used. For example, '"run.googleapis.com/launch-stage": "BETA"'
+               - 'run.googleapis.com/minScale' sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
+               - 'run.googleapis.com/scalingMode' sets the type of scaling mode for the service. The supported values for scaling mode are "manual" and "automatic". If not provided, it defaults to "automatic".
+               - 'run.googleapis.com/manualInstanceCount' sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+        :param Mapping[str, _builtins.str] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.int generation: A sequence number representing a specific generation of the desired state.
         :param Mapping[str, _builtins.str] labels: Map of string keys and values that can be used to organize and categorize
                (scope and select) objects. May match selectors of replication controllers
@@ -3602,16 +3639,51 @@ class GetServiceMetadataResult(dict):
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> Mapping[str, _builtins.str]:
+        """
+        Annotations is a key value map stored with a resource that
+        may be set by external tools to store and retrieve arbitrary metadata.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+
+        **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+        If terraform plan shows a diff where a server-side annotation is added, you can add it to your config
+        or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+
+        Annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted. Use the following annotation
+        keys to configure features on a Service:
+
+        - 'run.googleapis.com/binary-authorization-breakglass' sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
+        - 'run.googleapis.com/binary-authorization' sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
+        - 'run.googleapis.com/client-name' sets the client name calling the Cloud Run API.
+        - 'run.googleapis.com/custom-audiences' sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
+          that can be used in the audience field of ID token for authenticated requests.
+        - 'run.googleapis.com/description' sets a user defined description for the Service.
+        - 'run.googleapis.com/ingress' sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+          for the Service. For example, '"run.googleapis.com/ingress" = "all"'.
+        - 'run.googleapis.com/launch-stage' sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
+          when a preview feature is used. For example, '"run.googleapis.com/launch-stage": "BETA"'
+        - 'run.googleapis.com/minScale' sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
+        - 'run.googleapis.com/scalingMode' sets the type of scaling mode for the service. The supported values for scaling mode are "manual" and "automatic". If not provided, it defaults to "automatic".
+        - 'run.googleapis.com/manualInstanceCount' sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+        """
         return pulumi.get(self, "annotations")
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Mapping[str, _builtins.str]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property
@@ -3954,6 +4026,52 @@ class GetServiceTemplateMetadataResult(dict):
                  self_link: _builtins.str,
                  uid: _builtins.str):
         """
+        :param Mapping[str, _builtins.str] annotations: Annotations is a key value map stored with a resource that
+               may be set by external tools to store and retrieve arbitrary metadata.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+               
+               **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+               If terraform plan shows a diff where a server-side annotation is added, you can add it to your config
+               or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+               
+               Annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted. Use the following annotation
+               keys to configure features on a Revision template:
+               
+               - 'autoscaling.knative.dev/maxScale' sets the [maximum number of container
+                 instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--max-instances) of the Revision to run.
+               - 'autoscaling.knative.dev/minScale' sets the [minimum number of container
+                 instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min-instances) of the Revision to run.
+               - 'run.googleapis.com/client-name' sets the client name calling the Cloud Run API.
+               - 'run.googleapis.com/cloudsql-instances' sets the [Cloud SQL
+                 instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--add-cloudsql-instances) the Revision connects to.
+               - 'run.googleapis.com/cpu-throttling' sets whether to throttle the CPU when the container is not actively serving
+                 requests. See https://cloud.google.com/sdk/gcloud/reference/run/deploy#--[no-]cpu-throttling.
+               - 'run.googleapis.com/encryption-key-shutdown-hours' sets the number of hours to wait before an automatic shutdown
+                 server after CMEK key revocation is detected.
+               - 'run.googleapis.com/encryption-key' sets the [CMEK key](https://cloud.google.com/run/docs/securing/using-cmek)
+                 reference to encrypt the container with.
+               - 'run.googleapis.com/execution-environment' sets the [execution
+                 environment](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--execution-environment)
+                 where the application will run.
+               - 'run.googleapis.com/post-key-revocation-action-type' sets the
+                 [action type](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--post-key-revocation-action-type)
+                 after CMEK key revocation.
+               - 'run.googleapis.com/secrets' sets a list of key-value pairs to set as
+                 [secrets](https://cloud.google.com/run/docs/configuring/secrets#yaml).
+               - 'run.googleapis.com/sessionAffinity' sets whether to enable
+                 [session affinity](https://cloud.google.com/sdk/gcloud/reference/beta/run/deploy#--[no-]session-affinity)
+                 for connections to the Revision.
+               - 'run.googleapis.com/startup-cpu-boost' sets whether to allocate extra CPU to containers on startup.
+                 See https://cloud.google.com/sdk/gcloud/reference/run/deploy#--[no-]cpu-boost.
+               - 'run.googleapis.com/network-interfaces' sets [Direct VPC egress](https://cloud.google.com/run/docs/configuring/vpc-direct-vpc#yaml)
+                 for the Revision.
+               - 'run.googleapis.com/vpc-access-connector' sets a [VPC connector](https://cloud.google.com/run/docs/configuring/connecting-vpc#terraform_1)
+                 for the Revision.
+               - 'run.googleapis.com/vpc-access-egress' sets the outbound traffic to send through the VPC connector for this resource.
+                 See https://cloud.google.com/sdk/gcloud/reference/run/deploy#--vpc-egress.
+               - 'run.googleapis.com/gpu-zonal-redundancy-disabled' sets
+                 [GPU zonal redundancy](https://cloud.google.com/run/docs/configuring/services/gpu-zonal-redundancy) for the Revision.
+               - 'run.googleapis.com/health-check-disabled' disabled health checking containers during deployment.
         :param _builtins.int generation: A sequence number representing a specific generation of the desired state.
         :param Mapping[str, _builtins.str] labels: Map of string keys and values that can be used to organize and categorize
                (scope and select) objects.
@@ -3981,6 +4099,54 @@ class GetServiceTemplateMetadataResult(dict):
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> Mapping[str, _builtins.str]:
+        """
+        Annotations is a key value map stored with a resource that
+        may be set by external tools to store and retrieve arbitrary metadata.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+
+        **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+        If terraform plan shows a diff where a server-side annotation is added, you can add it to your config
+        or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+
+        Annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted. Use the following annotation
+        keys to configure features on a Revision template:
+
+        - 'autoscaling.knative.dev/maxScale' sets the [maximum number of container
+          instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--max-instances) of the Revision to run.
+        - 'autoscaling.knative.dev/minScale' sets the [minimum number of container
+          instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min-instances) of the Revision to run.
+        - 'run.googleapis.com/client-name' sets the client name calling the Cloud Run API.
+        - 'run.googleapis.com/cloudsql-instances' sets the [Cloud SQL
+          instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--add-cloudsql-instances) the Revision connects to.
+        - 'run.googleapis.com/cpu-throttling' sets whether to throttle the CPU when the container is not actively serving
+          requests. See https://cloud.google.com/sdk/gcloud/reference/run/deploy#--[no-]cpu-throttling.
+        - 'run.googleapis.com/encryption-key-shutdown-hours' sets the number of hours to wait before an automatic shutdown
+          server after CMEK key revocation is detected.
+        - 'run.googleapis.com/encryption-key' sets the [CMEK key](https://cloud.google.com/run/docs/securing/using-cmek)
+          reference to encrypt the container with.
+        - 'run.googleapis.com/execution-environment' sets the [execution
+          environment](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--execution-environment)
+          where the application will run.
+        - 'run.googleapis.com/post-key-revocation-action-type' sets the
+          [action type](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--post-key-revocation-action-type)
+          after CMEK key revocation.
+        - 'run.googleapis.com/secrets' sets a list of key-value pairs to set as
+          [secrets](https://cloud.google.com/run/docs/configuring/secrets#yaml).
+        - 'run.googleapis.com/sessionAffinity' sets whether to enable
+          [session affinity](https://cloud.google.com/sdk/gcloud/reference/beta/run/deploy#--[no-]session-affinity)
+          for connections to the Revision.
+        - 'run.googleapis.com/startup-cpu-boost' sets whether to allocate extra CPU to containers on startup.
+          See https://cloud.google.com/sdk/gcloud/reference/run/deploy#--[no-]cpu-boost.
+        - 'run.googleapis.com/network-interfaces' sets [Direct VPC egress](https://cloud.google.com/run/docs/configuring/vpc-direct-vpc#yaml)
+          for the Revision.
+        - 'run.googleapis.com/vpc-access-connector' sets a [VPC connector](https://cloud.google.com/run/docs/configuring/connecting-vpc#terraform_1)
+          for the Revision.
+        - 'run.googleapis.com/vpc-access-egress' sets the outbound traffic to send through the VPC connector for this resource.
+          See https://cloud.google.com/sdk/gcloud/reference/run/deploy#--vpc-egress.
+        - 'run.googleapis.com/gpu-zonal-redundancy-disabled' sets
+          [GPU zonal redundancy](https://cloud.google.com/run/docs/configuring/services/gpu-zonal-redundancy) for the Revision.
+        - 'run.googleapis.com/health-check-disabled' disabled health checking containers during deployment.
+        """
         return pulumi.get(self, "annotations")
 
     @_builtins.property

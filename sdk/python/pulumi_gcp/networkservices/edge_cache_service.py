@@ -286,7 +286,7 @@ class _EdgeCacheServiceState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
                Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
                You must have at least one (1) edgeSslCertificate specified to enable this.
@@ -486,7 +486,7 @@ class _EdgeCacheServiceState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -934,22 +934,14 @@ class EdgeCacheService(pulumi.CustomResource):
         EdgeCacheService can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/edgeCacheServices/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, EdgeCacheService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default projects/{{project}}/locations/global/edgeCacheServices/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default {{name}}
         ```
 
@@ -1367,22 +1359,14 @@ class EdgeCacheService(pulumi.CustomResource):
         EdgeCacheService can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/edgeCacheServices/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, EdgeCacheService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default projects/{{project}}/locations/global/edgeCacheServices/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default {{name}}
         ```
 
@@ -1497,7 +1481,7 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
                Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
                You must have at least one (1) edgeSslCertificate specified to enable this.
@@ -1638,7 +1622,7 @@ class EdgeCacheService(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

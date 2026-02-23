@@ -303,22 +303,14 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         GlobalNetworkEndpointGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/networkEndpointGroups/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, GlobalNetworkEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default projects/{{project}}/global/networkEndpointGroups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{name}}
         ```
 
@@ -390,22 +382,14 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         GlobalNetworkEndpointGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/networkEndpointGroups/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, GlobalNetworkEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default projects/{{project}}/global/networkEndpointGroups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{name}}
         ```
 

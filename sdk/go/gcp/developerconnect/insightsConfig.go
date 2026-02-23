@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("dci-tf-_10393"),
+//				ProjectId:      pulumi.String("dci-tf-_3684"),
 //				Name:           pulumi.String("Service Project"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
@@ -174,7 +174,7 @@ import (
 //			}
 //			myApphubApplication, err := apphub.NewApplication(ctx, "my_apphub_application", &apphub.ApplicationArgs{
 //				Location:      pulumi.String("us-central1"),
-//				ApplicationId: pulumi.String("tf-test-example-application_33052"),
+//				ApplicationId: pulumi.String("tf-test-example-application_10719"),
 //				Scope: &apphub.ApplicationScopeArgs{
 //					Type: pulumi.String("REGIONAL"),
 //				},
@@ -198,11 +198,203 @@ import (
 //			}
 //			_, err = developerconnect.NewInsightsConfig(ctx, "insights_config", &developerconnect.InsightsConfigArgs{
 //				Location:          pulumi.String("us-central1"),
-//				InsightsConfigId:  pulumi.String("tf-test-ic_3684"),
+//				InsightsConfigId:  pulumi.String("tf-test-ic-apphub-_1443"),
 //				Project:           project.ProjectId,
 //				Annotations:       pulumi.StringMap{},
 //				Labels:            pulumi.StringMap{},
 //				AppHubApplication: pulumi.String(invokeFormat.Result),
+//				ArtifactConfigs: developerconnect.InsightsConfigArtifactConfigArray{
+//					&developerconnect.InsightsConfigArtifactConfigArgs{
+//						GoogleArtifactAnalysis: &developerconnect.InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs{
+//							ProjectId: project.ProjectId,
+//						},
+//						GoogleArtifactRegistry: &developerconnect.InsightsConfigArtifactConfigGoogleArtifactRegistryArgs{
+//							ArtifactRegistryPackage: pulumi.String("my-package"),
+//							ProjectId:               project.ProjectId,
+//						},
+//						Uri: pulumi.String("us-docker.pkg.dev/my-project/my-repo/my-image"),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				waitForPropagation,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Developer Connect Insights Config Projects
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("dci-tf-_26032"),
+//				Name:           pulumi.String("Service Project"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//				DeletionPolicy: pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Grant Permissions
+//			apphubPermissions, err := projects.NewIAMMember(ctx, "apphub_permissions", &projects.IAMMemberArgs{
+//				Project: project.ProjectId,
+//				Role:    pulumi.String("roles/apphub.admin"),
+//				Member:  pulumi.String("serviceAccount:hashicorp-test-runner@ci-test-project-188019.iam.gserviceaccount.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			insightsAgent, err := projects.NewIAMMember(ctx, "insights_agent", &projects.IAMMemberArgs{
+//				Project: project.ProjectId,
+//				Role:    pulumi.String("roles/developerconnect.insightsAgent"),
+//				Member:  pulumi.String("serviceAccount:66214305248-compute@developer.gserviceaccount.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Enable APIs
+//			apphubApiService, err := projects.NewService(ctx, "apphub_api_service", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("apphub.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			containeranalysisApi, err := projects.NewService(ctx, "containeranalysis_api", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("containeranalysis.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			containerscanningApi, err := projects.NewService(ctx, "containerscanning_api", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("containerscanning.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			containerApi, err := projects.NewService(ctx, "container_api", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("container.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			artifactregistryApi, err := projects.NewService(ctx, "artifactregistry_api", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("artifactregistry.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			cloudbuildApi, err := projects.NewService(ctx, "cloudbuild_api", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("cloudbuild.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			cloudassetApi, err := projects.NewService(ctx, "cloudasset_api", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("cloudasset.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			computeApi, err := projects.NewService(ctx, "compute_api", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("compute.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			devconnectApi, err := projects.NewService(ctx, "devconnect_api", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("developerconnect.googleapis.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// Wait delay after enabling APIs and granting permissions
+//			waitForPropagation, err := time.NewSleep(ctx, "wait_for_propagation", &time.SleepArgs{
+//				CreateDuration: pulumi.String("120s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apphubPermissions,
+//				insightsAgent,
+//				apphubApiService,
+//				containeranalysisApi,
+//				containerscanningApi,
+//				containerApi,
+//				artifactregistryApi,
+//				artifactregistryApi,
+//				cloudbuildApi,
+//				cloudassetApi,
+//				computeApi,
+//				devconnectApi,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = developerconnect.NewInsightsConfig(ctx, "insights_config_projects", &developerconnect.InsightsConfigArgs{
+//				Location:         pulumi.String("us-central1"),
+//				InsightsConfigId: pulumi.String("tf-test-ic-projects-_8647"),
+//				Project:          project.ProjectId,
+//				Annotations:      pulumi.StringMap{},
+//				Labels:           pulumi.StringMap{},
+//				TargetProjects: &developerconnect.InsightsConfigTargetProjectsArgs{
+//					ProjectIds: pulumi.StringArray{
+//						project.ProjectId.ApplyT(func(projectId string) (string, error) {
+//							return fmt.Sprintf("projects/%v", projectId), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
 //				ArtifactConfigs: developerconnect.InsightsConfigArtifactConfigArray{
 //					&developerconnect.InsightsConfigArtifactConfigArgs{
 //						GoogleArtifactAnalysis: &developerconnect.InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs{
@@ -232,22 +424,14 @@ import (
 // InsightsConfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}`
-//
 // * `{{project}}/{{location}}/{{insights_config_id}}`
-//
 // * `{{location}}/{{insights_config_id}}`
 //
 // When using the `pulumi import` command, InsightsConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{project}}/{{location}}/{{insights_config_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{location}}/{{insights_config_id}}
 // ```
 type InsightsConfig struct {
@@ -261,12 +445,13 @@ type InsightsConfig struct {
 	// The name of the App Hub Application.
 	// Format:
 	// projects/{project}/locations/{location}/applications/{application}
-	AppHubApplication pulumi.StringOutput `pulumi:"appHubApplication"`
+	AppHubApplication pulumi.StringPtrOutput `pulumi:"appHubApplication"`
 	// The artifact configurations of the artifacts that are deployed.
 	// Structure is documented below.
 	ArtifactConfigs InsightsConfigArtifactConfigArrayOutput `pulumi:"artifactConfigs"`
 	// [Output only] Create timestamp
-	CreateTime           pulumi.StringOutput    `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -292,7 +477,7 @@ type InsightsConfig struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Reconciling (https://google.aip.dev/128#reconciliation).
 	// Set to true if the current state of InsightsConfig does not match the
@@ -310,6 +495,9 @@ type InsightsConfig struct {
 	// LINKED
 	// UNLINKED
 	State pulumi.StringOutput `pulumi:"state"`
+	// The projects to track with the InsightsConfig.
+	// Structure is documented below.
+	TargetProjects InsightsConfigTargetProjectsPtrOutput `pulumi:"targetProjects"`
 	// [Output only] Update timestamp
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -321,9 +509,6 @@ func NewInsightsConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AppHubApplication == nil {
-		return nil, errors.New("invalid value for required argument 'AppHubApplication'")
-	}
 	if args.InsightsConfigId == nil {
 		return nil, errors.New("invalid value for required argument 'InsightsConfigId'")
 	}
@@ -371,7 +556,8 @@ type insightsConfigState struct {
 	// Structure is documented below.
 	ArtifactConfigs []InsightsConfigArtifactConfig `pulumi:"artifactConfigs"`
 	// [Output only] Create timestamp
-	CreateTime           *string           `pulumi:"createTime"`
+	CreateTime *string `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -397,7 +583,7 @@ type insightsConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Reconciling (https://google.aip.dev/128#reconciliation).
 	// Set to true if the current state of InsightsConfig does not match the
@@ -415,6 +601,9 @@ type insightsConfigState struct {
 	// LINKED
 	// UNLINKED
 	State *string `pulumi:"state"`
+	// The projects to track with the InsightsConfig.
+	// Structure is documented below.
+	TargetProjects *InsightsConfigTargetProjects `pulumi:"targetProjects"`
 	// [Output only] Update timestamp
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -433,7 +622,8 @@ type InsightsConfigState struct {
 	// Structure is documented below.
 	ArtifactConfigs InsightsConfigArtifactConfigArrayInput
 	// [Output only] Create timestamp
-	CreateTime           pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -459,7 +649,7 @@ type InsightsConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Reconciling (https://google.aip.dev/128#reconciliation).
 	// Set to true if the current state of InsightsConfig does not match the
@@ -477,6 +667,9 @@ type InsightsConfigState struct {
 	// LINKED
 	// UNLINKED
 	State pulumi.StringPtrInput
+	// The projects to track with the InsightsConfig.
+	// Structure is documented below.
+	TargetProjects InsightsConfigTargetProjectsPtrInput
 	// [Output only] Update timestamp
 	UpdateTime pulumi.StringPtrInput
 }
@@ -494,7 +687,7 @@ type insightsConfigArgs struct {
 	// The name of the App Hub Application.
 	// Format:
 	// projects/{project}/locations/{location}/applications/{application}
-	AppHubApplication string `pulumi:"appHubApplication"`
+	AppHubApplication *string `pulumi:"appHubApplication"`
 	// The artifact configurations of the artifacts that are deployed.
 	// Structure is documented below.
 	ArtifactConfigs []InsightsConfigArtifactConfig `pulumi:"artifactConfigs"`
@@ -509,6 +702,9 @@ type insightsConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The projects to track with the InsightsConfig.
+	// Structure is documented below.
+	TargetProjects *InsightsConfigTargetProjects `pulumi:"targetProjects"`
 }
 
 // The set of arguments for constructing a InsightsConfig resource.
@@ -521,7 +717,7 @@ type InsightsConfigArgs struct {
 	// The name of the App Hub Application.
 	// Format:
 	// projects/{project}/locations/{location}/applications/{application}
-	AppHubApplication pulumi.StringInput
+	AppHubApplication pulumi.StringPtrInput
 	// The artifact configurations of the artifacts that are deployed.
 	// Structure is documented below.
 	ArtifactConfigs InsightsConfigArtifactConfigArrayInput
@@ -536,6 +732,9 @@ type InsightsConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The projects to track with the InsightsConfig.
+	// Structure is documented below.
+	TargetProjects InsightsConfigTargetProjectsPtrInput
 }
 
 func (InsightsConfigArgs) ElementType() reflect.Type {
@@ -636,8 +835,8 @@ func (o InsightsConfigOutput) Annotations() pulumi.StringMapOutput {
 // The name of the App Hub Application.
 // Format:
 // projects/{project}/locations/{location}/applications/{application}
-func (o InsightsConfigOutput) AppHubApplication() pulumi.StringOutput {
-	return o.ApplyT(func(v *InsightsConfig) pulumi.StringOutput { return v.AppHubApplication }).(pulumi.StringOutput)
+func (o InsightsConfigOutput) AppHubApplication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsConfig) pulumi.StringPtrOutput { return v.AppHubApplication }).(pulumi.StringPtrOutput)
 }
 
 // The artifact configurations of the artifacts that are deployed.
@@ -651,6 +850,7 @@ func (o InsightsConfigOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *InsightsConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o InsightsConfigOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InsightsConfig) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -700,7 +900,8 @@ func (o InsightsConfigOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InsightsConfigOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InsightsConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
@@ -728,6 +929,12 @@ func (o InsightsConfigOutput) RuntimeConfigs() InsightsConfigRuntimeConfigArrayO
 // UNLINKED
 func (o InsightsConfigOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *InsightsConfig) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The projects to track with the InsightsConfig.
+// Structure is documented below.
+func (o InsightsConfigOutput) TargetProjects() InsightsConfigTargetProjectsPtrOutput {
+	return o.ApplyT(func(v *InsightsConfig) InsightsConfigTargetProjectsPtrOutput { return v.TargetProjects }).(InsightsConfigTargetProjectsPtrOutput)
 }
 
 // [Output only] Update timestamp

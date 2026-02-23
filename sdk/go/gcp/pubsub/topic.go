@@ -504,22 +504,14 @@ import (
 // Topic can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/topics/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:pubsub/topic:Topic default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:pubsub/topic:Topic default {{name}}
 // ```
 type Topic struct {
@@ -565,7 +557,7 @@ type Topic struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
@@ -656,7 +648,7 @@ type topicState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
@@ -713,7 +705,7 @@ type TopicState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
@@ -992,7 +984,8 @@ func (o TopicOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o TopicOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

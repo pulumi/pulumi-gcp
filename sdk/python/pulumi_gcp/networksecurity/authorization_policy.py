@@ -181,7 +181,7 @@ class _AuthorizationPolicyState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
                A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
                Structure is documented below.
@@ -316,7 +316,7 @@ class _AuthorizationPolicyState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -366,6 +366,15 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPolicyRuleArgs', 'AuthorizationPolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         """
+        AuthorizationPolicy is a resource that specifies how a server should authorize incoming connections. This resource in itself does not change the configuration unless it's attached to a target https proxy or endpoint config selector resource.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about AuthorizationPolicy, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.authorizationPolicies)
+
         ## Example Usage
 
         ### Network Security Authorization Policy Basic
@@ -423,22 +432,14 @@ class AuthorizationPolicy(pulumi.CustomResource):
         AuthorizationPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, AuthorizationPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{location}}/{{name}}
         ```
 
@@ -466,6 +467,15 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  args: AuthorizationPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        AuthorizationPolicy is a resource that specifies how a server should authorize incoming connections. This resource in itself does not change the configuration unless it's attached to a target https proxy or endpoint config selector resource.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about AuthorizationPolicy, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.authorizationPolicies)
+
         ## Example Usage
 
         ### Network Security Authorization Policy Basic
@@ -523,22 +533,14 @@ class AuthorizationPolicy(pulumi.CustomResource):
         AuthorizationPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, AuthorizationPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{location}}/{{name}}
         ```
 
@@ -630,7 +632,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPolicyRuleArgs', 'AuthorizationPolicyRuleArgsDict']]]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
                A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
                Structure is documented below.
@@ -727,7 +729,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

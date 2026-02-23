@@ -81,6 +81,13 @@ __all__ = [
     'GetDataSourceDataSourceGcpResourceResult',
     'GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyResult',
     'GetDataSourceReferencesDataSourceReferenceResult',
+    'GetDataSourcesDataSourceResult',
+    'GetDataSourcesDataSourceBackupConfigInfoResult',
+    'GetDataSourcesDataSourceBackupConfigInfoBackupApplianceBackupConfigResult',
+    'GetDataSourcesDataSourceBackupConfigInfoGcpBackupConfigResult',
+    'GetDataSourcesDataSourceDataSourceBackupApplianceApplicationResult',
+    'GetDataSourcesDataSourceDataSourceGcpResourceResult',
+    'GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyResult',
     'GetManagementServerManagementUriResult',
     'GetManagementServerNetworkResult',
 ]
@@ -2295,7 +2302,10 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessC
         :param _builtins.str external_ip: (Optional)
         :param _builtins.str external_ipv6: (Optional)
         :param _builtins.int external_ipv6_prefix_length: (Optional)
-        :param _builtins.str name: Required. The resource name of the backup instance.
+        :param _builtins.str name: (Optional, Deprecated)
+               The resource name of the backup instance.
+               
+               > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         :param _builtins.str network_tier: Possible values: ["NETWORK_TIER_UNSPECIFIED", "PREMIUM", "STANDARD"]
         :param _builtins.str public_ptr_domain_name: (Optional)
         :param _builtins.bool set_public_ptr: (Optional)
@@ -2346,7 +2356,10 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessC
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Required. The resource name of the backup instance.
+        (Optional, Deprecated)
+        The resource name of the backup instance.
+
+        > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         """
         return pulumi.get(self, "name")
 
@@ -4307,7 +4320,7 @@ class GetDataSourceDataSourceGcpResourceResult(dict):
         :param _builtins.str gcp_resourcename: Full resource pathname URL of the source Google Cloud resource.
         :param _builtins.str location: The location in which the Data Source belongs.
         :param _builtins.str type: The type of the Google Cloud resource. Use the Unified Resource Type,
-               						eg. compute.googleapis.com/Instance.
+               					eg. compute.googleapis.com/Instance.
         """
         pulumi.set(__self__, "compute_instance_data_source_properties", compute_instance_data_source_properties)
         pulumi.set(__self__, "gcp_resourcename", gcp_resourcename)
@@ -4343,7 +4356,7 @@ class GetDataSourceDataSourceGcpResourceResult(dict):
     def type(self) -> _builtins.str:
         """
         The type of the Google Cloud resource. Use the Unified Resource Type,
-        						eg. compute.googleapis.com/Instance.
+        					eg. compute.googleapis.com/Instance.
         """
         return pulumi.get(self, "type")
 
@@ -4499,6 +4512,551 @@ class GetDataSourceReferencesDataSourceReferenceResult(dict):
         The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
         """
         return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class GetDataSourcesDataSourceResult(dict):
+    def __init__(__self__, *,
+                 backup_config_infos: Sequence['outputs.GetDataSourcesDataSourceBackupConfigInfoResult'],
+                 backup_count: _builtins.str,
+                 config_state: _builtins.str,
+                 create_time: _builtins.str,
+                 data_source_backup_appliance_applications: Sequence['outputs.GetDataSourcesDataSourceDataSourceBackupApplianceApplicationResult'],
+                 data_source_gcp_resources: Sequence['outputs.GetDataSourcesDataSourceDataSourceGcpResourceResult'],
+                 etag: _builtins.str,
+                 labels: Mapping[str, _builtins.str],
+                 name: _builtins.str,
+                 state: _builtins.str,
+                 total_stored_bytes: _builtins.str,
+                 update_time: _builtins.str):
+        """
+        :param Sequence['GetDataSourcesDataSourceBackupConfigInfoArgs'] backup_config_infos: Details of how the resource is configured for backup.
+        :param _builtins.str backup_count: Number of backups in the data source.
+        :param _builtins.str config_state: The backup configuration state.
+        :param _builtins.str create_time: The time when the instance was created.
+        :param Sequence['GetDataSourcesDataSourceDataSourceBackupApplianceApplicationArgs'] data_source_backup_appliance_applications: The backed up resource is a backup appliance application.
+        :param Sequence['GetDataSourcesDataSourceDataSourceGcpResourceArgs'] data_source_gcp_resources: The backed up resource is a Google Cloud resource.
+               		The word 'DataSource' was included in the names to indicate that this is
+               		the representation of the Google Cloud resource used within the
+               		DataSource object.
+        :param _builtins.str etag: Server specified ETag for the ManagementServer resource to prevent simultaneous updates from overwiting each other.
+        :param Mapping[str, _builtins.str] labels: Resource labels to represent user provided metadata.
+        :param _builtins.str name: Name of the datasource to create.
+               		It must have the format "projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}".
+               		'{datasource}' cannot be changed after creation. It must be between 3-63 characters long and must be unique within the backup vault.
+        :param _builtins.str state: The DataSource resource instance state.
+        :param _builtins.str total_stored_bytes: The number of bytes (metadata and data) stored in this datasource.
+        :param _builtins.str update_time: The time when the instance was updated.
+        """
+        pulumi.set(__self__, "backup_config_infos", backup_config_infos)
+        pulumi.set(__self__, "backup_count", backup_count)
+        pulumi.set(__self__, "config_state", config_state)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "data_source_backup_appliance_applications", data_source_backup_appliance_applications)
+        pulumi.set(__self__, "data_source_gcp_resources", data_source_gcp_resources)
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "total_stored_bytes", total_stored_bytes)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="backupConfigInfos")
+    def backup_config_infos(self) -> Sequence['outputs.GetDataSourcesDataSourceBackupConfigInfoResult']:
+        """
+        Details of how the resource is configured for backup.
+        """
+        return pulumi.get(self, "backup_config_infos")
+
+    @_builtins.property
+    @pulumi.getter(name="backupCount")
+    def backup_count(self) -> _builtins.str:
+        """
+        Number of backups in the data source.
+        """
+        return pulumi.get(self, "backup_count")
+
+    @_builtins.property
+    @pulumi.getter(name="configState")
+    def config_state(self) -> _builtins.str:
+        """
+        The backup configuration state.
+        """
+        return pulumi.get(self, "config_state")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the instance was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceBackupApplianceApplications")
+    def data_source_backup_appliance_applications(self) -> Sequence['outputs.GetDataSourcesDataSourceDataSourceBackupApplianceApplicationResult']:
+        """
+        The backed up resource is a backup appliance application.
+        """
+        return pulumi.get(self, "data_source_backup_appliance_applications")
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceGcpResources")
+    def data_source_gcp_resources(self) -> Sequence['outputs.GetDataSourcesDataSourceDataSourceGcpResourceResult']:
+        """
+        The backed up resource is a Google Cloud resource.
+        		The word 'DataSource' was included in the names to indicate that this is
+        		the representation of the Google Cloud resource used within the
+        		DataSource object.
+        """
+        return pulumi.get(self, "data_source_gcp_resources")
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> _builtins.str:
+        """
+        Server specified ETag for the ManagementServer resource to prevent simultaneous updates from overwiting each other.
+        """
+        return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, _builtins.str]:
+        """
+        Resource labels to represent user provided metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the datasource to create.
+        		It must have the format "projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}".
+        		'{datasource}' cannot be changed after creation. It must be between 3-63 characters long and must be unique within the backup vault.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        The DataSource resource instance state.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="totalStoredBytes")
+    def total_stored_bytes(self) -> _builtins.str:
+        """
+        The number of bytes (metadata and data) stored in this datasource.
+        """
+        return pulumi.get(self, "total_stored_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The time when the instance was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetDataSourcesDataSourceBackupConfigInfoResult(dict):
+    def __init__(__self__, *,
+                 backup_appliance_backup_configs: Sequence['outputs.GetDataSourcesDataSourceBackupConfigInfoBackupApplianceBackupConfigResult'],
+                 gcp_backup_configs: Sequence['outputs.GetDataSourcesDataSourceBackupConfigInfoGcpBackupConfigResult'],
+                 last_backup_error: Mapping[str, _builtins.str],
+                 last_backup_state: _builtins.str,
+                 last_successful_backup_consistency_time: _builtins.str):
+        """
+        :param Sequence['GetDataSourcesDataSourceBackupConfigInfoBackupApplianceBackupConfigArgs'] backup_appliance_backup_configs: Configuration for an application backed up by a Backup Appliance.
+        :param Sequence['GetDataSourcesDataSourceBackupConfigInfoGcpBackupConfigArgs'] gcp_backup_configs: Configuration for a Google Cloud resource.
+        :param Mapping[str, _builtins.str] last_backup_error: If the last backup failed, this field has the error message.
+        :param _builtins.str last_backup_state: LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+        :param _builtins.str last_successful_backup_consistency_time: If the last backup were successful, this field has the consistency date.
+        """
+        pulumi.set(__self__, "backup_appliance_backup_configs", backup_appliance_backup_configs)
+        pulumi.set(__self__, "gcp_backup_configs", gcp_backup_configs)
+        pulumi.set(__self__, "last_backup_error", last_backup_error)
+        pulumi.set(__self__, "last_backup_state", last_backup_state)
+        pulumi.set(__self__, "last_successful_backup_consistency_time", last_successful_backup_consistency_time)
+
+    @_builtins.property
+    @pulumi.getter(name="backupApplianceBackupConfigs")
+    def backup_appliance_backup_configs(self) -> Sequence['outputs.GetDataSourcesDataSourceBackupConfigInfoBackupApplianceBackupConfigResult']:
+        """
+        Configuration for an application backed up by a Backup Appliance.
+        """
+        return pulumi.get(self, "backup_appliance_backup_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="gcpBackupConfigs")
+    def gcp_backup_configs(self) -> Sequence['outputs.GetDataSourcesDataSourceBackupConfigInfoGcpBackupConfigResult']:
+        """
+        Configuration for a Google Cloud resource.
+        """
+        return pulumi.get(self, "gcp_backup_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="lastBackupError")
+    def last_backup_error(self) -> Mapping[str, _builtins.str]:
+        """
+        If the last backup failed, this field has the error message.
+        """
+        return pulumi.get(self, "last_backup_error")
+
+    @_builtins.property
+    @pulumi.getter(name="lastBackupState")
+    def last_backup_state(self) -> _builtins.str:
+        """
+        LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+        """
+        return pulumi.get(self, "last_backup_state")
+
+    @_builtins.property
+    @pulumi.getter(name="lastSuccessfulBackupConsistencyTime")
+    def last_successful_backup_consistency_time(self) -> _builtins.str:
+        """
+        If the last backup were successful, this field has the consistency date.
+        """
+        return pulumi.get(self, "last_successful_backup_consistency_time")
+
+
+@pulumi.output_type
+class GetDataSourcesDataSourceBackupConfigInfoBackupApplianceBackupConfigResult(dict):
+    def __init__(__self__, *,
+                 application_name: _builtins.str,
+                 backup_appliance_id: _builtins.str,
+                 backup_appliance_name: _builtins.str,
+                 host_name: _builtins.str,
+                 sla_id: _builtins.str,
+                 slp_name: _builtins.str,
+                 slt_name: _builtins.str):
+        """
+        :param _builtins.str application_name: The name of the application.
+        :param _builtins.str backup_appliance_id: The ID of the backup appliance.
+        :param _builtins.str backup_appliance_name: The name of the backup appliance.
+        :param _builtins.str host_name: The name of the host where the application is running.
+        :param _builtins.str sla_id: The ID of the SLA of this application.
+        :param _builtins.str slp_name: The name of the SLP associated with the application.
+        :param _builtins.str slt_name: The name of the SLT associated with the application.
+        """
+        pulumi.set(__self__, "application_name", application_name)
+        pulumi.set(__self__, "backup_appliance_id", backup_appliance_id)
+        pulumi.set(__self__, "backup_appliance_name", backup_appliance_name)
+        pulumi.set(__self__, "host_name", host_name)
+        pulumi.set(__self__, "sla_id", sla_id)
+        pulumi.set(__self__, "slp_name", slp_name)
+        pulumi.set(__self__, "slt_name", slt_name)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationName")
+    def application_name(self) -> _builtins.str:
+        """
+        The name of the application.
+        """
+        return pulumi.get(self, "application_name")
+
+    @_builtins.property
+    @pulumi.getter(name="backupApplianceId")
+    def backup_appliance_id(self) -> _builtins.str:
+        """
+        The ID of the backup appliance.
+        """
+        return pulumi.get(self, "backup_appliance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="backupApplianceName")
+    def backup_appliance_name(self) -> _builtins.str:
+        """
+        The name of the backup appliance.
+        """
+        return pulumi.get(self, "backup_appliance_name")
+
+    @_builtins.property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> _builtins.str:
+        """
+        The name of the host where the application is running.
+        """
+        return pulumi.get(self, "host_name")
+
+    @_builtins.property
+    @pulumi.getter(name="slaId")
+    def sla_id(self) -> _builtins.str:
+        """
+        The ID of the SLA of this application.
+        """
+        return pulumi.get(self, "sla_id")
+
+    @_builtins.property
+    @pulumi.getter(name="slpName")
+    def slp_name(self) -> _builtins.str:
+        """
+        The name of the SLP associated with the application.
+        """
+        return pulumi.get(self, "slp_name")
+
+    @_builtins.property
+    @pulumi.getter(name="sltName")
+    def slt_name(self) -> _builtins.str:
+        """
+        The name of the SLT associated with the application.
+        """
+        return pulumi.get(self, "slt_name")
+
+
+@pulumi.output_type
+class GetDataSourcesDataSourceBackupConfigInfoGcpBackupConfigResult(dict):
+    def __init__(__self__, *,
+                 backup_plan: _builtins.str,
+                 backup_plan_association: _builtins.str,
+                 backup_plan_description: _builtins.str,
+                 backup_plan_rules: Sequence[_builtins.str]):
+        """
+        :param _builtins.str backup_plan: The name of the backup plan.
+        :param _builtins.str backup_plan_association: The name of the backup plan association.
+        :param _builtins.str backup_plan_description: The description of the backup plan.
+        :param Sequence[_builtins.str] backup_plan_rules: The names of the backup plan rules which point to this backupvault
+        """
+        pulumi.set(__self__, "backup_plan", backup_plan)
+        pulumi.set(__self__, "backup_plan_association", backup_plan_association)
+        pulumi.set(__self__, "backup_plan_description", backup_plan_description)
+        pulumi.set(__self__, "backup_plan_rules", backup_plan_rules)
+
+    @_builtins.property
+    @pulumi.getter(name="backupPlan")
+    def backup_plan(self) -> _builtins.str:
+        """
+        The name of the backup plan.
+        """
+        return pulumi.get(self, "backup_plan")
+
+    @_builtins.property
+    @pulumi.getter(name="backupPlanAssociation")
+    def backup_plan_association(self) -> _builtins.str:
+        """
+        The name of the backup plan association.
+        """
+        return pulumi.get(self, "backup_plan_association")
+
+    @_builtins.property
+    @pulumi.getter(name="backupPlanDescription")
+    def backup_plan_description(self) -> _builtins.str:
+        """
+        The description of the backup plan.
+        """
+        return pulumi.get(self, "backup_plan_description")
+
+    @_builtins.property
+    @pulumi.getter(name="backupPlanRules")
+    def backup_plan_rules(self) -> Sequence[_builtins.str]:
+        """
+        The names of the backup plan rules which point to this backupvault
+        """
+        return pulumi.get(self, "backup_plan_rules")
+
+
+@pulumi.output_type
+class GetDataSourcesDataSourceDataSourceBackupApplianceApplicationResult(dict):
+    def __init__(__self__, *,
+                 appliance_id: _builtins.str,
+                 application_id: _builtins.str,
+                 application_name: _builtins.str,
+                 backup_appliance: _builtins.str,
+                 host_id: _builtins.str,
+                 hostname: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str appliance_id: Appliance Id of the Backup Appliance.
+        :param _builtins.str application_id: The appid field of the application within the Backup Appliance.
+        :param _builtins.str application_name: The name of the Application as known to the Backup Appliance.
+        :param _builtins.str backup_appliance: Appliance name.
+        :param _builtins.str host_id: Hostid of the application host.
+        :param _builtins.str hostname: Hostname of the host where the application is running.
+        :param _builtins.str type: The type of the application. e.g. VMBackup
+        """
+        pulumi.set(__self__, "appliance_id", appliance_id)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "application_name", application_name)
+        pulumi.set(__self__, "backup_appliance", backup_appliance)
+        pulumi.set(__self__, "host_id", host_id)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="applianceId")
+    def appliance_id(self) -> _builtins.str:
+        """
+        Appliance Id of the Backup Appliance.
+        """
+        return pulumi.get(self, "appliance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> _builtins.str:
+        """
+        The appid field of the application within the Backup Appliance.
+        """
+        return pulumi.get(self, "application_id")
+
+    @_builtins.property
+    @pulumi.getter(name="applicationName")
+    def application_name(self) -> _builtins.str:
+        """
+        The name of the Application as known to the Backup Appliance.
+        """
+        return pulumi.get(self, "application_name")
+
+    @_builtins.property
+    @pulumi.getter(name="backupAppliance")
+    def backup_appliance(self) -> _builtins.str:
+        """
+        Appliance name.
+        """
+        return pulumi.get(self, "backup_appliance")
+
+    @_builtins.property
+    @pulumi.getter(name="hostId")
+    def host_id(self) -> _builtins.str:
+        """
+        Hostid of the application host.
+        """
+        return pulumi.get(self, "host_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> _builtins.str:
+        """
+        Hostname of the host where the application is running.
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the application. e.g. VMBackup
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDataSourcesDataSourceDataSourceGcpResourceResult(dict):
+    def __init__(__self__, *,
+                 compute_instance_data_source_properties: Sequence['outputs.GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyResult'],
+                 gcp_resourcename: _builtins.str,
+                 location: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param Sequence['GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArgs'] compute_instance_data_source_properties: ComputeInstanceDataSourceProperties has a subset of Compute Instance properties that are useful at the Datasource level.
+        :param _builtins.str gcp_resourcename: Full resource pathname URL of the source Google Cloud resource.
+        :param _builtins.str location: Location of the resource: <region>/<zone>/"global"/"unspecified".
+        :param _builtins.str type: The type of the Google Cloud resource. Use the Unified Resource Type,
+               					eg. compute.googleapis.com/Instance.
+        """
+        pulumi.set(__self__, "compute_instance_data_source_properties", compute_instance_data_source_properties)
+        pulumi.set(__self__, "gcp_resourcename", gcp_resourcename)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="computeInstanceDataSourceProperties")
+    def compute_instance_data_source_properties(self) -> Sequence['outputs.GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyResult']:
+        """
+        ComputeInstanceDataSourceProperties has a subset of Compute Instance properties that are useful at the Datasource level.
+        """
+        return pulumi.get(self, "compute_instance_data_source_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="gcpResourcename")
+    def gcp_resourcename(self) -> _builtins.str:
+        """
+        Full resource pathname URL of the source Google Cloud resource.
+        """
+        return pulumi.get(self, "gcp_resourcename")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> _builtins.str:
+        """
+        Location of the resource: <region>/<zone>/"global"/"unspecified".
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the Google Cloud resource. Use the Unified Resource Type,
+        					eg. compute.googleapis.com/Instance.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 machine_type: _builtins.str,
+                 name: _builtins.str,
+                 total_disk_count: _builtins.str,
+                 total_disk_size_gb: _builtins.str):
+        """
+        :param _builtins.str description: The description of the Compute Engine instance.
+        :param _builtins.str machine_type: The machine type of the instance.
+        :param _builtins.str name: Name of the compute instance backed up by the datasource.
+        :param _builtins.str total_disk_count: The total number of disks attached to the Instance.
+        :param _builtins.str total_disk_size_gb: The sum of all the disk sizes.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "total_disk_count", total_disk_count)
+        pulumi.set(__self__, "total_disk_size_gb", total_disk_size_gb)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the Compute Engine instance.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> _builtins.str:
+        """
+        The machine type of the instance.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the compute instance backed up by the datasource.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="totalDiskCount")
+    def total_disk_count(self) -> _builtins.str:
+        """
+        The total number of disks attached to the Instance.
+        """
+        return pulumi.get(self, "total_disk_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalDiskSizeGb")
+    def total_disk_size_gb(self) -> _builtins.str:
+        """
+        The sum of all the disk sizes.
+        """
+        return pulumi.get(self, "total_disk_size_gb")
 
 
 @pulumi.output_type

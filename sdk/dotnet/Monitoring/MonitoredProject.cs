@@ -52,16 +52,12 @@ namespace Pulumi.Gcp.Monitoring
     /// MonitoredProject can be imported using any of these accepted formats:
     /// 
     /// * `v1/locations/global/metricsScopes/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, MonitoredProject can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default v1/locations/global/metricsScopes/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default {{name}}
     /// ```
     /// </summary>

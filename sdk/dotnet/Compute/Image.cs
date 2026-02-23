@@ -167,22 +167,14 @@ namespace Pulumi.Gcp.Compute
     /// Image can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/global/images/{{name}}`
-    /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, Image can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/image:Image default projects/{{project}}/global/images/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/image:Image default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/image:Image default {{name}}
     /// ```
     /// </summary>
@@ -291,7 +283,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -746,7 +738,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

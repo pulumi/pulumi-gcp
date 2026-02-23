@@ -192,28 +192,16 @@ import (
 // InterconnectAttachment can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
 // ```
 type InterconnectAttachment struct {
@@ -342,6 +330,9 @@ type InterconnectAttachment struct {
 	// identifier of an PARTNER attachment used to initiate provisioning with
 	// a selected partner. Of the form "XXXXX/region/domain"
 	PairingKey pulumi.StringOutput `pulumi:"pairingKey"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params InterconnectAttachmentParamsPtrOutput `pulumi:"params"`
 	// [Output only for type PARTNER. Not present for DEDICATED]. Optional
 	// BGP ASN for the router that should be supplied by a layer 3 Partner if
 	// they configured BGP on behalf of the customer.
@@ -352,11 +343,9 @@ type InterconnectAttachment struct {
 	PrivateInterconnectInfos InterconnectAttachmentPrivateInterconnectInfoArrayOutput `pulumi:"privateInterconnectInfos"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	//
-	// <a name="nestedL2Forwarding"></a>The `l2Forwarding` block supports:
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Region where the regional interconnect attachment resides.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -549,6 +538,9 @@ type interconnectAttachmentState struct {
 	// identifier of an PARTNER attachment used to initiate provisioning with
 	// a selected partner. Of the form "XXXXX/region/domain"
 	PairingKey *string `pulumi:"pairingKey"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *InterconnectAttachmentParams `pulumi:"params"`
 	// [Output only for type PARTNER. Not present for DEDICATED]. Optional
 	// BGP ASN for the router that should be supplied by a layer 3 Partner if
 	// they configured BGP on behalf of the customer.
@@ -559,11 +551,9 @@ type interconnectAttachmentState struct {
 	PrivateInterconnectInfos []InterconnectAttachmentPrivateInterconnectInfo `pulumi:"privateInterconnectInfos"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	//
-	// <a name="nestedL2Forwarding"></a>The `l2Forwarding` block supports:
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Region where the regional interconnect attachment resides.
 	Region *string `pulumi:"region"`
@@ -722,6 +712,9 @@ type InterconnectAttachmentState struct {
 	// identifier of an PARTNER attachment used to initiate provisioning with
 	// a selected partner. Of the form "XXXXX/region/domain"
 	PairingKey pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params InterconnectAttachmentParamsPtrInput
 	// [Output only for type PARTNER. Not present for DEDICATED]. Optional
 	// BGP ASN for the router that should be supplied by a layer 3 Partner if
 	// they configured BGP on behalf of the customer.
@@ -732,11 +725,9 @@ type InterconnectAttachmentState struct {
 	PrivateInterconnectInfos InterconnectAttachmentPrivateInterconnectInfoArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	//
-	// <a name="nestedL2Forwarding"></a>The `l2Forwarding` block supports:
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Region where the regional interconnect attachment resides.
 	Region pulumi.StringPtrInput
@@ -868,10 +859,11 @@ type interconnectAttachmentArgs struct {
 	// lowercase letter, and all following characters must be a dash, lowercase
 	// letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *InterconnectAttachmentParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	//
-	// <a name="nestedL2Forwarding"></a>The `l2Forwarding` block supports:
 	Project *string `pulumi:"project"`
 	// Region where the regional interconnect attachment resides.
 	Region *string `pulumi:"region"`
@@ -996,10 +988,11 @@ type InterconnectAttachmentArgs struct {
 	// lowercase letter, and all following characters must be a dash, lowercase
 	// letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params InterconnectAttachmentParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	//
-	// <a name="nestedL2Forwarding"></a>The `l2Forwarding` block supports:
 	Project pulumi.StringPtrInput
 	// Region where the regional interconnect attachment resides.
 	Region pulumi.StringPtrInput
@@ -1318,6 +1311,12 @@ func (o InterconnectAttachmentOutput) PairingKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.PairingKey }).(pulumi.StringOutput)
 }
 
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o InterconnectAttachmentOutput) Params() InterconnectAttachmentParamsPtrOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) InterconnectAttachmentParamsPtrOutput { return v.Params }).(InterconnectAttachmentParamsPtrOutput)
+}
+
 // [Output only for type PARTNER. Not present for DEDICATED]. Optional
 // BGP ASN for the router that should be supplied by a layer 3 Partner if
 // they configured BGP on behalf of the customer.
@@ -1336,14 +1335,13 @@ func (o InterconnectAttachmentOutput) PrivateInterconnectInfos() InterconnectAtt
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-//
-// <a name="nestedL2Forwarding"></a>The `l2Forwarding` block supports:
 func (o InterconnectAttachmentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InterconnectAttachmentOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

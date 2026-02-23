@@ -46,9 +46,17 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.advancedMachineFeatures);
     }
 
+    /**
+     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+     * 
+     */
     @Import(name="allowStoppingForUpdate")
     private @Nullable Output<Boolean> allowStoppingForUpdate;
 
+    /**
+     * @return If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+     * 
+     */
     public Optional<Output<Boolean>> allowStoppingForUpdate() {
         return Optional.ofNullable(this.allowStoppingForUpdate);
     }
@@ -607,11 +615,23 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
             return advancedMachineFeatures(Output.of(advancedMachineFeatures));
         }
 
+        /**
+         * @param allowStoppingForUpdate If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowStoppingForUpdate(@Nullable Output<Boolean> allowStoppingForUpdate) {
             $.allowStoppingForUpdate = allowStoppingForUpdate;
             return this;
         }
 
+        /**
+         * @param allowStoppingForUpdate If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowStoppingForUpdate(Boolean allowStoppingForUpdate) {
             return allowStoppingForUpdate(Output.of(allowStoppingForUpdate));
         }

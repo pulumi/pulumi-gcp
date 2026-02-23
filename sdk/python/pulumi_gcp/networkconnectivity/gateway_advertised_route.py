@@ -213,7 +213,7 @@ class _GatewayAdvertisedRouteState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] recipient: the recipient of this advertised route
                Possible values are: `RECIPIENT_UNSPECIFIED`, `ADVERTISE_TO_HUB`.
         :param pulumi.Input[_builtins.str] spoke: The name of the spoke
@@ -372,7 +372,7 @@ class _GatewayAdvertisedRouteState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -461,6 +461,17 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
                  spoke: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A gateway advertised route is a route that a gateway spoke advertises somewhere.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about GatewayAdvertisedRoute, see:
+
+        * [API documentation](https://docs.cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes.gatewayAdvertisedRoutes)
+        * How-to Guides
+            * [QUICKSTART_TITLE](https://docs.cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/ncc-gateway-overview)
+
         ## Example Usage
 
         ### Network Connectivity Gateway Advertised Route Basic
@@ -473,7 +484,7 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
             name="net-spoke",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_32270",
+            name="tf-test-subnet_42503",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
@@ -517,22 +528,14 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
         GatewayAdvertisedRoute can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/spokes/{{spoke}}/gatewayAdvertisedRoutes/{{name}}`
-
         * `{{project}}/{{location}}/{{spoke}}/{{name}}`
-
         * `{{location}}/{{spoke}}/{{name}}`
 
         When using the `pulumi import` command, GatewayAdvertisedRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default projects/{{project}}/locations/{{location}}/spokes/{{spoke}}/gatewayAdvertisedRoutes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{project}}/{{location}}/{{spoke}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{location}}/{{spoke}}/{{name}}
         ```
 
@@ -561,6 +564,17 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
                  args: GatewayAdvertisedRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A gateway advertised route is a route that a gateway spoke advertises somewhere.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about GatewayAdvertisedRoute, see:
+
+        * [API documentation](https://docs.cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes.gatewayAdvertisedRoutes)
+        * How-to Guides
+            * [QUICKSTART_TITLE](https://docs.cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/ncc-gateway-overview)
+
         ## Example Usage
 
         ### Network Connectivity Gateway Advertised Route Basic
@@ -573,7 +587,7 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
             name="net-spoke",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_32270",
+            name="tf-test-subnet_42503",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
@@ -617,22 +631,14 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
         GatewayAdvertisedRoute can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/spokes/{{spoke}}/gatewayAdvertisedRoutes/{{name}}`
-
         * `{{project}}/{{location}}/{{spoke}}/{{name}}`
-
         * `{{location}}/{{spoke}}/{{name}}`
 
         When using the `pulumi import` command, GatewayAdvertisedRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default projects/{{project}}/locations/{{location}}/spokes/{{spoke}}/gatewayAdvertisedRoutes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{project}}/{{location}}/{{spoke}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{location}}/{{spoke}}/{{name}}
         ```
 
@@ -737,7 +743,7 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] recipient: the recipient of this advertised route
                Possible values are: `RECIPIENT_UNSPECIFIED`, `ADVERTISE_TO_HUB`.
         :param pulumi.Input[_builtins.str] spoke: The name of the spoke
@@ -850,7 +856,7 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -12,6 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A resource that manages the lock state of a PromptTemplate.
+// When this resource is created, the template is locked.
+// When this resource is deleted, the template is unlocked.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
 // ## Example Usage
 //
 // ### Firebaseailogic Prompt Template Lock Basic
@@ -54,22 +61,14 @@ import (
 // PromptTemplateLock can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/templates/{{template_id}}`
-//
 // * `{{project}}/{{location}}/{{template_id}}`
-//
 // * `{{location}}/{{template_id}}`
 //
 // When using the `pulumi import` command, PromptTemplateLock can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock default projects/{{project}}/locations/{{location}}/templates/{{template_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock default {{project}}/{{location}}/{{template_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock default {{location}}/{{template_id}}
 // ```
 type AiLogicPromptTemplateLock struct {

@@ -103,34 +103,18 @@ namespace Pulumi.Gcp.EdgeNetwork
     /// Subnet can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
-    /// 
     /// * `{{location}}/{{zone}}/{{subnet_id}}`
-    /// 
     /// * `{{location}}/{{subnet_id}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:edgenetwork/subnet:Subnet default {{project}}/{{location}}/{{zone}}/{{subnet_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{zone}}/{{subnet_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{subnet_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:edgenetwork/subnet:Subnet default {{name}}
     /// ```
     /// </summary>
@@ -207,7 +191,7 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -487,7 +471,7 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

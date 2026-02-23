@@ -29,8 +29,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/integrationconnectors"
@@ -43,8 +41,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			targetProject, err := organizations.NewProject(ctx, "target_project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_16178"),
-//				Name:           pulumi.String("tf-test_26317"),
+//				ProjectId:      pulumi.String("tf-test_32270"),
+//				Name:           pulumi.String("tf-test_44703"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -89,8 +87,8 @@ import (
 //				return err
 //			}
 //			zone, err := dns.NewManagedZone(ctx, "zone", &dns.ManagedZoneArgs{
-//				Name:       pulumi.String("tf-test-dns_4866"),
-//				DnsName:    pulumi.String("private_12618.example.com."),
+//				Name:       pulumi.String("tf-test-dns_9329"),
+//				DnsName:    pulumi.String("private_37135.example.com."),
 //				Visibility: pulumi.String("private"),
 //				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 //					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
@@ -132,22 +130,14 @@ import (
 // ManagedZone can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/global/managedZones/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default projects/{{project}}/locations/global/managedZones/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{name}}
 // ```
 type ManagedZone struct {
@@ -172,7 +162,7 @@ type ManagedZone struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The name of the Target Project.
 	TargetProject pulumi.StringOutput `pulumi:"targetProject"`
@@ -245,7 +235,7 @@ type managedZoneState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The name of the Target Project.
 	TargetProject *string `pulumi:"targetProject"`
@@ -275,7 +265,7 @@ type ManagedZoneState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The name of the Target Project.
 	TargetProject pulumi.StringPtrInput
@@ -459,7 +449,8 @@ func (o ManagedZoneOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ManagedZoneOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

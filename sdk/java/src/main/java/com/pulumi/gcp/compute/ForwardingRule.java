@@ -1210,28 +1210,16 @@ import javax.annotation.Nullable;
  * ForwardingRule can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{name}}`
- * 
  * * `{{region}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/forwardingRule:ForwardingRule default projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{project}}/{{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{name}}
  * ```
  * 
@@ -1910,7 +1898,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -1918,15 +1906,23 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
     }
+    /**
+     * This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+     * 
+     */
     @Export(name="recreateClosedPsc", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> recreateClosedPsc;
 
+    /**
+     * @return This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+     * 
+     */
     public Output<Optional<Boolean>> recreateClosedPsc() {
         return Codegen.optional(this.recreateClosedPsc);
     }

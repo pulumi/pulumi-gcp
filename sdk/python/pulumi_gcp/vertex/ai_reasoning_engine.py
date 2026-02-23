@@ -348,6 +348,34 @@ class AiReasoningEngine(pulumi.CustomResource):
                 },
             })
         ```
+        ### Vertex Ai Reasoning Engine Developer Connect Source
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="reasoning-engine",
+            description="A basic reasoning engine",
+            region="us-central1",
+            spec={
+                "source_code_spec": {
+                    "developer_connect_source": {
+                        "config": {
+                            "git_repository_link": f"projects/{project.project_id}/locations/us-central1/connections/tpg-test-bot-github/gitRepositoryLinks/tpg-test-vertex-reasoning",
+                            "dir": "source",
+                            "revision": "main",
+                        },
+                    },
+                    "python_spec": {
+                        "version": "3.14",
+                        "entrypoint_module": "simple_agent",
+                        "entrypoint_object": "fixed_name_generator",
+                    },
+                },
+            })
+        ```
         ### Vertex Ai Reasoning Engine Psc Interface
 
         ```python
@@ -573,28 +601,16 @@ class AiReasoningEngine(pulumi.CustomResource):
         ReasoningEngine can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/reasoningEngines/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ReasoningEngine can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default projects/{{project}}/locations/{{region}}/reasoningEngines/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{name}}
         ```
 
@@ -654,6 +670,34 @@ class AiReasoningEngine(pulumi.CustomResource):
                 },
             })
         ```
+        ### Vertex Ai Reasoning Engine Developer Connect Source
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="reasoning-engine",
+            description="A basic reasoning engine",
+            region="us-central1",
+            spec={
+                "source_code_spec": {
+                    "developer_connect_source": {
+                        "config": {
+                            "git_repository_link": f"projects/{project.project_id}/locations/us-central1/connections/tpg-test-bot-github/gitRepositoryLinks/tpg-test-vertex-reasoning",
+                            "dir": "source",
+                            "revision": "main",
+                        },
+                    },
+                    "python_spec": {
+                        "version": "3.14",
+                        "entrypoint_module": "simple_agent",
+                        "entrypoint_object": "fixed_name_generator",
+                    },
+                },
+            })
+        ```
         ### Vertex Ai Reasoning Engine Psc Interface
 
         ```python
@@ -879,28 +923,16 @@ class AiReasoningEngine(pulumi.CustomResource):
         ReasoningEngine can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/reasoningEngines/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ReasoningEngine can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default projects/{{project}}/locations/{{region}}/reasoningEngines/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{name}}
         ```
 

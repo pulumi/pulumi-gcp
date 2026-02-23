@@ -27,68 +27,63 @@ __all__ = [
     'ConnectivityTestSourceCloudRunRevisionArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ConnectivityTestDestinationArgsDict(TypedDict):
-        cloud_sql_instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A Cloud SQL instance URI.
-        """
-        forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Forwarding rule URI. Forwarding rules are frontends for load balancers,
-        PSC endpoints, and Protocol Forwarding.
-        """
-        fqdn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A DNS endpoint of Google Kubernetes Engine cluster control plane.
-        Requires gke_master_cluster to be set, can't be used simultaneoulsly with
-        ip_address or network. Applicable only to destination endpoint.
-        """
-        gke_master_cluster: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A cluster URI for Google Kubernetes Engine cluster control plane.
-        """
-        instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A Compute Engine instance URI.
-        """
-        ip_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address of the endpoint, which can be an external or internal IP.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A VPC network URI.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The IP protocol port of the endpoint. Only applicable when protocol is
-        TCP or UDP.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Project ID where the endpoint is located.
-        The project ID can be derived from the URI if you provide a endpoint or
-        network URI.
-        The following are two cases where you may need to provide the project ID:
-        1. Only the IP address is specified, and the IP address is within a Google
-        Cloud project.
-        2. When you are using Shared VPC and the IP address that you provide is
-        from the service project. In this case, the network that the IP address
-        resides in is defined in the host project.
-        """
-        redis_cluster: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A Redis Cluster URI.
-        """
-        redis_instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A Redis Instance URI.
-        """
-elif False:
-    ConnectivityTestDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectivityTestDestinationArgsDict(TypedDict):
+    cloud_sql_instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A Cloud SQL instance URI.
+    """
+    forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Forwarding rule URI. Forwarding rules are frontends for load balancers,
+    PSC endpoints, and Protocol Forwarding.
+    """
+    fqdn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A DNS endpoint of Google Kubernetes Engine cluster control plane.
+    Requires gke_master_cluster to be set, can't be used simultaneoulsly with
+    ip_address or network. Applicable only to destination endpoint.
+    """
+    gke_master_cluster: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A cluster URI for Google Kubernetes Engine cluster control plane.
+    """
+    instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A Compute Engine instance URI.
+    """
+    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address of the endpoint, which can be an external or internal IP.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A VPC network URI.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The IP protocol port of the endpoint. Only applicable when protocol is
+    TCP or UDP.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Project ID where the endpoint is located.
+    The project ID can be derived from the URI if you provide a endpoint or
+    network URI.
+    The following are two cases where you may need to provide the project ID:
+    1. Only the IP address is specified, and the IP address is within a Google
+    Cloud project.
+    2. When you are using Shared VPC and the IP address that you provide is
+    from the service project. In this case, the network that the IP address
+    resides in is defined in the host project.
+    """
+    redis_cluster: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A Redis Cluster URI.
+    """
+    redis_instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A Redis Instance URI.
+    """
 
 @pulumi.input_type
 class ConnectivityTestDestinationArgs:
@@ -297,67 +292,64 @@ class ConnectivityTestDestinationArgs:
         pulumi.set(self, "redis_instance", value)
 
 
-if not MYPY:
-    class ConnectivityTestSourceArgsDict(TypedDict):
-        app_engine_version: NotRequired[pulumi.Input['ConnectivityTestSourceAppEngineVersionArgsDict']]
-        """
-        An App Engine service version.
-        Structure is documented below.
-        """
-        cloud_function: NotRequired[pulumi.Input['ConnectivityTestSourceCloudFunctionArgsDict']]
-        """
-        A Cloud Function.
-        Structure is documented below.
-        """
-        cloud_run_revision: NotRequired[pulumi.Input['ConnectivityTestSourceCloudRunRevisionArgsDict']]
-        """
-        A Cloud Run revision.
-        Structure is documented below.
-        """
-        cloud_sql_instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A Cloud SQL instance URI.
-        """
-        gke_master_cluster: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A cluster URI for Google Kubernetes Engine cluster control plane.
-        """
-        instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A Compute Engine instance URI.
-        """
-        ip_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address of the endpoint, which can be an external or internal IP.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A VPC network URI.
-        """
-        network_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of the network where the endpoint is located.
-        Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The IP protocol port of the endpoint. Only applicable when protocol is
-        TCP or UDP.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Project ID where the endpoint is located.
-        The project ID can be derived from the URI if you provide a endpoint or
-        network URI.
-        The following are two cases where you may need to provide the project ID:
-        1. Only the IP address is specified, and the IP address is within a Google
-        Cloud project.
-        2. When you are using Shared VPC and the IP address that you provide is
-        from the service project. In this case, the network that the IP address
-        resides in is defined in the host project.
-        """
-elif False:
-    ConnectivityTestSourceArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectivityTestSourceArgsDict(TypedDict):
+    app_engine_version: NotRequired[pulumi.Input['ConnectivityTestSourceAppEngineVersionArgsDict']]
+    """
+    An App Engine service version.
+    Structure is documented below.
+    """
+    cloud_function: NotRequired[pulumi.Input['ConnectivityTestSourceCloudFunctionArgsDict']]
+    """
+    A Cloud Function.
+    Structure is documented below.
+    """
+    cloud_run_revision: NotRequired[pulumi.Input['ConnectivityTestSourceCloudRunRevisionArgsDict']]
+    """
+    A Cloud Run revision.
+    Structure is documented below.
+    """
+    cloud_sql_instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A Cloud SQL instance URI.
+    """
+    gke_master_cluster: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A cluster URI for Google Kubernetes Engine cluster control plane.
+    """
+    instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A Compute Engine instance URI.
+    """
+    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address of the endpoint, which can be an external or internal IP.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A VPC network URI.
+    """
+    network_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of the network where the endpoint is located.
+    Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The IP protocol port of the endpoint. Only applicable when protocol is
+    TCP or UDP.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Project ID where the endpoint is located.
+    The project ID can be derived from the URI if you provide a endpoint or
+    network URI.
+    The following are two cases where you may need to provide the project ID:
+    1. Only the IP address is specified, and the IP address is within a Google
+    Cloud project.
+    2. When you are using Shared VPC and the IP address that you provide is
+    from the service project. In this case, the network that the IP address
+    resides in is defined in the host project.
+    """
 
 @pulumi.input_type
 class ConnectivityTestSourceArgs:
@@ -568,14 +560,11 @@ class ConnectivityTestSourceArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class ConnectivityTestSourceAppEngineVersionArgsDict(TypedDict):
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An App Engine service version name.
-        """
-elif False:
-    ConnectivityTestSourceAppEngineVersionArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectivityTestSourceAppEngineVersionArgsDict(TypedDict):
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An App Engine service version name.
+    """
 
 @pulumi.input_type
 class ConnectivityTestSourceAppEngineVersionArgs:
@@ -600,14 +589,11 @@ class ConnectivityTestSourceAppEngineVersionArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class ConnectivityTestSourceCloudFunctionArgsDict(TypedDict):
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A Cloud Function name.
-        """
-elif False:
-    ConnectivityTestSourceCloudFunctionArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectivityTestSourceCloudFunctionArgsDict(TypedDict):
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A Cloud Function name.
+    """
 
 @pulumi.input_type
 class ConnectivityTestSourceCloudFunctionArgs:
@@ -632,14 +618,11 @@ class ConnectivityTestSourceCloudFunctionArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class ConnectivityTestSourceCloudRunRevisionArgsDict(TypedDict):
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A Cloud Run revision URI.
-        """
-elif False:
-    ConnectivityTestSourceCloudRunRevisionArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectivityTestSourceCloudRunRevisionArgsDict(TypedDict):
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A Cloud Run revision URI.
+    """
 
 @pulumi.input_type
 class ConnectivityTestSourceCloudRunRevisionArgs:

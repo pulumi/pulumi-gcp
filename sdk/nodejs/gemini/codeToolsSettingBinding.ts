@@ -49,22 +49,14 @@ import * as utilities from "../utilities";
  * CodeToolsSettingBinding can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/codeToolsSettings/{{code_tools_setting_id}}/settingBindings/{{setting_binding_id}}`
- *
  * * `{{project}}/{{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}`
- *
  * * `{{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}`
  *
  * When using the `pulumi import` command, CodeToolsSettingBinding can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding default projects/{{project}}/locations/{{location}}/codeToolsSettings/{{code_tools_setting_id}}/settingBindings/{{setting_binding_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding default {{project}}/{{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding default {{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}
  * ```
  */
@@ -135,7 +127,7 @@ export class CodeToolsSettingBinding extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -250,7 +242,7 @@ export interface CodeToolsSettingBindingState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

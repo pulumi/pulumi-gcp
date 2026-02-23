@@ -134,14 +134,14 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
-    ///         Name = "psc-network-_3686",
+    ///         Name = "psc-network-_44339",
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     ///     var endpoint = new Gcp.Vertex.AiEndpoint("endpoint", new()
     ///     {
-    ///         Name = "endpoint-name_54136",
+    ///         Name = "endpoint-name_34599",
     ///         DisplayName = "sample-endpoint",
     ///         Description = "A sample vertex endpoint",
     ///         Location = "us-central1",
@@ -182,7 +182,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var endpoint = new Gcp.Vertex.AiEndpoint("endpoint", new()
     ///     {
-    ///         Name = "endpoint-name_11171",
+    ///         Name = "endpoint-name_79513",
     ///         DisplayName = "sample-endpoint",
     ///         Description = "A sample vertex endpoint",
     ///         Location = "us-central1",
@@ -204,22 +204,14 @@ namespace Pulumi.Gcp.Vertex
     /// Endpoint can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{location}}/{{name}}
     /// ```
     /// </summary>
@@ -338,7 +330,7 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -657,7 +649,7 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

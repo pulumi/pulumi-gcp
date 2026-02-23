@@ -198,7 +198,7 @@ class _GdcServiceInstanceState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Whether the service instance is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
         :param pulumi.Input[_builtins.str] requested_state: The intended state to which the service instance is reconciling. Possible values:
                * `CREATING`
@@ -383,7 +383,7 @@ class _GdcServiceInstanceState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -569,22 +569,14 @@ class GdcServiceInstance(pulumi.CustomResource):
         ServiceInstance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/serviceInstances/{{service_instance_id}}`
-
         * `{{project}}/{{location}}/{{service_instance_id}}`
-
         * `{{location}}/{{service_instance_id}}`
 
         When using the `pulumi import` command, ServiceInstance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default projects/{{project}}/locations/{{location}}/serviceInstances/{{service_instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{project}}/{{location}}/{{service_instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{location}}/{{service_instance_id}}
         ```
 
@@ -645,22 +637,14 @@ class GdcServiceInstance(pulumi.CustomResource):
         ServiceInstance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/serviceInstances/{{service_instance_id}}`
-
         * `{{project}}/{{location}}/{{service_instance_id}}`
-
         * `{{location}}/{{service_instance_id}}`
 
         When using the `pulumi import` command, ServiceInstance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default projects/{{project}}/locations/{{location}}/serviceInstances/{{service_instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{project}}/{{location}}/{{service_instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{location}}/{{service_instance_id}}
         ```
 
@@ -771,7 +755,7 @@ class GdcServiceInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Whether the service instance is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
         :param pulumi.Input[_builtins.str] requested_state: The intended state to which the service instance is reconciling. Possible values:
                * `CREATING`
@@ -906,7 +890,7 @@ class GdcServiceInstance(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

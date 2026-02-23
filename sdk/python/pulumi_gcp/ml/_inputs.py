@@ -19,16 +19,11 @@ __all__ = [
     'EngineModelDefaultVersionArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class EngineModelDefaultVersionArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name specified for the version when it was created.
-        """
-elif False:
-    EngineModelDefaultVersionArgsDict: TypeAlias = Mapping[str, Any]
+class EngineModelDefaultVersionArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name specified for the version when it was created.
+    """
 
 @pulumi.input_type
 class EngineModelDefaultVersionArgs:

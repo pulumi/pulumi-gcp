@@ -76,6 +76,7 @@ __all__ = [
     'DiskSourceImageEncryptionKey',
     'DiskSourceSnapshotEncryptionKey',
     'ExternalVpnGatewayInterface',
+    'ExternalVpnGatewayParams',
     'FirewallAllow',
     'FirewallDeny',
     'FirewallLogConfig',
@@ -124,6 +125,7 @@ __all__ = [
     'GlobalForwardingRuleMetadataFilter',
     'GlobalForwardingRuleMetadataFilterFilterLabel',
     'GlobalForwardingRuleServiceDirectoryRegistrations',
+    'HaVpnGatewayParams',
     'HaVpnGatewayVpnInterface',
     'HealthCheckGrpcHealthCheck',
     'HealthCheckGrpcTlsHealthCheck',
@@ -297,6 +299,7 @@ __all__ = [
     'InterconnectAttachmentL2ForwardingApplianceMapping',
     'InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping',
     'InterconnectAttachmentL2ForwardingGeneveHeader',
+    'InterconnectAttachmentParams',
     'InterconnectAttachmentPrivateInterconnectInfo',
     'InterconnectCircuitInfo',
     'InterconnectExpectedOutage',
@@ -665,6 +668,14 @@ __all__ = [
     'ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek',
     'ResourcePolicySnapshotSchedulePolicySnapshotProperties',
     'ResourcePolicyWorkloadPolicy',
+    'RolloutPlanWave',
+    'RolloutPlanWaveOrchestrationOptions',
+    'RolloutPlanWaveOrchestrationOptionsDelay',
+    'RolloutPlanWaveSelector',
+    'RolloutPlanWaveSelectorLocationSelector',
+    'RolloutPlanWaveSelectorResourceHierarchySelector',
+    'RolloutPlanWaveValidation',
+    'RolloutPlanWaveValidationTimeBasedValidationMetadata',
     'RouteAsPath',
     'RouteParams',
     'RouteWarning',
@@ -845,9 +856,11 @@ __all__ = [
     'URLMapPathMatcherRouteRuleUrlRedirect',
     'URLMapTest',
     'URLMapTestHeader',
+    'VPNGatewayParams',
     'VPNTunnelCipherSuite',
     'VPNTunnelCipherSuitePhase1',
     'VPNTunnelCipherSuitePhase2',
+    'VPNTunnelParams',
     'WireGroupEndpoint',
     'WireGroupEndpointInterconnect',
     'WireGroupTopology',
@@ -907,6 +920,7 @@ __all__ = [
     'GetGlobalForwardingRuleMetadataFilterResult',
     'GetGlobalForwardingRuleMetadataFilterFilterLabelResult',
     'GetGlobalForwardingRuleServiceDirectoryRegistrationResult',
+    'GetHcVpnGatewayParamResult',
     'GetHcVpnGatewayVpnInterfaceResult',
     'GetHealthCheckGrpcHealthCheckResult',
     'GetHealthCheckGrpcTlsHealthCheckResult',
@@ -3760,6 +3774,11 @@ class BackendServiceIamBindingCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -3785,6 +3804,13 @@ class BackendServiceIamBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -3797,6 +3823,11 @@ class BackendServiceIamMemberCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -3822,6 +3853,13 @@ class BackendServiceIamMemberCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -5569,6 +5607,46 @@ class ExternalVpnGatewayInterface(dict):
         is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
         """
         return pulumi.get(self, "ipv6_address")
+
+
+@pulumi.output_type
+class ExternalVpnGatewayParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExternalVpnGatewayParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExternalVpnGatewayParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExternalVpnGatewayParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] resource_manager_tags: Resource manager tags to be bound to the ExternalVpnGateway. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource manager tags to be bound to the ExternalVpnGateway. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -9251,6 +9329,46 @@ class GlobalForwardingRuleServiceDirectoryRegistrations(dict):
 
 
 @pulumi.output_type
+class HaVpnGatewayParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HaVpnGatewayParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HaVpnGatewayParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HaVpnGatewayParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] resource_manager_tags: Resource manager tags to be bound to the HaVpnGateway. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource manager tags to be bound to the HaVpnGateway. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
 class HaVpnGatewayVpnInterface(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -11723,7 +11841,7 @@ class InstanceBootDiskInitializeParams(dict):
                api/gcloud without the need to delete and recreate the disk, hyperdisk allows
                for an update of throughput every 4 hours. To update your hyperdisk more
                frequently, you'll need to manually delete and recreate it.
-        :param Mapping[str, _builtins.str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param Mapping[str, _builtins.str] resource_manager_tags: A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
         :param _builtins.str resource_policies: A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
         :param _builtins.int size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
@@ -11841,7 +11959,7 @@ class InstanceBootDiskInitializeParams(dict):
     @pulumi.getter(name="resourceManagerTags")
     def resource_manager_tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
         """
         return pulumi.get(self, "resource_manager_tags")
 
@@ -13169,6 +13287,8 @@ class InstanceFromMachineImageNetworkInterface(dict):
             suggest = "network_ip"
         elif key == "nicType":
             suggest = "nic_type"
+        elif key == "parentNicName":
+            suggest = "parent_nic_name"
         elif key == "queueCount":
             suggest = "queue_count"
         elif key == "securityPolicy":
@@ -13203,11 +13323,13 @@ class InstanceFromMachineImageNetworkInterface(dict):
                  network_attachment: Optional[_builtins.str] = None,
                  network_ip: Optional[_builtins.str] = None,
                  nic_type: Optional[_builtins.str] = None,
+                 parent_nic_name: Optional[_builtins.str] = None,
                  queue_count: Optional[_builtins.int] = None,
                  security_policy: Optional[_builtins.str] = None,
                  stack_type: Optional[_builtins.str] = None,
                  subnetwork: Optional[_builtins.str] = None,
-                 subnetwork_project: Optional[_builtins.str] = None):
+                 subnetwork_project: Optional[_builtins.str] = None,
+                 vlan: Optional[_builtins.int] = None):
         """
         :param Sequence['InstanceFromMachineImageNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
         :param Sequence['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An array of alias IP ranges for this network interface.
@@ -13223,11 +13345,13 @@ class InstanceFromMachineImageNetworkInterface(dict):
         :param _builtins.str network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param _builtins.str network_ip: The private IP address assigned to the instance.
         :param _builtins.str nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
+        :param _builtins.str parent_nic_name: Name of the parent network interface of a dynamic network interface.
         :param _builtins.int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param _builtins.str security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param _builtins.str stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
         :param _builtins.str subnetwork: The name or self_link of the subnetwork attached to this interface.
         :param _builtins.str subnetwork_project: The project in which the subnetwork belongs.
+        :param _builtins.int vlan: VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
         """
         if access_configs is not None:
             pulumi.set(__self__, "access_configs", access_configs)
@@ -13255,6 +13379,8 @@ class InstanceFromMachineImageNetworkInterface(dict):
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if parent_nic_name is not None:
+            pulumi.set(__self__, "parent_nic_name", parent_nic_name)
         if queue_count is not None:
             pulumi.set(__self__, "queue_count", queue_count)
         if security_policy is not None:
@@ -13265,6 +13391,8 @@ class InstanceFromMachineImageNetworkInterface(dict):
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
             pulumi.set(__self__, "subnetwork_project", subnetwork_project)
+        if vlan is not None:
+            pulumi.set(__self__, "vlan", vlan)
 
     @_builtins.property
     @pulumi.getter(name="accessConfigs")
@@ -13372,6 +13500,14 @@ class InstanceFromMachineImageNetworkInterface(dict):
         return pulumi.get(self, "nic_type")
 
     @_builtins.property
+    @pulumi.getter(name="parentNicName")
+    def parent_nic_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the parent network interface of a dynamic network interface.
+        """
+        return pulumi.get(self, "parent_nic_name")
+
+    @_builtins.property
     @pulumi.getter(name="queueCount")
     def queue_count(self) -> Optional[_builtins.int]:
         """
@@ -13410,6 +13546,14 @@ class InstanceFromMachineImageNetworkInterface(dict):
         The project in which the subnetwork belongs.
         """
         return pulumi.get(self, "subnetwork_project")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> Optional[_builtins.int]:
+        """
+        VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+        """
+        return pulumi.get(self, "vlan")
 
 
 @pulumi.output_type
@@ -15496,6 +15640,8 @@ class InstanceFromTemplateNetworkInterface(dict):
             suggest = "network_ip"
         elif key == "nicType":
             suggest = "nic_type"
+        elif key == "parentNicName":
+            suggest = "parent_nic_name"
         elif key == "queueCount":
             suggest = "queue_count"
         elif key == "securityPolicy":
@@ -15530,11 +15676,13 @@ class InstanceFromTemplateNetworkInterface(dict):
                  network_attachment: Optional[_builtins.str] = None,
                  network_ip: Optional[_builtins.str] = None,
                  nic_type: Optional[_builtins.str] = None,
+                 parent_nic_name: Optional[_builtins.str] = None,
                  queue_count: Optional[_builtins.int] = None,
                  security_policy: Optional[_builtins.str] = None,
                  stack_type: Optional[_builtins.str] = None,
                  subnetwork: Optional[_builtins.str] = None,
-                 subnetwork_project: Optional[_builtins.str] = None):
+                 subnetwork_project: Optional[_builtins.str] = None,
+                 vlan: Optional[_builtins.int] = None):
         """
         :param Sequence['InstanceFromTemplateNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
         :param Sequence['InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An array of alias IP ranges for this network interface.
@@ -15550,11 +15698,13 @@ class InstanceFromTemplateNetworkInterface(dict):
         :param _builtins.str network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param _builtins.str network_ip: The private IP address assigned to the instance.
         :param _builtins.str nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
+        :param _builtins.str parent_nic_name: Name of the parent network interface of a dynamic network interface.
         :param _builtins.int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param _builtins.str security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param _builtins.str stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
         :param _builtins.str subnetwork: The name or self_link of the subnetwork attached to this interface.
         :param _builtins.str subnetwork_project: The project in which the subnetwork belongs.
+        :param _builtins.int vlan: VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
         """
         if access_configs is not None:
             pulumi.set(__self__, "access_configs", access_configs)
@@ -15582,6 +15732,8 @@ class InstanceFromTemplateNetworkInterface(dict):
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if parent_nic_name is not None:
+            pulumi.set(__self__, "parent_nic_name", parent_nic_name)
         if queue_count is not None:
             pulumi.set(__self__, "queue_count", queue_count)
         if security_policy is not None:
@@ -15592,6 +15744,8 @@ class InstanceFromTemplateNetworkInterface(dict):
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
             pulumi.set(__self__, "subnetwork_project", subnetwork_project)
+        if vlan is not None:
+            pulumi.set(__self__, "vlan", vlan)
 
     @_builtins.property
     @pulumi.getter(name="accessConfigs")
@@ -15699,6 +15853,14 @@ class InstanceFromTemplateNetworkInterface(dict):
         return pulumi.get(self, "nic_type")
 
     @_builtins.property
+    @pulumi.getter(name="parentNicName")
+    def parent_nic_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the parent network interface of a dynamic network interface.
+        """
+        return pulumi.get(self, "parent_nic_name")
+
+    @_builtins.property
     @pulumi.getter(name="queueCount")
     def queue_count(self) -> Optional[_builtins.int]:
         """
@@ -15737,6 +15899,14 @@ class InstanceFromTemplateNetworkInterface(dict):
         The project in which the subnetwork belongs.
         """
         return pulumi.get(self, "subnetwork_project")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> Optional[_builtins.int]:
+        """
+        VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+        """
+        return pulumi.get(self, "vlan")
 
 
 @pulumi.output_type
@@ -18004,6 +18174,8 @@ class InstanceNetworkInterface(dict):
             suggest = "network_ip"
         elif key == "nicType":
             suggest = "nic_type"
+        elif key == "parentNicName":
+            suggest = "parent_nic_name"
         elif key == "queueCount":
             suggest = "queue_count"
         elif key == "securityPolicy":
@@ -18038,13 +18210,20 @@ class InstanceNetworkInterface(dict):
                  network_attachment: Optional[_builtins.str] = None,
                  network_ip: Optional[_builtins.str] = None,
                  nic_type: Optional[_builtins.str] = None,
+                 parent_nic_name: Optional[_builtins.str] = None,
                  queue_count: Optional[_builtins.int] = None,
                  security_policy: Optional[_builtins.str] = None,
                  stack_type: Optional[_builtins.str] = None,
                  subnetwork: Optional[_builtins.str] = None,
-                 subnetwork_project: Optional[_builtins.str] = None):
+                 subnetwork_project: Optional[_builtins.str] = None,
+                 vlan: Optional[_builtins.int] = None):
         """
-        :param Sequence['InstanceNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+        :param Sequence['InstanceNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
+               instance can be accessed via the Internet. Omit to ensure that the instance
+               is not accessible from the Internet. If omitted, ssh provisioners will not
+               work unless Terraform can send traffic to the instance's network (e.g. via
+               tunnel or because it is running on another cloud instance on that network).
+               This block can be specified once per `network_interface`. Structure documented below.
         :param Sequence['InstanceNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
@@ -18066,6 +18245,7 @@ class InstanceNetworkInterface(dict):
         :param _builtins.str network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param _builtins.str nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA.
+        :param _builtins.str parent_nic_name: Name of the parent network interface of a dynamic network interface.
         :param _builtins.int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param _builtins.str security_policy: Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param _builtins.str stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
@@ -18080,6 +18260,7 @@ class InstanceNetworkInterface(dict):
                If the `subnetwork` is a self_link, this field is set to the project
                defined in the subnetwork self_link. If the `subnetwork` is a name and this
                field is not provided, the provider project is used.
+        :param _builtins.int vlan: VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
         """
         if access_configs is not None:
             pulumi.set(__self__, "access_configs", access_configs)
@@ -18107,6 +18288,8 @@ class InstanceNetworkInterface(dict):
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if parent_nic_name is not None:
+            pulumi.set(__self__, "parent_nic_name", parent_nic_name)
         if queue_count is not None:
             pulumi.set(__self__, "queue_count", queue_count)
         if security_policy is not None:
@@ -18117,12 +18300,19 @@ class InstanceNetworkInterface(dict):
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
             pulumi.set(__self__, "subnetwork_project", subnetwork_project)
+        if vlan is not None:
+            pulumi.set(__self__, "vlan", vlan)
 
     @_builtins.property
     @pulumi.getter(name="accessConfigs")
     def access_configs(self) -> Optional[Sequence['outputs.InstanceNetworkInterfaceAccessConfig']]:
         """
-        Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+        Access configurations, i.e. IPs via which this
+        instance can be accessed via the Internet. Omit to ensure that the instance
+        is not accessible from the Internet. If omitted, ssh provisioners will not
+        work unless Terraform can send traffic to the instance's network (e.g. via
+        tunnel or because it is running on another cloud instance on that network).
+        This block can be specified once per `network_interface`. Structure documented below.
         """
         return pulumi.get(self, "access_configs")
 
@@ -18232,6 +18422,14 @@ class InstanceNetworkInterface(dict):
         return pulumi.get(self, "nic_type")
 
     @_builtins.property
+    @pulumi.getter(name="parentNicName")
+    def parent_nic_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the parent network interface of a dynamic network interface.
+        """
+        return pulumi.get(self, "parent_nic_name")
+
+    @_builtins.property
     @pulumi.getter(name="queueCount")
     def queue_count(self) -> Optional[_builtins.int]:
         """
@@ -18279,6 +18477,14 @@ class InstanceNetworkInterface(dict):
         field is not provided, the provider project is used.
         """
         return pulumi.get(self, "subnetwork_project")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> Optional[_builtins.int]:
+        """
+        VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+        """
+        return pulumi.get(self, "vlan")
 
 
 @pulumi.output_type
@@ -18588,7 +18794,7 @@ class InstanceParams(dict):
     def __init__(__self__, *,
                  resource_manager_tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param Mapping[str, _builtins.str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param Mapping[str, _builtins.str] resource_manager_tags: A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
         """
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
@@ -18597,7 +18803,7 @@ class InstanceParams(dict):
     @pulumi.getter(name="resourceManagerTags")
     def resource_manager_tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
         """
         return pulumi.get(self, "resource_manager_tags")
 
@@ -20223,6 +20429,11 @@ class InstanceTemplateIamBindingCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -20248,6 +20459,13 @@ class InstanceTemplateIamBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -20260,6 +20478,11 @@ class InstanceTemplateIamMemberCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -20285,6 +20508,13 @@ class InstanceTemplateIamMemberCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -20313,6 +20543,8 @@ class InstanceTemplateNetworkInterface(dict):
             suggest = "network_ip"
         elif key == "nicType":
             suggest = "nic_type"
+        elif key == "parentNicName":
+            suggest = "parent_nic_name"
         elif key == "queueCount":
             suggest = "queue_count"
         elif key == "stackType":
@@ -20344,10 +20576,12 @@ class InstanceTemplateNetworkInterface(dict):
                  network_attachment: Optional[_builtins.str] = None,
                  network_ip: Optional[_builtins.str] = None,
                  nic_type: Optional[_builtins.str] = None,
+                 parent_nic_name: Optional[_builtins.str] = None,
                  queue_count: Optional[_builtins.int] = None,
                  stack_type: Optional[_builtins.str] = None,
                  subnetwork: Optional[_builtins.str] = None,
-                 subnetwork_project: Optional[_builtins.str] = None):
+                 subnetwork_project: Optional[_builtins.str] = None,
+                 vlan: Optional[_builtins.int] = None):
         """
         :param Sequence['InstanceTemplateNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
                instance can be accessed via the Internet. Omit to ensure that the instance
@@ -20370,10 +20604,11 @@ class InstanceTemplateNetworkInterface(dict):
         :param _builtins.str network: The name or self_link of the network to attach this interface to.
                Use `network` attribute for Legacy or Auto subnetted networks and
                `subnetwork` for custom subnetted networks.
-        :param _builtins.str network_attachment: ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        :param _builtins.str network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param _builtins.str network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param _builtins.str nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
+        :param _builtins.str parent_nic_name: Name of the parent network interface of a dynamic network interface.
         :param _builtins.int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param _builtins.str stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param _builtins.str subnetwork: the name of the subnetwork to attach this interface
@@ -20381,6 +20616,7 @@ class InstanceTemplateNetworkInterface(dict):
                created in. Either `network` or `subnetwork` must be provided.
         :param _builtins.str subnetwork_project: The ID of the project in which the subnetwork belongs.
                If it is not provided, the provider project is used.
+        :param _builtins.int vlan: VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
         """
         if access_configs is not None:
             pulumi.set(__self__, "access_configs", access_configs)
@@ -20406,6 +20642,8 @@ class InstanceTemplateNetworkInterface(dict):
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if parent_nic_name is not None:
+            pulumi.set(__self__, "parent_nic_name", parent_nic_name)
         if queue_count is not None:
             pulumi.set(__self__, "queue_count", queue_count)
         if stack_type is not None:
@@ -20414,6 +20652,8 @@ class InstanceTemplateNetworkInterface(dict):
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
             pulumi.set(__self__, "subnetwork_project", subnetwork_project)
+        if vlan is not None:
+            pulumi.set(__self__, "vlan", vlan)
 
     @_builtins.property
     @pulumi.getter(name="accessConfigs")
@@ -20503,7 +20743,7 @@ class InstanceTemplateNetworkInterface(dict):
     @pulumi.getter(name="networkAttachment")
     def network_attachment(self) -> Optional[_builtins.str]:
         """
-        ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         """
         return pulumi.get(self, "network_attachment")
 
@@ -20523,6 +20763,14 @@ class InstanceTemplateNetworkInterface(dict):
         The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
         """
         return pulumi.get(self, "nic_type")
+
+    @_builtins.property
+    @pulumi.getter(name="parentNicName")
+    def parent_nic_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the parent network interface of a dynamic network interface.
+        """
+        return pulumi.get(self, "parent_nic_name")
 
     @_builtins.property
     @pulumi.getter(name="queueCount")
@@ -20558,6 +20806,14 @@ class InstanceTemplateNetworkInterface(dict):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "subnetwork_project")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> Optional[_builtins.int]:
+        """
+        VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+        """
+        return pulumi.get(self, "vlan")
 
 
 @pulumi.output_type
@@ -21531,6 +21787,11 @@ class InstantSnapshotIamBindingCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -21556,6 +21817,13 @@ class InstantSnapshotIamBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -21568,6 +21836,11 @@ class InstantSnapshotIamMemberCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -21593,6 +21866,13 @@ class InstantSnapshotIamMemberCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -22423,10 +22703,8 @@ class InterconnectAttachmentL2Forwarding(dict):
                  tunnel_endpoint_ip_address: Optional[_builtins.str] = None):
         """
         :param Sequence['InterconnectAttachmentL2ForwardingApplianceMappingArgs'] appliance_mappings: A map of VLAN tags to appliances and optional inner mapping rules.
-               Structure is documented below.
         :param _builtins.str default_appliance_ip_address: The default appliance IP address.
         :param 'InterconnectAttachmentL2ForwardingGeneveHeaderArgs' geneve_header: GeneveHeader related configurations.
-               Structure is documented below.
         :param _builtins.str network: URL of the network to which this attachment belongs.
         :param _builtins.str tunnel_endpoint_ip_address: The tunnel endpoint IP address.
         """
@@ -22446,7 +22724,6 @@ class InterconnectAttachmentL2Forwarding(dict):
     def appliance_mappings(self) -> Optional[Sequence['outputs.InterconnectAttachmentL2ForwardingApplianceMapping']]:
         """
         A map of VLAN tags to appliances and optional inner mapping rules.
-        Structure is documented below.
         """
         return pulumi.get(self, "appliance_mappings")
 
@@ -22463,7 +22740,6 @@ class InterconnectAttachmentL2Forwarding(dict):
     def geneve_header(self) -> Optional['outputs.InterconnectAttachmentL2ForwardingGeneveHeader']:
         """
         GeneveHeader related configurations.
-        Structure is documented below.
         """
         return pulumi.get(self, "geneve_header")
 
@@ -22627,6 +22903,50 @@ class InterconnectAttachmentL2ForwardingGeneveHeader(dict):
         VNI is a 24-bit unique virtual network identifier.
         """
         return pulumi.get(self, "vni")
+
+
+@pulumi.output_type
+class InterconnectAttachmentParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectAttachmentParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectAttachmentParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectAttachmentParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] resource_manager_tags: Resource manager tags to be bound to the interconnect attachment. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+               
+               <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource manager tags to be bound to the interconnect attachment. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+
+        <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -29701,6 +30021,11 @@ class RegionBackendServiceIamBindingCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -29726,6 +30051,13 @@ class RegionBackendServiceIamBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -29738,6 +30070,11 @@ class RegionBackendServiceIamMemberCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -29763,6 +30100,13 @@ class RegionBackendServiceIamMemberCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -29994,12 +30338,10 @@ class RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity(dict):
                  spillover: Optional[_builtins.str] = None,
                  spillover_ratio: Optional[_builtins.float] = None):
         """
-        :param _builtins.str spillover: (Optional, Beta)
-               This field indicates whether zonal affinity is enabled or not.
+        :param _builtins.str spillover: This field indicates whether zonal affinity is enabled or not.
                Default value is `ZONAL_AFFINITY_DISABLED`.
                Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
-        :param _builtins.float spillover_ratio: (Optional, Beta)
-               The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+        :param _builtins.float spillover_ratio: The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
                to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
                distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
                of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
@@ -30014,7 +30356,6 @@ class RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity(dict):
     @pulumi.getter
     def spillover(self) -> Optional[_builtins.str]:
         """
-        (Optional, Beta)
         This field indicates whether zonal affinity is enabled or not.
         Default value is `ZONAL_AFFINITY_DISABLED`.
         Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
@@ -30025,7 +30366,6 @@ class RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity(dict):
     @pulumi.getter(name="spilloverRatio")
     def spillover_ratio(self) -> Optional[_builtins.float]:
         """
-        (Optional, Beta)
         The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
         to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
         distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
@@ -34578,10 +34918,14 @@ class RegionInstanceTemplateNetworkInterface(dict):
             suggest = "ipv6_access_type"
         elif key == "ipv6Address":
             suggest = "ipv6_address"
+        elif key == "networkAttachment":
+            suggest = "network_attachment"
         elif key == "networkIp":
             suggest = "network_ip"
         elif key == "nicType":
             suggest = "nic_type"
+        elif key == "parentNicName":
+            suggest = "parent_nic_name"
         elif key == "queueCount":
             suggest = "queue_count"
         elif key == "stackType":
@@ -34610,13 +34954,22 @@ class RegionInstanceTemplateNetworkInterface(dict):
                  ipv6_address: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
                  network: Optional[_builtins.str] = None,
+                 network_attachment: Optional[_builtins.str] = None,
                  network_ip: Optional[_builtins.str] = None,
                  nic_type: Optional[_builtins.str] = None,
+                 parent_nic_name: Optional[_builtins.str] = None,
                  queue_count: Optional[_builtins.int] = None,
                  stack_type: Optional[_builtins.str] = None,
                  subnetwork: Optional[_builtins.str] = None,
-                 subnetwork_project: Optional[_builtins.str] = None):
+                 subnetwork_project: Optional[_builtins.str] = None,
+                 vlan: Optional[_builtins.int] = None):
         """
+        :param Sequence['RegionInstanceTemplateNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
+               instance can be accessed via the Internet. Omit to ensure that the instance
+               is not accessible from the Internet (this means that ssh provisioners will
+               not work unless you are running Terraform can send traffic to the instance's
+               network (e.g. via tunnel or because it is running on another cloud instance
+               on that network). This block can be specified once per `network_interface`. Structure documented below.
         :param Sequence['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
@@ -34627,13 +34980,16 @@ class RegionInstanceTemplateNetworkInterface(dict):
                specified, then this instance will have no external IPv6 Internet access. Structure documented below.
         :param _builtins.str ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
         :param _builtins.str ipv6_address: An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
-        :param _builtins.str name: The name of the network_interface.
+        :param _builtins.str name: The name of the instance template. If you leave
+               this blank, Terraform will auto-generate a unique name.
         :param _builtins.str network: The name or self_link of the network to attach this interface to.
                Use `network` attribute for Legacy or Auto subnetted networks and
                `subnetwork` for custom subnetted networks.
+        :param _builtins.str network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param _builtins.str network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param _builtins.str nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
+        :param _builtins.str parent_nic_name: Name of the parent network interface of a dynamic network interface.
         :param _builtins.int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param _builtins.str stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param _builtins.str subnetwork: the name of the subnetwork to attach this interface
@@ -34641,6 +34997,7 @@ class RegionInstanceTemplateNetworkInterface(dict):
                created in. Either `network` or `subnetwork` must be provided.
         :param _builtins.str subnetwork_project: The ID of the project in which the subnetwork belongs.
                If it is not provided, the provider project is used.
+        :param _builtins.int vlan: VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
         """
         if access_configs is not None:
             pulumi.set(__self__, "access_configs", access_configs)
@@ -34660,10 +35017,14 @@ class RegionInstanceTemplateNetworkInterface(dict):
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_attachment is not None:
+            pulumi.set(__self__, "network_attachment", network_attachment)
         if network_ip is not None:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if parent_nic_name is not None:
+            pulumi.set(__self__, "parent_nic_name", parent_nic_name)
         if queue_count is not None:
             pulumi.set(__self__, "queue_count", queue_count)
         if stack_type is not None:
@@ -34672,10 +35033,20 @@ class RegionInstanceTemplateNetworkInterface(dict):
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
             pulumi.set(__self__, "subnetwork_project", subnetwork_project)
+        if vlan is not None:
+            pulumi.set(__self__, "vlan", vlan)
 
     @_builtins.property
     @pulumi.getter(name="accessConfigs")
     def access_configs(self) -> Optional[Sequence['outputs.RegionInstanceTemplateNetworkInterfaceAccessConfig']]:
+        """
+        Access configurations, i.e. IPs via which this
+        instance can be accessed via the Internet. Omit to ensure that the instance
+        is not accessible from the Internet (this means that ssh provisioners will
+        not work unless you are running Terraform can send traffic to the instance's
+        network (e.g. via tunnel or because it is running on another cloud instance
+        on that network). This block can be specified once per `network_interface`. Structure documented below.
+        """
         return pulumi.get(self, "access_configs")
 
     @_builtins.property
@@ -34734,7 +35105,8 @@ class RegionInstanceTemplateNetworkInterface(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        The name of the network_interface.
+        The name of the instance template. If you leave
+        this blank, Terraform will auto-generate a unique name.
         """
         return pulumi.get(self, "name")
 
@@ -34747,6 +35119,14 @@ class RegionInstanceTemplateNetworkInterface(dict):
         `subnetwork` for custom subnetted networks.
         """
         return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> Optional[_builtins.str]:
+        """
+        The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        """
+        return pulumi.get(self, "network_attachment")
 
     @_builtins.property
     @pulumi.getter(name="networkIp")
@@ -34764,6 +35144,14 @@ class RegionInstanceTemplateNetworkInterface(dict):
         The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
         """
         return pulumi.get(self, "nic_type")
+
+    @_builtins.property
+    @pulumi.getter(name="parentNicName")
+    def parent_nic_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the parent network interface of a dynamic network interface.
+        """
+        return pulumi.get(self, "parent_nic_name")
 
     @_builtins.property
     @pulumi.getter(name="queueCount")
@@ -34799,6 +35187,14 @@ class RegionInstanceTemplateNetworkInterface(dict):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "subnetwork_project")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> Optional[_builtins.int]:
+        """
+        VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+        """
+        return pulumi.get(self, "vlan")
 
 
 @pulumi.output_type
@@ -34965,7 +35361,8 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
         :param _builtins.str network_tier: The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
         :param _builtins.str external_ipv6: The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
         :param _builtins.str external_ipv6_prefix_length: The prefix length of the external IPv6 range.
-        :param _builtins.str name: The name of this access configuration.
+        :param _builtins.str name: The name of the instance template. If you leave
+               this blank, Terraform will auto-generate a unique name.
         :param _builtins.str public_ptr_domain_name: The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
         """
         pulumi.set(__self__, "network_tier", network_tier)
@@ -35006,7 +35403,8 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        The name of this access configuration.
+        The name of the instance template. If you leave
+        this blank, Terraform will auto-generate a unique name.
         """
         return pulumi.get(self, "name")
 
@@ -50041,6 +50439,458 @@ class ResourcePolicyWorkloadPolicy(dict):
 
 
 @pulumi.output_type
+class RolloutPlanWave(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "orchestrationOptions":
+            suggest = "orchestration_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RolloutPlanWave. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RolloutPlanWave.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RolloutPlanWave.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 selectors: Sequence['outputs.RolloutPlanWaveSelector'],
+                 validation: 'outputs.RolloutPlanWaveValidation',
+                 display_name: Optional[_builtins.str] = None,
+                 number: Optional[_builtins.int] = None,
+                 orchestration_options: Optional['outputs.RolloutPlanWaveOrchestrationOptions'] = None):
+        """
+        :param Sequence['RolloutPlanWaveSelectorArgs'] selectors: The selectors for this wave. There is a logical AND between each selector
+               defined in a wave, so a resource must satisfy the criteria of *all* the
+               specified selectors to be in scope for the wave.
+               Structure is documented below.
+        :param 'RolloutPlanWaveValidationArgs' validation: The validation to be performed before progressing to the next wave.
+               Structure is documented below.
+        :param _builtins.str display_name: The display name of this wave of the rollout plan.
+        :param _builtins.int number: (Output)
+               The wave number.
+        :param 'RolloutPlanWaveOrchestrationOptionsArgs' orchestration_options: Options to control the pace of orchestration of a wave.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "selectors", selectors)
+        pulumi.set(__self__, "validation", validation)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if number is not None:
+            pulumi.set(__self__, "number", number)
+        if orchestration_options is not None:
+            pulumi.set(__self__, "orchestration_options", orchestration_options)
+
+    @_builtins.property
+    @pulumi.getter
+    def selectors(self) -> Sequence['outputs.RolloutPlanWaveSelector']:
+        """
+        The selectors for this wave. There is a logical AND between each selector
+        defined in a wave, so a resource must satisfy the criteria of *all* the
+        specified selectors to be in scope for the wave.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "selectors")
+
+    @_builtins.property
+    @pulumi.getter
+    def validation(self) -> 'outputs.RolloutPlanWaveValidation':
+        """
+        The validation to be performed before progressing to the next wave.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "validation")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The display name of this wave of the rollout plan.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def number(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The wave number.
+        """
+        return pulumi.get(self, "number")
+
+    @_builtins.property
+    @pulumi.getter(name="orchestrationOptions")
+    def orchestration_options(self) -> Optional['outputs.RolloutPlanWaveOrchestrationOptions']:
+        """
+        Options to control the pace of orchestration of a wave.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "orchestration_options")
+
+
+@pulumi.output_type
+class RolloutPlanWaveOrchestrationOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxConcurrentLocations":
+            suggest = "max_concurrent_locations"
+        elif key == "maxConcurrentResourcesPerLocation":
+            suggest = "max_concurrent_resources_per_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RolloutPlanWaveOrchestrationOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RolloutPlanWaveOrchestrationOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RolloutPlanWaveOrchestrationOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delays: Optional[Sequence['outputs.RolloutPlanWaveOrchestrationOptionsDelay']] = None,
+                 max_concurrent_locations: Optional[_builtins.int] = None,
+                 max_concurrent_resources_per_location: Optional[_builtins.int] = None):
+        """
+        :param Sequence['RolloutPlanWaveOrchestrationOptionsDelayArgs'] delays: Delays, if any, to be added between batches of projects.
+               Structure is documented below.
+        :param _builtins.int max_concurrent_locations: Maximum number of locations to be orchestrated in parallel.
+        :param _builtins.int max_concurrent_resources_per_location: Maximum number of resources to be orchestrated per location in parallel.
+        """
+        if delays is not None:
+            pulumi.set(__self__, "delays", delays)
+        if max_concurrent_locations is not None:
+            pulumi.set(__self__, "max_concurrent_locations", max_concurrent_locations)
+        if max_concurrent_resources_per_location is not None:
+            pulumi.set(__self__, "max_concurrent_resources_per_location", max_concurrent_resources_per_location)
+
+    @_builtins.property
+    @pulumi.getter
+    def delays(self) -> Optional[Sequence['outputs.RolloutPlanWaveOrchestrationOptionsDelay']]:
+        """
+        Delays, if any, to be added between batches of projects.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "delays")
+
+    @_builtins.property
+    @pulumi.getter(name="maxConcurrentLocations")
+    def max_concurrent_locations(self) -> Optional[_builtins.int]:
+        """
+        Maximum number of locations to be orchestrated in parallel.
+        """
+        return pulumi.get(self, "max_concurrent_locations")
+
+    @_builtins.property
+    @pulumi.getter(name="maxConcurrentResourcesPerLocation")
+    def max_concurrent_resources_per_location(self) -> Optional[_builtins.int]:
+        """
+        Maximum number of resources to be orchestrated per location in parallel.
+        """
+        return pulumi.get(self, "max_concurrent_resources_per_location")
+
+
+@pulumi.output_type
+class RolloutPlanWaveOrchestrationOptionsDelay(dict):
+    def __init__(__self__, *,
+                 delimiter: Optional[_builtins.str] = None,
+                 duration: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str delimiter: Controls whether the delay should only be added between batches of projects corresponding to different locations, or also between batches of projects corresponding to the same location.
+               Possible values are: `DELIMITER_UNSPECIFIED`, `DELIMITER_LOCATION`, `DELIMITER_BATCH`.
+        :param _builtins.str duration: The duration of the delay, if any, to be added between batches of projects.
+        :param _builtins.str type: Controls whether the specified duration is to be added at the end of each batch, or if the total processing time for each batch will be padded if needed to meet the specified duration.
+               Possible values are: `TYPE_UNSPECIFIED`, `TYPE_OFFSET`, `TYPE_MINIMUM`.
+        """
+        if delimiter is not None:
+            pulumi.set(__self__, "delimiter", delimiter)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def delimiter(self) -> Optional[_builtins.str]:
+        """
+        Controls whether the delay should only be added between batches of projects corresponding to different locations, or also between batches of projects corresponding to the same location.
+        Possible values are: `DELIMITER_UNSPECIFIED`, `DELIMITER_LOCATION`, `DELIMITER_BATCH`.
+        """
+        return pulumi.get(self, "delimiter")
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[_builtins.str]:
+        """
+        The duration of the delay, if any, to be added between batches of projects.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Controls whether the specified duration is to be added at the end of each batch, or if the total processing time for each batch will be padded if needed to meet the specified duration.
+        Possible values are: `TYPE_UNSPECIFIED`, `TYPE_OFFSET`, `TYPE_MINIMUM`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class RolloutPlanWaveSelector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "locationSelector":
+            suggest = "location_selector"
+        elif key == "resourceHierarchySelector":
+            suggest = "resource_hierarchy_selector"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RolloutPlanWaveSelector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RolloutPlanWaveSelector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RolloutPlanWaveSelector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 location_selector: Optional['outputs.RolloutPlanWaveSelectorLocationSelector'] = None,
+                 resource_hierarchy_selector: Optional['outputs.RolloutPlanWaveSelectorResourceHierarchySelector'] = None):
+        """
+        :param 'RolloutPlanWaveSelectorLocationSelectorArgs' location_selector: Roll out to resources by location.
+               Structure is documented below.
+        :param 'RolloutPlanWaveSelectorResourceHierarchySelectorArgs' resource_hierarchy_selector: Roll out to resources by Cloud Resource Manager resource hierarchy nodes such as projects, folders, orgs.
+               Structure is documented below.
+        """
+        if location_selector is not None:
+            pulumi.set(__self__, "location_selector", location_selector)
+        if resource_hierarchy_selector is not None:
+            pulumi.set(__self__, "resource_hierarchy_selector", resource_hierarchy_selector)
+
+    @_builtins.property
+    @pulumi.getter(name="locationSelector")
+    def location_selector(self) -> Optional['outputs.RolloutPlanWaveSelectorLocationSelector']:
+        """
+        Roll out to resources by location.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "location_selector")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceHierarchySelector")
+    def resource_hierarchy_selector(self) -> Optional['outputs.RolloutPlanWaveSelectorResourceHierarchySelector']:
+        """
+        Roll out to resources by Cloud Resource Manager resource hierarchy nodes such as projects, folders, orgs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "resource_hierarchy_selector")
+
+
+@pulumi.output_type
+class RolloutPlanWaveSelectorLocationSelector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "includedLocations":
+            suggest = "included_locations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RolloutPlanWaveSelectorLocationSelector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RolloutPlanWaveSelectorLocationSelector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RolloutPlanWaveSelectorLocationSelector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 included_locations: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] included_locations: Example: "us-central1-a"
+        """
+        if included_locations is not None:
+            pulumi.set(__self__, "included_locations", included_locations)
+
+    @_builtins.property
+    @pulumi.getter(name="includedLocations")
+    def included_locations(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Example: "us-central1-a"
+        """
+        return pulumi.get(self, "included_locations")
+
+
+@pulumi.output_type
+class RolloutPlanWaveSelectorResourceHierarchySelector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "includedFolders":
+            suggest = "included_folders"
+        elif key == "includedOrganizations":
+            suggest = "included_organizations"
+        elif key == "includedProjects":
+            suggest = "included_projects"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RolloutPlanWaveSelectorResourceHierarchySelector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RolloutPlanWaveSelectorResourceHierarchySelector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RolloutPlanWaveSelectorResourceHierarchySelector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 included_folders: Optional[Sequence[_builtins.str]] = None,
+                 included_organizations: Optional[Sequence[_builtins.str]] = None,
+                 included_projects: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] included_folders: Format: "folders/{folder_id}"
+        :param Sequence[_builtins.str] included_organizations: Format: "organizations/{organization_id}"
+        :param Sequence[_builtins.str] included_projects: Format: "projects/{project_id}"
+        """
+        if included_folders is not None:
+            pulumi.set(__self__, "included_folders", included_folders)
+        if included_organizations is not None:
+            pulumi.set(__self__, "included_organizations", included_organizations)
+        if included_projects is not None:
+            pulumi.set(__self__, "included_projects", included_projects)
+
+    @_builtins.property
+    @pulumi.getter(name="includedFolders")
+    def included_folders(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Format: "folders/{folder_id}"
+        """
+        return pulumi.get(self, "included_folders")
+
+    @_builtins.property
+    @pulumi.getter(name="includedOrganizations")
+    def included_organizations(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Format: "organizations/{organization_id}"
+        """
+        return pulumi.get(self, "included_organizations")
+
+    @_builtins.property
+    @pulumi.getter(name="includedProjects")
+    def included_projects(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Format: "projects/{project_id}"
+        """
+        return pulumi.get(self, "included_projects")
+
+
+@pulumi.output_type
+class RolloutPlanWaveValidation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeBasedValidationMetadata":
+            suggest = "time_based_validation_metadata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RolloutPlanWaveValidation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RolloutPlanWaveValidation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RolloutPlanWaveValidation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 time_based_validation_metadata: Optional['outputs.RolloutPlanWaveValidationTimeBasedValidationMetadata'] = None):
+        """
+        :param _builtins.str type: The type of the validation. Possible values:
+               "manual": The system waits for an end-user approval API before progressing to the next wave.
+               "time": The system waits for a user specified duration before progressing to the next wave.
+        :param 'RolloutPlanWaveValidationTimeBasedValidationMetadataArgs' time_based_validation_metadata: Metadata required if type = "time".
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "type", type)
+        if time_based_validation_metadata is not None:
+            pulumi.set(__self__, "time_based_validation_metadata", time_based_validation_metadata)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the validation. Possible values:
+        "manual": The system waits for an end-user approval API before progressing to the next wave.
+        "time": The system waits for a user specified duration before progressing to the next wave.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="timeBasedValidationMetadata")
+    def time_based_validation_metadata(self) -> Optional['outputs.RolloutPlanWaveValidationTimeBasedValidationMetadata']:
+        """
+        Metadata required if type = "time".
+        Structure is documented below.
+        """
+        return pulumi.get(self, "time_based_validation_metadata")
+
+
+@pulumi.output_type
+class RolloutPlanWaveValidationTimeBasedValidationMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "waitDuration":
+            suggest = "wait_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RolloutPlanWaveValidationTimeBasedValidationMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RolloutPlanWaveValidationTimeBasedValidationMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RolloutPlanWaveValidationTimeBasedValidationMetadata.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 wait_duration: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str wait_duration: The duration that the system waits in between waves. This wait starts
+               after all changes in the wave are rolled out.
+        """
+        if wait_duration is not None:
+            pulumi.set(__self__, "wait_duration", wait_duration)
+
+    @_builtins.property
+    @pulumi.getter(name="waitDuration")
+    def wait_duration(self) -> Optional[_builtins.str]:
+        """
+        The duration that the system waits in between waves. This wait starts
+        after all changes in the wave are rolled out.
+        """
+        return pulumi.get(self, "wait_duration")
+
+
+@pulumi.output_type
 class RouteAsPath(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -54777,6 +55627,11 @@ class StoragePoolIamBindingCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -54802,6 +55657,13 @@ class StoragePoolIamBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -54814,6 +55676,11 @@ class StoragePoolIamMemberCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -54839,6 +55706,13 @@ class StoragePoolIamMemberCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -63348,6 +64222,46 @@ class URLMapTestHeader(dict):
 
 
 @pulumi.output_type
+class VPNGatewayParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VPNGatewayParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VPNGatewayParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VPNGatewayParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] resource_manager_tags: Resource manager tags to be bound to the Vpn Gateway. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource manager tags to be bound to the Vpn Gateway. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
 class VPNTunnelCipherSuite(dict):
     def __init__(__self__, *,
                  phase1: Optional['outputs.VPNTunnelCipherSuitePhase1'] = None,
@@ -63484,6 +64398,46 @@ class VPNTunnelCipherSuitePhase2(dict):
         Perfect forward secrecy groups.
         """
         return pulumi.get(self, "pfs")
+
+
+@pulumi.output_type
+class VPNTunnelParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VPNTunnelParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VPNTunnelParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VPNTunnelParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] resource_manager_tags: Resource manager tags to be bound to the Vpn Tunnel. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource manager tags to be bound to the Vpn Tunnel. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -66525,6 +67479,7 @@ class GetForwardingRulesRuleResult(dict):
         :param _builtins.str creation_timestamp: Creation timestamp in RFC3339 text format.
         :param _builtins.str description: An optional description of this resource. Provide this property when
                you create the resource.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.int forwarding_rule_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param _builtins.str ip_address: IP address for which this forwarding rule accepts traffic. When a client
                sends traffic to this IP address, the forwarding rule directs the traffic
@@ -66699,6 +67654,7 @@ class GetForwardingRulesRuleResult(dict):
         :param _builtins.str psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED', 'REJECTED', 'CLOSED'
         :param Mapping[str, _builtins.str] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param _builtins.bool recreate_closed_psc: This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
         :param _builtins.str region: The region you want to get the forwarding rules from.
                
                These arguments must be set in either the provider or the resource in order for the information to be queried.
@@ -66861,6 +67817,9 @@ class GetForwardingRulesRuleResult(dict):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property
@@ -67173,6 +68132,9 @@ class GetForwardingRulesRuleResult(dict):
     @_builtins.property
     @pulumi.getter(name="recreateClosedPsc")
     def recreate_closed_psc(self) -> _builtins.bool:
+        """
+        This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+        """
         return pulumi.get(self, "recreate_closed_psc")
 
     @_builtins.property
@@ -67415,6 +68377,28 @@ class GetGlobalForwardingRuleServiceDirectoryRegistrationResult(dict):
         Directory region.
         """
         return pulumi.get(self, "service_directory_region")
+
+
+@pulumi.output_type
+class GetHcVpnGatewayParamResult(dict):
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, _builtins.str]):
+        """
+        :param Mapping[str, _builtins.str] resource_manager_tags: Resource manager tags to be bound to the HaVpnGateway. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Resource manager tags to be bound to the HaVpnGateway. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -69838,11 +70822,13 @@ class GetInstanceNetworkInterfaceResult(dict):
                  network_attachment: _builtins.str,
                  network_ip: _builtins.str,
                  nic_type: _builtins.str,
+                 parent_nic_name: _builtins.str,
                  queue_count: _builtins.int,
                  security_policy: _builtins.str,
                  stack_type: _builtins.str,
                  subnetwork: _builtins.str,
-                 subnetwork_project: _builtins.str):
+                 subnetwork_project: _builtins.str,
+                 vlan: _builtins.int):
         """
         :param Sequence['GetInstanceNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
                instance can be accessed via the Internet. Structure documented below.
@@ -69858,11 +70844,13 @@ class GetInstanceNetworkInterfaceResult(dict):
         :param _builtins.str network_attachment: The URL of the network attachment to this interface.
         :param _builtins.str network_ip: The internal ip address of the instance, either manually or dynamically assigned.
         :param _builtins.str nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
+        :param _builtins.str parent_nic_name: Name of the parent network interface of a dynamic network interface.
         :param _builtins.int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param _builtins.str security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param _builtins.str stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
         :param _builtins.str subnetwork: The name or self_link of the subnetwork attached to this interface.
         :param _builtins.str subnetwork_project: The project in which the subnetwork belongs.
+        :param _builtins.int vlan: VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
         """
         pulumi.set(__self__, "access_configs", access_configs)
         pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
@@ -69877,11 +70865,13 @@ class GetInstanceNetworkInterfaceResult(dict):
         pulumi.set(__self__, "network_attachment", network_attachment)
         pulumi.set(__self__, "network_ip", network_ip)
         pulumi.set(__self__, "nic_type", nic_type)
+        pulumi.set(__self__, "parent_nic_name", parent_nic_name)
         pulumi.set(__self__, "queue_count", queue_count)
         pulumi.set(__self__, "security_policy", security_policy)
         pulumi.set(__self__, "stack_type", stack_type)
         pulumi.set(__self__, "subnetwork", subnetwork)
         pulumi.set(__self__, "subnetwork_project", subnetwork_project)
+        pulumi.set(__self__, "vlan", vlan)
 
     @_builtins.property
     @pulumi.getter(name="accessConfigs")
@@ -69989,6 +70979,14 @@ class GetInstanceNetworkInterfaceResult(dict):
         return pulumi.get(self, "nic_type")
 
     @_builtins.property
+    @pulumi.getter(name="parentNicName")
+    def parent_nic_name(self) -> _builtins.str:
+        """
+        Name of the parent network interface of a dynamic network interface.
+        """
+        return pulumi.get(self, "parent_nic_name")
+
+    @_builtins.property
     @pulumi.getter(name="queueCount")
     def queue_count(self) -> _builtins.int:
         """
@@ -70027,6 +71025,14 @@ class GetInstanceNetworkInterfaceResult(dict):
         The project in which the subnetwork belongs.
         """
         return pulumi.get(self, "subnetwork_project")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> _builtins.int:
+        """
+        VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+        """
+        return pulumi.get(self, "vlan")
 
 
 @pulumi.output_type
@@ -71382,10 +72388,12 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
                  network_attachment: _builtins.str,
                  network_ip: _builtins.str,
                  nic_type: _builtins.str,
+                 parent_nic_name: _builtins.str,
                  queue_count: _builtins.int,
                  stack_type: _builtins.str,
                  subnetwork: _builtins.str,
-                 subnetwork_project: _builtins.str):
+                 subnetwork_project: _builtins.str,
+                 vlan: _builtins.int):
         """
         :param Sequence['GetInstanceTemplateNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
                instance can be accessed via the Internet. Omit to ensure that the instance
@@ -71409,6 +72417,7 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         :param _builtins.str network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param _builtins.str nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
+        :param _builtins.str parent_nic_name: Name of the parent network interface of a dynamic network interface.
         :param _builtins.int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param _builtins.str stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
         :param _builtins.str subnetwork: the name of the subnetwork to attach this interface
@@ -71416,6 +72425,7 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
                created in. Either `network` or `subnetwork` must be provided.
         :param _builtins.str subnetwork_project: The ID of the project in which the subnetwork belongs.
                If it is not provided, the provider project is used.
+        :param _builtins.int vlan: VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
         """
         pulumi.set(__self__, "access_configs", access_configs)
         pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
@@ -71429,10 +72439,12 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         pulumi.set(__self__, "network_attachment", network_attachment)
         pulumi.set(__self__, "network_ip", network_ip)
         pulumi.set(__self__, "nic_type", nic_type)
+        pulumi.set(__self__, "parent_nic_name", parent_nic_name)
         pulumi.set(__self__, "queue_count", queue_count)
         pulumi.set(__self__, "stack_type", stack_type)
         pulumi.set(__self__, "subnetwork", subnetwork)
         pulumi.set(__self__, "subnetwork_project", subnetwork_project)
+        pulumi.set(__self__, "vlan", vlan)
 
     @_builtins.property
     @pulumi.getter(name="accessConfigs")
@@ -71541,6 +72553,14 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         return pulumi.get(self, "nic_type")
 
     @_builtins.property
+    @pulumi.getter(name="parentNicName")
+    def parent_nic_name(self) -> _builtins.str:
+        """
+        Name of the parent network interface of a dynamic network interface.
+        """
+        return pulumi.get(self, "parent_nic_name")
+
+    @_builtins.property
     @pulumi.getter(name="queueCount")
     def queue_count(self) -> _builtins.int:
         """
@@ -71574,6 +72594,14 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "subnetwork_project")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> _builtins.int:
+        """
+        VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+        """
+        return pulumi.get(self, "vlan")
 
 
 @pulumi.output_type
@@ -76606,13 +77634,22 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
                  ipv6_address: _builtins.str,
                  name: _builtins.str,
                  network: _builtins.str,
+                 network_attachment: _builtins.str,
                  network_ip: _builtins.str,
                  nic_type: _builtins.str,
+                 parent_nic_name: _builtins.str,
                  queue_count: _builtins.int,
                  stack_type: _builtins.str,
                  subnetwork: _builtins.str,
-                 subnetwork_project: _builtins.str):
+                 subnetwork_project: _builtins.str,
+                 vlan: _builtins.int):
         """
+        :param Sequence['GetRegionInstanceTemplateNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
+               instance can be accessed via the Internet. Omit to ensure that the instance
+               is not accessible from the Internet (this means that ssh provisioners will
+               not work unless you are running Terraform can send traffic to the instance's
+               network (e.g. via tunnel or because it is running on another cloud instance
+               on that network). This block can be repeated multiple times. Structure documented below.
         :param Sequence['GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
@@ -76625,9 +77662,11 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
         :param _builtins.str network: The name or self_link of the network to attach this interface to.
                Use `network` attribute for Legacy or Auto subnetted networks and
                `subnetwork` for custom subnetted networks.
+        :param _builtins.str network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param _builtins.str network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param _builtins.str nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
+        :param _builtins.str parent_nic_name: Name of the parent network interface of a dynamic network interface.
         :param _builtins.int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param _builtins.str stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
         :param _builtins.str subnetwork: the name of the subnetwork to attach this interface
@@ -76635,6 +77674,7 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
                created in. Either `network` or `subnetwork` must be provided.
         :param _builtins.str subnetwork_project: The ID of the project in which the subnetwork belongs.
                If it is not provided, the provider project is used.
+        :param _builtins.int vlan: VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
         """
         pulumi.set(__self__, "access_configs", access_configs)
         pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
@@ -76645,16 +77685,27 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
         pulumi.set(__self__, "ipv6_address", ipv6_address)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "network_attachment", network_attachment)
         pulumi.set(__self__, "network_ip", network_ip)
         pulumi.set(__self__, "nic_type", nic_type)
+        pulumi.set(__self__, "parent_nic_name", parent_nic_name)
         pulumi.set(__self__, "queue_count", queue_count)
         pulumi.set(__self__, "stack_type", stack_type)
         pulumi.set(__self__, "subnetwork", subnetwork)
         pulumi.set(__self__, "subnetwork_project", subnetwork_project)
+        pulumi.set(__self__, "vlan", vlan)
 
     @_builtins.property
     @pulumi.getter(name="accessConfigs")
     def access_configs(self) -> Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceAccessConfigResult']:
+        """
+        Access configurations, i.e. IPs via which this
+        instance can be accessed via the Internet. Omit to ensure that the instance
+        is not accessible from the Internet (this means that ssh provisioners will
+        not work unless you are running Terraform can send traffic to the instance's
+        network (e.g. via tunnel or because it is running on another cloud instance
+        on that network). This block can be repeated multiple times. Structure documented below.
+        """
         return pulumi.get(self, "access_configs")
 
     @_builtins.property
@@ -76726,6 +77777,14 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
         return pulumi.get(self, "network")
 
     @_builtins.property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> _builtins.str:
+        """
+        The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        """
+        return pulumi.get(self, "network_attachment")
+
+    @_builtins.property
     @pulumi.getter(name="networkIp")
     def network_ip(self) -> _builtins.str:
         """
@@ -76741,6 +77800,14 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
         The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
         """
         return pulumi.get(self, "nic_type")
+
+    @_builtins.property
+    @pulumi.getter(name="parentNicName")
+    def parent_nic_name(self) -> _builtins.str:
+        """
+        Name of the parent network interface of a dynamic network interface.
+        """
+        return pulumi.get(self, "parent_nic_name")
 
     @_builtins.property
     @pulumi.getter(name="queueCount")
@@ -76776,6 +77843,14 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "subnetwork_project")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> _builtins.int:
+        """
+        VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+        """
+        return pulumi.get(self, "vlan")
 
 
 @pulumi.output_type

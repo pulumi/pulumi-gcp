@@ -55,21 +55,16 @@ __all__ = [
     'EntitlementRequesterJustificationConfigUnstructuredArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class SettingsEmailNotificationSettingsArgsDict(TypedDict):
-        custom_notification_behavior: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorArgsDict']]
-        """
-        CustomNotificationBehavior provides granular control over email notification delivery. Allows admins to selectively enable/disable notifications for specific events and specific personas.
-        Structure is documented below.
-        """
-        disable_all_notifications: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsDisableAllNotificationsArgsDict']]
-        """
-        This option indicates that all email notifications are disabled.
-        """
-elif False:
-    SettingsEmailNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class SettingsEmailNotificationSettingsArgsDict(TypedDict):
+    custom_notification_behavior: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorArgsDict']]
+    """
+    CustomNotificationBehavior provides granular control over email notification delivery. Allows admins to selectively enable/disable notifications for specific events and specific personas.
+    Structure is documented below.
+    """
+    disable_all_notifications: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsDisableAllNotificationsArgsDict']]
+    """
+    This option indicates that all email notifications are disabled.
+    """
 
 @pulumi.input_type
 class SettingsEmailNotificationSettingsArgs:
@@ -112,25 +107,22 @@ class SettingsEmailNotificationSettingsArgs:
         pulumi.set(self, "disable_all_notifications", value)
 
 
-if not MYPY:
-    class SettingsEmailNotificationSettingsCustomNotificationBehaviorArgsDict(TypedDict):
-        admin_notifications: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgsDict']]
-        """
-        Email notifications specific to Requesters.
-        Structure is documented below.
-        """
-        approver_notifications: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgsDict']]
-        """
-        Email notifications specific to Approvers.
-        Structure is documented below.
-        """
-        requester_notifications: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgsDict']]
-        """
-        Email notifications specific to Requesters.
-        Structure is documented below.
-        """
-elif False:
-    SettingsEmailNotificationSettingsCustomNotificationBehaviorArgsDict: TypeAlias = Mapping[str, Any]
+class SettingsEmailNotificationSettingsCustomNotificationBehaviorArgsDict(TypedDict):
+    admin_notifications: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgsDict']]
+    """
+    Email notifications specific to Requesters.
+    Structure is documented below.
+    """
+    approver_notifications: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgsDict']]
+    """
+    Email notifications specific to Approvers.
+    Structure is documented below.
+    """
+    requester_notifications: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgsDict']]
+    """
+    Email notifications specific to Requesters.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs:
@@ -193,30 +185,27 @@ class SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs:
         pulumi.set(self, "requester_notifications", value)
 
 
-if not MYPY:
-    class SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgsDict(TypedDict):
-        grant_activated: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Notification mode for grant activated.
-        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-        grant_activation_failed: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Notification mode for grant activation failed.
-        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-        grant_ended: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Notification mode for grant ended.
-        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-        grant_externally_modified: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Notification mode for grant externally modified.
-        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-elif False:
-    SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+class SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgsDict(TypedDict):
+    grant_activated: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Notification mode for grant activated.
+    Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
+    grant_activation_failed: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Notification mode for grant activation failed.
+    Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
+    grant_ended: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Notification mode for grant ended.
+    Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
+    grant_externally_modified: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Notification mode for grant externally modified.
+    Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
 
 @pulumi.input_type
 class SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs:
@@ -297,15 +286,12 @@ class SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificati
         pulumi.set(self, "grant_externally_modified", value)
 
 
-if not MYPY:
-    class SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgsDict(TypedDict):
-        pending_approval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Notification mode for pending approval.
-        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-elif False:
-    SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+class SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgsDict(TypedDict):
+    pending_approval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Notification mode for pending approval.
+    Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
 
 @pulumi.input_type
 class SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs:
@@ -332,50 +318,47 @@ class SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotific
         pulumi.set(self, "pending_approval", value)
 
 
-if not MYPY:
-    class SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgsDict(TypedDict):
-        entitlement_assigned: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Notification mode for entitlement assigned.
-        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-        grant_activated: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Notification mode for grant activated.
-        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-        grant_activation_failed: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Notification mode for grant activation failed.
-        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-        grant_denied: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Notification mode for grant denied.
-        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-        grant_ended: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Notification mode for grant ended.
-        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-        grant_expired: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Notification mode for grant expired.
-        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-        grant_externally_modified: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Notification mode for grant externally modified.
-        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-        grant_revoked: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Notification mode for grant revoked.
-        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-elif False:
-    SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+class SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgsDict(TypedDict):
+    entitlement_assigned: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Notification mode for entitlement assigned.
+    Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
+    grant_activated: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Notification mode for grant activated.
+    Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
+    grant_activation_failed: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Notification mode for grant activation failed.
+    Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
+    grant_denied: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Notification mode for grant denied.
+    Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
+    grant_ended: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Notification mode for grant ended.
+    Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
+    grant_expired: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Notification mode for grant expired.
+    Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
+    grant_externally_modified: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Notification mode for grant externally modified.
+    Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
+    grant_revoked: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Notification mode for grant revoked.
+    Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
 
 @pulumi.input_type
 class SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs:
@@ -528,11 +511,8 @@ class SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifi
         pulumi.set(self, "grant_revoked", value)
 
 
-if not MYPY:
-    class SettingsEmailNotificationSettingsDisableAllNotificationsArgsDict(TypedDict):
-        pass
-elif False:
-    SettingsEmailNotificationSettingsDisableAllNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+class SettingsEmailNotificationSettingsDisableAllNotificationsArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class SettingsEmailNotificationSettingsDisableAllNotificationsArgs:
@@ -540,14 +520,11 @@ class SettingsEmailNotificationSettingsDisableAllNotificationsArgs:
         pass
 
 
-if not MYPY:
-    class SettingsServiceAccountApproverSettingsArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether service account is allowed to grant approvals.
-        """
-elif False:
-    SettingsServiceAccountApproverSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class SettingsServiceAccountApproverSettingsArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether service account is allowed to grant approvals.
+    """
 
 @pulumi.input_type
 class SettingsServiceAccountApproverSettingsArgs:
@@ -572,18 +549,15 @@ class SettingsServiceAccountApproverSettingsArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class EntitlementAdditionalNotificationTargetsArgsDict(TypedDict):
-        admin_email_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. Additional email addresses to be notified when a principal(requester) is granted access.
-        """
-        requester_email_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. Additional email address to be notified about an eligible entitlement.
-        """
-elif False:
-    EntitlementAdditionalNotificationTargetsArgsDict: TypeAlias = Mapping[str, Any]
+class EntitlementAdditionalNotificationTargetsArgsDict(TypedDict):
+    admin_email_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Additional email addresses to be notified when a principal(requester) is granted access.
+    """
+    requester_email_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Additional email address to be notified about an eligible entitlement.
+    """
 
 @pulumi.input_type
 class EntitlementAdditionalNotificationTargetsArgs:
@@ -624,21 +598,18 @@ class EntitlementAdditionalNotificationTargetsArgs:
         pulumi.set(self, "requester_email_recipients", value)
 
 
-if not MYPY:
-    class EntitlementApprovalWorkflowArgsDict(TypedDict):
-        manual_approvals: pulumi.Input['EntitlementApprovalWorkflowManualApprovalsArgsDict']
-        """
-        A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
-        The workflow can consist of multiple serial steps where each step defines who can act as Approver in that step and how many of those users should approve before the workflow moves to the next step.
-        This can be used to create approval workflows such as
-        * Require an approval from any user in a group G.
-        * Require an approval from any k number of users from a Group G.
-        * Require an approval from any user in a group G and then from a user U. etc.
-        A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
-        Structure is documented below.
-        """
-elif False:
-    EntitlementApprovalWorkflowArgsDict: TypeAlias = Mapping[str, Any]
+class EntitlementApprovalWorkflowArgsDict(TypedDict):
+    manual_approvals: pulumi.Input['EntitlementApprovalWorkflowManualApprovalsArgsDict']
+    """
+    A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
+    The workflow can consist of multiple serial steps where each step defines who can act as Approver in that step and how many of those users should approve before the workflow moves to the next step.
+    This can be used to create approval workflows such as
+    * Require an approval from any user in a group G.
+    * Require an approval from any k number of users from a Group G.
+    * Require an approval from any user in a group G and then from a user U. etc.
+    A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EntitlementApprovalWorkflowArgs:
@@ -676,19 +647,16 @@ class EntitlementApprovalWorkflowArgs:
         pulumi.set(self, "manual_approvals", value)
 
 
-if not MYPY:
-    class EntitlementApprovalWorkflowManualApprovalsArgsDict(TypedDict):
-        steps: pulumi.Input[Sequence[pulumi.Input['EntitlementApprovalWorkflowManualApprovalsStepArgsDict']]]
-        """
-        List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
-        Structure is documented below.
-        """
-        require_approver_justification: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. Do the approvers need to provide a justification for their actions?
-        """
-elif False:
-    EntitlementApprovalWorkflowManualApprovalsArgsDict: TypeAlias = Mapping[str, Any]
+class EntitlementApprovalWorkflowManualApprovalsArgsDict(TypedDict):
+    steps: pulumi.Input[Sequence[pulumi.Input['EntitlementApprovalWorkflowManualApprovalsStepArgsDict']]]
+    """
+    List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
+    Structure is documented below.
+    """
+    require_approver_justification: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. Do the approvers need to provide a justification for their actions?
+    """
 
 @pulumi.input_type
 class EntitlementApprovalWorkflowManualApprovalsArgs:
@@ -730,31 +698,28 @@ class EntitlementApprovalWorkflowManualApprovalsArgs:
         pulumi.set(self, "require_approver_justification", value)
 
 
-if not MYPY:
-    class EntitlementApprovalWorkflowManualApprovalsStepArgsDict(TypedDict):
-        approvers: pulumi.Input['EntitlementApprovalWorkflowManualApprovalsStepApproversArgsDict']
-        """
-        The potential set of approvers in this step. This list should contain at only one entry.
-        Structure is documented below.
-        """
-        approvals_needed: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        How many users from the above list need to approve.
-        If there are not enough distinct users in the list above then the workflow
-        will indefinitely block. Should always be greater than 0. Currently 1 is the only
-        supported value.
-        """
-        approver_email_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. Additional email addresses to be notified when a grant is pending approval.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output, Beta)
-        Output Only. The ID of the approval step.
-        """
-elif False:
-    EntitlementApprovalWorkflowManualApprovalsStepArgsDict: TypeAlias = Mapping[str, Any]
+class EntitlementApprovalWorkflowManualApprovalsStepArgsDict(TypedDict):
+    approvers: pulumi.Input['EntitlementApprovalWorkflowManualApprovalsStepApproversArgsDict']
+    """
+    The potential set of approvers in this step. This list should contain at only one entry.
+    Structure is documented below.
+    """
+    approvals_needed: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    How many users from the above list need to approve.
+    If there are not enough distinct users in the list above then the workflow
+    will indefinitely block. Should always be greater than 0. Currently 1 is the only
+    supported value.
+    """
+    approver_email_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Additional email addresses to be notified when a grant is pending approval.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output, Beta)
+    Output Only. The ID of the approval step.
+    """
 
 @pulumi.input_type
 class EntitlementApprovalWorkflowManualApprovalsStepArgs:
@@ -836,14 +801,11 @@ class EntitlementApprovalWorkflowManualApprovalsStepArgs:
         pulumi.set(self, "id", value)
 
 
-if not MYPY:
-    class EntitlementApprovalWorkflowManualApprovalsStepApproversArgsDict(TypedDict):
-        principals: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
-        """
-elif False:
-    EntitlementApprovalWorkflowManualApprovalsStepApproversArgsDict: TypeAlias = Mapping[str, Any]
+class EntitlementApprovalWorkflowManualApprovalsStepApproversArgsDict(TypedDict):
+    principals: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+    """
 
 @pulumi.input_type
 class EntitlementApprovalWorkflowManualApprovalsStepApproversArgs:
@@ -867,14 +829,11 @@ class EntitlementApprovalWorkflowManualApprovalsStepApproversArgs:
         pulumi.set(self, "principals", value)
 
 
-if not MYPY:
-    class EntitlementEligibleUserArgsDict(TypedDict):
-        principals: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at "https://cloud.google.com/iam/docs/principal-identifiers#v1"
-        """
-elif False:
-    EntitlementEligibleUserArgsDict: TypeAlias = Mapping[str, Any]
+class EntitlementEligibleUserArgsDict(TypedDict):
+    principals: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at "https://cloud.google.com/iam/docs/principal-identifiers#v1"
+    """
 
 @pulumi.input_type
 class EntitlementEligibleUserArgs:
@@ -898,15 +857,12 @@ class EntitlementEligibleUserArgs:
         pulumi.set(self, "principals", value)
 
 
-if not MYPY:
-    class EntitlementPrivilegedAccessArgsDict(TypedDict):
-        gcp_iam_access: pulumi.Input['EntitlementPrivilegedAccessGcpIamAccessArgsDict']
-        """
-        GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-        Structure is documented below.
-        """
-elif False:
-    EntitlementPrivilegedAccessArgsDict: TypeAlias = Mapping[str, Any]
+class EntitlementPrivilegedAccessArgsDict(TypedDict):
+    gcp_iam_access: pulumi.Input['EntitlementPrivilegedAccessGcpIamAccessArgsDict']
+    """
+    GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EntitlementPrivilegedAccessArgs:
@@ -932,23 +888,20 @@ class EntitlementPrivilegedAccessArgs:
         pulumi.set(self, "gcp_iam_access", value)
 
 
-if not MYPY:
-    class EntitlementPrivilegedAccessGcpIamAccessArgsDict(TypedDict):
-        resource: pulumi.Input[_builtins.str]
-        """
-        Name of the resource.
-        """
-        resource_type: pulumi.Input[_builtins.str]
-        """
-        The type of this resource.
-        """
-        role_bindings: pulumi.Input[Sequence[pulumi.Input['EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgsDict']]]
-        """
-        Role bindings to be created on successful grant.
-        Structure is documented below.
-        """
-elif False:
-    EntitlementPrivilegedAccessGcpIamAccessArgsDict: TypeAlias = Mapping[str, Any]
+class EntitlementPrivilegedAccessGcpIamAccessArgsDict(TypedDict):
+    resource: pulumi.Input[_builtins.str]
+    """
+    Name of the resource.
+    """
+    resource_type: pulumi.Input[_builtins.str]
+    """
+    The type of this resource.
+    """
+    role_bindings: pulumi.Input[Sequence[pulumi.Input['EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgsDict']]]
+    """
+    Role bindings to be created on successful grant.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EntitlementPrivilegedAccessGcpIamAccessArgs:
@@ -1004,24 +957,21 @@ class EntitlementPrivilegedAccessGcpIamAccessArgs:
         pulumi.set(self, "role_bindings", value)
 
 
-if not MYPY:
-    class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgsDict(TypedDict):
-        role: pulumi.Input[_builtins.str]
-        """
-        IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
-        """
-        condition_expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-        https://cloud.google.com/iam/docs/conditions-overview#attributes.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output, Beta)
-        Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
-        """
-elif False:
-    EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgsDict: TypeAlias = Mapping[str, Any]
+class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgsDict(TypedDict):
+    role: pulumi.Input[_builtins.str]
+    """
+    IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+    """
+    condition_expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
+    https://cloud.google.com/iam/docs/conditions-overview#attributes.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output, Beta)
+    Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+    """
 
 @pulumi.input_type
 class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs:
@@ -1081,18 +1031,15 @@ class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs:
         pulumi.set(self, "id", value)
 
 
-if not MYPY:
-    class EntitlementRequesterJustificationConfigArgsDict(TypedDict):
-        not_mandatory: NotRequired[pulumi.Input['EntitlementRequesterJustificationConfigNotMandatoryArgsDict']]
-        """
-        The justification is not mandatory but can be provided in any of the supported formats.
-        """
-        unstructured: NotRequired[pulumi.Input['EntitlementRequesterJustificationConfigUnstructuredArgsDict']]
-        """
-        The requester has to provide a justification in the form of free flowing text.
-        """
-elif False:
-    EntitlementRequesterJustificationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EntitlementRequesterJustificationConfigArgsDict(TypedDict):
+    not_mandatory: NotRequired[pulumi.Input['EntitlementRequesterJustificationConfigNotMandatoryArgsDict']]
+    """
+    The justification is not mandatory but can be provided in any of the supported formats.
+    """
+    unstructured: NotRequired[pulumi.Input['EntitlementRequesterJustificationConfigUnstructuredArgsDict']]
+    """
+    The requester has to provide a justification in the form of free flowing text.
+    """
 
 @pulumi.input_type
 class EntitlementRequesterJustificationConfigArgs:
@@ -1133,11 +1080,8 @@ class EntitlementRequesterJustificationConfigArgs:
         pulumi.set(self, "unstructured", value)
 
 
-if not MYPY:
-    class EntitlementRequesterJustificationConfigNotMandatoryArgsDict(TypedDict):
-        pass
-elif False:
-    EntitlementRequesterJustificationConfigNotMandatoryArgsDict: TypeAlias = Mapping[str, Any]
+class EntitlementRequesterJustificationConfigNotMandatoryArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class EntitlementRequesterJustificationConfigNotMandatoryArgs:
@@ -1145,11 +1089,8 @@ class EntitlementRequesterJustificationConfigNotMandatoryArgs:
         pass
 
 
-if not MYPY:
-    class EntitlementRequesterJustificationConfigUnstructuredArgsDict(TypedDict):
-        pass
-elif False:
-    EntitlementRequesterJustificationConfigUnstructuredArgsDict: TypeAlias = Mapping[str, Any]
+class EntitlementRequesterJustificationConfigUnstructuredArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class EntitlementRequesterJustificationConfigUnstructuredArgs:

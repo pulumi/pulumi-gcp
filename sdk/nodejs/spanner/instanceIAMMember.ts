@@ -64,6 +64,43 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## This resource supports User Project Overrides.
+ *
+ * - 
+ *
+ * # IAM policy for Spanner Instances
+ *
+ * Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
+ *
+ * * `gcp.spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+ *
+ * > **Warning:** It's entirely possibly to lock yourself out of your instance using `gcp.spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+ *
+ * * `gcp.spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+ * * `gcp.spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+ *
+ * > **Note:** `gcp.spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.InstanceIAMBinding` and `gcp.spanner.InstanceIAMMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## gcp.spanner.InstanceIAMPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const instance = new gcp.spanner.InstanceIAMPolicy("instance", {
+ *     instance: "your-instance-name",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
  * ## gcp.spanner.InstanceIAMBinding
  *
  * ```typescript
@@ -92,29 +129,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ### Importing IAM policies
- *
- * IAM policy imports use the identifier of the Spanner Instances resource . For example:
- *
- * * `{{project}}/{{instance}}`
- *
- * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
- *
- * tf
- *
- * import {
- *
- *   id = {{project}}/{{instance}}
- *
- *   to = google_spanner_instance_iam_policy.default
- *
- * }
- *
- * The `pulumi import` command can also be used:
- *
- * ```sh
- * $ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember default {{project}}/{{instance}}
- * ```
+ * > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class InstanceIAMMember extends pulumi.CustomResource {
     /**

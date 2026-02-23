@@ -3202,9 +3202,14 @@ func (o DataTransferConfigScheduleOptionsPtrOutput) StartTime() pulumi.StringPtr
 
 type DataTransferConfigSensitiveParams struct {
 	// The Secret Access Key of the AWS account transferring data from.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretAccessKey *string `pulumi:"secretAccessKey"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
 	// The Secret Access Key of the AWS account transferring data from.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `secretAccessKey` or `secretAccessKeyWo` can only be set.
 	SecretAccessKeyWo *string `pulumi:"secretAccessKeyWo"`
 	// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	SecretAccessKeyWoVersion *int `pulumi:"secretAccessKeyWoVersion"`
@@ -3223,9 +3228,14 @@ type DataTransferConfigSensitiveParamsInput interface {
 
 type DataTransferConfigSensitiveParamsArgs struct {
 	// The Secret Access Key of the AWS account transferring data from.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
 	// The Secret Access Key of the AWS account transferring data from.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `secretAccessKey` or `secretAccessKeyWo` can only be set.
 	SecretAccessKeyWo pulumi.StringPtrInput `pulumi:"secretAccessKeyWo"`
 	// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	SecretAccessKeyWoVersion pulumi.IntPtrInput `pulumi:"secretAccessKeyWoVersion"`
@@ -3309,12 +3319,17 @@ func (o DataTransferConfigSensitiveParamsOutput) ToDataTransferConfigSensitivePa
 }
 
 // The Secret Access Key of the AWS account transferring data from.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
 // The Secret Access Key of the AWS account transferring data from.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `secretAccessKey` or `secretAccessKeyWo` can only be set.
 func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKeyWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *string { return v.SecretAccessKeyWo }).(pulumi.StringPtrOutput)
 }
@@ -3349,6 +3364,7 @@ func (o DataTransferConfigSensitiveParamsPtrOutput) Elem() DataTransferConfigSen
 }
 
 // The Secret Access Key of the AWS account transferring data from.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataTransferConfigSensitiveParams) *string {
 		if v == nil {
@@ -3359,7 +3375,11 @@ func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKey() pulumi.Str
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
 // The Secret Access Key of the AWS account transferring data from.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `secretAccessKey` or `secretAccessKeyWo` can only be set.
 func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKeyWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataTransferConfigSensitiveParams) *string {
 		if v == nil {
@@ -5837,6 +5857,11 @@ func (o DatasetExternalDatasetReferencePtrOutput) ExternalSource() pulumi.String
 }
 
 type DatasetIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -5856,6 +5881,11 @@ type DatasetIamBindingConditionInput interface {
 }
 
 type DatasetIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -5940,6 +5970,11 @@ func (o DatasetIamBindingConditionOutput) ToDatasetIamBindingConditionPtrOutputW
 	}).(DatasetIamBindingConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o DatasetIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -5978,6 +6013,11 @@ func (o DatasetIamBindingConditionPtrOutput) Elem() DatasetIamBindingConditionOu
 	}).(DatasetIamBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o DatasetIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatasetIamBindingCondition) *string {
 		if v == nil {
@@ -6008,6 +6048,11 @@ func (o DatasetIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type DatasetIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -6027,6 +6072,11 @@ type DatasetIamMemberConditionInput interface {
 }
 
 type DatasetIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -6111,6 +6161,11 @@ func (o DatasetIamMemberConditionOutput) ToDatasetIamMemberConditionPtrOutputWit
 	}).(DatasetIamMemberConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o DatasetIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -6149,6 +6204,11 @@ func (o DatasetIamMemberConditionPtrOutput) Elem() DatasetIamMemberConditionOutp
 	}).(DatasetIamMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o DatasetIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatasetIamMemberCondition) *string {
 		if v == nil {
@@ -20753,7 +20813,8 @@ type GetTableExternalDataConfigurationCsvOption struct {
 	Encoding string `pulumi:"encoding"`
 	// The separator for fields in a CSV file.
 	FieldDelimiter string `pulumi:"fieldDelimiter"`
-	Quote          string `pulumi:"quote"`
+	// The value that is used to quote data sections in a CSV file. If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true. The API-side default is ", specified in Terraform escaped as \". Due to limitations with Terraform default values, this value is required to be explicitly set.
+	Quote string `pulumi:"quote"`
 	// The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
 	SkipLeadingRows int `pulumi:"skipLeadingRows"`
 	// Specifies how source columns are matched to the table schema. Valid values are POSITION (columns matched by position, assuming same ordering) or NAME (columns matched by name, reads header row and reorders columns to align with schema field names).
@@ -20780,7 +20841,8 @@ type GetTableExternalDataConfigurationCsvOptionArgs struct {
 	Encoding pulumi.StringInput `pulumi:"encoding"`
 	// The separator for fields in a CSV file.
 	FieldDelimiter pulumi.StringInput `pulumi:"fieldDelimiter"`
-	Quote          pulumi.StringInput `pulumi:"quote"`
+	// The value that is used to quote data sections in a CSV file. If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true. The API-side default is ", specified in Terraform escaped as \". Due to limitations with Terraform default values, this value is required to be explicitly set.
+	Quote pulumi.StringInput `pulumi:"quote"`
 	// The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
 	SkipLeadingRows pulumi.IntInput `pulumi:"skipLeadingRows"`
 	// Specifies how source columns are matched to the table schema. Valid values are POSITION (columns matched by position, assuming same ordering) or NAME (columns matched by name, reads header row and reorders columns to align with schema field names).
@@ -20858,6 +20920,7 @@ func (o GetTableExternalDataConfigurationCsvOptionOutput) FieldDelimiter() pulum
 	return o.ApplyT(func(v GetTableExternalDataConfigurationCsvOption) string { return v.FieldDelimiter }).(pulumi.StringOutput)
 }
 
+// The value that is used to quote data sections in a CSV file. If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true. The API-side default is ", specified in Terraform escaped as \". Due to limitations with Terraform default values, this value is required to be explicitly set.
 func (o GetTableExternalDataConfigurationCsvOptionOutput) Quote() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTableExternalDataConfigurationCsvOption) string { return v.Quote }).(pulumi.StringOutput)
 }

@@ -37,13 +37,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-//				ScopeId: pulumi.String("tf-test-scope_16199"),
+//				ScopeId: pulumi.String("tf-test-scope_6529"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gkehub.NewScopeRbacRoleBinding(ctx, "scope_rbac_role_binding", &gkehub.ScopeRbacRoleBindingArgs{
-//				ScopeRbacRoleBindingId: pulumi.String("tf-test-scope-rbac-role-binding_21563"),
+//				ScopeRbacRoleBindingId: pulumi.String("tf-test-scope-rbac-role-binding_16178"),
 //				ScopeId:                scope.ScopeId,
 //				User:                   pulumi.String("test-email@gmail.com"),
 //				Role: &gkehub.ScopeRbacRoleBindingRoleArgs{
@@ -76,7 +76,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-//				ScopeId: pulumi.String("tf-test-scope_25141"),
+//				ScopeId: pulumi.String("tf-test-scope_26317"),
 //			})
 //			if err != nil {
 //				return err
@@ -96,7 +96,7 @@ import (
 //				return err
 //			}
 //			_, err = gkehub.NewScopeRbacRoleBinding(ctx, "scope_rbac_role_binding", &gkehub.ScopeRbacRoleBindingArgs{
-//				ScopeRbacRoleBindingId: pulumi.String("tf-test-scope-rbac-role-binding_30827"),
+//				ScopeRbacRoleBindingId: pulumi.String("tf-test-scope-rbac-role-binding_4866"),
 //				ScopeId:                scope.ScopeId,
 //				User:                   pulumi.String("test-email@gmail.com"),
 //				Role: &gkehub.ScopeRbacRoleBindingRoleArgs{
@@ -122,22 +122,14 @@ import (
 // ScopeRBACRoleBinding can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}`
-//
 // * `{{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}`
-//
 // * `{{scope_id}}/{{scope_rbac_role_binding_id}}`
 //
 // When using the `pulumi import` command, ScopeRBACRoleBinding can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{scope_id}}/{{scope_rbac_role_binding_id}}
 // ```
 type ScopeRbacRoleBinding struct {
@@ -164,7 +156,7 @@ type ScopeRbacRoleBinding struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Role to bind to the principal.
 	// Structure is documented below.
@@ -252,7 +244,7 @@ type scopeRbacRoleBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Role to bind to the principal.
 	// Structure is documented below.
@@ -297,7 +289,7 @@ type ScopeRbacRoleBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Role to bind to the principal.
 	// Structure is documented below.
@@ -508,7 +500,8 @@ func (o ScopeRbacRoleBindingOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ScopeRbacRoleBindingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

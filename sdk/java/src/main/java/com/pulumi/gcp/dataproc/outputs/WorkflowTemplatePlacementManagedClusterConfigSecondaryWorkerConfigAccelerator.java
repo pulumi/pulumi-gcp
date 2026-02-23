@@ -18,7 +18,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
      */
     private @Nullable Integer acceleratorCount;
     /**
-     * @return Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+     * @return Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
      * 
      */
     private @Nullable String acceleratorType;
@@ -32,7 +32,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         return Optional.ofNullable(this.acceleratorCount);
     }
     /**
-     * @return Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+     * @return Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
      * 
      */
     public Optional<String> acceleratorType() {

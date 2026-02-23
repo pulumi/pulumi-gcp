@@ -51,6 +51,8 @@ class ReleaseBlueprint(dict):
                  package: Optional[_builtins.str] = None,
                  version: Optional[_builtins.str] = None):
         """
+        :param _builtins.str engine: (Output)
+               Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
         :param _builtins.str package: URI to a blueprint used by the Unit (required unless unitKind or release is
                set).
         :param _builtins.str version: (Output)
@@ -66,6 +68,10 @@ class ReleaseBlueprint(dict):
     @_builtins.property
     @pulumi.getter
     def engine(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
+        """
         return pulumi.get(self, "engine")
 
     @_builtins.property

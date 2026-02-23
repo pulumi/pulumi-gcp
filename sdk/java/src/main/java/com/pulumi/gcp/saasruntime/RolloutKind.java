@@ -18,6 +18,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A RolloutKind is a reusable configuration resource that defines the policies, strategies, and targeting for Rollout operations. It acts as a template for repeatable Rollouts, providing guardrails and ensuring that updates are executed in a consistent manner across a fleet of Units.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
  * ## Example Usage
  * 
  * ### Saas Runtime Rollout Kind Basic
@@ -85,22 +90,14 @@ import javax.annotation.Nullable;
  * RolloutKind can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/rolloutKinds/{{rollout_kind_id}}`
- * 
  * * `{{project}}/{{location}}/{{rollout_kind_id}}`
- * 
  * * `{{location}}/{{rollout_kind_id}}`
  * 
  * When using the `pulumi import` command, RolloutKind can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default projects/{{project}}/locations/{{location}}/rolloutKinds/{{rollout_kind_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default {{project}}/{{location}}/{{rollout_kind_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default {{location}}/{{rollout_kind_id}}
  * ```
  * 
@@ -145,9 +142,17 @@ public class RolloutKind extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
@@ -253,7 +258,7 @@ public class RolloutKind extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -261,7 +266,7 @@ public class RolloutKind extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

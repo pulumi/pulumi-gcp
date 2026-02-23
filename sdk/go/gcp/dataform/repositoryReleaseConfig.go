@@ -12,6 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A resource represents a Dataform release configuration
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about RepositoryReleaseConfig, see:
+//
+// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.releaseConfigs)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/dataform/docs/release-configurations)
+//
 // ## Example Usage
 //
 // ### Dataform Repository Release Config
@@ -104,28 +115,16 @@ import (
 // RepositoryReleaseConfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}`
-//
 // * `{{project}}/{{region}}/{{repository}}/{{name}}`
-//
 // * `{{region}}/{{repository}}/{{name}}`
-//
 // * `{{repository}}/{{name}}`
 //
 // When using the `pulumi import` command, RepositoryReleaseConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{project}}/{{region}}/{{repository}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{region}}/{{repository}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{repository}}/{{name}}
 // ```
 type RepositoryReleaseConfig struct {

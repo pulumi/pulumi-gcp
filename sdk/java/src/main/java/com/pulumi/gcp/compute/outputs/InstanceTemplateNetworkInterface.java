@@ -74,7 +74,7 @@ public final class InstanceTemplateNetworkInterface {
      */
     private @Nullable String network;
     /**
-     * @return ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
      * 
      */
     private @Nullable String networkAttachment;
@@ -89,6 +89,11 @@ public final class InstanceTemplateNetworkInterface {
      * 
      */
     private @Nullable String nicType;
+    /**
+     * @return Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    private @Nullable String parentNicName;
     /**
      * @return The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
      * 
@@ -112,6 +117,11 @@ public final class InstanceTemplateNetworkInterface {
      * 
      */
     private @Nullable String subnetworkProject;
+    /**
+     * @return VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    private @Nullable Integer vlan;
 
     private InstanceTemplateNetworkInterface() {}
     /**
@@ -190,7 +200,7 @@ public final class InstanceTemplateNetworkInterface {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
      * 
      */
     public Optional<String> networkAttachment() {
@@ -210,6 +220,13 @@ public final class InstanceTemplateNetworkInterface {
      */
     public Optional<String> nicType() {
         return Optional.ofNullable(this.nicType);
+    }
+    /**
+     * @return Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    public Optional<String> parentNicName() {
+        return Optional.ofNullable(this.parentNicName);
     }
     /**
      * @return The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
@@ -242,6 +259,13 @@ public final class InstanceTemplateNetworkInterface {
     public Optional<String> subnetworkProject() {
         return Optional.ofNullable(this.subnetworkProject);
     }
+    /**
+     * @return VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    public Optional<Integer> vlan() {
+        return Optional.ofNullable(this.vlan);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -264,10 +288,12 @@ public final class InstanceTemplateNetworkInterface {
         private @Nullable String networkAttachment;
         private @Nullable String networkIp;
         private @Nullable String nicType;
+        private @Nullable String parentNicName;
         private @Nullable Integer queueCount;
         private @Nullable String stackType;
         private @Nullable String subnetwork;
         private @Nullable String subnetworkProject;
+        private @Nullable Integer vlan;
         public Builder() {}
         public Builder(InstanceTemplateNetworkInterface defaults) {
     	      Objects.requireNonNull(defaults);
@@ -283,10 +309,12 @@ public final class InstanceTemplateNetworkInterface {
     	      this.networkAttachment = defaults.networkAttachment;
     	      this.networkIp = defaults.networkIp;
     	      this.nicType = defaults.nicType;
+    	      this.parentNicName = defaults.parentNicName;
     	      this.queueCount = defaults.queueCount;
     	      this.stackType = defaults.stackType;
     	      this.subnetwork = defaults.subnetwork;
     	      this.subnetworkProject = defaults.subnetworkProject;
+    	      this.vlan = defaults.vlan;
         }
 
         @CustomType.Setter
@@ -371,6 +399,12 @@ public final class InstanceTemplateNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder parentNicName(@Nullable String parentNicName) {
+
+            this.parentNicName = parentNicName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder queueCount(@Nullable Integer queueCount) {
 
             this.queueCount = queueCount;
@@ -394,6 +428,12 @@ public final class InstanceTemplateNetworkInterface {
             this.subnetworkProject = subnetworkProject;
             return this;
         }
+        @CustomType.Setter
+        public Builder vlan(@Nullable Integer vlan) {
+
+            this.vlan = vlan;
+            return this;
+        }
         public InstanceTemplateNetworkInterface build() {
             final var _resultValue = new InstanceTemplateNetworkInterface();
             _resultValue.accessConfigs = accessConfigs;
@@ -408,10 +448,12 @@ public final class InstanceTemplateNetworkInterface {
             _resultValue.networkAttachment = networkAttachment;
             _resultValue.networkIp = networkIp;
             _resultValue.nicType = nicType;
+            _resultValue.parentNicName = parentNicName;
             _resultValue.queueCount = queueCount;
             _resultValue.stackType = stackType;
             _resultValue.subnetwork = subnetwork;
             _resultValue.subnetworkProject = subnetworkProject;
+            _resultValue.vlan = vlan;
             return _resultValue;
         }
     }

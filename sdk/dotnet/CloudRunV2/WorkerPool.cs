@@ -740,22 +740,14 @@ namespace Pulumi.Gcp.CloudRunV2
     /// WorkerPool can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{location}}/{{name}}
     /// ```
     /// </summary>
@@ -827,6 +819,14 @@ namespace Pulumi.Gcp.CloudRunV2
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the service. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the service,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the WorkerPool will fail.
+        /// When the field is set to false, deleting the WorkerPool is allowed.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -836,6 +836,9 @@ namespace Pulumi.Gcp.CloudRunV2
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -942,7 +945,7 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -1093,6 +1096,14 @@ namespace Pulumi.Gcp.CloudRunV2
             set => _customAudiences = value;
         }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the service. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the service,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the WorkerPool will fail.
+        /// When the field is set to false, deleting the WorkerPool is allowed.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -1266,6 +1277,14 @@ namespace Pulumi.Gcp.CloudRunV2
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the service. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the service,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the WorkerPool will fail.
+        /// When the field is set to false, deleting the WorkerPool is allowed.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -1277,6 +1296,10 @@ namespace Pulumi.Gcp.CloudRunV2
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
@@ -1417,7 +1440,7 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

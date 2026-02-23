@@ -23,28 +23,27 @@ __all__ = [
     'IcebergCatalogIamMemberConditionArgsDict',
     'IcebergCatalogReplicaArgs',
     'IcebergCatalogReplicaArgsDict',
+    'IcebergNamespaceIamBindingConditionArgs',
+    'IcebergNamespaceIamBindingConditionArgsDict',
+    'IcebergNamespaceIamMemberConditionArgs',
+    'IcebergNamespaceIamMemberConditionArgsDict',
     'TableHiveOptionsArgs',
     'TableHiveOptionsArgsDict',
     'TableHiveOptionsStorageDescriptorArgs',
     'TableHiveOptionsStorageDescriptorArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DatabaseHiveOptionsArgsDict(TypedDict):
-        location_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cloud Storage folder URI where the database data is stored, starting with "gs://".
-        """
-        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Stores user supplied Hive database parameters. An object containing a
-        list of"key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        """
-elif False:
-    DatabaseHiveOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseHiveOptionsArgsDict(TypedDict):
+    location_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud Storage folder URI where the database data is stored, starting with "gs://".
+    """
+    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Stores user supplied Hive database parameters. An object containing a
+    list of"key": value pairs.
+    Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+    """
 
 @pulumi.input_type
 class DatabaseHiveOptionsArgs:
@@ -89,13 +88,10 @@ class DatabaseHiveOptionsArgs:
         pulumi.set(self, "parameters", value)
 
 
-if not MYPY:
-    class IcebergCatalogIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    IcebergCatalogIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class IcebergCatalogIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class IcebergCatalogIamBindingConditionArgs:
@@ -136,13 +132,10 @@ class IcebergCatalogIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class IcebergCatalogIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    IcebergCatalogIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class IcebergCatalogIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class IcebergCatalogIamMemberConditionArgs:
@@ -183,20 +176,17 @@ class IcebergCatalogIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class IcebergCatalogReplicaArgsDict(TypedDict):
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The region of the replica, e.g., `us-east1`.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        If the IcebergCatalog is replicated to multiple regions, this describes the current state of the replica. STATE_UNKNOWN - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all namespaces are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
-        """
-elif False:
-    IcebergCatalogReplicaArgsDict: TypeAlias = Mapping[str, Any]
+class IcebergCatalogReplicaArgsDict(TypedDict):
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The region of the replica, e.g., `us-east1`.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    If the IcebergCatalog is replicated to multiple regions, this describes the current state of the replica. STATE_UNKNOWN - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all namespaces are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
+    """
 
 @pulumi.input_type
 class IcebergCatalogReplicaArgs:
@@ -241,25 +231,110 @@ class IcebergCatalogReplicaArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class TableHiveOptionsArgsDict(TypedDict):
-        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Stores user supplied Hive table parameters. An object containing a
-        list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        """
-        storage_descriptor: NotRequired[pulumi.Input['TableHiveOptionsStorageDescriptorArgsDict']]
-        """
-        Stores physical storage information on the data.
-        Structure is documented below.
-        """
-        table_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
-        """
-elif False:
-    TableHiveOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class IcebergNamespaceIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
+
+@pulumi.input_type
+class IcebergNamespaceIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class IcebergNamespaceIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
+
+@pulumi.input_type
+class IcebergNamespaceIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class TableHiveOptionsArgsDict(TypedDict):
+    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Stores user supplied Hive table parameters. An object containing a
+    list of "key": value pairs.
+    Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+    """
+    storage_descriptor: NotRequired[pulumi.Input['TableHiveOptionsStorageDescriptorArgsDict']]
+    """
+    Stores physical storage information on the data.
+    Structure is documented below.
+    """
+    table_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
+    """
 
 @pulumi.input_type
 class TableHiveOptionsArgs:
@@ -322,22 +397,19 @@ class TableHiveOptionsArgs:
         pulumi.set(self, "table_type", value)
 
 
-if not MYPY:
-    class TableHiveOptionsStorageDescriptorArgsDict(TypedDict):
-        input_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The fully qualified Java class name of the input format.
-        """
-        location_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cloud Storage folder URI where the table data is stored, starting with "gs://".
-        """
-        output_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The fully qualified Java class name of the output format.
-        """
-elif False:
-    TableHiveOptionsStorageDescriptorArgsDict: TypeAlias = Mapping[str, Any]
+class TableHiveOptionsStorageDescriptorArgsDict(TypedDict):
+    input_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The fully qualified Java class name of the input format.
+    """
+    location_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud Storage folder URI where the table data is stored, starting with "gs://".
+    """
+    output_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The fully qualified Java class name of the output format.
+    """
 
 @pulumi.input_type
 class TableHiveOptionsStorageDescriptorArgs:

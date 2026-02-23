@@ -1001,22 +1001,14 @@ class DataConnector(pulumi.CustomResource):
         DataConnector can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/dataConnector`
-
         * `{{project}}/{{location}}/{{collection_id}}`
-
         * `{{location}}/{{collection_id}}`
 
         When using the `pulumi import` command, DataConnector can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/dataConnector:DataConnector default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/dataConnector
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/dataConnector:DataConnector default {{project}}/{{location}}/{{collection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/dataConnector:DataConnector default {{location}}/{{collection_id}}
         ```
 
@@ -1146,22 +1138,14 @@ class DataConnector(pulumi.CustomResource):
         DataConnector can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/dataConnector`
-
         * `{{project}}/{{location}}/{{collection_id}}`
-
         * `{{location}}/{{collection_id}}`
 
         When using the `pulumi import` command, DataConnector can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/dataConnector:DataConnector default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/dataConnector
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/dataConnector:DataConnector default {{project}}/{{location}}/{{collection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/dataConnector:DataConnector default {{location}}/{{collection_id}}
         ```
 

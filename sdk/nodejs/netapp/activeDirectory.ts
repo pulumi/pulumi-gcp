@@ -61,22 +61,14 @@ import * as utilities from "../utilities";
  * ActiveDirectory can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, ActiveDirectory can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default {{location}}/{{name}}
  * ```
  */
@@ -187,6 +179,10 @@ export class ActiveDirectory extends pulumi.CustomResource {
      * Defaults to `CN=Computers` if left empty.
      */
     declare public readonly organizationalUnit: pulumi.Output<string>;
+    /**
+     * Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     */
     declare public readonly password: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -195,7 +191,7 @@ export class ActiveDirectory extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -396,6 +392,10 @@ export interface ActiveDirectoryState {
      * Defaults to `CN=Computers` if left empty.
      */
     organizationalUnit?: pulumi.Input<string>;
+    /**
+     * Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     */
     password?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -404,7 +404,7 @@ export interface ActiveDirectoryState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -505,6 +505,10 @@ export interface ActiveDirectoryArgs {
      * Defaults to `CN=Computers` if left empty.
      */
     organizationalUnit?: pulumi.Input<string>;
+    /**
+     * Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     */
     password: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

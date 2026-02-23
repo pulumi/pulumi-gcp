@@ -195,7 +195,7 @@ class _EngineModelState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] regions: The list of regions where the model is going to be deployed.
                Currently only one region per model is supported
         """
@@ -326,7 +326,7 @@ class _EngineModelState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -364,6 +364,19 @@ class EngineModel(pulumi.CustomResource):
                  regions: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **Warning:** This resource is deprecated at the API level and will be removed in a future version of Terraform.
+
+        Represents a machine learning solution.
+
+        A model can have multiple versions, each of which is a deployed, trained model
+        ready to receive prediction requests. The model itself is just a container.
+
+        To get more information about Model, see:
+
+        * [API documentation](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
+
         ## Example Usage
 
         ### Ml Model Basic
@@ -399,22 +412,14 @@ class EngineModel(pulumi.CustomResource):
         Model can be imported using any of these accepted formats:
 
         * `projects/{{project}}/models/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Model can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ml/engineModel:EngineModel default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
         ```
 
@@ -442,6 +447,19 @@ class EngineModel(pulumi.CustomResource):
                  args: Optional[EngineModelArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** This resource is deprecated at the API level and will be removed in a future version of Terraform.
+
+        Represents a machine learning solution.
+
+        A model can have multiple versions, each of which is a deployed, trained model
+        ready to receive prediction requests. The model itself is just a container.
+
+        To get more information about Model, see:
+
+        * [API documentation](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
+
         ## Example Usage
 
         ### Ml Model Basic
@@ -477,22 +495,14 @@ class EngineModel(pulumi.CustomResource):
         Model can be imported using any of these accepted formats:
 
         * `projects/{{project}}/models/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Model can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ml/engineModel:EngineModel default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
         ```
 
@@ -581,7 +591,7 @@ class EngineModel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] regions: The list of regions where the model is going to be deployed.
                Currently only one region per model is supported
         """
@@ -675,7 +685,7 @@ class EngineModel(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

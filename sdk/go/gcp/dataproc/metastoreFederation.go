@@ -125,22 +125,14 @@ import (
 // Federation can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}`
-//
 // * `{{project}}/{{location}}/{{federation_id}}`
-//
 // * `{{location}}/{{federation_id}}`
 //
 // When using the `pulumi import` command, Federation can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default projects/{{project}}/locations/{{location}}/federations/{{federation_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{project}}/{{location}}/{{federation_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{location}}/{{federation_id}}
 // ```
 type MetastoreFederation struct {
@@ -150,7 +142,10 @@ type MetastoreFederation struct {
 	// Structure is documented below.
 	BackendMetastores MetastoreFederationBackendMetastoreArrayOutput `pulumi:"backendMetastores"`
 	// Output only. The time when the metastore federation was created.
-	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the federation. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the federation will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -172,7 +167,7 @@ type MetastoreFederation struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The current state of the metastore federation.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -238,8 +233,11 @@ type metastoreFederationState struct {
 	// Structure is documented below.
 	BackendMetastores []MetastoreFederationBackendMetastore `pulumi:"backendMetastores"`
 	// Output only. The time when the metastore federation was created.
-	CreateTime         *string `pulumi:"createTime"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the federation. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the federation will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The URI of the endpoint used to access the metastore federation.
@@ -260,7 +258,7 @@ type metastoreFederationState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The current state of the metastore federation.
 	State *string `pulumi:"state"`
@@ -283,7 +281,10 @@ type MetastoreFederationState struct {
 	// Structure is documented below.
 	BackendMetastores MetastoreFederationBackendMetastoreArrayInput
 	// Output only. The time when the metastore federation was created.
-	CreateTime         pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the federation. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the federation will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -305,7 +306,7 @@ type MetastoreFederationState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The current state of the metastore federation.
 	State pulumi.StringPtrInput
@@ -330,8 +331,11 @@ func (MetastoreFederationState) ElementType() reflect.Type {
 type metastoreFederationArgs struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
-	BackendMetastores  []MetastoreFederationBackendMetastore `pulumi:"backendMetastores"`
-	DeletionProtection *bool                                 `pulumi:"deletionProtection"`
+	BackendMetastores []MetastoreFederationBackendMetastore `pulumi:"backendMetastores"`
+	// Whether Terraform will be prevented from destroying the federation. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the federation will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -357,7 +361,10 @@ type metastoreFederationArgs struct {
 type MetastoreFederationArgs struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
-	BackendMetastores  MetastoreFederationBackendMetastoreArrayInput
+	BackendMetastores MetastoreFederationBackendMetastoreArrayInput
+	// Whether Terraform will be prevented from destroying the federation. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the federation will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -480,6 +487,9 @@ func (o MetastoreFederationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the federation. Defaults to false.
+// When the field is set to true in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the federation will fail.
 func (o MetastoreFederationOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -525,7 +535,8 @@ func (o MetastoreFederationOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MetastoreFederationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

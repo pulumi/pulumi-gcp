@@ -87,22 +87,14 @@ import (
 // MulticastProducerAssociation can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/multicastProducerAssociations/{{multicast_producer_association_id}}`
-//
 // * `{{project}}/{{location}}/{{multicast_producer_association_id}}`
-//
 // * `{{location}}/{{multicast_producer_association_id}}`
 //
 // When using the `pulumi import` command, MulticastProducerAssociation can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default projects/{{project}}/locations/{{location}}/multicastProducerAssociations/{{multicast_producer_association_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default {{project}}/{{location}}/{{multicast_producer_association_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default {{location}}/{{multicast_producer_association_id}}
 // ```
 type MulticastProducerAssociation struct {
@@ -143,7 +135,7 @@ type MulticastProducerAssociation struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// (Output)
 	// The state of the multicast resource.
@@ -248,7 +240,7 @@ type multicastProducerAssociationState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// (Output)
 	// The state of the multicast resource.
@@ -307,7 +299,7 @@ type MulticastProducerAssociationState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// (Output)
 	// The state of the multicast resource.
@@ -543,7 +535,8 @@ func (o MulticastProducerAssociationOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MulticastProducerAssociationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MulticastProducerAssociation) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

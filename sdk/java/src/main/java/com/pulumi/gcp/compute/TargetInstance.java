@@ -235,7 +235,7 @@ import javax.annotation.Nullable;
  * 
  *         var policyddosprotection = new RegionSecurityPolicy("policyddosprotection", RegionSecurityPolicyArgs.builder()
  *             .region("southamerica-west1")
- *             .name("tf-test-policyddos_85840")
+ *             .name("tf-test-policyddos_60302")
  *             .description("ddos protection security policy to set target instance")
  *             .type("CLOUD_ARMOR_NETWORK")
  *             .ddosProtectionConfig(RegionSecurityPolicyDdosProtectionConfigArgs.builder()
@@ -245,7 +245,7 @@ import javax.annotation.Nullable;
  * 
  *         var edgeSecService = new NetworkEdgeSecurityService("edgeSecService", NetworkEdgeSecurityServiceArgs.builder()
  *             .region("southamerica-west1")
- *             .name("tf-test-edgesec_60302")
+ *             .name("tf-test-edgesec_22811")
  *             .securityPolicy(policyddosprotection.selfLink())
  *             .build());
  * 
@@ -275,28 +275,16 @@ import javax.annotation.Nullable;
  * TargetInstance can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}`
- * 
  * * `{{project}}/{{zone}}/{{name}}`
- * 
  * * `{{zone}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/targetInstance:TargetInstance default {{project}}/{{zone}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/targetInstance:TargetInstance default {{zone}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/targetInstance:TargetInstance default {{name}}
  * ```
  * 

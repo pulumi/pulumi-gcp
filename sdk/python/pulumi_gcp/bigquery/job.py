@@ -244,9 +244,8 @@ class _JobState:
         :param pulumi.Input[_builtins.str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: (Output)
-               The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
         :param pulumi.Input['JobQueryArgs'] query: Configures a query job.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] reservation: (Optional, Beta)
@@ -420,9 +419,8 @@ class _JobState:
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        (Output)
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -874,40 +872,20 @@ class Job(pulumi.CustomResource):
         Job can be imported using any of these accepted formats:
 
         * `projects/{{project}}/jobs/{{job_id}}/location/{{location}}`
-
         * `projects/{{project}}/jobs/{{job_id}}`
-
         * `{{project}}/{{job_id}}/{{location}}`
-
         * `{{job_id}}/{{location}}`
-
         * `{{project}}/{{job_id}}`
-
         * `{{job_id}}`
 
         When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}/location/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{job_id}}/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{job_id}}
         ```
 
@@ -1314,40 +1292,20 @@ class Job(pulumi.CustomResource):
         Job can be imported using any of these accepted formats:
 
         * `projects/{{project}}/jobs/{{job_id}}/location/{{location}}`
-
         * `projects/{{project}}/jobs/{{job_id}}`
-
         * `{{project}}/{{job_id}}/{{location}}`
-
         * `{{job_id}}/{{location}}`
-
         * `{{project}}/{{job_id}}`
-
         * `{{job_id}}`
 
         When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}/location/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{job_id}}/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{job_id}}
         ```
 
@@ -1455,9 +1413,8 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: (Output)
-               The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
         :param pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']] query: Configures a query job.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] reservation: (Optional, Beta)
@@ -1581,9 +1538,8 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
-        (Output)
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

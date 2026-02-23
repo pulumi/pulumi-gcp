@@ -159,12 +159,14 @@ export class Cluster extends pulumi.CustomResource {
      * which is the name of the cluster.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+     */
     declare public readonly gracefulDecommissionTimeout: pulumi.Output<string | undefined>;
     /**
-     * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-     *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
+     * instances in the cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -250,12 +252,14 @@ export interface ClusterState {
      * which is the name of the cluster.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+     */
     gracefulDecommissionTimeout?: pulumi.Input<string>;
     /**
-     * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-     *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
+     * instances in the cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -295,12 +299,14 @@ export interface ClusterArgs {
      * Structure defined below.
      */
     clusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfig>;
+    /**
+     * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+     */
     gracefulDecommissionTimeout?: pulumi.Input<string>;
     /**
-     * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-     *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
+     * instances in the cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

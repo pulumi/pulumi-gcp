@@ -30,22 +30,14 @@ import * as utilities from "../utilities";
  * ReleaseChannelSetting can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}`
- *
  * * `{{project}}/{{location}}/{{release_channel_setting_id}}`
- *
  * * `{{location}}/{{release_channel_setting_id}}`
  *
  * When using the `pulumi import` command, ReleaseChannelSetting can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{project}}/{{location}}/{{release_channel_setting_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{location}}/{{release_channel_setting_id}}
  * ```
  */
@@ -107,7 +99,7 @@ export class ReleaseChannelSetting extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -209,7 +201,7 @@ export interface ReleaseChannelSettingState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

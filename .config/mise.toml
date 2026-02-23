@@ -8,8 +8,7 @@ PULUMI_HOME = "{{config_root}}/.pulumi"
 [tools]
 
 # Runtimes
-# TODO: we may not need 'get_env' once https://github.com/jdx/mise/discussions/6339 is fixed
-go = "{{ get_env(name='GO_VERSION_MISE', default='latest') }}"
+go = "{{ env.GO_VERSION_MISE }}"
 node = '20.19.5'
 python = '3.11.8'
 "vfox:version-fox/vfox-dotnet" = "8.0.20" # vfox backend doesn't work on Windows, gives "error converting Lua table to PreInstall (no version returned from vfox plugin)" https://github.com/jdx/mise/discussions/5876 https://github.com/jdx/mise/discussions/5550
@@ -17,7 +16,7 @@ python = '3.11.8'
 java = 'corretto-11'
 
 # Executable tools
-pulumi = "{{ get_env(name='PULUMI_VERSION_MISE', default='latest') }}"
+"github:pulumi/pulumi" = "{{ env.PULUMI_VERSION_MISE }}"
 "github:pulumi/pulumictl" = '0.0.50'
 "github:pulumi/schema-tools" = "0.6.0"
 "aqua:gradle/gradle-distributions" = '7.6.6'
@@ -29,6 +28,7 @@ experimental = true # Required for Go binaries (e.g. pulumictl).
 lockfile = false
 http_retries = 3
 pin = true # `mise use` should pin versions instead of defaulting to latest.
+fetch_remote_versions_cache = "24h" # Mise queries versions even if they're pinned to confirm they exist. Reduce GitHub API calls by doing that less often.
 
 [plugins]
 vfox-pulumi = "https://github.com/pulumi/vfox-pulumi"

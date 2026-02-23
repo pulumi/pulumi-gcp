@@ -46,22 +46,14 @@ import * as utilities from "../utilities";
  * InterceptEndpointGroup can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/interceptEndpointGroups/{{intercept_endpoint_group_id}}`
- *
  * * `{{project}}/{{location}}/{{intercept_endpoint_group_id}}`
- *
  * * `{{location}}/{{intercept_endpoint_group_id}}`
  *
  * When using the `pulumi import` command, InterceptEndpointGroup can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default projects/{{project}}/locations/{{location}}/interceptEndpointGroups/{{intercept_endpoint_group_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{project}}/{{location}}/{{intercept_endpoint_group_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{location}}/{{intercept_endpoint_group_id}}
  * ```
  */
@@ -152,7 +144,7 @@ export class InterceptEndpointGroup extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -302,7 +294,7 @@ export interface InterceptEndpointGroupState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

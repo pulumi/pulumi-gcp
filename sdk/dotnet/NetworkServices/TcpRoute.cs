@@ -301,22 +301,14 @@ namespace Pulumi.Gcp.NetworkServices
     /// TcpRoute can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/global/tcpRoutes/{{name}}`
-    /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, TcpRoute can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default projects/{{project}}/locations/global/tcpRoutes/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default {{name}}
     /// ```
     /// </summary>
@@ -379,7 +371,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -624,7 +616,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

@@ -53,22 +53,14 @@ import (
 // GeminiGcpEnablementSetting can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}`
-//
 // * `{{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}`
-//
 // * `{{location}}/{{gemini_gcp_enablement_setting_id}}`
 //
 // When using the `pulumi import` command, GeminiGcpEnablementSetting can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default {{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default {{location}}/{{gemini_gcp_enablement_setting_id}}
 // ```
 type GeminiGcpEnablementSetting struct {
@@ -102,7 +94,7 @@ type GeminiGcpEnablementSetting struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Update time stamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -182,7 +174,7 @@ type geminiGcpEnablementSettingState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Update time stamp.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -222,7 +214,7 @@ type GeminiGcpEnablementSettingState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Update time stamp.
 	UpdateTime pulumi.StringPtrInput
@@ -436,7 +428,8 @@ func (o GeminiGcpEnablementSettingOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GeminiGcpEnablementSettingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

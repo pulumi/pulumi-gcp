@@ -66,22 +66,14 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// Destination can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{multicloud_data_transfer_config}}/destinations/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{multicloud_data_transfer_config}}/{{name}}`
-    /// 
     /// * `{{location}}/{{multicloud_data_transfer_config}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, Destination can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networkconnectivity/destination:Destination default projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{multicloud_data_transfer_config}}/destinations/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networkconnectivity/destination:Destination default {{project}}/{{location}}/{{multicloud_data_transfer_config}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networkconnectivity/destination:Destination default {{location}}/{{multicloud_data_transfer_config}}/{{name}}
     /// ```
     /// </summary>
@@ -163,7 +155,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -416,7 +408,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

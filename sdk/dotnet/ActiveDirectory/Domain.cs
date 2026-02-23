@@ -49,22 +49,14 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// Domain can be imported using any of these accepted formats:
     /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{project}} {{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, Domain can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:activedirectory/domain:Domain default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:activedirectory/domain:Domain default "{{project}} {{name}}"
-    /// ```
-    /// 
-    /// ```sh
+    /// $ terraform import google_active_directory_domain.default "{{project}} {{name}}"
     /// $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
     /// ```
     /// </summary>
@@ -85,6 +77,14 @@ namespace Pulumi.Gcp.ActiveDirectory
         [Output("authorizedNetworks")]
         public Output<ImmutableArray<string>> AuthorizedNetworks { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the domain. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the domain,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the domain will fail.
+        /// When the field is set to false, deleting the domain is allowed.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.ActiveDirectory
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -221,6 +221,14 @@ namespace Pulumi.Gcp.ActiveDirectory
             set => _authorizedNetworks = value;
         }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the domain. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the domain,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the domain will fail.
+        /// When the field is set to false, deleting the domain is allowed.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -300,6 +308,14 @@ namespace Pulumi.Gcp.ActiveDirectory
             set => _authorizedNetworks = value;
         }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the domain. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the domain,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the domain will fail.
+        /// When the field is set to false, deleting the domain is allowed.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -378,7 +394,7 @@ namespace Pulumi.Gcp.ActiveDirectory
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

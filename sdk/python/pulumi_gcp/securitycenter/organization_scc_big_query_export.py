@@ -426,16 +426,12 @@ class OrganizationSccBigQueryExport(pulumi.CustomResource):
         OrganizationSccBigQueryExport can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/bigQueryExports/{{big_query_export_id}}`
-
         * `{{organization}}/{{big_query_export_id}}`
 
         When using the `pulumi import` command, OrganizationSccBigQueryExport can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport default organizations/{{organization}}/bigQueryExports/{{big_query_export_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport default {{organization}}/{{big_query_export_id}}
         ```
 
@@ -520,16 +516,12 @@ class OrganizationSccBigQueryExport(pulumi.CustomResource):
         OrganizationSccBigQueryExport can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/bigQueryExports/{{big_query_export_id}}`
-
         * `{{organization}}/{{big_query_export_id}}`
 
         When using the `pulumi import` command, OrganizationSccBigQueryExport can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport default organizations/{{organization}}/bigQueryExports/{{big_query_export_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport default {{organization}}/{{big_query_export_id}}
         ```
 

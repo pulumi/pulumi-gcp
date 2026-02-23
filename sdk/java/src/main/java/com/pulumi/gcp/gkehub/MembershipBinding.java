@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var membership = new Membership("membership", MembershipArgs.builder()
- *             .membershipId("tf-test-membership_8647")
+ *             .membershipId("tf-test-membership_20665")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
  *                     .resourceLink(primary.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
@@ -81,11 +81,11 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var scope = new Scope("scope", ScopeArgs.builder()
- *             .scopeId("tf-test-scope_50610")
+ *             .scopeId("tf-test-scope_85160")
  *             .build());
  * 
  *         var membershipBinding = new MembershipBinding("membershipBinding", MembershipBindingArgs.builder()
- *             .membershipBindingId("tf-test-membership-binding_77124")
+ *             .membershipBindingId("tf-test-membership-binding_92130")
  *             .scope(scope.name())
  *             .membershipId(membership.membershipId())
  *             .location("global")
@@ -110,22 +110,14 @@ import javax.annotation.Nullable;
  * MembershipBinding can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}`
- * 
  * * `{{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}`
- * 
  * * `{{location}}/{{membership_id}}/{{membership_binding_id}}`
  * 
  * When using the `pulumi import` command, MembershipBinding can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default {{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default {{location}}/{{membership_id}}/{{membership_binding_id}}
  * ```
  * 
@@ -268,7 +260,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -276,7 +268,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

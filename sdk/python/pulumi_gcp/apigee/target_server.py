@@ -391,16 +391,12 @@ class TargetServer(pulumi.CustomResource):
         TargetServer can be imported using any of these accepted formats:
 
         * `{{env_id}}/targetservers/{{name}}`
-
         * `{{env_id}}/{{name}}`
 
         When using the `pulumi import` command, TargetServer can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/targetServer:TargetServer default {{env_id}}/targetservers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/targetServer:TargetServer default {{env_id}}/{{name}}
         ```
 
@@ -501,16 +497,12 @@ class TargetServer(pulumi.CustomResource):
         TargetServer can be imported using any of these accepted formats:
 
         * `{{env_id}}/targetservers/{{name}}`
-
         * `{{env_id}}/{{name}}`
 
         When using the `pulumi import` command, TargetServer can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/targetServer:TargetServer default {{env_id}}/targetservers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/targetServer:TargetServer default {{env_id}}/{{name}}
         ```
 

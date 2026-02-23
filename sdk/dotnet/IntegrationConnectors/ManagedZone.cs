@@ -32,8 +32,8 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// {
     ///     var targetProject = new Gcp.Organizations.Project("target_project", new()
     ///     {
-    ///         ProjectId = "tf-test_16178",
-    ///         Name = "tf-test_26317",
+    ///         ProjectId = "tf-test_32270",
+    ///         Name = "tf-test_44703",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",
@@ -75,8 +75,8 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// 
     ///     var zone = new Gcp.Dns.ManagedZone("zone", new()
     ///     {
-    ///         Name = "tf-test-dns_4866",
-    ///         DnsName = "private_12618.example.com.",
+    ///         Name = "tf-test-dns_9329",
+    ///         DnsName = "private_37135.example.com.",
     ///         Visibility = "private",
     ///         PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
     ///         {
@@ -124,22 +124,14 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// ManagedZone can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/global/managedZones/{{name}}`
-    /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default projects/{{project}}/locations/global/managedZones/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{name}}
     /// ```
     /// </summary>
@@ -194,7 +186,7 @@ namespace Pulumi.Gcp.IntegrationConnectors
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -395,7 +387,7 @@ namespace Pulumi.Gcp.IntegrationConnectors
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

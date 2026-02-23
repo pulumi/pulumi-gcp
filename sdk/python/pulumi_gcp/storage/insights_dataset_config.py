@@ -56,6 +56,11 @@ class InsightsDatasetConfigArgs:
         :param pulumi.Input['InsightsDatasetConfigIncludeCloudStorageLocationsArgs'] include_cloud_storage_locations: Defines the options for including cloud storage locations for the DatasetConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] include_newly_created_buckets: If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
+        :param pulumi.Input[_builtins.bool] link_dataset: A boolean terraform only flag to link/unlink dataset.
+               
+               Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+               > **Note** A dataset config resource can only be destroyed once it is unlinked,
+               so users must set this field to false to unlink the dataset and destroy the dataset config resource.
         :param pulumi.Input[_builtins.str] organization_number: Organization resource ID that the source projects should belong to.
                Projects that do not belong to the provided organization are not considered when creating the dataset.
         :param pulumi.Input[_builtins.bool] organization_scope: Defines the options for providing a source organization for the DatasetConfig.
@@ -237,6 +242,13 @@ class InsightsDatasetConfigArgs:
     @_builtins.property
     @pulumi.getter(name="linkDataset")
     def link_dataset(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        A boolean terraform only flag to link/unlink dataset.
+
+        Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+        > **Note** A dataset config resource can only be destroyed once it is unlinked,
+        so users must set this field to false to unlink the dataset and destroy the dataset config resource.
+        """
         return pulumi.get(self, "link_dataset")
 
     @link_dataset.setter
@@ -352,6 +364,11 @@ class _InsightsDatasetConfigState:
         :param pulumi.Input['InsightsDatasetConfigIncludeCloudStorageLocationsArgs'] include_cloud_storage_locations: Defines the options for including cloud storage locations for the DatasetConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] include_newly_created_buckets: If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
+        :param pulumi.Input[_builtins.bool] link_dataset: A boolean terraform only flag to link/unlink dataset.
+               
+               Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+               > **Note** A dataset config resource can only be destroyed once it is unlinked,
+               so users must set this field to false to unlink the dataset and destroy the dataset config resource.
         :param pulumi.Input[Sequence[pulumi.Input['InsightsDatasetConfigLinkArgs']]] links: Details of the linked DatasetConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the DatasetConfig.
@@ -556,6 +573,13 @@ class _InsightsDatasetConfigState:
     @_builtins.property
     @pulumi.getter(name="linkDataset")
     def link_dataset(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        A boolean terraform only flag to link/unlink dataset.
+
+        Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+        > **Note** A dataset config resource can only be destroyed once it is unlinked,
+        so users must set this field to false to unlink the dataset and destroy the dataset config resource.
+        """
         return pulumi.get(self, "link_dataset")
 
     @link_dataset.setter
@@ -807,22 +831,14 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         DatasetConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/datasetConfigs/{{dataset_config_id}}`
-
         * `{{project}}/{{location}}/{{dataset_config_id}}`
-
         * `{{location}}/{{dataset_config_id}}`
 
         When using the `pulumi import` command, DatasetConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default projects/{{project}}/locations/{{location}}/datasetConfigs/{{dataset_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default {{project}}/{{location}}/{{dataset_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default {{location}}/{{dataset_config_id}}
         ```
 
@@ -842,6 +858,11 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict']] include_cloud_storage_locations: Defines the options for including cloud storage locations for the DatasetConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] include_newly_created_buckets: If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
+        :param pulumi.Input[_builtins.bool] link_dataset: A boolean terraform only flag to link/unlink dataset.
+               
+               Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+               > **Note** A dataset config resource can only be destroyed once it is unlinked,
+               so users must set this field to false to unlink the dataset and destroy the dataset config resource.
         :param pulumi.Input[_builtins.str] location: The location of the DatasetConfig.
         :param pulumi.Input[_builtins.str] organization_number: Organization resource ID that the source projects should belong to.
                Projects that do not belong to the provided organization are not considered when creating the dataset.
@@ -943,22 +964,14 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         DatasetConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/datasetConfigs/{{dataset_config_id}}`
-
         * `{{project}}/{{location}}/{{dataset_config_id}}`
-
         * `{{location}}/{{dataset_config_id}}`
 
         When using the `pulumi import` command, DatasetConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default projects/{{project}}/locations/{{location}}/datasetConfigs/{{dataset_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default {{project}}/{{location}}/{{dataset_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default {{location}}/{{dataset_config_id}}
         ```
 
@@ -1090,6 +1103,11 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict']] include_cloud_storage_locations: Defines the options for including cloud storage locations for the DatasetConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] include_newly_created_buckets: If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
+        :param pulumi.Input[_builtins.bool] link_dataset: A boolean terraform only flag to link/unlink dataset.
+               
+               Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+               > **Note** A dataset config resource can only be destroyed once it is unlinked,
+               so users must set this field to false to unlink the dataset and destroy the dataset config resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsDatasetConfigLinkArgs', 'InsightsDatasetConfigLinkArgsDict']]]] links: Details of the linked DatasetConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the DatasetConfig.
@@ -1232,6 +1250,13 @@ class InsightsDatasetConfig(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="linkDataset")
     def link_dataset(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        A boolean terraform only flag to link/unlink dataset.
+
+        Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+        > **Note** A dataset config resource can only be destroyed once it is unlinked,
+        so users must set this field to false to unlink the dataset and destroy the dataset config resource.
+        """
         return pulumi.get(self, "link_dataset")
 
     @_builtins.property

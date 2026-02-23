@@ -426,7 +426,7 @@ class _GatewayState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
                Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
         :param pulumi.Input[_builtins.str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
@@ -693,7 +693,7 @@ class _GatewayState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -990,22 +990,14 @@ class Gateway(pulumi.CustomResource):
         Gateway can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/gateways/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/gateway:Gateway default projects/{{project}}/locations/{{location}}/gateways/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/gateway:Gateway default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/gateway:Gateway default {{location}}/{{name}}
         ```
 
@@ -1235,22 +1227,14 @@ class Gateway(pulumi.CustomResource):
         Gateway can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/gateways/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/gateway:Gateway default projects/{{project}}/locations/{{location}}/gateways/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/gateway:Gateway default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/gateway:Gateway default {{location}}/{{name}}
         ```
 
@@ -1401,7 +1385,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
                Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
         :param pulumi.Input[_builtins.str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
@@ -1590,7 +1574,7 @@ class Gateway(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

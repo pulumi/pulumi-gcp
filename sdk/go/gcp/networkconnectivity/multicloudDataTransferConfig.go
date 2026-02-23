@@ -66,22 +66,14 @@ import (
 // MulticloudDataTransferConfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, MulticloudDataTransferConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig default projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig default {{location}}/{{name}}
 // ```
 type MulticloudDataTransferConfig struct {
@@ -116,7 +108,7 @@ type MulticloudDataTransferConfig struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Maps services to their current or planned states. Service names are keys,
 	// and the associated values describe the state of the service.
@@ -198,7 +190,7 @@ type multicloudDataTransferConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Maps services to their current or planned states. Service names are keys,
 	// and the associated values describe the state of the service.
@@ -243,7 +235,7 @@ type MulticloudDataTransferConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Maps services to their current or planned states. Service names are keys,
 	// and the associated values describe the state of the service.
@@ -451,7 +443,8 @@ func (o MulticloudDataTransferConfigOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MulticloudDataTransferConfigOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MulticloudDataTransferConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

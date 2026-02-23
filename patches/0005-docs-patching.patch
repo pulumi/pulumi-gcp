@@ -310,14 +310,14 @@ diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/clo
 index 0177e77f0..3bf6d95c9 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
-@@ -33,8 +33,63 @@ To get more information about Service, see:
+@@ -33,9 +33,64 @@ To get more information about Service, see:
  ~> **Warning:** We recommend using the `google_cloud_run_v2_service` resource which offers a better
  developer experience and broader support of Cloud Run features.
  
 -## Example Usage - Cloud Run Service Basic
 +## Example Usage - Cloud Run Service Pubsub
-+
-+
+ 
+ 
 +```hcl
 +resource "google_cloud_run_service" "default" {
 +    name     = "cloud_run_service_name"
@@ -370,11 +370,12 @@ index 0177e77f0..3bf6d95c9 100644
 +  }
 +}
 +```
- 
++
 +## Example Usage - Cloud Run Service Basic
- 
++
  ```hcl
  resource "google_cloud_run_service" "default" {
+   name     = "cloudrun-srv"
 @@ -118,7 +173,7 @@ resource "google_cloud_run_service" "default" {
        annotations = {
          "autoscaling.knative.dev/maxScale"      = "1000"
@@ -547,7 +548,7 @@ index c761850a1..3cc5c8944 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index d66e6a586..aa86b997f 100644
+index 140964850..edfc61bec 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -154,7 +154,7 @@ The following arguments are supported:
@@ -691,7 +692,7 @@ index 5938de616..7717ff951 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index 4a38c5b55..91c2f09d0 100644
+index e202accec..f46539136 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -197,12 +197,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -755,7 +756,7 @@ index 4a38c5b55..91c2f09d0 100644
  
  * `name_prefix` - (Optional) Creates a unique name beginning with the specified
    prefix. Conflicts with `name`. Max length is 54 characters.
-@@ -599,7 +599,7 @@ The following arguments are supported:
+@@ -601,7 +601,7 @@ The following arguments are supported:
  * `access_config` - (Optional) Access configurations, i.e. IPs via which this
      instance can be accessed via the Internet. Omit to ensure that the instance
      is not accessible from the Internet (this means that ssh provisioners will
@@ -954,10 +955,10 @@ index 1e3372cf3..415c7fcd3 100644
  
    version {
 diff --git a/website/docs/r/compute_region_ssl_certificate.html.markdown b/website/docs/r/compute_region_ssl_certificate.html.markdown
-index 278743bbb..0d9814e80 100644
+index 171ccde4b..37e2d5b64 100644
 --- a/website/docs/r/compute_region_ssl_certificate.html.markdown
 +++ b/website/docs/r/compute_region_ssl_certificate.html.markdown
-@@ -104,7 +104,7 @@ resource "random_id" "certificate" {
+@@ -129,7 +129,7 @@ resource "random_id" "certificate" {
  // Using with Region Target HTTPS Proxies
  //
  // SSL certificates cannot be updated after creation. In order to apply
@@ -1258,10 +1259,10 @@ index c043eb3dc..a355d1d7f 100644
  #     overwritten during the next generation cycle.
  #
 diff --git a/website/docs/r/compute_ssl_certificate.html.markdown b/website/docs/r/compute_ssl_certificate.html.markdown
-index 57e18d953..b384a8daf 100644
+index e004d279a..b2d9cac0f 100644
 --- a/website/docs/r/compute_ssl_certificate.html.markdown
 +++ b/website/docs/r/compute_ssl_certificate.html.markdown
-@@ -101,12 +101,8 @@ resource "random_id" "certificate" {
+@@ -125,12 +125,8 @@ resource "random_id" "certificate" {
  // Using with Target HTTPS Proxies
  //
  // SSL certificates cannot be updated after creation. In order to apply
@@ -1277,10 +1278,10 @@ index 57e18d953..b384a8daf 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index 503b5ce28..0a9a2c3e0 100644
+index c2aacd44e..d392cfc27 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
-@@ -418,9 +418,6 @@ The following arguments are supported:
+@@ -416,9 +416,6 @@ The following arguments are supported:
    contained in this subnetwork. The primary IP of such VM must belong
    to the primary ipCidrRange of the subnetwork. The alias IPs may belong
    to either primary or secondary ranges.
@@ -1319,7 +1320,7 @@ index 19e798c12..35d919713 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 25ef970f8..0ae0d2781 100644
+index 3ecf85c8d..4ea8a21cb 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,9 +27,7 @@ To get more information about GKE clusters, see:
@@ -1404,7 +1405,7 @@ index 25ef970f8..0ae0d2781 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -996,10 +1015,6 @@ gvnic {
+@@ -1005,10 +1024,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1415,7 +1416,7 @@ index 25ef970f8..0ae0d2781 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -1026,7 +1041,7 @@ gvnic {
+@@ -1035,7 +1050,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1424,7 +1425,7 @@ index 25ef970f8..0ae0d2781 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -1068,13 +1083,14 @@ gvnic {
+@@ -1077,13 +1092,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1446,7 +1447,7 @@ index 25ef970f8..0ae0d2781 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1398,7 +1414,7 @@ for more details. This field only applies to private clusters, when
+@@ -1407,7 +1423,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1455,7 +1456,7 @@ index 25ef970f8..0ae0d2781 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1506,9 +1522,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1515,9 +1531,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -1683,7 +1684,7 @@ index ad0cde9bf..fdf69242a 100644
  * `zone` - (Optional) The zone in which the created job should run. If it is not provided, the provider zone is used.
  * `region` - (Optional) The region in which the created job should run.
 diff --git a/website/docs/r/dataproc_cluster.html.markdown b/website/docs/r/dataproc_cluster.html.markdown
-index a215775a6..71e2870e5 100644
+index 878281d88..be18d7a59 100644
 --- a/website/docs/r/dataproc_cluster.html.markdown
 +++ b/website/docs/r/dataproc_cluster.html.markdown
 @@ -162,7 +162,7 @@ resource "google_dataproc_cluster" "accelerated_cluster" {
@@ -1695,7 +1696,7 @@ index a215775a6..71e2870e5 100644
        Does not affect auto scaling decomissioning from an autoscaling policy.
        Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
        Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
-@@ -670,7 +670,6 @@ will be set for you based on whatever was set for the `worker_config.machine_typ
+@@ -702,7 +702,6 @@ will be set for you based on whatever was set for the `worker_config.machine_typ
    * PREEMPTIBILITY_UNSPECIFIED
    * NON_PREEMPTIBLE
    * PREEMPTIBLE
@@ -2796,7 +2797,7 @@ index c2ce72023..23818b46a 100644
  ~> **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
  
 diff --git a/website/docs/r/monitoring_notification_channel.html.markdown b/website/docs/r/monitoring_notification_channel.html.markdown
-index 28da1f3e9..99620169e 100644
+index 1158a2d5a..8690e3ec3 100644
 --- a/website/docs/r/monitoring_notification_channel.html.markdown
 +++ b/website/docs/r/monitoring_notification_channel.html.markdown
 @@ -32,7 +32,7 @@ and labels to configure that channel. Each `type` has specific labels that need
@@ -2808,7 +2809,7 @@ index 28da1f3e9..99620169e 100644
  labels are required.
  
  A list of supported channels per project the `list` endpoint can be
-@@ -100,7 +100,7 @@ The following arguments are supported:
+@@ -103,7 +103,7 @@ The following arguments are supported:
    Configuration fields that define the channel and its behavior. The
    permissible and required labels are specified in the
    NotificationChannelDescriptor corresponding to the type field.

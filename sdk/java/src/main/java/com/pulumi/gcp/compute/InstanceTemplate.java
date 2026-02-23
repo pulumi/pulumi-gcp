@@ -428,22 +428,14 @@ import javax.annotation.Nullable;
  * Instance templates can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/global/instanceTemplates/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
  * ```
  * 
@@ -637,14 +629,28 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+     * The machine type to create.
+     * 
+     * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+     * 
+     * More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
+     * create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
+     * 
+     * ***
      * 
      */
     @Export(name="machineType", refs={String.class}, tree="[0]")
     private Output<String> machineType;
 
     /**
-     * @return The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+     * @return The machine type to create.
+     * 
+     * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+     * 
+     * More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
+     * create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
+     * 
+     * ***
      * 
      */
     public Output<String> machineType() {

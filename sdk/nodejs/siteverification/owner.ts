@@ -93,6 +93,7 @@ import * as utilities from "../utilities";
  * $ pulumi import gcp:siteverification/owner:Owner default webResource/{{web_resource_id}}/{{email}}
  * ```
  *
+ * > **Note:** While verified owners can be successfully imported, attempting to later delete the imported resource will fail. The only way to remove
  * verified owners is to delete the web resource itself.
  */
 export class Owner extends pulumi.CustomResource {

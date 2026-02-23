@@ -232,7 +232,7 @@ class _EntryTypeState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['EntryTypeRequiredAspectArgs']]] required_aspects: AspectInfo for the entry type.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] system: The system that Entries of this type belongs to.
@@ -402,7 +402,7 @@ class _EntryTypeState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -512,7 +512,7 @@ class EntryType(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_entry_type_full = gcp.dataplex.AspectType("test_entry_type_full",
-            aspect_type_id="tf-test-aspect-type_37559",
+            aspect_type_id="tf-test-aspect-type_37118",
             location="us-central1",
             project="my-project-name",
             metadata_template=\"\"\"{
@@ -565,22 +565,14 @@ class EntryType(pulumi.CustomResource):
         EntryType can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/entryTypes/{{entry_type_id}}`
-
         * `{{project}}/{{location}}/{{entry_type_id}}`
-
         * `{{location}}/{{entry_type_id}}`
 
         When using the `pulumi import` command, EntryType can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/entryType:EntryType default projects/{{project}}/locations/{{location}}/entryTypes/{{entry_type_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryType:EntryType default {{project}}/{{location}}/{{entry_type_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryType:EntryType default {{location}}/{{entry_type_id}}
         ```
 
@@ -631,7 +623,7 @@ class EntryType(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_entry_type_full = gcp.dataplex.AspectType("test_entry_type_full",
-            aspect_type_id="tf-test-aspect-type_37559",
+            aspect_type_id="tf-test-aspect-type_37118",
             location="us-central1",
             project="my-project-name",
             metadata_template=\"\"\"{
@@ -684,22 +676,14 @@ class EntryType(pulumi.CustomResource):
         EntryType can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/entryTypes/{{entry_type_id}}`
-
         * `{{project}}/{{location}}/{{entry_type_id}}`
-
         * `{{location}}/{{entry_type_id}}`
 
         When using the `pulumi import` command, EntryType can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/entryType:EntryType default projects/{{project}}/locations/{{location}}/entryTypes/{{entry_type_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryType:EntryType default {{project}}/{{location}}/{{entry_type_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryType:EntryType default {{location}}/{{entry_type_id}}
         ```
 
@@ -803,7 +787,7 @@ class EntryType(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]] required_aspects: AspectInfo for the entry type.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] system: The system that Entries of this type belongs to.
@@ -922,7 +906,7 @@ class EntryType(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

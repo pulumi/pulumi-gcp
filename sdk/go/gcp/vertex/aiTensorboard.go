@@ -60,8 +60,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
@@ -111,28 +109,16 @@ import (
 // Tensorboard can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/tensorboards/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Tensorboard can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default projects/{{project}}/locations/{{region}}/tensorboards/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{name}}
 // ```
 type AiTensorboard struct {
@@ -162,7 +148,7 @@ type AiTensorboard struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the tensorboard. eg us-central1
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -234,7 +220,7 @@ type aiTensorboardState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the tensorboard. eg us-central1
 	Region *string `pulumi:"region"`
@@ -269,7 +255,7 @@ type AiTensorboardState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region of the tensorboard. eg us-central1
 	Region pulumi.StringPtrInput
@@ -462,7 +448,8 @@ func (o AiTensorboardOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AiTensorboardOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiTensorboard) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

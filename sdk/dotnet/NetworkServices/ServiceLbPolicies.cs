@@ -10,6 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices
 {
     /// <summary>
+    /// ServiceLbPolicy holds global load balancing and traffic distribution configuration that can be applied to a BackendService.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about ServiceLbPolicies, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.serviceLbPolicies)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Network Services Service Lb Policies Basic
@@ -123,22 +132,14 @@ namespace Pulumi.Gcp.NetworkServices
     /// ServiceLbPolicies can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, ServiceLbPolicies can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{location}}/{{name}}
     /// ```
     /// </summary>
@@ -220,7 +221,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -451,7 +452,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

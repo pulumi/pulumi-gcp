@@ -18,6 +18,7 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
 
     /**
      * The Secret Access Key of the AWS account transferring data from.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="secretAccessKey")
@@ -25,6 +26,7 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
 
     /**
      * @return The Secret Access Key of the AWS account transferring data from.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> secretAccessKey() {
@@ -33,7 +35,11 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
      * The Secret Access Key of the AWS account transferring data from.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `secretAccessKey` or `secretAccessKeyWo` can only be set.
      * 
      */
     @Import(name="secretAccessKeyWo")
@@ -41,7 +47,11 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
      * The Secret Access Key of the AWS account transferring data from.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `secretAccessKey` or `secretAccessKeyWo` can only be set.
      * 
      */
     public Optional<Output<String>> secretAccessKeyWo() {
@@ -91,6 +101,7 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
 
         /**
          * @param secretAccessKey The Secret Access Key of the AWS account transferring data from.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -102,6 +113,7 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
 
         /**
          * @param secretAccessKey The Secret Access Key of the AWS account transferring data from.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -112,7 +124,11 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
 
         /**
          * @param secretAccessKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
          * The Secret Access Key of the AWS account transferring data from.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `secretAccessKey` or `secretAccessKeyWo` can only be set.
          * 
          * @return builder
          * 
@@ -124,7 +140,11 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
 
         /**
          * @param secretAccessKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
          * The Secret Access Key of the AWS account transferring data from.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `secretAccessKey` or `secretAccessKeyWo` can only be set.
          * 
          * @return builder
          * 

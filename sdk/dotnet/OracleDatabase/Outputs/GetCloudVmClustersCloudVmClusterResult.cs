@@ -38,11 +38,17 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// The date and time that the VM cluster was created.
         /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
+        /// </summary>
         public readonly bool DeletionProtection;
         /// <summary>
         /// User friendly name for this resource.
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// The name of the Exadata Infrastructure resource on which VM cluster

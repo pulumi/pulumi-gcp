@@ -54,22 +54,14 @@ import * as utilities from "../utilities";
  * ApiHubInstance can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/apiHubInstances/{{api_hub_instance_id}}`
- *
  * * `{{project}}/{{location}}/{{api_hub_instance_id}}`
- *
  * * `{{location}}/{{api_hub_instance_id}}`
  *
  * When using the `pulumi import` command, ApiHubInstance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default projects/{{project}}/locations/{{location}}/apiHubInstances/{{api_hub_instance_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{project}}/{{location}}/{{api_hub_instance_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{location}}/{{api_hub_instance_id}}
  * ```
  */
@@ -150,7 +142,7 @@ export class ApiHubInstance extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -283,7 +275,7 @@ export interface ApiHubInstanceState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

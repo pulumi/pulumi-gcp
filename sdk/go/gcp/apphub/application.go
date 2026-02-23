@@ -137,22 +137,14 @@ import (
 // Application can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/applications/{{application_id}}`
-//
 // * `{{project}}/{{location}}/{{application_id}}`
-//
 // * `{{location}}/{{application_id}}`
 //
 // When using the `pulumi import` command, Application can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:apphub/application:Application default projects/{{project}}/locations/{{location}}/applications/{{application_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apphub/application:Application default {{project}}/{{location}}/{{application_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apphub/application:Application default {{location}}/{{application_id}}
 // ```
 type Application struct {

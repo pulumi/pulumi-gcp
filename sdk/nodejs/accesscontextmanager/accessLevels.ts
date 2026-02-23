@@ -7,6 +7,22 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is done atomically.
+ * This is a bulk edit of all Access Levels and may override existing Access Levels created by `gcp.accesscontextmanager.AccessLevel`,
+ * thus causing a permadiff if used alongside `gcp.accesscontextmanager.AccessLevel` on the same parent.
+ *
+ * To get more information about AccessLevels, see:
+ *
+ * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
+ * * How-to Guides
+ *     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+ *
+ * > **Warning:** This resource is authoritative over the access levels under an access policy. Due to a limitation in Terraform,
+ * it will overwrite all preexisting access levels during a create opration without displaying the old values on
+ * the left side of plan. To prevent this, we recommend importing the resource before applying it if overwriting
+ * preexisting rules, as the plan will correctly display the complete changes to your access policy if the
+ * resource is present in state.
+ *
  * ## Example Usage
  *
  * ### Access Context Manager Access Levels Basic
@@ -69,16 +85,12 @@ import * as utilities from "../utilities";
  * AccessLevels can be imported using any of these accepted formats:
  *
  * * `{{parent}}/accessLevels`
- *
  * * `{{parent}}`
  *
  * When using the `pulumi import` command, AccessLevels can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}/accessLevels
- * ```
- *
- * ```sh
  * $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}
  * ```
  */

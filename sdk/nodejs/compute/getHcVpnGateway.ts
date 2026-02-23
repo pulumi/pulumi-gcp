@@ -67,6 +67,7 @@ export interface GetHcVpnGatewayResult {
     readonly labels: {[key: string]: string};
     readonly name: string;
     readonly network: string;
+    readonly params: outputs.compute.GetHcVpnGatewayParam[];
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;

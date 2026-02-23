@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.Organizations
     public static class GetClientConfig
     {
         /// <summary>
+        /// Use this data source to access the configuration of the Google Cloud provider.
+        /// 
+        /// &gt; **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+        /// Please take appropriate measures to protect your remote state.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -38,6 +43,11 @@ namespace Pulumi.Gcp.Organizations
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
+        /// Use this data source to access the configuration of the Google Cloud provider.
+        /// 
+        /// &gt; **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+        /// Please take appropriate measures to protect your remote state.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -64,6 +74,11 @@ namespace Pulumi.Gcp.Organizations
             => global::Pulumi.Deployment.Instance.Invoke<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
+        /// Use this data source to access the configuration of the Google Cloud provider.
+        /// 
+        /// &gt; **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+        /// Please take appropriate measures to protect your remote state.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

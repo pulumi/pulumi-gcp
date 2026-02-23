@@ -27,22 +27,14 @@ import (
 // LbTrafficExtension can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/lbTrafficExtensions/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, LbTrafficExtension can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/lbTrafficExtension:LbTrafficExtension default projects/{{project}}/locations/{{location}}/lbTrafficExtensions/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/lbTrafficExtension:LbTrafficExtension default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/lbTrafficExtension:LbTrafficExtension default {{location}}/{{name}}
 // ```
 type LbTrafficExtension struct {
@@ -79,7 +71,7 @@ type LbTrafficExtension struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
@@ -161,7 +153,7 @@ type lbTrafficExtensionState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
@@ -197,7 +189,7 @@ type LbTrafficExtensionState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 }
 
@@ -413,7 +405,8 @@ func (o LbTrafficExtensionOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o LbTrafficExtensionOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LbTrafficExtension) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

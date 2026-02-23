@@ -58,22 +58,14 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// MirroringDeploymentGroup can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/mirroringDeploymentGroups/{{mirroring_deployment_group_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{mirroring_deployment_group_id}}`
-    /// 
     /// * `{{location}}/{{mirroring_deployment_group_id}}`
     /// 
     /// When using the `pulumi import` command, MirroringDeploymentGroup can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default projects/{{project}}/locations/{{location}}/mirroringDeploymentGroups/{{mirroring_deployment_group_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default {{project}}/{{location}}/{{mirroring_deployment_group_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default {{location}}/{{mirroring_deployment_group_id}}
     /// ```
     /// </summary>
@@ -161,7 +153,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -413,7 +405,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

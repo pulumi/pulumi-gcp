@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Projects can be imported using the `project_id`, e.g.
+ * Projects can be imported using the `projectId`, e.g.
  * 
  * * `{{project_id}}`
  * 
@@ -169,14 +169,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:organizations/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
     /**
-     * Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
+     * Controls whether the &#39;default&#39; network exists on the project. Defaults
+     * to `true`, where it is created. If set to `false`, the default network will still be created by GCP but
+     * will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
+     * network slot available to create the project successfully, even if you set `autoCreateNetwork` to
+     * `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
+     * with the GCE API and currently leaves it enabled.
      * 
      */
     @Export(name="autoCreateNetwork", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoCreateNetwork;
 
     /**
-     * @return Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
+     * @return Controls whether the &#39;default&#39; network exists on the project. Defaults
+     * to `true`, where it is created. If set to `false`, the default network will still be created by GCP but
+     * will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
+     * network slot available to create the project successfully, even if you set `autoCreateNetwork` to
+     * `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
+     * with the GCE API and currently leaves it enabled.
      * 
      */
     public Output<Optional<Boolean>> autoCreateNetwork() {
@@ -204,9 +214,23 @@ public class Project extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> billingAccount() {
         return Codegen.optional(this.billingAccount);
     }
+    /**
+     * The deletion policy for the Project. Setting PREVENT will protect the project
+     * against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
+     * to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
+     * the Google API. Possible values are: &#34;PREVENT&#34;, &#34;ABANDON&#34;, &#34;DELETE&#34;. Default value is `PREVENT`.
+     * 
+     */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
 
+    /**
+     * @return The deletion policy for the Project. Setting PREVENT will protect the project
+     * against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
+     * to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
+     * the Google API. Possible values are: &#34;PREVENT&#34;, &#34;ABANDON&#34;, &#34;DELETE&#34;. Default value is `PREVENT`.
+     * 
+     */
     public Output<Optional<String>> deletionPolicy() {
         return Codegen.optional(this.deletionPolicy);
     }
@@ -331,14 +355,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * (ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * @return (ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

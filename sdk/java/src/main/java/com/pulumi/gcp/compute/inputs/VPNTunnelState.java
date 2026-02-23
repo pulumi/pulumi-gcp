@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.VPNTunnelCipherSuiteArgs;
+import com.pulumi.gcp.compute.inputs.VPNTunnelParamsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -200,6 +201,25 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<VPNTunnelParamsArgs> params;
+
+    /**
+     * @return (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VPNTunnelParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * URL of the peer side external VPN gateway to which this VPN tunnel is connected.
      * 
      */
@@ -284,7 +304,7 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
@@ -292,7 +312,7 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
@@ -520,6 +540,7 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.localTrafficSelectors = $.localTrafficSelectors;
         this.name = $.name;
+        this.params = $.params;
         this.peerExternalGateway = $.peerExternalGateway;
         this.peerExternalGatewayInterface = $.peerExternalGatewayInterface;
         this.peerGcpGateway = $.peerGcpGateway;
@@ -812,6 +833,31 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param params (Optional, Beta)
+         * Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<VPNTunnelParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params (Optional, Beta)
+         * Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(VPNTunnelParamsArgs params) {
+            return params(Output.of(params));
+        }
+
+        /**
          * @param peerExternalGateway URL of the peer side external VPN gateway to which this VPN tunnel is connected.
          * 
          * @return builder
@@ -926,7 +972,7 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -938,7 +984,7 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 

@@ -108,6 +108,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Name = "my-mirroring",
     ///         Description = "bar",
+    ///         Enable = "TRUE",
     ///         Network = new Gcp.Compute.Inputs.PacketMirroringNetworkArgs
     ///         {
     ///             Url = @default.Id,
@@ -159,28 +160,16 @@ namespace Pulumi.Gcp.Compute
     /// PacketMirroring can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}`
-    /// 
     /// * `{{project}}/{{region}}/{{name}}`
-    /// 
     /// * `{{region}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, PacketMirroring can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{project}}/{{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
     /// ```
     /// </summary>
@@ -202,6 +191,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+        /// policy will not be enforced on the network. The default is TRUE.
+        /// Possible values are: `TRUE`, `FALSE`.
+        /// </summary>
+        [Output("enable")]
+        public Output<string> Enable { get; private set; } = null!;
 
         /// <summary>
         /// A filter for mirrored traffic.  If unset, all traffic is mirrored.
@@ -317,6 +314,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+        /// policy will not be enforced on the network. The default is TRUE.
+        /// Possible values are: `TRUE`, `FALSE`.
+        /// </summary>
+        [Input("enable")]
+        public Input<string>? Enable { get; set; }
+
+        /// <summary>
         /// A filter for mirrored traffic.  If unset, all traffic is mirrored.
         /// Structure is documented below.
         /// </summary>
@@ -390,6 +395,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+        /// policy will not be enforced on the network. The default is TRUE.
+        /// Possible values are: `TRUE`, `FALSE`.
+        /// </summary>
+        [Input("enable")]
+        public Input<string>? Enable { get; set; }
 
         /// <summary>
         /// A filter for mirrored traffic.  If unset, all traffic is mirrored.

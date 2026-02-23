@@ -23,16 +23,12 @@ namespace Pulumi.Gcp.Apigee
     /// SharedFlow can be imported using any of these accepted formats:
     /// 
     /// * `{{org_id}}/sharedflows/{{name}}`
-    /// 
     /// * `{{org_id}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, SharedFlow can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/sharedflows/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/{{name}}
     /// ```
     /// </summary>
@@ -47,6 +43,9 @@ namespace Pulumi.Gcp.Apigee
         [Output("configBundle")]
         public Output<string> ConfigBundle { get; private set; } = null!;
 
+        /// <summary>
+        /// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+        /// </summary>
         [Output("detectMd5hash")]
         public Output<string?> DetectMd5hash { get; private set; } = null!;
 
@@ -141,6 +140,9 @@ namespace Pulumi.Gcp.Apigee
         [Input("configBundle", required: true)]
         public Input<string> ConfigBundle { get; set; } = null!;
 
+        /// <summary>
+        /// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+        /// </summary>
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
 
@@ -172,6 +174,9 @@ namespace Pulumi.Gcp.Apigee
         [Input("configBundle")]
         public Input<string>? ConfigBundle { get; set; }
 
+        /// <summary>
+        /// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+        /// </summary>
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
 

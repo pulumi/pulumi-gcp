@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { FolderArgs, FolderState } from "./folder";
+export type Folder = import("./folder").Folder;
+export const Folder: typeof import("./folder").Folder = null as any;
+utilities.lazyLoad(exports, ["Folder"], () => require("./folder"));
+
 export { GetRepositoryIamPolicyArgs, GetRepositoryIamPolicyResult, GetRepositoryIamPolicyOutputArgs } from "./getRepositoryIamPolicy";
 export const getRepositoryIamPolicy: typeof import("./getRepositoryIamPolicy").getRepositoryIamPolicy = null as any;
 export const getRepositoryIamPolicyOutput: typeof import("./getRepositoryIamPolicy").getRepositoryIamPolicyOutput = null as any;
@@ -45,6 +50,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:dataform/folder:Folder":
+                return new Folder(name, <any>undefined, { urn })
             case "gcp:dataform/repository:Repository":
                 return new Repository(name, <any>undefined, { urn })
             case "gcp:dataform/repositoryIamBinding:RepositoryIamBinding":
@@ -62,6 +69,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "dataform/folder", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataform/repository", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataform/repositoryIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataform/repositoryIamMember", _module)

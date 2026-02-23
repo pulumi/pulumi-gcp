@@ -28,27 +28,368 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a VM instance template resource within GCE. For more information see
+ * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+ * and
+ * [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.compute.Snapshot;
+ * import com.pulumi.gcp.compute.SnapshotArgs;
+ * import com.pulumi.gcp.compute.RegionDisk;
+ * import com.pulumi.gcp.compute.RegionDiskArgs;
+ * import com.pulumi.gcp.compute.ResourcePolicy;
+ * import com.pulumi.gcp.compute.ResourcePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs;
+ * import com.pulumi.gcp.compute.RegionInstanceTemplate;
+ * import com.pulumi.gcp.compute.RegionInstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateServiceAccountArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Account("default", AccountArgs.builder()
+ *             .accountId("service-account-id")
+ *             .displayName("Service Account")
+ *             .build());
+ * 
+ *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family("debian-11")
+ *             .project("debian-cloud")
+ *             .build());
+ * 
+ *         var disk = new Disk("disk", DiskArgs.builder()
+ *             .name("foo")
+ *             .image(myImage.selfLink())
+ *             .size(10)
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
+ *             .build());
+ * 
+ *         var snapDisk = new Snapshot("snapDisk", SnapshotArgs.builder()
+ *             .name("snapDisk")
+ *             .sourceDisk(disk.name())
+ *             .zone("us-central1-a")
+ *             .build());
+ * 
+ *         var foobar = new RegionDisk("foobar", RegionDiskArgs.builder()
+ *             .name("existing-disk")
+ *             .snapshot(snapDisk.id())
+ *             .type("pd-ssd")
+ *             .region("us-central1")
+ *             .physicalBlockSizeBytes(4096)
+ *             .replicaZones(            
+ *                 "us-central1-a",
+ *                 "us-central1-f")
+ *             .build());
+ * 
+ *         var dailyBackup = new ResourcePolicy("dailyBackup", ResourcePolicyArgs.builder()
+ *             .name("every-day-4am")
+ *             .region("us-central1")
+ *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
+ *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
+ *                     .dailySchedule(ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs.builder()
+ *                         .daysInCycle(1)
+ *                         .startTime("04:00")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionInstanceTemplate = new RegionInstanceTemplate("defaultRegionInstanceTemplate", RegionInstanceTemplateArgs.builder()
+ *             .name("appserver-template")
+ *             .description("This template is used to create app server instances.")
+ *             .tags(            
+ *                 "foo",
+ *                 "bar")
+ *             .labels(Map.of("environment", "dev"))
+ *             .instanceDescription("description assigned to instances")
+ *             .machineType("e2-medium")
+ *             .canIpForward(false)
+ *             .scheduling(RegionInstanceTemplateSchedulingArgs.builder()
+ *                 .automaticRestart(true)
+ *                 .onHostMaintenance("MIGRATE")
+ *                 .build())
+ *             .disks(            
+ *                 RegionInstanceTemplateDiskArgs.builder()
+ *                     .sourceImage("debian-cloud/debian-11")
+ *                     .autoDelete(true)
+ *                     .boot(true)
+ *                     .resourcePolicies(dailyBackup.id())
+ *                     .build(),
+ *                 RegionInstanceTemplateDiskArgs.builder()
+ *                     .source(foobar.selfLink())
+ *                     .autoDelete(false)
+ *                     .boot(false)
+ *                     .build())
+ *             .networkInterfaces(RegionInstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .network("default")
+ *                 .build())
+ *             .metadata(Map.of("foo", "bar"))
+ *             .serviceAccount(RegionInstanceTemplateServiceAccountArgs.builder()
+ *                 .email(default_.email())
+ *                 .scopes("cloud-platform")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Automatic Envoy Deployment
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.RegionInstanceTemplate;
+ * import com.pulumi.gcp.compute.RegionInstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateServiceAccountArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = ComputeFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+ *             .build());
+ * 
+ *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family("debian-11")
+ *             .project("debian-cloud")
+ *             .build());
+ * 
+ *         var foobar = new RegionInstanceTemplate("foobar", RegionInstanceTemplateArgs.builder()
+ *             .name("appserver-template")
+ *             .machineType("e2-medium")
+ *             .canIpForward(false)
+ *             .tags(            
+ *                 "foo",
+ *                 "bar")
+ *             .disks(RegionInstanceTemplateDiskArgs.builder()
+ *                 .sourceImage(myImage.selfLink())
+ *                 .autoDelete(true)
+ *                 .boot(true)
+ *                 .build())
+ *             .networkInterfaces(RegionInstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .network("default")
+ *                 .build())
+ *             .scheduling(RegionInstanceTemplateSchedulingArgs.builder()
+ *                 .preemptible(false)
+ *                 .automaticRestart(true)
+ *                 .build())
+ *             .metadata(Map.ofEntries(
+ *                 Map.entry("gce-software-declaration", """
+ * {
+ *   \"softwareRecipes\": [{
+ *     \"name\": \"install-gce-service-proxy-agent\",
+ *     \"desired_state\": \"INSTALLED\",
+ *     \"installSteps\": [{
+ *       \"scriptRun\": {
+ *         \"script\": \"#! /bin/bash\
+ * ZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\
+ * export SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\
+ * sudo gsutil cp   gs://gce-service-proxy-\"$ZONE\"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   \"$SERVICE_PROXY_AGENT_DIRECTORY\"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     \"$SERVICE_PROXY_AGENT_DIRECTORY\"\
+ * sudo tar -xzf \"$SERVICE_PROXY_AGENT_DIRECTORY\"/service-proxy-agent-0.2.tgz -C \"$SERVICE_PROXY_AGENT_DIRECTORY\"\
+ * \"$SERVICE_PROXY_AGENT_DIRECTORY\"/service-proxy-agent/service-proxy-agent-bootstrap.sh\"
+ *       }
+ *     }]
+ *   }]
+ * }
+ *                 """),
+ *                 Map.entry("gce-service-proxy", """
+ * {
+ *   \"api-version\": \"0.2\",
+ *   \"proxy-spec\": {
+ *     \"proxy-port\": 15001,
+ *     \"network\": \"my-network\",
+ *     \"tracing\": \"ON\",
+ *     \"access-log\": \"/var/log/envoy/access.log\"
+ *   }
+ *   \"service\": {
+ *     \"serving-ports\": [80, 81]
+ *   },
+ *  \"labels\": {
+ *    \"app_name\": \"bookserver_app\",
+ *    \"app_version\": \"STABLE\"
+ *   }
+ * }
+ *                 """),
+ *                 Map.entry("enable-guest-attributes", "true"),
+ *                 Map.entry("enable-osconfig", "true")
+ *             ))
+ *             .serviceAccount(RegionInstanceTemplateServiceAccountArgs.builder()
+ *                 .email(default_.email())
+ *                 .scopes("cloud-platform")
+ *                 .build())
+ *             .labels(Map.of("gce-service-proxy", "on"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Deploying the Latest Image
+ * 
+ * A common way to use instance templates and managed instance groups is to deploy the
+ * latest image in a family, usually the latest build of your application. There are two
+ * ways to do this in Terraform, and they have their pros and cons. The difference ends
+ * up being in how &#34;latest&#34; is interpreted. You can either deploy the latest image available
+ * when Terraform runs, or you can have each instance check what the latest image is when
+ * it&#39;s being created, either as part of a scaling event or being rebuilt by the instance
+ * group manager.
+ * 
+ * If you&#39;re not sure, we recommend deploying the latest image available when Terraform runs,
+ * because this means all the instances in your group will be based on the same image, always,
+ * and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
+ * You can achieve this by using the `gcp.compute.Image`
+ * data source, which will retrieve the latest image on every `pulumi up`, and will update
+ * the template to use that specific image:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.RegionInstanceTemplate;
+ * import com.pulumi.gcp.compute.RegionInstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateDiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family("debian-11")
+ *             .project("debian-cloud")
+ *             .build());
+ * 
+ *         var instanceTemplate = new RegionInstanceTemplate("instanceTemplate", RegionInstanceTemplateArgs.builder()
+ *             .namePrefix("instance-template-")
+ *             .machineType("e2-medium")
+ *             .region("us-central1")
+ *             .disks(RegionInstanceTemplateDiskArgs.builder()
+ *                 .sourceImage(myImage.selfLink())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * To have instances update to the latest on every scaling event or instance re-creation,
+ * use the family as the image for the disk, and it will use GCP&#39;s default behavior, setting
+ * the image for the template to the family:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionInstanceTemplate;
+ * import com.pulumi.gcp.compute.RegionInstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateDiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instanceTemplate = new RegionInstanceTemplate("instanceTemplate", RegionInstanceTemplateArgs.builder()
+ *             .namePrefix("instance-template-")
+ *             .machineType("e2-medium")
+ *             .region("us-central1")
+ *             .disks(RegionInstanceTemplateDiskArgs.builder()
+ *                 .sourceImage("debian-cloud/debian-11")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Instance templates can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default {{name}}
  * ```
  * 
@@ -329,9 +670,19 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
     public Output<Optional<String>> minCpuPlatform() {
         return Codegen.optional(this.minCpuPlatform);
     }
+    /**
+     * The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }

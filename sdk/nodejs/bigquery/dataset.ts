@@ -7,6 +7,18 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Datasets allow you to organize and control access to your tables.
+ *
+ * To get more information about Dataset, see:
+ *
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
+ * * How-to Guides
+ *     * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
+ *
+ * > **Warning:** You must specify the role field using the legacy format `OWNER` instead of `roles/bigquery.dataOwner`.
+ * The API does accept both formats but it will always return the legacy format which results in Terraform
+ * showing permanent diff on each plan and apply operation.
+ *
  * ## Example Usage
  *
  * ### Bigquery Dataset Basic
@@ -211,22 +223,14 @@ import * as utilities from "../utilities";
  * Dataset can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/datasets/{{dataset_id}}`
- *
  * * `{{project}}/{{dataset_id}}`
- *
  * * `{{dataset_id}}`
  *
  * When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
  * ```
  */
@@ -397,7 +401,7 @@ export class Dataset extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -637,7 +641,7 @@ export interface DatasetState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -251,22 +251,14 @@ import javax.annotation.Nullable;
  * Config can be imported using any of these accepted formats:
  * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{project}} {{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{project}}/{{name}}
- * ```
- * 
- * ```sh
- * $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default &#34;{{project}} {{name}}&#34;
- * ```
- * 
- * ```sh
+ * $ terraform import google_bigquery_data_transfer_config.default &#34;{{project}} {{name}}&#34;
  * $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}
  * ```
  * 

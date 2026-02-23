@@ -115,22 +115,14 @@ import (
 // Service can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/services/{{service_id}}`
-//
 // * `{{project}}/{{location}}/{{service_id}}`
-//
 // * `{{location}}/{{service_id}}`
 //
 // When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:firebase/dataConnectService:DataConnectService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{project}}/{{location}}/{{service_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{location}}/{{service_id}}
 // ```
 type DataConnectService struct {
@@ -149,7 +141,8 @@ type DataConnectService struct {
 	// Possible values: DEFAULT, FORCE
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// Optional. Mutable human-readable name. 63 character limit.
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -175,7 +168,7 @@ type DataConnectService struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. A field that if true, indicates that the system is working update the
 	// service.
@@ -243,7 +236,8 @@ type dataConnectServiceState struct {
 	// Possible values: DEFAULT, FORCE
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Mutable human-readable name. 63 character limit.
-	DisplayName          *string           `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -269,7 +263,7 @@ type dataConnectServiceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. A field that if true, indicates that the system is working update the
 	// service.
@@ -297,7 +291,8 @@ type DataConnectServiceState struct {
 	// Possible values: DEFAULT, FORCE
 	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Mutable human-readable name. 63 character limit.
-	DisplayName          pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -323,7 +318,7 @@ type DataConnectServiceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. A field that if true, indicates that the system is working update the
 	// service.
@@ -509,6 +504,7 @@ func (o DataConnectServiceOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataConnectService) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o DataConnectServiceOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DataConnectService) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -555,7 +551,8 @@ func (o DataConnectServiceOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DataConnectServiceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DataConnectService) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

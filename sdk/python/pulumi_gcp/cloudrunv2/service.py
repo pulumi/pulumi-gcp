@@ -62,6 +62,12 @@ class ServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
                For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[_builtins.bool] default_uri_disabled: Disables public resolution of the default URI of this service.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the service,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the service will fail.
+               When the field is set to false, deleting the service is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[_builtins.bool] iap_enabled: (Optional, Beta)
                Used to enable/disable IAP for the service.
@@ -249,6 +255,14 @@ class ServiceArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the service. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the service,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the service will fail.
+        When the field is set to false, deleting the service is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -469,7 +483,14 @@ class _ServiceState:
                For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[_builtins.bool] default_uri_disabled: Disables public resolution of the default URI of this service.
         :param pulumi.Input[_builtins.str] delete_time: The deletion time.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the service,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the service will fail.
+               When the field is set to false, deleting the service is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of the Service. This field currently has a 512-character limit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[_builtins.str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
@@ -500,7 +521,7 @@ class _ServiceState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
                When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
@@ -750,6 +771,14 @@ class _ServiceState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the service. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the service,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the service will fail.
+        When the field is set to false, deleting the service is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -771,6 +800,9 @@ class _ServiceState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -998,7 +1030,7 @@ class _ServiceState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1418,6 +1450,32 @@ class Service(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Cloudrunv2 Service Readiness Probes
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            launch_stage="BETA",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "readiness_probe": {
+                        "timeout_seconds": 20,
+                        "period_seconds": 30,
+                        "success_threshold": 3,
+                        "failure_threshold": 2,
+                        "grpc": {
+                            "port": 8080,
+                        },
+                    },
+                }],
+            })
+        ```
         ### Cloudrunv2 Service Secret
 
         ```python
@@ -1696,22 +1754,14 @@ class Service(pulumi.CustomResource):
         Service can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/services/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudrunv2/service:Service default projects/{{project}}/locations/{{location}}/services/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrunv2/service:Service default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrunv2/service:Service default {{location}}/{{name}}
         ```
 
@@ -1732,6 +1782,12 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
                For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[_builtins.bool] default_uri_disabled: Disables public resolution of the default URI of this service.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the service,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the service will fail.
+               When the field is set to false, deleting the service is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[_builtins.bool] iap_enabled: (Optional, Beta)
                Used to enable/disable IAP for the service.
@@ -2021,6 +2077,32 @@ class Service(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Cloudrunv2 Service Readiness Probes
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            launch_stage="BETA",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "readiness_probe": {
+                        "timeout_seconds": 20,
+                        "period_seconds": 30,
+                        "success_threshold": 3,
+                        "failure_threshold": 2,
+                        "grpc": {
+                            "port": 8080,
+                        },
+                    },
+                }],
+            })
+        ```
         ### Cloudrunv2 Service Secret
 
         ```python
@@ -2299,22 +2381,14 @@ class Service(pulumi.CustomResource):
         Service can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/services/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudrunv2/service:Service default projects/{{project}}/locations/{{location}}/services/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrunv2/service:Service default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrunv2/service:Service default {{location}}/{{name}}
         ```
 
@@ -2490,7 +2564,14 @@ class Service(pulumi.CustomResource):
                For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[_builtins.bool] default_uri_disabled: Disables public resolution of the default URI of this service.
         :param pulumi.Input[_builtins.str] delete_time: The deletion time.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the service,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the service will fail.
+               When the field is set to false, deleting the service is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of the Service. This field currently has a 512-character limit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[_builtins.str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
@@ -2521,7 +2602,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
                When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
@@ -2690,6 +2771,14 @@ class Service(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the service. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the service,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the service will fail.
+        When the field is set to false, deleting the service is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -2703,6 +2792,9 @@ class Service(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
@@ -2858,7 +2950,7 @@ class Service(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

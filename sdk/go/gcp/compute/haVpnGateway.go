@@ -205,28 +205,16 @@ import (
 // HaVpnGateway can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{name}}
 // ```
 type HaVpnGateway struct {
@@ -262,11 +250,15 @@ type HaVpnGateway struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network this VPN gateway is accepting traffic for.
 	Network pulumi.StringOutput `pulumi:"network"`
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params HaVpnGatewayParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region this gateway should sit in.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -350,11 +342,15 @@ type haVpnGatewayState struct {
 	Name *string `pulumi:"name"`
 	// The network this VPN gateway is accepting traffic for.
 	Network *string `pulumi:"network"`
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *HaVpnGatewayParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region this gateway should sit in.
 	Region *string `pulumi:"region"`
@@ -401,11 +397,15 @@ type HaVpnGatewayState struct {
 	Name pulumi.StringPtrInput
 	// The network this VPN gateway is accepting traffic for.
 	Network pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params HaVpnGatewayParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region this gateway should sit in.
 	Region pulumi.StringPtrInput
@@ -448,6 +448,10 @@ type haVpnGatewayArgs struct {
 	Name *string `pulumi:"name"`
 	// The network this VPN gateway is accepting traffic for.
 	Network string `pulumi:"network"`
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *HaVpnGatewayParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -487,6 +491,10 @@ type HaVpnGatewayArgs struct {
 	Name pulumi.StringPtrInput
 	// The network this VPN gateway is accepting traffic for.
 	Network pulumi.StringInput
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params HaVpnGatewayParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -640,6 +648,13 @@ func (o HaVpnGatewayOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *HaVpnGateway) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o HaVpnGatewayOutput) Params() HaVpnGatewayParamsPtrOutput {
+	return o.ApplyT(func(v *HaVpnGateway) HaVpnGatewayParamsPtrOutput { return v.Params }).(HaVpnGatewayParamsPtrOutput)
+}
+
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (o HaVpnGatewayOutput) Project() pulumi.StringOutput {
@@ -647,7 +662,8 @@ func (o HaVpnGatewayOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o HaVpnGatewayOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HaVpnGateway) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

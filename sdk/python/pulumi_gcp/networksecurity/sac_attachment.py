@@ -209,7 +209,7 @@ class _SacAttachmentState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] sac_realm: SAC Realm which owns the attachment. This can be input as an ID or a full resource name.
         :param pulumi.Input[_builtins.str] state: State of the attachment.
         :param pulumi.Input['SacAttachmentSymantecOptionsArgs'] symantec_options: Configuration required for Symantec attachments.
@@ -351,7 +351,7 @@ class _SacAttachmentState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -438,6 +438,17 @@ class SacAttachment(pulumi.CustomResource):
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Represents a Secure Access Connect (SAC) attachment resource
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about SacAttachment, see:
+
+        * [API documentation](https://cloud.google.com/secure-access-connect/docs/reference/network-security/rest/v1beta1/projects.locations.sacAttachments)
+        * How-to Guides
+            * [QUICKSTART_TITLE](https://cloud.google.com/secure-access-connect/docs/overview)
+
         ## Example Usage
 
         ### Sac Attachment Prisma Access
@@ -461,22 +472,14 @@ class SacAttachment(pulumi.CustomResource):
         SacAttachment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/sacAttachments/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, SacAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default projects/{{project}}/locations/{{location}}/sacAttachments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default {{location}}/{{name}}
         ```
 
@@ -504,6 +507,17 @@ class SacAttachment(pulumi.CustomResource):
                  args: SacAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Represents a Secure Access Connect (SAC) attachment resource
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about SacAttachment, see:
+
+        * [API documentation](https://cloud.google.com/secure-access-connect/docs/reference/network-security/rest/v1beta1/projects.locations.sacAttachments)
+        * How-to Guides
+            * [QUICKSTART_TITLE](https://cloud.google.com/secure-access-connect/docs/overview)
+
         ## Example Usage
 
         ### Sac Attachment Prisma Access
@@ -527,22 +541,14 @@ class SacAttachment(pulumi.CustomResource):
         SacAttachment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/sacAttachments/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, SacAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default projects/{{project}}/locations/{{location}}/sacAttachments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default {{location}}/{{name}}
         ```
 
@@ -645,7 +651,7 @@ class SacAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] sac_realm: SAC Realm which owns the attachment. This can be input as an ID or a full resource name.
         :param pulumi.Input[_builtins.str] state: State of the attachment.
         :param pulumi.Input[Union['SacAttachmentSymantecOptionsArgs', 'SacAttachmentSymantecOptionsArgsDict']] symantec_options: Configuration required for Symantec attachments.
@@ -746,7 +752,7 @@ class SacAttachment(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

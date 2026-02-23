@@ -152,7 +152,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name: pulumi.String("psc-network-_3686"),
+//				Name: pulumi.String("psc-network-_44339"),
 //			})
 //			if err != nil {
 //				return err
@@ -162,7 +162,7 @@ import (
 //				return err
 //			}
 //			_, err = vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-//				Name:        pulumi.String("endpoint-name_54136"),
+//				Name:        pulumi.String("endpoint-name_34599"),
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Location:    pulumi.String("us-central1"),
@@ -207,7 +207,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-//				Name:        pulumi.String("endpoint-name_11171"),
+//				Name:        pulumi.String("endpoint-name_79513"),
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Location:    pulumi.String("us-central1"),
@@ -235,22 +235,14 @@ import (
 // Endpoint can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{location}}/{{name}}
 // ```
 type AiEndpoint struct {
@@ -299,7 +291,7 @@ type AiEndpoint struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region for the resource
 	Region pulumi.StringPtrOutput `pulumi:"region"`
@@ -398,7 +390,7 @@ type aiEndpointState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region for the resource
 	Region *string `pulumi:"region"`
@@ -457,7 +449,7 @@ type AiEndpointState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region for the resource
 	Region pulumi.StringPtrInput
@@ -742,7 +734,8 @@ func (o AiEndpointOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AiEndpointOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiEndpoint) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

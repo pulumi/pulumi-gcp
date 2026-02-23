@@ -6,6 +6,7 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .folder import *
 from .get_repository_iam_policy import *
 from .repository import *
 from .repository_iam_binding import *

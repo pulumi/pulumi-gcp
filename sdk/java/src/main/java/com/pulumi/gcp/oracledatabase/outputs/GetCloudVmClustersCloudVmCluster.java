@@ -44,12 +44,20 @@ public final class GetCloudVmClustersCloudVmCluster {
      * 
      */
     private String createTime;
+    /**
+     * @return Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
+     * 
+     */
     private Boolean deletionProtection;
     /**
      * @return User friendly name for this resource.
      * 
      */
     private String displayName;
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     private Map<String,String> effectiveLabels;
     /**
      * @return The name of the Exadata Infrastructure resource on which VM cluster
@@ -166,6 +174,10 @@ public final class GetCloudVmClustersCloudVmCluster {
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
+     * 
+     */
     public Boolean deletionProtection() {
         return this.deletionProtection;
     }
@@ -176,6 +188,10 @@ public final class GetCloudVmClustersCloudVmCluster {
     public String displayName() {
         return this.displayName;
     }
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
     }

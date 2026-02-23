@@ -106,6 +106,10 @@ def get_ai_feature_group_iam_policy(feature_group: Optional[_builtins.str] = Non
                                     region: Optional[_builtins.str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiFeatureGroupIamPolicyResult:
     """
+    Retrieves the current IAM policy data for featuregroup
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python
@@ -143,6 +147,10 @@ def get_ai_feature_group_iam_policy_output(feature_group: Optional[pulumi.Input[
                                            region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiFeatureGroupIamPolicyResult]:
     """
+    Retrieves the current IAM policy data for featuregroup
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python

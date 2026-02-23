@@ -187,22 +187,14 @@ import * as utilities from "../utilities";
  * TcpRoute can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/global/tcpRoutes/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, TcpRoute can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default projects/{{project}}/locations/global/tcpRoutes/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default {{name}}
  * ```
  */
@@ -274,7 +266,7 @@ export class TcpRoute extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -386,7 +378,7 @@ export interface TcpRouteState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

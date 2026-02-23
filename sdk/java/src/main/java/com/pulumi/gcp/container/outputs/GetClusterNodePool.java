@@ -100,6 +100,10 @@ public final class GetClusterNodePool {
      * 
      */
     private List<GetClusterNodePoolUpgradeSetting> upgradeSettings;
+    /**
+     * @return The Kubernetes version for the nodes in this pool. Note that if this field and autoUpgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the gcp.container.getEngineVersions data source&#39;s versionPrefix field to approximate fuzzy versions in a Terraform-compatible way.
+     * 
+     */
     private String version;
 
     private GetClusterNodePool() {}
@@ -215,6 +219,10 @@ public final class GetClusterNodePool {
     public List<GetClusterNodePoolUpgradeSetting> upgradeSettings() {
         return this.upgradeSettings;
     }
+    /**
+     * @return The Kubernetes version for the nodes in this pool. Note that if this field and autoUpgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the gcp.container.getEngineVersions data source&#39;s versionPrefix field to approximate fuzzy versions in a Terraform-compatible way.
+     * 
+     */
     public String version() {
         return this.version;
     }

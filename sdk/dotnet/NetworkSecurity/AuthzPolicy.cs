@@ -18,33 +18,88 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// ## Example Usage
     /// 
+    /// ### Network Security Authz Policy Mcp
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var @default = new Gcp.NetworkSecurity.AuthzPolicy("default", new()
+    ///     {
+    ///         Name = "my-mcp-policy",
+    ///         Location = "us-west1",
+    ///         Target = new Gcp.NetworkSecurity.Inputs.AuthzPolicyTargetArgs
+    ///         {
+    ///             Resources = new[]
+    ///             {
+    ///                 $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us-west1/agentGateways/gateway1",
+    ///             },
+    ///         },
+    ///         PolicyProfile = "REQUEST_AUTHZ",
+    ///         Action = "ALLOW",
+    ///         HttpRules = new[]
+    ///         {
+    ///             new Gcp.NetworkSecurity.Inputs.AuthzPolicyHttpRuleArgs
+    ///             {
+    ///                 To = new Gcp.NetworkSecurity.Inputs.AuthzPolicyHttpRuleToArgs
+    ///                 {
+    ///                     Operations = new[]
+    ///                     {
+    ///                         new Gcp.NetworkSecurity.Inputs.AuthzPolicyHttpRuleToOperationArgs
+    ///                         {
+    ///                             Mcp = new Gcp.NetworkSecurity.Inputs.AuthzPolicyHttpRuleToOperationMcpArgs
+    ///                             {
+    ///                                 BaseProtocolMethodsOption = "MATCH_BASE_PROTOCOL_METHODS",
+    ///                                 Methods = new[]
+    ///                                 {
+    ///                                     new Gcp.NetworkSecurity.Inputs.AuthzPolicyHttpRuleToOperationMcpMethodArgs
+    ///                                     {
+    ///                                         Name = "tools",
+    ///                                     },
+    ///                                     new Gcp.NetworkSecurity.Inputs.AuthzPolicyHttpRuleToOperationMcpMethodArgs
+    ///                                     {
+    ///                                         Name = "tools/call",
+    ///                                         Params = new[]
+    ///                                         {
+    ///                                             new Gcp.NetworkSecurity.Inputs.AuthzPolicyHttpRuleToOperationMcpMethodParamArgs
+    ///                                             {
+    ///                                                 Exact = "foo",
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// AuthzPolicy can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/authzPolicies/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, AuthzPolicy can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default projects/{{project}}/locations/{{location}}/authzPolicies/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{name}}
     /// ```
     /// </summary>
@@ -120,6 +175,18 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+        /// authorization policies with Authz extensions will be allowed with ExtAuthz or ExtProc protocols. Extensions are
+        /// invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+        /// Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support ExtProc
+        /// protocol and be capable of receiving all ExtProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+        /// RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+        /// Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+        /// </summary>
+        [Output("policyProfile")]
+        public Output<string?> PolicyProfile { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -128,7 +195,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -266,6 +333,18 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+        /// authorization policies with Authz extensions will be allowed with ExtAuthz or ExtProc protocols. Extensions are
+        /// invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+        /// Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support ExtProc
+        /// protocol and be capable of receiving all ExtProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+        /// RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+        /// Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+        /// </summary>
+        [Input("policyProfile")]
+        public Input<string>? PolicyProfile { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -378,6 +457,18 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+        /// authorization policies with Authz extensions will be allowed with ExtAuthz or ExtProc protocols. Extensions are
+        /// invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+        /// Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support ExtProc
+        /// protocol and be capable of receiving all ExtProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+        /// RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+        /// Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+        /// </summary>
+        [Input("policyProfile")]
+        public Input<string>? PolicyProfile { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -389,7 +480,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

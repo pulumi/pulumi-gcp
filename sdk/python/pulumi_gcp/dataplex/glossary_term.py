@@ -192,7 +192,7 @@ class _GlossaryTermState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] term_id: The term id for creation.
         :param pulumi.Input[_builtins.str] uid: System generated unique id for the GlossaryTerm. This ID will be different if the GlossaryTerm is deleted and re-created with the same name.
         :param pulumi.Input[_builtins.str] update_time: The time at which the GlossaryTerm was last updated.
@@ -355,7 +355,7 @@ class _GlossaryTermState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -427,7 +427,7 @@ class GlossaryTerm(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         term_test_id = gcp.dataplex.Glossary("term_test_id",
-            glossary_id="tf-test-glossary_40289",
+            glossary_id="tf-test-glossary_76044",
             location="us-central1")
         term_test_id_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id",
             parent=pulumi.Output.all(
@@ -437,7 +437,7 @@ class GlossaryTerm(pulumi.CustomResource):
         ,
             glossary_id=term_test_id.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-basic_33395")
+            term_id="tf-test-term-basic_69391")
         ```
         ### Dataplex Glossary Term Full
 
@@ -446,7 +446,7 @@ class GlossaryTerm(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
-            glossary_id="tf-test-glossary_76044",
+            glossary_id="tf-test-glossary_8270",
             location="us-central1")
         term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
             parent=pulumi.Output.all(
@@ -456,7 +456,7 @@ class GlossaryTerm(pulumi.CustomResource):
         ,
             glossary_id=term_test_id_full.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-full_69391",
+            term_id="tf-test-term-full_41150",
             labels={
                 "tag": "test-tf",
             },
@@ -469,22 +469,14 @@ class GlossaryTerm(pulumi.CustomResource):
         GlossaryTerm can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}`
-
         * `{{project}}/{{location}}/{{glossary_id}}/{{term_id}}`
-
         * `{{location}}/{{glossary_id}}/{{term_id}}`
 
         When using the `pulumi import` command, GlossaryTerm can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{project}}/{{location}}/{{glossary_id}}/{{term_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{location}}/{{glossary_id}}/{{term_id}}
         ```
 
@@ -521,7 +513,7 @@ class GlossaryTerm(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         term_test_id = gcp.dataplex.Glossary("term_test_id",
-            glossary_id="tf-test-glossary_40289",
+            glossary_id="tf-test-glossary_76044",
             location="us-central1")
         term_test_id_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id",
             parent=pulumi.Output.all(
@@ -531,7 +523,7 @@ class GlossaryTerm(pulumi.CustomResource):
         ,
             glossary_id=term_test_id.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-basic_33395")
+            term_id="tf-test-term-basic_69391")
         ```
         ### Dataplex Glossary Term Full
 
@@ -540,7 +532,7 @@ class GlossaryTerm(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
-            glossary_id="tf-test-glossary_76044",
+            glossary_id="tf-test-glossary_8270",
             location="us-central1")
         term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
             parent=pulumi.Output.all(
@@ -550,7 +542,7 @@ class GlossaryTerm(pulumi.CustomResource):
         ,
             glossary_id=term_test_id_full.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-full_69391",
+            term_id="tf-test-term-full_41150",
             labels={
                 "tag": "test-tf",
             },
@@ -563,22 +555,14 @@ class GlossaryTerm(pulumi.CustomResource):
         GlossaryTerm can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}`
-
         * `{{project}}/{{location}}/{{glossary_id}}/{{term_id}}`
-
         * `{{location}}/{{glossary_id}}/{{term_id}}`
 
         When using the `pulumi import` command, GlossaryTerm can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{project}}/{{location}}/{{glossary_id}}/{{term_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{location}}/{{glossary_id}}/{{term_id}}
         ```
 
@@ -680,7 +664,7 @@ class GlossaryTerm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] term_id: The term id for creation.
         :param pulumi.Input[_builtins.str] uid: System generated unique id for the GlossaryTerm. This ID will be different if the GlossaryTerm is deleted and re-created with the same name.
         :param pulumi.Input[_builtins.str] update_time: The time at which the GlossaryTerm was last updated.
@@ -794,7 +778,7 @@ class GlossaryTerm(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

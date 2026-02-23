@@ -493,22 +493,14 @@ class ReferenceList(pulumi.CustomResource):
         ReferenceList can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/referenceLists/{{reference_list_id}}`
-
         * `{{project}}/{{location}}/{{instance}}/{{reference_list_id}}`
-
         * `{{location}}/{{instance}}/{{reference_list_id}}`
 
         When using the `pulumi import` command, ReferenceList can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:chronicle/referenceList:ReferenceList default projects/{{project}}/locations/{{location}}/instances/{{instance}}/referenceLists/{{reference_list_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/referenceList:ReferenceList default {{project}}/{{location}}/{{instance}}/{{reference_list_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/referenceList:ReferenceList default {{location}}/{{instance}}/{{reference_list_id}}
         ```
 
@@ -590,22 +582,14 @@ class ReferenceList(pulumi.CustomResource):
         ReferenceList can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/referenceLists/{{reference_list_id}}`
-
         * `{{project}}/{{location}}/{{instance}}/{{reference_list_id}}`
-
         * `{{location}}/{{instance}}/{{reference_list_id}}`
 
         When using the `pulumi import` command, ReferenceList can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:chronicle/referenceList:ReferenceList default projects/{{project}}/locations/{{location}}/instances/{{instance}}/referenceLists/{{reference_list_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/referenceList:ReferenceList default {{project}}/{{location}}/{{instance}}/{{reference_list_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/referenceList:ReferenceList default {{location}}/{{instance}}/{{reference_list_id}}
         ```
 

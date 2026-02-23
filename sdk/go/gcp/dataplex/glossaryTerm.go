@@ -33,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			termTestId, err := dataplex.NewGlossary(ctx, "term_test_id", &dataplex.GlossaryArgs{
-//				GlossaryId: pulumi.String("tf-test-glossary_40289"),
+//				GlossaryId: pulumi.String("tf-test-glossary_76044"),
 //				Location:   pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -47,7 +47,7 @@ import (
 //				}).(pulumi.StringOutput),
 //				GlossaryId: termTestId.GlossaryId,
 //				Location:   pulumi.String("us-central1"),
-//				TermId:     pulumi.String("tf-test-term-basic_33395"),
+//				TermId:     pulumi.String("tf-test-term-basic_69391"),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +74,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			termTestIdFull, err := dataplex.NewGlossary(ctx, "term_test_id_full", &dataplex.GlossaryArgs{
-//				GlossaryId: pulumi.String("tf-test-glossary_76044"),
+//				GlossaryId: pulumi.String("tf-test-glossary_8270"),
 //				Location:   pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -88,7 +88,7 @@ import (
 //				}).(pulumi.StringOutput),
 //				GlossaryId: termTestIdFull.GlossaryId,
 //				Location:   pulumi.String("us-central1"),
-//				TermId:     pulumi.String("tf-test-term-full_69391"),
+//				TermId:     pulumi.String("tf-test-term-full_41150"),
 //				Labels: pulumi.StringMap{
 //					"tag": pulumi.String("test-tf"),
 //				},
@@ -109,22 +109,14 @@ import (
 // GlossaryTerm can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}`
-//
 // * `{{project}}/{{location}}/{{glossary_id}}/{{term_id}}`
-//
 // * `{{location}}/{{glossary_id}}/{{term_id}}`
 //
 // When using the `pulumi import` command, GlossaryTerm can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{project}}/{{location}}/{{glossary_id}}/{{term_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{location}}/{{glossary_id}}/{{term_id}}
 // ```
 type GlossaryTerm struct {
@@ -155,7 +147,7 @@ type GlossaryTerm struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The term id for creation.
 	TermId pulumi.StringPtrOutput `pulumi:"termId"`
@@ -231,7 +223,7 @@ type glossaryTermState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The term id for creation.
 	TermId *string `pulumi:"termId"`
@@ -267,7 +259,7 @@ type GlossaryTermState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The term id for creation.
 	TermId pulumi.StringPtrInput
@@ -470,7 +462,8 @@ func (o GlossaryTermOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GlossaryTermOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GlossaryTerm) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

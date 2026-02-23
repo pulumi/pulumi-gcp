@@ -120,22 +120,14 @@ namespace Pulumi.Gcp.OracleDatabase
     /// CloudExadataInfrastructure can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/cloudExadataInfrastructures/{{cloud_exadata_infrastructure_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}`
-    /// 
     /// * `{{location}}/{{cloud_exadata_infrastructure_id}}`
     /// 
     /// When using the `pulumi import` command, CloudExadataInfrastructure can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default projects/{{project}}/locations/{{location}}/cloudExadataInfrastructures/{{cloud_exadata_infrastructure_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{location}}/{{cloud_exadata_infrastructure_id}}
     /// ```
     /// </summary>
@@ -157,6 +149,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -222,7 +217,7 @@ namespace Pulumi.Gcp.OracleDatabase
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -287,6 +282,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("cloudExadataInfrastructureId", required: true)]
         public Input<string> CloudExadataInfrastructureId { get; set; } = null!;
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -359,6 +357,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -443,7 +444,7 @@ namespace Pulumi.Gcp.OracleDatabase
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

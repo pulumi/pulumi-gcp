@@ -27,13 +27,16 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, autoscaling_settings=None, create_time=None, id=None, management=None, name=None, node_type_configs=None, parent=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, autoscaling_settings=None, create_time=None, datastore_mount_configs=None, id=None, management=None, name=None, node_type_configs=None, parent=None, state=None, uid=None, update_time=None):
         if autoscaling_settings and not isinstance(autoscaling_settings, list):
             raise TypeError("Expected argument 'autoscaling_settings' to be a list")
         pulumi.set(__self__, "autoscaling_settings", autoscaling_settings)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if datastore_mount_configs and not isinstance(datastore_mount_configs, list):
+            raise TypeError("Expected argument 'datastore_mount_configs' to be a list")
+        pulumi.set(__self__, "datastore_mount_configs", datastore_mount_configs)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -68,6 +71,11 @@ class GetClusterResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="datastoreMountConfigs")
+    def datastore_mount_configs(self) -> Sequence['outputs.GetClusterDatastoreMountConfigResult']:
+        return pulumi.get(self, "datastore_mount_configs")
 
     @_builtins.property
     @pulumi.getter
@@ -121,6 +129,7 @@ class AwaitableGetClusterResult(GetClusterResult):
         return GetClusterResult(
             autoscaling_settings=self.autoscaling_settings,
             create_time=self.create_time,
+            datastore_mount_configs=self.datastore_mount_configs,
             id=self.id,
             management=self.management,
             name=self.name,
@@ -163,6 +172,7 @@ def get_cluster(name: Optional[_builtins.str] = None,
     return AwaitableGetClusterResult(
         autoscaling_settings=pulumi.get(__ret__, 'autoscaling_settings'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        datastore_mount_configs=pulumi.get(__ret__, 'datastore_mount_configs'),
         id=pulumi.get(__ret__, 'id'),
         management=pulumi.get(__ret__, 'management'),
         name=pulumi.get(__ret__, 'name'),
@@ -202,6 +212,7 @@ def get_cluster_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetClusterResult(
         autoscaling_settings=pulumi.get(__response__, 'autoscaling_settings'),
         create_time=pulumi.get(__response__, 'create_time'),
+        datastore_mount_configs=pulumi.get(__response__, 'datastore_mount_configs'),
         id=pulumi.get(__response__, 'id'),
         management=pulumi.get(__response__, 'management'),
         name=pulumi.get(__response__, 'name'),

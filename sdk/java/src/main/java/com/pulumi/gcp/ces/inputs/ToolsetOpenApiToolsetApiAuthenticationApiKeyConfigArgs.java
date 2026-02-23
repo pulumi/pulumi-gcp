@@ -55,20 +55,20 @@ public final class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs extend
     }
 
     /**
-     * Key location in the request.
+     * Key location in the request. For API key auth on MCP toolsets,
+     * the API key can only be sent in the request header.
      * Possible values:
      * HEADER
-     * QUERY_STRING
      * 
      */
     @Import(name="requestLocation", required=true)
     private Output<String> requestLocation;
 
     /**
-     * @return Key location in the request.
+     * @return Key location in the request. For API key auth on MCP toolsets,
+     * the API key can only be sent in the request header.
      * Possible values:
      * HEADER
-     * QUERY_STRING
      * 
      */
     public Output<String> requestLocation() {
@@ -154,10 +154,10 @@ public final class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs extend
         }
 
         /**
-         * @param requestLocation Key location in the request.
+         * @param requestLocation Key location in the request. For API key auth on MCP toolsets,
+         * the API key can only be sent in the request header.
          * Possible values:
          * HEADER
-         * QUERY_STRING
          * 
          * @return builder
          * 
@@ -168,10 +168,10 @@ public final class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs extend
         }
 
         /**
-         * @param requestLocation Key location in the request.
+         * @param requestLocation Key location in the request. For API key auth on MCP toolsets,
+         * the API key can only be sent in the request header.
          * Possible values:
          * HEADER
-         * QUERY_STRING
          * 
          * @return builder
          * 

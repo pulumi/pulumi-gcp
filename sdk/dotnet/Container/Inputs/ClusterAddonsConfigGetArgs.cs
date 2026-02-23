@@ -168,6 +168,12 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
+        /// The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+        /// </summary>
+        [Input("sliceControllerConfig")]
+        public Input<Inputs.ClusterAddonsConfigSliceControllerConfigGetArgs>? SliceControllerConfig { get; set; }
+
+        /// <summary>
         /// .
         /// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
         /// It is disabled by default for Standard clusters. Set `enabled = true` to enable.

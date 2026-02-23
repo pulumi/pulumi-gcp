@@ -218,22 +218,14 @@ import (
 // AutonomousDatabase can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/autonomousDatabases/{{autonomous_database_id}}`
-//
 // * `{{project}}/{{location}}/{{autonomous_database_id}}`
-//
 // * `{{location}}/{{autonomous_database_id}}`
 //
 // When using the `pulumi import` command, AutonomousDatabase can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default projects/{{project}}/locations/{{location}}/autonomousDatabases/{{autonomous_database_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{project}}/{{location}}/{{autonomous_database_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{location}}/{{autonomous_database_id}}
 // ```
 type AutonomousDatabase struct {
@@ -253,7 +245,8 @@ type AutonomousDatabase struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database           pulumi.StringOutput  `pulumi:"database"`
+	Database pulumi.StringOutput `pulumi:"database"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
 	DisasterRecoverySupportedLocations pulumi.StringArrayOutput `pulumi:"disasterRecoverySupportedLocations"`
@@ -296,7 +289,7 @@ type AutonomousDatabase struct {
 	// Structure is documented below.
 	Properties AutonomousDatabasePropertiesOutput `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The source Autonomous Database configuration for the standby Autonomous Database.
 	// Structure is documented below.
@@ -358,8 +351,9 @@ type autonomousDatabaseState struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database           *string `pulumi:"database"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	Database *string `pulumi:"database"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
 	DisasterRecoverySupportedLocations []string `pulumi:"disasterRecoverySupportedLocations"`
 	// The display name for the Autonomous Database. The name does not have to
@@ -401,7 +395,7 @@ type autonomousDatabaseState struct {
 	// Structure is documented below.
 	Properties *AutonomousDatabaseProperties `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The source Autonomous Database configuration for the standby Autonomous Database.
 	// Structure is documented below.
@@ -423,7 +417,8 @@ type AutonomousDatabaseState struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database           pulumi.StringPtrInput
+	Database pulumi.StringPtrInput
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
 	DisasterRecoverySupportedLocations pulumi.StringArrayInput
@@ -466,7 +461,7 @@ type AutonomousDatabaseState struct {
 	// Structure is documented below.
 	Properties AutonomousDatabasePropertiesPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The source Autonomous Database configuration for the standby Autonomous Database.
 	// Structure is documented below.
@@ -490,8 +485,9 @@ type autonomousDatabaseArgs struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database           *string `pulumi:"database"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	Database *string `pulumi:"database"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
 	DisplayName *string `pulumi:"displayName"`
@@ -539,7 +535,8 @@ type AutonomousDatabaseArgs struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database           pulumi.StringPtrInput
+	Database pulumi.StringPtrInput
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
@@ -691,6 +688,7 @@ func (o AutonomousDatabaseOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
 }
 
+// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 func (o AutonomousDatabaseOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -775,7 +773,8 @@ func (o AutonomousDatabaseOutput) Properties() AutonomousDatabasePropertiesOutpu
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AutonomousDatabaseOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

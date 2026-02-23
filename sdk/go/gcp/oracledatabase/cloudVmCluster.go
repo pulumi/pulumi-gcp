@@ -248,22 +248,14 @@ import (
 // CloudVmCluster can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/cloudVmClusters/{{cloud_vm_cluster_id}}`
-//
 // * `{{project}}/{{location}}/{{cloud_vm_cluster_id}}`
-//
 // * `{{location}}/{{cloud_vm_cluster_id}}`
 //
 // When using the `pulumi import` command, CloudVmCluster can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default projects/{{project}}/locations/{{location}}/cloudVmClusters/{{cloud_vm_cluster_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{project}}/{{location}}/{{cloud_vm_cluster_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{location}}/{{cloud_vm_cluster_id}}
 // ```
 type CloudVmCluster struct {
@@ -283,7 +275,8 @@ type CloudVmCluster struct {
 	// a letter or a number.
 	CloudVmClusterId pulumi.StringOutput `pulumi:"cloudVmClusterId"`
 	// The date and time that the VM cluster was created.
-	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -325,7 +318,7 @@ type CloudVmCluster struct {
 	// Structure is documented below.
 	Properties CloudVmClusterPropertiesPtrOutput `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
@@ -387,8 +380,9 @@ type cloudVmClusterState struct {
 	// a letter or a number.
 	CloudVmClusterId *string `pulumi:"cloudVmClusterId"`
 	// The date and time that the VM cluster was created.
-	CreateTime         *string `pulumi:"createTime"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -429,7 +423,7 @@ type cloudVmClusterState struct {
 	// Structure is documented below.
 	Properties *CloudVmClusterProperties `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
@@ -448,7 +442,8 @@ type CloudVmClusterState struct {
 	// a letter or a number.
 	CloudVmClusterId pulumi.StringPtrInput
 	// The date and time that the VM cluster was created.
-	CreateTime         pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
 	DeletionProtection pulumi.BoolPtrInput
 	// User friendly name for this resource.
 	DisplayName pulumi.StringPtrInput
@@ -490,7 +485,7 @@ type CloudVmClusterState struct {
 	// Structure is documented below.
 	Properties CloudVmClusterPropertiesPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 }
 
@@ -511,8 +506,9 @@ type cloudVmClusterArgs struct {
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
 	// a letter or a number.
-	CloudVmClusterId   string `pulumi:"cloudVmClusterId"`
-	DeletionProtection *bool  `pulumi:"deletionProtection"`
+	CloudVmClusterId string `pulumi:"cloudVmClusterId"`
+	// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName *string `pulumi:"displayName"`
 	// The name of the Exadata Infrastructure resource on which VM cluster
@@ -560,7 +556,8 @@ type CloudVmClusterArgs struct {
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
 	// a letter or a number.
-	CloudVmClusterId   pulumi.StringInput
+	CloudVmClusterId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
 	DeletionProtection pulumi.BoolPtrInput
 	// User friendly name for this resource.
 	DisplayName pulumi.StringPtrInput
@@ -712,6 +709,7 @@ func (o CloudVmClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
 func (o CloudVmClusterOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CloudVmCluster) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -792,7 +790,8 @@ func (o CloudVmClusterOutput) Properties() CloudVmClusterPropertiesPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CloudVmClusterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

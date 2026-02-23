@@ -178,7 +178,7 @@ class _InterceptEndpointGroupState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: The current state of the resource does not match the user's intended state,
                and the system is working to reconcile them. This is part of the normal
                operation (e.g. adding a new association to the group).
@@ -373,7 +373,7 @@ class _InterceptEndpointGroupState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -477,22 +477,14 @@ class InterceptEndpointGroup(pulumi.CustomResource):
         InterceptEndpointGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/interceptEndpointGroups/{{intercept_endpoint_group_id}}`
-
         * `{{project}}/{{location}}/{{intercept_endpoint_group_id}}`
-
         * `{{location}}/{{intercept_endpoint_group_id}}`
 
         When using the `pulumi import` command, InterceptEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default projects/{{project}}/locations/{{location}}/interceptEndpointGroups/{{intercept_endpoint_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{project}}/{{location}}/{{intercept_endpoint_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{location}}/{{intercept_endpoint_group_id}}
         ```
 
@@ -555,22 +547,14 @@ class InterceptEndpointGroup(pulumi.CustomResource):
         InterceptEndpointGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/interceptEndpointGroups/{{intercept_endpoint_group_id}}`
-
         * `{{project}}/{{location}}/{{intercept_endpoint_group_id}}`
-
         * `{{location}}/{{intercept_endpoint_group_id}}`
 
         When using the `pulumi import` command, InterceptEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default projects/{{project}}/locations/{{location}}/interceptEndpointGroups/{{intercept_endpoint_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{project}}/{{location}}/{{intercept_endpoint_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{location}}/{{intercept_endpoint_group_id}}
         ```
 
@@ -684,7 +668,7 @@ class InterceptEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: The current state of the resource does not match the user's intended state,
                and the system is working to reconcile them. This is part of the normal
                operation (e.g. adding a new association to the group).
@@ -825,7 +809,7 @@ class InterceptEndpointGroup(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -59,16 +59,12 @@ import * as utilities from "../utilities";
  * WebResource can be imported using any of these accepted formats:
  *
  * * `webResource/{{web_resource_id}}`
- *
  * * `{{web_resource_id}}`
  *
  * When using the `pulumi import` command, WebResource can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:siteverification/webResource:WebResource default webResource/{{web_resource_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:siteverification/webResource:WebResource default {{web_resource_id}}
  * ```
  */

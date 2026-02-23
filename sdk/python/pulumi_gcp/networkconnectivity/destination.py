@@ -199,7 +199,7 @@ class _DestinationState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['DestinationStateTimelineArgs']]] state_timelines: The timeline of the expected `Destination` states or the current rest
                state. If a state change is expected, the value is `ADDING`,
                `DELETING` or `SUSPENDING`, depending on the action specified.
@@ -385,7 +385,7 @@ class _DestinationState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -492,22 +492,14 @@ class Destination(pulumi.CustomResource):
         Destination can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{multicloud_data_transfer_config}}/destinations/{{name}}`
-
         * `{{project}}/{{location}}/{{multicloud_data_transfer_config}}/{{name}}`
-
         * `{{location}}/{{multicloud_data_transfer_config}}/{{name}}`
 
         When using the `pulumi import` command, Destination can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/destination:Destination default projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{multicloud_data_transfer_config}}/destinations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/destination:Destination default {{project}}/{{location}}/{{multicloud_data_transfer_config}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/destination:Destination default {{location}}/{{multicloud_data_transfer_config}}/{{name}}
         ```
 
@@ -574,22 +566,14 @@ class Destination(pulumi.CustomResource):
         Destination can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{multicloud_data_transfer_config}}/destinations/{{name}}`
-
         * `{{project}}/{{location}}/{{multicloud_data_transfer_config}}/{{name}}`
-
         * `{{location}}/{{multicloud_data_transfer_config}}/{{name}}`
 
         When using the `pulumi import` command, Destination can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/destination:Destination default projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{multicloud_data_transfer_config}}/destinations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/destination:Destination default {{project}}/{{location}}/{{multicloud_data_transfer_config}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/destination:Destination default {{location}}/{{multicloud_data_transfer_config}}/{{name}}
         ```
 
@@ -701,7 +685,7 @@ class Destination(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DestinationStateTimelineArgs', 'DestinationStateTimelineArgsDict']]]] state_timelines: The timeline of the expected `Destination` states or the current rest
                state. If a state change is expected, the value is `ADDING`,
                `DELETING` or `SUSPENDING`, depending on the action specified.
@@ -833,7 +817,7 @@ class Destination(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

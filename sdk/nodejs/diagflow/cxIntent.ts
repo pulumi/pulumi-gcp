@@ -76,16 +76,12 @@ import * as utilities from "../utilities";
  * Intent can be imported using any of these accepted formats:
  *
  * * `{{parent}}/intents/{{name}}`
- *
  * * `{{parent}}/{{name}}`
  *
  * When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/intents/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/{{name}}
  * ```
  */
@@ -187,7 +183,7 @@ export class CxIntent extends pulumi.CustomResource {
     declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -324,7 +320,7 @@ export interface CxIntentState {
     priority?: pulumi.Input<number>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

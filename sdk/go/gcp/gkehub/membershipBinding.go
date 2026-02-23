@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
-//				MembershipId: pulumi.String("tf-test-membership_8647"),
+//				MembershipId: pulumi.String("tf-test-membership_20665"),
 //				Endpoint: &gkehub.MembershipEndpointArgs{
 //					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
 //						ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
@@ -66,13 +66,13 @@ import (
 //				return err
 //			}
 //			scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-//				ScopeId: pulumi.String("tf-test-scope_50610"),
+//				ScopeId: pulumi.String("tf-test-scope_85160"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gkehub.NewMembershipBinding(ctx, "membership_binding", &gkehub.MembershipBindingArgs{
-//				MembershipBindingId: pulumi.String("tf-test-membership-binding_77124"),
+//				MembershipBindingId: pulumi.String("tf-test-membership-binding_92130"),
 //				Scope:               scope.Name,
 //				MembershipId:        membership.MembershipId,
 //				Location:            pulumi.String("global"),
@@ -99,22 +99,14 @@ import (
 // MembershipBinding can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}`
-//
 // * `{{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}`
-//
 // * `{{location}}/{{membership_id}}/{{membership_binding_id}}`
 //
 // When using the `pulumi import` command, MembershipBinding can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default {{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default {{location}}/{{membership_id}}/{{membership_binding_id}}
 // ```
 type MembershipBinding struct {
@@ -143,7 +135,7 @@ type MembershipBinding struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A Workspace resource name in the format
 	// `projects/*/locations/*/scopes/*`.
@@ -227,7 +219,7 @@ type membershipBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A Workspace resource name in the format
 	// `projects/*/locations/*/scopes/*`.
@@ -265,7 +257,7 @@ type MembershipBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// A Workspace resource name in the format
 	// `projects/*/locations/*/scopes/*`.
@@ -461,7 +453,8 @@ func (o MembershipBindingOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MembershipBindingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MembershipBinding) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

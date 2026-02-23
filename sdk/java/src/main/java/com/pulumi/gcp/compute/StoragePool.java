@@ -145,28 +145,16 @@ import javax.annotation.Nullable;
  * StoragePool can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/zones/{{zone}}/storagePools/{{name}}`
- * 
  * * `{{project}}/{{zone}}/{{name}}`
- * 
  * * `{{zone}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, StoragePool can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/storagePool:StoragePool default projects/{{project}}/zones/{{zone}}/storagePools/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/storagePool:StoragePool default {{project}}/{{zone}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/storagePool:StoragePool default {{zone}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/storagePool:StoragePool default {{name}}
  * ```
  * 
@@ -203,9 +191,23 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
     public Output<String> creationTimestamp() {
         return this.creationTimestamp;
     }
+    /**
+     * Whether Terraform will be prevented from destroying the StoragePool.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the StoragePool will fail.
+     * When the field is set to false, deleting the StoragePool is allowed.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the StoragePool.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the StoragePool will fail.
+     * When the field is set to false, deleting the StoragePool is allowed.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
@@ -395,7 +397,7 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -403,7 +405,7 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

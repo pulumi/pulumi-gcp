@@ -336,22 +336,14 @@ class SchemaBundle(pulumi.CustomResource):
         SchemaBundle can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance}}/tables/{{table}}/schemaBundles/{{schema_bundle_id}}`
-
         * `{{project}}/{{instance}}/{{table}}/{{schema_bundle_id}}`
-
         * `{{instance}}/{{table}}/{{schema_bundle_id}}`
 
         When using the `pulumi import` command, SchemaBundle can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigtable/schemaBundle:SchemaBundle default projects/{{project}}/instances/{{instance}}/tables/{{table}}/schemaBundles/{{schema_bundle_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/schemaBundle:SchemaBundle default {{project}}/{{instance}}/{{table}}/{{schema_bundle_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/schemaBundle:SchemaBundle default {{instance}}/{{table}}/{{schema_bundle_id}}
         ```
 
@@ -419,22 +411,14 @@ class SchemaBundle(pulumi.CustomResource):
         SchemaBundle can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance}}/tables/{{table}}/schemaBundles/{{schema_bundle_id}}`
-
         * `{{project}}/{{instance}}/{{table}}/{{schema_bundle_id}}`
-
         * `{{instance}}/{{table}}/{{schema_bundle_id}}`
 
         When using the `pulumi import` command, SchemaBundle can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigtable/schemaBundle:SchemaBundle default projects/{{project}}/instances/{{instance}}/tables/{{table}}/schemaBundles/{{schema_bundle_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/schemaBundle:SchemaBundle default {{project}}/{{instance}}/{{table}}/{{schema_bundle_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/schemaBundle:SchemaBundle default {{instance}}/{{table}}/{{schema_bundle_id}}
         ```
 

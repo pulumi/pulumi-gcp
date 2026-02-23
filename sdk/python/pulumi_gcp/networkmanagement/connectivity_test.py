@@ -261,7 +261,7 @@ class _ConnectivityTestState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] related_projects: Other projects that may be relevant for reachability analysis.
                This is applicable to scenarios where a test can cross project
                boundaries.
@@ -412,7 +412,7 @@ class _ConnectivityTestState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -621,22 +621,14 @@ class ConnectivityTest(pulumi.CustomResource):
         ConnectivityTest can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/connectivityTests/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ConnectivityTest can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default projects/{{project}}/locations/global/connectivityTests/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{name}}
         ```
 
@@ -817,22 +809,14 @@ class ConnectivityTest(pulumi.CustomResource):
         ConnectivityTest can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/connectivityTests/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ConnectivityTest can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default projects/{{project}}/locations/global/connectivityTests/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{name}}
         ```
 
@@ -937,7 +921,7 @@ class ConnectivityTest(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] related_projects: Other projects that may be relevant for reachability analysis.
                This is applicable to scenarios where a test can cross project
                boundaries.
@@ -1049,7 +1033,7 @@ class ConnectivityTest(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

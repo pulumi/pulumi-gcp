@@ -37,9 +37,21 @@ public final class MetastoreFederationArgs extends com.pulumi.resources.Resource
         return this.backendMetastores;
     }
 
+    /**
+     * Whether Terraform will be prevented from destroying the federation. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the federation will fail.
+     * 
+     */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the federation. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the federation will fail.
+     * 
+     */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
@@ -213,11 +225,27 @@ public final class MetastoreFederationArgs extends com.pulumi.resources.Resource
             return backendMetastores(List.of(backendMetastores));
         }
 
+        /**
+         * @param deletionProtection Whether Terraform will be prevented from destroying the federation. Defaults to false.
+         * When the field is set to true in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the federation will fail.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
             $.deletionProtection = deletionProtection;
             return this;
         }
 
+        /**
+         * @param deletionProtection Whether Terraform will be prevented from destroying the federation. Defaults to false.
+         * When the field is set to true in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the federation will fail.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
         }

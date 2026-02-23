@@ -32,12 +32,12 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var scope = new Gcp.GkeHub.Scope("scope", new()
     ///     {
-    ///         ScopeId = "tf-test-scope_16199",
+    ///         ScopeId = "tf-test-scope_6529",
     ///     });
     /// 
     ///     var scopeRbacRoleBinding = new Gcp.GkeHub.ScopeRbacRoleBinding("scope_rbac_role_binding", new()
     ///     {
-    ///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_21563",
+    ///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_16178",
     ///         ScopeId = scope.ScopeId,
     ///         User = "test-email@gmail.com",
     ///         Role = new Gcp.GkeHub.Inputs.ScopeRbacRoleBindingRoleArgs
@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var scope = new Gcp.GkeHub.Scope("scope", new()
     ///     {
-    ///         ScopeId = "tf-test-scope_25141",
+    ///         ScopeId = "tf-test-scope_26317",
     ///     });
     /// 
     ///     var rbacrolebindingactuation = new Gcp.GkeHub.Feature("rbacrolebindingactuation", new()
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var scopeRbacRoleBinding = new Gcp.GkeHub.ScopeRbacRoleBinding("scope_rbac_role_binding", new()
     ///     {
-    ///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_30827",
+    ///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_4866",
     ///         ScopeId = scope.ScopeId,
     ///         User = "test-email@gmail.com",
     ///         Role = new Gcp.GkeHub.Inputs.ScopeRbacRoleBindingRoleArgs
@@ -112,22 +112,14 @@ namespace Pulumi.Gcp.GkeHub
     /// ScopeRBACRoleBinding can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}`
-    /// 
     /// * `{{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}`
-    /// 
     /// * `{{scope_id}}/{{scope_rbac_role_binding_id}}`
     /// 
     /// When using the `pulumi import` command, ScopeRBACRoleBinding can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{scope_id}}/{{scope_rbac_role_binding_id}}
     /// ```
     /// </summary>
@@ -184,7 +176,7 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -422,7 +414,7 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

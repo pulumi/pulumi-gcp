@@ -162,6 +162,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string Network;
+        public readonly ImmutableArray<Outputs.GetHcVpnGatewayParamResult> Params;
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
@@ -187,6 +188,8 @@ namespace Pulumi.Gcp.Compute
 
             string network,
 
+            ImmutableArray<Outputs.GetHcVpnGatewayParamResult> @params,
+
             string? project,
 
             ImmutableDictionary<string, string> pulumiLabels,
@@ -207,6 +210,7 @@ namespace Pulumi.Gcp.Compute
             Labels = labels;
             Name = name;
             Network = network;
+            Params = @params;
             Project = project;
             PulumiLabels = pulumiLabels;
             Region = region;

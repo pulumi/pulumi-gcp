@@ -300,11 +300,11 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     alloydb: {
- *         clusterId: "tf-test-dbmsalloycluster_22811",
+ *         clusterId: "tf-test-dbmsalloycluster_91042",
  *         settings: {
  *             initialUser: {
- *                 user: "alloyuser_91042",
- *                 password: "alloypass_72490",
+ *                 user: "alloyuser_72490",
+ *                 password: "alloypass_89605",
  *             },
  *             vpcNetwork: _default.id,
  *             labels: {
@@ -449,22 +449,14 @@ import * as utilities from "../utilities";
  * ConnectionProfile can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
- *
  * * `{{project}}/{{location}}/{{connection_profile_id}}`
- *
  * * `{{location}}/{{connection_profile_id}}`
  *
  * When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
  * ```
  */
@@ -568,7 +560,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -712,7 +704,7 @@ export interface ConnectionProfileState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

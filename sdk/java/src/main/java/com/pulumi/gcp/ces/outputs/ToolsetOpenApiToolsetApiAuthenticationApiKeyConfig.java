@@ -26,10 +26,10 @@ public final class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig {
      */
     private String keyName;
     /**
-     * @return Key location in the request.
+     * @return Key location in the request. For API key auth on MCP toolsets,
+     * the API key can only be sent in the request header.
      * Possible values:
      * HEADER
-     * QUERY_STRING
      * 
      */
     private String requestLocation;
@@ -55,10 +55,10 @@ public final class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig {
         return this.keyName;
     }
     /**
-     * @return Key location in the request.
+     * @return Key location in the request. For API key auth on MCP toolsets,
+     * the API key can only be sent in the request header.
      * Possible values:
      * HEADER
-     * QUERY_STRING
      * 
      */
     public String requestLocation() {

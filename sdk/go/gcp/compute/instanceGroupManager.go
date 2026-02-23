@@ -262,31 +262,19 @@ import (
 //
 // Instance group managers can be imported using any of these accepted formats:
 //
+// ```sh
 // * `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}`
-//
 // * `{{project}}/{{zone}}/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example:
 //
-// ```sh
-// $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
 // ```
-//
-// ```sh
-// $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{zone}}/{{name}}
-// ```
-//
-// ```sh
-// $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{name}}
-// ```
-//
-// ```sh
-// $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{name}}
-// ```
+// $ terraform import google_compute_instance_group_manager.default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
+// $ terraform import google_compute_instance_group_manager.default {{project}}/{{zone}}/{{name}}
+// $ terraform import google_compute_instance_group_manager.default {{project}}/{{name}}
+// $ terraform import google_compute_instance_group_manager.default {{name}}
 type InstanceGroupManager struct {
 	pulumi.CustomResourceState
 
@@ -358,7 +346,10 @@ type InstanceGroupManager struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayOutput `pulumi:"targetPools"`
-	// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+	// The target number of running instances for this managed
+	// instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+	// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize pulumi.IntOutput `pulumi:"targetSize"`
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize pulumi.IntOutput `pulumi:"targetStoppedSize"`
@@ -490,7 +481,10 @@ type instanceGroupManagerState struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools []string `pulumi:"targetPools"`
-	// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+	// The target number of running instances for this managed
+	// instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+	// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize *int `pulumi:"targetSize"`
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize *int `pulumi:"targetStoppedSize"`
@@ -587,7 +581,10 @@ type InstanceGroupManagerState struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayInput
-	// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+	// The target number of running instances for this managed
+	// instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+	// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize pulumi.IntPtrInput
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize pulumi.IntPtrInput
@@ -675,7 +672,10 @@ type instanceGroupManagerArgs struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools []string `pulumi:"targetPools"`
-	// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+	// The target number of running instances for this managed
+	// instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+	// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize *int `pulumi:"targetSize"`
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize *int `pulumi:"targetStoppedSize"`
@@ -760,7 +760,10 @@ type InstanceGroupManagerArgs struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayInput
-	// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+	// The target number of running instances for this managed
+	// instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+	// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize pulumi.IntPtrInput
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize pulumi.IntPtrInput
@@ -1022,7 +1025,10 @@ func (o InstanceGroupManagerOutput) TargetPools() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringArrayOutput { return v.TargetPools }).(pulumi.StringArrayOutput)
 }
 
-// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+// The target number of running instances for this managed
+// instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 func (o InstanceGroupManagerOutput) TargetSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.IntOutput { return v.TargetSize }).(pulumi.IntOutput)
 }

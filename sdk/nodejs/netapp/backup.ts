@@ -73,22 +73,14 @@ import * as utilities from "../utilities";
  * Backup can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}`
- *
  * * `{{project}}/{{location}}/{{vault_name}}/{{name}}`
- *
  * * `{{location}}/{{vault_name}}/{{name}}`
  *
  * When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:netapp/backup:Backup default projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/backup:Backup default {{project}}/{{location}}/{{vault_name}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/backup:Backup default {{location}}/{{vault_name}}/{{name}}
  * ```
  */
@@ -167,7 +159,7 @@ export class Backup extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -311,7 +303,7 @@ export interface BackupState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

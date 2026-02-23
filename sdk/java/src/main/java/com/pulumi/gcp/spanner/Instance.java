@@ -144,31 +144,43 @@ import javax.annotation.Nullable;
  * Instance can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/instances/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:spanner/instance:Instance default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:spanner/instance:Instance default {{name}}
  * ```
  * 
  */
 @ResourceType(type="gcp:spanner/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
+    /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * Exactly one of either num_nodes, processingUnits or autoscalingConfig must be
+     * present in terraform except when instanceType = FREE_INSTANCE.
+     * When autoscaling is enabled, numNodes and processingUnits are treated as,
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+     * the instance.
+     * Structure is documented below.
+     * 
+     */
     @Export(name="autoscalingConfig", refs={InstanceAutoscalingConfig.class}, tree="[0]")
     private Output</* @Nullable */ InstanceAutoscalingConfig> autoscalingConfig;
 
+    /**
+     * @return The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * Exactly one of either num_nodes, processingUnits or autoscalingConfig must be
+     * present in terraform except when instanceType = FREE_INSTANCE.
+     * When autoscaling is enabled, numNodes and processingUnits are treated as,
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+     * the instance.
+     * Structure is documented below.
+     * 
+     */
     public Output<Optional<InstanceAutoscalingConfig>> autoscalingConfig() {
         return Codegen.optional(this.autoscalingConfig);
     }
@@ -340,15 +352,35 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The number of nodes allocated to this instance. Exactly one of either num_nodes, processingUnits or
+     * autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+     * 
+     */
     @Export(name="numNodes", refs={Integer.class}, tree="[0]")
     private Output<Integer> numNodes;
 
+    /**
+     * @return The number of nodes allocated to this instance. Exactly one of either num_nodes, processingUnits or
+     * autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+     * 
+     */
     public Output<Integer> numNodes() {
         return this.numNodes;
     }
+    /**
+     * The number of processing units allocated to this instance. Exactly one of either num_nodes,
+     * processingUnits or autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+     * 
+     */
     @Export(name="processingUnits", refs={Integer.class}, tree="[0]")
     private Output<Integer> processingUnits;
 
+    /**
+     * @return The number of processing units allocated to this instance. Exactly one of either num_nodes,
+     * processingUnits or autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+     * 
+     */
     public Output<Integer> processingUnits() {
         return this.processingUnits;
     }
@@ -370,7 +402,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -378,7 +410,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

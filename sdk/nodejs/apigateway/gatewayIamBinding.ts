@@ -7,16 +7,153 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Three different resources help you manage your IAM policy for API Gateway Gateway. Each of these resources serves a different use case:
+ *
+ * * `gcp.apigateway.GatewayIamPolicy`: Authoritative. Sets the IAM policy for the gateway and replaces any existing policy already attached.
+ * * `gcp.apigateway.GatewayIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the gateway are preserved.
+ * * `gcp.apigateway.GatewayIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the gateway are preserved.
+ *
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ *
+ * * `gcp.apigateway.GatewayIamPolicy`: Retrieves the IAM policy for the gateway
+ *
+ * > **Note:** `gcp.apigateway.GatewayIamPolicy` **cannot** be used in conjunction with `gcp.apigateway.GatewayIamBinding` and `gcp.apigateway.GatewayIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.apigateway.GatewayIamBinding` resources **can be** used in conjunction with `gcp.apigateway.GatewayIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * ## gcp.apigateway.GatewayIamPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/apigateway.viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.apigateway.GatewayIamPolicy("policy", {
+ *     project: apiGw.project,
+ *     region: apiGw.region,
+ *     gateway: apiGw.gatewayId,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## gcp.apigateway.GatewayIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.apigateway.GatewayIamBinding("binding", {
+ *     project: apiGw.project,
+ *     region: apiGw.region,
+ *     gateway: apiGw.gatewayId,
+ *     role: "roles/apigateway.viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## gcp.apigateway.GatewayIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.apigateway.GatewayIamMember("member", {
+ *     project: apiGw.project,
+ *     region: apiGw.region,
+ *     gateway: apiGw.gatewayId,
+ *     role: "roles/apigateway.viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * ## This resource supports User Project Overrides.
+ *
+ * - 
+ *
+ * # IAM policy for API Gateway Gateway
+ *
+ * Three different resources help you manage your IAM policy for API Gateway Gateway. Each of these resources serves a different use case:
+ *
+ * * `gcp.apigateway.GatewayIamPolicy`: Authoritative. Sets the IAM policy for the gateway and replaces any existing policy already attached.
+ * * `gcp.apigateway.GatewayIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the gateway are preserved.
+ * * `gcp.apigateway.GatewayIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the gateway are preserved.
+ *
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ *
+ * * `gcp.apigateway.GatewayIamPolicy`: Retrieves the IAM policy for the gateway
+ *
+ * > **Note:** `gcp.apigateway.GatewayIamPolicy` **cannot** be used in conjunction with `gcp.apigateway.GatewayIamBinding` and `gcp.apigateway.GatewayIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.apigateway.GatewayIamBinding` resources **can be** used in conjunction with `gcp.apigateway.GatewayIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * ## gcp.apigateway.GatewayIamPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/apigateway.viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.apigateway.GatewayIamPolicy("policy", {
+ *     project: apiGw.project,
+ *     region: apiGw.region,
+ *     gateway: apiGw.gatewayId,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## gcp.apigateway.GatewayIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.apigateway.GatewayIamBinding("binding", {
+ *     project: apiGw.project,
+ *     region: apiGw.region,
+ *     gateway: apiGw.gatewayId,
+ *     role: "roles/apigateway.viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## gcp.apigateway.GatewayIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.apigateway.GatewayIamMember("member", {
+ *     project: apiGw.project,
+ *     region: apiGw.region,
+ *     gateway: apiGw.gatewayId,
+ *     role: "roles/apigateway.viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:
  *
  * * projects/{{project}}/locations/{{region}}/gateways/{{gateway}}
- *
  * * {{project}}/{{region}}/{{gateway}}
- *
  * * {{region}}/{{gateway}}
- *
  * * {{gateway}}
  *
  * Any variables not passed in the import command will be taken from the provider configuration.
@@ -24,25 +161,21 @@ import * as utilities from "../utilities";
  * API Gateway gateway IAM resources can be imported using the resource identifiers, role, and member.
  *
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
- *
  * ```sh
- * $ pulumi import gcp:apigateway/gatewayIamBinding:GatewayIamBinding editor "projects/{{project}}/locations/{{region}}/gateways/{{gateway}} roles/apigateway.viewer user:jane@example.com"
+ * $ terraform import google_api_gateway_gateway_iam_member.editor "projects/{{project}}/locations/{{region}}/gateways/{{gateway}} roles/apigateway.viewer user:jane@example.com"
  * ```
  *
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
- *
  * ```sh
- * $ pulumi import gcp:apigateway/gatewayIamBinding:GatewayIamBinding editor "projects/{{project}}/locations/{{region}}/gateways/{{gateway}} roles/apigateway.viewer"
+ * $ terraform import google_api_gateway_gateway_iam_binding.editor "projects/{{project}}/locations/{{region}}/gateways/{{gateway}} roles/apigateway.viewer"
  * ```
  *
  * IAM policy imports use the identifier of the resource in question, e.g.
- *
  * ```sh
  * $ pulumi import gcp:apigateway/gatewayIamBinding:GatewayIamBinding editor projects/{{project}}/locations/{{region}}/gateways/{{gateway}}
  * ```
  *
- * -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
- *
+ * > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class GatewayIamBinding extends pulumi.CustomResource {

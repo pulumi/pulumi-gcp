@@ -165,16 +165,12 @@ import javax.annotation.Nullable;
  * DicomStore can be imported using any of these accepted formats:
  * 
  * * `{{dataset}}/dicomStores/{{name}}`
- * 
  * * `{{dataset}}/{{name}}`
  * 
  * When using the `pulumi import` command, DicomStore can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
  * ```
  * 
@@ -279,7 +275,7 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -287,7 +283,7 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

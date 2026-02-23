@@ -17,6 +17,11 @@ public final class GetClusterIpAllocationPolicyAdditionalIpRangesConfig {
      */
     private List<String> podIpv4RangeNames;
     /**
+     * @return Status of the subnetwork, If in draining status, subnet will not be selected for new node pools.
+     * 
+     */
+    private String status;
+    /**
      * @return Name of the subnetwork. This can be the full path of the subnetwork or just the name.
      * 
      */
@@ -29,6 +34,13 @@ public final class GetClusterIpAllocationPolicyAdditionalIpRangesConfig {
      */
     public List<String> podIpv4RangeNames() {
         return this.podIpv4RangeNames;
+    }
+    /**
+     * @return Status of the subnetwork, If in draining status, subnet will not be selected for new node pools.
+     * 
+     */
+    public String status() {
+        return this.status;
     }
     /**
      * @return Name of the subnetwork. This can be the full path of the subnetwork or just the name.
@@ -48,11 +60,13 @@ public final class GetClusterIpAllocationPolicyAdditionalIpRangesConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<String> podIpv4RangeNames;
+        private String status;
         private String subnetwork;
         public Builder() {}
         public Builder(GetClusterIpAllocationPolicyAdditionalIpRangesConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.podIpv4RangeNames = defaults.podIpv4RangeNames;
+    	      this.status = defaults.status;
     	      this.subnetwork = defaults.subnetwork;
         }
 
@@ -68,6 +82,14 @@ public final class GetClusterIpAllocationPolicyAdditionalIpRangesConfig {
             return podIpv4RangeNames(List.of(podIpv4RangeNames));
         }
         @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetClusterIpAllocationPolicyAdditionalIpRangesConfig", "status");
+            }
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
             if (subnetwork == null) {
               throw new MissingRequiredPropertyException("GetClusterIpAllocationPolicyAdditionalIpRangesConfig", "subnetwork");
@@ -78,6 +100,7 @@ public final class GetClusterIpAllocationPolicyAdditionalIpRangesConfig {
         public GetClusterIpAllocationPolicyAdditionalIpRangesConfig build() {
             final var _resultValue = new GetClusterIpAllocationPolicyAdditionalIpRangesConfig();
             _resultValue.podIpv4RangeNames = podIpv4RangeNames;
+            _resultValue.status = status;
             _resultValue.subnetwork = subnetwork;
             return _resultValue;
         }

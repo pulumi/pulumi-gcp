@@ -195,31 +195,23 @@ import * as utilities from "../utilities";
  * ## Import
  *
  * Storage buckets can be imported using the `name` or  `project/name`. If the project is not
- *
  * passed to the import command it will be inferred from the provider block or environment variables.
- *
  * If it cannot be inferred it will be queried from the Compute API (this will fail if the API is
- *
  * not enabled).
  *
  * * `{{project_id}}/{{bucket}}`
- *
  * * `{{bucket}}`
  *
  * When using the `pulumi import` command, Storage buckets can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
  * ```
  *
+ * > **Note:** Terraform will import this resource with `forceDestroy` set to
  * `false` in state. If you've set it to `true` in config, run `pulumi up` to
- *
  * update the value set in state. If you delete this resource before updating the
- *
  * value, objects in the bucket will not be destroyed.
  */
 export class Bucket extends pulumi.CustomResource {
@@ -266,6 +258,9 @@ export class Bucket extends pulumi.CustomResource {
      * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
      */
     declare public readonly defaultEventBasedHold: pulumi.Output<boolean | undefined>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
@@ -343,7 +338,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
-     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
      */
     declare public readonly softDeletePolicy: pulumi.Output<outputs.storage.BucketSoftDeletePolicy>;
     /**
@@ -483,6 +478,9 @@ export interface BucketState {
      * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
      */
     defaultEventBasedHold?: pulumi.Input<boolean>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
@@ -560,7 +558,7 @@ export interface BucketState {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
      */
     softDeletePolicy?: pulumi.Input<inputs.storage.BucketSoftDeletePolicy>;
     /**
@@ -677,7 +675,7 @@ export interface BucketArgs {
      */
     rpo?: pulumi.Input<string>;
     /**
-     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
      */
     softDeletePolicy?: pulumi.Input<inputs.storage.BucketSoftDeletePolicy>;
     /**

@@ -10,6 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Workstations
 {
     /// <summary>
+    /// A grouping of workstation configurations and the associated workstations in that region.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about WorkstationCluster, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters/create)
+    /// * How-to Guides
+    ///     * [Workstations](https://cloud.google.com/workstations/docs/)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Workstation Cluster Basic
@@ -220,22 +231,14 @@ namespace Pulumi.Gcp.Workstations
     /// WorkstationCluster can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{workstation_cluster_id}}`
-    /// 
     /// * `{{location}}/{{workstation_cluster_id}}`
     /// 
     /// When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{project}}/{{location}}/{{workstation_cluster_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
     /// ```
     /// </summary>
@@ -290,6 +293,9 @@ namespace Pulumi.Gcp.Workstations
         [Output("domainConfig")]
         public Output<Outputs.WorkstationClusterDomainConfig?> DomainConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -349,7 +355,7 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -599,6 +605,10 @@ namespace Pulumi.Gcp.Workstations
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
@@ -680,7 +690,7 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

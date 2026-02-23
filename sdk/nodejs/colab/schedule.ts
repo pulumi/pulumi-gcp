@@ -280,22 +280,14 @@ import * as utilities from "../utilities";
  * Schedule can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/schedules/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, Schedule can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:colab/schedule:Schedule default projects/{{project}}/locations/{{location}}/schedules/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:colab/schedule:Schedule default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:colab/schedule:Schedule default {{location}}/{{name}}
  * ```
  */

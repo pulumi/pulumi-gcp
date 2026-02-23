@@ -282,22 +282,14 @@ import (
 // Example can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/apps/{{app}}/examples/{{name}}`
-//
 // * `{{project}}/{{location}}/{{app}}/{{name}}`
-//
 // * `{{location}}/{{app}}/{{name}}`
 //
 // When using the `pulumi import` command, Example can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:ces/example:Example default projects/{{project}}/locations/{{location}}/apps/{{app}}/examples/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:ces/example:Example default {{project}}/{{location}}/{{app}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:ces/example:Example default {{location}}/{{app}}/{{name}}
 // ```
 type Example struct {
@@ -318,7 +310,9 @@ type Example struct {
 	// Etag used to ensure the object hasn't changed during a read-modify-write
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
-	Etag      pulumi.StringOutput `pulumi:"etag"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The ID to use for the example, which will become the final component of
+	// the example's resource name. In Terraform, this field is required.
 	ExampleId pulumi.StringOutput `pulumi:"exampleId"`
 	// The example may become invalid if referencing resources are deleted.
 	// Invalid examples will not be used as few-shot examples.
@@ -396,7 +390,9 @@ type exampleState struct {
 	// Etag used to ensure the object hasn't changed during a read-modify-write
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
-	Etag      *string `pulumi:"etag"`
+	Etag *string `pulumi:"etag"`
+	// The ID to use for the example, which will become the final component of
+	// the example's resource name. In Terraform, this field is required.
 	ExampleId *string `pulumi:"exampleId"`
 	// The example may become invalid if referencing resources are deleted.
 	// Invalid examples will not be used as few-shot examples.
@@ -433,7 +429,9 @@ type ExampleState struct {
 	// Etag used to ensure the object hasn't changed during a read-modify-write
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
-	Etag      pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// The ID to use for the example, which will become the final component of
+	// the example's resource name. In Terraform, this field is required.
 	ExampleId pulumi.StringPtrInput
 	// The example may become invalid if referencing resources are deleted.
 	// Invalid examples will not be used as few-shot examples.
@@ -469,7 +467,9 @@ type exampleArgs struct {
 	// example represents a conversation that is handled by the root agent.
 	// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
 	EntryAgent *string `pulumi:"entryAgent"`
-	ExampleId  string  `pulumi:"exampleId"`
+	// The ID to use for the example, which will become the final component of
+	// the example's resource name. In Terraform, this field is required.
+	ExampleId string `pulumi:"exampleId"`
 	// Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
 	// The collection of messages that make up the conversation.
@@ -492,7 +492,9 @@ type ExampleArgs struct {
 	// example represents a conversation that is handled by the root agent.
 	// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
 	EntryAgent pulumi.StringPtrInput
-	ExampleId  pulumi.StringInput
+	// The ID to use for the example, which will become the final component of
+	// the example's resource name. In Terraform, this field is required.
+	ExampleId pulumi.StringInput
 	// Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
 	// The collection of messages that make up the conversation.
@@ -624,6 +626,8 @@ func (o ExampleOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Example) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The ID to use for the example, which will become the final component of
+// the example's resource name. In Terraform, this field is required.
 func (o ExampleOutput) ExampleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Example) pulumi.StringOutput { return v.ExampleId }).(pulumi.StringOutput)
 }

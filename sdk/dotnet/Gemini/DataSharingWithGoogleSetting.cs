@@ -44,22 +44,14 @@ namespace Pulumi.Gcp.Gemini
     /// DataSharingWithGoogleSetting can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/dataSharingWithGoogleSettings/{{data_sharing_with_google_setting_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{data_sharing_with_google_setting_id}}`
-    /// 
     /// * `{{location}}/{{data_sharing_with_google_setting_id}}`
     /// 
     /// When using the `pulumi import` command, DataSharingWithGoogleSetting can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default projects/{{project}}/locations/{{location}}/dataSharingWithGoogleSettings/{{data_sharing_with_google_setting_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default {{project}}/{{location}}/{{data_sharing_with_google_setting_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default {{location}}/{{data_sharing_with_google_setting_id}}
     /// ```
     /// </summary>
@@ -126,7 +118,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -320,7 +312,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

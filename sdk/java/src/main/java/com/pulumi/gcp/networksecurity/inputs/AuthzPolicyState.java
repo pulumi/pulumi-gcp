@@ -184,6 +184,33 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+     * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
+     * invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+     * Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support extProc
+     * protocol and be capable of receiving all extProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+     * RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+     * Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+     * 
+     */
+    @Import(name="policyProfile")
+    private @Nullable Output<String> policyProfile;
+
+    /**
+     * @return Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+     * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
+     * invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+     * Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support extProc
+     * protocol and be capable of receiving all extProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+     * RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+     * Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+     * 
+     */
+    public Optional<Output<String>> policyProfile() {
+        return Optional.ofNullable(this.policyProfile);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -202,7 +229,7 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
@@ -210,7 +237,7 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
@@ -261,6 +288,7 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
+        this.policyProfile = $.policyProfile;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.target = $.target;
@@ -515,6 +543,39 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param policyProfile Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+         * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
+         * invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+         * Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support extProc
+         * protocol and be capable of receiving all extProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+         * RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+         * Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyProfile(@Nullable Output<String> policyProfile) {
+            $.policyProfile = policyProfile;
+            return this;
+        }
+
+        /**
+         * @param policyProfile Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+         * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
+         * invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+         * Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support extProc
+         * protocol and be capable of receiving all extProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+         * RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+         * Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyProfile(String policyProfile) {
+            return policyProfile(Output.of(policyProfile));
+        }
+
+        /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
@@ -539,7 +600,7 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -551,7 +612,7 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 

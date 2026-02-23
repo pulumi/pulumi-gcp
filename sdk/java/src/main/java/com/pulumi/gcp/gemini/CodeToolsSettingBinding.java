@@ -85,22 +85,14 @@ import javax.annotation.Nullable;
  * CodeToolsSettingBinding can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/codeToolsSettings/{{code_tools_setting_id}}/settingBindings/{{setting_binding_id}}`
- * 
  * * `{{project}}/{{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}`
- * 
  * * `{{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}`
  * 
  * When using the `pulumi import` command, CodeToolsSettingBinding can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding default projects/{{project}}/locations/{{location}}/codeToolsSettings/{{code_tools_setting_id}}/settingBindings/{{setting_binding_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding default {{project}}/{{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding default {{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}
  * ```
  * 
@@ -231,7 +223,7 @@ public class CodeToolsSettingBinding extends com.pulumi.resources.CustomResource
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -239,7 +231,7 @@ public class CodeToolsSettingBinding extends com.pulumi.resources.CustomResource
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

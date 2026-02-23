@@ -18,6 +18,13 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<string> PodIpv4RangeNames;
         /// <summary>
+        /// Status of the subnetwork. Additional subnet with DRAINING status will not be selected during new node pool creation
+        /// Accepted values are:
+        /// * `ACTIVE`: ACTIVE status indicates that the subnet is available for new node pool creation.
+        /// * `DRAINING`: DRAINING status indicates that the subnet is not used for new node pool creation.
+        /// </summary>
+        public readonly string? Status;
+        /// <summary>
         /// Name of the subnetwork. This can be the full path of the subnetwork or just the name.
         /// </summary>
         public readonly string Subnetwork;
@@ -26,9 +33,12 @@ namespace Pulumi.Gcp.Container.Outputs
         private ClusterIpAllocationPolicyAdditionalIpRangesConfig(
             ImmutableArray<string> podIpv4RangeNames,
 
+            string? status,
+
             string subnetwork)
         {
             PodIpv4RangeNames = podIpv4RangeNames;
+            Status = status;
             Subnetwork = subnetwork;
         }
     }

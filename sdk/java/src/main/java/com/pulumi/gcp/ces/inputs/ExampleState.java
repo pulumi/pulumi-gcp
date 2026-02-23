@@ -116,9 +116,19 @@ public final class ExampleState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.etag);
     }
 
+    /**
+     * The ID to use for the example, which will become the final component of
+     * the example&#39;s resource name. In Terraform, this field is required.
+     * 
+     */
     @Import(name="exampleId")
     private @Nullable Output<String> exampleId;
 
+    /**
+     * @return The ID to use for the example, which will become the final component of
+     * the example&#39;s resource name. In Terraform, this field is required.
+     * 
+     */
     public Optional<Output<String>> exampleId() {
         return Optional.ofNullable(this.exampleId);
     }
@@ -393,11 +403,25 @@ public final class ExampleState extends com.pulumi.resources.ResourceArgs {
             return etag(Output.of(etag));
         }
 
+        /**
+         * @param exampleId The ID to use for the example, which will become the final component of
+         * the example&#39;s resource name. In Terraform, this field is required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder exampleId(@Nullable Output<String> exampleId) {
             $.exampleId = exampleId;
             return this;
         }
 
+        /**
+         * @param exampleId The ID to use for the example, which will become the final component of
+         * the example&#39;s resource name. In Terraform, this field is required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder exampleId(String exampleId) {
             return exampleId(Output.of(exampleId));
         }

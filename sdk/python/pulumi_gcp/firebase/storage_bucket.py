@@ -126,6 +126,18 @@ class StorageBucket(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        An association between a Firebase project and a Google Cloud Storage bucket.
+        This association enables integration of Cloud Storage buckets with Firebase such as Firebase SDKS, Authentication, and Security Rules.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Bucket, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/storage/)
+
         ## Example Usage
 
         ### Firebasestorage Bucket Basic
@@ -148,22 +160,14 @@ class StorageBucket(pulumi.CustomResource):
         Bucket can be imported using any of these accepted formats:
 
         * `projects/{{project}}/buckets/{{bucket_id}}`
-
         * `{{project}}/{{bucket_id}}`
-
         * `{{bucket_id}}`
 
         When using the `pulumi import` command, Bucket can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default projects/{{project}}/buckets/{{bucket_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{project}}/{{bucket_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{bucket_id}}
         ```
 
@@ -180,6 +184,18 @@ class StorageBucket(pulumi.CustomResource):
                  args: Optional[StorageBucketArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An association between a Firebase project and a Google Cloud Storage bucket.
+        This association enables integration of Cloud Storage buckets with Firebase such as Firebase SDKS, Authentication, and Security Rules.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Bucket, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/storage/)
+
         ## Example Usage
 
         ### Firebasestorage Bucket Basic
@@ -202,22 +218,14 @@ class StorageBucket(pulumi.CustomResource):
         Bucket can be imported using any of these accepted formats:
 
         * `projects/{{project}}/buckets/{{bucket_id}}`
-
         * `{{project}}/{{bucket_id}}`
-
         * `{{bucket_id}}`
 
         When using the `pulumi import` command, Bucket can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default projects/{{project}}/buckets/{{bucket_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{project}}/{{bucket_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{bucket_id}}
         ```
 

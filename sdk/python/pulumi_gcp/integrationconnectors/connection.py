@@ -390,7 +390,7 @@ class _ConnectionState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] service_account: Service account needed for runtime plane to access Google Cloud resources.
         :param pulumi.Input[_builtins.str] service_directory: The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address.
                e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
@@ -719,7 +719,7 @@ class _ConnectionState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1114,22 +1114,14 @@ class Connection(pulumi.CustomResource):
         Connection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/connections/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:integrationconnectors/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:integrationconnectors/connection:Connection default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:integrationconnectors/connection:Connection default {{location}}/{{name}}
         ```
 
@@ -1446,22 +1438,14 @@ class Connection(pulumi.CustomResource):
         Connection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/connections/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:integrationconnectors/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:integrationconnectors/connection:Connection default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:integrationconnectors/connection:Connection default {{location}}/{{name}}
         ```
 
@@ -1620,7 +1604,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] service_account: Service account needed for runtime plane to access Google Cloud resources.
         :param pulumi.Input[_builtins.str] service_directory: The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address.
                e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
@@ -1846,7 +1830,7 @@ class Connection(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -6,6 +6,7 @@ package com.pulumi.gcp.vmwareengine.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.outputs.GetClusterAutoscalingSetting;
+import com.pulumi.gcp.vmwareengine.outputs.GetClusterDatastoreMountConfig;
 import com.pulumi.gcp.vmwareengine.outputs.GetClusterNodeTypeConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -16,6 +17,7 @@ import java.util.Objects;
 public final class GetClusterResult {
     private List<GetClusterAutoscalingSetting> autoscalingSettings;
     private String createTime;
+    private List<GetClusterDatastoreMountConfig> datastoreMountConfigs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -35,6 +37,9 @@ public final class GetClusterResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public List<GetClusterDatastoreMountConfig> datastoreMountConfigs() {
+        return this.datastoreMountConfigs;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -76,6 +81,7 @@ public final class GetClusterResult {
     public static final class Builder {
         private List<GetClusterAutoscalingSetting> autoscalingSettings;
         private String createTime;
+        private List<GetClusterDatastoreMountConfig> datastoreMountConfigs;
         private String id;
         private Boolean management;
         private String name;
@@ -89,6 +95,7 @@ public final class GetClusterResult {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalingSettings = defaults.autoscalingSettings;
     	      this.createTime = defaults.createTime;
+    	      this.datastoreMountConfigs = defaults.datastoreMountConfigs;
     	      this.id = defaults.id;
     	      this.management = defaults.management;
     	      this.name = defaults.name;
@@ -117,6 +124,17 @@ public final class GetClusterResult {
             }
             this.createTime = createTime;
             return this;
+        }
+        @CustomType.Setter
+        public Builder datastoreMountConfigs(List<GetClusterDatastoreMountConfig> datastoreMountConfigs) {
+            if (datastoreMountConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "datastoreMountConfigs");
+            }
+            this.datastoreMountConfigs = datastoreMountConfigs;
+            return this;
+        }
+        public Builder datastoreMountConfigs(GetClusterDatastoreMountConfig... datastoreMountConfigs) {
+            return datastoreMountConfigs(List.of(datastoreMountConfigs));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -189,6 +207,7 @@ public final class GetClusterResult {
             final var _resultValue = new GetClusterResult();
             _resultValue.autoscalingSettings = autoscalingSettings;
             _resultValue.createTime = createTime;
+            _resultValue.datastoreMountConfigs = datastoreMountConfigs;
             _resultValue.id = id;
             _resultValue.management = management;
             _resultValue.name = name;

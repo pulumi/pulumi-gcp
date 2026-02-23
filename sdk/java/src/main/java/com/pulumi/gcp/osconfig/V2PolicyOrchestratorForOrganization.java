@@ -112,16 +112,12 @@ import javax.annotation.Nullable;
  * PolicyOrchestratorForOrganization can be imported using any of these accepted formats:
  * 
  * * `organizations/{{organization_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}`
- * 
  * * `{{organization_id}}/{{policy_orchestrator_id}}`
  * 
  * When using the `pulumi import` command, PolicyOrchestratorForOrganization can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization default organizations/{{organization_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization default {{organization_id}}/{{policy_orchestrator_id}}
  * ```
  * 
@@ -346,7 +342,7 @@ public class V2PolicyOrchestratorForOrganization extends com.pulumi.resources.Cu
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -354,7 +350,7 @@ public class V2PolicyOrchestratorForOrganization extends com.pulumi.resources.Cu
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

@@ -72,6 +72,7 @@ type LookupInstanceResult struct {
 	DeletionProtectionEnabled bool                              `pulumi:"deletionProtectionEnabled"`
 	DeletionProtectionReason  string                            `pulumi:"deletionProtectionReason"`
 	Description               string                            `pulumi:"description"`
+	DesiredReplicaState       string                            `pulumi:"desiredReplicaState"`
 	DirectoryServices         []GetInstanceDirectoryService     `pulumi:"directoryServices"`
 	EffectiveLabels           map[string]string                 `pulumi:"effectiveLabels"`
 	EffectiveReplications     []GetInstanceEffectiveReplication `pulumi:"effectiveReplications"`
@@ -151,6 +152,10 @@ func (o LookupInstanceResultOutput) DeletionProtectionReason() pulumi.StringOutp
 
 func (o LookupInstanceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) DesiredReplicaState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DesiredReplicaState }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) DirectoryServices() GetInstanceDirectoryServiceArrayOutput {

@@ -38,22 +38,14 @@ import * as utilities from "../utilities";
  * OdbSubnet can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/odbNetworks/{{odbnetwork}}/odbSubnets/{{odb_subnet_id}}`
- *
  * * `{{project}}/{{location}}/{{odbnetwork}}/{{odb_subnet_id}}`
- *
  * * `{{location}}/{{odbnetwork}}/{{odb_subnet_id}}`
  *
  * When using the `pulumi import` command, OdbSubnet can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default projects/{{project}}/locations/{{location}}/odbNetworks/{{odbnetwork}}/odbSubnets/{{odb_subnet_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default {{project}}/{{location}}/{{odbnetwork}}/{{odb_subnet_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default {{location}}/{{odbnetwork}}/{{odb_subnet_id}}
  * ```
  */
@@ -93,6 +85,9 @@ export class OdbSubnet extends pulumi.CustomResource {
      * The date and time that the OdbNetwork was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -131,7 +126,7 @@ export class OdbSubnet extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -227,6 +222,9 @@ export interface OdbSubnetState {
      * The date and time that the OdbNetwork was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -265,7 +263,7 @@ export interface OdbSubnetState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -294,6 +292,9 @@ export interface OdbSubnetArgs {
      * The CIDR range of the subnet.
      */
     cidrRange: pulumi.Input<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * Labels or tags associated with the resource.

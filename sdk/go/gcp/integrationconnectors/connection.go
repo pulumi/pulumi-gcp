@@ -29,8 +29,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/integrationconnectors"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -73,8 +71,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/integrationconnectors"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -351,22 +347,14 @@ import (
 // Connection can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/connections/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:integrationconnectors/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:integrationconnectors/connection:Connection default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:integrationconnectors/connection:Connection default {{location}}/{{name}}
 // ```
 type Connection struct {
@@ -427,7 +415,7 @@ type Connection struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Service account needed for runtime plane to access Google Cloud resources.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
@@ -545,7 +533,7 @@ type connectionState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Service account needed for runtime plane to access Google Cloud resources.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -623,7 +611,7 @@ type ConnectionState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Service account needed for runtime plane to access Google Cloud resources.
 	ServiceAccount pulumi.StringPtrInput
@@ -954,7 +942,8 @@ func (o ConnectionOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ConnectionOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

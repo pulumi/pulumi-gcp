@@ -219,7 +219,7 @@ class _VolumeQuotaRuleState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The state of the quota rule. Possible Values : [STATE_UNSPECIFIED, CREATING, UPDATING, READY, DELETING, ERROR]
         :param pulumi.Input[_builtins.str] state_details: State details of the quota rule
         :param pulumi.Input[_builtins.str] target: The quota rule applies to the specified user or group.
@@ -367,7 +367,7 @@ class _VolumeQuotaRuleState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -504,22 +504,14 @@ class VolumeQuotaRule(pulumi.CustomResource):
         VolumeQuotaRule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}`
-
         * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
-
         * `{{location}}/{{volume_name}}/{{name}}`
 
         When using the `pulumi import` command, VolumeQuotaRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{project}}/{{location}}/{{volume_name}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{location}}/{{volume_name}}/{{name}}
         ```
 
@@ -597,22 +589,14 @@ class VolumeQuotaRule(pulumi.CustomResource):
         VolumeQuotaRule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}`
-
         * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
-
         * `{{location}}/{{volume_name}}/{{name}}`
 
         When using the `pulumi import` command, VolumeQuotaRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{project}}/{{location}}/{{volume_name}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{location}}/{{volume_name}}/{{name}}
         ```
 
@@ -715,7 +699,7 @@ class VolumeQuotaRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The state of the quota rule. Possible Values : [STATE_UNSPECIFIED, CREATING, UPDATING, READY, DELETING, ERROR]
         :param pulumi.Input[_builtins.str] state_details: State details of the quota rule
         :param pulumi.Input[_builtins.str] target: The quota rule applies to the specified user or group.
@@ -822,7 +806,7 @@ class VolumeQuotaRule(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -45,6 +45,10 @@ class StoragePoolArgs:
                * `hyperdisk-throughput`
         :param pulumi.Input[_builtins.str] capacity_provisioning_type: Provisioning type of the byte capacity of the pool.
                Possible values are: `STANDARD`, `ADVANCED`.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the StoragePool.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the StoragePool will fail.
+               When the field is set to false, deleting the StoragePool is allowed.
         :param pulumi.Input[_builtins.str] description: A description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this storage pool. These can be later modified by the setLabels method.
                
@@ -144,6 +148,12 @@ class StoragePoolArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the StoragePool.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the StoragePool will fail.
+        When the field is set to false, deleting the StoragePool is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -274,6 +284,10 @@ class _StoragePoolState:
         :param pulumi.Input[_builtins.str] capacity_provisioning_type: Provisioning type of the byte capacity of the pool.
                Possible values are: `STANDARD`, `ADVANCED`.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the StoragePool.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the StoragePool will fail.
+               When the field is set to false, deleting the StoragePool is allowed.
         :param pulumi.Input[_builtins.str] description: A description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] kind: Type of the resource.
@@ -301,7 +315,7 @@ class _StoragePoolState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['StoragePoolResourceStatusArgs']]] resource_statuses: Status information for the storage pool resource.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['StoragePoolStatusArgs']]] statuses: Status information for the storage pool resource.
@@ -379,6 +393,12 @@ class _StoragePoolState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the StoragePool.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the StoragePool will fail.
+        When the field is set to false, deleting the StoragePool is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -537,7 +557,7 @@ class _StoragePoolState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -685,28 +705,16 @@ class StoragePool(pulumi.CustomResource):
         StoragePool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/storagePools/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, StoragePool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/storagePool:StoragePool default projects/{{project}}/zones/{{zone}}/storagePools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/storagePool:StoragePool default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/storagePool:StoragePool default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/storagePool:StoragePool default {{name}}
         ```
 
@@ -714,6 +722,10 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] capacity_provisioning_type: Provisioning type of the byte capacity of the pool.
                Possible values are: `STANDARD`, `ADVANCED`.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the StoragePool.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the StoragePool will fail.
+               When the field is set to false, deleting the StoragePool is allowed.
         :param pulumi.Input[_builtins.str] description: A description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this storage pool. These can be later modified by the setLabels method.
                
@@ -815,28 +827,16 @@ class StoragePool(pulumi.CustomResource):
         StoragePool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/storagePools/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, StoragePool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/storagePool:StoragePool default projects/{{project}}/zones/{{zone}}/storagePools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/storagePool:StoragePool default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/storagePool:StoragePool default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/storagePool:StoragePool default {{name}}
         ```
 
@@ -942,6 +942,10 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] capacity_provisioning_type: Provisioning type of the byte capacity of the pool.
                Possible values are: `STANDARD`, `ADVANCED`.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the StoragePool.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the StoragePool will fail.
+               When the field is set to false, deleting the StoragePool is allowed.
         :param pulumi.Input[_builtins.str] description: A description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] kind: Type of the resource.
@@ -969,7 +973,7 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['StoragePoolResourceStatusArgs', 'StoragePoolResourceStatusArgsDict']]]] resource_statuses: Status information for the storage pool resource.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['StoragePoolStatusArgs', 'StoragePoolStatusArgsDict']]]] statuses: Status information for the storage pool resource.
@@ -1025,6 +1029,12 @@ class StoragePool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the StoragePool.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the StoragePool will fail.
+        When the field is set to false, deleting the StoragePool is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -1135,7 +1145,7 @@ class StoragePool(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -673,22 +673,14 @@ import javax.annotation.Nullable;
  * Job can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/jobs/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:cloudrunv2/job:Job default projects/{{project}}/locations/{{location}}/jobs/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:cloudrunv2/job:Job default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:cloudrunv2/job:Job default {{location}}/{{name}}
  * ```
  * 
@@ -825,15 +817,41 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<String> deleteTime() {
         return this.deleteTime;
     }
+    /**
+     * Whether Terraform will be prevented from destroying the job. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the job,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the job will fail.
+     * When the field is set to false, deleting the job is allowed.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the job. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the job,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the job will fail.
+     * When the field is set to false, deleting the job is allowed.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
@@ -1041,7 +1059,7 @@ public class Job extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -1049,7 +1067,7 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

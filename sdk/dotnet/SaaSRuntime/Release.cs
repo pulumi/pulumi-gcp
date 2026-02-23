@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SaaSRuntime
 {
     /// <summary>
+    /// A version to be propagated and deployed to Units. It points to a specific version of a Blueprint that can be applied to Units, for example, via a Rollout.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Saas Runtime Release Basic
@@ -81,22 +86,14 @@ namespace Pulumi.Gcp.SaaSRuntime
     /// Release can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/releases/{{release_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{release_id}}`
-    /// 
     /// * `{{location}}/{{release_id}}`
     /// 
     /// When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:saasruntime/release:Release default projects/{{project}}/locations/{{location}}/releases/{{release_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:saasruntime/release:Release default {{project}}/{{location}}/{{release_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:saasruntime/release:Release default {{location}}/{{release_id}}
     /// ```
     /// </summary>
@@ -114,6 +111,14 @@ namespace Pulumi.Gcp.SaaSRuntime
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
+        /// <summary>
+        /// Blueprints are OCI Images that contain all of the artifacts needed to
+        /// provision a unit. Metadata such as, type of the engine used to actuate the
+        /// blueprint (e.g. terraform, helm etc) and version will come from the image
+        /// manifest. If the hostname is omitted, it will be assumed to be the regional
+        /// path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+        /// Structure is documented below.
+        /// </summary>
         [Output("blueprint")]
         public Output<Outputs.ReleaseBlueprint?> Blueprint { get; private set; } = null!;
 
@@ -123,6 +128,9 @@ namespace Pulumi.Gcp.SaaSRuntime
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -195,7 +203,7 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -306,6 +314,14 @@ namespace Pulumi.Gcp.SaaSRuntime
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// Blueprints are OCI Images that contain all of the artifacts needed to
+        /// provision a unit. Metadata such as, type of the engine used to actuate the
+        /// blueprint (e.g. terraform, helm etc) and version will come from the image
+        /// manifest. If the hostname is omitted, it will be assumed to be the regional
+        /// path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+        /// Structure is documented below.
+        /// </summary>
         [Input("blueprint")]
         public Input<Inputs.ReleaseBlueprintArgs>? Blueprint { get; set; }
 
@@ -395,6 +411,14 @@ namespace Pulumi.Gcp.SaaSRuntime
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// Blueprints are OCI Images that contain all of the artifacts needed to
+        /// provision a unit. Metadata such as, type of the engine used to actuate the
+        /// blueprint (e.g. terraform, helm etc) and version will come from the image
+        /// manifest. If the hostname is omitted, it will be assumed to be the regional
+        /// path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+        /// Structure is documented below.
+        /// </summary>
         [Input("blueprint")]
         public Input<Inputs.ReleaseBlueprintGetArgs>? Blueprint { get; set; }
 
@@ -406,6 +430,10 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
@@ -518,7 +546,7 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

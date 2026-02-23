@@ -444,22 +444,14 @@ import (
 // PipelineJob can be imported using any of these accepted formats:
 //
 // * `{{dataset}}/pipelineJobs/{{name}}`
-//
 // * `{{dataset}}/pipelineJobs?pipelineJobId={{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, PipelineJob can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{dataset}}/pipelineJobs/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{dataset}}/pipelineJobs?pipelineJobId={{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{name}}
 // ```
 type PipelineJob struct {
@@ -496,7 +488,7 @@ type PipelineJob struct {
 	// Specifies the name of the pipeline job. This field is user-assigned.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Specifies reconciliation configuration.
 	// Structure is documented below.
@@ -577,7 +569,7 @@ type pipelineJobState struct {
 	// Specifies the name of the pipeline job. This field is user-assigned.
 	Name *string `pulumi:"name"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Specifies reconciliation configuration.
 	// Structure is documented below.
@@ -618,7 +610,7 @@ type PipelineJobState struct {
 	// Specifies the name of the pipeline job. This field is user-assigned.
 	Name pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Specifies reconciliation configuration.
 	// Structure is documented below.
@@ -842,7 +834,8 @@ func (o PipelineJobOutput) Name() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o PipelineJobOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PipelineJob) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

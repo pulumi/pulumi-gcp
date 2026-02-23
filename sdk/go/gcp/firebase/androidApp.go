@@ -12,6 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Google Cloud Firebase Android application instance
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about AndroidApp, see:
+//
+// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps)
+// * How-to Guides
+//   - [Official Documentation](https://firebase.google.com/docs/android/setup)
+//
 // ## Example Usage
 //
 // ### Firebase Android App Basic
@@ -106,34 +117,18 @@ import (
 // AndroidApp can be imported using any of these accepted formats:
 //
 // * `{{project}} projects/{{project}}/androidApps/{{app_id}}`
-//
 // * `projects/{{project}}/androidApps/{{app_id}}`
-//
 // * `{{project}}/{{project}}/{{app_id}}`
-//
 // * `androidApps/{{app_id}}`
-//
 // * `{{app_id}}`
 //
 // When using the `pulumi import` command, AndroidApp can be imported using one of the formats above. For example:
 //
 // ```sh
-// $ pulumi import gcp:firebase/androidApp:AndroidApp default "{{project}} projects/{{project}}/androidApps/{{app_id}}"
-// ```
-//
-// ```sh
+// $ terraform import google_firebase_android_app.default "{{project}} projects/{{project}}/androidApps/{{app_id}}"
 // $ pulumi import gcp:firebase/androidApp:AndroidApp default projects/{{project}}/androidApps/{{app_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}}/{{project}}/{{app_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/androidApp:AndroidApp default androidApps/{{app_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/androidApp:AndroidApp default {{app_id}}
 // ```
 type AndroidApp struct {
@@ -145,7 +140,10 @@ type AndroidApp struct {
 	ApiKeyId pulumi.StringOutput `pulumi:"apiKeyId"`
 	// The globally unique, Firebase-assigned identifier of the AndroidApp.
 	// This identifier should be treated as an opaque token, as the data format is not specified.
-	AppId          pulumi.StringOutput    `pulumi:"appId"`
+	AppId pulumi.StringOutput `pulumi:"appId"`
+	// (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+	// rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+	// serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the AndroidApp.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -209,7 +207,10 @@ type androidAppState struct {
 	ApiKeyId *string `pulumi:"apiKeyId"`
 	// The globally unique, Firebase-assigned identifier of the AndroidApp.
 	// This identifier should be treated as an opaque token, as the data format is not specified.
-	AppId          *string `pulumi:"appId"`
+	AppId *string `pulumi:"appId"`
+	// (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+	// rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+	// serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the AndroidApp.
 	DisplayName *string `pulumi:"displayName"`
@@ -238,7 +239,10 @@ type AndroidAppState struct {
 	ApiKeyId pulumi.StringPtrInput
 	// The globally unique, Firebase-assigned identifier of the AndroidApp.
 	// This identifier should be treated as an opaque token, as the data format is not specified.
-	AppId          pulumi.StringPtrInput
+	AppId pulumi.StringPtrInput
+	// (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+	// rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+	// serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the AndroidApp.
 	DisplayName pulumi.StringPtrInput
@@ -268,7 +272,10 @@ type androidAppArgs struct {
 	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
 	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
 	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
-	ApiKeyId       *string `pulumi:"apiKeyId"`
+	ApiKeyId *string `pulumi:"apiKeyId"`
+	// (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+	// rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+	// serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the AndroidApp.
 	DisplayName string `pulumi:"displayName"`
@@ -289,7 +296,10 @@ type AndroidAppArgs struct {
 	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
 	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
 	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
-	ApiKeyId       pulumi.StringPtrInput
+	ApiKeyId pulumi.StringPtrInput
+	// (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+	// rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+	// serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the AndroidApp.
 	DisplayName pulumi.StringInput
@@ -405,6 +415,9 @@ func (o AndroidAppOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }
 
+// (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+// rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+// serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
 func (o AndroidAppOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }

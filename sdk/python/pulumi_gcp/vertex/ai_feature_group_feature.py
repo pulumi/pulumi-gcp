@@ -167,7 +167,7 @@ class _AiFeatureGroupFeatureState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region for the resource. It should be the same as the feature group's region.
         :param pulumi.Input[_builtins.str] update_time: The timestamp of when the FeatureGroup was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] version_column_name: The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use featureId.
@@ -287,7 +287,7 @@ class _AiFeatureGroupFeatureState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -423,28 +423,16 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
         FeatureGroupFeature can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}`
-
         * `{{project}}/{{region}}/{{feature_group}}/{{name}}`
-
         * `{{region}}/{{feature_group}}/{{name}}`
-
         * `{{feature_group}}/{{name}}`
 
         When using the `pulumi import` command, FeatureGroupFeature can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{project}}/{{region}}/{{feature_group}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{region}}/{{feature_group}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{feature_group}}/{{name}}
         ```
 
@@ -544,28 +532,16 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
         FeatureGroupFeature can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}`
-
         * `{{project}}/{{region}}/{{feature_group}}/{{name}}`
-
         * `{{region}}/{{feature_group}}/{{name}}`
-
         * `{{feature_group}}/{{name}}`
 
         When using the `pulumi import` command, FeatureGroupFeature can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{project}}/{{region}}/{{feature_group}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{region}}/{{feature_group}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{feature_group}}/{{name}}
         ```
 
@@ -656,7 +632,7 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region for the resource. It should be the same as the feature group's region.
         :param pulumi.Input[_builtins.str] update_time: The timestamp of when the FeatureGroup was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] version_column_name: The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use featureId.
@@ -742,7 +718,7 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

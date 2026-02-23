@@ -17,14 +17,28 @@ public final class UserWorkloadsSecretState extends com.pulumi.resources.Resourc
     public static final UserWorkloadsSecretState Empty = new UserWorkloadsSecretState();
 
     /**
-     * A map of the secret data.
+     * The &#34;data&#34; field of Kubernetes Secret, organized in key-value pairs,
+     * which can contain sensitive values such as a password, a token, or a key.
+     * Content of this field will not be displayed in CLI output,
+     * but it will be stored in terraform state file. To protect sensitive data,
+     * follow the best practices outlined in the HashiCorp documentation:
+     * https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+     * The values for all keys have to be base64-encoded strings.
+     * For details see: https://kubernetes.io/docs/concepts/configuration/secret/
      * 
      */
     @Import(name="data")
     private @Nullable Output<Map<String,String>> data;
 
     /**
-     * @return A map of the secret data.
+     * @return The &#34;data&#34; field of Kubernetes Secret, organized in key-value pairs,
+     * which can contain sensitive values such as a password, a token, or a key.
+     * Content of this field will not be displayed in CLI output,
+     * but it will be stored in terraform state file. To protect sensitive data,
+     * follow the best practices outlined in the HashiCorp documentation:
+     * https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+     * The values for all keys have to be base64-encoded strings.
+     * For details see: https://kubernetes.io/docs/concepts/configuration/secret/
      * 
      */
     public Optional<Output<Map<String,String>>> data() {
@@ -122,7 +136,14 @@ public final class UserWorkloadsSecretState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param data A map of the secret data.
+         * @param data The &#34;data&#34; field of Kubernetes Secret, organized in key-value pairs,
+         * which can contain sensitive values such as a password, a token, or a key.
+         * Content of this field will not be displayed in CLI output,
+         * but it will be stored in terraform state file. To protect sensitive data,
+         * follow the best practices outlined in the HashiCorp documentation:
+         * https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+         * The values for all keys have to be base64-encoded strings.
+         * For details see: https://kubernetes.io/docs/concepts/configuration/secret/
          * 
          * @return builder
          * 
@@ -133,7 +154,14 @@ public final class UserWorkloadsSecretState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param data A map of the secret data.
+         * @param data The &#34;data&#34; field of Kubernetes Secret, organized in key-value pairs,
+         * which can contain sensitive values such as a password, a token, or a key.
+         * Content of this field will not be displayed in CLI output,
+         * but it will be stored in terraform state file. To protect sensitive data,
+         * follow the best practices outlined in the HashiCorp documentation:
+         * https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+         * The values for all keys have to be base64-encoded strings.
+         * For details see: https://kubernetes.io/docs/concepts/configuration/secret/
          * 
          * @return builder
          * 

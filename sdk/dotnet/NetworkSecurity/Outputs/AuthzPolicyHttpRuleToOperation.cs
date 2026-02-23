@@ -25,6 +25,11 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AuthzPolicyHttpRuleToOperationHost> Hosts;
         /// <summary>
+        /// Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AuthzPolicyHttpRuleToOperationMcp? Mcp;
+        /// <summary>
         /// A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
         /// </summary>
         public readonly ImmutableArray<string> Methods;
@@ -42,12 +47,15 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
 
             ImmutableArray<Outputs.AuthzPolicyHttpRuleToOperationHost> hosts,
 
+            Outputs.AuthzPolicyHttpRuleToOperationMcp? mcp,
+
             ImmutableArray<string> methods,
 
             ImmutableArray<Outputs.AuthzPolicyHttpRuleToOperationPath> paths)
         {
             HeaderSet = headerSet;
             Hosts = hosts;
+            Mcp = mcp;
             Methods = methods;
             Paths = paths;
         }

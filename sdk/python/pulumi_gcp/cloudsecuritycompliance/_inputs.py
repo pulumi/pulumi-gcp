@@ -137,58 +137,53 @@ __all__ = [
     'FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class CloudControlParameterSpecArgsDict(TypedDict):
-        is_required: pulumi.Input[_builtins.bool]
-        """
-        if the parameter is required
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the parameter.
-        """
-        value_type: pulumi.Input[_builtins.str]
-        """
-        Parameter value type.
-        Possible values:
-        STRING
-        BOOLEAN
-        STRINGLIST
-        NUMBER
-        ONEOF
-        """
-        default_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueArgsDict']]
-        """
-        Possible parameter value types.
-        Structure is documented below.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the parameter. The maximum length is 2000 characters.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the parameter. The maximum length is 200 characters.
-        """
-        sub_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterArgsDict']]]]
-        """
-        The parameter spec of the cloud control.
-        Structure is documented below.
-        """
-        substitution_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubstitutionRuleArgsDict']]]]
-        """
-        List of parameter substitutions.
-        Structure is documented below.
-        """
-        validation: NotRequired[pulumi.Input['CloudControlParameterSpecValidationArgsDict']]
-        """
-        Validation of the parameter.
-        Structure is documented below.
-        """
-elif False:
-    CloudControlParameterSpecArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecArgsDict(TypedDict):
+    is_required: pulumi.Input[_builtins.bool]
+    """
+    if the parameter is required
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the parameter.
+    """
+    value_type: pulumi.Input[_builtins.str]
+    """
+    Parameter value type.
+    Possible values:
+    STRING
+    BOOLEAN
+    STRINGLIST
+    NUMBER
+    ONEOF
+    """
+    default_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueArgsDict']]
+    """
+    Possible parameter value types.
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the parameter. The maximum length is 2000 characters.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the parameter. The maximum length is 200 characters.
+    """
+    sub_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterArgsDict']]]]
+    """
+    The parameter spec of the cloud control.
+    Structure is documented below.
+    """
+    substitution_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubstitutionRuleArgsDict']]]]
+    """
+    List of parameter substitutions.
+    Structure is documented below.
+    """
+    validation: NotRequired[pulumi.Input['CloudControlParameterSpecValidationArgsDict']]
+    """
+    Validation of the parameter.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecArgs:
@@ -358,32 +353,29 @@ class CloudControlParameterSpecArgs:
         pulumi.set(self, "validation", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecDefaultValueArgsDict(TypedDict):
-        bool_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Represents a boolean value.
-        """
-        number_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Represents a double value.
-        """
-        oneof_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueArgsDict']]
-        """
-        Sub-parameter values.
-        Structure is documented below.
-        """
-        string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueStringListValueArgsDict']]
-        """
-        A list of strings.
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a string value.
-        """
-elif False:
-    CloudControlParameterSpecDefaultValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecDefaultValueArgsDict(TypedDict):
+    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Represents a boolean value.
+    """
+    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Represents a double value.
+    """
+    oneof_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueArgsDict']]
+    """
+    Sub-parameter values.
+    Structure is documented below.
+    """
+    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueStringListValueArgsDict']]
+    """
+    A list of strings.
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a string value.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecDefaultValueArgs:
@@ -476,19 +468,16 @@ class CloudControlParameterSpecDefaultValueArgs:
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecDefaultValueOneofValueArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the parameter.
-        """
-        parameter_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueArgsDict']]
-        """
-        The value of the parameter.
-        Structure is documented below.
-        """
-elif False:
-    CloudControlParameterSpecDefaultValueOneofValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecDefaultValueOneofValueArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the parameter.
+    """
+    parameter_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueArgsDict']]
+    """
+    The value of the parameter.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecDefaultValueOneofValueArgs:
@@ -531,27 +520,24 @@ class CloudControlParameterSpecDefaultValueOneofValueArgs:
         pulumi.set(self, "parameter_value", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecDefaultValueOneofValueParameterValueArgsDict(TypedDict):
-        bool_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Represents a boolean value.
-        """
-        number_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Represents a double value.
-        """
-        string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgsDict']]
-        """
-        A list of strings.
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a string value.
-        """
-elif False:
-    CloudControlParameterSpecDefaultValueOneofValueParameterValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecDefaultValueOneofValueParameterValueArgsDict(TypedDict):
+    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Represents a boolean value.
+    """
+    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Represents a double value.
+    """
+    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgsDict']]
+    """
+    A list of strings.
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a string value.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs:
@@ -626,14 +612,11 @@ class CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs:
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The strings in the list.
-        """
-elif False:
-    CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The strings in the list.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs:
@@ -657,14 +640,11 @@ class CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListVal
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecDefaultValueStringListValueArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The strings in the list.
-        """
-elif False:
-    CloudControlParameterSpecDefaultValueStringListValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecDefaultValueStringListValueArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The strings in the list.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecDefaultValueStringListValueArgs:
@@ -688,51 +668,48 @@ class CloudControlParameterSpecDefaultValueStringListValueArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterArgsDict(TypedDict):
-        is_required: pulumi.Input[_builtins.bool]
-        """
-        if the parameter is required
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the parameter.
-        """
-        value_type: pulumi.Input[_builtins.str]
-        """
-        Parameter value type.
-        Possible values:
-        STRING
-        BOOLEAN
-        STRINGLIST
-        NUMBER
-        ONEOF
-        """
-        default_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueArgsDict']]
-        """
-        Possible parameter value types.
-        Structure is documented below.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the parameter. The maximum length is 2000 characters.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the parameter. The maximum length is 200 characters.
-        """
-        substitution_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleArgsDict']]]]
-        """
-        List of parameter substitutions.
-        Structure is documented below.
-        """
-        validation: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationArgsDict']]
-        """
-        Validation of the parameter.
-        Structure is documented below.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterArgsDict(TypedDict):
+    is_required: pulumi.Input[_builtins.bool]
+    """
+    if the parameter is required
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the parameter.
+    """
+    value_type: pulumi.Input[_builtins.str]
+    """
+    Parameter value type.
+    Possible values:
+    STRING
+    BOOLEAN
+    STRINGLIST
+    NUMBER
+    ONEOF
+    """
+    default_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueArgsDict']]
+    """
+    Possible parameter value types.
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the parameter. The maximum length is 2000 characters.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the parameter. The maximum length is 200 characters.
+    """
+    substitution_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleArgsDict']]]]
+    """
+    List of parameter substitutions.
+    Structure is documented below.
+    """
+    validation: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationArgsDict']]
+    """
+    Validation of the parameter.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterArgs:
@@ -884,32 +861,29 @@ class CloudControlParameterSpecSubParameterArgs:
         pulumi.set(self, "validation", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterDefaultValueArgsDict(TypedDict):
-        bool_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Represents a boolean value.
-        """
-        number_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Represents a double value.
-        """
-        oneof_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueArgsDict']]
-        """
-        Sub-parameter values.
-        Structure is documented below.
-        """
-        string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueStringListValueArgsDict']]
-        """
-        A list of strings.
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a string value.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterDefaultValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterDefaultValueArgsDict(TypedDict):
+    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Represents a boolean value.
+    """
+    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Represents a double value.
+    """
+    oneof_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueArgsDict']]
+    """
+    Sub-parameter values.
+    Structure is documented below.
+    """
+    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueStringListValueArgsDict']]
+    """
+    A list of strings.
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a string value.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterDefaultValueArgs:
@@ -1002,19 +976,16 @@ class CloudControlParameterSpecSubParameterDefaultValueArgs:
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterDefaultValueOneofValueArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the parameter.
-        """
-        parameter_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgsDict']]
-        """
-        The value of the parameter.
-        Structure is documented below.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterDefaultValueOneofValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterDefaultValueOneofValueArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the parameter.
+    """
+    parameter_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgsDict']]
+    """
+    The value of the parameter.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs:
@@ -1057,27 +1028,24 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs:
         pulumi.set(self, "parameter_value", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgsDict(TypedDict):
-        bool_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Represents a boolean value.
-        """
-        number_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Represents a double value.
-        """
-        string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgsDict']]
-        """
-        A list of strings.
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a string value.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgsDict(TypedDict):
+    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Represents a boolean value.
+    """
+    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Represents a double value.
+    """
+    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgsDict']]
+    """
+    A list of strings.
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a string value.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs:
@@ -1152,14 +1120,11 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueA
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The strings in the list.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The strings in the list.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs:
@@ -1183,14 +1148,11 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueS
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterDefaultValueStringListValueArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The strings in the list.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterDefaultValueStringListValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterDefaultValueStringListValueArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The strings in the list.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs:
@@ -1214,20 +1176,17 @@ class CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterSubstitutionRuleArgsDict(TypedDict):
-        attribute_substitution_rule: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgsDict']]
-        """
-        Attribute at the given path is substituted entirely.
-        Structure is documented below.
-        """
-        placeholder_substitution_rule: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgsDict']]
-        """
-        Placeholder is substituted in the rendered string.
-        Structure is documented below.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterSubstitutionRuleArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterSubstitutionRuleArgsDict(TypedDict):
+    attribute_substitution_rule: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgsDict']]
+    """
+    Attribute at the given path is substituted entirely.
+    Structure is documented below.
+    """
+    placeholder_substitution_rule: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgsDict']]
+    """
+    Placeholder is substituted in the rendered string.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterSubstitutionRuleArgs:
@@ -1272,15 +1231,12 @@ class CloudControlParameterSpecSubParameterSubstitutionRuleArgs:
         pulumi.set(self, "placeholder_substitution_rule", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgsDict(TypedDict):
-        attribute: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fully qualified proto attribute path (in dot notation).
-        Example: rules[0].cel_expression.resource_types_values
-        """
-elif False:
-    CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgsDict(TypedDict):
+    attribute: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fully qualified proto attribute path (in dot notation).
+    Example: rules[0].cel_expression.resource_types_values
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs:
@@ -1307,14 +1263,11 @@ class CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitution
         pulumi.set(self, "attribute", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgsDict(TypedDict):
-        attribute: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fully qualified proto attribute path (e.g., dot notation)
-        """
-elif False:
-    CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgsDict(TypedDict):
+    attribute: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fully qualified proto attribute path (e.g., dot notation)
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs:
@@ -1339,25 +1292,22 @@ class CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstituti
         pulumi.set(self, "attribute", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterValidationArgsDict(TypedDict):
-        allowed_values: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesArgsDict']]
-        """
-        Allowed set of values for the parameter.
-        Structure is documented below.
-        """
-        int_range: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationIntRangeArgsDict']]
-        """
-        Number range for number parameters.
-        Structure is documented below.
-        """
-        regexp_pattern: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationRegexpPatternArgsDict']]
-        """
-        Regular Expression Validator for parameter values.
-        Structure is documented below.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterValidationArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterValidationArgsDict(TypedDict):
+    allowed_values: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesArgsDict']]
+    """
+    Allowed set of values for the parameter.
+    Structure is documented below.
+    """
+    int_range: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationIntRangeArgsDict']]
+    """
+    Number range for number parameters.
+    Structure is documented below.
+    """
+    regexp_pattern: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationRegexpPatternArgsDict']]
+    """
+    Regular Expression Validator for parameter values.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterValidationArgs:
@@ -1420,15 +1370,12 @@ class CloudControlParameterSpecSubParameterValidationArgs:
         pulumi.set(self, "regexp_pattern", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterValidationAllowedValuesArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgsDict']]]
-        """
-        List of allowed values for the parameter.
-        Structure is documented below.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterValidationAllowedValuesArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterValidationAllowedValuesArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgsDict']]]
+    """
+    List of allowed values for the parameter.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterValidationAllowedValuesArgs:
@@ -1454,32 +1401,29 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgsDict(TypedDict):
-        bool_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Represents a boolean value.
-        """
-        number_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Represents a double value.
-        """
-        oneof_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgsDict']]
-        """
-        Sub-parameter values.
-        Structure is documented below.
-        """
-        string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgsDict']]
-        """
-        A list of strings.
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a string value.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgsDict(TypedDict):
+    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Represents a boolean value.
+    """
+    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Represents a double value.
+    """
+    oneof_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgsDict']]
+    """
+    Sub-parameter values.
+    Structure is documented below.
+    """
+    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgsDict']]
+    """
+    A list of strings.
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a string value.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgs:
@@ -1572,19 +1516,16 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgs:
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the parameter.
-        """
-        parameter_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgsDict']]
-        """
-        The value of the parameter.
-        Structure is documented below.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the parameter.
+    """
+    parameter_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgsDict']]
+    """
+    The value of the parameter.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs:
@@ -1627,27 +1568,24 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
         pulumi.set(self, "parameter_value", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgsDict(TypedDict):
-        bool_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Represents a boolean value.
-        """
-        number_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Represents a double value.
-        """
-        string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict']]
-        """
-        A list of strings.
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a string value.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgsDict(TypedDict):
+    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Represents a boolean value.
+    """
+    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Represents a double value.
+    """
+    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict']]
+    """
+    A list of strings.
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a string value.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs:
@@ -1722,14 +1660,11 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The strings in the list.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The strings in the list.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs:
@@ -1753,14 +1688,11 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The strings in the list.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The strings in the list.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs:
@@ -1784,18 +1716,15 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringLis
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterValidationIntRangeArgsDict(TypedDict):
-        max: pulumi.Input[_builtins.str]
-        """
-        Maximum allowed value for the numeric parameter (inclusive).
-        """
-        min: pulumi.Input[_builtins.str]
-        """
-        Minimum allowed value for the numeric parameter (inclusive).
-        """
-elif False:
-    CloudControlParameterSpecSubParameterValidationIntRangeArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterValidationIntRangeArgsDict(TypedDict):
+    max: pulumi.Input[_builtins.str]
+    """
+    Maximum allowed value for the numeric parameter (inclusive).
+    """
+    min: pulumi.Input[_builtins.str]
+    """
+    Minimum allowed value for the numeric parameter (inclusive).
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterValidationIntRangeArgs:
@@ -1834,14 +1763,11 @@ class CloudControlParameterSpecSubParameterValidationIntRangeArgs:
         pulumi.set(self, "min", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubParameterValidationRegexpPatternArgsDict(TypedDict):
-        pattern: pulumi.Input[_builtins.str]
-        """
-        Regex Pattern to match the value(s) of parameter.
-        """
-elif False:
-    CloudControlParameterSpecSubParameterValidationRegexpPatternArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubParameterValidationRegexpPatternArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    Regex Pattern to match the value(s) of parameter.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterValidationRegexpPatternArgs:
@@ -1865,20 +1791,17 @@ class CloudControlParameterSpecSubParameterValidationRegexpPatternArgs:
         pulumi.set(self, "pattern", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubstitutionRuleArgsDict(TypedDict):
-        attribute_substitution_rule: NotRequired[pulumi.Input['CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgsDict']]
-        """
-        Attribute at the given path is substituted entirely.
-        Structure is documented below.
-        """
-        placeholder_substitution_rule: NotRequired[pulumi.Input['CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgsDict']]
-        """
-        Placeholder is substituted in the rendered string.
-        Structure is documented below.
-        """
-elif False:
-    CloudControlParameterSpecSubstitutionRuleArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubstitutionRuleArgsDict(TypedDict):
+    attribute_substitution_rule: NotRequired[pulumi.Input['CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgsDict']]
+    """
+    Attribute at the given path is substituted entirely.
+    Structure is documented below.
+    """
+    placeholder_substitution_rule: NotRequired[pulumi.Input['CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgsDict']]
+    """
+    Placeholder is substituted in the rendered string.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubstitutionRuleArgs:
@@ -1923,15 +1846,12 @@ class CloudControlParameterSpecSubstitutionRuleArgs:
         pulumi.set(self, "placeholder_substitution_rule", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgsDict(TypedDict):
-        attribute: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fully qualified proto attribute path (in dot notation).
-        Example: rules[0].cel_expression.resource_types_values
-        """
-elif False:
-    CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgsDict(TypedDict):
+    attribute: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fully qualified proto attribute path (in dot notation).
+    Example: rules[0].cel_expression.resource_types_values
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs:
@@ -1958,14 +1878,11 @@ class CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs:
         pulumi.set(self, "attribute", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgsDict(TypedDict):
-        attribute: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fully qualified proto attribute path (e.g., dot notation)
-        """
-elif False:
-    CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgsDict(TypedDict):
+    attribute: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fully qualified proto attribute path (e.g., dot notation)
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs:
@@ -1990,25 +1907,22 @@ class CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs:
         pulumi.set(self, "attribute", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecValidationArgsDict(TypedDict):
-        allowed_values: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesArgsDict']]
-        """
-        Allowed set of values for the parameter.
-        Structure is documented below.
-        """
-        int_range: NotRequired[pulumi.Input['CloudControlParameterSpecValidationIntRangeArgsDict']]
-        """
-        Number range for number parameters.
-        Structure is documented below.
-        """
-        regexp_pattern: NotRequired[pulumi.Input['CloudControlParameterSpecValidationRegexpPatternArgsDict']]
-        """
-        Regular Expression Validator for parameter values.
-        Structure is documented below.
-        """
-elif False:
-    CloudControlParameterSpecValidationArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecValidationArgsDict(TypedDict):
+    allowed_values: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesArgsDict']]
+    """
+    Allowed set of values for the parameter.
+    Structure is documented below.
+    """
+    int_range: NotRequired[pulumi.Input['CloudControlParameterSpecValidationIntRangeArgsDict']]
+    """
+    Number range for number parameters.
+    Structure is documented below.
+    """
+    regexp_pattern: NotRequired[pulumi.Input['CloudControlParameterSpecValidationRegexpPatternArgsDict']]
+    """
+    Regular Expression Validator for parameter values.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecValidationArgs:
@@ -2071,15 +1985,12 @@ class CloudControlParameterSpecValidationArgs:
         pulumi.set(self, "regexp_pattern", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecValidationAllowedValuesArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueArgsDict']]]
-        """
-        List of allowed values for the parameter.
-        Structure is documented below.
-        """
-elif False:
-    CloudControlParameterSpecValidationAllowedValuesArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecValidationAllowedValuesArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueArgsDict']]]
+    """
+    List of allowed values for the parameter.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecValidationAllowedValuesArgs:
@@ -2105,32 +2016,29 @@ class CloudControlParameterSpecValidationAllowedValuesArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecValidationAllowedValuesValueArgsDict(TypedDict):
-        bool_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Represents a boolean value.
-        """
-        number_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Represents a double value.
-        """
-        oneof_value: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgsDict']]
-        """
-        Sub-parameter values.
-        Structure is documented below.
-        """
-        string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgsDict']]
-        """
-        A list of strings.
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a string value.
-        """
-elif False:
-    CloudControlParameterSpecValidationAllowedValuesValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecValidationAllowedValuesValueArgsDict(TypedDict):
+    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Represents a boolean value.
+    """
+    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Represents a double value.
+    """
+    oneof_value: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgsDict']]
+    """
+    Sub-parameter values.
+    Structure is documented below.
+    """
+    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgsDict']]
+    """
+    A list of strings.
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a string value.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecValidationAllowedValuesValueArgs:
@@ -2223,19 +2131,16 @@ class CloudControlParameterSpecValidationAllowedValuesValueArgs:
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the parameter.
-        """
-        parameter_value: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgsDict']]
-        """
-        The value of the parameter.
-        Structure is documented below.
-        """
-elif False:
-    CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the parameter.
+    """
+    parameter_value: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgsDict']]
+    """
+    The value of the parameter.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs:
@@ -2278,27 +2183,24 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs:
         pulumi.set(self, "parameter_value", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgsDict(TypedDict):
-        bool_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Represents a boolean value.
-        """
-        number_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Represents a double value.
-        """
-        string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict']]
-        """
-        A list of strings.
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a string value.
-        """
-elif False:
-    CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgsDict(TypedDict):
+    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Represents a boolean value.
+    """
+    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Represents a double value.
+    """
+    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict']]
+    """
+    A list of strings.
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a string value.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs:
@@ -2373,14 +2275,11 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The strings in the list.
-        """
-elif False:
-    CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The strings in the list.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs:
@@ -2404,14 +2303,11 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The strings in the list.
-        """
-elif False:
-    CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The strings in the list.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs:
@@ -2435,18 +2331,15 @@ class CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecValidationIntRangeArgsDict(TypedDict):
-        max: pulumi.Input[_builtins.str]
-        """
-        Maximum allowed value for the numeric parameter (inclusive).
-        """
-        min: pulumi.Input[_builtins.str]
-        """
-        Minimum allowed value for the numeric parameter (inclusive).
-        """
-elif False:
-    CloudControlParameterSpecValidationIntRangeArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecValidationIntRangeArgsDict(TypedDict):
+    max: pulumi.Input[_builtins.str]
+    """
+    Maximum allowed value for the numeric parameter (inclusive).
+    """
+    min: pulumi.Input[_builtins.str]
+    """
+    Minimum allowed value for the numeric parameter (inclusive).
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecValidationIntRangeArgs:
@@ -2485,14 +2378,11 @@ class CloudControlParameterSpecValidationIntRangeArgs:
         pulumi.set(self, "min", value)
 
 
-if not MYPY:
-    class CloudControlParameterSpecValidationRegexpPatternArgsDict(TypedDict):
-        pattern: pulumi.Input[_builtins.str]
-        """
-        Regex Pattern to match the value(s) of parameter.
-        """
-elif False:
-    CloudControlParameterSpecValidationRegexpPatternArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlParameterSpecValidationRegexpPatternArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    Regex Pattern to match the value(s) of parameter.
+    """
 
 @pulumi.input_type
 class CloudControlParameterSpecValidationRegexpPatternArgs:
@@ -2516,24 +2406,21 @@ class CloudControlParameterSpecValidationRegexpPatternArgs:
         pulumi.set(self, "pattern", value)
 
 
-if not MYPY:
-    class CloudControlRuleArgsDict(TypedDict):
-        rule_action_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The functionality enabled by the Rule.
-        """
-        cel_expression: NotRequired[pulumi.Input['CloudControlRuleCelExpressionArgsDict']]
-        """
-        A [CEL
-        expression](https://cloud.google.com/certificate-authority-service/docs/using-cel).
-        Structure is documented below.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the Rule. The maximum length is 2000 characters.
-        """
-elif False:
-    CloudControlRuleArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlRuleArgsDict(TypedDict):
+    rule_action_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The functionality enabled by the Rule.
+    """
+    cel_expression: NotRequired[pulumi.Input['CloudControlRuleCelExpressionArgsDict']]
+    """
+    A [CEL
+    expression](https://cloud.google.com/certificate-authority-service/docs/using-cel).
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the Rule. The maximum length is 2000 characters.
+    """
 
 @pulumi.input_type
 class CloudControlRuleArgs:
@@ -2593,20 +2480,17 @@ class CloudControlRuleArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class CloudControlRuleCelExpressionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Logic expression in CEL language.
-        The max length of the condition is 1000 characters.
-        """
-        resource_types_values: NotRequired[pulumi.Input['CloudControlRuleCelExpressionResourceTypesValuesArgsDict']]
-        """
-        A list of strings.
-        Structure is documented below.
-        """
-elif False:
-    CloudControlRuleCelExpressionArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlRuleCelExpressionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Logic expression in CEL language.
+    The max length of the condition is 1000 characters.
+    """
+    resource_types_values: NotRequired[pulumi.Input['CloudControlRuleCelExpressionResourceTypesValuesArgsDict']]
+    """
+    A list of strings.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CloudControlRuleCelExpressionArgs:
@@ -2650,14 +2534,11 @@ class CloudControlRuleCelExpressionArgs:
         pulumi.set(self, "resource_types_values", value)
 
 
-if not MYPY:
-    class CloudControlRuleCelExpressionResourceTypesValuesArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The strings in the list.
-        """
-elif False:
-    CloudControlRuleCelExpressionResourceTypesValuesArgsDict: TypeAlias = Mapping[str, Any]
+class CloudControlRuleCelExpressionResourceTypesValuesArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The strings in the list.
+    """
 
 @pulumi.input_type
 class CloudControlRuleCelExpressionResourceTypesValuesArgs:
@@ -2681,26 +2562,23 @@ class CloudControlRuleCelExpressionResourceTypesValuesArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class FrameworkCloudControlDetailArgsDict(TypedDict):
-        major_revision_id: pulumi.Input[_builtins.str]
-        """
-        Major revision of cloudcontrol
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the CloudControl in the format:
-        “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
-        """
-        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailParameterArgsDict']]]]
-        """
-        Parameters is a key-value pair that is required by the CloudControl. The
-        specification of these parameters will be present in cloudcontrol.Eg: {
-        "name": "location","value": "us-west-1"}.
-        Structure is documented below.
-        """
-elif False:
-    FrameworkCloudControlDetailArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkCloudControlDetailArgsDict(TypedDict):
+    major_revision_id: pulumi.Input[_builtins.str]
+    """
+    Major revision of cloudcontrol
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the CloudControl in the format:
+    “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
+    """
+    parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailParameterArgsDict']]]]
+    """
+    Parameters is a key-value pair that is required by the CloudControl. The
+    specification of these parameters will be present in cloudcontrol.Eg: {
+    "name": "location","value": "us-west-1"}.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class FrameworkCloudControlDetailArgs:
@@ -2763,19 +2641,16 @@ class FrameworkCloudControlDetailArgs:
         pulumi.set(self, "parameters", value)
 
 
-if not MYPY:
-    class FrameworkCloudControlDetailParameterArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the parameter.
-        """
-        parameter_value: pulumi.Input['FrameworkCloudControlDetailParameterParameterValueArgsDict']
-        """
-        Possible parameter value types.
-        Structure is documented below.
-        """
-elif False:
-    FrameworkCloudControlDetailParameterArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkCloudControlDetailParameterArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the parameter.
+    """
+    parameter_value: pulumi.Input['FrameworkCloudControlDetailParameterParameterValueArgsDict']
+    """
+    Possible parameter value types.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class FrameworkCloudControlDetailParameterArgs:
@@ -2816,32 +2691,29 @@ class FrameworkCloudControlDetailParameterArgs:
         pulumi.set(self, "parameter_value", value)
 
 
-if not MYPY:
-    class FrameworkCloudControlDetailParameterParameterValueArgsDict(TypedDict):
-        bool_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Represents a boolean value.
-        """
-        number_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Represents a double value.
-        """
-        oneof_value: NotRequired[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueArgsDict']]
-        """
-        Sub-parameter values.
-        Structure is documented below.
-        """
-        string_list_value: NotRequired[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueStringListValueArgsDict']]
-        """
-        A list of strings.
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a string value.
-        """
-elif False:
-    FrameworkCloudControlDetailParameterParameterValueArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkCloudControlDetailParameterParameterValueArgsDict(TypedDict):
+    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Represents a boolean value.
+    """
+    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Represents a double value.
+    """
+    oneof_value: NotRequired[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueArgsDict']]
+    """
+    Sub-parameter values.
+    Structure is documented below.
+    """
+    string_list_value: NotRequired[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueStringListValueArgsDict']]
+    """
+    A list of strings.
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a string value.
+    """
 
 @pulumi.input_type
 class FrameworkCloudControlDetailParameterParameterValueArgs:
@@ -2934,19 +2806,16 @@ class FrameworkCloudControlDetailParameterParameterValueArgs:
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class FrameworkCloudControlDetailParameterParameterValueOneofValueArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the parameter.
-        """
-        parameter_value: NotRequired[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgsDict']]
-        """
-        The value of the parameter.
-        Structure is documented below.
-        """
-elif False:
-    FrameworkCloudControlDetailParameterParameterValueOneofValueArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkCloudControlDetailParameterParameterValueOneofValueArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the parameter.
+    """
+    parameter_value: NotRequired[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgsDict']]
+    """
+    The value of the parameter.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class FrameworkCloudControlDetailParameterParameterValueOneofValueArgs:
@@ -2989,27 +2858,24 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValueArgs:
         pulumi.set(self, "parameter_value", value)
 
 
-if not MYPY:
-    class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgsDict(TypedDict):
-        bool_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Represents a boolean value.
-        """
-        number_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Represents a double value.
-        """
-        string_list_value: NotRequired[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgsDict']]
-        """
-        A list of strings.
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a string value.
-        """
-elif False:
-    FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgsDict(TypedDict):
+    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Represents a boolean value.
+    """
+    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Represents a double value.
+    """
+    string_list_value: NotRequired[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgsDict']]
+    """
+    A list of strings.
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a string value.
+    """
 
 @pulumi.input_type
 class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs:
@@ -3084,14 +2950,11 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The strings in the list.
-        """
-elif False:
-    FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The strings in the list.
+    """
 
 @pulumi.input_type
 class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs:
@@ -3115,14 +2978,11 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class FrameworkCloudControlDetailParameterParameterValueStringListValueArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The strings in the list.
-        """
-elif False:
-    FrameworkCloudControlDetailParameterParameterValueStringListValueArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkCloudControlDetailParameterParameterValueStringListValueArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The strings in the list.
+    """
 
 @pulumi.input_type
 class FrameworkCloudControlDetailParameterParameterValueStringListValueArgs:
@@ -3146,16 +3006,13 @@ class FrameworkCloudControlDetailParameterParameterValueStringListValueArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class FrameworkDeploymentCloudControlDeploymentReferenceArgsDict(TypedDict):
-        cloud_control_deployment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the CloudControlDeployment. The format is:
-        organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
-        """
-elif False:
-    FrameworkDeploymentCloudControlDeploymentReferenceArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkDeploymentCloudControlDeploymentReferenceArgsDict(TypedDict):
+    cloud_control_deployment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the CloudControlDeployment. The format is:
+    organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+    """
 
 @pulumi.input_type
 class FrameworkDeploymentCloudControlDeploymentReferenceArgs:
@@ -3184,23 +3041,20 @@ class FrameworkDeploymentCloudControlDeploymentReferenceArgs:
         pulumi.set(self, "cloud_control_deployment", value)
 
 
-if not MYPY:
-    class FrameworkDeploymentCloudControlMetadataArgsDict(TypedDict):
-        cloud_control_details: pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgsDict']
-        """
-        CloudControlDetails contains the details of a CloudControl.
-        Structure is documented below.
-        """
-        enforcement_mode: pulumi.Input[_builtins.str]
-        """
-        Enforcement mode for the framework deployment.
-        Possible values:
-        PREVENTIVE
-        DETECTIVE
-        AUDIT
-        """
-elif False:
-    FrameworkDeploymentCloudControlMetadataArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkDeploymentCloudControlMetadataArgsDict(TypedDict):
+    cloud_control_details: pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgsDict']
+    """
+    CloudControlDetails contains the details of a CloudControl.
+    Structure is documented below.
+    """
+    enforcement_mode: pulumi.Input[_builtins.str]
+    """
+    Enforcement mode for the framework deployment.
+    Possible values:
+    PREVENTIVE
+    DETECTIVE
+    AUDIT
+    """
 
 @pulumi.input_type
 class FrameworkDeploymentCloudControlMetadataArgs:
@@ -3249,27 +3103,24 @@ class FrameworkDeploymentCloudControlMetadataArgs:
         pulumi.set(self, "enforcement_mode", value)
 
 
-if not MYPY:
-    class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgsDict(TypedDict):
-        major_revision_id: pulumi.Input[_builtins.str]
-        """
-        Major revision of cloudcontrol
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the CloudControl in the format:
-        “organizations/{organization}/locations/{location}/
-        cloudControls/{cloud-control}”
-        """
-        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgsDict']]]]
-        """
-        Parameters is a key-value pair that is required by the CloudControl. The
-        specification of these parameters will be present in cloudcontrol.Eg: {
-        "name": "location","value": "us-west-1"}.
-        Structure is documented below.
-        """
-elif False:
-    FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgsDict(TypedDict):
+    major_revision_id: pulumi.Input[_builtins.str]
+    """
+    Major revision of cloudcontrol
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the CloudControl in the format:
+    “organizations/{organization}/locations/{location}/
+    cloudControls/{cloud-control}”
+    """
+    parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgsDict']]]]
+    """
+    Parameters is a key-value pair that is required by the CloudControl. The
+    specification of these parameters will be present in cloudcontrol.Eg: {
+    "name": "location","value": "us-west-1"}.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs:
@@ -3334,19 +3185,16 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs:
         pulumi.set(self, "parameters", value)
 
 
-if not MYPY:
-    class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the parameter.
-        """
-        parameter_value: pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgsDict']
-        """
-        Possible parameter value types.
-        Structure is documented below.
-        """
-elif False:
-    FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the parameter.
+    """
+    parameter_value: pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgsDict']
+    """
+    Possible parameter value types.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs:
@@ -3387,32 +3235,29 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs:
         pulumi.set(self, "parameter_value", value)
 
 
-if not MYPY:
-    class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgsDict(TypedDict):
-        bool_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Represents a boolean value.
-        """
-        number_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Represents a double value.
-        """
-        oneof_value: NotRequired[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgsDict']]
-        """
-        Sub-parameter values.
-        Structure is documented below.
-        """
-        string_list_value: NotRequired[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgsDict']]
-        """
-        A list of strings.
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a string value.
-        """
-elif False:
-    FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgsDict(TypedDict):
+    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Represents a boolean value.
+    """
+    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Represents a double value.
+    """
+    oneof_value: NotRequired[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgsDict']]
+    """
+    Sub-parameter values.
+    Structure is documented below.
+    """
+    string_list_value: NotRequired[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgsDict']]
+    """
+    A list of strings.
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a string value.
+    """
 
 @pulumi.input_type
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs:
@@ -3505,19 +3350,16 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the parameter.
-        """
-        parameter_value: NotRequired[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgsDict']]
-        """
-        The value of the parameter.
-        Structure is documented below.
-        """
-elif False:
-    FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the parameter.
+    """
+    parameter_value: NotRequired[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgsDict']]
+    """
+    The value of the parameter.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs:
@@ -3560,27 +3402,24 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
         pulumi.set(self, "parameter_value", value)
 
 
-if not MYPY:
-    class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgsDict(TypedDict):
-        bool_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Represents a boolean value.
-        """
-        number_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Represents a double value.
-        """
-        string_list_value: NotRequired[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgsDict']]
-        """
-        A list of strings.
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a string value.
-        """
-elif False:
-    FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgsDict(TypedDict):
+    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Represents a boolean value.
+    """
+    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Represents a double value.
+    """
+    string_list_value: NotRequired[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgsDict']]
+    """
+    A list of strings.
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a string value.
+    """
 
 @pulumi.input_type
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs:
@@ -3655,14 +3494,11 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The strings in the list.
-        """
-elif False:
-    FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The strings in the list.
+    """
 
 @pulumi.input_type
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs:
@@ -3686,14 +3522,11 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The strings in the list.
-        """
-elif False:
-    FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The strings in the list.
+    """
 
 @pulumi.input_type
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs:
@@ -3717,19 +3550,16 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class FrameworkDeploymentFrameworkArgsDict(TypedDict):
-        framework: pulumi.Input[_builtins.str]
-        """
-        In the format:
-        organizations/{org}/locations/{location}/frameworks/{framework}
-        """
-        major_revision_id: pulumi.Input[_builtins.str]
-        """
-        Major revision id of the framework.
-        """
-elif False:
-    FrameworkDeploymentFrameworkArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkDeploymentFrameworkArgsDict(TypedDict):
+    framework: pulumi.Input[_builtins.str]
+    """
+    In the format:
+    organizations/{org}/locations/{location}/frameworks/{framework}
+    """
+    major_revision_id: pulumi.Input[_builtins.str]
+    """
+    Major revision id of the framework.
+    """
 
 @pulumi.input_type
 class FrameworkDeploymentFrameworkArgs:
@@ -3770,21 +3600,18 @@ class FrameworkDeploymentFrameworkArgs:
         pulumi.set(self, "major_revision_id", value)
 
 
-if not MYPY:
-    class FrameworkDeploymentTargetResourceConfigArgsDict(TypedDict):
-        existing_target_resource: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        CRM node in format organizations/{organization}, folders/{folder},
-        or projects/{project}
-        """
-        target_resource_creation_config: NotRequired[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgsDict']]
-        """
-        TargetResourceCreationConfig contains the config to create a new resource to
-        be used as the target_resource of a deployment.
-        Structure is documented below.
-        """
-elif False:
-    FrameworkDeploymentTargetResourceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkDeploymentTargetResourceConfigArgsDict(TypedDict):
+    existing_target_resource: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    CRM node in format organizations/{organization}, folders/{folder},
+    or projects/{project}
+    """
+    target_resource_creation_config: NotRequired[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgsDict']]
+    """
+    TargetResourceCreationConfig contains the config to create a new resource to
+    be used as the target_resource of a deployment.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class FrameworkDeploymentTargetResourceConfigArgs:
@@ -3831,22 +3658,19 @@ class FrameworkDeploymentTargetResourceConfigArgs:
         pulumi.set(self, "target_resource_creation_config", value)
 
 
-if not MYPY:
-    class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgsDict(TypedDict):
-        folder_creation_config: NotRequired[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgsDict']]
-        """
-        FolderCreationConfig contains the config to create a new folder to be used
-        as the target_resource of a deployment.
-        Structure is documented below.
-        """
-        project_creation_config: NotRequired[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgsDict']]
-        """
-        ProjectCreationConfig contains the config to create a new project to be used
-        as the target_resource of a deployment.
-        Structure is documented below.
-        """
-elif False:
-    FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgsDict(TypedDict):
+    folder_creation_config: NotRequired[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgsDict']]
+    """
+    FolderCreationConfig contains the config to create a new folder to be used
+    as the target_resource of a deployment.
+    Structure is documented below.
+    """
+    project_creation_config: NotRequired[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgsDict']]
+    """
+    ProjectCreationConfig contains the config to create a new project to be used
+    as the target_resource of a deployment.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgs:
@@ -3895,19 +3719,16 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgs:
         pulumi.set(self, "project_creation_config", value)
 
 
-if not MYPY:
-    class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgsDict(TypedDict):
-        folder_display_name: pulumi.Input[_builtins.str]
-        """
-        Display name of the folder to be created
-        """
-        parent: pulumi.Input[_builtins.str]
-        """
-        The parent of the folder to be created. It can be an organizations/{org} or
-        folders/{folder}
-        """
-elif False:
-    FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgsDict(TypedDict):
+    folder_display_name: pulumi.Input[_builtins.str]
+    """
+    Display name of the folder to be created
+    """
+    parent: pulumi.Input[_builtins.str]
+    """
+    The parent of the folder to be created. It can be an organizations/{org} or
+    folders/{folder}
+    """
 
 @pulumi.input_type
 class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgs:
@@ -3948,22 +3769,19 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderC
         pulumi.set(self, "parent", value)
 
 
-if not MYPY:
-    class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgsDict(TypedDict):
-        billing_account_id: pulumi.Input[_builtins.str]
-        """
-        Billing account id to be used for the project.
-        """
-        parent: pulumi.Input[_builtins.str]
-        """
-        organizations/{org} or folders/{folder}
-        """
-        project_display_name: pulumi.Input[_builtins.str]
-        """
-        Display name of the project to be created.
-        """
-elif False:
-    FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgsDict(TypedDict):
+    billing_account_id: pulumi.Input[_builtins.str]
+    """
+    Billing account id to be used for the project.
+    """
+    parent: pulumi.Input[_builtins.str]
+    """
+    organizations/{org} or folders/{folder}
+    """
+    project_display_name: pulumi.Input[_builtins.str]
+    """
+    Display name of the project to be created.
+    """
 
 @pulumi.input_type
 class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgs:

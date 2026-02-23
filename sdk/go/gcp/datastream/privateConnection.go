@@ -131,22 +131,14 @@ import (
 // PrivateConnection can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}`
-//
 // * `{{project}}/{{location}}/{{private_connection_id}}`
-//
 // * `{{location}}/{{private_connection_id}}`
 //
 // When using the `pulumi import` command, PrivateConnection can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:datastream/privateConnection:PrivateConnection default projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:datastream/privateConnection:PrivateConnection default {{project}}/{{location}}/{{private_connection_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:datastream/privateConnection:PrivateConnection default {{location}}/{{private_connection_id}}
 // ```
 type PrivateConnection struct {
@@ -179,7 +171,7 @@ type PrivateConnection struct {
 	// Structure is documented below.
 	PscInterfaceConfig PrivateConnectionPscInterfaceConfigPtrOutput `pulumi:"pscInterfaceConfig"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// State of the PrivateConnection.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -260,7 +252,7 @@ type privateConnectionState struct {
 	// Structure is documented below.
 	PscInterfaceConfig *PrivateConnectionPscInterfaceConfig `pulumi:"pscInterfaceConfig"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// State of the PrivateConnection.
 	State *string `pulumi:"state"`
@@ -298,7 +290,7 @@ type PrivateConnectionState struct {
 	// Structure is documented below.
 	PscInterfaceConfig PrivateConnectionPscInterfaceConfigPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// State of the PrivateConnection.
 	State pulumi.StringPtrInput
@@ -509,7 +501,8 @@ func (o PrivateConnectionOutput) PscInterfaceConfig() PrivateConnectionPscInterf
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o PrivateConnectionOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

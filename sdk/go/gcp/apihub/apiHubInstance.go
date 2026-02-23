@@ -89,22 +89,14 @@ import (
 // ApiHubInstance can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/apiHubInstances/{{api_hub_instance_id}}`
-//
 // * `{{project}}/{{location}}/{{api_hub_instance_id}}`
-//
 // * `{{location}}/{{api_hub_instance_id}}`
 //
 // When using the `pulumi import` command, ApiHubInstance can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default projects/{{project}}/locations/{{location}}/apiHubInstances/{{api_hub_instance_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{project}}/{{location}}/{{api_hub_instance_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{location}}/{{api_hub_instance_id}}
 // ```
 type ApiHubInstance struct {
@@ -140,7 +132,7 @@ type ApiHubInstance struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. The current state of the ApiHub instance.
 	// Possible values:
@@ -230,7 +222,7 @@ type apiHubInstanceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. The current state of the ApiHub instance.
 	// Possible values:
@@ -280,7 +272,7 @@ type ApiHubInstanceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. The current state of the ApiHub instance.
 	// Possible values:
@@ -498,7 +490,8 @@ func (o ApiHubInstanceOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ApiHubInstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ApiHubInstance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -168,10 +168,6 @@ class SharedVPCServiceProject(pulumi.CustomResource):
 
         When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example:
 
-        ```sh
-        $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject default {{host_project}/{{service_project}}
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
@@ -215,10 +211,6 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         * `{{host_project}/{{service_project}}`
 
         When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example:
-
-        ```sh
-        $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject default {{host_project}/{{service_project}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param SharedVPCServiceProjectArgs args: The arguments to use to populate this resource's properties.

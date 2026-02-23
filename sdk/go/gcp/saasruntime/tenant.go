@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The Tenant resource represents the service producer's view of a service instance created for a consumer. It enables the association between the service producer's managed resources and the end consumer.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
 // ## Example Usage
 //
 // ### Saas Runtime Tenant Basic
@@ -60,22 +65,14 @@ import (
 // Tenant can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/tenants/{{tenant_id}}`
-//
 // * `{{project}}/{{location}}/{{tenant_id}}`
-//
 // * `{{location}}/{{tenant_id}}`
 //
 // When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:saasruntime/tenant:Tenant default projects/{{project}}/locations/{{location}}/tenants/{{tenant_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:saasruntime/tenant:Tenant default {{project}}/{{location}}/{{tenant_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:saasruntime/tenant:Tenant default {{location}}/{{tenant_id}}
 // ```
 type Tenant struct {
@@ -94,7 +91,8 @@ type Tenant struct {
 	// policies (using Unified Maintenance Policy API).
 	ConsumerResource pulumi.StringPtrOutput `pulumi:"consumerResource"`
 	// The timestamp when the resource was created.
-	CreateTime           pulumi.StringOutput    `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -113,7 +111,7 @@ type Tenant struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A reference to the Saas that defines the product (managed service) that
 	// the producer wants to manage with SaaS Runtime. Part of the
@@ -190,7 +188,8 @@ type tenantState struct {
 	// policies (using Unified Maintenance Policy API).
 	ConsumerResource *string `pulumi:"consumerResource"`
 	// The timestamp when the resource was created.
-	CreateTime           *string           `pulumi:"createTime"`
+	CreateTime *string `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -209,7 +208,7 @@ type tenantState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A reference to the Saas that defines the product (managed service) that
 	// the producer wants to manage with SaaS Runtime. Part of the
@@ -243,7 +242,8 @@ type TenantState struct {
 	// policies (using Unified Maintenance Policy API).
 	ConsumerResource pulumi.StringPtrInput
 	// The timestamp when the resource was created.
-	CreateTime           pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -262,7 +262,7 @@ type TenantState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// A reference to the Saas that defines the product (managed service) that
 	// the producer wants to manage with SaaS Runtime. Part of the
@@ -459,6 +459,7 @@ func (o TenantOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o TenantOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -495,7 +496,8 @@ func (o TenantOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o TenantOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

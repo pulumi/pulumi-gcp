@@ -104,28 +104,16 @@ import * as utilities from "../utilities";
  * Disk can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
- *
  * * `{{project}}/{{zone}}/{{name}}`
- *
  * * `{{zone}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/disk:Disk default {{name}}
  * ```
  */
@@ -318,7 +306,7 @@ export class Disk extends pulumi.CustomResource {
     declare public readonly provisionedThroughput: pulumi.Output<number>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -730,7 +718,7 @@ export interface DiskState {
     provisionedThroughput?: pulumi.Input<number>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

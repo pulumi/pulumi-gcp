@@ -404,7 +404,7 @@ class _RepositoryState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] registry_uri: The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigArgs'] remote_repository_config: Configuration specific for a Remote Repository.
                Structure is documented below.
@@ -663,7 +663,7 @@ class _RepositoryState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1318,22 +1318,14 @@ class Repository(pulumi.CustomResource):
         Repository can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
-
         * `{{project}}/{{location}}/{{repository_id}}`
-
         * `{{location}}/{{repository_id}}`
 
         When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:artifactregistry/repository:Repository default {{project}}/{{location}}/{{repository_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
         ```
 
@@ -1943,22 +1935,14 @@ class Repository(pulumi.CustomResource):
         Repository can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
-
         * `{{project}}/{{location}}/{{repository_id}}`
-
         * `{{location}}/{{repository_id}}`
 
         When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:artifactregistry/repository:Repository default {{project}}/{{location}}/{{repository_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
         ```
 
@@ -2112,7 +2096,7 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] registry_uri: The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
         :param pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']] remote_repository_config: Configuration specific for a Remote Repository.
                Structure is documented below.
@@ -2299,7 +2283,7 @@ class Repository(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

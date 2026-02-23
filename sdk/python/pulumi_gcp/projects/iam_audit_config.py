@@ -416,29 +416,11 @@ class IAMAuditConfig(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing Audit Configs
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        An audit config can be imported into a `google_project_iam_audit_config` resource using the resource's `project_id` and the `service`, e.g:
-
-        * `"{{project_id}} foo.googleapis.com"`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
-
-        tf
-
-        import {
-
-          id = "{{project_id}} foo.googleapis.com"
-
-          to = google_project_iam_audit_config.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig default "{{project_id}} foo.googleapis.com"
-        ```
+        > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
+         to include the title of condition, e.g. `terraform import google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -712,29 +694,11 @@ class IAMAuditConfig(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing Audit Configs
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        An audit config can be imported into a `google_project_iam_audit_config` resource using the resource's `project_id` and the `service`, e.g:
-
-        * `"{{project_id}} foo.googleapis.com"`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
-
-        tf
-
-        import {
-
-          id = "{{project_id}} foo.googleapis.com"
-
-          to = google_project_iam_audit_config.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig default "{{project_id}} foo.googleapis.com"
-        ```
+        > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
+         to include the title of condition, e.g. `terraform import google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
 
         :param str resource_name: The name of the resource.
         :param IAMAuditConfigArgs args: The arguments to use to populate this resource's properties.

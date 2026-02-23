@@ -121,22 +121,14 @@ import * as utilities from "../utilities";
  * EdgeCacheOrigin can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, EdgeCacheOrigin can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{name}}
  * ```
  */
@@ -253,7 +245,7 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
     declare public readonly protocol: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -428,7 +420,7 @@ export interface EdgeCacheOriginState {
     protocol?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

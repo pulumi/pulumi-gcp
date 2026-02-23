@@ -166,7 +166,7 @@ class _MeshState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[_builtins.str] update_time: Time the Mesh was updated in UTC.
         """
@@ -301,7 +301,7 @@ class _MeshState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -401,22 +401,14 @@ class Mesh(pulumi.CustomResource):
         Mesh can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/meshes/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Mesh can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/{{location}}/meshes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/mesh:Mesh default {{location}}/{{name}}
         ```
 
@@ -496,22 +488,14 @@ class Mesh(pulumi.CustomResource):
         Mesh can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/meshes/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Mesh can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/{{location}}/meshes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/mesh:Mesh default {{location}}/{{name}}
         ```
 
@@ -602,7 +586,7 @@ class Mesh(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[_builtins.str] update_time: Time the Mesh was updated in UTC.
         """
@@ -699,7 +683,7 @@ class Mesh(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

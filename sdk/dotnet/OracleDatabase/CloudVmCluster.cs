@@ -226,22 +226,14 @@ namespace Pulumi.Gcp.OracleDatabase
     /// CloudVmCluster can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/cloudVmClusters/{{cloud_vm_cluster_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{cloud_vm_cluster_id}}`
-    /// 
     /// * `{{location}}/{{cloud_vm_cluster_id}}`
     /// 
     /// When using the `pulumi import` command, CloudVmCluster can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default projects/{{project}}/locations/{{location}}/cloudVmClusters/{{cloud_vm_cluster_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{project}}/{{location}}/{{cloud_vm_cluster_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{location}}/{{cloud_vm_cluster_id}}
     /// ```
     /// </summary>
@@ -283,6 +275,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -375,7 +370,7 @@ namespace Pulumi.Gcp.OracleDatabase
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -460,6 +455,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("cloudVmClusterId", required: true)]
         public Input<string> CloudVmClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -579,6 +577,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -690,7 +691,7 @@ namespace Pulumi.Gcp.OracleDatabase
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

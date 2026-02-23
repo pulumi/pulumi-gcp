@@ -51,9 +51,21 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * Whether Terraform will be prevented from destroying the federation. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the federation will fail.
+     * 
+     */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the federation. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the federation will fail.
+     * 
+     */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
@@ -175,7 +187,7 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
 
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
@@ -183,7 +195,7 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
@@ -379,11 +391,27 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param deletionProtection Whether Terraform will be prevented from destroying the federation. Defaults to false.
+         * When the field is set to true in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the federation will fail.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
             $.deletionProtection = deletionProtection;
             return this;
         }
 
+        /**
+         * @param deletionProtection Whether Terraform will be prevented from destroying the federation. Defaults to false.
+         * When the field is set to true in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the federation will fail.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
         }
@@ -547,7 +575,7 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -559,7 +587,7 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 

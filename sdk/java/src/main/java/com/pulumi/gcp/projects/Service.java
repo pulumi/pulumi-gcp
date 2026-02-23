@@ -16,6 +16,22 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Allows management of a single API service for a Google Cloud project.
+ * 
+ * For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
+ * or run `gcloud services list --available`.
+ * 
+ * This resource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
+ * to use.
+ * 
+ * To get more information about `gcp.projects.Service`, see:
+ * 
+ * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
+ * * How-to Guides
+ *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+ * * Terraform guidance
+ *     * [User Guide - gcp.projects.Service](https://www.terraform.io/docs/providers/google/guides/google_project_service.html)
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -52,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Project services can be imported using the `project_id` and `service`, e.g.
+ * Project services can be imported using the `projectId` and `service`, e.g.
  * 
  * * `{{project_id}}/{{service}}`
  * 
@@ -63,13 +79,9 @@ import javax.annotation.Nullable;
  * ```
  * 
  * Note that unlike other resources that fail if they already exist,
- * 
  * `pulumi up` can be successfully used to verify already enabled services.
- * 
  * This means that when importing existing resources into Terraform, you can either
- * 
- * import the `google_project_service` resources or treat them as new
- * 
+ * import the `gcp.projects.Service` resources or treat them as new
  * infrastructure and run `pulumi up` to add them to state.
  * 
  */
@@ -113,9 +125,23 @@ public class Service extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> disableDependentServices() {
         return Codegen.optional(this.disableDependentServices);
     }
+    /**
+     * If `true`, disable the service when the
+     * Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+     * the Terraform resource is destroyed. It should generally only
+     * be `true` in configurations that manage the `gcp.organizations.Project` resource itself.
+     * 
+     */
     @Export(name="disableOnDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableOnDestroy;
 
+    /**
+     * @return If `true`, disable the service when the
+     * Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+     * the Terraform resource is destroyed. It should generally only
+     * be `true` in configurations that manage the `gcp.organizations.Project` resource itself.
+     * 
+     */
     public Output<Optional<Boolean>> disableOnDestroy() {
         return Codegen.optional(this.disableOnDestroy);
     }

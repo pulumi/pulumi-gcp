@@ -13,19 +13,19 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+        /// Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
         /// </summary>
         [Input("enableIntegrityMonitoring")]
         public Input<bool>? EnableIntegrityMonitoring { get; set; }
 
         /// <summary>
-        /// Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+        /// Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
         /// </summary>
         [Input("enableSecureBoot")]
         public Input<bool>? EnableSecureBoot { get; set; }
 
         /// <summary>
-        /// Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+        /// Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
         /// </summary>
         [Input("enableVtpm")]
         public Input<bool>? EnableVtpm { get; set; }

@@ -23,6 +23,9 @@ namespace Pulumi.Gcp.Kms.Outputs
         /// If not specified at creation time, the default duration is 30 days.
         /// </summary>
         public readonly string DestroyScheduledDuration;
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Id;
         /// <summary>

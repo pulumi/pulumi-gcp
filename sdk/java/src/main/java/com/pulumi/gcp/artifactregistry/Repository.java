@@ -1164,22 +1164,14 @@ import javax.annotation.Nullable;
  * Repository can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
- * 
  * * `{{project}}/{{location}}/{{repository_id}}`
- * 
  * * `{{location}}/{{repository_id}}`
  * 
  * When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:artifactregistry/repository:Repository default {{project}}/{{location}}/{{repository_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
  * ```
  * 
@@ -1446,7 +1438,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -1454,7 +1446,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

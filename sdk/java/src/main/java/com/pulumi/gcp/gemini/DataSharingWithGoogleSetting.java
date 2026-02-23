@@ -64,22 +64,14 @@ import javax.annotation.Nullable;
  * DataSharingWithGoogleSetting can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/dataSharingWithGoogleSettings/{{data_sharing_with_google_setting_id}}`
- * 
  * * `{{project}}/{{location}}/{{data_sharing_with_google_setting_id}}`
- * 
  * * `{{location}}/{{data_sharing_with_google_setting_id}}`
  * 
  * When using the `pulumi import` command, DataSharingWithGoogleSetting can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default projects/{{project}}/locations/{{location}}/dataSharingWithGoogleSettings/{{data_sharing_with_google_setting_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default {{project}}/{{location}}/{{data_sharing_with_google_setting_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default {{location}}/{{data_sharing_with_google_setting_id}}
  * ```
  * 
@@ -222,7 +214,7 @@ public class DataSharingWithGoogleSetting extends com.pulumi.resources.CustomRes
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -230,7 +222,7 @@ public class DataSharingWithGoogleSetting extends com.pulumi.resources.CustomRes
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

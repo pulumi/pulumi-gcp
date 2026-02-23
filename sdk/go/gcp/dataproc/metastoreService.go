@@ -534,22 +534,14 @@ import (
 // Service can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/services/{{service_id}}`
-//
 // * `{{project}}/{{location}}/{{service_id}}`
-//
 // * `{{location}}/{{service_id}}`
 //
 // When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataproc/metastoreService:MetastoreService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{project}}/{{location}}/{{service_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{location}}/{{service_id}}
 // ```
 type MetastoreService struct {
@@ -605,7 +597,7 @@ type MetastoreService struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The release channel of the service. If unspecified, defaults to `STABLE`.
 	// Default value is `STABLE`.
@@ -726,7 +718,7 @@ type metastoreServiceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The release channel of the service. If unspecified, defaults to `STABLE`.
 	// Default value is `STABLE`.
@@ -813,7 +805,7 @@ type MetastoreServiceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The release channel of the service. If unspecified, defaults to `STABLE`.
 	// Default value is `STABLE`.
@@ -1174,7 +1166,8 @@ func (o MetastoreServiceOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MetastoreServiceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

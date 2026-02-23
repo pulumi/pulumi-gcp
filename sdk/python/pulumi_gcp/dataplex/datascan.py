@@ -285,7 +285,7 @@ class _DatascanState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: Current state of the DataScan.
         :param pulumi.Input[_builtins.str] type: The type of DataScan.
         :param pulumi.Input[_builtins.str] uid: System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
@@ -541,7 +541,7 @@ class _DatascanState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -902,7 +902,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_39249",
+            name="tf-test-bucket-name-_16511",
             location="us-west1",
             uniform_bucket_level_access=True)
         basic_discovery = gcp.dataplex.Datascan("basic_discovery",
@@ -930,13 +930,13 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_74391",
+            name="tf-test-bucket-name-_8493",
             location="us-west1",
             uniform_bucket_level_access=True)
         tf_test_connection = gcp.bigquery.Connection("tf_test_connection",
-            connection_id="tf-test-connection-_16511",
+            connection_id="tf-test-connection-_9106",
             location="us-central1",
-            friendly_name="tf-test-connection-_8493",
+            friendly_name="tf-test-connection-_27169",
             description="a bigquery connection for tf test",
             cloud_resource={})
         full_discovery = gcp.dataplex.Datascan("full_discovery",
@@ -1004,7 +1004,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_9106",
+            name="tf-test-bucket-name-_75223",
             location="us-west1",
             uniform_bucket_level_access=True)
         onetime_discovery = gcp.dataplex.Datascan("onetime_discovery",
@@ -1034,11 +1034,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__27169",
+            dataset_id="tf_dataplex_test_dataset_id__41819",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__75223",
+            table_id="tf_dataplex_test_table_id__75092",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1115,11 +1115,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__41819",
+            dataset_id="tf_dataplex_test_dataset_id__2605",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__75092",
+            table_id="tf_dataplex_test_table_id__34535",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1197,28 +1197,16 @@ class Datascan(pulumi.CustomResource):
         Datascan can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
-
         * `{{project}}/{{location}}/{{data_scan_id}}`
-
         * `{{location}}/{{data_scan_id}}`
-
         * `{{data_scan_id}}`
 
         When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/datascan:Datascan default projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/datascan:Datascan default {{project}}/{{location}}/{{data_scan_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/datascan:Datascan default {{location}}/{{data_scan_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/datascan:Datascan default {{data_scan_id}}
         ```
 
@@ -1537,7 +1525,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_39249",
+            name="tf-test-bucket-name-_16511",
             location="us-west1",
             uniform_bucket_level_access=True)
         basic_discovery = gcp.dataplex.Datascan("basic_discovery",
@@ -1565,13 +1553,13 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_74391",
+            name="tf-test-bucket-name-_8493",
             location="us-west1",
             uniform_bucket_level_access=True)
         tf_test_connection = gcp.bigquery.Connection("tf_test_connection",
-            connection_id="tf-test-connection-_16511",
+            connection_id="tf-test-connection-_9106",
             location="us-central1",
-            friendly_name="tf-test-connection-_8493",
+            friendly_name="tf-test-connection-_27169",
             description="a bigquery connection for tf test",
             cloud_resource={})
         full_discovery = gcp.dataplex.Datascan("full_discovery",
@@ -1639,7 +1627,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_9106",
+            name="tf-test-bucket-name-_75223",
             location="us-west1",
             uniform_bucket_level_access=True)
         onetime_discovery = gcp.dataplex.Datascan("onetime_discovery",
@@ -1669,11 +1657,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__27169",
+            dataset_id="tf_dataplex_test_dataset_id__41819",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__75223",
+            table_id="tf_dataplex_test_table_id__75092",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1750,11 +1738,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__41819",
+            dataset_id="tf_dataplex_test_dataset_id__2605",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__75092",
+            table_id="tf_dataplex_test_table_id__34535",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1832,28 +1820,16 @@ class Datascan(pulumi.CustomResource):
         Datascan can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
-
         * `{{project}}/{{location}}/{{data_scan_id}}`
-
         * `{{location}}/{{data_scan_id}}`
-
         * `{{data_scan_id}}`
 
         When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/datascan:Datascan default projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/datascan:Datascan default {{project}}/{{location}}/{{data_scan_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/datascan:Datascan default {{location}}/{{data_scan_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/datascan:Datascan default {{data_scan_id}}
         ```
 
@@ -1989,7 +1965,7 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: Current state of the DataScan.
         :param pulumi.Input[_builtins.str] type: The type of DataScan.
         :param pulumi.Input[_builtins.str] uid: System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
@@ -2165,7 +2141,7 @@ class Datascan(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

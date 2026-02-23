@@ -515,7 +515,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_39249")
+ *             .name("tf-test-bucket-name-_16511")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -584,15 +584,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_74391")
+ *             .name("tf-test-bucket-name-_8493")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
  *         var tfTestConnection = new Connection("tfTestConnection", ConnectionArgs.builder()
- *             .connectionId("tf-test-connection-_16511")
+ *             .connectionId("tf-test-connection-_9106")
  *             .location("us-central1")
- *             .friendlyName("tf-test-connection-_8493")
+ *             .friendlyName("tf-test-connection-_27169")
  *             .description("a bigquery connection for tf test")
  *             .cloudResource(ConnectionCloudResourceArgs.builder()
  *                 .build())
@@ -689,7 +689,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_9106")
+ *             .name("tf-test-bucket-name-_75223")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -754,13 +754,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_dataplex_test_dataset_id__27169")
+ *             .datasetId("tf_dataplex_test_dataset_id__41819")
  *             .defaultTableExpirationMs(3600000)
  *             .build());
  * 
  *         var tfDataplexTestTable = new Table("tfDataplexTestTable", TableArgs.builder()
  *             .datasetId(tfDataplexTestDataset.datasetId())
- *             .tableId("tf_dataplex_test_table_id__75223")
+ *             .tableId("tf_dataplex_test_table_id__75092")
  *             .deletionProtection(false)
  *             .schema("""
  *     [
@@ -874,13 +874,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_dataplex_test_dataset_id__41819")
+ *             .datasetId("tf_dataplex_test_dataset_id__2605")
  *             .defaultTableExpirationMs(3600000)
  *             .build());
  * 
  *         var tfDataplexTestTable = new Table("tfDataplexTestTable", TableArgs.builder()
  *             .datasetId(tfDataplexTestDataset.datasetId())
- *             .tableId("tf_dataplex_test_table_id__75092")
+ *             .tableId("tf_dataplex_test_table_id__34535")
  *             .deletionProtection(false)
  *             .schema("""
  *     [
@@ -967,28 +967,16 @@ import javax.annotation.Nullable;
  * Datascan can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
- * 
  * * `{{project}}/{{location}}/{{data_scan_id}}`
- * 
  * * `{{location}}/{{data_scan_id}}`
- * 
  * * `{{data_scan_id}}`
  * 
  * When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataplex/datascan:Datascan default projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/datascan:Datascan default {{project}}/{{location}}/{{data_scan_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/datascan:Datascan default {{location}}/{{data_scan_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/datascan:Datascan default {{data_scan_id}}
  * ```
  * 
@@ -1241,7 +1229,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -1249,7 +1237,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

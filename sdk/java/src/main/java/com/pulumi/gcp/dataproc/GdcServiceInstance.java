@@ -77,22 +77,14 @@ import javax.annotation.Nullable;
  * ServiceInstance can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/serviceInstances/{{service_instance_id}}`
- * 
  * * `{{project}}/{{location}}/{{service_instance_id}}`
- * 
  * * `{{location}}/{{service_instance_id}}`
  * 
  * When using the `pulumi import` command, ServiceInstance can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default projects/{{project}}/locations/{{location}}/serviceInstances/{{service_instance_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{project}}/{{location}}/{{service_instance_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{location}}/{{service_instance_id}}
  * ```
  * 
@@ -235,7 +227,7 @@ public class GdcServiceInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -243,7 +235,7 @@ public class GdcServiceInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

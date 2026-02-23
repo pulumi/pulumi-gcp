@@ -348,7 +348,7 @@ class _MigrationJobState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['MigrationJobReverseSshConnectivityArgs'] reverse_ssh_connectivity: The details of the VPC network that the source database is located in.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] source: The name of the source connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{sourceConnectionProfile}.
@@ -603,7 +603,7 @@ class _MigrationJobState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -993,22 +993,14 @@ class MigrationJob(pulumi.CustomResource):
         MigrationJob can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}`
-
         * `{{project}}/{{location}}/{{migration_job_id}}`
-
         * `{{location}}/{{migration_job_id}}`
 
         When using the `pulumi import` command, MigrationJob can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{project}}/{{location}}/{{migration_job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{location}}/{{migration_job_id}}
         ```
 
@@ -1333,22 +1325,14 @@ class MigrationJob(pulumi.CustomResource):
         MigrationJob can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}`
-
         * `{{project}}/{{location}}/{{migration_job_id}}`
-
         * `{{location}}/{{migration_job_id}}`
 
         When using the `pulumi import` command, MigrationJob can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{project}}/{{location}}/{{migration_job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{location}}/{{migration_job_id}}
         ```
 
@@ -1489,7 +1473,7 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['MigrationJobReverseSshConnectivityArgs', 'MigrationJobReverseSshConnectivityArgsDict']] reverse_ssh_connectivity: The details of the VPC network that the source database is located in.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] source: The name of the source connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{sourceConnectionProfile}.
@@ -1667,7 +1651,7 @@ class MigrationJob(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -45,22 +45,14 @@ namespace Pulumi.Gcp.Gemini
     /// CodeRepositoryIndex can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{code_repository_index_id}}`
-    /// 
     /// * `{{location}}/{{code_repository_index_id}}`
     /// 
     /// When using the `pulumi import` command, CodeRepositoryIndex can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default {{project}}/{{location}}/{{code_repository_index_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default {{location}}/{{code_repository_index_id}}
     /// ```
     /// </summary>
@@ -127,7 +119,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -329,7 +321,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

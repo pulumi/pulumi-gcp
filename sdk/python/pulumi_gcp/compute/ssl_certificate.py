@@ -20,18 +20,18 @@ __all__ = ['SSLCertificateArgs', 'SSLCertificate']
 class SSLCertificateArgs:
     def __init__(__self__, *,
                  certificate: pulumi.Input[_builtins.str],
-                 private_key: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_key_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_key_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SSLCertificate resource.
         :param pulumi.Input[_builtins.str] certificate: The certificate in PEM format.
                The certificate chain must be no greater than 5 certs long.
                The chain must include at least one intermediate cert.
-               **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[_builtins.str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -50,17 +50,31 @@ class SSLCertificateArgs:
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 38 - 54 characters:
                `name_prefix` + YYmmdd + 3 digit incremental counter
+        :param pulumi.Input[_builtins.str] private_key: The write-only private key in PEM format.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] private_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The write-only private key in PEM format.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `private_key` or `private_key_wo` can only be set.
+        :param pulumi.Input[_builtins.str] private_key_wo_version: Triggers update of `private_key_wo` write-only. Increment this value when an update to `private_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "certificate", certificate)
-        pulumi.set(__self__, "private_key", private_key)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if name_prefix is not None:
             pulumi.set(__self__, "name_prefix", name_prefix)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_wo is not None:
+            pulumi.set(__self__, "private_key_wo", private_key_wo)
+        if private_key_wo_version is not None:
+            pulumi.set(__self__, "private_key_wo_version", private_key_wo_version)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -78,19 +92,6 @@ class SSLCertificateArgs:
     @certificate.setter
     def certificate(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "certificate", value)
-
-    @_builtins.property
-    @pulumi.getter(name="privateKey")
-    def private_key(self) -> pulumi.Input[_builtins.str]:
-        """
-        The write-only private key in PEM format.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        return pulumi.get(self, "private_key")
-
-    @private_key.setter
-    def private_key(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter
@@ -143,6 +144,48 @@ class SSLCertificateArgs:
         pulumi.set(self, "name_prefix", value)
 
     @_builtins.property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The write-only private key in PEM format.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "private_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyWo")
+    def private_key_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The write-only private key in PEM format.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `private_key` or `private_key_wo` can only be set.
+        """
+        return pulumi.get(self, "private_key_wo")
+
+    @private_key_wo.setter
+    def private_key_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "private_key_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyWoVersion")
+    def private_key_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Triggers update of `private_key_wo` write-only. Increment this value when an update to `private_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "private_key_wo_version")
+
+    @private_key_wo_version.setter
+    def private_key_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "private_key_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -167,6 +210,8 @@ class _SSLCertificateState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_key_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_key_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -197,6 +242,13 @@ class _SSLCertificateState:
                `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[_builtins.str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] private_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The write-only private key in PEM format.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `private_key` or `private_key_wo` can only be set.
+        :param pulumi.Input[_builtins.str] private_key_wo_version: Triggers update of `private_key_wo` write-only. Increment this value when an update to `private_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
@@ -217,6 +269,10 @@ class _SSLCertificateState:
             pulumi.set(__self__, "name_prefix", name_prefix)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
+        if private_key_wo is not None:
+            pulumi.set(__self__, "private_key_wo", private_key_wo)
+        if private_key_wo_version is not None:
+            pulumi.set(__self__, "private_key_wo_version", private_key_wo_version)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if self_link is not None:
@@ -337,6 +393,35 @@ class _SSLCertificateState:
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
+    @pulumi.getter(name="privateKeyWo")
+    def private_key_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The write-only private key in PEM format.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `private_key` or `private_key_wo` can only be set.
+        """
+        return pulumi.get(self, "private_key_wo")
+
+    @private_key_wo.setter
+    def private_key_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "private_key_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyWoVersion")
+    def private_key_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Triggers update of `private_key_wo` write-only. Increment this value when an update to `private_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "private_key_wo_version")
+
+    @private_key_wo_version.setter
+    def private_key_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "private_key_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -373,6 +458,8 @@ class SSLCertificate(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_key_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_key_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -386,6 +473,9 @@ class SSLCertificate(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `private_key_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ## Import
@@ -393,22 +483,14 @@ class SSLCertificate(pulumi.CustomResource):
         SslCertificate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/sslCertificates/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, SslCertificate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default projects/{{project}}/global/sslCertificates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{name}}
         ```
 
@@ -437,6 +519,13 @@ class SSLCertificate(pulumi.CustomResource):
                `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[_builtins.str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] private_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The write-only private key in PEM format.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `private_key` or `private_key_wo` can only be set.
+        :param pulumi.Input[_builtins.str] private_key_wo_version: Triggers update of `private_key_wo` write-only. Increment this value when an update to `private_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -457,6 +546,9 @@ class SSLCertificate(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `private_key_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ## Import
@@ -464,22 +556,14 @@ class SSLCertificate(pulumi.CustomResource):
         SslCertificate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/sslCertificates/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, SslCertificate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default projects/{{project}}/global/sslCertificates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{name}}
         ```
 
@@ -503,6 +587,8 @@ class SSLCertificate(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_key_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_key_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -519,15 +605,15 @@ class SSLCertificate(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
-            if private_key is None and not opts.urn:
-                raise TypeError("Missing required property 'private_key'")
             __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
+            __props__.__dict__["private_key_wo"] = None if private_key_wo is None else pulumi.Output.secret(private_key_wo)
+            __props__.__dict__["private_key_wo_version"] = private_key_wo_version
             __props__.__dict__["project"] = project
             __props__.__dict__["certificate_id"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["expire_time"] = None
             __props__.__dict__["self_link"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["certificate", "privateKey"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["certificate", "privateKey", "privateKeyWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SSLCertificate, __self__).__init__(
             'gcp:compute/sSLCertificate:SSLCertificate',
@@ -547,6 +633,8 @@ class SSLCertificate(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
             private_key: Optional[pulumi.Input[_builtins.str]] = None,
+            private_key_wo: Optional[pulumi.Input[_builtins.str]] = None,
+            private_key_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             self_link: Optional[pulumi.Input[_builtins.str]] = None) -> 'SSLCertificate':
         """
@@ -582,6 +670,13 @@ class SSLCertificate(pulumi.CustomResource):
                `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[_builtins.str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] private_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The write-only private key in PEM format.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `private_key` or `private_key_wo` can only be set.
+        :param pulumi.Input[_builtins.str] private_key_wo_version: Triggers update of `private_key_wo` write-only. Increment this value when an update to `private_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
@@ -598,6 +693,8 @@ class SSLCertificate(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["name_prefix"] = name_prefix
         __props__.__dict__["private_key"] = private_key
+        __props__.__dict__["private_key_wo"] = private_key_wo
+        __props__.__dict__["private_key_wo_version"] = private_key_wo_version
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
         return SSLCertificate(resource_name, opts=opts, __props__=__props__)
@@ -677,12 +774,33 @@ class SSLCertificate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> pulumi.Output[_builtins.str]:
+    def private_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The write-only private key in PEM format.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "private_key")
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyWo")
+    def private_key_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The write-only private key in PEM format.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `private_key` or `private_key_wo` can only be set.
+        """
+        return pulumi.get(self, "private_key_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyWoVersion")
+    def private_key_wo_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Triggers update of `private_key_wo` write-only. Increment this value when an update to `private_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "private_key_wo_version")
 
     @_builtins.property
     @pulumi.getter

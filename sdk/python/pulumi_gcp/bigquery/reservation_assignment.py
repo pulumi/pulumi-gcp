@@ -273,22 +273,14 @@ class ReservationAssignment(pulumi.CustomResource):
         ReservationAssignment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}`
-
         * `{{project}}/{{location}}/{{reservation}}/{{name}}`
-
         * `{{location}}/{{reservation}}/{{name}}`
 
         When using the `pulumi import` command, ReservationAssignment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default {{project}}/{{location}}/{{reservation}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default {{location}}/{{reservation}}/{{name}}
         ```
 
@@ -341,22 +333,14 @@ class ReservationAssignment(pulumi.CustomResource):
         ReservationAssignment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}`
-
         * `{{project}}/{{location}}/{{reservation}}/{{name}}`
-
         * `{{location}}/{{reservation}}/{{name}}`
 
         When using the `pulumi import` command, ReservationAssignment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default {{project}}/{{location}}/{{reservation}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default {{location}}/{{reservation}}/{{name}}
         ```
 

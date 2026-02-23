@@ -16,6 +16,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A composite health check resource specifies the health source resources and
+ * the health destination resource to which the aggregated health result from
+ * the health source resources is delivered.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about RegionCompositeHealthCheck, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionCompositeHealthChecks)
+ * * How-to Guides
+ *     * [Health checks overview](https://cloud.google.com/load-balancing/docs/health-check-concepts)
+ * 
  * ## Example Usage
  * 
  * ### Compute Region Composite Health Check Basic
@@ -126,28 +139,16 @@ import javax.annotation.Nullable;
  * RegionCompositeHealthCheck can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/regions/{{region}}/compositeHealthChecks/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{name}}`
- * 
  * * `{{region}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, RegionCompositeHealthCheck can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck default projects/{{project}}/regions/{{region}}/compositeHealthChecks/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck default {{project}}/{{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck default {{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck default {{name}}
  * ```
  * 

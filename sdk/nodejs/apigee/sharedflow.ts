@@ -20,16 +20,12 @@ import * as utilities from "../utilities";
  * SharedFlow can be imported using any of these accepted formats:
  *
  * * `{{org_id}}/sharedflows/{{name}}`
- *
  * * `{{org_id}}/{{name}}`
  *
  * When using the `pulumi import` command, SharedFlow can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/sharedflows/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/{{name}}
  * ```
  */
@@ -67,6 +63,9 @@ export class Sharedflow extends pulumi.CustomResource {
      * - - -
      */
     declare public readonly configBundle: pulumi.Output<string>;
+    /**
+     * (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+     */
     declare public readonly detectMd5hash: pulumi.Output<string | undefined>;
     /**
      * The id of the most recently created revision for this shared flow.
@@ -147,6 +146,9 @@ export interface SharedflowState {
      * - - -
      */
     configBundle?: pulumi.Input<string>;
+    /**
+     * (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+     */
     detectMd5hash?: pulumi.Input<string>;
     /**
      * The id of the most recently created revision for this shared flow.
@@ -185,6 +187,9 @@ export interface SharedflowArgs {
      * - - -
      */
     configBundle: pulumi.Input<string>;
+    /**
+     * (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+     */
     detectMd5hash?: pulumi.Input<string>;
     /**
      * The ID of the shared flow.

@@ -30,10 +30,10 @@ namespace Pulumi.Gcp.Ces.Inputs
         public Input<string> KeyName { get; set; } = null!;
 
         /// <summary>
-        /// Key location in the request.
+        /// Key location in the request. For API key auth on MCP toolsets,
+        /// the API key can only be sent in the request header.
         /// Possible values:
         /// HEADER
-        /// QUERY_STRING
         /// </summary>
         [Input("requestLocation", required: true)]
         public Input<string> RequestLocation { get; set; } = null!;

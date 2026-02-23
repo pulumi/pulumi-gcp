@@ -51,22 +51,14 @@ import * as utilities from "../utilities";
  * Group can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/global/hubs/{{hub}}/groups/{{name}}`
- *
  * * `{{project}}/{{hub}}/{{name}}`
- *
  * * `{{hub}}/{{name}}`
  *
  * When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkconnectivity/group:Group default projects/{{project}}/locations/global/hubs/{{hub}}/groups/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkconnectivity/group:Group default {{project}}/{{hub}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkconnectivity/group:Group default {{hub}}/{{name}}
  * ```
  */
@@ -137,7 +129,7 @@ export class Group extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -252,7 +244,7 @@ export interface GroupState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

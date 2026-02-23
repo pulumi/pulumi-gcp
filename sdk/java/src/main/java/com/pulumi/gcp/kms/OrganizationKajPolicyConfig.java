@@ -16,6 +16,22 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * `OrganizationKajPolicyConfig` is a organization-level singleton resource
+ * used to configure the default KAJ policy of newly created key.
+ * 
+ * &gt; **Note:** OrganizationKajPolicyConfig cannot be deleted from Google Cloud Platform.
+ * Destroying a Terraform-managed OrganizationKajPolicyConfig will remove it from state but
+ * *will not delete the resource from Google Cloud Platform.*
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about OrganizationKajPolicyConfig, see:
+ * 
+ * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/KeyAccessJustificationsPolicyConfig)
+ * * How-to Guides
+ *     * [Set default Key Access Justifications policy](https://cloud.google.com/assured-workloads/key-access-justifications/docs/set-default-policy)
+ * 
  * ## Example Usage
  * 
  * ### Kms Organization Kaj Policy Config Basic
@@ -62,16 +78,12 @@ import javax.annotation.Nullable;
  * OrganizationKajPolicyConfig can be imported using any of these accepted formats:
  * 
  * * `organizations/{{organization}}/kajPolicyConfig`
- * 
  * * `{{organization}}`
  * 
  * When using the `pulumi import` command, OrganizationKajPolicyConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig default organizations/{{organization}}/kajPolicyConfig
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig default {{organization}}
  * ```
  * 

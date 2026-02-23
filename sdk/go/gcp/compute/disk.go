@@ -158,28 +158,16 @@ import (
 // Disk can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
-//
 // * `{{project}}/{{zone}}/{{name}}`
-//
 // * `{{zone}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/disk:Disk default {{name}}
 // ```
 type Disk struct {
@@ -293,7 +281,7 @@ type Disk struct {
 	// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
 	ProvisionedThroughput pulumi.IntOutput `pulumi:"provisionedThroughput"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// (Optional, Beta)
 	// Resource policies applied to this disk for automatic snapshot creations.
@@ -538,7 +526,7 @@ type diskState struct {
 	// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// (Optional, Beta)
 	// Resource policies applied to this disk for automatic snapshot creations.
@@ -749,7 +737,7 @@ type DiskState struct {
 	// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
 	ProvisionedThroughput pulumi.IntPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// (Optional, Beta)
 	// Resource policies applied to this disk for automatic snapshot creations.
@@ -1463,7 +1451,8 @@ func (o DiskOutput) ProvisionedThroughput() pulumi.IntOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DiskOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

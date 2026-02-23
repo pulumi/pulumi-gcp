@@ -305,15 +305,35 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
     public Output<Optional<BucketObjectCustomerEncryption>> customerEncryption() {
         return Codegen.optional(this.customerEncryption);
     }
+    /**
+     * When set to ABANDON, the object won&#39;t be deleted from storage bucket. Instead, it will only be removed from terraform&#39;s state file.
+     * 
+     */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
 
+    /**
+     * @return When set to ABANDON, the object won&#39;t be deleted from storage bucket. Instead, it will only be removed from terraform&#39;s state file.
+     * 
+     */
     public Output<Optional<String>> deletionPolicy() {
         return Codegen.optional(this.deletionPolicy);
     }
+    /**
+     * Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+     * 
+     * &gt; **Warning:** For dynamically populated files or objects, `detectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `sourceMd5hash` instead.
+     * 
+     */
     @Export(name="detectMd5hash", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> detectMd5hash;
 
+    /**
+     * @return Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+     * 
+     * &gt; **Warning:** For dynamically populated files or objects, `detectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `sourceMd5hash` instead.
+     * 
+     */
     public Output<Optional<String>> detectMd5hash() {
         return Codegen.optional(this.detectMd5hash);
     }

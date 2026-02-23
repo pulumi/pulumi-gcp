@@ -81,22 +81,14 @@ import (
 // ServiceConnectionPolicy can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/serviceConnectionPolicies/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, ServiceConnectionPolicy can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy default projects/{{project}}/locations/{{location}}/serviceConnectionPolicies/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy default {{location}}/{{name}}
 // ```
 type ServiceConnectionPolicy struct {
@@ -133,7 +125,7 @@ type ServiceConnectionPolicy struct {
 	// Structure is documented below.
 	PscConnections ServiceConnectionPolicyPscConnectionArrayOutput `pulumi:"pscConnections"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
 	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
@@ -217,7 +209,7 @@ type serviceConnectionPolicyState struct {
 	// Structure is documented below.
 	PscConnections []ServiceConnectionPolicyPscConnection `pulumi:"pscConnections"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
 	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
@@ -258,7 +250,7 @@ type ServiceConnectionPolicyState struct {
 	// Structure is documented below.
 	PscConnections ServiceConnectionPolicyPscConnectionArrayInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
 	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
@@ -478,7 +470,8 @@ func (o ServiceConnectionPolicyOutput) PscConnections() ServiceConnectionPolicyP
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ServiceConnectionPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

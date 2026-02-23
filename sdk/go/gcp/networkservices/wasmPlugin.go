@@ -29,8 +29,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -81,8 +79,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -132,22 +128,14 @@ import (
 // WasmPlugin can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/wasmPlugins/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, WasmPlugin can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/wasmPlugin:WasmPlugin default projects/{{project}}/locations/{{location}}/wasmPlugins/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/wasmPlugin:WasmPlugin default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/wasmPlugin:WasmPlugin default {{location}}/{{name}}
 // ```
 type WasmPlugin struct {
@@ -177,7 +165,7 @@ type WasmPlugin struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. The timestamp when the resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -254,7 +242,7 @@ type wasmPluginState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. The timestamp when the resource was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -291,7 +279,7 @@ type WasmPluginState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. The timestamp when the resource was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -496,7 +484,8 @@ func (o WasmPluginOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o WasmPluginOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WasmPlugin) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

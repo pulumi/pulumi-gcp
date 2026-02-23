@@ -111,22 +111,14 @@ import * as utilities from "../utilities";
  * Secret can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/secrets/{{secret_id}}`
- *
  * * `{{project}}/{{secret_id}}`
- *
  * * `{{secret_id}}`
  *
  * When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
  * ```
  */
@@ -178,7 +170,15 @@ export class Secret extends pulumi.CustomResource {
      * The time at which the Secret was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the secret. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the secret will fail.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -216,7 +216,7 @@ export class Secret extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -356,7 +356,15 @@ export interface SecretState {
      * The time at which the Secret was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the secret. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the secret will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -394,7 +402,7 @@ export interface SecretState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -469,6 +477,11 @@ export interface SecretArgs {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Whether Terraform will be prevented from destroying the secret. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the secret will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.

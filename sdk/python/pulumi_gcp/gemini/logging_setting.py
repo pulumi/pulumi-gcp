@@ -154,7 +154,7 @@ class _LoggingSettingState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Update time stamp.
         """
         if create_time is not None:
@@ -297,7 +297,7 @@ class _LoggingSettingState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -357,22 +357,14 @@ class LoggingSetting(pulumi.CustomResource):
         LoggingSetting can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/loggingSettings/{{logging_setting_id}}`
-
         * `{{project}}/{{location}}/{{logging_setting_id}}`
-
         * `{{location}}/{{logging_setting_id}}`
 
         When using the `pulumi import` command, LoggingSetting can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/loggingSetting:LoggingSetting default projects/{{project}}/locations/{{location}}/loggingSettings/{{logging_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/loggingSetting:LoggingSetting default {{project}}/{{location}}/{{logging_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/loggingSetting:LoggingSetting default {{location}}/{{logging_setting_id}}
         ```
 
@@ -420,22 +412,14 @@ class LoggingSetting(pulumi.CustomResource):
         LoggingSetting can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/loggingSettings/{{logging_setting_id}}`
-
         * `{{project}}/{{location}}/{{logging_setting_id}}`
-
         * `{{location}}/{{logging_setting_id}}`
 
         When using the `pulumi import` command, LoggingSetting can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/loggingSetting:LoggingSetting default projects/{{project}}/locations/{{location}}/loggingSettings/{{logging_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/loggingSetting:LoggingSetting default {{project}}/{{location}}/{{logging_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/loggingSetting:LoggingSetting default {{location}}/{{logging_setting_id}}
         ```
 
@@ -528,7 +512,7 @@ class LoggingSetting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Update time stamp.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -629,7 +613,7 @@ class LoggingSetting(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

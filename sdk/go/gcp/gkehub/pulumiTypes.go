@@ -3479,7 +3479,9 @@ type FeatureMembershipConfigmanagement struct {
 	// Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
 	// to migrate from Hierarchy Controller to HNC.
 	HierarchyController *FeatureMembershipConfigmanagementHierarchyController `pulumi:"hierarchyController"`
-	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+	// Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+	// and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+	// This field was introduced in Terraform version 5.41.0.
 	Management *string `pulumi:"management"`
 	// Policy Controller configuration for the cluster. Structure is documented below.
 	// Configuring Policy Controller through the configmanagement feature is no longer recommended.
@@ -3509,7 +3511,9 @@ type FeatureMembershipConfigmanagementArgs struct {
 	// Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
 	// to migrate from Hierarchy Controller to HNC.
 	HierarchyController FeatureMembershipConfigmanagementHierarchyControllerPtrInput `pulumi:"hierarchyController"`
-	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+	// Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+	// and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+	// This field was introduced in Terraform version 5.41.0.
 	Management pulumi.StringPtrInput `pulumi:"management"`
 	// Policy Controller configuration for the cluster. Structure is documented below.
 	// Configuring Policy Controller through the configmanagement feature is no longer recommended.
@@ -3614,7 +3618,9 @@ func (o FeatureMembershipConfigmanagementOutput) HierarchyController() FeatureMe
 	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
 }
 
-// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+// Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+// and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+// This field was introduced in Terraform version 5.41.0.
 func (o FeatureMembershipConfigmanagementOutput) Management() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *string { return v.Management }).(pulumi.StringPtrOutput)
 }
@@ -3681,7 +3687,9 @@ func (o FeatureMembershipConfigmanagementPtrOutput) HierarchyController() Featur
 	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
 }
 
-// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+// Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+// and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+// This field was introduced in Terraform version 5.41.0.
 func (o FeatureMembershipConfigmanagementPtrOutput) Management() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *string {
 		if v == nil {
@@ -3716,7 +3724,9 @@ func (o FeatureMembershipConfigmanagementPtrOutput) Version() pulumi.StringPtrOu
 type FeatureMembershipConfigmanagementConfigSync struct {
 	// The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
 	DeploymentOverrides []FeatureMembershipConfigmanagementConfigSyncDeploymentOverride `pulumi:"deploymentOverrides"`
-	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+	// Whether Config Sync is enabled in the cluster. This field was introduced in Terraform version
+	// 5.41.0, and
+	// needs to be set to `true` explicitly to install Config Sync.
 	Enabled *bool `pulumi:"enabled"`
 	// (Optional) Structure is documented below.
 	Git *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
@@ -3748,7 +3758,9 @@ type FeatureMembershipConfigmanagementConfigSyncInput interface {
 type FeatureMembershipConfigmanagementConfigSyncArgs struct {
 	// The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
 	DeploymentOverrides FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayInput `pulumi:"deploymentOverrides"`
-	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+	// Whether Config Sync is enabled in the cluster. This field was introduced in Terraform version
+	// 5.41.0, and
+	// needs to be set to `true` explicitly to install Config Sync.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// (Optional) Structure is documented below.
 	Git FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
@@ -3850,7 +3862,9 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) DeploymentOverrides()
 	}).(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput)
 }
 
-// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+// Whether Config Sync is enabled in the cluster. This field was introduced in Terraform version
+// 5.41.0, and
+// needs to be set to `true` explicitly to install Config Sync.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -3925,7 +3939,9 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) DeploymentOverride
 	}).(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput)
 }
 
-// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+// Whether Config Sync is enabled in the cluster. This field was introduced in Terraform version
+// 5.41.0, and
+// needs to be set to `true` explicitly to install Config Sync.
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *bool {
 		if v == nil {
@@ -9945,6 +9961,8 @@ func (o FleetStateTypeArrayOutput) Index(i pulumi.IntInput) FleetStateTypeOutput
 }
 
 type MembershipAuthority struct {
+	// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
+	// with length <2000 characters. For example: `https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster`. If the cluster is provisioned with Terraform, this is `"https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}"`.
 	Issuer string `pulumi:"issuer"`
 }
 
@@ -9960,6 +9978,8 @@ type MembershipAuthorityInput interface {
 }
 
 type MembershipAuthorityArgs struct {
+	// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
+	// with length <2000 characters. For example: `https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster`. If the cluster is provisioned with Terraform, this is `"https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}"`.
 	Issuer pulumi.StringInput `pulumi:"issuer"`
 }
 
@@ -10040,6 +10060,8 @@ func (o MembershipAuthorityOutput) ToMembershipAuthorityPtrOutputWithContext(ctx
 	}).(MembershipAuthorityPtrOutput)
 }
 
+// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
+// with length <2000 characters. For example: `https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster`. If the cluster is provisioned with Terraform, this is `"https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}"`.
 func (o MembershipAuthorityOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v MembershipAuthority) string { return v.Issuer }).(pulumi.StringOutput)
 }
@@ -10068,6 +10090,8 @@ func (o MembershipAuthorityPtrOutput) Elem() MembershipAuthorityOutput {
 	}).(MembershipAuthorityOutput)
 }
 
+// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
+// with length <2000 characters. For example: `https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster`. If the cluster is provisioned with Terraform, this is `"https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}"`.
 func (o MembershipAuthorityPtrOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MembershipAuthority) *string {
 		if v == nil {
@@ -10319,6 +10343,11 @@ func (o MembershipEndpointPtrOutput) GkeCluster() MembershipEndpointGkeClusterPt
 }
 
 type MembershipEndpointGkeCluster struct {
+	// Self-link of the GCP resource for the GKE cluster.
+	// For example: `//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster`.
+	// It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+	// this can be `"//container.googleapis.com/${google_container_cluster.my-cluster.id}"` or
+	// `google_container_cluster.my-cluster.id`.
 	ResourceLink string `pulumi:"resourceLink"`
 }
 
@@ -10334,6 +10363,11 @@ type MembershipEndpointGkeClusterInput interface {
 }
 
 type MembershipEndpointGkeClusterArgs struct {
+	// Self-link of the GCP resource for the GKE cluster.
+	// For example: `//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster`.
+	// It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+	// this can be `"//container.googleapis.com/${google_container_cluster.my-cluster.id}"` or
+	// `google_container_cluster.my-cluster.id`.
 	ResourceLink pulumi.StringInput `pulumi:"resourceLink"`
 }
 
@@ -10414,6 +10448,11 @@ func (o MembershipEndpointGkeClusterOutput) ToMembershipEndpointGkeClusterPtrOut
 	}).(MembershipEndpointGkeClusterPtrOutput)
 }
 
+// Self-link of the GCP resource for the GKE cluster.
+// For example: `//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster`.
+// It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+// this can be `"//container.googleapis.com/${google_container_cluster.my-cluster.id}"` or
+// `google_container_cluster.my-cluster.id`.
 func (o MembershipEndpointGkeClusterOutput) ResourceLink() pulumi.StringOutput {
 	return o.ApplyT(func(v MembershipEndpointGkeCluster) string { return v.ResourceLink }).(pulumi.StringOutput)
 }
@@ -10442,6 +10481,11 @@ func (o MembershipEndpointGkeClusterPtrOutput) Elem() MembershipEndpointGkeClust
 	}).(MembershipEndpointGkeClusterOutput)
 }
 
+// Self-link of the GCP resource for the GKE cluster.
+// For example: `//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster`.
+// It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+// this can be `"//container.googleapis.com/${google_container_cluster.my-cluster.id}"` or
+// `google_container_cluster.my-cluster.id`.
 func (o MembershipEndpointGkeClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MembershipEndpointGkeCluster) *string {
 		if v == nil {
@@ -15748,6 +15792,8 @@ func (o GetFeatureStateStateArrayOutput) Index(i pulumi.IntInput) GetFeatureStat
 }
 
 type GetMembershipAuthority struct {
+	// A JSON Web Token (JWT) issuer URI. 'issuer' must start with 'https://' and // be a valid
+	// with length <2000 characters. For example: 'https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster'. If the cluster is provisioned with Terraform, this is '"https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}"'.
 	Issuer string `pulumi:"issuer"`
 }
 
@@ -15763,6 +15809,8 @@ type GetMembershipAuthorityInput interface {
 }
 
 type GetMembershipAuthorityArgs struct {
+	// A JSON Web Token (JWT) issuer URI. 'issuer' must start with 'https://' and // be a valid
+	// with length <2000 characters. For example: 'https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster'. If the cluster is provisioned with Terraform, this is '"https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}"'.
 	Issuer pulumi.StringInput `pulumi:"issuer"`
 }
 
@@ -15817,6 +15865,8 @@ func (o GetMembershipAuthorityOutput) ToGetMembershipAuthorityOutputWithContext(
 	return o
 }
 
+// A JSON Web Token (JWT) issuer URI. 'issuer' must start with 'https://' and // be a valid
+// with length <2000 characters. For example: 'https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster'. If the cluster is provisioned with Terraform, this is '"https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}"'.
 func (o GetMembershipAuthorityOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMembershipAuthority) string { return v.Issuer }).(pulumi.StringOutput)
 }
@@ -16036,6 +16086,11 @@ func (o GetMembershipEndpointArrayOutput) Index(i pulumi.IntInput) GetMembership
 }
 
 type GetMembershipEndpointGkeCluster struct {
+	// Self-link of the GCP resource for the GKE cluster.
+	// For example: '//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster'.
+	// It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+	// this can be '"//container.googleapis.com/${google_container_cluster.my-cluster.id}"' or
+	// 'google_container_cluster.my-cluster.id'.
 	ResourceLink string `pulumi:"resourceLink"`
 }
 
@@ -16051,6 +16106,11 @@ type GetMembershipEndpointGkeClusterInput interface {
 }
 
 type GetMembershipEndpointGkeClusterArgs struct {
+	// Self-link of the GCP resource for the GKE cluster.
+	// For example: '//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster'.
+	// It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+	// this can be '"//container.googleapis.com/${google_container_cluster.my-cluster.id}"' or
+	// 'google_container_cluster.my-cluster.id'.
 	ResourceLink pulumi.StringInput `pulumi:"resourceLink"`
 }
 
@@ -16105,6 +16165,11 @@ func (o GetMembershipEndpointGkeClusterOutput) ToGetMembershipEndpointGkeCluster
 	return o
 }
 
+// Self-link of the GCP resource for the GKE cluster.
+// For example: '//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster'.
+// It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+// this can be '"//container.googleapis.com/${google_container_cluster.my-cluster.id}"' or
+// 'google_container_cluster.my-cluster.id'.
 func (o GetMembershipEndpointGkeClusterOutput) ResourceLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMembershipEndpointGkeCluster) string { return v.ResourceLink }).(pulumi.StringOutput)
 }

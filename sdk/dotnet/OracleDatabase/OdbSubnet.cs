@@ -51,22 +51,14 @@ namespace Pulumi.Gcp.OracleDatabase
     /// OdbSubnet can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/odbNetworks/{{odbnetwork}}/odbSubnets/{{odb_subnet_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{odbnetwork}}/{{odb_subnet_id}}`
-    /// 
     /// * `{{location}}/{{odbnetwork}}/{{odb_subnet_id}}`
     /// 
     /// When using the `pulumi import` command, OdbSubnet can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default projects/{{project}}/locations/{{location}}/odbNetworks/{{odbnetwork}}/odbSubnets/{{odb_subnet_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default {{project}}/{{location}}/{{odbnetwork}}/{{odb_subnet_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default {{location}}/{{odbnetwork}}/{{odb_subnet_id}}
     /// ```
     /// </summary>
@@ -85,6 +77,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -139,7 +134,7 @@ namespace Pulumi.Gcp.OracleDatabase
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -221,6 +216,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("cidrRange", required: true)]
         public Input<string> CidrRange { get; set; } = null!;
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -295,6 +293,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -368,7 +369,7 @@ namespace Pulumi.Gcp.OracleDatabase
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

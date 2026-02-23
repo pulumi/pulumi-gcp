@@ -47,9 +47,17 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.advancedMachineFeatures);
     }
 
+    /**
+     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+     * 
+     */
     @Import(name="allowStoppingForUpdate")
     private @Nullable Output<Boolean> allowStoppingForUpdate;
 
+    /**
+     * @return If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+     * 
+     */
     public Optional<Output<Boolean>> allowStoppingForUpdate() {
         return Optional.ofNullable(this.allowStoppingForUpdate);
     }
@@ -208,9 +216,17 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.desiredStatus);
     }
 
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     @Import(name="effectiveLabels")
     private @Nullable Output<Map<String,String>> effectiveLabels;
 
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
     }
@@ -794,11 +810,23 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
             return advancedMachineFeatures(Output.of(advancedMachineFeatures));
         }
 
+        /**
+         * @param allowStoppingForUpdate If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowStoppingForUpdate(@Nullable Output<Boolean> allowStoppingForUpdate) {
             $.allowStoppingForUpdate = allowStoppingForUpdate;
             return this;
         }
 
+        /**
+         * @param allowStoppingForUpdate If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowStoppingForUpdate(Boolean allowStoppingForUpdate) {
             return allowStoppingForUpdate(Output.of(allowStoppingForUpdate));
         }
@@ -1027,11 +1055,23 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
             return desiredStatus(Output.of(desiredStatus));
         }
 
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
             $.effectiveLabels = effectiveLabels;
             return this;
         }
 
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
         }

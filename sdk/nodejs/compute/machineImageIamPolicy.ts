@@ -5,14 +5,270 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
+ *
+ * * `gcp.compute.MachineImageIamPolicy`: Authoritative. Sets the IAM policy for the machineimage and replaces any existing policy already attached.
+ * * `gcp.compute.MachineImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the machineimage are preserved.
+ * * `gcp.compute.MachineImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the machineimage are preserved.
+ *
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ *
+ * * `gcp.compute.MachineImageIamPolicy`: Retrieves the IAM policy for the machineimage
+ *
+ * > **Note:** `gcp.compute.MachineImageIamPolicy` **cannot** be used in conjunction with `gcp.compute.MachineImageIamBinding` and `gcp.compute.MachineImageIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.compute.MachineImageIamBinding` resources **can be** used in conjunction with `gcp.compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * ## gcp.compute.MachineImageIamPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/compute.admin",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.compute.MachineImageIamPolicy("policy", {
+ *     project: image.project,
+ *     machineImage: image.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/compute.admin",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.compute.MachineImageIamPolicy("policy", {
+ *     project: image.project,
+ *     machineImage: image.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * ## gcp.compute.MachineImageIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.compute.MachineImageIamBinding("binding", {
+ *     project: image.project,
+ *     machineImage: image.name,
+ *     role: "roles/compute.admin",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.compute.MachineImageIamBinding("binding", {
+ *     project: image.project,
+ *     machineImage: image.name,
+ *     role: "roles/compute.admin",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * ## gcp.compute.MachineImageIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.compute.MachineImageIamMember("member", {
+ *     project: image.project,
+ *     machineImage: image.name,
+ *     role: "roles/compute.admin",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.compute.MachineImageIamMember("member", {
+ *     project: image.project,
+ *     machineImage: image.name,
+ *     role: "roles/compute.admin",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * ## This resource supports User Project Overrides.
+ *
+ * - 
+ *
+ * # IAM policy for Compute Engine MachineImage
+ *
+ * Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
+ *
+ * * `gcp.compute.MachineImageIamPolicy`: Authoritative. Sets the IAM policy for the machineimage and replaces any existing policy already attached.
+ * * `gcp.compute.MachineImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the machineimage are preserved.
+ * * `gcp.compute.MachineImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the machineimage are preserved.
+ *
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ *
+ * * `gcp.compute.MachineImageIamPolicy`: Retrieves the IAM policy for the machineimage
+ *
+ * > **Note:** `gcp.compute.MachineImageIamPolicy` **cannot** be used in conjunction with `gcp.compute.MachineImageIamBinding` and `gcp.compute.MachineImageIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.compute.MachineImageIamBinding` resources **can be** used in conjunction with `gcp.compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * ## gcp.compute.MachineImageIamPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/compute.admin",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.compute.MachineImageIamPolicy("policy", {
+ *     project: image.project,
+ *     machineImage: image.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/compute.admin",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.compute.MachineImageIamPolicy("policy", {
+ *     project: image.project,
+ *     machineImage: image.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * ## gcp.compute.MachineImageIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.compute.MachineImageIamBinding("binding", {
+ *     project: image.project,
+ *     machineImage: image.name,
+ *     role: "roles/compute.admin",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.compute.MachineImageIamBinding("binding", {
+ *     project: image.project,
+ *     machineImage: image.name,
+ *     role: "roles/compute.admin",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * ## gcp.compute.MachineImageIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.compute.MachineImageIamMember("member", {
+ *     project: image.project,
+ *     machineImage: image.name,
+ *     role: "roles/compute.admin",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.compute.MachineImageIamMember("member", {
+ *     project: image.project,
+ *     machineImage: image.name,
+ *     role: "roles/compute.admin",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:
  *
  * * projects/{{project}}/global/machineImages/{{name}}
- *
  * * {{project}}/{{name}}
- *
  * * {{name}}
  *
  * Any variables not passed in the import command will be taken from the provider configuration.
@@ -20,25 +276,21 @@ import * as utilities from "../utilities";
  * Compute Engine machineimage IAM resources can be imported using the resource identifiers, role, and member.
  *
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
- *
  * ```sh
- * $ pulumi import gcp:compute/machineImageIamPolicy:MachineImageIamPolicy editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin user:jane@example.com"
+ * $ terraform import google_compute_machine_image_iam_member.editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin user:jane@example.com"
  * ```
  *
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
- *
  * ```sh
- * $ pulumi import gcp:compute/machineImageIamPolicy:MachineImageIamPolicy editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin"
+ * $ terraform import google_compute_machine_image_iam_binding.editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin"
  * ```
  *
  * IAM policy imports use the identifier of the resource in question, e.g.
- *
  * ```sh
  * $ pulumi import gcp:compute/machineImageIamPolicy:MachineImageIamPolicy editor projects/{{project}}/global/machineImages/{{machine_image}}
  * ```
  *
- * -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
- *
+ * > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class MachineImageIamPolicy extends pulumi.CustomResource {

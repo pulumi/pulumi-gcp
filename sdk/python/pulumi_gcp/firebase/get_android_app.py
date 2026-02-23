@@ -167,7 +167,11 @@ def get_android_app(app_id: Optional[_builtins.str] = None,
                     project: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAndroidAppResult:
     """
-    Use this data source to access information about an existing resource.
+    A Google Cloud Firebase Android application instance
+
+    > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
 
     :param _builtins.str app_id: The app_id of name of the Firebase androidApp.
            
@@ -198,7 +202,11 @@ def get_android_app_output(app_id: Optional[pulumi.Input[_builtins.str]] = None,
                            project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAndroidAppResult]:
     """
-    Use this data source to access information about an existing resource.
+    A Google Cloud Firebase Android application instance
+
+    > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
 
     :param _builtins.str app_id: The app_id of name of the Firebase androidApp.
            

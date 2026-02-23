@@ -96,22 +96,14 @@ import (
 // MirroringEndpointGroupAssociation can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/mirroringEndpointGroupAssociations/{{mirroring_endpoint_group_association_id}}`
-//
 // * `{{project}}/{{location}}/{{mirroring_endpoint_group_association_id}}`
-//
 // * `{{location}}/{{mirroring_endpoint_group_association_id}}`
 //
 // When using the `pulumi import` command, MirroringEndpointGroupAssociation can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default projects/{{project}}/locations/{{location}}/mirroringEndpointGroupAssociations/{{mirroring_endpoint_group_association_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default {{project}}/{{location}}/{{mirroring_endpoint_group_association_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default {{location}}/{{mirroring_endpoint_group_association_id}}
 // ```
 type MirroringEndpointGroupAssociation struct {
@@ -160,7 +152,7 @@ type MirroringEndpointGroupAssociation struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This part of the normal
@@ -266,7 +258,7 @@ type mirroringEndpointGroupAssociationState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This part of the normal
@@ -329,7 +321,7 @@ type MirroringEndpointGroupAssociationState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This part of the normal
@@ -570,7 +562,8 @@ func (o MirroringEndpointGroupAssociationOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MirroringEndpointGroupAssociationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MirroringEndpointGroupAssociation) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

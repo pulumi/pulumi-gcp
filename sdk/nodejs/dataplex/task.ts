@@ -25,12 +25,12 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const example = new gcp.dataplex.Lake("example", {
- *     name: "tf-test-lake_8270",
+ *     name: "tf-test-lake_89313",
  *     location: "us-central1",
  *     project: "my-project-name",
  * });
  * const exampleTask = new gcp.dataplex.Task("example", {
- *     taskId: "tf-test-task_41150",
+ *     taskId: "tf-test-task_60646",
  *     location: "us-central1",
  *     lake: example.name,
  *     description: "Test Task Basic",
@@ -65,17 +65,17 @@ import * as utilities from "../utilities";
  *
  * // VPC network
  * const _default = new gcp.compute.Network("default", {
- *     name: "tf-test-workstation-cluster_89313",
+ *     name: "tf-test-workstation-cluster_9394",
  *     autoCreateSubnetworks: true,
  * });
  * const project = gcp.organizations.getProject({});
  * const exampleSpark = new gcp.dataplex.Lake("example_spark", {
- *     name: "tf-test-lake_60646",
+ *     name: "tf-test-lake_11380",
  *     location: "us-central1",
  *     project: "my-project-name",
  * });
  * const exampleSparkTask = new gcp.dataplex.Task("example_spark", {
- *     taskId: "tf-test-task_9394",
+ *     taskId: "tf-test-task_35305",
  *     location: "us-central1",
  *     lake: exampleSpark.name,
  *     triggerSpec: {
@@ -124,17 +124,17 @@ import * as utilities from "../utilities";
  *
  * // VPC network
  * const _default = new gcp.compute.Network("default", {
- *     name: "tf-test-workstation-cluster_11380",
+ *     name: "tf-test-workstation-cluster_62793",
  *     autoCreateSubnetworks: true,
  * });
  * const project = gcp.organizations.getProject({});
  * const exampleNotebook = new gcp.dataplex.Lake("example_notebook", {
- *     name: "tf-test-lake_35305",
+ *     name: "tf-test-lake_55438",
  *     location: "us-central1",
  *     project: "my-project-name",
  * });
  * const exampleNotebookTask = new gcp.dataplex.Task("example_notebook", {
- *     taskId: "tf-test-task_62793",
+ *     taskId: "tf-test-task_32706",
  *     location: "us-central1",
  *     lake: exampleNotebook.name,
  *     triggerSpec: {
@@ -181,22 +181,14 @@ import * as utilities from "../utilities";
  * Task can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}`
- *
  * * `{{project}}/{{location}}/{{lake}}/{{task_id}}`
- *
  * * `{{location}}/{{lake}}/{{task_id}}`
  *
  * When using the `pulumi import` command, Task can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataplex/task:Task default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/task:Task default {{project}}/{{location}}/{{lake}}/{{task_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/task:Task default {{location}}/{{lake}}/{{task_id}}
  * ```
  */
@@ -286,7 +278,7 @@ export class Task extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -448,7 +440,7 @@ export interface TaskState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

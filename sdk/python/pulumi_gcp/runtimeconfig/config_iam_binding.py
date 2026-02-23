@@ -268,14 +268,136 @@ class ConfigIamBinding(pulumi.CustomResource):
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for Runtime Configurator Config. Each of these resources serves a different use case:
+
+        * `runtimeconfig.ConfigIamPolicy`: Authoritative. Sets the IAM policy for the config and replaces any existing policy already attached.
+        * `runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved.
+        * `runtimeconfig.ConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the config are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `runtimeconfig.ConfigIamPolicy`: Retrieves the IAM policy for the config
+
+        > **Note:** `runtimeconfig.ConfigIamPolicy` **cannot** be used in conjunction with `runtimeconfig.ConfigIamBinding` and `runtimeconfig.ConfigIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `runtimeconfig.ConfigIamBinding` resources **can be** used in conjunction with `runtimeconfig.ConfigIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## runtimeconfig.ConfigIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.runtimeconfig.ConfigIamPolicy("policy",
+            project=config["project"],
+            config=config["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## runtimeconfig.ConfigIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.runtimeconfig.ConfigIamBinding("binding",
+            project=config["project"],
+            config=config["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## runtimeconfig.ConfigIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.runtimeconfig.ConfigIamMember("member",
+            project=config["project"],
+            config=config["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Runtime Configurator Config
+
+        Three different resources help you manage your IAM policy for Runtime Configurator Config. Each of these resources serves a different use case:
+
+        * `runtimeconfig.ConfigIamPolicy`: Authoritative. Sets the IAM policy for the config and replaces any existing policy already attached.
+        * `runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved.
+        * `runtimeconfig.ConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the config are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `runtimeconfig.ConfigIamPolicy`: Retrieves the IAM policy for the config
+
+        > **Note:** `runtimeconfig.ConfigIamPolicy` **cannot** be used in conjunction with `runtimeconfig.ConfigIamBinding` and `runtimeconfig.ConfigIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `runtimeconfig.ConfigIamBinding` resources **can be** used in conjunction with `runtimeconfig.ConfigIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## runtimeconfig.ConfigIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.runtimeconfig.ConfigIamPolicy("policy",
+            project=config["project"],
+            config=config["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## runtimeconfig.ConfigIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.runtimeconfig.ConfigIamBinding("binding",
+            project=config["project"],
+            config=config["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## runtimeconfig.ConfigIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.runtimeconfig.ConfigIamMember("member",
+            project=config["project"],
+            config=config["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/configs/{{config}}
-
         * {{project}}/{{config}}
-
         * {{config}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -283,25 +405,21 @@ class ConfigIamBinding(pulumi.CustomResource):
         Runtime Configurator config IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:runtimeconfig/configIamBinding:ConfigIamBinding editor "projects/{{project}}/configs/{{config}} roles/viewer user:jane@example.com"
+        $ terraform import google_runtimeconfig_config_iam_member.editor "projects/{{project}}/configs/{{config}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:runtimeconfig/configIamBinding:ConfigIamBinding editor "projects/{{project}}/configs/{{config}} roles/viewer"
+        $ terraform import google_runtimeconfig_config_iam_binding.editor "projects/{{project}}/configs/{{config}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:runtimeconfig/configIamBinding:ConfigIamBinding editor projects/{{project}}/configs/{{config}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
@@ -332,14 +450,136 @@ class ConfigIamBinding(pulumi.CustomResource):
                  args: ConfigIamBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for Runtime Configurator Config. Each of these resources serves a different use case:
+
+        * `runtimeconfig.ConfigIamPolicy`: Authoritative. Sets the IAM policy for the config and replaces any existing policy already attached.
+        * `runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved.
+        * `runtimeconfig.ConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the config are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `runtimeconfig.ConfigIamPolicy`: Retrieves the IAM policy for the config
+
+        > **Note:** `runtimeconfig.ConfigIamPolicy` **cannot** be used in conjunction with `runtimeconfig.ConfigIamBinding` and `runtimeconfig.ConfigIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `runtimeconfig.ConfigIamBinding` resources **can be** used in conjunction with `runtimeconfig.ConfigIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## runtimeconfig.ConfigIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.runtimeconfig.ConfigIamPolicy("policy",
+            project=config["project"],
+            config=config["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## runtimeconfig.ConfigIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.runtimeconfig.ConfigIamBinding("binding",
+            project=config["project"],
+            config=config["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## runtimeconfig.ConfigIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.runtimeconfig.ConfigIamMember("member",
+            project=config["project"],
+            config=config["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Runtime Configurator Config
+
+        Three different resources help you manage your IAM policy for Runtime Configurator Config. Each of these resources serves a different use case:
+
+        * `runtimeconfig.ConfigIamPolicy`: Authoritative. Sets the IAM policy for the config and replaces any existing policy already attached.
+        * `runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved.
+        * `runtimeconfig.ConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the config are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `runtimeconfig.ConfigIamPolicy`: Retrieves the IAM policy for the config
+
+        > **Note:** `runtimeconfig.ConfigIamPolicy` **cannot** be used in conjunction with `runtimeconfig.ConfigIamBinding` and `runtimeconfig.ConfigIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `runtimeconfig.ConfigIamBinding` resources **can be** used in conjunction with `runtimeconfig.ConfigIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## runtimeconfig.ConfigIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.runtimeconfig.ConfigIamPolicy("policy",
+            project=config["project"],
+            config=config["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## runtimeconfig.ConfigIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.runtimeconfig.ConfigIamBinding("binding",
+            project=config["project"],
+            config=config["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## runtimeconfig.ConfigIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.runtimeconfig.ConfigIamMember("member",
+            project=config["project"],
+            config=config["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/configs/{{config}}
-
         * {{project}}/{{config}}
-
         * {{config}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -347,25 +587,21 @@ class ConfigIamBinding(pulumi.CustomResource):
         Runtime Configurator config IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:runtimeconfig/configIamBinding:ConfigIamBinding editor "projects/{{project}}/configs/{{config}} roles/viewer user:jane@example.com"
+        $ terraform import google_runtimeconfig_config_iam_member.editor "projects/{{project}}/configs/{{config}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:runtimeconfig/configIamBinding:ConfigIamBinding editor "projects/{{project}}/configs/{{config}} roles/viewer"
+        $ terraform import google_runtimeconfig_config_iam_binding.editor "projects/{{project}}/configs/{{config}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:runtimeconfig/configIamBinding:ConfigIamBinding editor projects/{{project}}/configs/{{config}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.

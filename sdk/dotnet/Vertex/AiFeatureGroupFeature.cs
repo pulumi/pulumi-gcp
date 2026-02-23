@@ -111,28 +111,16 @@ namespace Pulumi.Gcp.Vertex
     /// FeatureGroupFeature can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}`
-    /// 
     /// * `{{project}}/{{region}}/{{feature_group}}/{{name}}`
-    /// 
     /// * `{{region}}/{{feature_group}}/{{name}}`
-    /// 
     /// * `{{feature_group}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, FeatureGroupFeature can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{project}}/{{region}}/{{feature_group}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{region}}/{{feature_group}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{feature_group}}/{{name}}
     /// ```
     /// </summary>
@@ -186,7 +174,7 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -385,7 +373,7 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

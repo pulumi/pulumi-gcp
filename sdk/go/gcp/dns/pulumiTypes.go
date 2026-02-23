@@ -1429,7 +1429,13 @@ type ManagedZonePrivateVisibilityConfig struct {
 	// The list of Google Kubernetes Engine clusters that can see this zone.
 	// Structure is documented below.
 	GkeClusters []ManagedZonePrivateVisibilityConfigGkeCluster `pulumi:"gkeClusters"`
-	Networks    []ManagedZonePrivateVisibilityConfigNetwork    `pulumi:"networks"`
+	// The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+	// may experience issues with this resource while updating. If you've defined a `networks` block and
+	// add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+	// and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+	// blocks in an update and then apply another update adding all of them back simultaneously.
+	// Structure is documented below.
+	Networks []ManagedZonePrivateVisibilityConfigNetwork `pulumi:"networks"`
 }
 
 // ManagedZonePrivateVisibilityConfigInput is an input type that accepts ManagedZonePrivateVisibilityConfigArgs and ManagedZonePrivateVisibilityConfigOutput values.
@@ -1447,7 +1453,13 @@ type ManagedZonePrivateVisibilityConfigArgs struct {
 	// The list of Google Kubernetes Engine clusters that can see this zone.
 	// Structure is documented below.
 	GkeClusters ManagedZonePrivateVisibilityConfigGkeClusterArrayInput `pulumi:"gkeClusters"`
-	Networks    ManagedZonePrivateVisibilityConfigNetworkArrayInput    `pulumi:"networks"`
+	// The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+	// may experience issues with this resource while updating. If you've defined a `networks` block and
+	// add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+	// and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+	// blocks in an update and then apply another update adding all of them back simultaneously.
+	// Structure is documented below.
+	Networks ManagedZonePrivateVisibilityConfigNetworkArrayInput `pulumi:"networks"`
 }
 
 func (ManagedZonePrivateVisibilityConfigArgs) ElementType() reflect.Type {
@@ -1535,6 +1547,12 @@ func (o ManagedZonePrivateVisibilityConfigOutput) GkeClusters() ManagedZonePriva
 	}).(ManagedZonePrivateVisibilityConfigGkeClusterArrayOutput)
 }
 
+// The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+// may experience issues with this resource while updating. If you've defined a `networks` block and
+// add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+// and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+// blocks in an update and then apply another update adding all of them back simultaneously.
+// Structure is documented below.
 func (o ManagedZonePrivateVisibilityConfigOutput) Networks() ManagedZonePrivateVisibilityConfigNetworkArrayOutput {
 	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfig) []ManagedZonePrivateVisibilityConfigNetwork {
 		return v.Networks
@@ -1576,6 +1594,12 @@ func (o ManagedZonePrivateVisibilityConfigPtrOutput) GkeClusters() ManagedZonePr
 	}).(ManagedZonePrivateVisibilityConfigGkeClusterArrayOutput)
 }
 
+// The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+// may experience issues with this resource while updating. If you've defined a `networks` block and
+// add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+// and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+// blocks in an update and then apply another update adding all of them back simultaneously.
+// Structure is documented below.
 func (o ManagedZonePrivateVisibilityConfigPtrOutput) Networks() ManagedZonePrivateVisibilityConfigNetworkArrayOutput {
 	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfig) []ManagedZonePrivateVisibilityConfigNetwork {
 		if v == nil {
@@ -3606,8 +3630,10 @@ type RecordSetRoutingPolicyPrimaryBackupBackupGeo struct {
 	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
 	HealthCheckedTargets *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets `pulumi:"healthCheckedTargets"`
 	// The location name defined in Google Cloud.
-	Location string   `pulumi:"location"`
-	Rrdatas  []string `pulumi:"rrdatas"`
+	Location string `pulumi:"location"`
+	// The string data for the records in this record set
+	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
+	Rrdatas []string `pulumi:"rrdatas"`
 }
 
 // RecordSetRoutingPolicyPrimaryBackupBackupGeoInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs and RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput values.
@@ -3625,8 +3651,10 @@ type RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs struct {
 	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
 	HealthCheckedTargets RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrInput `pulumi:"healthCheckedTargets"`
 	// The location name defined in Google Cloud.
-	Location pulumi.StringInput      `pulumi:"location"`
-	Rrdatas  pulumi.StringArrayInput `pulumi:"rrdatas"`
+	Location pulumi.StringInput `pulumi:"location"`
+	// The string data for the records in this record set
+	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
+	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
 }
 
 func (RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs) ElementType() reflect.Type {
@@ -3692,6 +3720,8 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) Location() pulumi.St
 	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeo) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The string data for the records in this record set
+// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) Rrdatas() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeo) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
 }

@@ -118,22 +118,14 @@ import (
 // CertificateIssuanceConfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, CertificateIssuanceConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default {{location}}/{{name}}
 // ```
 type CertificateIssuanceConfig struct {
@@ -171,7 +163,7 @@ type CertificateIssuanceConfig struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 	// Must be a number between 1-99, inclusive.
@@ -263,7 +255,7 @@ type certificateIssuanceConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 	// Must be a number between 1-99, inclusive.
@@ -309,7 +301,7 @@ type CertificateIssuanceConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 	// Must be a number between 1-99, inclusive.
@@ -544,7 +536,8 @@ func (o CertificateIssuanceConfigOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CertificateIssuanceConfigOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

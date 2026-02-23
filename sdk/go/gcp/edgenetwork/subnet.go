@@ -119,34 +119,18 @@ import (
 // Subnet can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
-//
 // * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
-//
 // * `{{location}}/{{zone}}/{{subnet_id}}`
-//
 // * `{{location}}/{{subnet_id}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgenetwork/subnet:Subnet default {{project}}/{{location}}/{{zone}}/{{subnet_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{zone}}/{{subnet_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{subnet_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgenetwork/subnet:Subnet default {{name}}
 // ```
 type Subnet struct {
@@ -181,7 +165,7 @@ type Subnet struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Current stage of the resource to the device by config push.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -273,7 +257,7 @@ type subnetState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Current stage of the resource to the device by config push.
 	State *string `pulumi:"state"`
@@ -319,7 +303,7 @@ type SubnetState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Current stage of the resource to the device by config push.
 	State pulumi.StringPtrInput
@@ -542,7 +526,8 @@ func (o SubnetOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o SubnetOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

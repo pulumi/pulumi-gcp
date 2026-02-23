@@ -142,22 +142,14 @@ import javax.annotation.Nullable;
  * CertificateIssuanceConfig can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, CertificateIssuanceConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default {{location}}/{{name}}
  * ```
  * 
@@ -328,7 +320,7 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -336,7 +328,7 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

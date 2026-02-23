@@ -95,16 +95,12 @@ import (
 // GenerativeSettings can be imported using any of these accepted formats:
 //
 // * `{{parent}}/generativeSettings`
-//
 // * `{{parent}}`
 //
 // When using the `pulumi import` command, GenerativeSettings can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings default {{parent}}/generativeSettings
-// ```
-//
-// ```sh
 // $ pulumi import gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings default {{parent}}
 // ```
 type CxGenerativeSettings struct {

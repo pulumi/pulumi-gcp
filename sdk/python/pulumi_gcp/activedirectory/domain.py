@@ -39,6 +39,12 @@ class DomainArgs:
                If not specified, setupadmin will be used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
                If CIDR subnets overlap between networks, domain creation will fail.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the domain. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the domain,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the domain will fail.
+               When the field is set to false, deleting the domain is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels that can contain user-provided metadata
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -127,6 +133,14 @@ class DomainArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the domain. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the domain,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the domain will fail.
+        When the field is set to false, deleting the domain is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -182,6 +196,12 @@ class _DomainState:
                If not specified, setupadmin will be used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
                If CIDR subnets overlap between networks, domain creation will fail.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the domain. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the domain,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the domain will fail.
+               When the field is set to false, deleting the domain is allowed.
         :param pulumi.Input[_builtins.str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
                of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -196,7 +216,7 @@ class _DomainState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
                Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
         """
@@ -254,6 +274,14 @@ class _DomainState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the domain. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the domain,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the domain will fail.
+        When the field is set to false, deleting the domain is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -355,7 +383,7 @@ class _DomainState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -421,22 +449,14 @@ class Domain(pulumi.CustomResource):
         Domain can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Domain can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:activedirectory/domain:Domain default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:activedirectory/domain:Domain default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_active_directory_domain.default "{{project}} {{name}}"
         $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
         ```
 
@@ -446,6 +466,12 @@ class Domain(pulumi.CustomResource):
                If not specified, setupadmin will be used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
                If CIDR subnets overlap between networks, domain creation will fail.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the domain. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the domain,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the domain will fail.
+               When the field is set to false, deleting the domain is allowed.
         :param pulumi.Input[_builtins.str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
                of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels that can contain user-provided metadata
@@ -493,22 +519,14 @@ class Domain(pulumi.CustomResource):
         Domain can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Domain can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:activedirectory/domain:Domain default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:activedirectory/domain:Domain default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_active_directory_domain.default "{{project}} {{name}}"
         $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
         ```
 
@@ -597,6 +615,12 @@ class Domain(pulumi.CustomResource):
                If not specified, setupadmin will be used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
                If CIDR subnets overlap between networks, domain creation will fail.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the domain. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the domain,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the domain will fail.
+               When the field is set to false, deleting the domain is allowed.
         :param pulumi.Input[_builtins.str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
                of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -611,7 +635,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
                Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
         """
@@ -654,6 +678,14 @@ class Domain(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the domain. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the domain,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the domain will fail.
+        When the field is set to false, deleting the domain is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -723,7 +755,7 @@ class Domain(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

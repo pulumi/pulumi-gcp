@@ -50,22 +50,14 @@ import * as utilities from "../utilities";
  * MulticastDomain can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}`
- *
  * * `{{project}}/{{location}}/{{multicast_domain_id}}`
- *
  * * `{{location}}/{{multicast_domain_id}}`
  *
  * When using the `pulumi import` command, MulticastDomain can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{project}}/{{location}}/{{multicast_domain_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{location}}/{{multicast_domain_id}}
  * ```
  */
@@ -156,7 +148,7 @@ export class MulticastDomain extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -172,6 +164,11 @@ export class MulticastDomain extends pulumi.CustomResource {
      * INACTIVE
      */
     declare public /*out*/ readonly states: pulumi.Output<outputs.networkservices.MulticastDomainState[]>;
+    /**
+     * Information for an Ultra-Low-Latency multicast domain.
+     * Structure is documented below.
+     */
+    declare public readonly ullMulticastDomain: pulumi.Output<outputs.networkservices.MulticastDomainUllMulticastDomain | undefined>;
     /**
      * The Google-generated UUID for the resource. This value is
      * unique across all multicast domain resources. If a domain is deleted and
@@ -211,6 +208,7 @@ export class MulticastDomain extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["states"] = state?.states;
+            resourceInputs["ullMulticastDomain"] = state?.ullMulticastDomain;
             resourceInputs["uniqueId"] = state?.uniqueId;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
@@ -235,6 +233,7 @@ export class MulticastDomain extends pulumi.CustomResource {
             resourceInputs["multicastDomainGroup"] = args?.multicastDomainGroup;
             resourceInputs["multicastDomainId"] = args?.multicastDomainId;
             resourceInputs["project"] = args?.project;
+            resourceInputs["ullMulticastDomain"] = args?.ullMulticastDomain;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -313,7 +312,7 @@ export interface MulticastDomainState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -329,6 +328,11 @@ export interface MulticastDomainState {
      * INACTIVE
      */
     states?: pulumi.Input<pulumi.Input<inputs.networkservices.MulticastDomainState>[]>;
+    /**
+     * Information for an Ultra-Low-Latency multicast domain.
+     * Structure is documented below.
+     */
+    ullMulticastDomain?: pulumi.Input<inputs.networkservices.MulticastDomainUllMulticastDomain>;
     /**
      * The Google-generated UUID for the resource. This value is
      * unique across all multicast domain resources. If a domain is deleted and
@@ -390,4 +394,9 @@ export interface MulticastDomainArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Information for an Ultra-Low-Latency multicast domain.
+     * Structure is documented below.
+     */
+    ullMulticastDomain?: pulumi.Input<inputs.networkservices.MulticastDomainUllMulticastDomain>;
 }

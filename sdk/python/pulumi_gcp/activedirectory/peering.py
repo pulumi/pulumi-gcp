@@ -165,7 +165,7 @@ class _PeeringState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] status: The current state of this Peering.
         :param pulumi.Input[_builtins.str] status_message: Additional information about the current status of this peering, if available.
         """
@@ -282,7 +282,7 @@ class _PeeringState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -330,6 +330,17 @@ class Peering(pulumi.CustomResource):
                  status_message: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Creates a Peering for Managed AD instance.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Peering, see:
+
+        * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1beta1/projects.locations.global.peerings)
+        * How-to Guides
+            * [Active Directory Domain Peering](https://cloud.google.com/managed-microsoft-ad/docs/domain-peering)
+
         ## Example Usage
 
         ### Active Directory Peering Basic
@@ -391,6 +402,17 @@ class Peering(pulumi.CustomResource):
                  args: PeeringArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Creates a Peering for Managed AD instance.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Peering, see:
+
+        * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1beta1/projects.locations.global.peerings)
+        * How-to Guides
+            * [Active Directory Domain Peering](https://cloud.google.com/managed-microsoft-ad/docs/domain-peering)
+
         ## Example Usage
 
         ### Active Directory Peering Basic
@@ -519,7 +541,7 @@ class Peering(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] status: The current state of this Peering.
         :param pulumi.Input[_builtins.str] status_message: Additional information about the current status of this peering, if available.
         """
@@ -603,7 +625,7 @@ class Peering(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

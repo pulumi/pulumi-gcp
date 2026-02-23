@@ -502,22 +502,14 @@ import javax.annotation.Nullable;
  * Instance can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
- * 
  * * `{{project}}/{{location}}/{{instance_id}}`
- * 
  * * `{{location}}/{{instance_id}}`
  * 
  * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:memorystore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:memorystore/instance:Instance default {{project}}/{{location}}/{{instance_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:memorystore/instance:Instance default {{location}}/{{instance_id}}
  * ```
  * 
@@ -1078,7 +1070,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -1086,7 +1078,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

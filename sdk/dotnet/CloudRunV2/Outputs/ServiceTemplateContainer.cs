@@ -60,6 +60,11 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly Outputs.ServiceTemplateContainerPorts? Ports;
         /// <summary>
+        /// Periodic probe of container readiness.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ServiceTemplateContainerReadinessProbe? ReadinessProbe;
+        /// <summary>
         /// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         /// Structure is documented below.
         /// </summary>
@@ -107,6 +112,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             Outputs.ServiceTemplateContainerPorts? ports,
 
+            Outputs.ServiceTemplateContainerReadinessProbe? readinessProbe,
+
             Outputs.ServiceTemplateContainerResources? resources,
 
             Outputs.ServiceTemplateContainerSourceCode? sourceCode,
@@ -127,6 +134,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             LivenessProbe = livenessProbe;
             Name = name;
             Ports = ports;
+            ReadinessProbe = readinessProbe;
             Resources = resources;
             SourceCode = sourceCode;
             StartupProbe = startupProbe;

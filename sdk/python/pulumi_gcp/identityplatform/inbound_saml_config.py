@@ -298,22 +298,14 @@ class InboundSamlConfig(pulumi.CustomResource):
         InboundSamlConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/inboundSamlConfigs/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InboundSamlConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default projects/{{project}}/inboundSamlConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{name}}
         ```
 
@@ -376,22 +368,14 @@ class InboundSamlConfig(pulumi.CustomResource):
         InboundSamlConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/inboundSamlConfigs/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InboundSamlConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default projects/{{project}}/inboundSamlConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{name}}
         ```
 

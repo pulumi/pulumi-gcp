@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:networkservices/agentGateway:AgentGateway":
+		r = &AgentGateway{}
 	case "gcp:networkservices/authzExtension:AuthzExtension":
 		r = &AuthzExtension{}
 	case "gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset":
@@ -86,6 +88,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/agentGateway",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networkservices/authzExtension",

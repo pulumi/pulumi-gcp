@@ -18,6 +18,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A resource represents a Dataform workflow configuration
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about RepositoryWorkflowConfig, see:
+ * 
+ * * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.workflowConfigs)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/dataform/docs/workflow-configurations)
+ * 
  * ## Example Usage
  * 
  * ### Dataform Repository Workflow Config
@@ -153,28 +164,16 @@ import javax.annotation.Nullable;
  * RepositoryWorkflowConfig can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{repository}}/{{name}}`
- * 
  * * `{{region}}/{{repository}}/{{name}}`
- * 
  * * `{{repository}}/{{name}}`
  * 
  * When using the `pulumi import` command, RepositoryWorkflowConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{project}}/{{region}}/{{repository}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{region}}/{{repository}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{repository}}/{{name}}
  * ```
  * 

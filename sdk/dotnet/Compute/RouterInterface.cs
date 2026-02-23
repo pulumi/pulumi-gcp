@@ -39,19 +39,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// Router interfaces can be imported using the `project` (optional), `region`, `router`, and `name`, e.g.
+    /// Router interfaces can be imported using the `Project` (optional), `Region`, `Router`, and `Name`, e.g.
     /// 
     /// * `{{project_id}}/{{region}}/{{router}}/{{name}}`
-    /// 
     /// * `{{region}}/{{router}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, router interfaces can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/routerInterface:RouterInterface default {{project_id}}/{{region}}/{{router}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/routerInterface:RouterInterface default {{region}}/{{router}}/{{name}}
     /// ```
     /// </summary>

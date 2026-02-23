@@ -222,22 +222,14 @@ import (
 // Instance can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
 // ```
 type Instance struct {
@@ -251,6 +243,8 @@ type Instance struct {
 	DeletionProtectionReason pulumi.StringPtrOutput `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+	DesiredReplicaState pulumi.StringPtrOutput `pulumi:"desiredReplicaState"`
 	// Directory Services configuration.
 	// Should only be set if protocol is "NFS_V4_1".
 	// Structure is documented below.
@@ -301,7 +295,7 @@ type Instance struct {
 	// Possible values are: `NFS_V3`, `NFS_V4_1`.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A map of resource manager tags. Resource manager tag keys
 	// and values have the same definition as resource manager
@@ -377,6 +371,8 @@ type instanceState struct {
 	DeletionProtectionReason *string `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description *string `pulumi:"description"`
+	// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+	DesiredReplicaState *string `pulumi:"desiredReplicaState"`
 	// Directory Services configuration.
 	// Should only be set if protocol is "NFS_V4_1".
 	// Structure is documented below.
@@ -427,7 +423,7 @@ type instanceState struct {
 	// Possible values are: `NFS_V3`, `NFS_V4_1`.
 	Protocol *string `pulumi:"protocol"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A map of resource manager tags. Resource manager tag keys
 	// and values have the same definition as resource manager
@@ -460,6 +456,8 @@ type InstanceState struct {
 	DeletionProtectionReason pulumi.StringPtrInput
 	// A description of the instance.
 	Description pulumi.StringPtrInput
+	// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+	DesiredReplicaState pulumi.StringPtrInput
 	// Directory Services configuration.
 	// Should only be set if protocol is "NFS_V4_1".
 	// Structure is documented below.
@@ -510,7 +508,7 @@ type InstanceState struct {
 	// Possible values are: `NFS_V3`, `NFS_V4_1`.
 	Protocol pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// A map of resource manager tags. Resource manager tag keys
 	// and values have the same definition as resource manager
@@ -545,6 +543,8 @@ type instanceArgs struct {
 	DeletionProtectionReason *string `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description *string `pulumi:"description"`
+	// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+	DesiredReplicaState *string `pulumi:"desiredReplicaState"`
 	// Directory Services configuration.
 	// Should only be set if protocol is "NFS_V4_1".
 	// Structure is documented below.
@@ -616,6 +616,8 @@ type InstanceArgs struct {
 	DeletionProtectionReason pulumi.StringPtrInput
 	// A description of the instance.
 	Description pulumi.StringPtrInput
+	// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+	DesiredReplicaState pulumi.StringPtrInput
 	// Directory Services configuration.
 	// Should only be set if protocol is "NFS_V4_1".
 	// Structure is documented below.
@@ -786,6 +788,11 @@ func (o InstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+func (o InstanceOutput) DesiredReplicaState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DesiredReplicaState }).(pulumi.StringPtrOutput)
+}
+
 // Directory Services configuration.
 // Should only be set if protocol is "NFS_V4_1".
 // Structure is documented below.
@@ -878,7 +885,8 @@ func (o InstanceOutput) Protocol() pulumi.StringPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

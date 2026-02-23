@@ -246,22 +246,14 @@ import * as utilities from "../utilities";
  * PipelineJob can be imported using any of these accepted formats:
  *
  * * `{{dataset}}/pipelineJobs/{{name}}`
- *
  * * `{{dataset}}/pipelineJobs?pipelineJobId={{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, PipelineJob can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{dataset}}/pipelineJobs/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{dataset}}/pipelineJobs?pipelineJobId={{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{name}}
  * ```
  */
@@ -341,7 +333,7 @@ export class PipelineJob extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -457,7 +449,7 @@ export interface PipelineJobState {
     name?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

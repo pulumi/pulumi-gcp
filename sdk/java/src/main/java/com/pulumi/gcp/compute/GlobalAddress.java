@@ -110,22 +110,14 @@ import javax.annotation.Nullable;
  * GlobalAddress can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/global/addresses/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, GlobalAddress can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/globalAddress:GlobalAddress default projects/{{project}}/global/addresses/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{name}}
  * ```
  * 
@@ -350,7 +342,7 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -358,7 +350,7 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

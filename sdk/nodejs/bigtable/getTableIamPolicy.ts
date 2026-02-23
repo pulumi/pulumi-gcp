@@ -33,6 +33,10 @@ export function getTableIamPolicy(args: GetTableIamPolicyArgs, opts?: pulumi.Inv
  */
 export interface GetTableIamPolicyArgs {
     instanceName: string;
+    /**
+     * The project in which the table belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     project?: string;
     /**
      * The name or relative resource id of the table to manage IAM policies for.
@@ -89,6 +93,10 @@ export function getTableIamPolicyOutput(args: GetTableIamPolicyOutputArgs, opts?
  */
 export interface GetTableIamPolicyOutputArgs {
     instanceName: pulumi.Input<string>;
+    /**
+     * The project in which the table belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     project?: pulumi.Input<string>;
     /**
      * The name or relative resource id of the table to manage IAM policies for.

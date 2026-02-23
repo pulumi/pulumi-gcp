@@ -14,12 +14,17 @@ import javax.annotation.Nullable;
 public final class DataTransferConfigSensitiveParams {
     /**
      * @return The Secret Access Key of the AWS account transferring data from.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     private @Nullable String secretAccessKey;
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
      * The Secret Access Key of the AWS account transferring data from.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `secretAccessKey` or `secretAccessKeyWo` can only be set.
      * 
      */
     private @Nullable String secretAccessKeyWo;
@@ -32,6 +37,7 @@ public final class DataTransferConfigSensitiveParams {
     private DataTransferConfigSensitiveParams() {}
     /**
      * @return The Secret Access Key of the AWS account transferring data from.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<String> secretAccessKey() {
@@ -39,7 +45,11 @@ public final class DataTransferConfigSensitiveParams {
     }
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
      * The Secret Access Key of the AWS account transferring data from.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `secretAccessKey` or `secretAccessKeyWo` can only be set.
      * 
      */
     public Optional<String> secretAccessKeyWo() {

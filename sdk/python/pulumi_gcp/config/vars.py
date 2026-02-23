@@ -618,6 +618,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('parameterManagerRegionalCustomEndpoint')
 
     @_builtins.property
+    def poll_interval(self) -> Optional[str]:
+        return __config__.get('pollInterval')
+
+    @_builtins.property
     def privateca_custom_endpoint(self) -> Optional[str]:
         return __config__.get('privatecaCustomEndpoint')
 
@@ -804,6 +808,10 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def user_project_override(self) -> Optional[bool]:
         return __config__.get_bool('userProjectOverride')
+
+    @_builtins.property
+    def vector_search_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('vectorSearchCustomEndpoint')
 
     @_builtins.property
     def vertex_ai_custom_endpoint(self) -> Optional[str]:

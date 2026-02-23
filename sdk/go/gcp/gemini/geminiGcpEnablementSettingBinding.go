@@ -66,22 +66,14 @@ import (
 // GeminiGcpEnablementSettingBinding can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}/settingBindings/{{setting_binding_id}}`
-//
 // * `{{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}`
-//
 // * `{{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}`
 //
 // When using the `pulumi import` command, GeminiGcpEnablementSettingBinding can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding default projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}/settingBindings/{{setting_binding_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding default {{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding default {{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}
 // ```
 type GeminiGcpEnablementSettingBinding struct {
@@ -108,7 +100,7 @@ type GeminiGcpEnablementSettingBinding struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Id of the setting binding.
 	SettingBindingId pulumi.StringOutput `pulumi:"settingBindingId"`
@@ -183,7 +175,7 @@ type geminiGcpEnablementSettingBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Id of the setting binding.
 	SettingBindingId *string `pulumi:"settingBindingId"`
@@ -215,7 +207,7 @@ type GeminiGcpEnablementSettingBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Id of the setting binding.
 	SettingBindingId pulumi.StringPtrInput
@@ -402,7 +394,8 @@ func (o GeminiGcpEnablementSettingBindingOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GeminiGcpEnablementSettingBindingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSettingBinding) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -59,32 +59,27 @@ __all__ = [
     'VolumeTieringPolicyArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class BackupVaultBackupRetentionPolicyArgsDict(TypedDict):
-        backup_minimum_enforced_retention_days: pulumi.Input[_builtins.int]
-        """
-        Minimum retention duration in days for backups in the backup vault.
-        """
-        daily_backup_immutable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
-        """
-        manual_backup_immutable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
-        """
-        monthly_backup_immutable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
-        """
-        weekly_backup_immutable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
-        """
-elif False:
-    BackupVaultBackupRetentionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class BackupVaultBackupRetentionPolicyArgsDict(TypedDict):
+    backup_minimum_enforced_retention_days: pulumi.Input[_builtins.int]
+    """
+    Minimum retention duration in days for backups in the backup vault.
+    """
+    daily_backup_immutable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+    """
+    manual_backup_immutable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+    """
+    monthly_backup_immutable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+    """
+    weekly_backup_immutable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+    """
 
 @pulumi.input_type
 class BackupVaultBackupRetentionPolicyArgs:
@@ -172,23 +167,20 @@ class BackupVaultBackupRetentionPolicyArgs:
         pulumi.set(self, "weekly_backup_immutable", value)
 
 
-if not MYPY:
-    class VolumeBackupConfigArgsDict(TypedDict):
-        backup_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
-        """
-        backup_vault: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
-        Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
-        """
-        scheduled_backup_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
-        """
-elif False:
-    VolumeBackupConfigArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeBackupConfigArgsDict(TypedDict):
+    backup_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
+    """
+    backup_vault: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
+    Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
+    """
+    scheduled_backup_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
+    """
 
 @pulumi.input_type
 class VolumeBackupConfigArgs:
@@ -247,47 +239,44 @@ class VolumeBackupConfigArgs:
         pulumi.set(self, "scheduled_backup_enabled", value)
 
 
-if not MYPY:
-    class VolumeBlockDeviceArgsDict(TypedDict):
-        os_type: pulumi.Input[_builtins.str]
-        """
-        The OS type of the volume.
-        This field can't be changed after the block device is created.
-        Possible values are: `LINUX`, `WINDOWS`, `ESXI`.
-        """
-        host_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of host groups that identify hosts that can mount the block volume.
-        Format:
-        `projects/{project_id}/locations/{location}/hostGroups/{host_group_id}`
-        This field can be updated after the block device is created.
-        """
-        identifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Device identifier of the Block volume. This represents lun_serial_number
-        for ISCSI volumes
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User-defined name for the block device, unique within the Volume. In case
-        no user input is provided, name will be autogenerated in the backend.
-        The name must meet the following requirements:
-        *   Be between 1 and 255 characters long.
-        *   Contain only uppercase or lowercase letters (A-Z, a-z), numbers (0-9),
-        and the following special characters: "-", "_", "}", "{", ".".
-        *   Spaces are not allowed.
-        """
-        size_gib: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The size of the block device in GiB.
-        Any value provided in this field during Volume creation is IGNORED.
-        The block device's size is system-managed and will be set to match
-        the parent Volume's `capacity_gib`.
-        """
-elif False:
-    VolumeBlockDeviceArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeBlockDeviceArgsDict(TypedDict):
+    os_type: pulumi.Input[_builtins.str]
+    """
+    The OS type of the volume.
+    This field can't be changed after the block device is created.
+    Possible values are: `LINUX`, `WINDOWS`, `ESXI`.
+    """
+    host_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of host groups that identify hosts that can mount the block volume.
+    Format:
+    `projects/{project_id}/locations/{location}/hostGroups/{host_group_id}`
+    This field can be updated after the block device is created.
+    """
+    identifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Device identifier of the Block volume. This represents lun_serial_number
+    for ISCSI volumes
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User-defined name for the block device, unique within the Volume. In case
+    no user input is provided, name will be autogenerated in the backend.
+    The name must meet the following requirements:
+    *   Be between 1 and 255 characters long.
+    *   Contain only uppercase or lowercase letters (A-Z, a-z), numbers (0-9),
+    and the following special characters: "-", "_", "}", "{", ".".
+    *   Spaces are not allowed.
+    """
+    size_gib: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The size of the block device in GiB.
+    Any value provided in this field during Volume creation is IGNORED.
+    The block device's size is system-managed and will be set to match
+    the parent Volume's `capacity_gib`.
+    """
 
 @pulumi.input_type
 class VolumeBlockDeviceArgs:
@@ -409,59 +398,56 @@ class VolumeBlockDeviceArgs:
         pulumi.set(self, "size_gib", value)
 
 
-if not MYPY:
-    class VolumeCacheParametersArgsDict(TypedDict):
-        cache_config: NotRequired[pulumi.Input['VolumeCacheParametersCacheConfigArgsDict']]
-        """
-        Optional. Configuration of the cache volume.
-        Structure is documented below.
-        """
-        cache_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        State of the cache volume indicating the peering status.
-        """
-        command: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
-        """
-        enable_global_file_lock: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. Field indicating whether cache volume as global file lock enabled.
-        """
-        passphrase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Temporary passphrase generated to accept cluster peering command.
-        """
-        peer_cluster_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Name of the origin volume's ONTAP cluster.
-        """
-        peer_ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Required. List of IC LIF addresses of the origin volume's ONTAP cluster.
-        """
-        peer_svm_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Name of the origin volume's SVM.
-        """
-        peer_volume_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Name of the origin volume for the cache volume.
-        """
-        peering_command_expiry_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Expiration time for the peering command to be executed on user's ONTAP. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-        """
-        state_details: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Detailed description of the current cache state.
-        """
-elif False:
-    VolumeCacheParametersArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeCacheParametersArgsDict(TypedDict):
+    cache_config: NotRequired[pulumi.Input['VolumeCacheParametersCacheConfigArgsDict']]
+    """
+    Optional. Configuration of the cache volume.
+    Structure is documented below.
+    """
+    cache_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    State of the cache volume indicating the peering status.
+    """
+    command: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
+    """
+    enable_global_file_lock: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. Field indicating whether cache volume as global file lock enabled.
+    """
+    passphrase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Temporary passphrase generated to accept cluster peering command.
+    """
+    peer_cluster_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Name of the origin volume's ONTAP cluster.
+    """
+    peer_ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Required. List of IC LIF addresses of the origin volume's ONTAP cluster.
+    """
+    peer_svm_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Name of the origin volume's SVM.
+    """
+    peer_volume_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Name of the origin volume for the cache volume.
+    """
+    peering_command_expiry_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Expiration time for the peering command to be executed on user's ONTAP. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+    """
+    state_details: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Detailed description of the current cache state.
+    """
 
 @pulumi.input_type
 class VolumeCacheParametersArgs:
@@ -656,14 +642,11 @@ class VolumeCacheParametersArgs:
         pulumi.set(self, "state_details", value)
 
 
-if not MYPY:
-    class VolumeCacheParametersCacheConfigArgsDict(TypedDict):
-        cifs_change_notify_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. Flag indicating whether a CIFS change notification is enabled for the FlexCache volume.
-        """
-elif False:
-    VolumeCacheParametersCacheConfigArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeCacheParametersCacheConfigArgsDict(TypedDict):
+    cifs_change_notify_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. Flag indicating whether a CIFS change notification is enabled for the FlexCache volume.
+    """
 
 @pulumi.input_type
 class VolumeCacheParametersCacheConfigArgs:
@@ -688,15 +671,12 @@ class VolumeCacheParametersCacheConfigArgs:
         pulumi.set(self, "cifs_change_notify_enabled", value)
 
 
-if not MYPY:
-    class VolumeExportPolicyArgsDict(TypedDict):
-        rules: pulumi.Input[Sequence[pulumi.Input['VolumeExportPolicyRuleArgsDict']]]
-        """
-        Export rules (up to 5) control NFS volume access.
-        Structure is documented below.
-        """
-elif False:
-    VolumeExportPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeExportPolicyArgsDict(TypedDict):
+    rules: pulumi.Input[Sequence[pulumi.Input['VolumeExportPolicyRuleArgsDict']]]
+    """
+    Export rules (up to 5) control NFS volume access.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class VolumeExportPolicyArgs:
@@ -722,66 +702,63 @@ class VolumeExportPolicyArgs:
         pulumi.set(self, "rules", value)
 
 
-if not MYPY:
-    class VolumeExportPolicyRuleArgsDict(TypedDict):
-        access_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Defines the access type for clients matching the `allowedClients` specification.
-        Possible values are: `READ_ONLY`, `READ_WRITE`, `READ_NONE`.
-        """
-        allowed_clients: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
-        """
-        anon_uid: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ALL_SQUASH`.
-        """
-        has_root_access: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
-        Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
-        """
-        kerberos5_read_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode.
-        """
-        kerberos5_read_write: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode. The 'kerberos5ReadOnly' value is ignored if this is enabled.
-        """
-        kerberos5i_read_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'integrity' kerberos security mode.
-        """
-        kerberos5i_read_write: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'integrity' kerberos security mode. The 'kerberos5iReadOnly' value is ignored if this is enabled.
-        """
-        kerberos5p_read_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'privacy' kerberos security mode.
-        """
-        kerberos5p_read_write: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'privacy' kerberos security mode. The 'kerberos5pReadOnly' value is ignored if this is enabled.
-        """
-        nfsv3: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable to apply the export rule to NFSV3 clients.
-        """
-        nfsv4: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable to apply the export rule to NFSV4.1 clients.
-        """
-        squash_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-        Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
-        Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
-        """
-elif False:
-    VolumeExportPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeExportPolicyRuleArgsDict(TypedDict):
+    access_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Defines the access type for clients matching the `allowedClients` specification.
+    Possible values are: `READ_ONLY`, `READ_WRITE`, `READ_NONE`.
+    """
+    allowed_clients: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
+    """
+    anon_uid: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ALL_SQUASH`.
+    """
+    has_root_access: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
+    Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
+    """
+    kerberos5_read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode.
+    """
+    kerberos5_read_write: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode. The 'kerberos5ReadOnly' value is ignored if this is enabled.
+    """
+    kerberos5i_read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'integrity' kerberos security mode.
+    """
+    kerberos5i_read_write: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'integrity' kerberos security mode. The 'kerberos5iReadOnly' value is ignored if this is enabled.
+    """
+    kerberos5p_read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'privacy' kerberos security mode.
+    """
+    kerberos5p_read_write: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'privacy' kerberos security mode. The 'kerberos5pReadOnly' value is ignored if this is enabled.
+    """
+    nfsv3: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable to apply the export rule to NFSV3 clients.
+    """
+    nfsv4: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable to apply the export rule to NFSV4.1 clients.
+    """
+    squash_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
+    Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
+    Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+    """
 
 @pulumi.input_type
 class VolumeExportPolicyRuleArgs:
@@ -1006,61 +983,58 @@ class VolumeExportPolicyRuleArgs:
         pulumi.set(self, "squash_mode", value)
 
 
-if not MYPY:
-    class VolumeHybridReplicationParametersArgsDict(TypedDict):
-        cluster_location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Name of source cluster location associated with the replication. This is a free-form field
-        for display purposes only.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Description of the replication.
-        """
-        hybrid_replication_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
-        and `ONPREM_REPLICATION` to create an external replication.
-        Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
-        replication which got reversed. Default is `MIGRATION`.
-        Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Optional. Labels to be added to the replication as the key value pairs.
-        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        """
-        large_volume_constituent_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
-        """
-        peer_cluster_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
-        """
-        peer_ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
-        """
-        peer_svm_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
-        """
-        peer_volume_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
-        """
-        replication: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Desired name for the replication of this volume.
-        """
-        replication_schedule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Replication Schedule for the replication created.
-        Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
-        """
-elif False:
-    VolumeHybridReplicationParametersArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeHybridReplicationParametersArgsDict(TypedDict):
+    cluster_location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Name of source cluster location associated with the replication. This is a free-form field
+    for display purposes only.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Description of the replication.
+    """
+    hybrid_replication_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
+    and `ONPREM_REPLICATION` to create an external replication.
+    Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
+    replication which got reversed. Default is `MIGRATION`.
+    Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Labels to be added to the replication as the key value pairs.
+    An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+    """
+    large_volume_constituent_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
+    """
+    peer_cluster_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
+    """
+    peer_ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
+    """
+    peer_svm_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
+    """
+    peer_volume_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
+    """
+    replication: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Desired name for the replication of this volume.
+    """
+    replication_schedule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Replication Schedule for the replication created.
+    Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+    """
 
 @pulumi.input_type
 class VolumeHybridReplicationParametersArgs:
@@ -1259,37 +1233,34 @@ class VolumeHybridReplicationParametersArgs:
         pulumi.set(self, "replication_schedule", value)
 
 
-if not MYPY:
-    class VolumeMountOptionArgsDict(TypedDict):
-        export: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Export path of the volume.
-        """
-        export_full: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Full export path of the volume.
-        Format for NFS volumes: `<export_ip>:/<shareName>`
-        Format for SMB volumes: `\\\\\\\\netbios_prefix-four_random_hex_letters.domain_name\\\\shareName`
-        """
-        instructions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Human-readable mount instructions.
-        """
-        ip_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        IP Address.
-        """
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Protocol to mount with.
-        """
-elif False:
-    VolumeMountOptionArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeMountOptionArgsDict(TypedDict):
+    export: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Export path of the volume.
+    """
+    export_full: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Full export path of the volume.
+    Format for NFS volumes: `<export_ip>:/<shareName>`
+    Format for SMB volumes: `\\\\\\\\netbios_prefix-four_random_hex_letters.domain_name\\\\shareName`
+    """
+    instructions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Human-readable mount instructions.
+    """
+    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    IP Address.
+    """
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Protocol to mount with.
+    """
 
 @pulumi.input_type
 class VolumeMountOptionArgs:
@@ -1392,31 +1363,28 @@ class VolumeMountOptionArgs:
         pulumi.set(self, "protocol", value)
 
 
-if not MYPY:
-    class VolumeReplicationDestinationVolumeParametersArgsDict(TypedDict):
-        storage_pool: pulumi.Input[_builtins.str]
-        """
-        Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for the destination volume.
-        """
-        share_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Share name for destination volume. If not specified, name of source volume's share name will be used.
-        """
-        tiering_policy: NotRequired[pulumi.Input['VolumeReplicationDestinationVolumeParametersTieringPolicyArgsDict']]
-        """
-        Tiering policy for the volume.
-        Structure is documented below.
-        """
-        volume_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name for the destination volume to be created. If not specified, the name of the source volume will be used.
-        """
-elif False:
-    VolumeReplicationDestinationVolumeParametersArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeReplicationDestinationVolumeParametersArgsDict(TypedDict):
+    storage_pool: pulumi.Input[_builtins.str]
+    """
+    Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for the destination volume.
+    """
+    share_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Share name for destination volume. If not specified, name of source volume's share name will be used.
+    """
+    tiering_policy: NotRequired[pulumi.Input['VolumeReplicationDestinationVolumeParametersTieringPolicyArgsDict']]
+    """
+    Tiering policy for the volume.
+    Structure is documented below.
+    """
+    volume_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name for the destination volume to be created. If not specified, the name of the source volume will be used.
+    """
 
 @pulumi.input_type
 class VolumeReplicationDestinationVolumeParametersArgs:
@@ -1506,21 +1474,18 @@ class VolumeReplicationDestinationVolumeParametersArgs:
         pulumi.set(self, "volume_id", value)
 
 
-if not MYPY:
-    class VolumeReplicationDestinationVolumeParametersTieringPolicyArgsDict(TypedDict):
-        cooling_threshold_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
-        Default is 31.
-        """
-        tier_action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
-        Default value is `PAUSED`.
-        Possible values are: `ENABLED`, `PAUSED`.
-        """
-elif False:
-    VolumeReplicationDestinationVolumeParametersTieringPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeReplicationDestinationVolumeParametersTieringPolicyArgsDict(TypedDict):
+    cooling_threshold_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
+    Default is 31.
+    """
+    tier_action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
+    Default value is `PAUSED`.
+    Possible values are: `ENABLED`, `PAUSED`.
+    """
 
 @pulumi.input_type
 class VolumeReplicationDestinationVolumeParametersTieringPolicyArgs:
@@ -1567,46 +1532,43 @@ class VolumeReplicationDestinationVolumeParametersTieringPolicyArgs:
         pulumi.set(self, "tier_action", value)
 
 
-if not MYPY:
-    class VolumeReplicationHybridPeeringDetailArgsDict(TypedDict):
-        command: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
-        """
-        command_expiry_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Expiration time for the peering command to be executed on user's ONTAP.
-        Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
-        """
-        passphrase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Temporary passphrase generated to accept cluster peering command.
-        """
-        peer_cluster_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Name of the user's local source cluster to be peered with the destination cluster.
-        """
-        peer_svm_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Name of the user's local source vserver svm to be peered with the destination vserver svm.
-        """
-        peer_volume_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Name of the user's local source volume to be peered with the destination volume.
-        """
-        subnet_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. IP address of the subnet.
-        """
-elif False:
-    VolumeReplicationHybridPeeringDetailArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeReplicationHybridPeeringDetailArgsDict(TypedDict):
+    command: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
+    """
+    command_expiry_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Expiration time for the peering command to be executed on user's ONTAP.
+    Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
+    """
+    passphrase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Temporary passphrase generated to accept cluster peering command.
+    """
+    peer_cluster_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Name of the user's local source cluster to be peered with the destination cluster.
+    """
+    peer_svm_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+    """
+    peer_volume_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Name of the user's local source volume to be peered with the destination volume.
+    """
+    subnet_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. IP address of the subnet.
+    """
 
 @pulumi.input_type
 class VolumeReplicationHybridPeeringDetailArgs:
@@ -1743,15 +1705,12 @@ class VolumeReplicationHybridPeeringDetailArgs:
         pulumi.set(self, "subnet_ip", value)
 
 
-if not MYPY:
-    class VolumeReplicationHybridReplicationUserCommandArgsDict(TypedDict):
-        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        List of commands to be executed by the customer.
-        """
-elif False:
-    VolumeReplicationHybridReplicationUserCommandArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeReplicationHybridReplicationUserCommandArgsDict(TypedDict):
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    List of commands to be executed by the customer.
+    """
 
 @pulumi.input_type
 class VolumeReplicationHybridReplicationUserCommandArgs:
@@ -1778,52 +1737,49 @@ class VolumeReplicationHybridReplicationUserCommandArgs:
         pulumi.set(self, "commands", value)
 
 
-if not MYPY:
-    class VolumeReplicationTransferStatArgsDict(TypedDict):
-        lag_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The elapsed time since the creation of the snapshot on the source volume that was last replicated
-        to the destination volume. Lag time represents the difference in age of the destination volume
-        data in relation to the source volume data.
-        """
-        last_transfer_bytes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Size of last completed transfer in bytes.
-        """
-        last_transfer_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Time taken during last completed transfer.
-        """
-        last_transfer_end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Time when last transfer completed. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-        """
-        last_transfer_error: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A message describing the cause of the last transfer failure.
-        """
-        total_transfer_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Cumulative time taken across all transfers for the replication relationship.
-        """
-        transfer_bytes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Cumulative bytes transferred so far for the replication relationship.
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-        """
-elif False:
-    VolumeReplicationTransferStatArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeReplicationTransferStatArgsDict(TypedDict):
+    lag_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The elapsed time since the creation of the snapshot on the source volume that was last replicated
+    to the destination volume. Lag time represents the difference in age of the destination volume
+    data in relation to the source volume data.
+    """
+    last_transfer_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Size of last completed transfer in bytes.
+    """
+    last_transfer_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Time taken during last completed transfer.
+    """
+    last_transfer_end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Time when last transfer completed. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+    """
+    last_transfer_error: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A message describing the cause of the last transfer failure.
+    """
+    total_transfer_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Cumulative time taken across all transfers for the replication relationship.
+    """
+    transfer_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Cumulative bytes transferred so far for the replication relationship.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+    """
 
 @pulumi.input_type
 class VolumeReplicationTransferStatArgs:
@@ -1980,22 +1936,19 @@ class VolumeReplicationTransferStatArgs:
         pulumi.set(self, "update_time", value)
 
 
-if not MYPY:
-    class VolumeRestoreParametersArgsDict(TypedDict):
-        source_backup: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Full name of the backup to use for creating this volume.
-        `source_snapshot` and `source_backup` cannot be used simultaneously.
-        Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
-        """
-        source_snapshot: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Full name of the snapshot to use for creating this volume.
-        `source_snapshot` and `source_backup` cannot be used simultaneously.
-        Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
-        """
-elif False:
-    VolumeRestoreParametersArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeRestoreParametersArgsDict(TypedDict):
+    source_backup: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Full name of the backup to use for creating this volume.
+    `source_snapshot` and `source_backup` cannot be used simultaneously.
+    Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
+    """
+    source_snapshot: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Full name of the snapshot to use for creating this volume.
+    `source_snapshot` and `source_backup` cannot be used simultaneously.
+    Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
+    """
 
 @pulumi.input_type
 class VolumeRestoreParametersArgs:
@@ -2044,35 +1997,32 @@ class VolumeRestoreParametersArgs:
         pulumi.set(self, "source_snapshot", value)
 
 
-if not MYPY:
-    class VolumeSnapshotPolicyArgsDict(TypedDict):
-        daily_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyDailyScheduleArgsDict']]
-        """
-        Daily schedule policy.
-        Structure is documented below.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables automated snapshot creation according to defined schedule. Default is false.
-        To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
-        """
-        hourly_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyHourlyScheduleArgsDict']]
-        """
-        Hourly schedule policy.
-        Structure is documented below.
-        """
-        monthly_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyMonthlyScheduleArgsDict']]
-        """
-        Monthly schedule policy.
-        Structure is documented below.
-        """
-        weekly_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyWeeklyScheduleArgsDict']]
-        """
-        Weekly schedule policy.
-        Structure is documented below.
-        """
-elif False:
-    VolumeSnapshotPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeSnapshotPolicyArgsDict(TypedDict):
+    daily_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyDailyScheduleArgsDict']]
+    """
+    Daily schedule policy.
+    Structure is documented below.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables automated snapshot creation according to defined schedule. Default is false.
+    To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+    """
+    hourly_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyHourlyScheduleArgsDict']]
+    """
+    Hourly schedule policy.
+    Structure is documented below.
+    """
+    monthly_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyMonthlyScheduleArgsDict']]
+    """
+    Monthly schedule policy.
+    Structure is documented below.
+    """
+    weekly_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyWeeklyScheduleArgsDict']]
+    """
+    Weekly schedule policy.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class VolumeSnapshotPolicyArgs:
@@ -2171,22 +2121,19 @@ class VolumeSnapshotPolicyArgs:
         pulumi.set(self, "weekly_schedule", value)
 
 
-if not MYPY:
-    class VolumeSnapshotPolicyDailyScheduleArgsDict(TypedDict):
-        snapshots_to_keep: pulumi.Input[_builtins.int]
-        """
-        The maximum number of snapshots to keep for the daily schedule.
-        """
-        hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set the hour to create the snapshot (0-23), defaults to midnight (0).
-        """
-        minute: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
-        """
-elif False:
-    VolumeSnapshotPolicyDailyScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeSnapshotPolicyDailyScheduleArgsDict(TypedDict):
+    snapshots_to_keep: pulumi.Input[_builtins.int]
+    """
+    The maximum number of snapshots to keep for the daily schedule.
+    """
+    hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set the hour to create the snapshot (0-23), defaults to midnight (0).
+    """
+    minute: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
+    """
 
 @pulumi.input_type
 class VolumeSnapshotPolicyDailyScheduleArgs:
@@ -2242,18 +2189,15 @@ class VolumeSnapshotPolicyDailyScheduleArgs:
         pulumi.set(self, "minute", value)
 
 
-if not MYPY:
-    class VolumeSnapshotPolicyHourlyScheduleArgsDict(TypedDict):
-        snapshots_to_keep: pulumi.Input[_builtins.int]
-        """
-        The maximum number of snapshots to keep for the hourly schedule.
-        """
-        minute: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
-        """
-elif False:
-    VolumeSnapshotPolicyHourlyScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeSnapshotPolicyHourlyScheduleArgsDict(TypedDict):
+    snapshots_to_keep: pulumi.Input[_builtins.int]
+    """
+    The maximum number of snapshots to keep for the hourly schedule.
+    """
+    minute: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
+    """
 
 @pulumi.input_type
 class VolumeSnapshotPolicyHourlyScheduleArgs:
@@ -2293,26 +2237,23 @@ class VolumeSnapshotPolicyHourlyScheduleArgs:
         pulumi.set(self, "minute", value)
 
 
-if not MYPY:
-    class VolumeSnapshotPolicyMonthlyScheduleArgsDict(TypedDict):
-        snapshots_to_keep: pulumi.Input[_builtins.int]
-        """
-        The maximum number of snapshots to keep for the monthly schedule
-        """
-        days_of_month: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set the day or days of the month to make a snapshot (1-31). Accepts a comma separated number of days. Defaults to '1'.
-        """
-        hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set the hour to create the snapshot (0-23), defaults to midnight (0).
-        """
-        minute: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
-        """
-elif False:
-    VolumeSnapshotPolicyMonthlyScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeSnapshotPolicyMonthlyScheduleArgsDict(TypedDict):
+    snapshots_to_keep: pulumi.Input[_builtins.int]
+    """
+    The maximum number of snapshots to keep for the monthly schedule
+    """
+    days_of_month: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set the day or days of the month to make a snapshot (1-31). Accepts a comma separated number of days. Defaults to '1'.
+    """
+    hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set the hour to create the snapshot (0-23), defaults to midnight (0).
+    """
+    minute: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
+    """
 
 @pulumi.input_type
 class VolumeSnapshotPolicyMonthlyScheduleArgs:
@@ -2384,26 +2325,23 @@ class VolumeSnapshotPolicyMonthlyScheduleArgs:
         pulumi.set(self, "minute", value)
 
 
-if not MYPY:
-    class VolumeSnapshotPolicyWeeklyScheduleArgsDict(TypedDict):
-        snapshots_to_keep: pulumi.Input[_builtins.int]
-        """
-        The maximum number of snapshots to keep for the weekly schedule.
-        """
-        day: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set the day or days of the week to make a snapshot. Accepts a comma separated days of the week. Defaults to 'Sunday'.
-        """
-        hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set the hour to create the snapshot (0-23), defaults to midnight (0).
-        """
-        minute: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
-        """
-elif False:
-    VolumeSnapshotPolicyWeeklyScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeSnapshotPolicyWeeklyScheduleArgsDict(TypedDict):
+    snapshots_to_keep: pulumi.Input[_builtins.int]
+    """
+    The maximum number of snapshots to keep for the weekly schedule.
+    """
+    day: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set the day or days of the week to make a snapshot. Accepts a comma separated days of the week. Defaults to 'Sunday'.
+    """
+    hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set the hour to create the snapshot (0-23), defaults to midnight (0).
+    """
+    minute: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
+    """
 
 @pulumi.input_type
 class VolumeSnapshotPolicyWeeklyScheduleArgs:
@@ -2475,26 +2413,23 @@ class VolumeSnapshotPolicyWeeklyScheduleArgs:
         pulumi.set(self, "minute", value)
 
 
-if not MYPY:
-    class VolumeTieringPolicyArgsDict(TypedDict):
-        cooling_threshold_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
-        Default is 31.
-        """
-        hot_tier_bypass_mode_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false.
-        Only applicable to Flex service level.
-        """
-        tier_action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
-        Default value is `PAUSED`.
-        Possible values are: `ENABLED`, `PAUSED`.
-        """
-elif False:
-    VolumeTieringPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeTieringPolicyArgsDict(TypedDict):
+    cooling_threshold_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
+    Default is 31.
+    """
+    hot_tier_bypass_mode_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false.
+    Only applicable to Flex service level.
+    """
+    tier_action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
+    Default value is `PAUSED`.
+    Possible values are: `ENABLED`, `PAUSED`.
+    """
 
 @pulumi.input_type
 class VolumeTieringPolicyArgs:

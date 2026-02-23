@@ -2403,6 +2403,15 @@ type ClusterInitialUser struct {
 	// The initial password for the user.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The initial password for the user.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `password` or `passwordWo` can only be set.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// The database username.
 	User *string `pulumi:"user"`
 }
@@ -2422,6 +2431,15 @@ type ClusterInitialUserArgs struct {
 	// The initial password for the user.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The initial password for the user.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `password` or `passwordWo` can only be set.
+	PasswordWo pulumi.StringPtrInput `pulumi:"passwordWo"`
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion pulumi.StringPtrInput `pulumi:"passwordWoVersion"`
 	// The database username.
 	User pulumi.StringPtrInput `pulumi:"user"`
 }
@@ -2509,6 +2527,21 @@ func (o ClusterInitialUserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitialUser) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The initial password for the user.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `password` or `passwordWo` can only be set.
+func (o ClusterInitialUserOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterInitialUser) *string { return v.PasswordWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o ClusterInitialUserOutput) PasswordWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterInitialUser) *string { return v.PasswordWoVersion }).(pulumi.StringPtrOutput)
+}
+
 // The database username.
 func (o ClusterInitialUserOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitialUser) *string { return v.User }).(pulumi.StringPtrOutput)
@@ -2546,6 +2579,31 @@ func (o ClusterInitialUserPtrOutput) Password() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The initial password for the user.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `password` or `passwordWo` can only be set.
+func (o ClusterInitialUserPtrOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterInitialUser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o ClusterInitialUserPtrOutput) PasswordWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterInitialUser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordWoVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4492,8 +4550,17 @@ func (o InstanceClientConnectionConfigSslConfigPtrOutput) SslMode() pulumi.Strin
 
 type InstanceConnectionPoolConfig struct {
 	// Whether to enabled Managed Connection Pool.
-	Enabled bool              `pulumi:"enabled"`
-	Flags   map[string]string `pulumi:"flags"`
+	Enabled bool `pulumi:"enabled"`
+	// Flags for configuring managed connection pooling when it is enabled.
+	// These flags will only be set if `connection_pool_config.enabled` is
+	// true.
+	// Please see
+	// https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+	// for a comprehensive list of flags that can be set. To specify the flags
+	// in Terraform, please remove the "connection-pooling-" prefix and use
+	// underscores instead of dashes in the name. For example,
+	// "connection-pooling-pool-mode" would be "poolMode".
+	Flags map[string]string `pulumi:"flags"`
 	// (Output)
 	// The number of running poolers per instance.
 	PoolerCount *int `pulumi:"poolerCount"`
@@ -4512,8 +4579,17 @@ type InstanceConnectionPoolConfigInput interface {
 
 type InstanceConnectionPoolConfigArgs struct {
 	// Whether to enabled Managed Connection Pool.
-	Enabled pulumi.BoolInput      `pulumi:"enabled"`
-	Flags   pulumi.StringMapInput `pulumi:"flags"`
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Flags for configuring managed connection pooling when it is enabled.
+	// These flags will only be set if `connection_pool_config.enabled` is
+	// true.
+	// Please see
+	// https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+	// for a comprehensive list of flags that can be set. To specify the flags
+	// in Terraform, please remove the "connection-pooling-" prefix and use
+	// underscores instead of dashes in the name. For example,
+	// "connection-pooling-pool-mode" would be "poolMode".
+	Flags pulumi.StringMapInput `pulumi:"flags"`
 	// (Output)
 	// The number of running poolers per instance.
 	PoolerCount pulumi.IntPtrInput `pulumi:"poolerCount"`
@@ -4601,6 +4677,15 @@ func (o InstanceConnectionPoolConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceConnectionPoolConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Flags for configuring managed connection pooling when it is enabled.
+// These flags will only be set if `connection_pool_config.enabled` is
+// true.
+// Please see
+// https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+// for a comprehensive list of flags that can be set. To specify the flags
+// in Terraform, please remove the "connection-pooling-" prefix and use
+// underscores instead of dashes in the name. For example,
+// "connection-pooling-pool-mode" would be "poolMode".
 func (o InstanceConnectionPoolConfigOutput) Flags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v InstanceConnectionPoolConfig) map[string]string { return v.Flags }).(pulumi.StringMapOutput)
 }
@@ -4645,6 +4730,15 @@ func (o InstanceConnectionPoolConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Flags for configuring managed connection pooling when it is enabled.
+// These flags will only be set if `connection_pool_config.enabled` is
+// true.
+// Please see
+// https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+// for a comprehensive list of flags that can be set. To specify the flags
+// in Terraform, please remove the "connection-pooling-" prefix and use
+// underscores instead of dashes in the name. For example,
+// "connection-pooling-pool-mode" would be "poolMode".
 func (o InstanceConnectionPoolConfigPtrOutput) Flags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceConnectionPoolConfig) map[string]string {
 		if v == nil {
@@ -7847,6 +7941,10 @@ func (o GetClusterEncryptionInfoArrayOutput) Index(i pulumi.IntInput) GetCluster
 type GetClusterInitialUser struct {
 	// The initial password for the user.
 	Password string `pulumi:"password"`
+	// The initial password for the user.
+	PasswordWo string `pulumi:"passwordWo"`
+	// Triggers update of 'password_wo' write-only. Increment this value when an update to 'password_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion string `pulumi:"passwordWoVersion"`
 	// The database username.
 	User string `pulumi:"user"`
 }
@@ -7865,6 +7963,10 @@ type GetClusterInitialUserInput interface {
 type GetClusterInitialUserArgs struct {
 	// The initial password for the user.
 	Password pulumi.StringInput `pulumi:"password"`
+	// The initial password for the user.
+	PasswordWo pulumi.StringInput `pulumi:"passwordWo"`
+	// Triggers update of 'password_wo' write-only. Increment this value when an update to 'password_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion pulumi.StringInput `pulumi:"passwordWoVersion"`
 	// The database username.
 	User pulumi.StringInput `pulumi:"user"`
 }
@@ -7923,6 +8025,16 @@ func (o GetClusterInitialUserOutput) ToGetClusterInitialUserOutputWithContext(ct
 // The initial password for the user.
 func (o GetClusterInitialUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterInitialUser) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The initial password for the user.
+func (o GetClusterInitialUserOutput) PasswordWo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInitialUser) string { return v.PasswordWo }).(pulumi.StringOutput)
+}
+
+// Triggers update of 'password_wo' write-only. Increment this value when an update to 'password_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o GetClusterInitialUserOutput) PasswordWoVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInitialUser) string { return v.PasswordWoVersion }).(pulumi.StringOutput)
 }
 
 // The database username.
@@ -9454,8 +9566,17 @@ func (o GetInstanceClientConnectionConfigSslConfigArrayOutput) Index(i pulumi.In
 
 type GetInstanceConnectionPoolConfig struct {
 	// Whether to enabled Managed Connection Pool.
-	Enabled bool              `pulumi:"enabled"`
-	Flags   map[string]string `pulumi:"flags"`
+	Enabled bool `pulumi:"enabled"`
+	// Flags for configuring managed connection pooling when it is enabled.
+	// These flags will only be set if 'connection_pool_config.enabled' is
+	// true.
+	// Please see
+	// https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+	// for a comprehensive list of flags that can be set. To specify the flags
+	// in Terraform, please remove the "connection-pooling-" prefix and use
+	// underscores instead of dashes in the name. For example,
+	// "connection-pooling-pool-mode" would be "poolMode".
+	Flags map[string]string `pulumi:"flags"`
 	// The number of running poolers per instance.
 	PoolerCount int `pulumi:"poolerCount"`
 }
@@ -9473,8 +9594,17 @@ type GetInstanceConnectionPoolConfigInput interface {
 
 type GetInstanceConnectionPoolConfigArgs struct {
 	// Whether to enabled Managed Connection Pool.
-	Enabled pulumi.BoolInput      `pulumi:"enabled"`
-	Flags   pulumi.StringMapInput `pulumi:"flags"`
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Flags for configuring managed connection pooling when it is enabled.
+	// These flags will only be set if 'connection_pool_config.enabled' is
+	// true.
+	// Please see
+	// https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+	// for a comprehensive list of flags that can be set. To specify the flags
+	// in Terraform, please remove the "connection-pooling-" prefix and use
+	// underscores instead of dashes in the name. For example,
+	// "connection-pooling-pool-mode" would be "poolMode".
+	Flags pulumi.StringMapInput `pulumi:"flags"`
 	// The number of running poolers per instance.
 	PoolerCount pulumi.IntInput `pulumi:"poolerCount"`
 }
@@ -9535,6 +9665,15 @@ func (o GetInstanceConnectionPoolConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceConnectionPoolConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Flags for configuring managed connection pooling when it is enabled.
+// These flags will only be set if 'connection_pool_config.enabled' is
+// true.
+// Please see
+// https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+// for a comprehensive list of flags that can be set. To specify the flags
+// in Terraform, please remove the "connection-pooling-" prefix and use
+// underscores instead of dashes in the name. For example,
+// "connection-pooling-pool-mode" would be "poolMode".
 func (o GetInstanceConnectionPoolConfigOutput) Flags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstanceConnectionPoolConfig) map[string]string { return v.Flags }).(pulumi.StringMapOutput)
 }

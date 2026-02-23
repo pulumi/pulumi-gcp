@@ -29,8 +29,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -1060,8 +1058,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
@@ -1208,8 +1204,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
@@ -1227,8 +1221,8 @@ import (
 //				return err
 //			}
 //			cross_project_dataset, err := organizations.NewProject(ctx, "cross-project-dataset", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_59033"),
-//				Name:           pulumi.String("tf-test_32081"),
+//				ProjectId:      pulumi.String("tf-test_10393"),
+//				Name:           pulumi.String("tf-test_33052"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -1864,22 +1858,14 @@ import (
 // Stream can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
-//
 // * `{{project}}/{{location}}/{{stream_id}}`
-//
 // * `{{location}}/{{stream_id}}`
 //
 // When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:datastream/stream:Stream default projects/{{project}}/locations/{{location}}/streams/{{stream_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:datastream/stream:Stream default {{project}}/{{location}}/{{stream_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:datastream/stream:Stream default {{location}}/{{stream_id}}
 // ```
 type Stream struct {
@@ -1919,7 +1905,7 @@ type Stream struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Rule sets to apply to the stream.
 	// Structure is documented below.
@@ -2017,7 +2003,7 @@ type streamState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Rule sets to apply to the stream.
 	// Structure is documented below.
@@ -2066,7 +2052,7 @@ type StreamState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Rule sets to apply to the stream.
 	// Structure is documented below.
@@ -2322,7 +2308,8 @@ func (o StreamOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o StreamOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -348,16 +348,12 @@ import (
 // FhirStore can be imported using any of these accepted formats:
 //
 // * `{{dataset}}/fhirStores/{{name}}`
-//
 // * `{{dataset}}/{{name}}`
 //
 // When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/{{name}}
 // ```
 type FhirStore struct {
@@ -438,7 +434,7 @@ type FhirStore struct {
 	// Structure is documented below.
 	NotificationConfigs FhirStoreNotificationConfigArrayOutput `pulumi:"notificationConfigs"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -572,7 +568,7 @@ type fhirStoreState struct {
 	// Structure is documented below.
 	NotificationConfigs []FhirStoreNotificationConfig `pulumi:"notificationConfigs"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
@@ -669,7 +665,7 @@ type FhirStoreState struct {
 	// Structure is documented below.
 	NotificationConfigs FhirStoreNotificationConfigArrayInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
@@ -1079,7 +1075,8 @@ func (o FhirStoreOutput) NotificationConfigs() FhirStoreNotificationConfigArrayO
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o FhirStoreOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

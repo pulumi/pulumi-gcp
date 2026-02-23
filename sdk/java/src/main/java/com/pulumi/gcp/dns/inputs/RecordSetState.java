@@ -86,9 +86,19 @@ public final class RecordSetState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.routingPolicy);
     }
 
+    /**
+     * The string data for the records in this record set
+     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\&#34; \&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters\&#34; \&#34;morecharacters&#34;`).
+     * 
+     */
     @Import(name="rrdatas")
     private @Nullable Output<List<String>> rrdatas;
 
+    /**
+     * @return The string data for the records in this record set
+     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\&#34; \&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters\&#34; \&#34;morecharacters&#34;`).
+     * 
+     */
     public Optional<Output<List<String>>> rrdatas() {
         return Optional.ofNullable(this.rrdatas);
     }
@@ -249,15 +259,36 @@ public final class RecordSetState extends com.pulumi.resources.ResourceArgs {
             return routingPolicy(Output.of(routingPolicy));
         }
 
+        /**
+         * @param rrdatas The string data for the records in this record set
+         * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\&#34; \&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters\&#34; \&#34;morecharacters&#34;`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder rrdatas(@Nullable Output<List<String>> rrdatas) {
             $.rrdatas = rrdatas;
             return this;
         }
 
+        /**
+         * @param rrdatas The string data for the records in this record set
+         * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\&#34; \&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters\&#34; \&#34;morecharacters&#34;`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder rrdatas(List<String> rrdatas) {
             return rrdatas(Output.of(rrdatas));
         }
 
+        /**
+         * @param rrdatas The string data for the records in this record set
+         * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\&#34; \&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters\&#34; \&#34;morecharacters&#34;`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder rrdatas(String... rrdatas) {
             return rrdatas(List.of(rrdatas));
         }

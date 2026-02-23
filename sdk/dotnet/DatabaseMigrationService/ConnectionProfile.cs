@@ -459,13 +459,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///         },
     ///         Alloydb = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbArgs
     ///         {
-    ///             ClusterId = "tf-test-dbmsalloycluster_22811",
+    ///             ClusterId = "tf-test-dbmsalloycluster_91042",
     ///             Settings = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsArgs
     ///             {
     ///                 InitialUser = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsInitialUserArgs
     ///                 {
-    ///                     User = "alloyuser_91042",
-    ///                     Password = "alloypass_72490",
+    ///                     User = "alloyuser_72490",
+    ///                     Password = "alloypass_89605",
     ///                 },
     ///                 VpcNetwork = @default.Id,
     ///                 Labels = 
@@ -687,22 +687,14 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// ConnectionProfile can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{connection_profile_id}}`
-    /// 
     /// * `{{location}}/{{connection_profile_id}}`
     /// 
     /// When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
     /// ```
     /// </summary>
@@ -811,7 +803,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -1083,7 +1075,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

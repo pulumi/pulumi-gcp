@@ -148,22 +148,14 @@ namespace Pulumi.Gcp.Firebase
     /// PlayIntegrityConfig can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/apps/{{app_id}}/playIntegrityConfig`
-    /// 
     /// * `{{project}}/{{app_id}}`
-    /// 
     /// * `{{app_id}}`
     /// 
     /// When using the `pulumi import` command, PlayIntegrityConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig default projects/{{project}}/apps/{{app_id}}/playIntegrityConfig
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig default {{project}}/{{app_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig default {{app_id}}
     /// ```
     /// </summary>

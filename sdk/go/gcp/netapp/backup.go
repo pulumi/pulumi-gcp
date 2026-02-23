@@ -110,22 +110,14 @@ import (
 // Backup can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}`
-//
 // * `{{project}}/{{location}}/{{vault_name}}/{{name}}`
-//
 // * `{{location}}/{{vault_name}}/{{name}}`
 //
 // When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:netapp/backup:Backup default projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/backup:Backup default {{project}}/{{location}}/{{vault_name}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/backup:Backup default {{location}}/{{vault_name}}/{{name}}
 // ```
 type Backup struct {
@@ -157,7 +149,7 @@ type Backup struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// If specified, backup will be created from the given snapshot. If not specified,
 	// there will be a new snapshot taken to initiate the backup creation.
@@ -242,7 +234,7 @@ type backupState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// If specified, backup will be created from the given snapshot. If not specified,
 	// there will be a new snapshot taken to initiate the backup creation.
@@ -287,7 +279,7 @@ type BackupState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// If specified, backup will be created from the given snapshot. If not specified,
 	// there will be a new snapshot taken to initiate the backup creation.
@@ -503,7 +495,8 @@ func (o BackupOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o BackupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

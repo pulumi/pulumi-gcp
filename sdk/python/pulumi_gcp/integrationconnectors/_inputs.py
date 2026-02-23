@@ -113,51 +113,46 @@ __all__ = [
     'ConnectionStatusArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ConnectionAuthConfigArgsDict(TypedDict):
-        auth_type: pulumi.Input[_builtins.str]
-        """
-        authType of the Connection
-        Possible values are: `USER_PASSWORD`.
-        """
-        additional_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthConfigAdditionalVariableArgsDict']]]]
-        """
-        List containing additional auth configs.
-        Structure is documented below.
-        """
-        auth_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of authentication configured.
-        """
-        oauth2_auth_code_flow: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2AuthCodeFlowArgsDict']]
-        """
-        Parameters to support Oauth 2.0 Auth Code Grant Authentication.
-        Structure is documented below.
-        """
-        oauth2_client_credentials: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2ClientCredentialsArgsDict']]
-        """
-        OAuth3 Client Credentials for Authentication.
-        Structure is documented below.
-        """
-        oauth2_jwt_bearer: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerArgsDict']]
-        """
-        OAuth2 JWT Bearer for Authentication.
-        Structure is documented below.
-        """
-        ssh_public_key: NotRequired[pulumi.Input['ConnectionAuthConfigSshPublicKeyArgsDict']]
-        """
-        SSH Public Key for Authentication.
-        Structure is documented below.
-        """
-        user_password: NotRequired[pulumi.Input['ConnectionAuthConfigUserPasswordArgsDict']]
-        """
-        User password for Authentication.
-        Structure is documented below.
-        """
-elif False:
-    ConnectionAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthConfigArgsDict(TypedDict):
+    auth_type: pulumi.Input[_builtins.str]
+    """
+    authType of the Connection
+    Possible values are: `USER_PASSWORD`.
+    """
+    additional_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthConfigAdditionalVariableArgsDict']]]]
+    """
+    List containing additional auth configs.
+    Structure is documented below.
+    """
+    auth_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of authentication configured.
+    """
+    oauth2_auth_code_flow: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2AuthCodeFlowArgsDict']]
+    """
+    Parameters to support Oauth 2.0 Auth Code Grant Authentication.
+    Structure is documented below.
+    """
+    oauth2_client_credentials: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2ClientCredentialsArgsDict']]
+    """
+    OAuth3 Client Credentials for Authentication.
+    Structure is documented below.
+    """
+    oauth2_jwt_bearer: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerArgsDict']]
+    """
+    OAuth2 JWT Bearer for Authentication.
+    Structure is documented below.
+    """
+    ssh_public_key: NotRequired[pulumi.Input['ConnectionAuthConfigSshPublicKeyArgsDict']]
+    """
+    SSH Public Key for Authentication.
+    Structure is documented below.
+    """
+    user_password: NotRequired[pulumi.Input['ConnectionAuthConfigUserPasswordArgsDict']]
+    """
+    User password for Authentication.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigArgs:
@@ -307,36 +302,33 @@ class ConnectionAuthConfigArgs:
         pulumi.set(self, "user_password", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigAdditionalVariableArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Key for the configVariable
-        """
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean Value of configVariable.
-        """
-        encryption_key_value: NotRequired[pulumi.Input['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgsDict']]
-        """
-        Encryption key value of configVariable.
-        Structure is documented below.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Integer Value of configVariable.
-        """
-        secret_value: NotRequired[pulumi.Input['ConnectionAuthConfigAdditionalVariableSecretValueArgsDict']]
-        """
-        Secret value of configVariable
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String Value of configVariabley.
-        """
-elif False:
-    ConnectionAuthConfigAdditionalVariableArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthConfigAdditionalVariableArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Key for the configVariable
+    """
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean Value of configVariable.
+    """
+    encryption_key_value: NotRequired[pulumi.Input['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgsDict']]
+    """
+    Encryption key value of configVariable.
+    Structure is documented below.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Integer Value of configVariable.
+    """
+    secret_value: NotRequired[pulumi.Input['ConnectionAuthConfigAdditionalVariableSecretValueArgsDict']]
+    """
+    Secret value of configVariable
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String Value of configVariabley.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigAdditionalVariableArgs:
@@ -444,21 +436,18 @@ class ConnectionAuthConfigAdditionalVariableArgs:
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of Encryption Key
-        Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
-        """
-        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The [KMS key name] with which the content of the Operation is encrypted. The
-        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
-        Will be empty string if google managed.
-        """
-elif False:
-    ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of Encryption Key
+    Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
+    """
+    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The [KMS key name] with which the content of the Operation is encrypted. The
+    expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+    Will be empty string if google managed.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs:
@@ -504,14 +493,11 @@ class ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigAdditionalVariableSecretValueArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        Secret version of Secret Value for Config variable.
-        """
-elif False:
-    ConnectionAuthConfigAdditionalVariableSecretValueArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthConfigAdditionalVariableSecretValueArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    Secret version of Secret Value for Config variable.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigAdditionalVariableSecretValueArgs:
@@ -535,30 +521,27 @@ class ConnectionAuthConfigAdditionalVariableSecretValueArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigOauth2AuthCodeFlowArgsDict(TypedDict):
-        auth_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Auth URL for Authorization Code Flow.
-        """
-        client_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Client ID for user-provided OAuth app.
-        """
-        client_secret: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgsDict']]
-        """
-        Client secret for user-provided OAuth app.
-        """
-        enable_pkce: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable PKCE when the user performs the auth code flow.
-        """
-        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Scopes the connection will request when the user performs the auth code flow.
-        """
-elif False:
-    ConnectionAuthConfigOauth2AuthCodeFlowArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthConfigOauth2AuthCodeFlowArgsDict(TypedDict):
+    auth_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Auth URL for Authorization Code Flow.
+    """
+    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Client ID for user-provided OAuth app.
+    """
+    client_secret: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgsDict']]
+    """
+    Client secret for user-provided OAuth app.
+    """
+    enable_pkce: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable PKCE when the user performs the auth code flow.
+    """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Scopes the connection will request when the user performs the auth code flow.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigOauth2AuthCodeFlowArgs:
@@ -647,15 +630,12 @@ class ConnectionAuthConfigOauth2AuthCodeFlowArgs:
         pulumi.set(self, "scopes", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The resource name of the secret version in the format,
-        format as: projects/*/secrets/*/versions/*.
-        """
-elif False:
-    ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The resource name of the secret version in the format,
+    format as: projects/*/secrets/*/versions/*.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs:
@@ -681,18 +661,15 @@ class ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigOauth2ClientCredentialsArgsDict(TypedDict):
-        client_id: pulumi.Input[_builtins.str]
-        """
-        Secret version of Password for Authentication.
-        """
-        client_secret: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgsDict']]
-        """
-        Secret version reference containing the client secret.
-        """
-elif False:
-    ConnectionAuthConfigOauth2ClientCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthConfigOauth2ClientCredentialsArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    Secret version of Password for Authentication.
+    """
+    client_secret: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgsDict']]
+    """
+    Secret version reference containing the client secret.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigOauth2ClientCredentialsArgs:
@@ -732,15 +709,12 @@ class ConnectionAuthConfigOauth2ClientCredentialsArgs:
         pulumi.set(self, "client_secret", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The resource name of the secret version in the format,
-        format as: projects/*/secrets/*/versions/*.
-        """
-elif False:
-    ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The resource name of the secret version in the format,
+    format as: projects/*/secrets/*/versions/*.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs:
@@ -766,20 +740,17 @@ class ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigOauth2JwtBearerArgsDict(TypedDict):
-        client_key: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerClientKeyArgsDict']]
-        """
-        Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
-        This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
-        Specified in the form as: projects/*/secrets/*/versions/*.
-        """
-        jwt_claims: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgsDict']]
-        """
-        JwtClaims providers fields to generate the token.
-        """
-elif False:
-    ConnectionAuthConfigOauth2JwtBearerArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthConfigOauth2JwtBearerArgsDict(TypedDict):
+    client_key: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerClientKeyArgsDict']]
+    """
+    Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
+    This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
+    Specified in the form as: projects/*/secrets/*/versions/*.
+    """
+    jwt_claims: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgsDict']]
+    """
+    JwtClaims providers fields to generate the token.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigOauth2JwtBearerArgs:
@@ -824,15 +795,12 @@ class ConnectionAuthConfigOauth2JwtBearerArgs:
         pulumi.set(self, "jwt_claims", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigOauth2JwtBearerClientKeyArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The resource name of the secret version in the format,
-        format as: projects/*/secrets/*/versions/*.
-        """
-elif False:
-    ConnectionAuthConfigOauth2JwtBearerClientKeyArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthConfigOauth2JwtBearerClientKeyArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The resource name of the secret version in the format,
+    format as: projects/*/secrets/*/versions/*.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigOauth2JwtBearerClientKeyArgs:
@@ -858,24 +826,21 @@ class ConnectionAuthConfigOauth2JwtBearerClientKeyArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgsDict(TypedDict):
-        audience: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value for the "aud" claim.
+class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgsDict(TypedDict):
+    audience: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value for the "aud" claim.
 
-        <a name="nested_auth_config_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
-        """
-        issuer: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value for the "iss" claim.
-        """
-        subject: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value for the "sub" claim.
-        """
-elif False:
-    ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_auth_config_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
+    """
+    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value for the "iss" claim.
+    """
+    subject: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value for the "sub" claim.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs:
@@ -936,28 +901,25 @@ class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs:
         pulumi.set(self, "subject", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigSshPublicKeyArgsDict(TypedDict):
-        username: pulumi.Input[_builtins.str]
-        """
-        The user account used to authenticate.
-        """
-        cert_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Format of SSH Client cert.
-        """
-        ssh_client_cert: NotRequired[pulumi.Input['ConnectionAuthConfigSshPublicKeySshClientCertArgsDict']]
-        """
-        SSH Client Cert. It should contain both public and private key.
-        Structure is documented below.
-        """
-        ssh_client_cert_pass: NotRequired[pulumi.Input['ConnectionAuthConfigSshPublicKeySshClientCertPassArgsDict']]
-        """
-        Password (passphrase) for ssh client certificate if it has one.
-        Structure is documented below.
-        """
-elif False:
-    ConnectionAuthConfigSshPublicKeyArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthConfigSshPublicKeyArgsDict(TypedDict):
+    username: pulumi.Input[_builtins.str]
+    """
+    The user account used to authenticate.
+    """
+    cert_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Format of SSH Client cert.
+    """
+    ssh_client_cert: NotRequired[pulumi.Input['ConnectionAuthConfigSshPublicKeySshClientCertArgsDict']]
+    """
+    SSH Client Cert. It should contain both public and private key.
+    Structure is documented below.
+    """
+    ssh_client_cert_pass: NotRequired[pulumi.Input['ConnectionAuthConfigSshPublicKeySshClientCertPassArgsDict']]
+    """
+    Password (passphrase) for ssh client certificate if it has one.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigSshPublicKeyArgs:
@@ -1033,15 +995,12 @@ class ConnectionAuthConfigSshPublicKeyArgs:
         pulumi.set(self, "ssh_client_cert_pass", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigSshPublicKeySshClientCertArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The resource name of the secret version in the format,
-        format as: projects/*/secrets/*/versions/*.
-        """
-elif False:
-    ConnectionAuthConfigSshPublicKeySshClientCertArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthConfigSshPublicKeySshClientCertArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The resource name of the secret version in the format,
+    format as: projects/*/secrets/*/versions/*.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigSshPublicKeySshClientCertArgs:
@@ -1067,17 +1026,14 @@ class ConnectionAuthConfigSshPublicKeySshClientCertArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigSshPublicKeySshClientCertPassArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The resource name of the secret version in the format,
-        format as: projects/*/secrets/*/versions/*.
+class ConnectionAuthConfigSshPublicKeySshClientCertPassArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The resource name of the secret version in the format,
+    format as: projects/*/secrets/*/versions/*.
 
-        <a name="nested_auth_config_oauth2_auth_code_flow"></a>The `oauth2_auth_code_flow` block supports:
-        """
-elif False:
-    ConnectionAuthConfigSshPublicKeySshClientCertPassArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_auth_config_oauth2_auth_code_flow"></a>The `oauth2_auth_code_flow` block supports:
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigSshPublicKeySshClientCertPassArgs:
@@ -1107,19 +1063,16 @@ class ConnectionAuthConfigSshPublicKeySshClientCertPassArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigUserPasswordArgsDict(TypedDict):
-        username: pulumi.Input[_builtins.str]
-        """
-        Username for Authentication.
-        """
-        password: NotRequired[pulumi.Input['ConnectionAuthConfigUserPasswordPasswordArgsDict']]
-        """
-        Password for Authentication.
-        Structure is documented below.
-        """
-elif False:
-    ConnectionAuthConfigUserPasswordArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthConfigUserPasswordArgsDict(TypedDict):
+    username: pulumi.Input[_builtins.str]
+    """
+    Username for Authentication.
+    """
+    password: NotRequired[pulumi.Input['ConnectionAuthConfigUserPasswordPasswordArgsDict']]
+    """
+    Password for Authentication.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigUserPasswordArgs:
@@ -1161,15 +1114,12 @@ class ConnectionAuthConfigUserPasswordArgs:
         pulumi.set(self, "password", value)
 
 
-if not MYPY:
-    class ConnectionAuthConfigUserPasswordPasswordArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The resource name of the secret version in the format,
-        format as: projects/*/secrets/*/versions/*.
-        """
-elif False:
-    ConnectionAuthConfigUserPasswordPasswordArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthConfigUserPasswordPasswordArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The resource name of the secret version in the format,
+    format as: projects/*/secrets/*/versions/*.
+    """
 
 @pulumi.input_type
 class ConnectionAuthConfigUserPasswordPasswordArgs:
@@ -1195,36 +1145,33 @@ class ConnectionAuthConfigUserPasswordPasswordArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionConfigVariableArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Key for the configVariable
-        """
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean Value of configVariable
-        """
-        encryption_key_value: NotRequired[pulumi.Input['ConnectionConfigVariableEncryptionKeyValueArgsDict']]
-        """
-        Encryption key value of configVariable.
-        Structure is documented below.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Integer Value of configVariable
-        """
-        secret_value: NotRequired[pulumi.Input['ConnectionConfigVariableSecretValueArgsDict']]
-        """
-        Secret value of configVariable.
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String Value of configVariabley
-        """
-elif False:
-    ConnectionConfigVariableArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionConfigVariableArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Key for the configVariable
+    """
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean Value of configVariable
+    """
+    encryption_key_value: NotRequired[pulumi.Input['ConnectionConfigVariableEncryptionKeyValueArgsDict']]
+    """
+    Encryption key value of configVariable.
+    Structure is documented below.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Integer Value of configVariable
+    """
+    secret_value: NotRequired[pulumi.Input['ConnectionConfigVariableSecretValueArgsDict']]
+    """
+    Secret value of configVariable.
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String Value of configVariabley
+    """
 
 @pulumi.input_type
 class ConnectionConfigVariableArgs:
@@ -1332,21 +1279,18 @@ class ConnectionConfigVariableArgs:
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class ConnectionConfigVariableEncryptionKeyValueArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of Encryption Key
-        Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
-        """
-        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The [KMS key name] with which the content of the Operation is encrypted. The
-        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
-        Will be empty string if google managed.
-        """
-elif False:
-    ConnectionConfigVariableEncryptionKeyValueArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionConfigVariableEncryptionKeyValueArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of Encryption Key
+    Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
+    """
+    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The [KMS key name] with which the content of the Operation is encrypted. The
+    expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+    Will be empty string if google managed.
+    """
 
 @pulumi.input_type
 class ConnectionConfigVariableEncryptionKeyValueArgs:
@@ -1392,14 +1336,11 @@ class ConnectionConfigVariableEncryptionKeyValueArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class ConnectionConfigVariableSecretValueArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        Secret version of Secret Value for Config variable.
-        """
-elif False:
-    ConnectionConfigVariableSecretValueArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionConfigVariableSecretValueArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    Secret version of Secret Value for Config variable.
+    """
 
 @pulumi.input_type
 class ConnectionConfigVariableSecretValueArgs:
@@ -1423,15 +1364,12 @@ class ConnectionConfigVariableSecretValueArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionConnectorVersionInfraConfigArgsDict(TypedDict):
-        ratelimit_threshold: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Max QPS supported by the connector version before throttling of requests.
-        """
-elif False:
-    ConnectionConnectorVersionInfraConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionConnectorVersionInfraConfigArgsDict(TypedDict):
+    ratelimit_threshold: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Max QPS supported by the connector version before throttling of requests.
+    """
 
 @pulumi.input_type
 class ConnectionConnectorVersionInfraConfigArgs:
@@ -1458,19 +1396,16 @@ class ConnectionConnectorVersionInfraConfigArgs:
         pulumi.set(self, "ratelimit_threshold", value)
 
 
-if not MYPY:
-    class ConnectionDestinationConfigArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The key is the destination identifier that is supported by the Connector.
-        """
-        destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigDestinationArgsDict']]]]
-        """
-        The destinations for the key.
-        Structure is documented below.
-        """
-elif False:
-    ConnectionDestinationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionDestinationConfigArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The key is the destination identifier that is supported by the Connector.
+    """
+    destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigDestinationArgsDict']]]]
+    """
+    The destinations for the key.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectionDestinationConfigArgs:
@@ -1512,22 +1447,19 @@ class ConnectionDestinationConfigArgs:
         pulumi.set(self, "destinations", value)
 
 
-if not MYPY:
-    class ConnectionDestinationConfigDestinationArgsDict(TypedDict):
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        port number
-        """
-        service_attachment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service Attachment
-        """
-elif False:
-    ConnectionDestinationConfigDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionDestinationConfigDestinationArgsDict(TypedDict):
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    port number
+    """
+    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service Attachment
+    """
 
 @pulumi.input_type
 class ConnectionDestinationConfigDestinationArgs:
@@ -1584,29 +1516,26 @@ class ConnectionDestinationConfigDestinationArgs:
         pulumi.set(self, "service_attachment", value)
 
 
-if not MYPY:
-    class ConnectionEventingConfigArgsDict(TypedDict):
-        registration_destination_config: pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigArgsDict']
-        """
-        registrationDestinationConfig
-        Structure is documented below.
-        """
-        additional_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigAdditionalVariableArgsDict']]]]
-        """
-        List containing additional auth configs.
-        Structure is documented below.
-        """
-        auth_config: NotRequired[pulumi.Input['ConnectionEventingConfigAuthConfigArgsDict']]
-        """
-        authConfig for Eventing Configuration.
-        Structure is documented below.
-        """
-        enrichment_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enrichment Enabled.
-        """
-elif False:
-    ConnectionEventingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionEventingConfigArgsDict(TypedDict):
+    registration_destination_config: pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigArgsDict']
+    """
+    registrationDestinationConfig
+    Structure is documented below.
+    """
+    additional_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigAdditionalVariableArgsDict']]]]
+    """
+    List containing additional auth configs.
+    Structure is documented below.
+    """
+    auth_config: NotRequired[pulumi.Input['ConnectionEventingConfigAuthConfigArgsDict']]
+    """
+    authConfig for Eventing Configuration.
+    Structure is documented below.
+    """
+    enrichment_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enrichment Enabled.
+    """
 
 @pulumi.input_type
 class ConnectionEventingConfigArgs:
@@ -1684,36 +1613,33 @@ class ConnectionEventingConfigArgs:
         pulumi.set(self, "enrichment_enabled", value)
 
 
-if not MYPY:
-    class ConnectionEventingConfigAdditionalVariableArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Key for the configVariable
-        """
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean Value of configVariable.
-        """
-        encryption_key_value: NotRequired[pulumi.Input['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgsDict']]
-        """
-        Encryption key value of configVariable.
-        Structure is documented below.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Integer Value of configVariable.
-        """
-        secret_value: NotRequired[pulumi.Input['ConnectionEventingConfigAdditionalVariableSecretValueArgsDict']]
-        """
-        Secret value of configVariable
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String Value of configVariabley.
-        """
-elif False:
-    ConnectionEventingConfigAdditionalVariableArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionEventingConfigAdditionalVariableArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Key for the configVariable
+    """
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean Value of configVariable.
+    """
+    encryption_key_value: NotRequired[pulumi.Input['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgsDict']]
+    """
+    Encryption key value of configVariable.
+    Structure is documented below.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Integer Value of configVariable.
+    """
+    secret_value: NotRequired[pulumi.Input['ConnectionEventingConfigAdditionalVariableSecretValueArgsDict']]
+    """
+    Secret value of configVariable
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String Value of configVariabley.
+    """
 
 @pulumi.input_type
 class ConnectionEventingConfigAdditionalVariableArgs:
@@ -1821,21 +1747,18 @@ class ConnectionEventingConfigAdditionalVariableArgs:
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict):
-        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The [KMS key name] with which the content of the Operation is encrypted. The
-        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
-        Will be empty string if google managed.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of Encryption Key
-        Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
-        """
-elif False:
-    ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict):
+    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The [KMS key name] with which the content of the Operation is encrypted. The
+    expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+    Will be empty string if google managed.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of Encryption Key
+    Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
+    """
 
 @pulumi.input_type
 class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs:
@@ -1882,14 +1805,11 @@ class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ConnectionEventingConfigAdditionalVariableSecretValueArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        Secret version of Secret Value for Config variable.
-        """
-elif False:
-    ConnectionEventingConfigAdditionalVariableSecretValueArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionEventingConfigAdditionalVariableSecretValueArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    Secret version of Secret Value for Config variable.
+    """
 
 @pulumi.input_type
 class ConnectionEventingConfigAdditionalVariableSecretValueArgs:
@@ -1913,29 +1833,26 @@ class ConnectionEventingConfigAdditionalVariableSecretValueArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionEventingConfigAuthConfigArgsDict(TypedDict):
-        auth_type: pulumi.Input[_builtins.str]
-        """
-        authType of the Connection
-        Possible values are: `USER_PASSWORD`.
-        """
-        user_password: pulumi.Input['ConnectionEventingConfigAuthConfigUserPasswordArgsDict']
-        """
-        User password for Authentication.
-        Structure is documented below.
-        """
-        additional_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableArgsDict']]]]
-        """
-        List containing additional auth configs.
-        Structure is documented below.
-        """
-        auth_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of authentication configured.
-        """
-elif False:
-    ConnectionEventingConfigAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionEventingConfigAuthConfigArgsDict(TypedDict):
+    auth_type: pulumi.Input[_builtins.str]
+    """
+    authType of the Connection
+    Possible values are: `USER_PASSWORD`.
+    """
+    user_password: pulumi.Input['ConnectionEventingConfigAuthConfigUserPasswordArgsDict']
+    """
+    User password for Authentication.
+    Structure is documented below.
+    """
+    additional_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableArgsDict']]]]
+    """
+    List containing additional auth configs.
+    Structure is documented below.
+    """
+    auth_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of authentication configured.
+    """
 
 @pulumi.input_type
 class ConnectionEventingConfigAuthConfigArgs:
@@ -2012,36 +1929,33 @@ class ConnectionEventingConfigAuthConfigArgs:
         pulumi.set(self, "auth_key", value)
 
 
-if not MYPY:
-    class ConnectionEventingConfigAuthConfigAdditionalVariableArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Key for the configVariable
-        """
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean Value of configVariable.
-        """
-        encryption_key_value: NotRequired[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgsDict']]
-        """
-        Encryption key value of configVariable.
-        Structure is documented below.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Integer Value of configVariable.
-        """
-        secret_value: NotRequired[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgsDict']]
-        """
-        Secret value of configVariable
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String Value of configVariabley.
-        """
-elif False:
-    ConnectionEventingConfigAuthConfigAdditionalVariableArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionEventingConfigAuthConfigAdditionalVariableArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Key for the configVariable
+    """
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean Value of configVariable.
+    """
+    encryption_key_value: NotRequired[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgsDict']]
+    """
+    Encryption key value of configVariable.
+    Structure is documented below.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Integer Value of configVariable.
+    """
+    secret_value: NotRequired[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgsDict']]
+    """
+    Secret value of configVariable
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String Value of configVariabley.
+    """
 
 @pulumi.input_type
 class ConnectionEventingConfigAuthConfigAdditionalVariableArgs:
@@ -2149,21 +2063,18 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableArgs:
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict):
-        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The [KMS key name] with which the content of the Operation is encrypted. The
-        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
-        Will be empty string if google managed.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of Encryption Key
-        Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
-        """
-elif False:
-    ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict):
+    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The [KMS key name] with which the content of the Operation is encrypted. The
+    expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+    Will be empty string if google managed.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of Encryption Key
+    Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
+    """
 
 @pulumi.input_type
 class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs:
@@ -2210,14 +2121,11 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        Secret version of Secret Value for Config variable.
-        """
-elif False:
-    ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    Secret version of Secret Value for Config variable.
+    """
 
 @pulumi.input_type
 class ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs:
@@ -2241,19 +2149,16 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionEventingConfigAuthConfigUserPasswordArgsDict(TypedDict):
-        password: NotRequired[pulumi.Input['ConnectionEventingConfigAuthConfigUserPasswordPasswordArgsDict']]
-        """
-        Password for Authentication.
-        Structure is documented below.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Username for Authentication.
-        """
-elif False:
-    ConnectionEventingConfigAuthConfigUserPasswordArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionEventingConfigAuthConfigUserPasswordArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input['ConnectionEventingConfigAuthConfigUserPasswordPasswordArgsDict']]
+    """
+    Password for Authentication.
+    Structure is documented below.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Username for Authentication.
+    """
 
 @pulumi.input_type
 class ConnectionEventingConfigAuthConfigUserPasswordArgs:
@@ -2296,15 +2201,12 @@ class ConnectionEventingConfigAuthConfigUserPasswordArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ConnectionEventingConfigAuthConfigUserPasswordPasswordArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The resource name of the secret version in the format,
-        format as: projects/*/secrets/*/versions/*.
-        """
-elif False:
-    ConnectionEventingConfigAuthConfigUserPasswordPasswordArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionEventingConfigAuthConfigUserPasswordPasswordArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The resource name of the secret version in the format,
+    format as: projects/*/secrets/*/versions/*.
+    """
 
 @pulumi.input_type
 class ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs:
@@ -2330,19 +2232,16 @@ class ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionEventingConfigRegistrationDestinationConfigArgsDict(TypedDict):
-        destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigDestinationArgsDict']]]]
-        """
-        destinations for the connection
-        Structure is documented below.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Key for the connection
-        """
-elif False:
-    ConnectionEventingConfigRegistrationDestinationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionEventingConfigRegistrationDestinationConfigArgsDict(TypedDict):
+    destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigDestinationArgsDict']]]]
+    """
+    destinations for the connection
+    Structure is documented below.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Key for the connection
+    """
 
 @pulumi.input_type
 class ConnectionEventingConfigRegistrationDestinationConfigArgs:
@@ -2385,22 +2284,19 @@ class ConnectionEventingConfigRegistrationDestinationConfigArgs:
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class ConnectionEventingConfigRegistrationDestinationConfigDestinationArgsDict(TypedDict):
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        port number
-        """
-        service_attachment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service Attachment
-        """
-elif False:
-    ConnectionEventingConfigRegistrationDestinationConfigDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionEventingConfigRegistrationDestinationConfigDestinationArgsDict(TypedDict):
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    port number
+    """
+    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service Attachment
+    """
 
 @pulumi.input_type
 class ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs:
@@ -2457,20 +2353,17 @@ class ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs:
         pulumi.set(self, "service_attachment", value)
 
 
-if not MYPY:
-    class ConnectionEventingRuntimeDataArgsDict(TypedDict):
-        events_listener_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Events listener endpoint. The value will populated after provisioning the events listener.
-        """
-        statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataStatusArgsDict']]]]
-        """
-        (Output)
-        Current status of eventing.
-        Structure is documented below.
-        """
-elif False:
-    ConnectionEventingRuntimeDataArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionEventingRuntimeDataArgsDict(TypedDict):
+    events_listener_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Events listener endpoint. The value will populated after provisioning the events listener.
+    """
+    statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataStatusArgsDict']]]]
+    """
+    (Output)
+    Current status of eventing.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectionEventingRuntimeDataArgs:
@@ -2515,19 +2408,16 @@ class ConnectionEventingRuntimeDataArgs:
         pulumi.set(self, "statuses", value)
 
 
-if not MYPY:
-    class ConnectionEventingRuntimeDataStatusArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An arbitrary description for the Connection.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        State of the Eventing
-        """
-elif False:
-    ConnectionEventingRuntimeDataStatusArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionEventingRuntimeDataStatusArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An arbitrary description for the Connection.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    State of the Eventing
+    """
 
 @pulumi.input_type
 class ConnectionEventingRuntimeDataStatusArgs:
@@ -2570,18 +2460,15 @@ class ConnectionEventingRuntimeDataStatusArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class ConnectionLockConfigArgsDict(TypedDict):
-        locked: pulumi.Input[_builtins.bool]
-        """
-        Indicates whether or not the connection is locked.
-        """
-        reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Describes why a connection is locked.
-        """
-elif False:
-    ConnectionLockConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionLockConfigArgsDict(TypedDict):
+    locked: pulumi.Input[_builtins.bool]
+    """
+    Indicates whether or not the connection is locked.
+    """
+    reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Describes why a connection is locked.
+    """
 
 @pulumi.input_type
 class ConnectionLockConfigArgs:
@@ -2621,19 +2508,16 @@ class ConnectionLockConfigArgs:
         pulumi.set(self, "reason", value)
 
 
-if not MYPY:
-    class ConnectionLogConfigArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Enabled represents whether logging is enabled or not for a connection.
-        """
-        level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Log configuration level.
-        Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
-        """
-elif False:
-    ConnectionLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionLogConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Enabled represents whether logging is enabled or not for a connection.
+    """
+    level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Log configuration level.
+    Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+    """
 
 @pulumi.input_type
 class ConnectionLogConfigArgs:
@@ -2675,18 +2559,15 @@ class ConnectionLogConfigArgs:
         pulumi.set(self, "level", value)
 
 
-if not MYPY:
-    class ConnectionNodeConfigArgsDict(TypedDict):
-        max_node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum number of nodes in the runtime nodes.
-        """
-        min_node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum number of nodes in the runtime nodes.
-        """
-elif False:
-    ConnectionNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionNodeConfigArgsDict(TypedDict):
+    max_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum number of nodes in the runtime nodes.
+    """
+    min_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum number of nodes in the runtime nodes.
+    """
 
 @pulumi.input_type
 class ConnectionNodeConfigArgs:
@@ -2727,59 +2608,56 @@ class ConnectionNodeConfigArgs:
         pulumi.set(self, "min_node_count", value)
 
 
-if not MYPY:
-    class ConnectionSslConfigArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        Enum for controlling the SSL Type (TLS/MTLS)
-        Possible values are: `TLS`, `MTLS`.
-        """
-        additional_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionSslConfigAdditionalVariableArgsDict']]]]
-        """
-        Additional SSL related field values.
-        Structure is documented below.
-        """
-        client_cert_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of Client Cert (PEM/JKS/.. etc.)
-        Possible values are: `PEM`.
-        """
-        client_certificate: NotRequired[pulumi.Input['ConnectionSslConfigClientCertificateArgsDict']]
-        """
-        Client Certificate
-        Structure is documented below.
-        """
-        client_private_key: NotRequired[pulumi.Input['ConnectionSslConfigClientPrivateKeyArgsDict']]
-        """
-        Client Private Key
-        Structure is documented below.
-        """
-        client_private_key_pass: NotRequired[pulumi.Input['ConnectionSslConfigClientPrivateKeyPassArgsDict']]
-        """
-        Secret containing the passphrase protecting the Client Private Key
-        Structure is documented below.
-        """
-        private_server_certificate: NotRequired[pulumi.Input['ConnectionSslConfigPrivateServerCertificateArgsDict']]
-        """
-        Private Server Certificate. Needs to be specified if trust model is PRIVATE.
-        Structure is documented below.
-        """
-        server_cert_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of Server Cert (PEM/JKS/.. etc.)
-        Possible values are: `PEM`.
-        """
-        trust_model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum for Trust Model
-        Possible values are: `PUBLIC`, `PRIVATE`, `INSECURE`.
-        """
-        use_ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Bool for enabling SSL
-        """
-elif False:
-    ConnectionSslConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionSslConfigArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Enum for controlling the SSL Type (TLS/MTLS)
+    Possible values are: `TLS`, `MTLS`.
+    """
+    additional_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionSslConfigAdditionalVariableArgsDict']]]]
+    """
+    Additional SSL related field values.
+    Structure is documented below.
+    """
+    client_cert_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of Client Cert (PEM/JKS/.. etc.)
+    Possible values are: `PEM`.
+    """
+    client_certificate: NotRequired[pulumi.Input['ConnectionSslConfigClientCertificateArgsDict']]
+    """
+    Client Certificate
+    Structure is documented below.
+    """
+    client_private_key: NotRequired[pulumi.Input['ConnectionSslConfigClientPrivateKeyArgsDict']]
+    """
+    Client Private Key
+    Structure is documented below.
+    """
+    client_private_key_pass: NotRequired[pulumi.Input['ConnectionSslConfigClientPrivateKeyPassArgsDict']]
+    """
+    Secret containing the passphrase protecting the Client Private Key
+    Structure is documented below.
+    """
+    private_server_certificate: NotRequired[pulumi.Input['ConnectionSslConfigPrivateServerCertificateArgsDict']]
+    """
+    Private Server Certificate. Needs to be specified if trust model is PRIVATE.
+    Structure is documented below.
+    """
+    server_cert_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of Server Cert (PEM/JKS/.. etc.)
+    Possible values are: `PEM`.
+    """
+    trust_model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum for Trust Model
+    Possible values are: `PUBLIC`, `PRIVATE`, `INSECURE`.
+    """
+    use_ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Bool for enabling SSL
+    """
 
 @pulumi.input_type
 class ConnectionSslConfigArgs:
@@ -2965,36 +2843,33 @@ class ConnectionSslConfigArgs:
         pulumi.set(self, "use_ssl", value)
 
 
-if not MYPY:
-    class ConnectionSslConfigAdditionalVariableArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Key for the configVariable
-        """
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean Value of configVariable.
-        """
-        encryption_key_value: NotRequired[pulumi.Input['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgsDict']]
-        """
-        Encryption key value of configVariable.
-        Structure is documented below.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Integer Value of configVariable.
-        """
-        secret_value: NotRequired[pulumi.Input['ConnectionSslConfigAdditionalVariableSecretValueArgsDict']]
-        """
-        Secret value of configVariable
-        Structure is documented below.
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String Value of configVariabley.
-        """
-elif False:
-    ConnectionSslConfigAdditionalVariableArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionSslConfigAdditionalVariableArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Key for the configVariable
+    """
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean Value of configVariable.
+    """
+    encryption_key_value: NotRequired[pulumi.Input['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgsDict']]
+    """
+    Encryption key value of configVariable.
+    Structure is documented below.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Integer Value of configVariable.
+    """
+    secret_value: NotRequired[pulumi.Input['ConnectionSslConfigAdditionalVariableSecretValueArgsDict']]
+    """
+    Secret value of configVariable
+    Structure is documented below.
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String Value of configVariabley.
+    """
 
 @pulumi.input_type
 class ConnectionSslConfigAdditionalVariableArgs:
@@ -3102,21 +2977,18 @@ class ConnectionSslConfigAdditionalVariableArgs:
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict):
-        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The [KMS key name] with which the content of the Operation is encrypted. The
-        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
-        Will be empty string if google managed.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of Encryption Key
-        Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
-        """
-elif False:
-    ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict):
+    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The [KMS key name] with which the content of the Operation is encrypted. The
+    expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+    Will be empty string if google managed.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of Encryption Key
+    Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
+    """
 
 @pulumi.input_type
 class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs:
@@ -3163,14 +3035,11 @@ class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ConnectionSslConfigAdditionalVariableSecretValueArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        Secret version of Secret Value for Config variable.
-        """
-elif False:
-    ConnectionSslConfigAdditionalVariableSecretValueArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionSslConfigAdditionalVariableSecretValueArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    Secret version of Secret Value for Config variable.
+    """
 
 @pulumi.input_type
 class ConnectionSslConfigAdditionalVariableSecretValueArgs:
@@ -3194,14 +3063,11 @@ class ConnectionSslConfigAdditionalVariableSecretValueArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionSslConfigClientCertificateArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        Secret version of Secret Value for Config variable.
-        """
-elif False:
-    ConnectionSslConfigClientCertificateArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionSslConfigClientCertificateArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    Secret version of Secret Value for Config variable.
+    """
 
 @pulumi.input_type
 class ConnectionSslConfigClientCertificateArgs:
@@ -3225,14 +3091,11 @@ class ConnectionSslConfigClientCertificateArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionSslConfigClientPrivateKeyArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        Secret version of Secret Value for Config variable.
-        """
-elif False:
-    ConnectionSslConfigClientPrivateKeyArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionSslConfigClientPrivateKeyArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    Secret version of Secret Value for Config variable.
+    """
 
 @pulumi.input_type
 class ConnectionSslConfigClientPrivateKeyArgs:
@@ -3256,14 +3119,11 @@ class ConnectionSslConfigClientPrivateKeyArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionSslConfigClientPrivateKeyPassArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        Secret version of Secret Value for Config variable.
-        """
-elif False:
-    ConnectionSslConfigClientPrivateKeyPassArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionSslConfigClientPrivateKeyPassArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    Secret version of Secret Value for Config variable.
+    """
 
 @pulumi.input_type
 class ConnectionSslConfigClientPrivateKeyPassArgs:
@@ -3287,14 +3147,11 @@ class ConnectionSslConfigClientPrivateKeyPassArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionSslConfigPrivateServerCertificateArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        Secret version of Secret Value for Config variable.
-        """
-elif False:
-    ConnectionSslConfigPrivateServerCertificateArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionSslConfigPrivateServerCertificateArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    Secret version of Secret Value for Config variable.
+    """
 
 @pulumi.input_type
 class ConnectionSslConfigPrivateServerCertificateArgs:
@@ -3318,25 +3175,22 @@ class ConnectionSslConfigPrivateServerCertificateArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class ConnectionStatusArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An arbitrary description for the Connection.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        State of the Eventing
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Current status of eventing.
-        Structure is documented below.
-        """
-elif False:
-    ConnectionStatusArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionStatusArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An arbitrary description for the Connection.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    State of the Eventing
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Current status of eventing.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectionStatusArgs:

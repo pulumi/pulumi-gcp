@@ -16,6 +16,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Cloud TPU Queued Resource.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about QueuedResource, see:
+ * 
+ * * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.queuedResources)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/tpu/docs/)
+ * 
  * ## Example Usage
  * 
  * ### Tpu V2 Queued Resource Basic
@@ -139,28 +150,16 @@ import javax.annotation.Nullable;
  * QueuedResource can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{zone}}/queuedResources/{{name}}`
- * 
  * * `{{project}}/{{zone}}/{{name}}`
- * 
  * * `{{zone}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, QueuedResource can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default projects/{{project}}/locations/{{zone}}/queuedResources/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{project}}/{{zone}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{zone}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{name}}
  * ```
  * 

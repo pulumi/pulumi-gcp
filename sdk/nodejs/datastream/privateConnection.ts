@@ -78,22 +78,14 @@ import * as utilities from "../utilities";
  * PrivateConnection can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}`
- *
  * * `{{project}}/{{location}}/{{private_connection_id}}`
- *
  * * `{{location}}/{{private_connection_id}}`
  *
  * When using the `pulumi import` command, PrivateConnection can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:datastream/privateConnection:PrivateConnection default projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:datastream/privateConnection:PrivateConnection default {{project}}/{{location}}/{{private_connection_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:datastream/privateConnection:PrivateConnection default {{location}}/{{private_connection_id}}
  * ```
  */
@@ -173,7 +165,7 @@ export class PrivateConnection extends pulumi.CustomResource {
     declare public readonly pscInterfaceConfig: pulumi.Output<outputs.datastream.PrivateConnectionPscInterfaceConfig | undefined>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -297,7 +289,7 @@ export interface PrivateConnectionState {
     pscInterfaceConfig?: pulumi.Input<inputs.datastream.PrivateConnectionPscInterfaceConfig>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

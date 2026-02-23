@@ -295,6 +295,19 @@ class MachineImage(pulumi.CustomResource):
                  source_instance: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Represents a Machine Image resource. Machine images store all the configuration,
+        metadata, permissions, and data from one or more disks required to create a
+        Virtual machine (VM) instance.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about MachineImage, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/machineImages)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
+
         ## Example Usage
 
         ### Machine Image Basic
@@ -354,22 +367,14 @@ class MachineImage(pulumi.CustomResource):
         MachineImage can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/machineImages/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, MachineImage can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/machineImage:MachineImage default projects/{{project}}/global/machineImages/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/machineImage:MachineImage default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/machineImage:MachineImage default {{name}}
         ```
 
@@ -395,6 +400,19 @@ class MachineImage(pulumi.CustomResource):
                  args: MachineImageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Represents a Machine Image resource. Machine images store all the configuration,
+        metadata, permissions, and data from one or more disks required to create a
+        Virtual machine (VM) instance.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about MachineImage, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/machineImages)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
+
         ## Example Usage
 
         ### Machine Image Basic
@@ -454,22 +472,14 @@ class MachineImage(pulumi.CustomResource):
         MachineImage can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/machineImages/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, MachineImage can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/machineImage:MachineImage default projects/{{project}}/global/machineImages/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/machineImage:MachineImage default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/machineImage:MachineImage default {{name}}
         ```
 

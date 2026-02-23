@@ -12,27 +12,356 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a VM instance template resource within GCE. For more information see
+// [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+// and
+// [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := serviceaccount.NewAccount(ctx, "default", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("service-account-id"),
+//				DisplayName: pulumi.String("Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
+//				Name:  pulumi.String("foo"),
+//				Image: pulumi.String(myImage.SelfLink),
+//				Size:  pulumi.Int(10),
+//				Type:  pulumi.String("pd-ssd"),
+//				Zone:  pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			snapDisk, err := compute.NewSnapshot(ctx, "snap_disk", &compute.SnapshotArgs{
+//				Name:       pulumi.String("snapDisk"),
+//				SourceDisk: disk.Name,
+//				Zone:       pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foobar, err := compute.NewRegionDisk(ctx, "foobar", &compute.RegionDiskArgs{
+//				Name:                   pulumi.String("existing-disk"),
+//				Snapshot:               snapDisk.ID(),
+//				Type:                   pulumi.String("pd-ssd"),
+//				Region:                 pulumi.String("us-central1"),
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//				ReplicaZones: pulumi.StringArray{
+//					pulumi.String("us-central1-a"),
+//					pulumi.String("us-central1-f"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			dailyBackup, err := compute.NewResourcePolicy(ctx, "daily_backup", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("every-day-4am"),
+//				Region: pulumi.String("us-central1"),
+//				SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
+//					Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
+//						DailySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{
+//							DaysInCycle: pulumi.Int(1),
+//							StartTime:   pulumi.String("04:00"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionInstanceTemplate(ctx, "default", &compute.RegionInstanceTemplateArgs{
+//				Name:        pulumi.String("appserver-template"),
+//				Description: pulumi.String("This template is used to create app server instances."),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//					pulumi.String("bar"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"environment": pulumi.String("dev"),
+//				},
+//				InstanceDescription: pulumi.String("description assigned to instances"),
+//				MachineType:         pulumi.String("e2-medium"),
+//				CanIpForward:        pulumi.Bool(false),
+//				Scheduling: &compute.RegionInstanceTemplateSchedulingArgs{
+//					AutomaticRestart:  pulumi.Bool(true),
+//					OnHostMaintenance: pulumi.String("MIGRATE"),
+//				},
+//				Disks: compute.RegionInstanceTemplateDiskArray{
+//					&compute.RegionInstanceTemplateDiskArgs{
+//						SourceImage:      pulumi.String("debian-cloud/debian-11"),
+//						AutoDelete:       pulumi.Bool(true),
+//						Boot:             pulumi.Bool(true),
+//						ResourcePolicies: dailyBackup.ID(),
+//					},
+//					&compute.RegionInstanceTemplateDiskArgs{
+//						Source:     foobar.SelfLink,
+//						AutoDelete: pulumi.Bool(false),
+//						Boot:       pulumi.Bool(false),
+//					},
+//				},
+//				NetworkInterfaces: compute.RegionInstanceTemplateNetworkInterfaceArray{
+//					&compute.RegionInstanceTemplateNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Metadata: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				ServiceAccount: &compute.RegionInstanceTemplateServiceAccountArgs{
+//					Email: _default.Email,
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("cloud-platform"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Automatic Envoy Deployment
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.GetDefaultServiceAccount(ctx, &compute.GetDefaultServiceAccountArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionInstanceTemplate(ctx, "foobar", &compute.RegionInstanceTemplateArgs{
+//				Name:         pulumi.String("appserver-template"),
+//				MachineType:  pulumi.String("e2-medium"),
+//				CanIpForward: pulumi.Bool(false),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//					pulumi.String("bar"),
+//				},
+//				Disks: compute.RegionInstanceTemplateDiskArray{
+//					&compute.RegionInstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String(myImage.SelfLink),
+//						AutoDelete:  pulumi.Bool(true),
+//						Boot:        pulumi.Bool(true),
+//					},
+//				},
+//				NetworkInterfaces: compute.RegionInstanceTemplateNetworkInterfaceArray{
+//					&compute.RegionInstanceTemplateNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Scheduling: &compute.RegionInstanceTemplateSchedulingArgs{
+//					Preemptible:      pulumi.Bool(false),
+//					AutomaticRestart: pulumi.Bool(true),
+//				},
+//				Metadata: pulumi.StringMap{
+//					"gce-software-declaration": pulumi.String(`{
+//	  \"softwareRecipes\": [{
+//	    \"name\": \"install-gce-service-proxy-agent\",
+//	    \"desired_state\": \"INSTALLED\",
+//	    \"installSteps\": [{
+//	      \"scriptRun\": {
+//	        \"script\": \"#! /bin/bash\
+//
+// ZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\
+// export SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\
+// sudo gsutil cp   gs://gce-service-proxy-\"$ZONE\"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   \"$SERVICE_PROXY_AGENT_DIRECTORY\"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     \"$SERVICE_PROXY_AGENT_DIRECTORY\"\
+// sudo tar -xzf \"$SERVICE_PROXY_AGENT_DIRECTORY\"/service-proxy-agent-0.2.tgz -C \"$SERVICE_PROXY_AGENT_DIRECTORY\"\
+// \"$SERVICE_PROXY_AGENT_DIRECTORY\"/service-proxy-agent/service-proxy-agent-bootstrap.sh\"
+//
+//	      }
+//	    }]
+//	  }]
+//	}
+//
+// `),
+//
+//					"gce-service-proxy": pulumi.String(`{
+//	  \"api-version\": \"0.2\",
+//	  \"proxy-spec\": {
+//	    \"proxy-port\": 15001,
+//	    \"network\": \"my-network\",
+//	    \"tracing\": \"ON\",
+//	    \"access-log\": \"/var/log/envoy/access.log\"
+//	  }
+//	  \"service\": {
+//	    \"serving-ports\": [80, 81]
+//	  },
+//	 \"labels\": {
+//	   \"app_name\": \"bookserver_app\",
+//	   \"app_version\": \"STABLE\"
+//	  }
+//	}
+//
+// `),
+//
+//					"enable-guest-attributes": pulumi.String("true"),
+//					"enable-osconfig":         pulumi.String("true"),
+//				},
+//				ServiceAccount: &compute.RegionInstanceTemplateServiceAccountArgs{
+//					Email: pulumi.String(_default.Email),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("cloud-platform"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"gce-service-proxy": pulumi.String("on"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Deploying the Latest Image
+//
+// A common way to use instance templates and managed instance groups is to deploy the
+// latest image in a family, usually the latest build of your application. There are two
+// ways to do this in Terraform, and they have their pros and cons. The difference ends
+// up being in how "latest" is interpreted. You can either deploy the latest image available
+// when Terraform runs, or you can have each instance check what the latest image is when
+// it's being created, either as part of a scaling event or being rebuilt by the instance
+// group manager.
+//
+// If you're not sure, we recommend deploying the latest image available when Terraform runs,
+// because this means all the instances in your group will be based on the same image, always,
+// and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
+// You can achieve this by using the `compute.Image`
+// data source, which will retrieve the latest image on every `pulumi up`, and will update
+// the template to use that specific image:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionInstanceTemplate(ctx, "instance_template", &compute.RegionInstanceTemplateArgs{
+//				NamePrefix:  pulumi.String("instance-template-"),
+//				MachineType: pulumi.String("e2-medium"),
+//				Region:      pulumi.String("us-central1"),
+//				Disks: compute.RegionInstanceTemplateDiskArray{
+//					&compute.RegionInstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String(myImage.SelfLink),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// To have instances update to the latest on every scaling event or instance re-creation,
+// use the family as the image for the disk, and it will use GCP's default behavior, setting
+// the image for the template to the family:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionInstanceTemplate(ctx, "instance_template", &compute.RegionInstanceTemplateArgs{
+//				NamePrefix:  pulumi.String("instance-template-"),
+//				MachineType: pulumi.String("e2-medium"),
+//				Region:      pulumi.String("us-central1"),
+//				Disks: compute.RegionInstanceTemplateDiskArray{
+//					&compute.RegionInstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String("debian-cloud/debian-11"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Instance templates can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default {{name}}
 // ```
 type RegionInstanceTemplate struct {
@@ -90,7 +419,9 @@ type RegionInstanceTemplate struct {
 	// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform pulumi.StringPtrOutput `pulumi:"minCpuPlatform"`
-	Name           pulumi.StringOutput    `pulumi:"name"`
+	// The name of the instance template. If you leave
+	// this blank, Terraform will auto-generate a unique name.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`. Max length is 54 characters.
 	// Prefixes with lengths longer than 37 characters will use a shortened
@@ -240,7 +571,9 @@ type regionInstanceTemplateState struct {
 	// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
-	Name           *string `pulumi:"name"`
+	// The name of the instance template. If you leave
+	// this blank, Terraform will auto-generate a unique name.
+	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`. Max length is 54 characters.
 	// Prefixes with lengths longer than 37 characters will use a shortened
@@ -350,7 +683,9 @@ type RegionInstanceTemplateState struct {
 	// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform pulumi.StringPtrInput
-	Name           pulumi.StringPtrInput
+	// The name of the instance template. If you leave
+	// this blank, Terraform will auto-generate a unique name.
+	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`. Max length is 54 characters.
 	// Prefixes with lengths longer than 37 characters will use a shortened
@@ -458,7 +793,9 @@ type regionInstanceTemplateArgs struct {
 	// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
-	Name           *string `pulumi:"name"`
+	// The name of the instance template. If you leave
+	// this blank, Terraform will auto-generate a unique name.
+	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`. Max length is 54 characters.
 	// Prefixes with lengths longer than 37 characters will use a shortened
@@ -555,7 +892,9 @@ type RegionInstanceTemplateArgs struct {
 	// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform pulumi.StringPtrInput
-	Name           pulumi.StringPtrInput
+	// The name of the instance template. If you leave
+	// this blank, Terraform will auto-generate a unique name.
+	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`. Max length is 54 characters.
 	// Prefixes with lengths longer than 37 characters will use a shortened
@@ -800,6 +1139,8 @@ func (o RegionInstanceTemplateOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringPtrOutput { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
+// The name of the instance template. If you leave
+// this blank, Terraform will auto-generate a unique name.
 func (o RegionInstanceTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

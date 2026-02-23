@@ -7,6 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A Saas resource is the top-level representation of a SaaS service managed by a producer. It contains a list of locations where the service is available, which is used by the Rollout system to generate a rollout plan.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
  * ## Example Usage
  *
  * ### Saas Runtime Saas Basic
@@ -34,22 +39,14 @@ import * as utilities from "../utilities";
  * Saas can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/saas/{{saas_id}}`
- *
  * * `{{project}}/{{location}}/{{saas_id}}`
- *
  * * `{{location}}/{{saas_id}}`
  *
  * When using the `pulumi import` command, Saas can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:saasruntime/saaS:SaaS default projects/{{project}}/locations/{{location}}/saas/{{saas_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:saasruntime/saaS:SaaS default {{project}}/{{location}}/{{saas_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:saasruntime/saaS:SaaS default {{location}}/{{saas_id}}
  * ```
  */
@@ -94,6 +91,9 @@ export class SaaS extends pulumi.CustomResource {
      * The timestamp when the resource was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -135,7 +135,7 @@ export class SaaS extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -231,6 +231,9 @@ export interface SaaSState {
      * The timestamp when the resource was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -272,7 +275,7 @@ export interface SaaSState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

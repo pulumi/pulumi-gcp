@@ -7,6 +7,18 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A data product is a curated collection of data assets, packaged to address
+ * specific use cases.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about DataProduct, see:
+ *
+ * * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts)
+ * * How-to Guides
+ *     * [Introduction to Data Products](https://cloud.google.com/dataplex/docs/data-products-overview)
+ *
  * ## Example Usage
  *
  * ### Dataplex Data Product Basic
@@ -26,7 +38,7 @@ import * as utilities from "../utilities";
  *         groupId: "analyst",
  *         displayName: "Data Analyst",
  *         principal: {
- *             googleGroup: "tf-test-analysts-_74000@example.com",
+ *             googleGroup: "tf-test-analysts-_88722@example.com",
  *         },
  *     }],
  * });
@@ -54,7 +66,7 @@ import * as utilities from "../utilities";
  *             displayName: "Data Analyst - Updated",
  *             description: "In-place update verified",
  *             principal: {
- *                 googleGroup: "tf-test-analysts-_75125@example.com",
+ *                 googleGroup: "tf-test-analysts-_39249@example.com",
  *             },
  *         },
  *         {
@@ -62,7 +74,7 @@ import * as utilities from "../utilities";
  *             groupId: "scientist",
  *             displayName: "Data Scientist",
  *             principal: {
- *                 googleGroup: "tf-test-scientists-_88722@example.com",
+ *                 googleGroup: "tf-test-scientists-_74391@example.com",
  *             },
  *         },
  *     ],
@@ -74,22 +86,14 @@ import * as utilities from "../utilities";
  * DataProduct can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}`
- *
  * * `{{project}}/{{location}}/{{data_product_id}}`
- *
  * * `{{location}}/{{data_product_id}}`
  *
  * When using the `pulumi import` command, DataProduct can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataplex/dataProduct:DataProduct default projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{project}}/{{location}}/{{data_product_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{location}}/{{data_product_id}}
  * ```
  */
@@ -175,7 +179,7 @@ export class DataProduct extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -310,7 +314,7 @@ export interface DataProductState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -161,7 +161,7 @@ class _TemplateState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] template_id: Id of the requesting object
                If auto-generating Id server-side, remove this field and
                template_id from the method_signature of Create RPC
@@ -285,7 +285,7 @@ class _TemplateState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -369,22 +369,14 @@ class Template(pulumi.CustomResource):
         Template can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/templates/{{template_id}}`
-
         * `{{project}}/{{location}}/{{template_id}}`
-
         * `{{location}}/{{template_id}}`
 
         When using the `pulumi import` command, Template can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:modelarmor/template:Template default projects/{{project}}/locations/{{location}}/templates/{{template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:modelarmor/template:Template default {{project}}/{{location}}/{{template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:modelarmor/template:Template default {{location}}/{{template_id}}
         ```
 
@@ -433,22 +425,14 @@ class Template(pulumi.CustomResource):
         Template can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/templates/{{template_id}}`
-
         * `{{project}}/{{location}}/{{template_id}}`
-
         * `{{location}}/{{template_id}}`
 
         When using the `pulumi import` command, Template can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:modelarmor/template:Template default projects/{{project}}/locations/{{location}}/templates/{{template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:modelarmor/template:Template default {{project}}/{{location}}/{{template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:modelarmor/template:Template default {{location}}/{{template_id}}
         ```
 
@@ -541,7 +525,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] template_id: Id of the requesting object
                If auto-generating Id server-side, remove this field and
                template_id from the method_signature of Create RPC
@@ -631,7 +615,7 @@ class Template(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

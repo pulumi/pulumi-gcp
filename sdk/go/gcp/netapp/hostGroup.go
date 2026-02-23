@@ -60,22 +60,14 @@ import (
 // HostGroup can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/hostGroups/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, HostGroup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:netapp/hostGroup:HostGroup default projects/{{project}}/locations/{{location}}/hostGroups/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/hostGroup:HostGroup default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/hostGroup:HostGroup default {{location}}/{{name}}
 // ```
 type HostGroup struct {
@@ -107,7 +99,7 @@ type HostGroup struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The state of the Host Group.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -189,7 +181,7 @@ type hostGroupState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The state of the Host Group.
 	State *string `pulumi:"state"`
@@ -225,7 +217,7 @@ type HostGroupState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The state of the Host Group.
 	State pulumi.StringPtrInput
@@ -433,7 +425,8 @@ func (o HostGroupOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o HostGroupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HostGroup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -37,9 +37,29 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * A destination volume is created as part of replication creation. The destination volume will not became
+     * under Terraform management unless you import it manually. If you delete the replication, this volume
+     * will remain.
+     * Setting this parameter to true will delete the *current* destination volume when destroying the
+     * replication. If you reversed the replication direction, this will be your former source volume!
+     * For production use, it is recommended to keep this parameter false to avoid accidental volume
+     * deletion. Handle with care. Default is false.
+     * 
+     */
     @Import(name="deleteDestinationVolume")
     private @Nullable Output<Boolean> deleteDestinationVolume;
 
+    /**
+     * @return A destination volume is created as part of replication creation. The destination volume will not became
+     * under Terraform management unless you import it manually. If you delete the replication, this volume
+     * will remain.
+     * Setting this parameter to true will delete the *current* destination volume when destroying the
+     * replication. If you reversed the replication direction, this will be your former source volume!
+     * For production use, it is recommended to keep this parameter false to avoid accidental volume
+     * deletion. Handle with care. Default is false.
+     * 
+     */
     public Optional<Output<Boolean>> deleteDestinationVolume() {
         return Optional.ofNullable(this.deleteDestinationVolume);
     }
@@ -286,7 +306,7 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
 
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
@@ -294,7 +314,7 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
@@ -435,9 +455,21 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.volumeName);
     }
 
+    /**
+     * Replication resource state is independent of mirror_state. With enough data, it can take many hours
+     * for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+     * create/stop/resume operations, set this parameter to true. Default is false.
+     * 
+     */
     @Import(name="waitForMirror")
     private @Nullable Output<Boolean> waitForMirror;
 
+    /**
+     * @return Replication resource state is independent of mirror_state. With enough data, it can take many hours
+     * for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+     * create/stop/resume operations, set this parameter to true. Default is false.
+     * 
+     */
     public Optional<Output<Boolean>> waitForMirror() {
         return Optional.ofNullable(this.waitForMirror);
     }
@@ -512,11 +544,35 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param deleteDestinationVolume A destination volume is created as part of replication creation. The destination volume will not became
+         * under Terraform management unless you import it manually. If you delete the replication, this volume
+         * will remain.
+         * Setting this parameter to true will delete the *current* destination volume when destroying the
+         * replication. If you reversed the replication direction, this will be your former source volume!
+         * For production use, it is recommended to keep this parameter false to avoid accidental volume
+         * deletion. Handle with care. Default is false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteDestinationVolume(@Nullable Output<Boolean> deleteDestinationVolume) {
             $.deleteDestinationVolume = deleteDestinationVolume;
             return this;
         }
 
+        /**
+         * @param deleteDestinationVolume A destination volume is created as part of replication creation. The destination volume will not became
+         * under Terraform management unless you import it manually. If you delete the replication, this volume
+         * will remain.
+         * Setting this parameter to true will delete the *current* destination volume when destroying the
+         * replication. If you reversed the replication direction, this will be your former source volume!
+         * For production use, it is recommended to keep this parameter false to avoid accidental volume
+         * deletion. Handle with care. Default is false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteDestinationVolume(Boolean deleteDestinationVolume) {
             return deleteDestinationVolume(Output.of(deleteDestinationVolume));
         }
@@ -869,7 +925,7 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -881,7 +937,7 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -1083,11 +1139,27 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
             return volumeName(Output.of(volumeName));
         }
 
+        /**
+         * @param waitForMirror Replication resource state is independent of mirror_state. With enough data, it can take many hours
+         * for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+         * create/stop/resume operations, set this parameter to true. Default is false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waitForMirror(@Nullable Output<Boolean> waitForMirror) {
             $.waitForMirror = waitForMirror;
             return this;
         }
 
+        /**
+         * @param waitForMirror Replication resource state is independent of mirror_state. With enough data, it can take many hours
+         * for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+         * create/stop/resume operations, set this parameter to true. Default is false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waitForMirror(Boolean waitForMirror) {
             return waitForMirror(Output.of(waitForMirror));
         }

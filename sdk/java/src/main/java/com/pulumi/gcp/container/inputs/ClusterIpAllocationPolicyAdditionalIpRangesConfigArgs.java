@@ -33,6 +33,27 @@ public final class ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs extends
     }
 
     /**
+     * Status of the subnetwork. Additional subnet with DRAINING status will not be selected during new node pool creation
+     * Accepted values are:
+     * * `ACTIVE`: ACTIVE status indicates that the subnet is available for new node pool creation.
+     * * `DRAINING`: DRAINING status indicates that the subnet is not used for new node pool creation.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Status of the subnetwork. Additional subnet with DRAINING status will not be selected during new node pool creation
+     * Accepted values are:
+     * * `ACTIVE`: ACTIVE status indicates that the subnet is available for new node pool creation.
+     * * `DRAINING`: DRAINING status indicates that the subnet is not used for new node pool creation.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
      * Name of the subnetwork. This can be the full path of the subnetwork or just the name.
      * 
      */
@@ -51,6 +72,7 @@ public final class ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs extends
 
     private ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs(ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs $) {
         this.podIpv4RangeNames = $.podIpv4RangeNames;
+        this.status = $.status;
         this.subnetwork = $.subnetwork;
     }
 
@@ -101,6 +123,33 @@ public final class ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs extends
          */
         public Builder podIpv4RangeNames(String... podIpv4RangeNames) {
             return podIpv4RangeNames(List.of(podIpv4RangeNames));
+        }
+
+        /**
+         * @param status Status of the subnetwork. Additional subnet with DRAINING status will not be selected during new node pool creation
+         * Accepted values are:
+         * * `ACTIVE`: ACTIVE status indicates that the subnet is available for new node pool creation.
+         * * `DRAINING`: DRAINING status indicates that the subnet is not used for new node pool creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Status of the subnetwork. Additional subnet with DRAINING status will not be selected during new node pool creation
+         * Accepted values are:
+         * * `ACTIVE`: ACTIVE status indicates that the subnet is available for new node pool creation.
+         * * `DRAINING`: DRAINING status indicates that the subnet is not used for new node pool creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         /**

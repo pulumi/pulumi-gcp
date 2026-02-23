@@ -27,36 +27,35 @@ __all__ = [
     'GroupMembershipRoleArgsDict',
     'GroupMembershipRoleExpiryDetailArgs',
     'GroupMembershipRoleExpiryDetailArgsDict',
+    'PolicyPolicyQueryArgs',
+    'PolicyPolicyQueryArgsDict',
+    'PolicySettingArgs',
+    'PolicySettingArgsDict',
     'GetGroupLookupGroupKeyArgs',
     'GetGroupLookupGroupKeyArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class GroupAdditionalGroupKeyArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The ID of the entity.
-        For Google-managed entities, the id must be the email address of an existing
-        group or user.
-        For external-identity-mapped entities, the id must be a string conforming
-        to the Identity Source's requirements.
-        Must be unique within a namespace.
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The namespace in which the entity exists.
-        If not specified, the EntityKey represents a Google-managed entity
-        such as a Google user or a Google Group.
-        If specified, the EntityKey represents an external-identity-mapped group.
-        The namespace must correspond to an identity source created in Admin Console
-        and must be in the form of `identitysources/{identity_source_id}`.
-        """
-elif False:
-    GroupAdditionalGroupKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GroupAdditionalGroupKeyArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The ID of the entity.
+    For Google-managed entities, the id must be the email address of an existing
+    group or user.
+    For external-identity-mapped entities, the id must be a string conforming
+    to the Identity Source's requirements.
+    Must be unique within a namespace.
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The namespace in which the entity exists.
+    If not specified, the EntityKey represents a Google-managed entity
+    such as a Google user or a Google Group.
+    If specified, the EntityKey represents an external-identity-mapped group.
+    The namespace must correspond to an identity source created in Admin Console
+    and must be in the form of `identitysources/{identity_source_id}`.
+    """
 
 @pulumi.input_type
 class GroupAdditionalGroupKeyArgs:
@@ -121,28 +120,25 @@ class GroupAdditionalGroupKeyArgs:
         pulumi.set(self, "namespace", value)
 
 
-if not MYPY:
-    class GroupGroupKeyArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        The ID of the entity.
-        For Google-managed entities, the id must be the email address of an existing
-        group or user.
-        For external-identity-mapped entities, the id must be a string conforming
-        to the Identity Source's requirements.
-        Must be unique within a namespace.
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace in which the entity exists.
-        If not specified, the EntityKey represents a Google-managed entity
-        such as a Google user or a Google Group.
-        If specified, the EntityKey represents an external-identity-mapped group.
-        The namespace must correspond to an identity source created in Admin Console
-        and must be in the form of `identitysources/{identity_source_id}`.
-        """
-elif False:
-    GroupGroupKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GroupGroupKeyArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    The ID of the entity.
+    For Google-managed entities, the id must be the email address of an existing
+    group or user.
+    For external-identity-mapped entities, the id must be a string conforming
+    to the Identity Source's requirements.
+    Must be unique within a namespace.
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace in which the entity exists.
+    If not specified, the EntityKey represents a Google-managed entity
+    such as a Google user or a Google Group.
+    If specified, the EntityKey represents an external-identity-mapped group.
+    The namespace must correspond to an identity source created in Admin Console
+    and must be in the form of `identitysources/{identity_source_id}`.
+    """
 
 @pulumi.input_type
 class GroupGroupKeyArgs:
@@ -202,28 +198,25 @@ class GroupGroupKeyArgs:
         pulumi.set(self, "namespace", value)
 
 
-if not MYPY:
-    class GroupMembershipMemberKeyArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        The ID of the entity.
-        For Google-managed entities, the id must be the email address of an existing
-        group or user.
-        For external-identity-mapped entities, the id must be a string conforming
-        to the Identity Source's requirements.
-        Must be unique within a namespace.
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace in which the entity exists.
-        If not specified, the EntityKey represents a Google-managed entity
-        such as a Google user or a Google Group.
-        If specified, the EntityKey represents an external-identity-mapped group.
-        The namespace must correspond to an identity source created in Admin Console
-        and must be in the form of `identitysources/{identity_source_id}`.
-        """
-elif False:
-    GroupMembershipMemberKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GroupMembershipMemberKeyArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    The ID of the entity.
+    For Google-managed entities, the id must be the email address of an existing
+    group or user.
+    For external-identity-mapped entities, the id must be a string conforming
+    to the Identity Source's requirements.
+    Must be unique within a namespace.
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace in which the entity exists.
+    If not specified, the EntityKey represents a Google-managed entity
+    such as a Google user or a Google Group.
+    If specified, the EntityKey represents an external-identity-mapped group.
+    The namespace must correspond to an identity source created in Admin Console
+    and must be in the form of `identitysources/{identity_source_id}`.
+    """
 
 @pulumi.input_type
 class GroupMembershipMemberKeyArgs:
@@ -283,28 +276,25 @@ class GroupMembershipMemberKeyArgs:
         pulumi.set(self, "namespace", value)
 
 
-if not MYPY:
-    class GroupMembershipPreferredMemberKeyArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        The ID of the entity.
-        For Google-managed entities, the id must be the email address of an existing
-        group or user.
-        For external-identity-mapped entities, the id must be a string conforming
-        to the Identity Source's requirements.
-        Must be unique within a namespace.
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace in which the entity exists.
-        If not specified, the EntityKey represents a Google-managed entity
-        such as a Google user or a Google Group.
-        If specified, the EntityKey represents an external-identity-mapped group.
-        The namespace must correspond to an identity source created in Admin Console
-        and must be in the form of `identitysources/{identity_source_id}`.
-        """
-elif False:
-    GroupMembershipPreferredMemberKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GroupMembershipPreferredMemberKeyArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    The ID of the entity.
+    For Google-managed entities, the id must be the email address of an existing
+    group or user.
+    For external-identity-mapped entities, the id must be a string conforming
+    to the Identity Source's requirements.
+    Must be unique within a namespace.
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace in which the entity exists.
+    If not specified, the EntityKey represents a Google-managed entity
+    such as a Google user or a Google Group.
+    If specified, the EntityKey represents an external-identity-mapped group.
+    The namespace must correspond to an identity source created in Admin Console
+    and must be in the form of `identitysources/{identity_source_id}`.
+    """
 
 @pulumi.input_type
 class GroupMembershipPreferredMemberKeyArgs:
@@ -364,21 +354,18 @@ class GroupMembershipPreferredMemberKeyArgs:
         pulumi.set(self, "namespace", value)
 
 
-if not MYPY:
-    class GroupMembershipRoleArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-        Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-        """
-        expiry_detail: NotRequired[pulumi.Input['GroupMembershipRoleExpiryDetailArgsDict']]
-        """
-        The MembershipRole expiry details, only supported for MEMBER role.
-        Other roles cannot be accompanied with MEMBER role having expiry.
-        Structure is documented below.
-        """
-elif False:
-    GroupMembershipRoleArgsDict: TypeAlias = Mapping[str, Any]
+class GroupMembershipRoleArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+    Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+    """
+    expiry_detail: NotRequired[pulumi.Input['GroupMembershipRoleExpiryDetailArgsDict']]
+    """
+    The MembershipRole expiry details, only supported for MEMBER role.
+    Other roles cannot be accompanied with MEMBER role having expiry.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GroupMembershipRoleArgs:
@@ -424,17 +411,14 @@ class GroupMembershipRoleArgs:
         pulumi.set(self, "expiry_detail", value)
 
 
-if not MYPY:
-    class GroupMembershipRoleExpiryDetailArgsDict(TypedDict):
-        expire_time: pulumi.Input[_builtins.str]
-        """
-        The time at which the MembershipRole will expire.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    GroupMembershipRoleExpiryDetailArgsDict: TypeAlias = Mapping[str, Any]
+class GroupMembershipRoleExpiryDetailArgsDict(TypedDict):
+    expire_time: pulumi.Input[_builtins.str]
+    """
+    The time at which the MembershipRole will expire.
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+    resolution and up to nine fractional digits.
+    Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class GroupMembershipRoleExpiryDetailArgs:
@@ -464,26 +448,161 @@ class GroupMembershipRoleExpiryDetailArgs:
         pulumi.set(self, "expire_time", value)
 
 
-if not MYPY:
-    class GetGroupLookupGroupKeyArgsDict(TypedDict):
-        id: _builtins.str
+class PolicyPolicyQueryArgsDict(TypedDict):
+    org_unit: pulumi.Input[_builtins.str]
+    """
+    The OrgUnit the query applies to.
+    """
+    group: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The group that the query applies to.
+    """
+    query: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CEL query that defines which entities the Policy applies to.
+    """
+    sort_order: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Decimal sort order of this PolicyQuery.
+    """
+
+@pulumi.input_type
+class PolicyPolicyQueryArgs:
+    def __init__(__self__, *,
+                 org_unit: pulumi.Input[_builtins.str],
+                 group: Optional[pulumi.Input[_builtins.str]] = None,
+                 query: Optional[pulumi.Input[_builtins.str]] = None,
+                 sort_order: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        (Required) The ID of the entity.
-        For Google-managed entities, the id is the email address of an existing group or user.
-        For external-identity-mapped entities, the id is a string conforming
-        to the Identity Source's requirements.
+        :param pulumi.Input[_builtins.str] org_unit: The OrgUnit the query applies to.
+        :param pulumi.Input[_builtins.str] group: The group that the query applies to.
+        :param pulumi.Input[_builtins.str] query: The CEL query that defines which entities the Policy applies to.
+        :param pulumi.Input[_builtins.int] sort_order: (Output)
+               Decimal sort order of this PolicyQuery.
         """
-        namespace: NotRequired[_builtins.str]
+        pulumi.set(__self__, "org_unit", org_unit)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+        if sort_order is not None:
+            pulumi.set(__self__, "sort_order", sort_order)
+
+    @_builtins.property
+    @pulumi.getter(name="orgUnit")
+    def org_unit(self) -> pulumi.Input[_builtins.str]:
         """
-        (Optional) The namespace in which the entity exists.
-        If not populated, the EntityKey represents a Google-managed entity
-        such as a Google user or a Google Group.
-        If populated, the EntityKey represents an external-identity-mapped group.
-        The namespace must correspond to an identity source created in Admin Console
-        and must be in the form of `identitysources/{identity_source_id}`.
+        The OrgUnit the query applies to.
         """
-elif False:
-    GetGroupLookupGroupKeyArgsDict: TypeAlias = Mapping[str, Any]
+        return pulumi.get(self, "org_unit")
+
+    @org_unit.setter
+    def org_unit(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "org_unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The group that the query applies to.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "group", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The CEL query that defines which entities the Policy applies to.
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "query", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sortOrder")
+    def sort_order(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        Decimal sort order of this PolicyQuery.
+        """
+        return pulumi.get(self, "sort_order")
+
+    @sort_order.setter
+    def sort_order(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sort_order", value)
+
+
+class PolicySettingArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the Setting.
+    """
+    value_json: pulumi.Input[_builtins.str]
+    """
+    The value of the Setting as JSON string.
+    """
+
+@pulumi.input_type
+class PolicySettingArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 value_json: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] type: The type of the Setting.
+        :param pulumi.Input[_builtins.str] value_json: The value of the Setting as JSON string.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value_json", value_json)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of the Setting.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> pulumi.Input[_builtins.str]:
+        """
+        The value of the Setting as JSON string.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value_json", value)
+
+
+class GetGroupLookupGroupKeyArgsDict(TypedDict):
+    id: _builtins.str
+    """
+    (Required) The ID of the entity.
+    For Google-managed entities, the id is the email address of an existing group or user.
+    For external-identity-mapped entities, the id is a string conforming
+    to the Identity Source's requirements.
+    """
+    namespace: NotRequired[_builtins.str]
+    """
+    (Optional) The namespace in which the entity exists.
+    If not populated, the EntityKey represents a Google-managed entity
+    such as a Google user or a Google Group.
+    If populated, the EntityKey represents an external-identity-mapped group.
+    The namespace must correspond to an identity source created in Admin Console
+    and must be in the form of `identitysources/{identity_source_id}`.
+    """
 
 @pulumi.input_type
 class GetGroupLookupGroupKeyArgs:

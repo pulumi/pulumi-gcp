@@ -41,6 +41,12 @@ class WorkflowArgs:
                Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
         :param pulumi.Input[_builtins.str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
                Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the workflow,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the workflow will fail.
+               When the field is set to false, deleting the workflow is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         :param pulumi.Input[_builtins.str] execution_history_level: Describes the level of execution history to be stored for this workflow. This configuration
                determines how much information about workflow executions is preserved. If not specified,
@@ -129,6 +135,14 @@ class WorkflowArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the workflow,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the workflow will fail.
+        When the field is set to false, deleting the workflow is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -316,6 +330,12 @@ class _WorkflowState:
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
                Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the workflow,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the workflow will fail.
+               When the field is set to false, deleting the workflow is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] execution_history_level: Describes the level of execution history to be stored for this workflow. This configuration
@@ -332,7 +352,7 @@ class _WorkflowState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region of the workflow.
         :param pulumi.Input[_builtins.str] revision_id: The revision of the workflow. A new one is generated if the service account or source contents is changed.
         :param pulumi.Input[_builtins.str] service_account: Name of the service account associated with the latest workflow version. This service
@@ -434,6 +454,14 @@ class _WorkflowState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the workflow,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the workflow will fail.
+        When the field is set to false, deleting the workflow is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -537,7 +565,7 @@ class _WorkflowState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -802,6 +830,12 @@ class Workflow(pulumi.CustomResource):
                Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
         :param pulumi.Input[_builtins.str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
                Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the workflow,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the workflow will fail.
+               When the field is set to false, deleting the workflow is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         :param pulumi.Input[_builtins.str] execution_history_level: Describes the level of execution history to be stored for this workflow. This configuration
                determines how much information about workflow executions is preserved. If not specified,
@@ -1063,6 +1097,12 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
                Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the workflow,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the workflow will fail.
+               When the field is set to false, deleting the workflow is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] execution_history_level: Describes the level of execution history to be stored for this workflow. This configuration
@@ -1079,7 +1119,7 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region of the workflow.
         :param pulumi.Input[_builtins.str] revision_id: The revision of the workflow. A new one is generated if the service account or source contents is changed.
         :param pulumi.Input[_builtins.str] service_account: Name of the service account associated with the latest workflow version. This service
@@ -1154,6 +1194,14 @@ class Workflow(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the workflow,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the workflow will fail.
+        When the field is set to false, deleting the workflow is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -1225,7 +1273,7 @@ class Workflow(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -160,22 +160,14 @@ import (
 // Instance can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-//
 // * `{{project}}/{{location}}/{{instance_id}}`
-//
 // * `{{location}}/{{instance_id}}`
 //
 // When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:parallelstore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:parallelstore/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:parallelstore/instance:Instance default {{location}}/{{instance_id}}
 // ```
 type Instance struct {
@@ -264,7 +256,7 @@ type Instance struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Immutable. Contains the id of the allocated IP address range
 	// associated with the private service access connection for example, \"test-default\"
@@ -411,7 +403,7 @@ type instanceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Immutable. Contains the id of the allocated IP address range
 	// associated with the private service access connection for example, \"test-default\"
@@ -515,7 +507,7 @@ type InstanceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Immutable. Contains the id of the allocated IP address range
 	// associated with the private service access connection for example, \"test-default\"
@@ -904,7 +896,8 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

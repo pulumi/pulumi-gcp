@@ -57,22 +57,14 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// LicenseConfig can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/licenseConfigs/{{license_config_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{license_config_id}}`
-    /// 
     /// * `{{location}}/{{license_config_id}}`
     /// 
     /// When using the `pulumi import` command, LicenseConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:discoveryengine/licenseConfig:LicenseConfig default projects/{{project}}/locations/{{location}}/licenseConfigs/{{license_config_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:discoveryengine/licenseConfig:LicenseConfig default {{project}}/{{location}}/{{license_config_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:discoveryengine/licenseConfig:LicenseConfig default {{location}}/{{license_config_id}}
     /// ```
     /// </summary>

@@ -9,6 +9,7 @@ import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerBuildInfo;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerEnv;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerLivenessProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerPorts;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerReadinessProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerResources;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerSourceCode;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerStartupProbe;
@@ -77,6 +78,12 @@ public final class ServiceTemplateContainer {
      * 
      */
     private @Nullable ServiceTemplateContainerPorts ports;
+    /**
+     * @return Periodic probe of container readiness.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateContainerReadinessProbe readinessProbe;
     /**
      * @return Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
      * Structure is documented below.
@@ -186,6 +193,14 @@ public final class ServiceTemplateContainer {
         return Optional.ofNullable(this.ports);
     }
     /**
+     * @return Periodic probe of container readiness.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateContainerReadinessProbe> readinessProbe() {
+        return Optional.ofNullable(this.readinessProbe);
+    }
+    /**
      * @return Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
      * Structure is documented below.
      * 
@@ -245,6 +260,7 @@ public final class ServiceTemplateContainer {
         private @Nullable ServiceTemplateContainerLivenessProbe livenessProbe;
         private @Nullable String name;
         private @Nullable ServiceTemplateContainerPorts ports;
+        private @Nullable ServiceTemplateContainerReadinessProbe readinessProbe;
         private @Nullable ServiceTemplateContainerResources resources;
         private @Nullable ServiceTemplateContainerSourceCode sourceCode;
         private @Nullable ServiceTemplateContainerStartupProbe startupProbe;
@@ -263,6 +279,7 @@ public final class ServiceTemplateContainer {
     	      this.livenessProbe = defaults.livenessProbe;
     	      this.name = defaults.name;
     	      this.ports = defaults.ports;
+    	      this.readinessProbe = defaults.readinessProbe;
     	      this.resources = defaults.resources;
     	      this.sourceCode = defaults.sourceCode;
     	      this.startupProbe = defaults.startupProbe;
@@ -348,6 +365,12 @@ public final class ServiceTemplateContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder readinessProbe(@Nullable ServiceTemplateContainerReadinessProbe readinessProbe) {
+
+            this.readinessProbe = readinessProbe;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resources(@Nullable ServiceTemplateContainerResources resources) {
 
             this.resources = resources;
@@ -392,6 +415,7 @@ public final class ServiceTemplateContainer {
             _resultValue.livenessProbe = livenessProbe;
             _resultValue.name = name;
             _resultValue.ports = ports;
+            _resultValue.readinessProbe = readinessProbe;
             _resultValue.resources = resources;
             _resultValue.sourceCode = sourceCode;
             _resultValue.startupProbe = startupProbe;

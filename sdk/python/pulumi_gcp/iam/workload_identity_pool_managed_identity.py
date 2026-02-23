@@ -390,6 +390,18 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
                  workload_identity_pool_namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Represents a managed identity for a workload identity pool namespace.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about WorkloadIdentityPoolManagedIdentity, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.namespaces.managedIdentities)
+        * How-to Guides
+            * [Configure managed workload identity authentication for Compute Engine](https://cloud.google.com/iam/docs/create-managed-workload-identities)
+            * [Configure managed workload identity authentication for GKE](https://cloud.google.com/iam/docs/create-managed-workload-identities-gke)
+
         ## Example Usage
 
         ### Iam Workload Identity Pool Managed Identity Basic
@@ -442,22 +454,14 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
         WorkloadIdentityPoolManagedIdentity can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/namespaces/{{workload_identity_pool_namespace_id}}/managedIdentities/{{workload_identity_pool_managed_identity_id}}`
-
         * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}/{{workload_identity_pool_managed_identity_id}}`
-
         * `{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}/{{workload_identity_pool_managed_identity_id}}`
 
         When using the `pulumi import` command, WorkloadIdentityPoolManagedIdentity can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/namespaces/{{workload_identity_pool_namespace_id}}/managedIdentities/{{workload_identity_pool_managed_identity_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}/{{workload_identity_pool_managed_identity_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity default {{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}/{{workload_identity_pool_managed_identity_id}}
         ```
 
@@ -497,6 +501,18 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
                  args: WorkloadIdentityPoolManagedIdentityArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Represents a managed identity for a workload identity pool namespace.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about WorkloadIdentityPoolManagedIdentity, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.namespaces.managedIdentities)
+        * How-to Guides
+            * [Configure managed workload identity authentication for Compute Engine](https://cloud.google.com/iam/docs/create-managed-workload-identities)
+            * [Configure managed workload identity authentication for GKE](https://cloud.google.com/iam/docs/create-managed-workload-identities-gke)
+
         ## Example Usage
 
         ### Iam Workload Identity Pool Managed Identity Basic
@@ -549,22 +565,14 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
         WorkloadIdentityPoolManagedIdentity can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/namespaces/{{workload_identity_pool_namespace_id}}/managedIdentities/{{workload_identity_pool_managed_identity_id}}`
-
         * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}/{{workload_identity_pool_managed_identity_id}}`
-
         * `{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}/{{workload_identity_pool_managed_identity_id}}`
 
         When using the `pulumi import` command, WorkloadIdentityPoolManagedIdentity can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/namespaces/{{workload_identity_pool_namespace_id}}/managedIdentities/{{workload_identity_pool_managed_identity_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}/{{workload_identity_pool_managed_identity_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity default {{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}/{{workload_identity_pool_managed_identity_id}}
         ```
 

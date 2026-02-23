@@ -25,16 +25,12 @@ import (
 // SharedFlow can be imported using any of these accepted formats:
 //
 // * `{{org_id}}/sharedflows/{{name}}`
-//
 // * `{{org_id}}/{{name}}`
 //
 // When using the `pulumi import` command, SharedFlow can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/sharedflows/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/{{name}}
 // ```
 type Sharedflow struct {
@@ -43,7 +39,8 @@ type Sharedflow struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle  pulumi.StringOutput    `pulumi:"configBundle"`
+	ConfigBundle pulumi.StringOutput `pulumi:"configBundle"`
+	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringPtrOutput `pulumi:"detectMd5hash"`
 	// The id of the most recently created revision for this shared flow.
 	LatestRevisionId pulumi.StringOutput `pulumi:"latestRevisionId"`
@@ -99,7 +96,8 @@ type sharedflowState struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle  *string `pulumi:"configBundle"`
+	ConfigBundle *string `pulumi:"configBundle"`
+	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// The id of the most recently created revision for this shared flow.
 	LatestRevisionId *string `pulumi:"latestRevisionId"`
@@ -120,7 +118,8 @@ type SharedflowState struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle  pulumi.StringPtrInput
+	ConfigBundle pulumi.StringPtrInput
+	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringPtrInput
 	// The id of the most recently created revision for this shared flow.
 	LatestRevisionId pulumi.StringPtrInput
@@ -145,7 +144,8 @@ type sharedflowArgs struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle  string  `pulumi:"configBundle"`
+	ConfigBundle string `pulumi:"configBundle"`
+	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// The ID of the shared flow.
 	Name *string `pulumi:"name"`
@@ -158,7 +158,8 @@ type SharedflowArgs struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle  pulumi.StringInput
+	ConfigBundle pulumi.StringInput
+	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringPtrInput
 	// The ID of the shared flow.
 	Name pulumi.StringPtrInput
@@ -260,6 +261,7 @@ func (o SharedflowOutput) ConfigBundle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.ConfigBundle }).(pulumi.StringOutput)
 }
 
+// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 func (o SharedflowOutput) DetectMd5hash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Sharedflow) pulumi.StringPtrOutput { return v.DetectMd5hash }).(pulumi.StringPtrOutput)
 }

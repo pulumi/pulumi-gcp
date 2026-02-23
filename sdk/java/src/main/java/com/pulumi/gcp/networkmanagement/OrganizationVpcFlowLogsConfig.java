@@ -62,16 +62,12 @@ import javax.annotation.Nullable;
  * OrganizationVpcFlowLogsConfig can be imported using any of these accepted formats:
  * 
  * * `organizations/{{organization}}/locations/{{location}}/vpcFlowLogsConfigs/{{vpc_flow_logs_config_id}}`
- * 
  * * `{{organization}}/{{location}}/{{vpc_flow_logs_config_id}}`
  * 
  * When using the `pulumi import` command, OrganizationVpcFlowLogsConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig default organizations/{{organization}}/locations/{{location}}/vpcFlowLogsConfigs/{{vpc_flow_logs_config_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig default {{organization}}/{{location}}/{{vpc_flow_logs_config_id}}
  * ```
  * 
@@ -300,7 +296,7 @@ public class OrganizationVpcFlowLogsConfig extends com.pulumi.resources.CustomRe
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -308,7 +304,7 @@ public class OrganizationVpcFlowLogsConfig extends com.pulumi.resources.CustomRe
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

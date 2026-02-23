@@ -111,16 +111,12 @@ import * as utilities from "../utilities";
  * AddonsConfig can be imported using any of these accepted formats:
  *
  * * `organizations/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, AddonsConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigee/addonsConfig:AddonsConfig default organizations/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apigee/addonsConfig:AddonsConfig default {{name}}
  * ```
  */

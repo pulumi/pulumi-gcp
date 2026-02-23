@@ -12,6 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Represents a Secure Access Connect (SAC) attachment resource
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about SacAttachment, see:
+//
+// * [API documentation](https://cloud.google.com/secure-access-connect/docs/reference/network-security/rest/v1beta1/projects.locations.sacAttachments)
+// * How-to Guides
+//   - [QUICKSTART_TITLE](https://cloud.google.com/secure-access-connect/docs/overview)
+//
 // ## Example Usage
 //
 // ### Sac Attachment Prisma Access
@@ -51,22 +62,14 @@ import (
 // SacAttachment can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/sacAttachments/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, SacAttachment can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default projects/{{project}}/locations/{{location}}/sacAttachments/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default {{location}}/{{name}}
 // ```
 type SacAttachment struct {
@@ -93,7 +96,7 @@ type SacAttachment struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// SAC Realm which owns the attachment. This can be input as an ID or a full resource name.
 	SacRealm pulumi.StringOutput `pulumi:"sacRealm"`
@@ -173,7 +176,7 @@ type sacAttachmentState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// SAC Realm which owns the attachment. This can be input as an ID or a full resource name.
 	SacRealm *string `pulumi:"sacRealm"`
@@ -210,7 +213,7 @@ type SacAttachmentState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// SAC Realm which owns the attachment. This can be input as an ID or a full resource name.
 	SacRealm pulumi.StringPtrInput
@@ -414,7 +417,8 @@ func (o SacAttachmentOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o SacAttachmentOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SacAttachment) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

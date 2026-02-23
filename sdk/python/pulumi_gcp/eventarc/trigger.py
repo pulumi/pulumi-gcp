@@ -256,7 +256,7 @@ class _TriggerState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['TriggerRetryPolicyArgs'] retry_policy: The retry policy configuration for the Trigger.
                Can only be set with Cloud Run destinations.
                Structure is documented below.
@@ -457,7 +457,7 @@ class _TriggerState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -615,22 +615,14 @@ class Trigger(pulumi.CustomResource):
         Trigger can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/triggers/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/trigger:Trigger default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/trigger:Trigger default {{location}}/{{name}}
         ```
 
@@ -730,22 +722,14 @@ class Trigger(pulumi.CustomResource):
         Trigger can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/triggers/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/trigger:Trigger default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/trigger:Trigger default {{location}}/{{name}}
         ```
 
@@ -863,7 +847,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']] retry_policy: The retry policy configuration for the Trigger.
                Can only be set with Cloud Run destinations.
                Structure is documented below.
@@ -1003,7 +987,7 @@ class Trigger(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

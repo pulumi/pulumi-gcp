@@ -259,6 +259,7 @@ class _UnitOperationState:
         :param pulumi.Input['UnitOperationDeprovisionArgs'] deprovision: Deprovision is the unit operation that deprovision the underlying
                resources represented by a Unit. Can only execute if the Unit is currently
                provisioned.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] engine_state: The engine state for on-going
                deployment engine operation(s).
@@ -287,7 +288,7 @@ class _UnitOperationState:
                provisioned.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: UnitOperationState describes the current state of the unit operation.
                Possible values:
                UNIT_OPERATION_STATE_UNKNOWN
@@ -419,6 +420,9 @@ class _UnitOperationState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -556,7 +560,7 @@ class _UnitOperationState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -846,22 +850,14 @@ class UnitOperation(pulumi.CustomResource):
         UnitOperation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/unitOperations/{{unit_operation_id}}`
-
         * `{{project}}/{{location}}/{{unit_operation_id}}`
-
         * `{{location}}/{{unit_operation_id}}`
 
         When using the `pulumi import` command, UnitOperation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default projects/{{project}}/locations/{{location}}/unitOperations/{{unit_operation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default {{project}}/{{location}}/{{unit_operation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default {{location}}/{{unit_operation_id}}
         ```
 
@@ -1064,22 +1060,14 @@ class UnitOperation(pulumi.CustomResource):
         UnitOperation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/unitOperations/{{unit_operation_id}}`
-
         * `{{project}}/{{location}}/{{unit_operation_id}}`
-
         * `{{location}}/{{unit_operation_id}}`
 
         When using the `pulumi import` command, UnitOperation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default projects/{{project}}/locations/{{location}}/unitOperations/{{unit_operation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default {{project}}/{{location}}/{{unit_operation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default {{location}}/{{unit_operation_id}}
         ```
 
@@ -1199,6 +1187,7 @@ class UnitOperation(pulumi.CustomResource):
         :param pulumi.Input[Union['UnitOperationDeprovisionArgs', 'UnitOperationDeprovisionArgsDict']] deprovision: Deprovision is the unit operation that deprovision the underlying
                resources represented by a Unit. Can only execute if the Unit is currently
                provisioned.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] engine_state: The engine state for on-going
                deployment engine operation(s).
@@ -1227,7 +1216,7 @@ class UnitOperation(pulumi.CustomResource):
                provisioned.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: UnitOperationState describes the current state of the unit operation.
                Possible values:
                UNIT_OPERATION_STATE_UNKNOWN
@@ -1326,6 +1315,9 @@ class UnitOperation(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
@@ -1423,7 +1415,7 @@ class UnitOperation(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

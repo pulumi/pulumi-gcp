@@ -118,6 +118,8 @@ def get_table_iam_policy(instance_name: Optional[_builtins.str] = None,
     ```
 
 
+    :param _builtins.str project: The project in which the table belongs. If it
+           is not provided, Terraform will use the provider default.
     :param _builtins.str table: The name or relative resource id of the table to manage IAM policies for.
     """
     __args__ = dict()
@@ -152,6 +154,8 @@ def get_table_iam_policy_output(instance_name: Optional[pulumi.Input[_builtins.s
     ```
 
 
+    :param _builtins.str project: The project in which the table belongs. If it
+           is not provided, Terraform will use the provider default.
     :param _builtins.str table: The name or relative resource id of the table to manage IAM policies for.
     """
     __args__ = dict()

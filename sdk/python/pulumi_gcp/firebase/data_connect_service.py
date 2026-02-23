@@ -185,6 +185,7 @@ class _DataConnectServiceState:
                present.
                Possible values: DEFAULT, FORCE
         :param pulumi.Input[_builtins.str] display_name: Optional. Mutable human-readable name. 63 character limit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Output only. This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
@@ -205,7 +206,7 @@ class _DataConnectServiceState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Output only. A field that if true, indicates that the system is working update the
                service.
         :param pulumi.Input[_builtins.str] service_id: Required. The ID to use for the service, which will become the final component of the
@@ -303,6 +304,9 @@ class _DataConnectServiceState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -399,7 +403,7 @@ class _DataConnectServiceState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -532,22 +536,14 @@ class DataConnectService(pulumi.CustomResource):
         Service can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/services/{{service_id}}`
-
         * `{{project}}/{{location}}/{{service_id}}`
-
         * `{{location}}/{{service_id}}`
 
         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{project}}/{{location}}/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{location}}/{{service_id}}
         ```
 
@@ -637,22 +633,14 @@ class DataConnectService(pulumi.CustomResource):
         Service can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/services/{{service_id}}`
-
         * `{{project}}/{{location}}/{{service_id}}`
-
         * `{{location}}/{{service_id}}`
 
         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{project}}/{{location}}/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{location}}/{{service_id}}
         ```
 
@@ -752,6 +740,7 @@ class DataConnectService(pulumi.CustomResource):
                present.
                Possible values: DEFAULT, FORCE
         :param pulumi.Input[_builtins.str] display_name: Optional. Mutable human-readable name. 63 character limit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Output only. This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
@@ -772,7 +761,7 @@ class DataConnectService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Output only. A field that if true, indicates that the system is working update the
                service.
         :param pulumi.Input[_builtins.str] service_id: Required. The ID to use for the service, which will become the final component of the
@@ -843,6 +832,9 @@ class DataConnectService(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
@@ -911,7 +903,7 @@ class DataConnectService(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -303,22 +303,14 @@ import (
 // SparkApplication can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}`
-//
 // * `{{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}`
-//
 // * `{{location}}/{{serviceinstance}}/{{spark_application_id}}`
 //
 // When using the `pulumi import` command, SparkApplication can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{location}}/{{serviceinstance}}/{{spark_application_id}}
 // ```
 type GdcSparkApplication struct {
@@ -335,7 +327,8 @@ type GdcSparkApplication struct {
 	// List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
 	DependencyImages pulumi.StringArrayOutput `pulumi:"dependencyImages"`
 	// User-provided human-readable name to be used in user interfaces.
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -359,7 +352,7 @@ type GdcSparkApplication struct {
 	// application-specific properties.
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Represents the PySparkApplicationConfig.
 	// Structure is documented below.
@@ -454,7 +447,8 @@ type gdcSparkApplicationState struct {
 	// List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
 	DependencyImages []string `pulumi:"dependencyImages"`
 	// User-provided human-readable name to be used in user interfaces.
-	DisplayName          *string           `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -478,7 +472,7 @@ type gdcSparkApplicationState struct {
 	// application-specific properties.
 	Properties map[string]string `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Represents the PySparkApplicationConfig.
 	// Structure is documented below.
@@ -530,7 +524,8 @@ type GdcSparkApplicationState struct {
 	// List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
 	DependencyImages pulumi.StringArrayInput
 	// User-provided human-readable name to be used in user interfaces.
-	DisplayName          pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -554,7 +549,7 @@ type GdcSparkApplicationState struct {
 	// application-specific properties.
 	Properties pulumi.StringMapInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Represents the PySparkApplicationConfig.
 	// Structure is documented below.
@@ -801,6 +796,7 @@ func (o GdcSparkApplicationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GdcSparkApplication) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o GdcSparkApplicationOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GdcSparkApplication) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -854,7 +850,8 @@ func (o GdcSparkApplicationOutput) Properties() pulumi.StringMapOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GdcSparkApplicationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GdcSparkApplication) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

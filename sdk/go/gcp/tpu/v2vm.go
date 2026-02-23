@@ -12,6 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Cloud TPU VM instance.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about Vm, see:
+//
+// * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.nodes)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/tpu/docs/)
+//
 // ## Example Usage
 //
 // ### Tpu V2 Vm Basic
@@ -174,28 +185,16 @@ import (
 // Vm can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
-//
 // * `{{project}}/{{zone}}/{{name}}`
-//
 // * `{{zone}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:tpu/v2Vm:V2Vm default {{project}}/{{zone}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:tpu/v2Vm:V2Vm default {{zone}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:tpu/v2Vm:V2Vm default {{name}}
 // ```
 type V2Vm struct {
@@ -253,7 +252,7 @@ type V2Vm struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The qualified name of the QueuedResource that requested this Node.
 	QueuedResource pulumi.StringOutput `pulumi:"queuedResource"`
@@ -370,7 +369,7 @@ type v2vmState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The qualified name of the QueuedResource that requested this Node.
 	QueuedResource *string `pulumi:"queuedResource"`
@@ -450,7 +449,7 @@ type V2VmState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The qualified name of the QueuedResource that requested this Node.
 	QueuedResource pulumi.StringPtrInput
@@ -784,7 +783,8 @@ func (o V2VmOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o V2VmOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *V2Vm) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

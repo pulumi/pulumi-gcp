@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
+ * job on Dataflow, which is an implementation of Apache Beam running on Google
+ * Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
+ * and [Dataflow](https://cloud.google.com/dataflow/).
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -125,6 +133,9 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      * - - -
      */
     declare public readonly containerSpecGcsPath: pulumi.Output<string>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Immutable. Indicates if the job should use the streaming engine feature.
@@ -208,6 +219,11 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      * Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
     declare public readonly serviceAccountEmail: pulumi.Output<string>;
+    /**
+     * If set to `true`, terraform will
+     * treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+     * and will remove the resource from terraform state and move on.  See above note.
+     */
     declare public readonly skipWaitOnJobTermination: pulumi.Output<boolean | undefined>;
     /**
      * The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -343,6 +359,9 @@ export interface FlexTemplateJobState {
      * - - -
      */
     containerSpecGcsPath?: pulumi.Input<string>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Immutable. Indicates if the job should use the streaming engine feature.
@@ -426,6 +445,11 @@ export interface FlexTemplateJobState {
      * Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
     serviceAccountEmail?: pulumi.Input<string>;
+    /**
+     * If set to `true`, terraform will
+     * treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+     * and will remove the resource from terraform state and move on.  See above note.
+     */
     skipWaitOnJobTermination?: pulumi.Input<boolean>;
     /**
      * The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -550,6 +574,11 @@ export interface FlexTemplateJobArgs {
      * Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
     serviceAccountEmail?: pulumi.Input<string>;
+    /**
+     * If set to `true`, terraform will
+     * treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+     * and will remove the resource from terraform state and move on.  See above note.
+     */
     skipWaitOnJobTermination?: pulumi.Input<boolean>;
     /**
      * The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.

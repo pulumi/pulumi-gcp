@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var termTestId = new Glossary("termTestId", GlossaryArgs.builder()
- *             .glossaryId("tf-test-glossary_40289")
+ *             .glossaryId("tf-test-glossary_76044")
  *             .location("us-central1")
  *             .build());
  * 
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             }))
  *             .glossaryId(termTestId.glossaryId())
  *             .location("us-central1")
- *             .termId("tf-test-term-basic_33395")
+ *             .termId("tf-test-term-basic_69391")
  *             .build());
  * 
  *     }
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var termTestIdFull = new Glossary("termTestIdFull", GlossaryArgs.builder()
- *             .glossaryId("tf-test-glossary_76044")
+ *             .glossaryId("tf-test-glossary_8270")
  *             .location("us-central1")
  *             .build());
  * 
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *             }))
  *             .glossaryId(termTestIdFull.glossaryId())
  *             .location("us-central1")
- *             .termId("tf-test-term-full_69391")
+ *             .termId("tf-test-term-full_41150")
  *             .labels(Map.of("tag", "test-tf"))
  *             .displayName("terraform term")
  *             .description("term created by Terraform")
@@ -122,22 +122,14 @@ import javax.annotation.Nullable;
  * GlossaryTerm can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}`
- * 
  * * `{{project}}/{{location}}/{{glossary_id}}/{{term_id}}`
- * 
  * * `{{location}}/{{glossary_id}}/{{term_id}}`
  * 
  * When using the `pulumi import` command, GlossaryTerm can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{project}}/{{location}}/{{glossary_id}}/{{term_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{location}}/{{glossary_id}}/{{term_id}}
  * ```
  * 
@@ -294,7 +286,7 @@ public class GlossaryTerm extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -302,7 +294,7 @@ public class GlossaryTerm extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

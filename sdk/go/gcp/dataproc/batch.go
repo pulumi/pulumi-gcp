@@ -37,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_spark", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_55438"),
+//				BatchId:  pulumi.String("tf-test-batch_49082"),
 //				Location: pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"batch_test": pulumi.String("terraform"),
@@ -234,7 +234,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_sparsql", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_32706"),
+//				BatchId:  pulumi.String("tf-test-batch_60365"),
 //				Location: pulumi.String("us-central1"),
 //				RuntimeConfig: &dataproc.BatchRuntimeConfigArgs{
 //					Properties: pulumi.StringMap{
@@ -280,7 +280,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_pyspark", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_49082"),
+//				BatchId:  pulumi.String("tf-test-batch_80215"),
 //				Location: pulumi.String("us-central1"),
 //				RuntimeConfig: &dataproc.BatchRuntimeConfigArgs{
 //					Properties: pulumi.StringMap{
@@ -337,7 +337,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_sparkr", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_60365"),
+//				BatchId:  pulumi.String("tf-test-batch_59033"),
 //				Location: pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"batch_test": pulumi.String("terraform"),
@@ -387,7 +387,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_autotuning", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_80215"),
+//				BatchId:  pulumi.String("tf-test-batch_32081"),
 //				Location: pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"batch_test": pulumi.String("terraform"),
@@ -436,22 +436,14 @@ import (
 // Batch can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/batches/{{batch_id}}`
-//
 // * `{{project}}/{{location}}/{{batch_id}}`
-//
 // * `{{location}}/{{batch_id}}`
 //
 // When using the `pulumi import` command, Batch can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataproc/batch:Batch default projects/{{project}}/locations/{{location}}/batches/{{batch_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataproc/batch:Batch default {{project}}/{{location}}/{{batch_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataproc/batch:Batch default {{location}}/{{batch_id}}
 // ```
 type Batch struct {
@@ -484,7 +476,7 @@ type Batch struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// PySpark batch config.
 	// Structure is documented below.
@@ -581,7 +573,7 @@ type batchState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// PySpark batch config.
 	// Structure is documented below.
@@ -644,7 +636,7 @@ type BatchState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// PySpark batch config.
 	// Structure is documented below.
@@ -896,7 +888,8 @@ func (o BatchOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o BatchOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Batch) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

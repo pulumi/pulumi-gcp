@@ -119,6 +119,10 @@ def get_job_iam_policy(job_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str job_id: The name or relative resource id of the job to manage IAM policies for.
+    :param _builtins.str project: The project in which the job belongs. If it
+           is not provided, Terraform will use the provider default.
+    :param _builtins.str region: The region in which the job belongs. If it
+           is not provided, Terraform will use the provider default.
     """
     __args__ = dict()
     __args__['jobId'] = job_id
@@ -153,6 +157,10 @@ def get_job_iam_policy_output(job_id: Optional[pulumi.Input[_builtins.str]] = No
 
 
     :param _builtins.str job_id: The name or relative resource id of the job to manage IAM policies for.
+    :param _builtins.str project: The project in which the job belongs. If it
+           is not provided, Terraform will use the provider default.
+    :param _builtins.str region: The region in which the job belongs. If it
+           is not provided, Terraform will use the provider default.
     """
     __args__ = dict()
     __args__['jobId'] = job_id

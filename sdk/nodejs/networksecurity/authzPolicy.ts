@@ -15,33 +15,59 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Network Security Authz Policy Mcp
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const _default = new gcp.networksecurity.AuthzPolicy("default", {
+ *     name: "my-mcp-policy",
+ *     location: "us-west1",
+ *     target: {
+ *         resources: [project.then(project => `projects/${project.projectId}/locations/us-west1/agentGateways/gateway1`)],
+ *     },
+ *     policyProfile: "REQUEST_AUTHZ",
+ *     action: "ALLOW",
+ *     httpRules: [{
+ *         to: {
+ *             operations: [{
+ *                 mcp: {
+ *                     baseProtocolMethodsOption: "MATCH_BASE_PROTOCOL_METHODS",
+ *                     methods: [
+ *                         {
+ *                             name: "tools",
+ *                         },
+ *                         {
+ *                             name: "tools/call",
+ *                             params: [{
+ *                                 exact: "foo",
+ *                             }],
+ *                         },
+ *                     ],
+ *                 },
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * AuthzPolicy can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/authzPolicies/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, AuthzPolicy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default projects/{{project}}/locations/{{location}}/authzPolicies/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{name}}
  * ```
  */
@@ -124,13 +150,23 @@ export class AuthzPolicy extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+     * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
+     * invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+     * Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support extProc
+     * protocol and be capable of receiving all extProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+     * RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+     * Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+     */
+    declare public readonly policyProfile: pulumi.Output<string | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -165,6 +201,7 @@ export class AuthzPolicy extends pulumi.CustomResource {
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
+            resourceInputs["policyProfile"] = state?.policyProfile;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["target"] = state?.target;
@@ -187,6 +224,7 @@ export class AuthzPolicy extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["name"] = args?.name;
+            resourceInputs["policyProfile"] = args?.policyProfile;
             resourceInputs["project"] = args?.project;
             resourceInputs["target"] = args?.target;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -256,13 +294,23 @@ export interface AuthzPolicyState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+     * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
+     * invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+     * Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support extProc
+     * protocol and be capable of receiving all extProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+     * RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+     * Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+     */
+    policyProfile?: pulumi.Input<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -322,6 +370,16 @@ export interface AuthzPolicyArgs {
      * Identifier. Name of the AuthzPolicy resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+     * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
+     * invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+     * Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support extProc
+     * protocol and be capable of receiving all extProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+     * RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+     * Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+     */
+    policyProfile?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -12,27 +12,30 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// RolloutSequence defines the desired order of upgrades.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about RolloutSequence, see:
+//
+// * [API documentation](https://docs.cloud.google.com/kubernetes-engine/fleet-management/docs/reference/rest/v1beta/projects.locations.rolloutSequences)
+// * How-to Guides
+//   - [Rollout Sequencing Overview](https://cloud.google.com/kubernetes-engine/docs/concepts/rollout-sequencing-custom-stages/about-rollout-sequencing)
+//
 // ## Import
 //
 // RolloutSequence can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/global/rolloutSequences/{{rollout_sequence_id}}`
-//
 // * `{{project}}/{{rollout_sequence_id}}`
-//
 // * `{{rollout_sequence_id}}`
 //
 // When using the `pulumi import` command, RolloutSequence can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default projects/{{project}}/locations/global/rolloutSequences/{{rollout_sequence_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default {{project}}/{{rollout_sequence_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default {{rollout_sequence_id}}
 // ```
 type RolloutSequence struct {
@@ -59,7 +62,7 @@ type RolloutSequence struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The user-provided identifier of the RolloutSequence.
 	RolloutSequenceId pulumi.StringOutput `pulumi:"rolloutSequenceId"`
@@ -134,7 +137,7 @@ type rolloutSequenceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The user-provided identifier of the RolloutSequence.
 	RolloutSequenceId *string `pulumi:"rolloutSequenceId"`
@@ -169,7 +172,7 @@ type RolloutSequenceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The user-provided identifier of the RolloutSequence.
 	RolloutSequenceId pulumi.StringPtrInput
@@ -355,7 +358,8 @@ func (o RolloutSequenceOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RolloutSequenceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RolloutSequence) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

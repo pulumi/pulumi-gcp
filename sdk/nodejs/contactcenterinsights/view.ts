@@ -43,22 +43,14 @@ import * as utilities from "../utilities";
  * View can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/views/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, View can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:contactcenterinsights/view:View default projects/{{project}}/locations/{{location}}/views/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:contactcenterinsights/view:View default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:contactcenterinsights/view:View default {{location}}/{{name}}
  * ```
  */

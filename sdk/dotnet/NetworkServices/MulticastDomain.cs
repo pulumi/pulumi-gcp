@@ -68,22 +68,14 @@ namespace Pulumi.Gcp.NetworkServices
     /// MulticastDomain can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{multicast_domain_id}}`
-    /// 
     /// * `{{location}}/{{multicast_domain_id}}`
     /// 
     /// When using the `pulumi import` command, MulticastDomain can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{project}}/{{location}}/{{multicast_domain_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{location}}/{{multicast_domain_id}}
     /// ```
     /// </summary>
@@ -171,7 +163,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -190,6 +182,13 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Output("states")]
         public Output<ImmutableArray<Outputs.MulticastDomainState>> States { get; private set; } = null!;
+
+        /// <summary>
+        /// Information for an Ultra-Low-Latency multicast domain.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("ullMulticastDomain")]
+        public Output<Outputs.MulticastDomainUllMulticastDomain?> UllMulticastDomain { get; private set; } = null!;
 
         /// <summary>
         /// The Google-generated UUID for the resource. This value is
@@ -323,6 +322,13 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Information for an Ultra-Low-Latency multicast domain.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("ullMulticastDomain")]
+        public Input<Inputs.MulticastDomainUllMulticastDomainArgs>? UllMulticastDomain { get; set; }
+
         public MulticastDomainArgs()
         {
         }
@@ -431,7 +437,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {
@@ -463,6 +469,13 @@ namespace Pulumi.Gcp.NetworkServices
             get => _states ?? (_states = new InputList<Inputs.MulticastDomainStateGetArgs>());
             set => _states = value;
         }
+
+        /// <summary>
+        /// Information for an Ultra-Low-Latency multicast domain.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("ullMulticastDomain")]
+        public Input<Inputs.MulticastDomainUllMulticastDomainGetArgs>? UllMulticastDomain { get; set; }
 
         /// <summary>
         /// The Google-generated UUID for the resource. This value is

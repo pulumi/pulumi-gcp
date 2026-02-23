@@ -534,28 +534,16 @@ class Connector(pulumi.CustomResource):
         Connector can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/connectors/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Connector can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vpcaccess/connector:Connector default projects/{{project}}/locations/{{region}}/connectors/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vpcaccess/connector:Connector default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vpcaccess/connector:Connector default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vpcaccess/connector:Connector default {{name}}
         ```
 
@@ -637,28 +625,16 @@ class Connector(pulumi.CustomResource):
         Connector can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/connectors/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Connector can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vpcaccess/connector:Connector default projects/{{project}}/locations/{{region}}/connectors/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vpcaccess/connector:Connector default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vpcaccess/connector:Connector default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vpcaccess/connector:Connector default {{name}}
         ```
 

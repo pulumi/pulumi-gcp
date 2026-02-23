@@ -16,14 +16,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const termTestId = new gcp.dataplex.Glossary("term_test_id", {
- *     glossaryId: "tf-test-glossary_40289",
+ *     glossaryId: "tf-test-glossary_76044",
  *     location: "us-central1",
  * });
  * const termTestIdGlossaryTerm = new gcp.dataplex.GlossaryTerm("term_test_id", {
  *     parent: pulumi.interpolate`projects/${termTestId.project}/locations/us-central1/glossaries/${termTestId.glossaryId}`,
  *     glossaryId: termTestId.glossaryId,
  *     location: "us-central1",
- *     termId: "tf-test-term-basic_33395",
+ *     termId: "tf-test-term-basic_69391",
  * });
  * ```
  * ### Dataplex Glossary Term Full
@@ -33,14 +33,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const termTestIdFull = new gcp.dataplex.Glossary("term_test_id_full", {
- *     glossaryId: "tf-test-glossary_76044",
+ *     glossaryId: "tf-test-glossary_8270",
  *     location: "us-central1",
  * });
  * const termTestIdFullGlossaryTerm = new gcp.dataplex.GlossaryTerm("term_test_id_full", {
  *     parent: pulumi.interpolate`projects/${termTestIdFull.project}/locations/us-central1/glossaries/${termTestIdFull.glossaryId}`,
  *     glossaryId: termTestIdFull.glossaryId,
  *     location: "us-central1",
- *     termId: "tf-test-term-full_69391",
+ *     termId: "tf-test-term-full_41150",
  *     labels: {
  *         tag: "test-tf",
  *     },
@@ -54,22 +54,14 @@ import * as utilities from "../utilities";
  * GlossaryTerm can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}`
- *
  * * `{{project}}/{{location}}/{{glossary_id}}/{{term_id}}`
- *
  * * `{{location}}/{{glossary_id}}/{{term_id}}`
  *
  * When using the `pulumi import` command, GlossaryTerm can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{project}}/{{location}}/{{glossary_id}}/{{term_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{location}}/{{glossary_id}}/{{term_id}}
  * ```
  */
@@ -147,7 +139,7 @@ export class GlossaryTerm extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -270,7 +262,7 @@ export interface GlossaryTermState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -10,6 +10,7 @@ import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerBuildInfoArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerEnvArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerLivenessProbeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerPortsArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerReadinessProbeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerResourcesArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerSourceCodeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeArgs;
@@ -188,6 +189,23 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Periodic probe of container readiness.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="readinessProbe")
+    private @Nullable Output<ServiceTemplateContainerReadinessProbeArgs> readinessProbe;
+
+    /**
+     * @return Periodic probe of container readiness.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceTemplateContainerReadinessProbeArgs>> readinessProbe() {
+        return Optional.ofNullable(this.readinessProbe);
+    }
+
+    /**
      * Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
      * Structure is documented below.
      * 
@@ -285,6 +303,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         this.livenessProbe = $.livenessProbe;
         this.name = $.name;
         this.ports = $.ports;
+        this.readinessProbe = $.readinessProbe;
         this.resources = $.resources;
         this.sourceCode = $.sourceCode;
         this.startupProbe = $.startupProbe;
@@ -583,6 +602,29 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
          */
         public Builder ports(ServiceTemplateContainerPortsArgs ports) {
             return ports(Output.of(ports));
+        }
+
+        /**
+         * @param readinessProbe Periodic probe of container readiness.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbe(@Nullable Output<ServiceTemplateContainerReadinessProbeArgs> readinessProbe) {
+            $.readinessProbe = readinessProbe;
+            return this;
+        }
+
+        /**
+         * @param readinessProbe Periodic probe of container readiness.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbe(ServiceTemplateContainerReadinessProbeArgs readinessProbe) {
+            return readinessProbe(Output.of(readinessProbe));
         }
 
         /**

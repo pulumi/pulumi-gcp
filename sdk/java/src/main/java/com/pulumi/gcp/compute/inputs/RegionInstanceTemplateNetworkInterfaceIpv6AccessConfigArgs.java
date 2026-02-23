@@ -47,14 +47,16 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs ex
     }
 
     /**
-     * The name of this access configuration.
+     * The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of this access configuration.
+     * @return The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -162,7 +164,8 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs ex
         }
 
         /**
-         * @param name The name of this access configuration.
+         * @param name The name of the instance template. If you leave
+         * this blank, Terraform will auto-generate a unique name.
          * 
          * @return builder
          * 
@@ -173,7 +176,8 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs ex
         }
 
         /**
-         * @param name The name of this access configuration.
+         * @param name The name of the instance template. If you leave
+         * this blank, Terraform will auto-generate a unique name.
          * 
          * @return builder
          * 

@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.InterconnectAttachmentL2ForwardingArgs;
+import com.pulumi.gcp.compute.inputs.InterconnectAttachmentParamsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -381,10 +382,25 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<InterconnectAttachmentParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InterconnectAttachmentParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
-     * 
-     * &lt;a name=&#34;nestedL2Forwarding&#34;&gt;&lt;/a&gt;The `l2Forwarding` block supports:
      * 
      */
     @Import(name="project")
@@ -393,8 +409,6 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
     /**
      * @return The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
-     * 
-     * &lt;a name=&#34;nestedL2Forwarding&#34;&gt;&lt;/a&gt;The `l2Forwarding` block supports:
      * 
      */
     public Optional<Output<String>> project() {
@@ -540,6 +554,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
         this.labels = $.labels;
         this.mtu = $.mtu;
         this.name = $.name;
+        this.params = $.params;
         this.project = $.project;
         this.region = $.region;
         this.router = $.router;
@@ -1064,10 +1079,31 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<InterconnectAttachmentParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(InterconnectAttachmentParamsArgs params) {
+            return params(Output.of(params));
+        }
+
+        /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
-         * 
-         * &lt;a name=&#34;nestedL2Forwarding&#34;&gt;&lt;/a&gt;The `l2Forwarding` block supports:
          * 
          * @return builder
          * 
@@ -1080,8 +1116,6 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
         /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
-         * 
-         * &lt;a name=&#34;nestedL2Forwarding&#34;&gt;&lt;/a&gt;The `l2Forwarding` block supports:
          * 
          * @return builder
          * 

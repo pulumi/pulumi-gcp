@@ -242,22 +242,14 @@ import (
 // Instance can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:notebooks/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:notebooks/instance:Instance default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:notebooks/instance:Instance default {{location}}/{{name}}
 // ```
 type Instance struct {
@@ -351,7 +343,7 @@ type Instance struct {
 	// the population of this value.
 	ProxyUri pulumi.StringOutput `pulumi:"proxyUri"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
@@ -514,7 +506,7 @@ type instanceState struct {
 	// the population of this value.
 	ProxyUri *string `pulumi:"proxyUri"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
@@ -637,7 +629,7 @@ type InstanceState struct {
 	// the population of this value.
 	ProxyUri pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
@@ -1154,7 +1146,8 @@ func (o InstanceOutput) ProxyUri() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

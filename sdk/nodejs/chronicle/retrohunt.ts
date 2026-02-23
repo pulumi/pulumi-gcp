@@ -52,22 +52,14 @@ import * as utilities from "../utilities";
  * Retrohunt can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/retrohunts/{{retrohunt}}`
- *
  * * `{{project}}/{{location}}/{{instance}}/{{rule}}/{{retrohunt}}`
- *
  * * `{{location}}/{{instance}}/{{rule}}/{{retrohunt}}`
  *
  * When using the `pulumi import` command, Retrohunt can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:chronicle/retrohunt:Retrohunt default projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/retrohunts/{{retrohunt}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:chronicle/retrohunt:Retrohunt default {{project}}/{{location}}/{{instance}}/{{rule}}/{{retrohunt}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:chronicle/retrohunt:Retrohunt default {{location}}/{{instance}}/{{rule}}/{{retrohunt}}
  * ```
  */

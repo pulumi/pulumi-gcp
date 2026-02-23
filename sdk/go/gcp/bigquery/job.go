@@ -628,40 +628,20 @@ import (
 // Job can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/jobs/{{job_id}}/location/{{location}}`
-//
 // * `projects/{{project}}/jobs/{{job_id}}`
-//
 // * `{{project}}/{{job_id}}/{{location}}`
-//
 // * `{{job_id}}/{{location}}`
-//
 // * `{{project}}/{{job_id}}`
-//
 // * `{{job_id}}`
 //
 // When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}/location/{{location}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}/{{location}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:bigquery/job:Job default {{job_id}}/{{location}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:bigquery/job:Job default {{job_id}}
 // ```
 type Job struct {
@@ -696,9 +676,8 @@ type Job struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// (Output)
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Configures a query job.
 	// Structure is documented below.
@@ -781,9 +760,8 @@ type jobState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// (Output)
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Configures a query job.
 	// Structure is documented below.
@@ -829,9 +807,8 @@ type JobState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// (Output)
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Configures a query job.
 	// Structure is documented below.
@@ -1064,9 +1041,9 @@ func (o JobOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// (Output)
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o JobOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

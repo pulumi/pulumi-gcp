@@ -250,7 +250,7 @@ class _ApiConfigState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] service_config_id: The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
         """
         if api is not None:
@@ -442,7 +442,7 @@ class _ApiConfigState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -481,6 +481,17 @@ class ApiConfig(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        An API Configuration is an association of an API Controller Config and a Gateway Config
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about ApiConfig, see:
+
+        * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
+
         ## Example Usage
 
         ## Import
@@ -488,22 +499,14 @@ class ApiConfig(pulumi.CustomResource):
         ApiConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}`
-
         * `{{project}}/{{api}}/{{api_config_id}}`
-
         * `{{api}}/{{api_config_id}}`
 
         When using the `pulumi import` command, ApiConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{api_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{api_config_id}}
         ```
 
@@ -538,6 +541,17 @@ class ApiConfig(pulumi.CustomResource):
                  args: ApiConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An API Configuration is an association of an API Controller Config and a Gateway Config
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about ApiConfig, see:
+
+        * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
+
         ## Example Usage
 
         ## Import
@@ -545,22 +559,14 @@ class ApiConfig(pulumi.CustomResource):
         ApiConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}`
-
         * `{{project}}/{{api}}/{{api_config_id}}`
-
         * `{{api}}/{{api_config_id}}`
 
         When using the `pulumi import` command, ApiConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{api_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{api_config_id}}
         ```
 
@@ -671,7 +677,7 @@ class ApiConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] service_config_id: The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -806,7 +812,7 @@ class ApiConfig(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

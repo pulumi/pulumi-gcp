@@ -286,8 +286,8 @@ import (
 //				return err
 //			}
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_40472"),
-//				Name:           pulumi.String("tf-test_44339"),
+//				ProjectId:      pulumi.String("tf-test_55500"),
+//				Name:           pulumi.String("tf-test_12223"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -609,28 +609,16 @@ import (
 // FeatureOnlineStoreFeatureview can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}`
-//
 // * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}`
-//
 // * `{{region}}/{{feature_online_store}}/{{name}}`
-//
 // * `{{feature_online_store}}/{{name}}`
 //
 // When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{project}}/{{region}}/{{feature_online_store}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{region}}/{{feature_online_store}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{feature_online_store}}/{{name}}
 // ```
 type AiFeatureOnlineStoreFeatureview struct {
@@ -659,7 +647,7 @@ type AiFeatureOnlineStoreFeatureview struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region for the resource. It should be the same as the featureonlinestore region.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -735,7 +723,7 @@ type aiFeatureOnlineStoreFeatureviewState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region for the resource. It should be the same as the featureonlinestore region.
 	Region *string `pulumi:"region"`
@@ -774,7 +762,7 @@ type AiFeatureOnlineStoreFeatureviewState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region for the resource. It should be the same as the featureonlinestore region.
 	Region pulumi.StringPtrInput
@@ -992,7 +980,8 @@ func (o AiFeatureOnlineStoreFeatureviewOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AiFeatureOnlineStoreFeatureviewOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureview) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

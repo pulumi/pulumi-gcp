@@ -120,22 +120,14 @@ import javax.annotation.Nullable;
  * MulticastGroupRangeActivation can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/multicastGroupRangeActivations/{{multicast_group_range_activation_id}}`
- * 
  * * `{{project}}/{{location}}/{{multicast_group_range_activation_id}}`
- * 
  * * `{{location}}/{{multicast_group_range_activation_id}}`
  * 
  * When using the `pulumi import` command, MulticastGroupRangeActivation can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation default projects/{{project}}/locations/{{location}}/multicastGroupRangeActivations/{{multicast_group_range_activation_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation default {{project}}/{{location}}/{{multicast_group_range_activation_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation default {{location}}/{{multicast_group_range_activation_id}}
  * ```
  * 
@@ -360,7 +352,7 @@ public class MulticastGroupRangeActivation extends com.pulumi.resources.CustomRe
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -368,7 +360,7 @@ public class MulticastGroupRangeActivation extends com.pulumi.resources.CustomRe
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

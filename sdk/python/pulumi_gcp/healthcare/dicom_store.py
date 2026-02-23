@@ -169,7 +169,7 @@ class _DicomStoreState:
         :param pulumi.Input['DicomStoreNotificationConfigArgs'] notification_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] self_link: The fully qualified name of this dataset
         :param pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]] stream_configs: (Optional, Beta)
                To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
@@ -271,7 +271,7 @@ class _DicomStoreState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -398,16 +398,12 @@ class DicomStore(pulumi.CustomResource):
         DicomStore can be imported using any of these accepted formats:
 
         * `{{dataset}}/dicomStores/{{name}}`
-
         * `{{dataset}}/{{name}}`
 
         When using the `pulumi import` command, DicomStore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
         ```
 
@@ -520,16 +516,12 @@ class DicomStore(pulumi.CustomResource):
         DicomStore can be imported using any of these accepted formats:
 
         * `{{dataset}}/dicomStores/{{name}}`
-
         * `{{dataset}}/{{name}}`
 
         When using the `pulumi import` command, DicomStore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
         ```
 
@@ -618,7 +610,7 @@ class DicomStore(pulumi.CustomResource):
         :param pulumi.Input[Union['DicomStoreNotificationConfigArgs', 'DicomStoreNotificationConfigArgsDict']] notification_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] self_link: The fully qualified name of this dataset
         :param pulumi.Input[Sequence[pulumi.Input[Union['DicomStoreStreamConfigArgs', 'DicomStoreStreamConfigArgsDict']]]] stream_configs: (Optional, Beta)
                To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
@@ -697,7 +689,7 @@ class DicomStore(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

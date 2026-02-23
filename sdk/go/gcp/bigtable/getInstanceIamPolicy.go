@@ -51,8 +51,10 @@ func LookupInstanceIamPolicy(ctx *pulumi.Context, args *LookupInstanceIamPolicyA
 // A collection of arguments for invoking getInstanceIamPolicy.
 type LookupInstanceIamPolicyArgs struct {
 	// The name or relative resource id of the instance to manage IAM policies for.
-	Instance string  `pulumi:"instance"`
-	Project  *string `pulumi:"project"`
+	Instance string `pulumi:"instance"`
+	// The project in which the instance belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getInstanceIamPolicy.
@@ -79,8 +81,10 @@ func LookupInstanceIamPolicyOutput(ctx *pulumi.Context, args LookupInstanceIamPo
 // A collection of arguments for invoking getInstanceIamPolicy.
 type LookupInstanceIamPolicyOutputArgs struct {
 	// The name or relative resource id of the instance to manage IAM policies for.
-	Instance pulumi.StringInput    `pulumi:"instance"`
-	Project  pulumi.StringPtrInput `pulumi:"project"`
+	Instance pulumi.StringInput `pulumi:"instance"`
+	// The project in which the instance belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (LookupInstanceIamPolicyOutputArgs) ElementType() reflect.Type {

@@ -244,27 +244,33 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
+    /**
+     * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+     * 
+     */
     @Export(name="gracefulDecommissionTimeout", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gracefulDecommissionTimeout;
 
+    /**
+     * @return The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+     * 
+     */
     public Output<Optional<String>> gracefulDecommissionTimeout() {
         return Codegen.optional(this.gracefulDecommissionTimeout);
     }
     /**
-     * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-     * 
-     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
+     * instances in the cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-     * 
-     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
+     * instances in the cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

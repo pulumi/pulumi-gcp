@@ -32,6 +32,7 @@ class SearchEngineArgs:
                  features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 knowledge_graph_config: Optional[pulumi.Input['SearchEngineKnowledgeGraphConfigArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SearchEngine resource.
@@ -55,6 +56,8 @@ class SearchEngineArgs:
                protections.
                If this field is set and processed successfully, the Engine will be
                protected by the KMS key, as indicated in the cmek_config field.
+        :param pulumi.Input['SearchEngineKnowledgeGraphConfigArgs'] knowledge_graph_config: Configurations for the Knowledge Graph.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -74,6 +77,8 @@ class SearchEngineArgs:
             pulumi.set(__self__, "industry_vertical", industry_vertical)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if knowledge_graph_config is not None:
+            pulumi.set(__self__, "knowledge_graph_config", knowledge_graph_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -219,6 +224,19 @@ class SearchEngineArgs:
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="knowledgeGraphConfig")
+    def knowledge_graph_config(self) -> Optional[pulumi.Input['SearchEngineKnowledgeGraphConfigArgs']]:
+        """
+        Configurations for the Knowledge Graph.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "knowledge_graph_config")
+
+    @knowledge_graph_config.setter
+    def knowledge_graph_config(self, value: Optional[pulumi.Input['SearchEngineKnowledgeGraphConfigArgs']]):
+        pulumi.set(self, "knowledge_graph_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -245,6 +263,7 @@ class _SearchEngineState:
                  features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 knowledge_graph_config: Optional[pulumi.Input['SearchEngineKnowledgeGraphConfigArgs']] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -270,6 +289,8 @@ class _SearchEngineState:
                protections.
                If this field is set and processed successfully, the Engine will be
                protected by the KMS key, as indicated in the cmek_config field.
+        :param pulumi.Input['SearchEngineKnowledgeGraphConfigArgs'] knowledge_graph_config: Configurations for the Knowledge Graph.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Location.
         :param pulumi.Input[_builtins.str] name: The unique full resource name of the search engine. Values are of the format
                `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
@@ -301,6 +322,8 @@ class _SearchEngineState:
             pulumi.set(__self__, "industry_vertical", industry_vertical)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if knowledge_graph_config is not None:
+            pulumi.set(__self__, "knowledge_graph_config", knowledge_graph_config)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -441,6 +464,19 @@ class _SearchEngineState:
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="knowledgeGraphConfig")
+    def knowledge_graph_config(self) -> Optional[pulumi.Input['SearchEngineKnowledgeGraphConfigArgs']]:
+        """
+        Configurations for the Knowledge Graph.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "knowledge_graph_config")
+
+    @knowledge_graph_config.setter
+    def knowledge_graph_config(self, value: Optional[pulumi.Input['SearchEngineKnowledgeGraphConfigArgs']]):
+        pulumi.set(self, "knowledge_graph_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -521,6 +557,7 @@ class SearchEngine(pulumi.CustomResource):
                  features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 knowledge_graph_config: Optional[pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  search_engine_config: Optional[pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
@@ -580,7 +617,8 @@ class SearchEngine(pulumi.CustomResource):
             data_store_ids=[agentspace_basic.data_store_id],
             industry_vertical="GENERIC",
             app_type="APP_TYPE_INTRANET",
-            search_engine_config={})
+            search_engine_config={},
+            knowledge_graph_config={})
         ```
 
         ## Import
@@ -588,22 +626,14 @@ class SearchEngine(pulumi.CustomResource):
         SearchEngine can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
-
         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
-
         * `{{location}}/{{collection_id}}/{{engine_id}}`
 
         When using the `pulumi import` command, SearchEngine can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{location}}/{{collection_id}}/{{engine_id}}
         ```
 
@@ -626,6 +656,8 @@ class SearchEngine(pulumi.CustomResource):
                protections.
                If this field is set and processed successfully, the Engine will be
                protected by the KMS key, as indicated in the cmek_config field.
+        :param pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']] knowledge_graph_config: Configurations for the Knowledge Graph.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Location.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -693,7 +725,8 @@ class SearchEngine(pulumi.CustomResource):
             data_store_ids=[agentspace_basic.data_store_id],
             industry_vertical="GENERIC",
             app_type="APP_TYPE_INTRANET",
-            search_engine_config={})
+            search_engine_config={},
+            knowledge_graph_config={})
         ```
 
         ## Import
@@ -701,22 +734,14 @@ class SearchEngine(pulumi.CustomResource):
         SearchEngine can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
-
         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
-
         * `{{location}}/{{collection_id}}/{{engine_id}}`
 
         When using the `pulumi import` command, SearchEngine can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{location}}/{{collection_id}}/{{engine_id}}
         ```
 
@@ -744,6 +769,7 @@ class SearchEngine(pulumi.CustomResource):
                  features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 knowledge_graph_config: Optional[pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  search_engine_config: Optional[pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
@@ -773,6 +799,7 @@ class SearchEngine(pulumi.CustomResource):
             __props__.__dict__["features"] = features
             __props__.__dict__["industry_vertical"] = industry_vertical
             __props__.__dict__["kms_key_name"] = kms_key_name
+            __props__.__dict__["knowledge_graph_config"] = knowledge_graph_config
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -803,6 +830,7 @@ class SearchEngine(pulumi.CustomResource):
             features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
             kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+            knowledge_graph_config: Optional[pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -833,6 +861,8 @@ class SearchEngine(pulumi.CustomResource):
                protections.
                If this field is set and processed successfully, the Engine will be
                protected by the KMS key, as indicated in the cmek_config field.
+        :param pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']] knowledge_graph_config: Configurations for the Knowledge Graph.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Location.
         :param pulumi.Input[_builtins.str] name: The unique full resource name of the search engine. Values are of the format
                `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
@@ -858,6 +888,7 @@ class SearchEngine(pulumi.CustomResource):
         __props__.__dict__["features"] = features
         __props__.__dict__["industry_vertical"] = industry_vertical
         __props__.__dict__["kms_key_name"] = kms_key_name
+        __props__.__dict__["knowledge_graph_config"] = knowledge_graph_config
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -952,6 +983,15 @@ class SearchEngine(pulumi.CustomResource):
         protected by the KMS key, as indicated in the cmek_config field.
         """
         return pulumi.get(self, "kms_key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeGraphConfig")
+    def knowledge_graph_config(self) -> pulumi.Output[Optional['outputs.SearchEngineKnowledgeGraphConfig']]:
+        """
+        Configurations for the Knowledge Graph.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "knowledge_graph_config")
 
     @_builtins.property
     @pulumi.getter

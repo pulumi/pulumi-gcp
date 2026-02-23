@@ -137,22 +137,14 @@ import javax.annotation.Nullable;
  * MulticastGroupProducerActivation can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/multicastGroupProducerActivations/{{multicast_group_producer_activation_id}}`
- * 
  * * `{{project}}/{{location}}/{{multicast_group_producer_activation_id}}`
- * 
  * * `{{location}}/{{multicast_group_producer_activation_id}}`
  * 
  * When using the `pulumi import` command, MulticastGroupProducerActivation can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networkservices/multicastGroupProducerActivation:MulticastGroupProducerActivation default projects/{{project}}/locations/{{location}}/multicastGroupProducerActivations/{{multicast_group_producer_activation_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkservices/multicastGroupProducerActivation:MulticastGroupProducerActivation default {{project}}/{{location}}/{{multicast_group_producer_activation_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkservices/multicastGroupProducerActivation:MulticastGroupProducerActivation default {{location}}/{{multicast_group_producer_activation_id}}
  * ```
  * 
@@ -329,7 +321,7 @@ public class MulticastGroupProducerActivation extends com.pulumi.resources.Custo
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -337,7 +329,7 @@ public class MulticastGroupProducerActivation extends com.pulumi.resources.Custo
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

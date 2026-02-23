@@ -96,6 +96,10 @@ def get_backend_service_iam_policy(name: Optional[_builtins.str] = None,
                                    project: Optional[_builtins.str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBackendServiceIamPolicyResult:
     """
+    Retrieves the current IAM policy data for backendservice
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python
@@ -127,6 +131,10 @@ def get_backend_service_iam_policy_output(name: Optional[pulumi.Input[_builtins.
                                           project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackendServiceIamPolicyResult]:
     """
+    Retrieves the current IAM policy data for backendservice
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python

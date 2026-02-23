@@ -176,22 +176,14 @@ import * as utilities from "../utilities";
  * Build can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/builds/{{build_id}}`
- *
  * * `{{project}}/{{location}}/{{backend}}/{{build_id}}`
- *
  * * `{{location}}/{{backend}}/{{build_id}}`
  *
  * When using the `pulumi import` command, Build can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default projects/{{project}}/locations/{{location}}/backends/{{backend}}/builds/{{build_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{project}}/{{location}}/{{backend}}/{{build_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{location}}/{{backend}}/{{build_id}}
  * ```
  */
@@ -253,6 +245,9 @@ export class AppHostingBuild extends pulumi.CustomResource {
      * Human-readable name. 63 character limit.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -317,7 +312,7 @@ export class AppHostingBuild extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -457,6 +452,9 @@ export interface AppHostingBuildState {
      * Human-readable name. 63 character limit.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -521,7 +519,7 @@ export interface AppHostingBuildState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

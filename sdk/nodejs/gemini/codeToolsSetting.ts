@@ -41,22 +41,14 @@ import * as utilities from "../utilities";
  * CodeToolsSetting can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/codeToolsSettings/{{code_tools_setting_id}}`
- *
  * * `{{project}}/{{location}}/{{code_tools_setting_id}}`
- *
  * * `{{location}}/{{code_tools_setting_id}}`
  *
  * When using the `pulumi import` command, CodeToolsSetting can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gemini/codeToolsSetting:CodeToolsSetting default projects/{{project}}/locations/{{location}}/codeToolsSettings/{{code_tools_setting_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gemini/codeToolsSetting:CodeToolsSetting default {{project}}/{{location}}/{{code_tools_setting_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gemini/codeToolsSetting:CodeToolsSetting default {{location}}/{{code_tools_setting_id}}
  * ```
  */
@@ -127,7 +119,7 @@ export class CodeToolsSetting extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -227,7 +219,7 @@ export interface CodeToolsSettingState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

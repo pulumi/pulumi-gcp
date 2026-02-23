@@ -473,28 +473,16 @@ class TargetPool(pulumi.CustomResource):
         Target pools can be imported using any of the following formats:
 
         * `projects/{{project}}/regions/{{region}}/targetPools/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, target pools can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/targetPool:TargetPool default projects/{{project}}/regions/{{region}}/targetPools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetPool:TargetPool default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetPool:TargetPool default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetPool:TargetPool default {{name}}
         ```
 
@@ -563,28 +551,16 @@ class TargetPool(pulumi.CustomResource):
         Target pools can be imported using any of the following formats:
 
         * `projects/{{project}}/regions/{{region}}/targetPools/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, target pools can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/targetPool:TargetPool default projects/{{project}}/regions/{{region}}/targetPools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetPool:TargetPool default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetPool:TargetPool default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetPool:TargetPool default {{name}}
         ```
 

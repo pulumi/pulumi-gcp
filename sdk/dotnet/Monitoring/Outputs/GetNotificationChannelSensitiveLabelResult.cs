@@ -18,25 +18,67 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string AuthToken;
         /// <summary>
+        /// An authorization token for a notification channel. Channel types that support this field include: slack
+        /// </summary>
+        public readonly string AuthTokenWo;
+        /// <summary>
+        /// Triggers update of 'auth_token_wo' write-only. Increment this value when an update to 'auth_token_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string AuthTokenWoVersion;
+        /// <summary>
         /// An password for a notification channel. Channel types that support this field include: webhook_basicauth
         /// </summary>
         public readonly string Password;
         /// <summary>
+        /// An password for a notification channel. Channel types that support this field include: webhook_basicauth
+        /// </summary>
+        public readonly string PasswordWo;
+        /// <summary>
+        /// Triggers update of 'password_wo' write-only. Increment this value when an update to 'password_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string PasswordWoVersion;
+        /// <summary>
         /// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
         /// </summary>
         public readonly string ServiceKey;
+        /// <summary>
+        /// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+        /// </summary>
+        public readonly string ServiceKeyWo;
+        /// <summary>
+        /// Triggers update of 'service_key_wo' write-only. Increment this value when an update to 'service_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string ServiceKeyWoVersion;
 
         [OutputConstructor]
         private GetNotificationChannelSensitiveLabelResult(
             string authToken,
 
+            string authTokenWo,
+
+            string authTokenWoVersion,
+
             string password,
 
-            string serviceKey)
+            string passwordWo,
+
+            string passwordWoVersion,
+
+            string serviceKey,
+
+            string serviceKeyWo,
+
+            string serviceKeyWoVersion)
         {
             AuthToken = authToken;
+            AuthTokenWo = authTokenWo;
+            AuthTokenWoVersion = authTokenWoVersion;
             Password = password;
+            PasswordWo = passwordWo;
+            PasswordWoVersion = passwordWoVersion;
             ServiceKey = serviceKey;
+            ServiceKeyWo = serviceKeyWo;
+            ServiceKeyWoVersion = serviceKeyWoVersion;
         }
     }
 }

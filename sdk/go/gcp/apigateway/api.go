@@ -12,6 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A consumable API that can be used by multiple Gateways.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about Api, see:
+//
+// * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+//
 // ## Example Usage
 //
 // ### Apigateway Api Basic
@@ -45,22 +56,14 @@ import (
 // Api can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/global/apis/{{api_id}}`
-//
 // * `{{project}}/{{api_id}}`
-//
 // * `{{api_id}}`
 //
 // When using the `pulumi import` command, Api can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{api_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apigateway/api:Api default {{project}}/{{api_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apigateway/api:Api default {{api_id}}
 // ```
 type Api struct {
@@ -88,7 +91,7 @@ type Api struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
@@ -152,7 +155,7 @@ type apiState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
@@ -179,7 +182,7 @@ type ApiState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 }
 
@@ -357,7 +360,8 @@ func (o ApiOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ApiOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

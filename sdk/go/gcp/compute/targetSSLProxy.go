@@ -31,6 +31,9 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -78,12 +81,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultCertificateMap, err := certificatemanager.NewCertificateMapResource(ctx, "default", &certificatemanager.CertificateMapResourceArgs{
+//				Name:        pulumi.String("certificate-map-test"),
+//				Description: pulumi.String("My acceptance test certificate map"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = compute.NewTargetSSLProxy(ctx, "default", &compute.TargetSSLProxyArgs{
 //				Name:           pulumi.String("test-proxy"),
 //				BackendService: defaultBackendService.ID(),
 //				SslCertificates: pulumi.StringArray{
 //					defaultSSLCertificate.ID(),
 //				},
+//				CertificateMap: defaultCertificateMap.ID().ApplyT(func(id string) (string, error) {
+//					return fmt.Sprintf("//certificatemanager.googleapis.com/%v", id), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -99,22 +112,14 @@ import (
 // TargetSslProxy can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/global/targetSslProxies/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, TargetSslProxy can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default projects/{{project}}/global/targetSslProxies/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{name}}
 // ```
 type TargetSSLProxy struct {

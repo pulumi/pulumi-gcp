@@ -115,22 +115,14 @@ import (
 // GitRepositoryLink can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/gitRepositoryLinks/{{git_repository_link_id}}`
-//
 // * `{{project}}/{{location}}/{{parent_connection}}/{{git_repository_link_id}}`
-//
 // * `{{location}}/{{parent_connection}}/{{git_repository_link_id}}`
 //
 // When using the `pulumi import` command, GitRepositoryLink can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:developerconnect/gitRepositoryLink:GitRepositoryLink default projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/gitRepositoryLinks/{{git_repository_link_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:developerconnect/gitRepositoryLink:GitRepositoryLink default {{project}}/{{location}}/{{parent_connection}}/{{git_repository_link_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:developerconnect/gitRepositoryLink:GitRepositoryLink default {{location}}/{{parent_connection}}/{{git_repository_link_id}}
 // ```
 type GitRepositoryLink struct {
@@ -145,7 +137,8 @@ type GitRepositoryLink struct {
 	// Output only. [Output only] Create timestamp
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Output only. [Output only] Delete timestamp
-	DeleteTime           pulumi.StringOutput    `pulumi:"deleteTime"`
+	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -172,7 +165,7 @@ type GitRepositoryLink struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Set to true when the connection is being set up or updated in the
 	// background.
@@ -239,7 +232,8 @@ type gitRepositoryLinkState struct {
 	// Output only. [Output only] Create timestamp
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. [Output only] Delete timestamp
-	DeleteTime           *string           `pulumi:"deleteTime"`
+	DeleteTime *string `pulumi:"deleteTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -266,7 +260,7 @@ type gitRepositoryLinkState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Set to true when the connection is being set up or updated in the
 	// background.
@@ -287,7 +281,8 @@ type GitRepositoryLinkState struct {
 	// Output only. [Output only] Create timestamp
 	CreateTime pulumi.StringPtrInput
 	// Output only. [Output only] Delete timestamp
-	DeleteTime           pulumi.StringPtrInput
+	DeleteTime pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -314,7 +309,7 @@ type GitRepositoryLinkState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. Set to true when the connection is being set up or updated in the
 	// background.
@@ -495,6 +490,7 @@ func (o GitRepositoryLinkOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitRepositoryLink) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o GitRepositoryLinkOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GitRepositoryLink) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -548,7 +544,8 @@ func (o GitRepositoryLinkOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GitRepositoryLinkOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GitRepositoryLink) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

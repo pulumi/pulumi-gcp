@@ -272,22 +272,14 @@ import * as utilities from "../utilities";
  * Pipeline can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/pipelines/{{pipeline_id}}`
- *
  * * `{{project}}/{{location}}/{{pipeline_id}}`
- *
  * * `{{location}}/{{pipeline_id}}`
  *
  * When using the `pulumi import` command, Pipeline can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:eventarc/pipeline:Pipeline default projects/{{project}}/locations/{{location}}/pipelines/{{pipeline_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:eventarc/pipeline:Pipeline default {{project}}/{{location}}/{{pipeline_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:eventarc/pipeline:Pipeline default {{location}}/{{pipeline_id}}
  * ```
  */
@@ -349,6 +341,9 @@ export class Pipeline extends pulumi.CustomResource {
      * Display name of resource.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -407,7 +402,7 @@ export class Pipeline extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -542,6 +537,9 @@ export interface PipelineState {
      * Display name of resource.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -600,7 +598,7 @@ export interface PipelineState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

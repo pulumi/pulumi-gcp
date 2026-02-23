@@ -650,22 +650,14 @@ import (
 // GlobalForwardingRule can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/global/forwardingRules/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, GlobalForwardingRule can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default projects/{{project}}/global/forwardingRules/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default {{name}}
 // ```
 type GlobalForwardingRule struct {
@@ -837,7 +829,7 @@ type GlobalForwardingRule struct {
 	// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
 	PscConnectionStatus pulumi.StringOutput `pulumi:"pscConnectionStatus"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -1071,7 +1063,7 @@ type globalForwardingRuleState struct {
 	// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
 	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -1268,7 +1260,7 @@ type GlobalForwardingRuleState struct {
 	// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
 	PscConnectionStatus pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -1984,7 +1976,8 @@ func (o GlobalForwardingRuleOutput) PscConnectionStatus() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GlobalForwardingRuleOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

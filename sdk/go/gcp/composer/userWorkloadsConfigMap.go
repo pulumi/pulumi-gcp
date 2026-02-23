@@ -100,28 +100,16 @@ import (
 // UserWorkloadsConfigMap can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/environments/{{environment}}/userWorkloadsConfigMaps/{{name}}`
-//
 // * `{{project}}/{{region}}/{{environment}}/{{name}}`
-//
 // * `{{region}}/{{environment}}/{{name}}`
-//
 // * `{{environment}}/{{name}}`
 //
 // When using the `pulumi import` command, UserWorkloadsConfigMap can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap default projects/{{project}}/locations/{{region}}/environments/{{environment}}/userWorkloadsConfigMaps/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap default {{project}}/{{region}}/{{environment}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap default {{region}}/{{environment}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap default {{environment}}/{{name}}
 // ```
 type UserWorkloadsConfigMap struct {

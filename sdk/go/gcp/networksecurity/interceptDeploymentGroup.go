@@ -63,22 +63,14 @@ import (
 // InterceptDeploymentGroup can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/interceptDeploymentGroups/{{intercept_deployment_group_id}}`
-//
 // * `{{project}}/{{location}}/{{intercept_deployment_group_id}}`
-//
 // * `{{location}}/{{intercept_deployment_group_id}}`
 //
 // When using the `pulumi import` command, InterceptDeploymentGroup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup default projects/{{project}}/locations/{{location}}/interceptDeploymentGroups/{{intercept_deployment_group_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup default {{project}}/{{location}}/{{intercept_deployment_group_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup default {{location}}/{{intercept_deployment_group_id}}
 // ```
 type InterceptDeploymentGroup struct {
@@ -120,7 +112,7 @@ type InterceptDeploymentGroup struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This is part of the normal
@@ -219,7 +211,7 @@ type interceptDeploymentGroupState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This is part of the normal
@@ -275,7 +267,7 @@ type InterceptDeploymentGroupState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This is part of the normal
@@ -501,7 +493,8 @@ func (o InterceptDeploymentGroupOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InterceptDeploymentGroupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

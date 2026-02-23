@@ -582,22 +582,14 @@ import (
 // Connection can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`
-//
 // * `{{project}}/{{location}}/{{connection_id}}`
-//
 // * `{{location}}/{{connection_id}}`
 //
 // When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:developerconnect/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:developerconnect/connection:Connection default {{project}}/{{location}}/{{connection_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:developerconnect/connection:Connection default {{location}}/{{connection_id}}
 // ```
 type Connection struct {
@@ -628,7 +620,8 @@ type Connection struct {
 	// Optional. If disabled is set to true, functionality is disabled for this connection.
 	// Repository based API methods and webhooks processing for repositories in
 	// this connection will be disabled.
-	Disabled             pulumi.BoolPtrOutput   `pulumi:"disabled"`
+	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -666,7 +659,7 @@ type Connection struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Set to true when the connection is being set up or updated in the
 	// background.
@@ -743,7 +736,8 @@ type connectionState struct {
 	// Optional. If disabled is set to true, functionality is disabled for this connection.
 	// Repository based API methods and webhooks processing for repositories in
 	// this connection will be disabled.
-	Disabled             *bool             `pulumi:"disabled"`
+	Disabled *bool `pulumi:"disabled"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -781,7 +775,7 @@ type connectionState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Set to true when the connection is being set up or updated in the
 	// background.
@@ -818,7 +812,8 @@ type ConnectionState struct {
 	// Optional. If disabled is set to true, functionality is disabled for this connection.
 	// Repository based API methods and webhooks processing for repositories in
 	// this connection will be disabled.
-	Disabled             pulumi.BoolPtrInput
+	Disabled pulumi.BoolPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -856,7 +851,7 @@ type ConnectionState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. Set to true when the connection is being set up or updated in the
 	// background.
@@ -1109,6 +1104,7 @@ func (o ConnectionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o ConnectionOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -1182,7 +1178,8 @@ func (o ConnectionOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ConnectionOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

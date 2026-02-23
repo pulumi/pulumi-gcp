@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vmwareengine.ClusterArgs;
 import com.pulumi.gcp.vmwareengine.inputs.ClusterState;
 import com.pulumi.gcp.vmwareengine.outputs.ClusterAutoscalingSettings;
+import com.pulumi.gcp.vmwareengine.outputs.ClusterDatastoreMountConfig;
 import com.pulumi.gcp.vmwareengine.outputs.ClusterNodeTypeConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -188,6 +189,357 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Vmware Engine Cluster Nfs Datastore Filestore
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+ * import com.pulumi.gcp.filestore.Instance;
+ * import com.pulumi.gcp.filestore.InstanceArgs;
+ * import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
+ * import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
+ * import com.pulumi.gcp.vmwareengine.Network;
+ * import com.pulumi.gcp.vmwareengine.NetworkArgs;
+ * import com.pulumi.gcp.vmwareengine.PrivateCloud;
+ * import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
+ * import com.pulumi.gcp.vmwareengine.Subnet;
+ * import com.pulumi.gcp.vmwareengine.SubnetArgs;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
+ * import com.pulumi.gcp.vmwareengine.NetworkPeering;
+ * import com.pulumi.gcp.vmwareengine.NetworkPeeringArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.TrimprefixArgs;
+ * import com.pulumi.gcp.vmwareengine.Datastore;
+ * import com.pulumi.gcp.vmwareengine.DatastoreArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.DatastoreNfsDatastoreArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.DatastoreNfsDatastoreGoogleFileServiceArgs;
+ * import com.pulumi.gcp.vmwareengine.Cluster;
+ * import com.pulumi.gcp.vmwareengine.ClusterArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.ClusterNodeTypeConfigArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.ClusterDatastoreMountConfigArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.ClusterDatastoreMountConfigDatastoreNetworkArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Use this network for filestore instance
+ *         final var fsNetwork = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("filestore_nw")
+ *             .build());
+ * 
+ *         // Create a filestore instance with delete protection enabled
+ *         //### Use ip range of private cloud service subnet in the 'nfs_export_options'
+ *         var testInstance = new Instance("testInstance", InstanceArgs.builder()
+ *             .name("test-fs-filestore")
+ *             .location("")
+ *             .tier("ZONAL")
+ *             .deletionProtectionEnabled("yes")
+ *             .fileShares(InstanceFileSharesArgs.builder()
+ *                 .capacityGb(1024)
+ *                 .name("share101")
+ *                 .nfsExportOptions(InstanceFileSharesNfsExportOptionArgs.builder()
+ *                     .ipRanges("10.0.0.0/24")
+ *                     .build())
+ *                 .build())
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .network(fsNetwork.id())
+ *                 .modes("MODE_IPV4")
+ *                 .connectMode("PRIVATE_SERVICE_ACCESS")
+ *                 .build())
+ *             .build());
+ * 
+ *         var cluster_nw = new Network("cluster-nw", NetworkArgs.builder()
+ *             .name("pc-nw")
+ *             .type("STANDARD")
+ *             .location("global")
+ *             .description("PC network description.")
+ *             .build());
+ * 
+ *         var cluster_pc = new PrivateCloud("cluster-pc", PrivateCloudArgs.builder()
+ *             .location("")
+ *             .name("sample-pc")
+ *             .description("Sample test PC.")
+ *             .networkConfig(PrivateCloudNetworkConfigArgs.builder()
+ *                 .managementCidr("192.168.30.0/24")
+ *                 .vmwareEngineNetwork(cluster_nw.id())
+ *                 .build())
+ *             .managementCluster(PrivateCloudManagementClusterArgs.builder()
+ *                 .clusterId("sample-mgmt-cluster")
+ *                 .nodeTypeConfigs(PrivateCloudManagementClusterNodeTypeConfigArgs.builder()
+ *                     .nodeTypeId("standard-72")
+ *                     .nodeCount(3)
+ *                     .customCoreCount(32)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         // Update service subnet
+ *         //###  Service subnet is used by nfs datastore mounts
+ *         //### ip_cidr_range configured on subnet must also be allowed in filestore instance's 'nfs_export_options'
+ *         var cluster_pc_subnet = new Subnet("cluster-pc-subnet", SubnetArgs.builder()
+ *             .name("service-1")
+ *             .parent(cluster_pc.id())
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .build());
+ * 
+ *         // Read network peering
+ *         //### This peering is created by filestore instance
+ *         final var snPeering = ComputeFunctions.getNetworkPeering(GetNetworkPeeringArgs.builder()
+ *             .name("servicenetworking-googleapis-com")
+ *             .network(fsNetwork.id())
+ *             .build());
+ * 
+ *         // Create vmware engine network peering
+ *         //## vmware network peering is required for filestore mount on cluster
+ *         var psaNetworkPeering = new NetworkPeering("psaNetworkPeering", NetworkPeeringArgs.builder()
+ *             .name("tf-test-psa-network-peering")
+ *             .description("test description")
+ *             .vmwareEngineNetwork(cluster_nw.id())
+ *             .peerNetwork(StdFunctions.trimprefix(TrimprefixArgs.builder()
+ *                 .input(snPeering.peerNetwork())
+ *                 .prefix("https://www.googleapis.com/compute/v1")
+ *                 .build()).result())
+ *             .peerNetworkType("PRIVATE_SERVICES_ACCESS")
+ *             .build());
+ * 
+ *         var testFsDatastore = new Datastore("testFsDatastore", DatastoreArgs.builder()
+ *             .name("ext-fs-datastore")
+ *             .location("")
+ *             .description("test description")
+ *             .nfsDatastore(DatastoreNfsDatastoreArgs.builder()
+ *                 .googleFileService(DatastoreNfsDatastoreGoogleFileServiceArgs.builder()
+ *                     .filestoreInstance(testInstance.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var vmw_ext_cluster = new Cluster("vmw-ext-cluster", ClusterArgs.builder()
+ *             .name("ext-cluster")
+ *             .parent(cluster_pc.id())
+ *             .nodeTypeConfigs(ClusterNodeTypeConfigArgs.builder()
+ *                 .nodeTypeId("standard-72")
+ *                 .nodeCount(3)
+ *                 .build())
+ *             .datastoreMountConfigs(ClusterDatastoreMountConfigArgs.builder()
+ *                 .datastore(testFsDatastore.id())
+ *                 .datastoreNetwork(ClusterDatastoreMountConfigDatastoreNetworkArgs.builder()
+ *                     .subnet(cluster_pc_subnet.id())
+ *                     .connectionCount(4)
+ *                     .mtu(1500)
+ *                     .build())
+ *                 .nfsVersion("NFS_V3")
+ *                 .accessMode("READ_WRITE")
+ *                 .ignoreColocation(false)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(psaNetworkPeering)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Vmware Engine Cluster Nfs Datastore Netapp
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+ * import com.pulumi.gcp.vmwareengine.Network;
+ * import com.pulumi.gcp.vmwareengine.NetworkArgs;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
+ * import com.pulumi.gcp.vmwareengine.NetworkPeering;
+ * import com.pulumi.gcp.vmwareengine.NetworkPeeringArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.TrimprefixArgs;
+ * import com.pulumi.gcp.vmwareengine.PrivateCloud;
+ * import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
+ * import com.pulumi.gcp.vmwareengine.Subnet;
+ * import com.pulumi.gcp.vmwareengine.SubnetArgs;
+ * import com.pulumi.gcp.netapp.StoragePool;
+ * import com.pulumi.gcp.netapp.StoragePoolArgs;
+ * import com.pulumi.gcp.netapp.Volume;
+ * import com.pulumi.gcp.netapp.VolumeArgs;
+ * import com.pulumi.gcp.netapp.inputs.VolumeExportPolicyArgs;
+ * import com.pulumi.gcp.vmwareengine.Datastore;
+ * import com.pulumi.gcp.vmwareengine.DatastoreArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.DatastoreNfsDatastoreArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.DatastoreNfsDatastoreGoogleFileServiceArgs;
+ * import com.pulumi.gcp.vmwareengine.Cluster;
+ * import com.pulumi.gcp.vmwareengine.ClusterArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.ClusterNodeTypeConfigArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.ClusterDatastoreMountConfigArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.ClusterDatastoreMountConfigDatastoreNetworkArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Use this network for netapp volume
+ *         final var npNetwork = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("netapp_nw")
+ *             .build());
+ * 
+ *         var cluster_nw = new Network("cluster-nw", NetworkArgs.builder()
+ *             .name("pc-nw")
+ *             .type("STANDARD")
+ *             .location("global")
+ *             .description("PC network description.")
+ *             .build());
+ * 
+ *         // Read network peering
+ *         //### This peering is created by netapp volume
+ *         final var snPeering = ComputeFunctions.getNetworkPeering(GetNetworkPeeringArgs.builder()
+ *             .name("sn-netapp-prod")
+ *             .network(npNetwork.id())
+ *             .build());
+ * 
+ *         // Create vmware engine network peering
+ *         //### vmware network peering is required for netapp mount on cluster
+ *         var gcnvNetworkPeering = new NetworkPeering("gcnvNetworkPeering", NetworkPeeringArgs.builder()
+ *             .name("tf-test-gcnv-network-peering")
+ *             .description("test description")
+ *             .vmwareEngineNetwork(cluster_nw.id())
+ *             .peerNetwork(StdFunctions.trimprefix(TrimprefixArgs.builder()
+ *                 .input(snPeering.peerNetwork())
+ *                 .prefix("https://www.googleapis.com/compute/v1")
+ *                 .build()).result())
+ *             .peerNetworkType("GOOGLE_CLOUD_NETAPP_VOLUMES")
+ *             .build());
+ * 
+ *         var cluster_pc = new PrivateCloud("cluster-pc", PrivateCloudArgs.builder()
+ *             .location("")
+ *             .name("sample-pc")
+ *             .description("Sample test PC.")
+ *             .networkConfig(PrivateCloudNetworkConfigArgs.builder()
+ *                 .managementCidr("192.168.30.0/24")
+ *                 .vmwareEngineNetwork(cluster_nw.id())
+ *                 .build())
+ *             .managementCluster(PrivateCloudManagementClusterArgs.builder()
+ *                 .clusterId("sample-mgmt-cluster")
+ *                 .nodeTypeConfigs(PrivateCloudManagementClusterNodeTypeConfigArgs.builder()
+ *                     .nodeTypeId("standard-72")
+ *                     .nodeCount(3)
+ *                     .customCoreCount(32)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         // Update service subnet
+ *         //###  Service subnet is used by nfs datastore mounts
+ *         //### ip_cidr_range configured on subnet must also be allowed in in netapp volumes's 'export_policy'
+ *         var cluster_pc_subnet = new Subnet("cluster-pc-subnet", SubnetArgs.builder()
+ *             .name("service-1")
+ *             .parent(cluster_pc.id())
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .build());
+ * 
+ *         var default_ = new StoragePool("default", StoragePoolArgs.builder()
+ *             .name("tf-test-test-pool")
+ *             .location("us-west1")
+ *             .serviceLevel("PREMIUM")
+ *             .capacityGib("2048")
+ *             .network(npNetwork.id())
+ *             .build());
+ * 
+ *         // Create a netapp volume with delete protection enabled
+ *         //## Use ip range of private cloud service subnet in the 'export_policy'
+ *         var testVolume = new Volume("testVolume", VolumeArgs.builder()
+ *             .location("us-west1")
+ *             .name("tf-test-test-volume")
+ *             .capacityGib("100")
+ *             .shareName("tf-test-test-volume")
+ *             .storagePool(default_.name())
+ *             .protocols("NFSV3")
+ *             .exportPolicy(VolumeExportPolicyArgs.builder()
+ *                 .rules(VolumeExportPolicyRuleArgs.builder()
+ *                     .accessType("READ_WRITE")
+ *                     .allowedClients("10.0.0.0/24")
+ *                     .hasRootAccess("true")
+ *                     .kerberos5ReadOnly(false)
+ *                     .kerberos5ReadWrite(false)
+ *                     .kerberos5iReadOnly(false)
+ *                     .kerberos5iReadWrite(false)
+ *                     .kerberos5pReadOnly(false)
+ *                     .kerberos5pReadWrite(false)
+ *                     .nfsv3(true)
+ *                     .nfsv4(false)
+ *                     .build())
+ *                 .build())
+ *             .restrictedActions("DELETE")
+ *             .build());
+ * 
+ *         var testFsDatastore = new Datastore("testFsDatastore", DatastoreArgs.builder()
+ *             .name("ext-fs-datastore")
+ *             .location("us-west1")
+ *             .description("example google_file_service.netapp datastore.")
+ *             .nfsDatastore(DatastoreNfsDatastoreArgs.builder()
+ *                 .googleFileService(DatastoreNfsDatastoreGoogleFileServiceArgs.builder()
+ *                     .netappVolume(testVolume.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var vmw_ext_cluster = new Cluster("vmw-ext-cluster", ClusterArgs.builder()
+ *             .name("ext-cluster")
+ *             .parent(cluster_pc.id())
+ *             .nodeTypeConfigs(ClusterNodeTypeConfigArgs.builder()
+ *                 .nodeTypeId("standard-72")
+ *                 .nodeCount(3)
+ *                 .build())
+ *             .datastoreMountConfigs(ClusterDatastoreMountConfigArgs.builder()
+ *                 .datastore(testFsDatastore.id())
+ *                 .datastoreNetwork(ClusterDatastoreMountConfigDatastoreNetworkArgs.builder()
+ *                     .subnet(cluster_pc_subnet.id())
+ *                     .connectionCount(4)
+ *                     .mtu(1500)
+ *                     .build())
+ *                 .nfsVersion("NFS_V3")
+ *                 .accessMode("READ_WRITE")
+ *                 .ignoreColocation(true)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(gcnvNetworkPeering)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -237,6 +589,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Optional. Configuration to mount a datastore.
+     * Mount can be done along with cluster create or during cluster update
+     * Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+     * for unmount remove &#39;datastore_mount_config&#39; config from the update of cluster resource
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="datastoreMountConfigs", refs={List.class,ClusterDatastoreMountConfig.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ClusterDatastoreMountConfig>> datastoreMountConfigs;
+
+    /**
+     * @return Optional. Configuration to mount a datastore.
+     * Mount can be done along with cluster create or during cluster update
+     * Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+     * for unmount remove &#39;datastore_mount_config&#39; config from the update of cluster resource
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<ClusterDatastoreMountConfig>>> datastoreMountConfigs() {
+        return Codegen.optional(this.datastoreMountConfigs);
     }
     /**
      * True if the cluster is a management cluster; false otherwise.

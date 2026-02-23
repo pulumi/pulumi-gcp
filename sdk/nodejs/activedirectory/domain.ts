@@ -34,22 +34,14 @@ import * as utilities from "../utilities";
  * Domain can be imported using any of these accepted formats:
  *
  * * `{{project}}/{{name}}`
- *
  * * `{{project}} {{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, Domain can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:activedirectory/domain:Domain default {{project}}/{{name}}
- * ```
- *
- * ```sh
- * $ pulumi import gcp:activedirectory/domain:Domain default "{{project}} {{name}}"
- * ```
- *
- * ```sh
+ * $ terraform import google_active_directory_domain.default "{{project}} {{name}}"
  * $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
  * ```
  */
@@ -91,6 +83,14 @@ export class Domain extends pulumi.CustomResource {
      * If CIDR subnets overlap between networks, domain creation will fail.
      */
     declare public readonly authorizedNetworks: pulumi.Output<string[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the domain. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the domain,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the domain will fail.
+     * When the field is set to false, deleting the domain is allowed.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
@@ -128,7 +128,7 @@ export class Domain extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -207,6 +207,14 @@ export interface DomainState {
      * If CIDR subnets overlap between networks, domain creation will fail.
      */
     authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether Terraform will be prevented from destroying the domain. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the domain,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the domain will fail.
+     * When the field is set to false, deleting the domain is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
@@ -244,7 +252,7 @@ export interface DomainState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -268,6 +276,14 @@ export interface DomainArgs {
      * If CIDR subnets overlap between networks, domain creation will fail.
      */
     authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether Terraform will be prevented from destroying the domain. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the domain,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the domain will fail.
+     * When the field is set to false, deleting the domain is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions

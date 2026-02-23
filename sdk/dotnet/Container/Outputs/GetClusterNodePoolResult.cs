@@ -77,6 +77,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of MaxSurge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolUpgradeSettingResult> UpgradeSettings;
+        /// <summary>
+        /// The Kubernetes version for the nodes in this pool. Note that if this field and AutoUpgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the gcp.container.getEngineVersions data source's VersionPrefix field to approximate fuzzy versions in a Terraform-compatible way.
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

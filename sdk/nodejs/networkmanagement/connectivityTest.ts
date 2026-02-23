@@ -154,22 +154,14 @@ import * as utilities from "../utilities";
  * ConnectivityTest can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/global/connectivityTests/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, ConnectivityTest can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default projects/{{project}}/locations/global/connectivityTests/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{name}}
  * ```
  */
@@ -246,7 +238,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
     declare public readonly protocol: pulumi.Output<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -373,7 +365,7 @@ export interface ConnectivityTestState {
     protocol?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

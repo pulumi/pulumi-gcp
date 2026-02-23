@@ -37,19 +37,14 @@ __all__ = [
     'RepositoryUriArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class HookPushOptionArgsDict(TypedDict):
-        branch_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Trigger hook for matching branches only.
-        Specified as glob pattern. If empty or *, events for all branches are
-        reported. Examples: main, {main,release*}.
-        See https://pkg.go.dev/github.com/gobwas/glob documentation.
-        """
-elif False:
-    HookPushOptionArgsDict: TypeAlias = Mapping[str, Any]
+class HookPushOptionArgsDict(TypedDict):
+    branch_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Trigger hook for matching branches only.
+    Specified as glob pattern. If empty or *, events for all branches are
+    reported. Examples: main, {main,release*}.
+    See https://pkg.go.dev/github.com/gobwas/glob documentation.
+    """
 
 @pulumi.input_type
 class HookPushOptionArgs:
@@ -80,30 +75,27 @@ class HookPushOptionArgs:
         pulumi.set(self, "branch_filter", value)
 
 
-if not MYPY:
-    class InstanceHostConfigArgsDict(TypedDict):
-        api: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        API hostname.
-        """
-        git_http: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Git HTTP hostname.
-        """
-        git_ssh: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Git SSH hostname.
-        """
-        html: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        HTML hostname.
-        """
-elif False:
-    InstanceHostConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceHostConfigArgsDict(TypedDict):
+    api: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    API hostname.
+    """
+    git_http: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Git HTTP hostname.
+    """
+    git_ssh: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Git SSH hostname.
+    """
+    html: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    HTML hostname.
+    """
 
 @pulumi.input_type
 class InstanceHostConfigArgs:
@@ -184,13 +176,10 @@ class InstanceHostConfigArgs:
         pulumi.set(self, "html", value)
 
 
-if not MYPY:
-    class InstanceIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    InstanceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class InstanceIamBindingConditionArgs:
@@ -231,13 +220,10 @@ class InstanceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class InstanceIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    InstanceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class InstanceIamMemberConditionArgs:
@@ -278,28 +264,25 @@ class InstanceIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class InstancePrivateConfigArgsDict(TypedDict):
-        is_private: pulumi.Input[_builtins.bool]
-        """
-        'Indicate if it's private instance.'
-        """
-        ca_pool: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
-        """
-        http_service_attachment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
-        """
-        ssh_service_attachment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
-        """
-elif False:
-    InstancePrivateConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePrivateConfigArgsDict(TypedDict):
+    is_private: pulumi.Input[_builtins.bool]
+    """
+    'Indicate if it's private instance.'
+    """
+    ca_pool: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+    """
+    http_service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+    """
+    ssh_service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+    """
 
 @pulumi.input_type
 class InstancePrivateConfigArgs:
@@ -375,14 +358,11 @@ class InstancePrivateConfigArgs:
         pulumi.set(self, "ssh_service_attachment", value)
 
 
-if not MYPY:
-    class InstanceWorkforceIdentityFederationConfigArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        'Whether Workforce Identity Federation is enabled.'
-        """
-elif False:
-    InstanceWorkforceIdentityFederationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceWorkforceIdentityFederationConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    'Whether Workforce Identity Federation is enabled.'
+    """
 
 @pulumi.input_type
 class InstanceWorkforceIdentityFederationConfigArgs:
@@ -406,13 +386,10 @@ class InstanceWorkforceIdentityFederationConfigArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class RepositoryIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RepositoryIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RepositoryIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RepositoryIamBindingConditionArgs:
@@ -453,13 +430,10 @@ class RepositoryIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RepositoryIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RepositoryIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RepositoryIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RepositoryIamMemberConditionArgs:
@@ -500,29 +474,26 @@ class RepositoryIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RepositoryInitialConfigArgsDict(TypedDict):
-        default_branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default branch name of the repository.
-        """
-        gitignores: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of gitignore template names user can choose from.
-        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
-        """
-        license: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        License template name user can choose from.
-        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
-        """
-        readme: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        README template name.
-        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
-        """
-elif False:
-    RepositoryInitialConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RepositoryInitialConfigArgsDict(TypedDict):
+    default_branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default branch name of the repository.
+    """
+    gitignores: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of gitignore template names user can choose from.
+    Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+    """
+    license: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    License template name user can choose from.
+    Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+    """
+    readme: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    README template name.
+    Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+    """
 
 @pulumi.input_type
 class RepositoryInitialConfigArgs:
@@ -601,25 +572,22 @@ class RepositoryInitialConfigArgs:
         pulumi.set(self, "readme", value)
 
 
-if not MYPY:
-    class RepositoryUriArgsDict(TypedDict):
-        api: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        API is the URI for API access.
-        """
-        git_https: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        git_https is the git HTTPS URI for git operations.
-        """
-        html: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        HTML is the URI for the user to view the repository in a browser.
-        """
-elif False:
-    RepositoryUriArgsDict: TypeAlias = Mapping[str, Any]
+class RepositoryUriArgsDict(TypedDict):
+    api: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    API is the URI for API access.
+    """
+    git_https: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    git_https is the git HTTPS URI for git operations.
+    """
+    html: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    HTML is the URI for the user to view the repository in a browser.
+    """
 
 @pulumi.input_type
 class RepositoryUriArgs:

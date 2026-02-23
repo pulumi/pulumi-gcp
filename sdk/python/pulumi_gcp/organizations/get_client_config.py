@@ -108,6 +108,11 @@ class AwaitableGetClientConfigResult(GetClientConfigResult):
 
 def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientConfigResult:
     """
+    Use this data source to access the configuration of the Google Cloud provider.
+
+    > **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+    Please take appropriate measures to protect your remote state.
+
     ## Example Usage
 
     ```python
@@ -133,6 +138,11 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
         zone=pulumi.get(__ret__, 'zone'))
 def get_client_config_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientConfigResult]:
     """
+    Use this data source to access the configuration of the Google Cloud provider.
+
+    > **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+    Please take appropriate measures to protect your remote state.
+
     ## Example Usage
 
     ```python

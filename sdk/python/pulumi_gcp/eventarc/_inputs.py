@@ -75,18 +75,13 @@ __all__ = [
     'TriggerTransportPubsubArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class GoogleApiSourceLoggingConfigArgsDict(TypedDict):
-        log_severity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The minimum severity of logs that will be sent to Stackdriver/Platform
-        Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
-        Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
-        """
-elif False:
-    GoogleApiSourceLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class GoogleApiSourceLoggingConfigArgsDict(TypedDict):
+    log_severity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum severity of logs that will be sent to Stackdriver/Platform
+    Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+    Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+    """
 
 @pulumi.input_type
 class GoogleApiSourceLoggingConfigArgs:
@@ -115,16 +110,13 @@ class GoogleApiSourceLoggingConfigArgs:
         pulumi.set(self, "log_severity", value)
 
 
-if not MYPY:
-    class MessageBusLoggingConfigArgsDict(TypedDict):
-        log_severity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
-        Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
-        Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
-        """
-elif False:
-    MessageBusLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class MessageBusLoggingConfigArgsDict(TypedDict):
+    log_severity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
+    Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+    Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+    """
 
 @pulumi.input_type
 class MessageBusLoggingConfigArgs:
@@ -153,51 +145,48 @@ class MessageBusLoggingConfigArgs:
         pulumi.set(self, "log_severity", value)
 
 
-if not MYPY:
-    class PipelineDestinationArgsDict(TypedDict):
-        authentication_config: NotRequired[pulumi.Input['PipelineDestinationAuthenticationConfigArgsDict']]
-        """
-        Represents a config used to authenticate message requests.
-        Structure is documented below.
-        """
-        http_endpoint: NotRequired[pulumi.Input['PipelineDestinationHttpEndpointArgsDict']]
-        """
-        Represents a HTTP endpoint destination.
-        Structure is documented below.
-        """
-        message_bus: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource name of the Message Bus to which events should be
-        published. The Message Bus resource should exist in the same project as
-        the Pipeline. Format:
-        `projects/{project}/locations/{location}/messageBuses/{message_bus}`
-        """
-        network_config: NotRequired[pulumi.Input['PipelineDestinationNetworkConfigArgsDict']]
-        """
-        Represents a network config to be used for destination resolution and
-        connectivity.
-        Structure is documented below.
-        """
-        output_payload_format: NotRequired[pulumi.Input['PipelineDestinationOutputPayloadFormatArgsDict']]
-        """
-        Represents the format of message data.
-        Structure is documented below.
-        """
-        topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource name of the Pub/Sub topic to which events should be
-        published. Format:
-        `projects/{project}/locations/{location}/topics/{topic}`
-        """
-        workflow: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource name of the Workflow whose Executions are triggered by
-        the events. The Workflow resource should be deployed in the same
-        project as the Pipeline. Format:
-        `projects/{project}/locations/{location}/workflows/{workflow}`
-        """
-elif False:
-    PipelineDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineDestinationArgsDict(TypedDict):
+    authentication_config: NotRequired[pulumi.Input['PipelineDestinationAuthenticationConfigArgsDict']]
+    """
+    Represents a config used to authenticate message requests.
+    Structure is documented below.
+    """
+    http_endpoint: NotRequired[pulumi.Input['PipelineDestinationHttpEndpointArgsDict']]
+    """
+    Represents a HTTP endpoint destination.
+    Structure is documented below.
+    """
+    message_bus: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource name of the Message Bus to which events should be
+    published. The Message Bus resource should exist in the same project as
+    the Pipeline. Format:
+    `projects/{project}/locations/{location}/messageBuses/{message_bus}`
+    """
+    network_config: NotRequired[pulumi.Input['PipelineDestinationNetworkConfigArgsDict']]
+    """
+    Represents a network config to be used for destination resolution and
+    connectivity.
+    Structure is documented below.
+    """
+    output_payload_format: NotRequired[pulumi.Input['PipelineDestinationOutputPayloadFormatArgsDict']]
+    """
+    Represents the format of message data.
+    Structure is documented below.
+    """
+    topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource name of the Pub/Sub topic to which events should be
+    published. Format:
+    `projects/{project}/locations/{location}/topics/{topic}`
+    """
+    workflow: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource name of the Workflow whose Executions are triggered by
+    the events. The Workflow resource should be deployed in the same
+    project as the Pipeline. Format:
+    `projects/{project}/locations/{location}/workflows/{workflow}`
+    """
 
 @pulumi.input_type
 class PipelineDestinationArgs:
@@ -344,26 +333,23 @@ class PipelineDestinationArgs:
         pulumi.set(self, "workflow", value)
 
 
-if not MYPY:
-    class PipelineDestinationAuthenticationConfigArgsDict(TypedDict):
-        google_oidc: NotRequired[pulumi.Input['PipelineDestinationAuthenticationConfigGoogleOidcArgsDict']]
-        """
-        Represents a config used to authenticate with a Google OIDC token using
-        a GCP service account. Use this authentication method to invoke your
-        Cloud Run and Cloud Functions destinations or HTTP endpoints that
-        support Google OIDC.
-        Structure is documented below.
-        """
-        oauth_token: NotRequired[pulumi.Input['PipelineDestinationAuthenticationConfigOauthTokenArgsDict']]
-        """
-        Contains information needed for generating an
-        [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
-        This type of authorization should generally only be used when calling
-        Google APIs hosted on *.googleapis.com.
-        Structure is documented below.
-        """
-elif False:
-    PipelineDestinationAuthenticationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineDestinationAuthenticationConfigArgsDict(TypedDict):
+    google_oidc: NotRequired[pulumi.Input['PipelineDestinationAuthenticationConfigGoogleOidcArgsDict']]
+    """
+    Represents a config used to authenticate with a Google OIDC token using
+    a GCP service account. Use this authentication method to invoke your
+    Cloud Run and Cloud Functions destinations or HTTP endpoints that
+    support Google OIDC.
+    Structure is documented below.
+    """
+    oauth_token: NotRequired[pulumi.Input['PipelineDestinationAuthenticationConfigOauthTokenArgsDict']]
+    """
+    Contains information needed for generating an
+    [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+    This type of authorization should generally only be used when calling
+    Google APIs hosted on *.googleapis.com.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PipelineDestinationAuthenticationConfigArgs:
@@ -420,26 +406,23 @@ class PipelineDestinationAuthenticationConfigArgs:
         pulumi.set(self, "oauth_token", value)
 
 
-if not MYPY:
-    class PipelineDestinationAuthenticationConfigGoogleOidcArgsDict(TypedDict):
-        service_account: pulumi.Input[_builtins.str]
-        """
-        Service account email used to generate the OIDC Token.
-        The principal who calls this API must have
-        iam.serviceAccounts.actAs permission in the service account. See
-        https://cloud.google.com/iam/docs/understanding-service-accounts
-        for more information. Eventarc service agents must have
-        roles/roles/iam.serviceAccountTokenCreator role to allow the
-        Pipeline to create OpenID tokens for authenticated requests.
-        """
-        audience: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Audience to be used to generate the OIDC Token. The audience claim
-        identifies the recipient that the JWT is intended for. If
-        unspecified, the destination URI will be used.
-        """
-elif False:
-    PipelineDestinationAuthenticationConfigGoogleOidcArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineDestinationAuthenticationConfigGoogleOidcArgsDict(TypedDict):
+    service_account: pulumi.Input[_builtins.str]
+    """
+    Service account email used to generate the OIDC Token.
+    The principal who calls this API must have
+    iam.serviceAccounts.actAs permission in the service account. See
+    https://cloud.google.com/iam/docs/understanding-service-accounts
+    for more information. Eventarc service agents must have
+    roles/roles/iam.serviceAccountTokenCreator role to allow the
+    Pipeline to create OpenID tokens for authenticated requests.
+    """
+    audience: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Audience to be used to generate the OIDC Token. The audience claim
+    identifies the recipient that the JWT is intended for. If
+    unspecified, the destination URI will be used.
+    """
 
 @pulumi.input_type
 class PipelineDestinationAuthenticationConfigGoogleOidcArgs:
@@ -495,27 +478,24 @@ class PipelineDestinationAuthenticationConfigGoogleOidcArgs:
         pulumi.set(self, "audience", value)
 
 
-if not MYPY:
-    class PipelineDestinationAuthenticationConfigOauthTokenArgsDict(TypedDict):
-        service_account: pulumi.Input[_builtins.str]
-        """
-        Service account email used to generate the [OAuth
-        token](https://developers.google.com/identity/protocols/OAuth2).
-        The principal who calls this API must have
-        iam.serviceAccounts.actAs permission in the service account. See
-        https://cloud.google.com/iam/docs/understanding-service-accounts
-        for more information. Eventarc service agents must have
-        roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline
-        to create OAuth2 tokens for authenticated requests.
-        """
-        scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OAuth scope to be used for generating OAuth access token. If not
-        specified, "https://www.googleapis.com/auth/cloud-platform" will be
-        used.
-        """
-elif False:
-    PipelineDestinationAuthenticationConfigOauthTokenArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineDestinationAuthenticationConfigOauthTokenArgsDict(TypedDict):
+    service_account: pulumi.Input[_builtins.str]
+    """
+    Service account email used to generate the [OAuth
+    token](https://developers.google.com/identity/protocols/OAuth2).
+    The principal who calls this API must have
+    iam.serviceAccounts.actAs permission in the service account. See
+    https://cloud.google.com/iam/docs/understanding-service-accounts
+    for more information. Eventarc service agents must have
+    roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline
+    to create OAuth2 tokens for authenticated requests.
+    """
+    scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OAuth scope to be used for generating OAuth access token. If not
+    specified, "https://www.googleapis.com/auth/cloud-platform" will be
+    used.
+    """
 
 @pulumi.input_type
 class PipelineDestinationAuthenticationConfigOauthTokenArgs:
@@ -573,178 +553,175 @@ class PipelineDestinationAuthenticationConfigOauthTokenArgs:
         pulumi.set(self, "scope", value)
 
 
-if not MYPY:
-    class PipelineDestinationHttpEndpointArgsDict(TypedDict):
-        uri: pulumi.Input[_builtins.str]
-        """
-        The URI of the HTTP enpdoint.
-        The value must be a RFC2396 URI string.
-        Examples: `https://svc.us-central1.p.local:8080/route`.
-        Only the HTTPS protocol is supported.
-        """
-        message_binding_template: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CEL expression used to modify how the destination-bound HTTP
-        request is constructed.
-        If a binding expression is not specified here, the message
-        is treated as a CloudEvent and is mapped to the HTTP request according
-        to the CloudEvent HTTP Protocol Binding Binary Content Mode
-        (https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md#31-binary-content-mode).
-        In this representation, all fields except the `data` and
-        `datacontenttype` field on the message are mapped to HTTP request
-        headers with a prefix of `ce-`.
-        To construct the HTTP request payload and the value of the content-type
-        HTTP header, the payload format is defined as follows:
-        1) Use the output_payload_format_type on the Pipeline.Destination if it
-        is set, else:
-        2) Use the input_payload_format_type on the Pipeline if it is set,
-        else:
-        3) Treat the payload as opaque binary data.
-        The `data` field of the message is converted to the payload format or
-        left as-is for case 3) and then attached as the payload of the HTTP
-        request. The `content-type` header on the HTTP request is set to the
-        payload format type or left empty for case 3). However, if a mediation
-        has updated the `datacontenttype` field on the message so that it is
-        not the same as the payload format type but it is still a prefix of the
-        payload format type, then the `content-type` header on the HTTP request
-        is set to this `datacontenttype` value. For example, if the
-        `datacontenttype` is "application/json" and the payload format type is
-        "application/json; charset=utf-8", then the `content-type` header on
-        the HTTP request is set to "application/json; charset=utf-8".
-        If a non-empty binding expression is specified then this expression is
-        used to modify the default CloudEvent HTTP Protocol Binding Binary
-        Content representation.
-        The result of the CEL expression must be a map of key/value pairs
-        which is used as follows:
-        - If a map named `headers` exists on the result of the expression,
-        then its key/value pairs are directly mapped to the HTTP request
-        headers. The headers values are constructed from the corresponding
-        value type's canonical representation. If the `headers` field doesn't
-        exist then the resulting HTTP request will be the headers of the
-        CloudEvent HTTP Binding Binary Content Mode representation of the final
-        message. Note: If the specified binding expression, has updated the
-        `datacontenttype` field on the message so that it is not the same as
-        the payload format type but it is still a prefix of the payload format
-        type, then the `content-type` header in the `headers` map is set to
-        this `datacontenttype` value.
-        - If a field named `body` exists on the result of the expression then
-        its value is directly mapped to the body of the request. If the value
-        of the `body` field is of type bytes or string then it is used for
-        the HTTP request body as-is, with no conversion. If the body field is
-        of any other type then it is converted to a JSON string. If the body
-        field does not exist then the resulting payload of the HTTP request
-        will be data value of the CloudEvent HTTP Binding Binary Content Mode
-        representation of the final message as described earlier.
-        - Any other fields in the resulting expression will be ignored.
-        The CEL expression may access the incoming CloudEvent message in its
-        definition, as follows:
-        - The `data` field of the incoming CloudEvent message can be accessed
-        using the `message.data` value. Subfields of `message.data` may also be
-        accessed if an input_payload_format has been specified on the Pipeline.
-        - Each attribute of the incoming CloudEvent message can be accessed
-        using the `message.` value, where  is replaced with the
-        name of the attribute.
-        - Existing headers can be accessed in the CEL expression using the
-        `headers` variable. The `headers` variable defines a map of key/value
-        pairs corresponding to the HTTP headers of the CloudEvent HTTP Binding
-        Binary Content Mode representation of the final message as described
-        earlier. For example, the following CEL expression can be used to
-        construct an HTTP request by adding an additional header to the HTTP
-        headers of the CloudEvent HTTP Binding Binary Content Mode
-        representation of the final message and by overwriting the body of the
-        request:
-        ```
-        {
-        "headers": headers.merge({"new-header-key": "new-header-value"}),
-        "body": "new-body"
-        }
-        ```
-        - The default binding for the message payload can be accessed using the
-        `body` variable. It conatins a string representation of the message
-        payload in the format specified by the `output_payload_format` field.
-        If the `input_payload_format` field is not set, the `body`
-        variable contains the same message payload bytes that were published.
-        Additionally, the following CEL extension functions are provided for
-        use in this CEL expression:
-        - toBase64Url:
-        map.toBase64Url() > string
-        - Converts a CelValue to a base64url encoded string
-        - toJsonString: map.toJsonString() > string
-        - Converts a CelValue to a JSON string
-        - merge:
-        map1.merge(map2) > map3
-        - Merges the passed CEL map with the existing CEL map the
-        function is applied to.
-        - If the same key exists in both maps, if the key's value is type
-        map both maps are merged else the value from the passed map is
-        used.
-        - denormalize:
-        map.denormalize() > map
-        - Denormalizes a CEL map such that every value of type map or key
-        in the map is expanded to return a single level map.
-        - The resulting keys are "." separated indices of the map keys.
-        - For example:
-        {
-        "a": 1,
-        "b": {
-        "c": 2,
-        "d": 3
-        }
-        "e": [4, 5]
-        }
-        .denormalize()
-        > {
-        "a": 1,
-        "b.c": 2,
-        "b.d": 3,
-        "e.0": 4,
-        "e.1": 5
-        }
-        - setField:
-        map.setField(key, value) > message
-        - Sets the field of the message with the given key to the
-        given value.
-        - If the field is not present it will be added.
-        - If the field is present it will be overwritten.
-        - The key can be a dot separated path to set a field in a nested
-        message.
-        - Key must be of type string.
-        - Value may be any valid type.
-        - removeFields:
-        map.removeFields([key1, key2, ...]) > message
-        - Removes the fields of the map with the given keys.
-        - The keys can be a dot separated path to remove a field in a
-        nested message.
-        - If a key is not found it will be ignored.
-        - Keys must be of type string.
-        - toMap:
-        [map1, map2, ...].toMap() > map
-        - Converts a CEL list of CEL maps to a single CEL map
-        - toCloudEventJsonWithPayloadFormat:
-        message.toCloudEventJsonWithPayloadFormat() > map
-        - Converts a message to the corresponding structure of JSON
-        format for CloudEvents.
-        - It converts `data` to destination payload format
-        specified in `output_payload_format`. If `output_payload_format` is
-        not set, the data will remain unchanged.
-        - It also sets the corresponding datacontenttype of
-        the CloudEvent, as indicated by
-        `output_payload_format`. If no
-        `output_payload_format` is set it will use the value of the
-        "datacontenttype" attribute on the CloudEvent if present, else
-        remove "datacontenttype" attribute.
-        - This function expects that the content of the message will
-        adhere to the standard CloudEvent format. If it doesn't then this
-        function will fail.
-        - The result is a CEL map that corresponds to the JSON
-        representation of the CloudEvent. To convert that data to a JSON
-        string it can be chained with the toJsonString function.
-        The Pipeline expects that the message it receives adheres to the
-        standard CloudEvent format. If it doesn't then the outgoing message
-        request may fail with a persistent error.
-        """
-elif False:
-    PipelineDestinationHttpEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineDestinationHttpEndpointArgsDict(TypedDict):
+    uri: pulumi.Input[_builtins.str]
+    """
+    The URI of the HTTP enpdoint.
+    The value must be a RFC2396 URI string.
+    Examples: `https://svc.us-central1.p.local:8080/route`.
+    Only the HTTPS protocol is supported.
+    """
+    message_binding_template: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CEL expression used to modify how the destination-bound HTTP
+    request is constructed.
+    If a binding expression is not specified here, the message
+    is treated as a CloudEvent and is mapped to the HTTP request according
+    to the CloudEvent HTTP Protocol Binding Binary Content Mode
+    (https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md#31-binary-content-mode).
+    In this representation, all fields except the `data` and
+    `datacontenttype` field on the message are mapped to HTTP request
+    headers with a prefix of `ce-`.
+    To construct the HTTP request payload and the value of the content-type
+    HTTP header, the payload format is defined as follows:
+    1) Use the output_payload_format_type on the Pipeline.Destination if it
+    is set, else:
+    2) Use the input_payload_format_type on the Pipeline if it is set,
+    else:
+    3) Treat the payload as opaque binary data.
+    The `data` field of the message is converted to the payload format or
+    left as-is for case 3) and then attached as the payload of the HTTP
+    request. The `content-type` header on the HTTP request is set to the
+    payload format type or left empty for case 3). However, if a mediation
+    has updated the `datacontenttype` field on the message so that it is
+    not the same as the payload format type but it is still a prefix of the
+    payload format type, then the `content-type` header on the HTTP request
+    is set to this `datacontenttype` value. For example, if the
+    `datacontenttype` is "application/json" and the payload format type is
+    "application/json; charset=utf-8", then the `content-type` header on
+    the HTTP request is set to "application/json; charset=utf-8".
+    If a non-empty binding expression is specified then this expression is
+    used to modify the default CloudEvent HTTP Protocol Binding Binary
+    Content representation.
+    The result of the CEL expression must be a map of key/value pairs
+    which is used as follows:
+    - If a map named `headers` exists on the result of the expression,
+    then its key/value pairs are directly mapped to the HTTP request
+    headers. The headers values are constructed from the corresponding
+    value type's canonical representation. If the `headers` field doesn't
+    exist then the resulting HTTP request will be the headers of the
+    CloudEvent HTTP Binding Binary Content Mode representation of the final
+    message. Note: If the specified binding expression, has updated the
+    `datacontenttype` field on the message so that it is not the same as
+    the payload format type but it is still a prefix of the payload format
+    type, then the `content-type` header in the `headers` map is set to
+    this `datacontenttype` value.
+    - If a field named `body` exists on the result of the expression then
+    its value is directly mapped to the body of the request. If the value
+    of the `body` field is of type bytes or string then it is used for
+    the HTTP request body as-is, with no conversion. If the body field is
+    of any other type then it is converted to a JSON string. If the body
+    field does not exist then the resulting payload of the HTTP request
+    will be data value of the CloudEvent HTTP Binding Binary Content Mode
+    representation of the final message as described earlier.
+    - Any other fields in the resulting expression will be ignored.
+    The CEL expression may access the incoming CloudEvent message in its
+    definition, as follows:
+    - The `data` field of the incoming CloudEvent message can be accessed
+    using the `message.data` value. Subfields of `message.data` may also be
+    accessed if an input_payload_format has been specified on the Pipeline.
+    - Each attribute of the incoming CloudEvent message can be accessed
+    using the `message.` value, where  is replaced with the
+    name of the attribute.
+    - Existing headers can be accessed in the CEL expression using the
+    `headers` variable. The `headers` variable defines a map of key/value
+    pairs corresponding to the HTTP headers of the CloudEvent HTTP Binding
+    Binary Content Mode representation of the final message as described
+    earlier. For example, the following CEL expression can be used to
+    construct an HTTP request by adding an additional header to the HTTP
+    headers of the CloudEvent HTTP Binding Binary Content Mode
+    representation of the final message and by overwriting the body of the
+    request:
+    ```
+    {
+    "headers": headers.merge({"new-header-key": "new-header-value"}),
+    "body": "new-body"
+    }
+    ```
+    - The default binding for the message payload can be accessed using the
+    `body` variable. It conatins a string representation of the message
+    payload in the format specified by the `output_payload_format` field.
+    If the `input_payload_format` field is not set, the `body`
+    variable contains the same message payload bytes that were published.
+    Additionally, the following CEL extension functions are provided for
+    use in this CEL expression:
+    - toBase64Url:
+    map.toBase64Url() > string
+    - Converts a CelValue to a base64url encoded string
+    - toJsonString: map.toJsonString() > string
+    - Converts a CelValue to a JSON string
+    - merge:
+    map1.merge(map2) > map3
+    - Merges the passed CEL map with the existing CEL map the
+    function is applied to.
+    - If the same key exists in both maps, if the key's value is type
+    map both maps are merged else the value from the passed map is
+    used.
+    - denormalize:
+    map.denormalize() > map
+    - Denormalizes a CEL map such that every value of type map or key
+    in the map is expanded to return a single level map.
+    - The resulting keys are "." separated indices of the map keys.
+    - For example:
+    {
+    "a": 1,
+    "b": {
+    "c": 2,
+    "d": 3
+    }
+    "e": [4, 5]
+    }
+    .denormalize()
+    > {
+    "a": 1,
+    "b.c": 2,
+    "b.d": 3,
+    "e.0": 4,
+    "e.1": 5
+    }
+    - setField:
+    map.setField(key, value) > message
+    - Sets the field of the message with the given key to the
+    given value.
+    - If the field is not present it will be added.
+    - If the field is present it will be overwritten.
+    - The key can be a dot separated path to set a field in a nested
+    message.
+    - Key must be of type string.
+    - Value may be any valid type.
+    - removeFields:
+    map.removeFields([key1, key2, ...]) > message
+    - Removes the fields of the map with the given keys.
+    - The keys can be a dot separated path to remove a field in a
+    nested message.
+    - If a key is not found it will be ignored.
+    - Keys must be of type string.
+    - toMap:
+    [map1, map2, ...].toMap() > map
+    - Converts a CEL list of CEL maps to a single CEL map
+    - toCloudEventJsonWithPayloadFormat:
+    message.toCloudEventJsonWithPayloadFormat() > map
+    - Converts a message to the corresponding structure of JSON
+    format for CloudEvents.
+    - It converts `data` to destination payload format
+    specified in `output_payload_format`. If `output_payload_format` is
+    not set, the data will remain unchanged.
+    - It also sets the corresponding datacontenttype of
+    the CloudEvent, as indicated by
+    `output_payload_format`. If no
+    `output_payload_format` is set it will use the value of the
+    "datacontenttype" attribute on the CloudEvent if present, else
+    remove "datacontenttype" attribute.
+    - This function expects that the content of the message will
+    adhere to the standard CloudEvent format. If it doesn't then this
+    function will fail.
+    - The result is a CEL map that corresponds to the JSON
+    representation of the CloudEvent. To convert that data to a JSON
+    string it can be chained with the toJsonString function.
+    The Pipeline expects that the message it receives adheres to the
+    standard CloudEvent format. If it doesn't then the outgoing message
+    request may fail with a persistent error.
+    """
 
 @pulumi.input_type
 class PipelineDestinationHttpEndpointArgs:
@@ -1104,18 +1081,15 @@ class PipelineDestinationHttpEndpointArgs:
         pulumi.set(self, "message_binding_template", value)
 
 
-if not MYPY:
-    class PipelineDestinationNetworkConfigArgsDict(TypedDict):
-        network_attachment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the NetworkAttachment that allows access to the consumer VPC.
-        Format:
-        `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-        Required for HTTP endpoint destinations. Must not be specified for
-        Workflows, MessageBus, or Topic destinations.
-        """
-elif False:
-    PipelineDestinationNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineDestinationNetworkConfigArgsDict(TypedDict):
+    network_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the NetworkAttachment that allows access to the consumer VPC.
+    Format:
+    `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+    Required for HTTP endpoint destinations. Must not be specified for
+    Workflows, MessageBus, or Topic destinations.
+    """
 
 @pulumi.input_type
 class PipelineDestinationNetworkConfigArgs:
@@ -1148,24 +1122,21 @@ class PipelineDestinationNetworkConfigArgs:
         pulumi.set(self, "network_attachment", value)
 
 
-if not MYPY:
-    class PipelineDestinationOutputPayloadFormatArgsDict(TypedDict):
-        avro: NotRequired[pulumi.Input['PipelineDestinationOutputPayloadFormatAvroArgsDict']]
-        """
-        The format of an AVRO message payload.
-        Structure is documented below.
-        """
-        json: NotRequired[pulumi.Input['PipelineDestinationOutputPayloadFormatJsonArgsDict']]
-        """
-        The format of a JSON message payload.
-        """
-        protobuf: NotRequired[pulumi.Input['PipelineDestinationOutputPayloadFormatProtobufArgsDict']]
-        """
-        The format of a Protobuf message payload.
-        Structure is documented below.
-        """
-elif False:
-    PipelineDestinationOutputPayloadFormatArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineDestinationOutputPayloadFormatArgsDict(TypedDict):
+    avro: NotRequired[pulumi.Input['PipelineDestinationOutputPayloadFormatAvroArgsDict']]
+    """
+    The format of an AVRO message payload.
+    Structure is documented below.
+    """
+    json: NotRequired[pulumi.Input['PipelineDestinationOutputPayloadFormatJsonArgsDict']]
+    """
+    The format of a JSON message payload.
+    """
+    protobuf: NotRequired[pulumi.Input['PipelineDestinationOutputPayloadFormatProtobufArgsDict']]
+    """
+    The format of a Protobuf message payload.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PipelineDestinationOutputPayloadFormatArgs:
@@ -1226,14 +1197,11 @@ class PipelineDestinationOutputPayloadFormatArgs:
         pulumi.set(self, "protobuf", value)
 
 
-if not MYPY:
-    class PipelineDestinationOutputPayloadFormatAvroArgsDict(TypedDict):
-        schema_definition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The entire schema definition is stored in this field.
-        """
-elif False:
-    PipelineDestinationOutputPayloadFormatAvroArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineDestinationOutputPayloadFormatAvroArgsDict(TypedDict):
+    schema_definition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The entire schema definition is stored in this field.
+    """
 
 @pulumi.input_type
 class PipelineDestinationOutputPayloadFormatAvroArgs:
@@ -1258,11 +1226,8 @@ class PipelineDestinationOutputPayloadFormatAvroArgs:
         pulumi.set(self, "schema_definition", value)
 
 
-if not MYPY:
-    class PipelineDestinationOutputPayloadFormatJsonArgsDict(TypedDict):
-        pass
-elif False:
-    PipelineDestinationOutputPayloadFormatJsonArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineDestinationOutputPayloadFormatJsonArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PipelineDestinationOutputPayloadFormatJsonArgs:
@@ -1270,14 +1235,11 @@ class PipelineDestinationOutputPayloadFormatJsonArgs:
         pass
 
 
-if not MYPY:
-    class PipelineDestinationOutputPayloadFormatProtobufArgsDict(TypedDict):
-        schema_definition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The entire schema definition is stored in this field.
-        """
-elif False:
-    PipelineDestinationOutputPayloadFormatProtobufArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineDestinationOutputPayloadFormatProtobufArgsDict(TypedDict):
+    schema_definition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The entire schema definition is stored in this field.
+    """
 
 @pulumi.input_type
 class PipelineDestinationOutputPayloadFormatProtobufArgs:
@@ -1302,24 +1264,21 @@ class PipelineDestinationOutputPayloadFormatProtobufArgs:
         pulumi.set(self, "schema_definition", value)
 
 
-if not MYPY:
-    class PipelineInputPayloadFormatArgsDict(TypedDict):
-        avro: NotRequired[pulumi.Input['PipelineInputPayloadFormatAvroArgsDict']]
-        """
-        The format of an AVRO message payload.
-        Structure is documented below.
-        """
-        json: NotRequired[pulumi.Input['PipelineInputPayloadFormatJsonArgsDict']]
-        """
-        The format of a JSON message payload.
-        """
-        protobuf: NotRequired[pulumi.Input['PipelineInputPayloadFormatProtobufArgsDict']]
-        """
-        The format of a Protobuf message payload.
-        Structure is documented below.
-        """
-elif False:
-    PipelineInputPayloadFormatArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineInputPayloadFormatArgsDict(TypedDict):
+    avro: NotRequired[pulumi.Input['PipelineInputPayloadFormatAvroArgsDict']]
+    """
+    The format of an AVRO message payload.
+    Structure is documented below.
+    """
+    json: NotRequired[pulumi.Input['PipelineInputPayloadFormatJsonArgsDict']]
+    """
+    The format of a JSON message payload.
+    """
+    protobuf: NotRequired[pulumi.Input['PipelineInputPayloadFormatProtobufArgsDict']]
+    """
+    The format of a Protobuf message payload.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PipelineInputPayloadFormatArgs:
@@ -1380,14 +1339,11 @@ class PipelineInputPayloadFormatArgs:
         pulumi.set(self, "protobuf", value)
 
 
-if not MYPY:
-    class PipelineInputPayloadFormatAvroArgsDict(TypedDict):
-        schema_definition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The entire schema definition is stored in this field.
-        """
-elif False:
-    PipelineInputPayloadFormatAvroArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineInputPayloadFormatAvroArgsDict(TypedDict):
+    schema_definition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The entire schema definition is stored in this field.
+    """
 
 @pulumi.input_type
 class PipelineInputPayloadFormatAvroArgs:
@@ -1412,11 +1368,8 @@ class PipelineInputPayloadFormatAvroArgs:
         pulumi.set(self, "schema_definition", value)
 
 
-if not MYPY:
-    class PipelineInputPayloadFormatJsonArgsDict(TypedDict):
-        pass
-elif False:
-    PipelineInputPayloadFormatJsonArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineInputPayloadFormatJsonArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PipelineInputPayloadFormatJsonArgs:
@@ -1424,14 +1377,11 @@ class PipelineInputPayloadFormatJsonArgs:
         pass
 
 
-if not MYPY:
-    class PipelineInputPayloadFormatProtobufArgsDict(TypedDict):
-        schema_definition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The entire schema definition is stored in this field.
-        """
-elif False:
-    PipelineInputPayloadFormatProtobufArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineInputPayloadFormatProtobufArgsDict(TypedDict):
+    schema_definition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The entire schema definition is stored in this field.
+    """
 
 @pulumi.input_type
 class PipelineInputPayloadFormatProtobufArgs:
@@ -1456,16 +1406,13 @@ class PipelineInputPayloadFormatProtobufArgs:
         pulumi.set(self, "schema_definition", value)
 
 
-if not MYPY:
-    class PipelineLoggingConfigArgsDict(TypedDict):
-        log_severity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The minimum severity of logs that will be sent to Stackdriver/Platform
-        Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
-        Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
-        """
-elif False:
-    PipelineLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineLoggingConfigArgsDict(TypedDict):
+    log_severity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum severity of logs that will be sent to Stackdriver/Platform
+    Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+    Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+    """
 
 @pulumi.input_type
 class PipelineLoggingConfigArgs:
@@ -1494,15 +1441,12 @@ class PipelineLoggingConfigArgs:
         pulumi.set(self, "log_severity", value)
 
 
-if not MYPY:
-    class PipelineMediationArgsDict(TypedDict):
-        transformation: NotRequired[pulumi.Input['PipelineMediationTransformationArgsDict']]
-        """
-        Transformation defines the way to transform an incoming message.
-        Structure is documented below.
-        """
-elif False:
-    PipelineMediationArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineMediationArgsDict(TypedDict):
+    transformation: NotRequired[pulumi.Input['PipelineMediationTransformationArgsDict']]
+    """
+    Transformation defines the way to transform an incoming message.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PipelineMediationArgs:
@@ -1529,89 +1473,86 @@ class PipelineMediationArgs:
         pulumi.set(self, "transformation", value)
 
 
-if not MYPY:
-    class PipelineMediationTransformationArgsDict(TypedDict):
-        transformation_template: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CEL expression template to apply to transform messages.
-        The following CEL extension functions are provided for
-        use in this CEL expression:
-        - merge:
-        map1.merge(map2) > map3
-        - Merges the passed CEL map with the existing CEL map the
-        function is applied to.
-        - If the same key exists in both maps, if the key's value is type
-        map both maps are merged else the value from the passed map is
-        used.
-        - denormalize:
-        map.denormalize() > map
-        - Denormalizes a CEL map such that every value of type map or key
-        in the map is expanded to return a single level map.
-        - The resulting keys are "." separated indices of the map keys.
-        - For example:
-        {
-        "a": 1,
-        "b": {
-        "c": 2,
-        "d": 3
-        }
-        "e": [4, 5]
-        }
-        .denormalize()
-        > {
-        "a": 1,
-        "b.c": 2,
-        "b.d": 3,
-        "e.0": 4,
-        "e.1": 5
-        }
-        - setField:
-        map.setField(key, value) > message
-        - Sets the field of the message with the given key to the
-        given value.
-        - If the field is not present it will be added.
-        - If the field is present it will be overwritten.
-        - The key can be a dot separated path to set a field in a nested
-        message.
-        - Key must be of type string.
-        - Value may be any valid type.
-        - removeFields:
-        map.removeFields([key1, key2, ...]) > message
-        - Removes the fields of the map with the given keys.
-        - The keys can be a dot separated path to remove a field in a
-        nested message.
-        - If a key is not found it will be ignored.
-        - Keys must be of type string.
-        - toMap:
-        [map1, map2, ...].toMap() > map
-        - Converts a CEL list of CEL maps to a single CEL map
-        - toDestinationPayloadFormat():
-        message.data.toDestinationPayloadFormat() > string or bytes
-        - Converts the message data to the destination payload format
-        specified in Pipeline.Destination.output_payload_format
-        - This function is meant to be applied to the message.data field.
-        - If the destination payload format is not set, the function will
-        return the message data unchanged.
-        - toCloudEventJsonWithPayloadFormat:
-        message.toCloudEventJsonWithPayloadFormat() > map
-        - Converts a message to the corresponding structure of JSON
-        format for CloudEvents
-        - This function applies toDestinationPayloadFormat() to the
-        message data. It also sets the corresponding datacontenttype of
-        the CloudEvent, as indicated by
-        Pipeline.Destination.output_payload_format. If no
-        output_payload_format is set it will use the existing
-        datacontenttype on the CloudEvent if present, else leave
-        datacontenttype absent.
-        - This function expects that the content of the message will
-        adhere to the standard CloudEvent format. If it doesn't then this
-        function will fail.
-        - The result is a CEL map that corresponds to the JSON
-        representation of the CloudEvent. To convert that data to a JSON
-        string it can be chained with the toJsonString function.
-        """
-elif False:
-    PipelineMediationTransformationArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineMediationTransformationArgsDict(TypedDict):
+    transformation_template: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CEL expression template to apply to transform messages.
+    The following CEL extension functions are provided for
+    use in this CEL expression:
+    - merge:
+    map1.merge(map2) > map3
+    - Merges the passed CEL map with the existing CEL map the
+    function is applied to.
+    - If the same key exists in both maps, if the key's value is type
+    map both maps are merged else the value from the passed map is
+    used.
+    - denormalize:
+    map.denormalize() > map
+    - Denormalizes a CEL map such that every value of type map or key
+    in the map is expanded to return a single level map.
+    - The resulting keys are "." separated indices of the map keys.
+    - For example:
+    {
+    "a": 1,
+    "b": {
+    "c": 2,
+    "d": 3
+    }
+    "e": [4, 5]
+    }
+    .denormalize()
+    > {
+    "a": 1,
+    "b.c": 2,
+    "b.d": 3,
+    "e.0": 4,
+    "e.1": 5
+    }
+    - setField:
+    map.setField(key, value) > message
+    - Sets the field of the message with the given key to the
+    given value.
+    - If the field is not present it will be added.
+    - If the field is present it will be overwritten.
+    - The key can be a dot separated path to set a field in a nested
+    message.
+    - Key must be of type string.
+    - Value may be any valid type.
+    - removeFields:
+    map.removeFields([key1, key2, ...]) > message
+    - Removes the fields of the map with the given keys.
+    - The keys can be a dot separated path to remove a field in a
+    nested message.
+    - If a key is not found it will be ignored.
+    - Keys must be of type string.
+    - toMap:
+    [map1, map2, ...].toMap() > map
+    - Converts a CEL list of CEL maps to a single CEL map
+    - toDestinationPayloadFormat():
+    message.data.toDestinationPayloadFormat() > string or bytes
+    - Converts the message data to the destination payload format
+    specified in Pipeline.Destination.output_payload_format
+    - This function is meant to be applied to the message.data field.
+    - If the destination payload format is not set, the function will
+    return the message data unchanged.
+    - toCloudEventJsonWithPayloadFormat:
+    message.toCloudEventJsonWithPayloadFormat() > map
+    - Converts a message to the corresponding structure of JSON
+    format for CloudEvents
+    - This function applies toDestinationPayloadFormat() to the
+    message data. It also sets the corresponding datacontenttype of
+    the CloudEvent, as indicated by
+    Pipeline.Destination.output_payload_format. If no
+    output_payload_format is set it will use the existing
+    datacontenttype on the CloudEvent if present, else leave
+    datacontenttype absent.
+    - This function expects that the content of the message will
+    adhere to the standard CloudEvent format. If it doesn't then this
+    function will fail.
+    - The result is a CEL map that corresponds to the JSON
+    representation of the CloudEvent. To convert that data to a JSON
+    string it can be chained with the toJsonString function.
+    """
 
 @pulumi.input_type
 class PipelineMediationTransformationArgs:
@@ -1786,28 +1727,25 @@ class PipelineMediationTransformationArgs:
         pulumi.set(self, "transformation_template", value)
 
 
-if not MYPY:
-    class PipelineRetryPolicyArgsDict(TypedDict):
-        max_attempts: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of delivery attempts for any message. The value must
-        be between 1 and 100.
-        The default value for this field is 5.
-        """
-        max_retry_delay: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum amount of seconds to wait between retry attempts. The value
-        must be between 1 and 600.
-        The default value for this field is 60.
-        """
-        min_retry_delay: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The minimum amount of seconds to wait between retry attempts. The value
-        must be between 1 and 600.
-        The default value for this field is 5.
-        """
-elif False:
-    PipelineRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class PipelineRetryPolicyArgsDict(TypedDict):
+    max_attempts: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of delivery attempts for any message. The value must
+    be between 1 and 100.
+    The default value for this field is 5.
+    """
+    max_retry_delay: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum amount of seconds to wait between retry attempts. The value
+    must be between 1 and 600.
+    The default value for this field is 60.
+    """
+    min_retry_delay: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum amount of seconds to wait between retry attempts. The value
+    must be between 1 and 600.
+    The default value for this field is 5.
+    """
 
 @pulumi.input_type
 class PipelineRetryPolicyArgs:
@@ -1876,39 +1814,36 @@ class PipelineRetryPolicyArgs:
         pulumi.set(self, "min_retry_delay", value)
 
 
-if not MYPY:
-    class TriggerDestinationArgsDict(TypedDict):
-        cloud_function: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
-        """
-        cloud_run_service: NotRequired[pulumi.Input['TriggerDestinationCloudRunServiceArgsDict']]
-        """
-        Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
-        Structure is documented below.
-        """
-        gke: NotRequired[pulumi.Input['TriggerDestinationGkeArgsDict']]
-        """
-        A GKE service capable of receiving events. The service should be running in the same project as the trigger.
-        Structure is documented below.
-        """
-        http_endpoint: NotRequired[pulumi.Input['TriggerDestinationHttpEndpointArgsDict']]
-        """
-        An HTTP endpoint destination described by an URI.
-        Structure is documented below.
-        """
-        network_config: NotRequired[pulumi.Input['TriggerDestinationNetworkConfigArgsDict']]
-        """
-        Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
-        Structure is documented below.
-        """
-        workflow: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
-        """
-elif False:
-    TriggerDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class TriggerDestinationArgsDict(TypedDict):
+    cloud_function: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+    """
+    cloud_run_service: NotRequired[pulumi.Input['TriggerDestinationCloudRunServiceArgsDict']]
+    """
+    Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+    Structure is documented below.
+    """
+    gke: NotRequired[pulumi.Input['TriggerDestinationGkeArgsDict']]
+    """
+    A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+    Structure is documented below.
+    """
+    http_endpoint: NotRequired[pulumi.Input['TriggerDestinationHttpEndpointArgsDict']]
+    """
+    An HTTP endpoint destination described by an URI.
+    Structure is documented below.
+    """
+    network_config: NotRequired[pulumi.Input['TriggerDestinationNetworkConfigArgsDict']]
+    """
+    Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+    Structure is documented below.
+    """
+    workflow: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+    """
 
 @pulumi.input_type
 class TriggerDestinationArgs:
@@ -2023,22 +1958,19 @@ class TriggerDestinationArgs:
         pulumi.set(self, "workflow", value)
 
 
-if not MYPY:
-    class TriggerDestinationCloudRunServiceArgsDict(TypedDict):
-        service: pulumi.Input[_builtins.str]
-        """
-        Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. The region the Cloud Run service is deployed in.
-        """
-elif False:
-    TriggerDestinationCloudRunServiceArgsDict: TypeAlias = Mapping[str, Any]
+class TriggerDestinationCloudRunServiceArgsDict(TypedDict):
+    service: pulumi.Input[_builtins.str]
+    """
+    Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. The region the Cloud Run service is deployed in.
+    """
 
 @pulumi.input_type
 class TriggerDestinationCloudRunServiceArgs:
@@ -2094,30 +2026,27 @@ class TriggerDestinationCloudRunServiceArgs:
         pulumi.set(self, "region", value)
 
 
-if not MYPY:
-    class TriggerDestinationGkeArgsDict(TypedDict):
-        cluster: pulumi.Input[_builtins.str]
-        """
-        Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
-        """
-        location: pulumi.Input[_builtins.str]
-        """
-        Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
-        """
-        namespace: pulumi.Input[_builtins.str]
-        """
-        Required. The namespace the GKE service is running in.
-        """
-        service: pulumi.Input[_builtins.str]
-        """
-        Required. Name of the GKE service.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
-        """
-elif False:
-    TriggerDestinationGkeArgsDict: TypeAlias = Mapping[str, Any]
+class TriggerDestinationGkeArgsDict(TypedDict):
+    cluster: pulumi.Input[_builtins.str]
+    """
+    Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
+    """
+    location: pulumi.Input[_builtins.str]
+    """
+    Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+    """
+    namespace: pulumi.Input[_builtins.str]
+    """
+    Required. The namespace the GKE service is running in.
+    """
+    service: pulumi.Input[_builtins.str]
+    """
+    Required. Name of the GKE service.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+    """
 
 @pulumi.input_type
 class TriggerDestinationGkeArgs:
@@ -2202,14 +2131,11 @@ class TriggerDestinationGkeArgs:
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class TriggerDestinationHttpEndpointArgsDict(TypedDict):
-        uri: pulumi.Input[_builtins.str]
-        """
-        Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
-        """
-elif False:
-    TriggerDestinationHttpEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class TriggerDestinationHttpEndpointArgsDict(TypedDict):
+    uri: pulumi.Input[_builtins.str]
+    """
+    Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+    """
 
 @pulumi.input_type
 class TriggerDestinationHttpEndpointArgs:
@@ -2233,14 +2159,11 @@ class TriggerDestinationHttpEndpointArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class TriggerDestinationNetworkConfigArgsDict(TypedDict):
-        network_attachment: pulumi.Input[_builtins.str]
-        """
-        Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-        """
-elif False:
-    TriggerDestinationNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+class TriggerDestinationNetworkConfigArgsDict(TypedDict):
+    network_attachment: pulumi.Input[_builtins.str]
+    """
+    Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+    """
 
 @pulumi.input_type
 class TriggerDestinationNetworkConfigArgs:
@@ -2264,22 +2187,19 @@ class TriggerDestinationNetworkConfigArgs:
         pulumi.set(self, "network_attachment", value)
 
 
-if not MYPY:
-    class TriggerMatchingCriteriaArgsDict(TypedDict):
-        attribute: pulumi.Input[_builtins.str]
-        """
-        Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-        """
-        operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
-        """
-elif False:
-    TriggerMatchingCriteriaArgsDict: TypeAlias = Mapping[str, Any]
+class TriggerMatchingCriteriaArgsDict(TypedDict):
+    attribute: pulumi.Input[_builtins.str]
+    """
+    Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
+    """
+    operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+    """
 
 @pulumi.input_type
 class TriggerMatchingCriteriaArgs:
@@ -2334,15 +2254,12 @@ class TriggerMatchingCriteriaArgs:
         pulumi.set(self, "operator", value)
 
 
-if not MYPY:
-    class TriggerRetryPolicyArgsDict(TypedDict):
-        max_attempts: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of delivery attempts for any message. The only valid
-        value is 1.
-        """
-elif False:
-    TriggerRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class TriggerRetryPolicyArgsDict(TypedDict):
+    max_attempts: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of delivery attempts for any message. The only valid
+    value is 1.
+    """
 
 @pulumi.input_type
 class TriggerRetryPolicyArgs:
@@ -2369,15 +2286,12 @@ class TriggerRetryPolicyArgs:
         pulumi.set(self, "max_attempts", value)
 
 
-if not MYPY:
-    class TriggerTransportArgsDict(TypedDict):
-        pubsub: NotRequired[pulumi.Input['TriggerTransportPubsubArgsDict']]
-        """
-        The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-        Structure is documented below.
-        """
-elif False:
-    TriggerTransportArgsDict: TypeAlias = Mapping[str, Any]
+class TriggerTransportArgsDict(TypedDict):
+    pubsub: NotRequired[pulumi.Input['TriggerTransportPubsubArgsDict']]
+    """
+    The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class TriggerTransportArgs:
@@ -2404,19 +2318,16 @@ class TriggerTransportArgs:
         pulumi.set(self, "pubsub", value)
 
 
-if not MYPY:
-    class TriggerTransportPubsubArgsDict(TypedDict):
-        subscription: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
-        """
-        topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
-        """
-elif False:
-    TriggerTransportPubsubArgsDict: TypeAlias = Mapping[str, Any]
+class TriggerTransportPubsubArgsDict(TypedDict):
+    subscription: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+    """
+    topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+    """
 
 @pulumi.input_type
 class TriggerTransportPubsubArgs:

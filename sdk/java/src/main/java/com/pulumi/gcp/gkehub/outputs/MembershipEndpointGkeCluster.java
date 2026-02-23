@@ -10,9 +10,25 @@ import java.util.Objects;
 
 @CustomType
 public final class MembershipEndpointGkeCluster {
+    /**
+     * @return Self-link of the GCP resource for the GKE cluster.
+     * For example: `//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster`.
+     * It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+     * this can be `&#34;//container.googleapis.com/${google_container_cluster.my-cluster.id}&#34;` or
+     * `google_container_cluster.my-cluster.id`.
+     * 
+     */
     private String resourceLink;
 
     private MembershipEndpointGkeCluster() {}
+    /**
+     * @return Self-link of the GCP resource for the GKE cluster.
+     * For example: `//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster`.
+     * It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+     * this can be `&#34;//container.googleapis.com/${google_container_cluster.my-cluster.id}&#34;` or
+     * `google_container_cluster.my-cluster.id`.
+     * 
+     */
     public String resourceLink() {
         return this.resourceLink;
     }

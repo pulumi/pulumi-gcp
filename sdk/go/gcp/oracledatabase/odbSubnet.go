@@ -60,22 +60,14 @@ import (
 // OdbSubnet can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/odbNetworks/{{odbnetwork}}/odbSubnets/{{odb_subnet_id}}`
-//
 // * `{{project}}/{{location}}/{{odbnetwork}}/{{odb_subnet_id}}`
-//
 // * `{{location}}/{{odbnetwork}}/{{odb_subnet_id}}`
 //
 // When using the `pulumi import` command, OdbSubnet can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default projects/{{project}}/locations/{{location}}/odbNetworks/{{odbnetwork}}/odbSubnets/{{odb_subnet_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default {{project}}/{{location}}/{{odbnetwork}}/{{odb_subnet_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default {{location}}/{{odbnetwork}}/{{odb_subnet_id}}
 // ```
 type OdbSubnet struct {
@@ -84,7 +76,8 @@ type OdbSubnet struct {
 	// The CIDR range of the subnet.
 	CidrRange pulumi.StringOutput `pulumi:"cidrRange"`
 	// The date and time that the OdbNetwork was created.
-	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -108,7 +101,7 @@ type OdbSubnet struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Purpose of the subnet.
 	// Possible values:
@@ -177,8 +170,9 @@ type odbSubnetState struct {
 	// The CIDR range of the subnet.
 	CidrRange *string `pulumi:"cidrRange"`
 	// The date and time that the OdbNetwork was created.
-	CreateTime         *string `pulumi:"createTime"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	CreateTime *string `pulumi:"createTime"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Labels or tags associated with the resource.
@@ -201,7 +195,7 @@ type odbSubnetState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Purpose of the subnet.
 	// Possible values:
@@ -221,7 +215,8 @@ type OdbSubnetState struct {
 	// The CIDR range of the subnet.
 	CidrRange pulumi.StringPtrInput
 	// The date and time that the OdbNetwork was created.
-	CreateTime         pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -245,7 +240,7 @@ type OdbSubnetState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Purpose of the subnet.
 	// Possible values:
@@ -267,8 +262,9 @@ func (OdbSubnetState) ElementType() reflect.Type {
 
 type odbSubnetArgs struct {
 	// The CIDR range of the subnet.
-	CidrRange          string `pulumi:"cidrRange"`
-	DeletionProtection *bool  `pulumi:"deletionProtection"`
+	CidrRange string `pulumi:"cidrRange"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Labels or tags associated with the resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -295,7 +291,8 @@ type odbSubnetArgs struct {
 // The set of arguments for constructing a OdbSubnet resource.
 type OdbSubnetArgs struct {
 	// The CIDR range of the subnet.
-	CidrRange          pulumi.StringInput
+	CidrRange pulumi.StringInput
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// Labels or tags associated with the resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -417,6 +414,7 @@ func (o OdbSubnetOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OdbSubnet) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 func (o OdbSubnetOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OdbSubnet) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -464,7 +462,8 @@ func (o OdbSubnetOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o OdbSubnetOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *OdbSubnet) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -281,14 +281,250 @@ class BackendServiceIamBinding(pulumi.CustomResource):
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for Compute Engine BackendService. Each of these resources serves a different use case:
+
+        * `compute.BackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the backendservice and replaces any existing policy already attached.
+        * `compute.BackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backendservice are preserved.
+        * `compute.BackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backendservice are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.BackendServiceIamPolicy`: Retrieves the IAM policy for the backendservice
+
+        > **Note:** `compute.BackendServiceIamPolicy` **cannot** be used in conjunction with `compute.BackendServiceIamBinding` and `compute.BackendServiceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.BackendServiceIamBinding` resources **can be** used in conjunction with `compute.BackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## compute.BackendServiceIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.compute.BackendServiceIamPolicy("policy",
+            project=default["project"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.compute.BackendServiceIamPolicy("policy",
+            project=default["project"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## compute.BackendServiceIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.BackendServiceIamBinding("binding",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.BackendServiceIamBinding("binding",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## compute.BackendServiceIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.BackendServiceIamMember("member",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.BackendServiceIamMember("member",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Compute Engine BackendService
+
+        Three different resources help you manage your IAM policy for Compute Engine BackendService. Each of these resources serves a different use case:
+
+        * `compute.BackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the backendservice and replaces any existing policy already attached.
+        * `compute.BackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backendservice are preserved.
+        * `compute.BackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backendservice are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.BackendServiceIamPolicy`: Retrieves the IAM policy for the backendservice
+
+        > **Note:** `compute.BackendServiceIamPolicy` **cannot** be used in conjunction with `compute.BackendServiceIamBinding` and `compute.BackendServiceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.BackendServiceIamBinding` resources **can be** used in conjunction with `compute.BackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## compute.BackendServiceIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.compute.BackendServiceIamPolicy("policy",
+            project=default["project"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.compute.BackendServiceIamPolicy("policy",
+            project=default["project"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## compute.BackendServiceIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.BackendServiceIamBinding("binding",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.BackendServiceIamBinding("binding",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## compute.BackendServiceIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.BackendServiceIamMember("member",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.BackendServiceIamMember("member",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/global/backendServices/{{name}}
-
         * {{project}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -296,25 +532,21 @@ class BackendServiceIamBinding(pulumi.CustomResource):
         Compute Engine backendservice IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:compute/backendServiceIamBinding:BackendServiceIamBinding editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin user:jane@example.com"
+        $ terraform import google_compute_backend_service_iam_member.editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:compute/backendServiceIamBinding:BackendServiceIamBinding editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin"
+        $ terraform import google_compute_backend_service_iam_binding.editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:compute/backendServiceIamBinding:BackendServiceIamBinding editor projects/{{project}}/global/backendServices/{{backend_service}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
@@ -347,14 +579,250 @@ class BackendServiceIamBinding(pulumi.CustomResource):
                  args: BackendServiceIamBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for Compute Engine BackendService. Each of these resources serves a different use case:
+
+        * `compute.BackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the backendservice and replaces any existing policy already attached.
+        * `compute.BackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backendservice are preserved.
+        * `compute.BackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backendservice are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.BackendServiceIamPolicy`: Retrieves the IAM policy for the backendservice
+
+        > **Note:** `compute.BackendServiceIamPolicy` **cannot** be used in conjunction with `compute.BackendServiceIamBinding` and `compute.BackendServiceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.BackendServiceIamBinding` resources **can be** used in conjunction with `compute.BackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## compute.BackendServiceIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.compute.BackendServiceIamPolicy("policy",
+            project=default["project"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.compute.BackendServiceIamPolicy("policy",
+            project=default["project"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## compute.BackendServiceIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.BackendServiceIamBinding("binding",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.BackendServiceIamBinding("binding",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## compute.BackendServiceIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.BackendServiceIamMember("member",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.BackendServiceIamMember("member",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Compute Engine BackendService
+
+        Three different resources help you manage your IAM policy for Compute Engine BackendService. Each of these resources serves a different use case:
+
+        * `compute.BackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the backendservice and replaces any existing policy already attached.
+        * `compute.BackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backendservice are preserved.
+        * `compute.BackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backendservice are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.BackendServiceIamPolicy`: Retrieves the IAM policy for the backendservice
+
+        > **Note:** `compute.BackendServiceIamPolicy` **cannot** be used in conjunction with `compute.BackendServiceIamBinding` and `compute.BackendServiceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.BackendServiceIamBinding` resources **can be** used in conjunction with `compute.BackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## compute.BackendServiceIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.compute.BackendServiceIamPolicy("policy",
+            project=default["project"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.compute.BackendServiceIamPolicy("policy",
+            project=default["project"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## compute.BackendServiceIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.BackendServiceIamBinding("binding",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.BackendServiceIamBinding("binding",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## compute.BackendServiceIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.BackendServiceIamMember("member",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.BackendServiceIamMember("member",
+            project=default["project"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/global/backendServices/{{name}}
-
         * {{project}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -362,25 +830,21 @@ class BackendServiceIamBinding(pulumi.CustomResource):
         Compute Engine backendservice IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:compute/backendServiceIamBinding:BackendServiceIamBinding editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin user:jane@example.com"
+        $ terraform import google_compute_backend_service_iam_member.editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:compute/backendServiceIamBinding:BackendServiceIamBinding editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin"
+        $ terraform import google_compute_backend_service_iam_binding.editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:compute/backendServiceIamBinding:BackendServiceIamBinding editor projects/{{project}}/global/backendServices/{{backend_service}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.

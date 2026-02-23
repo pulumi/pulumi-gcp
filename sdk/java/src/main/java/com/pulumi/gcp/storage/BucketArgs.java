@@ -323,14 +323,14 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won&#39;t generate any terraform change. Structure is documented below.
      * 
      */
     @Import(name="softDeletePolicy")
     private @Nullable Output<BucketSoftDeletePolicyArgs> softDeletePolicy;
 
     /**
-     * @return The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * @return The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won&#39;t generate any terraform change. Structure is documented below.
      * 
      */
     public Optional<Output<BucketSoftDeletePolicyArgs>> softDeletePolicy() {
@@ -870,7 +870,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param softDeletePolicy The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+         * @param softDeletePolicy The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won&#39;t generate any terraform change. Structure is documented below.
          * 
          * @return builder
          * 
@@ -881,7 +881,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param softDeletePolicy The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+         * @param softDeletePolicy The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won&#39;t generate any terraform change. Structure is documented below.
          * 
          * @return builder
          * 

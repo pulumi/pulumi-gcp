@@ -54,7 +54,10 @@ class DatabaseInstanceArgs:
                `SQLSERVER_2019_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
                includes an up-to-date reference of supported versions.
-        :param pulumi.Input[_builtins.str] backupdr_backup: The name of the BackupDR backup to restore from.
+        :param pulumi.Input[_builtins.str] backupdr_backup: The backupdr_backup needed to restore the database to a backup run. This field will
+               cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+               **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+               block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
@@ -81,7 +84,10 @@ class DatabaseInstanceArgs:
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
-        :param pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs'] point_in_time_restore_context: Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        :param pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs'] point_in_time_restore_context: The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
+               cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
+               **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+               block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region the instance will sit in. If a region is not provided in the resource definition,
@@ -173,7 +179,10 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="backupdrBackup")
     def backupdr_backup(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the BackupDR backup to restore from.
+        The backupdr_backup needed to restore the database to a backup run. This field will
+        cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+        **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+        block during resource creation/update will trigger the restore action after the resource is created/updated.
         """
         return pulumi.get(self, "backupdr_backup")
 
@@ -310,7 +319,10 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="pointInTimeRestoreContext")
     def point_in_time_restore_context(self) -> Optional[pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs']]:
         """
-        Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
+        cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
+        **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+        block during resource creation/update will trigger the restore action after the resource is created/updated.
         """
         return pulumi.get(self, "point_in_time_restore_context")
 
@@ -491,7 +503,10 @@ class _DatabaseInstanceState:
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: The list of all maintenance versions applicable on the instance.
-        :param pulumi.Input[_builtins.str] backupdr_backup: The name of the BackupDR backup to restore from.
+        :param pulumi.Input[_builtins.str] backupdr_backup: The backupdr_backup needed to restore the database to a backup run. This field will
+               cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+               **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+               block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
@@ -532,7 +547,10 @@ class _DatabaseInstanceState:
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
-        :param pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs'] point_in_time_restore_context: Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        :param pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs'] point_in_time_restore_context: The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
+               cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
+               **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+               block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[_builtins.str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -647,7 +665,10 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="backupdrBackup")
     def backupdr_backup(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the BackupDR backup to restore from.
+        The backupdr_backup needed to restore the database to a backup run. This field will
+        cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+        **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+        block during resource creation/update will trigger the restore action after the resource is created/updated.
         """
         return pulumi.get(self, "backupdr_backup")
 
@@ -862,7 +883,10 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="pointInTimeRestoreContext")
     def point_in_time_restore_context(self) -> Optional[pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs']]:
         """
-        Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
+        cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
+        **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+        block during resource creation/update will trigger the restore action after the resource is created/updated.
         """
         return pulumi.get(self, "point_in_time_restore_context")
 
@@ -1378,34 +1402,28 @@ class DatabaseInstance(pulumi.CustomResource):
         Database instances can be imported using one of any of these accepted formats:
 
         * `projects/{{project}}/instances/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Database instances can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default projects/{{project}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{name}}
         ```
 
+        > **NOTE:** Some fields (such as `replica_configuration`) won't show a diff if they are unset in
         config and set on the server.
-
         When importing, double-check that your config has all the fields set that you expect- just seeing
-
         no diff isn't sufficient to know that your config could reproduce the imported resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] backupdr_backup: The name of the BackupDR backup to restore from.
+        :param pulumi.Input[_builtins.str] backupdr_backup: The backupdr_backup needed to restore the database to a backup run. This field will
+               cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+               **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+               block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
@@ -1441,7 +1459,10 @@ class DatabaseInstance(pulumi.CustomResource):
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
-        :param pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']] point_in_time_restore_context: Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        :param pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']] point_in_time_restore_context: The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
+               cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
+               **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+               block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region the instance will sit in. If a region is not provided in the resource definition,
@@ -1747,29 +1768,20 @@ class DatabaseInstance(pulumi.CustomResource):
         Database instances can be imported using one of any of these accepted formats:
 
         * `projects/{{project}}/instances/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Database instances can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default projects/{{project}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{name}}
         ```
 
+        > **NOTE:** Some fields (such as `replica_configuration`) won't show a diff if they are unset in
         config and set on the server.
-
         When importing, double-check that your config has all the fields set that you expect- just seeing
-
         no diff isn't sufficient to know that your config could reproduce the imported resource.
 
         :param str resource_name: The name of the resource.
@@ -1908,7 +1920,10 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: The list of all maintenance versions applicable on the instance.
-        :param pulumi.Input[_builtins.str] backupdr_backup: The name of the BackupDR backup to restore from.
+        :param pulumi.Input[_builtins.str] backupdr_backup: The backupdr_backup needed to restore the database to a backup run. This field will
+               cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+               **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+               block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
@@ -1949,7 +1964,10 @@ class DatabaseInstance(pulumi.CustomResource):
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
-        :param pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']] point_in_time_restore_context: Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        :param pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']] point_in_time_restore_context: The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
+               cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
+               **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+               block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[_builtins.str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -2031,7 +2049,10 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="backupdrBackup")
     def backupdr_backup(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the BackupDR backup to restore from.
+        The backupdr_backup needed to restore the database to a backup run. This field will
+        cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+        **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+        block during resource creation/update will trigger the restore action after the resource is created/updated.
         """
         return pulumi.get(self, "backupdr_backup")
 
@@ -2182,7 +2203,10 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="pointInTimeRestoreContext")
     def point_in_time_restore_context(self) -> pulumi.Output[Optional['outputs.DatabaseInstancePointInTimeRestoreContext']]:
         """
-        Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
+        cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
+        **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+        block during resource creation/update will trigger the restore action after the resource is created/updated.
         """
         return pulumi.get(self, "point_in_time_restore_context")
 

@@ -245,16 +245,12 @@ import javax.annotation.Nullable;
  * Playbook can be imported using any of these accepted formats:
  * 
  * * `{{parent}}/playbooks/{{name}}`
- * 
  * * `{{parent}}/{{name}}`
  * 
  * When using the `pulumi import` command, Playbook can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:diagflow/cxPlaybook:CxPlaybook default {{parent}}/playbooks/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:diagflow/cxPlaybook:CxPlaybook default {{parent}}/{{name}}
  * ```
  * 

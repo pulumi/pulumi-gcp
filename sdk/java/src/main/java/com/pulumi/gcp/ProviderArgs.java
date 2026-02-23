@@ -1057,6 +1057,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.parameterManagerRegionalCustomEndpoint);
     }
 
+    @Import(name="pollInterval")
+    private @Nullable Output<String> pollInterval;
+
+    public Optional<Output<String>> pollInterval() {
+        return Optional.ofNullable(this.pollInterval);
+    }
+
     @Import(name="privatecaCustomEndpoint")
     private @Nullable Output<String> privatecaCustomEndpoint;
 
@@ -1379,6 +1386,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.userProjectOverride);
     }
 
+    @Import(name="vectorSearchCustomEndpoint")
+    private @Nullable Output<String> vectorSearchCustomEndpoint;
+
+    public Optional<Output<String>> vectorSearchCustomEndpoint() {
+        return Optional.ofNullable(this.vectorSearchCustomEndpoint);
+    }
+
     @Import(name="vertexAiCustomEndpoint")
     private @Nullable Output<String> vertexAiCustomEndpoint;
 
@@ -1579,6 +1593,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.parallelstoreCustomEndpoint = $.parallelstoreCustomEndpoint;
         this.parameterManagerCustomEndpoint = $.parameterManagerCustomEndpoint;
         this.parameterManagerRegionalCustomEndpoint = $.parameterManagerRegionalCustomEndpoint;
+        this.pollInterval = $.pollInterval;
         this.privatecaCustomEndpoint = $.privatecaCustomEndpoint;
         this.privilegedAccessManagerCustomEndpoint = $.privilegedAccessManagerCustomEndpoint;
         this.project = $.project;
@@ -1625,6 +1640,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.transcoderCustomEndpoint = $.transcoderCustomEndpoint;
         this.universeDomain = $.universeDomain;
         this.userProjectOverride = $.userProjectOverride;
+        this.vectorSearchCustomEndpoint = $.vectorSearchCustomEndpoint;
         this.vertexAiCustomEndpoint = $.vertexAiCustomEndpoint;
         this.vmwareengineCustomEndpoint = $.vmwareengineCustomEndpoint;
         this.vpcAccessCustomEndpoint = $.vpcAccessCustomEndpoint;
@@ -2988,6 +3004,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return parameterManagerRegionalCustomEndpoint(Output.of(parameterManagerRegionalCustomEndpoint));
         }
 
+        public Builder pollInterval(@Nullable Output<String> pollInterval) {
+            $.pollInterval = pollInterval;
+            return this;
+        }
+
+        public Builder pollInterval(String pollInterval) {
+            return pollInterval(Output.of(pollInterval));
+        }
+
         public Builder privatecaCustomEndpoint(@Nullable Output<String> privatecaCustomEndpoint) {
             $.privatecaCustomEndpoint = privatecaCustomEndpoint;
             return this;
@@ -3404,6 +3429,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder userProjectOverride(Boolean userProjectOverride) {
             return userProjectOverride(Output.of(userProjectOverride));
+        }
+
+        public Builder vectorSearchCustomEndpoint(@Nullable Output<String> vectorSearchCustomEndpoint) {
+            $.vectorSearchCustomEndpoint = vectorSearchCustomEndpoint;
+            return this;
+        }
+
+        public Builder vectorSearchCustomEndpoint(String vectorSearchCustomEndpoint) {
+            return vectorSearchCustomEndpoint(Output.of(vectorSearchCustomEndpoint));
         }
 
         public Builder vertexAiCustomEndpoint(@Nullable Output<String> vertexAiCustomEndpoint) {

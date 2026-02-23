@@ -88,22 +88,14 @@ import (
 // DnsAuthorization can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{location}}/{{name}}
 // ```
 type DnsAuthorization struct {
@@ -136,7 +128,7 @@ type DnsAuthorization struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
 	// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
@@ -213,7 +205,7 @@ type dnsAuthorizationState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
 	// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
@@ -253,7 +245,7 @@ type DnsAuthorizationState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
 	// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
@@ -468,7 +460,8 @@ func (o DnsAuthorizationOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DnsAuthorizationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

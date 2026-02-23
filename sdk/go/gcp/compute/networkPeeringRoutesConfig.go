@@ -95,22 +95,14 @@ import (
 // NetworkPeeringRoutesConfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}`
-//
 // * `{{project}}/{{network}}/{{peering}}`
-//
 // * `{{network}}/{{peering}}`
 //
 // When using the `pulumi import` command, NetworkPeeringRoutesConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{project}}/{{network}}/{{peering}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{network}}/{{peering}}
 // ```
 type NetworkPeeringRoutesConfig struct {

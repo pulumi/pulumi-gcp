@@ -21,6 +21,7 @@ import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigNetworkPolicyConfi
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigParallelstoreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigPodSnapshotConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigRayOperatorConfig;
+import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigSliceControllerConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigStatefulHaConfig;
 import java.util.List;
 import java.util.Objects;
@@ -107,6 +108,11 @@ public final class GetClusterAddonsConfig {
      * 
      */
     private List<GetClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
+    /**
+     * @return The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+     * 
+     */
+    private List<GetClusterAddonsConfigSliceControllerConfig> sliceControllerConfigs;
     /**
      * @return The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
      * 
@@ -227,6 +233,13 @@ public final class GetClusterAddonsConfig {
         return this.rayOperatorConfigs;
     }
     /**
+     * @return The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+     * 
+     */
+    public List<GetClusterAddonsConfigSliceControllerConfig> sliceControllerConfigs() {
+        return this.sliceControllerConfigs;
+    }
+    /**
      * @return The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
      * 
      */
@@ -259,6 +272,7 @@ public final class GetClusterAddonsConfig {
         private List<GetClusterAddonsConfigParallelstoreCsiDriverConfig> parallelstoreCsiDriverConfigs;
         private List<GetClusterAddonsConfigPodSnapshotConfig> podSnapshotConfigs;
         private List<GetClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
+        private List<GetClusterAddonsConfigSliceControllerConfig> sliceControllerConfigs;
         private List<GetClusterAddonsConfigStatefulHaConfig> statefulHaConfigs;
         public Builder() {}
         public Builder(GetClusterAddonsConfig defaults) {
@@ -279,6 +293,7 @@ public final class GetClusterAddonsConfig {
     	      this.parallelstoreCsiDriverConfigs = defaults.parallelstoreCsiDriverConfigs;
     	      this.podSnapshotConfigs = defaults.podSnapshotConfigs;
     	      this.rayOperatorConfigs = defaults.rayOperatorConfigs;
+    	      this.sliceControllerConfigs = defaults.sliceControllerConfigs;
     	      this.statefulHaConfigs = defaults.statefulHaConfigs;
         }
 
@@ -459,6 +474,17 @@ public final class GetClusterAddonsConfig {
             return rayOperatorConfigs(List.of(rayOperatorConfigs));
         }
         @CustomType.Setter
+        public Builder sliceControllerConfigs(List<GetClusterAddonsConfigSliceControllerConfig> sliceControllerConfigs) {
+            if (sliceControllerConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "sliceControllerConfigs");
+            }
+            this.sliceControllerConfigs = sliceControllerConfigs;
+            return this;
+        }
+        public Builder sliceControllerConfigs(GetClusterAddonsConfigSliceControllerConfig... sliceControllerConfigs) {
+            return sliceControllerConfigs(List.of(sliceControllerConfigs));
+        }
+        @CustomType.Setter
         public Builder statefulHaConfigs(List<GetClusterAddonsConfigStatefulHaConfig> statefulHaConfigs) {
             if (statefulHaConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "statefulHaConfigs");
@@ -487,6 +513,7 @@ public final class GetClusterAddonsConfig {
             _resultValue.parallelstoreCsiDriverConfigs = parallelstoreCsiDriverConfigs;
             _resultValue.podSnapshotConfigs = podSnapshotConfigs;
             _resultValue.rayOperatorConfigs = rayOperatorConfigs;
+            _resultValue.sliceControllerConfigs = sliceControllerConfigs;
             _resultValue.statefulHaConfigs = statefulHaConfigs;
             return _resultValue;
         }

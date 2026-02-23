@@ -558,6 +558,12 @@ class ManagedZonePrivateVisibilityConfig(dict):
         """
         :param Sequence['ManagedZonePrivateVisibilityConfigGkeClusterArgs'] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
                Structure is documented below.
+        :param Sequence['ManagedZonePrivateVisibilityConfigNetworkArgs'] networks: The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+               may experience issues with this resource while updating. If you've defined a `networks` block and
+               add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+               and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+               blocks in an update and then apply another update adding all of them back simultaneously.
+               Structure is documented below.
         """
         if gke_clusters is not None:
             pulumi.set(__self__, "gke_clusters", gke_clusters)
@@ -576,6 +582,14 @@ class ManagedZonePrivateVisibilityConfig(dict):
     @_builtins.property
     @pulumi.getter
     def networks(self) -> Optional[Sequence['outputs.ManagedZonePrivateVisibilityConfigNetwork']]:
+        """
+        The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+        may experience issues with this resource while updating. If you've defined a `networks` block and
+        add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+        and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+        blocks in an update and then apply another update adding all of them back simultaneously.
+        Structure is documented below.
+        """
         return pulumi.get(self, "networks")
 
 
@@ -1333,6 +1347,8 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
         """
         :param _builtins.str location: The location name defined in Google Cloud.
         :param 'RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs' health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        :param Sequence[_builtins.str] rrdatas: The string data for the records in this record set
+               whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\\" \\"` inside the Terraform configuration string (e.g. `"first255characters\\" \\"morecharacters"`).
         """
         pulumi.set(__self__, "location", location)
         if health_checked_targets is not None:
@@ -1359,6 +1375,10 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
     @_builtins.property
     @pulumi.getter
     def rrdatas(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The string data for the records in this record set
+        whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\\" \\"` inside the Terraform configuration string (e.g. `"first255characters\\" \\"morecharacters"`).
+        """
         return pulumi.get(self, "rrdatas")
 
 

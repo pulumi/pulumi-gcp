@@ -50,22 +50,14 @@ import (
 // Template can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/templates/{{template_id}}`
-//
 // * `{{project}}/{{location}}/{{template_id}}`
-//
 // * `{{location}}/{{template_id}}`
 //
 // When using the `pulumi import` command, Template can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:modelarmor/template:Template default projects/{{project}}/locations/{{location}}/templates/{{template_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:modelarmor/template:Template default {{project}}/{{location}}/{{template_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:modelarmor/template:Template default {{location}}/{{template_id}}
 // ```
 type Template struct {
@@ -90,7 +82,7 @@ type Template struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Id of the requesting object
 	// If auto-generating Id server-side, remove this field and
@@ -166,7 +158,7 @@ type templateState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Id of the requesting object
 	// If auto-generating Id server-side, remove this field and
@@ -199,7 +191,7 @@ type TemplateState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Id of the requesting object
 	// If auto-generating Id server-side, remove this field and
@@ -388,7 +380,8 @@ func (o TemplateOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o TemplateOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

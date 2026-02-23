@@ -188,7 +188,7 @@ type ConsentStore struct {
 	// "consent1"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
@@ -256,7 +256,7 @@ type consentStoreState struct {
 	// "consent1"
 	Name *string `pulumi:"name"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
@@ -287,7 +287,7 @@ type ConsentStoreState struct {
 	// "consent1"
 	Name pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 }
 
@@ -479,7 +479,8 @@ func (o ConsentStoreOutput) Name() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ConsentStoreOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConsentStore) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

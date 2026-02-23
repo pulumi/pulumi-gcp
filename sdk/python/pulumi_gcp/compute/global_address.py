@@ -291,7 +291,7 @@ class _GlobalAddressState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
                * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
@@ -501,7 +501,7 @@ class _GlobalAddressState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -595,22 +595,14 @@ class GlobalAddress(pulumi.CustomResource):
         GlobalAddress can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/addresses/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, GlobalAddress can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/globalAddress:GlobalAddress default projects/{{project}}/global/addresses/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{name}}
         ```
 
@@ -700,22 +692,14 @@ class GlobalAddress(pulumi.CustomResource):
         GlobalAddress can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/addresses/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, GlobalAddress can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/globalAddress:GlobalAddress default projects/{{project}}/global/addresses/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{name}}
         ```
 
@@ -839,7 +823,7 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
                * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
@@ -991,7 +975,7 @@ class GlobalAddress(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

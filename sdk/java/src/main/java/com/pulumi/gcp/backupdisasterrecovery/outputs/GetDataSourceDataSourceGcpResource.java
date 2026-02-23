@@ -29,7 +29,7 @@ public final class GetDataSourceDataSourceGcpResource {
     private String location;
     /**
      * @return The type of the Google Cloud resource. Use the Unified Resource Type,
-     * 						eg. compute.googleapis.com/Instance.
+     * 					eg. compute.googleapis.com/Instance.
      * 
      */
     private String type;
@@ -58,7 +58,7 @@ public final class GetDataSourceDataSourceGcpResource {
     }
     /**
      * @return The type of the Google Cloud resource. Use the Unified Resource Type,
-     * 						eg. compute.googleapis.com/Instance.
+     * 					eg. compute.googleapis.com/Instance.
      * 
      */
     public String type() {

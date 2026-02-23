@@ -147,22 +147,14 @@ import javax.annotation.Nullable;
  * Federation can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}`
- * 
  * * `{{project}}/{{location}}/{{federation_id}}`
- * 
  * * `{{location}}/{{federation_id}}`
  * 
  * When using the `pulumi import` command, Federation can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default projects/{{project}}/locations/{{location}}/federations/{{federation_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{project}}/{{location}}/{{federation_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{location}}/{{federation_id}}
  * ```
  * 
@@ -199,9 +191,21 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * Whether Terraform will be prevented from destroying the federation. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the federation will fail.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the federation. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the federation will fail.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
@@ -315,7 +319,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -323,7 +327,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -75,28 +77,16 @@ import * as utilities from "../utilities";
  * VpnGateway can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, VpnGateway can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/vPNGateway:VPNGateway default projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{name}}
  * ```
  */
@@ -155,6 +145,12 @@ export class VPNGateway extends pulumi.CustomResource {
      */
     declare public readonly network: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.VPNGatewayParams | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -186,6 +182,7 @@ export class VPNGateway extends pulumi.CustomResource {
             resourceInputs["gatewayId"] = state?.gatewayId;
             resourceInputs["name"] = state?.name;
             resourceInputs["network"] = state?.network;
+            resourceInputs["params"] = state?.params;
             resourceInputs["project"] = state?.project;
             resourceInputs["region"] = state?.region;
             resourceInputs["selfLink"] = state?.selfLink;
@@ -197,6 +194,7 @@ export class VPNGateway extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["network"] = args?.network;
+            resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -239,6 +237,12 @@ export interface VPNGatewayState {
      */
     network?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.VPNGatewayParams>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -275,6 +279,12 @@ export interface VPNGatewayArgs {
      * The network this VPN gateway is accepting traffic for.
      */
     network: pulumi.Input<string>;
+    /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.VPNGatewayParams>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

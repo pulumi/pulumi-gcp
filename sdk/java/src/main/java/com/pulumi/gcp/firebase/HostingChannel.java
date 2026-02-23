@@ -18,6 +18,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A `Channel` represents a stream of releases for a site. All sites have a default
+ * `live` channel that serves content to the Firebase-provided subdomains and any
+ * connected custom domains.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about Channel, see:
+ * 
+ * * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.channels)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/docs/hosting)
+ * 
  * ## Example Usage
  * 
  * ### Firebasehosting Channel Basic
@@ -109,16 +122,12 @@ import javax.annotation.Nullable;
  * Channel can be imported using any of these accepted formats:
  * 
  * * `sites/{{site_id}}/channels/{{channel_id}}`
- * 
  * * `{{site_id}}/{{channel_id}}`
  * 
  * When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:firebase/hostingChannel:HostingChannel default sites/{{site_id}}/channels/{{channel_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/hostingChannel:HostingChannel default {{site_id}}/{{channel_id}}
  * ```
  * 
@@ -207,7 +216,7 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -215,7 +224,7 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

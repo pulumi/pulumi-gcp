@@ -57,7 +57,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			testEntryTypeFull, err := dataplex.NewAspectType(ctx, "test_entry_type_full", &dataplex.AspectTypeArgs{
-//				AspectTypeId: pulumi.String("tf-test-aspect-type_37559"),
+//				AspectTypeId: pulumi.String("tf-test-aspect-type_37118"),
 //				Location:     pulumi.String("us-central1"),
 //				Project:      pulumi.String("my-project-name"),
 //				MetadataTemplate: pulumi.String(`{
@@ -126,22 +126,14 @@ import (
 // EntryType can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/entryTypes/{{entry_type_id}}`
-//
 // * `{{project}}/{{location}}/{{entry_type_id}}`
-//
 // * `{{location}}/{{entry_type_id}}`
 //
 // When using the `pulumi import` command, EntryType can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataplex/entryType:EntryType default projects/{{project}}/locations/{{location}}/entryTypes/{{entry_type_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/entryType:EntryType default {{project}}/{{location}}/{{entry_type_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/entryType:EntryType default {{location}}/{{entry_type_id}}
 // ```
 type EntryType struct {
@@ -172,7 +164,7 @@ type EntryType struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// AspectInfo for the entry type.
 	// Structure is documented below.
@@ -247,7 +239,7 @@ type entryTypeState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// AspectInfo for the entry type.
 	// Structure is documented below.
@@ -288,7 +280,7 @@ type EntryTypeState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// AspectInfo for the entry type.
 	// Structure is documented below.
@@ -506,7 +498,8 @@ func (o EntryTypeOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o EntryTypeOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EntryType) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

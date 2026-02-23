@@ -14,9 +14,25 @@ public final class MembershipEndpointGkeClusterArgs extends com.pulumi.resources
 
     public static final MembershipEndpointGkeClusterArgs Empty = new MembershipEndpointGkeClusterArgs();
 
+    /**
+     * Self-link of the GCP resource for the GKE cluster.
+     * For example: `//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster`.
+     * It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+     * this can be `&#34;//container.googleapis.com/${google_container_cluster.my-cluster.id}&#34;` or
+     * `google_container_cluster.my-cluster.id`.
+     * 
+     */
     @Import(name="resourceLink", required=true)
     private Output<String> resourceLink;
 
+    /**
+     * @return Self-link of the GCP resource for the GKE cluster.
+     * For example: `//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster`.
+     * It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+     * this can be `&#34;//container.googleapis.com/${google_container_cluster.my-cluster.id}&#34;` or
+     * `google_container_cluster.my-cluster.id`.
+     * 
+     */
     public Output<String> resourceLink() {
         return this.resourceLink;
     }
@@ -45,11 +61,31 @@ public final class MembershipEndpointGkeClusterArgs extends com.pulumi.resources
             $ = new MembershipEndpointGkeClusterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param resourceLink Self-link of the GCP resource for the GKE cluster.
+         * For example: `//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster`.
+         * It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+         * this can be `&#34;//container.googleapis.com/${google_container_cluster.my-cluster.id}&#34;` or
+         * `google_container_cluster.my-cluster.id`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceLink(Output<String> resourceLink) {
             $.resourceLink = resourceLink;
             return this;
         }
 
+        /**
+         * @param resourceLink Self-link of the GCP resource for the GKE cluster.
+         * For example: `//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster`.
+         * It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+         * this can be `&#34;//container.googleapis.com/${google_container_cluster.my-cluster.id}&#34;` or
+         * `google_container_cluster.my-cluster.id`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceLink(String resourceLink) {
             return resourceLink(Output.of(resourceLink));
         }

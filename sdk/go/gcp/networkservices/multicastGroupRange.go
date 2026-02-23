@@ -89,22 +89,14 @@ import (
 // MulticastGroupRange can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/multicastGroupRanges/{{multicast_group_range_id}}`
-//
 // * `{{project}}/{{location}}/{{multicast_group_range_id}}`
-//
 // * `{{location}}/{{multicast_group_range_id}}`
 //
 // When using the `pulumi import` command, MulticastGroupRange can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default projects/{{project}}/locations/{{location}}/multicastGroupRanges/{{multicast_group_range_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{project}}/{{location}}/{{multicast_group_range_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{location}}/{{multicast_group_range_id}}
 // ```
 type MulticastGroupRange struct {
@@ -161,7 +153,7 @@ type MulticastGroupRange struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Whether an empty consumerAcceptList will deny all consumer projects.
 	RequireExplicitAccept pulumi.BoolPtrOutput `pulumi:"requireExplicitAccept"`
@@ -291,7 +283,7 @@ type multicastGroupRangeState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Whether an empty consumerAcceptList will deny all consumer projects.
 	RequireExplicitAccept *bool `pulumi:"requireExplicitAccept"`
@@ -375,7 +367,7 @@ type MulticastGroupRangeState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Whether an empty consumerAcceptList will deny all consumer projects.
 	RequireExplicitAccept pulumi.BoolPtrInput
@@ -691,7 +683,8 @@ func (o MulticastGroupRangeOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MulticastGroupRangeOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MulticastGroupRange) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

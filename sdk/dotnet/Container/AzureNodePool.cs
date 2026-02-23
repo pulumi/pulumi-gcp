@@ -144,24 +144,15 @@ namespace Pulumi.Gcp.Container
     /// ## Import
     /// 
     /// NodePool can be imported using any of these accepted formats:
-    /// 
     /// * `projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{cluster}}/{{name}}`
-    /// 
     /// * `{{location}}/{{cluster}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:container/azureNodePool:AzureNodePool default projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{project}}/{{location}}/{{cluster}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{location}}/{{cluster}}/{{name}}
     /// ```
     /// </summary>
@@ -207,6 +198,9 @@ namespace Pulumi.Gcp.Container
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -464,6 +458,10 @@ namespace Pulumi.Gcp.Container
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());

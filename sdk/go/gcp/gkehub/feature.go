@@ -565,22 +565,14 @@ import (
 // Feature can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/features/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Feature can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkehub/feature:Feature default projects/{{project}}/locations/{{location}}/features/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/feature:Feature default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/feature:Feature default {{location}}/{{name}}
 // ```
 type Feature struct {
@@ -607,7 +599,7 @@ type Feature struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// State of the Feature resource itself.
 	// Structure is documented below.
@@ -683,7 +675,7 @@ type featureState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// State of the Feature resource itself.
 	// Structure is documented below.
@@ -722,7 +714,7 @@ type FeatureState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// State of the Feature resource itself.
 	// Structure is documented below.
@@ -916,7 +908,8 @@ func (o FeatureOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o FeatureOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

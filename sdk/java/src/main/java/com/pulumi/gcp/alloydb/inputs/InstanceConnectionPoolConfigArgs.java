@@ -34,9 +34,33 @@ public final class InstanceConnectionPoolConfigArgs extends com.pulumi.resources
         return this.enabled;
     }
 
+    /**
+     * Flags for configuring managed connection pooling when it is enabled.
+     * These flags will only be set if `connection_pool_config.enabled` is
+     * true.
+     * Please see
+     * https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+     * for a comprehensive list of flags that can be set. To specify the flags
+     * in Terraform, please remove the &#34;connection-pooling-&#34; prefix and use
+     * underscores instead of dashes in the name. For example,
+     * &#34;connection-pooling-pool-mode&#34; would be &#34;poolMode&#34;.
+     * 
+     */
     @Import(name="flags")
     private @Nullable Output<Map<String,String>> flags;
 
+    /**
+     * @return Flags for configuring managed connection pooling when it is enabled.
+     * These flags will only be set if `connection_pool_config.enabled` is
+     * true.
+     * Please see
+     * https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+     * for a comprehensive list of flags that can be set. To specify the flags
+     * in Terraform, please remove the &#34;connection-pooling-&#34; prefix and use
+     * underscores instead of dashes in the name. For example,
+     * &#34;connection-pooling-pool-mode&#34; would be &#34;poolMode&#34;.
+     * 
+     */
     public Optional<Output<Map<String,String>>> flags() {
         return Optional.ofNullable(this.flags);
     }
@@ -105,11 +129,39 @@ public final class InstanceConnectionPoolConfigArgs extends com.pulumi.resources
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param flags Flags for configuring managed connection pooling when it is enabled.
+         * These flags will only be set if `connection_pool_config.enabled` is
+         * true.
+         * Please see
+         * https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+         * for a comprehensive list of flags that can be set. To specify the flags
+         * in Terraform, please remove the &#34;connection-pooling-&#34; prefix and use
+         * underscores instead of dashes in the name. For example,
+         * &#34;connection-pooling-pool-mode&#34; would be &#34;poolMode&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder flags(@Nullable Output<Map<String,String>> flags) {
             $.flags = flags;
             return this;
         }
 
+        /**
+         * @param flags Flags for configuring managed connection pooling when it is enabled.
+         * These flags will only be set if `connection_pool_config.enabled` is
+         * true.
+         * Please see
+         * https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+         * for a comprehensive list of flags that can be set. To specify the flags
+         * in Terraform, please remove the &#34;connection-pooling-&#34; prefix and use
+         * underscores instead of dashes in the name. For example,
+         * &#34;connection-pooling-pool-mode&#34; would be &#34;poolMode&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder flags(Map<String,String> flags) {
             return flags(Output.of(flags));
         }

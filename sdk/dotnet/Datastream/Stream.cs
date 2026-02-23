@@ -1291,8 +1291,8 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var cross_project_dataset = new Gcp.Organizations.Project("cross-project-dataset", new()
     ///     {
-    ///         ProjectId = "tf-test_59033",
-    ///         Name = "tf-test_32081",
+    ///         ProjectId = "tf-test_10393",
+    ///         Name = "tf-test_33052",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",
@@ -1957,22 +1957,14 @@ namespace Pulumi.Gcp.Datastream
     /// Stream can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{stream_id}}`
-    /// 
     /// * `{{location}}/{{stream_id}}`
     /// 
     /// When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:datastream/stream:Stream default projects/{{project}}/locations/{{location}}/streams/{{stream_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:datastream/stream:Stream default {{project}}/{{location}}/{{stream_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:datastream/stream:Stream default {{location}}/{{stream_id}}
     /// ```
     /// </summary>
@@ -2062,7 +2054,7 @@ namespace Pulumi.Gcp.Datastream
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -2355,7 +2347,7 @@ namespace Pulumi.Gcp.Datastream
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

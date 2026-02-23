@@ -267,16 +267,12 @@ class DnsZone(pulumi.CustomResource):
         DnsZone can be imported using any of these accepted formats:
 
         * `{{org_id}}/dnsZones/{{dns_zone_id}}`
-
         * `{{org_id}}/{{dns_zone_id}}`
 
         When using the `pulumi import` command, DnsZone can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/dnsZone:DnsZone default {{org_id}}/dnsZones/{{dns_zone_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/dnsZone:DnsZone default {{org_id}}/{{dns_zone_id}}
         ```
 
@@ -336,16 +332,12 @@ class DnsZone(pulumi.CustomResource):
         DnsZone can be imported using any of these accepted formats:
 
         * `{{org_id}}/dnsZones/{{dns_zone_id}}`
-
         * `{{org_id}}/{{dns_zone_id}}`
 
         When using the `pulumi import` command, DnsZone can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/dnsZone:DnsZone default {{org_id}}/dnsZones/{{dns_zone_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/dnsZone:DnsZone default {{org_id}}/{{dns_zone_id}}
         ```
 

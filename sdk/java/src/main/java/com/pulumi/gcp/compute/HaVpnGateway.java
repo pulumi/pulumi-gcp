@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.HaVpnGatewayArgs;
 import com.pulumi.gcp.compute.inputs.HaVpnGatewayState;
+import com.pulumi.gcp.compute.outputs.HaVpnGatewayParams;
 import com.pulumi.gcp.compute.outputs.HaVpnGatewayVpnInterface;
 import java.lang.String;
 import java.util.List;
@@ -223,28 +224,16 @@ import javax.annotation.Nullable;
  * HaVpnGateway can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{name}}`
- * 
  * * `{{region}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{project}}/{{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{name}}
  * ```
  * 
@@ -382,6 +371,24 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
         return this.network;
     }
     /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={HaVpnGatewayParams.class}, tree="[0]")
+    private Output</* @Nullable */ HaVpnGatewayParams> params;
+
+    /**
+     * @return (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<HaVpnGatewayParams>> params() {
+        return Codegen.optional(this.params);
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -399,7 +406,7 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -407,7 +414,7 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

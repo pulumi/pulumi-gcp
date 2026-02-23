@@ -26,6 +26,8 @@ public final class GetRegionSslCertificateResult {
     private String name;
     private String namePrefix;
     private String privateKey;
+    private String privateKeyWo;
+    private String privateKeyWoVersion;
     private @Nullable String project;
     private @Nullable String region;
     private String selfLink;
@@ -62,6 +64,12 @@ public final class GetRegionSslCertificateResult {
     public String privateKey() {
         return this.privateKey;
     }
+    public String privateKeyWo() {
+        return this.privateKeyWo;
+    }
+    public String privateKeyWoVersion() {
+        return this.privateKeyWoVersion;
+    }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -90,6 +98,8 @@ public final class GetRegionSslCertificateResult {
         private String name;
         private String namePrefix;
         private String privateKey;
+        private String privateKeyWo;
+        private String privateKeyWoVersion;
         private @Nullable String project;
         private @Nullable String region;
         private String selfLink;
@@ -105,6 +115,8 @@ public final class GetRegionSslCertificateResult {
     	      this.name = defaults.name;
     	      this.namePrefix = defaults.namePrefix;
     	      this.privateKey = defaults.privateKey;
+    	      this.privateKeyWo = defaults.privateKeyWo;
+    	      this.privateKeyWoVersion = defaults.privateKeyWoVersion;
     	      this.project = defaults.project;
     	      this.region = defaults.region;
     	      this.selfLink = defaults.selfLink;
@@ -183,6 +195,22 @@ public final class GetRegionSslCertificateResult {
             return this;
         }
         @CustomType.Setter
+        public Builder privateKeyWo(String privateKeyWo) {
+            if (privateKeyWo == null) {
+              throw new MissingRequiredPropertyException("GetRegionSslCertificateResult", "privateKeyWo");
+            }
+            this.privateKeyWo = privateKeyWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder privateKeyWoVersion(String privateKeyWoVersion) {
+            if (privateKeyWoVersion == null) {
+              throw new MissingRequiredPropertyException("GetRegionSslCertificateResult", "privateKeyWoVersion");
+            }
+            this.privateKeyWoVersion = privateKeyWoVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -213,6 +241,8 @@ public final class GetRegionSslCertificateResult {
             _resultValue.name = name;
             _resultValue.namePrefix = namePrefix;
             _resultValue.privateKey = privateKey;
+            _resultValue.privateKeyWo = privateKeyWo;
+            _resultValue.privateKeyWoVersion = privateKeyWoVersion;
             _resultValue.project = project;
             _resultValue.region = region;
             _resultValue.selfLink = selfLink;

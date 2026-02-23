@@ -77,22 +77,14 @@ import * as utilities from "../utilities";
  * RegionalEndpoint can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/regionalEndpoints/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, RegionalEndpoint can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default projects/{{project}}/locations/{{location}}/regionalEndpoints/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default {{location}}/{{name}}
  * ```
  */
@@ -176,7 +168,7 @@ export class RegionalEndpoint extends pulumi.CustomResource {
     declare public /*out*/ readonly pscForwardingRule: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -310,7 +302,7 @@ export interface RegionalEndpointState {
     pscForwardingRule?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

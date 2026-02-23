@@ -7,31 +7,93 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * Three different resources help you manage your IAM policy for Healthcare dataset. Each of these resources serves a different use case:
+ *
+ * * `gcp.healthcare.DatasetIamPolicy`: Authoritative. Sets the IAM policy for the dataset and replaces any existing policy already attached.
+ * * `gcp.healthcare.DatasetIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataset are preserved.
+ * * `gcp.healthcare.DatasetIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the dataset are preserved.
+ *
+ * > **Note:** `gcp.healthcare.DatasetIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.DatasetIamBinding` and `gcp.healthcare.DatasetIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.healthcare.DatasetIamBinding` resources **can be** used in conjunction with `gcp.healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## gcp.healthcare.DatasetIamPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const dataset = new gcp.healthcare.DatasetIamPolicy("dataset", {
+ *     datasetId: "your-dataset-id",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## gcp.healthcare.DatasetIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.healthcare.DatasetIamBinding("dataset", {
+ *     datasetId: "your-dataset-id",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## gcp.healthcare.DatasetIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.healthcare.DatasetIamMember("dataset", {
+ *     datasetId: "your-dataset-id",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * ## gcp.healthcare.DatasetIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.healthcare.DatasetIamBinding("dataset", {
+ *     datasetId: "your-dataset-id",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## gcp.healthcare.DatasetIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.healthcare.DatasetIamMember("dataset", {
+ *     datasetId: "your-dataset-id",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
- * ### Importing IAM policies
- *
- * IAM policy imports use the identifier of the Healthcase Dataset resource. For example:
- *
- * * `"{{project_id}}/{{location}}/{{dataset}}"`
- *
- * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
- *
- * tf
- *
- * import {
- *
- *   id = "{{project_id}}/{{location}}/{{dataset}}"
- *
- *   to = google_healthcare_dataset_iam_policy.default
- *
- * }
- *
- * The `pulumi import` command can also be used:
- *
- * ```sh
- * $ pulumi import gcp:healthcare/datasetIamBinding:DatasetIamBinding default {{project_id}}/{{location}}/{{dataset}}
- * ```
+ * > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class DatasetIamBinding extends pulumi.CustomResource {
     /**

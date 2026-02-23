@@ -210,9 +210,27 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deleteTime);
     }
 
+    /**
+     * Whether Terraform will be prevented from destroying the service. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the service,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the service will fail.
+     * When the field is set to false, deleting the service is allowed.
+     * 
+     */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the service. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the service,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the service will fail.
+     * When the field is set to false, deleting the service is allowed.
+     * 
+     */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
@@ -232,9 +250,17 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Import(name="effectiveAnnotations")
     private @Nullable Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Optional<Output<Map<String,String>>> effectiveAnnotations() {
         return Optional.ofNullable(this.effectiveAnnotations);
     }
@@ -520,7 +546,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
@@ -528,7 +554,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
@@ -1039,11 +1065,33 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
             return deleteTime(Output.of(deleteTime));
         }
 
+        /**
+         * @param deletionProtection Whether Terraform will be prevented from destroying the service. Defaults to true.
+         * When a`terraform destroy` or `pulumi up` would delete the service,
+         * the command will fail if this field is not set to false in Terraform state.
+         * When the field is set to true or unset in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the service will fail.
+         * When the field is set to false, deleting the service is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
             $.deletionProtection = deletionProtection;
             return this;
         }
 
+        /**
+         * @param deletionProtection Whether Terraform will be prevented from destroying the service. Defaults to true.
+         * When a`terraform destroy` or `pulumi up` would delete the service,
+         * the command will fail if this field is not set to false in Terraform state.
+         * When the field is set to true or unset in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the service will fail.
+         * When the field is set to false, deleting the service is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
         }
@@ -1069,11 +1117,23 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {
             $.effectiveAnnotations = effectiveAnnotations;
             return this;
         }
 
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
             return effectiveAnnotations(Output.of(effectiveAnnotations));
         }
@@ -1461,7 +1521,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -1473,7 +1533,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 

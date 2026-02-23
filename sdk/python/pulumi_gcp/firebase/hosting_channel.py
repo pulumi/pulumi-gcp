@@ -157,7 +157,7 @@ class _HostingChannelState:
         :param pulumi.Input[_builtins.str] name: The fully-qualified resource name for the channel, in the format:
                sites/SITE_ID/channels/CHANNEL_ID
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.int] retained_release_count: The number of previous releases to retain on the channel for rollback or other
                purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[_builtins.str] site_id: Required. The ID of the site in which to create this channel.
@@ -254,7 +254,7 @@ class _HostingChannelState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -316,6 +316,19 @@ class HostingChannel(pulumi.CustomResource):
                  ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A `Channel` represents a stream of releases for a site. All sites have a default
+        `live` channel that serves content to the Firebase-provided subdomains and any
+        connected custom domains.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Channel, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.channels)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Channel Basic
@@ -355,16 +368,12 @@ class HostingChannel(pulumi.CustomResource):
         Channel can be imported using any of these accepted formats:
 
         * `sites/{{site_id}}/channels/{{channel_id}}`
-
         * `{{site_id}}/{{channel_id}}`
 
         When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingChannel:HostingChannel default sites/{{site_id}}/channels/{{channel_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingChannel:HostingChannel default {{site_id}}/{{channel_id}}
         ```
 
@@ -391,6 +400,19 @@ class HostingChannel(pulumi.CustomResource):
                  args: HostingChannelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A `Channel` represents a stream of releases for a site. All sites have a default
+        `live` channel that serves content to the Firebase-provided subdomains and any
+        connected custom domains.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Channel, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.channels)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Channel Basic
@@ -430,16 +452,12 @@ class HostingChannel(pulumi.CustomResource):
         Channel can be imported using any of these accepted formats:
 
         * `sites/{{site_id}}/channels/{{channel_id}}`
-
         * `{{site_id}}/{{channel_id}}`
 
         When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingChannel:HostingChannel default sites/{{site_id}}/channels/{{channel_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingChannel:HostingChannel default {{site_id}}/{{channel_id}}
         ```
 
@@ -525,7 +543,7 @@ class HostingChannel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The fully-qualified resource name for the channel, in the format:
                sites/SITE_ID/channels/CHANNEL_ID
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.int] retained_release_count: The number of previous releases to retain on the channel for rollback or other
                purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[_builtins.str] site_id: Required. The ID of the site in which to create this channel.
@@ -598,7 +616,7 @@ class HostingChannel(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

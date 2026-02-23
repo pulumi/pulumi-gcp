@@ -17,6 +17,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A consumable API that can be used by multiple Gateways.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about Api, see:
+ * 
+ * * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+ * 
  * ## Example Usage
  * 
  * ### Apigateway Api Basic
@@ -57,22 +68,14 @@ import javax.annotation.Nullable;
  * Api can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/global/apis/{{api_id}}`
- * 
  * * `{{project}}/{{api_id}}`
- * 
  * * `{{api_id}}`
  * 
  * When using the `pulumi import` command, Api can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{api_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:apigateway/api:Api default {{project}}/{{api_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:apigateway/api:Api default {{api_id}}
  * ```
  * 
@@ -203,7 +206,7 @@ public class Api extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -211,7 +214,7 @@ public class Api extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

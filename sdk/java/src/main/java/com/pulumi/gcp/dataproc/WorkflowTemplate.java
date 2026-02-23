@@ -120,27 +120,122 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Encryption Config With Spark Jobs
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.dataproc.WorkflowTemplate;
+ * import com.pulumi.gcp.dataproc.WorkflowTemplateArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateEncryptionConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobSparkJobArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobPysparkJobArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         // Grant Dataproc service account KMS permissions at project level
+ *         var dataprocKmsEncrypterDecrypter = new IAMMember("dataprocKmsEncrypterDecrypter", IAMMemberArgs.builder()
+ *             .project(project.name())
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code dataproc-accounts.iam.gserviceaccount.com", project.number()))
+ *             .build());
+ * 
+ *         var example = new WorkflowTemplate("example", WorkflowTemplateArgs.builder()
+ *             .name(workflowTemplateName)
+ *             .location(region)
+ *             .encryptionConfig(WorkflowTemplateEncryptionConfigArgs.builder()
+ *                 .kmsKey("<<-- uri to desired crypto key for customer management -->>")
+ *                 .build())
+ *             .placement(WorkflowTemplatePlacementArgs.builder()
+ *                 .managedCluster(WorkflowTemplatePlacementManagedClusterArgs.builder()
+ *                     .clusterName(clusterName)
+ *                     .config(WorkflowTemplatePlacementManagedClusterConfigArgs.builder()
+ *                         .gceClusterConfig(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs.builder()
+ *                             .zone(zone)
+ *                             .network(network)
+ *                             .build())
+ *                         .masterConfig(WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs.builder()
+ *                             .numInstances(1)
+ *                             .machineType(machineType)
+ *                             .diskConfig(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs.builder()
+ *                                 .bootDiskType("pd-standard")
+ *                                 .bootDiskSizeGb(100)
+ *                                 .build())
+ *                             .build())
+ *                         .workerConfig(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs.builder()
+ *                             .numInstances(2)
+ *                             .machineType(machineType)
+ *                             .diskConfig(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs.builder()
+ *                                 .bootDiskType("pd-standard")
+ *                                 .bootDiskSizeGb(100)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .jobs(            
+ *                 WorkflowTemplateJobArgs.builder()
+ *                     .stepId("example-job")
+ *                     .sparkJob(WorkflowTemplateJobSparkJobArgs.builder()
+ *                         .mainClass("org.apache.spark.examples.SparkPi")
+ *                         .jarFileUris("file:///usr/lib/spark/examples/jars/spark-examples.jar")
+ *                         .args("1000")
+ *                         .build())
+ *                     .build(),
+ *                 WorkflowTemplateJobArgs.builder()
+ *                     .stepId("example-pyspark-job")
+ *                     .pysparkJob(WorkflowTemplateJobPysparkJobArgs.builder()
+ *                         .mainPythonFileUri("gs://dataproc-examples/pyspark/hello-world/hello-world.py")
+ *                         .build())
+ *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(dataprocKmsEncrypterDecrypter)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * WorkflowTemplate can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, WorkflowTemplate can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{location}}/{{name}}
  * ```
  * 
@@ -175,35 +270,43 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> dagTimeout() {
         return Codegen.optional(this.dagTimeout);
     }
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
     /**
-     * Optional. The encryption configuration for the workflow template.
+     * Encryption settings for encrypting workflow template job arguments. Structure is documented below
      * 
      */
     @Export(name="encryptionConfig", refs={WorkflowTemplateEncryptionConfig.class}, tree="[0]")
     private Output</* @Nullable */ WorkflowTemplateEncryptionConfig> encryptionConfig;
 
     /**
-     * @return Optional. The encryption configuration for the workflow template.
+     * @return Encryption settings for encrypting workflow template job arguments. Structure is documented below
      * 
      */
     public Output<Optional<WorkflowTemplateEncryptionConfig>> encryptionConfig() {
         return Codegen.optional(this.encryptionConfig);
     }
     /**
-     * Required. The Directed Acyclic Graph of Jobs to submit.
+     * (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
      * 
      */
     @Export(name="jobs", refs={List.class,WorkflowTemplateJob.class}, tree="[0,1]")
     private Output<List<WorkflowTemplateJob>> jobs;
 
     /**
-     * @return Required. The Directed Acyclic Graph of Jobs to submit.
+     * @return (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
      * 
      */
     public Output<List<WorkflowTemplateJob>> jobs() {
@@ -244,14 +347,14 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+     * (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+     * @return (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      * 
      */
     public Output<String> name() {
@@ -272,14 +375,14 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.parameters);
     }
     /**
-     * Required. WorkflowTemplate scheduling information.
+     * (Required) WorkflowTemplate scheduling information.
      * 
      */
     @Export(name="placement", refs={WorkflowTemplatePlacement.class}, tree="[0]")
     private Output<WorkflowTemplatePlacement> placement;
 
     /**
-     * @return Required. WorkflowTemplate scheduling information.
+     * @return (Required) WorkflowTemplate scheduling information.
      * 
      */
     public Output<WorkflowTemplatePlacement> placement() {

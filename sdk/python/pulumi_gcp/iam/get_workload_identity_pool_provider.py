@@ -181,6 +181,11 @@ def get_workload_identity_pool_provider(project: Optional[_builtins.str] = None,
                                         workload_identity_pool_provider_id: Optional[_builtins.str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkloadIdentityPoolProviderResult:
     """
+    Get a IAM workload identity provider from Google Cloud by its id.
+
+    > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python
@@ -229,6 +234,11 @@ def get_workload_identity_pool_provider_output(project: Optional[pulumi.Input[Op
                                                workload_identity_pool_provider_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkloadIdentityPoolProviderResult]:
     """
+    Get a IAM workload identity provider from Google Cloud by its id.
+
+    > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python

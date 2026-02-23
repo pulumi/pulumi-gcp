@@ -112,22 +112,14 @@ import (
 // VpnConnection can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, VpnConnection can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{location}}/{{name}}
 // ```
 type VpnConnection struct {
@@ -159,7 +151,7 @@ type VpnConnection struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The VPN connection Cloud Router name.
 	Router pulumi.StringPtrOutput `pulumi:"router"`
@@ -239,7 +231,7 @@ type vpnConnectionState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The VPN connection Cloud Router name.
 	Router *string `pulumi:"router"`
@@ -279,7 +271,7 @@ type VpnConnectionState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The VPN connection Cloud Router name.
 	Router pulumi.StringPtrInput
@@ -496,7 +488,8 @@ func (o VpnConnectionOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o VpnConnectionOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -119,22 +119,14 @@ import (
 // BlockchainNodes can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/blockchainNodes/{{blockchain_node_id}}`
-//
 // * `{{project}}/{{location}}/{{blockchain_node_id}}`
-//
 // * `{{location}}/{{blockchain_node_id}}`
 //
 // When using the `pulumi import` command, BlockchainNodes can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default projects/{{project}}/locations/{{location}}/blockchainNodes/{{blockchain_node_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default {{project}}/{{location}}/{{blockchain_node_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default {{location}}/{{blockchain_node_id}}
 // ```
 type BlockchainNodes struct {
@@ -168,7 +160,7 @@ type BlockchainNodes struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The timestamp at which the blockchain node was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -243,7 +235,7 @@ type blockchainNodesState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The timestamp at which the blockchain node was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -278,7 +270,7 @@ type BlockchainNodesState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The timestamp at which the blockchain node was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -476,7 +468,8 @@ func (o BlockchainNodesOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o BlockchainNodesOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BlockchainNodes) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

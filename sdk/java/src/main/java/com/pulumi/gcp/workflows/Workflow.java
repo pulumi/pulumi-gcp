@@ -255,9 +255,27 @@ public class Workflow extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> cryptoKeyName() {
         return Codegen.optional(this.cryptoKeyName);
     }
+    /**
+     * Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the workflow,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the workflow will fail.
+     * When the field is set to false, deleting the workflow is allowed.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the workflow,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the workflow will fail.
+     * When the field is set to false, deleting the workflow is allowed.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
@@ -377,7 +395,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -385,7 +403,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

@@ -431,16 +431,12 @@ class AttachedDisk(pulumi.CustomResource):
         Attached Disk can be imported the following ways:
 
         * `projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}`
-
         * `{{project}}/{{zone}}/{{instance.name}}/{{disk.name}}`
 
         When using the `pulumi import` command, Attached Disk can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/attachedDisk:AttachedDisk default projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/attachedDisk:AttachedDisk default {{project}}/{{zone}}/{{instance.name}}/{{disk.name}}
         ```
 
@@ -533,16 +529,12 @@ class AttachedDisk(pulumi.CustomResource):
         Attached Disk can be imported the following ways:
 
         * `projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}`
-
         * `{{project}}/{{zone}}/{{instance.name}}/{{disk.name}}`
 
         When using the `pulumi import` command, Attached Disk can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/attachedDisk:AttachedDisk default projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/attachedDisk:AttachedDisk default {{project}}/{{zone}}/{{instance.name}}/{{disk.name}}
         ```
 

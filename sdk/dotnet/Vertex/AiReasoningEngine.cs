@@ -60,6 +60,48 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// ### Vertex Ai Reasoning Engine Developer Connect Source
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
+    ///     {
+    ///         DisplayName = "reasoning-engine",
+    ///         Description = "A basic reasoning engine",
+    ///         Region = "us-central1",
+    ///         Spec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecArgs
+    ///         {
+    ///             SourceCodeSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecArgs
+    ///             {
+    ///                 DeveloperConnectSource = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs
+    ///                 {
+    ///                     Config = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs
+    ///                     {
+    ///                         GitRepositoryLink = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us-central1/connections/tpg-test-bot-github/gitRepositoryLinks/tpg-test-vertex-reasoning",
+    ///                         Dir = "source",
+    ///                         Revision = "main",
+    ///                     },
+    ///                 },
+    ///                 PythonSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs
+    ///                 {
+    ///                     Version = "3.14",
+    ///                     EntrypointModule = "simple_agent",
+    ///                     EntrypointObject = "fixed_name_generator",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Vertex Ai Reasoning Engine Psc Interface
     /// 
     /// ```csharp
@@ -421,28 +463,16 @@ namespace Pulumi.Gcp.Vertex
     /// ReasoningEngine can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{region}}/reasoningEngines/{{name}}`
-    /// 
     /// * `{{project}}/{{region}}/{{name}}`
-    /// 
     /// * `{{region}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, ReasoningEngine can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default projects/{{project}}/locations/{{region}}/reasoningEngines/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{project}}/{{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{name}}
     /// ```
     /// </summary>

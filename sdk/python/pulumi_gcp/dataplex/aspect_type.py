@@ -208,7 +208,7 @@ class _AspectTypeState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] transfer_status: Denotes the transfer status of the Aspect Type. It is unspecified
                for Aspect Type created from Dataplex API.
         :param pulumi.Input[_builtins.str] uid: System generated globally unique ID for the AspectType. This ID will be different if the AspectType is deleted and re-created with the same name.
@@ -390,7 +390,7 @@ class _AspectTypeState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -645,22 +645,14 @@ class AspectType(pulumi.CustomResource):
         AspectType can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/aspectTypes/{{aspect_type_id}}`
-
         * `{{project}}/{{location}}/{{aspect_type_id}}`
-
         * `{{location}}/{{aspect_type_id}}`
 
         When using the `pulumi import` command, AspectType can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/aspectType:AspectType default projects/{{project}}/locations/{{location}}/aspectTypes/{{aspect_type_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/aspectType:AspectType default {{project}}/{{location}}/{{aspect_type_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/aspectType:AspectType default {{location}}/{{aspect_type_id}}
         ```
 
@@ -883,22 +875,14 @@ class AspectType(pulumi.CustomResource):
         AspectType can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/aspectTypes/{{aspect_type_id}}`
-
         * `{{project}}/{{location}}/{{aspect_type_id}}`
-
         * `{{location}}/{{aspect_type_id}}`
 
         When using the `pulumi import` command, AspectType can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/aspectType:AspectType default projects/{{project}}/locations/{{location}}/aspectTypes/{{aspect_type_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/aspectType:AspectType default {{project}}/{{location}}/{{aspect_type_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/aspectType:AspectType default {{location}}/{{aspect_type_id}}
         ```
 
@@ -1003,7 +987,7 @@ class AspectType(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] transfer_status: Denotes the transfer status of the Aspect Type. It is unspecified
                for Aspect Type created from Dataplex API.
         :param pulumi.Input[_builtins.str] uid: System generated globally unique ID for the AspectType. This ID will be different if the AspectType is deleted and re-created with the same name.
@@ -1131,7 +1115,7 @@ class AspectType(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

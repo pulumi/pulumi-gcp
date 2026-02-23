@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
+    /// A resource that manages the lock state of a PromptTemplate.
+    /// When this resource is created, the template is locked.
+    /// When this resource is deleted, the template is unlocked.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Firebaseailogic Prompt Template Lock Basic
@@ -47,22 +54,14 @@ namespace Pulumi.Gcp.Firebase
     /// PromptTemplateLock can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/templates/{{template_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{template_id}}`
-    /// 
     /// * `{{location}}/{{template_id}}`
     /// 
     /// When using the `pulumi import` command, PromptTemplateLock can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock default projects/{{project}}/locations/{{location}}/templates/{{template_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock default {{project}}/{{location}}/{{template_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock default {{location}}/{{template_id}}
     /// ```
     /// </summary>

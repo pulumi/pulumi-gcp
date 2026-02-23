@@ -176,22 +176,14 @@ import (
 // Membership can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}`
-//
 // * `{{project}}/{{location}}/{{membership_id}}`
-//
 // * `{{location}}/{{membership_id}}`
 //
 // When using the `pulumi import` command, Membership can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{location}}/{{membership_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
 // ```
 type Membership struct {
@@ -223,7 +215,7 @@ type Membership struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
@@ -291,7 +283,7 @@ type membershipState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
@@ -322,7 +314,7 @@ type MembershipState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 }
 
@@ -516,7 +508,8 @@ func (o MembershipOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MembershipOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

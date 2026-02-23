@@ -478,22 +478,14 @@ import (
 // Instance can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-//
 // * `{{project}}/{{location}}/{{instance_id}}`
-//
 // * `{{location}}/{{instance_id}}`
 //
 // When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:memorystore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:memorystore/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:memorystore/instance:Instance default {{location}}/{{instance_id}}
 // ```
 type Instance struct {
@@ -611,7 +603,7 @@ type Instance struct {
 	// Deprecated: `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
 	PscAutoConnections InstancePscAutoConnectionArrayOutput `pulumi:"pscAutoConnections"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
 	ReplicaCount pulumi.IntOutput `pulumi:"replicaCount"`
@@ -797,7 +789,7 @@ type instanceState struct {
 	// Deprecated: `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
 	PscAutoConnections []InstancePscAutoConnection `pulumi:"pscAutoConnections"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
 	ReplicaCount *int `pulumi:"replicaCount"`
@@ -940,7 +932,7 @@ type InstanceState struct {
 	// Deprecated: `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
 	PscAutoConnections InstancePscAutoConnectionArrayInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
 	ReplicaCount pulumi.IntPtrInput
@@ -1445,7 +1437,8 @@ func (o InstanceOutput) PscAutoConnections() InstancePscAutoConnectionArrayOutpu
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

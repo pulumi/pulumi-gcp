@@ -97,19 +97,22 @@ class AiLogicConfigGenerativeLanguageConfig(dict):
                  api_key_wo_version: Optional[_builtins.str] = None):
         """
         :param _builtins.str api_key: The value of the API key. The API key must have
-               'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+               `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
                Note that this API is sometimes called the *Generative Language API* in
                the Google Cloud console.
-               
                Do **not** add this Gemini API key into your app's codebase
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param _builtins.str api_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
                The value of the API key. The API key must have
-               'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+               `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
                Note that this API is sometimes called the *Generative Language API* in
                the Google Cloud console.
-               
                Do **not** add this Gemini API key into your app's codebase
-        :param _builtins.str api_key_wo_version: Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `api_key` or `api_key_wo` can only be set.
+        :param _builtins.str api_key_wo_version: Triggers update of `api_key_wo` write-only. Increment this value when an update to `api_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
@@ -123,11 +126,11 @@ class AiLogicConfigGenerativeLanguageConfig(dict):
     def api_key(self) -> Optional[_builtins.str]:
         """
         The value of the API key. The API key must have
-        'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+        `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
         Note that this API is sometimes called the *Generative Language API* in
         the Google Cloud console.
-
         Do **not** add this Gemini API key into your app's codebase
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "api_key")
 
@@ -136,12 +139,15 @@ class AiLogicConfigGenerativeLanguageConfig(dict):
     def api_key_wo(self) -> Optional[_builtins.str]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
         The value of the API key. The API key must have
-        'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+        `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
         Note that this API is sometimes called the *Generative Language API* in
         the Google Cloud console.
-
         Do **not** add this Gemini API key into your app's codebase
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `api_key` or `api_key_wo` can only be set.
         """
         return pulumi.get(self, "api_key_wo")
 
@@ -149,7 +155,7 @@ class AiLogicConfigGenerativeLanguageConfig(dict):
     @pulumi.getter(name="apiKeyWoVersion")
     def api_key_wo_version(self) -> Optional[_builtins.str]:
         """
-        Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        Triggers update of `api_key_wo` write-only. Increment this value when an update to `api_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "api_key_wo_version")
 

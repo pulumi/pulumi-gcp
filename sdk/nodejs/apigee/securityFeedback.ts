@@ -83,16 +83,12 @@ import * as utilities from "../utilities";
  * SecurityFeedback can be imported using any of these accepted formats:
  *
  * * `{{org_id}}/securityFeedback/{{feedback_id}}`
- *
  * * `{{org_id}}/{{feedback_id}}`
  *
  * When using the `pulumi import` command, SecurityFeedback can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigee/securityFeedback:SecurityFeedback default {{org_id}}/securityFeedback/{{feedback_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apigee/securityFeedback:SecurityFeedback default {{org_id}}/{{feedback_id}}
  * ```
  */

@@ -347,7 +347,7 @@ class _InternalRangeState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_cidr_ranges: Optional. Can be set to narrow down or pick a different address space while searching for a free range.
                If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
         :param pulumi.Input[_builtins.str] usage: The type of usage set for this InternalRange.
@@ -580,7 +580,7 @@ class _InternalRangeState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -816,22 +816,14 @@ class InternalRange(pulumi.CustomResource):
         InternalRange can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/internalRanges/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InternalRange can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default projects/{{project}}/locations/global/internalRanges/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default {{name}}
         ```
 
@@ -1040,22 +1032,14 @@ class InternalRange(pulumi.CustomResource):
         InternalRange can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/internalRanges/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InternalRange can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default projects/{{project}}/locations/global/internalRanges/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default {{name}}
         ```
 
@@ -1188,7 +1172,7 @@ class InternalRange(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_cidr_ranges: Optional. Can be set to narrow down or pick a different address space while searching for a free range.
                If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
         :param pulumi.Input[_builtins.str] usage: The type of usage set for this InternalRange.
@@ -1352,7 +1336,7 @@ class InternalRange(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

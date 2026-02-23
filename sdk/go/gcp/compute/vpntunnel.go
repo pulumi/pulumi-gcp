@@ -244,28 +244,16 @@ import (
 // VpnTunnel can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, VpnTunnel can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{name}}
 // ```
 type VPNTunnel struct {
@@ -306,6 +294,10 @@ type VPNTunnel struct {
 	// be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params VPNTunnelParamsPtrOutput `pulumi:"params"`
 	// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
 	PeerExternalGateway pulumi.StringPtrOutput `pulumi:"peerExternalGateway"`
 	// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
@@ -321,7 +313,7 @@ type VPNTunnel struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -441,6 +433,10 @@ type vpntunnelState struct {
 	// be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *VPNTunnelParams `pulumi:"params"`
 	// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
 	PeerExternalGateway *string `pulumi:"peerExternalGateway"`
 	// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
@@ -456,7 +452,7 @@ type vpntunnelState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
 	Region *string `pulumi:"region"`
@@ -534,6 +530,10 @@ type VPNTunnelState struct {
 	// be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params VPNTunnelParamsPtrInput
 	// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
 	PeerExternalGateway pulumi.StringPtrInput
 	// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
@@ -549,7 +549,7 @@ type VPNTunnelState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
 	Region pulumi.StringPtrInput
@@ -622,6 +622,10 @@ type vpntunnelArgs struct {
 	// be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *VPNTunnelParams `pulumi:"params"`
 	// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
 	PeerExternalGateway *string `pulumi:"peerExternalGateway"`
 	// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
@@ -698,6 +702,10 @@ type VPNTunnelArgs struct {
 	// be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params VPNTunnelParamsPtrInput
 	// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
 	PeerExternalGateway pulumi.StringPtrInput
 	// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
@@ -898,6 +906,13 @@ func (o VPNTunnelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o VPNTunnelOutput) Params() VPNTunnelParamsPtrOutput {
+	return o.ApplyT(func(v *VPNTunnel) VPNTunnelParamsPtrOutput { return v.Params }).(VPNTunnelParamsPtrOutput)
+}
+
 // URL of the peer side external VPN gateway to which this VPN tunnel is connected.
 func (o VPNTunnelOutput) PeerExternalGateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringPtrOutput { return v.PeerExternalGateway }).(pulumi.StringPtrOutput)
@@ -928,7 +943,8 @@ func (o VPNTunnelOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o VPNTunnelOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

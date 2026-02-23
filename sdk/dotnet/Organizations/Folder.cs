@@ -31,16 +31,12 @@ namespace Pulumi.Gcp.Organizations
     /// Folders can be imported using the folder's id, e.g.
     /// 
     /// * `folders/{{folder_id}}`
-    /// 
     /// * `{{folder_id}}`
     /// 
     /// When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:organizations/folder:Folder default folders/{{folder_id}}
     /// ```
     /// </summary>
@@ -60,6 +56,9 @@ namespace Pulumi.Gcp.Organizations
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `True` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `False`, deleting the folder is allowed. Default value is `True`.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -153,6 +152,9 @@ namespace Pulumi.Gcp.Organizations
 
     public sealed class FolderArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `True` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `False`, deleting the folder is allowed. Default value is `True`.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -209,6 +211,9 @@ namespace Pulumi.Gcp.Organizations
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `True` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `False`, deleting the folder is allowed. Default value is `True`.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 

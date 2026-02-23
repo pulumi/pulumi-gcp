@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.VPNGatewayArgs;
 import com.pulumi.gcp.compute.inputs.VPNGatewayState;
+import com.pulumi.gcp.compute.outputs.VPNGatewayParams;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
@@ -129,28 +130,16 @@ import javax.annotation.Nullable;
  * VpnGateway can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{name}}`
- * 
  * * `{{region}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, VpnGateway can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/vPNGateway:VPNGateway default projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{project}}/{{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{name}}
  * ```
  * 
@@ -238,6 +227,24 @@ public class VPNGateway extends com.pulumi.resources.CustomResource {
      */
     public Output<String> network() {
         return this.network;
+    }
+    /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={VPNGatewayParams.class}, tree="[0]")
+    private Output</* @Nullable */ VPNGatewayParams> params;
+
+    /**
+     * @return (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<VPNGatewayParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The ID of the project in which the resource belongs.

@@ -12,6 +12,26 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Volume replication creates an asynchronous mirror of a volume in a different location. This capability
+// lets you use the replicated volume for critical application activity in case of a location-wide outage
+// or disaster.
+//
+// A new destination volume is created as part of the replication resource. It's content is updated on a
+// schedule with content of the source volume. It can be used as a read-only copy while the mirror is
+// enabled, or as an independent read-write volume while the mirror is stopped. A destination volume will
+// also contain the snapshots of the source volume. Resuming a mirror will overwrite all changes on the
+// destination volume with the content of the source volume. While is mirror is enabled, all configuration
+// changes done to source or destination volumes are automatically done to both. Please note that the
+// destination volume is not a resource managed by Terraform.
+//
+// Reversing the replication direction is not supported through the provider.
+//
+// To get more information about VolumeReplication, see:
+//
+// * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes.replications)
+// * How-to Guides
+//   - [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-replication)
+//
 // ## Example Usage
 //
 // ### Netapp Volume Replication Create
@@ -105,29 +125,28 @@ import (
 // VolumeReplication can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/replications/{{name}}`
-//
 // * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
-//
 // * `{{location}}/{{volume_name}}/{{name}}`
 //
 // When using the `pulumi import` command, VolumeReplication can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:netapp/volumeReplication:VolumeReplication default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/replications/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/volumeReplication:VolumeReplication default {{project}}/{{location}}/{{volume_name}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/volumeReplication:VolumeReplication default {{location}}/{{volume_name}}/{{name}}
 // ```
 type VolumeReplication struct {
 	pulumi.CustomResourceState
 
 	// Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-	CreateTime              pulumi.StringOutput  `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// A destination volume is created as part of replication creation. The destination volume will not became
+	// under Terraform management unless you import it manually. If you delete the replication, this volume
+	// will remain.
+	// Setting this parameter to true will delete the *current* destination volume when destroying the
+	// replication. If you reversed the replication direction, this will be your former source volume!
+	// For production use, it is recommended to keep this parameter false to avoid accidental volume
+	// deletion. Handle with care. Default is false.
 	DeleteDestinationVolume pulumi.BoolPtrOutput `pulumi:"deleteDestinationVolume"`
 	// An description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -173,7 +192,7 @@ type VolumeReplication struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
 	// and act independently from the source volume.
@@ -197,7 +216,10 @@ type VolumeReplication struct {
 	// Structure is documented below.
 	TransferStats VolumeReplicationTransferStatArrayOutput `pulumi:"transferStats"`
 	// The name of the existing source volume.
-	VolumeName    pulumi.StringOutput  `pulumi:"volumeName"`
+	VolumeName pulumi.StringOutput `pulumi:"volumeName"`
+	// Replication resource state is independent of mirror_state. With enough data, it can take many hours
+	// for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+	// create/stop/resume operations, set this parameter to true. Default is false.
 	WaitForMirror pulumi.BoolPtrOutput `pulumi:"waitForMirror"`
 }
 
@@ -246,8 +268,15 @@ func GetVolumeReplication(ctx *pulumi.Context,
 // Input properties used for looking up and filtering VolumeReplication resources.
 type volumeReplicationState struct {
 	// Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-	CreateTime              *string `pulumi:"createTime"`
-	DeleteDestinationVolume *bool   `pulumi:"deleteDestinationVolume"`
+	CreateTime *string `pulumi:"createTime"`
+	// A destination volume is created as part of replication creation. The destination volume will not became
+	// under Terraform management unless you import it manually. If you delete the replication, this volume
+	// will remain.
+	// Setting this parameter to true will delete the *current* destination volume when destroying the
+	// replication. If you reversed the replication direction, this will be your former source volume!
+	// For production use, it is recommended to keep this parameter false to avoid accidental volume
+	// deletion. Handle with care. Default is false.
+	DeleteDestinationVolume *bool `pulumi:"deleteDestinationVolume"`
 	// An description of this resource.
 	Description *string `pulumi:"description"`
 	// Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
@@ -292,7 +321,7 @@ type volumeReplicationState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
 	// and act independently from the source volume.
@@ -316,13 +345,23 @@ type volumeReplicationState struct {
 	// Structure is documented below.
 	TransferStats []VolumeReplicationTransferStat `pulumi:"transferStats"`
 	// The name of the existing source volume.
-	VolumeName    *string `pulumi:"volumeName"`
-	WaitForMirror *bool   `pulumi:"waitForMirror"`
+	VolumeName *string `pulumi:"volumeName"`
+	// Replication resource state is independent of mirror_state. With enough data, it can take many hours
+	// for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+	// create/stop/resume operations, set this parameter to true. Default is false.
+	WaitForMirror *bool `pulumi:"waitForMirror"`
 }
 
 type VolumeReplicationState struct {
 	// Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-	CreateTime              pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// A destination volume is created as part of replication creation. The destination volume will not became
+	// under Terraform management unless you import it manually. If you delete the replication, this volume
+	// will remain.
+	// Setting this parameter to true will delete the *current* destination volume when destroying the
+	// replication. If you reversed the replication direction, this will be your former source volume!
+	// For production use, it is recommended to keep this parameter false to avoid accidental volume
+	// deletion. Handle with care. Default is false.
 	DeleteDestinationVolume pulumi.BoolPtrInput
 	// An description of this resource.
 	Description pulumi.StringPtrInput
@@ -368,7 +407,7 @@ type VolumeReplicationState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
 	// and act independently from the source volume.
@@ -392,7 +431,10 @@ type VolumeReplicationState struct {
 	// Structure is documented below.
 	TransferStats VolumeReplicationTransferStatArrayInput
 	// The name of the existing source volume.
-	VolumeName    pulumi.StringPtrInput
+	VolumeName pulumi.StringPtrInput
+	// Replication resource state is independent of mirror_state. With enough data, it can take many hours
+	// for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+	// create/stop/resume operations, set this parameter to true. Default is false.
 	WaitForMirror pulumi.BoolPtrInput
 }
 
@@ -401,6 +443,13 @@ func (VolumeReplicationState) ElementType() reflect.Type {
 }
 
 type volumeReplicationArgs struct {
+	// A destination volume is created as part of replication creation. The destination volume will not became
+	// under Terraform management unless you import it manually. If you delete the replication, this volume
+	// will remain.
+	// Setting this parameter to true will delete the *current* destination volume when destroying the
+	// replication. If you reversed the replication direction, this will be your former source volume!
+	// For production use, it is recommended to keep this parameter false to avoid accidental volume
+	// deletion. Handle with care. Default is false.
 	DeleteDestinationVolume *bool `pulumi:"deleteDestinationVolume"`
 	// An description of this resource.
 	Description *string `pulumi:"description"`
@@ -433,12 +482,22 @@ type volumeReplicationArgs struct {
 	// Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
 	ReplicationSchedule string `pulumi:"replicationSchedule"`
 	// The name of the existing source volume.
-	VolumeName    string `pulumi:"volumeName"`
-	WaitForMirror *bool  `pulumi:"waitForMirror"`
+	VolumeName string `pulumi:"volumeName"`
+	// Replication resource state is independent of mirror_state. With enough data, it can take many hours
+	// for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+	// create/stop/resume operations, set this parameter to true. Default is false.
+	WaitForMirror *bool `pulumi:"waitForMirror"`
 }
 
 // The set of arguments for constructing a VolumeReplication resource.
 type VolumeReplicationArgs struct {
+	// A destination volume is created as part of replication creation. The destination volume will not became
+	// under Terraform management unless you import it manually. If you delete the replication, this volume
+	// will remain.
+	// Setting this parameter to true will delete the *current* destination volume when destroying the
+	// replication. If you reversed the replication direction, this will be your former source volume!
+	// For production use, it is recommended to keep this parameter false to avoid accidental volume
+	// deletion. Handle with care. Default is false.
 	DeleteDestinationVolume pulumi.BoolPtrInput
 	// An description of this resource.
 	Description pulumi.StringPtrInput
@@ -471,7 +530,10 @@ type VolumeReplicationArgs struct {
 	// Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
 	ReplicationSchedule pulumi.StringInput
 	// The name of the existing source volume.
-	VolumeName    pulumi.StringInput
+	VolumeName pulumi.StringInput
+	// Replication resource state is independent of mirror_state. With enough data, it can take many hours
+	// for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+	// create/stop/resume operations, set this parameter to true. Default is false.
 	WaitForMirror pulumi.BoolPtrInput
 }
 
@@ -567,6 +629,13 @@ func (o VolumeReplicationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeReplication) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// A destination volume is created as part of replication creation. The destination volume will not became
+// under Terraform management unless you import it manually. If you delete the replication, this volume
+// will remain.
+// Setting this parameter to true will delete the *current* destination volume when destroying the
+// replication. If you reversed the replication direction, this will be your former source volume!
+// For production use, it is recommended to keep this parameter false to avoid accidental volume
+// deletion. Handle with care. Default is false.
 func (o VolumeReplicationOutput) DeleteDestinationVolume() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VolumeReplication) pulumi.BoolPtrOutput { return v.DeleteDestinationVolume }).(pulumi.BoolPtrOutput)
 }
@@ -663,7 +732,8 @@ func (o VolumeReplicationOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o VolumeReplicationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VolumeReplication) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
@@ -715,6 +785,9 @@ func (o VolumeReplicationOutput) VolumeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeReplication) pulumi.StringOutput { return v.VolumeName }).(pulumi.StringOutput)
 }
 
+// Replication resource state is independent of mirror_state. With enough data, it can take many hours
+// for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+// create/stop/resume operations, set this parameter to true. Default is false.
 func (o VolumeReplicationOutput) WaitForMirror() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VolumeReplication) pulumi.BoolPtrOutput { return v.WaitForMirror }).(pulumi.BoolPtrOutput)
 }

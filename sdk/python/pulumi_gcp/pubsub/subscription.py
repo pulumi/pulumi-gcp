@@ -560,7 +560,7 @@ class _SubscriptionState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['SubscriptionPushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to
                configure it. An empty pushConfig signifies that the subscriber will
                pull and ack messages using API methods.
@@ -856,7 +856,7 @@ class _SubscriptionState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1204,7 +1204,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_60461",
+                "filename_suffix": "-_54136",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1237,7 +1237,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_45397",
+                "filename_suffix": "-_11171",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1276,7 +1276,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_16451",
+                "filename_suffix": "-_40472",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1383,22 +1383,14 @@ class Subscription(pulumi.CustomResource):
         Subscription can be imported using any of these accepted formats:
 
         * `projects/{{project}}/subscriptions/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:pubsub/subscription:Subscription default projects/{{project}}/subscriptions/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:pubsub/subscription:Subscription default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:pubsub/subscription:Subscription default {{name}}
         ```
 
@@ -1740,7 +1732,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_60461",
+                "filename_suffix": "-_54136",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1773,7 +1765,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_45397",
+                "filename_suffix": "-_11171",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1812,7 +1804,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_16451",
+                "filename_suffix": "-_40472",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1919,22 +1911,14 @@ class Subscription(pulumi.CustomResource):
         Subscription can be imported using any of these accepted formats:
 
         * `projects/{{project}}/subscriptions/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:pubsub/subscription:Subscription default projects/{{project}}/subscriptions/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:pubsub/subscription:Subscription default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:pubsub/subscription:Subscription default {{name}}
         ```
 
@@ -2113,7 +2097,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['SubscriptionPushConfigArgs', 'SubscriptionPushConfigArgsDict']] push_config: If push delivery is used with this subscription, this field is used to
                configure it. An empty pushConfig signifies that the subscriber will
                pull and ack messages using API methods.
@@ -2338,7 +2322,7 @@ class Subscription(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

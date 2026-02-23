@@ -56,11 +56,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var scope = new Scope("scope", ScopeArgs.builder()
- *             .scopeId("tf-test-scope_16199")
+ *             .scopeId("tf-test-scope_6529")
  *             .build());
  * 
  *         var scopeRbacRoleBinding = new ScopeRbacRoleBinding("scopeRbacRoleBinding", ScopeRbacRoleBindingArgs.builder()
- *             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_21563")
+ *             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_16178")
  *             .scopeId(scope.scopeId())
  *             .user("test-email}{@literal @}{@code gmail.com")
  *             .role(ScopeRbacRoleBindingRoleArgs.builder()
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var scope = new Scope("scope", ScopeArgs.builder()
- *             .scopeId("tf-test-scope_25141")
+ *             .scopeId("tf-test-scope_26317")
  *             .build());
  * 
  *         var rbacrolebindingactuation = new Feature("rbacrolebindingactuation", FeatureArgs.builder()
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var scopeRbacRoleBinding = new ScopeRbacRoleBinding("scopeRbacRoleBinding", ScopeRbacRoleBindingArgs.builder()
- *             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_30827")
+ *             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_4866")
  *             .scopeId(scope.scopeId())
  *             .user("test-email}{@literal @}{@code gmail.com")
  *             .role(ScopeRbacRoleBindingRoleArgs.builder()
@@ -141,22 +141,14 @@ import javax.annotation.Nullable;
  * ScopeRBACRoleBinding can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}`
- * 
  * * `{{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}`
- * 
  * * `{{scope_id}}/{{scope_rbac_role_binding_id}}`
  * 
  * When using the `pulumi import` command, ScopeRBACRoleBinding can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{scope_id}}/{{scope_rbac_role_binding_id}}
  * ```
  * 
@@ -275,7 +267,7 @@ public class ScopeRbacRoleBinding extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -283,7 +275,7 @@ public class ScopeRbacRoleBinding extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

@@ -73,13 +73,15 @@ type LookupRegionSslCertificateResult struct {
 	Description       string `pulumi:"description"`
 	ExpireTime        string `pulumi:"expireTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
-	Name       string  `pulumi:"name"`
-	NamePrefix string  `pulumi:"namePrefix"`
-	PrivateKey string  `pulumi:"privateKey"`
-	Project    *string `pulumi:"project"`
-	Region     *string `pulumi:"region"`
-	SelfLink   string  `pulumi:"selfLink"`
+	Id                  string  `pulumi:"id"`
+	Name                string  `pulumi:"name"`
+	NamePrefix          string  `pulumi:"namePrefix"`
+	PrivateKey          string  `pulumi:"privateKey"`
+	PrivateKeyWo        string  `pulumi:"privateKeyWo"`
+	PrivateKeyWoVersion string  `pulumi:"privateKeyWoVersion"`
+	Project             *string `pulumi:"project"`
+	Region              *string `pulumi:"region"`
+	SelfLink            string  `pulumi:"selfLink"`
 }
 
 func LookupRegionSslCertificateOutput(ctx *pulumi.Context, args LookupRegionSslCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupRegionSslCertificateResultOutput {
@@ -159,6 +161,14 @@ func (o LookupRegionSslCertificateResultOutput) NamePrefix() pulumi.StringOutput
 
 func (o LookupRegionSslCertificateResultOutput) PrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionSslCertificateResult) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionSslCertificateResultOutput) PrivateKeyWo() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionSslCertificateResult) string { return v.PrivateKeyWo }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionSslCertificateResultOutput) PrivateKeyWoVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionSslCertificateResult) string { return v.PrivateKeyWoVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionSslCertificateResultOutput) Project() pulumi.StringPtrOutput {

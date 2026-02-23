@@ -176,7 +176,7 @@ class _PrivateConnectionState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: State of the PrivateConnection.
         :param pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between databasemigrationservice and the consumer's VPC.
@@ -324,7 +324,7 @@ class _PrivateConnectionState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -412,22 +412,14 @@ class PrivateConnection(pulumi.CustomResource):
         PrivateConnection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}`
-
         * `{{project}}/{{location}}/{{private_connection_id}}`
-
         * `{{location}}/{{private_connection_id}}`
 
         When using the `pulumi import` command, PrivateConnection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:databasemigrationservice/privateConnection:PrivateConnection default projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/privateConnection:PrivateConnection default {{project}}/{{location}}/{{private_connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/privateConnection:PrivateConnection default {{location}}/{{private_connection_id}}
         ```
 
@@ -491,22 +483,14 @@ class PrivateConnection(pulumi.CustomResource):
         PrivateConnection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}`
-
         * `{{project}}/{{location}}/{{private_connection_id}}`
-
         * `{{location}}/{{private_connection_id}}`
 
         When using the `pulumi import` command, PrivateConnection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:databasemigrationservice/privateConnection:PrivateConnection default projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/privateConnection:PrivateConnection default {{project}}/{{location}}/{{private_connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/privateConnection:PrivateConnection default {{location}}/{{private_connection_id}}
         ```
 
@@ -604,7 +588,7 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: State of the PrivateConnection.
         :param pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between databasemigrationservice and the consumer's VPC.
@@ -709,7 +693,7 @@ class PrivateConnection(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

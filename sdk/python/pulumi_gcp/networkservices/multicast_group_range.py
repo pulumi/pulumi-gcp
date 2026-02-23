@@ -312,7 +312,7 @@ class _MulticastGroupRangeState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] require_explicit_accept: Whether an empty consumer_accept_list will deny all consumer projects.
         :param pulumi.Input[_builtins.str] reserved_internal_range: The resource name of the internal range reserved for this
                multicast group range.
@@ -561,7 +561,7 @@ class _MulticastGroupRangeState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -713,22 +713,14 @@ class MulticastGroupRange(pulumi.CustomResource):
         MulticastGroupRange can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicastGroupRanges/{{multicast_group_range_id}}`
-
         * `{{project}}/{{location}}/{{multicast_group_range_id}}`
-
         * `{{location}}/{{multicast_group_range_id}}`
 
         When using the `pulumi import` command, MulticastGroupRange can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default projects/{{project}}/locations/{{location}}/multicastGroupRanges/{{multicast_group_range_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{project}}/{{location}}/{{multicast_group_range_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{location}}/{{multicast_group_range_id}}
         ```
 
@@ -825,22 +817,14 @@ class MulticastGroupRange(pulumi.CustomResource):
         MulticastGroupRange can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicastGroupRanges/{{multicast_group_range_id}}`
-
         * `{{project}}/{{location}}/{{multicast_group_range_id}}`
-
         * `{{location}}/{{multicast_group_range_id}}`
 
         When using the `pulumi import` command, MulticastGroupRange can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default projects/{{project}}/locations/{{location}}/multicastGroupRanges/{{multicast_group_range_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{project}}/{{location}}/{{multicast_group_range_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{location}}/{{multicast_group_range_id}}
         ```
 
@@ -982,7 +966,7 @@ class MulticastGroupRange(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] require_explicit_accept: Whether an empty consumer_accept_list will deny all consumer projects.
         :param pulumi.Input[_builtins.str] reserved_internal_range: The resource name of the internal range reserved for this
                multicast group range.
@@ -1165,7 +1149,7 @@ class MulticastGroupRange(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

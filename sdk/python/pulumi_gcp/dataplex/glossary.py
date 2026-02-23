@@ -160,7 +160,7 @@ class _GlossaryState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.int] term_count: The number of terms in the glossary.
         :param pulumi.Input[_builtins.str] uid: System generated unique id for the Glossary. This ID will be different if the Glossary is deleted and re-created with the same name.
         :param pulumi.Input[_builtins.str] update_time: The time at which the glossary was last updated.
@@ -323,7 +323,7 @@ class _GlossaryState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -417,22 +417,14 @@ class Glossary(pulumi.CustomResource):
         Glossary can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}`
-
         * `{{project}}/{{location}}/{{glossary_id}}`
-
         * `{{location}}/{{glossary_id}}`
 
         When using the `pulumi import` command, Glossary can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/glossary:Glossary default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossary:Glossary default {{project}}/{{location}}/{{glossary_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossary:Glossary default {{location}}/{{glossary_id}}
         ```
 
@@ -491,22 +483,14 @@ class Glossary(pulumi.CustomResource):
         Glossary can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}`
-
         * `{{project}}/{{location}}/{{glossary_id}}`
-
         * `{{location}}/{{glossary_id}}`
 
         When using the `pulumi import` command, Glossary can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/glossary:Glossary default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossary:Glossary default {{project}}/{{location}}/{{glossary_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossary:Glossary default {{location}}/{{glossary_id}}
         ```
 
@@ -606,7 +590,7 @@ class Glossary(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.int] term_count: The number of terms in the glossary.
         :param pulumi.Input[_builtins.str] uid: System generated unique id for the Glossary. This ID will be different if the Glossary is deleted and re-created with the same name.
         :param pulumi.Input[_builtins.str] update_time: The time at which the glossary was last updated.
@@ -720,7 +704,7 @@ class Glossary(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

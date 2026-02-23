@@ -60,34 +60,18 @@ import (
 // Network can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
-//
 // * `{{project}}/{{location}}/{{zone}}/{{network_id}}`
-//
 // * `{{location}}/{{zone}}/{{network_id}}`
-//
 // * `{{location}}/{{network_id}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:edgenetwork/network:Network default projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgenetwork/network:Network default {{project}}/{{location}}/{{zone}}/{{network_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{zone}}/{{network_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{network_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgenetwork/network:Network default {{name}}
 // ```
 type Network struct {
@@ -119,7 +103,7 @@ type Network struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The time when the subnet was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -199,7 +183,7 @@ type networkState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The time when the subnet was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -236,7 +220,7 @@ type NetworkState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The time when the subnet was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -433,7 +417,8 @@ func (o NetworkOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o NetworkOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

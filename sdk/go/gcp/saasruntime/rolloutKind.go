@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A RolloutKind is a reusable configuration resource that defines the policies, strategies, and targeting for Rollout operations. It acts as a template for repeatable Rollouts, providing guardrails and ensuring that updates are executed in a consistent manner across a fleet of Units.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
 // ## Example Usage
 //
 // ### Saas Runtime Rollout Kind Basic
@@ -72,22 +77,14 @@ import (
 // RolloutKind can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/rolloutKinds/{{rollout_kind_id}}`
-//
 // * `{{project}}/{{location}}/{{rollout_kind_id}}`
-//
 // * `{{location}}/{{rollout_kind_id}}`
 //
 // When using the `pulumi import` command, RolloutKind can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default projects/{{project}}/locations/{{location}}/rolloutKinds/{{rollout_kind_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default {{project}}/{{location}}/{{rollout_kind_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default {{location}}/{{rollout_kind_id}}
 // ```
 type RolloutKind struct {
@@ -101,7 +98,8 @@ type RolloutKind struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The timestamp when the resource was created.
-	CreateTime           pulumi.StringOutput    `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -124,7 +122,7 @@ type RolloutKind struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The ID value for the new rollout kind.
 	RolloutKindId pulumi.StringOutput `pulumi:"rolloutKindId"`
@@ -214,7 +212,8 @@ type rolloutKindState struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The timestamp when the resource was created.
-	CreateTime           *string           `pulumi:"createTime"`
+	CreateTime *string `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -237,7 +236,7 @@ type rolloutKindState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The ID value for the new rollout kind.
 	RolloutKindId *string `pulumi:"rolloutKindId"`
@@ -284,7 +283,8 @@ type RolloutKindState struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The timestamp when the resource was created.
-	CreateTime           pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -307,7 +307,7 @@ type RolloutKindState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The ID value for the new rollout kind.
 	RolloutKindId pulumi.StringPtrInput
@@ -548,6 +548,7 @@ func (o RolloutKindOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RolloutKind) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o RolloutKindOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RolloutKind) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -591,7 +592,8 @@ func (o RolloutKindOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RolloutKindOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RolloutKind) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

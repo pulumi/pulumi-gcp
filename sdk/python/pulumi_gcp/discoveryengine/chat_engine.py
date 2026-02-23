@@ -515,22 +515,14 @@ class ChatEngine(pulumi.CustomResource):
         ChatEngine can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
-
         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
-
         * `{{location}}/{{collection_id}}/{{engine_id}}`
 
         When using the `pulumi import` command, ChatEngine can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default {{location}}/{{collection_id}}/{{engine_id}}
         ```
 
@@ -648,22 +640,14 @@ class ChatEngine(pulumi.CustomResource):
         ChatEngine can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
-
         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
-
         * `{{location}}/{{collection_id}}/{{engine_id}}`
 
         When using the `pulumi import` command, ChatEngine can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default {{location}}/{{collection_id}}/{{engine_id}}
         ```
 

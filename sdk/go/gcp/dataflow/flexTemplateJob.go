@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
+// job on Dataflow, which is an implementation of Apache Beam running on Google
+// Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
+// and [Dataflow](https://cloud.google.com/dataflow/).
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
 // ## Example Usage
 //
 // ```go
@@ -76,8 +84,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataflow"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -136,8 +142,9 @@ type FlexTemplateJob struct {
 	// Template.
 	//
 	// ***
-	ContainerSpecGcsPath pulumi.StringOutput    `pulumi:"containerSpecGcsPath"`
-	EffectiveLabels      pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	ContainerSpecGcsPath pulumi.StringOutput `pulumi:"containerSpecGcsPath"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Immutable. Indicates if the job should use the streaming engine feature.
 	EnableStreamingEngine pulumi.BoolPtrOutput `pulumi:"enableStreamingEngine"`
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -183,7 +190,10 @@ type FlexTemplateJob struct {
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage pulumi.StringOutput `pulumi:"sdkContainerImage"`
 	// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
-	ServiceAccountEmail      pulumi.StringOutput  `pulumi:"serviceAccountEmail"`
+	ServiceAccountEmail pulumi.StringOutput `pulumi:"serviceAccountEmail"`
+	// If set to `true`, terraform will
+	// treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+	// and will remove the resource from terraform state and move on.  See above note.
 	SkipWaitOnJobTermination pulumi.BoolPtrOutput `pulumi:"skipWaitOnJobTermination"`
 	// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
 	StagingLocation pulumi.StringOutput `pulumi:"stagingLocation"`
@@ -247,8 +257,9 @@ type flexTemplateJobState struct {
 	// Template.
 	//
 	// ***
-	ContainerSpecGcsPath *string           `pulumi:"containerSpecGcsPath"`
-	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
+	ContainerSpecGcsPath *string `pulumi:"containerSpecGcsPath"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Immutable. Indicates if the job should use the streaming engine feature.
 	EnableStreamingEngine *bool `pulumi:"enableStreamingEngine"`
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -294,8 +305,11 @@ type flexTemplateJobState struct {
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage *string `pulumi:"sdkContainerImage"`
 	// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
-	ServiceAccountEmail      *string `pulumi:"serviceAccountEmail"`
-	SkipWaitOnJobTermination *bool   `pulumi:"skipWaitOnJobTermination"`
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// If set to `true`, terraform will
+	// treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+	// and will remove the resource from terraform state and move on.  See above note.
+	SkipWaitOnJobTermination *bool `pulumi:"skipWaitOnJobTermination"`
 	// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
 	StagingLocation *string `pulumi:"stagingLocation"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
@@ -322,7 +336,8 @@ type FlexTemplateJobState struct {
 	//
 	// ***
 	ContainerSpecGcsPath pulumi.StringPtrInput
-	EffectiveLabels      pulumi.StringMapInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Immutable. Indicates if the job should use the streaming engine feature.
 	EnableStreamingEngine pulumi.BoolPtrInput
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -368,7 +383,10 @@ type FlexTemplateJobState struct {
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage pulumi.StringPtrInput
 	// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
-	ServiceAccountEmail      pulumi.StringPtrInput
+	ServiceAccountEmail pulumi.StringPtrInput
+	// If set to `true`, terraform will
+	// treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+	// and will remove the resource from terraform state and move on.  See above note.
 	SkipWaitOnJobTermination pulumi.BoolPtrInput
 	// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
 	StagingLocation pulumi.StringPtrInput
@@ -441,8 +459,11 @@ type flexTemplateJobArgs struct {
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage *string `pulumi:"sdkContainerImage"`
 	// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
-	ServiceAccountEmail      *string `pulumi:"serviceAccountEmail"`
-	SkipWaitOnJobTermination *bool   `pulumi:"skipWaitOnJobTermination"`
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// If set to `true`, terraform will
+	// treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+	// and will remove the resource from terraform state and move on.  See above note.
+	SkipWaitOnJobTermination *bool `pulumi:"skipWaitOnJobTermination"`
 	// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
 	StagingLocation *string `pulumi:"stagingLocation"`
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
@@ -507,7 +528,10 @@ type FlexTemplateJobArgs struct {
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage pulumi.StringPtrInput
 	// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
-	ServiceAccountEmail      pulumi.StringPtrInput
+	ServiceAccountEmail pulumi.StringPtrInput
+	// If set to `true`, terraform will
+	// treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+	// and will remove the resource from terraform state and move on.  See above note.
 	SkipWaitOnJobTermination pulumi.BoolPtrInput
 	// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
 	StagingLocation pulumi.StringPtrInput
@@ -629,6 +653,7 @@ func (o FlexTemplateJobOutput) ContainerSpecGcsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.ContainerSpecGcsPath }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o FlexTemplateJobOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -733,6 +758,9 @@ func (o FlexTemplateJobOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
 
+// If set to `true`, terraform will
+// treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+// and will remove the resource from terraform state and move on.  See above note.
 func (o FlexTemplateJobOutput) SkipWaitOnJobTermination() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.BoolPtrOutput { return v.SkipWaitOnJobTermination }).(pulumi.BoolPtrOutput)
 }

@@ -136,31 +136,86 @@ class DatasetIamPolicy(pulumi.CustomResource):
                  policy_data: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        Three different resources help you manage your IAM policy for Healthcare dataset. Each of these resources serves a different use case:
+
+        * `healthcare.DatasetIamPolicy`: Authoritative. Sets the IAM policy for the dataset and replaces any existing policy already attached.
+        * `healthcare.DatasetIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataset are preserved.
+        * `healthcare.DatasetIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the dataset are preserved.
+
+        > **Note:** `healthcare.DatasetIamPolicy` **cannot** be used in conjunction with `healthcare.DatasetIamBinding` and `healthcare.DatasetIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `healthcare.DatasetIamBinding` resources **can be** used in conjunction with `healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## healthcare.DatasetIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
+        dataset = gcp.healthcare.DatasetIamPolicy("dataset",
+            dataset_id="your-dataset-id",
+            policy_data=admin.policy_data)
+        ```
+
+        ## healthcare.DatasetIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.DatasetIamBinding("dataset",
+            dataset_id="your-dataset-id",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+
+        ## healthcare.DatasetIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.DatasetIamMember("dataset",
+            dataset_id="your-dataset-id",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+
+        ## healthcare.DatasetIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.DatasetIamBinding("dataset",
+            dataset_id="your-dataset-id",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+
+        ## healthcare.DatasetIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.DatasetIamMember("dataset",
+            dataset_id="your-dataset-id",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
-        ### Importing IAM policies
-
-        IAM policy imports use the identifier of the Healthcase Dataset resource. For example:
-
-        * `"{{project_id}}/{{location}}/{{dataset}}"`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = "{{project_id}}/{{location}}/{{dataset}}"
-
-          to = google_healthcare_dataset_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:healthcare/datasetIamPolicy:DatasetIamPolicy default {{project_id}}/{{location}}/{{dataset}}
-        ```
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -178,31 +233,86 @@ class DatasetIamPolicy(pulumi.CustomResource):
                  args: DatasetIamPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        Three different resources help you manage your IAM policy for Healthcare dataset. Each of these resources serves a different use case:
+
+        * `healthcare.DatasetIamPolicy`: Authoritative. Sets the IAM policy for the dataset and replaces any existing policy already attached.
+        * `healthcare.DatasetIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataset are preserved.
+        * `healthcare.DatasetIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the dataset are preserved.
+
+        > **Note:** `healthcare.DatasetIamPolicy` **cannot** be used in conjunction with `healthcare.DatasetIamBinding` and `healthcare.DatasetIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `healthcare.DatasetIamBinding` resources **can be** used in conjunction with `healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## healthcare.DatasetIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
+        dataset = gcp.healthcare.DatasetIamPolicy("dataset",
+            dataset_id="your-dataset-id",
+            policy_data=admin.policy_data)
+        ```
+
+        ## healthcare.DatasetIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.DatasetIamBinding("dataset",
+            dataset_id="your-dataset-id",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+
+        ## healthcare.DatasetIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.DatasetIamMember("dataset",
+            dataset_id="your-dataset-id",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+
+        ## healthcare.DatasetIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.DatasetIamBinding("dataset",
+            dataset_id="your-dataset-id",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+
+        ## healthcare.DatasetIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.DatasetIamMember("dataset",
+            dataset_id="your-dataset-id",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
-        ### Importing IAM policies
-
-        IAM policy imports use the identifier of the Healthcase Dataset resource. For example:
-
-        * `"{{project_id}}/{{location}}/{{dataset}}"`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = "{{project_id}}/{{location}}/{{dataset}}"
-
-          to = google_healthcare_dataset_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:healthcare/datasetIamPolicy:DatasetIamPolicy default {{project_id}}/{{location}}/{{dataset}}
-        ```
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param DatasetIamPolicyArgs args: The arguments to use to populate this resource's properties.

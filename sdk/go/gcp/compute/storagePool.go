@@ -123,28 +123,16 @@ import (
 // StoragePool can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/zones/{{zone}}/storagePools/{{name}}`
-//
 // * `{{project}}/{{zone}}/{{name}}`
-//
 // * `{{zone}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, StoragePool can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/storagePool:StoragePool default projects/{{project}}/zones/{{zone}}/storagePools/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/storagePool:StoragePool default {{project}}/{{zone}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/storagePool:StoragePool default {{zone}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/storagePool:StoragePool default {{name}}
 // ```
 type StoragePool struct {
@@ -154,7 +142,11 @@ type StoragePool struct {
 	// Possible values are: `STANDARD`, `ADVANCED`.
 	CapacityProvisioningType pulumi.StringOutput `pulumi:"capacityProvisioningType"`
 	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp  pulumi.StringOutput  `pulumi:"creationTimestamp"`
+	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the StoragePool.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the StoragePool will fail.
+	// When the field is set to false, deleting the StoragePool is allowed.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// A description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -194,7 +186,7 @@ type StoragePool struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Status information for the storage pool resource.
 	// Structure is documented below.
@@ -259,8 +251,12 @@ type storagePoolState struct {
 	// Possible values are: `STANDARD`, `ADVANCED`.
 	CapacityProvisioningType *string `pulumi:"capacityProvisioningType"`
 	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp  *string `pulumi:"creationTimestamp"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the StoragePool.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the StoragePool will fail.
+	// When the field is set to false, deleting the StoragePool is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -299,7 +295,7 @@ type storagePoolState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Status information for the storage pool resource.
 	// Structure is documented below.
@@ -321,7 +317,11 @@ type StoragePoolState struct {
 	// Possible values are: `STANDARD`, `ADVANCED`.
 	CapacityProvisioningType pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp  pulumi.StringPtrInput
+	CreationTimestamp pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the StoragePool.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the StoragePool will fail.
+	// When the field is set to false, deleting the StoragePool is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// A description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -361,7 +361,7 @@ type StoragePoolState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Status information for the storage pool resource.
 	// Structure is documented below.
@@ -386,7 +386,11 @@ type storagePoolArgs struct {
 	// Provisioning type of the byte capacity of the pool.
 	// Possible values are: `STANDARD`, `ADVANCED`.
 	CapacityProvisioningType *string `pulumi:"capacityProvisioningType"`
-	DeletionProtection       *bool   `pulumi:"deletionProtection"`
+	// Whether Terraform will be prevented from destroying the StoragePool.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the StoragePool will fail.
+	// When the field is set to false, deleting the StoragePool is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Labels to apply to this storage pool. These can be later modified by the setLabels method.
@@ -431,7 +435,11 @@ type StoragePoolArgs struct {
 	// Provisioning type of the byte capacity of the pool.
 	// Possible values are: `STANDARD`, `ADVANCED`.
 	CapacityProvisioningType pulumi.StringPtrInput
-	DeletionProtection       pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the StoragePool.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the StoragePool will fail.
+	// When the field is set to false, deleting the StoragePool is allowed.
+	DeletionProtection pulumi.BoolPtrInput
 	// A description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Labels to apply to this storage pool. These can be later modified by the setLabels method.
@@ -569,6 +577,10 @@ func (o StoragePoolOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the StoragePool.
+// When the field is set to true or unset in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the StoragePool will fail.
+// When the field is set to false, deleting the StoragePool is allowed.
 func (o StoragePoolOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -644,7 +656,8 @@ func (o StoragePoolOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o StoragePoolOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

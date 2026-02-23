@@ -55,11 +55,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var scope = new Scope("scope", ScopeArgs.builder()
- *             .scopeId("tf-test-scope_85160")
+ *             .scopeId("tf-test-scope_25141")
  *             .build());
  * 
  *         var namespace = new Namespace("namespace", NamespaceArgs.builder()
- *             .scopeNamespaceId("tf-test-namespace_92130")
+ *             .scopeNamespaceId("tf-test-namespace_30827")
  *             .scopeId(scope.scopeId())
  *             .scope(scope.name())
  *             .namespaceLabels(Map.ofEntries(
@@ -86,22 +86,14 @@ import javax.annotation.Nullable;
  * Namespace can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/global/scopes/{{scope_id}}/namespaces/{{scope_namespace_id}}`
- * 
  * * `{{project}}/{{scope_id}}/{{scope_namespace_id}}`
- * 
  * * `{{scope_id}}/{{scope_namespace_id}}`
  * 
  * When using the `pulumi import` command, Namespace can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:gkehub/namespace:Namespace default projects/{{project}}/locations/global/scopes/{{scope_id}}/namespaces/{{scope_namespace_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gkehub/namespace:Namespace default {{project}}/{{scope_id}}/{{scope_namespace_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gkehub/namespace:Namespace default {{scope_id}}/{{scope_namespace_id}}
  * ```
  * 
@@ -224,7 +216,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -232,7 +224,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

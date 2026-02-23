@@ -54,16 +54,12 @@ namespace Pulumi.Gcp.Compute
     /// SnapshotSettings can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/global/snapshotSettings/`
-    /// 
     /// * `{{project}}`
     /// 
     /// When using the `pulumi import` command, SnapshotSettings can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/snapshotSettings:SnapshotSettings default projects/{{project}}/global/snapshotSettings/
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/snapshotSettings:SnapshotSettings default {{project}}
     /// ```
     /// </summary>

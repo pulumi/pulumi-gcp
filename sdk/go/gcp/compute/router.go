@@ -129,7 +129,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-subnet_52865"),
+//				Name:        pulumi.String("tf-test-subnet_85840"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,
@@ -202,28 +202,16 @@ import (
 // Router can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/regions/{{region}}/routers/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Router can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/router:Router default projects/{{project}}/regions/{{region}}/routers/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/router:Router default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/router:Router default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/router:Router default {{name}}
 // ```
 type Router struct {

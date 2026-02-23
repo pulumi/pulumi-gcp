@@ -373,22 +373,14 @@ namespace Pulumi.Gcp.Compute
     /// Instance templates can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/global/instanceTemplates/{{name}}`
-    /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
     /// ```
     /// </summary>
@@ -477,7 +469,14 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+        /// The machine type to create.
+        /// 
+        /// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// 
+        /// More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
+        /// create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
+        /// 
+        /// - - -
         /// </summary>
         [Output("machineType")]
         public Output<string> MachineType { get; private set; } = null!;
@@ -790,7 +789,14 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+        /// The machine type to create.
+        /// 
+        /// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// 
+        /// More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
+        /// create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
+        /// 
+        /// - - -
         /// </summary>
         [Input("machineType", required: true)]
         public Input<string> MachineType { get; set; } = null!;
@@ -1075,7 +1081,14 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+        /// The machine type to create.
+        /// 
+        /// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// 
+        /// More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
+        /// create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
+        /// 
+        /// - - -
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }

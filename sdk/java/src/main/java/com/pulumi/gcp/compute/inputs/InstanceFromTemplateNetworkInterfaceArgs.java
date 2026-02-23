@@ -218,6 +218,21 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
     }
 
     /**
+     * Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    @Import(name="parentNicName")
+    private @Nullable Output<String> parentNicName;
+
+    /**
+     * @return Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    public Optional<Output<String>> parentNicName() {
+        return Optional.ofNullable(this.parentNicName);
+    }
+
+    /**
      * The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
      * 
      */
@@ -292,6 +307,21 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
         return Optional.ofNullable(this.subnetworkProject);
     }
 
+    /**
+     * VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    @Import(name="vlan")
+    private @Nullable Output<Integer> vlan;
+
+    /**
+     * @return VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    public Optional<Output<Integer>> vlan() {
+        return Optional.ofNullable(this.vlan);
+    }
+
     private InstanceFromTemplateNetworkInterfaceArgs() {}
 
     private InstanceFromTemplateNetworkInterfaceArgs(InstanceFromTemplateNetworkInterfaceArgs $) {
@@ -308,11 +338,13 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
         this.networkAttachment = $.networkAttachment;
         this.networkIp = $.networkIp;
         this.nicType = $.nicType;
+        this.parentNicName = $.parentNicName;
         this.queueCount = $.queueCount;
         this.securityPolicy = $.securityPolicy;
         this.stackType = $.stackType;
         this.subnetwork = $.subnetwork;
         this.subnetworkProject = $.subnetworkProject;
+        this.vlan = $.vlan;
     }
 
     public static Builder builder() {
@@ -639,6 +671,27 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
         }
 
         /**
+         * @param parentNicName Name of the parent network interface of a dynamic network interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentNicName(@Nullable Output<String> parentNicName) {
+            $.parentNicName = parentNicName;
+            return this;
+        }
+
+        /**
+         * @param parentNicName Name of the parent network interface of a dynamic network interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentNicName(String parentNicName) {
+            return parentNicName(Output.of(parentNicName));
+        }
+
+        /**
          * @param queueCount The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
          * 
          * @return builder
@@ -741,6 +794,27 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
          */
         public Builder subnetworkProject(String subnetworkProject) {
             return subnetworkProject(Output.of(subnetworkProject));
+        }
+
+        /**
+         * @param vlan VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vlan(@Nullable Output<Integer> vlan) {
+            $.vlan = vlan;
+            return this;
+        }
+
+        /**
+         * @param vlan VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vlan(Integer vlan) {
+            return vlan(Output.of(vlan));
         }
 
         public InstanceFromTemplateNetworkInterfaceArgs build() {

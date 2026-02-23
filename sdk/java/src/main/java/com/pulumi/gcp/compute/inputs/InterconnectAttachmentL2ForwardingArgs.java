@@ -20,7 +20,6 @@ public final class InterconnectAttachmentL2ForwardingArgs extends com.pulumi.res
 
     /**
      * A map of VLAN tags to appliances and optional inner mapping rules.
-     * Structure is documented below.
      * 
      */
     @Import(name="applianceMappings")
@@ -28,7 +27,6 @@ public final class InterconnectAttachmentL2ForwardingArgs extends com.pulumi.res
 
     /**
      * @return A map of VLAN tags to appliances and optional inner mapping rules.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<List<InterconnectAttachmentL2ForwardingApplianceMappingArgs>>> applianceMappings() {
@@ -52,7 +50,6 @@ public final class InterconnectAttachmentL2ForwardingArgs extends com.pulumi.res
 
     /**
      * GeneveHeader related configurations.
-     * Structure is documented below.
      * 
      */
     @Import(name="geneveHeader")
@@ -60,7 +57,6 @@ public final class InterconnectAttachmentL2ForwardingArgs extends com.pulumi.res
 
     /**
      * @return GeneveHeader related configurations.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<InterconnectAttachmentL2ForwardingGeneveHeaderArgs>> geneveHeader() {
@@ -127,7 +123,6 @@ public final class InterconnectAttachmentL2ForwardingArgs extends com.pulumi.res
 
         /**
          * @param applianceMappings A map of VLAN tags to appliances and optional inner mapping rules.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -139,7 +134,6 @@ public final class InterconnectAttachmentL2ForwardingArgs extends com.pulumi.res
 
         /**
          * @param applianceMappings A map of VLAN tags to appliances and optional inner mapping rules.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -150,7 +144,6 @@ public final class InterconnectAttachmentL2ForwardingArgs extends com.pulumi.res
 
         /**
          * @param applianceMappings A map of VLAN tags to appliances and optional inner mapping rules.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -182,7 +175,6 @@ public final class InterconnectAttachmentL2ForwardingArgs extends com.pulumi.res
 
         /**
          * @param geneveHeader GeneveHeader related configurations.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -194,7 +186,6 @@ public final class InterconnectAttachmentL2ForwardingArgs extends com.pulumi.res
 
         /**
          * @param geneveHeader GeneveHeader related configurations.
-         * Structure is documented below.
          * 
          * @return builder
          * 

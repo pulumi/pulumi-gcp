@@ -65,6 +65,7 @@ import * as utilities from "../utilities";
  *     industryVertical: "GENERIC",
  *     appType: "APP_TYPE_INTRANET",
  *     searchEngineConfig: {},
+ *     knowledgeGraphConfig: {},
  * });
  * ```
  *
@@ -73,22 +74,14 @@ import * as utilities from "../utilities";
  * SearchEngine can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
- *
  * * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
- *
  * * `{{location}}/{{collection_id}}/{{engine_id}}`
  *
  * When using the `pulumi import` command, SearchEngine can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{location}}/{{collection_id}}/{{engine_id}}
  * ```
  */
@@ -169,6 +162,11 @@ export class SearchEngine extends pulumi.CustomResource {
      */
     declare public readonly kmsKeyName: pulumi.Output<string | undefined>;
     /**
+     * Configurations for the Knowledge Graph.
+     * Structure is documented below.
+     */
+    declare public readonly knowledgeGraphConfig: pulumi.Output<outputs.discoveryengine.SearchEngineKnowledgeGraphConfig | undefined>;
+    /**
      * Location.
      */
     declare public readonly location: pulumi.Output<string>;
@@ -217,6 +215,7 @@ export class SearchEngine extends pulumi.CustomResource {
             resourceInputs["features"] = state?.features;
             resourceInputs["industryVertical"] = state?.industryVertical;
             resourceInputs["kmsKeyName"] = state?.kmsKeyName;
+            resourceInputs["knowledgeGraphConfig"] = state?.knowledgeGraphConfig;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -251,6 +250,7 @@ export class SearchEngine extends pulumi.CustomResource {
             resourceInputs["features"] = args?.features;
             resourceInputs["industryVertical"] = args?.industryVertical;
             resourceInputs["kmsKeyName"] = args?.kmsKeyName;
+            resourceInputs["knowledgeGraphConfig"] = args?.knowledgeGraphConfig;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["searchEngineConfig"] = args?.searchEngineConfig;
@@ -315,6 +315,11 @@ export interface SearchEngineState {
      * protected by the KMS key, as indicated in the cmekConfig field.
      */
     kmsKeyName?: pulumi.Input<string>;
+    /**
+     * Configurations for the Knowledge Graph.
+     * Structure is documented below.
+     */
+    knowledgeGraphConfig?: pulumi.Input<inputs.discoveryengine.SearchEngineKnowledgeGraphConfig>;
     /**
      * Location.
      */
@@ -390,6 +395,11 @@ export interface SearchEngineArgs {
      * protected by the KMS key, as indicated in the cmekConfig field.
      */
     kmsKeyName?: pulumi.Input<string>;
+    /**
+     * Configurations for the Knowledge Graph.
+     * Structure is documented below.
+     */
+    knowledgeGraphConfig?: pulumi.Input<inputs.discoveryengine.SearchEngineKnowledgeGraphConfig>;
     /**
      * Location.
      */

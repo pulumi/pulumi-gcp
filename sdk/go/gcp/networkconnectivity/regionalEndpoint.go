@@ -128,22 +128,14 @@ import (
 // RegionalEndpoint can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/regionalEndpoints/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, RegionalEndpoint can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default projects/{{project}}/locations/{{location}}/regionalEndpoints/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default {{location}}/{{name}}
 // ```
 type RegionalEndpoint struct {
@@ -178,7 +170,7 @@ type RegionalEndpoint struct {
 	// The resource reference of the PSC Forwarding Rule created on behalf of the customer. Format: `//compute.googleapis.com/projects/{project}/regions/{region}/forwardingRules/{forwarding_rule_name}`
 	PscForwardingRule pulumi.StringOutput `pulumi:"pscForwardingRule"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The name of the subnetwork from which the IP address will be allocated. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
@@ -261,7 +253,7 @@ type regionalEndpointState struct {
 	// The resource reference of the PSC Forwarding Rule created on behalf of the customer. Format: `//compute.googleapis.com/projects/{project}/regions/{region}/forwardingRules/{forwarding_rule_name}`
 	PscForwardingRule *string `pulumi:"pscForwardingRule"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The name of the subnetwork from which the IP address will be allocated. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`
 	Subnetwork *string `pulumi:"subnetwork"`
@@ -301,7 +293,7 @@ type RegionalEndpointState struct {
 	// The resource reference of the PSC Forwarding Rule created on behalf of the customer. Format: `//compute.googleapis.com/projects/{project}/regions/{region}/forwardingRules/{forwarding_rule_name}`
 	PscForwardingRule pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The name of the subnetwork from which the IP address will be allocated. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`
 	Subnetwork pulumi.StringPtrInput
@@ -523,7 +515,8 @@ func (o RegionalEndpointOutput) PscForwardingRule() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RegionalEndpointOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RegionalEndpoint) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

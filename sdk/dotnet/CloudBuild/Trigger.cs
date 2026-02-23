@@ -1069,28 +1069,16 @@ namespace Pulumi.Gcp.CloudBuild
     /// Trigger can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}`
-    /// 
     /// * `projects/{{project}}/triggers/{{trigger_id}}`
-    /// 
     /// * `{{project}}/{{trigger_id}}`
-    /// 
     /// * `{{trigger_id}}`
     /// 
     /// When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/triggers/{{trigger_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:cloudbuild/trigger:Trigger default {{project}}/{{trigger_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:cloudbuild/trigger:Trigger default {{trigger_id}}
     /// ```
     /// </summary>

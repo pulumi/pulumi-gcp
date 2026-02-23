@@ -16,14 +16,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     public static final WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs Empty = new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs();
 
     /**
-     * Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+     * Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
      * 
      */
     @Import(name="enableIntegrityMonitoring")
     private @Nullable Output<Boolean> enableIntegrityMonitoring;
 
     /**
-     * @return Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+     * @return Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
      * 
      */
     public Optional<Output<Boolean>> enableIntegrityMonitoring() {
@@ -31,14 +31,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     }
 
     /**
-     * Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+     * Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
      * 
      */
     @Import(name="enableSecureBoot")
     private @Nullable Output<Boolean> enableSecureBoot;
 
     /**
-     * @return Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+     * @return Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
      * 
      */
     public Optional<Output<Boolean>> enableSecureBoot() {
@@ -46,14 +46,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     }
 
     /**
-     * Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+     * Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
      * 
      */
     @Import(name="enableVtpm")
     private @Nullable Output<Boolean> enableVtpm;
 
     /**
-     * @return Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+     * @return Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
      * 
      */
     public Optional<Output<Boolean>> enableVtpm() {
@@ -87,7 +87,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param enableIntegrityMonitoring Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+         * @param enableIntegrityMonitoring Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param enableIntegrityMonitoring Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+         * @param enableIntegrityMonitoring Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param enableSecureBoot Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+         * @param enableSecureBoot Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param enableSecureBoot Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+         * @param enableSecureBoot Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param enableVtpm Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+         * @param enableVtpm Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param enableVtpm Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+         * @param enableVtpm Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
          * 
          * @return builder
          * 

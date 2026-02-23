@@ -248,6 +248,7 @@ class _BackupState:
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] description: User-provided description of the backup.
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Backup.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['BackupEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
@@ -268,7 +269,7 @@ class _BackupState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
                This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[_builtins.str] size_bytes: Output only. The size of the backup in bytes.
@@ -437,6 +438,9 @@ class _BackupState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -577,7 +581,7 @@ class _BackupState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -770,22 +774,14 @@ class Backup(pulumi.CustomResource):
         Backup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}`
-
         * `{{project}}/{{location}}/{{backup_id}}`
-
         * `{{location}}/{{backup_id}}`
 
         When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:alloydb/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{backup_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:alloydb/backup:Backup default {{project}}/{{location}}/{{backup_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:alloydb/backup:Backup default {{location}}/{{backup_id}}
         ```
 
@@ -910,22 +906,14 @@ class Backup(pulumi.CustomResource):
         Backup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}`
-
         * `{{project}}/{{location}}/{{backup_id}}`
-
         * `{{location}}/{{backup_id}}`
 
         When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:alloydb/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{backup_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:alloydb/backup:Backup default {{project}}/{{location}}/{{backup_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:alloydb/backup:Backup default {{location}}/{{backup_id}}
         ```
 
@@ -1054,6 +1042,7 @@ class Backup(pulumi.CustomResource):
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] description: User-provided description of the backup.
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Backup.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
@@ -1074,7 +1063,7 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
                This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[_builtins.str] size_bytes: Output only. The size of the backup in bytes.
@@ -1190,6 +1179,9 @@ class Backup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
@@ -1286,7 +1278,7 @@ class Backup(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

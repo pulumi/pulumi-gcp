@@ -11,12 +11,30 @@ namespace Pulumi.Gcp.Firebase
 {
     public static class GetHostingChannel
     {
+        /// <summary>
+        /// A Google Cloud Firebase Hosting Channel instance
+        /// 
+        /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// </summary>
         public static Task<GetHostingChannelResult> InvokeAsync(GetHostingChannelArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostingChannelResult>("gcp:firebase/getHostingChannel:getHostingChannel", args ?? new GetHostingChannelArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// A Google Cloud Firebase Hosting Channel instance
+        /// 
+        /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// </summary>
         public static Output<GetHostingChannelResult> Invoke(GetHostingChannelInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostingChannelResult>("gcp:firebase/getHostingChannel:getHostingChannel", args ?? new GetHostingChannelInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// A Google Cloud Firebase Hosting Channel instance
+        /// 
+        /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// </summary>
         public static Output<GetHostingChannelResult> Invoke(GetHostingChannelInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostingChannelResult>("gcp:firebase/getHostingChannel:getHostingChannel", args ?? new GetHostingChannelInvokeArgs(), options.WithDefaults());
     }

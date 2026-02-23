@@ -412,6 +412,17 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        A rule for the OrganizationSecurityPolicy.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about OrganizationSecurityPolicyRule, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
+        * How-to Guides
+            * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+
         ## Example Usage
 
         ### Organization Security Policy Rule Basic
@@ -492,6 +503,17 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                  args: OrganizationSecurityPolicyRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A rule for the OrganizationSecurityPolicy.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about OrganizationSecurityPolicyRule, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
+        * How-to Guides
+            * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+
         ## Example Usage
 
         ### Organization Security Policy Rule Basic

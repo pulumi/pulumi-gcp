@@ -108,6 +108,8 @@ def get_instance_iam_policy(instance: Optional[_builtins.str] = None,
 
 
     :param _builtins.str instance: The name or relative resource id of the instance to manage IAM policies for.
+    :param _builtins.str project: The project in which the instance belongs. If it
+           is not provided, Terraform will use the provider default.
     """
     __args__ = dict()
     __args__['instance'] = instance
@@ -138,6 +140,8 @@ def get_instance_iam_policy_output(instance: Optional[pulumi.Input[_builtins.str
 
 
     :param _builtins.str instance: The name or relative resource id of the instance to manage IAM policies for.
+    :param _builtins.str project: The project in which the instance belongs. If it
+           is not provided, Terraform will use the provider default.
     """
     __args__ = dict()
     __args__['instance'] = instance

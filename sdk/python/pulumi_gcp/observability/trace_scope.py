@@ -270,6 +270,11 @@ class TraceScope(pulumi.CustomResource):
                  trace_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A trace scope is a collection of resources whose traces are queried together
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ### Observability Trace Scope Basic
@@ -280,8 +285,8 @@ class TraceScope(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         project_2 = gcp.organizations.Project("project-2",
-            project_id="tf-test_34242",
-            name="tf-test_9723",
+            project_id="tf-test_45397",
+            name="tf-test_16451",
             org_id="123456789",
             deletion_policy="DELETE")
         observability_trace_scope = gcp.observability.TraceScope("observability_trace_scope",
@@ -300,22 +305,14 @@ class TraceScope(pulumi.CustomResource):
         TraceScope can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/traceScopes/{{trace_scope_id}}`
-
         * `{{project}}/{{location}}/{{trace_scope_id}}`
-
         * `{{location}}/{{trace_scope_id}}`
 
         When using the `pulumi import` command, TraceScope can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:observability/traceScope:TraceScope default projects/{{project}}/locations/{{location}}/traceScopes/{{trace_scope_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:observability/traceScope:TraceScope default {{project}}/{{location}}/{{trace_scope_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:observability/traceScope:TraceScope default {{location}}/{{trace_scope_id}}
         ```
 
@@ -338,6 +335,11 @@ class TraceScope(pulumi.CustomResource):
                  args: TraceScopeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A trace scope is a collection of resources whose traces are queried together
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ### Observability Trace Scope Basic
@@ -348,8 +350,8 @@ class TraceScope(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         project_2 = gcp.organizations.Project("project-2",
-            project_id="tf-test_34242",
-            name="tf-test_9723",
+            project_id="tf-test_45397",
+            name="tf-test_16451",
             org_id="123456789",
             deletion_policy="DELETE")
         observability_trace_scope = gcp.observability.TraceScope("observability_trace_scope",
@@ -368,22 +370,14 @@ class TraceScope(pulumi.CustomResource):
         TraceScope can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/traceScopes/{{trace_scope_id}}`
-
         * `{{project}}/{{location}}/{{trace_scope_id}}`
-
         * `{{location}}/{{trace_scope_id}}`
 
         When using the `pulumi import` command, TraceScope can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:observability/traceScope:TraceScope default projects/{{project}}/locations/{{location}}/traceScopes/{{trace_scope_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:observability/traceScope:TraceScope default {{project}}/{{location}}/{{trace_scope_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:observability/traceScope:TraceScope default {{location}}/{{trace_scope_id}}
         ```
 

@@ -64,22 +64,14 @@ import * as utilities from "../utilities";
  * MulticastDomainGroup can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/multicastDomainGroups/{{multicast_domain_group_id}}`
- *
  * * `{{project}}/{{location}}/{{multicast_domain_group_id}}`
- *
  * * `{{location}}/{{multicast_domain_group_id}}`
  *
  * When using the `pulumi import` command, MulticastDomainGroup can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default projects/{{project}}/locations/{{location}}/multicastDomainGroups/{{multicast_domain_group_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default {{project}}/{{location}}/{{multicast_domain_group_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default {{location}}/{{multicast_domain_group_id}}
  * ```
  */
@@ -158,7 +150,7 @@ export class MulticastDomainGroup extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -293,7 +285,7 @@ export interface MulticastDomainGroupState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -47,9 +47,27 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.annotations);
     }
 
+    /**
+     * Blueprints are OCI Images that contain all of the artifacts needed to
+     * provision a unit. Metadata such as, type of the engine used to actuate the
+     * blueprint (e.g. terraform, helm etc) and version will come from the image
+     * manifest. If the hostname is omitted, it will be assumed to be the regional
+     * path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+     * Structure is documented below.
+     * 
+     */
     @Import(name="blueprint")
     private @Nullable Output<ReleaseBlueprintArgs> blueprint;
 
+    /**
+     * @return Blueprints are OCI Images that contain all of the artifacts needed to
+     * provision a unit. Metadata such as, type of the engine used to actuate the
+     * blueprint (e.g. terraform, helm etc) and version will come from the image
+     * manifest. If the hostname is omitted, it will be assumed to be the regional
+     * path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<ReleaseBlueprintArgs>> blueprint() {
         return Optional.ofNullable(this.blueprint);
     }
@@ -69,9 +87,17 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Import(name="effectiveAnnotations")
     private @Nullable Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Optional<Output<Map<String,String>>> effectiveAnnotations() {
         return Optional.ofNullable(this.effectiveAnnotations);
     }
@@ -239,7 +265,7 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
@@ -247,7 +273,7 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
@@ -418,11 +444,33 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
             return annotations(Output.of(annotations));
         }
 
+        /**
+         * @param blueprint Blueprints are OCI Images that contain all of the artifacts needed to
+         * provision a unit. Metadata such as, type of the engine used to actuate the
+         * blueprint (e.g. terraform, helm etc) and version will come from the image
+         * manifest. If the hostname is omitted, it will be assumed to be the regional
+         * path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blueprint(@Nullable Output<ReleaseBlueprintArgs> blueprint) {
             $.blueprint = blueprint;
             return this;
         }
 
+        /**
+         * @param blueprint Blueprints are OCI Images that contain all of the artifacts needed to
+         * provision a unit. Metadata such as, type of the engine used to actuate the
+         * blueprint (e.g. terraform, helm etc) and version will come from the image
+         * manifest. If the hostname is omitted, it will be assumed to be the regional
+         * path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blueprint(ReleaseBlueprintArgs blueprint) {
             return blueprint(Output.of(blueprint));
         }
@@ -448,11 +496,23 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {
             $.effectiveAnnotations = effectiveAnnotations;
             return this;
         }
 
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
             return effectiveAnnotations(Output.of(effectiveAnnotations));
         }
@@ -709,7 +769,7 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -721,7 +781,7 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 

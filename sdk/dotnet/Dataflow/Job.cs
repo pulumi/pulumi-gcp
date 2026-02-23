@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// ## Import
     /// 
-    /// Dataflow jobs can be imported using the job `id` e.g.
+    /// Dataflow jobs can be imported using the job `Id` e.g.
     /// 
     /// * `{{id}}`
     /// 

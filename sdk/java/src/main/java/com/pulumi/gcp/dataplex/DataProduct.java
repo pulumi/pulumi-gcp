@@ -19,6 +19,18 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A data product is a curated collection of data assets, packaged to address
+ * specific use cases.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about DataProduct, see:
+ * 
+ * * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts)
+ * * How-to Guides
+ *     * [Introduction to Data Products](https://cloud.google.com/dataplex/docs/data-products-overview)
+ * 
  * ## Example Usage
  * 
  * ### Dataplex Data Product Basic
@@ -58,7 +70,7 @@ import javax.annotation.Nullable;
  *                 .groupId("analyst")
  *                 .displayName("Data Analyst")
  *                 .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                     .googleGroup("tf-test-analysts-_74000}{@literal @}{@code example.com")
+ *                     .googleGroup("tf-test-analysts-_88722}{@literal @}{@code example.com")
  *                     .build())
  *                 .build())
  *             .build());
@@ -108,7 +120,7 @@ import javax.annotation.Nullable;
  *                     .displayName("Data Analyst - Updated")
  *                     .description("In-place update verified")
  *                     .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                         .googleGroup("tf-test-analysts-_75125}{@literal @}{@code example.com")
+ *                         .googleGroup("tf-test-analysts-_39249}{@literal @}{@code example.com")
  *                         .build())
  *                     .build(),
  *                 DataProductAccessGroupArgs.builder()
@@ -116,7 +128,7 @@ import javax.annotation.Nullable;
  *                     .groupId("scientist")
  *                     .displayName("Data Scientist")
  *                     .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                         .googleGroup("tf-test-scientists-_88722}{@literal @}{@code example.com")
+ *                         .googleGroup("tf-test-scientists-_74391}{@literal @}{@code example.com")
  *                         .build())
  *                     .build())
  *             .build());
@@ -131,22 +143,14 @@ import javax.annotation.Nullable;
  * DataProduct can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}`
- * 
  * * `{{project}}/{{location}}/{{data_product_id}}`
- * 
  * * `{{location}}/{{data_product_id}}`
  * 
  * When using the `pulumi import` command, DataProduct can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataplex/dataProduct:DataProduct default projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{project}}/{{location}}/{{data_product_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{location}}/{{data_product_id}}
  * ```
  * 
@@ -331,7 +335,7 @@ public class DataProduct extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -339,7 +343,7 @@ public class DataProduct extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

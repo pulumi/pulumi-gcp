@@ -11,6 +11,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A resource represents a Dataform Git repository
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about Repository, see:
+//
+// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/dataform/docs/)
+//
 // ## Example Usage
 //
 // ### Dataform Repository
@@ -19,8 +30,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
@@ -107,28 +116,16 @@ import (
 // Repository can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/repositories/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataform/repository:Repository default projects/{{project}}/locations/{{region}}/repositories/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataform/repository:Repository default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataform/repository:Repository default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataform/repository:Repository default {{name}}
 // ```
 type Repository struct {
@@ -160,7 +157,7 @@ type Repository struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A reference to the region
 	Region pulumi.StringPtrOutput `pulumi:"region"`
@@ -232,7 +229,7 @@ type repositoryState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A reference to the region
 	Region *string `pulumi:"region"`
@@ -270,7 +267,7 @@ type RepositoryState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// A reference to the region
 	Region pulumi.StringPtrInput
@@ -492,7 +489,8 @@ func (o RepositoryOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RepositoryOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

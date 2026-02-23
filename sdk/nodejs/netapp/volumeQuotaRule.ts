@@ -55,22 +55,14 @@ import * as utilities from "../utilities";
  * VolumeQuotaRule can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}`
- *
  * * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
- *
  * * `{{location}}/{{volume_name}}/{{name}}`
  *
  * When using the `pulumi import` command, VolumeQuotaRule can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{project}}/{{location}}/{{volume_name}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{location}}/{{volume_name}}/{{name}}
  * ```
  */
@@ -140,7 +132,7 @@ export class VolumeQuotaRule extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -273,7 +265,7 @@ export interface VolumeQuotaRuleState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

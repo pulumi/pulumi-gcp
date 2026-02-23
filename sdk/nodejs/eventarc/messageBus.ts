@@ -53,22 +53,14 @@ import * as utilities from "../utilities";
  * MessageBus can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/messageBuses/{{message_bus_id}}`
- *
  * * `{{project}}/{{location}}/{{message_bus_id}}`
- *
  * * `{{location}}/{{message_bus_id}}`
  *
  * When using the `pulumi import` command, MessageBus can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:eventarc/messageBus:MessageBus default projects/{{project}}/locations/{{location}}/messageBuses/{{message_bus_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:eventarc/messageBus:MessageBus default {{project}}/{{location}}/{{message_bus_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:eventarc/messageBus:MessageBus default {{location}}/{{message_bus_id}}
  * ```
  */
@@ -121,6 +113,9 @@ export class MessageBus extends pulumi.CustomResource {
      * Optional. Resource display name.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -165,7 +160,7 @@ export class MessageBus extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -264,6 +259,9 @@ export interface MessageBusState {
      * Optional. Resource display name.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -308,7 +306,7 @@ export interface MessageBusState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

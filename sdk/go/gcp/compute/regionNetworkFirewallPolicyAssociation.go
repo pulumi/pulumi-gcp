@@ -71,34 +71,18 @@ import (
 // RegionNetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
-//
 // * `{{project}}/{{region}}/{{firewall_policy}}/{{name}}`
-//
 // * `{{region}}/{{firewall_policy}}/{{name}}`
-//
 // * `{{project}}/{{firewall_policy}}/{{name}}`
-//
 // * `{{firewall_policy}}/{{name}}`
 //
 // When using the `pulumi import` command, RegionNetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{region}}/{{firewall_policy}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{region}}/{{firewall_policy}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{firewall_policy}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
 // ```
 type RegionNetworkFirewallPolicyAssociation struct {

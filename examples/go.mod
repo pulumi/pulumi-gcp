@@ -7,8 +7,8 @@ toolchain go1.24.10
 require (
 	github.com/pulumi/providertest v0.6.0
 	github.com/pulumi/pulumi-gcp/sdk/v6 v6.67.0
-	github.com/pulumi/pulumi/pkg/v3 v3.218.0
-	github.com/pulumi/pulumi/sdk/v3 v3.218.0
+	github.com/pulumi/pulumi/pkg/v3 v3.220.0
+	github.com/pulumi/pulumi/sdk/v3 v3.220.0
 	github.com/stretchr/testify v1.10.0
 )
 

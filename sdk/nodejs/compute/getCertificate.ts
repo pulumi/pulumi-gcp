@@ -62,6 +62,8 @@ export interface GetCertificateResult {
     readonly name: string;
     readonly namePrefix: string;
     readonly privateKey: string;
+    readonly privateKeyWo: string;
+    readonly privateKeyWoVersion: string;
     readonly project?: string;
     readonly selfLink: string;
 }

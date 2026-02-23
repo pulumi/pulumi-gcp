@@ -16,14 +16,550 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
+ * 
+ * * `gcp.compute.MachineImageIamPolicy`: Authoritative. Sets the IAM policy for the machineimage and replaces any existing policy already attached.
+ * * `gcp.compute.MachineImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the machineimage are preserved.
+ * * `gcp.compute.MachineImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the machineimage are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.compute.MachineImageIamPolicy`: Retrieves the IAM policy for the machineimage
+ * 
+ * &gt; **Note:** `gcp.compute.MachineImageIamPolicy` **cannot** be used in conjunction with `gcp.compute.MachineImageIamBinding` and `gcp.compute.MachineImageIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.compute.MachineImageIamBinding` resources **can be** used in conjunction with `gcp.compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * ## gcp.compute.MachineImageIamPolicy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.compute.MachineImageIamPolicy;
+ * import com.pulumi.gcp.compute.MachineImageIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/compute.admin")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()
+ *             .project(image.project())
+ *             .machineImage(image.name())
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.compute.MachineImageIamPolicy;
+ * import com.pulumi.gcp.compute.MachineImageIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/compute.admin")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()
+ *             .project(image.project())
+ *             .machineImage(image.name())
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ## gcp.compute.MachineImageIamBinding
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.MachineImageIamBinding;
+ * import com.pulumi.gcp.compute.MachineImageIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()
+ *             .project(image.project())
+ *             .machineImage(image.name())
+ *             .role("roles/compute.admin")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.MachineImageIamBinding;
+ * import com.pulumi.gcp.compute.MachineImageIamBindingArgs;
+ * import com.pulumi.gcp.compute.inputs.MachineImageIamBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()
+ *             .project(image.project())
+ *             .machineImage(image.name())
+ *             .role("roles/compute.admin")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .condition(MachineImageIamBindingConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ## gcp.compute.MachineImageIamMember
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.MachineImageIamMember;
+ * import com.pulumi.gcp.compute.MachineImageIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()
+ *             .project(image.project())
+ *             .machineImage(image.name())
+ *             .role("roles/compute.admin")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.MachineImageIamMember;
+ * import com.pulumi.gcp.compute.MachineImageIamMemberArgs;
+ * import com.pulumi.gcp.compute.inputs.MachineImageIamMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()
+ *             .project(image.project())
+ *             .machineImage(image.name())
+ *             .role("roles/compute.admin")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .condition(MachineImageIamMemberConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## This resource supports User Project Overrides.
+ * 
+ * - 
+ * 
+ * # IAM policy for Compute Engine MachineImage
+ * 
+ * Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
+ * 
+ * * `gcp.compute.MachineImageIamPolicy`: Authoritative. Sets the IAM policy for the machineimage and replaces any existing policy already attached.
+ * * `gcp.compute.MachineImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the machineimage are preserved.
+ * * `gcp.compute.MachineImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the machineimage are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.compute.MachineImageIamPolicy`: Retrieves the IAM policy for the machineimage
+ * 
+ * &gt; **Note:** `gcp.compute.MachineImageIamPolicy` **cannot** be used in conjunction with `gcp.compute.MachineImageIamBinding` and `gcp.compute.MachineImageIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.compute.MachineImageIamBinding` resources **can be** used in conjunction with `gcp.compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * ## gcp.compute.MachineImageIamPolicy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.compute.MachineImageIamPolicy;
+ * import com.pulumi.gcp.compute.MachineImageIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/compute.admin")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()
+ *             .project(image.project())
+ *             .machineImage(image.name())
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.compute.MachineImageIamPolicy;
+ * import com.pulumi.gcp.compute.MachineImageIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/compute.admin")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()
+ *             .project(image.project())
+ *             .machineImage(image.name())
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ## gcp.compute.MachineImageIamBinding
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.MachineImageIamBinding;
+ * import com.pulumi.gcp.compute.MachineImageIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()
+ *             .project(image.project())
+ *             .machineImage(image.name())
+ *             .role("roles/compute.admin")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.MachineImageIamBinding;
+ * import com.pulumi.gcp.compute.MachineImageIamBindingArgs;
+ * import com.pulumi.gcp.compute.inputs.MachineImageIamBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()
+ *             .project(image.project())
+ *             .machineImage(image.name())
+ *             .role("roles/compute.admin")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .condition(MachineImageIamBindingConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ## gcp.compute.MachineImageIamMember
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.MachineImageIamMember;
+ * import com.pulumi.gcp.compute.MachineImageIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()
+ *             .project(image.project())
+ *             .machineImage(image.name())
+ *             .role("roles/compute.admin")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.MachineImageIamMember;
+ * import com.pulumi.gcp.compute.MachineImageIamMemberArgs;
+ * import com.pulumi.gcp.compute.inputs.MachineImageIamMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()
+ *             .project(image.project())
+ *             .machineImage(image.name())
+ *             .role("roles/compute.admin")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .condition(MachineImageIamMemberConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
  * * projects/{{project}}/global/machineImages/{{name}}
- * 
  * * {{project}}/{{name}}
- * 
  * * {{name}}
  * 
  * Any variables not passed in the import command will be taken from the provider configuration.
@@ -31,25 +567,21 @@ import javax.annotation.Nullable;
  * Compute Engine machineimage IAM resources can be imported using the resource identifiers, role, and member.
  * 
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
- * 
  * ```sh
- * $ pulumi import gcp:compute/machineImageIamMember:MachineImageIamMember editor &#34;projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin user:jane{@literal @}example.com&#34;
+ * $ terraform import google_compute_machine_image_iam_member.editor &#34;projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
- * 
  * ```sh
- * $ pulumi import gcp:compute/machineImageIamMember:MachineImageIamMember editor &#34;projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin&#34;
+ * $ terraform import google_compute_machine_image_iam_binding.editor &#34;projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin&#34;
  * ```
  * 
  * IAM policy imports use the identifier of the resource in question, e.g.
- * 
  * ```sh
  * $ pulumi import gcp:compute/machineImageIamMember:MachineImageIamMember editor projects/{{project}}/global/machineImages/{{machine_image}}
  * ```
  * 
- * -&gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
- * 
+ * &gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */

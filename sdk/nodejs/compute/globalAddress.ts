@@ -48,22 +48,14 @@ import * as utilities from "../utilities";
  * GlobalAddress can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/global/addresses/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, GlobalAddress can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/globalAddress:GlobalAddress default projects/{{project}}/global/addresses/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{name}}
  * ```
  */
@@ -169,7 +161,7 @@ export class GlobalAddress extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -314,7 +306,7 @@ export interface GlobalAddressState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

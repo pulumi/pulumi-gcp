@@ -117,8 +117,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// <summary>
         /// The Google Cloud Project in which the Data Source belongs.
         /// </summary>
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetDataSourceArgs()
         {
@@ -149,8 +149,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// <summary>
         /// The Google Cloud Project in which the Data Source belongs.
         /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public GetDataSourceInvokeArgs()
         {

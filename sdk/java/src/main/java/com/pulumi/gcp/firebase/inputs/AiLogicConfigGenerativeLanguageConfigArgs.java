@@ -17,11 +17,11 @@ public final class AiLogicConfigGenerativeLanguageConfigArgs extends com.pulumi.
 
     /**
      * The value of the API key. The API key must have
-     * &#39;generativelanguage.googleapis.com&#39; in its &#34;API restrictions&#34; allowlist.
+     * `generativelanguage.googleapis.com` in its &#34;API restrictions&#34; allowlist.
      * Note that this API is sometimes called the *Generative Language API* in
      * the Google Cloud console.
-     * 
      * Do **not** add this Gemini API key into your app&#39;s codebase
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="apiKey")
@@ -29,11 +29,11 @@ public final class AiLogicConfigGenerativeLanguageConfigArgs extends com.pulumi.
 
     /**
      * @return The value of the API key. The API key must have
-     * &#39;generativelanguage.googleapis.com&#39; in its &#34;API restrictions&#34; allowlist.
+     * `generativelanguage.googleapis.com` in its &#34;API restrictions&#34; allowlist.
      * Note that this API is sometimes called the *Generative Language API* in
      * the Google Cloud console.
-     * 
      * Do **not** add this Gemini API key into your app&#39;s codebase
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> apiKey() {
@@ -42,12 +42,15 @@ public final class AiLogicConfigGenerativeLanguageConfigArgs extends com.pulumi.
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
      * The value of the API key. The API key must have
-     * &#39;generativelanguage.googleapis.com&#39; in its &#34;API restrictions&#34; allowlist.
+     * `generativelanguage.googleapis.com` in its &#34;API restrictions&#34; allowlist.
      * Note that this API is sometimes called the *Generative Language API* in
      * the Google Cloud console.
-     * 
      * Do **not** add this Gemini API key into your app&#39;s codebase
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `apiKey` or `apiKeyWo` can only be set.
      * 
      */
     @Import(name="apiKeyWo")
@@ -55,12 +58,15 @@ public final class AiLogicConfigGenerativeLanguageConfigArgs extends com.pulumi.
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
      * The value of the API key. The API key must have
-     * &#39;generativelanguage.googleapis.com&#39; in its &#34;API restrictions&#34; allowlist.
+     * `generativelanguage.googleapis.com` in its &#34;API restrictions&#34; allowlist.
      * Note that this API is sometimes called the *Generative Language API* in
      * the Google Cloud console.
-     * 
      * Do **not** add this Gemini API key into your app&#39;s codebase
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `apiKey` or `apiKeyWo` can only be set.
      * 
      */
     public Optional<Output<String>> apiKeyWo() {
@@ -68,14 +74,14 @@ public final class AiLogicConfigGenerativeLanguageConfigArgs extends com.pulumi.
     }
 
     /**
-     * Triggers update of &#39;api_key_wo&#39; write-only. Increment this value when an update to &#39;api_key_wo&#39; is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * Triggers update of `apiKeyWo` write-only. Increment this value when an update to `apiKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
     @Import(name="apiKeyWoVersion")
     private @Nullable Output<String> apiKeyWoVersion;
 
     /**
-     * @return Triggers update of &#39;api_key_wo&#39; write-only. Increment this value when an update to &#39;api_key_wo&#39; is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * @return Triggers update of `apiKeyWo` write-only. Increment this value when an update to `apiKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
     public Optional<Output<String>> apiKeyWoVersion() {
@@ -110,11 +116,11 @@ public final class AiLogicConfigGenerativeLanguageConfigArgs extends com.pulumi.
 
         /**
          * @param apiKey The value of the API key. The API key must have
-         * &#39;generativelanguage.googleapis.com&#39; in its &#34;API restrictions&#34; allowlist.
+         * `generativelanguage.googleapis.com` in its &#34;API restrictions&#34; allowlist.
          * Note that this API is sometimes called the *Generative Language API* in
          * the Google Cloud console.
-         * 
          * Do **not** add this Gemini API key into your app&#39;s codebase
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -126,11 +132,11 @@ public final class AiLogicConfigGenerativeLanguageConfigArgs extends com.pulumi.
 
         /**
          * @param apiKey The value of the API key. The API key must have
-         * &#39;generativelanguage.googleapis.com&#39; in its &#34;API restrictions&#34; allowlist.
+         * `generativelanguage.googleapis.com` in its &#34;API restrictions&#34; allowlist.
          * Note that this API is sometimes called the *Generative Language API* in
          * the Google Cloud console.
-         * 
          * Do **not** add this Gemini API key into your app&#39;s codebase
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -141,12 +147,15 @@ public final class AiLogicConfigGenerativeLanguageConfigArgs extends com.pulumi.
 
         /**
          * @param apiKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
          * The value of the API key. The API key must have
-         * &#39;generativelanguage.googleapis.com&#39; in its &#34;API restrictions&#34; allowlist.
+         * `generativelanguage.googleapis.com` in its &#34;API restrictions&#34; allowlist.
          * Note that this API is sometimes called the *Generative Language API* in
          * the Google Cloud console.
-         * 
          * Do **not** add this Gemini API key into your app&#39;s codebase
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `apiKey` or `apiKeyWo` can only be set.
          * 
          * @return builder
          * 
@@ -158,12 +167,15 @@ public final class AiLogicConfigGenerativeLanguageConfigArgs extends com.pulumi.
 
         /**
          * @param apiKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
          * The value of the API key. The API key must have
-         * &#39;generativelanguage.googleapis.com&#39; in its &#34;API restrictions&#34; allowlist.
+         * `generativelanguage.googleapis.com` in its &#34;API restrictions&#34; allowlist.
          * Note that this API is sometimes called the *Generative Language API* in
          * the Google Cloud console.
-         * 
          * Do **not** add this Gemini API key into your app&#39;s codebase
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `apiKey` or `apiKeyWo` can only be set.
          * 
          * @return builder
          * 
@@ -173,7 +185,7 @@ public final class AiLogicConfigGenerativeLanguageConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param apiKeyWoVersion Triggers update of &#39;api_key_wo&#39; write-only. Increment this value when an update to &#39;api_key_wo&#39; is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * @param apiKeyWoVersion Triggers update of `apiKeyWo` write-only. Increment this value when an update to `apiKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          * 
          * @return builder
          * 
@@ -184,7 +196,7 @@ public final class AiLogicConfigGenerativeLanguageConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param apiKeyWoVersion Triggers update of &#39;api_key_wo&#39; write-only. Increment this value when an update to &#39;api_key_wo&#39; is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * @param apiKeyWoVersion Triggers update of `apiKeyWo` write-only. Increment this value when an update to `apiKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          * 
          * @return builder
          * 

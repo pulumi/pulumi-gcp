@@ -214,7 +214,7 @@ class _CaPoolState:
         :param pulumi.Input['CaPoolPublishingOptionsArgs'] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] tier: The Tier of this CaPool.
                Possible values are: `ENTERPRISE`, `DEVOPS`.
         """
@@ -352,7 +352,7 @@ class _CaPoolState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -569,22 +569,14 @@ class CaPool(pulumi.CustomResource):
         CaPool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/caPools/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, CaPool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificateauthority/caPool:CaPool default projects/{{project}}/locations/{{location}}/caPools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/caPool:CaPool default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/caPool:CaPool default {{location}}/{{name}}
         ```
 
@@ -798,22 +790,14 @@ class CaPool(pulumi.CustomResource):
         CaPool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/caPools/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, CaPool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificateauthority/caPool:CaPool default projects/{{project}}/locations/{{location}}/caPools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/caPool:CaPool default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/caPool:CaPool default {{location}}/{{name}}
         ```
 
@@ -913,7 +897,7 @@ class CaPool(pulumi.CustomResource):
         :param pulumi.Input[Union['CaPoolPublishingOptionsArgs', 'CaPoolPublishingOptionsArgsDict']] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] tier: The Tier of this CaPool.
                Possible values are: `ENTERPRISE`, `DEVOPS`.
         """
@@ -1014,7 +998,7 @@ class CaPool(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -5,6 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A consumable API that can be used by multiple Gateways.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about Api, see:
+ *
+ * * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+ *
  * ## Example Usage
  *
  * ### Apigateway Api Basic
@@ -21,22 +32,14 @@ import * as utilities from "../utilities";
  * Api can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/global/apis/{{api_id}}`
- *
  * * `{{project}}/{{api_id}}`
- *
  * * `{{api_id}}`
  *
  * When using the `pulumi import` command, Api can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{api_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apigateway/api:Api default {{project}}/{{api_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apigateway/api:Api default {{api_id}}
  * ```
  */
@@ -107,7 +110,7 @@ export class Api extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
 
@@ -198,7 +201,7 @@ export interface ApiState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

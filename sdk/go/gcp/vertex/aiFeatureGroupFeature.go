@@ -123,28 +123,16 @@ import (
 // FeatureGroupFeature can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}`
-//
 // * `{{project}}/{{region}}/{{feature_group}}/{{name}}`
-//
 // * `{{region}}/{{feature_group}}/{{name}}`
-//
 // * `{{feature_group}}/{{name}}`
 //
 // When using the `pulumi import` command, FeatureGroupFeature can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{project}}/{{region}}/{{feature_group}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{region}}/{{feature_group}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{feature_group}}/{{name}}
 // ```
 type AiFeatureGroupFeature struct {
@@ -168,7 +156,7 @@ type AiFeatureGroupFeature struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region for the resource. It should be the same as the feature group's region.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -237,7 +225,7 @@ type aiFeatureGroupFeatureState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region for the resource. It should be the same as the feature group's region.
 	Region *string `pulumi:"region"`
@@ -266,7 +254,7 @@ type AiFeatureGroupFeatureState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region for the resource. It should be the same as the feature group's region.
 	Region pulumi.StringPtrInput
@@ -447,7 +435,8 @@ func (o AiFeatureGroupFeatureOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AiFeatureGroupFeatureOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiFeatureGroupFeature) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

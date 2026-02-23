@@ -26,8 +26,19 @@ namespace Pulumi.Gcp.SecretManager.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionalSecretsSecretCustomerManagedEncryptionResult> CustomerManagedEncryptions;
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+        /// When the field is set to true in Terraform state, a 'terraform apply'
+        /// or 'terraform destroy' that would delete the federation will fail.
+        /// </summary>
         public readonly bool DeletionProtection;
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// Timestamp in UTC when the regional secret is scheduled to expire.

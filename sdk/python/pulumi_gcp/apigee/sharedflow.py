@@ -31,6 +31,7 @@ class SharedflowArgs:
                
                - - -
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization name associated with the Apigee instance.
+        :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         :param pulumi.Input[_builtins.str] name: The ID of the shared flow.
         """
         pulumi.set(__self__, "config_bundle", config_bundle)
@@ -69,6 +70,9 @@ class SharedflowArgs:
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+        """
         return pulumi.get(self, "detect_md5hash")
 
     @detect_md5hash.setter
@@ -104,6 +108,7 @@ class _SharedflowState:
         :param pulumi.Input[_builtins.str] config_bundle: Path to the config zip bundle.
                
                - - -
+        :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         :param pulumi.Input[_builtins.str] latest_revision_id: The id of the most recently created revision for this shared flow.
         :param pulumi.Input[_builtins.str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
         :param pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArgs']]] meta_datas: Metadata describing the shared flow.
@@ -146,6 +151,9 @@ class _SharedflowState:
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+        """
         return pulumi.get(self, "detect_md5hash")
 
     @detect_md5hash.setter
@@ -251,16 +259,12 @@ class Sharedflow(pulumi.CustomResource):
         SharedFlow can be imported using any of these accepted formats:
 
         * `{{org_id}}/sharedflows/{{name}}`
-
         * `{{org_id}}/{{name}}`
 
         When using the `pulumi import` command, SharedFlow can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/sharedflows/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/{{name}}
         ```
 
@@ -269,6 +273,7 @@ class Sharedflow(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] config_bundle: Path to the config zip bundle.
                
                - - -
+        :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         :param pulumi.Input[_builtins.str] name: The ID of the shared flow.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization name associated with the Apigee instance.
         """
@@ -292,16 +297,12 @@ class Sharedflow(pulumi.CustomResource):
         SharedFlow can be imported using any of these accepted formats:
 
         * `{{org_id}}/sharedflows/{{name}}`
-
         * `{{org_id}}/{{name}}`
 
         When using the `pulumi import` command, SharedFlow can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/sharedflows/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/{{name}}
         ```
 
@@ -373,6 +374,7 @@ class Sharedflow(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] config_bundle: Path to the config zip bundle.
                
                - - -
+        :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         :param pulumi.Input[_builtins.str] latest_revision_id: The id of the most recently created revision for this shared flow.
         :param pulumi.Input[_builtins.str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SharedflowMetaDataArgs', 'SharedflowMetaDataArgsDict']]]] meta_datas: Metadata describing the shared flow.
@@ -408,6 +410,9 @@ class Sharedflow(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+        """
         return pulumi.get(self, "detect_md5hash")
 
     @_builtins.property

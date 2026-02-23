@@ -187,7 +187,7 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
     declare public readonly offlineStorageTtlDays: pulumi.Output<number | undefined>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -297,7 +297,7 @@ export interface AiFeatureStoreEntityTypeState {
     offlineStorageTtlDays?: pulumi.Input<number>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

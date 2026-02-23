@@ -87,16 +87,12 @@ namespace Pulumi.Gcp.Kms
     /// CryptoKey can be imported using any of these accepted formats:
     /// 
     /// * `{{key_ring}}/cryptoKeys/{{name}}`
-    /// 
     /// * `{{key_ring}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/{{name}}
     /// ```
     /// </summary>
@@ -176,7 +172,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -469,7 +465,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

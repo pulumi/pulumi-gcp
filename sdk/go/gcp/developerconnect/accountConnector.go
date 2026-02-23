@@ -242,22 +242,14 @@ import (
 // AccountConnector can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/accountConnectors/{{account_connector_id}}`
-//
 // * `{{project}}/{{location}}/{{account_connector_id}}`
-//
 // * `{{location}}/{{account_connector_id}}`
 //
 // When using the `pulumi import` command, AccountConnector can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default projects/{{project}}/locations/{{location}}/accountConnectors/{{account_connector_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default {{project}}/{{location}}/{{account_connector_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default {{location}}/{{account_connector_id}}
 // ```
 type AccountConnector struct {
@@ -273,7 +265,8 @@ type AccountConnector struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Output only. The timestamp when the userConnection was created.
-	CreateTime           pulumi.StringOutput    `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -295,7 +288,7 @@ type AccountConnector struct {
 	// Structure is documented below.
 	ProviderOauthConfig AccountConnectorProviderOauthConfigPtrOutput `pulumi:"providerOauthConfig"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. The timestamp when the userConnection was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -352,7 +345,8 @@ type accountConnectorState struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Output only. The timestamp when the userConnection was created.
-	CreateTime           *string           `pulumi:"createTime"`
+	CreateTime *string `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -374,7 +368,7 @@ type accountConnectorState struct {
 	// Structure is documented below.
 	ProviderOauthConfig *AccountConnectorProviderOauthConfig `pulumi:"providerOauthConfig"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. The timestamp when the userConnection was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -391,7 +385,8 @@ type AccountConnectorState struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Output only. The timestamp when the userConnection was created.
-	CreateTime           pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -413,7 +408,7 @@ type AccountConnectorState struct {
 	// Structure is documented below.
 	ProviderOauthConfig AccountConnectorProviderOauthConfigPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. The timestamp when the userConnection was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -579,6 +574,7 @@ func (o AccountConnectorOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o AccountConnectorOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -624,7 +620,8 @@ func (o AccountConnectorOutput) ProviderOauthConfig() AccountConnectorProviderOa
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AccountConnectorOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

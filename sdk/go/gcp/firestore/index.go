@@ -440,7 +440,6 @@ import (
 //	}
 //
 // ```
-//
 // ## Import
 //
 // Index can be imported using any of these accepted formats:
@@ -463,6 +462,11 @@ type Index struct {
 	Collection pulumi.StringOutput `pulumi:"collection"`
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrOutput `pulumi:"database"`
+	// Deletion behavior for this index.
+	// If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+	// If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+	// The default value is `DELETE`.
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The density configuration for this index.
 	// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
 	Density pulumi.StringOutput `pulumi:"density"`
@@ -536,6 +540,11 @@ type indexState struct {
 	Collection *string `pulumi:"collection"`
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
+	// Deletion behavior for this index.
+	// If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+	// If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+	// The default value is `DELETE`.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The density configuration for this index.
 	// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
 	Density *string `pulumi:"density"`
@@ -574,6 +583,11 @@ type IndexState struct {
 	Collection pulumi.StringPtrInput
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
+	// Deletion behavior for this index.
+	// If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+	// If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+	// The default value is `DELETE`.
+	DeletionPolicy pulumi.StringPtrInput
 	// The density configuration for this index.
 	// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
 	Density pulumi.StringPtrInput
@@ -616,6 +630,11 @@ type indexArgs struct {
 	Collection string `pulumi:"collection"`
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
+	// Deletion behavior for this index.
+	// If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+	// If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+	// The default value is `DELETE`.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The density configuration for this index.
 	// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
 	Density *string `pulumi:"density"`
@@ -652,6 +671,11 @@ type IndexArgs struct {
 	Collection pulumi.StringInput
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
+	// Deletion behavior for this index.
+	// If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+	// If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+	// The default value is `DELETE`.
+	DeletionPolicy pulumi.StringPtrInput
 	// The density configuration for this index.
 	// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
 	Density pulumi.StringPtrInput
@@ -780,6 +804,14 @@ func (o IndexOutput) Collection() pulumi.StringOutput {
 // The Firestore database id. Defaults to `"(default)"`.
 func (o IndexOutput) Database() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Index) pulumi.StringPtrOutput { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// Deletion behavior for this index.
+// If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+// If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+// The default value is `DELETE`.
+func (o IndexOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // The density configuration for this index.

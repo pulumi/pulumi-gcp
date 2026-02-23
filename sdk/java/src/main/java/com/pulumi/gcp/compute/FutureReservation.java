@@ -24,6 +24,25 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Represents a future reservation resource in Compute Engine. Future reservations allow users
+ * to reserve capacity for a specified time window, ensuring that resources are available
+ * when needed.
+ * 
+ * Reservations apply only to Compute Engine, Cloud Dataproc, and Google
+ * Kubernetes Engine VM usage.Reservations do not apply to `f1-micro` or
+ * `g1-small` machine types, preemptible VMs, sole tenant nodes, or other
+ * services not listed above
+ * like Cloud SQL and Dataflow.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about FutureReservation, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/futureReservations)
+ * * How-to Guides
+ *     * [Future Reservations Guide](https://cloud.google.com/compute/docs/instances/future-reservations-overview)
+ * 
  * ## Example Usage
  * 
  * ### Future Reservation Basic
@@ -140,28 +159,16 @@ import javax.annotation.Nullable;
  * FutureReservation can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/zones/{{zone}}/futureReservations/{{name}}`
- * 
  * * `{{project}}/{{zone}}/{{name}}`
- * 
  * * `{{zone}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, FutureReservation can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/futureReservation:FutureReservation default projects/{{project}}/zones/{{zone}}/futureReservations/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/futureReservation:FutureReservation default {{project}}/{{zone}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/futureReservation:FutureReservation default {{zone}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/futureReservation:FutureReservation default {{name}}
  * ```
  * 

@@ -226,7 +226,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The current state of the Instance.
         :param pulumi.Input[_builtins.str] state_note: Provides information about the current instance state.
         :param pulumi.Input[_builtins.str] update_time: Time the Instance was updated in UTC.
@@ -417,7 +417,7 @@ class _InstanceState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -886,28 +886,16 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-
         * `{{project}}/{{location}}/{{instance_id}}`
-
         * `{{location}}/{{instance_id}}`
-
         * `{{instance_id}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default {{location}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default {{instance_id}}
         ```
 
@@ -1337,28 +1325,16 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-
         * `{{project}}/{{location}}/{{instance_id}}`
-
         * `{{location}}/{{instance_id}}`
-
         * `{{instance_id}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default {{location}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default {{instance_id}}
         ```
 
@@ -1474,7 +1450,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The current state of the Instance.
         :param pulumi.Input[_builtins.str] state_note: Provides information about the current instance state.
         :param pulumi.Input[_builtins.str] update_time: Time the Instance was updated in UTC.
@@ -1610,7 +1586,7 @@ class Instance(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

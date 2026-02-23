@@ -523,22 +523,14 @@ import (
 // Certificate can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/certificates/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:certificatemanager/certificate:Certificate default {{location}}/{{name}}
 // ```
 type Certificate struct {
@@ -567,7 +559,7 @@ type Certificate struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
 	SanDnsnames pulumi.StringArrayOutput `pulumi:"sanDnsnames"`
@@ -646,7 +638,7 @@ type certificateState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
 	SanDnsnames []string `pulumi:"sanDnsnames"`
@@ -691,7 +683,7 @@ type CertificateState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
 	SanDnsnames pulumi.StringArrayInput
@@ -924,7 +916,8 @@ func (o CertificateOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CertificateOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

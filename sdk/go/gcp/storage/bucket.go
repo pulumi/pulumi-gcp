@@ -315,31 +315,23 @@ import (
 // ## Import
 //
 // Storage buckets can be imported using the `name` or  `project/name`. If the project is not
-//
 // passed to the import command it will be inferred from the provider block or environment variables.
-//
-// # If it cannot be inferred it will be queried from the Compute API (this will fail if the API is
-//
+// If it cannot be inferred it will be queried from the Compute API (this will fail if the API is
 // not enabled).
 //
 // * `{{project_id}}/{{bucket}}`
-//
 // * `{{bucket}}`
 //
 // When using the `pulumi import` command, Storage buckets can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
 // ```
 //
+// > **Note:** Terraform will import this resource with `forceDestroy` set to
 // `false` in state. If you've set it to `true` in config, run `pulumi up` to
-//
 // update the value set in state. If you delete this resource before updating the
-//
 // value, objects in the bucket will not be destroyed.
 type Bucket struct {
 	pulumi.CustomResourceState
@@ -351,8 +343,9 @@ type Bucket struct {
 	// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
 	CustomPlacementConfig BucketCustomPlacementConfigPtrOutput `pulumi:"customPlacementConfig"`
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
-	DefaultEventBasedHold pulumi.BoolPtrOutput   `pulumi:"defaultEventBasedHold"`
-	EffectiveLabels       pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	DefaultEventBasedHold pulumi.BoolPtrOutput `pulumi:"defaultEventBasedHold"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
 	EnableObjectRetention pulumi.BoolPtrOutput `pulumi:"enableObjectRetention"`
 	// The bucket's encryption configuration. Structure is documented below.
@@ -392,7 +385,7 @@ type Bucket struct {
 	Rpo pulumi.StringOutput `pulumi:"rpo"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
 	SoftDeletePolicy BucketSoftDeletePolicyOutput `pulumi:"softDeletePolicy"`
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrOutput `pulumi:"storageClass"`
@@ -455,8 +448,9 @@ type bucketState struct {
 	// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
 	CustomPlacementConfig *BucketCustomPlacementConfig `pulumi:"customPlacementConfig"`
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
-	DefaultEventBasedHold *bool             `pulumi:"defaultEventBasedHold"`
-	EffectiveLabels       map[string]string `pulumi:"effectiveLabels"`
+	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
 	EnableObjectRetention *bool `pulumi:"enableObjectRetention"`
 	// The bucket's encryption configuration. Structure is documented below.
@@ -496,7 +490,7 @@ type bucketState struct {
 	Rpo *string `pulumi:"rpo"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
 	SoftDeletePolicy *BucketSoftDeletePolicy `pulumi:"softDeletePolicy"`
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass *string `pulumi:"storageClass"`
@@ -523,7 +517,8 @@ type BucketState struct {
 	CustomPlacementConfig BucketCustomPlacementConfigPtrInput
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold pulumi.BoolPtrInput
-	EffectiveLabels       pulumi.StringMapInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
 	EnableObjectRetention pulumi.BoolPtrInput
 	// The bucket's encryption configuration. Structure is documented below.
@@ -563,7 +558,7 @@ type BucketState struct {
 	Rpo pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
 	SoftDeletePolicy BucketSoftDeletePolicyPtrInput
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrInput
@@ -627,7 +622,7 @@ type bucketArgs struct {
 	RetentionPolicy *BucketRetentionPolicy `pulumi:"retentionPolicy"`
 	// The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
 	Rpo *string `pulumi:"rpo"`
-	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
 	SoftDeletePolicy *BucketSoftDeletePolicy `pulumi:"softDeletePolicy"`
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass *string `pulumi:"storageClass"`
@@ -682,7 +677,7 @@ type BucketArgs struct {
 	RetentionPolicy BucketRetentionPolicyPtrInput
 	// The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
 	Rpo pulumi.StringPtrInput
-	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
 	SoftDeletePolicy BucketSoftDeletePolicyPtrInput
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrInput
@@ -801,6 +796,7 @@ func (o BucketOutput) DefaultEventBasedHold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.BoolPtrOutput { return v.DefaultEventBasedHold }).(pulumi.BoolPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o BucketOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -898,7 +894,7 @@ func (o BucketOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
 func (o BucketOutput) SoftDeletePolicy() BucketSoftDeletePolicyOutput {
 	return o.ApplyT(func(v *Bucket) BucketSoftDeletePolicyOutput { return v.SoftDeletePolicy }).(BucketSoftDeletePolicyOutput)
 }

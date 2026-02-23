@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.InterconnectAttachmentL2ForwardingArgs;
+import com.pulumi.gcp.compute.inputs.InterconnectAttachmentParamsArgs;
 import com.pulumi.gcp.compute.inputs.InterconnectAttachmentPrivateInterconnectInfoArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -554,6 +555,23 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<InterconnectAttachmentParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InterconnectAttachmentParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * [Output only for type PARTNER. Not present for DEDICATED]. Optional
      * BGP ASN for the router that should be supplied by a layer 3 Partner if
      * they configured BGP on behalf of the customer.
@@ -595,8 +613,6 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
-     * &lt;a name=&#34;nestedL2Forwarding&#34;&gt;&lt;/a&gt;The `l2Forwarding` block supports:
-     * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
@@ -605,8 +621,6 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
      * @return The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
-     * &lt;a name=&#34;nestedL2Forwarding&#34;&gt;&lt;/a&gt;The `l2Forwarding` block supports:
-     * 
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
@@ -614,7 +628,7 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
 
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
@@ -622,7 +636,7 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
@@ -808,6 +822,7 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         this.mtu = $.mtu;
         this.name = $.name;
         this.pairingKey = $.pairingKey;
+        this.params = $.params;
         this.partnerAsn = $.partnerAsn;
         this.privateInterconnectInfos = $.privateInterconnectInfos;
         this.project = $.project;
@@ -1569,6 +1584,29 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<InterconnectAttachmentParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(InterconnectAttachmentParamsArgs params) {
+            return params(Output.of(params));
+        }
+
+        /**
          * @param partnerAsn [Output only for type PARTNER. Not present for DEDICATED]. Optional
          * BGP ASN for the router that should be supplied by a layer 3 Partner if
          * they configured BGP on behalf of the customer.
@@ -1634,8 +1672,6 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
-         * &lt;a name=&#34;nestedL2Forwarding&#34;&gt;&lt;/a&gt;The `l2Forwarding` block supports:
-         * 
          * @return builder
          * 
          */
@@ -1648,8 +1684,6 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
-         * &lt;a name=&#34;nestedL2Forwarding&#34;&gt;&lt;/a&gt;The `l2Forwarding` block supports:
-         * 
          * @return builder
          * 
          */
@@ -1659,7 +1693,7 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -1671,7 +1705,7 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 

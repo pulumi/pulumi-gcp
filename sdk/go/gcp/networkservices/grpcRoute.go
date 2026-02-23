@@ -262,22 +262,14 @@ import (
 // GrpcRoute can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{location}}/{{name}}
 // ```
 type GrpcRoute struct {
@@ -307,7 +299,7 @@ type GrpcRoute struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -383,7 +375,7 @@ type grpcRouteState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -419,7 +411,7 @@ type GrpcRouteState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -626,7 +618,8 @@ func (o GrpcRouteOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GrpcRouteOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

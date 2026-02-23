@@ -42,15 +42,13 @@ class MirroringEndpointGroupArgs:
         :param pulumi.Input[_builtins.str] mirroring_deployment_group: The deployment group that this DIRECT endpoint group is connected to, for example:
                `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
                See https://google.aip.dev/124.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mirroring_deployment_groups: (Optional, Beta)
-               A list of the deployment groups that this BROKER endpoint group is
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mirroring_deployment_groups: A list of the deployment groups that this BROKER endpoint group is
                connected to, for example:
                `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
                See https://google.aip.dev/124.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] type: (Optional, Beta)
-               The type of the endpoint group.
+        :param pulumi.Input[_builtins.str] type: The type of the endpoint group.
                If left unspecified, defaults to DIRECT.
                Possible values:
                DIRECT
@@ -141,7 +139,6 @@ class MirroringEndpointGroupArgs:
     @pulumi.getter(name="mirroringDeploymentGroups")
     def mirroring_deployment_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        (Optional, Beta)
         A list of the deployment groups that this BROKER endpoint group is
         connected to, for example:
         `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -170,7 +167,6 @@ class MirroringEndpointGroupArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Optional, Beta)
         The type of the endpoint group.
         If left unspecified, defaults to DIRECT.
         Possible values:
@@ -223,8 +219,7 @@ class _MirroringEndpointGroupState:
         :param pulumi.Input[_builtins.str] mirroring_deployment_group: The deployment group that this DIRECT endpoint group is connected to, for example:
                `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
                See https://google.aip.dev/124.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mirroring_deployment_groups: (Optional, Beta)
-               A list of the deployment groups that this BROKER endpoint group is
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mirroring_deployment_groups: A list of the deployment groups that this BROKER endpoint group is
                connected to, for example:
                `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
                See https://google.aip.dev/124.
@@ -237,7 +232,7 @@ class _MirroringEndpointGroupState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: The current state of the resource does not match the user's intended state,
                and the system is working to reconcile them. This is part of the normal
                operation (e.g. adding a new association to the group).
@@ -248,8 +243,7 @@ class _MirroringEndpointGroupState:
                STATE_UNSPECIFIED
                ACTIVE
                OUT_OF_SYNC
-        :param pulumi.Input[_builtins.str] type: (Optional, Beta)
-               The type of the endpoint group.
+        :param pulumi.Input[_builtins.str] type: The type of the endpoint group.
                If left unspecified, defaults to DIRECT.
                Possible values:
                DIRECT
@@ -401,7 +395,6 @@ class _MirroringEndpointGroupState:
     @pulumi.getter(name="mirroringDeploymentGroups")
     def mirroring_deployment_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        (Optional, Beta)
         A list of the deployment groups that this BROKER endpoint group is
         connected to, for example:
         `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -459,7 +452,7 @@ class _MirroringEndpointGroupState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -503,7 +496,6 @@ class _MirroringEndpointGroupState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Optional, Beta)
         The type of the endpoint group.
         If left unspecified, defaults to DIRECT.
         Possible values:
@@ -611,22 +603,14 @@ class MirroringEndpointGroup(pulumi.CustomResource):
         MirroringEndpointGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/mirroringEndpointGroups/{{mirroring_endpoint_group_id}}`
-
         * `{{project}}/{{location}}/{{mirroring_endpoint_group_id}}`
-
         * `{{location}}/{{mirroring_endpoint_group_id}}`
 
         When using the `pulumi import` command, MirroringEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default projects/{{project}}/locations/{{location}}/mirroringEndpointGroups/{{mirroring_endpoint_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{project}}/{{location}}/{{mirroring_endpoint_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{location}}/{{mirroring_endpoint_group_id}}
         ```
 
@@ -641,8 +625,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] mirroring_deployment_group: The deployment group that this DIRECT endpoint group is connected to, for example:
                `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
                See https://google.aip.dev/124.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mirroring_deployment_groups: (Optional, Beta)
-               A list of the deployment groups that this BROKER endpoint group is
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mirroring_deployment_groups: A list of the deployment groups that this BROKER endpoint group is
                connected to, for example:
                `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
                See https://google.aip.dev/124.
@@ -650,8 +633,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
                of the endpoint group's resource name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] type: (Optional, Beta)
-               The type of the endpoint group.
+        :param pulumi.Input[_builtins.str] type: The type of the endpoint group.
                If left unspecified, defaults to DIRECT.
                Possible values:
                DIRECT
@@ -729,22 +711,14 @@ class MirroringEndpointGroup(pulumi.CustomResource):
         MirroringEndpointGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/mirroringEndpointGroups/{{mirroring_endpoint_group_id}}`
-
         * `{{project}}/{{location}}/{{mirroring_endpoint_group_id}}`
-
         * `{{location}}/{{mirroring_endpoint_group_id}}`
 
         When using the `pulumi import` command, MirroringEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default projects/{{project}}/locations/{{location}}/mirroringEndpointGroups/{{mirroring_endpoint_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{project}}/{{location}}/{{mirroring_endpoint_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{location}}/{{mirroring_endpoint_group_id}}
         ```
 
@@ -854,8 +828,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] mirroring_deployment_group: The deployment group that this DIRECT endpoint group is connected to, for example:
                `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
                See https://google.aip.dev/124.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mirroring_deployment_groups: (Optional, Beta)
-               A list of the deployment groups that this BROKER endpoint group is
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mirroring_deployment_groups: A list of the deployment groups that this BROKER endpoint group is
                connected to, for example:
                `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
                See https://google.aip.dev/124.
@@ -868,7 +841,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: The current state of the resource does not match the user's intended state,
                and the system is working to reconcile them. This is part of the normal
                operation (e.g. adding a new association to the group).
@@ -879,8 +852,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
                STATE_UNSPECIFIED
                ACTIVE
                OUT_OF_SYNC
-        :param pulumi.Input[_builtins.str] type: (Optional, Beta)
-               The type of the endpoint group.
+        :param pulumi.Input[_builtins.str] type: The type of the endpoint group.
                If left unspecified, defaults to DIRECT.
                Possible values:
                DIRECT
@@ -988,7 +960,6 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="mirroringDeploymentGroups")
     def mirroring_deployment_groups(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        (Optional, Beta)
         A list of the deployment groups that this BROKER endpoint group is
         connected to, for example:
         `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -1030,7 +1001,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1062,7 +1033,6 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        (Optional, Beta)
         The type of the endpoint group.
         If left unspecified, defaults to DIRECT.
         Possible values:

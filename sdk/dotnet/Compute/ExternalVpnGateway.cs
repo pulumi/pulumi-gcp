@@ -155,22 +155,14 @@ namespace Pulumi.Gcp.Compute
     /// ExternalVpnGateway can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/global/externalVpnGateways/{{name}}`
-    /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, ExternalVpnGateway can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default projects/{{project}}/global/externalVpnGateways/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{name}}
     /// ```
     /// </summary>
@@ -224,6 +216,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.ExternalVpnGatewayParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -232,7 +232,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -347,6 +347,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.ExternalVpnGatewayParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -437,6 +445,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.ExternalVpnGatewayParamsGetArgs>? Params { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -448,7 +464,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

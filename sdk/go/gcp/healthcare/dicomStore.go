@@ -155,16 +155,12 @@ import (
 // DicomStore can be imported using any of these accepted formats:
 //
 // * `{{dataset}}/dicomStores/{{name}}`
-//
 // * `{{dataset}}/{{name}}`
 //
 // When using the `pulumi import` command, DicomStore can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
 // ```
 type DicomStore struct {
@@ -194,7 +190,7 @@ type DicomStore struct {
 	// Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -267,7 +263,7 @@ type dicomStoreState struct {
 	// Structure is documented below.
 	NotificationConfig *DicomStoreNotificationConfig `pulumi:"notificationConfig"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
@@ -303,7 +299,7 @@ type DicomStoreState struct {
 	// Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
@@ -503,7 +499,8 @@ func (o DicomStoreOutput) NotificationConfig() DicomStoreNotificationConfigPtrOu
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DicomStoreOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DicomStore) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

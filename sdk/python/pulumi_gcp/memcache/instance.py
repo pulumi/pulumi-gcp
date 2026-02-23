@@ -42,6 +42,12 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] node_count: Number of nodes in the memcache instance.
         :param pulumi.Input[_builtins.str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
                'default' will be used.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance.
+               When a `terraform destroy` or `pulumi up` would delete the instance,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the instance will fail.
+               When the field is set to false, deleting the instance is allowed.
         :param pulumi.Input[_builtins.str] display_name: A user-visible name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user-provided metadata.
                
@@ -134,6 +140,14 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the instance.
+        When a `terraform destroy` or `pulumi up` would delete the instance,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the instance will fail.
+        When the field is set to false, deleting the instance is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -303,6 +317,12 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
                'default' will be used.
         :param pulumi.Input[_builtins.str] create_time: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance.
+               When a `terraform destroy` or `pulumi up` would delete the instance,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the instance will fail.
+               When the field is set to false, deleting the instance is allowed.
         :param pulumi.Input[_builtins.str] discovery_endpoint: Endpoint for Discovery API
         :param pulumi.Input[_builtins.str] display_name: A user-visible name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -331,7 +351,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region of the Memcache instance. If it is not provided, the provider region is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] reserved_ip_range_ids: Contains the name of allocated IP address ranges associated with
                the private service access connection for example, "test-default"
@@ -410,6 +430,14 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the instance.
+        When a `terraform destroy` or `pulumi up` would delete the instance,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the instance will fail.
+        When the field is set to false, deleting the instance is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -602,7 +630,7 @@ class _InstanceState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -739,28 +767,16 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:memcache/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:memcache/instance:Instance default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:memcache/instance:Instance default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:memcache/instance:Instance default {{name}}
         ```
 
@@ -768,6 +784,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
                'default' will be used.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance.
+               When a `terraform destroy` or `pulumi up` would delete the instance,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the instance will fail.
+               When the field is set to false, deleting the instance is allowed.
         :param pulumi.Input[_builtins.str] display_name: A user-visible name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user-provided metadata.
                
@@ -869,28 +891,16 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:memcache/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:memcache/instance:Instance default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:memcache/instance:Instance default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:memcache/instance:Instance default {{name}}
         ```
 
@@ -1000,6 +1010,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
                'default' will be used.
         :param pulumi.Input[_builtins.str] create_time: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance.
+               When a `terraform destroy` or `pulumi up` would delete the instance,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the instance will fail.
+               When the field is set to false, deleting the instance is allowed.
         :param pulumi.Input[_builtins.str] discovery_endpoint: Endpoint for Discovery API
         :param pulumi.Input[_builtins.str] display_name: A user-visible name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1028,7 +1044,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region of the Memcache instance. If it is not provided, the provider region is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] reserved_ip_range_ids: Contains the name of allocated IP address ranges associated with
                the private service access connection for example, "test-default"
@@ -1083,6 +1099,14 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the instance.
+        When a `terraform destroy` or `pulumi up` would delete the instance,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the instance will fail.
+        When the field is set to false, deleting the instance is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -1215,7 +1239,7 @@ class Instance(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

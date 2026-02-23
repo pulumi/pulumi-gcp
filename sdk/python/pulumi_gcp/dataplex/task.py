@@ -261,7 +261,7 @@ class _TaskState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['TaskSparkArgs'] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -470,7 +470,7 @@ class _TaskState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -593,11 +593,11 @@ class Task(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         example = gcp.dataplex.Lake("example",
-            name="tf-test-lake_8270",
+            name="tf-test-lake_89313",
             location="us-central1",
             project="my-project-name")
         example_task = gcp.dataplex.Task("example",
-            task_id="tf-test-task_41150",
+            task_id="tf-test-task_60646",
             location="us-central1",
             lake=example.name,
             description="Test Task Basic",
@@ -631,15 +631,15 @@ class Task(pulumi.CustomResource):
 
         # VPC network
         default = gcp.compute.Network("default",
-            name="tf-test-workstation-cluster_89313",
+            name="tf-test-workstation-cluster_9394",
             auto_create_subnetworks=True)
         project = gcp.organizations.get_project()
         example_spark = gcp.dataplex.Lake("example_spark",
-            name="tf-test-lake_60646",
+            name="tf-test-lake_11380",
             location="us-central1",
             project="my-project-name")
         example_spark_task = gcp.dataplex.Task("example_spark",
-            task_id="tf-test-task_9394",
+            task_id="tf-test-task_35305",
             location="us-central1",
             lake=example_spark.name,
             trigger_spec={
@@ -687,15 +687,15 @@ class Task(pulumi.CustomResource):
 
         # VPC network
         default = gcp.compute.Network("default",
-            name="tf-test-workstation-cluster_11380",
+            name="tf-test-workstation-cluster_62793",
             auto_create_subnetworks=True)
         project = gcp.organizations.get_project()
         example_notebook = gcp.dataplex.Lake("example_notebook",
-            name="tf-test-lake_35305",
+            name="tf-test-lake_55438",
             location="us-central1",
             project="my-project-name")
         example_notebook_task = gcp.dataplex.Task("example_notebook",
-            task_id="tf-test-task_62793",
+            task_id="tf-test-task_32706",
             location="us-central1",
             lake=example_notebook.name,
             trigger_spec={
@@ -741,22 +741,14 @@ class Task(pulumi.CustomResource):
         Task can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}`
-
         * `{{project}}/{{location}}/{{lake}}/{{task_id}}`
-
         * `{{location}}/{{lake}}/{{task_id}}`
 
         When using the `pulumi import` command, Task can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/task:Task default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/task:Task default {{project}}/{{location}}/{{lake}}/{{task_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/task:Task default {{location}}/{{lake}}/{{task_id}}
         ```
 
@@ -807,11 +799,11 @@ class Task(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         example = gcp.dataplex.Lake("example",
-            name="tf-test-lake_8270",
+            name="tf-test-lake_89313",
             location="us-central1",
             project="my-project-name")
         example_task = gcp.dataplex.Task("example",
-            task_id="tf-test-task_41150",
+            task_id="tf-test-task_60646",
             location="us-central1",
             lake=example.name,
             description="Test Task Basic",
@@ -845,15 +837,15 @@ class Task(pulumi.CustomResource):
 
         # VPC network
         default = gcp.compute.Network("default",
-            name="tf-test-workstation-cluster_89313",
+            name="tf-test-workstation-cluster_9394",
             auto_create_subnetworks=True)
         project = gcp.organizations.get_project()
         example_spark = gcp.dataplex.Lake("example_spark",
-            name="tf-test-lake_60646",
+            name="tf-test-lake_11380",
             location="us-central1",
             project="my-project-name")
         example_spark_task = gcp.dataplex.Task("example_spark",
-            task_id="tf-test-task_9394",
+            task_id="tf-test-task_35305",
             location="us-central1",
             lake=example_spark.name,
             trigger_spec={
@@ -901,15 +893,15 @@ class Task(pulumi.CustomResource):
 
         # VPC network
         default = gcp.compute.Network("default",
-            name="tf-test-workstation-cluster_11380",
+            name="tf-test-workstation-cluster_62793",
             auto_create_subnetworks=True)
         project = gcp.organizations.get_project()
         example_notebook = gcp.dataplex.Lake("example_notebook",
-            name="tf-test-lake_35305",
+            name="tf-test-lake_55438",
             location="us-central1",
             project="my-project-name")
         example_notebook_task = gcp.dataplex.Task("example_notebook",
-            task_id="tf-test-task_62793",
+            task_id="tf-test-task_32706",
             location="us-central1",
             lake=example_notebook.name,
             trigger_spec={
@@ -955,22 +947,14 @@ class Task(pulumi.CustomResource):
         Task can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}`
-
         * `{{project}}/{{location}}/{{lake}}/{{task_id}}`
-
         * `{{location}}/{{lake}}/{{task_id}}`
 
         When using the `pulumi import` command, Task can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/task:Task default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/task:Task default {{project}}/{{location}}/{{lake}}/{{task_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/task:Task default {{location}}/{{lake}}/{{task_id}}
         ```
 
@@ -1091,7 +1075,7 @@ class Task(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['TaskSparkArgs', 'TaskSparkArgsDict']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -1238,7 +1222,7 @@ class Task(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -28,33 +28,87 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Network Security Authz Policy Mcp
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.networksecurity.AuthzPolicy;
+ * import com.pulumi.gcp.networksecurity.AuthzPolicyArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyTargetArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyHttpRuleArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyHttpRuleToArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var default_ = new AuthzPolicy("default", AuthzPolicyArgs.builder()
+ *             .name("my-mcp-policy")
+ *             .location("us-west1")
+ *             .target(AuthzPolicyTargetArgs.builder()
+ *                 .resources(String.format("projects/%s/locations/us-west1/agentGateways/gateway1", project.projectId()))
+ *                 .build())
+ *             .policyProfile("REQUEST_AUTHZ")
+ *             .action("ALLOW")
+ *             .httpRules(AuthzPolicyHttpRuleArgs.builder()
+ *                 .to(AuthzPolicyHttpRuleToArgs.builder()
+ *                     .operations(AuthzPolicyHttpRuleToOperationArgs.builder()
+ *                         .mcp(AuthzPolicyHttpRuleToOperationMcpArgs.builder()
+ *                             .baseProtocolMethodsOption("MATCH_BASE_PROTOCOL_METHODS")
+ *                             .methods(                            
+ *                                 AuthzPolicyHttpRuleToOperationMcpMethodArgs.builder()
+ *                                     .name("tools")
+ *                                     .build(),
+ *                                 AuthzPolicyHttpRuleToOperationMcpMethodArgs.builder()
+ *                                     .name("tools/call")
+ *                                     .params(AuthzPolicyHttpRuleToOperationMcpMethodParamArgs.builder()
+ *                                         .exact("foo")
+ *                                         .build())
+ *                                     .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * AuthzPolicy can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/authzPolicies/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, AuthzPolicy can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default projects/{{project}}/locations/{{location}}/authzPolicies/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{name}}
  * ```
  * 
@@ -216,6 +270,32 @@ public class AuthzPolicy extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+     * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
+     * invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+     * Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support extProc
+     * protocol and be capable of receiving all extProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+     * RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+     * Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+     * 
+     */
+    @Export(name="policyProfile", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> policyProfile;
+
+    /**
+     * @return Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+     * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
+     * invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+     * Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support extProc
+     * protocol and be capable of receiving all extProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+     * RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+     * Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+     * 
+     */
+    public Output<Optional<String>> policyProfile() {
+        return Codegen.optional(this.policyProfile);
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -233,7 +313,7 @@ public class AuthzPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -241,7 +321,7 @@ public class AuthzPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

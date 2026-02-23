@@ -174,7 +174,7 @@ class _RestoreChannelState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] uid: Server generated, unique identifier of UUID format.
         """
         if description is not None:
@@ -327,7 +327,7 @@ class _RestoreChannelState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -396,22 +396,14 @@ class RestoreChannel(pulumi.CustomResource):
         RestoreChannel can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/restoreChannels/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, RestoreChannel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default projects/{{project}}/locations/{{location}}/restoreChannels/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default {{location}}/{{name}}
         ```
 
@@ -473,22 +465,14 @@ class RestoreChannel(pulumi.CustomResource):
         RestoreChannel can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/restoreChannels/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, RestoreChannel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default projects/{{project}}/locations/{{location}}/restoreChannels/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default {{location}}/{{name}}
         ```
 
@@ -591,7 +575,7 @@ class RestoreChannel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] uid: Server generated, unique identifier of UUID format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -702,7 +686,7 @@ class RestoreChannel(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

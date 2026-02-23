@@ -272,22 +272,14 @@ import javax.annotation.Nullable;
  * Example can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/apps/{{app}}/examples/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{app}}/{{name}}`
- * 
  * * `{{location}}/{{app}}/{{name}}`
  * 
  * When using the `pulumi import` command, Example can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:ces/example:Example default projects/{{project}}/locations/{{location}}/apps/{{app}}/examples/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:ces/example:Example default {{project}}/{{location}}/{{app}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:ces/example:Example default {{location}}/{{app}}/{{name}}
  * ```
  * 
@@ -386,9 +378,19 @@ public class Example extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
+    /**
+     * The ID to use for the example, which will become the final component of
+     * the example&#39;s resource name. In Terraform, this field is required.
+     * 
+     */
     @Export(name="exampleId", refs={String.class}, tree="[0]")
     private Output<String> exampleId;
 
+    /**
+     * @return The ID to use for the example, which will become the final component of
+     * the example&#39;s resource name. In Terraform, this field is required.
+     * 
+     */
     public Output<String> exampleId() {
         return this.exampleId;
     }

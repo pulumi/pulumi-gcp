@@ -33,6 +33,8 @@ class ExampleArgs:
         The set of arguments for constructing a Example resource.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] display_name: Display name of the example.
+        :param pulumi.Input[_builtins.str] example_id: The ID to use for the example, which will become the final component of
+               the example's resource name. In Terraform, this field is required.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the example.
         :param pulumi.Input[_builtins.str] entry_agent: The agent that initially handles the conversation. If not specified, the
@@ -83,6 +85,10 @@ class ExampleArgs:
     @_builtins.property
     @pulumi.getter(name="exampleId")
     def example_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID to use for the example, which will become the final component of
+        the example's resource name. In Terraform, this field is required.
+        """
         return pulumi.get(self, "example_id")
 
     @example_id.setter
@@ -182,6 +188,8 @@ class _ExampleState:
         :param pulumi.Input[_builtins.str] etag: Etag used to ensure the object hasn't changed during a read-modify-write
                operation. If the etag is empty, the update will overwrite any concurrent
                changes.
+        :param pulumi.Input[_builtins.str] example_id: The ID to use for the example, which will become the final component of
+               the example's resource name. In Terraform, this field is required.
         :param pulumi.Input[_builtins.bool] invalid: The example may become invalid if referencing resources are deleted.
                Invalid examples will not be used as few-shot examples.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -300,6 +308,10 @@ class _ExampleState:
     @_builtins.property
     @pulumi.getter(name="exampleId")
     def example_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID to use for the example, which will become the final component of
+        the example's resource name. In Terraform, this field is required.
+        """
         return pulumi.get(self, "example_id")
 
     @example_id.setter
@@ -592,22 +604,14 @@ class Example(pulumi.CustomResource):
         Example can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/apps/{{app}}/examples/{{name}}`
-
         * `{{project}}/{{location}}/{{app}}/{{name}}`
-
         * `{{location}}/{{app}}/{{name}}`
 
         When using the `pulumi import` command, Example can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ces/example:Example default projects/{{project}}/locations/{{location}}/apps/{{app}}/examples/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/example:Example default {{project}}/{{location}}/{{app}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/example:Example default {{location}}/{{app}}/{{name}}
         ```
 
@@ -619,6 +623,8 @@ class Example(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] entry_agent: The agent that initially handles the conversation. If not specified, the
                example represents a conversation that is handled by the root agent.
                Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        :param pulumi.Input[_builtins.str] example_id: The ID to use for the example, which will become the final component of
+               the example's resource name. In Terraform, this field is required.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]] messages: The collection of messages that make up the conversation.
                Structure is documented below.
@@ -824,22 +830,14 @@ class Example(pulumi.CustomResource):
         Example can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/apps/{{app}}/examples/{{name}}`
-
         * `{{project}}/{{location}}/{{app}}/{{name}}`
-
         * `{{location}}/{{app}}/{{name}}`
 
         When using the `pulumi import` command, Example can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ces/example:Example default projects/{{project}}/locations/{{location}}/apps/{{app}}/examples/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/example:Example default {{project}}/{{location}}/{{app}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/example:Example default {{location}}/{{app}}/{{name}}
         ```
 
@@ -936,6 +934,8 @@ class Example(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] etag: Etag used to ensure the object hasn't changed during a read-modify-write
                operation. If the etag is empty, the update will overwrite any concurrent
                changes.
+        :param pulumi.Input[_builtins.str] example_id: The ID to use for the example, which will become the final component of
+               the example's resource name. In Terraform, this field is required.
         :param pulumi.Input[_builtins.bool] invalid: The example may become invalid if referencing resources are deleted.
                Invalid examples will not be used as few-shot examples.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -1022,6 +1022,10 @@ class Example(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="exampleId")
     def example_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID to use for the example, which will become the final component of
+        the example's resource name. In Terraform, this field is required.
+        """
         return pulumi.get(self, "example_id")
 
     @_builtins.property

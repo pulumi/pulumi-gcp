@@ -233,28 +233,16 @@ namespace Pulumi.Gcp.Compute
     /// VpnTunnel can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}`
-    /// 
     /// * `{{project}}/{{region}}/{{name}}`
-    /// 
     /// * `{{region}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, VpnTunnel can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{project}}/{{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{name}}
     /// ```
     /// </summary>
@@ -337,6 +325,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.VPNTunnelParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         /// </summary>
         [Output("peerExternalGateway")]
@@ -372,7 +368,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -577,6 +573,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.VPNTunnelParamsArgs>? Params { get; set; }
 
         /// <summary>
         /// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
@@ -812,6 +816,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.VPNTunnelParamsGetArgs>? Params { get; set; }
+
+        /// <summary>
         /// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         /// </summary>
         [Input("peerExternalGateway")]
@@ -850,7 +862,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

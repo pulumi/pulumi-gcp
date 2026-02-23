@@ -59,22 +59,14 @@ import (
 // Namespace can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}`
-//
 // * `{{project}}/{{location}}/{{namespace_id}}`
-//
 // * `{{location}}/{{namespace_id}}`
 //
 // When using the `pulumi import` command, Namespace can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:servicedirectory/namespace:Namespace default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:servicedirectory/namespace:Namespace default {{project}}/{{location}}/{{namespace_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:servicedirectory/namespace:Namespace default {{location}}/{{namespace_id}}
 // ```
 type Namespace struct {
@@ -101,7 +93,7 @@ type Namespace struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
@@ -167,7 +159,7 @@ type namespaceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
@@ -193,7 +185,7 @@ type NamespaceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 }
 
@@ -364,7 +356,8 @@ func (o NamespaceOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o NamespaceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

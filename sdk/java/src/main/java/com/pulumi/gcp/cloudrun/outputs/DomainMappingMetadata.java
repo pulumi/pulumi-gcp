@@ -26,6 +26,11 @@ public final class DomainMappingMetadata {
      * 
      */
     private @Nullable Map<String,String> annotations;
+    /**
+     * @return (Output)
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     private @Nullable Map<String,String> effectiveAnnotations;
     /**
      * @return (Output)
@@ -56,9 +61,8 @@ public final class DomainMappingMetadata {
      */
     private String namespace;
     /**
-     * @return (Output)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
      * 
      */
     private @Nullable Map<String,String> pulumiLabels;
@@ -104,6 +108,11 @@ public final class DomainMappingMetadata {
     public Map<String,String> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }
+    /**
+     * @return (Output)
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveAnnotations() {
         return this.effectiveAnnotations == null ? Map.of() : this.effectiveAnnotations;
     }
@@ -144,9 +153,8 @@ public final class DomainMappingMetadata {
         return this.namespace;
     }
     /**
-     * @return (Output)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
      * 
      */
     public Map<String,String> pulumiLabels() {

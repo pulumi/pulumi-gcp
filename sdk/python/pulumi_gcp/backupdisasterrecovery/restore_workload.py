@@ -45,11 +45,16 @@ class RestoreWorkloadArgs:
                Structure is documented below.
         :param pulumi.Input['RestoreWorkloadComputeInstanceTargetEnvironmentArgs'] compute_instance_target_environment: Optional. The destination environment for GCE VM restoration.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] delete_restored_instance: Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+               If false, only the restore record is removed from the state, leaving the resource active.
         :param pulumi.Input['RestoreWorkloadDiskRestorePropertiesArgs'] disk_restore_properties: Optional. Disk properties to be overridden during restore.
                Structure is documented below.
         :param pulumi.Input['RestoreWorkloadDiskTargetEnvironmentArgs'] disk_target_environment: Optional. The destination environment for zonal disk restoration.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] name: Required. The resource name of the backup instance.
+        :param pulumi.Input[_builtins.str] name: (Optional, Deprecated)
+               The resource name of the backup instance.
+               
+               > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         :param pulumi.Input['RestoreWorkloadRegionDiskTargetEnvironmentArgs'] region_disk_target_environment: Optional. The destination environment for regional disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID
@@ -72,6 +77,9 @@ class RestoreWorkloadArgs:
             pulumi.set(__self__, "disk_restore_properties", disk_restore_properties)
         if disk_target_environment is not None:
             pulumi.set(__self__, "disk_target_environment", disk_target_environment)
+        if name is not None:
+            warnings.warn("""`name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region_disk_target_environment is not None:
@@ -168,6 +176,10 @@ class RestoreWorkloadArgs:
     @_builtins.property
     @pulumi.getter(name="deleteRestoredInstance")
     def delete_restored_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+        If false, only the restore record is removed from the state, leaving the resource active.
+        """
         return pulumi.get(self, "delete_restored_instance")
 
     @delete_restored_instance.setter
@@ -202,9 +214,13 @@ class RestoreWorkloadArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""`name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Required. The resource name of the backup instance.
+        (Optional, Deprecated)
+        The resource name of the backup instance.
+
+        > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         """
         return pulumi.get(self, "name")
 
@@ -267,12 +283,17 @@ class _RestoreWorkloadState:
         :param pulumi.Input['RestoreWorkloadComputeInstanceTargetEnvironmentArgs'] compute_instance_target_environment: Optional. The destination environment for GCE VM restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_source_id: Required. The ID of the data source.
+        :param pulumi.Input[_builtins.bool] delete_restored_instance: Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+               If false, only the restore record is removed from the state, leaving the resource active.
         :param pulumi.Input['RestoreWorkloadDiskRestorePropertiesArgs'] disk_restore_properties: Optional. Disk properties to be overridden during restore.
                Structure is documented below.
         :param pulumi.Input['RestoreWorkloadDiskTargetEnvironmentArgs'] disk_target_environment: Optional. The destination environment for zonal disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Required. The location for the backup vault.
-        :param pulumi.Input[_builtins.str] name: Required. The resource name of the backup instance.
+        :param pulumi.Input[_builtins.str] name: (Optional, Deprecated)
+               The resource name of the backup instance.
+               
+               > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         :param pulumi.Input['RestoreWorkloadRegionDiskTargetEnvironmentArgs'] region_disk_target_environment: Optional. The destination environment for regional disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID
@@ -301,6 +322,9 @@ class _RestoreWorkloadState:
             pulumi.set(__self__, "disk_target_environment", disk_target_environment)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if name is not None:
+            warnings.warn("""`name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region_disk_target_environment is not None:
@@ -387,6 +411,10 @@ class _RestoreWorkloadState:
     @_builtins.property
     @pulumi.getter(name="deleteRestoredInstance")
     def delete_restored_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+        If false, only the restore record is removed from the state, leaving the resource active.
+        """
         return pulumi.get(self, "delete_restored_instance")
 
     @delete_restored_instance.setter
@@ -433,9 +461,13 @@ class _RestoreWorkloadState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""`name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Required. The resource name of the backup instance.
+        (Optional, Deprecated)
+        The resource name of the backup instance.
+
+        > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         """
         return pulumi.get(self, "name")
 
@@ -505,6 +537,10 @@ class RestoreWorkload(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        An imperative resource that triggers a GCBDR restoration event.
+        Creating this resource will initiate a restore operation from a specified backup.
+        The resource represents the restore operation and its result.
+
         ## Example Usage
 
         ### Backup Dr Restore Workload Compute Instance Basic
@@ -518,14 +554,13 @@ class RestoreWorkload(pulumi.CustomResource):
             backup_vault_id="backup-vault",
             data_source_id="data-source",
             backup_id="backup",
-            name="projects/my-project/locations/us-central1/backups/my-backup",
             compute_instance_target_environment={
                 "project": "my-project-name",
                 "zone": "us-central1-a",
             },
             compute_instance_restore_properties={
                 "name": "restored-instance",
-                "machine_type": "e2-medium",
+                "machine_type": "zones/us-central1-a/machineTypes/e2-medium",
             })
         ```
         ### Backup Dr Restore Workload Compute Instance Full
@@ -539,22 +574,30 @@ class RestoreWorkload(pulumi.CustomResource):
             backup_vault_id="backup-vault",
             data_source_id="data-source",
             backup_id="backup",
-            name="projects/my-project/locations/us-central1/backups/my-backup",
             compute_instance_target_environment={
                 "project": "my-project-name",
                 "zone": "us-central1-a",
             },
             compute_instance_restore_properties={
                 "name": "restored-instance-full",
-                "machine_type": "e2-medium",
+                "machine_type": "zones/us-central1-a/machineTypes/e2-medium",
                 "description": "Restored compute instance with advanced configuration",
                 "can_ip_forward": True,
                 "deletion_protection": False,
-                "labels": {
-                    "environment": "production",
-                    "restored": "true",
-                    "team": "infrastructure",
-                },
+                "labels": [
+                    {
+                        "key": "environment",
+                        "value": "production",
+                    },
+                    {
+                        "key": "restored",
+                        "value": "true",
+                    },
+                    {
+                        "key": "team",
+                        "value": "infrastructure",
+                    },
+                ],
                 "tags": {
                     "items": [
                         "web",
@@ -563,10 +606,10 @@ class RestoreWorkload(pulumi.CustomResource):
                     ],
                 },
                 "network_interfaces": [{
-                    "network": "default",
+                    "network": "projects/my-project-name/global/networks/default",
                     "subnetwork": "projects/my-project-name/regions/us-central1/subnetworks/default",
                     "access_configs": [{
-                        "name": "External NAT",
+                        "name": "ONE_TO_ONE_NAT",
                         "network_tier": "PREMIUM",
                     }],
                 }],
@@ -618,7 +661,6 @@ class RestoreWorkload(pulumi.CustomResource):
             backup_vault_id="backup-vault",
             data_source_id="data-source",
             backup_id="backup",
-            name="projects/my-project/locations/us-central1/backups/my-backup",
             disk_target_environment={
                 "project": "my-project-name",
                 "zone": "us-central1-a",
@@ -626,7 +668,7 @@ class RestoreWorkload(pulumi.CustomResource):
             disk_restore_properties={
                 "name": "restored-disk",
                 "size_gb": 100,
-                "type": "pd-standard",
+                "type": "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard",
                 "description": "Restored persistent disk from backup",
                 "labels": {
                     "environment": "production",
@@ -645,13 +687,12 @@ class RestoreWorkload(pulumi.CustomResource):
             backup_vault_id="backup-vault",
             data_source_id="data-source",
             backup_id="backup",
-            name="projects/my-project/locations/us-central1/backups/my-backup",
             region_disk_target_environment={
                 "project": "my-project-name",
                 "region": "us-central1",
                 "replica_zones": [
-                    "us-central1-a",
-                    "us-central1-b",
+                    "projects/my-project-name/zones/us-central1-a",
+                    "projects/my-project-name/zones/us-central1-b",
                 ],
             },
             disk_restore_properties={
@@ -678,7 +719,6 @@ class RestoreWorkload(pulumi.CustomResource):
             backup_vault_id="backup-vault",
             data_source_id="data-source",
             backup_id="backup",
-            name="projects/my-project/locations/us-central1/backups/my-backup",
             delete_restored_instance=False,
             disk_target_environment={
                 "project": "my-project-name",
@@ -686,8 +726,8 @@ class RestoreWorkload(pulumi.CustomResource):
             },
             disk_restore_properties={
                 "name": "persistent-disk",
-                "size_gb": 50,
-                "type": "pd-standard",
+                "size_gb": 100,
+                "type": "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard",
             })
         ```
 
@@ -696,16 +736,12 @@ class RestoreWorkload(pulumi.CustomResource):
         RestoreWorkload can be imported using any of these accepted formats:
 
         * `/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RestoreWorkload can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default /{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
         ```
 
@@ -719,12 +755,17 @@ class RestoreWorkload(pulumi.CustomResource):
         :param pulumi.Input[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict']] compute_instance_target_environment: Optional. The destination environment for GCE VM restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_source_id: Required. The ID of the data source.
+        :param pulumi.Input[_builtins.bool] delete_restored_instance: Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+               If false, only the restore record is removed from the state, leaving the resource active.
         :param pulumi.Input[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict']] disk_restore_properties: Optional. Disk properties to be overridden during restore.
                Structure is documented below.
         :param pulumi.Input[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict']] disk_target_environment: Optional. The destination environment for zonal disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Required. The location for the backup vault.
-        :param pulumi.Input[_builtins.str] name: Required. The resource name of the backup instance.
+        :param pulumi.Input[_builtins.str] name: (Optional, Deprecated)
+               The resource name of the backup instance.
+               
+               > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         :param pulumi.Input[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict']] region_disk_target_environment: Optional. The destination environment for regional disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID
@@ -738,6 +779,10 @@ class RestoreWorkload(pulumi.CustomResource):
                  args: RestoreWorkloadArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An imperative resource that triggers a GCBDR restoration event.
+        Creating this resource will initiate a restore operation from a specified backup.
+        The resource represents the restore operation and its result.
+
         ## Example Usage
 
         ### Backup Dr Restore Workload Compute Instance Basic
@@ -751,14 +796,13 @@ class RestoreWorkload(pulumi.CustomResource):
             backup_vault_id="backup-vault",
             data_source_id="data-source",
             backup_id="backup",
-            name="projects/my-project/locations/us-central1/backups/my-backup",
             compute_instance_target_environment={
                 "project": "my-project-name",
                 "zone": "us-central1-a",
             },
             compute_instance_restore_properties={
                 "name": "restored-instance",
-                "machine_type": "e2-medium",
+                "machine_type": "zones/us-central1-a/machineTypes/e2-medium",
             })
         ```
         ### Backup Dr Restore Workload Compute Instance Full
@@ -772,22 +816,30 @@ class RestoreWorkload(pulumi.CustomResource):
             backup_vault_id="backup-vault",
             data_source_id="data-source",
             backup_id="backup",
-            name="projects/my-project/locations/us-central1/backups/my-backup",
             compute_instance_target_environment={
                 "project": "my-project-name",
                 "zone": "us-central1-a",
             },
             compute_instance_restore_properties={
                 "name": "restored-instance-full",
-                "machine_type": "e2-medium",
+                "machine_type": "zones/us-central1-a/machineTypes/e2-medium",
                 "description": "Restored compute instance with advanced configuration",
                 "can_ip_forward": True,
                 "deletion_protection": False,
-                "labels": {
-                    "environment": "production",
-                    "restored": "true",
-                    "team": "infrastructure",
-                },
+                "labels": [
+                    {
+                        "key": "environment",
+                        "value": "production",
+                    },
+                    {
+                        "key": "restored",
+                        "value": "true",
+                    },
+                    {
+                        "key": "team",
+                        "value": "infrastructure",
+                    },
+                ],
                 "tags": {
                     "items": [
                         "web",
@@ -796,10 +848,10 @@ class RestoreWorkload(pulumi.CustomResource):
                     ],
                 },
                 "network_interfaces": [{
-                    "network": "default",
+                    "network": "projects/my-project-name/global/networks/default",
                     "subnetwork": "projects/my-project-name/regions/us-central1/subnetworks/default",
                     "access_configs": [{
-                        "name": "External NAT",
+                        "name": "ONE_TO_ONE_NAT",
                         "network_tier": "PREMIUM",
                     }],
                 }],
@@ -851,7 +903,6 @@ class RestoreWorkload(pulumi.CustomResource):
             backup_vault_id="backup-vault",
             data_source_id="data-source",
             backup_id="backup",
-            name="projects/my-project/locations/us-central1/backups/my-backup",
             disk_target_environment={
                 "project": "my-project-name",
                 "zone": "us-central1-a",
@@ -859,7 +910,7 @@ class RestoreWorkload(pulumi.CustomResource):
             disk_restore_properties={
                 "name": "restored-disk",
                 "size_gb": 100,
-                "type": "pd-standard",
+                "type": "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard",
                 "description": "Restored persistent disk from backup",
                 "labels": {
                     "environment": "production",
@@ -878,13 +929,12 @@ class RestoreWorkload(pulumi.CustomResource):
             backup_vault_id="backup-vault",
             data_source_id="data-source",
             backup_id="backup",
-            name="projects/my-project/locations/us-central1/backups/my-backup",
             region_disk_target_environment={
                 "project": "my-project-name",
                 "region": "us-central1",
                 "replica_zones": [
-                    "us-central1-a",
-                    "us-central1-b",
+                    "projects/my-project-name/zones/us-central1-a",
+                    "projects/my-project-name/zones/us-central1-b",
                 ],
             },
             disk_restore_properties={
@@ -911,7 +961,6 @@ class RestoreWorkload(pulumi.CustomResource):
             backup_vault_id="backup-vault",
             data_source_id="data-source",
             backup_id="backup",
-            name="projects/my-project/locations/us-central1/backups/my-backup",
             delete_restored_instance=False,
             disk_target_environment={
                 "project": "my-project-name",
@@ -919,8 +968,8 @@ class RestoreWorkload(pulumi.CustomResource):
             },
             disk_restore_properties={
                 "name": "persistent-disk",
-                "size_gb": 50,
-                "type": "pd-standard",
+                "size_gb": 100,
+                "type": "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard",
             })
         ```
 
@@ -929,16 +978,12 @@ class RestoreWorkload(pulumi.CustomResource):
         RestoreWorkload can be imported using any of these accepted formats:
 
         * `/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RestoreWorkload can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default /{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
         ```
 
@@ -1040,12 +1085,17 @@ class RestoreWorkload(pulumi.CustomResource):
         :param pulumi.Input[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict']] compute_instance_target_environment: Optional. The destination environment for GCE VM restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_source_id: Required. The ID of the data source.
+        :param pulumi.Input[_builtins.bool] delete_restored_instance: Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+               If false, only the restore record is removed from the state, leaving the resource active.
         :param pulumi.Input[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict']] disk_restore_properties: Optional. Disk properties to be overridden during restore.
                Structure is documented below.
         :param pulumi.Input[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict']] disk_target_environment: Optional. The destination environment for zonal disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Required. The location for the backup vault.
-        :param pulumi.Input[_builtins.str] name: Required. The resource name of the backup instance.
+        :param pulumi.Input[_builtins.str] name: (Optional, Deprecated)
+               The resource name of the backup instance.
+               
+               > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         :param pulumi.Input[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict']] region_disk_target_environment: Optional. The destination environment for regional disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID
@@ -1127,6 +1177,10 @@ class RestoreWorkload(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deleteRestoredInstance")
     def delete_restored_instance(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+        If false, only the restore record is removed from the state, leaving the resource active.
+        """
         return pulumi.get(self, "delete_restored_instance")
 
     @_builtins.property
@@ -1157,9 +1211,13 @@ class RestoreWorkload(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""`name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Required. The resource name of the backup instance.
+        (Optional, Deprecated)
+        The resource name of the backup instance.
+
+        > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         """
         return pulumi.get(self, "name")
 

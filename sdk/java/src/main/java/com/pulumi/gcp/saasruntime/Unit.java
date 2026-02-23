@@ -87,22 +87,14 @@ import javax.annotation.Nullable;
  * Unit can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/units/{{unit_id}}`
- * 
  * * `{{project}}/{{location}}/{{unit_id}}`
- * 
  * * `{{location}}/{{unit_id}}`
  * 
  * When using the `pulumi import` command, Unit can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:saasruntime/unit:Unit default projects/{{project}}/locations/{{location}}/units/{{unit_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:saasruntime/unit:Unit default {{project}}/{{location}}/{{unit_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:saasruntime/unit:Unit default {{location}}/{{unit_id}}
  * ```
  * 
@@ -199,9 +191,17 @@ public class Unit extends com.pulumi.resources.CustomResource {
     public Output<List<UnitDependent>> dependents() {
         return this.dependents;
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
@@ -347,9 +347,25 @@ public class Unit extends com.pulumi.resources.CustomResource {
     public Output<List<String>> ongoingOperations() {
         return this.ongoingOperations;
     }
+    /**
+     * Set of key/value pairs corresponding to output variables from execution of
+     * actuation templates. The variables are declared in actuation configs (e.g
+     * in helm chart or terraform) and the values are fetched and returned by the
+     * actuation engine upon completion of execution.
+     * Structure is documented below.
+     * 
+     */
     @Export(name="outputVariables", refs={List.class,UnitOutputVariable.class}, tree="[0,1]")
     private Output<List<UnitOutputVariable>> outputVariables;
 
+    /**
+     * @return Set of key/value pairs corresponding to output variables from execution of
+     * actuation templates. The variables are declared in actuation configs (e.g
+     * in helm chart or terraform) and the values are fetched and returned by the
+     * actuation engine upon completion of execution.
+     * Structure is documented below.
+     * 
+     */
     public Output<List<UnitOutputVariable>> outputVariables() {
         return this.outputVariables;
     }
@@ -385,7 +401,7 @@ public class Unit extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -393,7 +409,7 @@ public class Unit extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "dci-tf-_10393",
+ *     projectId: "dci-tf-_3684",
  *     name: "Service Project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
@@ -119,7 +119,7 @@ import * as utilities from "../utilities";
  * });
  * const myApphubApplication = new gcp.apphub.Application("my_apphub_application", {
  *     location: "us-central1",
- *     applicationId: "tf-test-example-application_33052",
+ *     applicationId: "tf-test-example-application_10719",
  *     scope: {
  *         type: "REGIONAL",
  *     },
@@ -129,7 +129,7 @@ import * as utilities from "../utilities";
  * });
  * const insightsConfig = new gcp.developerconnect.InsightsConfig("insights_config", {
  *     location: "us-central1",
- *     insightsConfigId: "tf-test-ic_3684",
+ *     insightsConfigId: "tf-test-ic-apphub-_1443",
  *     project: project.projectId,
  *     annotations: {},
  *     labels: {},
@@ -155,28 +155,148 @@ import * as utilities from "../utilities";
  *     dependsOn: [waitForPropagation],
  * });
  * ```
+ * ### Developer Connect Insights Config Projects
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "dci-tf-_26032",
+ *     name: "Service Project",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
+ * });
+ * // Grant Permissions
+ * const apphubPermissions = new gcp.projects.IAMMember("apphub_permissions", {
+ *     project: project.projectId,
+ *     role: "roles/apphub.admin",
+ *     member: "serviceAccount:hashicorp-test-runner@ci-test-project-188019.iam.gserviceaccount.com",
+ * });
+ * const insightsAgent = new gcp.projects.IAMMember("insights_agent", {
+ *     project: project.projectId,
+ *     role: "roles/developerconnect.insightsAgent",
+ *     member: "serviceAccount:66214305248-compute@developer.gserviceaccount.com",
+ * });
+ * // Enable APIs
+ * const apphubApiService = new gcp.projects.Service("apphub_api_service", {
+ *     project: project.projectId,
+ *     service: "apphub.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const containeranalysisApi = new gcp.projects.Service("containeranalysis_api", {
+ *     project: project.projectId,
+ *     service: "containeranalysis.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const containerscanningApi = new gcp.projects.Service("containerscanning_api", {
+ *     project: project.projectId,
+ *     service: "containerscanning.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const containerApi = new gcp.projects.Service("container_api", {
+ *     project: project.projectId,
+ *     service: "container.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const artifactregistryApi = new gcp.projects.Service("artifactregistry_api", {
+ *     project: project.projectId,
+ *     service: "artifactregistry.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const cloudbuildApi = new gcp.projects.Service("cloudbuild_api", {
+ *     project: project.projectId,
+ *     service: "cloudbuild.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const cloudassetApi = new gcp.projects.Service("cloudasset_api", {
+ *     project: project.projectId,
+ *     service: "cloudasset.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const computeApi = new gcp.projects.Service("compute_api", {
+ *     project: project.projectId,
+ *     service: "compute.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const devconnectApi = new gcp.projects.Service("devconnect_api", {
+ *     project: project.projectId,
+ *     service: "developerconnect.googleapis.com",
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * // Wait delay after enabling APIs and granting permissions
+ * const waitForPropagation = new time.Sleep("wait_for_propagation", {createDuration: "120s"}, {
+ *     dependsOn: [
+ *         apphubPermissions,
+ *         insightsAgent,
+ *         apphubApiService,
+ *         containeranalysisApi,
+ *         containerscanningApi,
+ *         containerApi,
+ *         artifactregistryApi,
+ *         artifactregistryApi,
+ *         cloudbuildApi,
+ *         cloudassetApi,
+ *         computeApi,
+ *         devconnectApi,
+ *     ],
+ * });
+ * const insightsConfigProjects = new gcp.developerconnect.InsightsConfig("insights_config_projects", {
+ *     location: "us-central1",
+ *     insightsConfigId: "tf-test-ic-projects-_8647",
+ *     project: project.projectId,
+ *     annotations: {},
+ *     labels: {},
+ *     targetProjects: {
+ *         projectIds: [pulumi.interpolate`projects/${project.projectId}`],
+ *     },
+ *     artifactConfigs: [{
+ *         googleArtifactAnalysis: {
+ *             projectId: project.projectId,
+ *         },
+ *         googleArtifactRegistry: {
+ *             artifactRegistryPackage: "my-package",
+ *             projectId: project.projectId,
+ *         },
+ *         uri: "us-docker.pkg.dev/my-project/my-repo/my-image",
+ *     }],
+ * }, {
+ *     dependsOn: [waitForPropagation],
+ * });
+ * ```
  *
  * ## Import
  *
  * InsightsConfig can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}`
- *
  * * `{{project}}/{{location}}/{{insights_config_id}}`
- *
  * * `{{location}}/{{insights_config_id}}`
  *
  * When using the `pulumi import` command, InsightsConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{project}}/{{location}}/{{insights_config_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{location}}/{{insights_config_id}}
  * ```
  */
@@ -220,7 +340,7 @@ export class InsightsConfig extends pulumi.CustomResource {
      * Format:
      * projects/{project}/locations/{location}/applications/{application}
      */
-    declare public readonly appHubApplication: pulumi.Output<string>;
+    declare public readonly appHubApplication: pulumi.Output<string | undefined>;
     /**
      * The artifact configurations of the artifacts that are deployed.
      * Structure is documented below.
@@ -230,6 +350,9 @@ export class InsightsConfig extends pulumi.CustomResource {
      * [Output only] Create timestamp
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -270,7 +393,7 @@ export class InsightsConfig extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -295,6 +418,11 @@ export class InsightsConfig extends pulumi.CustomResource {
      * UNLINKED
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    /**
+     * The projects to track with the InsightsConfig.
+     * Structure is documented below.
+     */
+    declare public readonly targetProjects: pulumi.Output<outputs.developerconnect.InsightsConfigTargetProjects | undefined>;
     /**
      * [Output only] Update timestamp
      */
@@ -329,12 +457,10 @@ export class InsightsConfig extends pulumi.CustomResource {
             resourceInputs["reconciling"] = state?.reconciling;
             resourceInputs["runtimeConfigs"] = state?.runtimeConfigs;
             resourceInputs["state"] = state?.state;
+            resourceInputs["targetProjects"] = state?.targetProjects;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as InsightsConfigArgs | undefined;
-            if (args?.appHubApplication === undefined && !opts.urn) {
-                throw new Error("Missing required property 'appHubApplication'");
-            }
             if (args?.insightsConfigId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'insightsConfigId'");
             }
@@ -348,6 +474,7 @@ export class InsightsConfig extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
+            resourceInputs["targetProjects"] = args?.targetProjects;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -392,6 +519,9 @@ export interface InsightsConfigState {
      * [Output only] Create timestamp
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -432,7 +562,7 @@ export interface InsightsConfigState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -458,6 +588,11 @@ export interface InsightsConfigState {
      */
     state?: pulumi.Input<string>;
     /**
+     * The projects to track with the InsightsConfig.
+     * Structure is documented below.
+     */
+    targetProjects?: pulumi.Input<inputs.developerconnect.InsightsConfigTargetProjects>;
+    /**
      * [Output only] Update timestamp
      */
     updateTime?: pulumi.Input<string>;
@@ -479,7 +614,7 @@ export interface InsightsConfigArgs {
      * Format:
      * projects/{project}/locations/{location}/applications/{application}
      */
-    appHubApplication: pulumi.Input<string>;
+    appHubApplication?: pulumi.Input<string>;
     /**
      * The artifact configurations of the artifacts that are deployed.
      * Structure is documented below.
@@ -504,4 +639,9 @@ export interface InsightsConfigArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The projects to track with the InsightsConfig.
+     * Structure is documented below.
+     */
+    targetProjects?: pulumi.Input<inputs.developerconnect.InsightsConfigTargetProjects>;
 }

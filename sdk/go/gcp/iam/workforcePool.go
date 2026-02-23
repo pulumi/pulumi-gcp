@@ -98,16 +98,12 @@ import (
 // WorkforcePool can be imported using any of these accepted formats:
 //
 // * `locations/{{location}}/workforcePools/{{workforce_pool_id}}`
-//
 // * `{{location}}/{{workforce_pool_id}}`
 //
 // When using the `pulumi import` command, WorkforcePool can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:iam/workforcePool:WorkforcePool default locations/{{location}}/workforcePools/{{workforce_pool_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:iam/workforcePool:WorkforcePool default {{location}}/{{workforce_pool_id}}
 // ```
 type WorkforcePool struct {

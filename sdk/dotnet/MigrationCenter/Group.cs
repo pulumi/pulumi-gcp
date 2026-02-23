@@ -44,22 +44,14 @@ namespace Pulumi.Gcp.MigrationCenter
     /// Group can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/groups/{{group_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{group_id}}`
-    /// 
     /// * `{{location}}/{{group_id}}`
     /// 
     /// When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:migrationcenter/group:Group default projects/{{project}}/locations/{{location}}/groups/{{group_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:migrationcenter/group:Group default {{project}}/{{location}}/{{group_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:migrationcenter/group:Group default {{location}}/{{group_id}}
     /// ```
     /// </summary>
@@ -125,7 +117,7 @@ namespace Pulumi.Gcp.MigrationCenter
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -318,7 +310,7 @@ namespace Pulumi.Gcp.MigrationCenter
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

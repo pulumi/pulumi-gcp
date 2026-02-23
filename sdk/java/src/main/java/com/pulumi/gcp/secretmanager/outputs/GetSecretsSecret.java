@@ -26,8 +26,22 @@ public final class GetSecretsSecret {
      * 
      */
     private String createTime;
+    /**
+     * @return Whether Terraform will be prevented from destroying the secret. Defaults to false.
+     * When the field is set to true in Terraform state, a &#39;terraform apply&#39;
+     * or &#39;terraform destroy&#39; that would delete the secret will fail.
+     * 
+     */
     private Boolean deletionProtection;
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     private Map<String,String> effectiveAnnotations;
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     private Map<String,String> effectiveLabels;
     /**
      * @return Timestamp in UTC when the Secret is scheduled to expire.
@@ -118,12 +132,26 @@ public final class GetSecretsSecret {
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return Whether Terraform will be prevented from destroying the secret. Defaults to false.
+     * When the field is set to true in Terraform state, a &#39;terraform apply&#39;
+     * or &#39;terraform destroy&#39; that would delete the secret will fail.
+     * 
+     */
     public Boolean deletionProtection() {
         return this.deletionProtection;
     }
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
     }

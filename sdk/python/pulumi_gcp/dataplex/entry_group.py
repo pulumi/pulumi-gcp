@@ -160,7 +160,7 @@ class _EntryGroupState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] transfer_status: Denotes the transfer status of the Entry Group. It is unspecified
                for Entry Group created from Dataplex API.
         :param pulumi.Input[_builtins.str] uid: System generated globally unique ID for the EntryGroup. This ID will be different if the EntryGroup is deleted and re-created with the same name.
@@ -310,7 +310,7 @@ class _EntryGroupState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -407,22 +407,14 @@ class EntryGroup(pulumi.CustomResource):
         EntryGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}`
-
         * `{{project}}/{{location}}/{{entry_group_id}}`
-
         * `{{location}}/{{entry_group_id}}`
 
         When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{project}}/{{location}}/{{entry_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{location}}/{{entry_group_id}}
         ```
 
@@ -483,22 +475,14 @@ class EntryGroup(pulumi.CustomResource):
         EntryGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}`
-
         * `{{project}}/{{location}}/{{entry_group_id}}`
-
         * `{{location}}/{{entry_group_id}}`
 
         When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{project}}/{{location}}/{{entry_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{location}}/{{entry_group_id}}
         ```
 
@@ -591,7 +575,7 @@ class EntryGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] transfer_status: Denotes the transfer status of the Entry Group. It is unspecified
                for Entry Group created from Dataplex API.
         :param pulumi.Input[_builtins.str] uid: System generated globally unique ID for the EntryGroup. This ID will be different if the EntryGroup is deleted and re-created with the same name.
@@ -697,7 +681,7 @@ class EntryGroup(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

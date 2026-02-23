@@ -30,13 +30,12 @@ public final class BucketLifecycleRuleCondition {
      */
     private @Nullable String customTimeBefore;
     /**
-     * @return Number of days elapsed since the user-specified timestamp set on an object.
+     * @return Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceCustomTime` condition.
      * 
      */
     private @Nullable Integer daysSinceCustomTime;
     /**
-     * @return Number of days elapsed since the noncurrent timestamp of an object. This
-     * 										condition is relevant only for versioned objects.
+     * @return Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceNoncurrentTime` condition.
      * 
      */
     private @Nullable Integer daysSinceNoncurrentTime;
@@ -56,12 +55,12 @@ public final class BucketLifecycleRuleCondition {
      */
     private @Nullable List<String> matchesSuffixes;
     /**
-     * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+     * @return Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrentTimeBefore` condition.
      * 
      */
     private @Nullable String noncurrentTimeBefore;
     /**
-     * @return Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+     * @return Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `numNewerVersions` condition.
      * 
      */
     private @Nullable Integer numNewerVersions;
@@ -114,15 +113,14 @@ public final class BucketLifecycleRuleCondition {
         return Optional.ofNullable(this.customTimeBefore);
     }
     /**
-     * @return Number of days elapsed since the user-specified timestamp set on an object.
+     * @return Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceCustomTime` condition.
      * 
      */
     public Optional<Integer> daysSinceCustomTime() {
         return Optional.ofNullable(this.daysSinceCustomTime);
     }
     /**
-     * @return Number of days elapsed since the noncurrent timestamp of an object. This
-     * 										condition is relevant only for versioned objects.
+     * @return Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceNoncurrentTime` condition.
      * 
      */
     public Optional<Integer> daysSinceNoncurrentTime() {
@@ -150,14 +148,14 @@ public final class BucketLifecycleRuleCondition {
         return this.matchesSuffixes == null ? List.of() : this.matchesSuffixes;
     }
     /**
-     * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+     * @return Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrentTimeBefore` condition.
      * 
      */
     public Optional<String> noncurrentTimeBefore() {
         return Optional.ofNullable(this.noncurrentTimeBefore);
     }
     /**
-     * @return Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+     * @return Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `numNewerVersions` condition.
      * 
      */
     public Optional<Integer> numNewerVersions() {

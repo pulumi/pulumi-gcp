@@ -37,13 +37,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-//				ScopeId: pulumi.String("tf-test-scope_85160"),
+//				ScopeId: pulumi.String("tf-test-scope_25141"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gkehub.NewNamespace(ctx, "namespace", &gkehub.NamespaceArgs{
-//				ScopeNamespaceId: pulumi.String("tf-test-namespace_92130"),
+//				ScopeNamespaceId: pulumi.String("tf-test-namespace_30827"),
 //				ScopeId:          scope.ScopeId,
 //				Scope:            scope.Name,
 //				NamespaceLabels: pulumi.StringMap{
@@ -73,22 +73,14 @@ import (
 // Namespace can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/global/scopes/{{scope_id}}/namespaces/{{scope_namespace_id}}`
-//
 // * `{{project}}/{{scope_id}}/{{scope_namespace_id}}`
-//
 // * `{{scope_id}}/{{scope_namespace_id}}`
 //
 // When using the `pulumi import` command, Namespace can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkehub/namespace:Namespace default projects/{{project}}/locations/global/scopes/{{scope_id}}/namespaces/{{scope_namespace_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/namespace:Namespace default {{project}}/{{scope_id}}/{{scope_namespace_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/namespace:Namespace default {{scope_id}}/{{scope_namespace_id}}
 // ```
 type Namespace struct {
@@ -117,7 +109,7 @@ type Namespace struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The name of the Scope instance.
 	Scope pulumi.StringOutput `pulumi:"scope"`
@@ -201,7 +193,7 @@ type namespaceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The name of the Scope instance.
 	Scope *string `pulumi:"scope"`
@@ -242,7 +234,7 @@ type NamespaceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The name of the Scope instance.
 	Scope pulumi.StringPtrInput
@@ -441,7 +433,8 @@ func (o NamespaceOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o NamespaceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

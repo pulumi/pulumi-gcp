@@ -216,16 +216,12 @@ import javax.annotation.Nullable;
  * FirewallPolicyWithRules can be imported using any of these accepted formats:
  * 
  * * `locations/global/firewallPolicies/{{policy_id}}`
- * 
  * * `{{policy_id}}`
  * 
  * When using the `pulumi import` command, FirewallPolicyWithRules can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules default locations/global/firewallPolicies/{{policy_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules default {{policy_id}}
  * ```
  * 

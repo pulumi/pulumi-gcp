@@ -200,7 +200,7 @@ class _BackupState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] source_snapshot: If specified, backup will be created from the given snapshot. If not specified,
                there will be a new snapshot taken to initiate the backup creation.
                Format: `projects/{{projectId}}/locations/{{location}}/volumes/{{volumename}}/snapshots/{{snapshotname}}``
@@ -375,7 +375,7 @@ class _BackupState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -536,22 +536,14 @@ class Backup(pulumi.CustomResource):
         Backup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}`
-
         * `{{project}}/{{location}}/{{vault_name}}/{{name}}`
-
         * `{{location}}/{{vault_name}}/{{name}}`
 
         When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/backup:Backup default projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/backup:Backup default {{project}}/{{location}}/{{vault_name}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/backup:Backup default {{location}}/{{vault_name}}/{{name}}
         ```
 
@@ -641,22 +633,14 @@ class Backup(pulumi.CustomResource):
         Backup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}`
-
         * `{{project}}/{{location}}/{{vault_name}}/{{name}}`
-
         * `{{location}}/{{vault_name}}/{{name}}`
 
         When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/backup:Backup default projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/backup:Backup default {{project}}/{{location}}/{{vault_name}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/backup:Backup default {{location}}/{{vault_name}}/{{name}}
         ```
 
@@ -765,7 +749,7 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] source_snapshot: If specified, backup will be created from the given snapshot. If not specified,
                there will be a new snapshot taken to initiate the backup creation.
                Format: `projects/{{projectId}}/locations/{{location}}/volumes/{{volumename}}/snapshots/{{snapshotname}}``
@@ -888,7 +872,7 @@ class Backup(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

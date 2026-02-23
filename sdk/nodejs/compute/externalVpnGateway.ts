@@ -118,22 +118,14 @@ import * as utilities from "../utilities";
  * ExternalVpnGateway can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/global/externalVpnGateways/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, ExternalVpnGateway can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default projects/{{project}}/global/externalVpnGateways/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{name}}
  * ```
  */
@@ -200,13 +192,19 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.ExternalVpnGatewayParams | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -238,6 +236,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
             resourceInputs["labelFingerprint"] = state?.labelFingerprint;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
+            resourceInputs["params"] = state?.params;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["redundancyType"] = state?.redundancyType;
@@ -248,6 +247,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
             resourceInputs["interfaces"] = args?.interfaces;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
+            resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
             resourceInputs["redundancyType"] = args?.redundancyType;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -301,13 +301,19 @@ export interface ExternalVpnGatewayState {
      */
     name?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.ExternalVpnGatewayParams>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -350,6 +356,12 @@ export interface ExternalVpnGatewayArgs {
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.ExternalVpnGatewayParams>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

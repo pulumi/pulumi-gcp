@@ -18,6 +18,18 @@ public final class GetInstanceConnectionPoolConfig {
      * 
      */
     private Boolean enabled;
+    /**
+     * @return Flags for configuring managed connection pooling when it is enabled.
+     * These flags will only be set if &#39;connection_pool_config.enabled&#39; is
+     * true.
+     * Please see
+     * https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+     * for a comprehensive list of flags that can be set. To specify the flags
+     * in Terraform, please remove the &#34;connection-pooling-&#34; prefix and use
+     * underscores instead of dashes in the name. For example,
+     * &#34;connection-pooling-pool-mode&#34; would be &#34;poolMode&#34;.
+     * 
+     */
     private Map<String,String> flags;
     /**
      * @return The number of running poolers per instance.
@@ -33,6 +45,18 @@ public final class GetInstanceConnectionPoolConfig {
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return Flags for configuring managed connection pooling when it is enabled.
+     * These flags will only be set if &#39;connection_pool_config.enabled&#39; is
+     * true.
+     * Please see
+     * https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+     * for a comprehensive list of flags that can be set. To specify the flags
+     * in Terraform, please remove the &#34;connection-pooling-&#34; prefix and use
+     * underscores instead of dashes in the name. For example,
+     * &#34;connection-pooling-pool-mode&#34; would be &#34;poolMode&#34;.
+     * 
+     */
     public Map<String,String> flags() {
         return this.flags;
     }

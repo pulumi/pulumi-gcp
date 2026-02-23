@@ -136,22 +136,14 @@ import (
 // TrustConfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, TrustConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default {{location}}/{{name}}
 // ```
 type TrustConfig struct {
@@ -181,7 +173,7 @@ type TrustConfig struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Set of trust stores to perform validation against.
 	// This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
@@ -255,7 +247,7 @@ type trustConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Set of trust stores to perform validation against.
 	// This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
@@ -292,7 +284,7 @@ type TrustConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Set of trust stores to perform validation against.
 	// This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
@@ -492,7 +484,8 @@ func (o TrustConfigOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o TrustConfigOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TrustConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

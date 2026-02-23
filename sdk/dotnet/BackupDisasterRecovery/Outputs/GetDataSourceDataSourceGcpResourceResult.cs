@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         public readonly string Location;
         /// <summary>
         /// The type of the Google Cloud resource. Use the Unified Resource Type,
-        /// 						eg. compute.googleapis.com/Instance.
+        /// 					eg. compute.googleapis.com/Instance.
         /// </summary>
         public readonly string Type;
 

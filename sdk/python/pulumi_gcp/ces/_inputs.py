@@ -429,6 +429,26 @@ __all__ = [
     'ToolPythonFunctionArgsDict',
     'ToolSystemToolArgs',
     'ToolSystemToolArgsDict',
+    'ToolsetMcpToolsetArgs',
+    'ToolsetMcpToolsetArgsDict',
+    'ToolsetMcpToolsetApiAuthenticationArgs',
+    'ToolsetMcpToolsetApiAuthenticationArgsDict',
+    'ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs',
+    'ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgsDict',
+    'ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs',
+    'ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgsDict',
+    'ToolsetMcpToolsetApiAuthenticationOauthConfigArgs',
+    'ToolsetMcpToolsetApiAuthenticationOauthConfigArgsDict',
+    'ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs',
+    'ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgsDict',
+    'ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs',
+    'ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict',
+    'ToolsetMcpToolsetServiceDirectoryConfigArgs',
+    'ToolsetMcpToolsetServiceDirectoryConfigArgsDict',
+    'ToolsetMcpToolsetTlsConfigArgs',
+    'ToolsetMcpToolsetTlsConfigArgsDict',
+    'ToolsetMcpToolsetTlsConfigCaCertArgs',
+    'ToolsetMcpToolsetTlsConfigCaCertArgsDict',
     'ToolsetOpenApiToolsetArgs',
     'ToolsetOpenApiToolsetArgsDict',
     'ToolsetOpenApiToolsetApiAuthenticationArgs',
@@ -451,25 +471,20 @@ __all__ = [
     'ToolsetOpenApiToolsetTlsConfigCaCertArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AgentAfterAgentCallbackArgsDict(TypedDict):
-        python_code: pulumi.Input[_builtins.str]
-        """
-        The python code to execute for the callback.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human-readable description of the callback.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the callback is disabled. Disabled callbacks are ignored by the
-        agent.
-        """
-elif False:
-    AgentAfterAgentCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AgentAfterAgentCallbackArgsDict(TypedDict):
+    python_code: pulumi.Input[_builtins.str]
+    """
+    The python code to execute for the callback.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Human-readable description of the callback.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the callback is disabled. Disabled callbacks are ignored by the
+    agent.
+    """
 
 @pulumi.input_type
 class AgentAfterAgentCallbackArgs:
@@ -527,23 +542,20 @@ class AgentAfterAgentCallbackArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class AgentAfterModelCallbackArgsDict(TypedDict):
-        python_code: pulumi.Input[_builtins.str]
-        """
-        The python code to execute for the callback.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human-readable description of the callback.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the callback is disabled. Disabled callbacks are ignored by the
-        agent.
-        """
-elif False:
-    AgentAfterModelCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AgentAfterModelCallbackArgsDict(TypedDict):
+    python_code: pulumi.Input[_builtins.str]
+    """
+    The python code to execute for the callback.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Human-readable description of the callback.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the callback is disabled. Disabled callbacks are ignored by the
+    agent.
+    """
 
 @pulumi.input_type
 class AgentAfterModelCallbackArgs:
@@ -601,23 +613,20 @@ class AgentAfterModelCallbackArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class AgentAfterToolCallbackArgsDict(TypedDict):
-        python_code: pulumi.Input[_builtins.str]
-        """
-        The python code to execute for the callback.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human-readable description of the callback.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the callback is disabled. Disabled callbacks are ignored by the
-        agent.
-        """
-elif False:
-    AgentAfterToolCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AgentAfterToolCallbackArgsDict(TypedDict):
+    python_code: pulumi.Input[_builtins.str]
+    """
+    The python code to execute for the callback.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Human-readable description of the callback.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the callback is disabled. Disabled callbacks are ignored by the
+    agent.
+    """
 
 @pulumi.input_type
 class AgentAfterToolCallbackArgs:
@@ -675,23 +684,20 @@ class AgentAfterToolCallbackArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class AgentBeforeAgentCallbackArgsDict(TypedDict):
-        python_code: pulumi.Input[_builtins.str]
-        """
-        The python code to execute for the callback.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human-readable description of the callback.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the callback is disabled. Disabled callbacks are ignored by the
-        agent.
-        """
-elif False:
-    AgentBeforeAgentCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AgentBeforeAgentCallbackArgsDict(TypedDict):
+    python_code: pulumi.Input[_builtins.str]
+    """
+    The python code to execute for the callback.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Human-readable description of the callback.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the callback is disabled. Disabled callbacks are ignored by the
+    agent.
+    """
 
 @pulumi.input_type
 class AgentBeforeAgentCallbackArgs:
@@ -749,23 +755,20 @@ class AgentBeforeAgentCallbackArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class AgentBeforeModelCallbackArgsDict(TypedDict):
-        python_code: pulumi.Input[_builtins.str]
-        """
-        The python code to execute for the callback.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human-readable description of the callback.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the callback is disabled. Disabled callbacks are ignored by the
-        agent.
-        """
-elif False:
-    AgentBeforeModelCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AgentBeforeModelCallbackArgsDict(TypedDict):
+    python_code: pulumi.Input[_builtins.str]
+    """
+    The python code to execute for the callback.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Human-readable description of the callback.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the callback is disabled. Disabled callbacks are ignored by the
+    agent.
+    """
 
 @pulumi.input_type
 class AgentBeforeModelCallbackArgs:
@@ -823,23 +826,20 @@ class AgentBeforeModelCallbackArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class AgentBeforeToolCallbackArgsDict(TypedDict):
-        python_code: pulumi.Input[_builtins.str]
-        """
-        The python code to execute for the callback.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human-readable description of the callback.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the callback is disabled. Disabled callbacks are ignored by the
-        agent.
-        """
-elif False:
-    AgentBeforeToolCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AgentBeforeToolCallbackArgsDict(TypedDict):
+    python_code: pulumi.Input[_builtins.str]
+    """
+    The python code to execute for the callback.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Human-readable description of the callback.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the callback is disabled. Disabled callbacks are ignored by the
+    agent.
+    """
 
 @pulumi.input_type
 class AgentBeforeToolCallbackArgs:
@@ -897,11 +897,8 @@ class AgentBeforeToolCallbackArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class AgentLlmAgentArgsDict(TypedDict):
-        pass
-elif False:
-    AgentLlmAgentArgsDict: TypeAlias = Mapping[str, Any]
+class AgentLlmAgentArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class AgentLlmAgentArgs:
@@ -909,22 +906,19 @@ class AgentLlmAgentArgs:
         pass
 
 
-if not MYPY:
-    class AgentModelSettingsArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The LLM model that the agent should use.
-        If not set, the agent will inherit the model from its parent agent.
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        If set, this temperature will be used for the LLM model. Temperature
-        controls the randomness of the model's responses. Lower temperatures
-        produce responses that are more predictable. Higher temperatures produce
-        responses that are more creative.
-        """
-elif False:
-    AgentModelSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class AgentModelSettingsArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The LLM model that the agent should use.
+    If not set, the agent will inherit the model from its parent agent.
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    If set, this temperature will be used for the LLM model. Temperature
+    controls the randomness of the model's responses. Lower temperatures
+    produce responses that are more predictable. Higher temperatures produce
+    responses that are more creative.
+    """
 
 @pulumi.input_type
 class AgentModelSettingsArgs:
@@ -973,37 +967,34 @@ class AgentModelSettingsArgs:
         pulumi.set(self, "temperature", value)
 
 
-if not MYPY:
-    class AgentRemoteDialogflowAgentArgsDict(TypedDict):
-        agent: pulumi.Input[_builtins.str]
-        """
-        The
-        [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents
-        agent resource name.
-        Format: `projects/{project}/locations/{location}/agents/{agent}`
-        """
-        flow_id: pulumi.Input[_builtins.str]
-        """
-        The flow ID of the flow in the Dialogflow agent.
-        """
-        environment_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The environment ID of the Dialogflow agent be used for the agent
-        execution. If not specified, the draft environment will be used.
-        """
-        input_variable_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The mapping of the app variables names to the Dialogflow session
-        parameters names to be sent to the Dialogflow agent as input.
-        """
-        output_variable_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The mapping of the Dialogflow session parameters names to the app
-        variables names to be sent back to the CES agent after the Dialogflow
-        agent execution ends.
-        """
-elif False:
-    AgentRemoteDialogflowAgentArgsDict: TypeAlias = Mapping[str, Any]
+class AgentRemoteDialogflowAgentArgsDict(TypedDict):
+    agent: pulumi.Input[_builtins.str]
+    """
+    The
+    [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents
+    agent resource name.
+    Format: `projects/{project}/locations/{location}/agents/{agent}`
+    """
+    flow_id: pulumi.Input[_builtins.str]
+    """
+    The flow ID of the flow in the Dialogflow agent.
+    """
+    environment_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The environment ID of the Dialogflow agent be used for the agent
+    execution. If not specified, the draft environment will be used.
+    """
+    input_variable_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The mapping of the app variables names to the Dialogflow session
+    parameters names to be sent to the Dialogflow agent as input.
+    """
+    output_variable_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The mapping of the Dialogflow session parameters names to the app
+    variables names to be sent back to the CES agent after the Dialogflow
+    agent execution ends.
+    """
 
 @pulumi.input_type
 class AgentRemoteDialogflowAgentArgs:
@@ -1104,20 +1095,17 @@ class AgentRemoteDialogflowAgentArgs:
         pulumi.set(self, "output_variable_mapping", value)
 
 
-if not MYPY:
-    class AgentToolsetArgsDict(TypedDict):
-        toolset: pulumi.Input[_builtins.str]
-        """
-        The resource name of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        tool_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The tools IDs to filter the toolset.
-        """
-elif False:
-    AgentToolsetArgsDict: TypeAlias = Mapping[str, Any]
+class AgentToolsetArgsDict(TypedDict):
+    toolset: pulumi.Input[_builtins.str]
+    """
+    The resource name of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    tool_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The tools IDs to filter the toolset.
+    """
 
 @pulumi.input_type
 class AgentToolsetArgs:
@@ -1161,38 +1149,35 @@ class AgentToolsetArgs:
         pulumi.set(self, "tool_ids", value)
 
 
-if not MYPY:
-    class AppAudioProcessingConfigArgsDict(TypedDict):
-        ambient_sound_config: NotRequired[pulumi.Input['AppAudioProcessingConfigAmbientSoundConfigArgsDict']]
-        """
-        Configuration for the ambient sound to be played with the synthesized agent
-        response, to enhance the naturalness of the conversation.
-        Structure is documented below.
-        """
-        barge_in_config: NotRequired[pulumi.Input['AppAudioProcessingConfigBargeInConfigArgsDict']]
-        """
-        Configuration for how the user barge-in activities should be handled.
-        Structure is documented below.
-        """
-        inactivity_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The duration of user inactivity (no speech or interaction) before the agent
-        prompts the user for reengagement. If not set, the agent will not prompt
-        the user for reengagement.
-        """
-        synthesize_speech_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppAudioProcessingConfigSynthesizeSpeechConfigArgsDict']]]]
-        """
-        Configuration of how the agent response should be synthesized, mapping from
-        the language code to SynthesizeSpeechConfig.
-        If the configuration for the specified language code is not found, the
-        configuration for the root language code will be used. For example, if the
-        map contains "en-us" and "en", and the specified language code is "en-gb",
-        then "en" configuration will be used.
-        Note: Language code is case-insensitive.
-        Structure is documented below.
-        """
-elif False:
-    AppAudioProcessingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppAudioProcessingConfigArgsDict(TypedDict):
+    ambient_sound_config: NotRequired[pulumi.Input['AppAudioProcessingConfigAmbientSoundConfigArgsDict']]
+    """
+    Configuration for the ambient sound to be played with the synthesized agent
+    response, to enhance the naturalness of the conversation.
+    Structure is documented below.
+    """
+    barge_in_config: NotRequired[pulumi.Input['AppAudioProcessingConfigBargeInConfigArgsDict']]
+    """
+    Configuration for how the user barge-in activities should be handled.
+    Structure is documented below.
+    """
+    inactivity_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The duration of user inactivity (no speech or interaction) before the agent
+    prompts the user for reengagement. If not set, the agent will not prompt
+    the user for reengagement.
+    """
+    synthesize_speech_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppAudioProcessingConfigSynthesizeSpeechConfigArgsDict']]]]
+    """
+    Configuration of how the agent response should be synthesized, mapping from
+    the language code to SynthesizeSpeechConfig.
+    If the configuration for the specified language code is not found, the
+    configuration for the root language code will be used. For example, if the
+    map contains "en-us" and "en", and the specified language code is "en-gb",
+    then "en" configuration will be used.
+    Note: Language code is case-insensitive.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppAudioProcessingConfigArgs:
@@ -1289,37 +1274,34 @@ class AppAudioProcessingConfigArgs:
         pulumi.set(self, "synthesize_speech_configs", value)
 
 
-if not MYPY:
-    class AppAudioProcessingConfigAmbientSoundConfigArgsDict(TypedDict):
-        gcs_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Ambient noise as a mono-channel, 16kHz WAV file stored in [Cloud
-        Storage](https://cloud.google.com/storage).
-        Note: Please make sure the CES service agent
-        `service-@gcp-sa-ces.iam.gserviceaccount.com` has
-        `storage.objects.get` permission to the Cloud Storage object.
-        """
-        prebuilt_ambient_sound: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the prebuilt ambient sound.
-        Valid values are: - "coffee_shop" - "keyboard" - "keypad" - "hum"
-        -"office_1" - "office_2" - "office_3"
-        -"room_1" - "room_2" - "room_3"
-        -"room_4" - "room_5" - "air_conditioner"
-        """
-        volume_gain_db: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Volume gain (in dB) of the normal native volume supported by
-        ambient noise, in the range [-96.0, 16.0]. If unset, or set to a value of
-        0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB)
-        will play at approximately half the amplitude of the normal native signal
-        amplitude. A value of +6.0 (dB) will play at approximately twice the
-        amplitude of the normal native signal amplitude. We strongly recommend not
-        to exceed +10 (dB) as there's usually no effective increase in loudness for
-        any value greater than that.
-        """
-elif False:
-    AppAudioProcessingConfigAmbientSoundConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppAudioProcessingConfigAmbientSoundConfigArgsDict(TypedDict):
+    gcs_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Ambient noise as a mono-channel, 16kHz WAV file stored in [Cloud
+    Storage](https://cloud.google.com/storage).
+    Note: Please make sure the CES service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com` has
+    `storage.objects.get` permission to the Cloud Storage object.
+    """
+    prebuilt_ambient_sound: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the prebuilt ambient sound.
+    Valid values are: - "coffee_shop" - "keyboard" - "keypad" - "hum"
+    -"office_1" - "office_2" - "office_3"
+    -"room_1" - "room_2" - "room_3"
+    -"room_4" - "room_5" - "air_conditioner"
+    """
+    volume_gain_db: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Volume gain (in dB) of the normal native volume supported by
+    ambient noise, in the range [-96.0, 16.0]. If unset, or set to a value of
+    0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB)
+    will play at approximately half the amplitude of the normal native signal
+    amplitude. A value of +6.0 (dB) will play at approximately twice the
+    amplitude of the normal native signal amplitude. We strongly recommend not
+    to exceed +10 (dB) as there's usually no effective increase in loudness for
+    any value greater than that.
+    """
 
 @pulumi.input_type
 class AppAudioProcessingConfigAmbientSoundConfigArgs:
@@ -1406,17 +1388,14 @@ class AppAudioProcessingConfigAmbientSoundConfigArgs:
         pulumi.set(self, "volume_gain_db", value)
 
 
-if not MYPY:
-    class AppAudioProcessingConfigBargeInConfigArgsDict(TypedDict):
-        barge_in_awareness: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If enabled, the agent will adapt its next response based on the assumption
-        that the user hasn't heard the full preceding agent message.
-        This should not be used in scenarios where agent responses are displayed
-        visually.
-        """
-elif False:
-    AppAudioProcessingConfigBargeInConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppAudioProcessingConfigBargeInConfigArgsDict(TypedDict):
+    barge_in_awareness: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If enabled, the agent will adapt its next response based on the assumption
+    that the user hasn't heard the full preceding agent message.
+    This should not be used in scenarios where agent responses are displayed
+    visually.
+    """
 
 @pulumi.input_type
 class AppAudioProcessingConfigBargeInConfigArgs:
@@ -1447,27 +1426,24 @@ class AppAudioProcessingConfigBargeInConfigArgs:
         pulumi.set(self, "barge_in_awareness", value)
 
 
-if not MYPY:
-    class AppAudioProcessingConfigSynthesizeSpeechConfigArgsDict(TypedDict):
-        language_code: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        speaking_rate: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
-        speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
-        half as fast. Values outside of the range [0.25, 2.0] will return an error.
-        """
-        voice: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the voice. If not set, the service will choose a
-        voice based on the other parameters such as language_code.
-        For the list of available voices, please refer to Supported voices and
-        languages from Cloud Text-to-Speech.
-        """
-elif False:
-    AppAudioProcessingConfigSynthesizeSpeechConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppAudioProcessingConfigSynthesizeSpeechConfigArgsDict(TypedDict):
+    language_code: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    speaking_rate: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
+    speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
+    half as fast. Values outside of the range [0.25, 2.0] will return an error.
+    """
+    voice: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the voice. If not set, the service will choose a
+    voice based on the other parameters such as language_code.
+    For the list of available voices, please refer to Supported voices and
+    languages from Cloud Text-to-Speech.
+    """
 
 @pulumi.input_type
 class AppAudioProcessingConfigSynthesizeSpeechConfigArgs:
@@ -1533,26 +1509,23 @@ class AppAudioProcessingConfigSynthesizeSpeechConfigArgs:
         pulumi.set(self, "voice", value)
 
 
-if not MYPY:
-    class AppClientCertificateSettingsArgsDict(TypedDict):
-        private_key: pulumi.Input[_builtins.str]
-        """
-        The name of the SecretManager secret version resource
-        storing the private key encoded in PEM format.
-        Format: projects/{project}/secrets/{secret}/versions/{version}
-        """
-        tls_certificate: pulumi.Input[_builtins.str]
-        """
-        The TLS certificate encoded in PEM format.
-        This string must include the begin header and end footer lines.
-        """
-        passphrase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The passphrase to decrypt the private key.
-        Should be left unset if the private key is not encrypted.
-        """
-elif False:
-    AppClientCertificateSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class AppClientCertificateSettingsArgsDict(TypedDict):
+    private_key: pulumi.Input[_builtins.str]
+    """
+    The name of the SecretManager secret version resource
+    storing the private key encoded in PEM format.
+    Format: projects/{project}/secrets/{secret}/versions/{version}
+    """
+    tls_certificate: pulumi.Input[_builtins.str]
+    """
+    The TLS certificate encoded in PEM format.
+    This string must include the begin header and end footer lines.
+    """
+    passphrase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The passphrase to decrypt the private key.
+    Should be left unset if the private key is not encrypted.
+    """
 
 @pulumi.input_type
 class AppClientCertificateSettingsArgs:
@@ -1615,19 +1588,16 @@ class AppClientCertificateSettingsArgs:
         pulumi.set(self, "passphrase", value)
 
 
-if not MYPY:
-    class AppDataStoreSettingsArgsDict(TypedDict):
-        engines: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppDataStoreSettingsEngineArgsDict']]]]
-        """
-        (Output)
-        The engines for the app.
-        Structure is documented below.
+class AppDataStoreSettingsArgsDict(TypedDict):
+    engines: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppDataStoreSettingsEngineArgsDict']]]]
+    """
+    (Output)
+    The engines for the app.
+    Structure is documented below.
 
 
-        <a name="nested_data_store_settings_engines"></a>The `engines` block contains:
-        """
-elif False:
-    AppDataStoreSettingsArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_data_store_settings_engines"></a>The `engines` block contains:
+    """
 
 @pulumi.input_type
 class AppDataStoreSettingsArgs:
@@ -1662,22 +1632,19 @@ class AppDataStoreSettingsArgs:
         pulumi.set(self, "engines", value)
 
 
-if not MYPY:
-    class AppDataStoreSettingsEngineArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifier. The unique identifier of the app.
-        Format: `projects/{project}/locations/{location}/apps/{app}`
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the engine.
-        Possible values:
-        ENGINE_TYPE_SEARCH
-        ENGINE_TYPE_CHAT
-        """
-elif False:
-    AppDataStoreSettingsEngineArgsDict: TypeAlias = Mapping[str, Any]
+class AppDataStoreSettingsEngineArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Identifier. The unique identifier of the app.
+    Format: `projects/{project}/locations/{location}/apps/{app}`
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the engine.
+    Possible values:
+    ENGINE_TYPE_SEARCH
+    ENGINE_TYPE_CHAT
+    """
 
 @pulumi.input_type
 class AppDataStoreSettingsEngineArgs:
@@ -1726,45 +1693,42 @@ class AppDataStoreSettingsEngineArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class AppDefaultChannelProfileArgsDict(TypedDict):
-        channel_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the channel profile.
-        Possible values:
-        UNKNOWN
-        WEB_UI
-        API
-        TWILIO
-        GOOGLE_TELEPHONY_PLATFORM
-        CONTACT_CENTER_AS_A_SERVICE
-        """
-        disable_barge_in_control: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to disable user barge-in in the conversation.
-        - true: User interruptions are disabled while the agent is speaking.
-        - false: The agent retains automatic control over when the user can interrupt.
-        """
-        disable_dtmf: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to disable DTMF (dual-tone multi-frequency).
-        """
-        persona_property: NotRequired[pulumi.Input['AppDefaultChannelProfilePersonaPropertyArgsDict']]
-        """
-        Represents the persona property of a channel.
-        Structure is documented below.
-        """
-        profile_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique identifier of the channel profile.
-        """
-        web_widget_config: NotRequired[pulumi.Input['AppDefaultChannelProfileWebWidgetConfigArgsDict']]
-        """
-        Message for configuration for the web widget.
-        Structure is documented below.
-        """
-elif False:
-    AppDefaultChannelProfileArgsDict: TypeAlias = Mapping[str, Any]
+class AppDefaultChannelProfileArgsDict(TypedDict):
+    channel_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the channel profile.
+    Possible values:
+    UNKNOWN
+    WEB_UI
+    API
+    TWILIO
+    GOOGLE_TELEPHONY_PLATFORM
+    CONTACT_CENTER_AS_A_SERVICE
+    """
+    disable_barge_in_control: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to disable user barge-in in the conversation.
+    - true: User interruptions are disabled while the agent is speaking.
+    - false: The agent retains automatic control over when the user can interrupt.
+    """
+    disable_dtmf: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to disable DTMF (dual-tone multi-frequency).
+    """
+    persona_property: NotRequired[pulumi.Input['AppDefaultChannelProfilePersonaPropertyArgsDict']]
+    """
+    Represents the persona property of a channel.
+    Structure is documented below.
+    """
+    profile_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of the channel profile.
+    """
+    web_widget_config: NotRequired[pulumi.Input['AppDefaultChannelProfileWebWidgetConfigArgsDict']]
+    """
+    Message for configuration for the web widget.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppDefaultChannelProfileArgs:
@@ -1891,18 +1855,15 @@ class AppDefaultChannelProfileArgs:
         pulumi.set(self, "web_widget_config", value)
 
 
-if not MYPY:
-    class AppDefaultChannelProfilePersonaPropertyArgsDict(TypedDict):
-        persona: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The persona of the channel.
-        Possible values:
-        UNKNOWN
-        CONCISE
-        CHATTY
-        """
-elif False:
-    AppDefaultChannelProfilePersonaPropertyArgsDict: TypeAlias = Mapping[str, Any]
+class AppDefaultChannelProfilePersonaPropertyArgsDict(TypedDict):
+    persona: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The persona of the channel.
+    Possible values:
+    UNKNOWN
+    CONCISE
+    CHATTY
+    """
 
 @pulumi.input_type
 class AppDefaultChannelProfilePersonaPropertyArgs:
@@ -1935,31 +1896,28 @@ class AppDefaultChannelProfilePersonaPropertyArgs:
         pulumi.set(self, "persona", value)
 
 
-if not MYPY:
-    class AppDefaultChannelProfileWebWidgetConfigArgsDict(TypedDict):
-        modality: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The modality of the web widget.
-        Possible values:
-        UNKNOWN_MODALITY
-        CHAT_AND_VOICE
-        VOICE_ONLY
-        CHAT_ONLY
-        """
-        theme: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The theme of the web widget.
-        Possible values:
-        UNKNOWN_THEME
-        LIGHT
-        DARK
-        """
-        web_widget_title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The title of the web widget.
-        """
-elif False:
-    AppDefaultChannelProfileWebWidgetConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppDefaultChannelProfileWebWidgetConfigArgsDict(TypedDict):
+    modality: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The modality of the web widget.
+    Possible values:
+    UNKNOWN_MODALITY
+    CHAT_AND_VOICE
+    VOICE_ONLY
+    CHAT_ONLY
+    """
+    theme: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The theme of the web widget.
+    Possible values:
+    UNKNOWN_THEME
+    LIGHT
+    DARK
+    """
+    web_widget_title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The title of the web widget.
+    """
 
 @pulumi.input_type
 class AppDefaultChannelProfileWebWidgetConfigArgs:
@@ -2034,15 +1992,12 @@ class AppDefaultChannelProfileWebWidgetConfigArgs:
         pulumi.set(self, "web_widget_title", value)
 
 
-if not MYPY:
-    class AppEvaluationMetricsThresholdsArgsDict(TypedDict):
-        golden_evaluation_metrics_thresholds: NotRequired[pulumi.Input['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgsDict']]
-        """
-        Settings for golden evaluations.
-        Structure is documented below.
-        """
-elif False:
-    AppEvaluationMetricsThresholdsArgsDict: TypeAlias = Mapping[str, Any]
+class AppEvaluationMetricsThresholdsArgsDict(TypedDict):
+    golden_evaluation_metrics_thresholds: NotRequired[pulumi.Input['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgsDict']]
+    """
+    Settings for golden evaluations.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppEvaluationMetricsThresholdsArgs:
@@ -2069,20 +2024,17 @@ class AppEvaluationMetricsThresholdsArgs:
         pulumi.set(self, "golden_evaluation_metrics_thresholds", value)
 
 
-if not MYPY:
-    class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgsDict(TypedDict):
-        expectation_level_metrics_thresholds: NotRequired[pulumi.Input['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgsDict']]
-        """
-        Expectation level metrics thresholds.
-        Structure is documented below.
-        """
-        turn_level_metrics_thresholds: NotRequired[pulumi.Input['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgsDict']]
-        """
-        Turn level metrics thresholds.
-        Structure is documented below.
-        """
-elif False:
-    AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgsDict: TypeAlias = Mapping[str, Any]
+class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgsDict(TypedDict):
+    expectation_level_metrics_thresholds: NotRequired[pulumi.Input['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgsDict']]
+    """
+    Expectation level metrics thresholds.
+    Structure is documented below.
+    """
+    turn_level_metrics_thresholds: NotRequired[pulumi.Input['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgsDict']]
+    """
+    Turn level metrics thresholds.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs:
@@ -2127,15 +2079,12 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs:
         pulumi.set(self, "turn_level_metrics_thresholds", value)
 
 
-if not MYPY:
-    class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgsDict(TypedDict):
-        tool_invocation_parameter_correctness_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The success threshold for individual tool invocation parameter
-        correctness. Must be a float between 0 and 1. Default is 1.0.
-        """
-elif False:
-    AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgsDict: TypeAlias = Mapping[str, Any]
+class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgsDict(TypedDict):
+    tool_invocation_parameter_correctness_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The success threshold for individual tool invocation parameter
+    correctness. Must be a float between 0 and 1. Default is 1.0.
+    """
 
 @pulumi.input_type
 class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs:
@@ -2162,20 +2111,17 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectation
         pulumi.set(self, "tool_invocation_parameter_correctness_threshold", value)
 
 
-if not MYPY:
-    class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgsDict(TypedDict):
-        overall_tool_invocation_correctness_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The success threshold for overall tool invocation correctness. Must be
-        a float between 0 and 1. Default is 1.0.
-        """
-        semantic_similarity_success_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The success threshold for semantic similarity. Must be an integer
-        between 0 and 4. Default is >= 3.
-        """
-elif False:
-    AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgsDict: TypeAlias = Mapping[str, Any]
+class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgsDict(TypedDict):
+    overall_tool_invocation_correctness_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The success threshold for overall tool invocation correctness. Must be
+    a float between 0 and 1. Default is 1.0.
+    """
+    semantic_similarity_success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The success threshold for semantic similarity. Must be an integer
+    between 0 and 4. Default is >= 3.
+    """
 
 @pulumi.input_type
 class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs:
@@ -2220,35 +2166,32 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMe
         pulumi.set(self, "semantic_similarity_success_threshold", value)
 
 
-if not MYPY:
-    class AppLanguageSettingsArgsDict(TypedDict):
-        default_language_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default language code of the app.
-        """
-        enable_multilingual_support: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables multilingual support. If true, agents in the app will use pre-built
-        instructions to improve handling of multilingual input.
-        """
-        fallback_action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The action to perform when an agent receives input in an unsupported
-        language.
-        This can be a predefined action or a custom tool call.
-        Valid values are:
-        - A tool's full resource name, which triggers a specific tool execution.
-        - A predefined system action, such as "escalate" or "exit", which triggers
-        an EndSession signal with corresponding metadata
-        to terminate the conversation.
-        """
-        supported_language_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of languages codes supported by the app, in addition to the
-        `default_language_code`.
-        """
-elif False:
-    AppLanguageSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class AppLanguageSettingsArgsDict(TypedDict):
+    default_language_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default language code of the app.
+    """
+    enable_multilingual_support: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables multilingual support. If true, agents in the app will use pre-built
+    instructions to improve handling of multilingual input.
+    """
+    fallback_action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The action to perform when an agent receives input in an unsupported
+    language.
+    This can be a predefined action or a custom tool call.
+    Valid values are:
+    - A tool's full resource name, which triggers a specific tool execution.
+    - A predefined system action, such as "escalate" or "exit", which triggers
+    an EndSession signal with corresponding metadata
+    to terminate the conversation.
+    """
+    supported_language_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of languages codes supported by the app, in addition to the
+    `default_language_code`.
+    """
 
 @pulumi.input_type
 class AppLanguageSettingsArgs:
@@ -2339,35 +2282,32 @@ class AppLanguageSettingsArgs:
         pulumi.set(self, "supported_language_codes", value)
 
 
-if not MYPY:
-    class AppLoggingSettingsArgsDict(TypedDict):
-        audio_recording_config: NotRequired[pulumi.Input['AppLoggingSettingsAudioRecordingConfigArgsDict']]
-        """
-        Configuration for how the audio interactions should be recorded.
-        Structure is documented below.
-        """
-        bigquery_export_settings: NotRequired[pulumi.Input['AppLoggingSettingsBigqueryExportSettingsArgsDict']]
-        """
-        Settings to describe the BigQuery export behaviors for the app.
-        Structure is documented below.
-        """
-        cloud_logging_settings: NotRequired[pulumi.Input['AppLoggingSettingsCloudLoggingSettingsArgsDict']]
-        """
-        Settings to describe the Cloud Logging behaviors for the app.
-        Structure is documented below.
-        """
-        conversation_logging_settings: NotRequired[pulumi.Input['AppLoggingSettingsConversationLoggingSettingsArgsDict']]
-        """
-        Settings to describe the conversation logging behaviors for the app.
-        Structure is documented below.
-        """
-        redaction_config: NotRequired[pulumi.Input['AppLoggingSettingsRedactionConfigArgsDict']]
-        """
-        Configuration to instruct how sensitive data should be handled.
-        Structure is documented below.
-        """
-elif False:
-    AppLoggingSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class AppLoggingSettingsArgsDict(TypedDict):
+    audio_recording_config: NotRequired[pulumi.Input['AppLoggingSettingsAudioRecordingConfigArgsDict']]
+    """
+    Configuration for how the audio interactions should be recorded.
+    Structure is documented below.
+    """
+    bigquery_export_settings: NotRequired[pulumi.Input['AppLoggingSettingsBigqueryExportSettingsArgsDict']]
+    """
+    Settings to describe the BigQuery export behaviors for the app.
+    Structure is documented below.
+    """
+    cloud_logging_settings: NotRequired[pulumi.Input['AppLoggingSettingsCloudLoggingSettingsArgsDict']]
+    """
+    Settings to describe the Cloud Logging behaviors for the app.
+    Structure is documented below.
+    """
+    conversation_logging_settings: NotRequired[pulumi.Input['AppLoggingSettingsConversationLoggingSettingsArgsDict']]
+    """
+    Settings to describe the conversation logging behaviors for the app.
+    Structure is documented below.
+    """
+    redaction_config: NotRequired[pulumi.Input['AppLoggingSettingsRedactionConfigArgsDict']]
+    """
+    Configuration to instruct how sensitive data should be handled.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppLoggingSettingsArgs:
@@ -2466,31 +2406,28 @@ class AppLoggingSettingsArgs:
         pulumi.set(self, "redaction_config", value)
 
 
-if not MYPY:
-    class AppLoggingSettingsAudioRecordingConfigArgsDict(TypedDict):
-        gcs_bucket: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The [Cloud Storage](https://cloud.google.com/storage) bucket to store the
-        session audio recordings. The URI must start with "gs://".
-        Note: If the Cloud Storage bucket is in a different project from the app,
-        you should grant `storage.objects.create` permission to the CES service
-        agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-        """
-        gcs_path_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage path prefix for audio recordings.
-        This prefix can include the following placeholders, which will be
-        dynamically substituted at serving time:
-        - $project:   project ID
-        - $location:  app location
-        - $app:       app ID
-        - $date:      session date in YYYY-MM-DD format
-        - $session:   session ID
-        If the path prefix is not specified, the default prefix
-        `$project/$location/$app/$date/$session/` will be used.
-        """
-elif False:
-    AppLoggingSettingsAudioRecordingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppLoggingSettingsAudioRecordingConfigArgsDict(TypedDict):
+    gcs_bucket: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The [Cloud Storage](https://cloud.google.com/storage) bucket to store the
+    session audio recordings. The URI must start with "gs://".
+    Note: If the Cloud Storage bucket is in a different project from the app,
+    you should grant `storage.objects.create` permission to the CES service
+    agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    gcs_path_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage path prefix for audio recordings.
+    This prefix can include the following placeholders, which will be
+    dynamically substituted at serving time:
+    - $project:   project ID
+    - $location:  app location
+    - $app:       app ID
+    - $date:      session date in YYYY-MM-DD format
+    - $session:   session ID
+    If the path prefix is not specified, the default prefix
+    `$project/$location/$app/$date/$session/` will be used.
+    """
 
 @pulumi.input_type
 class AppLoggingSettingsAudioRecordingConfigArgs:
@@ -2557,25 +2494,22 @@ class AppLoggingSettingsAudioRecordingConfigArgs:
         pulumi.set(self, "gcs_path_prefix", value)
 
 
-if not MYPY:
-    class AppLoggingSettingsBigqueryExportSettingsArgsDict(TypedDict):
-        dataset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The BigQuery dataset to export the data to.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the BigQuery export is enabled.
-        """
-        project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The project ID of the BigQuery dataset to export the data to.
-        Note: If the BigQuery dataset is in a different project from the app, you should grant
-        roles/bigquery.admin role to the CES service agent service-<PROJECT-
-        NUMBER>@gcp-sa-ces.iam.gserviceaccount.com.
-        """
-elif False:
-    AppLoggingSettingsBigqueryExportSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class AppLoggingSettingsBigqueryExportSettingsArgsDict(TypedDict):
+    dataset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The BigQuery dataset to export the data to.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the BigQuery export is enabled.
+    """
+    project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The project ID of the BigQuery dataset to export the data to.
+    Note: If the BigQuery dataset is in a different project from the app, you should grant
+    roles/bigquery.admin role to the CES service agent service-<PROJECT-
+    NUMBER>@gcp-sa-ces.iam.gserviceaccount.com.
+    """
 
 @pulumi.input_type
 class AppLoggingSettingsBigqueryExportSettingsArgs:
@@ -2638,14 +2572,11 @@ class AppLoggingSettingsBigqueryExportSettingsArgs:
         pulumi.set(self, "project", value)
 
 
-if not MYPY:
-    class AppLoggingSettingsCloudLoggingSettingsArgsDict(TypedDict):
-        enable_cloud_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable Cloud Logging for the sessions.
-        """
-elif False:
-    AppLoggingSettingsCloudLoggingSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class AppLoggingSettingsCloudLoggingSettingsArgsDict(TypedDict):
+    enable_cloud_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable Cloud Logging for the sessions.
+    """
 
 @pulumi.input_type
 class AppLoggingSettingsCloudLoggingSettingsArgs:
@@ -2670,14 +2601,11 @@ class AppLoggingSettingsCloudLoggingSettingsArgs:
         pulumi.set(self, "enable_cloud_logging", value)
 
 
-if not MYPY:
-    class AppLoggingSettingsConversationLoggingSettingsArgsDict(TypedDict):
-        disable_conversation_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to disable conversation logging for the sessions.
-        """
-elif False:
-    AppLoggingSettingsConversationLoggingSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class AppLoggingSettingsConversationLoggingSettingsArgsDict(TypedDict):
+    disable_conversation_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to disable conversation logging for the sessions.
+    """
 
 @pulumi.input_type
 class AppLoggingSettingsConversationLoggingSettingsArgs:
@@ -2702,29 +2630,26 @@ class AppLoggingSettingsConversationLoggingSettingsArgs:
         pulumi.set(self, "disable_conversation_logging", value)
 
 
-if not MYPY:
-    class AppLoggingSettingsRedactionConfigArgsDict(TypedDict):
-        deidentify_template: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        [DLP](https://cloud.google.com/dlp/docs) deidentify template name to
-        instruct on how to de-identify content.
-        Format:
-        `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
-        """
-        enable_redaction: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, redaction will be applied in various logging scenarios, including
-        conversation history, Cloud Logging and audio recording.
-        """
-        inspect_template: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        [DLP](https://cloud.google.com/dlp/docs) inspect template name to configure
-        detection of sensitive data types.
-        Format:
-        `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
-        """
-elif False:
-    AppLoggingSettingsRedactionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppLoggingSettingsRedactionConfigArgsDict(TypedDict):
+    deidentify_template: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    [DLP](https://cloud.google.com/dlp/docs) deidentify template name to
+    instruct on how to de-identify content.
+    Format:
+    `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
+    """
+    enable_redaction: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, redaction will be applied in various logging scenarios, including
+    conversation history, Cloud Logging and audio recording.
+    """
+    inspect_template: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    [DLP](https://cloud.google.com/dlp/docs) inspect template name to configure
+    detection of sensitive data types.
+    Format:
+    `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
+    """
 
 @pulumi.input_type
 class AppLoggingSettingsRedactionConfigArgs:
@@ -2795,22 +2720,19 @@ class AppLoggingSettingsRedactionConfigArgs:
         pulumi.set(self, "inspect_template", value)
 
 
-if not MYPY:
-    class AppModelSettingsArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The LLM model that the agent should use.
-        If not set, the agent will inherit the model from its parent agent.
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        If set, this temperature will be used for the LLM model. Temperature
-        controls the randomness of the model's responses. Lower temperatures
-        produce responses that are more predictable. Higher temperatures produce
-        responses that are more creative.
-        """
-elif False:
-    AppModelSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class AppModelSettingsArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The LLM model that the agent should use.
+    If not set, the agent will inherit the model from its parent agent.
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    If set, this temperature will be used for the LLM model. Temperature
+    controls the randomness of the model's responses. Lower temperatures
+    produce responses that are more predictable. Higher temperatures produce
+    responses that are more creative.
+    """
 
 @pulumi.input_type
 class AppModelSettingsArgs:
@@ -2859,14 +2781,11 @@ class AppModelSettingsArgs:
         pulumi.set(self, "temperature", value)
 
 
-if not MYPY:
-    class AppTimeZoneSettingsArgsDict(TypedDict):
-        time_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time zone of the app from the time zone database, e.g., America/Los_Angeles, Europe/Paris.
-        """
-elif False:
-    AppTimeZoneSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class AppTimeZoneSettingsArgsDict(TypedDict):
+    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time zone of the app from the time zone database, e.g., America/Los_Angeles, Europe/Paris.
+    """
 
 @pulumi.input_type
 class AppTimeZoneSettingsArgs:
@@ -2891,24 +2810,21 @@ class AppTimeZoneSettingsArgs:
         pulumi.set(self, "time_zone", value)
 
 
-if not MYPY:
-    class AppVariableDeclarationArgsDict(TypedDict):
-        description: pulumi.Input[_builtins.str]
-        """
-        The description of the variable.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the variable. The name must start with a letter or underscore
-        and contain only letters, numbers, or underscores.
-        """
-        schema: pulumi.Input['AppVariableDeclarationSchemaArgsDict']
-        """
-        Represents a select subset of an OpenAPI 3.0 schema object.
-        Structure is documented below.
-        """
-elif False:
-    AppVariableDeclarationArgsDict: TypeAlias = Mapping[str, Any]
+class AppVariableDeclarationArgsDict(TypedDict):
+    description: pulumi.Input[_builtins.str]
+    """
+    The description of the variable.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the variable. The name must start with a letter or underscore
+    and contain only letters, numbers, or underscores.
+    """
+    schema: pulumi.Input['AppVariableDeclarationSchemaArgsDict']
+    """
+    Represents a select subset of an OpenAPI 3.0 schema object.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVariableDeclarationArgs:
@@ -2966,104 +2882,101 @@ class AppVariableDeclarationArgs:
         pulumi.set(self, "schema", value)
 
 
-if not MYPY:
-    class AppVariableDeclarationSchemaArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of the data.
-        Possible values:
-        STRING
-        INTEGER
-        NUMBER
-        BOOLEAN
-        OBJECT
-        ARRAY
-        """
-        additional_properties: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Defines the schema for additional properties allowed in an object.
-        The value must be a valid JSON string representing the Schema object.
-        (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
-        """
-        any_of: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The instance value should be valid against at least one of the schemas in this list.
-        """
-        default: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Default value of the data. Represents a dynamically typed value
-        which can be either null, a number, a string, a boolean, a struct,
-        or a list of values. The provided default value must be compatible
-        with the defined 'type' and other schema constraints.
-        """
-        defs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A map of definitions for use by ref. Only allowed at the root of the schema.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the data.
-        """
-        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Possible values of the element of primitive type with enum format.
-        Examples:
-        1. We can define direction as :
-        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
-        2. We can define apartment number as :
-        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
-        """
-        items: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Schema of the elements of Type.ARRAY.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the value may be null.
-        """
-        prefix_items: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Schemas of initial elements of Type.ARRAY.
-        """
-        properties: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Properties of Type.OBJECT.
-        """
-        ref: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Allows indirect references between schema nodes. The value should be a
-        valid reference to a child of the root `defs`.
-        For example, the following schema defines a reference to a schema node
-        named "Pet":
-        type: object
-        properties:
-        pet:
-        ref: #/defs/Pet
-        defs:
-        Pet:
-        type: object
-        properties:
-        name:
-        type: string
-        The value of the "pet" property is a reference to the schema node
-        named "Pet".
-        See details in
-        https://json-schema.org/understanding-json-schema/structuring.
-        """
-        requireds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Required properties of Type.OBJECT.
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The title of the schema.
-        """
-        unique_items: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
-        """
-elif False:
-    AppVariableDeclarationSchemaArgsDict: TypeAlias = Mapping[str, Any]
+class AppVariableDeclarationSchemaArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the data.
+    Possible values:
+    STRING
+    INTEGER
+    NUMBER
+    BOOLEAN
+    OBJECT
+    ARRAY
+    """
+    additional_properties: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Defines the schema for additional properties allowed in an object.
+    The value must be a valid JSON string representing the Schema object.
+    (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+    """
+    any_of: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The instance value should be valid against at least one of the schemas in this list.
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Default value of the data. Represents a dynamically typed value
+    which can be either null, a number, a string, a boolean, a struct,
+    or a list of values. The provided default value must be compatible
+    with the defined 'type' and other schema constraints.
+    """
+    defs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A map of definitions for use by ref. Only allowed at the root of the schema.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the data.
+    """
+    enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Possible values of the element of primitive type with enum format.
+    Examples:
+    1. We can define direction as :
+    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+    2. We can define apartment number as :
+    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+    """
+    items: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Schema of the elements of Type.ARRAY.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the value may be null.
+    """
+    prefix_items: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Schemas of initial elements of Type.ARRAY.
+    """
+    properties: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Properties of Type.OBJECT.
+    """
+    ref: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Allows indirect references between schema nodes. The value should be a
+    valid reference to a child of the root `defs`.
+    For example, the following schema defines a reference to a schema node
+    named "Pet":
+    type: object
+    properties:
+    pet:
+    ref: #/defs/Pet
+    defs:
+    Pet:
+    type: object
+    properties:
+    name:
+    type: string
+    The value of the "pet" property is a reference to the schema node
+    named "Pet".
+    See details in
+    https://json-schema.org/understanding-json-schema/structuring.
+    """
+    requireds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Required properties of Type.OBJECT.
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The title of the schema.
+    """
+    unique_items: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+    """
 
 @pulumi.input_type
 class AppVariableDeclarationSchemaArgs:
@@ -3379,45 +3292,42 @@ class AppVariableDeclarationSchemaArgs:
         pulumi.set(self, "unique_items", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotArgsDict(TypedDict):
-        agents: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentArgsDict']]]]
-        """
-        (Output)
-        List of agents in the app.
-        Structure is documented below.
-        """
-        apps: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppArgsDict']]]]
-        """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        """
-        examples: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleArgsDict']]]]
-        """
-        (Output)
-        List of examples in the app.
-        Structure is documented below.
-        """
-        guardrails: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailArgsDict']]]]
-        """
-        (Output)
-        List of guardrails for the app.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
-        """
-        tools: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolArgsDict']]]]
-        """
-        (Output)
-        List of available tools for the agent.
-        Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-        """
-        toolsets: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetArgsDict']]]]
-        """
-        (Output)
-        List of toolsets for the agent.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotArgsDict(TypedDict):
+    agents: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentArgsDict']]]]
+    """
+    (Output)
+    List of agents in the app.
+    Structure is documented below.
+    """
+    apps: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppArgsDict']]]]
+    """
+    Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+    """
+    examples: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleArgsDict']]]]
+    """
+    (Output)
+    List of examples in the app.
+    Structure is documented below.
+    """
+    guardrails: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailArgsDict']]]]
+    """
+    (Output)
+    List of guardrails for the app.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
+    """
+    tools: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolArgsDict']]]]
+    """
+    (Output)
+    List of available tools for the agent.
+    Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
+    """
+    toolsets: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetArgsDict']]]]
+    """
+    (Output)
+    List of toolsets for the agent.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotArgs:
@@ -3544,158 +3454,155 @@ class AppVersionSnapshotArgs:
         pulumi.set(self, "toolsets", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAgentArgsDict(TypedDict):
-        after_agent_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentAfterAgentCallbackArgsDict']]]]
-        """
-        (Output)
-        The callbacks to execute after the agent is called.
-        The provided callbacks are executed sequentially in the exact order they
-        are given in the list. If a callback returns an overridden response,
-        execution stops and any remaining callbacks are skipped.
-        Structure is documented below.
-        """
-        after_model_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentAfterModelCallbackArgsDict']]]]
-        """
-        (Output)
-        The callbacks to execute after the model is called. If there are multiple
-        calls to the model, the callback will be executed multiple times.
-        The provided callbacks are executed sequentially in the exact order they
-        are given in the list. If a callback returns an overridden response,
-        execution stops and any remaining callbacks are skipped.
-        Structure is documented below.
-        """
-        after_tool_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentAfterToolCallbackArgsDict']]]]
-        """
-        (Output)
-        The callbacks to execute after the tool is invoked. If there are multiple
-        tool invocations, the callback will be executed multiple times.
-        The provided callbacks are executed sequentially in the exact order they
-        are given in the list. If a callback returns an overridden response,
-        execution stops and any remaining callbacks are skipped.
-        Structure is documented below.
-        """
-        before_agent_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentBeforeAgentCallbackArgsDict']]]]
-        """
-        (Output)
-        The callbacks to execute before the agent is called.
-        The provided callbacks are executed sequentially in the exact order they
-        are given in the list. If a callback returns an overridden response,
-        execution stops and any remaining callbacks are skipped.
-        Structure is documented below.
-        """
-        before_model_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentBeforeModelCallbackArgsDict']]]]
-        """
-        (Output)
-        The callbacks to execute before the model is called. If there are multiple
-        calls to the model, the callback will be executed multiple times.
-        The provided callbacks are executed sequentially in the exact order they
-        are given in the list. If a callback returns an overridden response,
-        execution stops and any remaining callbacks are skipped.
-        Structure is documented below.
-        """
-        before_tool_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentBeforeToolCallbackArgsDict']]]]
-        """
-        (Output)
-        The callbacks to execute before the tool is invoked. If there are multiple
-        tool invocations, the callback will be executed multiple times.
-        The provided callbacks are executed sequentially in the exact order they
-        are given in the list. If a callback returns an overridden response,
-        execution stops and any remaining callbacks are skipped.
-        Structure is documented below.
-        """
-        child_agents: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        List of child agents in the agent tree.
-        Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-        """
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the toolset was created.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the app version.
-        """
-        etag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        ETag used to ensure the object hasn't changed during a read-modify-write
-        operation. If the etag is empty, the update will overwrite any concurrent
-        changes.
-        """
-        generated_summary: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        If the tool is generated by the LLM assistant, this field contains a
-        descriptive summary of the generation.
-        """
-        guardrails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        List of guardrails for the app.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
-        """
-        instruction: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Instructions for the LLM model to guide the agent's behavior.
-        """
-        llm_agents: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentLlmAgentArgsDict']]]]
-        """
-        (Output)
-        Default agent type. The agent uses instructions and callbacks specified in
-        the agent to perform the task using a large language model.
-        """
-        model_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentModelSettingArgsDict']]]]
-        """
-        (Output)
-        Model settings contains various configurations for the LLM model.
-        Structure is documented below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        remote_dialogflow_agents: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentRemoteDialogflowAgentArgsDict']]]]
-        """
-        (Output)
-        The agent which will transfer execution to an existing remote
-        [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
-        agent flow. The corresponding Dialogflow agent will process subsequent user
-        queries until the session ends or flow ends and the control is transferred
-        back to the parent CES agent.
-        Structure is documented below.
-        """
-        tools: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        List of available tools for the agent.
-        Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-        """
-        toolsets: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentToolsetArgsDict']]]]
-        """
-        (Output)
-        List of toolsets for the agent.
-        Structure is documented below.
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the toolset was last updated.
-        """
-elif False:
-    AppVersionSnapshotAgentArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAgentArgsDict(TypedDict):
+    after_agent_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentAfterAgentCallbackArgsDict']]]]
+    """
+    (Output)
+    The callbacks to execute after the agent is called.
+    The provided callbacks are executed sequentially in the exact order they
+    are given in the list. If a callback returns an overridden response,
+    execution stops and any remaining callbacks are skipped.
+    Structure is documented below.
+    """
+    after_model_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentAfterModelCallbackArgsDict']]]]
+    """
+    (Output)
+    The callbacks to execute after the model is called. If there are multiple
+    calls to the model, the callback will be executed multiple times.
+    The provided callbacks are executed sequentially in the exact order they
+    are given in the list. If a callback returns an overridden response,
+    execution stops and any remaining callbacks are skipped.
+    Structure is documented below.
+    """
+    after_tool_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentAfterToolCallbackArgsDict']]]]
+    """
+    (Output)
+    The callbacks to execute after the tool is invoked. If there are multiple
+    tool invocations, the callback will be executed multiple times.
+    The provided callbacks are executed sequentially in the exact order they
+    are given in the list. If a callback returns an overridden response,
+    execution stops and any remaining callbacks are skipped.
+    Structure is documented below.
+    """
+    before_agent_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentBeforeAgentCallbackArgsDict']]]]
+    """
+    (Output)
+    The callbacks to execute before the agent is called.
+    The provided callbacks are executed sequentially in the exact order they
+    are given in the list. If a callback returns an overridden response,
+    execution stops and any remaining callbacks are skipped.
+    Structure is documented below.
+    """
+    before_model_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentBeforeModelCallbackArgsDict']]]]
+    """
+    (Output)
+    The callbacks to execute before the model is called. If there are multiple
+    calls to the model, the callback will be executed multiple times.
+    The provided callbacks are executed sequentially in the exact order they
+    are given in the list. If a callback returns an overridden response,
+    execution stops and any remaining callbacks are skipped.
+    Structure is documented below.
+    """
+    before_tool_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentBeforeToolCallbackArgsDict']]]]
+    """
+    (Output)
+    The callbacks to execute before the tool is invoked. If there are multiple
+    tool invocations, the callback will be executed multiple times.
+    The provided callbacks are executed sequentially in the exact order they
+    are given in the list. If a callback returns an overridden response,
+    execution stops and any remaining callbacks are skipped.
+    Structure is documented below.
+    """
+    child_agents: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    List of child agents in the agent tree.
+    Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+    """
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the toolset was created.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the app version.
+    """
+    etag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    ETag used to ensure the object hasn't changed during a read-modify-write
+    operation. If the etag is empty, the update will overwrite any concurrent
+    changes.
+    """
+    generated_summary: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    If the tool is generated by the LLM assistant, this field contains a
+    descriptive summary of the generation.
+    """
+    guardrails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    List of guardrails for the app.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
+    """
+    instruction: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Instructions for the LLM model to guide the agent's behavior.
+    """
+    llm_agents: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentLlmAgentArgsDict']]]]
+    """
+    (Output)
+    Default agent type. The agent uses instructions and callbacks specified in
+    the agent to perform the task using a large language model.
+    """
+    model_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentModelSettingArgsDict']]]]
+    """
+    (Output)
+    Model settings contains various configurations for the LLM model.
+    Structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    remote_dialogflow_agents: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentRemoteDialogflowAgentArgsDict']]]]
+    """
+    (Output)
+    The agent which will transfer execution to an existing remote
+    [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
+    agent flow. The corresponding Dialogflow agent will process subsequent user
+    queries until the session ends or flow ends and the control is transferred
+    back to the parent CES agent.
+    Structure is documented below.
+    """
+    tools: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    List of available tools for the agent.
+    Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
+    """
+    toolsets: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentToolsetArgsDict']]]]
+    """
+    (Output)
+    List of toolsets for the agent.
+    Structure is documented below.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the toolset was last updated.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAgentArgs:
@@ -4168,24 +4075,21 @@ class AppVersionSnapshotAgentArgs:
         pulumi.set(self, "update_time", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAgentAfterAgentCallbackArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether summarization is disabled.
-        """
-        python_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Python code to execute for the tool.
-        """
-elif False:
-    AppVersionSnapshotAgentAfterAgentCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAgentAfterAgentCallbackArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether summarization is disabled.
+    """
+    python_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Python code to execute for the tool.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAgentAfterAgentCallbackArgs:
@@ -4246,24 +4150,21 @@ class AppVersionSnapshotAgentAfterAgentCallbackArgs:
         pulumi.set(self, "python_code", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAgentAfterModelCallbackArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether summarization is disabled.
-        """
-        python_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Python code to execute for the tool.
-        """
-elif False:
-    AppVersionSnapshotAgentAfterModelCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAgentAfterModelCallbackArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether summarization is disabled.
+    """
+    python_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Python code to execute for the tool.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAgentAfterModelCallbackArgs:
@@ -4324,24 +4225,21 @@ class AppVersionSnapshotAgentAfterModelCallbackArgs:
         pulumi.set(self, "python_code", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAgentAfterToolCallbackArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether summarization is disabled.
-        """
-        python_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Python code to execute for the tool.
-        """
-elif False:
-    AppVersionSnapshotAgentAfterToolCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAgentAfterToolCallbackArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether summarization is disabled.
+    """
+    python_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Python code to execute for the tool.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAgentAfterToolCallbackArgs:
@@ -4402,24 +4300,21 @@ class AppVersionSnapshotAgentAfterToolCallbackArgs:
         pulumi.set(self, "python_code", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAgentBeforeAgentCallbackArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether summarization is disabled.
-        """
-        python_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Python code to execute for the tool.
-        """
-elif False:
-    AppVersionSnapshotAgentBeforeAgentCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAgentBeforeAgentCallbackArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether summarization is disabled.
+    """
+    python_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Python code to execute for the tool.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAgentBeforeAgentCallbackArgs:
@@ -4480,24 +4375,21 @@ class AppVersionSnapshotAgentBeforeAgentCallbackArgs:
         pulumi.set(self, "python_code", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAgentBeforeModelCallbackArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether summarization is disabled.
-        """
-        python_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Python code to execute for the tool.
-        """
-elif False:
-    AppVersionSnapshotAgentBeforeModelCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAgentBeforeModelCallbackArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether summarization is disabled.
+    """
+    python_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Python code to execute for the tool.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAgentBeforeModelCallbackArgs:
@@ -4558,24 +4450,21 @@ class AppVersionSnapshotAgentBeforeModelCallbackArgs:
         pulumi.set(self, "python_code", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAgentBeforeToolCallbackArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether summarization is disabled.
-        """
-        python_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Python code to execute for the tool.
-        """
-elif False:
-    AppVersionSnapshotAgentBeforeToolCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAgentBeforeToolCallbackArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether summarization is disabled.
+    """
+    python_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Python code to execute for the tool.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAgentBeforeToolCallbackArgs:
@@ -4636,11 +4525,8 @@ class AppVersionSnapshotAgentBeforeToolCallbackArgs:
         pulumi.set(self, "python_code", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAgentLlmAgentArgsDict(TypedDict):
-        pass
-elif False:
-    AppVersionSnapshotAgentLlmAgentArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAgentLlmAgentArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class AppVersionSnapshotAgentLlmAgentArgs:
@@ -4648,24 +4534,21 @@ class AppVersionSnapshotAgentLlmAgentArgs:
         pass
 
 
-if not MYPY:
-    class AppVersionSnapshotAgentModelSettingArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The LLM model that the agent should use.
-        If not set, the agent will inherit the model from its parent agent.
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        If set, this temperature will be used for the LLM model. Temperature
-        controls the randomness of the model's responses. Lower temperatures
-        produce responses that are more predictable. Higher temperatures produce
-        responses that are more creative.
-        """
-elif False:
-    AppVersionSnapshotAgentModelSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAgentModelSettingArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The LLM model that the agent should use.
+    If not set, the agent will inherit the model from its parent agent.
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    If set, this temperature will be used for the LLM model. Temperature
+    controls the randomness of the model's responses. Lower temperatures
+    produce responses that are more predictable. Higher temperatures produce
+    responses that are more creative.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAgentModelSettingArgs:
@@ -4718,42 +4601,39 @@ class AppVersionSnapshotAgentModelSettingArgs:
         pulumi.set(self, "temperature", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAgentRemoteDialogflowAgentArgsDict(TypedDict):
-        agent: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the agent to transfer the conversation to. The agent must be
-        in the same app as the current agent.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-        """
-        environment_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The environment ID of the Dialogflow agent be used for the agent
-        execution. If not specified, the draft environment will be used.
-        """
-        flow_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The flow ID of the flow in the Dialogflow agent.
-        """
-        input_variable_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        The mapping of the app variables names to the Dialogflow session
-        parameters names to be sent to the Dialogflow agent as input.
-        """
-        output_variable_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        The mapping of the Dialogflow session parameters names to the app
-        variables names to be sent back to the CES agent after the Dialogflow
-        agent execution ends.
-        """
-elif False:
-    AppVersionSnapshotAgentRemoteDialogflowAgentArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAgentRemoteDialogflowAgentArgsDict(TypedDict):
+    agent: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the agent to transfer the conversation to. The agent must be
+    in the same app as the current agent.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+    """
+    environment_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The environment ID of the Dialogflow agent be used for the agent
+    execution. If not specified, the draft environment will be used.
+    """
+    flow_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The flow ID of the flow in the Dialogflow agent.
+    """
+    input_variable_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    The mapping of the app variables names to the Dialogflow session
+    parameters names to be sent to the Dialogflow agent as input.
+    """
+    output_variable_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    The mapping of the Dialogflow session parameters names to the app
+    variables names to be sent back to the CES agent after the Dialogflow
+    agent execution ends.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAgentRemoteDialogflowAgentArgs:
@@ -4866,22 +4746,19 @@ class AppVersionSnapshotAgentRemoteDialogflowAgentArgs:
         pulumi.set(self, "output_variable_mapping", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAgentToolsetArgsDict(TypedDict):
-        tool_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        The tools IDs to filter the toolset.
-        """
-        toolset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The resource name of the Toolset from which this tool is derived.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-elif False:
-    AppVersionSnapshotAgentToolsetArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAgentToolsetArgsDict(TypedDict):
+    tool_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    The tools IDs to filter the toolset.
+    """
+    toolset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The resource name of the Toolset from which this tool is derived.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAgentToolsetArgs:
@@ -4930,135 +4807,132 @@ class AppVersionSnapshotAgentToolsetArgs:
         pulumi.set(self, "toolset", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppArgsDict(TypedDict):
-        audio_processing_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigArgsDict']]]]
-        """
-        (Output)
-        Configuration for how the input and output audio should be processed and
-        delivered.
-        Structure is documented below.
-        """
-        client_certificate_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppClientCertificateSettingArgsDict']]]]
-        """
-        (Output)
-        The default client certificate settings for the app.
-        Structure is documented below.
-        """
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the toolset was created.
-        """
-        data_store_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppDataStoreSettingArgsDict']]]]
-        """
-        (Output)
-        Data store related settings for the app.
-        Structure is documented below.
-        """
-        default_channel_profiles: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileArgsDict']]]]
-        """
-        (Output)
-        A ChannelProfile configures the agent's behavior for a specific communication
-        channel, such as web UI or telephony.
-        Structure is documented below.
-        """
-        deployment_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Number of deployments in the app.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the app version.
-        """
-        etag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        ETag used to ensure the object hasn't changed during a read-modify-write
-        operation. If the etag is empty, the update will overwrite any concurrent
-        changes.
-        """
-        evaluation_metrics_thresholds: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdArgsDict']]]]
-        """
-        (Output)
-        Threshold settings for metrics in an Evaluation.
-        Structure is documented below.
-        """
-        global_instruction: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Instructions for all the agents in the app.
-        You can use this instruction to set up a stable identity or personality
-        across all the agents.
-        """
-        guardrails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        List of guardrails for the app.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
-        """
-        language_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLanguageSettingArgsDict']]]]
-        """
-        (Output)
-        Language settings of the app.
-        Structure is documented below.
-        """
-        logging_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingArgsDict']]]]
-        """
-        (Output)
-        Settings to describe the logging behaviors for the app.
-        Structure is documented below.
-        """
-        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Metadata about the app. This field can be used to store additional
-        information relevant to the app's details or intended usages.
-        """
-        model_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppModelSettingArgsDict']]]]
-        """
-        (Output)
-        Model settings contains various configurations for the LLM model.
-        Structure is documented below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        root_agent: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The root agent is the entry point of the app.
-        Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-        """
-        time_zone_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppTimeZoneSettingArgsDict']]]]
-        """
-        (Output)
-        TimeZone settings of the app.
-        Structure is documented below.
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the toolset was last updated.
-        """
-        variable_declarations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppVariableDeclarationArgsDict']]]]
-        """
-        (Output)
-        The declarations of the variables.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotAppArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppArgsDict(TypedDict):
+    audio_processing_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigArgsDict']]]]
+    """
+    (Output)
+    Configuration for how the input and output audio should be processed and
+    delivered.
+    Structure is documented below.
+    """
+    client_certificate_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppClientCertificateSettingArgsDict']]]]
+    """
+    (Output)
+    The default client certificate settings for the app.
+    Structure is documented below.
+    """
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the toolset was created.
+    """
+    data_store_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppDataStoreSettingArgsDict']]]]
+    """
+    (Output)
+    Data store related settings for the app.
+    Structure is documented below.
+    """
+    default_channel_profiles: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileArgsDict']]]]
+    """
+    (Output)
+    A ChannelProfile configures the agent's behavior for a specific communication
+    channel, such as web UI or telephony.
+    Structure is documented below.
+    """
+    deployment_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Number of deployments in the app.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the app version.
+    """
+    etag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    ETag used to ensure the object hasn't changed during a read-modify-write
+    operation. If the etag is empty, the update will overwrite any concurrent
+    changes.
+    """
+    evaluation_metrics_thresholds: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdArgsDict']]]]
+    """
+    (Output)
+    Threshold settings for metrics in an Evaluation.
+    Structure is documented below.
+    """
+    global_instruction: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Instructions for all the agents in the app.
+    You can use this instruction to set up a stable identity or personality
+    across all the agents.
+    """
+    guardrails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    List of guardrails for the app.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
+    """
+    language_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLanguageSettingArgsDict']]]]
+    """
+    (Output)
+    Language settings of the app.
+    Structure is documented below.
+    """
+    logging_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingArgsDict']]]]
+    """
+    (Output)
+    Settings to describe the logging behaviors for the app.
+    Structure is documented below.
+    """
+    metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Metadata about the app. This field can be used to store additional
+    information relevant to the app's details or intended usages.
+    """
+    model_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppModelSettingArgsDict']]]]
+    """
+    (Output)
+    Model settings contains various configurations for the LLM model.
+    Structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    root_agent: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The root agent is the entry point of the app.
+    Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+    """
+    time_zone_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppTimeZoneSettingArgsDict']]]]
+    """
+    (Output)
+    TimeZone settings of the app.
+    Structure is documented below.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the toolset was last updated.
+    """
+    variable_declarations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppVariableDeclarationArgsDict']]]]
+    """
+    (Output)
+    The declarations of the variables.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppArgs:
@@ -5485,42 +5359,39 @@ class AppVersionSnapshotAppArgs:
         pulumi.set(self, "variable_declarations", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppAudioProcessingConfigArgsDict(TypedDict):
-        ambient_sound_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfigArgsDict']]]]
-        """
-        (Output)
-        Configuration for the ambient sound to be played with the synthesized agent
-        response, to enhance the naturalness of the conversation.
-        Structure is documented below.
-        """
-        barge_in_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigBargeInConfigArgsDict']]]]
-        """
-        (Output)
-        Configuration for how the user barge-in activities should be handled.
-        Structure is documented below.
-        """
-        inactivity_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The duration of user inactivity (no speech or interaction) before the agent
-        prompts the user for reengagement. If not set, the agent will not prompt
-        the user for reengagement.
-        """
-        synthesize_speech_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfigArgsDict']]]]
-        """
-        (Output)
-        Configuration of how the agent response should be synthesized, mapping from
-        the language code to SynthesizeSpeechConfig.
-        If the configuration for the specified language code is not found, the
-        configuration for the root language code will be used. For example, if the
-        map contains "en-us" and "en", and the specified language code is "en-gb",
-        then "en" configuration will be used.
-        Note: Language code is case-insensitive.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotAppAudioProcessingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppAudioProcessingConfigArgsDict(TypedDict):
+    ambient_sound_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfigArgsDict']]]]
+    """
+    (Output)
+    Configuration for the ambient sound to be played with the synthesized agent
+    response, to enhance the naturalness of the conversation.
+    Structure is documented below.
+    """
+    barge_in_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigBargeInConfigArgsDict']]]]
+    """
+    (Output)
+    Configuration for how the user barge-in activities should be handled.
+    Structure is documented below.
+    """
+    inactivity_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The duration of user inactivity (no speech or interaction) before the agent
+    prompts the user for reengagement. If not set, the agent will not prompt
+    the user for reengagement.
+    """
+    synthesize_speech_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfigArgsDict']]]]
+    """
+    (Output)
+    Configuration of how the agent response should be synthesized, mapping from
+    the language code to SynthesizeSpeechConfig.
+    If the configuration for the specified language code is not found, the
+    configuration for the root language code will be used. For example, if the
+    map contains "en-us" and "en", and the specified language code is "en-gb",
+    then "en" configuration will be used.
+    Note: Language code is case-insensitive.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppAudioProcessingConfigArgs:
@@ -5625,40 +5496,37 @@ class AppVersionSnapshotAppAudioProcessingConfigArgs:
         pulumi.set(self, "synthesize_speech_configs", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfigArgsDict(TypedDict):
-        gcs_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Ambient noise as a mono-channel, 16kHz WAV file stored in [Cloud
-        Storage](https://cloud.google.com/storage).
-        Note: Please make sure the CES service agent
-        `service-@gcp-sa-ces.iam.gserviceaccount.com` has
-        `storage.objects.get` permission to the Cloud Storage object.
-        """
-        prebuilt_ambient_sound: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Name of the prebuilt ambient sound.
-        Valid values are: - "coffee_shop" - "keyboard" - "keypad" - "hum"
-        -"office_1" - "office_2" - "office_3"
-        -"room_1" - "room_2" - "room_3"
-        -"room_4" - "room_5" - "air_conditioner"
-        """
-        volume_gain_db: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        Volume gain (in dB) of the normal native volume supported by
-        ambient noise, in the range [-96.0, 16.0]. If unset, or set to a value of
-        0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB)
-        will play at approximately half the amplitude of the normal native signal
-        amplitude. A value of +6.0 (dB) will play at approximately twice the
-        amplitude of the normal native signal amplitude. We strongly recommend not
-        to exceed +10 (dB) as there's usually no effective increase in loudness for
-        any value greater than that.
-        """
-elif False:
-    AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfigArgsDict(TypedDict):
+    gcs_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Ambient noise as a mono-channel, 16kHz WAV file stored in [Cloud
+    Storage](https://cloud.google.com/storage).
+    Note: Please make sure the CES service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com` has
+    `storage.objects.get` permission to the Cloud Storage object.
+    """
+    prebuilt_ambient_sound: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Name of the prebuilt ambient sound.
+    Valid values are: - "coffee_shop" - "keyboard" - "keypad" - "hum"
+    -"office_1" - "office_2" - "office_3"
+    -"room_1" - "room_2" - "room_3"
+    -"room_4" - "room_5" - "air_conditioner"
+    """
+    volume_gain_db: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    Volume gain (in dB) of the normal native volume supported by
+    ambient noise, in the range [-96.0, 16.0]. If unset, or set to a value of
+    0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB)
+    will play at approximately half the amplitude of the normal native signal
+    amplitude. A value of +6.0 (dB) will play at approximately twice the
+    amplitude of the normal native signal amplitude. We strongly recommend not
+    to exceed +10 (dB) as there's usually no effective increase in loudness for
+    any value greater than that.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfigArgs:
@@ -5751,18 +5619,15 @@ class AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfigArgs:
         pulumi.set(self, "volume_gain_db", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppAudioProcessingConfigBargeInConfigArgsDict(TypedDict):
-        barge_in_awareness: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        If enabled, the agent will adapt its next response based on the assumption
-        that the user hasn't heard the full preceding agent message.
-        This should not be used in scenarios where agent responses are displayed
-        visually.
-        """
-elif False:
-    AppVersionSnapshotAppAudioProcessingConfigBargeInConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppAudioProcessingConfigBargeInConfigArgsDict(TypedDict):
+    barge_in_awareness: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    If enabled, the agent will adapt its next response based on the assumption
+    that the user hasn't heard the full preceding agent message.
+    This should not be used in scenarios where agent responses are displayed
+    visually.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppAudioProcessingConfigBargeInConfigArgs:
@@ -5795,29 +5660,26 @@ class AppVersionSnapshotAppAudioProcessingConfigBargeInConfigArgs:
         pulumi.set(self, "barge_in_awareness", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfigArgsDict(TypedDict):
-        language_code: pulumi.Input[_builtins.str]
-        """
-        (Required) The identifier for this object. Format specified above.
-        """
-        speaking_rate: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
-        speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
-        half as fast. Values outside of the range [0.25, 2.0] will return an error.
-        """
-        voice: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the voice. If not set, the service will choose a
-        voice based on the other parameters such as language_code.
-        For the list of available voices, please refer to Supported voices and
-        languages from Cloud Text-to-Speech.
-        """
-elif False:
-    AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfigArgsDict(TypedDict):
+    language_code: pulumi.Input[_builtins.str]
+    """
+    (Required) The identifier for this object. Format specified above.
+    """
+    speaking_rate: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
+    speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
+    half as fast. Values outside of the range [0.25, 2.0] will return an error.
+    """
+    voice: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the voice. If not set, the service will choose a
+    voice based on the other parameters such as language_code.
+    For the list of available voices, please refer to Supported voices and
+    languages from Cloud Text-to-Speech.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfigArgs:
@@ -5887,29 +5749,26 @@ class AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfigArgs:
         pulumi.set(self, "voice", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppClientCertificateSettingArgsDict(TypedDict):
-        passphrase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The passphrase to decrypt the private key.
-        Should be left unset if the private key is not encrypted.
-        """
-        private_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the SecretManager secret version resource
-        storing the private key encoded in PEM format.
-        Format: projects/{project}/secrets/{secret}/versions/{version}
-        """
-        tls_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The TLS certificate encoded in PEM format.
-        This string must include the begin header and end footer lines.
-        """
-elif False:
-    AppVersionSnapshotAppClientCertificateSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppClientCertificateSettingArgsDict(TypedDict):
+    passphrase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The passphrase to decrypt the private key.
+    Should be left unset if the private key is not encrypted.
+    """
+    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the SecretManager secret version resource
+    storing the private key encoded in PEM format.
+    Format: projects/{project}/secrets/{secret}/versions/{version}
+    """
+    tls_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The TLS certificate encoded in PEM format.
+    This string must include the begin header and end footer lines.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppClientCertificateSettingArgs:
@@ -5980,16 +5839,13 @@ class AppVersionSnapshotAppClientCertificateSettingArgs:
         pulumi.set(self, "tls_certificate", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppDataStoreSettingArgsDict(TypedDict):
-        engines: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppDataStoreSettingEngineArgsDict']]]]
-        """
-        (Output)
-        The engines for the app.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotAppDataStoreSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppDataStoreSettingArgsDict(TypedDict):
+    engines: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppDataStoreSettingEngineArgsDict']]]]
+    """
+    (Output)
+    The engines for the app.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppDataStoreSettingArgs:
@@ -6018,28 +5874,25 @@ class AppVersionSnapshotAppDataStoreSettingArgs:
         pulumi.set(self, "engines", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppDataStoreSettingEngineArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The type of the data store. This field is readonly and populated by the
-        server.
-        Possible values:
-        PUBLIC_WEB
-        UNSTRUCTURED
-        FAQ
-        CONNECTOR
-        """
-elif False:
-    AppVersionSnapshotAppDataStoreSettingEngineArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppDataStoreSettingEngineArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The type of the data store. This field is readonly and populated by the
+    server.
+    Possible values:
+    PUBLIC_WEB
+    UNSTRUCTURED
+    FAQ
+    CONNECTOR
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppDataStoreSettingEngineArgs:
@@ -6100,51 +5953,48 @@ class AppVersionSnapshotAppDataStoreSettingEngineArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppDefaultChannelProfileArgsDict(TypedDict):
-        channel_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The type of the channel profile.
-        Possible values:
-        UNKNOWN
-        WEB_UI
-        API
-        TWILIO
-        GOOGLE_TELEPHONY_PLATFORM
-        CONTACT_CENTER_AS_A_SERVICE
-        """
-        disable_barge_in_control: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether to disable user barge-in in the conversation.
-        - true: User interruptions are disabled while the agent is speaking.
-        - false: The agent retains automatic control over when the user can interrupt.
-        """
-        disable_dtmf: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether to disable DTMF (dual-tone multi-frequency).
-        """
-        persona_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArgsDict']]]]
-        """
-        (Output)
-        Represents the persona property of a channel.
-        Structure is documented below.
-        """
-        profile_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The unique identifier of the channel profile.
-        """
-        web_widget_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgsDict']]]]
-        """
-        (Output)
-        Message for configuration for the web widget.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotAppDefaultChannelProfileArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppDefaultChannelProfileArgsDict(TypedDict):
+    channel_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The type of the channel profile.
+    Possible values:
+    UNKNOWN
+    WEB_UI
+    API
+    TWILIO
+    GOOGLE_TELEPHONY_PLATFORM
+    CONTACT_CENTER_AS_A_SERVICE
+    """
+    disable_barge_in_control: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether to disable user barge-in in the conversation.
+    - true: User interruptions are disabled while the agent is speaking.
+    - false: The agent retains automatic control over when the user can interrupt.
+    """
+    disable_dtmf: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether to disable DTMF (dual-tone multi-frequency).
+    """
+    persona_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArgsDict']]]]
+    """
+    (Output)
+    Represents the persona property of a channel.
+    Structure is documented below.
+    """
+    profile_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The unique identifier of the channel profile.
+    """
+    web_widget_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgsDict']]]]
+    """
+    (Output)
+    Message for configuration for the web widget.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppDefaultChannelProfileArgs:
@@ -6283,19 +6133,16 @@ class AppVersionSnapshotAppDefaultChannelProfileArgs:
         pulumi.set(self, "web_widget_configs", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArgsDict(TypedDict):
-        persona: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The persona of the channel.
-        Possible values:
-        UNKNOWN
-        CONCISE
-        CHATTY
-        """
-elif False:
-    AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArgsDict(TypedDict):
+    persona: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The persona of the channel.
+    Possible values:
+    UNKNOWN
+    CONCISE
+    CHATTY
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArgs:
@@ -6330,34 +6177,31 @@ class AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArgs:
         pulumi.set(self, "persona", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgsDict(TypedDict):
-        modality: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The modality of the web widget.
-        Possible values:
-        UNKNOWN_MODALITY
-        CHAT_AND_VOICE
-        VOICE_ONLY
-        CHAT_ONLY
-        """
-        theme: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The theme of the web widget.
-        Possible values:
-        UNKNOWN_THEME
-        LIGHT
-        DARK
-        """
-        web_widget_title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The title of the web widget.
-        """
-elif False:
-    AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgsDict(TypedDict):
+    modality: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The modality of the web widget.
+    Possible values:
+    UNKNOWN_MODALITY
+    CHAT_AND_VOICE
+    VOICE_ONLY
+    CHAT_ONLY
+    """
+    theme: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The theme of the web widget.
+    Possible values:
+    UNKNOWN_THEME
+    LIGHT
+    DARK
+    """
+    web_widget_title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The title of the web widget.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgs:
@@ -6438,16 +6282,13 @@ class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgs:
         pulumi.set(self, "web_widget_title", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppEvaluationMetricsThresholdArgsDict(TypedDict):
-        golden_evaluation_metrics_thresholds: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgsDict']]]]
-        """
-        (Output)
-        Settings for golden evaluations.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotAppEvaluationMetricsThresholdArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppEvaluationMetricsThresholdArgsDict(TypedDict):
+    golden_evaluation_metrics_thresholds: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgsDict']]]]
+    """
+    (Output)
+    Settings for golden evaluations.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppEvaluationMetricsThresholdArgs:
@@ -6476,22 +6317,19 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdArgs:
         pulumi.set(self, "golden_evaluation_metrics_thresholds", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgsDict(TypedDict):
-        expectation_level_metrics_thresholds: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgsDict']]]]
-        """
-        (Output)
-        Expectation level metrics thresholds.
-        Structure is documented below.
-        """
-        turn_level_metrics_thresholds: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgsDict']]]]
-        """
-        (Output)
-        Turn level metrics thresholds.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgsDict(TypedDict):
+    expectation_level_metrics_thresholds: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgsDict']]]]
+    """
+    (Output)
+    Expectation level metrics thresholds.
+    Structure is documented below.
+    """
+    turn_level_metrics_thresholds: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgsDict']]]]
+    """
+    (Output)
+    Turn level metrics thresholds.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgs:
@@ -6540,16 +6378,13 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
         pulumi.set(self, "turn_level_metrics_thresholds", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgsDict(TypedDict):
-        tool_invocation_parameter_correctness_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        The success threshold for individual tool invocation parameter
-        correctness. Must be a float between 0 and 1. Default is 1.0.
-        """
-elif False:
-    AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgsDict(TypedDict):
+    tool_invocation_parameter_correctness_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    The success threshold for individual tool invocation parameter
+    correctness. Must be a float between 0 and 1. Default is 1.0.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgs:
@@ -6578,22 +6413,19 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
         pulumi.set(self, "tool_invocation_parameter_correctness_threshold", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgsDict(TypedDict):
-        overall_tool_invocation_correctness_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        The success threshold for overall tool invocation correctness. Must be
-        a float between 0 and 1. Default is 1.0.
-        """
-        semantic_similarity_success_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The success threshold for semantic similarity. Must be an integer
-        between 0 and 4. Default is >= 3.
-        """
-elif False:
-    AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgsDict(TypedDict):
+    overall_tool_invocation_correctness_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    The success threshold for overall tool invocation correctness. Must be
+    a float between 0 and 1. Default is 1.0.
+    """
+    semantic_similarity_success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The success threshold for semantic similarity. Must be an integer
+    between 0 and 4. Default is >= 3.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgs:
@@ -6642,39 +6474,36 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
         pulumi.set(self, "semantic_similarity_success_threshold", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppLanguageSettingArgsDict(TypedDict):
-        default_language_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The default language code of the app.
-        """
-        enable_multilingual_support: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Enables multilingual support. If true, agents in the app will use pre-built
-        instructions to improve handling of multilingual input.
-        """
-        fallback_action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The action to perform when an agent receives input in an unsupported
-        language.
-        This can be a predefined action or a custom tool call.
-        Valid values are:
-        - A tool's full resource name, which triggers a specific tool execution.
-        - A predefined system action, such as "escalate" or "exit", which triggers
-        an EndSession signal with corresponding metadata
-        to terminate the conversation.
-        """
-        supported_language_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        List of languages codes supported by the app, in addition to the
-        `default_language_code`.
-        """
-elif False:
-    AppVersionSnapshotAppLanguageSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppLanguageSettingArgsDict(TypedDict):
+    default_language_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The default language code of the app.
+    """
+    enable_multilingual_support: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Enables multilingual support. If true, agents in the app will use pre-built
+    instructions to improve handling of multilingual input.
+    """
+    fallback_action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The action to perform when an agent receives input in an unsupported
+    language.
+    This can be a predefined action or a custom tool call.
+    Valid values are:
+    - A tool's full resource name, which triggers a specific tool execution.
+    - A predefined system action, such as "escalate" or "exit", which triggers
+    an EndSession signal with corresponding metadata
+    to terminate the conversation.
+    """
+    supported_language_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    List of languages codes supported by the app, in addition to the
+    `default_language_code`.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppLanguageSettingArgs:
@@ -6773,40 +6602,37 @@ class AppVersionSnapshotAppLanguageSettingArgs:
         pulumi.set(self, "supported_language_codes", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppLoggingSettingArgsDict(TypedDict):
-        audio_recording_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingAudioRecordingConfigArgsDict']]]]
-        """
-        (Output)
-        Configuration for how the audio interactions should be recorded.
-        Structure is documented below.
-        """
-        bigquery_export_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingBigqueryExportSettingArgsDict']]]]
-        """
-        (Output)
-        Settings to describe the BigQuery export behaviors for the app.
-        Structure is documented below.
-        """
-        cloud_logging_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArgsDict']]]]
-        """
-        (Output)
-        Settings to describe the Cloud Logging behaviors for the app.
-        Structure is documented below.
-        """
-        conversation_logging_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgsDict']]]]
-        """
-        (Output)
-        Settings to describe the conversation logging behaviors for the app.
-        Structure is documented below.
-        """
-        redaction_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingRedactionConfigArgsDict']]]]
-        """
-        (Output)
-        Configuration to instruct how sensitive data should be handled.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotAppLoggingSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppLoggingSettingArgsDict(TypedDict):
+    audio_recording_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingAudioRecordingConfigArgsDict']]]]
+    """
+    (Output)
+    Configuration for how the audio interactions should be recorded.
+    Structure is documented below.
+    """
+    bigquery_export_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingBigqueryExportSettingArgsDict']]]]
+    """
+    (Output)
+    Settings to describe the BigQuery export behaviors for the app.
+    Structure is documented below.
+    """
+    cloud_logging_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArgsDict']]]]
+    """
+    (Output)
+    Settings to describe the Cloud Logging behaviors for the app.
+    Structure is documented below.
+    """
+    conversation_logging_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgsDict']]]]
+    """
+    (Output)
+    Settings to describe the conversation logging behaviors for the app.
+    Structure is documented below.
+    """
+    redaction_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingRedactionConfigArgsDict']]]]
+    """
+    (Output)
+    Configuration to instruct how sensitive data should be handled.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppLoggingSettingArgs:
@@ -6915,33 +6741,30 @@ class AppVersionSnapshotAppLoggingSettingArgs:
         pulumi.set(self, "redaction_configs", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppLoggingSettingAudioRecordingConfigArgsDict(TypedDict):
-        gcs_bucket: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The [Cloud Storage](https://cloud.google.com/storage) bucket to store the
-        session audio recordings. The URI must start with "gs://".
-        Note: If the Cloud Storage bucket is in a different project from the app,
-        you should grant `storage.objects.create` permission to the CES service
-        agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-        """
-        gcs_path_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Cloud Storage path prefix for audio recordings.
-        This prefix can include the following placeholders, which will be
-        dynamically substituted at serving time:
-        - $project:   project ID
-        - $location:  app location
-        - $app:       app ID
-        - $date:      session date in YYYY-MM-DD format
-        - $session:   session ID
-        If the path prefix is not specified, the default prefix
-        `$project/$location/$app/$date/$session/` will be used.
-        """
-elif False:
-    AppVersionSnapshotAppLoggingSettingAudioRecordingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppLoggingSettingAudioRecordingConfigArgsDict(TypedDict):
+    gcs_bucket: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The [Cloud Storage](https://cloud.google.com/storage) bucket to store the
+    session audio recordings. The URI must start with "gs://".
+    Note: If the Cloud Storage bucket is in a different project from the app,
+    you should grant `storage.objects.create` permission to the CES service
+    agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    gcs_path_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Cloud Storage path prefix for audio recordings.
+    This prefix can include the following placeholders, which will be
+    dynamically substituted at serving time:
+    - $project:   project ID
+    - $location:  app location
+    - $app:       app ID
+    - $date:      session date in YYYY-MM-DD format
+    - $session:   session ID
+    If the path prefix is not specified, the default prefix
+    `$project/$location/$app/$date/$session/` will be used.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppLoggingSettingAudioRecordingConfigArgs:
@@ -7012,25 +6835,22 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfigArgs:
         pulumi.set(self, "gcs_path_prefix", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppLoggingSettingBigqueryExportSettingArgsDict(TypedDict):
-        dataset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The BigQuery dataset to export the data to.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the guardrail is enabled.
-        """
-        project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
-elif False:
-    AppVersionSnapshotAppLoggingSettingBigqueryExportSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppLoggingSettingBigqueryExportSettingArgsDict(TypedDict):
+    dataset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The BigQuery dataset to export the data to.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the guardrail is enabled.
+    """
+    project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppLoggingSettingBigqueryExportSettingArgs:
@@ -7093,15 +6913,12 @@ class AppVersionSnapshotAppLoggingSettingBigqueryExportSettingArgs:
         pulumi.set(self, "project", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArgsDict(TypedDict):
-        enable_cloud_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether to enable Cloud Logging for the sessions.
-        """
-elif False:
-    AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArgsDict(TypedDict):
+    enable_cloud_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether to enable Cloud Logging for the sessions.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArgs:
@@ -7128,15 +6945,12 @@ class AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArgs:
         pulumi.set(self, "enable_cloud_logging", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgsDict(TypedDict):
-        disable_conversation_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether to disable conversation logging for the sessions.
-        """
-elif False:
-    AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgsDict(TypedDict):
+    disable_conversation_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether to disable conversation logging for the sessions.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs:
@@ -7163,32 +6977,29 @@ class AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs:
         pulumi.set(self, "disable_conversation_logging", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppLoggingSettingRedactionConfigArgsDict(TypedDict):
-        deidentify_template: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        [DLP](https://cloud.google.com/dlp/docs) deidentify template name to
-        instruct on how to de-identify content.
-        Format:
-        `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
-        """
-        enable_redaction: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        If true, redaction will be applied in various logging scenarios, including
-        conversation history, Cloud Logging and audio recording.
-        """
-        inspect_template: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        [DLP](https://cloud.google.com/dlp/docs) inspect template name to configure
-        detection of sensitive data types.
-        Format:
-        `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
-        """
-elif False:
-    AppVersionSnapshotAppLoggingSettingRedactionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppLoggingSettingRedactionConfigArgsDict(TypedDict):
+    deidentify_template: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    [DLP](https://cloud.google.com/dlp/docs) deidentify template name to
+    instruct on how to de-identify content.
+    Format:
+    `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
+    """
+    enable_redaction: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    If true, redaction will be applied in various logging scenarios, including
+    conversation history, Cloud Logging and audio recording.
+    """
+    inspect_template: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    [DLP](https://cloud.google.com/dlp/docs) inspect template name to configure
+    detection of sensitive data types.
+    Format:
+    `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppLoggingSettingRedactionConfigArgs:
@@ -7265,24 +7076,21 @@ class AppVersionSnapshotAppLoggingSettingRedactionConfigArgs:
         pulumi.set(self, "inspect_template", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppModelSettingArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The LLM model that the agent should use.
-        If not set, the agent will inherit the model from its parent agent.
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        If set, this temperature will be used for the LLM model. Temperature
-        controls the randomness of the model's responses. Lower temperatures
-        produce responses that are more predictable. Higher temperatures produce
-        responses that are more creative.
-        """
-elif False:
-    AppVersionSnapshotAppModelSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppModelSettingArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The LLM model that the agent should use.
+    If not set, the agent will inherit the model from its parent agent.
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    If set, this temperature will be used for the LLM model. Temperature
+    controls the randomness of the model's responses. Lower temperatures
+    produce responses that are more predictable. Higher temperatures produce
+    responses that are more creative.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppModelSettingArgs:
@@ -7335,15 +7143,12 @@ class AppVersionSnapshotAppModelSettingArgs:
         pulumi.set(self, "temperature", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppTimeZoneSettingArgsDict(TypedDict):
-        time_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The time zone of the app from the time zone database, e.g., America/Los_Angeles, Europe/Paris.
-        """
-elif False:
-    AppVersionSnapshotAppTimeZoneSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppTimeZoneSettingArgsDict(TypedDict):
+    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The time zone of the app from the time zone database, e.g., America/Los_Angeles, Europe/Paris.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppTimeZoneSettingArgs:
@@ -7370,27 +7175,24 @@ class AppVersionSnapshotAppTimeZoneSettingArgs:
         pulumi.set(self, "time_zone", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppVariableDeclarationArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        schemas: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppVariableDeclarationSchemaArgsDict']]]]
-        """
-        (Output)
-        Represents a select subset of an OpenAPI 3.0 schema object.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotAppVariableDeclarationArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppVariableDeclarationArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    schemas: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppVariableDeclarationSchemaArgsDict']]]]
+    """
+    (Output)
+    Represents a select subset of an OpenAPI 3.0 schema object.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppVariableDeclarationArgs:
@@ -7457,112 +7259,109 @@ class AppVersionSnapshotAppVariableDeclarationArgs:
         pulumi.set(self, "schemas", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotAppVariableDeclarationSchemaArgsDict(TypedDict):
-        additional_properties: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Defines the schema for additional properties allowed in an object.
-        The value must be a valid JSON string representing the Schema object.
-        (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
-        """
-        any_of: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. The instance value should be valid against at least one of the schemas in this list.
-        """
-        default: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Default value of the data. Represents a dynamically typed value
-        which can be either null, a number, a string, a boolean, a struct,
-        or a list of values. The provided default value must be compatible
-        with the defined 'type' and other schema constraints.
-        """
-        defs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A map of definitions for use by ref. Only allowed at the root of the schema.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Possible values of the element of primitive type with enum format.
-        Examples:
-        1. We can define direction as :
-        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
-        2. We can define apartment number as :
-        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
-        """
-        items: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Schema of the elements of Type.ARRAY.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Indicates if the value may be null.
-        """
-        prefix_items: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Schemas of initial elements of Type.ARRAY.
-        """
-        properties: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Properties of Type.OBJECT.
-        """
-        ref: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Allows indirect references between schema nodes. The value should be a
-        valid reference to a child of the root `defs`.
-        For example, the following schema defines a reference to a schema node
-        named "Pet":
-        type: object
-        properties:
-        pet:
-        ref: #/defs/Pet
-        defs:
-        Pet:
-        type: object
-        properties:
-        name:
-        type: string
-        The value of the "pet" property is a reference to the schema node
-        named "Pet".
-        See details in
-        https://json-schema.org/understanding-json-schema/structuring.
-        """
-        requireds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Required properties of Type.OBJECT.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The type of the data store. This field is readonly and populated by the
-        server.
-        Possible values:
-        PUBLIC_WEB
-        UNSTRUCTURED
-        FAQ
-        CONNECTOR
-        """
-        unique_items: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
-        """
-elif False:
-    AppVersionSnapshotAppVariableDeclarationSchemaArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotAppVariableDeclarationSchemaArgsDict(TypedDict):
+    additional_properties: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Defines the schema for additional properties allowed in an object.
+    The value must be a valid JSON string representing the Schema object.
+    (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+    """
+    any_of: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. The instance value should be valid against at least one of the schemas in this list.
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Default value of the data. Represents a dynamically typed value
+    which can be either null, a number, a string, a boolean, a struct,
+    or a list of values. The provided default value must be compatible
+    with the defined 'type' and other schema constraints.
+    """
+    defs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A map of definitions for use by ref. Only allowed at the root of the schema.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Possible values of the element of primitive type with enum format.
+    Examples:
+    1. We can define direction as :
+    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+    2. We can define apartment number as :
+    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+    """
+    items: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Schema of the elements of Type.ARRAY.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Indicates if the value may be null.
+    """
+    prefix_items: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Schemas of initial elements of Type.ARRAY.
+    """
+    properties: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Properties of Type.OBJECT.
+    """
+    ref: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Allows indirect references between schema nodes. The value should be a
+    valid reference to a child of the root `defs`.
+    For example, the following schema defines a reference to a schema node
+    named "Pet":
+    type: object
+    properties:
+    pet:
+    ref: #/defs/Pet
+    defs:
+    Pet:
+    type: object
+    properties:
+    name:
+    type: string
+    The value of the "pet" property is a reference to the schema node
+    named "Pet".
+    See details in
+    https://json-schema.org/understanding-json-schema/structuring.
+    """
+    requireds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Required properties of Type.OBJECT.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The type of the data store. This field is readonly and populated by the
+    server.
+    Possible values:
+    PUBLIC_WEB
+    UNSTRUCTURED
+    FAQ
+    CONNECTOR
+    """
+    unique_items: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppVariableDeclarationSchemaArgs:
@@ -7887,61 +7686,58 @@ class AppVersionSnapshotAppVariableDeclarationSchemaArgs:
         pulumi.set(self, "unique_items", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotExampleArgsDict(TypedDict):
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the toolset was created.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the app version.
-        """
-        entry_agent: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The agent that initially handles the conversation. If not specified, the
-        example represents a conversation that is handled by the root agent.
-        Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-        """
-        etag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        ETag used to ensure the object hasn't changed during a read-modify-write
-        operation. If the etag is empty, the update will overwrite any concurrent
-        changes.
-        """
-        invalid: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        The example may become invalid if referencing resources are deleted.
-        Invalid examples will not be used as few-shot examples.
-        """
-        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageArgsDict']]]]
-        """
-        (Output)
-        The collection of messages that make up the conversation.
-        Structure is documented below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the toolset was last updated.
-        """
-elif False:
-    AppVersionSnapshotExampleArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotExampleArgsDict(TypedDict):
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the toolset was created.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the app version.
+    """
+    entry_agent: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The agent that initially handles the conversation. If not specified, the
+    example represents a conversation that is handled by the root agent.
+    Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+    """
+    etag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    ETag used to ensure the object hasn't changed during a read-modify-write
+    operation. If the etag is empty, the update will overwrite any concurrent
+    changes.
+    """
+    invalid: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    The example may become invalid if referencing resources are deleted.
+    Invalid examples will not be used as few-shot examples.
+    """
+    messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageArgsDict']]]]
+    """
+    (Output)
+    The collection of messages that make up the conversation.
+    Structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the toolset was last updated.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotExampleArgs:
@@ -8124,21 +7920,18 @@ class AppVersionSnapshotExampleArgs:
         pulumi.set(self, "update_time", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotExampleMessageArgsDict(TypedDict):
-        chunks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkArgsDict']]]]
-        """
-        (Output)
-        Content of the message as a series of chunks.
-        Structure is documented below.
-        """
-        role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The role within the conversation, e.g., user, agent.
-        """
-elif False:
-    AppVersionSnapshotExampleMessageArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotExampleMessageArgsDict(TypedDict):
+    chunks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkArgsDict']]]]
+    """
+    (Output)
+    Content of the message as a series of chunks.
+    Structure is documented below.
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The role within the conversation, e.g., user, agent.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotExampleMessageArgs:
@@ -8185,46 +7978,43 @@ class AppVersionSnapshotExampleMessageArgs:
         pulumi.set(self, "role", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotExampleMessageChunkArgsDict(TypedDict):
-        agent_transfers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkAgentTransferArgsDict']]]]
-        """
-        (Output)
-        Represents an event indicating the transfer of a conversation to a different
-        agent.
-        Structure is documented below.
-        """
-        images: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkImageArgsDict']]]]
-        """
-        (Output)
-        Represents an image input or output in the conversation.
-        Structure is documented below.
-        """
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Text for the agent to respond with.
-        """
-        tool_calls: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolCallArgsDict']]]]
-        """
-        (Output)
-        Request for the client or the agent to execute the specified tool.
-        Structure is documented below.
-        """
-        tool_responses: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolResponseArgsDict']]]]
-        """
-        (Output)
-        The execution result of a specific tool from the client or the agent.
-        Structure is documented below.
-        """
-        updated_variables: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A struct represents variables that were updated in the conversation,
-        keyed by variable names.
-        """
-elif False:
-    AppVersionSnapshotExampleMessageChunkArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotExampleMessageChunkArgsDict(TypedDict):
+    agent_transfers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkAgentTransferArgsDict']]]]
+    """
+    (Output)
+    Represents an event indicating the transfer of a conversation to a different
+    agent.
+    Structure is documented below.
+    """
+    images: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkImageArgsDict']]]]
+    """
+    (Output)
+    Represents an image input or output in the conversation.
+    Structure is documented below.
+    """
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Text for the agent to respond with.
+    """
+    tool_calls: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolCallArgsDict']]]]
+    """
+    (Output)
+    Request for the client or the agent to execute the specified tool.
+    Structure is documented below.
+    """
+    tool_responses: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolResponseArgsDict']]]]
+    """
+    (Output)
+    The execution result of a specific tool from the client or the agent.
+    Structure is documented below.
+    """
+    updated_variables: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A struct represents variables that were updated in the conversation,
+    keyed by variable names.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotExampleMessageChunkArgs:
@@ -8353,21 +8143,18 @@ class AppVersionSnapshotExampleMessageChunkArgs:
         pulumi.set(self, "updated_variables", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotExampleMessageChunkAgentTransferArgsDict(TypedDict):
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the app version.
-        """
-        target_agent: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The agent to which the conversation is being transferred. The agent will
-        handle the conversation from this point forward.
-        Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-        """
-elif False:
-    AppVersionSnapshotExampleMessageChunkAgentTransferArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotExampleMessageChunkAgentTransferArgsDict(TypedDict):
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the app version.
+    """
+    target_agent: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The agent to which the conversation is being transferred. The agent will
+    handle the conversation from this point forward.
+    Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotExampleMessageChunkAgentTransferArgs:
@@ -8414,24 +8201,21 @@ class AppVersionSnapshotExampleMessageChunkAgentTransferArgs:
         pulumi.set(self, "target_agent", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotExampleMessageChunkImageArgsDict(TypedDict):
-        data: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Raw bytes of the image.
-        """
-        mime_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The IANA standard MIME type of the source data.
-        Supported image types includes:
-        * image/png
-        * image/jpeg
-        * image/webp
-        """
-elif False:
-    AppVersionSnapshotExampleMessageChunkImageArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotExampleMessageChunkImageArgsDict(TypedDict):
+    data: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Raw bytes of the image.
+    """
+    mime_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The IANA standard MIME type of the source data.
+    Supported image types includes:
+    * image/png
+    * image/jpeg
+    * image/webp
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotExampleMessageChunkImageArgs:
@@ -8484,36 +8268,33 @@ class AppVersionSnapshotExampleMessageChunkImageArgs:
         pulumi.set(self, "mime_type", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotExampleMessageChunkToolCallArgsDict(TypedDict):
-        args: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The input parameters and values for the tool in JSON object format.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the app version.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The matching ID of the tool call the response is for.
-        """
-        tool: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the tool to execute.
-        Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-        """
-        toolset_tools: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolCallToolsetToolArgsDict']]]]
-        """
-        (Output)
-        A tool that is created from a toolset.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotExampleMessageChunkToolCallArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotExampleMessageChunkToolCallArgsDict(TypedDict):
+    args: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The input parameters and values for the tool in JSON object format.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the app version.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The matching ID of the tool call the response is for.
+    """
+    tool: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the tool to execute.
+    Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
+    """
+    toolset_tools: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolCallToolsetToolArgsDict']]]]
+    """
+    (Output)
+    A tool that is created from a toolset.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotExampleMessageChunkToolCallArgs:
@@ -8614,22 +8395,19 @@ class AppVersionSnapshotExampleMessageChunkToolCallArgs:
         pulumi.set(self, "toolset_tools", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotExampleMessageChunkToolCallToolsetToolArgsDict(TypedDict):
-        tool_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The tool ID to filter the tools to retrieve the schema for.
-        """
-        toolset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The resource name of the Toolset from which this tool is derived.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-elif False:
-    AppVersionSnapshotExampleMessageChunkToolCallToolsetToolArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotExampleMessageChunkToolCallToolsetToolArgsDict(TypedDict):
+    tool_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The tool ID to filter the tools to retrieve the schema for.
+    """
+    toolset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The resource name of the Toolset from which this tool is derived.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotExampleMessageChunkToolCallToolsetToolArgs:
@@ -8678,37 +8456,34 @@ class AppVersionSnapshotExampleMessageChunkToolCallToolsetToolArgs:
         pulumi.set(self, "toolset", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotExampleMessageChunkToolResponseArgsDict(TypedDict):
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the app version.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The matching ID of the tool call the response is for.
-        """
-        response: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Represents a select subset of an OpenAPI 3.0 schema object.
-        Structure is documented below.
-        """
-        tool: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the tool to execute.
-        Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-        """
-        toolset_tools: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolResponseToolsetToolArgsDict']]]]
-        """
-        (Output)
-        A tool that is created from a toolset.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotExampleMessageChunkToolResponseArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotExampleMessageChunkToolResponseArgsDict(TypedDict):
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the app version.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The matching ID of the tool call the response is for.
+    """
+    response: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Represents a select subset of an OpenAPI 3.0 schema object.
+    Structure is documented below.
+    """
+    tool: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the tool to execute.
+    Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
+    """
+    toolset_tools: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolResponseToolsetToolArgsDict']]]]
+    """
+    (Output)
+    A tool that is created from a toolset.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotExampleMessageChunkToolResponseArgs:
@@ -8811,22 +8586,19 @@ class AppVersionSnapshotExampleMessageChunkToolResponseArgs:
         pulumi.set(self, "toolset_tools", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotExampleMessageChunkToolResponseToolsetToolArgsDict(TypedDict):
-        tool_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The tool ID to filter the tools to retrieve the schema for.
-        """
-        toolset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The resource name of the Toolset from which this tool is derived.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-elif False:
-    AppVersionSnapshotExampleMessageChunkToolResponseToolsetToolArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotExampleMessageChunkToolResponseToolsetToolArgsDict(TypedDict):
+    tool_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The tool ID to filter the tools to retrieve the schema for.
+    """
+    toolset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The resource name of the Toolset from which this tool is derived.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotExampleMessageChunkToolResponseToolsetToolArgs:
@@ -8875,88 +8647,85 @@ class AppVersionSnapshotExampleMessageChunkToolResponseToolsetToolArgs:
         pulumi.set(self, "toolset", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailArgsDict(TypedDict):
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionArgsDict']]]]
-        """
-        (Output)
-        Action that is taken when a certain precondition is met.
-        Structure is documented below.
-        """
-        code_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackArgsDict']]]]
-        """
-        (Output)
-        Guardrail that blocks the conversation based on the code callbacks
-        provided.
-        Structure is documented below.
-        """
-        content_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailContentFilterArgsDict']]]]
-        """
-        (Output)
-        Guardrail that bans certain content from being used in the conversation.
-        Structure is documented below.
-        """
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the toolset was created.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the app version.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the guardrail is enabled.
-        """
-        etag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        ETag used to ensure the object hasn't changed during a read-modify-write
-        operation. If the etag is empty, the update will overwrite any concurrent
-        changes.
-        """
-        llm_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPolicyArgsDict']]]]
-        """
-        (Output)
-        Guardrail that blocks the conversation if the LLM response is considered
-        violating the policy based on the LLM classification.
-        Structure is documented below.
-        """
-        llm_prompt_securities: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityArgsDict']]]]
-        """
-        (Output)
-        Guardrail that blocks the conversation if the input is considered unsafe
-        based on the LLM classification.
-        Structure is documented below.
-        """
-        model_safeties: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailModelSafetyArgsDict']]]]
-        """
-        (Output)
-        Model safety settings overrides. When this is set, it will override the
-        default settings and trigger the guardrail if the response is considered
-        unsafe.
-        Structure is documented below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the toolset was last updated.
-        """
-elif False:
-    AppVersionSnapshotGuardrailArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailArgsDict(TypedDict):
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionArgsDict']]]]
+    """
+    (Output)
+    Action that is taken when a certain precondition is met.
+    Structure is documented below.
+    """
+    code_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackArgsDict']]]]
+    """
+    (Output)
+    Guardrail that blocks the conversation based on the code callbacks
+    provided.
+    Structure is documented below.
+    """
+    content_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailContentFilterArgsDict']]]]
+    """
+    (Output)
+    Guardrail that bans certain content from being used in the conversation.
+    Structure is documented below.
+    """
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the toolset was created.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the app version.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the guardrail is enabled.
+    """
+    etag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    ETag used to ensure the object hasn't changed during a read-modify-write
+    operation. If the etag is empty, the update will overwrite any concurrent
+    changes.
+    """
+    llm_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPolicyArgsDict']]]]
+    """
+    (Output)
+    Guardrail that blocks the conversation if the LLM response is considered
+    violating the policy based on the LLM classification.
+    Structure is documented below.
+    """
+    llm_prompt_securities: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityArgsDict']]]]
+    """
+    (Output)
+    Guardrail that blocks the conversation if the input is considered unsafe
+    based on the LLM classification.
+    Structure is documented below.
+    """
+    model_safeties: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailModelSafetyArgsDict']]]]
+    """
+    (Output)
+    Model safety settings overrides. When this is set, it will override the
+    default settings and trigger the guardrail if the response is considered
+    unsafe.
+    Structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the toolset was last updated.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailArgs:
@@ -9225,28 +8994,25 @@ class AppVersionSnapshotGuardrailArgs:
         pulumi.set(self, "update_time", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailActionArgsDict(TypedDict):
-        generative_answers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionGenerativeAnswerArgsDict']]]]
-        """
-        (Output)
-        The agent will immediately respond with a generative answer.
-        Structure is documented below.
-        """
-        respond_immediatelies: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionRespondImmediatelyArgsDict']]]]
-        """
-        (Output)
-        The agent will immediately respond with a preconfigured response.
-        Structure is documented below.
-        """
-        transfer_agents: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionTransferAgentArgsDict']]]]
-        """
-        (Output)
-        The agent will transfer the conversation to a different agent.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotGuardrailActionArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailActionArgsDict(TypedDict):
+    generative_answers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionGenerativeAnswerArgsDict']]]]
+    """
+    (Output)
+    The agent will immediately respond with a generative answer.
+    Structure is documented below.
+    """
+    respond_immediatelies: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionRespondImmediatelyArgsDict']]]]
+    """
+    (Output)
+    The agent will immediately respond with a preconfigured response.
+    Structure is documented below.
+    """
+    transfer_agents: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionTransferAgentArgsDict']]]]
+    """
+    (Output)
+    The agent will transfer the conversation to a different agent.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailActionArgs:
@@ -9315,15 +9081,12 @@ class AppVersionSnapshotGuardrailActionArgs:
         pulumi.set(self, "transfer_agents", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailActionGenerativeAnswerArgsDict(TypedDict):
-        prompt: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The prompt definition. If not set, default prompt will be used.
-        """
-elif False:
-    AppVersionSnapshotGuardrailActionGenerativeAnswerArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailActionGenerativeAnswerArgsDict(TypedDict):
+    prompt: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The prompt definition. If not set, default prompt will be used.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailActionGenerativeAnswerArgs:
@@ -9350,17 +9113,14 @@ class AppVersionSnapshotGuardrailActionGenerativeAnswerArgs:
         pulumi.set(self, "prompt", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailActionRespondImmediatelyArgsDict(TypedDict):
-        responses: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionRespondImmediatelyResponseArgsDict']]]]
-        """
-        (Output)
-        The canned responses for the agent to choose from. The response is chosen
-        randomly.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotGuardrailActionRespondImmediatelyArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailActionRespondImmediatelyArgsDict(TypedDict):
+    responses: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionRespondImmediatelyResponseArgsDict']]]]
+    """
+    (Output)
+    The canned responses for the agent to choose from. The response is chosen
+    randomly.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailActionRespondImmediatelyArgs:
@@ -9391,20 +9151,17 @@ class AppVersionSnapshotGuardrailActionRespondImmediatelyArgs:
         pulumi.set(self, "responses", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailActionRespondImmediatelyResponseArgsDict(TypedDict):
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether summarization is disabled.
-        """
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Text for the agent to respond with.
-        """
-elif False:
-    AppVersionSnapshotGuardrailActionRespondImmediatelyResponseArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailActionRespondImmediatelyResponseArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether summarization is disabled.
+    """
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Text for the agent to respond with.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailActionRespondImmediatelyResponseArgs:
@@ -9449,18 +9206,15 @@ class AppVersionSnapshotGuardrailActionRespondImmediatelyResponseArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailActionTransferAgentArgsDict(TypedDict):
-        agent: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the agent to transfer the conversation to. The agent must be
-        in the same app as the current agent.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-        """
-elif False:
-    AppVersionSnapshotGuardrailActionTransferAgentArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailActionTransferAgentArgsDict(TypedDict):
+    agent: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the agent to transfer the conversation to. The agent must be
+    in the same app as the current agent.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailActionTransferAgentArgs:
@@ -9493,38 +9247,35 @@ class AppVersionSnapshotGuardrailActionTransferAgentArgs:
         pulumi.set(self, "agent", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailCodeCallbackArgsDict(TypedDict):
-        after_agent_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallbackArgsDict']]]]
-        """
-        (Output)
-        A callback defines the custom logic to be executed at various stages of
-        agent interaction.
-        Structure is documented below.
-        """
-        after_model_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackAfterModelCallbackArgsDict']]]]
-        """
-        (Output)
-        A callback defines the custom logic to be executed at various stages of
-        agent interaction.
-        Structure is documented below.
-        """
-        before_agent_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallbackArgsDict']]]]
-        """
-        (Output)
-        A callback defines the custom logic to be executed at various stages of
-        agent interaction.
-        Structure is documented below.
-        """
-        before_model_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgsDict']]]]
-        """
-        (Output)
-        A callback defines the custom logic to be executed at various stages of
-        agent interaction.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotGuardrailCodeCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailCodeCallbackArgsDict(TypedDict):
+    after_agent_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallbackArgsDict']]]]
+    """
+    (Output)
+    A callback defines the custom logic to be executed at various stages of
+    agent interaction.
+    Structure is documented below.
+    """
+    after_model_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackAfterModelCallbackArgsDict']]]]
+    """
+    (Output)
+    A callback defines the custom logic to be executed at various stages of
+    agent interaction.
+    Structure is documented below.
+    """
+    before_agent_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallbackArgsDict']]]]
+    """
+    (Output)
+    A callback defines the custom logic to be executed at various stages of
+    agent interaction.
+    Structure is documented below.
+    """
+    before_model_callbacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgsDict']]]]
+    """
+    (Output)
+    A callback defines the custom logic to be executed at various stages of
+    agent interaction.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailCodeCallbackArgs:
@@ -9621,24 +9372,21 @@ class AppVersionSnapshotGuardrailCodeCallbackArgs:
         pulumi.set(self, "before_model_callbacks", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallbackArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether summarization is disabled.
-        """
-        python_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Python code to execute for the tool.
-        """
-elif False:
-    AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallbackArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether summarization is disabled.
+    """
+    python_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Python code to execute for the tool.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallbackArgs:
@@ -9699,24 +9447,21 @@ class AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallbackArgs:
         pulumi.set(self, "python_code", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailCodeCallbackAfterModelCallbackArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether summarization is disabled.
-        """
-        python_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Python code to execute for the tool.
-        """
-elif False:
-    AppVersionSnapshotGuardrailCodeCallbackAfterModelCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailCodeCallbackAfterModelCallbackArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether summarization is disabled.
+    """
+    python_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Python code to execute for the tool.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailCodeCallbackAfterModelCallbackArgs:
@@ -9777,24 +9522,21 @@ class AppVersionSnapshotGuardrailCodeCallbackAfterModelCallbackArgs:
         pulumi.set(self, "python_code", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallbackArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether summarization is disabled.
-        """
-        python_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Python code to execute for the tool.
-        """
-elif False:
-    AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallbackArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether summarization is disabled.
+    """
+    python_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Python code to execute for the tool.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallbackArgs:
@@ -9855,24 +9597,21 @@ class AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallbackArgs:
         pulumi.set(self, "python_code", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether summarization is disabled.
-        """
-        python_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Python code to execute for the tool.
-        """
-elif False:
-    AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether summarization is disabled.
+    """
+    python_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Python code to execute for the tool.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgs:
@@ -9933,39 +9672,36 @@ class AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgs:
         pulumi.set(self, "python_code", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailContentFilterArgsDict(TypedDict):
-        banned_contents: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        List of banned phrases. Applies to both user inputs and agent responses.
-        """
-        banned_contents_in_agent_responses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        List of banned phrases. Applies only to agent responses.
-        """
-        banned_contents_in_user_inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        List of banned phrases. Applies only to user inputs.
-        """
-        disregard_diacritics: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        If true, diacritics are ignored during matching.
-        """
-        match_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Match type for the content filter.
-        Possible values:
-        SIMPLE_STRING_MATCH
-        WORD_BOUNDARY_STRING_MATCH
-        REGEXP_MATCH
-        """
-elif False:
-    AppVersionSnapshotGuardrailContentFilterArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailContentFilterArgsDict(TypedDict):
+    banned_contents: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    List of banned phrases. Applies to both user inputs and agent responses.
+    """
+    banned_contents_in_agent_responses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    List of banned phrases. Applies only to agent responses.
+    """
+    banned_contents_in_user_inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    List of banned phrases. Applies only to user inputs.
+    """
+    disregard_diacritics: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    If true, diacritics are ignored during matching.
+    """
+    match_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Match type for the content filter.
+    Possible values:
+    SIMPLE_STRING_MATCH
+    WORD_BOUNDARY_STRING_MATCH
+    REGEXP_MATCH
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailContentFilterArgs:
@@ -10072,46 +9808,43 @@ class AppVersionSnapshotGuardrailContentFilterArgs:
         pulumi.set(self, "match_type", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailLlmPolicyArgsDict(TypedDict):
-        fail_open: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        If an error occurs during the policy check, fail open and do not trigger
-        the guardrail.
-        """
-        max_conversation_messages: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        When checking this policy, consider the last 'n' messages in the
-        conversation.
-        When not set a default value of 10 will be used.
-        """
-        model_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPolicyModelSettingArgsDict']]]]
-        """
-        (Output)
-        Model settings contains various configurations for the LLM model.
-        Structure is documented below.
-        """
-        policy_scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Defines when to apply the policy check during the conversation. If set to
-        `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
-        When applying the policy to the agent response, additional latency will
-        be introduced before the agent can respond.
-        Possible values:
-        USER_QUERY
-        AGENT_RESPONSE
-        USER_QUERY_AND_AGENT_RESPONSE
-        """
-        prompt: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The prompt definition. If not set, default prompt will be used.
-        """
-elif False:
-    AppVersionSnapshotGuardrailLlmPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailLlmPolicyArgsDict(TypedDict):
+    fail_open: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    If an error occurs during the policy check, fail open and do not trigger
+    the guardrail.
+    """
+    max_conversation_messages: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    When checking this policy, consider the last 'n' messages in the
+    conversation.
+    When not set a default value of 10 will be used.
+    """
+    model_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPolicyModelSettingArgsDict']]]]
+    """
+    (Output)
+    Model settings contains various configurations for the LLM model.
+    Structure is documented below.
+    """
+    policy_scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Defines when to apply the policy check during the conversation. If set to
+    `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+    When applying the policy to the agent response, additional latency will
+    be introduced before the agent can respond.
+    Possible values:
+    USER_QUERY
+    AGENT_RESPONSE
+    USER_QUERY_AND_AGENT_RESPONSE
+    """
+    prompt: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The prompt definition. If not set, default prompt will be used.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailLlmPolicyArgs:
@@ -10232,24 +9965,21 @@ class AppVersionSnapshotGuardrailLlmPolicyArgs:
         pulumi.set(self, "prompt", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailLlmPolicyModelSettingArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The LLM model that the agent should use.
-        If not set, the agent will inherit the model from its parent agent.
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        If set, this temperature will be used for the LLM model. Temperature
-        controls the randomness of the model's responses. Lower temperatures
-        produce responses that are more predictable. Higher temperatures produce
-        responses that are more creative.
-        """
-elif False:
-    AppVersionSnapshotGuardrailLlmPolicyModelSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailLlmPolicyModelSettingArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The LLM model that the agent should use.
+    If not set, the agent will inherit the model from its parent agent.
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    If set, this temperature will be used for the LLM model. Temperature
+    controls the randomness of the model's responses. Lower temperatures
+    produce responses that are more predictable. Higher temperatures produce
+    responses that are more creative.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailLlmPolicyModelSettingArgs:
@@ -10302,23 +10032,20 @@ class AppVersionSnapshotGuardrailLlmPolicyModelSettingArgs:
         pulumi.set(self, "temperature", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailLlmPromptSecurityArgsDict(TypedDict):
-        custom_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyArgsDict']]]]
-        """
-        (Output)
-        Guardrail that blocks the conversation if the LLM response is considered
-        violating the policy based on the LLM classification.
-        Structure is documented below.
-        """
-        default_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArgsDict']]]]
-        """
-        (Output)
-        Configuration for default system security settings.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotGuardrailLlmPromptSecurityArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailLlmPromptSecurityArgsDict(TypedDict):
+    custom_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyArgsDict']]]]
+    """
+    (Output)
+    Guardrail that blocks the conversation if the LLM response is considered
+    violating the policy based on the LLM classification.
+    Structure is documented below.
+    """
+    default_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArgsDict']]]]
+    """
+    (Output)
+    Configuration for default system security settings.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailLlmPromptSecurityArgs:
@@ -10369,46 +10096,43 @@ class AppVersionSnapshotGuardrailLlmPromptSecurityArgs:
         pulumi.set(self, "default_settings", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyArgsDict(TypedDict):
-        fail_open: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        If an error occurs during the policy check, fail open and do not trigger
-        the guardrail.
-        """
-        max_conversation_messages: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        When checking this policy, consider the last 'n' messages in the
-        conversation.
-        When not set a default value of 10 will be used.
-        """
-        model_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSettingArgsDict']]]]
-        """
-        (Output)
-        Model settings contains various configurations for the LLM model.
-        Structure is documented below.
-        """
-        policy_scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Defines when to apply the policy check during the conversation. If set to
-        `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
-        When applying the policy to the agent response, additional latency will
-        be introduced before the agent can respond.
-        Possible values:
-        USER_QUERY
-        AGENT_RESPONSE
-        USER_QUERY_AND_AGENT_RESPONSE
-        """
-        prompt: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The prompt definition. If not set, default prompt will be used.
-        """
-elif False:
-    AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyArgsDict(TypedDict):
+    fail_open: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    If an error occurs during the policy check, fail open and do not trigger
+    the guardrail.
+    """
+    max_conversation_messages: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    When checking this policy, consider the last 'n' messages in the
+    conversation.
+    When not set a default value of 10 will be used.
+    """
+    model_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSettingArgsDict']]]]
+    """
+    (Output)
+    Model settings contains various configurations for the LLM model.
+    Structure is documented below.
+    """
+    policy_scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Defines when to apply the policy check during the conversation. If set to
+    `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+    When applying the policy to the agent response, additional latency will
+    be introduced before the agent can respond.
+    Possible values:
+    USER_QUERY
+    AGENT_RESPONSE
+    USER_QUERY_AND_AGENT_RESPONSE
+    """
+    prompt: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The prompt definition. If not set, default prompt will be used.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyArgs:
@@ -10529,24 +10253,21 @@ class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyArgs:
         pulumi.set(self, "prompt", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSettingArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The LLM model that the agent should use.
-        If not set, the agent will inherit the model from its parent agent.
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        If set, this temperature will be used for the LLM model. Temperature
-        controls the randomness of the model's responses. Lower temperatures
-        produce responses that are more predictable. Higher temperatures produce
-        responses that are more creative.
-        """
-elif False:
-    AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSettingArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The LLM model that the agent should use.
+    If not set, the agent will inherit the model from its parent agent.
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    If set, this temperature will be used for the LLM model. Temperature
+    controls the randomness of the model's responses. Lower temperatures
+    produce responses that are more predictable. Higher temperatures produce
+    responses that are more creative.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSettingArgs:
@@ -10599,17 +10320,14 @@ class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSettingArgs:
         pulumi.set(self, "temperature", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArgsDict(TypedDict):
-        default_prompt_template: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The default prompt template used by the system.
-        This field is for display purposes to show the user what prompt
-        the system uses by default. It is OUTPUT_ONLY.
-        """
-elif False:
-    AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArgsDict(TypedDict):
+    default_prompt_template: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The default prompt template used by the system.
+    This field is for display purposes to show the user what prompt
+    the system uses by default. It is OUTPUT_ONLY.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArgs:
@@ -10640,16 +10358,13 @@ class AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArgs:
         pulumi.set(self, "default_prompt_template", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailModelSafetyArgsDict(TypedDict):
-        safety_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailModelSafetySafetySettingArgsDict']]]]
-        """
-        (Output)
-        List of safety settings.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotGuardrailModelSafetyArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailModelSafetyArgsDict(TypedDict):
+    safety_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotGuardrailModelSafetySafetySettingArgsDict']]]]
+    """
+    (Output)
+    List of safety settings.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailModelSafetyArgs:
@@ -10678,31 +10393,28 @@ class AppVersionSnapshotGuardrailModelSafetyArgs:
         pulumi.set(self, "safety_settings", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotGuardrailModelSafetySafetySettingArgsDict(TypedDict):
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The harm category.
-        Possible values:
-        HARM_CATEGORY_HATE_SPEECH
-        HARM_CATEGORY_DANGEROUS_CONTENT
-        HARM_CATEGORY_HARASSMENT
-        HARM_CATEGORY_SEXUALLY_EXPLICIT
-        """
-        threshold: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The harm block threshold.
-        Possible values:
-        BLOCK_LOW_AND_ABOVE
-        BLOCK_MEDIUM_AND_ABOVE
-        BLOCK_ONLY_HIGH
-        BLOCK_NONE
-        OFF
-        """
-elif False:
-    AppVersionSnapshotGuardrailModelSafetySafetySettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotGuardrailModelSafetySafetySettingArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The harm category.
+    Possible values:
+    HARM_CATEGORY_HATE_SPEECH
+    HARM_CATEGORY_DANGEROUS_CONTENT
+    HARM_CATEGORY_HARASSMENT
+    HARM_CATEGORY_SEXUALLY_EXPLICIT
+    """
+    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The harm block threshold.
+    Possible values:
+    BLOCK_LOW_AND_ABOVE
+    BLOCK_MEDIUM_AND_ABOVE
+    BLOCK_ONLY_HIGH
+    BLOCK_NONE
+    OFF
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotGuardrailModelSafetySafetySettingArgs:
@@ -10769,95 +10481,92 @@ class AppVersionSnapshotGuardrailModelSafetySafetySettingArgs:
         pulumi.set(self, "threshold", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolArgsDict(TypedDict):
-        client_functions: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolClientFunctionArgsDict']]]]
-        """
-        (Output)
-        Represents a client-side function that the agent can invoke. When the
-        tool is chosen by the agent, control is handed off to the client.
-        The client is responsible for executing the function and returning the result
-        as a ToolResponse to continue the interaction with the agent.
-        Structure is documented below.
-        """
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the toolset was created.
-        """
-        data_store_tools: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolArgsDict']]]]
-        """
-        (Output)
-        Tool to retrieve from Vertex AI Search datastore or engine for grounding.
-        Accepts either a datastore or an engine, but not both.
-        See Vertex AI Search:
-        https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
-        Structure is documented below.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the app version.
-        """
-        etag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        ETag used to ensure the object hasn't changed during a read-modify-write
-        operation. If the etag is empty, the update will overwrite any concurrent
-        changes.
-        """
-        execution_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Possible values:
-        SYNCHRONOUS
-        ASYNCHRONOUS
-        """
-        generated_summary: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        If the tool is generated by the LLM assistant, this field contains a
-        descriptive summary of the generation.
-        """
-        google_search_tools: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolGoogleSearchToolArgsDict']]]]
-        """
-        (Output)
-        Represents a tool to perform Google web searches for grounding.
-        See
-        https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/grounding-with-google-search.
-        Structure is documented below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        open_api_tools: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolArgsDict']]]]
-        """
-        (Output)
-        A remote API tool defined by an OpenAPI schema.
-        Structure is documented below.
-        """
-        python_functions: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolPythonFunctionArgsDict']]]]
-        """
-        (Output)
-        A Python function tool.
-        Structure is documented below.
-        """
-        system_tools: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolSystemToolArgsDict']]]]
-        """
-        (Output)
-        The system tool.
-        Structure is documented below.
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the toolset was last updated.
-        """
-elif False:
-    AppVersionSnapshotToolArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolArgsDict(TypedDict):
+    client_functions: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolClientFunctionArgsDict']]]]
+    """
+    (Output)
+    Represents a client-side function that the agent can invoke. When the
+    tool is chosen by the agent, control is handed off to the client.
+    The client is responsible for executing the function and returning the result
+    as a ToolResponse to continue the interaction with the agent.
+    Structure is documented below.
+    """
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the toolset was created.
+    """
+    data_store_tools: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolArgsDict']]]]
+    """
+    (Output)
+    Tool to retrieve from Vertex AI Search datastore or engine for grounding.
+    Accepts either a datastore or an engine, but not both.
+    See Vertex AI Search:
+    https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
+    Structure is documented below.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the app version.
+    """
+    etag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    ETag used to ensure the object hasn't changed during a read-modify-write
+    operation. If the etag is empty, the update will overwrite any concurrent
+    changes.
+    """
+    execution_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Possible values:
+    SYNCHRONOUS
+    ASYNCHRONOUS
+    """
+    generated_summary: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    If the tool is generated by the LLM assistant, this field contains a
+    descriptive summary of the generation.
+    """
+    google_search_tools: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolGoogleSearchToolArgsDict']]]]
+    """
+    (Output)
+    Represents a tool to perform Google web searches for grounding.
+    See
+    https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/grounding-with-google-search.
+    Structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    open_api_tools: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolArgsDict']]]]
+    """
+    (Output)
+    A remote API tool defined by an OpenAPI schema.
+    Structure is documented below.
+    """
+    python_functions: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolPythonFunctionArgsDict']]]]
+    """
+    (Output)
+    A Python function tool.
+    Structure is documented below.
+    """
+    system_tools: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolSystemToolArgsDict']]]]
+    """
+    (Output)
+    The system tool.
+    Structure is documented below.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the toolset was last updated.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolArgs:
@@ -11140,33 +10849,30 @@ class AppVersionSnapshotToolArgs:
         pulumi.set(self, "update_time", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolClientFunctionArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolClientFunctionParameterArgsDict']]]]
-        """
-        (Output)
-        Represents a select subset of an OpenAPI 3.0 schema object.
-        Structure is documented below.
-        """
-        responses: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolClientFunctionResponseArgsDict']]]]
-        """
-        (Output)
-        Represents a select subset of an OpenAPI 3.0 schema object.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotToolClientFunctionArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolClientFunctionArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolClientFunctionParameterArgsDict']]]]
+    """
+    (Output)
+    Represents a select subset of an OpenAPI 3.0 schema object.
+    Structure is documented below.
+    """
+    responses: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolClientFunctionResponseArgsDict']]]]
+    """
+    (Output)
+    Represents a select subset of an OpenAPI 3.0 schema object.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolClientFunctionArgs:
@@ -11253,112 +10959,109 @@ class AppVersionSnapshotToolClientFunctionArgs:
         pulumi.set(self, "responses", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolClientFunctionParameterArgsDict(TypedDict):
-        additional_properties: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Defines the schema for additional properties allowed in an object.
-        The value must be a valid JSON string representing the Schema object.
-        (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
-        """
-        any_of: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. The instance value should be valid against at least one of the schemas in this list.
-        """
-        default: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Default value of the data. Represents a dynamically typed value
-        which can be either null, a number, a string, a boolean, a struct,
-        or a list of values. The provided default value must be compatible
-        with the defined 'type' and other schema constraints.
-        """
-        defs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A map of definitions for use by ref. Only allowed at the root of the schema.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Possible values of the element of primitive type with enum format.
-        Examples:
-        1. We can define direction as :
-        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
-        2. We can define apartment number as :
-        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
-        """
-        items: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Schema of the elements of Type.ARRAY.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Indicates if the value may be null.
-        """
-        prefix_items: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Schemas of initial elements of Type.ARRAY.
-        """
-        properties: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Properties of Type.OBJECT.
-        """
-        ref: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Allows indirect references between schema nodes. The value should be a
-        valid reference to a child of the root `defs`.
-        For example, the following schema defines a reference to a schema node
-        named "Pet":
-        type: object
-        properties:
-        pet:
-        ref: #/defs/Pet
-        defs:
-        Pet:
-        type: object
-        properties:
-        name:
-        type: string
-        The value of the "pet" property is a reference to the schema node
-        named "Pet".
-        See details in
-        https://json-schema.org/understanding-json-schema/structuring.
-        """
-        requireds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Required properties of Type.OBJECT.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The type of the data store. This field is readonly and populated by the
-        server.
-        Possible values:
-        PUBLIC_WEB
-        UNSTRUCTURED
-        FAQ
-        CONNECTOR
-        """
-        unique_items: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
-        """
-elif False:
-    AppVersionSnapshotToolClientFunctionParameterArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolClientFunctionParameterArgsDict(TypedDict):
+    additional_properties: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Defines the schema for additional properties allowed in an object.
+    The value must be a valid JSON string representing the Schema object.
+    (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+    """
+    any_of: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. The instance value should be valid against at least one of the schemas in this list.
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Default value of the data. Represents a dynamically typed value
+    which can be either null, a number, a string, a boolean, a struct,
+    or a list of values. The provided default value must be compatible
+    with the defined 'type' and other schema constraints.
+    """
+    defs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A map of definitions for use by ref. Only allowed at the root of the schema.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Possible values of the element of primitive type with enum format.
+    Examples:
+    1. We can define direction as :
+    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+    2. We can define apartment number as :
+    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+    """
+    items: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Schema of the elements of Type.ARRAY.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Indicates if the value may be null.
+    """
+    prefix_items: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Schemas of initial elements of Type.ARRAY.
+    """
+    properties: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Properties of Type.OBJECT.
+    """
+    ref: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Allows indirect references between schema nodes. The value should be a
+    valid reference to a child of the root `defs`.
+    For example, the following schema defines a reference to a schema node
+    named "Pet":
+    type: object
+    properties:
+    pet:
+    ref: #/defs/Pet
+    defs:
+    Pet:
+    type: object
+    properties:
+    name:
+    type: string
+    The value of the "pet" property is a reference to the schema node
+    named "Pet".
+    See details in
+    https://json-schema.org/understanding-json-schema/structuring.
+    """
+    requireds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Required properties of Type.OBJECT.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The type of the data store. This field is readonly and populated by the
+    server.
+    Possible values:
+    PUBLIC_WEB
+    UNSTRUCTURED
+    FAQ
+    CONNECTOR
+    """
+    unique_items: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolClientFunctionParameterArgs:
@@ -11683,112 +11386,109 @@ class AppVersionSnapshotToolClientFunctionParameterArgs:
         pulumi.set(self, "unique_items", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolClientFunctionResponseArgsDict(TypedDict):
-        additional_properties: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Defines the schema for additional properties allowed in an object.
-        The value must be a valid JSON string representing the Schema object.
-        (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
-        """
-        any_of: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. The instance value should be valid against at least one of the schemas in this list.
-        """
-        default: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Default value of the data. Represents a dynamically typed value
-        which can be either null, a number, a string, a boolean, a struct,
-        or a list of values. The provided default value must be compatible
-        with the defined 'type' and other schema constraints.
-        """
-        defs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A map of definitions for use by ref. Only allowed at the root of the schema.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Possible values of the element of primitive type with enum format.
-        Examples:
-        1. We can define direction as :
-        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
-        2. We can define apartment number as :
-        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
-        """
-        items: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Schema of the elements of Type.ARRAY.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Indicates if the value may be null.
-        """
-        prefix_items: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Schemas of initial elements of Type.ARRAY.
-        """
-        properties: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Properties of Type.OBJECT.
-        """
-        ref: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Allows indirect references between schema nodes. The value should be a
-        valid reference to a child of the root `defs`.
-        For example, the following schema defines a reference to a schema node
-        named "Pet":
-        type: object
-        properties:
-        pet:
-        ref: #/defs/Pet
-        defs:
-        Pet:
-        type: object
-        properties:
-        name:
-        type: string
-        The value of the "pet" property is a reference to the schema node
-        named "Pet".
-        See details in
-        https://json-schema.org/understanding-json-schema/structuring.
-        """
-        requireds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Required properties of Type.OBJECT.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The type of the data store. This field is readonly and populated by the
-        server.
-        Possible values:
-        PUBLIC_WEB
-        UNSTRUCTURED
-        FAQ
-        CONNECTOR
-        """
-        unique_items: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
-        """
-elif False:
-    AppVersionSnapshotToolClientFunctionResponseArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolClientFunctionResponseArgsDict(TypedDict):
+    additional_properties: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Defines the schema for additional properties allowed in an object.
+    The value must be a valid JSON string representing the Schema object.
+    (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+    """
+    any_of: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. The instance value should be valid against at least one of the schemas in this list.
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Default value of the data. Represents a dynamically typed value
+    which can be either null, a number, a string, a boolean, a struct,
+    or a list of values. The provided default value must be compatible
+    with the defined 'type' and other schema constraints.
+    """
+    defs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A map of definitions for use by ref. Only allowed at the root of the schema.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Possible values of the element of primitive type with enum format.
+    Examples:
+    1. We can define direction as :
+    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+    2. We can define apartment number as :
+    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+    """
+    items: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Schema of the elements of Type.ARRAY.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Indicates if the value may be null.
+    """
+    prefix_items: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Schemas of initial elements of Type.ARRAY.
+    """
+    properties: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Properties of Type.OBJECT.
+    """
+    ref: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Allows indirect references between schema nodes. The value should be a
+    valid reference to a child of the root `defs`.
+    For example, the following schema defines a reference to a schema node
+    named "Pet":
+    type: object
+    properties:
+    pet:
+    ref: #/defs/Pet
+    defs:
+    Pet:
+    type: object
+    properties:
+    name:
+    type: string
+    The value of the "pet" property is a reference to the schema node
+    named "Pet".
+    See details in
+    https://json-schema.org/understanding-json-schema/structuring.
+    """
+    requireds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Required properties of Type.OBJECT.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The type of the data store. This field is readonly and populated by the
+    server.
+    Possible values:
+    PUBLIC_WEB
+    UNSTRUCTURED
+    FAQ
+    CONNECTOR
+    """
+    unique_items: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolClientFunctionResponseArgs:
@@ -12113,46 +11813,43 @@ class AppVersionSnapshotToolClientFunctionResponseArgs:
         pulumi.set(self, "unique_items", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolArgsDict(TypedDict):
-        boost_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecArgsDict']]]]
-        """
-        (Output)
-        Boost specification to boost certain documents.
-        Structure is documented below.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        engine_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceArgsDict']]]]
-        """
-        (Output)
-        Configuration for searching within an Engine, potentially targeting
-        specific DataStores.
-        Structure is documented below.
-        """
-        max_results: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Number of search results to return per query.
-        The default value is 10. The maximum allowed value is 10.
-        """
-        modality_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigArgsDict']]]]
-        """
-        (Output)
-        The modality configs for the data store.
-        Structure is documented below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolArgsDict(TypedDict):
+    boost_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecArgsDict']]]]
+    """
+    (Output)
+    Boost specification to boost certain documents.
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    engine_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceArgsDict']]]]
+    """
+    (Output)
+    Configuration for searching within an Engine, potentially targeting
+    specific DataStores.
+    Structure is documented below.
+    """
+    max_results: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Number of search results to return per query.
+    The default value is 10. The maximum allowed value is 10.
+    """
+    modality_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigArgsDict']]]]
+    """
+    (Output)
+    The modality configs for the data store.
+    Structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolArgs:
@@ -12281,23 +11978,20 @@ class AppVersionSnapshotToolDataStoreToolArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolBoostSpecArgsDict(TypedDict):
-        data_stores: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        The Data Store where the boosting configuration is applied. Full resource
-        name of DataStore, such as
-        projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}.
-        """
-        specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecArgsDict']]]]
-        """
-        (Output)
-        A list of boosting specifications.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolBoostSpecArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolBoostSpecArgsDict(TypedDict):
+    data_stores: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    The Data Store where the boosting configuration is applied. Full resource
+    name of DataStore, such as
+    projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}.
+    """
+    specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecArgsDict']]]]
+    """
+    (Output)
+    A list of boosting specifications.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolBoostSpecArgs:
@@ -12348,16 +12042,13 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecArgs:
         pulumi.set(self, "specs", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolBoostSpecSpecArgsDict(TypedDict):
-        condition_boost_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecArgsDict']]]]
-        """
-        (Output)
-        A list of boosting specifications.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolBoostSpecSpecArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolBoostSpecSpecArgsDict(TypedDict):
+    condition_boost_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecArgsDict']]]]
+    """
+    (Output)
+    A list of boosting specifications.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolBoostSpecSpecArgs:
@@ -12386,39 +12077,36 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecArgs:
         pulumi.set(self, "condition_boost_specs", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecArgsDict(TypedDict):
-        boost: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        Strength of the boost, which should be in [-1, 1]. Negative boost means
-        demotion. Default is 0.0.
-        Setting to 1.0 gives the suggestions a big promotion. However, it does
-        not necessarily mean that the top result will be a boosted suggestion.
-        Setting to -1.0 gives the suggestions a big demotion. However, other
-        suggestions that are relevant might still be shown.
-        Setting to 0.0 means no boost applied. The boosting condition is
-        ignored.
-        """
-        boost_control_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgsDict']]]]
-        """
-        (Output)
-        Specification for custom ranking based on customer specified attribute
-        value. It provides more controls for customized ranking than the simple
-        (condition, boost) combination above.
-        Structure is documented below.
-        """
-        condition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        An expression which specifies a boost condition. The syntax is the same
-        as filter expression syntax. Currently, the only supported condition is
-        a list of BCP-47 lang codes.
-        Example: To boost suggestions in languages en or fr:
-        (lang_code: ANY("en", "fr"))
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecArgsDict(TypedDict):
+    boost: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    Strength of the boost, which should be in [-1, 1]. Negative boost means
+    demotion. Default is 0.0.
+    Setting to 1.0 gives the suggestions a big promotion. However, it does
+    not necessarily mean that the top result will be a boosted suggestion.
+    Setting to -1.0 gives the suggestions a big demotion. However, other
+    suggestions that are relevant might still be shown.
+    Setting to 0.0 means no boost applied. The boosting condition is
+    ignored.
+    """
+    boost_control_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgsDict']]]]
+    """
+    (Output)
+    Specification for custom ranking based on customer specified attribute
+    value. It provides more controls for customized ranking than the simple
+    (condition, boost) combination above.
+    Structure is documented below.
+    """
+    condition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    An expression which specifies a boost condition. The syntax is the same
+    as filter expression syntax. Currently, the only supported condition is
+    a list of BCP-47 lang codes.
+    Example: To boost suggestions in languages en or fr:
+    (lang_code: ANY("en", "fr"))
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs:
@@ -12509,44 +12197,41 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs:
         pulumi.set(self, "condition", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgsDict(TypedDict):
-        attribute_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The attribute type to be used to determine the boost amount. The
-        attribute value can be derived from the field value of the specified
-        field_name. In the case of numerical it is straightforward i.e.
-        attribute_value = numerical_field_value. In the case of freshness
-        however, attribute_value = (time.now() - datetime_field_value).
-        Possible values:
-        NUMERICAL
-        FRESHNESS
-        """
-        control_points: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgsDict']]]]
-        """
-        (Output)
-        The control points used to define the curve. The monotonic function
-        (defined through the interpolation_type above) passes through the
-        control points listed here.
-        Structure is documented below.
-        """
-        field_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the field whose value will be used to determine the
-        boost amount.
-        """
-        interpolation_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The interpolation type to be applied to connect the control points
-        listed below.
-        Possible values:
-        LINEAR
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgsDict(TypedDict):
+    attribute_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The attribute type to be used to determine the boost amount. The
+    attribute value can be derived from the field value of the specified
+    field_name. In the case of numerical it is straightforward i.e.
+    attribute_value = numerical_field_value. In the case of freshness
+    however, attribute_value = (time.now() - datetime_field_value).
+    Possible values:
+    NUMERICAL
+    FRESHNESS
+    """
+    control_points: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgsDict']]]]
+    """
+    (Output)
+    The control points used to define the curve. The monotonic function
+    (defined through the interpolation_type above) passes through the
+    control points listed here.
+    Structure is documented below.
+    """
+    field_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the field whose value will be used to determine the
+    boost amount.
+    """
+    interpolation_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The interpolation type to be applied to connect the control points
+    listed below.
+    Possible values:
+    LINEAR
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs:
@@ -12655,26 +12340,23 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
         pulumi.set(self, "interpolation_type", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgsDict(TypedDict):
-        attribute_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Can be one of:
-        1. The numerical field value.
-        2. The duration spec for freshness:
-        The value must be formatted as an XSD `dayTimeDuration` value (a
-        restricted subset of an ISO 8601 duration value). The pattern for
-        this is: `nDnM]`.
-        """
-        boost_amount: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        The value between -1 to 1 by which to boost the score if the
-        attribute_value evaluates to the value specified above.
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgsDict(TypedDict):
+    attribute_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Can be one of:
+    1. The numerical field value.
+    2. The duration spec for freshness:
+    The value must be formatted as an XSD `dayTimeDuration` value (a
+    restricted subset of an ISO 8601 duration value). The pattern for
+    this is: `nDnM]`.
+    """
+    boost_amount: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    The value between -1 to 1 by which to boost the score if the
+    attribute_value evaluates to the value specified above.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs:
@@ -12731,32 +12413,29 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
         pulumi.set(self, "boost_amount", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolEngineSourceArgsDict(TypedDict):
-        data_store_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceArgsDict']]]]
-        """
-        (Output)
-        Use to target specific DataStores within the Engine.
-        If empty, the search applies to all DataStores associated with the
-        Engine.
-        Structure is documented below.
-        """
-        engine: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Full resource name of the Engine.
-        Format:
-        `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
-        """
-        filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Filter specification for the DataStore.
-        See:
-        https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolEngineSourceArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolEngineSourceArgsDict(TypedDict):
+    data_store_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceArgsDict']]]]
+    """
+    (Output)
+    Use to target specific DataStores within the Engine.
+    If empty, the search applies to all DataStores associated with the
+    Engine.
+    Structure is documented below.
+    """
+    engine: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Full resource name of the Engine.
+    Format:
+    `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+    """
+    filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Filter specification for the DataStore.
+    See:
+    https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolEngineSourceArgs:
@@ -12833,23 +12512,20 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceArgs:
         pulumi.set(self, "filter", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceArgsDict(TypedDict):
-        data_stores: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict']]]]
-        """
-        (Output)
-        A DataStore resource in Vertex AI Search.
-        Structure is documented below.
-        """
-        filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Filter specification for the DataStore.
-        See:
-        https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceArgsDict(TypedDict):
+    data_stores: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict']]]]
+    """
+    (Output)
+    A DataStore resource in Vertex AI Search.
+    Structure is documented below.
+    """
+    filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Filter specification for the DataStore.
+    See:
+    https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceArgs:
@@ -12900,52 +12576,49 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceArgs:
         pulumi.set(self, "filter", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict(TypedDict):
-        connector_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgsDict']]]]
-        """
-        (Output)
-        The connector config for the data store connection.
-        Structure is documented below.
-        """
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the toolset was created.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the app version.
-        """
-        document_processing_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The document processing mode for the data store connection.
-        Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
-        Possible values:
-        DOCUMENTS
-        CHUNKS
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The type of the data store. This field is readonly and populated by the
-        server.
-        Possible values:
-        PUBLIC_WEB
-        UNSTRUCTURED
-        FAQ
-        CONNECTOR
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict(TypedDict):
+    connector_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgsDict']]]]
+    """
+    (Output)
+    The connector config for the data store connection.
+    Structure is documented below.
+    """
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the toolset was created.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the app version.
+    """
+    document_processing_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The document processing mode for the data store connection.
+    Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
+    Possible values:
+    DOCUMENTS
+    CHUNKS
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The type of the data store. This field is readonly and populated by the
+    server.
+    Possible values:
+    PUBLIC_WEB
+    UNSTRUCTURED
+    FAQ
+    CONNECTOR
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs:
@@ -13086,26 +12759,23 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreArg
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgsDict(TypedDict):
-        collection: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Resource name of the collection the data store belongs to.
-        """
-        collection_display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Display name of the collection the data store belongs to.
-        """
-        data_source: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the data source.
-        Example: `salesforce`, `jira`, `confluence`, `bigquery`.
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgsDict(TypedDict):
+    collection: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Resource name of the collection the data store belongs to.
+    """
+    collection_display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Display name of the collection the data store belongs to.
+    """
+    data_source: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the data source.
+    Example: `salesforce`, `jira`, `confluence`, `bigquery`.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgs:
@@ -13170,36 +12840,33 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreCon
         pulumi.set(self, "data_source", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolModalityConfigArgsDict(TypedDict):
-        grounding_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfigArgsDict']]]]
-        """
-        (Output)
-        Grounding configuration.
-        Structure is documented below.
-        """
-        modality_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The modality type.
-        Possible values:
-        TEXT
-        AUDIO
-        """
-        rewriter_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigArgsDict']]]]
-        """
-        (Output)
-        Rewriter configuration.
-        Structure is documented below.
-        """
-        summarization_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigArgsDict']]]]
-        """
-        (Output)
-        Summarization configuration.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolModalityConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolModalityConfigArgsDict(TypedDict):
+    grounding_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfigArgsDict']]]]
+    """
+    (Output)
+    Grounding configuration.
+    Structure is documented below.
+    """
+    modality_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The modality type.
+    Possible values:
+    TEXT
+    AUDIO
+    """
+    rewriter_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigArgsDict']]]]
+    """
+    (Output)
+    Rewriter configuration.
+    Structure is documented below.
+    """
+    summarization_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigArgsDict']]]]
+    """
+    (Output)
+    Summarization configuration.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolModalityConfigArgs:
@@ -13292,26 +12959,23 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigArgs:
         pulumi.set(self, "summarization_configs", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfigArgsDict(TypedDict):
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether summarization is disabled.
-        """
-        grounding_level: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        The groundedness threshold of the answer based on the retrieved sources.
-        The value has a configurable range of [1, 5]. The level is used to
-        threshold the groundedness of the answer, meaning that all responses with
-        a groundedness score below the threshold will fall back to returning
-        relevant snippets only.
-        For example, a level of 3 means that the groundedness score must be
-        3 or higher for the response to be returned.
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfigArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether summarization is disabled.
+    """
+    grounding_level: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    The groundedness threshold of the answer based on the retrieved sources.
+    The value has a configurable range of [1, 5]. The level is used to
+    threshold the groundedness of the answer, meaning that all responses with
+    a groundedness score below the threshold will fall back to returning
+    relevant snippets only.
+    For example, a level of 3 means that the groundedness score must be
+    3 or higher for the response to be returned.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfigArgs:
@@ -13368,26 +13032,23 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfigArgs:
         pulumi.set(self, "grounding_level", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigArgsDict(TypedDict):
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether summarization is disabled.
-        """
-        model_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSettingArgsDict']]]]
-        """
-        (Output)
-        Model settings contains various configurations for the LLM model.
-        Structure is documented below.
-        """
-        prompt: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The prompt definition. If not set, default prompt will be used.
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether summarization is disabled.
+    """
+    model_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSettingArgsDict']]]]
+    """
+    (Output)
+    Model settings contains various configurations for the LLM model.
+    Structure is documented below.
+    """
+    prompt: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The prompt definition. If not set, default prompt will be used.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigArgs:
@@ -13452,24 +13113,21 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigArgs:
         pulumi.set(self, "prompt", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSettingArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The LLM model that the agent should use.
-        If not set, the agent will inherit the model from its parent agent.
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        If set, this temperature will be used for the LLM model. Temperature
-        controls the randomness of the model's responses. Lower temperatures
-        produce responses that are more predictable. Higher temperatures produce
-        responses that are more creative.
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSettingArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The LLM model that the agent should use.
+    If not set, the agent will inherit the model from its parent agent.
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    If set, this temperature will be used for the LLM model. Temperature
+    controls the randomness of the model's responses. Lower temperatures
+    produce responses that are more predictable. Higher temperatures produce
+    responses that are more creative.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSettingArgs:
@@ -13522,26 +13180,23 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSettin
         pulumi.set(self, "temperature", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigArgsDict(TypedDict):
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether summarization is disabled.
-        """
-        model_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSettingArgsDict']]]]
-        """
-        (Output)
-        Model settings contains various configurations for the LLM model.
-        Structure is documented below.
-        """
-        prompt: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The prompt definition. If not set, default prompt will be used.
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether summarization is disabled.
+    """
+    model_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSettingArgsDict']]]]
+    """
+    (Output)
+    Model settings contains various configurations for the LLM model.
+    Structure is documented below.
+    """
+    prompt: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The prompt definition. If not set, default prompt will be used.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigArgs:
@@ -13606,24 +13261,21 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigArgs:
         pulumi.set(self, "prompt", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSettingArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The LLM model that the agent should use.
-        If not set, the agent will inherit the model from its parent agent.
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        If set, this temperature will be used for the LLM model. Temperature
-        controls the randomness of the model's responses. Lower temperatures
-        produce responses that are more predictable. Higher temperatures produce
-        responses that are more creative.
-        """
-elif False:
-    AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSettingArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The LLM model that the agent should use.
+    If not set, the agent will inherit the model from its parent agent.
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    If set, this temperature will be used for the LLM model. Temperature
+    controls the randomness of the model's responses. Lower temperatures
+    produce responses that are more predictable. Higher temperatures produce
+    responses that are more creative.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSettingArgs:
@@ -13676,28 +13328,25 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelS
         pulumi.set(self, "temperature", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolGoogleSearchToolArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        exclude_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        List of domains to be excluded from the search results.
-        Example: "example.com".
-        A maximum of 2000 domains can be excluded.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-elif False:
-    AppVersionSnapshotToolGoogleSearchToolArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolGoogleSearchToolArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    exclude_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    List of domains to be excluded from the search results.
+    Example: "example.com".
+    A maximum of 2000 domains can be excluded.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolGoogleSearchToolArgs:
@@ -13766,60 +13415,57 @@ class AppVersionSnapshotToolGoogleSearchToolArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolOpenApiToolArgsDict(TypedDict):
-        api_authentications: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationArgsDict']]]]
-        """
-        (Output)
-        Authentication information required for API calls.
-        Structure is documented below.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        ignore_unknown_fields: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        If true, the agent will ignore unknown fields in the API response for all
-        operations defined in the OpenAPI schema.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        open_api_schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The OpenAPI schema of the toolset.
-        """
-        service_directory_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolServiceDirectoryConfigArgsDict']]]]
-        """
-        (Output)
-        Configuration for tools using Service Directory.
-        Structure is documented below.
-        """
-        tls_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolTlsConfigArgsDict']]]]
-        """
-        (Output)
-        The TLS configuration.
-        Structure is documented below.
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The server URL of the Open API schema.
-        This field is only set in toolsets in the environment dependencies
-        during the export process if the schema contains a server url.
-        During the import process, if this url is present in the environment dependencies
-        and the schema has the $env_var placeholder,
-        it will replace the placeholder in the schema.
-        """
-elif False:
-    AppVersionSnapshotToolOpenApiToolArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolOpenApiToolArgsDict(TypedDict):
+    api_authentications: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationArgsDict']]]]
+    """
+    (Output)
+    Authentication information required for API calls.
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    ignore_unknown_fields: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    If true, the agent will ignore unknown fields in the API response for all
+    operations defined in the OpenAPI schema.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    open_api_schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The OpenAPI schema of the toolset.
+    """
+    service_directory_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolServiceDirectoryConfigArgsDict']]]]
+    """
+    (Output)
+    Configuration for tools using Service Directory.
+    Structure is documented below.
+    """
+    tls_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolTlsConfigArgsDict']]]]
+    """
+    (Output)
+    The TLS configuration.
+    Structure is documented below.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The server URL of the Open API schema.
+    This field is only set in toolsets in the environment dependencies
+    during the export process if the schema contains a server url.
+    During the import process, if this url is present in the environment dependencies
+    and the schema has the $env_var placeholder,
+    it will replace the placeholder in the schema.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolOpenApiToolArgs:
@@ -13992,35 +13638,32 @@ class AppVersionSnapshotToolOpenApiToolArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolOpenApiToolApiAuthenticationArgsDict(TypedDict):
-        api_key_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfigArgsDict']]]]
-        """
-        (Output)
-        Configurations for authentication with API key.
-        Structure is documented below.
-        """
-        oauth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfigArgsDict']]]]
-        """
-        (Output)
-        Configurations for authentication with OAuth.
-        Structure is documented below.
-        """
-        service_account_auth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgsDict']]]]
-        """
-        (Output)
-        Configurations for authentication using a custom service account.
-        Structure is documented below.
-        """
-        service_agent_id_token_auth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]]]
-        """
-        (Output)
-        Configurations for authentication with [ID
-        token](https://cloud.google.com/docs/authentication/token-types#id) generated
-        from service agent.
-        """
-elif False:
-    AppVersionSnapshotToolOpenApiToolApiAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolOpenApiToolApiAuthenticationArgsDict(TypedDict):
+    api_key_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfigArgsDict']]]]
+    """
+    (Output)
+    Configurations for authentication with API key.
+    Structure is documented below.
+    """
+    oauth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfigArgsDict']]]]
+    """
+    (Output)
+    Configurations for authentication with OAuth.
+    Structure is documented below.
+    """
+    service_account_auth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgsDict']]]]
+    """
+    (Output)
+    Configurations for authentication using a custom service account.
+    Structure is documented below.
+    """
+    service_agent_id_token_auth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]]]
+    """
+    (Output)
+    Configurations for authentication with [ID
+    token](https://cloud.google.com/docs/authentication/token-types#id) generated
+    from service agent.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolOpenApiToolApiAuthenticationArgs:
@@ -14111,33 +13754,30 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationArgs:
         pulumi.set(self, "service_agent_id_token_auth_configs", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfigArgsDict(TypedDict):
-        api_key_secret_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the SecretManager secret version resource storing the API key.
-        Format: `projects/{project}/secrets/{secret}/versions/{version}`
-        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
-        service agent
-        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-        """
-        key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The parameter name or the header name of the API key.
-        E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
-        """
-        request_location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Key location in the request.
-        Possible values:
-        HEADER
-        QUERY_STRING
-        """
-elif False:
-    AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfigArgsDict(TypedDict):
+    api_key_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the SecretManager secret version resource storing the API key.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+    service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The parameter name or the header name of the API key.
+    E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+    """
+    request_location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Key location in the request.
+    Possible values:
+    HEADER
+    QUERY_STRING
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfigArgs:
@@ -14216,42 +13856,39 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfigArgs:
         pulumi.set(self, "request_location", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfigArgsDict(TypedDict):
-        client_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The client ID from the OAuth provider.
-        """
-        client_secret_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the SecretManager secret version resource storing the
-        client secret.
-        Format: `projects/{project}/secrets/{secret}/versions/{version}`
-        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
-        service agent
-        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-        """
-        oauth_grant_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        OAuth grant types.
-        Possible values:
-        CLIENT_CREDENTIAL
-        """
-        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        The OAuth scopes to grant.
-        """
-        token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The token endpoint in the OAuth provider to exchange for an access token.
-        """
-elif False:
-    AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfigArgsDict(TypedDict):
+    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The client ID from the OAuth provider.
+    """
+    client_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the SecretManager secret version resource storing the
+    client secret.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+    service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    oauth_grant_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    OAuth grant types.
+    Possible values:
+    CLIENT_CREDENTIAL
+    """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    The OAuth scopes to grant.
+    """
+    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The token endpoint in the OAuth provider to exchange for an access token.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfigArgs:
@@ -14364,21 +14001,18 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfigArgs:
         pulumi.set(self, "token_endpoint", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict):
-        service_account: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The email address of the service account used for authenticatation. CES
-        uses this service account to exchange an access token and the access token
-        is then sent in the `Authorization` header of the request.
-        The service account must have the
-        `roles/iam.serviceAccountTokenCreator` role granted to the
-        CES service agent
-        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-        """
-elif False:
-    AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict):
+    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The email address of the service account used for authenticatation. CES
+    uses this service account to exchange an access token and the access token
+    is then sent in the `Authorization` header of the request.
+    The service account must have the
+    `roles/iam.serviceAccountTokenCreator` role granted to the
+    CES service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs:
@@ -14417,11 +14051,8 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig
         pulumi.set(self, "service_account", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict(TypedDict):
-        pass
-elif False:
-    AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs:
@@ -14429,20 +14060,17 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthC
         pass
 
 
-if not MYPY:
-    class AppVersionSnapshotToolOpenApiToolServiceDirectoryConfigArgsDict(TypedDict):
-        service: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of [Service
-        Directory](https://cloud.google.com/service-directory) service.
-        Format:
-        `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-        Location of the service directory must be the same as the location of the
-        app.
-        """
-elif False:
-    AppVersionSnapshotToolOpenApiToolServiceDirectoryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolOpenApiToolServiceDirectoryConfigArgsDict(TypedDict):
+    service: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of [Service
+    Directory](https://cloud.google.com/service-directory) service.
+    Format:
+    `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+    Location of the service directory must be the same as the location of the
+    app.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolOpenApiToolServiceDirectoryConfigArgs:
@@ -14479,17 +14107,14 @@ class AppVersionSnapshotToolOpenApiToolServiceDirectoryConfigArgs:
         pulumi.set(self, "service", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolOpenApiToolTlsConfigArgsDict(TypedDict):
-        ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolTlsConfigCaCertArgsDict']]]]
-        """
-        (Output)
-        Specifies a list of allowed custom CA certificates for HTTPS
-        verification.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotToolOpenApiToolTlsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolOpenApiToolTlsConfigArgsDict(TypedDict):
+    ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolTlsConfigCaCertArgsDict']]]]
+    """
+    (Output)
+    Specifies a list of allowed custom CA certificates for HTTPS
+    verification.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolOpenApiToolTlsConfigArgs:
@@ -14520,28 +14145,25 @@ class AppVersionSnapshotToolOpenApiToolTlsConfigArgs:
         pulumi.set(self, "ca_certs", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolOpenApiToolTlsConfigCaCertArgsDict(TypedDict):
-        cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The allowed custom CA certificates (in DER format) for
-        HTTPS verification. This overrides the default SSL trust store. If this
-        is empty or unspecified, CES will use Google's default trust
-        store to verify certificates. N.B. Make sure the HTTPS server
-        certificates are signed with "subject alt name". For instance a
-        certificate can be self-signed using the following command,
-        openssl x509 -req -days 200 -in example.com.csr \\
-        -signkey example.com.key \\
-        -out example.com.crt \\
-        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the app version.
-        """
-elif False:
-    AppVersionSnapshotToolOpenApiToolTlsConfigCaCertArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolOpenApiToolTlsConfigCaCertArgsDict(TypedDict):
+    cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The allowed custom CA certificates (in DER format) for
+    HTTPS verification. This overrides the default SSL trust store. If this
+    is empty or unspecified, CES will use Google's default trust
+    store to verify certificates. N.B. Make sure the HTTPS server
+    certificates are signed with "subject alt name". For instance a
+    certificate can be self-signed using the following command,
+    openssl x509 -req -days 200 -in example.com.csr \\
+    -signkey example.com.key \\
+    -out example.com.crt \\
+    -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the app version.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolOpenApiToolTlsConfigCaCertArgs:
@@ -14602,26 +14224,23 @@ class AppVersionSnapshotToolOpenApiToolTlsConfigCaCertArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolPythonFunctionArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        python_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Python code to execute for the tool.
-        """
-elif False:
-    AppVersionSnapshotToolPythonFunctionArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolPythonFunctionArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    python_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Python code to execute for the tool.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolPythonFunctionArgs:
@@ -14686,21 +14305,18 @@ class AppVersionSnapshotToolPythonFunctionArgs:
         pulumi.set(self, "python_code", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolSystemToolArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-elif False:
-    AppVersionSnapshotToolSystemToolArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolSystemToolArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolSystemToolArgs:
@@ -14747,56 +14363,53 @@ class AppVersionSnapshotToolSystemToolArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolsetArgsDict(TypedDict):
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the toolset was created.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the app version.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the app version.
-        """
-        etag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        ETag used to ensure the object hasn't changed during a read-modify-write
-        operation. If the etag is empty, the update will overwrite any concurrent
-        changes.
-        """
-        execution_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Possible values:
-        SYNCHRONOUS
-        ASYNCHRONOUS
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Identifier. The unique identifier of the toolset.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        open_api_toolsets: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetArgsDict']]]]
-        """
-        (Output)
-        A toolset that contains a list of tools that are defined by an OpenAPI
-        schema.
-        Structure is documented below.
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the toolset was last updated.
-        """
-elif False:
-    AppVersionSnapshotToolsetArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolsetArgsDict(TypedDict):
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the toolset was created.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app version.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the app version.
+    """
+    etag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    ETag used to ensure the object hasn't changed during a read-modify-write
+    operation. If the etag is empty, the update will overwrite any concurrent
+    changes.
+    """
+    execution_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Possible values:
+    SYNCHRONOUS
+    ASYNCHRONOUS
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Identifier. The unique identifier of the toolset.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    open_api_toolsets: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetArgsDict']]]]
+    """
+    (Output)
+    A toolset that contains a list of tools that are defined by an OpenAPI
+    schema.
+    Structure is documented below.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the toolset was last updated.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolsetArgs:
@@ -14961,49 +14574,46 @@ class AppVersionSnapshotToolsetArgs:
         pulumi.set(self, "update_time", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolsetOpenApiToolsetArgsDict(TypedDict):
-        api_authentications: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationArgsDict']]]]
-        """
-        (Output)
-        Authentication information required for API calls.
-        Structure is documented below.
-        """
-        ignore_unknown_fields: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        If true, the agent will ignore unknown fields in the API response for all
-        operations defined in the OpenAPI schema.
-        """
-        open_api_schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The OpenAPI schema of the toolset.
-        """
-        service_directory_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfigArgsDict']]]]
-        """
-        (Output)
-        Configuration for tools using Service Directory.
-        Structure is documented below.
-        """
-        tls_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetTlsConfigArgsDict']]]]
-        """
-        (Output)
-        The TLS configuration.
-        Structure is documented below.
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The server URL of the Open API schema.
-        This field is only set in toolsets in the environment dependencies
-        during the export process if the schema contains a server url.
-        During the import process, if this url is present in the environment dependencies
-        and the schema has the $env_var placeholder,
-        it will replace the placeholder in the schema.
-        """
-elif False:
-    AppVersionSnapshotToolsetOpenApiToolsetArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolsetOpenApiToolsetArgsDict(TypedDict):
+    api_authentications: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationArgsDict']]]]
+    """
+    (Output)
+    Authentication information required for API calls.
+    Structure is documented below.
+    """
+    ignore_unknown_fields: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    If true, the agent will ignore unknown fields in the API response for all
+    operations defined in the OpenAPI schema.
+    """
+    open_api_schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The OpenAPI schema of the toolset.
+    """
+    service_directory_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfigArgsDict']]]]
+    """
+    (Output)
+    Configuration for tools using Service Directory.
+    Structure is documented below.
+    """
+    tls_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetTlsConfigArgsDict']]]]
+    """
+    (Output)
+    The TLS configuration.
+    Structure is documented below.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The server URL of the Open API schema.
+    This field is only set in toolsets in the environment dependencies
+    during the export process if the schema contains a server url.
+    During the import process, if this url is present in the environment dependencies
+    and the schema has the $env_var placeholder,
+    it will replace the placeholder in the schema.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolsetOpenApiToolsetArgs:
@@ -15138,41 +14748,38 @@ class AppVersionSnapshotToolsetOpenApiToolsetArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationArgsDict(TypedDict):
-        api_key_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgsDict']]]]
-        """
-        (Output)
-        Configurations for authentication with API key.
-        Structure is documented below.
-        """
-        bearer_token_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgsDict']]]]
-        """
-        (Output)
-        Configurations for authentication with a bearer token.
-        Structure is documented below.
-        """
-        oauth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationOauthConfigArgsDict']]]]
-        """
-        (Output)
-        Configurations for authentication with OAuth.
-        Structure is documented below.
-        """
-        service_account_auth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgsDict']]]]
-        """
-        (Output)
-        Configurations for authentication using a custom service account.
-        Structure is documented below.
-        """
-        service_agent_id_token_auth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]]]
-        """
-        (Output)
-        Configurations for authentication with [ID
-        token](https://cloud.google.com/docs/authentication/token-types#id) generated
-        from service agent.
-        """
-elif False:
-    AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationArgsDict(TypedDict):
+    api_key_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgsDict']]]]
+    """
+    (Output)
+    Configurations for authentication with API key.
+    Structure is documented below.
+    """
+    bearer_token_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgsDict']]]]
+    """
+    (Output)
+    Configurations for authentication with a bearer token.
+    Structure is documented below.
+    """
+    oauth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationOauthConfigArgsDict']]]]
+    """
+    (Output)
+    Configurations for authentication with OAuth.
+    Structure is documented below.
+    """
+    service_account_auth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgsDict']]]]
+    """
+    (Output)
+    Configurations for authentication using a custom service account.
+    Structure is documented below.
+    """
+    service_agent_id_token_auth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]]]
+    """
+    (Output)
+    Configurations for authentication with [ID
+    token](https://cloud.google.com/docs/authentication/token-types#id) generated
+    from service agent.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationArgs:
@@ -15283,33 +14890,30 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationArgs:
         pulumi.set(self, "service_agent_id_token_auth_configs", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgsDict(TypedDict):
-        api_key_secret_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the SecretManager secret version resource storing the API key.
-        Format: `projects/{project}/secrets/{secret}/versions/{version}`
-        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
-        service agent
-        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-        """
-        key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The parameter name or the header name of the API key.
-        E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
-        """
-        request_location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Key location in the request.
-        Possible values:
-        HEADER
-        QUERY_STRING
-        """
-elif False:
-    AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgsDict(TypedDict):
+    api_key_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the SecretManager secret version resource storing the API key.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+    service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The parameter name or the header name of the API key.
+    E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+    """
+    request_location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Key location in the request.
+    Possible values:
+    HEADER
+    QUERY_STRING
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs:
@@ -15388,14 +14992,11 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs:
         pulumi.set(self, "request_location", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgsDict(TypedDict):
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        """
-elif False:
-    AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgsDict(TypedDict):
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs:
@@ -15420,42 +15021,39 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigA
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationOauthConfigArgsDict(TypedDict):
-        client_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The client ID from the OAuth provider.
-        """
-        client_secret_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the SecretManager secret version resource storing the
-        client secret.
-        Format: `projects/{project}/secrets/{secret}/versions/{version}`
-        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
-        service agent
-        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-        """
-        oauth_grant_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        OAuth grant types.
-        Possible values:
-        CLIENT_CREDENTIAL
-        """
-        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        The OAuth scopes to grant.
-        """
-        token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The token endpoint in the OAuth provider to exchange for an access token.
-        """
-elif False:
-    AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationOauthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationOauthConfigArgsDict(TypedDict):
+    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The client ID from the OAuth provider.
+    """
+    client_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the SecretManager secret version resource storing the
+    client secret.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+    service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    oauth_grant_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    OAuth grant types.
+    Possible values:
+    CLIENT_CREDENTIAL
+    """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    The OAuth scopes to grant.
+    """
+    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The token endpoint in the OAuth provider to exchange for an access token.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationOauthConfigArgs:
@@ -15568,21 +15166,18 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationOauthConfigArgs:
         pulumi.set(self, "token_endpoint", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict):
-        service_account: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The email address of the service account used for authenticatation. CES
-        uses this service account to exchange an access token and the access token
-        is then sent in the `Authorization` header of the request.
-        The service account must have the
-        `roles/iam.serviceAccountTokenCreator` role granted to the
-        CES service agent
-        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-        """
-elif False:
-    AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict):
+    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The email address of the service account used for authenticatation. CES
+    uses this service account to exchange an access token and the access token
+    is then sent in the `Authorization` header of the request.
+    The service account must have the
+    `roles/iam.serviceAccountTokenCreator` role granted to the
+    CES service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs:
@@ -15621,11 +15216,8 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuth
         pulumi.set(self, "service_account", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict(TypedDict):
-        pass
-elif False:
-    AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs:
@@ -15633,20 +15225,17 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAgentIdToke
         pass
 
 
-if not MYPY:
-    class AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfigArgsDict(TypedDict):
-        service: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of [Service
-        Directory](https://cloud.google.com/service-directory) service.
-        Format:
-        `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-        Location of the service directory must be the same as the location of the
-        app.
-        """
-elif False:
-    AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfigArgsDict(TypedDict):
+    service: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of [Service
+    Directory](https://cloud.google.com/service-directory) service.
+    Format:
+    `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+    Location of the service directory must be the same as the location of the
+    app.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfigArgs:
@@ -15683,17 +15272,14 @@ class AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfigArgs:
         pulumi.set(self, "service", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigArgsDict(TypedDict):
-        ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgsDict']]]]
-        """
-        (Output)
-        Specifies a list of allowed custom CA certificates for HTTPS
-        verification.
-        Structure is documented below.
-        """
-elif False:
-    AppVersionSnapshotToolsetOpenApiToolsetTlsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigArgsDict(TypedDict):
+    ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgsDict']]]]
+    """
+    (Output)
+    Specifies a list of allowed custom CA certificates for HTTPS
+    verification.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigArgs:
@@ -15724,28 +15310,25 @@ class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigArgs:
         pulumi.set(self, "ca_certs", value)
 
 
-if not MYPY:
-    class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgsDict(TypedDict):
-        cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The allowed custom CA certificates (in DER format) for
-        HTTPS verification. This overrides the default SSL trust store. If this
-        is empty or unspecified, CES will use Google's default trust
-        store to verify certificates. N.B. Make sure the HTTPS server
-        certificates are signed with "subject alt name". For instance a
-        certificate can be self-signed using the following command,
-        openssl x509 -req -days 200 -in example.com.csr \\
-        -signkey example.com.key \\
-        -out example.com.crt \\
-        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the app version.
-        """
-elif False:
-    AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgsDict: TypeAlias = Mapping[str, Any]
+class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgsDict(TypedDict):
+    cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The allowed custom CA certificates (in DER format) for
+    HTTPS verification. This overrides the default SSL trust store. If this
+    is empty or unspecified, CES will use Google's default trust
+    store to verify certificates. N.B. Make sure the HTTPS server
+    certificates are signed with "subject alt name". For instance a
+    certificate can be self-signed using the following command,
+    openssl x509 -req -days 200 -in example.com.csr \\
+    -signkey example.com.key \\
+    -out example.com.crt \\
+    -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the app version.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgs:
@@ -15806,46 +15389,43 @@ class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class DeploymentChannelProfileArgsDict(TypedDict):
-        channel_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the channel profile.
-        Possible values:
-        UNKNOWN
-        WEB_UI
-        API
-        TWILIO
-        GOOGLE_TELEPHONY_PLATFORM
-        CONTACT_CENTER_AS_A_SERVICE
-        """
-        disable_barge_in_control: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to disable user barge-in control in the conversation.
-        - **true**: User interruptions are disabled while the agent is speaking.
-        - **false**: The agent retains automatic control over when the user can
-        interrupt.
-        """
-        disable_dtmf: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to disable DTMF (dual-tone multi-frequency).
-        """
-        persona_property: NotRequired[pulumi.Input['DeploymentChannelProfilePersonaPropertyArgsDict']]
-        """
-        Represents the persona property of a channel.
-        Structure is documented below.
-        """
-        profile_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique identifier of the channel profile.
-        """
-        web_widget_config: NotRequired[pulumi.Input['DeploymentChannelProfileWebWidgetConfigArgsDict']]
-        """
-        Message for configuration for the web widget.
-        Structure is documented below.
-        """
-elif False:
-    DeploymentChannelProfileArgsDict: TypeAlias = Mapping[str, Any]
+class DeploymentChannelProfileArgsDict(TypedDict):
+    channel_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the channel profile.
+    Possible values:
+    UNKNOWN
+    WEB_UI
+    API
+    TWILIO
+    GOOGLE_TELEPHONY_PLATFORM
+    CONTACT_CENTER_AS_A_SERVICE
+    """
+    disable_barge_in_control: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to disable user barge-in control in the conversation.
+    - **true**: User interruptions are disabled while the agent is speaking.
+    - **false**: The agent retains automatic control over when the user can
+    interrupt.
+    """
+    disable_dtmf: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to disable DTMF (dual-tone multi-frequency).
+    """
+    persona_property: NotRequired[pulumi.Input['DeploymentChannelProfilePersonaPropertyArgsDict']]
+    """
+    Represents the persona property of a channel.
+    Structure is documented below.
+    """
+    profile_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of the channel profile.
+    """
+    web_widget_config: NotRequired[pulumi.Input['DeploymentChannelProfileWebWidgetConfigArgsDict']]
+    """
+    Message for configuration for the web widget.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DeploymentChannelProfileArgs:
@@ -15974,18 +15554,15 @@ class DeploymentChannelProfileArgs:
         pulumi.set(self, "web_widget_config", value)
 
 
-if not MYPY:
-    class DeploymentChannelProfilePersonaPropertyArgsDict(TypedDict):
-        persona: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The persona of the channel.
-        Possible values:
-        UNKNOWN
-        CONCISE
-        CHATTY
-        """
-elif False:
-    DeploymentChannelProfilePersonaPropertyArgsDict: TypeAlias = Mapping[str, Any]
+class DeploymentChannelProfilePersonaPropertyArgsDict(TypedDict):
+    persona: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The persona of the channel.
+    Possible values:
+    UNKNOWN
+    CONCISE
+    CHATTY
+    """
 
 @pulumi.input_type
 class DeploymentChannelProfilePersonaPropertyArgs:
@@ -16018,31 +15595,28 @@ class DeploymentChannelProfilePersonaPropertyArgs:
         pulumi.set(self, "persona", value)
 
 
-if not MYPY:
-    class DeploymentChannelProfileWebWidgetConfigArgsDict(TypedDict):
-        modality: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The modality of the web widget.
-        Possible values:
-        UNKNOWN_MODALITY
-        CHAT_AND_VOICE
-        VOICE_ONLY
-        CHAT_ONLY
-        """
-        theme: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The theme of the web widget.
-        Possible values:
-        UNKNOWN_THEME
-        LIGHT
-        DARK
-        """
-        web_widget_title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The title of the web widget.
-        """
-elif False:
-    DeploymentChannelProfileWebWidgetConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DeploymentChannelProfileWebWidgetConfigArgsDict(TypedDict):
+    modality: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The modality of the web widget.
+    Possible values:
+    UNKNOWN_MODALITY
+    CHAT_AND_VOICE
+    VOICE_ONLY
+    CHAT_ONLY
+    """
+    theme: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The theme of the web widget.
+    Possible values:
+    UNKNOWN_THEME
+    LIGHT
+    DARK
+    """
+    web_widget_title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The title of the web widget.
+    """
 
 @pulumi.input_type
 class DeploymentChannelProfileWebWidgetConfigArgs:
@@ -16117,19 +15691,16 @@ class DeploymentChannelProfileWebWidgetConfigArgs:
         pulumi.set(self, "web_widget_title", value)
 
 
-if not MYPY:
-    class ExampleMessageArgsDict(TypedDict):
-        chunks: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExampleMessageChunkArgsDict']]]]
-        """
-        Content of the message as a series of chunks.
-        Structure is documented below.
-        """
-        role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role within the conversation, e.g., user, agent.
-        """
-elif False:
-    ExampleMessageArgsDict: TypeAlias = Mapping[str, Any]
+class ExampleMessageArgsDict(TypedDict):
+    chunks: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExampleMessageChunkArgsDict']]]]
+    """
+    Content of the message as a series of chunks.
+    Structure is documented below.
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role within the conversation, e.g., user, agent.
+    """
 
 @pulumi.input_type
 class ExampleMessageArgs:
@@ -16172,40 +15743,37 @@ class ExampleMessageArgs:
         pulumi.set(self, "role", value)
 
 
-if not MYPY:
-    class ExampleMessageChunkArgsDict(TypedDict):
-        agent_transfer: NotRequired[pulumi.Input['ExampleMessageChunkAgentTransferArgsDict']]
-        """
-        Represents an event indicating the transfer of a conversation to a different
-        agent.
-        Structure is documented below.
-        """
-        image: NotRequired[pulumi.Input['ExampleMessageChunkImageArgsDict']]
-        """
-        Represents an image input or output in the conversation.
-        Structure is documented below.
-        """
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Text data.
-        """
-        tool_call: NotRequired[pulumi.Input['ExampleMessageChunkToolCallArgsDict']]
-        """
-        Request for the client or the agent to execute the specified tool.
-        Structure is documented below.
-        """
-        tool_response: NotRequired[pulumi.Input['ExampleMessageChunkToolResponseArgsDict']]
-        """
-        The execution result of a specific tool from the client or the agent.
-        Structure is documented below.
-        """
-        updated_variables: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A struct represents variables that were updated in the conversation,
-        keyed by variable names.
-        """
-elif False:
-    ExampleMessageChunkArgsDict: TypeAlias = Mapping[str, Any]
+class ExampleMessageChunkArgsDict(TypedDict):
+    agent_transfer: NotRequired[pulumi.Input['ExampleMessageChunkAgentTransferArgsDict']]
+    """
+    Represents an event indicating the transfer of a conversation to a different
+    agent.
+    Structure is documented below.
+    """
+    image: NotRequired[pulumi.Input['ExampleMessageChunkImageArgsDict']]
+    """
+    Represents an image input or output in the conversation.
+    Structure is documented below.
+    """
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Text data.
+    """
+    tool_call: NotRequired[pulumi.Input['ExampleMessageChunkToolCallArgsDict']]
+    """
+    Request for the client or the agent to execute the specified tool.
+    Structure is documented below.
+    """
+    tool_response: NotRequired[pulumi.Input['ExampleMessageChunkToolResponseArgsDict']]
+    """
+    The execution result of a specific tool from the client or the agent.
+    Structure is documented below.
+    """
+    updated_variables: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A struct represents variables that were updated in the conversation,
+    keyed by variable names.
+    """
 
 @pulumi.input_type
 class ExampleMessageChunkArgs:
@@ -16322,21 +15890,18 @@ class ExampleMessageChunkArgs:
         pulumi.set(self, "updated_variables", value)
 
 
-if not MYPY:
-    class ExampleMessageChunkAgentTransferArgsDict(TypedDict):
-        target_agent: pulumi.Input[_builtins.str]
-        """
-        The agent to which the conversation is being transferred. The agent will
-        handle the conversation from this point forward.
-        Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Display name of the agent.
-        """
-elif False:
-    ExampleMessageChunkAgentTransferArgsDict: TypeAlias = Mapping[str, Any]
+class ExampleMessageChunkAgentTransferArgsDict(TypedDict):
+    target_agent: pulumi.Input[_builtins.str]
+    """
+    The agent to which the conversation is being transferred. The agent will
+    handle the conversation from this point forward.
+    Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Display name of the agent.
+    """
 
 @pulumi.input_type
 class ExampleMessageChunkAgentTransferArgs:
@@ -16382,22 +15947,19 @@ class ExampleMessageChunkAgentTransferArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class ExampleMessageChunkImageArgsDict(TypedDict):
-        data: pulumi.Input[_builtins.str]
-        """
-        Raw bytes of the image.
-        """
-        mime_type: pulumi.Input[_builtins.str]
-        """
-        The IANA standard MIME type of the source data.
-        Supported image types includes:
-        * image/png
-        * image/jpeg
-        * image/webp
-        """
-elif False:
-    ExampleMessageChunkImageArgsDict: TypeAlias = Mapping[str, Any]
+class ExampleMessageChunkImageArgsDict(TypedDict):
+    data: pulumi.Input[_builtins.str]
+    """
+    Raw bytes of the image.
+    """
+    mime_type: pulumi.Input[_builtins.str]
+    """
+    The IANA standard MIME type of the source data.
+    Supported image types includes:
+    * image/png
+    * image/jpeg
+    * image/webp
+    """
 
 @pulumi.input_type
 class ExampleMessageChunkImageArgs:
@@ -16444,35 +16006,32 @@ class ExampleMessageChunkImageArgs:
         pulumi.set(self, "mime_type", value)
 
 
-if not MYPY:
-    class ExampleMessageChunkToolCallArgsDict(TypedDict):
-        args: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input parameters and values for the tool in JSON object format.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Display name of the tool.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique identifier of the tool call. If populated, the client should
-        return the execution result with the matching ID in
-        ToolResponse.
-        """
-        tool: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the tool to execute.
-        Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-        """
-        toolset_tool: NotRequired[pulumi.Input['ExampleMessageChunkToolCallToolsetToolArgsDict']]
-        """
-        A tool that is created from a toolset.
-        Structure is documented below.
-        """
-elif False:
-    ExampleMessageChunkToolCallArgsDict: TypeAlias = Mapping[str, Any]
+class ExampleMessageChunkToolCallArgsDict(TypedDict):
+    args: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input parameters and values for the tool in JSON object format.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Display name of the tool.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of the tool call. If populated, the client should
+    return the execution result with the matching ID in
+    ToolResponse.
+    """
+    tool: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the tool to execute.
+    Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
+    """
+    toolset_tool: NotRequired[pulumi.Input['ExampleMessageChunkToolCallToolsetToolArgsDict']]
+    """
+    A tool that is created from a toolset.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ExampleMessageChunkToolCallArgs:
@@ -16571,20 +16130,17 @@ class ExampleMessageChunkToolCallArgs:
         pulumi.set(self, "toolset_tool", value)
 
 
-if not MYPY:
-    class ExampleMessageChunkToolCallToolsetToolArgsDict(TypedDict):
-        toolset: pulumi.Input[_builtins.str]
-        """
-        The resource name of the Toolset from which this tool is derived.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        tool_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tool ID to filter the tools to retrieve the schema for.
-        """
-elif False:
-    ExampleMessageChunkToolCallToolsetToolArgsDict: TypeAlias = Mapping[str, Any]
+class ExampleMessageChunkToolCallToolsetToolArgsDict(TypedDict):
+    toolset: pulumi.Input[_builtins.str]
+    """
+    The resource name of the Toolset from which this tool is derived.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    tool_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tool ID to filter the tools to retrieve the schema for.
+    """
 
 @pulumi.input_type
 class ExampleMessageChunkToolCallToolsetToolArgs:
@@ -16628,36 +16184,33 @@ class ExampleMessageChunkToolCallToolsetToolArgs:
         pulumi.set(self, "tool_id", value)
 
 
-if not MYPY:
-    class ExampleMessageChunkToolResponseArgsDict(TypedDict):
-        response: pulumi.Input[_builtins.str]
-        """
-        The tool execution result in JSON object format.
-        Use "output" key to specify tool response and "error" key to specify
-        error details (if any). If "output" and "error" keys are not specified,
-        then whole "response" is treated as tool execution result.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Display name of the tool.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The matching ID of the tool call the response is for.
-        """
-        tool: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the tool to execute.
-        Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-        """
-        toolset_tool: NotRequired[pulumi.Input['ExampleMessageChunkToolResponseToolsetToolArgsDict']]
-        """
-        A tool that is created from a toolset.
-        Structure is documented below.
-        """
-elif False:
-    ExampleMessageChunkToolResponseArgsDict: TypeAlias = Mapping[str, Any]
+class ExampleMessageChunkToolResponseArgsDict(TypedDict):
+    response: pulumi.Input[_builtins.str]
+    """
+    The tool execution result in JSON object format.
+    Use "output" key to specify tool response and "error" key to specify
+    error details (if any). If "output" and "error" keys are not specified,
+    then whole "response" is treated as tool execution result.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Display name of the tool.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The matching ID of the tool call the response is for.
+    """
+    tool: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the tool to execute.
+    Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
+    """
+    toolset_tool: NotRequired[pulumi.Input['ExampleMessageChunkToolResponseToolsetToolArgsDict']]
+    """
+    A tool that is created from a toolset.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ExampleMessageChunkToolResponseArgs:
@@ -16757,20 +16310,17 @@ class ExampleMessageChunkToolResponseArgs:
         pulumi.set(self, "toolset_tool", value)
 
 
-if not MYPY:
-    class ExampleMessageChunkToolResponseToolsetToolArgsDict(TypedDict):
-        toolset: pulumi.Input[_builtins.str]
-        """
-        The resource name of the Toolset from which this tool is derived.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        """
-        tool_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tool ID to filter the tools to retrieve the schema for.
-        """
-elif False:
-    ExampleMessageChunkToolResponseToolsetToolArgsDict: TypeAlias = Mapping[str, Any]
+class ExampleMessageChunkToolResponseToolsetToolArgsDict(TypedDict):
+    toolset: pulumi.Input[_builtins.str]
+    """
+    The resource name of the Toolset from which this tool is derived.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+    """
+    tool_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tool ID to filter the tools to retrieve the schema for.
+    """
 
 @pulumi.input_type
 class ExampleMessageChunkToolResponseToolsetToolArgs:
@@ -16814,25 +16364,22 @@ class ExampleMessageChunkToolResponseToolsetToolArgs:
         pulumi.set(self, "tool_id", value)
 
 
-if not MYPY:
-    class GuardrailActionArgsDict(TypedDict):
-        generative_answer: NotRequired[pulumi.Input['GuardrailActionGenerativeAnswerArgsDict']]
-        """
-        The agent will immediately respond with a generative answer.
-        Structure is documented below.
-        """
-        respond_immediately: NotRequired[pulumi.Input['GuardrailActionRespondImmediatelyArgsDict']]
-        """
-        The agent will immediately respond with a preconfigured response.
-        Structure is documented below.
-        """
-        transfer_agent: NotRequired[pulumi.Input['GuardrailActionTransferAgentArgsDict']]
-        """
-        The agent will transfer the conversation to a different agent.
-        Structure is documented below.
-        """
-elif False:
-    GuardrailActionArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailActionArgsDict(TypedDict):
+    generative_answer: NotRequired[pulumi.Input['GuardrailActionGenerativeAnswerArgsDict']]
+    """
+    The agent will immediately respond with a generative answer.
+    Structure is documented below.
+    """
+    respond_immediately: NotRequired[pulumi.Input['GuardrailActionRespondImmediatelyArgsDict']]
+    """
+    The agent will immediately respond with a preconfigured response.
+    Structure is documented below.
+    """
+    transfer_agent: NotRequired[pulumi.Input['GuardrailActionTransferAgentArgsDict']]
+    """
+    The agent will transfer the conversation to a different agent.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GuardrailActionArgs:
@@ -16895,14 +16442,11 @@ class GuardrailActionArgs:
         pulumi.set(self, "transfer_agent", value)
 
 
-if not MYPY:
-    class GuardrailActionGenerativeAnswerArgsDict(TypedDict):
-        prompt: pulumi.Input[_builtins.str]
-        """
-        The prompt to use for the generative answer.
-        """
-elif False:
-    GuardrailActionGenerativeAnswerArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailActionGenerativeAnswerArgsDict(TypedDict):
+    prompt: pulumi.Input[_builtins.str]
+    """
+    The prompt to use for the generative answer.
+    """
 
 @pulumi.input_type
 class GuardrailActionGenerativeAnswerArgs:
@@ -16926,16 +16470,13 @@ class GuardrailActionGenerativeAnswerArgs:
         pulumi.set(self, "prompt", value)
 
 
-if not MYPY:
-    class GuardrailActionRespondImmediatelyArgsDict(TypedDict):
-        responses: pulumi.Input[Sequence[pulumi.Input['GuardrailActionRespondImmediatelyResponseArgsDict']]]
-        """
-        The canned responses for the agent to choose from. The response is chosen
-        randomly.
-        Structure is documented below.
-        """
-elif False:
-    GuardrailActionRespondImmediatelyArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailActionRespondImmediatelyArgsDict(TypedDict):
+    responses: pulumi.Input[Sequence[pulumi.Input['GuardrailActionRespondImmediatelyResponseArgsDict']]]
+    """
+    The canned responses for the agent to choose from. The response is chosen
+    randomly.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GuardrailActionRespondImmediatelyArgs:
@@ -16963,19 +16504,16 @@ class GuardrailActionRespondImmediatelyArgs:
         pulumi.set(self, "responses", value)
 
 
-if not MYPY:
-    class GuardrailActionRespondImmediatelyResponseArgsDict(TypedDict):
-        text: pulumi.Input[_builtins.str]
-        """
-        Text for the agent to respond with.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the response is disabled. Disabled responses are not used by the
-        agent.
-        """
-elif False:
-    GuardrailActionRespondImmediatelyResponseArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailActionRespondImmediatelyResponseArgsDict(TypedDict):
+    text: pulumi.Input[_builtins.str]
+    """
+    Text for the agent to respond with.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the response is disabled. Disabled responses are not used by the
+    agent.
+    """
 
 @pulumi.input_type
 class GuardrailActionRespondImmediatelyResponseArgs:
@@ -17017,17 +16555,14 @@ class GuardrailActionRespondImmediatelyResponseArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class GuardrailActionTransferAgentArgsDict(TypedDict):
-        agent: pulumi.Input[_builtins.str]
-        """
-        The name of the agent to transfer the conversation to. The agent must be
-        in the same app as the current agent.
-        Format:
-        `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-        """
-elif False:
-    GuardrailActionTransferAgentArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailActionTransferAgentArgsDict(TypedDict):
+    agent: pulumi.Input[_builtins.str]
+    """
+    The name of the agent to transfer the conversation to. The agent must be
+    in the same app as the current agent.
+    Format:
+    `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+    """
 
 @pulumi.input_type
 class GuardrailActionTransferAgentArgs:
@@ -17057,34 +16592,31 @@ class GuardrailActionTransferAgentArgs:
         pulumi.set(self, "agent", value)
 
 
-if not MYPY:
-    class GuardrailCodeCallbackArgsDict(TypedDict):
-        after_agent_callback: NotRequired[pulumi.Input['GuardrailCodeCallbackAfterAgentCallbackArgsDict']]
-        """
-        A callback defines the custom logic to be executed at various stages of
-        agent interaction.
-        Structure is documented below.
-        """
-        after_model_callback: NotRequired[pulumi.Input['GuardrailCodeCallbackAfterModelCallbackArgsDict']]
-        """
-        A callback defines the custom logic to be executed at various stages of
-        agent interaction.
-        Structure is documented below.
-        """
-        before_agent_callback: NotRequired[pulumi.Input['GuardrailCodeCallbackBeforeAgentCallbackArgsDict']]
-        """
-        A callback defines the custom logic to be executed at various stages of
-        agent interaction.
-        Structure is documented below.
-        """
-        before_model_callback: NotRequired[pulumi.Input['GuardrailCodeCallbackBeforeModelCallbackArgsDict']]
-        """
-        A callback defines the custom logic to be executed at various stages of
-        agent interaction.
-        Structure is documented below.
-        """
-elif False:
-    GuardrailCodeCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailCodeCallbackArgsDict(TypedDict):
+    after_agent_callback: NotRequired[pulumi.Input['GuardrailCodeCallbackAfterAgentCallbackArgsDict']]
+    """
+    A callback defines the custom logic to be executed at various stages of
+    agent interaction.
+    Structure is documented below.
+    """
+    after_model_callback: NotRequired[pulumi.Input['GuardrailCodeCallbackAfterModelCallbackArgsDict']]
+    """
+    A callback defines the custom logic to be executed at various stages of
+    agent interaction.
+    Structure is documented below.
+    """
+    before_agent_callback: NotRequired[pulumi.Input['GuardrailCodeCallbackBeforeAgentCallbackArgsDict']]
+    """
+    A callback defines the custom logic to be executed at various stages of
+    agent interaction.
+    Structure is documented below.
+    """
+    before_model_callback: NotRequired[pulumi.Input['GuardrailCodeCallbackBeforeModelCallbackArgsDict']]
+    """
+    A callback defines the custom logic to be executed at various stages of
+    agent interaction.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GuardrailCodeCallbackArgs:
@@ -17173,23 +16705,20 @@ class GuardrailCodeCallbackArgs:
         pulumi.set(self, "before_model_callback", value)
 
 
-if not MYPY:
-    class GuardrailCodeCallbackAfterAgentCallbackArgsDict(TypedDict):
-        python_code: pulumi.Input[_builtins.str]
-        """
-        The python code to execute for the callback.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human-readable description of the callback.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the callback is disabled. Disabled callbacks are ignored by the
-        agent.
-        """
-elif False:
-    GuardrailCodeCallbackAfterAgentCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailCodeCallbackAfterAgentCallbackArgsDict(TypedDict):
+    python_code: pulumi.Input[_builtins.str]
+    """
+    The python code to execute for the callback.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Human-readable description of the callback.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the callback is disabled. Disabled callbacks are ignored by the
+    agent.
+    """
 
 @pulumi.input_type
 class GuardrailCodeCallbackAfterAgentCallbackArgs:
@@ -17247,23 +16776,20 @@ class GuardrailCodeCallbackAfterAgentCallbackArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class GuardrailCodeCallbackAfterModelCallbackArgsDict(TypedDict):
-        python_code: pulumi.Input[_builtins.str]
-        """
-        The python code to execute for the callback.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human-readable description of the callback.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the callback is disabled. Disabled callbacks are ignored by the
-        agent.
-        """
-elif False:
-    GuardrailCodeCallbackAfterModelCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailCodeCallbackAfterModelCallbackArgsDict(TypedDict):
+    python_code: pulumi.Input[_builtins.str]
+    """
+    The python code to execute for the callback.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Human-readable description of the callback.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the callback is disabled. Disabled callbacks are ignored by the
+    agent.
+    """
 
 @pulumi.input_type
 class GuardrailCodeCallbackAfterModelCallbackArgs:
@@ -17321,23 +16847,20 @@ class GuardrailCodeCallbackAfterModelCallbackArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class GuardrailCodeCallbackBeforeAgentCallbackArgsDict(TypedDict):
-        python_code: pulumi.Input[_builtins.str]
-        """
-        The python code to execute for the callback.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human-readable description of the callback.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the callback is disabled. Disabled callbacks are ignored by the
-        agent.
-        """
-elif False:
-    GuardrailCodeCallbackBeforeAgentCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailCodeCallbackBeforeAgentCallbackArgsDict(TypedDict):
+    python_code: pulumi.Input[_builtins.str]
+    """
+    The python code to execute for the callback.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Human-readable description of the callback.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the callback is disabled. Disabled callbacks are ignored by the
+    agent.
+    """
 
 @pulumi.input_type
 class GuardrailCodeCallbackBeforeAgentCallbackArgs:
@@ -17395,23 +16918,20 @@ class GuardrailCodeCallbackBeforeAgentCallbackArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class GuardrailCodeCallbackBeforeModelCallbackArgsDict(TypedDict):
-        python_code: pulumi.Input[_builtins.str]
-        """
-        The python code to execute for the callback.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human-readable description of the callback.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the callback is disabled. Disabled callbacks are ignored by the
-        agent.
-        """
-elif False:
-    GuardrailCodeCallbackBeforeModelCallbackArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailCodeCallbackBeforeModelCallbackArgsDict(TypedDict):
+    python_code: pulumi.Input[_builtins.str]
+    """
+    The python code to execute for the callback.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Human-readable description of the callback.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the callback is disabled. Disabled callbacks are ignored by the
+    agent.
+    """
 
 @pulumi.input_type
 class GuardrailCodeCallbackBeforeModelCallbackArgs:
@@ -17469,34 +16989,31 @@ class GuardrailCodeCallbackBeforeModelCallbackArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class GuardrailContentFilterArgsDict(TypedDict):
-        match_type: pulumi.Input[_builtins.str]
-        """
-        Match type for the content filter.
-        Possible values:
-        SIMPLE_STRING_MATCH
-        WORD_BOUNDARY_STRING_MATCH
-        REGEXP_MATCH
-        """
-        banned_contents: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of banned phrases. Applies to both user inputs and agent responses.
-        """
-        banned_contents_in_agent_responses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of banned phrases. Applies only to agent responses.
-        """
-        banned_contents_in_user_inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of banned phrases. Applies only to user inputs.
-        """
-        disregard_diacritics: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, diacritics are ignored during matching.
-        """
-elif False:
-    GuardrailContentFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailContentFilterArgsDict(TypedDict):
+    match_type: pulumi.Input[_builtins.str]
+    """
+    Match type for the content filter.
+    Possible values:
+    SIMPLE_STRING_MATCH
+    WORD_BOUNDARY_STRING_MATCH
+    REGEXP_MATCH
+    """
+    banned_contents: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of banned phrases. Applies to both user inputs and agent responses.
+    """
+    banned_contents_in_agent_responses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of banned phrases. Applies only to agent responses.
+    """
+    banned_contents_in_user_inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of banned phrases. Applies only to user inputs.
+    """
+    disregard_diacritics: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, diacritics are ignored during matching.
+    """
 
 @pulumi.input_type
 class GuardrailContentFilterArgs:
@@ -17592,48 +17109,45 @@ class GuardrailContentFilterArgs:
         pulumi.set(self, "disregard_diacritics", value)
 
 
-if not MYPY:
-    class GuardrailLlmPolicyArgsDict(TypedDict):
-        policy_scope: pulumi.Input[_builtins.str]
-        """
-        Defines when to apply the policy check during the conversation. If set to
-        `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
-        When applying the policy to the agent response, additional latency will
-        be introduced before the agent can respond.
-        Possible values:
-        USER_QUERY
-        AGENT_RESPONSE
-        USER_QUERY_AND_AGENT_RESPONSE
-        Possible values are: `USER_QUERY`, `AGENT_RESPONSE`, `USER_QUERY_AND_AGENT_RESPONSE`.
-        """
-        prompt: pulumi.Input[_builtins.str]
-        """
-        Policy prompt.
-        """
-        allow_short_utterance: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        By default, the LLM policy check is bypassed for short utterances.
-        Enabling this setting applies the policy check to all utterances,
-        including those that would normally be skipped.
-        """
-        fail_open: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If an error occurs during the policy check, fail open and do not trigger
-        the guardrail.
-        """
-        max_conversation_messages: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        When checking this policy, consider the last 'n' messages in the
-        conversation.
-        When not set a default value of 10 will be used.
-        """
-        model_settings: NotRequired[pulumi.Input['GuardrailLlmPolicyModelSettingsArgsDict']]
-        """
-        Model settings contains various configurations for the LLM model.
-        Structure is documented below.
-        """
-elif False:
-    GuardrailLlmPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailLlmPolicyArgsDict(TypedDict):
+    policy_scope: pulumi.Input[_builtins.str]
+    """
+    Defines when to apply the policy check during the conversation. If set to
+    `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+    When applying the policy to the agent response, additional latency will
+    be introduced before the agent can respond.
+    Possible values:
+    USER_QUERY
+    AGENT_RESPONSE
+    USER_QUERY_AND_AGENT_RESPONSE
+    Possible values are: `USER_QUERY`, `AGENT_RESPONSE`, `USER_QUERY_AND_AGENT_RESPONSE`.
+    """
+    prompt: pulumi.Input[_builtins.str]
+    """
+    Policy prompt.
+    """
+    allow_short_utterance: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    By default, the LLM policy check is bypassed for short utterances.
+    Enabling this setting applies the policy check to all utterances,
+    including those that would normally be skipped.
+    """
+    fail_open: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If an error occurs during the policy check, fail open and do not trigger
+    the guardrail.
+    """
+    max_conversation_messages: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    When checking this policy, consider the last 'n' messages in the
+    conversation.
+    When not set a default value of 10 will be used.
+    """
+    model_settings: NotRequired[pulumi.Input['GuardrailLlmPolicyModelSettingsArgsDict']]
+    """
+    Model settings contains various configurations for the LLM model.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GuardrailLlmPolicyArgs:
@@ -17764,22 +17278,19 @@ class GuardrailLlmPolicyArgs:
         pulumi.set(self, "model_settings", value)
 
 
-if not MYPY:
-    class GuardrailLlmPolicyModelSettingsArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The LLM model that the agent should use.
-        If not set, the agent will inherit the model from its parent agent.
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        If set, this temperature will be used for the LLM model. Temperature
-        controls the randomness of the model's responses. Lower temperatures
-        produce responses that are more predictable. Higher temperatures produce
-        responses that are more creative.
-        """
-elif False:
-    GuardrailLlmPolicyModelSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailLlmPolicyModelSettingsArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The LLM model that the agent should use.
+    If not set, the agent will inherit the model from its parent agent.
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    If set, this temperature will be used for the LLM model. Temperature
+    controls the randomness of the model's responses. Lower temperatures
+    produce responses that are more predictable. Higher temperatures produce
+    responses that are more creative.
+    """
 
 @pulumi.input_type
 class GuardrailLlmPolicyModelSettingsArgs:
@@ -17828,21 +17339,18 @@ class GuardrailLlmPolicyModelSettingsArgs:
         pulumi.set(self, "temperature", value)
 
 
-if not MYPY:
-    class GuardrailLlmPromptSecurityArgsDict(TypedDict):
-        custom_policy: NotRequired[pulumi.Input['GuardrailLlmPromptSecurityCustomPolicyArgsDict']]
-        """
-        Guardrail that blocks the conversation if the LLM response is considered
-        violating the policy based on the LLM classification.
-        Structure is documented below.
-        """
-        default_settings: NotRequired[pulumi.Input['GuardrailLlmPromptSecurityDefaultSettingsArgsDict']]
-        """
-        Configuration for default system security settings.
-        Structure is documented below.
-        """
-elif False:
-    GuardrailLlmPromptSecurityArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailLlmPromptSecurityArgsDict(TypedDict):
+    custom_policy: NotRequired[pulumi.Input['GuardrailLlmPromptSecurityCustomPolicyArgsDict']]
+    """
+    Guardrail that blocks the conversation if the LLM response is considered
+    violating the policy based on the LLM classification.
+    Structure is documented below.
+    """
+    default_settings: NotRequired[pulumi.Input['GuardrailLlmPromptSecurityDefaultSettingsArgsDict']]
+    """
+    Configuration for default system security settings.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GuardrailLlmPromptSecurityArgs:
@@ -17889,47 +17397,44 @@ class GuardrailLlmPromptSecurityArgs:
         pulumi.set(self, "default_settings", value)
 
 
-if not MYPY:
-    class GuardrailLlmPromptSecurityCustomPolicyArgsDict(TypedDict):
-        policy_scope: pulumi.Input[_builtins.str]
-        """
-        Defines when to apply the policy check during the conversation. If set to
-        `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
-        When applying the policy to the agent response, additional latency will
-        be introduced before the agent can respond.
-        Possible values:
-        USER_QUERY
-        AGENT_RESPONSE
-        USER_QUERY_AND_AGENT_RESPONSE
-        """
-        prompt: pulumi.Input[_builtins.str]
-        """
-        Policy prompt.
-        """
-        allow_short_utterance: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        By default, the LLM policy check is bypassed for short utterances.
-        Enabling this setting applies the policy check to all utterances,
-        including those that would normally be skipped.
-        """
-        fail_open: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If an error occurs during the policy check, fail open and do not trigger
-        the guardrail.
-        """
-        max_conversation_messages: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        When checking this policy, consider the last 'n' messages in the
-        conversation.
-        When not set a default value of 10 will be used.
-        """
-        model_settings: NotRequired[pulumi.Input['GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgsDict']]
-        """
-        Model settings contains various configurations for the LLM model.
-        Structure is documented below.
-        """
-elif False:
-    GuardrailLlmPromptSecurityCustomPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailLlmPromptSecurityCustomPolicyArgsDict(TypedDict):
+    policy_scope: pulumi.Input[_builtins.str]
+    """
+    Defines when to apply the policy check during the conversation. If set to
+    `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+    When applying the policy to the agent response, additional latency will
+    be introduced before the agent can respond.
+    Possible values:
+    USER_QUERY
+    AGENT_RESPONSE
+    USER_QUERY_AND_AGENT_RESPONSE
+    """
+    prompt: pulumi.Input[_builtins.str]
+    """
+    Policy prompt.
+    """
+    allow_short_utterance: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    By default, the LLM policy check is bypassed for short utterances.
+    Enabling this setting applies the policy check to all utterances,
+    including those that would normally be skipped.
+    """
+    fail_open: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If an error occurs during the policy check, fail open and do not trigger
+    the guardrail.
+    """
+    max_conversation_messages: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    When checking this policy, consider the last 'n' messages in the
+    conversation.
+    When not set a default value of 10 will be used.
+    """
+    model_settings: NotRequired[pulumi.Input['GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgsDict']]
+    """
+    Model settings contains various configurations for the LLM model.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GuardrailLlmPromptSecurityCustomPolicyArgs:
@@ -18058,22 +17563,19 @@ class GuardrailLlmPromptSecurityCustomPolicyArgs:
         pulumi.set(self, "model_settings", value)
 
 
-if not MYPY:
-    class GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The LLM model that the agent should use.
-        If not set, the agent will inherit the model from its parent agent.
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        If set, this temperature will be used for the LLM model. Temperature
-        controls the randomness of the model's responses. Lower temperatures
-        produce responses that are more predictable. Higher temperatures produce
-        responses that are more creative.
-        """
-elif False:
-    GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The LLM model that the agent should use.
+    If not set, the agent will inherit the model from its parent agent.
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    If set, this temperature will be used for the LLM model. Temperature
+    controls the randomness of the model's responses. Lower temperatures
+    produce responses that are more predictable. Higher temperatures produce
+    responses that are more creative.
+    """
 
 @pulumi.input_type
 class GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs:
@@ -18122,17 +17624,14 @@ class GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs:
         pulumi.set(self, "temperature", value)
 
 
-if not MYPY:
-    class GuardrailLlmPromptSecurityDefaultSettingsArgsDict(TypedDict):
-        default_prompt_template: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The default prompt template used by the system.
-        This field is for display purposes to show the user what prompt
-        the system uses by default. It is OUTPUT_ONLY.
-        """
-elif False:
-    GuardrailLlmPromptSecurityDefaultSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailLlmPromptSecurityDefaultSettingsArgsDict(TypedDict):
+    default_prompt_template: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The default prompt template used by the system.
+    This field is for display purposes to show the user what prompt
+    the system uses by default. It is OUTPUT_ONLY.
+    """
 
 @pulumi.input_type
 class GuardrailLlmPromptSecurityDefaultSettingsArgs:
@@ -18163,15 +17662,12 @@ class GuardrailLlmPromptSecurityDefaultSettingsArgs:
         pulumi.set(self, "default_prompt_template", value)
 
 
-if not MYPY:
-    class GuardrailModelSafetyArgsDict(TypedDict):
-        safety_settings: pulumi.Input[Sequence[pulumi.Input['GuardrailModelSafetySafetySettingArgsDict']]]
-        """
-        List of safety settings.
-        Structure is documented below.
-        """
-elif False:
-    GuardrailModelSafetyArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailModelSafetyArgsDict(TypedDict):
+    safety_settings: pulumi.Input[Sequence[pulumi.Input['GuardrailModelSafetySafetySettingArgsDict']]]
+    """
+    List of safety settings.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GuardrailModelSafetyArgs:
@@ -18197,31 +17693,28 @@ class GuardrailModelSafetyArgs:
         pulumi.set(self, "safety_settings", value)
 
 
-if not MYPY:
-    class GuardrailModelSafetySafetySettingArgsDict(TypedDict):
-        category: pulumi.Input[_builtins.str]
-        """
-        The harm category.
-        Possible values:
-        HARM_CATEGORY_HATE_SPEECH
-        HARM_CATEGORY_DANGEROUS_CONTENT
-        HARM_CATEGORY_HARASSMENT
-        HARM_CATEGORY_SEXUALLY_EXPLICIT
-        Possible values are: `HARM_CATEGORY_HATE_SPEECH`, `HARM_CATEGORY_DANGEROUS_CONTENT`, `HARM_CATEGORY_HARASSMENT`, `HARM_CATEGORY_SEXUALLY_EXPLICIT`.
-        """
-        threshold: pulumi.Input[_builtins.str]
-        """
-        The harm block threshold.
-        Possible values:
-        BLOCK_LOW_AND_ABOVE
-        BLOCK_MEDIUM_AND_ABOVE
-        BLOCK_ONLY_HIGH
-        BLOCK_NONE
-        OFF
-        Possible values are: `BLOCK_LOW_AND_ABOVE`, `BLOCK_MEDIUM_AND_ABOVE`, `BLOCK_ONLY_HIGH`, `BLOCK_NONE`, `OFF`.
-        """
-elif False:
-    GuardrailModelSafetySafetySettingArgsDict: TypeAlias = Mapping[str, Any]
+class GuardrailModelSafetySafetySettingArgsDict(TypedDict):
+    category: pulumi.Input[_builtins.str]
+    """
+    The harm category.
+    Possible values:
+    HARM_CATEGORY_HATE_SPEECH
+    HARM_CATEGORY_DANGEROUS_CONTENT
+    HARM_CATEGORY_HARASSMENT
+    HARM_CATEGORY_SEXUALLY_EXPLICIT
+    Possible values are: `HARM_CATEGORY_HATE_SPEECH`, `HARM_CATEGORY_DANGEROUS_CONTENT`, `HARM_CATEGORY_HARASSMENT`, `HARM_CATEGORY_SEXUALLY_EXPLICIT`.
+    """
+    threshold: pulumi.Input[_builtins.str]
+    """
+    The harm block threshold.
+    Possible values:
+    BLOCK_LOW_AND_ABOVE
+    BLOCK_MEDIUM_AND_ABOVE
+    BLOCK_ONLY_HIGH
+    BLOCK_NONE
+    OFF
+    Possible values are: `BLOCK_LOW_AND_ABOVE`, `BLOCK_MEDIUM_AND_ABOVE`, `BLOCK_ONLY_HIGH`, `BLOCK_NONE`, `OFF`.
+    """
 
 @pulumi.input_type
 class GuardrailModelSafetySafetySettingArgs:
@@ -18286,28 +17779,25 @@ class GuardrailModelSafetySafetySettingArgs:
         pulumi.set(self, "threshold", value)
 
 
-if not MYPY:
-    class ToolClientFunctionArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The function name.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The function description.
-        """
-        parameters: NotRequired[pulumi.Input['ToolClientFunctionParametersArgsDict']]
-        """
-        Represents a select subset of an OpenAPI 3.0 schema object.
-        Structure is documented below.
-        """
-        response: NotRequired[pulumi.Input['ToolClientFunctionResponseArgsDict']]
-        """
-        Represents a select subset of an OpenAPI 3.0 schema object.
-        Structure is documented below.
-        """
-elif False:
-    ToolClientFunctionArgsDict: TypeAlias = Mapping[str, Any]
+class ToolClientFunctionArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The function name.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The function description.
+    """
+    parameters: NotRequired[pulumi.Input['ToolClientFunctionParametersArgsDict']]
+    """
+    Represents a select subset of an OpenAPI 3.0 schema object.
+    Structure is documented below.
+    """
+    response: NotRequired[pulumi.Input['ToolClientFunctionResponseArgsDict']]
+    """
+    Represents a select subset of an OpenAPI 3.0 schema object.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ToolClientFunctionArgs:
@@ -18383,120 +17873,117 @@ class ToolClientFunctionArgs:
         pulumi.set(self, "response", value)
 
 
-if not MYPY:
-    class ToolClientFunctionParametersArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of the data.
-        Possible values:
-        STRING
-        INTEGER
-        NUMBER
-        BOOLEAN
-        OBJECT
-        ARRAY
-        """
-        additional_properties: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Defines the schema for additional properties allowed in an object.
-        The value must be a valid JSON string representing the Schema object.
-        (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
-        """
-        any_of: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance value should be valid against at least one of the schemas in this list.
-        """
-        default: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default value of the data. Represents a dynamically typed value
-        which can be either null, a number, a string, a boolean, a struct,
-        or a list of values. The provided default value must be compatible
-        with the defined 'type' and other schema constraints.
-        """
-        defs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A map of definitions for use by ref. Only allowed at the root of the schema.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the data.
-        """
-        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Possible values of the element of primitive type with enum format.
-        Examples:
-        1. We can define direction as :
-        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
-        2. We can define apartment number as :
-        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
-        """
-        items: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Schema of the elements of Type.ARRAY.
-        """
-        max_items: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of the elements for Type.ARRAY. (int64 format)
-        """
-        maximum: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Maximum value for Type.INTEGER and Type.NUMBER.
-        """
-        min_items: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum number of the elements for Type.ARRAY. (int64 format)
-        """
-        minimum: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Minimum value for Type.INTEGER and Type.NUMBER.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the value may be null.
-        """
-        prefix_items: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Schemas of initial elements of Type.ARRAY.
-        """
-        properties: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Properties of Type.OBJECT.
-        """
-        ref: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Allows indirect references between schema nodes. The value should be a
-        valid reference to a child of the root `defs`.
-        For example, the following schema defines a reference to a schema node
-        named "Pet":
-        type: object
-        properties:
-        pet:
-        ref: #/defs/Pet
-        defs:
-        Pet:
-        type: object
-        properties:
-        name:
-        type: string
-        The value of the "pet" property is a reference to the schema node
-        named "Pet".
-        See details in
-        https://json-schema.org/understanding-json-schema/structuring.
-        """
-        requireds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Required properties of Type.OBJECT.
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The title of the schema.
-        """
-        unique_items: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
-        """
-elif False:
-    ToolClientFunctionParametersArgsDict: TypeAlias = Mapping[str, Any]
+class ToolClientFunctionParametersArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the data.
+    Possible values:
+    STRING
+    INTEGER
+    NUMBER
+    BOOLEAN
+    OBJECT
+    ARRAY
+    """
+    additional_properties: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Defines the schema for additional properties allowed in an object.
+    The value must be a valid JSON string representing the Schema object.
+    (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+    """
+    any_of: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance value should be valid against at least one of the schemas in this list.
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default value of the data. Represents a dynamically typed value
+    which can be either null, a number, a string, a boolean, a struct,
+    or a list of values. The provided default value must be compatible
+    with the defined 'type' and other schema constraints.
+    """
+    defs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A map of definitions for use by ref. Only allowed at the root of the schema.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the data.
+    """
+    enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Possible values of the element of primitive type with enum format.
+    Examples:
+    1. We can define direction as :
+    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+    2. We can define apartment number as :
+    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+    """
+    items: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Schema of the elements of Type.ARRAY.
+    """
+    max_items: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of the elements for Type.ARRAY. (int64 format)
+    """
+    maximum: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Maximum value for Type.INTEGER and Type.NUMBER.
+    """
+    min_items: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum number of the elements for Type.ARRAY. (int64 format)
+    """
+    minimum: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Minimum value for Type.INTEGER and Type.NUMBER.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the value may be null.
+    """
+    prefix_items: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Schemas of initial elements of Type.ARRAY.
+    """
+    properties: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Properties of Type.OBJECT.
+    """
+    ref: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Allows indirect references between schema nodes. The value should be a
+    valid reference to a child of the root `defs`.
+    For example, the following schema defines a reference to a schema node
+    named "Pet":
+    type: object
+    properties:
+    pet:
+    ref: #/defs/Pet
+    defs:
+    Pet:
+    type: object
+    properties:
+    name:
+    type: string
+    The value of the "pet" property is a reference to the schema node
+    named "Pet".
+    See details in
+    https://json-schema.org/understanding-json-schema/structuring.
+    """
+    requireds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Required properties of Type.OBJECT.
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The title of the schema.
+    """
+    unique_items: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+    """
 
 @pulumi.input_type
 class ToolClientFunctionParametersArgs:
@@ -18876,120 +18363,117 @@ class ToolClientFunctionParametersArgs:
         pulumi.set(self, "unique_items", value)
 
 
-if not MYPY:
-    class ToolClientFunctionResponseArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of the data.
-        Possible values:
-        STRING
-        INTEGER
-        NUMBER
-        BOOLEAN
-        OBJECT
-        ARRAY
-        """
-        additional_properties: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Defines the schema for additional properties allowed in an object.
-        The value must be a valid JSON string representing the Schema object.
-        (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
-        """
-        any_of: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance value should be valid against at least one of the schemas in this list.
-        """
-        default: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default value of the data. Represents a dynamically typed value
-        which can be either null, a number, a string, a boolean, a struct,
-        or a list of values. The provided default value must be compatible
-        with the defined 'type' and other schema constraints.
-        """
-        defs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A map of definitions for use by ref. Only allowed at the root of the schema.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the data.
-        """
-        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Possible values of the element of primitive type with enum format.
-        Examples:
-        1. We can define direction as :
-        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
-        2. We can define apartment number as :
-        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
-        """
-        items: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Schema of the elements of Type.ARRAY.
-        """
-        max_items: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of the elements for Type.ARRAY. (int64 format)
-        """
-        maximum: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Maximum value for Type.INTEGER and Type.NUMBER.
-        """
-        min_items: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum number of the elements for Type.ARRAY. (int64 format)
-        """
-        minimum: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Minimum value for Type.INTEGER and Type.NUMBER.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the value may be null.
-        """
-        prefix_items: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Schemas of initial elements of Type.ARRAY.
-        """
-        properties: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Properties of Type.OBJECT.
-        """
-        ref: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Allows indirect references between schema nodes. The value should be a
-        valid reference to a child of the root `defs`.
-        For example, the following schema defines a reference to a schema node
-        named "Pet":
-        type: object
-        properties:
-        pet:
-        ref: #/defs/Pet
-        defs:
-        Pet:
-        type: object
-        properties:
-        name:
-        type: string
-        The value of the "pet" property is a reference to the schema node
-        named "Pet".
-        See details in
-        https://json-schema.org/understanding-json-schema/structuring.
-        """
-        requireds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Required properties of Type.OBJECT.
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The title of the schema.
-        """
-        unique_items: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
-        """
-elif False:
-    ToolClientFunctionResponseArgsDict: TypeAlias = Mapping[str, Any]
+class ToolClientFunctionResponseArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the data.
+    Possible values:
+    STRING
+    INTEGER
+    NUMBER
+    BOOLEAN
+    OBJECT
+    ARRAY
+    """
+    additional_properties: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Defines the schema for additional properties allowed in an object.
+    The value must be a valid JSON string representing the Schema object.
+    (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+    """
+    any_of: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance value should be valid against at least one of the schemas in this list.
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default value of the data. Represents a dynamically typed value
+    which can be either null, a number, a string, a boolean, a struct,
+    or a list of values. The provided default value must be compatible
+    with the defined 'type' and other schema constraints.
+    """
+    defs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A map of definitions for use by ref. Only allowed at the root of the schema.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the data.
+    """
+    enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Possible values of the element of primitive type with enum format.
+    Examples:
+    1. We can define direction as :
+    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+    2. We can define apartment number as :
+    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+    """
+    items: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Schema of the elements of Type.ARRAY.
+    """
+    max_items: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of the elements for Type.ARRAY. (int64 format)
+    """
+    maximum: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Maximum value for Type.INTEGER and Type.NUMBER.
+    """
+    min_items: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum number of the elements for Type.ARRAY. (int64 format)
+    """
+    minimum: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Minimum value for Type.INTEGER and Type.NUMBER.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the value may be null.
+    """
+    prefix_items: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Schemas of initial elements of Type.ARRAY.
+    """
+    properties: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Properties of Type.OBJECT.
+    """
+    ref: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Allows indirect references between schema nodes. The value should be a
+    valid reference to a child of the root `defs`.
+    For example, the following schema defines a reference to a schema node
+    named "Pet":
+    type: object
+    properties:
+    pet:
+    ref: #/defs/Pet
+    defs:
+    Pet:
+    type: object
+    properties:
+    name:
+    type: string
+    The value of the "pet" property is a reference to the schema node
+    named "Pet".
+    See details in
+    https://json-schema.org/understanding-json-schema/structuring.
+    """
+    requireds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Required properties of Type.OBJECT.
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The title of the schema.
+    """
+    unique_items: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+    """
 
 @pulumi.input_type
 class ToolClientFunctionResponseArgs:
@@ -19369,39 +18853,36 @@ class ToolClientFunctionResponseArgs:
         pulumi.set(self, "unique_items", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The data store tool name.
-        """
-        boost_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolBoostSpecArgsDict']]]]
-        """
-        Boost specification to boost certain documents.
-        Structure is documented below.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tool description.
-        """
-        engine_source: NotRequired[pulumi.Input['ToolDataStoreToolEngineSourceArgsDict']]
-        """
-        Configuration for searching within an Engine, potentially targeting
-        specific DataStores.
-        Structure is documented below.
-        """
-        max_results: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of search results to return per query.
-        The default value is 10. The maximum allowed value is 10.
-        """
-        modality_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolModalityConfigArgsDict']]]]
-        """
-        The modality configs for the data store.
-        Structure is documented below.
-        """
-elif False:
-    ToolDataStoreToolArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The data store tool name.
+    """
+    boost_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolBoostSpecArgsDict']]]]
+    """
+    Boost specification to boost certain documents.
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tool description.
+    """
+    engine_source: NotRequired[pulumi.Input['ToolDataStoreToolEngineSourceArgsDict']]
+    """
+    Configuration for searching within an Engine, potentially targeting
+    specific DataStores.
+    Structure is documented below.
+    """
+    max_results: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of search results to return per query.
+    The default value is 10. The maximum allowed value is 10.
+    """
+    modality_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolModalityConfigArgsDict']]]]
+    """
+    The modality configs for the data store.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolArgs:
@@ -19515,21 +18996,18 @@ class ToolDataStoreToolArgs:
         pulumi.set(self, "modality_configs", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolBoostSpecArgsDict(TypedDict):
-        data_stores: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The Data Store where the boosting configuration is applied. Full resource
-        name of DataStore, such as
-        projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}.
-        """
-        specs: pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolBoostSpecSpecArgsDict']]]
-        """
-        A list of boosting specifications.
-        Structure is documented below.
-        """
-elif False:
-    ToolDataStoreToolBoostSpecArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolBoostSpecArgsDict(TypedDict):
+    data_stores: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The Data Store where the boosting configuration is applied. Full resource
+    name of DataStore, such as
+    projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}.
+    """
+    specs: pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolBoostSpecSpecArgsDict']]]
+    """
+    A list of boosting specifications.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolBoostSpecArgs:
@@ -19574,15 +19052,12 @@ class ToolDataStoreToolBoostSpecArgs:
         pulumi.set(self, "specs", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolBoostSpecSpecArgsDict(TypedDict):
-        condition_boost_specs: pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgsDict']]]
-        """
-        A list of boosting specifications.
-        Structure is documented below.
-        """
-elif False:
-    ToolDataStoreToolBoostSpecSpecArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolBoostSpecSpecArgsDict(TypedDict):
+    condition_boost_specs: pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgsDict']]]
+    """
+    A list of boosting specifications.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolBoostSpecSpecArgs:
@@ -19608,36 +19083,33 @@ class ToolDataStoreToolBoostSpecSpecArgs:
         pulumi.set(self, "condition_boost_specs", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgsDict(TypedDict):
-        condition: pulumi.Input[_builtins.str]
-        """
-        An expression which specifies a boost condition. The syntax is the same
-        as filter expression syntax. Currently, the only supported condition is
-        a list of BCP-47 lang codes.
-        Example: To boost suggestions in languages en or fr:
-        (lang_code: ANY("en", "fr"))
-        """
-        boost: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Strength of the boost, which should be in [-1, 1]. Negative boost means
-        demotion. Default is 0.0.
-        Setting to 1.0 gives the suggestions a big promotion. However, it does
-        not necessarily mean that the top result will be a boosted suggestion.
-        Setting to -1.0 gives the suggestions a big demotion. However, other
-        suggestions that are relevant might still be shown.
-        Setting to 0.0 means no boost applied. The boosting condition is
-        ignored.
-        """
-        boost_control_spec: NotRequired[pulumi.Input['ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgsDict']]
-        """
-        Specification for custom ranking based on customer specified attribute
-        value. It provides more controls for customized ranking than the simple
-        (condition, boost) combination above.
-        Structure is documented below.
-        """
-elif False:
-    ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgsDict(TypedDict):
+    condition: pulumi.Input[_builtins.str]
+    """
+    An expression which specifies a boost condition. The syntax is the same
+    as filter expression syntax. Currently, the only supported condition is
+    a list of BCP-47 lang codes.
+    Example: To boost suggestions in languages en or fr:
+    (lang_code: ANY("en", "fr"))
+    """
+    boost: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Strength of the boost, which should be in [-1, 1]. Negative boost means
+    demotion. Default is 0.0.
+    Setting to 1.0 gives the suggestions a big promotion. However, it does
+    not necessarily mean that the top result will be a boosted suggestion.
+    Setting to -1.0 gives the suggestions a big demotion. However, other
+    suggestions that are relevant might still be shown.
+    Setting to 0.0 means no boost applied. The boosting condition is
+    ignored.
+    """
+    boost_control_spec: NotRequired[pulumi.Input['ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgsDict']]
+    """
+    Specification for custom ranking based on customer specified attribute
+    value. It provides more controls for customized ranking than the simple
+    (condition, boost) combination above.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs:
@@ -19721,40 +19193,37 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs:
         pulumi.set(self, "boost_control_spec", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgsDict(TypedDict):
-        attribute_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The attribute type to be used to determine the boost amount. The
-        attribute value can be derived from the field value of the specified
-        field_name. In the case of numerical it is straightforward i.e.
-        attribute_value = numerical_field_value. In the case of freshness
-        however, attribute_value = (time.now() - datetime_field_value).
-        Possible values:
-        NUMERICAL
-        FRESHNESS
-        """
-        control_points: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgsDict']]]]
-        """
-        The control points used to define the curve. The monotonic function
-        (defined through the interpolation_type above) passes through the
-        control points listed here.
-        Structure is documented below.
-        """
-        field_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the field whose value will be used to determine the
-        boost amount.
-        """
-        interpolation_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The interpolation type to be applied to connect the control points
-        listed below.
-        Possible values:
-        LINEAR
-        """
-elif False:
-    ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgsDict(TypedDict):
+    attribute_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The attribute type to be used to determine the boost amount. The
+    attribute value can be derived from the field value of the specified
+    field_name. In the case of numerical it is straightforward i.e.
+    attribute_value = numerical_field_value. In the case of freshness
+    however, attribute_value = (time.now() - datetime_field_value).
+    Possible values:
+    NUMERICAL
+    FRESHNESS
+    """
+    control_points: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgsDict']]]]
+    """
+    The control points used to define the curve. The monotonic function
+    (defined through the interpolation_type above) passes through the
+    control points listed here.
+    Structure is documented below.
+    """
+    field_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the field whose value will be used to determine the
+    boost amount.
+    """
+    interpolation_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The interpolation type to be applied to connect the control points
+    listed below.
+    Possible values:
+    LINEAR
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs:
@@ -19855,24 +19324,21 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs:
         pulumi.set(self, "interpolation_type", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgsDict(TypedDict):
-        attribute_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Can be one of:
-        1. The numerical field value.
-        2. The duration spec for freshness:
-        The value must be formatted as an XSD `dayTimeDuration` value (a
-        restricted subset of an ISO 8601 duration value). The pattern for
-        this is: `nDnM]`.
-        """
-        boost_amount: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The value between -1 to 1 by which to boost the score if the
-        attribute_value evaluates to the value specified above.
-        """
-elif False:
-    ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgsDict(TypedDict):
+    attribute_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Can be one of:
+    1. The numerical field value.
+    2. The duration spec for freshness:
+    The value must be formatted as an XSD `dayTimeDuration` value (a
+    restricted subset of an ISO 8601 duration value). The pattern for
+    this is: `nDnM]`.
+    """
+    boost_amount: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The value between -1 to 1 by which to boost the score if the
+    attribute_value evaluates to the value specified above.
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs:
@@ -19925,30 +19391,27 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoi
         pulumi.set(self, "boost_amount", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolEngineSourceArgsDict(TypedDict):
-        engine: pulumi.Input[_builtins.str]
-        """
-        Full resource name of the Engine.
-        Format:
-        `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
-        """
-        data_store_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolEngineSourceDataStoreSourceArgsDict']]]]
-        """
-        Use to target specific DataStores within the Engine.
-        If empty, the search applies to all DataStores associated with the
-        Engine.
-        Structure is documented below.
-        """
-        filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the search across the Engine. Not relevant and not
-        used if 'data_store_sources' is provided.
-        See:
-        https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
-        """
-elif False:
-    ToolDataStoreToolEngineSourceArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolEngineSourceArgsDict(TypedDict):
+    engine: pulumi.Input[_builtins.str]
+    """
+    Full resource name of the Engine.
+    Format:
+    `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+    """
+    data_store_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolEngineSourceDataStoreSourceArgsDict']]]]
+    """
+    Use to target specific DataStores within the Engine.
+    If empty, the search applies to all DataStores associated with the
+    Engine.
+    Structure is documented below.
+    """
+    filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the search across the Engine. Not relevant and not
+    used if 'data_store_sources' is provided.
+    See:
+    https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolEngineSourceArgs:
@@ -20020,21 +19483,18 @@ class ToolDataStoreToolEngineSourceArgs:
         pulumi.set(self, "filter", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolEngineSourceDataStoreSourceArgsDict(TypedDict):
-        data_store: NotRequired[pulumi.Input['ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict']]
-        """
-        A DataStore resource in Vertex AI Search.
-        Structure is documented below.
-        """
-        filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Filter specification for the DataStore.
-        See:
-        https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
-        """
-elif False:
-    ToolDataStoreToolEngineSourceDataStoreSourceArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolEngineSourceDataStoreSourceArgsDict(TypedDict):
+    data_store: NotRequired[pulumi.Input['ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict']]
+    """
+    A DataStore resource in Vertex AI Search.
+    Structure is documented below.
+    """
+    filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Filter specification for the DataStore.
+    See:
+    https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolEngineSourceDataStoreSourceArgs:
@@ -20081,55 +19541,52 @@ class ToolDataStoreToolEngineSourceDataStoreSourceArgs:
         pulumi.set(self, "filter", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Full resource name of the DataStore.
-        Format:
-        `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
-        """
-        connector_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgsDict']]]]
-        """
-        (Output)
-        The connector config for the data store connection.
-        Structure is documented below.
-        """
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the data store was created.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The display name of the data store.
-        """
-        document_processing_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The document processing mode for the data store connection.
-        Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
-        Possible values:
-        DOCUMENTS
-        CHUNKS
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The type of the data store. This field is readonly and populated by the
-        server.
-        Possible values:
-        PUBLIC_WEB
-        UNSTRUCTURED
-        FAQ
-        CONNECTOR
+class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Full resource name of the DataStore.
+    Format:
+    `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
+    """
+    connector_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgsDict']]]]
+    """
+    (Output)
+    The connector config for the data store connection.
+    Structure is documented below.
+    """
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the data store was created.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The display name of the data store.
+    """
+    document_processing_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The document processing mode for the data store connection.
+    Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
+    Possible values:
+    DOCUMENTS
+    CHUNKS
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The type of the data store. This field is readonly and populated by the
+    server.
+    Possible values:
+    PUBLIC_WEB
+    UNSTRUCTURED
+    FAQ
+    CONNECTOR
 
 
-        <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
-        """
-elif False:
-    ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs:
@@ -20275,23 +19732,20 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgsDict(TypedDict):
-        collection: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Resource name of the collection the data store belongs to.
-        """
-        collection_display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Display name of the collection the data store belongs to.
-        """
-        data_source: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the data source.
-        Example: 'salesforce', 'jira', 'confluence', 'bigquery'.
-        """
-elif False:
-    ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgsDict(TypedDict):
+    collection: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Resource name of the collection the data store belongs to.
+    """
+    collection_display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Display name of the collection the data store belongs to.
+    """
+    data_source: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the data source.
+    Example: 'salesforce', 'jira', 'confluence', 'bigquery'.
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgs:
@@ -20350,32 +19804,29 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgs:
         pulumi.set(self, "data_source", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolModalityConfigArgsDict(TypedDict):
-        modality_type: pulumi.Input[_builtins.str]
-        """
-        The modality type.
-        Possible values:
-        TEXT
-        AUDIO
-        """
-        grounding_config: NotRequired[pulumi.Input['ToolDataStoreToolModalityConfigGroundingConfigArgsDict']]
-        """
-        Grounding configuration.
-        Structure is documented below.
-        """
-        rewriter_config: NotRequired[pulumi.Input['ToolDataStoreToolModalityConfigRewriterConfigArgsDict']]
-        """
-        Rewriter configuration.
-        Structure is documented below.
-        """
-        summarization_config: NotRequired[pulumi.Input['ToolDataStoreToolModalityConfigSummarizationConfigArgsDict']]
-        """
-        Summarization configuration.
-        Structure is documented below.
-        """
-elif False:
-    ToolDataStoreToolModalityConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolModalityConfigArgsDict(TypedDict):
+    modality_type: pulumi.Input[_builtins.str]
+    """
+    The modality type.
+    Possible values:
+    TEXT
+    AUDIO
+    """
+    grounding_config: NotRequired[pulumi.Input['ToolDataStoreToolModalityConfigGroundingConfigArgsDict']]
+    """
+    Grounding configuration.
+    Structure is documented below.
+    """
+    rewriter_config: NotRequired[pulumi.Input['ToolDataStoreToolModalityConfigRewriterConfigArgsDict']]
+    """
+    Rewriter configuration.
+    Structure is documented below.
+    """
+    summarization_config: NotRequired[pulumi.Input['ToolDataStoreToolModalityConfigSummarizationConfigArgsDict']]
+    """
+    Summarization configuration.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolModalityConfigArgs:
@@ -20459,24 +19910,21 @@ class ToolDataStoreToolModalityConfigArgs:
         pulumi.set(self, "summarization_config", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolModalityConfigGroundingConfigArgsDict(TypedDict):
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether grounding is disabled.
-        """
-        grounding_level: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The groundedness threshold of the answer based on the retrieved sources.
-        The value has a configurable range of [1, 5]. The level is used to
-        threshold the groundedness of the answer, meaning that all responses with
-        a groundedness score below the threshold will fall back to returning
-        relevant snippets only.
-        For example, a level of 3 means that the groundedness score must be
-        3 or higher for the response to be returned.
-        """
-elif False:
-    ToolDataStoreToolModalityConfigGroundingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolModalityConfigGroundingConfigArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether grounding is disabled.
+    """
+    grounding_level: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The groundedness threshold of the answer based on the retrieved sources.
+    The value has a configurable range of [1, 5]. The level is used to
+    threshold the groundedness of the answer, meaning that all responses with
+    a groundedness score below the threshold will fall back to returning
+    relevant snippets only.
+    For example, a level of 3 means that the groundedness score must be
+    3 or higher for the response to be returned.
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolModalityConfigGroundingConfigArgs:
@@ -20529,23 +19977,20 @@ class ToolDataStoreToolModalityConfigGroundingConfigArgs:
         pulumi.set(self, "grounding_level", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolModalityConfigRewriterConfigArgsDict(TypedDict):
-        model_settings: pulumi.Input['ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgsDict']
-        """
-        Model settings contains various configurations for the LLM model.
-        Structure is documented below.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the rewriter is disabled.
-        """
-        prompt: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The prompt definition. If not set, default prompt will be used.
-        """
-elif False:
-    ToolDataStoreToolModalityConfigRewriterConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolModalityConfigRewriterConfigArgsDict(TypedDict):
+    model_settings: pulumi.Input['ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgsDict']
+    """
+    Model settings contains various configurations for the LLM model.
+    Structure is documented below.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the rewriter is disabled.
+    """
+    prompt: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The prompt definition. If not set, default prompt will be used.
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolModalityConfigRewriterConfigArgs:
@@ -20603,22 +20048,19 @@ class ToolDataStoreToolModalityConfigRewriterConfigArgs:
         pulumi.set(self, "prompt", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The LLM model that the agent should use.
-        If not set, the agent will inherit the model from its parent agent.
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        If set, this temperature will be used for the LLM model. Temperature
-        controls the randomness of the model's responses. Lower temperatures
-        produce responses that are more predictable. Higher temperatures produce
-        responses that are more creative.
-        """
-elif False:
-    ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The LLM model that the agent should use.
+    If not set, the agent will inherit the model from its parent agent.
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    If set, this temperature will be used for the LLM model. Temperature
+    controls the randomness of the model's responses. Lower temperatures
+    produce responses that are more predictable. Higher temperatures produce
+    responses that are more creative.
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs:
@@ -20667,23 +20109,20 @@ class ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs:
         pulumi.set(self, "temperature", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolModalityConfigSummarizationConfigArgsDict(TypedDict):
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether summarization is disabled.
-        """
-        model_settings: NotRequired[pulumi.Input['ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgsDict']]
-        """
-        Model settings contains various configurations for the LLM model.
-        Structure is documented below.
-        """
-        prompt: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The prompt definition. If not set, default prompt will be used.
-        """
-elif False:
-    ToolDataStoreToolModalityConfigSummarizationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolModalityConfigSummarizationConfigArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether summarization is disabled.
+    """
+    model_settings: NotRequired[pulumi.Input['ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgsDict']]
+    """
+    Model settings contains various configurations for the LLM model.
+    Structure is documented below.
+    """
+    prompt: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The prompt definition. If not set, default prompt will be used.
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolModalityConfigSummarizationConfigArgs:
@@ -20742,22 +20181,19 @@ class ToolDataStoreToolModalityConfigSummarizationConfigArgs:
         pulumi.set(self, "prompt", value)
 
 
-if not MYPY:
-    class ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The LLM model that the agent should use.
-        If not set, the agent will inherit the model from its parent agent.
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        If set, this temperature will be used for the LLM model. Temperature
-        controls the randomness of the model's responses. Lower temperatures
-        produce responses that are more predictable. Higher temperatures produce
-        responses that are more creative.
-        """
-elif False:
-    ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The LLM model that the agent should use.
+    If not set, the agent will inherit the model from its parent agent.
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    If set, this temperature will be used for the LLM model. Temperature
+    controls the randomness of the model's responses. Lower temperatures
+    produce responses that are more predictable. Higher temperatures produce
+    responses that are more creative.
+    """
 
 @pulumi.input_type
 class ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs:
@@ -20806,40 +20242,37 @@ class ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs:
         pulumi.set(self, "temperature", value)
 
 
-if not MYPY:
-    class ToolGoogleSearchToolArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the tool.
-        """
-        context_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Content will be fetched directly from these URLs for context and grounding.
-        More details: https://cloud.google.com/vertex-ai/generative-ai/docs/url-context.
-        Example: "https://example.com/path.html". A maximum of 20 URLs are allowed.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the tool's purpose.
-        """
-        exclude_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of domains to be excluded from the search results.
-        Example: "example.com".
-        A maximum of 2000 domains can be excluded.
-        """
-        preferred_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies domain names to guide the search.
-        The model will be instructed to prioritize these domains
-        when formulating queries for google search.
-        This is a best-effort hint and these domains may or may
-        not be exclusively reflected in the final search results.
-        Example: "example.com", "another.site".
-        A maximum of 20 domains can be specified.
-        """
-elif False:
-    ToolGoogleSearchToolArgsDict: TypeAlias = Mapping[str, Any]
+class ToolGoogleSearchToolArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the tool.
+    """
+    context_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Content will be fetched directly from these URLs for context and grounding.
+    More details: https://cloud.google.com/vertex-ai/generative-ai/docs/url-context.
+    Example: "https://example.com/path.html". A maximum of 20 URLs are allowed.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the tool's purpose.
+    """
+    exclude_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of domains to be excluded from the search results.
+    Example: "example.com".
+    A maximum of 2000 domains can be excluded.
+    """
+    preferred_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies domain names to guide the search.
+    The model will be instructed to prioritize these domains
+    when formulating queries for google search.
+    This is a best-effort hint and these domains may or may
+    not be exclusively reflected in the final search results.
+    Example: "example.com", "another.site".
+    A maximum of 20 domains can be specified.
+    """
 
 @pulumi.input_type
 class ToolGoogleSearchToolArgs:
@@ -20947,57 +20380,54 @@ class ToolGoogleSearchToolArgs:
         pulumi.set(self, "preferred_domains", value)
 
 
-if not MYPY:
-    class ToolOpenApiToolArgsDict(TypedDict):
-        api_authentications: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationArgsDict']]]]
-        """
-        (Output)
-        Authentication information required for API calls.
-        Structure is documented below.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The description of the system tool.
-        """
-        ignore_unknown_fields: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        If true, the agent will ignore unknown fields in the API response.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the system tool.
-        """
-        open_api_schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The OpenAPI schema in JSON or YAML format.
-        """
-        service_directory_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolServiceDirectoryConfigArgsDict']]]]
-        """
-        (Output)
-        Configuration for tools using Service Directory.
-        Structure is documented below.
-        """
-        tls_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolTlsConfigArgsDict']]]]
-        """
-        (Output)
-        The TLS configuration.
-        Structure is documented below.
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The server URL of the Open API schema. This field is only set in tools in the
-        environment dependencies during the export process if the schema contains a
-        server url. During the import process, if this url is present in the environment
-        dependencies and the schema has the $env_var placeholder, it will replace the
-        placeholder in the schema.
-        """
-elif False:
-    ToolOpenApiToolArgsDict: TypeAlias = Mapping[str, Any]
+class ToolOpenApiToolArgsDict(TypedDict):
+    api_authentications: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationArgsDict']]]]
+    """
+    (Output)
+    Authentication information required for API calls.
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The description of the system tool.
+    """
+    ignore_unknown_fields: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    If true, the agent will ignore unknown fields in the API response.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the system tool.
+    """
+    open_api_schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The OpenAPI schema in JSON or YAML format.
+    """
+    service_directory_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolServiceDirectoryConfigArgsDict']]]]
+    """
+    (Output)
+    Configuration for tools using Service Directory.
+    Structure is documented below.
+    """
+    tls_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolTlsConfigArgsDict']]]]
+    """
+    (Output)
+    The TLS configuration.
+    Structure is documented below.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The server URL of the Open API schema. This field is only set in tools in the
+    environment dependencies during the export process if the schema contains a
+    server url. During the import process, if this url is present in the environment
+    dependencies and the schema has the $env_var placeholder, it will replace the
+    placeholder in the schema.
+    """
 
 @pulumi.input_type
 class ToolOpenApiToolArgs:
@@ -21164,41 +20594,38 @@ class ToolOpenApiToolArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class ToolOpenApiToolApiAuthenticationArgsDict(TypedDict):
-        api_key_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationApiKeyConfigArgsDict']]]]
-        """
-        (Output)
-        Configurations for authentication with API key.
-        Structure is documented below.
-        """
-        bearer_token_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationBearerTokenConfigArgsDict']]]]
-        """
-        (Output)
-        Configurations for authentication with a bearer token.
-        Structure is documented below.
-        """
-        oauth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationOauthConfigArgsDict']]]]
-        """
-        (Output)
-        Configurations for authentication with OAuth.
-        Structure is documented below.
-        """
-        service_account_auth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgsDict']]]]
-        """
-        (Output)
-        Configurations for authentication using a custom service account.
-        Structure is documented below.
-        """
-        service_agent_id_token_auth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]]]
-        """
-        (Output)
-        Configurations for authentication with [ID
-        token](https://cloud.google.com/docs/authentication/token-types#id) generated
-        from service agent.
-        """
-elif False:
-    ToolOpenApiToolApiAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+class ToolOpenApiToolApiAuthenticationArgsDict(TypedDict):
+    api_key_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationApiKeyConfigArgsDict']]]]
+    """
+    (Output)
+    Configurations for authentication with API key.
+    Structure is documented below.
+    """
+    bearer_token_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationBearerTokenConfigArgsDict']]]]
+    """
+    (Output)
+    Configurations for authentication with a bearer token.
+    Structure is documented below.
+    """
+    oauth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationOauthConfigArgsDict']]]]
+    """
+    (Output)
+    Configurations for authentication with OAuth.
+    Structure is documented below.
+    """
+    service_account_auth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgsDict']]]]
+    """
+    (Output)
+    Configurations for authentication using a custom service account.
+    Structure is documented below.
+    """
+    service_agent_id_token_auth_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]]]
+    """
+    (Output)
+    Configurations for authentication with [ID
+    token](https://cloud.google.com/docs/authentication/token-types#id) generated
+    from service agent.
+    """
 
 @pulumi.input_type
 class ToolOpenApiToolApiAuthenticationArgs:
@@ -21309,33 +20736,30 @@ class ToolOpenApiToolApiAuthenticationArgs:
         pulumi.set(self, "service_agent_id_token_auth_configs", value)
 
 
-if not MYPY:
-    class ToolOpenApiToolApiAuthenticationApiKeyConfigArgsDict(TypedDict):
-        api_key_secret_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the SecretManager secret version resource storing the API key.
-        Format: `projects/{project}/secrets/{secret}/versions/{version}`
-        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
-        service agent
-        `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
-        """
-        key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The parameter name or the header name of the API key.
-        E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
-        """
-        request_location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Key location in the request.
-        Possible values:
-        HEADER
-        QUERY_STRING
-        """
-elif False:
-    ToolOpenApiToolApiAuthenticationApiKeyConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolOpenApiToolApiAuthenticationApiKeyConfigArgsDict(TypedDict):
+    api_key_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the SecretManager secret version resource storing the API key.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+    service agent
+    `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The parameter name or the header name of the API key.
+    E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+    """
+    request_location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Key location in the request.
+    Possible values:
+    HEADER
+    QUERY_STRING
+    """
 
 @pulumi.input_type
 class ToolOpenApiToolApiAuthenticationApiKeyConfigArgs:
@@ -21414,15 +20838,12 @@ class ToolOpenApiToolApiAuthenticationApiKeyConfigArgs:
         pulumi.set(self, "request_location", value)
 
 
-if not MYPY:
-    class ToolOpenApiToolApiAuthenticationBearerTokenConfigArgsDict(TypedDict):
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The bearer token. Must be in the format $context.variables.<name_of_variable>.
-        """
-elif False:
-    ToolOpenApiToolApiAuthenticationBearerTokenConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolOpenApiToolApiAuthenticationBearerTokenConfigArgsDict(TypedDict):
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The bearer token. Must be in the format $context.variables.<name_of_variable>.
+    """
 
 @pulumi.input_type
 class ToolOpenApiToolApiAuthenticationBearerTokenConfigArgs:
@@ -21449,42 +20870,39 @@ class ToolOpenApiToolApiAuthenticationBearerTokenConfigArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class ToolOpenApiToolApiAuthenticationOauthConfigArgsDict(TypedDict):
-        client_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The client ID from the OAuth provider.
-        """
-        client_secret_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the SecretManager secret version resource storing the
-        client secret.
-        Format: `projects/{project}/secrets/{secret}/versions/{version}`
-        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
-        service agent
-        `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
-        """
-        oauth_grant_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        OAuth grant types.
-        Possible values:
-        CLIENT_CREDENTIAL
-        """
-        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        The OAuth scopes to grant.
-        """
-        token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The token endpoint in the OAuth provider to exchange for an access token.
-        """
-elif False:
-    ToolOpenApiToolApiAuthenticationOauthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolOpenApiToolApiAuthenticationOauthConfigArgsDict(TypedDict):
+    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The client ID from the OAuth provider.
+    """
+    client_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the SecretManager secret version resource storing the
+    client secret.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+    service agent
+    `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    oauth_grant_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    OAuth grant types.
+    Possible values:
+    CLIENT_CREDENTIAL
+    """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    The OAuth scopes to grant.
+    """
+    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The token endpoint in the OAuth provider to exchange for an access token.
+    """
 
 @pulumi.input_type
 class ToolOpenApiToolApiAuthenticationOauthConfigArgs:
@@ -21597,21 +21015,18 @@ class ToolOpenApiToolApiAuthenticationOauthConfigArgs:
         pulumi.set(self, "token_endpoint", value)
 
 
-if not MYPY:
-    class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict):
-        service_account: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The email address of the service account used for authenticatation. CES
-        uses this service account to exchange an access token and the access token
-        is then sent in the `Authorization` header of the request.
-        The service account must have the
-        `roles/iam.serviceAccountTokenCreator` role granted to the
-        CES service agent
-        `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
-        """
-elif False:
-    ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict):
+    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The email address of the service account used for authenticatation. CES
+    uses this service account to exchange an access token and the access token
+    is then sent in the `Authorization` header of the request.
+    The service account must have the
+    `roles/iam.serviceAccountTokenCreator` role granted to the
+    CES service agent
+    `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
 
 @pulumi.input_type
 class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs:
@@ -21650,11 +21065,8 @@ class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs:
         pulumi.set(self, "service_account", value)
 
 
-if not MYPY:
-    class ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict(TypedDict):
-        pass
-elif False:
-    ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs:
@@ -21662,20 +21074,17 @@ class ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs:
         pass
 
 
-if not MYPY:
-    class ToolOpenApiToolServiceDirectoryConfigArgsDict(TypedDict):
-        service: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of [Service
-        Directory](https://cloud.google.com/service-directory) service.
-        Format:
-        `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-        Location of the service directory must be the same as the location of the
-        app.
-        """
-elif False:
-    ToolOpenApiToolServiceDirectoryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolOpenApiToolServiceDirectoryConfigArgsDict(TypedDict):
+    service: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of [Service
+    Directory](https://cloud.google.com/service-directory) service.
+    Format:
+    `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+    Location of the service directory must be the same as the location of the
+    app.
+    """
 
 @pulumi.input_type
 class ToolOpenApiToolServiceDirectoryConfigArgs:
@@ -21712,17 +21121,14 @@ class ToolOpenApiToolServiceDirectoryConfigArgs:
         pulumi.set(self, "service", value)
 
 
-if not MYPY:
-    class ToolOpenApiToolTlsConfigArgsDict(TypedDict):
-        ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolTlsConfigCaCertArgsDict']]]]
-        """
-        (Output)
-        Specifies a list of allowed custom CA certificates for HTTPS
-        verification.
-        Structure is documented below.
-        """
-elif False:
-    ToolOpenApiToolTlsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolOpenApiToolTlsConfigArgsDict(TypedDict):
+    ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolTlsConfigCaCertArgsDict']]]]
+    """
+    (Output)
+    Specifies a list of allowed custom CA certificates for HTTPS
+    verification.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ToolOpenApiToolTlsConfigArgs:
@@ -21753,31 +21159,28 @@ class ToolOpenApiToolTlsConfigArgs:
         pulumi.set(self, "ca_certs", value)
 
 
-if not MYPY:
-    class ToolOpenApiToolTlsConfigCaCertArgsDict(TypedDict):
-        cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The allowed custom CA certificates (in DER format) for
-        HTTPS verification. This overrides the default SSL trust store. If this
-        is empty or unspecified, CES will use Google's default trust
-        store to verify certificates. N.B. Make sure the HTTPS server
-        certificates are signed with "subject alt name". For instance a
-        certificate can be self-signed using the following command,
-        openssl x509 -req -days 200 -in example.com.csr \\
-        -signkey example.com.key \\
-        -out example.com.crt \\
-        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
-        A base64-encoded string.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the allowed custom CA certificates. This
-        can be used to disambiguate the custom CA certificates.
-        """
-elif False:
-    ToolOpenApiToolTlsConfigCaCertArgsDict: TypeAlias = Mapping[str, Any]
+class ToolOpenApiToolTlsConfigCaCertArgsDict(TypedDict):
+    cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The allowed custom CA certificates (in DER format) for
+    HTTPS verification. This overrides the default SSL trust store. If this
+    is empty or unspecified, CES will use Google's default trust
+    store to verify certificates. N.B. Make sure the HTTPS server
+    certificates are signed with "subject alt name". For instance a
+    certificate can be self-signed using the following command,
+    openssl x509 -req -days 200 -in example.com.csr \\
+    -signkey example.com.key \\
+    -out example.com.crt \\
+    -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+    A base64-encoded string.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the allowed custom CA certificates. This
+    can be used to disambiguate the custom CA certificates.
+    """
 
 @pulumi.input_type
 class ToolOpenApiToolTlsConfigCaCertArgs:
@@ -21844,26 +21247,23 @@ class ToolOpenApiToolTlsConfigCaCertArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class ToolPythonFunctionArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The description of the Python function, parsed from the python code's
-        docstring.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the Python function to execute. Must match a Python function
-        name defined in the python code. Case sensitive. If the name is not
-        provided, the first function defined in the python code will be used.
-        """
-        python_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Python code to execute for the tool.
-        """
-elif False:
-    ToolPythonFunctionArgsDict: TypeAlias = Mapping[str, Any]
+class ToolPythonFunctionArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The description of the Python function, parsed from the python code's
+    docstring.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the Python function to execute. Must match a Python function
+    name defined in the python code. Case sensitive. If the name is not
+    provided, the first function defined in the python code will be used.
+    """
+    python_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Python code to execute for the tool.
+    """
 
 @pulumi.input_type
 class ToolPythonFunctionArgs:
@@ -21928,20 +21328,17 @@ class ToolPythonFunctionArgs:
         pulumi.set(self, "python_code", value)
 
 
-if not MYPY:
-    class ToolSystemToolArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The description of the system tool.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the system tool.
-        """
-elif False:
-    ToolSystemToolArgsDict: TypeAlias = Mapping[str, Any]
+class ToolSystemToolArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The description of the system tool.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the system tool.
+    """
 
 @pulumi.input_type
 class ToolSystemToolArgs:
@@ -21986,44 +21383,743 @@ class ToolSystemToolArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class ToolsetOpenApiToolsetArgsDict(TypedDict):
-        open_api_schema: pulumi.Input[_builtins.str]
+class ToolsetMcpToolsetArgsDict(TypedDict):
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The address of the MCP server, for example, "https://example.com/mcp/". If
+    the server is built with the MCP SDK, the url should be suffixed with
+    "/mcp/". Only Streamable HTTP transport based servers are supported. See
+    https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http
+    for more details.
+    """
+    api_authentication: NotRequired[pulumi.Input['ToolsetMcpToolsetApiAuthenticationArgsDict']]
+    """
+    Authentication information required to access tools and execute a tool
+    against the MCP server. For API key auth, the API key can only be sent in
+    the request header; sending it via query parameters is not supported.
+    Structure is documented below.
+    """
+    service_directory_config: NotRequired[pulumi.Input['ToolsetMcpToolsetServiceDirectoryConfigArgsDict']]
+    """
+    Service Directory configuration for VPC-SC, used to resolve service names
+    within a perimeter.
+    Structure is documented below.
+    """
+    tls_config: NotRequired[pulumi.Input['ToolsetMcpToolsetTlsConfigArgsDict']]
+    """
+    The TLS configuration. Includes the custom server certificates that the
+    client should trust.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ToolsetMcpToolsetArgs:
+    def __init__(__self__, *,
+                 server_address: pulumi.Input[_builtins.str],
+                 api_authentication: Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationArgs']] = None,
+                 service_directory_config: Optional[pulumi.Input['ToolsetMcpToolsetServiceDirectoryConfigArgs']] = None,
+                 tls_config: Optional[pulumi.Input['ToolsetMcpToolsetTlsConfigArgs']] = None):
         """
-        The OpenAPI schema of the toolset.
+        :param pulumi.Input[_builtins.str] server_address: The address of the MCP server, for example, "https://example.com/mcp/". If
+               the server is built with the MCP SDK, the url should be suffixed with
+               "/mcp/". Only Streamable HTTP transport based servers are supported. See
+               https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http
+               for more details.
+        :param pulumi.Input['ToolsetMcpToolsetApiAuthenticationArgs'] api_authentication: Authentication information required to access tools and execute a tool
+               against the MCP server. For API key auth, the API key can only be sent in
+               the request header; sending it via query parameters is not supported.
+               Structure is documented below.
+        :param pulumi.Input['ToolsetMcpToolsetServiceDirectoryConfigArgs'] service_directory_config: Service Directory configuration for VPC-SC, used to resolve service names
+               within a perimeter.
+               Structure is documented below.
+        :param pulumi.Input['ToolsetMcpToolsetTlsConfigArgs'] tls_config: The TLS configuration. Includes the custom server certificates that the
+               client should trust.
+               Structure is documented below.
         """
-        api_authentication: NotRequired[pulumi.Input['ToolsetOpenApiToolsetApiAuthenticationArgsDict']]
+        pulumi.set(__self__, "server_address", server_address)
+        if api_authentication is not None:
+            pulumi.set(__self__, "api_authentication", api_authentication)
+        if service_directory_config is not None:
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
+        if tls_config is not None:
+            pulumi.set(__self__, "tls_config", tls_config)
+
+    @_builtins.property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> pulumi.Input[_builtins.str]:
         """
-        Authentication information required for API calls.
+        The address of the MCP server, for example, "https://example.com/mcp/". If
+        the server is built with the MCP SDK, the url should be suffixed with
+        "/mcp/". Only Streamable HTTP transport based servers are supported. See
+        https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http
+        for more details.
+        """
+        return pulumi.get(self, "server_address")
+
+    @server_address.setter
+    def server_address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "server_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiAuthentication")
+    def api_authentication(self) -> Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationArgs']]:
+        """
+        Authentication information required to access tools and execute a tool
+        against the MCP server. For API key auth, the API key can only be sent in
+        the request header; sending it via query parameters is not supported.
         Structure is documented below.
         """
-        ignore_unknown_fields: NotRequired[pulumi.Input[_builtins.bool]]
+        return pulumi.get(self, "api_authentication")
+
+    @api_authentication.setter
+    def api_authentication(self, value: Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationArgs']]):
+        pulumi.set(self, "api_authentication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> Optional[pulumi.Input['ToolsetMcpToolsetServiceDirectoryConfigArgs']]:
         """
-        If true, the agent will ignore unknown fields in the API response for all
-        operations defined in the OpenAPI schema.
-        """
-        service_directory_config: NotRequired[pulumi.Input['ToolsetOpenApiToolsetServiceDirectoryConfigArgsDict']]
-        """
-        Configuration for tools using Service Directory.
+        Service Directory configuration for VPC-SC, used to resolve service names
+        within a perimeter.
         Structure is documented below.
         """
-        tls_config: NotRequired[pulumi.Input['ToolsetOpenApiToolsetTlsConfigArgsDict']]
+        return pulumi.get(self, "service_directory_config")
+
+    @service_directory_config.setter
+    def service_directory_config(self, value: Optional[pulumi.Input['ToolsetMcpToolsetServiceDirectoryConfigArgs']]):
+        pulumi.set(self, "service_directory_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsConfig")
+    def tls_config(self) -> Optional[pulumi.Input['ToolsetMcpToolsetTlsConfigArgs']]:
         """
-        The TLS configuration.
+        The TLS configuration. Includes the custom server certificates that the
+        client should trust.
         Structure is documented below.
         """
-        url: NotRequired[pulumi.Input[_builtins.str]]
+        return pulumi.get(self, "tls_config")
+
+    @tls_config.setter
+    def tls_config(self, value: Optional[pulumi.Input['ToolsetMcpToolsetTlsConfigArgs']]):
+        pulumi.set(self, "tls_config", value)
+
+
+class ToolsetMcpToolsetApiAuthenticationArgsDict(TypedDict):
+    api_key_config: NotRequired[pulumi.Input['ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgsDict']]
+    """
+    Configurations for authentication with API key.
+    Structure is documented below.
+    """
+    bearer_token_config: NotRequired[pulumi.Input['ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgsDict']]
+    """
+    Configurations for authentication with a bearer token.
+    Structure is documented below.
+    """
+    oauth_config: NotRequired[pulumi.Input['ToolsetMcpToolsetApiAuthenticationOauthConfigArgsDict']]
+    """
+    Configurations for authentication with OAuth.
+    Structure is documented below.
+    """
+    service_account_auth_config: NotRequired[pulumi.Input['ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgsDict']]
+    """
+    Configurations for authentication using a custom service account.
+    Structure is documented below.
+    """
+    service_agent_id_token_auth_config: NotRequired[pulumi.Input['ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]
+    """
+    Configurations for authentication with [ID
+    token](https://cloud.google.com/docs/authentication/token-types#id) generated
+    from service agent.
+    """
+
+@pulumi.input_type
+class ToolsetMcpToolsetApiAuthenticationArgs:
+    def __init__(__self__, *,
+                 api_key_config: Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs']] = None,
+                 bearer_token_config: Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs']] = None,
+                 oauth_config: Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationOauthConfigArgs']] = None,
+                 service_account_auth_config: Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs']] = None,
+                 service_agent_id_token_auth_config: Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs']] = None):
         """
-        (Output)
-        The server URL of the Open API schema.
-        This field is only set in toolsets in the environment dependencies
-        during the export process if the schema contains a server url.
-        During the import process, if this url is present in the environment dependencies
-        and the schema has the $env_var placeholder,
-        it will replace the placeholder in the schema.
+        :param pulumi.Input['ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs'] api_key_config: Configurations for authentication with API key.
+               Structure is documented below.
+        :param pulumi.Input['ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs'] bearer_token_config: Configurations for authentication with a bearer token.
+               Structure is documented below.
+        :param pulumi.Input['ToolsetMcpToolsetApiAuthenticationOauthConfigArgs'] oauth_config: Configurations for authentication with OAuth.
+               Structure is documented below.
+        :param pulumi.Input['ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs'] service_account_auth_config: Configurations for authentication using a custom service account.
+               Structure is documented below.
+        :param pulumi.Input['ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs'] service_agent_id_token_auth_config: Configurations for authentication with [ID
+               token](https://cloud.google.com/docs/authentication/token-types#id) generated
+               from service agent.
         """
-elif False:
-    ToolsetOpenApiToolsetArgsDict: TypeAlias = Mapping[str, Any]
+        if api_key_config is not None:
+            pulumi.set(__self__, "api_key_config", api_key_config)
+        if bearer_token_config is not None:
+            pulumi.set(__self__, "bearer_token_config", bearer_token_config)
+        if oauth_config is not None:
+            pulumi.set(__self__, "oauth_config", oauth_config)
+        if service_account_auth_config is not None:
+            pulumi.set(__self__, "service_account_auth_config", service_account_auth_config)
+        if service_agent_id_token_auth_config is not None:
+            pulumi.set(__self__, "service_agent_id_token_auth_config", service_agent_id_token_auth_config)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyConfig")
+    def api_key_config(self) -> Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs']]:
+        """
+        Configurations for authentication with API key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_key_config")
+
+    @api_key_config.setter
+    def api_key_config(self, value: Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs']]):
+        pulumi.set(self, "api_key_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bearerTokenConfig")
+    def bearer_token_config(self) -> Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs']]:
+        """
+        Configurations for authentication with a bearer token.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bearer_token_config")
+
+    @bearer_token_config.setter
+    def bearer_token_config(self, value: Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs']]):
+        pulumi.set(self, "bearer_token_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthConfig")
+    def oauth_config(self) -> Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationOauthConfigArgs']]:
+        """
+        Configurations for authentication with OAuth.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth_config")
+
+    @oauth_config.setter
+    def oauth_config(self, value: Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationOauthConfigArgs']]):
+        pulumi.set(self, "oauth_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountAuthConfig")
+    def service_account_auth_config(self) -> Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs']]:
+        """
+        Configurations for authentication using a custom service account.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_account_auth_config")
+
+    @service_account_auth_config.setter
+    def service_account_auth_config(self, value: Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs']]):
+        pulumi.set(self, "service_account_auth_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAgentIdTokenAuthConfig")
+    def service_agent_id_token_auth_config(self) -> Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs']]:
+        """
+        Configurations for authentication with [ID
+        token](https://cloud.google.com/docs/authentication/token-types#id) generated
+        from service agent.
+        """
+        return pulumi.get(self, "service_agent_id_token_auth_config")
+
+    @service_agent_id_token_auth_config.setter
+    def service_agent_id_token_auth_config(self, value: Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs']]):
+        pulumi.set(self, "service_agent_id_token_auth_config", value)
+
+
+class ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgsDict(TypedDict):
+    api_key_secret_version: pulumi.Input[_builtins.str]
+    """
+    The name of the SecretManager secret version resource storing the API key.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+    service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    key_name: pulumi.Input[_builtins.str]
+    """
+    The parameter name or the header name of the API key.
+    E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+    """
+    request_location: pulumi.Input[_builtins.str]
+    """
+    Key location in the request. For API key auth on MCP toolsets,
+    the API key can only be sent in the request header.
+    Possible values:
+    HEADER
+    """
+
+@pulumi.input_type
+class ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs:
+    def __init__(__self__, *,
+                 api_key_secret_version: pulumi.Input[_builtins.str],
+                 key_name: pulumi.Input[_builtins.str],
+                 request_location: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] api_key_secret_version: The name of the SecretManager secret version resource storing the API key.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+               Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+               service agent
+               `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        :param pulumi.Input[_builtins.str] key_name: The parameter name or the header name of the API key.
+               E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+        :param pulumi.Input[_builtins.str] request_location: Key location in the request. For API key auth on MCP toolsets,
+               the API key can only be sent in the request header.
+               Possible values:
+               HEADER
+        """
+        pulumi.set(__self__, "api_key_secret_version", api_key_secret_version)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "request_location", request_location)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeySecretVersion")
+    def api_key_secret_version(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the SecretManager secret version resource storing the API key.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+        service agent
+        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "api_key_secret_version")
+
+    @api_key_secret_version.setter
+    def api_key_secret_version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "api_key_secret_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The parameter name or the header name of the API key.
+        E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+        """
+        return pulumi.get(self, "key_name")
+
+    @key_name.setter
+    def key_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requestLocation")
+    def request_location(self) -> pulumi.Input[_builtins.str]:
+        """
+        Key location in the request. For API key auth on MCP toolsets,
+        the API key can only be sent in the request header.
+        Possible values:
+        HEADER
+        """
+        return pulumi.get(self, "request_location")
+
+    @request_location.setter
+    def request_location(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "request_location", value)
+
+
+class ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgsDict(TypedDict):
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional)
+    """
+
+@pulumi.input_type
+class ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs:
+    def __init__(__self__, *,
+                 token: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] token: (Optional)
+        """
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "token", value)
+
+
+class ToolsetMcpToolsetApiAuthenticationOauthConfigArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The client ID from the OAuth provider.
+    """
+    client_secret_version: pulumi.Input[_builtins.str]
+    """
+    The name of the SecretManager secret version resource storing the
+    client secret.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+    service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    oauth_grant_type: pulumi.Input[_builtins.str]
+    """
+    OAuth grant types.
+    Possible values:
+    CLIENT_CREDENTIAL
+    """
+    token_endpoint: pulumi.Input[_builtins.str]
+    """
+    The token endpoint in the OAuth provider to exchange for an access token.
+    """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The OAuth scopes to grant.
+    """
+
+@pulumi.input_type
+class ToolsetMcpToolsetApiAuthenticationOauthConfigArgs:
+    def __init__(__self__, *,
+                 client_id: pulumi.Input[_builtins.str],
+                 client_secret_version: pulumi.Input[_builtins.str],
+                 oauth_grant_type: pulumi.Input[_builtins.str],
+                 token_endpoint: pulumi.Input[_builtins.str],
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] client_id: The client ID from the OAuth provider.
+        :param pulumi.Input[_builtins.str] client_secret_version: The name of the SecretManager secret version resource storing the
+               client secret.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+               Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+               service agent
+               `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        :param pulumi.Input[_builtins.str] oauth_grant_type: OAuth grant types.
+               Possible values:
+               CLIENT_CREDENTIAL
+        :param pulumi.Input[_builtins.str] token_endpoint: The token endpoint in the OAuth provider to exchange for an access token.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The OAuth scopes to grant.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret_version", client_secret_version)
+        pulumi.set(__self__, "oauth_grant_type", oauth_grant_type)
+        pulumi.set(__self__, "token_endpoint", token_endpoint)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The client ID from the OAuth provider.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecretVersion")
+    def client_secret_version(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the SecretManager secret version resource storing the
+        client secret.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+        service agent
+        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "client_secret_version")
+
+    @client_secret_version.setter
+    def client_secret_version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_secret_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthGrantType")
+    def oauth_grant_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        OAuth grant types.
+        Possible values:
+        CLIENT_CREDENTIAL
+        """
+        return pulumi.get(self, "oauth_grant_type")
+
+    @oauth_grant_type.setter
+    def oauth_grant_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "oauth_grant_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenEndpoint")
+    def token_endpoint(self) -> pulumi.Input[_builtins.str]:
+        """
+        The token endpoint in the OAuth provider to exchange for an access token.
+        """
+        return pulumi.get(self, "token_endpoint")
+
+    @token_endpoint.setter
+    def token_endpoint(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "token_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The OAuth scopes to grant.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
+
+
+class ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict):
+    service_account: pulumi.Input[_builtins.str]
+    """
+    The email address of the service account used for authenticatation. CES
+    uses this service account to exchange an access token and the access token
+    is then sent in the `Authorization` header of the request.
+    The service account must have the
+    `roles/iam.serviceAccountTokenCreator` role granted to the
+    CES service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+
+@pulumi.input_type
+class ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs:
+    def __init__(__self__, *,
+                 service_account: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] service_account: The email address of the service account used for authenticatation. CES
+               uses this service account to exchange an access token and the access token
+               is then sent in the `Authorization` header of the request.
+               The service account must have the
+               `roles/iam.serviceAccountTokenCreator` role granted to the
+               CES service agent
+               `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        pulumi.set(__self__, "service_account", service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[_builtins.str]:
+        """
+        The email address of the service account used for authenticatation. CES
+        uses this service account to exchange an access token and the access token
+        is then sent in the `Authorization` header of the request.
+        The service account must have the
+        `roles/iam.serviceAccountTokenCreator` role granted to the
+        CES service agent
+        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "service_account", value)
+
+
+class ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs:
+    def __init__(__self__):
+        pass
+
+
+class ToolsetMcpToolsetServiceDirectoryConfigArgsDict(TypedDict):
+    service: pulumi.Input[_builtins.str]
+    """
+    The name of [Service
+    Directory](https://cloud.google.com/service-directory) service.
+    Format:
+    `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+    Location of the service directory must be the same as the location of the
+    app.
+    """
+
+@pulumi.input_type
+class ToolsetMcpToolsetServiceDirectoryConfigArgs:
+    def __init__(__self__, *,
+                 service: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] service: The name of [Service
+               Directory](https://cloud.google.com/service-directory) service.
+               Format:
+               `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+               Location of the service directory must be the same as the location of the
+               app.
+        """
+        pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of [Service
+        Directory](https://cloud.google.com/service-directory) service.
+        Format:
+        `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+        Location of the service directory must be the same as the location of the
+        app.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "service", value)
+
+
+class ToolsetMcpToolsetTlsConfigArgsDict(TypedDict):
+    ca_certs: pulumi.Input[Sequence[pulumi.Input['ToolsetMcpToolsetTlsConfigCaCertArgsDict']]]
+    """
+    Specifies a list of allowed custom CA certificates for HTTPS
+    verification.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ToolsetMcpToolsetTlsConfigArgs:
+    def __init__(__self__, *,
+                 ca_certs: pulumi.Input[Sequence[pulumi.Input['ToolsetMcpToolsetTlsConfigCaCertArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ToolsetMcpToolsetTlsConfigCaCertArgs']]] ca_certs: Specifies a list of allowed custom CA certificates for HTTPS
+               verification.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "ca_certs", ca_certs)
+
+    @_builtins.property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> pulumi.Input[Sequence[pulumi.Input['ToolsetMcpToolsetTlsConfigCaCertArgs']]]:
+        """
+        Specifies a list of allowed custom CA certificates for HTTPS
+        verification.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ca_certs")
+
+    @ca_certs.setter
+    def ca_certs(self, value: pulumi.Input[Sequence[pulumi.Input['ToolsetMcpToolsetTlsConfigCaCertArgs']]]):
+        pulumi.set(self, "ca_certs", value)
+
+
+class ToolsetMcpToolsetTlsConfigCaCertArgsDict(TypedDict):
+    cert: pulumi.Input[_builtins.str]
+    """
+    The allowed custom CA certificates (in DER format) for
+    HTTPS verification. This overrides the default SSL trust store. If this
+    is empty or unspecified, CES will use Google's default trust
+    store to verify certificates. N.B. Make sure the HTTPS server
+    certificates are signed with "subject alt name". For instance a
+    certificate can be self-signed using the following command,
+    openssl x509 -req -days 200 -in example.com.csr \\
+    -signkey example.com.key \\
+    -out example.com.crt \\
+    -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+    """
+    display_name: pulumi.Input[_builtins.str]
+    """
+    The name of the allowed custom CA certificates. This
+    can be used to disambiguate the custom CA certificates.
+    """
+
+@pulumi.input_type
+class ToolsetMcpToolsetTlsConfigCaCertArgs:
+    def __init__(__self__, *,
+                 cert: pulumi.Input[_builtins.str],
+                 display_name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] cert: The allowed custom CA certificates (in DER format) for
+               HTTPS verification. This overrides the default SSL trust store. If this
+               is empty or unspecified, CES will use Google's default trust
+               store to verify certificates. N.B. Make sure the HTTPS server
+               certificates are signed with "subject alt name". For instance a
+               certificate can be self-signed using the following command,
+               openssl x509 -req -days 200 -in example.com.csr \\
+               -signkey example.com.key \\
+               -out example.com.crt \\
+               -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+        :param pulumi.Input[_builtins.str] display_name: The name of the allowed custom CA certificates. This
+               can be used to disambiguate the custom CA certificates.
+        """
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "display_name", display_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def cert(self) -> pulumi.Input[_builtins.str]:
+        """
+        The allowed custom CA certificates (in DER format) for
+        HTTPS verification. This overrides the default SSL trust store. If this
+        is empty or unspecified, CES will use Google's default trust
+        store to verify certificates. N.B. Make sure the HTTPS server
+        certificates are signed with "subject alt name". For instance a
+        certificate can be self-signed using the following command,
+        openssl x509 -req -days 200 -in example.com.csr \\
+        -signkey example.com.key \\
+        -out example.com.crt \\
+        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+        """
+        return pulumi.get(self, "cert")
+
+    @cert.setter
+    def cert(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the allowed custom CA certificates. This
+        can be used to disambiguate the custom CA certificates.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "display_name", value)
+
+
+class ToolsetOpenApiToolsetArgsDict(TypedDict):
+    open_api_schema: pulumi.Input[_builtins.str]
+    """
+    The OpenAPI schema of the toolset.
+    """
+    api_authentication: NotRequired[pulumi.Input['ToolsetOpenApiToolsetApiAuthenticationArgsDict']]
+    """
+    Authentication information required for API calls.
+    Structure is documented below.
+    """
+    ignore_unknown_fields: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, the agent will ignore unknown fields in the API response for all
+    operations defined in the OpenAPI schema.
+    """
+    service_directory_config: NotRequired[pulumi.Input['ToolsetOpenApiToolsetServiceDirectoryConfigArgsDict']]
+    """
+    Configuration for tools using Service Directory.
+    Structure is documented below.
+    """
+    tls_config: NotRequired[pulumi.Input['ToolsetOpenApiToolsetTlsConfigArgsDict']]
+    """
+    The TLS configuration.
+    Structure is documented below.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The server URL of the Open API schema.
+    This field is only set in toolsets in the environment dependencies
+    during the export process if the schema contains a server url.
+    During the import process, if this url is present in the environment dependencies
+    and the schema has the $env_var placeholder,
+    it will replace the placeholder in the schema.
+    """
 
 @pulumi.input_type
 class ToolsetOpenApiToolsetArgs:
@@ -22147,36 +22243,33 @@ class ToolsetOpenApiToolsetArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class ToolsetOpenApiToolsetApiAuthenticationArgsDict(TypedDict):
-        api_key_config: NotRequired[pulumi.Input['ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgsDict']]
-        """
-        Configurations for authentication with API key.
-        Structure is documented below.
-        """
-        bearer_token_config: NotRequired[pulumi.Input['ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgsDict']]
-        """
-        Configurations for authentication with a bearer token.
-        Structure is documented below.
-        """
-        oauth_config: NotRequired[pulumi.Input['ToolsetOpenApiToolsetApiAuthenticationOauthConfigArgsDict']]
-        """
-        Configurations for authentication with OAuth.
-        Structure is documented below.
-        """
-        service_account_auth_config: NotRequired[pulumi.Input['ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgsDict']]
-        """
-        Configurations for authentication using a custom service account.
-        Structure is documented below.
-        """
-        service_agent_id_token_auth_config: NotRequired[pulumi.Input['ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]
-        """
-        Configurations for authentication with [ID
-        token](https://cloud.google.com/docs/authentication/token-types#id) generated
-        from service agent.
-        """
-elif False:
-    ToolsetOpenApiToolsetApiAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+class ToolsetOpenApiToolsetApiAuthenticationArgsDict(TypedDict):
+    api_key_config: NotRequired[pulumi.Input['ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgsDict']]
+    """
+    Configurations for authentication with API key.
+    Structure is documented below.
+    """
+    bearer_token_config: NotRequired[pulumi.Input['ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgsDict']]
+    """
+    Configurations for authentication with a bearer token.
+    Structure is documented below.
+    """
+    oauth_config: NotRequired[pulumi.Input['ToolsetOpenApiToolsetApiAuthenticationOauthConfigArgsDict']]
+    """
+    Configurations for authentication with OAuth.
+    Structure is documented below.
+    """
+    service_account_auth_config: NotRequired[pulumi.Input['ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgsDict']]
+    """
+    Configurations for authentication using a custom service account.
+    Structure is documented below.
+    """
+    service_agent_id_token_auth_config: NotRequired[pulumi.Input['ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]
+    """
+    Configurations for authentication with [ID
+    token](https://cloud.google.com/docs/authentication/token-types#id) generated
+    from service agent.
+    """
 
 @pulumi.input_type
 class ToolsetOpenApiToolsetApiAuthenticationArgs:
@@ -22277,30 +22370,27 @@ class ToolsetOpenApiToolsetApiAuthenticationArgs:
         pulumi.set(self, "service_agent_id_token_auth_config", value)
 
 
-if not MYPY:
-    class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgsDict(TypedDict):
-        api_key_secret_version: pulumi.Input[_builtins.str]
-        """
-        The name of the SecretManager secret version resource storing the API key.
-        Format: `projects/{project}/secrets/{secret}/versions/{version}`
-        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
-        service agent
-        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-        """
-        key_name: pulumi.Input[_builtins.str]
-        """
-        The parameter name or the header name of the API key.
-        E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
-        """
-        request_location: pulumi.Input[_builtins.str]
-        """
-        Key location in the request.
-        Possible values:
-        HEADER
-        QUERY_STRING
-        """
-elif False:
-    ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgsDict(TypedDict):
+    api_key_secret_version: pulumi.Input[_builtins.str]
+    """
+    The name of the SecretManager secret version resource storing the API key.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+    service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    key_name: pulumi.Input[_builtins.str]
+    """
+    The parameter name or the header name of the API key.
+    E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+    """
+    request_location: pulumi.Input[_builtins.str]
+    """
+    Key location in the request. For API key auth on MCP toolsets,
+    the API key can only be sent in the request header.
+    Possible values:
+    HEADER
+    """
 
 @pulumi.input_type
 class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs:
@@ -22316,10 +22406,10 @@ class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs:
                `service-@gcp-sa-ces.iam.gserviceaccount.com`.
         :param pulumi.Input[_builtins.str] key_name: The parameter name or the header name of the API key.
                E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
-        :param pulumi.Input[_builtins.str] request_location: Key location in the request.
+        :param pulumi.Input[_builtins.str] request_location: Key location in the request. For API key auth on MCP toolsets,
+               the API key can only be sent in the request header.
                Possible values:
                HEADER
-               QUERY_STRING
         """
         pulumi.set(__self__, "api_key_secret_version", api_key_secret_version)
         pulumi.set(__self__, "key_name", key_name)
@@ -22358,10 +22448,10 @@ class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs:
     @pulumi.getter(name="requestLocation")
     def request_location(self) -> pulumi.Input[_builtins.str]:
         """
-        Key location in the request.
+        Key location in the request. For API key auth on MCP toolsets,
+        the API key can only be sent in the request header.
         Possible values:
         HEADER
-        QUERY_STRING
         """
         return pulumi.get(self, "request_location")
 
@@ -22370,14 +22460,11 @@ class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs:
         pulumi.set(self, "request_location", value)
 
 
-if not MYPY:
-    class ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgsDict(TypedDict):
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Optional)
-        """
-elif False:
-    ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgsDict(TypedDict):
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional)
+    """
 
 @pulumi.input_type
 class ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs:
@@ -22402,37 +22489,34 @@ class ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class ToolsetOpenApiToolsetApiAuthenticationOauthConfigArgsDict(TypedDict):
-        client_id: pulumi.Input[_builtins.str]
-        """
-        The client ID from the OAuth provider.
-        """
-        client_secret_version: pulumi.Input[_builtins.str]
-        """
-        The name of the SecretManager secret version resource storing the
-        client secret.
-        Format: `projects/{project}/secrets/{secret}/versions/{version}`
-        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
-        service agent
-        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-        """
-        oauth_grant_type: pulumi.Input[_builtins.str]
-        """
-        OAuth grant types.
-        Possible values:
-        CLIENT_CREDENTIAL
-        """
-        token_endpoint: pulumi.Input[_builtins.str]
-        """
-        The token endpoint in the OAuth provider to exchange for an access token.
-        """
-        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The OAuth scopes to grant.
-        """
-elif False:
-    ToolsetOpenApiToolsetApiAuthenticationOauthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolsetOpenApiToolsetApiAuthenticationOauthConfigArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The client ID from the OAuth provider.
+    """
+    client_secret_version: pulumi.Input[_builtins.str]
+    """
+    The name of the SecretManager secret version resource storing the
+    client secret.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+    service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    oauth_grant_type: pulumi.Input[_builtins.str]
+    """
+    OAuth grant types.
+    Possible values:
+    CLIENT_CREDENTIAL
+    """
+    token_endpoint: pulumi.Input[_builtins.str]
+    """
+    The token endpoint in the OAuth provider to exchange for an access token.
+    """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The OAuth scopes to grant.
+    """
 
 @pulumi.input_type
 class ToolsetOpenApiToolsetApiAuthenticationOauthConfigArgs:
@@ -22531,20 +22615,17 @@ class ToolsetOpenApiToolsetApiAuthenticationOauthConfigArgs:
         pulumi.set(self, "scopes", value)
 
 
-if not MYPY:
-    class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict):
-        service_account: pulumi.Input[_builtins.str]
-        """
-        The email address of the service account used for authenticatation. CES
-        uses this service account to exchange an access token and the access token
-        is then sent in the `Authorization` header of the request.
-        The service account must have the
-        `roles/iam.serviceAccountTokenCreator` role granted to the
-        CES service agent
-        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-        """
-elif False:
-    ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict):
+    service_account: pulumi.Input[_builtins.str]
+    """
+    The email address of the service account used for authenticatation. CES
+    uses this service account to exchange an access token and the access token
+    is then sent in the `Authorization` header of the request.
+    The service account must have the
+    `roles/iam.serviceAccountTokenCreator` role granted to the
+    CES service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
 
 @pulumi.input_type
 class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs:
@@ -22580,11 +22661,8 @@ class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs:
         pulumi.set(self, "service_account", value)
 
 
-if not MYPY:
-    class ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict(TypedDict):
-        pass
-elif False:
-    ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs:
@@ -22592,19 +22670,16 @@ class ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs:
         pass
 
 
-if not MYPY:
-    class ToolsetOpenApiToolsetServiceDirectoryConfigArgsDict(TypedDict):
-        service: pulumi.Input[_builtins.str]
-        """
-        The name of [Service
-        Directory](https://cloud.google.com/service-directory) service.
-        Format:
-        `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-        Location of the service directory must be the same as the location of the
-        app.
-        """
-elif False:
-    ToolsetOpenApiToolsetServiceDirectoryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolsetOpenApiToolsetServiceDirectoryConfigArgsDict(TypedDict):
+    service: pulumi.Input[_builtins.str]
+    """
+    The name of [Service
+    Directory](https://cloud.google.com/service-directory) service.
+    Format:
+    `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+    Location of the service directory must be the same as the location of the
+    app.
+    """
 
 @pulumi.input_type
 class ToolsetOpenApiToolsetServiceDirectoryConfigArgs:
@@ -22638,16 +22713,13 @@ class ToolsetOpenApiToolsetServiceDirectoryConfigArgs:
         pulumi.set(self, "service", value)
 
 
-if not MYPY:
-    class ToolsetOpenApiToolsetTlsConfigArgsDict(TypedDict):
-        ca_certs: pulumi.Input[Sequence[pulumi.Input['ToolsetOpenApiToolsetTlsConfigCaCertArgsDict']]]
-        """
-        Specifies a list of allowed custom CA certificates for HTTPS
-        verification.
-        Structure is documented below.
-        """
-elif False:
-    ToolsetOpenApiToolsetTlsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ToolsetOpenApiToolsetTlsConfigArgsDict(TypedDict):
+    ca_certs: pulumi.Input[Sequence[pulumi.Input['ToolsetOpenApiToolsetTlsConfigCaCertArgsDict']]]
+    """
+    Specifies a list of allowed custom CA certificates for HTTPS
+    verification.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ToolsetOpenApiToolsetTlsConfigArgs:
@@ -22675,28 +22747,25 @@ class ToolsetOpenApiToolsetTlsConfigArgs:
         pulumi.set(self, "ca_certs", value)
 
 
-if not MYPY:
-    class ToolsetOpenApiToolsetTlsConfigCaCertArgsDict(TypedDict):
-        cert: pulumi.Input[_builtins.str]
-        """
-        The allowed custom CA certificates (in DER format) for
-        HTTPS verification. This overrides the default SSL trust store. If this
-        is empty or unspecified, CES will use Google's default trust
-        store to verify certificates. N.B. Make sure the HTTPS server
-        certificates are signed with "subject alt name". For instance a
-        certificate can be self-signed using the following command,
-        openssl x509 -req -days 200 -in example.com.csr \\
-        -signkey example.com.key \\
-        -out example.com.crt \\
-        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
-        """
-        display_name: pulumi.Input[_builtins.str]
-        """
-        The name of the allowed custom CA certificates. This
-        can be used to disambiguate the custom CA certificates.
-        """
-elif False:
-    ToolsetOpenApiToolsetTlsConfigCaCertArgsDict: TypeAlias = Mapping[str, Any]
+class ToolsetOpenApiToolsetTlsConfigCaCertArgsDict(TypedDict):
+    cert: pulumi.Input[_builtins.str]
+    """
+    The allowed custom CA certificates (in DER format) for
+    HTTPS verification. This overrides the default SSL trust store. If this
+    is empty or unspecified, CES will use Google's default trust
+    store to verify certificates. N.B. Make sure the HTTPS server
+    certificates are signed with "subject alt name". For instance a
+    certificate can be self-signed using the following command,
+    openssl x509 -req -days 200 -in example.com.csr \\
+    -signkey example.com.key \\
+    -out example.com.crt \\
+    -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+    """
+    display_name: pulumi.Input[_builtins.str]
+    """
+    The name of the allowed custom CA certificates. This
+    can be used to disambiguate the custom CA certificates.
+    """
 
 @pulumi.input_type
 class ToolsetOpenApiToolsetTlsConfigCaCertArgs:

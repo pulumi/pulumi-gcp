@@ -14,6 +14,15 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         [Input("accessConfigs")]
         private InputList<Inputs.RegionInstanceTemplateNetworkInterfaceAccessConfigGetArgs>? _accessConfigs;
+
+        /// <summary>
+        /// Access configurations, i.e. IPs via which this
+        /// instance can be accessed via the Internet. Omit to ensure that the instance
+        /// is not accessible from the Internet (this means that ssh provisioners will
+        /// not work unless you are running Terraform can send traffic to the instance's
+        /// network (e.g. via tunnel or because it is running on another cloud instance
+        /// on that network). This block can be specified once per `NetworkInterface`. Structure documented below.
+        /// </summary>
         public InputList<Inputs.RegionInstanceTemplateNetworkInterfaceAccessConfigGetArgs> AccessConfigs
         {
             get => _accessConfigs ?? (_accessConfigs = new InputList<Inputs.RegionInstanceTemplateNetworkInterfaceAccessConfigGetArgs>());
@@ -73,7 +82,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Ipv6Address { get; set; }
 
         /// <summary>
-        /// The name of the network_interface.
+        /// The name of the instance template. If you leave
+        /// this blank, Terraform will auto-generate a unique name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -87,6 +97,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
+        [Input("networkAttachment")]
+        public Input<string>? NetworkAttachment { get; set; }
+
+        /// <summary>
         /// The private IP address to assign to the instance. If
         /// empty, the address will be automatically assigned.
         /// </summary>
@@ -98,6 +114,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("nicType")]
         public Input<string>? NicType { get; set; }
+
+        /// <summary>
+        /// Name of the parent network interface of a dynamic network interface.
+        /// </summary>
+        [Input("parentNicName")]
+        public Input<string>? ParentNicName { get; set; }
 
         /// <summary>
         /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
@@ -125,6 +147,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("subnetworkProject")]
         public Input<string>? SubnetworkProject { get; set; }
+
+        /// <summary>
+        /// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+        /// </summary>
+        [Input("vlan")]
+        public Input<int>? Vlan { get; set; }
 
         public RegionInstanceTemplateNetworkInterfaceGetArgs()
         {

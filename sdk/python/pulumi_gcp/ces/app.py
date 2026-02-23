@@ -1039,7 +1039,7 @@ class App(pulumi.CustomResource):
             client_certificate_settings={
                 "tls_certificate": std.file(input="test-fixtures/cert.pem").result,
                 "private_key": fake_secret_version.name,
-                "passphrase": "fakepassphrase",
+                "passphrase": fake_secret_version.name,
             })
         ```
         ### Ces App Ambient Sound Gcs Uri
@@ -1195,22 +1195,14 @@ class App(pulumi.CustomResource):
         App can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/apps/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, App can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ces/app:App default projects/{{project}}/locations/{{location}}/apps/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/app:App default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/app:App default {{location}}/{{name}}
         ```
 
@@ -1435,7 +1427,7 @@ class App(pulumi.CustomResource):
             client_certificate_settings={
                 "tls_certificate": std.file(input="test-fixtures/cert.pem").result,
                 "private_key": fake_secret_version.name,
-                "passphrase": "fakepassphrase",
+                "passphrase": fake_secret_version.name,
             })
         ```
         ### Ces App Ambient Sound Gcs Uri
@@ -1591,22 +1583,14 @@ class App(pulumi.CustomResource):
         App can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/apps/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, App can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ces/app:App default projects/{{project}}/locations/{{location}}/apps/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/app:App default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/app:App default {{location}}/{{name}}
         ```
 

@@ -50,6 +50,7 @@ class CloudVmClusterArgs:
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         :param pulumi.Input[_builtins.str] backup_subnet_cidr: CIDR range of the backup subnet.
         :param pulumi.Input[_builtins.str] cidr: Network settings. CIDR to use for cluster IP allocation.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
         :param pulumi.Input[_builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels or tags associated with the VM Cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -177,6 +178,9 @@ class CloudVmClusterArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -313,6 +317,7 @@ class _CloudVmClusterState:
                characters in length. The value must start with a letter and end with
                a letter or a number.
         :param pulumi.Input[_builtins.str] create_time: The date and time that the VM cluster was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
         :param pulumi.Input[_builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] exadata_infrastructure: The name of the Exadata Infrastructure resource on which VM cluster
@@ -341,7 +346,7 @@ class _CloudVmClusterState:
         :param pulumi.Input['CloudVmClusterPropertiesArgs'] properties: Various properties and settings associated with Exadata VM cluster.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         """
         if backup_odb_subnet is not None:
             pulumi.set(__self__, "backup_odb_subnet", backup_odb_subnet)
@@ -450,6 +455,9 @@ class _CloudVmClusterState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -620,7 +628,7 @@ class _CloudVmClusterState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -803,22 +811,14 @@ class CloudVmCluster(pulumi.CustomResource):
         CloudVmCluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/cloudVmClusters/{{cloud_vm_cluster_id}}`
-
         * `{{project}}/{{location}}/{{cloud_vm_cluster_id}}`
-
         * `{{location}}/{{cloud_vm_cluster_id}}`
 
         When using the `pulumi import` command, CloudVmCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default projects/{{project}}/locations/{{location}}/cloudVmClusters/{{cloud_vm_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{project}}/{{location}}/{{cloud_vm_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{location}}/{{cloud_vm_cluster_id}}
         ```
 
@@ -833,6 +833,7 @@ class CloudVmCluster(pulumi.CustomResource):
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
         :param pulumi.Input[_builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[_builtins.str] exadata_infrastructure: The name of the Exadata Infrastructure resource on which VM cluster
                resource is created, in the following format:
@@ -1015,22 +1016,14 @@ class CloudVmCluster(pulumi.CustomResource):
         CloudVmCluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/cloudVmClusters/{{cloud_vm_cluster_id}}`
-
         * `{{project}}/{{location}}/{{cloud_vm_cluster_id}}`
-
         * `{{location}}/{{cloud_vm_cluster_id}}`
 
         When using the `pulumi import` command, CloudVmCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default projects/{{project}}/locations/{{location}}/cloudVmClusters/{{cloud_vm_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{project}}/{{location}}/{{cloud_vm_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{location}}/{{cloud_vm_cluster_id}}
         ```
 
@@ -1145,6 +1138,7 @@ class CloudVmCluster(pulumi.CustomResource):
                characters in length. The value must start with a letter and end with
                a letter or a number.
         :param pulumi.Input[_builtins.str] create_time: The date and time that the VM cluster was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
         :param pulumi.Input[_builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] exadata_infrastructure: The name of the Exadata Infrastructure resource on which VM cluster
@@ -1173,7 +1167,7 @@ class CloudVmCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict']] properties: Various properties and settings associated with Exadata VM cluster.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1248,6 +1242,9 @@ class CloudVmCluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -1366,7 +1363,7 @@ class CloudVmCluster(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

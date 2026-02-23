@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkservices.inputs.MulticastDomainConnectionConfigArgs;
 import com.pulumi.gcp.networkservices.inputs.MulticastDomainStateArgs;
+import com.pulumi.gcp.networkservices.inputs.MulticastDomainUllMulticastDomainArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -212,7 +213,7 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
 
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
@@ -220,7 +221,7 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
@@ -258,6 +259,23 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<List<MulticastDomainStateArgs>>> states() {
         return Optional.ofNullable(this.states);
+    }
+
+    /**
+     * Information for an Ultra-Low-Latency multicast domain.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="ullMulticastDomain")
+    private @Nullable Output<MulticastDomainUllMulticastDomainArgs> ullMulticastDomain;
+
+    /**
+     * @return Information for an Ultra-Low-Latency multicast domain.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<MulticastDomainUllMulticastDomainArgs>> ullMulticastDomain() {
+        return Optional.ofNullable(this.ullMulticastDomain);
     }
 
     /**
@@ -314,6 +332,7 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.states = $.states;
+        this.ullMulticastDomain = $.ullMulticastDomain;
         this.uniqueId = $.uniqueId;
         this.updateTime = $.updateTime;
     }
@@ -595,7 +614,7 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -607,7 +626,7 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -672,6 +691,29 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
          */
         public Builder states(MulticastDomainStateArgs... states) {
             return states(List.of(states));
+        }
+
+        /**
+         * @param ullMulticastDomain Information for an Ultra-Low-Latency multicast domain.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ullMulticastDomain(@Nullable Output<MulticastDomainUllMulticastDomainArgs> ullMulticastDomain) {
+            $.ullMulticastDomain = ullMulticastDomain;
+            return this;
+        }
+
+        /**
+         * @param ullMulticastDomain Information for an Ultra-Low-Latency multicast domain.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ullMulticastDomain(MulticastDomainUllMulticastDomainArgs ullMulticastDomain) {
+            return ullMulticastDomain(Output.of(ullMulticastDomain));
         }
 
         /**

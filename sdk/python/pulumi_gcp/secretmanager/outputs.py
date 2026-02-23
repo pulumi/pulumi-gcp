@@ -103,6 +103,11 @@ class RegionalSecretIamBindingCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -128,6 +133,13 @@ class RegionalSecretIamBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -140,6 +152,11 @@ class RegionalSecretIamMemberCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -165,6 +182,13 @@ class RegionalSecretIamMemberCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -297,6 +321,11 @@ class SecretIamBindingCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -322,6 +351,13 @@ class SecretIamBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -334,6 +370,11 @@ class SecretIamMemberCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -359,6 +400,13 @@ class SecretIamMemberCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -793,6 +841,11 @@ class GetRegionalSecretsSecretResult(dict):
         :param _builtins.str create_time: The time at which the regional secret was created.
         :param Sequence['GetRegionalSecretsSecretCustomerManagedEncryptionArgs'] customer_managed_encryptions: Customer Managed Encryption for the regional secret.
                Structure is documented below.
+        :param _builtins.bool deletion_protection: Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+               When the field is set to true in Terraform state, a 'terraform apply'
+               or 'terraform destroy' that would delete the federation will fail.
+        :param Mapping[str, _builtins.str] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.str expire_time: Timestamp in UTC when the regional secret is scheduled to expire.
         :param Mapping[str, _builtins.str] labels: The labels assigned to this regional secret.
         :param _builtins.str location: The location of the regional secret.
@@ -861,16 +914,27 @@ class GetRegionalSecretsSecretResult(dict):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> _builtins.bool:
+        """
+        Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+        When the field is set to true in Terraform state, a 'terraform apply'
+        or 'terraform destroy' that would delete the federation will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Mapping[str, _builtins.str]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property
@@ -1260,6 +1324,11 @@ class GetSecretsSecretResult(dict):
         """
         :param Mapping[str, _builtins.str] annotations: Custom metadata about the secret.
         :param _builtins.str create_time: The time at which the Secret was created.
+        :param _builtins.bool deletion_protection: Whether Terraform will be prevented from destroying the secret. Defaults to false.
+               When the field is set to true in Terraform state, a 'terraform apply'
+               or 'terraform destroy' that would delete the secret will fail.
+        :param Mapping[str, _builtins.str] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.str expire_time: Timestamp in UTC when the Secret is scheduled to expire.
         :param Mapping[str, _builtins.str] labels: The labels assigned to this Secret.
         :param _builtins.str name: The resource name of the Pub/Sub topic that will be published to.
@@ -1320,16 +1389,27 @@ class GetSecretsSecretResult(dict):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> _builtins.bool:
+        """
+        Whether Terraform will be prevented from destroying the secret. Defaults to false.
+        When the field is set to true in Terraform state, a 'terraform apply'
+        or 'terraform destroy' that would delete the secret will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Mapping[str, _builtins.str]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property

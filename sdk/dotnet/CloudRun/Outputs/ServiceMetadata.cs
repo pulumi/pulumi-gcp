@@ -39,6 +39,10 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Annotations;
+        /// <summary>
+        /// (Output)
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? EffectiveAnnotations;
         /// <summary>
         /// (Output)
@@ -64,9 +68,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly string? Namespace;
         /// <summary>
-        /// (Output)
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? PulumiLabels;
         /// <summary>

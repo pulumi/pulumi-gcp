@@ -272,7 +272,7 @@ class _CertificateState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is
                considered revoked if and only if this field is present.
                Structure is documented below.
@@ -532,7 +532,7 @@ class _CertificateState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1058,22 +1058,14 @@ class Certificate(pulumi.CustomResource):
         Certificate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}`
-
         * `{{project}}/{{location}}/{{pool}}/{{name}}`
-
         * `{{location}}/{{pool}}/{{name}}`
 
         When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{pool}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{pool}}/{{name}}
         ```
 
@@ -1584,22 +1576,14 @@ class Certificate(pulumi.CustomResource):
         Certificate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}`
-
         * `{{project}}/{{location}}/{{pool}}/{{name}}`
-
         * `{{location}}/{{pool}}/{{name}}`
 
         When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{pool}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{pool}}/{{name}}
         ```
 
@@ -1732,7 +1716,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateRevocationDetailArgs', 'CertificateRevocationDetailArgsDict']]]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is
                considered revoked if and only if this field is present.
                Structure is documented below.
@@ -1914,7 +1898,7 @@ class Certificate(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

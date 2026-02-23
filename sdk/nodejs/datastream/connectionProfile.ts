@@ -447,22 +447,14 @@ import * as utilities from "../utilities";
  * ConnectionProfile can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
- *
  * * `{{project}}/{{location}}/{{connection_profile_id}}`
- *
  * * `{{location}}/{{connection_profile_id}}`
  *
  * When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
  * ```
  */
@@ -570,7 +562,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -743,7 +735,7 @@ export interface ConnectionProfileState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

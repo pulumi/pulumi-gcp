@@ -21,6 +21,10 @@ namespace Pulumi.Gcp.Dns.Outputs
         /// The location name defined in Google Cloud.
         /// </summary>
         public readonly string Location;
+        /// <summary>
+        /// The string data for the records in this record set
+        /// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
+        /// </summary>
         public readonly ImmutableArray<string> Rrdatas;
 
         [OutputConstructor]

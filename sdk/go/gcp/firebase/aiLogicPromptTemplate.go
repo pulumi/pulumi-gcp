@@ -12,8 +12,55 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The PromptTemplate resource for Firebase AI Logic.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about PromptTemplate, see:
+//
+// * [API documentation](https://firebase.google.com/docs/reference/ai-logic/rest/v1beta/projects.locations.templates)
+// * How-to Guides
+//   - [Get started with server prompt templates](https://firebase.google.com/docs/ai-logic/server-prompt-templates/get-started)
+//   - [Product documentation for Firebase AI Logic](https://firebase.google.com/docs/ai-logic)
+//   - [Specification for Dotprompt format](https://google.github.io/dotprompt/getting-started)
+//
 // ## Example Usage
 //
+// ### Firebaseailogic Prompt Template File
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/hello_world.prompt",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewAiLogicPromptTemplate(ctx, "file", &firebase.AiLogicPromptTemplateArgs{
+//				Location:       pulumi.String("global"),
+//				TemplateId:     pulumi.String("file-template"),
+//				TemplateString: pulumi.String(invokeFile.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Firebaseailogic Prompt Template Basic
 //
 // ```go
@@ -47,22 +94,14 @@ import (
 // PromptTemplate can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/templates/{{template_id}}`
-//
 // * `{{project}}/{{location}}/{{template_id}}`
-//
 // * `{{location}}/{{template_id}}`
 //
 // When using the `pulumi import` command, PromptTemplate can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default projects/{{project}}/locations/{{location}}/templates/{{template_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default {{project}}/{{location}}/{{template_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default {{location}}/{{template_id}}
 // ```
 type AiLogicPromptTemplate struct {
@@ -94,7 +133,7 @@ type AiLogicPromptTemplate struct {
 	// The unique ID of the PromptTemplate, which is the final component of the
 	// PromptTemplate's resource name.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
-	// The DotPrompt raw template string.
+	// The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
 	TemplateString pulumi.StringOutput `pulumi:"templateString"`
 	// Timestamp when the PromptTemplate was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -165,7 +204,7 @@ type aiLogicPromptTemplateState struct {
 	// The unique ID of the PromptTemplate, which is the final component of the
 	// PromptTemplate's resource name.
 	TemplateId *string `pulumi:"templateId"`
-	// The DotPrompt raw template string.
+	// The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
 	TemplateString *string `pulumi:"templateString"`
 	// Timestamp when the PromptTemplate was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -198,7 +237,7 @@ type AiLogicPromptTemplateState struct {
 	// The unique ID of the PromptTemplate, which is the final component of the
 	// PromptTemplate's resource name.
 	TemplateId pulumi.StringPtrInput
-	// The DotPrompt raw template string.
+	// The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
 	TemplateString pulumi.StringPtrInput
 	// Timestamp when the PromptTemplate was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -219,7 +258,7 @@ type aiLogicPromptTemplateArgs struct {
 	// The unique ID of the PromptTemplate, which is the final component of the
 	// PromptTemplate's resource name.
 	TemplateId string `pulumi:"templateId"`
-	// The DotPrompt raw template string.
+	// The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
 	TemplateString string `pulumi:"templateString"`
 }
 
@@ -235,7 +274,7 @@ type AiLogicPromptTemplateArgs struct {
 	// The unique ID of the PromptTemplate, which is the final component of the
 	// PromptTemplate's resource name.
 	TemplateId pulumi.StringInput
-	// The DotPrompt raw template string.
+	// The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
 	TemplateString pulumi.StringInput
 }
 
@@ -379,7 +418,7 @@ func (o AiLogicPromptTemplateOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiLogicPromptTemplate) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
 }
 
-// The DotPrompt raw template string.
+// The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
 func (o AiLogicPromptTemplateOutput) TemplateString() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiLogicPromptTemplate) pulumi.StringOutput { return v.TemplateString }).(pulumi.StringOutput)
 }

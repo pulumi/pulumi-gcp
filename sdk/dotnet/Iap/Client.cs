@@ -10,6 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iap
 {
     /// <summary>
+    /// &gt; **Warning:** This resource is deprecated on Jan 22, 2025. After Jan 19, 2026 the `gcp.iap.Client` Terraform resource will no longer function as intended due to the deprecation of the IAP OAuth Admin APIs. New projects will not be able to use these APIs. March 19, 2026 The IAP OAuth Admin APIs will be permanently shut down. Access to this feature will no longer be available.
+    /// 
+    /// Contains the data that describes an Identity Aware Proxy owned client.
+    /// 
+    /// &gt; **Note:** Only internal org clients can be created via declarative tools. External clients must be
+    /// manually created via the GCP console. This restriction is due to the existing APIs and not lack of support
+    /// in this tool.
+    /// 
+    /// To get more information about Client, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands.identityAwareProxyClients)
+    /// * How-to Guides
+    ///     * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Iap Client
@@ -57,16 +71,12 @@ namespace Pulumi.Gcp.Iap
     /// Client can be imported using any of these accepted formats:
     /// 
     /// * `{{brand}}/identityAwareProxyClients/{{client_id}}`
-    /// 
     /// * `{{brand}}/{{client_id}}`
     /// 
     /// When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:iap/client:Client default {{brand}}/identityAwareProxyClients/{{client_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:iap/client:Client default {{brand}}/{{client_id}}
     /// ```
     /// </summary>

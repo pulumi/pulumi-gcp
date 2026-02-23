@@ -315,28 +315,16 @@ namespace Pulumi.Gcp.DataFusion
     /// Instance can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-    /// 
     /// * `{{project}}/{{region}}/{{name}}`
-    /// 
     /// * `{{region}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:datafusion/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:datafusion/instance:Instance default {{project}}/{{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:datafusion/instance:Instance default {{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:datafusion/instance:Instance default {{name}}
     /// ```
     /// </summary>
@@ -484,7 +472,7 @@ namespace Pulumi.Gcp.DataFusion
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -982,7 +970,7 @@ namespace Pulumi.Gcp.DataFusion
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

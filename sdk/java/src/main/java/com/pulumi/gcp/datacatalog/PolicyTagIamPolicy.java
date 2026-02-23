@@ -286,25 +286,21 @@ import javax.annotation.Nullable;
  * Data Catalog policytag IAM resources can be imported using the resource identifiers, role, and member.
  * 
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
- * 
  * ```sh
- * $ pulumi import gcp:datacatalog/policyTagIamPolicy:PolicyTagIamPolicy editor &#34;{{policy_tag}} roles/viewer user:jane{@literal @}example.com&#34;
+ * $ terraform import google_data_catalog_policy_tag_iam_member.editor &#34;{{policy_tag}} roles/viewer user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
- * 
  * ```sh
- * $ pulumi import gcp:datacatalog/policyTagIamPolicy:PolicyTagIamPolicy editor &#34;{{policy_tag}} roles/viewer&#34;
+ * $ terraform import google_data_catalog_policy_tag_iam_binding.editor &#34;{{policy_tag}} roles/viewer&#34;
  * ```
  * 
  * IAM policy imports use the identifier of the resource in question, e.g.
- * 
  * ```sh
  * $ pulumi import gcp:datacatalog/policyTagIamPolicy:PolicyTagIamPolicy editor {{policy_tag}}
  * ```
  * 
- * -&gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
- * 
+ * &gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */

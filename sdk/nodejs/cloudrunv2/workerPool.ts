@@ -465,22 +465,14 @@ import * as utilities from "../utilities";
  * WorkerPool can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{location}}/{{name}}
  * ```
  */
@@ -561,11 +553,22 @@ export class WorkerPool extends pulumi.CustomResource {
      * The deletion time.
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the service. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the service,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the WorkerPool will fail.
+     * When the field is set to false, deleting the WorkerPool is allowed.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * User-provided description of the WorkerPool. This field currently has a 512-character limit.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -640,7 +643,7 @@ export class WorkerPool extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -824,11 +827,22 @@ export interface WorkerPoolState {
      * The deletion time.
      */
     deleteTime?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the service. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the service,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the WorkerPool will fail.
+     * When the field is set to false, deleting the WorkerPool is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * User-provided description of the WorkerPool. This field currently has a 512-character limit.
      */
     description?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -903,7 +917,7 @@ export interface WorkerPoolState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -974,6 +988,14 @@ export interface WorkerPoolArgs {
      * @deprecated `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
      */
     customAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether Terraform will be prevented from destroying the service. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the service,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the WorkerPool will fail.
+     * When the field is set to false, deleting the WorkerPool is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * User-provided description of the WorkerPool. This field currently has a 512-character limit.

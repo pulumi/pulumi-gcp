@@ -29,8 +29,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -97,22 +95,14 @@ import (
 // GoogleApiSource can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/googleApiSources/{{google_api_source_id}}`
-//
 // * `{{project}}/{{location}}/{{google_api_source_id}}`
-//
 // * `{{location}}/{{google_api_source_id}}`
 //
 // When using the `pulumi import` command, GoogleApiSource can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default projects/{{project}}/locations/{{location}}/googleApiSources/{{google_api_source_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default {{project}}/{{location}}/{{google_api_source_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default {{location}}/{{google_api_source_id}}
 // ```
 type GoogleApiSource struct {
@@ -134,7 +124,8 @@ type GoogleApiSource struct {
 	// "projects/{PROJECT_ID}/locations/{region}/messagesBuses/{MESSAGE_BUS_ID)
 	Destination pulumi.StringOutput `pulumi:"destination"`
 	// Resource display name.
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -162,7 +153,7 @@ type GoogleApiSource struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Server assigned unique identifier for the channel. The value is a UUID4
 	// string and guaranteed to remain unchanged until the resource is deleted.
@@ -231,7 +222,8 @@ type googleApiSourceState struct {
 	// "projects/{PROJECT_ID}/locations/{region}/messagesBuses/{MESSAGE_BUS_ID)
 	Destination *string `pulumi:"destination"`
 	// Resource display name.
-	DisplayName          *string           `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -259,7 +251,7 @@ type googleApiSourceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Server assigned unique identifier for the channel. The value is a UUID4
 	// string and guaranteed to remain unchanged until the resource is deleted.
@@ -285,7 +277,8 @@ type GoogleApiSourceState struct {
 	// "projects/{PROJECT_ID}/locations/{region}/messagesBuses/{MESSAGE_BUS_ID)
 	Destination pulumi.StringPtrInput
 	// Resource display name.
-	DisplayName          pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -313,7 +306,7 @@ type GoogleApiSourceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Server assigned unique identifier for the channel. The value is a UUID4
 	// string and guaranteed to remain unchanged until the resource is deleted.
@@ -514,6 +507,7 @@ func (o GoogleApiSourceOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleApiSource) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o GoogleApiSourceOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleApiSource) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -568,7 +562,8 @@ func (o GoogleApiSourceOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GoogleApiSourceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleApiSource) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

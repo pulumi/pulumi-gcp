@@ -10,6 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Kms
 {
     /// <summary>
+    /// `AutokeyConfig` is a singleton resource used to configure the auto-provisioning
+    /// flow of CryptoKeys for CMEK.
+    /// 
+    /// &gt; **Note:** AutokeyConfigs cannot be deleted from Google Cloud Platform.
+    /// Destroying a Terraform-managed AutokeyConfig will remove it from state but
+    /// *will not delete the resource from the project.*
+    /// 
+    /// To get more information about AutokeyConfig, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/AutokeyConfig)
+    /// * How-to Guides
+    ///     * [Cloud KMS with Autokey](https://cloud.google.com/kms/docs/kms-with-autokey)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Kms Autokey Config All
@@ -157,16 +170,12 @@ namespace Pulumi.Gcp.Kms
     /// AutokeyConfig can be imported using any of these accepted formats:
     /// 
     /// * `folders/{{folder}}/autokeyConfig`
-    /// 
     /// * `{{folder}}`
     /// 
     /// When using the `pulumi import` command, AutokeyConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:kms/autokeyConfig:AutokeyConfig default folders/{{folder}}/autokeyConfig
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:kms/autokeyConfig:AutokeyConfig default {{folder}}
     /// ```
     /// </summary>

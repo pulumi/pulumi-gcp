@@ -220,7 +220,7 @@ class _AiFeatureOnlineStoreFeatureviewState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region for the resource. It should be the same as the featureonlinestore region.
         :param pulumi.Input['AiFeatureOnlineStoreFeatureviewSyncConfigArgs'] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
                Structure is documented below.
@@ -363,7 +363,7 @@ class _AiFeatureOnlineStoreFeatureviewState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -612,8 +612,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         test_project = gcp.organizations.get_project()
         project = gcp.organizations.Project("project",
-            project_id="tf-test_40472",
-            name="tf-test_44339",
+            project_id="tf-test_55500",
+            name="tf-test_12223",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -823,28 +823,16 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         FeatureOnlineStoreFeatureview can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}`
-
         * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}`
-
         * `{{region}}/{{feature_online_store}}/{{name}}`
-
         * `{{feature_online_store}}/{{name}}`
 
         When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{project}}/{{region}}/{{feature_online_store}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{region}}/{{feature_online_store}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{feature_online_store}}/{{name}}
         ```
 
@@ -1048,8 +1036,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         test_project = gcp.organizations.get_project()
         project = gcp.organizations.Project("project",
-            project_id="tf-test_40472",
-            name="tf-test_44339",
+            project_id="tf-test_55500",
+            name="tf-test_12223",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -1259,28 +1247,16 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         FeatureOnlineStoreFeatureview can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}`
-
         * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}`
-
         * `{{region}}/{{feature_online_store}}/{{name}}`
-
         * `{{feature_online_store}}/{{name}}`
 
         When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{project}}/{{region}}/{{feature_online_store}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{region}}/{{feature_online_store}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{feature_online_store}}/{{name}}
         ```
 
@@ -1379,7 +1355,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region for the resource. It should be the same as the featureonlinestore region.
         :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
                Structure is documented below.
@@ -1482,7 +1458,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

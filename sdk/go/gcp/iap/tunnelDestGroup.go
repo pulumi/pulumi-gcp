@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.NewTunnelDestGroup(ctx, "dest_group", &iap.TunnelDestGroupArgs{
 //				Region:    pulumi.String("us-central1"),
-//				GroupName: pulumi.String("testgroup_6529"),
+//				GroupName: pulumi.String("testgroup_12618"),
 //				Cidrs: pulumi.StringArray{
 //					pulumi.String("10.1.0.0/16"),
 //					pulumi.String("192.168.10.0/24"),
@@ -58,40 +58,20 @@ import (
 // TunnelDestGroup can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}`
-//
 // * `{{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}`
-//
 // * `{{project}}/{{region}}/{{group_name}}`
-//
 // * `{{region}}/destGroups/{{group_name}}`
-//
 // * `{{region}}/{{group_name}}`
-//
 // * `{{group_name}}`
 //
 // When using the `pulumi import` command, TunnelDestGroup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default projects/{{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{project}}/{{region}}/{{group_name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{region}}/destGroups/{{group_name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{region}}/{{group_name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{group_name}}
 // ```
 type TunnelDestGroup struct {

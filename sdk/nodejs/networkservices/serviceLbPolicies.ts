@@ -7,6 +7,15 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * ServiceLbPolicy holds global load balancing and traffic distribution configuration that can be applied to a BackendService.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about ServiceLbPolicies, see:
+ *
+ * * [API documentation](https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.serviceLbPolicies)
+ *
  * ## Example Usage
  *
  * ### Network Services Service Lb Policies Basic
@@ -88,22 +97,14 @@ import * as utilities from "../utilities";
  * ServiceLbPolicies can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, ServiceLbPolicies can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{location}}/{{name}}
  * ```
  */
@@ -188,7 +189,7 @@ export class ServiceLbPolicies extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -305,7 +306,7 @@ export interface ServiceLbPoliciesState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

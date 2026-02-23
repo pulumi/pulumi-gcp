@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// ## Import
     /// 
-    /// Projects can be imported using the `project_id`, e.g.
+    /// Projects can be imported using the `ProjectId`, e.g.
     /// 
     /// * `{{project_id}}`
     /// 
@@ -118,7 +118,12 @@ namespace Pulumi.Gcp.Organizations
     public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set AutoCreateNetwork to false, since the network will exist momentarily.
+        /// Controls whether the 'default' network exists on the project. Defaults
+        /// to `True`, where it is created. If set to `False`, the default network will still be created by GCP but
+        /// will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
+        /// network slot available to create the project successfully, even if you set `AutoCreateNetwork` to
+        /// `False`. Note that when `False`, Terraform enables `compute.googleapis.com` on the project to interact
+        /// with the GCE API and currently leaves it enabled.
         /// </summary>
         [Output("autoCreateNetwork")]
         public Output<bool?> AutoCreateNetwork { get; private set; } = null!;
@@ -133,6 +138,12 @@ namespace Pulumi.Gcp.Organizations
         [Output("billingAccount")]
         public Output<string?> BillingAccount { get; private set; } = null!;
 
+        /// <summary>
+        /// The deletion policy for the Project. Setting PREVENT will protect the project
+        /// against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
+        /// to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
+        /// the Google API. Possible values are: "PREVENT", "ABANDON", "DELETE". Default value is `PREVENT`.
+        /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
@@ -190,7 +201,7 @@ namespace Pulumi.Gcp.Organizations
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// (ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -253,7 +264,12 @@ namespace Pulumi.Gcp.Organizations
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set AutoCreateNetwork to false, since the network will exist momentarily.
+        /// Controls whether the 'default' network exists on the project. Defaults
+        /// to `True`, where it is created. If set to `False`, the default network will still be created by GCP but
+        /// will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
+        /// network slot available to create the project successfully, even if you set `AutoCreateNetwork` to
+        /// `False`. Note that when `False`, Terraform enables `compute.googleapis.com` on the project to interact
+        /// with the GCE API and currently leaves it enabled.
         /// </summary>
         [Input("autoCreateNetwork")]
         public Input<bool>? AutoCreateNetwork { get; set; }
@@ -268,6 +284,12 @@ namespace Pulumi.Gcp.Organizations
         [Input("billingAccount")]
         public Input<string>? BillingAccount { get; set; }
 
+        /// <summary>
+        /// The deletion policy for the Project. Setting PREVENT will protect the project
+        /// against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
+        /// to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
+        /// the Google API. Possible values are: "PREVENT", "ABANDON", "DELETE". Default value is `PREVENT`.
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
@@ -339,7 +361,12 @@ namespace Pulumi.Gcp.Organizations
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set AutoCreateNetwork to false, since the network will exist momentarily.
+        /// Controls whether the 'default' network exists on the project. Defaults
+        /// to `True`, where it is created. If set to `False`, the default network will still be created by GCP but
+        /// will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
+        /// network slot available to create the project successfully, even if you set `AutoCreateNetwork` to
+        /// `False`. Note that when `False`, Terraform enables `compute.googleapis.com` on the project to interact
+        /// with the GCE API and currently leaves it enabled.
         /// </summary>
         [Input("autoCreateNetwork")]
         public Input<bool>? AutoCreateNetwork { get; set; }
@@ -354,6 +381,12 @@ namespace Pulumi.Gcp.Organizations
         [Input("billingAccount")]
         public Input<string>? BillingAccount { get; set; }
 
+        /// <summary>
+        /// The deletion policy for the Project. Setting PREVENT will protect the project
+        /// against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
+        /// to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
+        /// the Google API. Possible values are: "PREVENT", "ABANDON", "DELETE". Default value is `PREVENT`.
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
@@ -430,7 +463,7 @@ namespace Pulumi.Gcp.Organizations
         private InputMap<string>? _pulumiLabels;
 
         /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// (ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

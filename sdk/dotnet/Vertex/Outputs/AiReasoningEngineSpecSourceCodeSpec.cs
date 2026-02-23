@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineSpecSourceCodeSpec
     {
         /// <summary>
+        /// Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource? DeveloperConnectSource;
+        /// <summary>
         /// Source code is provided directly in the request.
         /// Structure is documented below.
         /// </summary>
@@ -26,10 +31,13 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
         [OutputConstructor]
         private AiReasoningEngineSpecSourceCodeSpec(
+            Outputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource? developerConnectSource,
+
             Outputs.AiReasoningEngineSpecSourceCodeSpecInlineSource? inlineSource,
 
             Outputs.AiReasoningEngineSpecSourceCodeSpecPythonSpec? pythonSpec)
         {
+            DeveloperConnectSource = developerConnectSource;
             InlineSource = inlineSource;
             PythonSpec = pythonSpec;
         }

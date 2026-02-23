@@ -59,25 +59,20 @@ __all__ = [
     'PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class PosturePolicySetArgsDict(TypedDict):
-        policies: pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyArgsDict']]]
-        """
-        List of security policy
-        Structure is documented below.
-        """
-        policy_set_id: pulumi.Input[_builtins.str]
-        """
-        ID of the policy set.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the policy set.
-        """
-elif False:
-    PosturePolicySetArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetArgsDict(TypedDict):
+    policies: pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyArgsDict']]]
+    """
+    List of security policy
+    Structure is documented below.
+    """
+    policy_set_id: pulumi.Input[_builtins.str]
+    """
+    ID of the policy set.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the policy set.
+    """
 
 @pulumi.input_type
 class PosturePolicySetArgs:
@@ -134,28 +129,25 @@ class PosturePolicySetArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyArgsDict(TypedDict):
-        constraint: pulumi.Input['PosturePolicySetPolicyConstraintArgsDict']
-        """
-        Policy constraint definition.It can have the definition of one of following constraints: orgPolicyConstraint orgPolicyConstraintCustom securityHealthAnalyticsModule securityHealthAnalyticsCustomModule
-        Structure is documented below.
-        """
-        policy_id: pulumi.Input[_builtins.str]
-        """
-        ID of the policy.
-        """
-        compliance_standards: NotRequired[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyComplianceStandardArgsDict']]]]
-        """
-        Mapping for policy to security standards and controls.
-        Structure is documented below.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the policy.
-        """
-elif False:
-    PosturePolicySetPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyArgsDict(TypedDict):
+    constraint: pulumi.Input['PosturePolicySetPolicyConstraintArgsDict']
+    """
+    Policy constraint definition.It can have the definition of one of following constraints: orgPolicyConstraint orgPolicyConstraintCustom securityHealthAnalyticsModule securityHealthAnalyticsCustomModule
+    Structure is documented below.
+    """
+    policy_id: pulumi.Input[_builtins.str]
+    """
+    ID of the policy.
+    """
+    compliance_standards: NotRequired[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyComplianceStandardArgsDict']]]]
+    """
+    Mapping for policy to security standards and controls.
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the policy.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyArgs:
@@ -230,18 +222,15 @@ class PosturePolicySetPolicyArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyComplianceStandardArgsDict(TypedDict):
-        control: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mapping of security controls for the policy.
-        """
-        standard: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mapping of compliance standards for the policy.
-        """
-elif False:
-    PosturePolicySetPolicyComplianceStandardArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyComplianceStandardArgsDict(TypedDict):
+    control: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mapping of security controls for the policy.
+    """
+    standard: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mapping of compliance standards for the policy.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyComplianceStandardArgs:
@@ -282,30 +271,27 @@ class PosturePolicySetPolicyComplianceStandardArgs:
         pulumi.set(self, "standard", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintArgsDict(TypedDict):
-        org_policy_constraint: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintArgsDict']]
-        """
-        Organization policy canned constraint definition.
-        Structure is documented below.
-        """
-        org_policy_constraint_custom: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgsDict']]
-        """
-        Organization policy custom constraint policy definition.
-        Structure is documented below.
-        """
-        security_health_analytics_custom_module: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgsDict']]
-        """
-        Definition of Security Health Analytics Custom Module.
-        Structure is documented below.
-        """
-        security_health_analytics_module: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgsDict']]
-        """
-        Security Health Analytics built-in detector definition.
-        Structure is documented below.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintArgsDict(TypedDict):
+    org_policy_constraint: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintArgsDict']]
+    """
+    Organization policy canned constraint definition.
+    Structure is documented below.
+    """
+    org_policy_constraint_custom: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgsDict']]
+    """
+    Organization policy custom constraint policy definition.
+    Structure is documented below.
+    """
+    security_health_analytics_custom_module: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgsDict']]
+    """
+    Definition of Security Health Analytics Custom Module.
+    Structure is documented below.
+    """
+    security_health_analytics_module: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgsDict']]
+    """
+    Security Health Analytics built-in detector definition.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintArgs:
@@ -386,19 +372,16 @@ class PosturePolicySetPolicyConstraintArgs:
         pulumi.set(self, "security_health_analytics_module", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintOrgPolicyConstraintArgsDict(TypedDict):
-        canned_constraint_id: pulumi.Input[_builtins.str]
-        """
-        Organization policy canned constraint Id
-        """
-        policy_rules: pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgsDict']]]
-        """
-        Definition of policy rules
-        Structure is documented below.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintOrgPolicyConstraintArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintOrgPolicyConstraintArgsDict(TypedDict):
+    canned_constraint_id: pulumi.Input[_builtins.str]
+    """
+    Organization policy canned constraint Id
+    """
+    policy_rules: pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgsDict']]]
+    """
+    Definition of policy rules
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs:
@@ -439,20 +422,17 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs:
         pulumi.set(self, "policy_rules", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgsDict(TypedDict):
-        policy_rules: pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgsDict']]]
-        """
-        Definition of policy rules
-        Structure is documented below.
-        """
-        custom_constraint: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgsDict']]
-        """
-        Organization policy custom constraint definition.
-        Structure is documented below.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgsDict(TypedDict):
+    policy_rules: pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgsDict']]]
+    """
+    Definition of policy rules
+    Structure is documented below.
+    """
+    custom_constraint: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgsDict']]
+    """
+    Organization policy custom constraint definition.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs:
@@ -496,39 +476,36 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs:
         pulumi.set(self, "custom_constraint", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgsDict(TypedDict):
-        action_type: pulumi.Input[_builtins.str]
-        """
-        The action to take if the condition is met.
-        Possible values are: `ALLOW`, `DENY`.
-        """
-        condition: pulumi.Input[_builtins.str]
-        """
-        A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
-        """
-        method_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Immutable. The name of the custom constraint. This is unique within the organization.
-        """
-        resource_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A human-friendly description of the constraint to display as an error message when the policy is violated.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A human-friendly name for the constraint.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgsDict(TypedDict):
+    action_type: pulumi.Input[_builtins.str]
+    """
+    The action to take if the condition is met.
+    Possible values are: `ALLOW`, `DENY`.
+    """
+    condition: pulumi.Input[_builtins.str]
+    """
+    A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+    """
+    method_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Immutable. The name of the custom constraint. This is unique within the organization.
+    """
+    resource_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A human-friendly description of the constraint to display as an error message when the policy is violated.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A human-friendly name for the constraint.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs:
@@ -646,35 +623,32 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintA
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgsDict(TypedDict):
-        allow_all: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
-        """
-        condition: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgsDict']]
-        """
-        Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-        This page details the objects and attributes that are used to the build the CEL expressions for
-        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-        Structure is documented below.
-        """
-        deny_all: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
-        """
-        enforce: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
-        This field can be set only in policies for boolean constraints.
-        """
-        values: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgsDict']]
-        """
-        List of values to be used for this policy rule. This field can be set only in policies for list constraints.
-        Structure is documented below.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgsDict(TypedDict):
+    allow_all: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
+    """
+    condition: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgsDict']]
+    """
+    Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+    This page details the objects and attributes that are used to the build the CEL expressions for
+    custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+    Structure is documented below.
+    """
+    deny_all: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+    """
+    enforce: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
+    This field can be set only in policies for boolean constraints.
+    """
+    values: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgsDict']]
+    """
+    List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs:
@@ -773,26 +747,23 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the expression
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Title for the expression, i.e. a short string describing its purpose.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the expression
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Title for the expression, i.e. a short string describing its purpose.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs:
@@ -864,18 +835,15 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditi
         pulumi.set(self, "title", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgsDict(TypedDict):
-        allowed_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of values allowed at this resource.
-        """
-        denied_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of values denied at this resource.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgsDict(TypedDict):
+    allowed_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of values allowed at this resource.
+    """
+    denied_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of values denied at this resource.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs:
@@ -916,35 +884,32 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesA
         pulumi.set(self, "denied_values", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgsDict(TypedDict):
-        allow_all: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
-        """
-        condition: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgsDict']]
-        """
-        Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-        This page details the objects and attributes that are used to the build the CEL expressions for
-        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-        Structure is documented below.
-        """
-        deny_all: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
-        """
-        enforce: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
-        This field can be set only in policies for boolean constraints.
-        """
-        values: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgsDict']]
-        """
-        List of values to be used for this policy rule. This field can be set only in policies for list constraints.
-        Structure is documented below.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgsDict(TypedDict):
+    allow_all: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
+    """
+    condition: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgsDict']]
+    """
+    Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+    This page details the objects and attributes that are used to the build the CEL expressions for
+    custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+    Structure is documented below.
+    """
+    deny_all: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+    """
+    enforce: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
+    This field can be set only in policies for boolean constraints.
+    """
+    values: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgsDict']]
+    """
+    List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs:
@@ -1043,26 +1008,23 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the expression
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Title for the expression, i.e. a short string describing its purpose.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the expression
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Title for the expression, i.e. a short string describing its purpose.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs:
@@ -1134,18 +1096,15 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs
         pulumi.set(self, "title", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgsDict(TypedDict):
-        allowed_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of values allowed at this resource.
-        """
-        denied_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of values denied at this resource.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgsDict(TypedDict):
+    allowed_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of values allowed at this resource.
+    """
+    denied_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of values denied at this resource.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs:
@@ -1186,31 +1145,28 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs:
         pulumi.set(self, "denied_values", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgsDict(TypedDict):
-        config: pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgsDict']
-        """
-        Custom module details.
-        Structure is documented below.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the Security Health Analytics custom module. This
-        display name becomes the finding category for all findings that are
-        returned by this custom module.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A server generated id of custom module.
-        """
-        module_enablement_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The state of enablement for the module at its level of the resource hierarchy.
-        Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgsDict(TypedDict):
+    config: pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgsDict']
+    """
+    Custom module details.
+    Structure is documented below.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the Security Health Analytics custom module. This
+    display name becomes the finding category for all findings that are
+    returned by this custom module.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A server generated id of custom module.
+    """
+    module_enablement_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The state of enablement for the module at its level of the resource hierarchy.
+    Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs:
@@ -1292,45 +1248,42 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs:
         pulumi.set(self, "module_enablement_state", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgsDict(TypedDict):
-        predicate: pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgsDict']
-        """
-        The CEL expression to evaluate to produce findings.When the expression
-        evaluates to true against a resource, a finding is generated.
-        Structure is documented below.
-        """
-        resource_selector: pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgsDict']
-        """
-        The resource types that the custom module operates on. Each custom module
-        can specify up to 5 resource types.
-        Structure is documented below.
-        """
-        severity: pulumi.Input[_builtins.str]
-        """
-        The severity to assign to findings generated by the module.
-        Possible values are: `SEVERITY_UNSPECIFIED`, `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
-        """
-        custom_output: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgsDict']]
-        """
-        Custom output properties. A set of optional name-value pairs that define custom source properties to
-        return with each finding that is generated by the custom module. The custom
-        source properties that are defined here are included in the finding JSON
-        under `sourceProperties`.
-        Structure is documented below.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Text that describes the vulnerability or misconfiguration that the custom
-        module detects.
-        """
-        recommendation: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An explanation of the recommended steps that security teams can take to
-        resolve the detected issue
-        """
-elif False:
-    PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgsDict(TypedDict):
+    predicate: pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgsDict']
+    """
+    The CEL expression to evaluate to produce findings.When the expression
+    evaluates to true against a resource, a finding is generated.
+    Structure is documented below.
+    """
+    resource_selector: pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgsDict']
+    """
+    The resource types that the custom module operates on. Each custom module
+    can specify up to 5 resource types.
+    Structure is documented below.
+    """
+    severity: pulumi.Input[_builtins.str]
+    """
+    The severity to assign to findings generated by the module.
+    Possible values are: `SEVERITY_UNSPECIFIED`, `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+    """
+    custom_output: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgsDict']]
+    """
+    Custom output properties. A set of optional name-value pairs that define custom source properties to
+    return with each finding that is generated by the custom module. The custom
+    source properties that are defined here are included in the finding JSON
+    under `sourceProperties`.
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Text that describes the vulnerability or misconfiguration that the custom
+    module detects.
+    """
+    recommendation: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An explanation of the recommended steps that security teams can take to
+    resolve the detected issue
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgs:
@@ -1454,15 +1407,12 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigA
         pulumi.set(self, "recommendation", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgsDict(TypedDict):
-        properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgsDict']]]]
-        """
-        A list of custom output properties to add to the finding.
-        Structure is documented below.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgsDict(TypedDict):
+    properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgsDict']]]]
+    """
+    A list of custom output properties to add to the finding.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs:
@@ -1489,21 +1439,18 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
         pulumi.set(self, "properties", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the property for the custom output.
-        """
-        value_expression: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgsDict']]
-        """
-        The CEL expression for the custom output. A resource property can be
-        specified to return the value of the property or a text string enclosed
-        in quotation marks.
-        Structure is documented below.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the property for the custom output.
+    """
+    value_expression: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgsDict']]
+    """
+    The CEL expression for the custom output. A resource property can be
+    specified to return the value of the property or a text string enclosed
+    in quotation marks.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs:
@@ -1549,26 +1496,23 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
         pulumi.set(self, "value_expression", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the expression
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Title for the expression, i.e. a short string describing its purpose.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the expression
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Title for the expression, i.e. a short string describing its purpose.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs:
@@ -1640,26 +1584,23 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
         pulumi.set(self, "title", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the expression
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Title for the expression, i.e. a short string describing its purpose.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the expression
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Title for the expression, i.e. a short string describing its purpose.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgs:
@@ -1731,14 +1672,11 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigP
         pulumi.set(self, "title", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgsDict(TypedDict):
-        resource_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The resource types to run the detector on.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgsDict(TypedDict):
+    resource_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The resource types to run the detector on.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgs:
@@ -1762,19 +1700,16 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
         pulumi.set(self, "resource_types", value)
 
 
-if not MYPY:
-    class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgsDict(TypedDict):
-        module_name: pulumi.Input[_builtins.str]
-        """
-        The name of the module eg: BIGQUERY_TABLE_CMEK_DISABLED.
-        """
-        module_enablement_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The state of enablement for the module at its level of the resource hierarchy.
-        Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-        """
-elif False:
-    PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgsDict: TypeAlias = Mapping[str, Any]
+class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgsDict(TypedDict):
+    module_name: pulumi.Input[_builtins.str]
+    """
+    The name of the module eg: BIGQUERY_TABLE_CMEK_DISABLED.
+    """
+    module_enablement_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The state of enablement for the module at its level of the resource hierarchy.
+    Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+    """
 
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs:

@@ -52,9 +52,21 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.appId);
     }
 
+    /**
+     * (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+     * rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+     * serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+     * 
+     */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
+    /**
+     * @return (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+     * rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+     * serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+     * 
+     */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
     }
@@ -253,11 +265,27 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
             return appId(Output.of(appId));
         }
 
+        /**
+         * @param deletionPolicy (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+         * rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+         * serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
             $.deletionPolicy = deletionPolicy;
             return this;
         }
 
+        /**
+         * @param deletionPolicy (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+         * rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+         * serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
         }

@@ -227,6 +227,7 @@ class _GoogleApiSourceState:
                It must be point to the full resource name of a MessageBus. Format:
                "projects/{PROJECT_ID}/locations/{region}/messagesBuses/{MESSAGE_BUS_ID)
         :param pulumi.Input[_builtins.str] display_name: Resource display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other
                fields, and might be sent only on update and delete requests to ensure that
@@ -245,7 +246,7 @@ class _GoogleApiSourceState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] uid: Server assigned unique identifier for the channel. The value is a UUID4
                string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[_builtins.str] update_time: The last-modified time.
@@ -355,6 +356,9 @@ class _GoogleApiSourceState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -471,7 +475,7 @@ class _GoogleApiSourceState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -563,22 +567,14 @@ class GoogleApiSource(pulumi.CustomResource):
         GoogleApiSource can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/googleApiSources/{{google_api_source_id}}`
-
         * `{{project}}/{{location}}/{{google_api_source_id}}`
-
         * `{{location}}/{{google_api_source_id}}`
 
         When using the `pulumi import` command, GoogleApiSource can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default projects/{{project}}/locations/{{location}}/googleApiSources/{{google_api_source_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default {{project}}/{{location}}/{{google_api_source_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default {{location}}/{{google_api_source_id}}
         ```
 
@@ -655,22 +651,14 @@ class GoogleApiSource(pulumi.CustomResource):
         GoogleApiSource can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/googleApiSources/{{google_api_source_id}}`
-
         * `{{project}}/{{location}}/{{google_api_source_id}}`
-
         * `{{location}}/{{google_api_source_id}}`
 
         When using the `pulumi import` command, GoogleApiSource can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default projects/{{project}}/locations/{{location}}/googleApiSources/{{google_api_source_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default {{project}}/{{location}}/{{google_api_source_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default {{location}}/{{google_api_source_id}}
         ```
 
@@ -778,6 +766,7 @@ class GoogleApiSource(pulumi.CustomResource):
                It must be point to the full resource name of a MessageBus. Format:
                "projects/{PROJECT_ID}/locations/{region}/messagesBuses/{MESSAGE_BUS_ID)
         :param pulumi.Input[_builtins.str] display_name: Resource display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other
                fields, and might be sent only on update and delete requests to ensure that
@@ -796,7 +785,7 @@ class GoogleApiSource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] uid: Server assigned unique identifier for the channel. The value is a UUID4
                string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[_builtins.str] update_time: The last-modified time.
@@ -874,6 +863,9 @@ class GoogleApiSource(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
@@ -954,7 +946,7 @@ class GoogleApiSource(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

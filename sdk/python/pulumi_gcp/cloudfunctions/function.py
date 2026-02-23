@@ -1327,16 +1327,12 @@ class Function(pulumi.CustomResource):
         Functions can be imported using the `name` or `{{project}}/{{region}}/name`, e.g.
 
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Functions can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudfunctions/function:Function default {{name}}
         ```
 
@@ -1483,16 +1479,12 @@ class Function(pulumi.CustomResource):
         Functions can be imported using the `name` or `{{project}}/{{region}}/name`, e.g.
 
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Functions can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudfunctions/function:Function default {{name}}
         ```
 

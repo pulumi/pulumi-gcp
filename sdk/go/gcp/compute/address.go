@@ -227,28 +227,16 @@ import (
 // Address can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/regions/{{region}}/addresses/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Address can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/address:Address default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/address:Address default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/address:Address default {{name}}
 // ```
 type Address struct {
@@ -316,7 +304,7 @@ type Address struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The purpose of this resource, which can be one of the following values.
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
@@ -443,7 +431,7 @@ type addressState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The purpose of this resource, which can be one of the following values.
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
@@ -536,7 +524,7 @@ type AddressState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The purpose of this resource, which can be one of the following values.
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
@@ -923,7 +911,8 @@ func (o AddressOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AddressOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

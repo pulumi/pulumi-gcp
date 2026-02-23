@@ -40,22 +40,14 @@ import * as utilities from "../utilities";
  * RepositoryGroup can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index}}/repositoryGroups/{{repository_group_id}}`
- *
  * * `{{project}}/{{location}}/{{code_repository_index}}/{{repository_group_id}}`
- *
  * * `{{location}}/{{code_repository_index}}/{{repository_group_id}}`
  *
  * When using the `pulumi import` command, RepositoryGroup can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gemini/repositoryGroup:RepositoryGroup default projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index}}/repositoryGroups/{{repository_group_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gemini/repositoryGroup:RepositoryGroup default {{project}}/{{location}}/{{code_repository_index}}/{{repository_group_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gemini/repositoryGroup:RepositoryGroup default {{location}}/{{code_repository_index}}/{{repository_group_id}}
  * ```
  */
@@ -120,7 +112,7 @@ export class RepositoryGroup extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -231,7 +223,7 @@ export interface RepositoryGroupState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

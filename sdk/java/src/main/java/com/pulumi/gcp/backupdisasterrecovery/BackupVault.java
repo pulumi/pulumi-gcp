@@ -137,22 +137,14 @@ import javax.annotation.Nullable;
  * BackupVault can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/backupVaults/{{backup_vault_id}}`
- * 
  * * `{{project}}/{{location}}/{{backup_vault_id}}`
- * 
  * * `{{location}}/{{backup_vault_id}}`
  * 
  * When using the `pulumi import` command, BackupVault can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default projects/{{project}}/locations/{{location}}/backupVaults/{{backup_vault_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{project}}/{{location}}/{{backup_vault_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{location}}/{{backup_vault_id}}
  * ```
  * 
@@ -311,9 +303,17 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
@@ -519,7 +519,7 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -527,7 +527,7 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

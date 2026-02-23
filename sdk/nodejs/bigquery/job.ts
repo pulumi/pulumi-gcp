@@ -408,40 +408,20 @@ import * as utilities from "../utilities";
  * Job can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/jobs/{{job_id}}/location/{{location}}`
- *
  * * `projects/{{project}}/jobs/{{job_id}}`
- *
  * * `{{project}}/{{job_id}}/{{location}}`
- *
  * * `{{job_id}}/{{location}}`
- *
  * * `{{project}}/{{job_id}}`
- *
  * * `{{job_id}}`
  *
  * When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}/location/{{location}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}/{{location}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigquery/job:Job default {{job_id}}/{{location}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigquery/job:Job default {{job_id}}
  * ```
  */
@@ -523,9 +503,8 @@ export class Job extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * (Output)
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -659,9 +638,8 @@ export interface JobState {
      */
     project?: pulumi.Input<string>;
     /**
-     * (Output)
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

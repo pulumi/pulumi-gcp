@@ -49,39 +49,34 @@ __all__ = [
     'WatchlistWatchlistUserPreferencesArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DataAccessScopeAllowedDataAccessLabelArgsDict(TypedDict):
-        asset_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The asset namespace configured in the forwarder
-        of the customer's events.
-        """
-        data_access_label: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the data access label.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The display name of the label.
-        Data access label and log types's name
-        will match the display name of the resource.
-        The asset namespace will match the namespace itself.
-        The ingestion key value pair will match the key of the tuple.
-        """
-        ingestion_label: NotRequired[pulumi.Input['DataAccessScopeAllowedDataAccessLabelIngestionLabelArgsDict']]
-        """
-        Representation of an ingestion label type.
-        Structure is documented below.
-        """
-        log_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the log type.
-        """
-elif False:
-    DataAccessScopeAllowedDataAccessLabelArgsDict: TypeAlias = Mapping[str, Any]
+class DataAccessScopeAllowedDataAccessLabelArgsDict(TypedDict):
+    asset_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The asset namespace configured in the forwarder
+    of the customer's events.
+    """
+    data_access_label: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the data access label.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The display name of the label.
+    Data access label and log types's name
+    will match the display name of the resource.
+    The asset namespace will match the namespace itself.
+    The ingestion key value pair will match the key of the tuple.
+    """
+    ingestion_label: NotRequired[pulumi.Input['DataAccessScopeAllowedDataAccessLabelIngestionLabelArgsDict']]
+    """
+    Representation of an ingestion label type.
+    Structure is documented below.
+    """
+    log_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the log type.
+    """
 
 @pulumi.input_type
 class DataAccessScopeAllowedDataAccessLabelArgs:
@@ -184,20 +179,17 @@ class DataAccessScopeAllowedDataAccessLabelArgs:
         pulumi.set(self, "log_type", value)
 
 
-if not MYPY:
-    class DataAccessScopeAllowedDataAccessLabelIngestionLabelArgsDict(TypedDict):
-        ingestion_label_key: pulumi.Input[_builtins.str]
-        """
-        Required. The key of the ingestion label. Always required.
-        """
-        ingestion_label_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The value of the ingestion label. Optional. An object
-        with no provided value and some key provided would match
-        against the given key and ANY value.
-        """
-elif False:
-    DataAccessScopeAllowedDataAccessLabelIngestionLabelArgsDict: TypeAlias = Mapping[str, Any]
+class DataAccessScopeAllowedDataAccessLabelIngestionLabelArgsDict(TypedDict):
+    ingestion_label_key: pulumi.Input[_builtins.str]
+    """
+    Required. The key of the ingestion label. Always required.
+    """
+    ingestion_label_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The value of the ingestion label. Optional. An object
+    with no provided value and some key provided would match
+    against the given key and ANY value.
+    """
 
 @pulumi.input_type
 class DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs:
@@ -241,37 +233,34 @@ class DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs:
         pulumi.set(self, "ingestion_label_value", value)
 
 
-if not MYPY:
-    class DataAccessScopeDeniedDataAccessLabelArgsDict(TypedDict):
-        asset_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The asset namespace configured in the forwarder
-        of the customer's events.
-        """
-        data_access_label: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the data access label.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The display name of the label.
-        Data access label and log types's name
-        will match the display name of the resource.
-        The asset namespace will match the namespace itself.
-        The ingestion key value pair will match the key of the tuple.
-        """
-        ingestion_label: NotRequired[pulumi.Input['DataAccessScopeDeniedDataAccessLabelIngestionLabelArgsDict']]
-        """
-        Representation of an ingestion label type.
-        Structure is documented below.
-        """
-        log_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the log type.
-        """
-elif False:
-    DataAccessScopeDeniedDataAccessLabelArgsDict: TypeAlias = Mapping[str, Any]
+class DataAccessScopeDeniedDataAccessLabelArgsDict(TypedDict):
+    asset_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The asset namespace configured in the forwarder
+    of the customer's events.
+    """
+    data_access_label: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the data access label.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The display name of the label.
+    Data access label and log types's name
+    will match the display name of the resource.
+    The asset namespace will match the namespace itself.
+    The ingestion key value pair will match the key of the tuple.
+    """
+    ingestion_label: NotRequired[pulumi.Input['DataAccessScopeDeniedDataAccessLabelIngestionLabelArgsDict']]
+    """
+    Representation of an ingestion label type.
+    Structure is documented below.
+    """
+    log_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the log type.
+    """
 
 @pulumi.input_type
 class DataAccessScopeDeniedDataAccessLabelArgs:
@@ -374,20 +363,17 @@ class DataAccessScopeDeniedDataAccessLabelArgs:
         pulumi.set(self, "log_type", value)
 
 
-if not MYPY:
-    class DataAccessScopeDeniedDataAccessLabelIngestionLabelArgsDict(TypedDict):
-        ingestion_label_key: pulumi.Input[_builtins.str]
-        """
-        Required. The key of the ingestion label. Always required.
-        """
-        ingestion_label_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The value of the ingestion label. Optional. An object
-        with no provided value and some key provided would match
-        against the given key and ANY value.
-        """
-elif False:
-    DataAccessScopeDeniedDataAccessLabelIngestionLabelArgsDict: TypeAlias = Mapping[str, Any]
+class DataAccessScopeDeniedDataAccessLabelIngestionLabelArgsDict(TypedDict):
+    ingestion_label_key: pulumi.Input[_builtins.str]
+    """
+    Required. The key of the ingestion label. Always required.
+    """
+    ingestion_label_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The value of the ingestion label. Optional. An object
+    with no provided value and some key provided would match
+    against the given key and ANY value.
+    """
 
 @pulumi.input_type
 class DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs:
@@ -431,14 +417,11 @@ class DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs:
         pulumi.set(self, "ingestion_label_value", value)
 
 
-if not MYPY:
-    class ReferenceListEntryArgsDict(TypedDict):
-        value: pulumi.Input[_builtins.str]
-        """
-        Required. The value of the entry. Maximum length is 512 characters.
-        """
-elif False:
-    ReferenceListEntryArgsDict: TypeAlias = Mapping[str, Any]
+class ReferenceListEntryArgsDict(TypedDict):
+    value: pulumi.Input[_builtins.str]
+    """
+    Required. The value of the entry. Maximum length is 512 characters.
+    """
 
 @pulumi.input_type
 class ReferenceListEntryArgs:
@@ -462,15 +445,12 @@ class ReferenceListEntryArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ReferenceListScopeInfoArgsDict(TypedDict):
-        reference_list_scope: NotRequired[pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgsDict']]
-        """
-        ReferenceListScope specifies the list of scope names of the reference list.
-        Structure is documented below.
-        """
-elif False:
-    ReferenceListScopeInfoArgsDict: TypeAlias = Mapping[str, Any]
+class ReferenceListScopeInfoArgsDict(TypedDict):
+    reference_list_scope: NotRequired[pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgsDict']]
+    """
+    ReferenceListScope specifies the list of scope names of the reference list.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ReferenceListScopeInfoArgs:
@@ -497,16 +477,13 @@ class ReferenceListScopeInfoArgs:
         pulumi.set(self, "reference_list_scope", value)
 
 
-if not MYPY:
-    class ReferenceListScopeInfoReferenceListScopeArgsDict(TypedDict):
-        scope_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. The list of scope names of the reference list. The scope names should be
-        full resource names and should be of the format:
-        "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
-        """
-elif False:
-    ReferenceListScopeInfoReferenceListScopeArgsDict: TypeAlias = Mapping[str, Any]
+class ReferenceListScopeInfoReferenceListScopeArgsDict(TypedDict):
+    scope_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. The list of scope names of the reference list. The scope names should be
+    full resource names and should be of the format:
+    "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
+    """
 
 @pulumi.input_type
 class ReferenceListScopeInfoReferenceListScopeArgs:
@@ -535,22 +512,19 @@ class ReferenceListScopeInfoReferenceListScopeArgs:
         pulumi.set(self, "scope_names", value)
 
 
-if not MYPY:
-    class RetrohuntExecutionIntervalArgsDict(TypedDict):
-        end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Exclusive end of the interval.
-        If specified, a Timestamp matching this interval will have to be before the
-        end.
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Inclusive start of the interval.
-        If specified, a Timestamp matching this interval will have to be the same
-        or after the start.
-        """
-elif False:
-    RetrohuntExecutionIntervalArgsDict: TypeAlias = Mapping[str, Any]
+class RetrohuntExecutionIntervalArgsDict(TypedDict):
+    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Exclusive end of the interval.
+    If specified, a Timestamp matching this interval will have to be before the
+    end.
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Inclusive start of the interval.
+    If specified, a Timestamp matching this interval will have to be the same
+    or after the start.
+    """
 
 @pulumi.input_type
 class RetrohuntExecutionIntervalArgs:
@@ -599,18 +573,15 @@ class RetrohuntExecutionIntervalArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class RetrohuntProcessIntervalArgsDict(TypedDict):
-        end_time: pulumi.Input[_builtins.str]
-        """
-        Exclusive end of the interval.
-        """
-        start_time: pulumi.Input[_builtins.str]
-        """
-        Inclusive start of the interval.
-        """
-elif False:
-    RetrohuntProcessIntervalArgsDict: TypeAlias = Mapping[str, Any]
+class RetrohuntProcessIntervalArgsDict(TypedDict):
+    end_time: pulumi.Input[_builtins.str]
+    """
+    Exclusive end of the interval.
+    """
+    start_time: pulumi.Input[_builtins.str]
+    """
+    Inclusive start of the interval.
+    """
 
 @pulumi.input_type
 class RetrohuntProcessIntervalArgs:
@@ -649,35 +620,32 @@ class RetrohuntProcessIntervalArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class RuleCompilationDiagnosticArgsDict(TypedDict):
-        message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The diagnostic message.
-        """
-        position: NotRequired[pulumi.Input['RuleCompilationDiagnosticPositionArgsDict']]
-        """
-        CompilationPosition represents the location of a compilation diagnostic in
-        rule text.
-        Structure is documented below.
-        """
-        severity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The severity of a rule's compilation diagnostic.
-        Possible values:
-        SEVERITY_UNSPECIFIED
-        WARNING
-        ERROR
-        """
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Link to documentation that describes a diagnostic in more detail.
-        """
-elif False:
-    RuleCompilationDiagnosticArgsDict: TypeAlias = Mapping[str, Any]
+class RuleCompilationDiagnosticArgsDict(TypedDict):
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The diagnostic message.
+    """
+    position: NotRequired[pulumi.Input['RuleCompilationDiagnosticPositionArgsDict']]
+    """
+    CompilationPosition represents the location of a compilation diagnostic in
+    rule text.
+    Structure is documented below.
+    """
+    severity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The severity of a rule's compilation diagnostic.
+    Possible values:
+    SEVERITY_UNSPECIFIED
+    WARNING
+    ERROR
+    """
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Link to documentation that describes a diagnostic in more detail.
+    """
 
 @pulumi.input_type
 class RuleCompilationDiagnosticArgs:
@@ -768,30 +736,27 @@ class RuleCompilationDiagnosticArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class RuleCompilationDiagnosticPositionArgsDict(TypedDict):
-        end_column: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Output only. End column number, beginning at 1.
-        """
-        end_line: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Output only. End line number, beginning at 1.
-        """
-        start_column: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Output only. Start column number, beginning at 1.
-        """
-        start_line: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Output only. Start line number, beginning at 1.
-        """
-elif False:
-    RuleCompilationDiagnosticPositionArgsDict: TypeAlias = Mapping[str, Any]
+class RuleCompilationDiagnosticPositionArgsDict(TypedDict):
+    end_column: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Output only. End column number, beginning at 1.
+    """
+    end_line: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Output only. End line number, beginning at 1.
+    """
+    start_column: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Output only. Start column number, beginning at 1.
+    """
+    start_line: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Output only. Start line number, beginning at 1.
+    """
 
 @pulumi.input_type
 class RuleCompilationDiagnosticPositionArgs:
@@ -872,15 +837,12 @@ class RuleCompilationDiagnosticPositionArgs:
         pulumi.set(self, "start_line", value)
 
 
-if not MYPY:
-    class RuleSeverityArgsDict(TypedDict):
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the severity level. Extracted from the meta section of
-        the rule text.
-        """
-elif False:
-    RuleSeverityArgsDict: TypeAlias = Mapping[str, Any]
+class RuleSeverityArgsDict(TypedDict):
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the severity level. Extracted from the meta section of
+    the rule text.
+    """
 
 @pulumi.input_type
 class RuleSeverityArgs:
@@ -907,20 +869,17 @@ class RuleSeverityArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class WatchlistEntityCountArgsDict(TypedDict):
-        asset: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Output only. Count of asset type entities in the watchlist.
-        """
-        user: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Output only. Count of user type entities in the watchlist.
-        """
-elif False:
-    WatchlistEntityCountArgsDict: TypeAlias = Mapping[str, Any]
+class WatchlistEntityCountArgsDict(TypedDict):
+    asset: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Output only. Count of asset type entities in the watchlist.
+    """
+    user: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Output only. Count of user type entities in the watchlist.
+    """
 
 @pulumi.input_type
 class WatchlistEntityCountArgs:
@@ -965,14 +924,11 @@ class WatchlistEntityCountArgs:
         pulumi.set(self, "user", value)
 
 
-if not MYPY:
-    class WatchlistEntityPopulationMechanismArgsDict(TypedDict):
-        manual: NotRequired[pulumi.Input['WatchlistEntityPopulationMechanismManualArgsDict']]
-        """
-        Entities are added manually.
-        """
-elif False:
-    WatchlistEntityPopulationMechanismArgsDict: TypeAlias = Mapping[str, Any]
+class WatchlistEntityPopulationMechanismArgsDict(TypedDict):
+    manual: NotRequired[pulumi.Input['WatchlistEntityPopulationMechanismManualArgsDict']]
+    """
+    Entities are added manually.
+    """
 
 @pulumi.input_type
 class WatchlistEntityPopulationMechanismArgs:
@@ -997,11 +953,8 @@ class WatchlistEntityPopulationMechanismArgs:
         pulumi.set(self, "manual", value)
 
 
-if not MYPY:
-    class WatchlistEntityPopulationMechanismManualArgsDict(TypedDict):
-        pass
-elif False:
-    WatchlistEntityPopulationMechanismManualArgsDict: TypeAlias = Mapping[str, Any]
+class WatchlistEntityPopulationMechanismManualArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class WatchlistEntityPopulationMechanismManualArgs:
@@ -1009,14 +962,11 @@ class WatchlistEntityPopulationMechanismManualArgs:
         pass
 
 
-if not MYPY:
-    class WatchlistWatchlistUserPreferencesArgsDict(TypedDict):
-        pinned: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. Whether the watchlist is pinned on the dashboard.
-        """
-elif False:
-    WatchlistWatchlistUserPreferencesArgsDict: TypeAlias = Mapping[str, Any]
+class WatchlistWatchlistUserPreferencesArgsDict(TypedDict):
+    pinned: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. Whether the watchlist is pinned on the dashboard.
+    """
 
 @pulumi.input_type
 class WatchlistWatchlistUserPreferencesArgs:

@@ -767,28 +767,16 @@ import * as utilities from "../utilities";
  * ForwardingRule can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/forwardingRule:ForwardingRule default projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{name}}
  * ```
  */
@@ -1079,9 +1067,12 @@ export class ForwardingRule extends pulumi.CustomResource {
     declare public /*out*/ readonly pscConnectionStatus: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
+    /**
+     * This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+     */
     declare public readonly recreateClosedPsc: pulumi.Output<boolean | undefined>;
     /**
      * A reference to the region where the regional forwarding rule resides.
@@ -1498,9 +1489,12 @@ export interface ForwardingRuleState {
     pscConnectionStatus?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+     */
     recreateClosedPsc?: pulumi.Input<boolean>;
     /**
      * A reference to the region where the regional forwarding rule resides.
@@ -1792,6 +1786,9 @@ export interface ForwardingRuleArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+     */
     recreateClosedPsc?: pulumi.Input<boolean>;
     /**
      * A reference to the region where the regional forwarding rule resides.

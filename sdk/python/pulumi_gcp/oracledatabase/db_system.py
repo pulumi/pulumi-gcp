@@ -43,6 +43,7 @@ class DbSystemArgs:
         :param pulumi.Input[_builtins.str] odb_subnet: The name of the OdbSubnet associated with the DbSystem for IP
                allocation. Format:
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: The GCP Oracle zone where Oracle DbSystem is hosted.
                Example: us-east4-b-r2.
                If not specified, the system will pick a zone based on availability.
@@ -132,6 +133,9 @@ class DbSystemArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -234,6 +238,7 @@ class _DbSystemState:
                restricted to (^a-z?$) and must be a maximum of
                63 characters in length. The value must start with a letter and end with a
                letter or a number.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: The display name for the System db. The name does not have to
                be unique within your project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -260,7 +265,7 @@ class _DbSystemState:
         :param pulumi.Input['DbSystemPropertiesArgs'] properties: The properties of a DbSystem.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -325,6 +330,9 @@ class _DbSystemState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -493,7 +501,7 @@ class _DbSystemState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -604,22 +612,14 @@ class DbSystem(pulumi.CustomResource):
         DbSystem can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dbSystems/{{db_system_id}}`
-
         * `{{project}}/{{location}}/{{db_system_id}}`
-
         * `{{location}}/{{db_system_id}}`
 
         When using the `pulumi import` command, DbSystem can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default projects/{{project}}/locations/{{location}}/dbSystems/{{db_system_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{project}}/{{location}}/{{db_system_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{location}}/{{db_system_id}}
         ```
 
@@ -629,6 +629,7 @@ class DbSystem(pulumi.CustomResource):
                restricted to (^a-z?$) and must be a maximum of
                63 characters in length. The value must start with a letter and end with a
                letter or a number.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: The display name for the System db. The name does not have to
                be unique within your project.
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: The GCP Oracle zone where Oracle DbSystem is hosted.
@@ -741,22 +742,14 @@ class DbSystem(pulumi.CustomResource):
         DbSystem can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dbSystems/{{db_system_id}}`
-
         * `{{project}}/{{location}}/{{db_system_id}}`
-
         * `{{location}}/{{db_system_id}}`
 
         When using the `pulumi import` command, DbSystem can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default projects/{{project}}/locations/{{location}}/dbSystems/{{db_system_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{project}}/{{location}}/{{db_system_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{location}}/{{db_system_id}}
         ```
 
@@ -858,6 +851,7 @@ class DbSystem(pulumi.CustomResource):
                restricted to (^a-z?$) and must be a maximum of
                63 characters in length. The value must start with a letter and end with a
                letter or a number.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: The display name for the System db. The name does not have to
                be unique within your project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -884,7 +878,7 @@ class DbSystem(pulumi.CustomResource):
         :param pulumi.Input[Union['DbSystemPropertiesArgs', 'DbSystemPropertiesArgsDict']] properties: The properties of a DbSystem.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -930,6 +924,9 @@ class DbSystem(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -1046,7 +1043,7 @@ class DbSystem(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

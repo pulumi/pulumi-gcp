@@ -112,22 +112,14 @@ import (
 // EndpointPolicy can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/global/endpointPolicies/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, EndpointPolicy can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default projects/{{project}}/locations/global/endpointPolicies/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default {{name}}
 // ```
 type EndpointPolicy struct {
@@ -156,7 +148,7 @@ type EndpointPolicy struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
 	ServerTlsPolicy pulumi.StringPtrOutput `pulumi:"serverTlsPolicy"`
@@ -234,7 +226,7 @@ type endpointPolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
@@ -272,7 +264,7 @@ type EndpointPolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
 	ServerTlsPolicy pulumi.StringPtrInput
@@ -486,7 +478,8 @@ func (o EndpointPolicyOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o EndpointPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

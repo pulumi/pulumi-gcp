@@ -40,22 +40,14 @@ import * as utilities from "../utilities";
  * RestoreChannel can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/restoreChannels/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, RestoreChannel can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default projects/{{project}}/locations/{{location}}/restoreChannels/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default {{location}}/{{name}}
  * ```
  */
@@ -139,7 +131,7 @@ export class RestoreChannel extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -254,7 +246,7 @@ export interface RestoreChannelState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

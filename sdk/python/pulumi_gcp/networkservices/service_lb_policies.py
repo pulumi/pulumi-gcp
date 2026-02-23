@@ -220,7 +220,7 @@ class _ServiceLbPoliciesState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Time the ServiceLbPolicy was updated in UTC.
         """
         if auto_capacity_drain is not None:
@@ -394,7 +394,7 @@ class _ServiceLbPoliciesState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -432,6 +432,15 @@ class ServiceLbPolicies(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        ServiceLbPolicy holds global load balancing and traffic distribution configuration that can be applied to a BackendService.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about ServiceLbPolicies, see:
+
+        * [API documentation](https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.serviceLbPolicies)
+
         ## Example Usage
 
         ### Network Services Service Lb Policies Basic
@@ -508,22 +517,14 @@ class ServiceLbPolicies(pulumi.CustomResource):
         ServiceLbPolicies can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, ServiceLbPolicies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{location}}/{{name}}
         ```
 
@@ -553,6 +554,15 @@ class ServiceLbPolicies(pulumi.CustomResource):
                  args: ServiceLbPoliciesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ServiceLbPolicy holds global load balancing and traffic distribution configuration that can be applied to a BackendService.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about ServiceLbPolicies, see:
+
+        * [API documentation](https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.serviceLbPolicies)
+
         ## Example Usage
 
         ### Network Services Service Lb Policies Basic
@@ -629,22 +639,14 @@ class ServiceLbPolicies(pulumi.CustomResource):
         ServiceLbPolicies can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, ServiceLbPolicies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{location}}/{{name}}
         ```
 
@@ -747,7 +749,7 @@ class ServiceLbPolicies(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Time the ServiceLbPolicy was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -869,7 +871,7 @@ class ServiceLbPolicies(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

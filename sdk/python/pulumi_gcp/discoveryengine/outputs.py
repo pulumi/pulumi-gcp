@@ -62,6 +62,8 @@ __all__ = [
     'RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig',
     'RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig',
     'SearchEngineCommonConfig',
+    'SearchEngineKnowledgeGraphConfig',
+    'SearchEngineKnowledgeGraphConfigFeatureConfig',
     'SearchEngineSearchEngineConfig',
     'TargetSiteFailureReason',
     'TargetSiteFailureReasonQuotaFailure',
@@ -2644,6 +2646,164 @@ class SearchEngineCommonConfig(dict):
         The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
         """
         return pulumi.get(self, "company_name")
+
+
+@pulumi.output_type
+class SearchEngineKnowledgeGraphConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudKnowledgeGraphTypes":
+            suggest = "cloud_knowledge_graph_types"
+        elif key == "enableCloudKnowledgeGraph":
+            suggest = "enable_cloud_knowledge_graph"
+        elif key == "enablePrivateKnowledgeGraph":
+            suggest = "enable_private_knowledge_graph"
+        elif key == "featureConfig":
+            suggest = "feature_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SearchEngineKnowledgeGraphConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SearchEngineKnowledgeGraphConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SearchEngineKnowledgeGraphConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_knowledge_graph_types: Optional[Sequence[_builtins.str]] = None,
+                 enable_cloud_knowledge_graph: Optional[_builtins.bool] = None,
+                 enable_private_knowledge_graph: Optional[_builtins.bool] = None,
+                 feature_config: Optional['outputs.SearchEngineKnowledgeGraphConfigFeatureConfig'] = None):
+        """
+        :param Sequence[_builtins.str] cloud_knowledge_graph_types: Specify entity types to support.
+        :param _builtins.bool enable_cloud_knowledge_graph: Whether to enable the Cloud Knowledge Graph for the engine.
+        :param _builtins.bool enable_private_knowledge_graph: Whether to enable the Private Knowledge Graph for the engine.
+        :param 'SearchEngineKnowledgeGraphConfigFeatureConfigArgs' feature_config: Feature config for the Knowledge Graph.
+               Structure is documented below.
+        """
+        if cloud_knowledge_graph_types is not None:
+            pulumi.set(__self__, "cloud_knowledge_graph_types", cloud_knowledge_graph_types)
+        if enable_cloud_knowledge_graph is not None:
+            pulumi.set(__self__, "enable_cloud_knowledge_graph", enable_cloud_knowledge_graph)
+        if enable_private_knowledge_graph is not None:
+            pulumi.set(__self__, "enable_private_knowledge_graph", enable_private_knowledge_graph)
+        if feature_config is not None:
+            pulumi.set(__self__, "feature_config", feature_config)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudKnowledgeGraphTypes")
+    def cloud_knowledge_graph_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Specify entity types to support.
+        """
+        return pulumi.get(self, "cloud_knowledge_graph_types")
+
+    @_builtins.property
+    @pulumi.getter(name="enableCloudKnowledgeGraph")
+    def enable_cloud_knowledge_graph(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable the Cloud Knowledge Graph for the engine.
+        """
+        return pulumi.get(self, "enable_cloud_knowledge_graph")
+
+    @_builtins.property
+    @pulumi.getter(name="enablePrivateKnowledgeGraph")
+    def enable_private_knowledge_graph(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable the Private Knowledge Graph for the engine.
+        """
+        return pulumi.get(self, "enable_private_knowledge_graph")
+
+    @_builtins.property
+    @pulumi.getter(name="featureConfig")
+    def feature_config(self) -> Optional['outputs.SearchEngineKnowledgeGraphConfigFeatureConfig']:
+        """
+        Feature config for the Knowledge Graph.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "feature_config")
+
+
+@pulumi.output_type
+class SearchEngineKnowledgeGraphConfigFeatureConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disablePrivateKgAutoComplete":
+            suggest = "disable_private_kg_auto_complete"
+        elif key == "disablePrivateKgEnrichment":
+            suggest = "disable_private_kg_enrichment"
+        elif key == "disablePrivateKgQueryUiChips":
+            suggest = "disable_private_kg_query_ui_chips"
+        elif key == "disablePrivateKgQueryUnderstanding":
+            suggest = "disable_private_kg_query_understanding"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SearchEngineKnowledgeGraphConfigFeatureConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SearchEngineKnowledgeGraphConfigFeatureConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SearchEngineKnowledgeGraphConfigFeatureConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disable_private_kg_auto_complete: Optional[_builtins.bool] = None,
+                 disable_private_kg_enrichment: Optional[_builtins.bool] = None,
+                 disable_private_kg_query_ui_chips: Optional[_builtins.bool] = None,
+                 disable_private_kg_query_understanding: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool disable_private_kg_auto_complete: Whether to disable the private KG auto complete for the engine.
+        :param _builtins.bool disable_private_kg_enrichment: Whether to disable the private KG enrichment for the engine.
+        :param _builtins.bool disable_private_kg_query_ui_chips: Whether to disable the private KG for query UI chips.
+        :param _builtins.bool disable_private_kg_query_understanding: Whether to disable the private KG query understanding for the engine.
+        """
+        if disable_private_kg_auto_complete is not None:
+            pulumi.set(__self__, "disable_private_kg_auto_complete", disable_private_kg_auto_complete)
+        if disable_private_kg_enrichment is not None:
+            pulumi.set(__self__, "disable_private_kg_enrichment", disable_private_kg_enrichment)
+        if disable_private_kg_query_ui_chips is not None:
+            pulumi.set(__self__, "disable_private_kg_query_ui_chips", disable_private_kg_query_ui_chips)
+        if disable_private_kg_query_understanding is not None:
+            pulumi.set(__self__, "disable_private_kg_query_understanding", disable_private_kg_query_understanding)
+
+    @_builtins.property
+    @pulumi.getter(name="disablePrivateKgAutoComplete")
+    def disable_private_kg_auto_complete(self) -> Optional[_builtins.bool]:
+        """
+        Whether to disable the private KG auto complete for the engine.
+        """
+        return pulumi.get(self, "disable_private_kg_auto_complete")
+
+    @_builtins.property
+    @pulumi.getter(name="disablePrivateKgEnrichment")
+    def disable_private_kg_enrichment(self) -> Optional[_builtins.bool]:
+        """
+        Whether to disable the private KG enrichment for the engine.
+        """
+        return pulumi.get(self, "disable_private_kg_enrichment")
+
+    @_builtins.property
+    @pulumi.getter(name="disablePrivateKgQueryUiChips")
+    def disable_private_kg_query_ui_chips(self) -> Optional[_builtins.bool]:
+        """
+        Whether to disable the private KG for query UI chips.
+        """
+        return pulumi.get(self, "disable_private_kg_query_ui_chips")
+
+    @_builtins.property
+    @pulumi.getter(name="disablePrivateKgQueryUnderstanding")
+    def disable_private_kg_query_understanding(self) -> Optional[_builtins.bool]:
+        """
+        Whether to disable the private KG query understanding for the engine.
+        """
+        return pulumi.get(self, "disable_private_kg_query_understanding")
 
 
 @pulumi.output_type

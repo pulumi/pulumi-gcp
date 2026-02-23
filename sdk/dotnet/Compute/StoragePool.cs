@@ -100,28 +100,16 @@ namespace Pulumi.Gcp.Compute
     /// StoragePool can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/zones/{{zone}}/storagePools/{{name}}`
-    /// 
     /// * `{{project}}/{{zone}}/{{name}}`
-    /// 
     /// * `{{zone}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, StoragePool can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/storagePool:StoragePool default projects/{{project}}/zones/{{zone}}/storagePools/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/storagePool:StoragePool default {{project}}/{{zone}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/storagePool:StoragePool default {{zone}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/storagePool:StoragePool default {{name}}
     /// ```
     /// </summary>
@@ -141,6 +129,12 @@ namespace Pulumi.Gcp.Compute
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the StoragePool.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the StoragePool will fail.
+        /// When the field is set to false, deleting the StoragePool is allowed.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -227,7 +221,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -319,6 +313,12 @@ namespace Pulumi.Gcp.Compute
         [Input("capacityProvisioningType")]
         public Input<string>? CapacityProvisioningType { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the StoragePool.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the StoragePool will fail.
+        /// When the field is set to false, deleting the StoragePool is allowed.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -426,6 +426,12 @@ namespace Pulumi.Gcp.Compute
         [Input("creationTimestamp")]
         public Input<string>? CreationTimestamp { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the StoragePool.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the StoragePool will fail.
+        /// When the field is set to false, deleting the StoragePool is allowed.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -531,7 +537,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

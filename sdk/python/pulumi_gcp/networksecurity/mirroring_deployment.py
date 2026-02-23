@@ -192,7 +192,7 @@ class _MirroringDeploymentState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: The current state of the resource does not match the user's intended state,
                and the system is working to reconcile them. This part of the normal
                operation (e.g. linking a new association to the parent group).
@@ -375,7 +375,7 @@ class _MirroringDeploymentState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -516,22 +516,14 @@ class MirroringDeployment(pulumi.CustomResource):
         MirroringDeployment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/mirroringDeployments/{{mirroring_deployment_id}}`
-
         * `{{project}}/{{location}}/{{mirroring_deployment_id}}`
-
         * `{{location}}/{{mirroring_deployment_id}}`
 
         When using the `pulumi import` command, MirroringDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default projects/{{project}}/locations/{{location}}/mirroringDeployments/{{mirroring_deployment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default {{project}}/{{location}}/{{mirroring_deployment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default {{location}}/{{mirroring_deployment_id}}
         ```
 
@@ -630,22 +622,14 @@ class MirroringDeployment(pulumi.CustomResource):
         MirroringDeployment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/mirroringDeployments/{{mirroring_deployment_id}}`
-
         * `{{project}}/{{location}}/{{mirroring_deployment_id}}`
-
         * `{{location}}/{{mirroring_deployment_id}}`
 
         When using the `pulumi import` command, MirroringDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default projects/{{project}}/locations/{{location}}/mirroringDeployments/{{mirroring_deployment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default {{project}}/{{location}}/{{mirroring_deployment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default {{location}}/{{mirroring_deployment_id}}
         ```
 
@@ -758,7 +742,7 @@ class MirroringDeployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: The current state of the resource does not match the user's intended state,
                and the system is working to reconcile them. This part of the normal
                operation (e.g. linking a new association to the parent group).
@@ -892,7 +876,7 @@ class MirroringDeployment(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

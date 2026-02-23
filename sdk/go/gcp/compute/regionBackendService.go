@@ -890,28 +890,16 @@ import (
 // RegionBackendService can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/regions/{{region}}/backendServices/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{name}}
 // ```
 type RegionBackendService struct {
@@ -1073,7 +1061,6 @@ type RegionBackendService struct {
 	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
 	// Changes to this field force recreation of the resource.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
-	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy RegionBackendServiceNetworkPassThroughLbTrafficPolicyPtrOutput `pulumi:"networkPassThroughLbTrafficPolicy"`
@@ -1316,7 +1303,6 @@ type regionBackendServiceState struct {
 	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
 	// Changes to this field force recreation of the resource.
 	Network *string `pulumi:"network"`
-	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy *RegionBackendServiceNetworkPassThroughLbTrafficPolicy `pulumi:"networkPassThroughLbTrafficPolicy"`
@@ -1530,7 +1516,6 @@ type RegionBackendServiceState struct {
 	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
 	// Changes to this field force recreation of the resource.
 	Network pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy RegionBackendServiceNetworkPassThroughLbTrafficPolicyPtrInput
@@ -1741,7 +1726,6 @@ type regionBackendServiceArgs struct {
 	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
 	// Changes to this field force recreation of the resource.
 	Network *string `pulumi:"network"`
-	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy *RegionBackendServiceNetworkPassThroughLbTrafficPolicy `pulumi:"networkPassThroughLbTrafficPolicy"`
@@ -1947,7 +1931,6 @@ type RegionBackendServiceArgs struct {
 	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
 	// Changes to this field force recreation of the resource.
 	Network pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy RegionBackendServiceNetworkPassThroughLbTrafficPolicyPtrInput
@@ -2321,7 +2304,6 @@ func (o RegionBackendServiceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Configures traffic steering properties of internal passthrough Network Load Balancers.
 // Structure is documented below.
 func (o RegionBackendServiceOutput) NetworkPassThroughLbTrafficPolicy() RegionBackendServiceNetworkPassThroughLbTrafficPolicyPtrOutput {

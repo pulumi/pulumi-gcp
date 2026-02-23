@@ -175,7 +175,7 @@ class _ParameterState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: The time at which the Parameter was updated.
         """
         if create_time is not None:
@@ -330,7 +330,7 @@ class _ParameterState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -423,22 +423,14 @@ class Parameter(pulumi.CustomResource):
         Parameter can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
-
         * `{{project}}/{{parameter_id}}`
-
         * `{{parameter_id}}`
 
         When using the `pulumi import` command, Parameter can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:parametermanager/parameter:Parameter default projects/{{project}}/locations/global/parameters/{{parameter_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parametermanager/parameter:Parameter default {{project}}/{{parameter_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parametermanager/parameter:Parameter default {{parameter_id}}
         ```
 
@@ -530,22 +522,14 @@ class Parameter(pulumi.CustomResource):
         Parameter can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
-
         * `{{project}}/{{parameter_id}}`
-
         * `{{parameter_id}}`
 
         When using the `pulumi import` command, Parameter can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:parametermanager/parameter:Parameter default projects/{{project}}/locations/global/parameters/{{parameter_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parametermanager/parameter:Parameter default {{project}}/{{parameter_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parametermanager/parameter:Parameter default {{parameter_id}}
         ```
 
@@ -647,7 +631,7 @@ class Parameter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: The time at which the Parameter was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -760,7 +744,7 @@ class Parameter(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

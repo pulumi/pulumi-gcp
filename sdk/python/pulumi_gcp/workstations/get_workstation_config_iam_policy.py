@@ -116,6 +116,10 @@ def get_workstation_config_iam_policy(location: Optional[_builtins.str] = None,
                                       workstation_config_id: Optional[_builtins.str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkstationConfigIamPolicyResult:
     """
+    Retrieves the current IAM policy data for workstationconfig
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python
@@ -161,6 +165,10 @@ def get_workstation_config_iam_policy_output(location: Optional[pulumi.Input[Opt
                                              workstation_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkstationConfigIamPolicyResult]:
     """
+    Retrieves the current IAM policy data for workstationconfig
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python

@@ -27,6 +27,7 @@ class ToolsetArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  execution_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 mcp_toolset: Optional[pulumi.Input['ToolsetMcpToolsetArgs']] = None,
                  open_api_toolset: Optional[pulumi.Input['ToolsetOpenApiToolsetArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -41,6 +42,9 @@ class ToolsetArgs:
         :param pulumi.Input[_builtins.str] execution_type: Possible values:
                SYNCHRONOUS
                ASYNCHRONOUS
+        :param pulumi.Input['ToolsetMcpToolsetArgs'] mcp_toolset: A toolset that contains a list of tools that are offered by the MCP
+               server.
+               Structure is documented below.
         :param pulumi.Input['ToolsetOpenApiToolsetArgs'] open_api_toolset: A toolset that contains a list of tools that are defined by an OpenAPI
                schema.
                Structure is documented below.
@@ -56,6 +60,8 @@ class ToolsetArgs:
             pulumi.set(__self__, "display_name", display_name)
         if execution_type is not None:
             pulumi.set(__self__, "execution_type", execution_type)
+        if mcp_toolset is not None:
+            pulumi.set(__self__, "mcp_toolset", mcp_toolset)
         if open_api_toolset is not None:
             pulumi.set(__self__, "open_api_toolset", open_api_toolset)
         if project is not None:
@@ -138,6 +144,20 @@ class ToolsetArgs:
         pulumi.set(self, "execution_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="mcpToolset")
+    def mcp_toolset(self) -> Optional[pulumi.Input['ToolsetMcpToolsetArgs']]:
+        """
+        A toolset that contains a list of tools that are offered by the MCP
+        server.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mcp_toolset")
+
+    @mcp_toolset.setter
+    def mcp_toolset(self, value: Optional[pulumi.Input['ToolsetMcpToolsetArgs']]):
+        pulumi.set(self, "mcp_toolset", value)
+
+    @_builtins.property
     @pulumi.getter(name="openApiToolset")
     def open_api_toolset(self) -> Optional[pulumi.Input['ToolsetOpenApiToolsetArgs']]:
         """
@@ -175,6 +195,7 @@ class _ToolsetState:
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
                  execution_type: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 mcp_toolset: Optional[pulumi.Input['ToolsetMcpToolsetArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  open_api_toolset: Optional[pulumi.Input['ToolsetOpenApiToolsetArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -193,6 +214,9 @@ class _ToolsetState:
                SYNCHRONOUS
                ASYNCHRONOUS
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input['ToolsetMcpToolsetArgs'] mcp_toolset: A toolset that contains a list of tools that are offered by the MCP
+               server.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier. The unique identifier of the toolset.
                Format:
                `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
@@ -220,6 +244,8 @@ class _ToolsetState:
             pulumi.set(__self__, "execution_type", execution_type)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if mcp_toolset is not None:
+            pulumi.set(__self__, "mcp_toolset", mcp_toolset)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if open_api_toolset is not None:
@@ -320,6 +346,20 @@ class _ToolsetState:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter(name="mcpToolset")
+    def mcp_toolset(self) -> Optional[pulumi.Input['ToolsetMcpToolsetArgs']]:
+        """
+        A toolset that contains a list of tools that are offered by the MCP
+        server.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mcp_toolset")
+
+    @mcp_toolset.setter
+    def mcp_toolset(self, value: Optional[pulumi.Input['ToolsetMcpToolsetArgs']]):
+        pulumi.set(self, "mcp_toolset", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -398,6 +438,7 @@ class Toolset(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  execution_type: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 mcp_toolset: Optional[pulumi.Input[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict']]] = None,
                  open_api_toolset: Optional[pulumi.Input[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  toolset_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -688,28 +729,256 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+        ### Ces Toolset Mcp Service Account Auth Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_toolset = gcp.ces.App("ces_app_for_toolset",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Toolset example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_toolset_mcp_service_account_auth_config = gcp.ces.Toolset("ces_toolset_mcp_service_account_auth_config",
+            toolset_id="toolset1",
+            location="us",
+            app=ces_app_for_toolset.app_id,
+            display_name="Basic toolset display name",
+            mcp_toolset={
+                "server_address": "https://api.example.com/mcp/",
+                "tls_config": {
+                    "ca_certs": [{
+                        "display_name": "example",
+                        "cert": "ZXhhbXBsZQ==",
+                    }],
+                },
+                "service_directory_config": {
+                    "service": "projects/example/locations/us/namespaces/namespace/services/service",
+                },
+                "api_authentication": {
+                    "service_account_auth_config": {
+                        "service_account": "my@service-account.com",
+                    },
+                },
+            })
+        ```
+        ### Ces Toolset Mcp Oauth Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_toolset = gcp.ces.App("ces_app_for_toolset",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Toolset example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_toolset_mcp_oauth_config = gcp.ces.Toolset("ces_toolset_mcp_oauth_config",
+            toolset_id="toolset1",
+            location="us",
+            app=ces_app_for_toolset.app_id,
+            display_name="Basic toolset display name",
+            mcp_toolset={
+                "server_address": "https://api.example.com/mcp/",
+                "tls_config": {
+                    "ca_certs": [{
+                        "display_name": "example",
+                        "cert": "ZXhhbXBsZQ==",
+                    }],
+                },
+                "service_directory_config": {
+                    "service": "projects/example/locations/us/namespaces/namespace/services/service",
+                },
+                "api_authentication": {
+                    "oauth_config": {
+                        "oauth_grant_type": "CLIENT_CREDENTIAL",
+                        "client_id": "example_client_id",
+                        "client_secret_version": "projects/fake-project/secrets/fake-secret/versions/version1",
+                        "token_endpoint": "123",
+                        "scopes": ["scope1"],
+                    },
+                },
+            })
+        ```
+        ### Ces Toolset Mcp Service Agent Id Token Auth Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_toolset = gcp.ces.App("ces_app_for_toolset",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Toolset example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_toolset_mcp_service_agent_id_token_auth_config = gcp.ces.Toolset("ces_toolset_mcp_service_agent_id_token_auth_config",
+            toolset_id="toolset1",
+            location="us",
+            app=ces_app_for_toolset.app_id,
+            display_name="Basic toolset display name",
+            mcp_toolset={
+                "server_address": "https://api.example.com/mcp/",
+                "tls_config": {
+                    "ca_certs": [{
+                        "display_name": "example",
+                        "cert": "ZXhhbXBsZQ==",
+                    }],
+                },
+                "service_directory_config": {
+                    "service": "projects/example/locations/us/namespaces/namespace/services/service",
+                },
+                "api_authentication": {
+                    "service_agent_id_token_auth_config": {},
+                },
+            })
+        ```
+        ### Ces Toolset Mcp Api Key Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_toolset = gcp.ces.App("ces_app_for_toolset",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Toolset example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_toolset_mcp_api_key_config = gcp.ces.Toolset("ces_toolset_mcp_api_key_config",
+            toolset_id="toolset1",
+            location="us",
+            app=ces_app_for_toolset.app_id,
+            display_name="Basic toolset display name",
+            description="Test description",
+            execution_type="SYNCHRONOUS",
+            mcp_toolset={
+                "server_address": "https://api.example.com/mcp/",
+                "tls_config": {
+                    "ca_certs": [{
+                        "display_name": "example",
+                        "cert": "ZXhhbXBsZQ==",
+                    }],
+                },
+                "service_directory_config": {
+                    "service": "projects/example/locations/us/namespaces/namespace/services/service",
+                },
+                "api_authentication": {
+                    "api_key_config": {
+                        "key_name": "ExampleKey",
+                        "api_key_secret_version": "projects/fake-project/secrets/fake-secret/versions/version-1",
+                        "request_location": "HEADER",
+                    },
+                },
+            })
+        ```
+        ### Ces Toolset Mcp Bearer Token Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_toolset = gcp.ces.App("ces_app_for_toolset",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Toolset example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_toolset_mcp_bearer_token_config = gcp.ces.Toolset("ces_toolset_mcp_bearer_token_config",
+            toolset_id="toolset1",
+            location="us",
+            app=ces_app_for_toolset.app_id,
+            display_name="Basic toolset display name",
+            mcp_toolset={
+                "server_address": "https://api.example.com/mcp/",
+                "tls_config": {
+                    "ca_certs": [{
+                        "display_name": "example",
+                        "cert": "ZXhhbXBsZQ==",
+                    }],
+                },
+                "service_directory_config": {
+                    "service": "projects/example/locations/us/namespaces/namespace/services/service",
+                },
+                "api_authentication": {
+                    "bearer_token_config": {
+                        "token": "$context.variables.my_ces_toolset_auth_token",
+                    },
+                },
+            })
+        ```
 
         ## Import
 
         Toolset can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/apps/{{app}}/toolsets/{{toolset_id}}`
-
         * `{{project}}/{{location}}/{{app}}/{{toolset_id}}`
-
         * `{{location}}/{{app}}/{{toolset_id}}`
 
         When using the `pulumi import` command, Toolset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ces/toolset:Toolset default projects/{{project}}/locations/{{location}}/apps/{{app}}/toolsets/{{toolset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/toolset:Toolset default {{project}}/{{location}}/{{app}}/{{toolset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/toolset:Toolset default {{location}}/{{app}}/{{toolset_id}}
         ```
 
@@ -722,6 +991,9 @@ class Toolset(pulumi.CustomResource):
                SYNCHRONOUS
                ASYNCHRONOUS
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict']] mcp_toolset: A toolset that contains a list of tools that are offered by the MCP
+               server.
+               Structure is documented below.
         :param pulumi.Input[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']] open_api_toolset: A toolset that contains a list of tools that are defined by an OpenAPI
                schema.
                Structure is documented below.
@@ -1023,28 +1295,256 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+        ### Ces Toolset Mcp Service Account Auth Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_toolset = gcp.ces.App("ces_app_for_toolset",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Toolset example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_toolset_mcp_service_account_auth_config = gcp.ces.Toolset("ces_toolset_mcp_service_account_auth_config",
+            toolset_id="toolset1",
+            location="us",
+            app=ces_app_for_toolset.app_id,
+            display_name="Basic toolset display name",
+            mcp_toolset={
+                "server_address": "https://api.example.com/mcp/",
+                "tls_config": {
+                    "ca_certs": [{
+                        "display_name": "example",
+                        "cert": "ZXhhbXBsZQ==",
+                    }],
+                },
+                "service_directory_config": {
+                    "service": "projects/example/locations/us/namespaces/namespace/services/service",
+                },
+                "api_authentication": {
+                    "service_account_auth_config": {
+                        "service_account": "my@service-account.com",
+                    },
+                },
+            })
+        ```
+        ### Ces Toolset Mcp Oauth Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_toolset = gcp.ces.App("ces_app_for_toolset",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Toolset example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_toolset_mcp_oauth_config = gcp.ces.Toolset("ces_toolset_mcp_oauth_config",
+            toolset_id="toolset1",
+            location="us",
+            app=ces_app_for_toolset.app_id,
+            display_name="Basic toolset display name",
+            mcp_toolset={
+                "server_address": "https://api.example.com/mcp/",
+                "tls_config": {
+                    "ca_certs": [{
+                        "display_name": "example",
+                        "cert": "ZXhhbXBsZQ==",
+                    }],
+                },
+                "service_directory_config": {
+                    "service": "projects/example/locations/us/namespaces/namespace/services/service",
+                },
+                "api_authentication": {
+                    "oauth_config": {
+                        "oauth_grant_type": "CLIENT_CREDENTIAL",
+                        "client_id": "example_client_id",
+                        "client_secret_version": "projects/fake-project/secrets/fake-secret/versions/version1",
+                        "token_endpoint": "123",
+                        "scopes": ["scope1"],
+                    },
+                },
+            })
+        ```
+        ### Ces Toolset Mcp Service Agent Id Token Auth Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_toolset = gcp.ces.App("ces_app_for_toolset",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Toolset example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_toolset_mcp_service_agent_id_token_auth_config = gcp.ces.Toolset("ces_toolset_mcp_service_agent_id_token_auth_config",
+            toolset_id="toolset1",
+            location="us",
+            app=ces_app_for_toolset.app_id,
+            display_name="Basic toolset display name",
+            mcp_toolset={
+                "server_address": "https://api.example.com/mcp/",
+                "tls_config": {
+                    "ca_certs": [{
+                        "display_name": "example",
+                        "cert": "ZXhhbXBsZQ==",
+                    }],
+                },
+                "service_directory_config": {
+                    "service": "projects/example/locations/us/namespaces/namespace/services/service",
+                },
+                "api_authentication": {
+                    "service_agent_id_token_auth_config": {},
+                },
+            })
+        ```
+        ### Ces Toolset Mcp Api Key Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_toolset = gcp.ces.App("ces_app_for_toolset",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Toolset example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_toolset_mcp_api_key_config = gcp.ces.Toolset("ces_toolset_mcp_api_key_config",
+            toolset_id="toolset1",
+            location="us",
+            app=ces_app_for_toolset.app_id,
+            display_name="Basic toolset display name",
+            description="Test description",
+            execution_type="SYNCHRONOUS",
+            mcp_toolset={
+                "server_address": "https://api.example.com/mcp/",
+                "tls_config": {
+                    "ca_certs": [{
+                        "display_name": "example",
+                        "cert": "ZXhhbXBsZQ==",
+                    }],
+                },
+                "service_directory_config": {
+                    "service": "projects/example/locations/us/namespaces/namespace/services/service",
+                },
+                "api_authentication": {
+                    "api_key_config": {
+                        "key_name": "ExampleKey",
+                        "api_key_secret_version": "projects/fake-project/secrets/fake-secret/versions/version-1",
+                        "request_location": "HEADER",
+                    },
+                },
+            })
+        ```
+        ### Ces Toolset Mcp Bearer Token Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_toolset = gcp.ces.App("ces_app_for_toolset",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Toolset example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_toolset_mcp_bearer_token_config = gcp.ces.Toolset("ces_toolset_mcp_bearer_token_config",
+            toolset_id="toolset1",
+            location="us",
+            app=ces_app_for_toolset.app_id,
+            display_name="Basic toolset display name",
+            mcp_toolset={
+                "server_address": "https://api.example.com/mcp/",
+                "tls_config": {
+                    "ca_certs": [{
+                        "display_name": "example",
+                        "cert": "ZXhhbXBsZQ==",
+                    }],
+                },
+                "service_directory_config": {
+                    "service": "projects/example/locations/us/namespaces/namespace/services/service",
+                },
+                "api_authentication": {
+                    "bearer_token_config": {
+                        "token": "$context.variables.my_ces_toolset_auth_token",
+                    },
+                },
+            })
+        ```
 
         ## Import
 
         Toolset can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/apps/{{app}}/toolsets/{{toolset_id}}`
-
         * `{{project}}/{{location}}/{{app}}/{{toolset_id}}`
-
         * `{{location}}/{{app}}/{{toolset_id}}`
 
         When using the `pulumi import` command, Toolset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ces/toolset:Toolset default projects/{{project}}/locations/{{location}}/apps/{{app}}/toolsets/{{toolset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/toolset:Toolset default {{project}}/{{location}}/{{app}}/{{toolset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/toolset:Toolset default {{location}}/{{app}}/{{toolset_id}}
         ```
 
@@ -1068,6 +1568,7 @@ class Toolset(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  execution_type: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 mcp_toolset: Optional[pulumi.Input[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict']]] = None,
                  open_api_toolset: Optional[pulumi.Input[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  toolset_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1089,6 +1590,7 @@ class Toolset(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["mcp_toolset"] = mcp_toolset
             __props__.__dict__["open_api_toolset"] = open_api_toolset
             __props__.__dict__["project"] = project
             if toolset_id is None and not opts.urn:
@@ -1115,6 +1617,7 @@ class Toolset(pulumi.CustomResource):
             etag: Optional[pulumi.Input[_builtins.str]] = None,
             execution_type: Optional[pulumi.Input[_builtins.str]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
+            mcp_toolset: Optional[pulumi.Input[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             open_api_toolset: Optional[pulumi.Input[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1138,6 +1641,9 @@ class Toolset(pulumi.CustomResource):
                SYNCHRONOUS
                ASYNCHRONOUS
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict']] mcp_toolset: A toolset that contains a list of tools that are offered by the MCP
+               server.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier. The unique identifier of the toolset.
                Format:
                `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
@@ -1162,6 +1668,7 @@ class Toolset(pulumi.CustomResource):
         __props__.__dict__["etag"] = etag
         __props__.__dict__["execution_type"] = execution_type
         __props__.__dict__["location"] = location
+        __props__.__dict__["mcp_toolset"] = mcp_toolset
         __props__.__dict__["name"] = name
         __props__.__dict__["open_api_toolset"] = open_api_toolset
         __props__.__dict__["project"] = project
@@ -1228,6 +1735,16 @@ class Toolset(pulumi.CustomResource):
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter(name="mcpToolset")
+    def mcp_toolset(self) -> pulumi.Output[Optional['outputs.ToolsetMcpToolset']]:
+        """
+        A toolset that contains a list of tools that are offered by the MCP
+        server.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mcp_toolset")
 
     @_builtins.property
     @pulumi.getter

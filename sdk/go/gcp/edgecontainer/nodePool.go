@@ -29,8 +29,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/edgecontainer"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -98,22 +96,14 @@ import (
 // NodePool can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}`
-//
 // * `{{project}}/{{location}}/{{cluster}}/{{name}}`
-//
 // * `{{location}}/{{cluster}}/{{name}}`
 //
 // When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:edgecontainer/nodePool:NodePool default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgecontainer/nodePool:NodePool default {{project}}/{{location}}/{{cluster}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgecontainer/nodePool:NodePool default {{location}}/{{cluster}}/{{name}}
 // ```
 type NodePool struct {
@@ -153,7 +143,7 @@ type NodePool struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The time when the node pool was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -240,7 +230,7 @@ type nodePoolState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The time when the node pool was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -281,7 +271,7 @@ type NodePoolState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The time when the node pool was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -512,7 +502,8 @@ func (o NodePoolOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o NodePoolOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "dci-tf-_10393",
+    ///         ProjectId = "dci-tf-_3684",
     ///         Name = "Service Project",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     var myApphubApplication = new Gcp.Apphub.Application("my_apphub_application", new()
     ///     {
     ///         Location = "us-central1",
-    ///         ApplicationId = "tf-test-example-application_33052",
+    ///         ApplicationId = "tf-test-example-application_10719",
     ///         Scope = new Gcp.Apphub.Inputs.ApplicationScopeArgs
     ///         {
     ///             Type = "REGIONAL",
@@ -210,7 +210,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     var insightsConfig = new Gcp.DeveloperConnect.InsightsConfig("insights_config", new()
     ///     {
     ///         Location = "us-central1",
-    ///         InsightsConfigId = "tf-test-ic_3684",
+    ///         InsightsConfigId = "tf-test-ic-apphub-_1443",
     ///         Project = project.ProjectId,
     ///         Annotations = null,
     ///         Labels = null,
@@ -250,28 +250,235 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// ### Developer Connect Insights Config Projects
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "dci-tf-_26032",
+    ///         Name = "Service Project",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     // Grant Permissions
+    ///     var apphubPermissions = new Gcp.Projects.IAMMember("apphub_permissions", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Role = "roles/apphub.admin",
+    ///         Member = "serviceAccount:hashicorp-test-runner@ci-test-project-188019.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var insightsAgent = new Gcp.Projects.IAMMember("insights_agent", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Role = "roles/developerconnect.insightsAgent",
+    ///         Member = "serviceAccount:66214305248-compute@developer.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     // Enable APIs
+    ///     var apphubApiService = new Gcp.Projects.Service("apphub_api_service", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "apphub.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var containeranalysisApi = new Gcp.Projects.Service("containeranalysis_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "containeranalysis.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var containerscanningApi = new Gcp.Projects.Service("containerscanning_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "containerscanning.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var containerApi = new Gcp.Projects.Service("container_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "container.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var artifactregistryApi = new Gcp.Projects.Service("artifactregistry_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "artifactregistry.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var cloudbuildApi = new Gcp.Projects.Service("cloudbuild_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "cloudbuild.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var cloudassetApi = new Gcp.Projects.Service("cloudasset_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "cloudasset.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var computeApi = new Gcp.Projects.Service("compute_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "compute.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var devconnectApi = new Gcp.Projects.Service("devconnect_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "developerconnect.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     // Wait delay after enabling APIs and granting permissions
+    ///     var waitForPropagation = new Time.Sleep("wait_for_propagation", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apphubPermissions,
+    ///             insightsAgent,
+    ///             apphubApiService,
+    ///             containeranalysisApi,
+    ///             containerscanningApi,
+    ///             containerApi,
+    ///             artifactregistryApi,
+    ///             artifactregistryApi,
+    ///             cloudbuildApi,
+    ///             cloudassetApi,
+    ///             computeApi,
+    ///             devconnectApi,
+    ///         },
+    ///     });
+    /// 
+    ///     var insightsConfigProjects = new Gcp.DeveloperConnect.InsightsConfig("insights_config_projects", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         InsightsConfigId = "tf-test-ic-projects-_8647",
+    ///         Project = project.ProjectId,
+    ///         Annotations = null,
+    ///         Labels = null,
+    ///         TargetProjects = new Gcp.DeveloperConnect.Inputs.InsightsConfigTargetProjectsArgs
+    ///         {
+    ///             ProjectIds = new[]
+    ///             {
+    ///                 project.ProjectId.Apply(projectId =&gt; $"projects/{projectId}"),
+    ///             },
+    ///         },
+    ///         ArtifactConfigs = new[]
+    ///         {
+    ///             new Gcp.DeveloperConnect.Inputs.InsightsConfigArtifactConfigArgs
+    ///             {
+    ///                 GoogleArtifactAnalysis = new Gcp.DeveloperConnect.Inputs.InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs
+    ///                 {
+    ///                     ProjectId = project.ProjectId,
+    ///                 },
+    ///                 GoogleArtifactRegistry = new Gcp.DeveloperConnect.Inputs.InsightsConfigArtifactConfigGoogleArtifactRegistryArgs
+    ///                 {
+    ///                     ArtifactRegistryPackage = "my-package",
+    ///                     ProjectId = project.ProjectId,
+    ///                 },
+    ///                 Uri = "us-docker.pkg.dev/my-project/my-repo/my-image",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             waitForPropagation,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
     /// InsightsConfig can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{insights_config_id}}`
-    /// 
     /// * `{{location}}/{{insights_config_id}}`
     /// 
     /// When using the `pulumi import` command, InsightsConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{project}}/{{location}}/{{insights_config_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{location}}/{{insights_config_id}}
     /// ```
     /// </summary>
@@ -293,7 +500,7 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// projects/{project}/locations/{location}/applications/{application}
         /// </summary>
         [Output("appHubApplication")]
-        public Output<string> AppHubApplication { get; private set; } = null!;
+        public Output<string?> AppHubApplication { get; private set; } = null!;
 
         /// <summary>
         /// The artifact configurations of the artifacts that are deployed.
@@ -308,6 +515,9 @@ namespace Pulumi.Gcp.DeveloperConnect
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -364,7 +574,7 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -396,6 +606,13 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The projects to track with the InsightsConfig.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("targetProjects")]
+        public Output<Outputs.InsightsConfigTargetProjects?> TargetProjects { get; private set; } = null!;
 
         /// <summary>
         /// [Output only] Update timestamp
@@ -474,8 +691,8 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// Format:
         /// projects/{project}/locations/{location}/applications/{application}
         /// </summary>
-        [Input("appHubApplication", required: true)]
-        public Input<string> AppHubApplication { get; set; } = null!;
+        [Input("appHubApplication")]
+        public Input<string>? AppHubApplication { get; set; }
 
         [Input("artifactConfigs")]
         private InputList<Inputs.InsightsConfigArtifactConfigArgs>? _artifactConfigs;
@@ -522,6 +739,13 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The projects to track with the InsightsConfig.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("targetProjects")]
+        public Input<Inputs.InsightsConfigTargetProjectsArgs>? TargetProjects { get; set; }
 
         public InsightsConfigArgs()
         {
@@ -575,6 +799,10 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
@@ -659,7 +887,7 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {
@@ -704,6 +932,13 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// The projects to track with the InsightsConfig.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("targetProjects")]
+        public Input<Inputs.InsightsConfigTargetProjectsGetArgs>? TargetProjects { get; set; }
 
         /// <summary>
         /// [Output only] Update timestamp

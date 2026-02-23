@@ -29,8 +29,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
@@ -464,11 +462,11 @@ import (
 //					"foo": pulumi.String("bar"),
 //				},
 //				Alloydb: &databasemigrationservice.ConnectionProfileAlloydbArgs{
-//					ClusterId: pulumi.String("tf-test-dbmsalloycluster_22811"),
+//					ClusterId: pulumi.String("tf-test-dbmsalloycluster_91042"),
 //					Settings: &databasemigrationservice.ConnectionProfileAlloydbSettingsArgs{
 //						InitialUser: &databasemigrationservice.ConnectionProfileAlloydbSettingsInitialUserArgs{
-//							User:     pulumi.String("alloyuser_91042"),
-//							Password: pulumi.String("alloypass_72490"),
+//							User:     pulumi.String("alloyuser_72490"),
+//							Password: pulumi.String("alloypass_89605"),
 //						},
 //						VpcNetwork: _default.ID(),
 //						Labels: pulumi.StringMap{
@@ -705,22 +703,14 @@ import (
 // ConnectionProfile can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
-//
 // * `{{project}}/{{location}}/{{connection_profile_id}}`
-//
 // * `{{location}}/{{connection_profile_id}}`
 //
 // When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
 // ```
 type ConnectionProfile struct {
@@ -767,7 +757,7 @@ type ConnectionProfile struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The current connection profile state.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -852,7 +842,7 @@ type connectionProfileState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The current connection profile state.
 	State *string `pulumi:"state"`
@@ -900,7 +890,7 @@ type ConnectionProfileState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The current connection profile state.
 	State pulumi.StringPtrInput
@@ -1148,7 +1138,8 @@ func (o ConnectionProfileOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ConnectionProfileOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

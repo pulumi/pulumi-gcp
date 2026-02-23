@@ -138,7 +138,7 @@ class _ScopeState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] scope_id: The client-provided identifier of the scope.
         :param pulumi.Input[Sequence[pulumi.Input['ScopeStateArgs']]] states: State of the scope resource.
                Structure is documented below.
@@ -267,7 +267,7 @@ class _ScopeState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -372,22 +372,14 @@ class Scope(pulumi.CustomResource):
         Scope can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/scopes/{{scope_id}}`
-
         * `{{project}}/{{scope_id}}`
-
         * `{{scope_id}}`
 
         When using the `pulumi import` command, Scope can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/scope:Scope default projects/{{project}}/locations/global/scopes/{{scope_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/scope:Scope default {{project}}/{{scope_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/scope:Scope default {{scope_id}}
         ```
 
@@ -448,22 +440,14 @@ class Scope(pulumi.CustomResource):
         Scope can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/scopes/{{scope_id}}`
-
         * `{{project}}/{{scope_id}}`
-
         * `{{scope_id}}`
 
         When using the `pulumi import` command, Scope can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/scope:Scope default projects/{{project}}/locations/global/scopes/{{scope_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/scope:Scope default {{project}}/{{scope_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/scope:Scope default {{scope_id}}
         ```
 
@@ -556,7 +540,7 @@ class Scope(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] scope_id: The client-provided identifier of the scope.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScopeStateArgs', 'ScopeStateArgsDict']]]] states: State of the scope resource.
                Structure is documented below.
@@ -650,7 +634,7 @@ class Scope(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

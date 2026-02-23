@@ -7,6 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A UnitKind serves as a template or type definition for a group of Units. Units that belong to the same UnitKind are managed together, follow the same release model, and are typically updated together through rollouts.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
  * ## Example Usage
  *
  * ### Saas Runtime Unit Kind Basic
@@ -52,22 +57,14 @@ import * as utilities from "../utilities";
  * UnitKind can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/unitKinds/{{unit_kind_id}}`
- *
  * * `{{project}}/{{location}}/{{unit_kind_id}}`
- *
  * * `{{location}}/{{unit_kind_id}}`
  *
  * When using the `pulumi import` command, UnitKind can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:saasruntime/unitKind:UnitKind default projects/{{project}}/locations/{{location}}/unitKinds/{{unit_kind_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:saasruntime/unitKind:UnitKind default {{project}}/{{location}}/{{unit_kind_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:saasruntime/unitKind:UnitKind default {{location}}/{{unit_kind_id}}
  * ```
  */
@@ -125,6 +122,9 @@ export class UnitKind extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly dependencies: pulumi.Output<outputs.saasruntime.UnitKindDependency[] | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -173,7 +173,7 @@ export class UnitKind extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -299,6 +299,9 @@ export interface UnitKindState {
      * Structure is documented below.
      */
     dependencies?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitKindDependency>[]>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -347,7 +350,7 @@ export interface UnitKindState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -75,22 +75,14 @@ import javax.annotation.Nullable;
  * LoggingSettingBinding can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/loggingSettings/{{logging_setting_id}}/settingBindings/{{setting_binding_id}}`
- * 
  * * `{{project}}/{{location}}/{{logging_setting_id}}/{{setting_binding_id}}`
- * 
  * * `{{location}}/{{logging_setting_id}}/{{setting_binding_id}}`
  * 
  * When using the `pulumi import` command, LoggingSettingBinding can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:gemini/loggingSettingBinding:LoggingSettingBinding default projects/{{project}}/locations/{{location}}/loggingSettings/{{logging_setting_id}}/settingBindings/{{setting_binding_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gemini/loggingSettingBinding:LoggingSettingBinding default {{project}}/{{location}}/{{logging_setting_id}}/{{setting_binding_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gemini/loggingSettingBinding:LoggingSettingBinding default {{location}}/{{logging_setting_id}}/{{setting_binding_id}}
  * ```
  * 
@@ -221,7 +213,7 @@ public class LoggingSettingBinding extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -229,7 +221,7 @@ public class LoggingSettingBinding extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

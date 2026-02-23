@@ -7,6 +7,20 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A regional secret version resource.
+ *
+ * To get more information about RegionalSecretVersion, see:
+ *
+ * * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions)
+ * * How-to Guides
+ *     * [Create and deploy a Regional Secret Version](https://cloud.google.com/secret-manager/regional-secrets/add-secret-version-rs)
+ *
+ * > **Warning:** The behavior of the `secretData` field is force new.
+ * While updating this field, Terraform deletes the existing resource and then creates a new one, which may cause potential outages. To mitigate
+ * this, use the `createBeforeDestroy` field within the lifecycle block.
+ *
+ * For more details, refer to the Terraform lifecycle documentation.
+ *
  * ## Example Usage
  *
  * ### Regional Secret Version Basic

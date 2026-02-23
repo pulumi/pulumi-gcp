@@ -10,27 +10,30 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub
 {
     /// <summary>
+    /// RolloutSequence defines the desired order of upgrades.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about RolloutSequence, see:
+    /// 
+    /// * [API documentation](https://docs.cloud.google.com/kubernetes-engine/fleet-management/docs/reference/rest/v1beta/projects.locations.rolloutSequences)
+    /// * How-to Guides
+    ///     * [Rollout Sequencing Overview](https://cloud.google.com/kubernetes-engine/docs/concepts/rollout-sequencing-custom-stages/about-rollout-sequencing)
+    /// 
     /// ## Import
     /// 
     /// RolloutSequence can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/global/rolloutSequences/{{rollout_sequence_id}}`
-    /// 
     /// * `{{project}}/{{rollout_sequence_id}}`
-    /// 
     /// * `{{rollout_sequence_id}}`
     /// 
     /// When using the `pulumi import` command, RolloutSequence can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default projects/{{project}}/locations/global/rolloutSequences/{{rollout_sequence_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default {{project}}/{{rollout_sequence_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default {{rollout_sequence_id}}
     /// ```
     /// </summary>
@@ -91,7 +94,7 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -300,7 +303,7 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

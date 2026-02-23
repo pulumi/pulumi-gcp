@@ -170,7 +170,7 @@ class _NamespaceState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] scope: The name of the Scope instance.
         :param pulumi.Input[_builtins.str] scope_id: Id of the scope
         :param pulumi.Input[_builtins.str] scope_namespace_id: The client-provided identifier of the namespace.
@@ -305,7 +305,7 @@ class _NamespaceState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -417,9 +417,9 @@ class Namespace(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_85160")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_25141")
         namespace = gcp.gkehub.Namespace("namespace",
-            scope_namespace_id="tf-test-namespace_92130",
+            scope_namespace_id="tf-test-namespace_30827",
             scope_id=scope.scope_id,
             scope=scope.name,
             namespace_labels={
@@ -440,22 +440,14 @@ class Namespace(pulumi.CustomResource):
         Namespace can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/scopes/{{scope_id}}/namespaces/{{scope_namespace_id}}`
-
         * `{{project}}/{{scope_id}}/{{scope_namespace_id}}`
-
         * `{{scope_id}}/{{scope_namespace_id}}`
 
         When using the `pulumi import` command, Namespace can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/namespace:Namespace default projects/{{project}}/locations/global/scopes/{{scope_id}}/namespaces/{{scope_namespace_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/namespace:Namespace default {{project}}/{{scope_id}}/{{scope_namespace_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/namespace:Namespace default {{scope_id}}/{{scope_namespace_id}}
         ```
 
@@ -499,9 +491,9 @@ class Namespace(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_85160")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_25141")
         namespace = gcp.gkehub.Namespace("namespace",
-            scope_namespace_id="tf-test-namespace_92130",
+            scope_namespace_id="tf-test-namespace_30827",
             scope_id=scope.scope_id,
             scope=scope.name,
             namespace_labels={
@@ -522,22 +514,14 @@ class Namespace(pulumi.CustomResource):
         Namespace can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/scopes/{{scope_id}}/namespaces/{{scope_namespace_id}}`
-
         * `{{project}}/{{scope_id}}/{{scope_namespace_id}}`
-
         * `{{scope_id}}/{{scope_namespace_id}}`
 
         When using the `pulumi import` command, Namespace can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/namespace:Namespace default projects/{{project}}/locations/global/scopes/{{scope_id}}/namespaces/{{scope_namespace_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/namespace:Namespace default {{project}}/{{scope_id}}/{{scope_namespace_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/namespace:Namespace default {{scope_id}}/{{scope_namespace_id}}
         ```
 
@@ -640,7 +624,7 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] scope: The name of the Scope instance.
         :param pulumi.Input[_builtins.str] scope_id: Id of the scope
         :param pulumi.Input[_builtins.str] scope_namespace_id: The client-provided identifier of the namespace.
@@ -738,7 +722,7 @@ class Namespace(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -1147,16 +1147,12 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         WorkforcePoolProvider can be imported using any of these accepted formats:
 
         * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}`
-
         * `{{location}}/{{workforce_pool_id}}/{{provider_id}}`
 
         When using the `pulumi import` command, WorkforcePoolProvider can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workforcePoolProvider:WorkforcePoolProvider default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workforcePoolProvider:WorkforcePoolProvider default {{location}}/{{workforce_pool_id}}/{{provider_id}}
         ```
 
@@ -1590,16 +1586,12 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         WorkforcePoolProvider can be imported using any of these accepted formats:
 
         * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}`
-
         * `{{location}}/{{workforce_pool_id}}/{{provider_id}}`
 
         When using the `pulumi import` command, WorkforcePoolProvider can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workforcePoolProvider:WorkforcePoolProvider default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workforcePoolProvider:WorkforcePoolProvider default {{location}}/{{workforce_pool_id}}/{{provider_id}}
         ```
 

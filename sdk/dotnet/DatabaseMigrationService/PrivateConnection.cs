@@ -61,22 +61,14 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// PrivateConnection can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{private_connection_id}}`
-    /// 
     /// * `{{location}}/{{private_connection_id}}`
     /// 
     /// When using the `pulumi import` command, PrivateConnection can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:databasemigrationservice/privateConnection:PrivateConnection default projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:databasemigrationservice/privateConnection:PrivateConnection default {{project}}/{{location}}/{{private_connection_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:databasemigrationservice/privateConnection:PrivateConnection default {{location}}/{{private_connection_id}}
     /// ```
     /// </summary>
@@ -143,7 +135,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -359,7 +351,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

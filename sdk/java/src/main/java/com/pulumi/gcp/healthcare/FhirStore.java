@@ -371,16 +371,12 @@ import javax.annotation.Nullable;
  * FhirStore can be imported using any of these accepted formats:
  * 
  * * `{{dataset}}/fhirStores/{{name}}`
- * 
  * * `{{dataset}}/{{name}}`
  * 
  * When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/{{name}}
  * ```
  * 
@@ -677,7 +673,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -685,7 +681,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

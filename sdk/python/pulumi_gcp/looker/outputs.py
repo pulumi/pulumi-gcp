@@ -55,12 +55,26 @@ class InstanceAdminSettings(dict):
 
     def __init__(__self__, *,
                  allowed_email_domains: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] allowed_email_domains: Email domain allowlist for the instance.
+               Define the email domains to which your users can deliver Looker (Google Cloud core) content.
+               Updating this list will restart the instance. Updating the allowed email domains from terraform
+               means the value provided will be considered as the entire list and not an amendment to the
+               existing list of allowed email domains.
+        """
         if allowed_email_domains is not None:
             pulumi.set(__self__, "allowed_email_domains", allowed_email_domains)
 
     @_builtins.property
     @pulumi.getter(name="allowedEmailDomains")
     def allowed_email_domains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Email domain allowlist for the instance.
+        Define the email domains to which your users can deliver Looker (Google Cloud core) content.
+        Updating this list will restart the instance. Updating the allowed email domains from terraform
+        means the value provided will be considered as the entire list and not an amendment to the
+        existing list of allowed email domains.
+        """
         return pulumi.get(self, "allowed_email_domains")
 
 

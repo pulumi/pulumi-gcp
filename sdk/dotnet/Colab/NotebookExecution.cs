@@ -456,22 +456,14 @@ namespace Pulumi.Gcp.Colab
     /// NotebookExecution can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/notebookExecutionJobs/{{notebook_execution_job_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{notebook_execution_job_id}}`
-    /// 
     /// * `{{location}}/{{notebook_execution_job_id}}`
     /// 
     /// When using the `pulumi import` command, NotebookExecution can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:colab/notebookExecution:NotebookExecution default projects/{{project}}/locations/{{location}}/notebookExecutionJobs/{{notebook_execution_job_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:colab/notebookExecution:NotebookExecution default {{project}}/{{location}}/{{notebook_execution_job_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:colab/notebookExecution:NotebookExecution default {{location}}/{{notebook_execution_job_id}}
     /// ```
     /// </summary>

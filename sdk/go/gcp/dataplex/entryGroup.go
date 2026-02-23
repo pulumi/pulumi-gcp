@@ -80,22 +80,14 @@ import (
 // EntryGroup can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}`
-//
 // * `{{project}}/{{location}}/{{entry_group_id}}`
-//
 // * `{{location}}/{{entry_group_id}}`
 //
 // When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataplex/entryGroup:EntryGroup default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{project}}/{{location}}/{{entry_group_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{location}}/{{entry_group_id}}
 // ```
 type EntryGroup struct {
@@ -124,7 +116,7 @@ type EntryGroup struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Denotes the transfer status of the Entry Group. It is unspecified
 	// for Entry Group created from Dataplex API.
@@ -193,7 +185,7 @@ type entryGroupState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Denotes the transfer status of the Entry Group. It is unspecified
 	// for Entry Group created from Dataplex API.
@@ -228,7 +220,7 @@ type EntryGroupState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Denotes the transfer status of the Entry Group. It is unspecified
 	// for Entry Group created from Dataplex API.
@@ -419,7 +411,8 @@ func (o EntryGroupOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o EntryGroupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EntryGroup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

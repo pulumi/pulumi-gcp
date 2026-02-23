@@ -59,22 +59,14 @@ import (
 // EndpointAttachment can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/endpointAttachments/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, EndpointAttachment can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:integrationconnectors/endpointAttachment:EndpointAttachment default projects/{{project}}/locations/{{location}}/endpointAttachments/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:integrationconnectors/endpointAttachment:EndpointAttachment default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:integrationconnectors/endpointAttachment:EndpointAttachment default {{location}}/{{name}}
 // ```
 type EndpointAttachment struct {
@@ -103,7 +95,7 @@ type EndpointAttachment struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The path of the service attachment.
 	ServiceAttachment pulumi.StringOutput `pulumi:"serviceAttachment"`
@@ -175,7 +167,7 @@ type endpointAttachmentState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The path of the service attachment.
 	ServiceAttachment *string `pulumi:"serviceAttachment"`
@@ -207,7 +199,7 @@ type EndpointAttachmentState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The path of the service attachment.
 	ServiceAttachment pulumi.StringPtrInput
@@ -399,7 +391,8 @@ func (o EndpointAttachmentOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o EndpointAttachmentOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

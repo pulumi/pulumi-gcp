@@ -243,7 +243,7 @@ class _RegistrationState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] register_failure_reason: Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
         :param pulumi.Input[_builtins.str] state: Output only. The current state of the Registration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_privacies: Output only. Set of options for the contactSettings.privacy field that this Registration supports.
@@ -469,7 +469,7 @@ class _RegistrationState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -546,6 +546,18 @@ class Registration(pulumi.CustomResource):
                  yearly_price: Optional[pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']]] = None,
                  __props__=None):
         """
+        Registers a new domain name and creates a corresponding Registration resource.
+
+        To get more information about Registration, see:
+
+        * [API documentation](https://cloud.google.com/domains/docs/reference/rest/v1/projects.locations.registrations)
+        * How-to Guides
+            * [Register a domain with Cloud Domains](https://cloud.google.com/domains/docs/buy-register-domain)
+
+        > **Warning:** The Terraform implementation of this resource will not actually delete a Registration during
+        `terraform destroy`. Instead it will "abandon" the resource and remove it from state.
+        For information on deleting a registered domain, see https://cloud.google.com/domains/docs/delete-domain
+
         ## Example Usage
 
         ### Clouddomains Registration Full
@@ -620,22 +632,14 @@ class Registration(pulumi.CustomResource):
         Registration can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}`
-
         * `{{project}}/{{location}}/{{domain_name}}`
-
         * `{{location}}/{{domain_name}}`
 
         When using the `pulumi import` command, Registration can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:clouddomains/registration:Registration default projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddomains/registration:Registration default {{project}}/{{location}}/{{domain_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddomains/registration:Registration default {{location}}/{{domain_name}}
         ```
 
@@ -667,6 +671,18 @@ class Registration(pulumi.CustomResource):
                  args: RegistrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Registers a new domain name and creates a corresponding Registration resource.
+
+        To get more information about Registration, see:
+
+        * [API documentation](https://cloud.google.com/domains/docs/reference/rest/v1/projects.locations.registrations)
+        * How-to Guides
+            * [Register a domain with Cloud Domains](https://cloud.google.com/domains/docs/buy-register-domain)
+
+        > **Warning:** The Terraform implementation of this resource will not actually delete a Registration during
+        `terraform destroy`. Instead it will "abandon" the resource and remove it from state.
+        For information on deleting a registered domain, see https://cloud.google.com/domains/docs/delete-domain
+
         ## Example Usage
 
         ### Clouddomains Registration Full
@@ -741,22 +757,14 @@ class Registration(pulumi.CustomResource):
         Registration can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}`
-
         * `{{project}}/{{location}}/{{domain_name}}`
-
         * `{{location}}/{{domain_name}}`
 
         When using the `pulumi import` command, Registration can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:clouddomains/registration:Registration default projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddomains/registration:Registration default {{project}}/{{location}}/{{domain_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddomains/registration:Registration default {{location}}/{{domain_name}}
         ```
 
@@ -880,7 +888,7 @@ class Registration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] register_failure_reason: Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
         :param pulumi.Input[_builtins.str] state: Output only. The current state of the Registration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_privacies: Output only. Set of options for the contactSettings.privacy field that this Registration supports.
@@ -1036,7 +1044,7 @@ class Registration(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

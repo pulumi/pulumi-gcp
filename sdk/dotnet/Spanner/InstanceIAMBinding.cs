@@ -100,6 +100,59 @@ namespace Pulumi.Gcp.Spanner
     /// });
     /// ```
     /// 
+    /// ## This resource supports User Project Overrides.
+    /// 
+    /// - 
+    /// 
+    /// # IAM policy for Spanner Instances
+    /// 
+    /// Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+    /// 
+    /// &gt; **Warning:** It's entirely possibly to lock yourself out of your instance using `gcp.spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+    /// 
+    /// * `gcp.spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+    /// * `gcp.spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.InstanceIAMBinding` and `gcp.spanner.InstanceIAMMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## gcp.spanner.InstanceIAMPolicy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var instance = new Gcp.Spanner.InstanceIAMPolicy("instance", new()
+    ///     {
+    ///         Instance = "your-instance-name",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## gcp.spanner.InstanceIAMBinding
     /// 
     /// ```csharp
@@ -145,29 +198,8 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// ## Import
     /// 
-    /// ### Importing IAM policies
-    /// 
-    /// IAM policy imports use the identifier of the Spanner Instances resource . For example:
-    /// 
-    /// * `{{project}}/{{instance}}`
-    /// 
-    /// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-    /// 
-    /// tf
-    /// 
-    /// import {
-    /// 
-    ///   id = {{project}}/{{instance}}
-    /// 
-    ///   to = google_spanner_instance_iam_policy.default
-    /// 
-    /// }
-    /// 
-    /// The `pulumi import` command can also be used:
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:spanner/instanceIAMBinding:InstanceIAMBinding default {{project}}/{{instance}}
-    /// ```
+    /// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:spanner/instanceIAMBinding:InstanceIAMBinding")]
     public partial class InstanceIAMBinding : global::Pulumi.CustomResource

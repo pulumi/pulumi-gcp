@@ -33,6 +33,13 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
             set => _hosts = value;
         }
 
+        /// <summary>
+        /// Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("mcp")]
+        public Input<Inputs.AuthzPolicyHttpRuleToOperationMcpArgs>? Mcp { get; set; }
+
         [Input("methods")]
         private InputList<string>? _methods;
 

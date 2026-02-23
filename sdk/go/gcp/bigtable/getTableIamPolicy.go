@@ -51,8 +51,10 @@ func LookupTableIamPolicy(ctx *pulumi.Context, args *LookupTableIamPolicyArgs, o
 
 // A collection of arguments for invoking getTableIamPolicy.
 type LookupTableIamPolicyArgs struct {
-	InstanceName string  `pulumi:"instanceName"`
-	Project      *string `pulumi:"project"`
+	InstanceName string `pulumi:"instanceName"`
+	// The project in which the table belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Project *string `pulumi:"project"`
 	// The name or relative resource id of the table to manage IAM policies for.
 	Table string `pulumi:"table"`
 }
@@ -81,8 +83,10 @@ func LookupTableIamPolicyOutput(ctx *pulumi.Context, args LookupTableIamPolicyOu
 
 // A collection of arguments for invoking getTableIamPolicy.
 type LookupTableIamPolicyOutputArgs struct {
-	InstanceName pulumi.StringInput    `pulumi:"instanceName"`
-	Project      pulumi.StringPtrInput `pulumi:"project"`
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The project in which the table belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// The name or relative resource id of the table to manage IAM policies for.
 	Table pulumi.StringInput `pulumi:"table"`
 }

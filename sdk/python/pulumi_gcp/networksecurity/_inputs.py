@@ -89,6 +89,12 @@ __all__ = [
     'AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgsDict',
     'AuthzPolicyHttpRuleToOperationHostArgs',
     'AuthzPolicyHttpRuleToOperationHostArgsDict',
+    'AuthzPolicyHttpRuleToOperationMcpArgs',
+    'AuthzPolicyHttpRuleToOperationMcpArgsDict',
+    'AuthzPolicyHttpRuleToOperationMcpMethodArgs',
+    'AuthzPolicyHttpRuleToOperationMcpMethodArgsDict',
+    'AuthzPolicyHttpRuleToOperationMcpMethodParamArgs',
+    'AuthzPolicyHttpRuleToOperationMcpMethodParamArgsDict',
     'AuthzPolicyHttpRuleToOperationPathArgs',
     'AuthzPolicyHttpRuleToOperationPathArgsDict',
     'AuthzPolicyTargetArgs',
@@ -173,15 +179,10 @@ __all__ = [
     'ServerTlsPolicyServerCertificateGrpcEndpointArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AddressGroupIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    AddressGroupIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class AddressGroupIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class AddressGroupIamBindingConditionArgs:
@@ -222,13 +223,10 @@ class AddressGroupIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class AddressGroupIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    AddressGroupIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class AddressGroupIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class AddressGroupIamMemberConditionArgs:
@@ -269,22 +267,19 @@ class AddressGroupIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class AuthorizationPolicyRuleArgsDict(TypedDict):
-        destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgsDict']]]]
-        """
-        List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
-        If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
-        Structure is documented below.
-        """
-        sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgsDict']]]]
-        """
-        List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ipBlocks match.
-        If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
-        Structure is documented below.
-        """
-elif False:
-    AuthorizationPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorizationPolicyRuleArgsDict(TypedDict):
+    destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgsDict']]]]
+    """
+    List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
+    If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
+    Structure is documented below.
+    """
+    sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgsDict']]]]
+    """
+    List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ipBlocks match.
+    If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthorizationPolicyRuleArgs:
@@ -333,28 +328,25 @@ class AuthorizationPolicyRuleArgs:
         pulumi.set(self, "sources", value)
 
 
-if not MYPY:
-    class AuthorizationPolicyRuleDestinationArgsDict(TypedDict):
-        hosts: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
-        """
-        methods: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services.
-        """
-        ports: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        List of destination ports to match. At least one port should match.
-        """
-        http_header_match: NotRequired[pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgsDict']]
-        """
-        Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
-        Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
-        Structure is documented below.
-        """
-elif False:
-    AuthorizationPolicyRuleDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorizationPolicyRuleDestinationArgsDict(TypedDict):
+    hosts: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
+    """
+    methods: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services.
+    """
+    ports: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    List of destination ports to match. At least one port should match.
+    """
+    http_header_match: NotRequired[pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgsDict']]
+    """
+    Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
+    Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthorizationPolicyRuleDestinationArgs:
@@ -428,18 +420,15 @@ class AuthorizationPolicyRuleDestinationArgs:
         pulumi.set(self, "http_header_match", value)
 
 
-if not MYPY:
-    class AuthorizationPolicyRuleDestinationHttpHeaderMatchArgsDict(TypedDict):
-        header_name: pulumi.Input[_builtins.str]
-        """
-        The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
-        """
-        regex_match: pulumi.Input[_builtins.str]
-        """
-        The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: en.cppreference.com/w/cpp/regex/ecmascript For matching against a port specified in the HTTP request, use a headerMatch with headerName set to Host and a regular expression that satisfies the RFC2616 Host header's port specifier.
-        """
-elif False:
-    AuthorizationPolicyRuleDestinationHttpHeaderMatchArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorizationPolicyRuleDestinationHttpHeaderMatchArgsDict(TypedDict):
+    header_name: pulumi.Input[_builtins.str]
+    """
+    The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
+    """
+    regex_match: pulumi.Input[_builtins.str]
+    """
+    The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: en.cppreference.com/w/cpp/regex/ecmascript For matching against a port specified in the HTTP request, use a headerMatch with headerName set to Host and a regular expression that satisfies the RFC2616 Host header's port specifier.
+    """
 
 @pulumi.input_type
 class AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs:
@@ -478,20 +467,17 @@ class AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs:
         pulumi.set(self, "regex_match", value)
 
 
-if not MYPY:
-    class AuthorizationPolicyRuleSourceArgsDict(TypedDict):
-        ip_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided.
-        The IP addresses of any load balancers or proxies should be considered untrusted.
-        """
-        principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*".
-        Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
-        """
-elif False:
-    AuthorizationPolicyRuleSourceArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorizationPolicyRuleSourceArgsDict(TypedDict):
+    ip_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided.
+    The IP addresses of any load balancers or proxies should be considered untrusted.
+    """
+    principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*".
+    Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
+    """
 
 @pulumi.input_type
 class AuthorizationPolicyRuleSourceArgs:
@@ -536,20 +522,17 @@ class AuthorizationPolicyRuleSourceArgs:
         pulumi.set(self, "principals", value)
 
 
-if not MYPY:
-    class AuthzPolicyCustomProviderArgsDict(TypedDict):
-        authz_extension: NotRequired[pulumi.Input['AuthzPolicyCustomProviderAuthzExtensionArgsDict']]
-        """
-        Delegate authorization decision to user authored Service Extension. Only one of cloudIap or authzExtension can be specified.
-        Structure is documented below.
-        """
-        cloud_iap: NotRequired[pulumi.Input['AuthzPolicyCustomProviderCloudIapArgsDict']]
-        """
-        Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService. Enabling IAP in both places will result in request failure. Ensure that IAP is enabled in either the AuthzPolicy or the BackendService but not in both places.
-        Structure is documented below.
-        """
-elif False:
-    AuthzPolicyCustomProviderArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyCustomProviderArgsDict(TypedDict):
+    authz_extension: NotRequired[pulumi.Input['AuthzPolicyCustomProviderAuthzExtensionArgsDict']]
+    """
+    Delegate authorization decision to user authored Service Extension. Only one of cloudIap or authzExtension can be specified.
+    Structure is documented below.
+    """
+    cloud_iap: NotRequired[pulumi.Input['AuthzPolicyCustomProviderCloudIapArgsDict']]
+    """
+    Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService. Enabling IAP in both places will result in request failure. Ensure that IAP is enabled in either the AuthzPolicy or the BackendService but not in both places.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthzPolicyCustomProviderArgs:
@@ -594,14 +577,11 @@ class AuthzPolicyCustomProviderArgs:
         pulumi.set(self, "cloud_iap", value)
 
 
-if not MYPY:
-    class AuthzPolicyCustomProviderAuthzExtensionArgsDict(TypedDict):
-        resources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of references to authorization extensions that will be invoked for requests matching this policy. Limited to 1 custom provider.
-        """
-elif False:
-    AuthzPolicyCustomProviderAuthzExtensionArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyCustomProviderAuthzExtensionArgsDict(TypedDict):
+    resources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of references to authorization extensions that will be invoked for requests matching this policy. Limited to 1 custom provider.
+    """
 
 @pulumi.input_type
 class AuthzPolicyCustomProviderAuthzExtensionArgs:
@@ -625,14 +605,11 @@ class AuthzPolicyCustomProviderAuthzExtensionArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class AuthzPolicyCustomProviderCloudIapArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Enable Cloud IAP at the AuthzPolicy level.
-        """
-elif False:
-    AuthzPolicyCustomProviderCloudIapArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyCustomProviderCloudIapArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Enable Cloud IAP at the AuthzPolicy level.
+    """
 
 @pulumi.input_type
 class AuthzPolicyCustomProviderCloudIapArgs:
@@ -656,24 +633,21 @@ class AuthzPolicyCustomProviderCloudIapArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleArgsDict(TypedDict):
-        from_: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromArgsDict']]
-        """
-        Describes properties of one or more sources of a request.
-        Structure is documented below.
-        """
-        to: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToArgsDict']]
-        """
-        Describes properties of one or more targets of a request
-        Structure is documented below.
-        """
-        when: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
-        """
-elif False:
-    AuthzPolicyHttpRuleArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleArgsDict(TypedDict):
+    from_: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromArgsDict']]
+    """
+    Describes properties of one or more sources of a request.
+    Structure is documented below.
+    """
+    to: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToArgsDict']]
+    """
+    Describes properties of one or more targets of a request
+    Structure is documented below.
+    """
+    when: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleArgs:
@@ -734,20 +708,17 @@ class AuthzPolicyHttpRuleArgs:
         pulumi.set(self, "when", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromArgsDict(TypedDict):
-        not_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgsDict']]]]
-        """
-        Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
-        Structure is documented below.
-        """
-        sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgsDict']]]]
-        """
-        Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
-        Structure is documented below.
-        """
-elif False:
-    AuthzPolicyHttpRuleFromArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleFromArgsDict(TypedDict):
+    not_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgsDict']]]]
+    """
+    Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
+    Structure is documented below.
+    """
+    sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgsDict']]]]
+    """
+    Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromArgs:
@@ -792,27 +763,24 @@ class AuthzPolicyHttpRuleFromArgs:
         pulumi.set(self, "sources", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromNotSourceArgsDict(TypedDict):
-        ip_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgsDict']]]]
-        """
-        A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
-        Structure is documented below.
-        """
-        principals: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict']]]]
-        """
-        A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
-        Limited to 5 principals.
-        Structure is documented below.
-        """
-        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceArgsDict']]]]
-        """
-        A list of resources to match against the resource of the source VM of a request.
-        Limited to 5 resources.
-        Structure is documented below.
-        """
-elif False:
-    AuthzPolicyHttpRuleFromNotSourceArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleFromNotSourceArgsDict(TypedDict):
+    ip_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgsDict']]]]
+    """
+    A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+    Structure is documented below.
+    """
+    principals: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict']]]]
+    """
+    A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+    Limited to 5 principals.
+    Structure is documented below.
+    """
+    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceArgsDict']]]]
+    """
+    A list of resources to match against the resource of the source VM of a request.
+    Limited to 5 resources.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromNotSourceArgs:
@@ -879,18 +847,15 @@ class AuthzPolicyHttpRuleFromNotSourceArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromNotSourceIpBlockArgsDict(TypedDict):
-        length: pulumi.Input[_builtins.int]
-        """
-        The length of the address range.
-        """
-        prefix: pulumi.Input[_builtins.str]
-        """
-        The address prefix.
-        """
-elif False:
-    AuthzPolicyHttpRuleFromNotSourceIpBlockArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleFromNotSourceIpBlockArgsDict(TypedDict):
+    length: pulumi.Input[_builtins.int]
+    """
+    The length of the address range.
+    """
+    prefix: pulumi.Input[_builtins.str]
+    """
+    The address prefix.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromNotSourceIpBlockArgs:
@@ -929,65 +894,62 @@ class AuthzPolicyHttpRuleFromNotSourceIpBlockArgs:
         pulumi.set(self, "prefix", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict(TypedDict):
-        contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Optional, Deprecated)
-        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc.def
+class AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict(TypedDict):
+    contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional, Deprecated)
+    The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc.def
 
-        > **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
-        """
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Optional, Deprecated)
-        The input string must match exactly the string specified here.
-        Examples:
-        * abc only matches the value abc.
+    > **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+    """
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional, Deprecated)
+    The input string must match exactly the string specified here.
+    Examples:
+    * abc only matches the value abc.
 
-        > **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
-        """
-        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Optional, Deprecated)
-        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+    > **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Optional, Deprecated)
+    If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
 
-        > **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Optional, Deprecated)
-        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value abc.xyz
+    > **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional, Deprecated)
+    The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value abc.xyz
 
-        > **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
-        """
-        principal: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgsDict']]
-        """
-        Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
-        Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
-        Structure is documented below.
-        """
-        principal_selector: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
-        Default value is `CLIENT_CERT_URI_SAN`.
-        Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
-        """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Optional, Deprecated)
-        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc
+    > **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+    """
+    principal: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgsDict']]
+    """
+    Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+    Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+    Structure is documented below.
+    """
+    principal_selector: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+    Default value is `CLIENT_CERT_URI_SAN`.
+    Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional, Deprecated)
+    The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc
 
-        > **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
-        """
-elif False:
-    AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict: TypeAlias = Mapping[str, Any]
+    > **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs:
@@ -1182,38 +1144,35 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgsDict(TypedDict):
-        contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc.def
-        """
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must match exactly the string specified here.
-        Examples:
-        * abc only matches the value abc.
-        """
-        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value abc.xyz
-        """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc
-        """
-elif False:
-    AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgsDict(TypedDict):
+    contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc.def
+    """
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must match exactly the string specified here.
+    Examples:
+    * abc only matches the value abc.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value abc.xyz
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs:
@@ -1318,20 +1277,17 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromNotSourceResourceArgsDict(TypedDict):
-        iam_service_account: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgsDict']]
-        """
-        An IAM service account to match against the source service account of the VM sending the request.
-        Structure is documented below.
-        """
-        tag_value_id_set: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgsDict']]
-        """
-        A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
-        Structure is documented below.
-        """
-elif False:
-    AuthzPolicyHttpRuleFromNotSourceResourceArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleFromNotSourceResourceArgsDict(TypedDict):
+    iam_service_account: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgsDict']]
+    """
+    An IAM service account to match against the source service account of the VM sending the request.
+    Structure is documented below.
+    """
+    tag_value_id_set: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgsDict']]
+    """
+    A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromNotSourceResourceArgs:
@@ -1376,38 +1332,35 @@ class AuthzPolicyHttpRuleFromNotSourceResourceArgs:
         pulumi.set(self, "tag_value_id_set", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgsDict(TypedDict):
-        contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc.def
-        """
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must match exactly the string specified here.
-        Examples:
-        * abc only matches the value abc.
-        """
-        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value abc.xyz
-        """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc
-        """
-elif False:
-    AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgsDict(TypedDict):
+    contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc.def
+    """
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must match exactly the string specified here.
+    Examples:
+    * abc only matches the value abc.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value abc.xyz
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs:
@@ -1512,15 +1465,12 @@ class AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgsDict(TypedDict):
-        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
-        Limited to 5 matches.
-        """
-elif False:
-    AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgsDict(TypedDict):
+    ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
+    Limited to 5 matches.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs:
@@ -1547,27 +1497,24 @@ class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs:
         pulumi.set(self, "ids", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromSourceArgsDict(TypedDict):
-        ip_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgsDict']]]]
-        """
-        A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
-        Structure is documented below.
-        """
-        principals: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgsDict']]]]
-        """
-        A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
-        Limited to 5 principals.
-        Structure is documented below.
-        """
-        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceArgsDict']]]]
-        """
-        A list of resources to match against the resource of the source VM of a request.
-        Limited to 5 resources.
-        Structure is documented below.
-        """
-elif False:
-    AuthzPolicyHttpRuleFromSourceArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleFromSourceArgsDict(TypedDict):
+    ip_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgsDict']]]]
+    """
+    A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+    Structure is documented below.
+    """
+    principals: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgsDict']]]]
+    """
+    A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+    Limited to 5 principals.
+    Structure is documented below.
+    """
+    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceArgsDict']]]]
+    """
+    A list of resources to match against the resource of the source VM of a request.
+    Limited to 5 resources.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromSourceArgs:
@@ -1634,18 +1581,15 @@ class AuthzPolicyHttpRuleFromSourceArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromSourceIpBlockArgsDict(TypedDict):
-        length: pulumi.Input[_builtins.int]
-        """
-        The length of the address range.
-        """
-        prefix: pulumi.Input[_builtins.str]
-        """
-        The address prefix.
-        """
-elif False:
-    AuthzPolicyHttpRuleFromSourceIpBlockArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleFromSourceIpBlockArgsDict(TypedDict):
+    length: pulumi.Input[_builtins.int]
+    """
+    The length of the address range.
+    """
+    prefix: pulumi.Input[_builtins.str]
+    """
+    The address prefix.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromSourceIpBlockArgs:
@@ -1684,65 +1628,62 @@ class AuthzPolicyHttpRuleFromSourceIpBlockArgs:
         pulumi.set(self, "prefix", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromSourcePrincipalArgsDict(TypedDict):
-        contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Optional, Deprecated)
-        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc.def
+class AuthzPolicyHttpRuleFromSourcePrincipalArgsDict(TypedDict):
+    contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional, Deprecated)
+    The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc.def
 
-        > **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
-        """
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Optional, Deprecated)
-        The input string must match exactly the string specified here.
-        Examples:
-        * abc only matches the value abc.
+    > **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+    """
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional, Deprecated)
+    The input string must match exactly the string specified here.
+    Examples:
+    * abc only matches the value abc.
 
-        > **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
-        """
-        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Optional, Deprecated)
-        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+    > **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Optional, Deprecated)
+    If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
 
-        > **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Optional, Deprecated)
-        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value abc.xyz
+    > **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional, Deprecated)
+    The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value abc.xyz
 
-        > **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
-        """
-        principal: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgsDict']]
-        """
-        Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
-        Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
-        Structure is documented below.
-        """
-        principal_selector: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
-        Default value is `CLIENT_CERT_URI_SAN`.
-        Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
-        """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Optional, Deprecated)
-        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc
+    > **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+    """
+    principal: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgsDict']]
+    """
+    Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+    Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+    Structure is documented below.
+    """
+    principal_selector: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+    Default value is `CLIENT_CERT_URI_SAN`.
+    Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional, Deprecated)
+    The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc
 
-        > **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
-        """
-elif False:
-    AuthzPolicyHttpRuleFromSourcePrincipalArgsDict: TypeAlias = Mapping[str, Any]
+    > **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromSourcePrincipalArgs:
@@ -1937,38 +1878,35 @@ class AuthzPolicyHttpRuleFromSourcePrincipalArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgsDict(TypedDict):
-        contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc.def
-        """
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must match exactly the string specified here.
-        Examples:
-        * abc only matches the value abc.
-        """
-        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value abc.xyz
-        """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc
-        """
-elif False:
-    AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgsDict(TypedDict):
+    contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc.def
+    """
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must match exactly the string specified here.
+    Examples:
+    * abc only matches the value abc.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value abc.xyz
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs:
@@ -2073,20 +2011,17 @@ class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromSourceResourceArgsDict(TypedDict):
-        iam_service_account: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgsDict']]
-        """
-        An IAM service account to match against the source service account of the VM sending the request.
-        Structure is documented below.
-        """
-        tag_value_id_set: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgsDict']]
-        """
-        A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
-        Structure is documented below.
-        """
-elif False:
-    AuthzPolicyHttpRuleFromSourceResourceArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleFromSourceResourceArgsDict(TypedDict):
+    iam_service_account: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgsDict']]
+    """
+    An IAM service account to match against the source service account of the VM sending the request.
+    Structure is documented below.
+    """
+    tag_value_id_set: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgsDict']]
+    """
+    A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromSourceResourceArgs:
@@ -2131,38 +2066,35 @@ class AuthzPolicyHttpRuleFromSourceResourceArgs:
         pulumi.set(self, "tag_value_id_set", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgsDict(TypedDict):
-        contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc.def
-        """
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must match exactly the string specified here.
-        Examples:
-        * abc only matches the value abc.
-        """
-        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value abc.xyz
-        """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc
-        """
-elif False:
-    AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgsDict(TypedDict):
+    contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc.def
+    """
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must match exactly the string specified here.
+    Examples:
+    * abc only matches the value abc.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value abc.xyz
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs:
@@ -2267,15 +2199,12 @@ class AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgsDict(TypedDict):
-        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
-        Limited to 5 matches.
-        """
-elif False:
-    AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgsDict(TypedDict):
+    ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
+    Limited to 5 matches.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs:
@@ -2302,20 +2231,17 @@ class AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs:
         pulumi.set(self, "ids", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleToArgsDict(TypedDict):
-        not_operations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgsDict']]]]
-        """
-        Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
-        Structure is documented below.
-        """
-        operations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgsDict']]]]
-        """
-        Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
-        Structure is documented below.
-        """
-elif False:
-    AuthzPolicyHttpRuleToArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleToArgsDict(TypedDict):
+    not_operations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgsDict']]]]
+    """
+    Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
+    Structure is documented below.
+    """
+    operations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgsDict']]]]
+    """
+    Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleToArgs:
@@ -2360,32 +2286,29 @@ class AuthzPolicyHttpRuleToArgs:
         pulumi.set(self, "operations", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleToNotOperationArgsDict(TypedDict):
-        header_set: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetArgsDict']]
-        """
-        A list of headers to match against in http header.
-        Structure is documented below.
-        """
-        hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgsDict']]]]
-        """
-        A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-        Limited to 10 matches.
-        Structure is documented below.
-        """
-        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
-        """
-        paths: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgsDict']]]]
-        """
-        A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-        Limited to 10 matches.
-        Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
-        Structure is documented below.
-        """
-elif False:
-    AuthzPolicyHttpRuleToNotOperationArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleToNotOperationArgsDict(TypedDict):
+    header_set: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetArgsDict']]
+    """
+    A list of headers to match against in http header.
+    Structure is documented below.
+    """
+    hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgsDict']]]]
+    """
+    A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+    Limited to 10 matches.
+    Structure is documented below.
+    """
+    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
+    """
+    paths: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgsDict']]]]
+    """
+    A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+    Limited to 10 matches.
+    Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleToNotOperationArgs:
@@ -2470,15 +2393,12 @@ class AuthzPolicyHttpRuleToNotOperationArgs:
         pulumi.set(self, "paths", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleToNotOperationHeaderSetArgsDict(TypedDict):
-        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgsDict']]]]
-        """
-        A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
-        Structure is documented below.
-        """
-elif False:
-    AuthzPolicyHttpRuleToNotOperationHeaderSetArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleToNotOperationHeaderSetArgsDict(TypedDict):
+    headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgsDict']]]]
+    """
+    A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleToNotOperationHeaderSetArgs:
@@ -2505,19 +2425,16 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetArgs:
         pulumi.set(self, "headers", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the name of the header in the request.
-        """
-        value: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgsDict']]
-        """
-        Specifies how the header match will be performed.
-        Structure is documented below.
-        """
-elif False:
-    AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the name of the header in the request.
+    """
+    value: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgsDict']]
+    """
+    Specifies how the header match will be performed.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs:
@@ -2560,38 +2477,35 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgsDict(TypedDict):
-        contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc.def
-        """
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must match exactly the string specified here.
-        Examples:
-        * abc only matches the value abc.
-        """
-        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value abc.xyz
-        """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc
-        """
-elif False:
-    AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgsDict(TypedDict):
+    contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc.def
+    """
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must match exactly the string specified here.
+    Examples:
+    * abc only matches the value abc.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value abc.xyz
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs:
@@ -2696,38 +2610,35 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleToNotOperationHostArgsDict(TypedDict):
-        contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc.def
-        """
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must match exactly the string specified here.
-        Examples:
-        * abc only matches the value abc.
-        """
-        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value abc.xyz
-        """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc
-        """
-elif False:
-    AuthzPolicyHttpRuleToNotOperationHostArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleToNotOperationHostArgsDict(TypedDict):
+    contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc.def
+    """
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must match exactly the string specified here.
+    Examples:
+    * abc only matches the value abc.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value abc.xyz
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleToNotOperationHostArgs:
@@ -2832,38 +2743,35 @@ class AuthzPolicyHttpRuleToNotOperationHostArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleToNotOperationPathArgsDict(TypedDict):
-        contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc.def
-        """
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must match exactly the string specified here.
-        Examples:
-        * abc only matches the value abc.
-        """
-        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value abc.xyz
-        """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc
-        """
-elif False:
-    AuthzPolicyHttpRuleToNotOperationPathArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleToNotOperationPathArgsDict(TypedDict):
+    contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc.def
+    """
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must match exactly the string specified here.
+    Examples:
+    * abc only matches the value abc.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value abc.xyz
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleToNotOperationPathArgs:
@@ -2968,38 +2876,41 @@ class AuthzPolicyHttpRuleToNotOperationPathArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleToOperationArgsDict(TypedDict):
-        header_set: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetArgsDict']]
-        """
-        A list of headers to match against in http header.
-        Structure is documented below.
-        """
-        hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgsDict']]]]
-        """
-        A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-        Limited to 10 matches.
-        Structure is documented below.
-        """
-        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
-        """
-        paths: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgsDict']]]]
-        """
-        A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-        Limited to 10 matches.
-        Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
-        Structure is documented below.
-        """
-elif False:
-    AuthzPolicyHttpRuleToOperationArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleToOperationArgsDict(TypedDict):
+    header_set: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetArgsDict']]
+    """
+    A list of headers to match against in http header.
+    Structure is documented below.
+    """
+    hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgsDict']]]]
+    """
+    A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+    Limited to 10 matches.
+    Structure is documented below.
+    """
+    mcp: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpArgsDict']]
+    """
+    Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
+    Structure is documented below.
+    """
+    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
+    """
+    paths: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgsDict']]]]
+    """
+    A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+    Limited to 10 matches.
+    Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleToOperationArgs:
     def __init__(__self__, *,
                  header_set: Optional[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetArgs']] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgs']]]] = None,
+                 mcp: Optional[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpArgs']] = None,
                  methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  paths: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgs']]]] = None):
         """
@@ -3007,6 +2918,8 @@ class AuthzPolicyHttpRuleToOperationArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgs']]] hosts: A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
                Limited to 10 matches.
+               Structure is documented below.
+        :param pulumi.Input['AuthzPolicyHttpRuleToOperationMcpArgs'] mcp: Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] methods: A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgs']]] paths: A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
@@ -3018,6 +2931,8 @@ class AuthzPolicyHttpRuleToOperationArgs:
             pulumi.set(__self__, "header_set", header_set)
         if hosts is not None:
             pulumi.set(__self__, "hosts", hosts)
+        if mcp is not None:
+            pulumi.set(__self__, "mcp", mcp)
         if methods is not None:
             pulumi.set(__self__, "methods", methods)
         if paths is not None:
@@ -3052,6 +2967,19 @@ class AuthzPolicyHttpRuleToOperationArgs:
 
     @_builtins.property
     @pulumi.getter
+    def mcp(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpArgs']]:
+        """
+        Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mcp")
+
+    @mcp.setter
+    def mcp(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpArgs']]):
+        pulumi.set(self, "mcp", value)
+
+    @_builtins.property
+    @pulumi.getter
     def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
@@ -3078,15 +3006,12 @@ class AuthzPolicyHttpRuleToOperationArgs:
         pulumi.set(self, "paths", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleToOperationHeaderSetArgsDict(TypedDict):
-        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgsDict']]]]
-        """
-        A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
-        Structure is documented below.
-        """
-elif False:
-    AuthzPolicyHttpRuleToOperationHeaderSetArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleToOperationHeaderSetArgsDict(TypedDict):
+    headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgsDict']]]]
+    """
+    A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleToOperationHeaderSetArgs:
@@ -3113,19 +3038,16 @@ class AuthzPolicyHttpRuleToOperationHeaderSetArgs:
         pulumi.set(self, "headers", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the name of the header in the request.
-        """
-        value: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgsDict']]
-        """
-        Specifies how the header match will be performed.
-        Structure is documented below.
-        """
-elif False:
-    AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the name of the header in the request.
+    """
+    value: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgsDict']]
+    """
+    Specifies how the header match will be performed.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs:
@@ -3168,38 +3090,35 @@ class AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgsDict(TypedDict):
-        contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc.def
-        """
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must match exactly the string specified here.
-        Examples:
-        * abc only matches the value abc.
-        """
-        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value abc.xyz
-        """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc
-        """
-elif False:
-    AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgsDict(TypedDict):
+    contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc.def
+    """
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must match exactly the string specified here.
+    Examples:
+    * abc only matches the value abc.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value abc.xyz
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs:
@@ -3304,38 +3223,35 @@ class AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleToOperationHostArgsDict(TypedDict):
-        contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc.def
-        """
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must match exactly the string specified here.
-        Examples:
-        * abc only matches the value abc.
-        """
-        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value abc.xyz
-        """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc
-        """
-elif False:
-    AuthzPolicyHttpRuleToOperationHostArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyHttpRuleToOperationHostArgsDict(TypedDict):
+    contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc.def
+    """
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must match exactly the string specified here.
+    Examples:
+    * abc only matches the value abc.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value abc.xyz
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleToOperationHostArgs:
@@ -3440,38 +3356,265 @@ class AuthzPolicyHttpRuleToOperationHostArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class AuthzPolicyHttpRuleToOperationPathArgsDict(TypedDict):
-        contains: NotRequired[pulumi.Input[_builtins.str]]
+class AuthzPolicyHttpRuleToOperationMcpArgsDict(TypedDict):
+    base_protocol_methods_option: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize/ * completion/ * logging/ * notifications/ * ping
+    Default value is `SKIP_BASE_PROTOCOL_METHODS`.
+    Possible values are: `SKIP_BASE_PROTOCOL_METHODS`, `MATCH_BASE_PROTOCOL_METHODS`.
+    """
+    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgsDict']]]]
+    """
+    Defines a set of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the includeBaseProtocolMethods to true to match on all the other MCP protocol methods.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AuthzPolicyHttpRuleToOperationMcpArgs:
+    def __init__(__self__, *,
+                 base_protocol_methods_option: Optional[pulumi.Input[_builtins.str]] = None,
+                 methods: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgs']]]] = None):
         """
-        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc.def
+        :param pulumi.Input[_builtins.str] base_protocol_methods_option: If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize/ * completion/ * logging/ * notifications/ * ping
+               Default value is `SKIP_BASE_PROTOCOL_METHODS`.
+               Possible values are: `SKIP_BASE_PROTOCOL_METHODS`, `MATCH_BASE_PROTOCOL_METHODS`.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgs']]] methods: Defines a set of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the includeBaseProtocolMethods to true to match on all the other MCP protocol methods.
+               Structure is documented below.
         """
-        exact: NotRequired[pulumi.Input[_builtins.str]]
+        if base_protocol_methods_option is not None:
+            pulumi.set(__self__, "base_protocol_methods_option", base_protocol_methods_option)
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+
+    @_builtins.property
+    @pulumi.getter(name="baseProtocolMethodsOption")
+    def base_protocol_methods_option(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The input string must match exactly the string specified here.
-        Examples:
-        * abc only matches the value abc.
+        If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize/ * completion/ * logging/ * notifications/ * ping
+        Default value is `SKIP_BASE_PROTOCOL_METHODS`.
+        Possible values are: `SKIP_BASE_PROTOCOL_METHODS`, `MATCH_BASE_PROTOCOL_METHODS`.
         """
-        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+        return pulumi.get(self, "base_protocol_methods_option")
+
+    @base_protocol_methods_option.setter
+    def base_protocol_methods_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "base_protocol_methods_option", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgs']]]]:
         """
-        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+        Defines a set of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the includeBaseProtocolMethods to true to match on all the other MCP protocol methods.
+        Structure is documented below.
         """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
+        return pulumi.get(self, "methods")
+
+    @methods.setter
+    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgs']]]]):
+        pulumi.set(self, "methods", value)
+
+
+class AuthzPolicyHttpRuleToOperationMcpMethodArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The MCP method to match against. Allowed values are as follows:
+    1) “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
+    2) “prompts/list”, “tools/list”, “resources/list”, “resources/templates/list”
+    3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
+    Params cannot be specified for categories 1) and 2).
+    """
+    params: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgsDict']]]]
+    """
+    MCP method parameters to match against.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AuthzPolicyHttpRuleToOperationMcpMethodArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 params: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs']]]] = None):
         """
-        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value abc.xyz
+        :param pulumi.Input[_builtins.str] name: The MCP method to match against. Allowed values are as follows:
+               1) “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
+               2) “prompts/list”, “tools/list”, “resources/list”, “resources/templates/list”
+               3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
+               Params cannot be specified for categories 1) and 2).
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs']]] params: MCP method parameters to match against.
+               Structure is documented below.
         """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
+        pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
         """
-        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-        Examples:
-        * abc matches the value xyz.abc
+        The MCP method to match against. Allowed values are as follows:
+        1) “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
+        2) “prompts/list”, “tools/list”, “resources/list”, “resources/templates/list”
+        3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
+        Params cannot be specified for categories 1) and 2).
         """
-elif False:
-    AuthzPolicyHttpRuleToOperationPathArgsDict: TypeAlias = Mapping[str, Any]
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs']]]]:
+        """
+        MCP method parameters to match against.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs']]]]):
+        pulumi.set(self, "params", value)
+
+
+class AuthzPolicyHttpRuleToOperationMcpMethodParamArgsDict(TypedDict):
+    contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A substring match on the MCP method parameter name.
+    """
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An exact match on the MCP method parameter name.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies that the string match should be case insensitive.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A prefix match on the MCP method parameter name.
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A suffix match on the MCP method parameter name.
+    """
+
+@pulumi.input_type
+class AuthzPolicyHttpRuleToOperationMcpMethodParamArgs:
+    def __init__(__self__, *,
+                 contains: Optional[pulumi.Input[_builtins.str]] = None,
+                 exact: Optional[pulumi.Input[_builtins.str]] = None,
+                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
+                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] contains: A substring match on the MCP method parameter name.
+        :param pulumi.Input[_builtins.str] exact: An exact match on the MCP method parameter name.
+        :param pulumi.Input[_builtins.bool] ignore_case: Specifies that the string match should be case insensitive.
+        :param pulumi.Input[_builtins.str] prefix: A prefix match on the MCP method parameter name.
+        :param pulumi.Input[_builtins.str] suffix: A suffix match on the MCP method parameter name.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if ignore_case is not None:
+            pulumi.set(__self__, "ignore_case", ignore_case)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A substring match on the MCP method parameter name.
+        """
+        return pulumi.get(self, "contains")
+
+    @contains.setter
+    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "contains", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An exact match on the MCP method parameter name.
+        """
+        return pulumi.get(self, "exact")
+
+    @exact.setter
+    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "exact", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreCase")
+    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies that the string match should be case insensitive.
+        """
+        return pulumi.get(self, "ignore_case")
+
+    @ignore_case.setter
+    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ignore_case", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A prefix match on the MCP method parameter name.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "prefix", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A suffix match on the MCP method parameter name.
+        """
+        return pulumi.get(self, "suffix")
+
+    @suffix.setter
+    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "suffix", value)
+
+
+class AuthzPolicyHttpRuleToOperationPathArgsDict(TypedDict):
+    contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc.def
+    """
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must match exactly the string specified here.
+    Examples:
+    * abc only matches the value abc.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value abc.xyz
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+    Examples:
+    * abc matches the value xyz.abc
+    """
 
 @pulumi.input_type
 class AuthzPolicyHttpRuleToOperationPathArgs:
@@ -3576,55 +3719,59 @@ class AuthzPolicyHttpRuleToOperationPathArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class AuthzPolicyTargetArgsDict(TypedDict):
-        load_balancing_scheme: pulumi.Input[_builtins.str]
-        """
-        All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
-        For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
-        Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-        """
-        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of references to the Forwarding Rules on which this policy will be applied.
-        """
-elif False:
-    AuthzPolicyTargetArgsDict: TypeAlias = Mapping[str, Any]
+class AuthzPolicyTargetArgsDict(TypedDict):
+    load_balancing_scheme: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+    Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
+    For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+    Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+    """
+    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+    policy will be applied.
+    """
 
 @pulumi.input_type
 class AuthzPolicyTargetArgs:
     def __init__(__self__, *,
-                 load_balancing_scheme: pulumi.Input[_builtins.str],
+                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
-        :param pulumi.Input[_builtins.str] load_balancing_scheme: All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
+        :param pulumi.Input[_builtins.str] load_balancing_scheme: Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+               Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
                For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
                Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of references to the Forwarding Rules on which this policy will be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+               policy will be applied.
         """
-        pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
+        if load_balancing_scheme is not None:
+            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> pulumi.Input[_builtins.str]:
+    def load_balancing_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
+        Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+        Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
         For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
         Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
     @load_balancing_scheme.setter
-    def load_balancing_scheme(self, value: pulumi.Input[_builtins.str]):
+    def load_balancing_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "load_balancing_scheme", value)
 
     @_builtins.property
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of references to the Forwarding Rules on which this policy will be applied.
+        A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+        policy will be applied.
         """
         return pulumi.get(self, "resources")
 
@@ -3633,20 +3780,17 @@ class AuthzPolicyTargetArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class ClientTlsPolicyClientCertificateArgsDict(TypedDict):
-        certificate_provider_instance: NotRequired[pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgsDict']]
-        """
-        The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
-        Structure is documented below.
-        """
-        grpc_endpoint: NotRequired[pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArgsDict']]
-        """
-        gRPC specific configuration to access the gRPC server to obtain the cert and private key.
-        Structure is documented below.
-        """
-elif False:
-    ClientTlsPolicyClientCertificateArgsDict: TypeAlias = Mapping[str, Any]
+class ClientTlsPolicyClientCertificateArgsDict(TypedDict):
+    certificate_provider_instance: NotRequired[pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgsDict']]
+    """
+    The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
+    Structure is documented below.
+    """
+    grpc_endpoint: NotRequired[pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArgsDict']]
+    """
+    gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ClientTlsPolicyClientCertificateArgs:
@@ -3691,14 +3835,11 @@ class ClientTlsPolicyClientCertificateArgs:
         pulumi.set(self, "grpc_endpoint", value)
 
 
-if not MYPY:
-    class ClientTlsPolicyClientCertificateCertificateProviderInstanceArgsDict(TypedDict):
-        plugin_instance: pulumi.Input[_builtins.str]
-        """
-        Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
-        """
-elif False:
-    ClientTlsPolicyClientCertificateCertificateProviderInstanceArgsDict: TypeAlias = Mapping[str, Any]
+class ClientTlsPolicyClientCertificateCertificateProviderInstanceArgsDict(TypedDict):
+    plugin_instance: pulumi.Input[_builtins.str]
+    """
+    Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+    """
 
 @pulumi.input_type
 class ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs:
@@ -3722,14 +3863,11 @@ class ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs:
         pulumi.set(self, "plugin_instance", value)
 
 
-if not MYPY:
-    class ClientTlsPolicyClientCertificateGrpcEndpointArgsDict(TypedDict):
-        target_uri: pulumi.Input[_builtins.str]
-        """
-        The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
-        """
-elif False:
-    ClientTlsPolicyClientCertificateGrpcEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class ClientTlsPolicyClientCertificateGrpcEndpointArgsDict(TypedDict):
+    target_uri: pulumi.Input[_builtins.str]
+    """
+    The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+    """
 
 @pulumi.input_type
 class ClientTlsPolicyClientCertificateGrpcEndpointArgs:
@@ -3753,20 +3891,17 @@ class ClientTlsPolicyClientCertificateGrpcEndpointArgs:
         pulumi.set(self, "target_uri", value)
 
 
-if not MYPY:
-    class ClientTlsPolicyServerValidationCaArgsDict(TypedDict):
-        certificate_provider_instance: NotRequired[pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgsDict']]
-        """
-        The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
-        Structure is documented below.
-        """
-        grpc_endpoint: NotRequired[pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict']]
-        """
-        gRPC specific configuration to access the gRPC server to obtain the cert and private key.
-        Structure is documented below.
-        """
-elif False:
-    ClientTlsPolicyServerValidationCaArgsDict: TypeAlias = Mapping[str, Any]
+class ClientTlsPolicyServerValidationCaArgsDict(TypedDict):
+    certificate_provider_instance: NotRequired[pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgsDict']]
+    """
+    The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
+    Structure is documented below.
+    """
+    grpc_endpoint: NotRequired[pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict']]
+    """
+    gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ClientTlsPolicyServerValidationCaArgs:
@@ -3811,14 +3946,11 @@ class ClientTlsPolicyServerValidationCaArgs:
         pulumi.set(self, "grpc_endpoint", value)
 
 
-if not MYPY:
-    class ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgsDict(TypedDict):
-        plugin_instance: pulumi.Input[_builtins.str]
-        """
-        Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
-        """
-elif False:
-    ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgsDict: TypeAlias = Mapping[str, Any]
+class ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgsDict(TypedDict):
+    plugin_instance: pulumi.Input[_builtins.str]
+    """
+    Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+    """
 
 @pulumi.input_type
 class ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs:
@@ -3842,14 +3974,11 @@ class ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs:
         pulumi.set(self, "plugin_instance", value)
 
 
-if not MYPY:
-    class ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict(TypedDict):
-        target_uri: pulumi.Input[_builtins.str]
-        """
-        The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
-        """
-elif False:
-    ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict(TypedDict):
+    target_uri: pulumi.Input[_builtins.str]
+    """
+    The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+    """
 
 @pulumi.input_type
 class ClientTlsPolicyServerValidationCaGrpcEndpointArgs:
@@ -3873,14 +4002,11 @@ class ClientTlsPolicyServerValidationCaGrpcEndpointArgs:
         pulumi.set(self, "target_uri", value)
 
 
-if not MYPY:
-    class FirewallEndpointEndpointSettingsArgsDict(TypedDict):
-        jumbo_frames_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether Jumbo Frames are enabled for the firewall endpoint.
-        """
-elif False:
-    FirewallEndpointEndpointSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class FirewallEndpointEndpointSettingsArgsDict(TypedDict):
+    jumbo_frames_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether Jumbo Frames are enabled for the firewall endpoint.
+    """
 
 @pulumi.input_type
 class FirewallEndpointEndpointSettingsArgs:
@@ -3905,17 +4031,14 @@ class FirewallEndpointEndpointSettingsArgs:
         pulumi.set(self, "jumbo_frames_enabled", value)
 
 
-if not MYPY:
-    class InterceptDeploymentGroupConnectedEndpointGroupArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The connected endpoint group's resource name, for example:
-        `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
-        See https://google.aip.dev/124.
-        """
-elif False:
-    InterceptDeploymentGroupConnectedEndpointGroupArgsDict: TypeAlias = Mapping[str, Any]
+class InterceptDeploymentGroupConnectedEndpointGroupArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The connected endpoint group's resource name, for example:
+    `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+    See https://google.aip.dev/124.
+    """
 
 @pulumi.input_type
 class InterceptDeploymentGroupConnectedEndpointGroupArgs:
@@ -3946,23 +4069,20 @@ class InterceptDeploymentGroupConnectedEndpointGroupArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class InterceptDeploymentGroupLocationArgsDict(TypedDict):
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cloud location of the deployment group, currently restricted to `global`.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The current state of the association in this location.
-        Possible values:
-        STATE_UNSPECIFIED
-        ACTIVE
-        OUT_OF_SYNC
-        """
-elif False:
-    InterceptDeploymentGroupLocationArgsDict: TypeAlias = Mapping[str, Any]
+class InterceptDeploymentGroupLocationArgsDict(TypedDict):
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cloud location of the deployment group, currently restricted to `global`.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The current state of the association in this location.
+    Possible values:
+    STATE_UNSPECIFIED
+    ACTIVE
+    OUT_OF_SYNC
+    """
 
 @pulumi.input_type
 class InterceptDeploymentGroupLocationArgs:
@@ -4013,33 +4133,30 @@ class InterceptDeploymentGroupLocationArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class InterceptEndpointGroupAssociationArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The connected deployment group's resource name, for example:
-        `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
-        See https://google.aip.dev/124.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The associated network, for example:
-        projects/123456789/global/networks/my-network.
-        See https://google.aip.dev/124.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The current state of the association in this location.
-        Possible values:
-        STATE_UNSPECIFIED
-        ACTIVE
-        OUT_OF_SYNC
-        """
-elif False:
-    InterceptEndpointGroupAssociationArgsDict: TypeAlias = Mapping[str, Any]
+class InterceptEndpointGroupAssociationArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The connected deployment group's resource name, for example:
+    `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+    See https://google.aip.dev/124.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The associated network, for example:
+    projects/123456789/global/networks/my-network.
+    See https://google.aip.dev/124.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The current state of the association in this location.
+    Possible values:
+    STATE_UNSPECIFIED
+    ACTIVE
+    OUT_OF_SYNC
+    """
 
 @pulumi.input_type
 class InterceptEndpointGroupAssociationArgs:
@@ -4118,23 +4235,20 @@ class InterceptEndpointGroupAssociationArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class InterceptEndpointGroupAssociationLocationArgsDict(TypedDict):
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cloud location of the association, currently restricted to `global`.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The current state of the association in this location.
-        Possible values:
-        STATE_UNSPECIFIED
-        ACTIVE
-        OUT_OF_SYNC
-        """
-elif False:
-    InterceptEndpointGroupAssociationLocationArgsDict: TypeAlias = Mapping[str, Any]
+class InterceptEndpointGroupAssociationLocationArgsDict(TypedDict):
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cloud location of the association, currently restricted to `global`.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The current state of the association in this location.
+    Possible values:
+    STATE_UNSPECIFIED
+    ACTIVE
+    OUT_OF_SYNC
+    """
 
 @pulumi.input_type
 class InterceptEndpointGroupAssociationLocationArgs:
@@ -4185,23 +4299,20 @@ class InterceptEndpointGroupAssociationLocationArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class InterceptEndpointGroupAssociationLocationsDetailArgsDict(TypedDict):
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cloud location of the association, currently restricted to `global`.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The current state of the association in this location.
-        Possible values:
-        STATE_UNSPECIFIED
-        ACTIVE
-        OUT_OF_SYNC
-        """
-elif False:
-    InterceptEndpointGroupAssociationLocationsDetailArgsDict: TypeAlias = Mapping[str, Any]
+class InterceptEndpointGroupAssociationLocationsDetailArgsDict(TypedDict):
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cloud location of the association, currently restricted to `global`.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The current state of the association in this location.
+    Possible values:
+    STATE_UNSPECIFIED
+    ACTIVE
+    OUT_OF_SYNC
+    """
 
 @pulumi.input_type
 class InterceptEndpointGroupAssociationLocationsDetailArgs:
@@ -4252,23 +4363,20 @@ class InterceptEndpointGroupAssociationLocationsDetailArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class InterceptEndpointGroupConnectedDeploymentGroupArgsDict(TypedDict):
-        locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgsDict']]]]
-        """
-        (Output)
-        The list of locations where the deployment group is present.
-        Structure is documented below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The connected deployment group's resource name, for example:
-        `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
-        See https://google.aip.dev/124.
-        """
-elif False:
-    InterceptEndpointGroupConnectedDeploymentGroupArgsDict: TypeAlias = Mapping[str, Any]
+class InterceptEndpointGroupConnectedDeploymentGroupArgsDict(TypedDict):
+    locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgsDict']]]]
+    """
+    (Output)
+    The list of locations where the deployment group is present.
+    Structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The connected deployment group's resource name, for example:
+    `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+    See https://google.aip.dev/124.
+    """
 
 @pulumi.input_type
 class InterceptEndpointGroupConnectedDeploymentGroupArgs:
@@ -4319,23 +4427,20 @@ class InterceptEndpointGroupConnectedDeploymentGroupArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class InterceptEndpointGroupConnectedDeploymentGroupLocationArgsDict(TypedDict):
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cloud location of the endpoint group, currently restricted to `global`.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The current state of the association in this location.
-        Possible values:
-        STATE_UNSPECIFIED
-        ACTIVE
-        OUT_OF_SYNC
-        """
-elif False:
-    InterceptEndpointGroupConnectedDeploymentGroupLocationArgsDict: TypeAlias = Mapping[str, Any]
+class InterceptEndpointGroupConnectedDeploymentGroupLocationArgsDict(TypedDict):
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cloud location of the endpoint group, currently restricted to `global`.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The current state of the association in this location.
+    Possible values:
+    STATE_UNSPECIFIED
+    ACTIVE
+    OUT_OF_SYNC
+    """
 
 @pulumi.input_type
 class InterceptEndpointGroupConnectedDeploymentGroupLocationArgs:
@@ -4386,17 +4491,14 @@ class InterceptEndpointGroupConnectedDeploymentGroupLocationArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class MirroringDeploymentGroupConnectedEndpointGroupArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The connected endpoint group's resource name, for example:
-        `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
-        See https://google.aip.dev/124.
-        """
-elif False:
-    MirroringDeploymentGroupConnectedEndpointGroupArgsDict: TypeAlias = Mapping[str, Any]
+class MirroringDeploymentGroupConnectedEndpointGroupArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The connected endpoint group's resource name, for example:
+    `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+    See https://google.aip.dev/124.
+    """
 
 @pulumi.input_type
 class MirroringDeploymentGroupConnectedEndpointGroupArgs:
@@ -4427,23 +4529,20 @@ class MirroringDeploymentGroupConnectedEndpointGroupArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class MirroringDeploymentGroupLocationArgsDict(TypedDict):
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cloud location of the deployment group, currently restricted to `global`.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The current state of the association in this location.
-        Possible values:
-        STATE_UNSPECIFIED
-        ACTIVE
-        OUT_OF_SYNC
-        """
-elif False:
-    MirroringDeploymentGroupLocationArgsDict: TypeAlias = Mapping[str, Any]
+class MirroringDeploymentGroupLocationArgsDict(TypedDict):
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cloud location of the deployment group, currently restricted to `global`.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The current state of the association in this location.
+    Possible values:
+    STATE_UNSPECIFIED
+    ACTIVE
+    OUT_OF_SYNC
+    """
 
 @pulumi.input_type
 class MirroringDeploymentGroupLocationArgs:
@@ -4494,33 +4593,30 @@ class MirroringDeploymentGroupLocationArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class MirroringEndpointGroupAssociationArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The connected deployment group's resource name, for example:
-        `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
-        See https://google.aip.dev/124.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The associated network, for example:
-        projects/123456789/global/networks/my-network.
-        See https://google.aip.dev/124.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The current state of the association in this location.
-        Possible values:
-        STATE_UNSPECIFIED
-        ACTIVE
-        OUT_OF_SYNC
-        """
-elif False:
-    MirroringEndpointGroupAssociationArgsDict: TypeAlias = Mapping[str, Any]
+class MirroringEndpointGroupAssociationArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The connected deployment group's resource name, for example:
+    `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+    See https://google.aip.dev/124.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The associated network, for example:
+    projects/123456789/global/networks/my-network.
+    See https://google.aip.dev/124.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The current state of the association in this location.
+    Possible values:
+    STATE_UNSPECIFIED
+    ACTIVE
+    OUT_OF_SYNC
+    """
 
 @pulumi.input_type
 class MirroringEndpointGroupAssociationArgs:
@@ -4599,23 +4695,20 @@ class MirroringEndpointGroupAssociationArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class MirroringEndpointGroupAssociationLocationArgsDict(TypedDict):
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cloud location of the association, currently restricted to `global`.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The current state of the association in this location.
-        Possible values:
-        STATE_UNSPECIFIED
-        ACTIVE
-        OUT_OF_SYNC
-        """
-elif False:
-    MirroringEndpointGroupAssociationLocationArgsDict: TypeAlias = Mapping[str, Any]
+class MirroringEndpointGroupAssociationLocationArgsDict(TypedDict):
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cloud location of the association, currently restricted to `global`.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The current state of the association in this location.
+    Possible values:
+    STATE_UNSPECIFIED
+    ACTIVE
+    OUT_OF_SYNC
+    """
 
 @pulumi.input_type
 class MirroringEndpointGroupAssociationLocationArgs:
@@ -4666,23 +4759,20 @@ class MirroringEndpointGroupAssociationLocationArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class MirroringEndpointGroupAssociationLocationsDetailArgsDict(TypedDict):
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cloud location of the association, currently restricted to `global`.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The current state of the association in this location.
-        Possible values:
-        STATE_UNSPECIFIED
-        ACTIVE
-        OUT_OF_SYNC
-        """
-elif False:
-    MirroringEndpointGroupAssociationLocationsDetailArgsDict: TypeAlias = Mapping[str, Any]
+class MirroringEndpointGroupAssociationLocationsDetailArgsDict(TypedDict):
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cloud location of the association, currently restricted to `global`.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The current state of the association in this location.
+    Possible values:
+    STATE_UNSPECIFIED
+    ACTIVE
+    OUT_OF_SYNC
+    """
 
 @pulumi.input_type
 class MirroringEndpointGroupAssociationLocationsDetailArgs:
@@ -4733,23 +4823,20 @@ class MirroringEndpointGroupAssociationLocationsDetailArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class MirroringEndpointGroupConnectedDeploymentGroupArgsDict(TypedDict):
-        locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupLocationArgsDict']]]]
-        """
-        (Output)
-        The list of locations where the deployment group is present.
-        Structure is documented below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The connected deployment group's resource name, for example:
-        `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
-        See https://google.aip.dev/124.
-        """
-elif False:
-    MirroringEndpointGroupConnectedDeploymentGroupArgsDict: TypeAlias = Mapping[str, Any]
+class MirroringEndpointGroupConnectedDeploymentGroupArgsDict(TypedDict):
+    locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupLocationArgsDict']]]]
+    """
+    (Output)
+    The list of locations where the deployment group is present.
+    Structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The connected deployment group's resource name, for example:
+    `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+    See https://google.aip.dev/124.
+    """
 
 @pulumi.input_type
 class MirroringEndpointGroupConnectedDeploymentGroupArgs:
@@ -4800,23 +4887,20 @@ class MirroringEndpointGroupConnectedDeploymentGroupArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class MirroringEndpointGroupConnectedDeploymentGroupLocationArgsDict(TypedDict):
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cloud location of the endpoint group, currently restricted to `global`.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The current state of the association in this location.
-        Possible values:
-        STATE_UNSPECIFIED
-        ACTIVE
-        OUT_OF_SYNC
-        """
-elif False:
-    MirroringEndpointGroupConnectedDeploymentGroupLocationArgsDict: TypeAlias = Mapping[str, Any]
+class MirroringEndpointGroupConnectedDeploymentGroupLocationArgsDict(TypedDict):
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cloud location of the endpoint group, currently restricted to `global`.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The current state of the association in this location.
+    Possible values:
+    STATE_UNSPECIFIED
+    ACTIVE
+    OUT_OF_SYNC
+    """
 
 @pulumi.input_type
 class MirroringEndpointGroupConnectedDeploymentGroupLocationArgs:
@@ -4867,18 +4951,15 @@ class MirroringEndpointGroupConnectedDeploymentGroupLocationArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class SacAttachmentSymantecOptionsArgsDict(TypedDict):
-        symantec_location_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
-        """
-        symantec_site: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Symantec data center identifier that this attachment will connect to.
-        """
-elif False:
-    SacAttachmentSymantecOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class SacAttachmentSymantecOptionsArgsDict(TypedDict):
+    symantec_location_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
+    """
+    symantec_site: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Symantec data center identifier that this attachment will connect to.
+    """
 
 @pulumi.input_type
 class SacAttachmentSymantecOptionsArgs:
@@ -4919,20 +5000,17 @@ class SacAttachmentSymantecOptionsArgs:
         pulumi.set(self, "symantec_site", value)
 
 
-if not MYPY:
-    class SacRealmPairingKeyArgsDict(TypedDict):
-        expire_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Key value.
-        """
-elif False:
-    SacRealmPairingKeyArgsDict: TypeAlias = Mapping[str, Any]
+class SacRealmPairingKeyArgsDict(TypedDict):
+    expire_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Key value.
+    """
 
 @pulumi.input_type
 class SacRealmPairingKeyArgs:
@@ -4977,25 +5055,22 @@ class SacRealmPairingKeyArgs:
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class SacRealmSymantecOptionsArgsDict(TypedDict):
-        available_symantec_sites: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Symantec site IDs which the user can choose to connect to.
-        """
-        secret_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
-        A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form projects/{projectNumber}/secrets/my-secret.
-        """
-        symantec_connection_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Connection status to Symantec API
-        """
-elif False:
-    SacRealmSymantecOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class SacRealmSymantecOptionsArgsDict(TypedDict):
+    available_symantec_sites: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Symantec site IDs which the user can choose to connect to.
+    """
+    secret_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
+    A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form projects/{projectNumber}/secrets/my-secret.
+    """
+    symantec_connection_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Connection status to Symantec API
+    """
 
 @pulumi.input_type
 class SacRealmSymantecOptionsArgs:
@@ -5058,15 +5133,12 @@ class SacRealmSymantecOptionsArgs:
         pulumi.set(self, "symantec_connection_state", value)
 
 
-if not MYPY:
-    class SecurityProfileCustomInterceptProfileArgsDict(TypedDict):
-        intercept_endpoint_group: pulumi.Input[_builtins.str]
-        """
-        The Intercept Endpoint Group to which matching traffic should be intercepted.
-        Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
-        """
-elif False:
-    SecurityProfileCustomInterceptProfileArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityProfileCustomInterceptProfileArgsDict(TypedDict):
+    intercept_endpoint_group: pulumi.Input[_builtins.str]
+    """
+    The Intercept Endpoint Group to which matching traffic should be intercepted.
+    Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
+    """
 
 @pulumi.input_type
 class SecurityProfileCustomInterceptProfileArgs:
@@ -5092,33 +5164,30 @@ class SecurityProfileCustomInterceptProfileArgs:
         pulumi.set(self, "intercept_endpoint_group", value)
 
 
-if not MYPY:
-    class SecurityProfileCustomMirroringProfileArgsDict(TypedDict):
-        mirroring_endpoint_group: pulumi.Input[_builtins.str]
-        """
-        The target Mirroring Endpoint Group.
-        When a mirroring rule with this security profile attached matches a packet,
-        a replica will be mirrored to the location-local target in this group.
-        Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
-        """
-        mirroring_deployment_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Optional, Beta)
-        The target downstream Mirroring Deployment Groups.
-        This field is used for Packet Broker mirroring endpoint groups to specify
-        the deployment groups that the packet should be mirrored to by the broker.
-        Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
-        """
-        mirroring_endpoint_group_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output, Beta)
-        The type of the mirroring endpoint group this profile is attached to.
-        Possible values:
-        DIRECT
-        BROKER
-        """
-elif False:
-    SecurityProfileCustomMirroringProfileArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityProfileCustomMirroringProfileArgsDict(TypedDict):
+    mirroring_endpoint_group: pulumi.Input[_builtins.str]
+    """
+    The target Mirroring Endpoint Group.
+    When a mirroring rule with this security profile attached matches a packet,
+    a replica will be mirrored to the location-local target in this group.
+    Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
+    """
+    mirroring_deployment_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Optional, Beta)
+    The target downstream Mirroring Deployment Groups.
+    This field is used for Packet Broker mirroring endpoint groups to specify
+    the deployment groups that the packet should be mirrored to by the broker.
+    Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
+    """
+    mirroring_endpoint_group_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output, Beta)
+    The type of the mirroring endpoint group this profile is attached to.
+    Possible values:
+    DIRECT
+    BROKER
+    """
 
 @pulumi.input_type
 class SecurityProfileCustomMirroringProfileArgs:
@@ -5196,27 +5265,24 @@ class SecurityProfileCustomMirroringProfileArgs:
         pulumi.set(self, "mirroring_endpoint_group_type", value)
 
 
-if not MYPY:
-    class SecurityProfileThreatPreventionProfileArgsDict(TypedDict):
-        antivirus_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileAntivirusOverrideArgsDict']]]]
-        """
-        Defines what action to take for antivirus threats per protocol.
-        Structure is documented below.
-        """
-        severity_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgsDict']]]]
-        """
-        The configuration for overriding threats actions by severity match.
-        Structure is documented below.
-        """
-        threat_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgsDict']]]]
-        """
-        The configuration for overriding threats actions by threat id match.
-        If a threat is matched both by configuration provided in severity overrides
-        and threat overrides, the threat overrides action is applied.
-        Structure is documented below.
-        """
-elif False:
-    SecurityProfileThreatPreventionProfileArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityProfileThreatPreventionProfileArgsDict(TypedDict):
+    antivirus_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileAntivirusOverrideArgsDict']]]]
+    """
+    Defines what action to take for antivirus threats per protocol.
+    Structure is documented below.
+    """
+    severity_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgsDict']]]]
+    """
+    The configuration for overriding threats actions by severity match.
+    Structure is documented below.
+    """
+    threat_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgsDict']]]]
+    """
+    The configuration for overriding threats actions by threat id match.
+    If a threat is matched both by configuration provided in severity overrides
+    and threat overrides, the threat overrides action is applied.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SecurityProfileThreatPreventionProfileArgs:
@@ -5283,20 +5349,17 @@ class SecurityProfileThreatPreventionProfileArgs:
         pulumi.set(self, "threat_overrides", value)
 
 
-if not MYPY:
-    class SecurityProfileThreatPreventionProfileAntivirusOverrideArgsDict(TypedDict):
-        action: pulumi.Input[_builtins.str]
-        """
-        Threat action override. For some threat types, only a subset of actions applies.
-        Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
-        """
-        protocol: pulumi.Input[_builtins.str]
-        """
-        Required protocol to match.
-        Possible values are: `SMTP`, `SMB`, `POP3`, `IMAP`, `HTTP2`, `HTTP`, `FTP`.
-        """
-elif False:
-    SecurityProfileThreatPreventionProfileAntivirusOverrideArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityProfileThreatPreventionProfileAntivirusOverrideArgsDict(TypedDict):
+    action: pulumi.Input[_builtins.str]
+    """
+    Threat action override. For some threat types, only a subset of actions applies.
+    Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+    """
+    protocol: pulumi.Input[_builtins.str]
+    """
+    Required protocol to match.
+    Possible values are: `SMTP`, `SMB`, `POP3`, `IMAP`, `HTTP2`, `HTTP`, `FTP`.
+    """
 
 @pulumi.input_type
 class SecurityProfileThreatPreventionProfileAntivirusOverrideArgs:
@@ -5339,20 +5402,17 @@ class SecurityProfileThreatPreventionProfileAntivirusOverrideArgs:
         pulumi.set(self, "protocol", value)
 
 
-if not MYPY:
-    class SecurityProfileThreatPreventionProfileSeverityOverrideArgsDict(TypedDict):
-        action: pulumi.Input[_builtins.str]
-        """
-        Threat action override.
-        Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
-        """
-        severity: pulumi.Input[_builtins.str]
-        """
-        Severity level to match.
-        Possible values are: `CRITICAL`, `HIGH`, `INFORMATIONAL`, `LOW`, `MEDIUM`.
-        """
-elif False:
-    SecurityProfileThreatPreventionProfileSeverityOverrideArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityProfileThreatPreventionProfileSeverityOverrideArgsDict(TypedDict):
+    action: pulumi.Input[_builtins.str]
+    """
+    Threat action override.
+    Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+    """
+    severity: pulumi.Input[_builtins.str]
+    """
+    Severity level to match.
+    Possible values are: `CRITICAL`, `HIGH`, `INFORMATIONAL`, `LOW`, `MEDIUM`.
+    """
 
 @pulumi.input_type
 class SecurityProfileThreatPreventionProfileSeverityOverrideArgs:
@@ -5395,24 +5455,21 @@ class SecurityProfileThreatPreventionProfileSeverityOverrideArgs:
         pulumi.set(self, "severity", value)
 
 
-if not MYPY:
-    class SecurityProfileThreatPreventionProfileThreatOverrideArgsDict(TypedDict):
-        action: pulumi.Input[_builtins.str]
-        """
-        Threat action.
-        Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
-        """
-        threat_id: pulumi.Input[_builtins.str]
-        """
-        Vendor-specific ID of a threat to override.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Type of threat.
-        """
-elif False:
-    SecurityProfileThreatPreventionProfileThreatOverrideArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityProfileThreatPreventionProfileThreatOverrideArgsDict(TypedDict):
+    action: pulumi.Input[_builtins.str]
+    """
+    Threat action.
+    Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+    """
+    threat_id: pulumi.Input[_builtins.str]
+    """
+    Vendor-specific ID of a threat to override.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Type of threat.
+    """
 
 @pulumi.input_type
 class SecurityProfileThreatPreventionProfileThreatOverrideArgs:
@@ -5471,17 +5528,14 @@ class SecurityProfileThreatPreventionProfileThreatOverrideArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class SecurityProfileUrlFilteringProfileArgsDict(TypedDict):
-        url_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityProfileUrlFilteringProfileUrlFilterArgsDict']]]]
-        """
-        The configuration for action to take based on domain name match.
-        A domain name would be checked for matching filters through the list in order of highest to lowest priority,
-        and the first filter that a domain name matches with is the one whose actions gets applied.
-        Structure is documented below.
-        """
-elif False:
-    SecurityProfileUrlFilteringProfileArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityProfileUrlFilteringProfileArgsDict(TypedDict):
+    url_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityProfileUrlFilteringProfileUrlFilterArgsDict']]]]
+    """
+    The configuration for action to take based on domain name match.
+    A domain name would be checked for matching filters through the list in order of highest to lowest priority,
+    and the first filter that a domain name matches with is the one whose actions gets applied.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SecurityProfileUrlFilteringProfileArgs:
@@ -5512,26 +5566,23 @@ class SecurityProfileUrlFilteringProfileArgs:
         pulumi.set(self, "url_filters", value)
 
 
-if not MYPY:
-    class SecurityProfileUrlFilteringProfileUrlFilterArgsDict(TypedDict):
-        filtering_action: pulumi.Input[_builtins.str]
-        """
-        The action to take when the filter is applied.
-        Possible values are: `ALLOW`, `DENY`.
-        """
-        priority: pulumi.Input[_builtins.int]
-        """
-        The priority of the filter within the URL filtering profile.
-        Must be an integer from 0 and 2147483647, inclusive. Lower integers indicate higher priorities.
-        The priority of a filter must be unique within a URL filtering profile.
-        """
-        urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of domain matcher strings that a domain name gets compared with to determine if the filter is applicable.
-        A domain name must match with at least one of the strings in the list for a filter to be applicable.
-        """
-elif False:
-    SecurityProfileUrlFilteringProfileUrlFilterArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityProfileUrlFilteringProfileUrlFilterArgsDict(TypedDict):
+    filtering_action: pulumi.Input[_builtins.str]
+    """
+    The action to take when the filter is applied.
+    Possible values are: `ALLOW`, `DENY`.
+    """
+    priority: pulumi.Input[_builtins.int]
+    """
+    The priority of the filter within the URL filtering profile.
+    Must be an integer from 0 and 2147483647, inclusive. Lower integers indicate higher priorities.
+    The priority of a filter must be unique within a URL filtering profile.
+    """
+    urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of domain matcher strings that a domain name gets compared with to determine if the filter is applicable.
+    A domain name must match with at least one of the strings in the list for a filter to be applicable.
+    """
 
 @pulumi.input_type
 class SecurityProfileUrlFilteringProfileUrlFilterArgs:
@@ -5594,28 +5645,25 @@ class SecurityProfileUrlFilteringProfileUrlFilterArgs:
         pulumi.set(self, "urls", value)
 
 
-if not MYPY:
-    class ServerTlsPolicyMtlsPolicyArgsDict(TypedDict):
-        client_validation_cas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgsDict']]]]
-        """
-        Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
-        Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
-        Structure is documented below.
-        """
-        client_validation_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
-        Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-        Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
-        """
-        client_validation_trust_config: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
-        If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
-        Allowed only if the policy is to be used with external HTTPS load balancers.
-        """
-elif False:
-    ServerTlsPolicyMtlsPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ServerTlsPolicyMtlsPolicyArgsDict(TypedDict):
+    client_validation_cas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgsDict']]]]
+    """
+    Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
+    Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+    Structure is documented below.
+    """
+    client_validation_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
+    Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+    Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+    """
+    client_validation_trust_config: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
+    If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
+    Allowed only if the policy is to be used with external HTTPS load balancers.
+    """
 
 @pulumi.input_type
 class ServerTlsPolicyMtlsPolicyArgs:
@@ -5684,21 +5732,18 @@ class ServerTlsPolicyMtlsPolicyArgs:
         pulumi.set(self, "client_validation_trust_config", value)
 
 
-if not MYPY:
-    class ServerTlsPolicyMtlsPolicyClientValidationCaArgsDict(TypedDict):
-        certificate_provider_instance: NotRequired[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgsDict']]
-        """
-        Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
-        Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
-        Structure is documented below.
-        """
-        grpc_endpoint: NotRequired[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgsDict']]
-        """
-        gRPC specific configuration to access the gRPC server to obtain the cert and private key.
-        Structure is documented below.
-        """
-elif False:
-    ServerTlsPolicyMtlsPolicyClientValidationCaArgsDict: TypeAlias = Mapping[str, Any]
+class ServerTlsPolicyMtlsPolicyClientValidationCaArgsDict(TypedDict):
+    certificate_provider_instance: NotRequired[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgsDict']]
+    """
+    Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+    Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+    Structure is documented below.
+    """
+    grpc_endpoint: NotRequired[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgsDict']]
+    """
+    gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ServerTlsPolicyMtlsPolicyClientValidationCaArgs:
@@ -5745,14 +5790,11 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaArgs:
         pulumi.set(self, "grpc_endpoint", value)
 
 
-if not MYPY:
-    class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgsDict(TypedDict):
-        plugin_instance: pulumi.Input[_builtins.str]
-        """
-        Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
-        """
-elif False:
-    ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgsDict: TypeAlias = Mapping[str, Any]
+class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgsDict(TypedDict):
+    plugin_instance: pulumi.Input[_builtins.str]
+    """
+    Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+    """
 
 @pulumi.input_type
 class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs:
@@ -5776,14 +5818,11 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs
         pulumi.set(self, "plugin_instance", value)
 
 
-if not MYPY:
-    class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgsDict(TypedDict):
-        target_uri: pulumi.Input[_builtins.str]
-        """
-        The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
-        """
-elif False:
-    ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgsDict(TypedDict):
+    target_uri: pulumi.Input[_builtins.str]
+    """
+    The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+    """
 
 @pulumi.input_type
 class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs:
@@ -5807,21 +5846,18 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs:
         pulumi.set(self, "target_uri", value)
 
 
-if not MYPY:
-    class ServerTlsPolicyServerCertificateArgsDict(TypedDict):
-        certificate_provider_instance: NotRequired[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgsDict']]
-        """
-        Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
-        Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
-        Structure is documented below.
-        """
-        grpc_endpoint: NotRequired[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgsDict']]
-        """
-        gRPC specific configuration to access the gRPC server to obtain the cert and private key.
-        Structure is documented below.
-        """
-elif False:
-    ServerTlsPolicyServerCertificateArgsDict: TypeAlias = Mapping[str, Any]
+class ServerTlsPolicyServerCertificateArgsDict(TypedDict):
+    certificate_provider_instance: NotRequired[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgsDict']]
+    """
+    Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+    Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+    Structure is documented below.
+    """
+    grpc_endpoint: NotRequired[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgsDict']]
+    """
+    gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ServerTlsPolicyServerCertificateArgs:
@@ -5868,14 +5904,11 @@ class ServerTlsPolicyServerCertificateArgs:
         pulumi.set(self, "grpc_endpoint", value)
 
 
-if not MYPY:
-    class ServerTlsPolicyServerCertificateCertificateProviderInstanceArgsDict(TypedDict):
-        plugin_instance: pulumi.Input[_builtins.str]
-        """
-        Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
-        """
-elif False:
-    ServerTlsPolicyServerCertificateCertificateProviderInstanceArgsDict: TypeAlias = Mapping[str, Any]
+class ServerTlsPolicyServerCertificateCertificateProviderInstanceArgsDict(TypedDict):
+    plugin_instance: pulumi.Input[_builtins.str]
+    """
+    Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+    """
 
 @pulumi.input_type
 class ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs:
@@ -5899,14 +5932,11 @@ class ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs:
         pulumi.set(self, "plugin_instance", value)
 
 
-if not MYPY:
-    class ServerTlsPolicyServerCertificateGrpcEndpointArgsDict(TypedDict):
-        target_uri: pulumi.Input[_builtins.str]
-        """
-        The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
-        """
-elif False:
-    ServerTlsPolicyServerCertificateGrpcEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class ServerTlsPolicyServerCertificateGrpcEndpointArgsDict(TypedDict):
+    target_uri: pulumi.Input[_builtins.str]
+    """
+    The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+    """
 
 @pulumi.input_type
 class ServerTlsPolicyServerCertificateGrpcEndpointArgs:

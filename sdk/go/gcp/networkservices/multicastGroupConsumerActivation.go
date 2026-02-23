@@ -125,22 +125,14 @@ import (
 // MulticastGroupConsumerActivation can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/multicastGroupConsumerActivations/{{multicast_group_consumer_activation_id}}`
-//
 // * `{{project}}/{{location}}/{{multicast_group_consumer_activation_id}}`
-//
 // * `{{location}}/{{multicast_group_consumer_activation_id}}`
 //
 // When using the `pulumi import` command, MulticastGroupConsumerActivation can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation default projects/{{project}}/locations/{{location}}/multicastGroupConsumerActivations/{{multicast_group_consumer_activation_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation default {{project}}/{{location}}/{{multicast_group_consumer_activation_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation default {{location}}/{{multicast_group_consumer_activation_id}}
 // ```
 type MulticastGroupConsumerActivation struct {
@@ -185,7 +177,7 @@ type MulticastGroupConsumerActivation struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// (Output)
 	// The state of the multicast resource.
@@ -294,7 +286,7 @@ type multicastGroupConsumerActivationState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// (Output)
 	// The state of the multicast resource.
@@ -357,7 +349,7 @@ type MulticastGroupConsumerActivationState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// (Output)
 	// The state of the multicast resource.
@@ -612,7 +604,8 @@ func (o MulticastGroupConsumerActivationOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MulticastGroupConsumerActivationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MulticastGroupConsumerActivation) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

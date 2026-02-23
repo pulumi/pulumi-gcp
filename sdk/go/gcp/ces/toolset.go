@@ -434,28 +434,368 @@ import (
 //	}
 //
 // ```
+// ### Ces Toolset Mcp Service Account Auth Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cesAppForToolset, err := ces.NewApp(ctx, "ces_app_for_toolset", &ces.AppArgs{
+//				AppId:       pulumi.String("app-id"),
+//				Location:    pulumi.String("us"),
+//				Description: pulumi.String("App used as parent for CES Toolset example"),
+//				DisplayName: pulumi.String("my-app"),
+//				LanguageSettings: &ces.AppLanguageSettingsArgs{
+//					DefaultLanguageCode: pulumi.String("en-US"),
+//					SupportedLanguageCodes: pulumi.StringArray{
+//						pulumi.String("es-ES"),
+//						pulumi.String("fr-FR"),
+//					},
+//					EnableMultilingualSupport: pulumi.Bool(true),
+//					FallbackAction:            pulumi.String("escalate"),
+//				},
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewToolset(ctx, "ces_toolset_mcp_service_account_auth_config", &ces.ToolsetArgs{
+//				ToolsetId:   pulumi.String("toolset1"),
+//				Location:    pulumi.String("us"),
+//				App:         cesAppForToolset.AppId,
+//				DisplayName: pulumi.String("Basic toolset display name"),
+//				McpToolset: &ces.ToolsetMcpToolsetArgs{
+//					ServerAddress: pulumi.String("https://api.example.com/mcp/"),
+//					TlsConfig: &ces.ToolsetMcpToolsetTlsConfigArgs{
+//						CaCerts: ces.ToolsetMcpToolsetTlsConfigCaCertArray{
+//							&ces.ToolsetMcpToolsetTlsConfigCaCertArgs{
+//								DisplayName: pulumi.String("example"),
+//								Cert:        pulumi.String("ZXhhbXBsZQ=="),
+//							},
+//						},
+//					},
+//					ServiceDirectoryConfig: &ces.ToolsetMcpToolsetServiceDirectoryConfigArgs{
+//						Service: pulumi.String("projects/example/locations/us/namespaces/namespace/services/service"),
+//					},
+//					ApiAuthentication: &ces.ToolsetMcpToolsetApiAuthenticationArgs{
+//						ServiceAccountAuthConfig: &ces.ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs{
+//							ServiceAccount: pulumi.String("my@service-account.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Ces Toolset Mcp Oauth Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cesAppForToolset, err := ces.NewApp(ctx, "ces_app_for_toolset", &ces.AppArgs{
+//				AppId:       pulumi.String("app-id"),
+//				Location:    pulumi.String("us"),
+//				Description: pulumi.String("App used as parent for CES Toolset example"),
+//				DisplayName: pulumi.String("my-app"),
+//				LanguageSettings: &ces.AppLanguageSettingsArgs{
+//					DefaultLanguageCode: pulumi.String("en-US"),
+//					SupportedLanguageCodes: pulumi.StringArray{
+//						pulumi.String("es-ES"),
+//						pulumi.String("fr-FR"),
+//					},
+//					EnableMultilingualSupport: pulumi.Bool(true),
+//					FallbackAction:            pulumi.String("escalate"),
+//				},
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewToolset(ctx, "ces_toolset_mcp_oauth_config", &ces.ToolsetArgs{
+//				ToolsetId:   pulumi.String("toolset1"),
+//				Location:    pulumi.String("us"),
+//				App:         cesAppForToolset.AppId,
+//				DisplayName: pulumi.String("Basic toolset display name"),
+//				McpToolset: &ces.ToolsetMcpToolsetArgs{
+//					ServerAddress: pulumi.String("https://api.example.com/mcp/"),
+//					TlsConfig: &ces.ToolsetMcpToolsetTlsConfigArgs{
+//						CaCerts: ces.ToolsetMcpToolsetTlsConfigCaCertArray{
+//							&ces.ToolsetMcpToolsetTlsConfigCaCertArgs{
+//								DisplayName: pulumi.String("example"),
+//								Cert:        pulumi.String("ZXhhbXBsZQ=="),
+//							},
+//						},
+//					},
+//					ServiceDirectoryConfig: &ces.ToolsetMcpToolsetServiceDirectoryConfigArgs{
+//						Service: pulumi.String("projects/example/locations/us/namespaces/namespace/services/service"),
+//					},
+//					ApiAuthentication: &ces.ToolsetMcpToolsetApiAuthenticationArgs{
+//						OauthConfig: &ces.ToolsetMcpToolsetApiAuthenticationOauthConfigArgs{
+//							OauthGrantType:      pulumi.String("CLIENT_CREDENTIAL"),
+//							ClientId:            pulumi.String("example_client_id"),
+//							ClientSecretVersion: pulumi.String("projects/fake-project/secrets/fake-secret/versions/version1"),
+//							TokenEndpoint:       pulumi.String("123"),
+//							Scopes: pulumi.StringArray{
+//								pulumi.String("scope1"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Ces Toolset Mcp Service Agent Id Token Auth Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cesAppForToolset, err := ces.NewApp(ctx, "ces_app_for_toolset", &ces.AppArgs{
+//				AppId:       pulumi.String("app-id"),
+//				Location:    pulumi.String("us"),
+//				Description: pulumi.String("App used as parent for CES Toolset example"),
+//				DisplayName: pulumi.String("my-app"),
+//				LanguageSettings: &ces.AppLanguageSettingsArgs{
+//					DefaultLanguageCode: pulumi.String("en-US"),
+//					SupportedLanguageCodes: pulumi.StringArray{
+//						pulumi.String("es-ES"),
+//						pulumi.String("fr-FR"),
+//					},
+//					EnableMultilingualSupport: pulumi.Bool(true),
+//					FallbackAction:            pulumi.String("escalate"),
+//				},
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewToolset(ctx, "ces_toolset_mcp_service_agent_id_token_auth_config", &ces.ToolsetArgs{
+//				ToolsetId:   pulumi.String("toolset1"),
+//				Location:    pulumi.String("us"),
+//				App:         cesAppForToolset.AppId,
+//				DisplayName: pulumi.String("Basic toolset display name"),
+//				McpToolset: &ces.ToolsetMcpToolsetArgs{
+//					ServerAddress: pulumi.String("https://api.example.com/mcp/"),
+//					TlsConfig: &ces.ToolsetMcpToolsetTlsConfigArgs{
+//						CaCerts: ces.ToolsetMcpToolsetTlsConfigCaCertArray{
+//							&ces.ToolsetMcpToolsetTlsConfigCaCertArgs{
+//								DisplayName: pulumi.String("example"),
+//								Cert:        pulumi.String("ZXhhbXBsZQ=="),
+//							},
+//						},
+//					},
+//					ServiceDirectoryConfig: &ces.ToolsetMcpToolsetServiceDirectoryConfigArgs{
+//						Service: pulumi.String("projects/example/locations/us/namespaces/namespace/services/service"),
+//					},
+//					ApiAuthentication: &ces.ToolsetMcpToolsetApiAuthenticationArgs{
+//						ServiceAgentIdTokenAuthConfig: &ces.ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs{},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Ces Toolset Mcp Api Key Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cesAppForToolset, err := ces.NewApp(ctx, "ces_app_for_toolset", &ces.AppArgs{
+//				AppId:       pulumi.String("app-id"),
+//				Location:    pulumi.String("us"),
+//				Description: pulumi.String("App used as parent for CES Toolset example"),
+//				DisplayName: pulumi.String("my-app"),
+//				LanguageSettings: &ces.AppLanguageSettingsArgs{
+//					DefaultLanguageCode: pulumi.String("en-US"),
+//					SupportedLanguageCodes: pulumi.StringArray{
+//						pulumi.String("es-ES"),
+//						pulumi.String("fr-FR"),
+//					},
+//					EnableMultilingualSupport: pulumi.Bool(true),
+//					FallbackAction:            pulumi.String("escalate"),
+//				},
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewToolset(ctx, "ces_toolset_mcp_api_key_config", &ces.ToolsetArgs{
+//				ToolsetId:     pulumi.String("toolset1"),
+//				Location:      pulumi.String("us"),
+//				App:           cesAppForToolset.AppId,
+//				DisplayName:   pulumi.String("Basic toolset display name"),
+//				Description:   pulumi.String("Test description"),
+//				ExecutionType: pulumi.String("SYNCHRONOUS"),
+//				McpToolset: &ces.ToolsetMcpToolsetArgs{
+//					ServerAddress: pulumi.String("https://api.example.com/mcp/"),
+//					TlsConfig: &ces.ToolsetMcpToolsetTlsConfigArgs{
+//						CaCerts: ces.ToolsetMcpToolsetTlsConfigCaCertArray{
+//							&ces.ToolsetMcpToolsetTlsConfigCaCertArgs{
+//								DisplayName: pulumi.String("example"),
+//								Cert:        pulumi.String("ZXhhbXBsZQ=="),
+//							},
+//						},
+//					},
+//					ServiceDirectoryConfig: &ces.ToolsetMcpToolsetServiceDirectoryConfigArgs{
+//						Service: pulumi.String("projects/example/locations/us/namespaces/namespace/services/service"),
+//					},
+//					ApiAuthentication: &ces.ToolsetMcpToolsetApiAuthenticationArgs{
+//						ApiKeyConfig: &ces.ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs{
+//							KeyName:             pulumi.String("ExampleKey"),
+//							ApiKeySecretVersion: pulumi.String("projects/fake-project/secrets/fake-secret/versions/version-1"),
+//							RequestLocation:     pulumi.String("HEADER"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Ces Toolset Mcp Bearer Token Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cesAppForToolset, err := ces.NewApp(ctx, "ces_app_for_toolset", &ces.AppArgs{
+//				AppId:       pulumi.String("app-id"),
+//				Location:    pulumi.String("us"),
+//				Description: pulumi.String("App used as parent for CES Toolset example"),
+//				DisplayName: pulumi.String("my-app"),
+//				LanguageSettings: &ces.AppLanguageSettingsArgs{
+//					DefaultLanguageCode: pulumi.String("en-US"),
+//					SupportedLanguageCodes: pulumi.StringArray{
+//						pulumi.String("es-ES"),
+//						pulumi.String("fr-FR"),
+//					},
+//					EnableMultilingualSupport: pulumi.Bool(true),
+//					FallbackAction:            pulumi.String("escalate"),
+//				},
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewToolset(ctx, "ces_toolset_mcp_bearer_token_config", &ces.ToolsetArgs{
+//				ToolsetId:   pulumi.String("toolset1"),
+//				Location:    pulumi.String("us"),
+//				App:         cesAppForToolset.AppId,
+//				DisplayName: pulumi.String("Basic toolset display name"),
+//				McpToolset: &ces.ToolsetMcpToolsetArgs{
+//					ServerAddress: pulumi.String("https://api.example.com/mcp/"),
+//					TlsConfig: &ces.ToolsetMcpToolsetTlsConfigArgs{
+//						CaCerts: ces.ToolsetMcpToolsetTlsConfigCaCertArray{
+//							&ces.ToolsetMcpToolsetTlsConfigCaCertArgs{
+//								DisplayName: pulumi.String("example"),
+//								Cert:        pulumi.String("ZXhhbXBsZQ=="),
+//							},
+//						},
+//					},
+//					ServiceDirectoryConfig: &ces.ToolsetMcpToolsetServiceDirectoryConfigArgs{
+//						Service: pulumi.String("projects/example/locations/us/namespaces/namespace/services/service"),
+//					},
+//					ApiAuthentication: &ces.ToolsetMcpToolsetApiAuthenticationArgs{
+//						BearerTokenConfig: &ces.ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs{
+//							Token: pulumi.String("$context.variables.my_ces_toolset_auth_token"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
 // Toolset can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/apps/{{app}}/toolsets/{{toolset_id}}`
-//
 // * `{{project}}/{{location}}/{{app}}/{{toolset_id}}`
-//
 // * `{{location}}/{{app}}/{{toolset_id}}`
 //
 // When using the `pulumi import` command, Toolset can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:ces/toolset:Toolset default projects/{{project}}/locations/{{location}}/apps/{{app}}/toolsets/{{toolset_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:ces/toolset:Toolset default {{project}}/{{location}}/{{app}}/{{toolset_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:ces/toolset:Toolset default {{location}}/{{app}}/{{toolset_id}}
 // ```
 type Toolset struct {
@@ -479,6 +819,10 @@ type Toolset struct {
 	ExecutionType pulumi.StringPtrOutput `pulumi:"executionType"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// A toolset that contains a list of tools that are offered by the MCP
+	// server.
+	// Structure is documented below.
+	McpToolset ToolsetMcpToolsetPtrOutput `pulumi:"mcpToolset"`
 	// Identifier. The unique identifier of the toolset.
 	// Format:
 	// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
@@ -555,6 +899,10 @@ type toolsetState struct {
 	ExecutionType *string `pulumi:"executionType"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
+	// A toolset that contains a list of tools that are offered by the MCP
+	// server.
+	// Structure is documented below.
+	McpToolset *ToolsetMcpToolset `pulumi:"mcpToolset"`
 	// Identifier. The unique identifier of the toolset.
 	// Format:
 	// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
@@ -593,6 +941,10 @@ type ToolsetState struct {
 	ExecutionType pulumi.StringPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
+	// A toolset that contains a list of tools that are offered by the MCP
+	// server.
+	// Structure is documented below.
+	McpToolset ToolsetMcpToolsetPtrInput
 	// Identifier. The unique identifier of the toolset.
 	// Format:
 	// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
@@ -629,6 +981,10 @@ type toolsetArgs struct {
 	ExecutionType *string `pulumi:"executionType"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
+	// A toolset that contains a list of tools that are offered by the MCP
+	// server.
+	// Structure is documented below.
+	McpToolset *ToolsetMcpToolset `pulumi:"mcpToolset"`
 	// A toolset that contains a list of tools that are defined by an OpenAPI
 	// schema.
 	// Structure is documented below.
@@ -656,6 +1012,10 @@ type ToolsetArgs struct {
 	ExecutionType pulumi.StringPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
+	// A toolset that contains a list of tools that are offered by the MCP
+	// server.
+	// Structure is documented below.
+	McpToolset ToolsetMcpToolsetPtrInput
 	// A toolset that contains a list of tools that are defined by an OpenAPI
 	// schema.
 	// Structure is documented below.
@@ -793,6 +1153,13 @@ func (o ToolsetOutput) ExecutionType() pulumi.StringPtrOutput {
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 func (o ToolsetOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Toolset) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// A toolset that contains a list of tools that are offered by the MCP
+// server.
+// Structure is documented below.
+func (o ToolsetOutput) McpToolset() ToolsetMcpToolsetPtrOutput {
+	return o.ApplyT(func(v *Toolset) ToolsetMcpToolsetPtrOutput { return v.McpToolset }).(ToolsetMcpToolsetPtrOutput)
 }
 
 // Identifier. The unique identifier of the toolset.

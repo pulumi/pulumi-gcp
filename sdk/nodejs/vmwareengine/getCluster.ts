@@ -52,6 +52,7 @@ export interface GetClusterArgs {
 export interface GetClusterResult {
     readonly autoscalingSettings: outputs.vmwareengine.GetClusterAutoscalingSetting[];
     readonly createTime: string;
+    readonly datastoreMountConfigs: outputs.vmwareengine.GetClusterDatastoreMountConfig[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */

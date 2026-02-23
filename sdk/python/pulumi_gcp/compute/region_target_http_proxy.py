@@ -454,28 +454,16 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         RegionTargetHttpProxy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionTargetHttpProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{name}}
         ```
 
@@ -625,28 +613,16 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         RegionTargetHttpProxy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionTargetHttpProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{name}}
         ```
 

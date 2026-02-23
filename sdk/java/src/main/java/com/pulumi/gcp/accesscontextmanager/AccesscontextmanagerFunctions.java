@@ -13,8 +13,13 @@ import com.pulumi.gcp.accesscontextmanager.inputs.GetAccessPolicyArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.GetAccessPolicyIamPolicyArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.GetAccessPolicyIamPolicyPlainArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.GetAccessPolicyPlainArgs;
+import com.pulumi.gcp.accesscontextmanager.inputs.GetSupportedServiceArgs;
+import com.pulumi.gcp.accesscontextmanager.inputs.GetSupportedServicePlainArgs;
 import com.pulumi.gcp.accesscontextmanager.outputs.GetAccessPolicyIamPolicyResult;
 import com.pulumi.gcp.accesscontextmanager.outputs.GetAccessPolicyResult;
+import com.pulumi.gcp.accesscontextmanager.outputs.GetSupportedServiceResult;
+import com.pulumi.gcp.accesscontextmanager.outputs.GetSupportedServicesResult;
+import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class AccesscontextmanagerFunctions {
@@ -442,5 +447,648 @@ public final class AccesscontextmanagerFunctions {
      */
     public static CompletableFuture<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicyPlain(GetAccessPolicyIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy", TypeShape.of(GetAccessPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a VPC Service Controls supported service, including its supported methods.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import com.pulumi.gcp.accesscontextmanager.inputs.GetSupportedServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = AccesscontextmanagerFunctions.getSupportedService(GetSupportedServiceArgs.builder()
+     *             .serviceName("storage.googleapis.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Use supported methods in a service perimeter
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import com.pulumi.gcp.accesscontextmanager.inputs.GetSupportedServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = AccesscontextmanagerFunctions.getSupportedService(GetSupportedServiceArgs.builder()
+     *             .serviceName("storage.googleapis.com")
+     *             .build());
+     * 
+     *         ctx.export("storageMethods", storage.supportedMethods());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSupportedServiceResult> getSupportedService(GetSupportedServiceArgs args) {
+        return getSupportedService(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a VPC Service Controls supported service, including its supported methods.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import com.pulumi.gcp.accesscontextmanager.inputs.GetSupportedServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = AccesscontextmanagerFunctions.getSupportedService(GetSupportedServiceArgs.builder()
+     *             .serviceName("storage.googleapis.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Use supported methods in a service perimeter
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import com.pulumi.gcp.accesscontextmanager.inputs.GetSupportedServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = AccesscontextmanagerFunctions.getSupportedService(GetSupportedServiceArgs.builder()
+     *             .serviceName("storage.googleapis.com")
+     *             .build());
+     * 
+     *         ctx.export("storageMethods", storage.supportedMethods());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSupportedServiceResult> getSupportedServicePlain(GetSupportedServicePlainArgs args) {
+        return getSupportedServicePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a VPC Service Controls supported service, including its supported methods.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import com.pulumi.gcp.accesscontextmanager.inputs.GetSupportedServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = AccesscontextmanagerFunctions.getSupportedService(GetSupportedServiceArgs.builder()
+     *             .serviceName("storage.googleapis.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Use supported methods in a service perimeter
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import com.pulumi.gcp.accesscontextmanager.inputs.GetSupportedServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = AccesscontextmanagerFunctions.getSupportedService(GetSupportedServiceArgs.builder()
+     *             .serviceName("storage.googleapis.com")
+     *             .build());
+     * 
+     *         ctx.export("storageMethods", storage.supportedMethods());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSupportedServiceResult> getSupportedService(GetSupportedServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:accesscontextmanager/getSupportedService:getSupportedService", TypeShape.of(GetSupportedServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a VPC Service Controls supported service, including its supported methods.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import com.pulumi.gcp.accesscontextmanager.inputs.GetSupportedServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = AccesscontextmanagerFunctions.getSupportedService(GetSupportedServiceArgs.builder()
+     *             .serviceName("storage.googleapis.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Use supported methods in a service perimeter
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import com.pulumi.gcp.accesscontextmanager.inputs.GetSupportedServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = AccesscontextmanagerFunctions.getSupportedService(GetSupportedServiceArgs.builder()
+     *             .serviceName("storage.googleapis.com")
+     *             .build());
+     * 
+     *         ctx.export("storageMethods", storage.supportedMethods());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSupportedServiceResult> getSupportedService(GetSupportedServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:accesscontextmanager/getSupportedService:getSupportedService", TypeShape.of(GetSupportedServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a VPC Service Controls supported service, including its supported methods.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import com.pulumi.gcp.accesscontextmanager.inputs.GetSupportedServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = AccesscontextmanagerFunctions.getSupportedService(GetSupportedServiceArgs.builder()
+     *             .serviceName("storage.googleapis.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Use supported methods in a service perimeter
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import com.pulumi.gcp.accesscontextmanager.inputs.GetSupportedServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = AccesscontextmanagerFunctions.getSupportedService(GetSupportedServiceArgs.builder()
+     *             .serviceName("storage.googleapis.com")
+     *             .build());
+     * 
+     *         ctx.export("storageMethods", storage.supportedMethods());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSupportedServiceResult> getSupportedServicePlain(GetSupportedServicePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:accesscontextmanager/getSupportedService:getSupportedService", TypeShape.of(GetSupportedServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Lists all VPC Service Controls supported services.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = AccesscontextmanagerFunctions.getSupportedServices(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter to GA services available on restricted VIP
+     * 
+     */
+    public static Output<GetSupportedServicesResult> getSupportedServices() {
+        return getSupportedServices(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Lists all VPC Service Controls supported services.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = AccesscontextmanagerFunctions.getSupportedServices(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter to GA services available on restricted VIP
+     * 
+     */
+    public static CompletableFuture<GetSupportedServicesResult> getSupportedServicesPlain() {
+        return getSupportedServicesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Lists all VPC Service Controls supported services.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = AccesscontextmanagerFunctions.getSupportedServices(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter to GA services available on restricted VIP
+     * 
+     */
+    public static Output<GetSupportedServicesResult> getSupportedServices(InvokeArgs args) {
+        return getSupportedServices(args, InvokeOptions.Empty);
+    }
+    /**
+     * Lists all VPC Service Controls supported services.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = AccesscontextmanagerFunctions.getSupportedServices(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter to GA services available on restricted VIP
+     * 
+     */
+    public static CompletableFuture<GetSupportedServicesResult> getSupportedServicesPlain(InvokeArgs args) {
+        return getSupportedServicesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Lists all VPC Service Controls supported services.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = AccesscontextmanagerFunctions.getSupportedServices(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter to GA services available on restricted VIP
+     * 
+     */
+    public static Output<GetSupportedServicesResult> getSupportedServices(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:accesscontextmanager/getSupportedServices:getSupportedServices", TypeShape.of(GetSupportedServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Lists all VPC Service Controls supported services.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = AccesscontextmanagerFunctions.getSupportedServices(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter to GA services available on restricted VIP
+     * 
+     */
+    public static Output<GetSupportedServicesResult> getSupportedServices(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:accesscontextmanager/getSupportedServices:getSupportedServices", TypeShape.of(GetSupportedServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Lists all VPC Service Controls supported services.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = AccesscontextmanagerFunctions.getSupportedServices(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter to GA services available on restricted VIP
+     * 
+     */
+    public static CompletableFuture<GetSupportedServicesResult> getSupportedServicesPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:accesscontextmanager/getSupportedServices:getSupportedServices", TypeShape.of(GetSupportedServicesResult.class), args, Utilities.withVersion(options));
     }
 }

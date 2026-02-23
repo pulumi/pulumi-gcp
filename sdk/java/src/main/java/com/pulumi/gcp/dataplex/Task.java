@@ -67,13 +67,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Lake("example", LakeArgs.builder()
- *             .name("tf-test-lake_8270")
+ *             .name("tf-test-lake_89313")
  *             .location("us-central1")
  *             .project("my-project-name")
  *             .build());
  * 
  *         var exampleTask = new Task("exampleTask", TaskArgs.builder()
- *             .taskId("tf-test-task_41150")
+ *             .taskId("tf-test-task_60646")
  *             .location("us-central1")
  *             .lake(example.name())
  *             .description("Test Task Basic")
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         // VPC network
  *         var default_ = new Network("default", NetworkArgs.builder()
- *             .name("tf-test-workstation-cluster_89313")
+ *             .name("tf-test-workstation-cluster_9394")
  *             .autoCreateSubnetworks(true)
  *             .build());
  * 
@@ -149,13 +149,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleSpark = new Lake("exampleSpark", LakeArgs.builder()
- *             .name("tf-test-lake_60646")
+ *             .name("tf-test-lake_11380")
  *             .location("us-central1")
  *             .project("my-project-name")
  *             .build());
  * 
  *         var exampleSparkTask = new Task("exampleSparkTask", TaskArgs.builder()
- *             .taskId("tf-test-task_9394")
+ *             .taskId("tf-test-task_35305")
  *             .location("us-central1")
  *             .lake(exampleSpark.name())
  *             .triggerSpec(TaskTriggerSpecArgs.builder()
@@ -237,7 +237,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         // VPC network
  *         var default_ = new Network("default", NetworkArgs.builder()
- *             .name("tf-test-workstation-cluster_11380")
+ *             .name("tf-test-workstation-cluster_62793")
  *             .autoCreateSubnetworks(true)
  *             .build());
  * 
@@ -245,13 +245,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleNotebook = new Lake("exampleNotebook", LakeArgs.builder()
- *             .name("tf-test-lake_35305")
+ *             .name("tf-test-lake_55438")
  *             .location("us-central1")
  *             .project("my-project-name")
  *             .build());
  * 
  *         var exampleNotebookTask = new Task("exampleNotebookTask", TaskArgs.builder()
- *             .taskId("tf-test-task_62793")
+ *             .taskId("tf-test-task_32706")
  *             .location("us-central1")
  *             .lake(exampleNotebook.name())
  *             .triggerSpec(TaskTriggerSpecArgs.builder()
@@ -300,22 +300,14 @@ import javax.annotation.Nullable;
  * Task can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}`
- * 
  * * `{{project}}/{{location}}/{{lake}}/{{task_id}}`
- * 
  * * `{{location}}/{{lake}}/{{task_id}}`
  * 
  * When using the `pulumi import` command, Task can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataplex/task:Task default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/task:Task default {{project}}/{{location}}/{{lake}}/{{task_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/task:Task default {{location}}/{{lake}}/{{task_id}}
  * ```
  * 
@@ -508,7 +500,7 @@ public class Task extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -516,7 +508,7 @@ public class Task extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

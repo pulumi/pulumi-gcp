@@ -461,16 +461,12 @@ namespace Pulumi.Gcp.DataLoss
     /// InspectTemplate can be imported using any of these accepted formats:
     /// 
     /// * `{{parent}}/inspectTemplates/{{name}}`
-    /// 
     /// * `{{parent}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, InspectTemplate can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/inspectTemplates/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/{{name}}
     /// ```
     /// </summary>

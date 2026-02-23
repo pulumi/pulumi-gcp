@@ -253,7 +253,7 @@ class _RepositoryState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: A reference to the region
         :param pulumi.Input[_builtins.str] service_account: The service account to run workflow invocations under.
         :param pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs'] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
@@ -406,7 +406,7 @@ class _RepositoryState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -471,6 +471,17 @@ class Repository(pulumi.CustomResource):
                  workspace_compilation_overrides: Optional[pulumi.Input[Union['RepositoryWorkspaceCompilationOverridesArgs', 'RepositoryWorkspaceCompilationOverridesArgsDict']]] = None,
                  __props__=None):
         """
+        A resource represents a Dataform Git repository
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Repository, see:
+
+        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataform/docs/)
+
         ## Example Usage
 
         ### Dataform Repository
@@ -524,28 +535,16 @@ class Repository(pulumi.CustomResource):
         Repository can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/repositories/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataform/repository:Repository default projects/{{project}}/locations/{{region}}/repositories/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repository:Repository default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repository:Repository default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repository:Repository default {{name}}
         ```
 
@@ -578,6 +577,17 @@ class Repository(pulumi.CustomResource):
                  args: Optional[RepositoryArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A resource represents a Dataform Git repository
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Repository, see:
+
+        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataform/docs/)
+
         ## Example Usage
 
         ### Dataform Repository
@@ -631,28 +641,16 @@ class Repository(pulumi.CustomResource):
         Repository can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/repositories/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataform/repository:Repository default projects/{{project}}/locations/{{region}}/repositories/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repository:Repository default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repository:Repository default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repository:Repository default {{name}}
         ```
 
@@ -753,7 +751,7 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: A reference to the region
         :param pulumi.Input[_builtins.str] service_account: The service account to run workflow invocations under.
         :param pulumi.Input[Union['RepositoryWorkspaceCompilationOverridesArgs', 'RepositoryWorkspaceCompilationOverridesArgsDict']] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
@@ -862,7 +860,7 @@ class Repository(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

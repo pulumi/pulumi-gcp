@@ -65,22 +65,14 @@ import (
 // ReleaseChannelSettingBinding can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}/settingBindings/{{setting_binding_id}}`
-//
 // * `{{project}}/{{location}}/{{release_channel_setting_id}}/{{setting_binding_id}}`
-//
 // * `{{location}}/{{release_channel_setting_id}}/{{setting_binding_id}}`
 //
 // When using the `pulumi import` command, ReleaseChannelSettingBinding can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gemini/releaseChannelSettingBinding:ReleaseChannelSettingBinding default projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}/settingBindings/{{setting_binding_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gemini/releaseChannelSettingBinding:ReleaseChannelSettingBinding default {{project}}/{{location}}/{{release_channel_setting_id}}/{{setting_binding_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gemini/releaseChannelSettingBinding:ReleaseChannelSettingBinding default {{location}}/{{release_channel_setting_id}}/{{setting_binding_id}}
 // ```
 type ReleaseChannelSettingBinding struct {
@@ -106,7 +98,7 @@ type ReleaseChannelSettingBinding struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	ReleaseChannelSettingId pulumi.StringOutput `pulumi:"releaseChannelSettingId"`
@@ -182,7 +174,7 @@ type releaseChannelSettingBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	ReleaseChannelSettingId *string `pulumi:"releaseChannelSettingId"`
@@ -215,7 +207,7 @@ type ReleaseChannelSettingBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	ReleaseChannelSettingId pulumi.StringPtrInput
@@ -402,7 +394,8 @@ func (o ReleaseChannelSettingBindingOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ReleaseChannelSettingBindingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ReleaseChannelSettingBinding) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An imperative resource that triggers a GCBDR restoration event.
+// Creating this resource will initiate a restore operation from a specified backup.
+// The resource represents the restore operation and its result.
+//
 // ## Example Usage
 //
 // ### Backup Dr Restore Workload Compute Instance Basic
@@ -33,14 +37,13 @@ import (
 //				BackupVaultId: pulumi.String("backup-vault"),
 //				DataSourceId:  pulumi.String("data-source"),
 //				BackupId:      pulumi.String("backup"),
-//				Name:          pulumi.String("projects/my-project/locations/us-central1/backups/my-backup"),
 //				ComputeInstanceTargetEnvironment: &backupdisasterrecovery.RestoreWorkloadComputeInstanceTargetEnvironmentArgs{
 //					Project: pulumi.String("my-project-name"),
 //					Zone:    pulumi.String("us-central1-a"),
 //				},
 //				ComputeInstanceRestoreProperties: &backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesArgs{
 //					Name:        pulumi.String("restored-instance"),
-//					MachineType: pulumi.String("e2-medium"),
+//					MachineType: pulumi.String("zones/us-central1-a/machineTypes/e2-medium"),
 //				},
 //			})
 //			if err != nil {
@@ -70,21 +73,29 @@ import (
 //				BackupVaultId: pulumi.String("backup-vault"),
 //				DataSourceId:  pulumi.String("data-source"),
 //				BackupId:      pulumi.String("backup"),
-//				Name:          pulumi.String("projects/my-project/locations/us-central1/backups/my-backup"),
 //				ComputeInstanceTargetEnvironment: &backupdisasterrecovery.RestoreWorkloadComputeInstanceTargetEnvironmentArgs{
 //					Project: pulumi.String("my-project-name"),
 //					Zone:    pulumi.String("us-central1-a"),
 //				},
 //				ComputeInstanceRestoreProperties: &backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesArgs{
 //					Name:               pulumi.String("restored-instance-full"),
-//					MachineType:        pulumi.String("e2-medium"),
+//					MachineType:        pulumi.String("zones/us-central1-a/machineTypes/e2-medium"),
 //					Description:        pulumi.String("Restored compute instance with advanced configuration"),
 //					CanIpForward:       pulumi.Bool(true),
 //					DeletionProtection: pulumi.Bool(false),
 //					Labels: backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesLabelArray{
-//						Environment: "production",
-//						Restored:    "true",
-//						Team:        "infrastructure",
+//						&backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs{
+//							Key:   pulumi.String("environment"),
+//							Value: pulumi.String("production"),
+//						},
+//						&backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs{
+//							Key:   pulumi.String("restored"),
+//							Value: pulumi.String("true"),
+//						},
+//						&backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs{
+//							Key:   pulumi.String("team"),
+//							Value: pulumi.String("infrastructure"),
+//						},
 //					},
 //					Tags: &backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs{
 //						Items: pulumi.StringArray{
@@ -95,11 +106,11 @@ import (
 //					},
 //					NetworkInterfaces: backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArray{
 //						&backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs{
-//							Network:    pulumi.String("default"),
+//							Network:    pulumi.String("projects/my-project-name/global/networks/default"),
 //							Subnetwork: pulumi.String("projects/my-project-name/regions/us-central1/subnetworks/default"),
 //							AccessConfigs: backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArray{
 //								&backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs{
-//									Name:        pulumi.String("External NAT"),
+//									Name:        pulumi.String("ONE_TO_ONE_NAT"),
 //									NetworkTier: pulumi.String("PREMIUM"),
 //								},
 //							},
@@ -170,7 +181,6 @@ import (
 //				BackupVaultId: pulumi.String("backup-vault"),
 //				DataSourceId:  pulumi.String("data-source"),
 //				BackupId:      pulumi.String("backup"),
-//				Name:          pulumi.String("projects/my-project/locations/us-central1/backups/my-backup"),
 //				DiskTargetEnvironment: &backupdisasterrecovery.RestoreWorkloadDiskTargetEnvironmentArgs{
 //					Project: pulumi.String("my-project-name"),
 //					Zone:    pulumi.String("us-central1-a"),
@@ -178,7 +188,7 @@ import (
 //				DiskRestoreProperties: &backupdisasterrecovery.RestoreWorkloadDiskRestorePropertiesArgs{
 //					Name:        pulumi.String("restored-disk"),
 //					SizeGb:      pulumi.Int(100),
-//					Type:        pulumi.String("pd-standard"),
+//					Type:        pulumi.String("projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard"),
 //					Description: pulumi.String("Restored persistent disk from backup"),
 //					Labels: backupdisasterrecovery.RestoreWorkloadDiskRestorePropertiesLabelArray{
 //						Environment: "production",
@@ -213,13 +223,12 @@ import (
 //				BackupVaultId: pulumi.String("backup-vault"),
 //				DataSourceId:  pulumi.String("data-source"),
 //				BackupId:      pulumi.String("backup"),
-//				Name:          pulumi.String("projects/my-project/locations/us-central1/backups/my-backup"),
 //				RegionDiskTargetEnvironment: &backupdisasterrecovery.RestoreWorkloadRegionDiskTargetEnvironmentArgs{
 //					Project: pulumi.String("my-project-name"),
 //					Region:  pulumi.String("us-central1"),
 //					ReplicaZones: pulumi.StringArray{
-//						pulumi.String("us-central1-a"),
-//						pulumi.String("us-central1-b"),
+//						pulumi.String("projects/my-project-name/zones/us-central1-a"),
+//						pulumi.String("projects/my-project-name/zones/us-central1-b"),
 //					},
 //				},
 //				DiskRestoreProperties: &backupdisasterrecovery.RestoreWorkloadDiskRestorePropertiesArgs{
@@ -262,7 +271,6 @@ import (
 //				BackupVaultId:          pulumi.String("backup-vault"),
 //				DataSourceId:           pulumi.String("data-source"),
 //				BackupId:               pulumi.String("backup"),
-//				Name:                   pulumi.String("projects/my-project/locations/us-central1/backups/my-backup"),
 //				DeleteRestoredInstance: pulumi.Bool(false),
 //				DiskTargetEnvironment: &backupdisasterrecovery.RestoreWorkloadDiskTargetEnvironmentArgs{
 //					Project: pulumi.String("my-project-name"),
@@ -270,8 +278,8 @@ import (
 //				},
 //				DiskRestoreProperties: &backupdisasterrecovery.RestoreWorkloadDiskRestorePropertiesArgs{
 //					Name:   pulumi.String("persistent-disk"),
-//					SizeGb: pulumi.Int(50),
-//					Type:   pulumi.String("pd-standard"),
+//					SizeGb: pulumi.Int(100),
+//					Type:   pulumi.String("projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard"),
 //				},
 //			})
 //			if err != nil {
@@ -288,16 +296,12 @@ import (
 // RestoreWorkload can be imported using any of these accepted formats:
 //
 // * `/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, RestoreWorkload can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default /{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
 // ```
 type RestoreWorkload struct {
@@ -316,7 +320,9 @@ type RestoreWorkload struct {
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput `pulumi:"computeInstanceTargetEnvironment"`
 	// Required. The ID of the data source.
-	DataSourceId           pulumi.StringOutput  `pulumi:"dataSourceId"`
+	DataSourceId pulumi.StringOutput `pulumi:"dataSourceId"`
+	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+	// If false, only the restore record is removed from the state, leaving the resource active.
 	DeleteRestoredInstance pulumi.BoolPtrOutput `pulumi:"deleteRestoredInstance"`
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
@@ -326,7 +332,12 @@ type RestoreWorkload struct {
 	DiskTargetEnvironment RestoreWorkloadDiskTargetEnvironmentPtrOutput `pulumi:"diskTargetEnvironment"`
 	// Required. The location for the backup vault.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Required. The resource name of the backup instance.
+	// (Optional, Deprecated)
+	// The resource name of the backup instance.
+	//
+	// > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
+	//
+	// Deprecated: `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. The destination environment for regional disk restoration.
 	// Structure is documented below.
@@ -395,8 +406,10 @@ type restoreWorkloadState struct {
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment *RestoreWorkloadComputeInstanceTargetEnvironment `pulumi:"computeInstanceTargetEnvironment"`
 	// Required. The ID of the data source.
-	DataSourceId           *string `pulumi:"dataSourceId"`
-	DeleteRestoredInstance *bool   `pulumi:"deleteRestoredInstance"`
+	DataSourceId *string `pulumi:"dataSourceId"`
+	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+	// If false, only the restore record is removed from the state, leaving the resource active.
+	DeleteRestoredInstance *bool `pulumi:"deleteRestoredInstance"`
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
 	DiskRestoreProperties *RestoreWorkloadDiskRestoreProperties `pulumi:"diskRestoreProperties"`
@@ -405,7 +418,12 @@ type restoreWorkloadState struct {
 	DiskTargetEnvironment *RestoreWorkloadDiskTargetEnvironment `pulumi:"diskTargetEnvironment"`
 	// Required. The location for the backup vault.
 	Location *string `pulumi:"location"`
-	// Required. The resource name of the backup instance.
+	// (Optional, Deprecated)
+	// The resource name of the backup instance.
+	//
+	// > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
+	//
+	// Deprecated: `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
 	Name *string `pulumi:"name"`
 	// Optional. The destination environment for regional disk restoration.
 	// Structure is documented below.
@@ -433,7 +451,9 @@ type RestoreWorkloadState struct {
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment RestoreWorkloadComputeInstanceTargetEnvironmentPtrInput
 	// Required. The ID of the data source.
-	DataSourceId           pulumi.StringPtrInput
+	DataSourceId pulumi.StringPtrInput
+	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+	// If false, only the restore record is removed from the state, leaving the resource active.
 	DeleteRestoredInstance pulumi.BoolPtrInput
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
@@ -443,7 +463,12 @@ type RestoreWorkloadState struct {
 	DiskTargetEnvironment RestoreWorkloadDiskTargetEnvironmentPtrInput
 	// Required. The location for the backup vault.
 	Location pulumi.StringPtrInput
-	// Required. The resource name of the backup instance.
+	// (Optional, Deprecated)
+	// The resource name of the backup instance.
+	//
+	// > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
+	//
+	// Deprecated: `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
 	Name pulumi.StringPtrInput
 	// Optional. The destination environment for regional disk restoration.
 	// Structure is documented below.
@@ -475,8 +500,10 @@ type restoreWorkloadArgs struct {
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment *RestoreWorkloadComputeInstanceTargetEnvironment `pulumi:"computeInstanceTargetEnvironment"`
 	// Required. The ID of the data source.
-	DataSourceId           string `pulumi:"dataSourceId"`
-	DeleteRestoredInstance *bool  `pulumi:"deleteRestoredInstance"`
+	DataSourceId string `pulumi:"dataSourceId"`
+	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+	// If false, only the restore record is removed from the state, leaving the resource active.
+	DeleteRestoredInstance *bool `pulumi:"deleteRestoredInstance"`
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
 	DiskRestoreProperties *RestoreWorkloadDiskRestoreProperties `pulumi:"diskRestoreProperties"`
@@ -485,7 +512,12 @@ type restoreWorkloadArgs struct {
 	DiskTargetEnvironment *RestoreWorkloadDiskTargetEnvironment `pulumi:"diskTargetEnvironment"`
 	// Required. The location for the backup vault.
 	Location string `pulumi:"location"`
-	// Required. The resource name of the backup instance.
+	// (Optional, Deprecated)
+	// The resource name of the backup instance.
+	//
+	// > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
+	//
+	// Deprecated: `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
 	Name *string `pulumi:"name"`
 	// Optional. The destination environment for regional disk restoration.
 	// Structure is documented below.
@@ -511,7 +543,9 @@ type RestoreWorkloadArgs struct {
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment RestoreWorkloadComputeInstanceTargetEnvironmentPtrInput
 	// Required. The ID of the data source.
-	DataSourceId           pulumi.StringInput
+	DataSourceId pulumi.StringInput
+	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+	// If false, only the restore record is removed from the state, leaving the resource active.
 	DeleteRestoredInstance pulumi.BoolPtrInput
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
@@ -521,7 +555,12 @@ type RestoreWorkloadArgs struct {
 	DiskTargetEnvironment RestoreWorkloadDiskTargetEnvironmentPtrInput
 	// Required. The location for the backup vault.
 	Location pulumi.StringInput
-	// Required. The resource name of the backup instance.
+	// (Optional, Deprecated)
+	// The resource name of the backup instance.
+	//
+	// > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
+	//
+	// Deprecated: `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
 	Name pulumi.StringPtrInput
 	// Optional. The destination environment for regional disk restoration.
 	// Structure is documented below.
@@ -655,6 +694,8 @@ func (o RestoreWorkloadOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestoreWorkload) pulumi.StringOutput { return v.DataSourceId }).(pulumi.StringOutput)
 }
 
+// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+// If false, only the restore record is removed from the state, leaving the resource active.
 func (o RestoreWorkloadOutput) DeleteRestoredInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RestoreWorkload) pulumi.BoolPtrOutput { return v.DeleteRestoredInstance }).(pulumi.BoolPtrOutput)
 }
@@ -676,7 +717,12 @@ func (o RestoreWorkloadOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestoreWorkload) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Required. The resource name of the backup instance.
+// (Optional, Deprecated)
+// The resource name of the backup instance.
+//
+// > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
+//
+// Deprecated: `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
 func (o RestoreWorkloadOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestoreWorkload) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

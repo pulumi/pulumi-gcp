@@ -18321,6 +18321,254 @@ func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) E
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetSupportedServiceSupportedMethod struct {
+	// A valid method name for the respective request mode. Must be a fully qualified name, for example, `storage.googleapis.com/BucketService.GetBucket`.
+	Method string `pulumi:"method"`
+	// A valid Cloud IAM permission for the respective request mode, for example, `storage.buckets.get`.
+	Permission string `pulumi:"permission"`
+}
+
+// GetSupportedServiceSupportedMethodInput is an input type that accepts GetSupportedServiceSupportedMethodArgs and GetSupportedServiceSupportedMethodOutput values.
+// You can construct a concrete instance of `GetSupportedServiceSupportedMethodInput` via:
+//
+//	GetSupportedServiceSupportedMethodArgs{...}
+type GetSupportedServiceSupportedMethodInput interface {
+	pulumi.Input
+
+	ToGetSupportedServiceSupportedMethodOutput() GetSupportedServiceSupportedMethodOutput
+	ToGetSupportedServiceSupportedMethodOutputWithContext(context.Context) GetSupportedServiceSupportedMethodOutput
+}
+
+type GetSupportedServiceSupportedMethodArgs struct {
+	// A valid method name for the respective request mode. Must be a fully qualified name, for example, `storage.googleapis.com/BucketService.GetBucket`.
+	Method pulumi.StringInput `pulumi:"method"`
+	// A valid Cloud IAM permission for the respective request mode, for example, `storage.buckets.get`.
+	Permission pulumi.StringInput `pulumi:"permission"`
+}
+
+func (GetSupportedServiceSupportedMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSupportedServiceSupportedMethod)(nil)).Elem()
+}
+
+func (i GetSupportedServiceSupportedMethodArgs) ToGetSupportedServiceSupportedMethodOutput() GetSupportedServiceSupportedMethodOutput {
+	return i.ToGetSupportedServiceSupportedMethodOutputWithContext(context.Background())
+}
+
+func (i GetSupportedServiceSupportedMethodArgs) ToGetSupportedServiceSupportedMethodOutputWithContext(ctx context.Context) GetSupportedServiceSupportedMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSupportedServiceSupportedMethodOutput)
+}
+
+// GetSupportedServiceSupportedMethodArrayInput is an input type that accepts GetSupportedServiceSupportedMethodArray and GetSupportedServiceSupportedMethodArrayOutput values.
+// You can construct a concrete instance of `GetSupportedServiceSupportedMethodArrayInput` via:
+//
+//	GetSupportedServiceSupportedMethodArray{ GetSupportedServiceSupportedMethodArgs{...} }
+type GetSupportedServiceSupportedMethodArrayInput interface {
+	pulumi.Input
+
+	ToGetSupportedServiceSupportedMethodArrayOutput() GetSupportedServiceSupportedMethodArrayOutput
+	ToGetSupportedServiceSupportedMethodArrayOutputWithContext(context.Context) GetSupportedServiceSupportedMethodArrayOutput
+}
+
+type GetSupportedServiceSupportedMethodArray []GetSupportedServiceSupportedMethodInput
+
+func (GetSupportedServiceSupportedMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSupportedServiceSupportedMethod)(nil)).Elem()
+}
+
+func (i GetSupportedServiceSupportedMethodArray) ToGetSupportedServiceSupportedMethodArrayOutput() GetSupportedServiceSupportedMethodArrayOutput {
+	return i.ToGetSupportedServiceSupportedMethodArrayOutputWithContext(context.Background())
+}
+
+func (i GetSupportedServiceSupportedMethodArray) ToGetSupportedServiceSupportedMethodArrayOutputWithContext(ctx context.Context) GetSupportedServiceSupportedMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSupportedServiceSupportedMethodArrayOutput)
+}
+
+type GetSupportedServiceSupportedMethodOutput struct{ *pulumi.OutputState }
+
+func (GetSupportedServiceSupportedMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSupportedServiceSupportedMethod)(nil)).Elem()
+}
+
+func (o GetSupportedServiceSupportedMethodOutput) ToGetSupportedServiceSupportedMethodOutput() GetSupportedServiceSupportedMethodOutput {
+	return o
+}
+
+func (o GetSupportedServiceSupportedMethodOutput) ToGetSupportedServiceSupportedMethodOutputWithContext(ctx context.Context) GetSupportedServiceSupportedMethodOutput {
+	return o
+}
+
+// A valid method name for the respective request mode. Must be a fully qualified name, for example, `storage.googleapis.com/BucketService.GetBucket`.
+func (o GetSupportedServiceSupportedMethodOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupportedServiceSupportedMethod) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// A valid Cloud IAM permission for the respective request mode, for example, `storage.buckets.get`.
+func (o GetSupportedServiceSupportedMethodOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupportedServiceSupportedMethod) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+type GetSupportedServiceSupportedMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSupportedServiceSupportedMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSupportedServiceSupportedMethod)(nil)).Elem()
+}
+
+func (o GetSupportedServiceSupportedMethodArrayOutput) ToGetSupportedServiceSupportedMethodArrayOutput() GetSupportedServiceSupportedMethodArrayOutput {
+	return o
+}
+
+func (o GetSupportedServiceSupportedMethodArrayOutput) ToGetSupportedServiceSupportedMethodArrayOutputWithContext(ctx context.Context) GetSupportedServiceSupportedMethodArrayOutput {
+	return o
+}
+
+func (o GetSupportedServiceSupportedMethodArrayOutput) Index(i pulumi.IntInput) GetSupportedServiceSupportedMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSupportedServiceSupportedMethod {
+		return vs[0].([]GetSupportedServiceSupportedMethod)[vs[1].(int)]
+	}).(GetSupportedServiceSupportedMethodOutput)
+}
+
+type GetSupportedServicesSupportedService struct {
+	// True if the service is available on the restricted VIP. Services on the restricted VIP typically either support VPC Service Controls or are core infrastructure services required for the functioning of Google Cloud.
+	AvailableOnRestrictedVip bool `pulumi:"availableOnRestrictedVip"`
+	// True if the service is supported with some limitations. Check [documentation](https://cloud.google.com/vpc-service-controls/docs/supported-products) for details.
+	KnownLimitations bool `pulumi:"knownLimitations"`
+	// The service name or address of the supported service, such as `storage.googleapis.com`.
+	Name string `pulumi:"name"`
+	// The support stage of the service. Values are `GA`, `PREVIEW`, and `DEPRECATED`.
+	ServiceSupportStage string `pulumi:"serviceSupportStage"`
+	// The support stage of the service.
+	SupportStage string `pulumi:"supportStage"`
+	// The name of the supported product, such as 'Cloud Storage'.
+	Title string `pulumi:"title"`
+}
+
+// GetSupportedServicesSupportedServiceInput is an input type that accepts GetSupportedServicesSupportedServiceArgs and GetSupportedServicesSupportedServiceOutput values.
+// You can construct a concrete instance of `GetSupportedServicesSupportedServiceInput` via:
+//
+//	GetSupportedServicesSupportedServiceArgs{...}
+type GetSupportedServicesSupportedServiceInput interface {
+	pulumi.Input
+
+	ToGetSupportedServicesSupportedServiceOutput() GetSupportedServicesSupportedServiceOutput
+	ToGetSupportedServicesSupportedServiceOutputWithContext(context.Context) GetSupportedServicesSupportedServiceOutput
+}
+
+type GetSupportedServicesSupportedServiceArgs struct {
+	// True if the service is available on the restricted VIP. Services on the restricted VIP typically either support VPC Service Controls or are core infrastructure services required for the functioning of Google Cloud.
+	AvailableOnRestrictedVip pulumi.BoolInput `pulumi:"availableOnRestrictedVip"`
+	// True if the service is supported with some limitations. Check [documentation](https://cloud.google.com/vpc-service-controls/docs/supported-products) for details.
+	KnownLimitations pulumi.BoolInput `pulumi:"knownLimitations"`
+	// The service name or address of the supported service, such as `storage.googleapis.com`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The support stage of the service. Values are `GA`, `PREVIEW`, and `DEPRECATED`.
+	ServiceSupportStage pulumi.StringInput `pulumi:"serviceSupportStage"`
+	// The support stage of the service.
+	SupportStage pulumi.StringInput `pulumi:"supportStage"`
+	// The name of the supported product, such as 'Cloud Storage'.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (GetSupportedServicesSupportedServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSupportedServicesSupportedService)(nil)).Elem()
+}
+
+func (i GetSupportedServicesSupportedServiceArgs) ToGetSupportedServicesSupportedServiceOutput() GetSupportedServicesSupportedServiceOutput {
+	return i.ToGetSupportedServicesSupportedServiceOutputWithContext(context.Background())
+}
+
+func (i GetSupportedServicesSupportedServiceArgs) ToGetSupportedServicesSupportedServiceOutputWithContext(ctx context.Context) GetSupportedServicesSupportedServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSupportedServicesSupportedServiceOutput)
+}
+
+// GetSupportedServicesSupportedServiceArrayInput is an input type that accepts GetSupportedServicesSupportedServiceArray and GetSupportedServicesSupportedServiceArrayOutput values.
+// You can construct a concrete instance of `GetSupportedServicesSupportedServiceArrayInput` via:
+//
+//	GetSupportedServicesSupportedServiceArray{ GetSupportedServicesSupportedServiceArgs{...} }
+type GetSupportedServicesSupportedServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetSupportedServicesSupportedServiceArrayOutput() GetSupportedServicesSupportedServiceArrayOutput
+	ToGetSupportedServicesSupportedServiceArrayOutputWithContext(context.Context) GetSupportedServicesSupportedServiceArrayOutput
+}
+
+type GetSupportedServicesSupportedServiceArray []GetSupportedServicesSupportedServiceInput
+
+func (GetSupportedServicesSupportedServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSupportedServicesSupportedService)(nil)).Elem()
+}
+
+func (i GetSupportedServicesSupportedServiceArray) ToGetSupportedServicesSupportedServiceArrayOutput() GetSupportedServicesSupportedServiceArrayOutput {
+	return i.ToGetSupportedServicesSupportedServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetSupportedServicesSupportedServiceArray) ToGetSupportedServicesSupportedServiceArrayOutputWithContext(ctx context.Context) GetSupportedServicesSupportedServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSupportedServicesSupportedServiceArrayOutput)
+}
+
+type GetSupportedServicesSupportedServiceOutput struct{ *pulumi.OutputState }
+
+func (GetSupportedServicesSupportedServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSupportedServicesSupportedService)(nil)).Elem()
+}
+
+func (o GetSupportedServicesSupportedServiceOutput) ToGetSupportedServicesSupportedServiceOutput() GetSupportedServicesSupportedServiceOutput {
+	return o
+}
+
+func (o GetSupportedServicesSupportedServiceOutput) ToGetSupportedServicesSupportedServiceOutputWithContext(ctx context.Context) GetSupportedServicesSupportedServiceOutput {
+	return o
+}
+
+// True if the service is available on the restricted VIP. Services on the restricted VIP typically either support VPC Service Controls or are core infrastructure services required for the functioning of Google Cloud.
+func (o GetSupportedServicesSupportedServiceOutput) AvailableOnRestrictedVip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSupportedServicesSupportedService) bool { return v.AvailableOnRestrictedVip }).(pulumi.BoolOutput)
+}
+
+// True if the service is supported with some limitations. Check [documentation](https://cloud.google.com/vpc-service-controls/docs/supported-products) for details.
+func (o GetSupportedServicesSupportedServiceOutput) KnownLimitations() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSupportedServicesSupportedService) bool { return v.KnownLimitations }).(pulumi.BoolOutput)
+}
+
+// The service name or address of the supported service, such as `storage.googleapis.com`.
+func (o GetSupportedServicesSupportedServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupportedServicesSupportedService) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The support stage of the service. Values are `GA`, `PREVIEW`, and `DEPRECATED`.
+func (o GetSupportedServicesSupportedServiceOutput) ServiceSupportStage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupportedServicesSupportedService) string { return v.ServiceSupportStage }).(pulumi.StringOutput)
+}
+
+// The support stage of the service.
+func (o GetSupportedServicesSupportedServiceOutput) SupportStage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupportedServicesSupportedService) string { return v.SupportStage }).(pulumi.StringOutput)
+}
+
+// The name of the supported product, such as 'Cloud Storage'.
+func (o GetSupportedServicesSupportedServiceOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupportedServicesSupportedService) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type GetSupportedServicesSupportedServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSupportedServicesSupportedServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSupportedServicesSupportedService)(nil)).Elem()
+}
+
+func (o GetSupportedServicesSupportedServiceArrayOutput) ToGetSupportedServicesSupportedServiceArrayOutput() GetSupportedServicesSupportedServiceArrayOutput {
+	return o
+}
+
+func (o GetSupportedServicesSupportedServiceArrayOutput) ToGetSupportedServicesSupportedServiceArrayOutputWithContext(ctx context.Context) GetSupportedServicesSupportedServiceArrayOutput {
+	return o
+}
+
+func (o GetSupportedServicesSupportedServiceArrayOutput) Index(i pulumi.IntInput) GetSupportedServicesSupportedServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSupportedServicesSupportedService {
+		return vs[0].([]GetSupportedServicesSupportedService)[vs[1].(int)]
+	}).(GetSupportedServicesSupportedServiceOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelBasicInput)(nil)).Elem(), AccessLevelBasicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelBasicPtrInput)(nil)).Elem(), AccessLevelBasicArgs{})
@@ -18538,6 +18786,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSupportedServiceSupportedMethodInput)(nil)).Elem(), GetSupportedServiceSupportedMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSupportedServiceSupportedMethodArrayInput)(nil)).Elem(), GetSupportedServiceSupportedMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSupportedServicesSupportedServiceInput)(nil)).Elem(), GetSupportedServicesSupportedServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSupportedServicesSupportedServiceArrayInput)(nil)).Elem(), GetSupportedServicesSupportedServiceArray{})
 	pulumi.RegisterOutputType(AccessLevelBasicOutput{})
 	pulumi.RegisterOutputType(AccessLevelBasicPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelBasicConditionOutput{})
@@ -18754,4 +19006,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput{})
+	pulumi.RegisterOutputType(GetSupportedServiceSupportedMethodOutput{})
+	pulumi.RegisterOutputType(GetSupportedServiceSupportedMethodArrayOutput{})
+	pulumi.RegisterOutputType(GetSupportedServicesSupportedServiceOutput{})
+	pulumi.RegisterOutputType(GetSupportedServicesSupportedServiceArrayOutput{})
 }

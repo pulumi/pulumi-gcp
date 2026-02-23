@@ -68,28 +68,16 @@ import (
 // DnsThreatDetector can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/dnsThreatDetectors/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, DnsThreatDetector can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default projects/{{project}}/locations/{{location}}/dnsThreatDetectors/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default {{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default {{name}}
 // ```
 type DnsThreatDetector struct {
@@ -117,7 +105,7 @@ type DnsThreatDetector struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// DNS Threat Detection provider. The only supported value is `INFOBLOX`.
 	ThreatDetectorProvider pulumi.StringPtrOutput `pulumi:"threatDetectorProvider"`
@@ -184,7 +172,7 @@ type dnsThreatDetectorState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// DNS Threat Detection provider. The only supported value is `INFOBLOX`.
 	ThreatDetectorProvider *string `pulumi:"threatDetectorProvider"`
@@ -217,7 +205,7 @@ type DnsThreatDetectorState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// DNS Threat Detection provider. The only supported value is `INFOBLOX`.
 	ThreatDetectorProvider pulumi.StringPtrInput
@@ -402,7 +390,8 @@ func (o DnsThreatDetectorOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DnsThreatDetectorOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DnsThreatDetector) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

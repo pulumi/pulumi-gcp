@@ -266,28 +266,16 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         InstanceGroupNamedPort can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}`
-
         * `{{project}}/{{zone}}/{{group}}/{{port}}/{{name}}`
-
         * `{{zone}}/{{group}}/{{port}}/{{name}}`
-
         * `{{group}}/{{port}}/{{name}}`
 
         When using the `pulumi import` command, InstanceGroupNamedPort can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{project}}/{{zone}}/{{group}}/{{port}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{zone}}/{{group}}/{{port}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{group}}/{{port}}/{{name}}
         ```
 
@@ -363,28 +351,16 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         InstanceGroupNamedPort can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}`
-
         * `{{project}}/{{zone}}/{{group}}/{{port}}/{{name}}`
-
         * `{{zone}}/{{group}}/{{port}}/{{name}}`
-
         * `{{group}}/{{port}}/{{name}}`
 
         When using the `pulumi import` command, InstanceGroupNamedPort can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{project}}/{{zone}}/{{group}}/{{port}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{zone}}/{{group}}/{{port}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{group}}/{{port}}/{{name}}
         ```
 

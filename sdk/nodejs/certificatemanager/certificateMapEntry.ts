@@ -67,22 +67,14 @@ import * as utilities from "../utilities";
  * CertificateMapEntry can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}`
- *
  * * `{{project}}/{{map}}/{{name}}`
- *
  * * `{{map}}/{{name}}`
  *
  * When using the `pulumi import` command, CertificateMapEntry can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{project}}/{{map}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{map}}/{{name}}
  * ```
  */
@@ -170,7 +162,7 @@ export class CertificateMapEntry extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -299,7 +291,7 @@ export interface CertificateMapEntryState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

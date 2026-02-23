@@ -31,42 +31,37 @@ __all__ = [
     'JobRetryConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class JobAppEngineHttpTargetArgsDict(TypedDict):
-        relative_uri: pulumi.Input[_builtins.str]
-        """
-        The relative URI.
-        The relative URL must begin with "/" and must be a valid HTTP relative URL.
-        It can contain a path, query string arguments, and \\# fragments.
-        If the relative URL is empty, then the root path "/" will be used.
-        No spaces are allowed, and the maximum length allowed is 2083 characters
-        """
-        app_engine_routing: NotRequired[pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArgsDict']]
-        """
-        App Engine Routing setting for the job.
-        Structure is documented below.
-        """
-        body: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HTTP request body.
-        A request body is allowed only if the HTTP method is POST or PUT.
-        It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
-        A base64-encoded string.
-        """
-        headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        HTTP request headers.
-        This map contains the header field names and values.
-        Headers can be set when the job is created.
-        """
-        http_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Which HTTP method to use for the request.
-        """
-elif False:
-    JobAppEngineHttpTargetArgsDict: TypeAlias = Mapping[str, Any]
+class JobAppEngineHttpTargetArgsDict(TypedDict):
+    relative_uri: pulumi.Input[_builtins.str]
+    """
+    The relative URI.
+    The relative URL must begin with "/" and must be a valid HTTP relative URL.
+    It can contain a path, query string arguments, and \\# fragments.
+    If the relative URL is empty, then the root path "/" will be used.
+    No spaces are allowed, and the maximum length allowed is 2083 characters
+    """
+    app_engine_routing: NotRequired[pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArgsDict']]
+    """
+    App Engine Routing setting for the job.
+    Structure is documented below.
+    """
+    body: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP request body.
+    A request body is allowed only if the HTTP method is POST or PUT.
+    It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
+    A base64-encoded string.
+    """
+    headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    HTTP request headers.
+    This map contains the header field names and values.
+    Headers can be set when the job is created.
+    """
+    http_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Which HTTP method to use for the request.
+    """
 
 @pulumi.input_type
 class JobAppEngineHttpTargetArgs:
@@ -174,25 +169,22 @@ class JobAppEngineHttpTargetArgs:
         pulumi.set(self, "http_method", value)
 
 
-if not MYPY:
-    class JobAppEngineHttpTargetAppEngineRoutingArgsDict(TypedDict):
-        instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        App instance.
-        By default, the job is sent to an instance which is available when the job is attempted.
-        """
-        service: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        App service.
-        By default, the job is sent to the service which is the default service when the job is attempted.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        App version.
-        By default, the job is sent to the version which is the default version when the job is attempted.
-        """
-elif False:
-    JobAppEngineHttpTargetAppEngineRoutingArgsDict: TypeAlias = Mapping[str, Any]
+class JobAppEngineHttpTargetAppEngineRoutingArgsDict(TypedDict):
+    instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    App instance.
+    By default, the job is sent to an instance which is available when the job is attempted.
+    """
+    service: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    App service.
+    By default, the job is sent to the service which is the default service when the job is attempted.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    App version.
+    By default, the job is sent to the version which is the default version when the job is attempted.
+    """
 
 @pulumi.input_type
 class JobAppEngineHttpTargetAppEngineRoutingArgs:
@@ -255,42 +247,39 @@ class JobAppEngineHttpTargetAppEngineRoutingArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class JobHttpTargetArgsDict(TypedDict):
-        uri: pulumi.Input[_builtins.str]
-        """
-        The full URI path that the request will be sent to.
-        """
-        body: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HTTP request body.
-        A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-        It is an error to set body on a job with an incompatible HttpMethod.
-        A base64-encoded string.
-        """
-        headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        This map contains the header field names and values.
-        Repeated headers are not supported, but a header value can contain commas.
-        """
-        http_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Which HTTP method to use for the request.
-        """
-        oauth_token: NotRequired[pulumi.Input['JobHttpTargetOauthTokenArgsDict']]
-        """
-        Contains information needed for generating an OAuth token.
-        This type of authorization should be used when sending requests to a GCP endpoint.
-        Structure is documented below.
-        """
-        oidc_token: NotRequired[pulumi.Input['JobHttpTargetOidcTokenArgsDict']]
-        """
-        Contains information needed for generating an OpenID Connect token.
-        This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
-        Structure is documented below.
-        """
-elif False:
-    JobHttpTargetArgsDict: TypeAlias = Mapping[str, Any]
+class JobHttpTargetArgsDict(TypedDict):
+    uri: pulumi.Input[_builtins.str]
+    """
+    The full URI path that the request will be sent to.
+    """
+    body: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP request body.
+    A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
+    It is an error to set body on a job with an incompatible HttpMethod.
+    A base64-encoded string.
+    """
+    headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    This map contains the header field names and values.
+    Repeated headers are not supported, but a header value can contain commas.
+    """
+    http_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Which HTTP method to use for the request.
+    """
+    oauth_token: NotRequired[pulumi.Input['JobHttpTargetOauthTokenArgsDict']]
+    """
+    Contains information needed for generating an OAuth token.
+    This type of authorization should be used when sending requests to a GCP endpoint.
+    Structure is documented below.
+    """
+    oidc_token: NotRequired[pulumi.Input['JobHttpTargetOidcTokenArgsDict']]
+    """
+    Contains information needed for generating an OpenID Connect token.
+    This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobHttpTargetArgs:
@@ -410,20 +399,17 @@ class JobHttpTargetArgs:
         pulumi.set(self, "oidc_token", value)
 
 
-if not MYPY:
-    class JobHttpTargetOauthTokenArgsDict(TypedDict):
-        service_account_email: pulumi.Input[_builtins.str]
-        """
-        Service account email to be used for generating OAuth token.
-        The service account must be within the same project as the job.
-        """
-        scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OAuth scope to be used for generating OAuth access token. If not specified,
-        "https://www.googleapis.com/auth/cloud-platform" will be used.
-        """
-elif False:
-    JobHttpTargetOauthTokenArgsDict: TypeAlias = Mapping[str, Any]
+class JobHttpTargetOauthTokenArgsDict(TypedDict):
+    service_account_email: pulumi.Input[_builtins.str]
+    """
+    Service account email to be used for generating OAuth token.
+    The service account must be within the same project as the job.
+    """
+    scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OAuth scope to be used for generating OAuth access token. If not specified,
+    "https://www.googleapis.com/auth/cloud-platform" will be used.
+    """
 
 @pulumi.input_type
 class JobHttpTargetOauthTokenArgs:
@@ -467,20 +453,17 @@ class JobHttpTargetOauthTokenArgs:
         pulumi.set(self, "scope", value)
 
 
-if not MYPY:
-    class JobHttpTargetOidcTokenArgsDict(TypedDict):
-        service_account_email: pulumi.Input[_builtins.str]
-        """
-        Service account email to be used for generating OAuth token.
-        The service account must be within the same project as the job.
-        """
-        audience: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Audience to be used when generating OIDC token. If not specified,
-        the URI specified in target will be used.
-        """
-elif False:
-    JobHttpTargetOidcTokenArgsDict: TypeAlias = Mapping[str, Any]
+class JobHttpTargetOidcTokenArgsDict(TypedDict):
+    service_account_email: pulumi.Input[_builtins.str]
+    """
+    Service account email to be used for generating OAuth token.
+    The service account must be within the same project as the job.
+    """
+    audience: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Audience to be used when generating OIDC token. If not specified,
+    the URI specified in target will be used.
+    """
 
 @pulumi.input_type
 class JobHttpTargetOidcTokenArgs:
@@ -524,28 +507,25 @@ class JobHttpTargetOidcTokenArgs:
         pulumi.set(self, "audience", value)
 
 
-if not MYPY:
-    class JobPubsubTargetArgsDict(TypedDict):
-        topic_name: pulumi.Input[_builtins.str]
-        """
-        The full resource name for the Cloud Pub/Sub topic to which
-        messages will be published when a job is delivered. ~>**NOTE:**
-        The topic name must be in the same format as required by PubSub's
-        PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
-        """
-        attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Attributes for PubsubMessage.
-        Pubsub message must contain either non-empty data, or at least one attribute.
-        """
-        data: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The message payload for PubsubMessage.
-        Pubsub message must contain either non-empty data, or at least one attribute.
-        A base64-encoded string.
-        """
-elif False:
-    JobPubsubTargetArgsDict: TypeAlias = Mapping[str, Any]
+class JobPubsubTargetArgsDict(TypedDict):
+    topic_name: pulumi.Input[_builtins.str]
+    """
+    The full resource name for the Cloud Pub/Sub topic to which
+    messages will be published when a job is delivered. ~>**NOTE:**
+    The topic name must be in the same format as required by PubSub's
+    PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
+    """
+    attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Attributes for PubsubMessage.
+    Pubsub message must contain either non-empty data, or at least one attribute.
+    """
+    data: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The message payload for PubsubMessage.
+    Pubsub message must contain either non-empty data, or at least one attribute.
+    A base64-encoded string.
+    """
 
 @pulumi.input_type
 class JobPubsubTargetArgs:
@@ -613,39 +593,36 @@ class JobPubsubTargetArgs:
         pulumi.set(self, "data", value)
 
 
-if not MYPY:
-    class JobRetryConfigArgsDict(TypedDict):
-        max_backoff_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum amount of time to wait before retrying a job after it fails.
-        A duration in seconds with up to nine fractional digits, terminated by 's'.
-        """
-        max_doublings: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The time between retries will double maxDoublings times.
-        A job's retry interval starts at minBackoffDuration,
-        then doubles maxDoublings times, then increases linearly,
-        and finally retries retries at intervals of maxBackoffDuration up to retryCount times.
-        """
-        max_retry_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time limit for retrying a failed job, measured from time when an execution was first attempted.
-        If specified with retryCount, the job will be retried until both limits are reached.
-        A duration in seconds with up to nine fractional digits, terminated by 's'.
-        """
-        min_backoff_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The minimum amount of time to wait before retrying a job after it fails.
-        A duration in seconds with up to nine fractional digits, terminated by 's'.
-        """
-        retry_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of attempts that the system will make to run a
-        job using the exponential backoff procedure described by maxDoublings.
-        Values greater than 5 and negative values are not allowed.
-        """
-elif False:
-    JobRetryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class JobRetryConfigArgsDict(TypedDict):
+    max_backoff_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum amount of time to wait before retrying a job after it fails.
+    A duration in seconds with up to nine fractional digits, terminated by 's'.
+    """
+    max_doublings: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The time between retries will double maxDoublings times.
+    A job's retry interval starts at minBackoffDuration,
+    then doubles maxDoublings times, then increases linearly,
+    and finally retries retries at intervals of maxBackoffDuration up to retryCount times.
+    """
+    max_retry_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time limit for retrying a failed job, measured from time when an execution was first attempted.
+    If specified with retryCount, the job will be retried until both limits are reached.
+    A duration in seconds with up to nine fractional digits, terminated by 's'.
+    """
+    min_backoff_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum amount of time to wait before retrying a job after it fails.
+    A duration in seconds with up to nine fractional digits, terminated by 's'.
+    """
+    retry_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of attempts that the system will make to run a
+    job using the exponential backoff procedure described by maxDoublings.
+    Values greater than 5 and negative values are not allowed.
+    """
 
 @pulumi.input_type
 class JobRetryConfigArgs:

@@ -200,7 +200,7 @@ class _HttpRouteState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
@@ -352,7 +352,7 @@ class _HttpRouteState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -664,22 +664,14 @@ class HttpRoute(pulumi.CustomResource):
         HttpRoute can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/httpRoutes/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, HttpRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/httpRoute:HttpRoute default projects/{{project}}/locations/global/httpRoutes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/httpRoute:HttpRoute default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/httpRoute:HttpRoute default {{name}}
         ```
 
@@ -958,22 +950,14 @@ class HttpRoute(pulumi.CustomResource):
         HttpRoute can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/httpRoutes/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, HttpRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/httpRoute:HttpRoute default projects/{{project}}/locations/global/httpRoutes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/httpRoute:HttpRoute default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/httpRoute:HttpRoute default {{name}}
         ```
 
@@ -1074,7 +1058,7 @@ class HttpRoute(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
@@ -1182,7 +1166,7 @@ class HttpRoute(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

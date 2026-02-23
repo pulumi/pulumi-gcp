@@ -256,7 +256,7 @@ class _V2PolicyOrchestratorForOrganizationState:
                * Must end with a number or a letter.
                * Must be unique within the parent.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Output only. Set to true, if the there are ongoing changes being applied by the
                orchestrator.
         :param pulumi.Input[_builtins.str] state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
@@ -474,7 +474,7 @@ class _V2PolicyOrchestratorForOrganizationState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -606,16 +606,12 @@ class V2PolicyOrchestratorForOrganization(pulumi.CustomResource):
         PolicyOrchestratorForOrganization can be imported using any of these accepted formats:
 
         * `organizations/{{organization_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}`
-
         * `{{organization_id}}/{{policy_orchestrator_id}}`
 
         When using the `pulumi import` command, PolicyOrchestratorForOrganization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization default organizations/{{organization_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization default {{organization_id}}/{{policy_orchestrator_id}}
         ```
 
@@ -725,16 +721,12 @@ class V2PolicyOrchestratorForOrganization(pulumi.CustomResource):
         PolicyOrchestratorForOrganization can be imported using any of these accepted formats:
 
         * `organizations/{{organization_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}`
-
         * `{{organization_id}}/{{policy_orchestrator_id}}`
 
         When using the `pulumi import` command, PolicyOrchestratorForOrganization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization default organizations/{{organization_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization default {{organization_id}}/{{policy_orchestrator_id}}
         ```
 
@@ -866,7 +858,7 @@ class V2PolicyOrchestratorForOrganization(pulumi.CustomResource):
                * Must end with a number or a letter.
                * Must be unique within the parent.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Output only. Set to true, if the there are ongoing changes being applied by the
                orchestrator.
         :param pulumi.Input[_builtins.str] state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
@@ -1025,7 +1017,7 @@ class V2PolicyOrchestratorForOrganization(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

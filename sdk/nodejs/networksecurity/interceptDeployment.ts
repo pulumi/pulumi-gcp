@@ -74,22 +74,14 @@ import * as utilities from "../utilities";
  * InterceptDeployment can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/interceptDeployments/{{intercept_deployment_id}}`
- *
  * * `{{project}}/{{location}}/{{intercept_deployment_id}}`
- *
  * * `{{location}}/{{intercept_deployment_id}}`
  *
  * When using the `pulumi import` command, InterceptDeployment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networksecurity/interceptDeployment:InterceptDeployment default projects/{{project}}/locations/{{location}}/interceptDeployments/{{intercept_deployment_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/interceptDeployment:InterceptDeployment default {{project}}/{{location}}/{{intercept_deployment_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/interceptDeployment:InterceptDeployment default {{location}}/{{intercept_deployment_id}}
  * ```
  */
@@ -175,7 +167,7 @@ export class InterceptDeployment extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -324,7 +316,7 @@ export interface InterceptDeploymentState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -82,7 +82,8 @@ type LookupBucketObjectResult struct {
 	Crc32c              string                              `pulumi:"crc32c"`
 	CustomerEncryptions []GetBucketObjectCustomerEncryption `pulumi:"customerEncryptions"`
 	DeletionPolicy      string                              `pulumi:"deletionPolicy"`
-	DetectMd5hash       string                              `pulumi:"detectMd5hash"`
+	// (Computed) Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+	DetectMd5hash string `pulumi:"detectMd5hash"`
 	// (Computed) Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold        bool `pulumi:"eventBasedHold"`
 	ForceEmptyContentType bool `pulumi:"forceEmptyContentType"`
@@ -199,6 +200,7 @@ func (o LookupBucketObjectResultOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
+// (Computed) Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
 func (o LookupBucketObjectResultOutput) DetectMd5hash() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.DetectMd5hash }).(pulumi.StringOutput)
 }

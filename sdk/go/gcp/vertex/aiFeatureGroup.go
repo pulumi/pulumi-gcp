@@ -105,28 +105,16 @@ import (
 // FeatureGroup can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/featureGroups/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, FeatureGroup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default projects/{{project}}/locations/{{region}}/featureGroups/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{name}}
 // ```
 type AiFeatureGroup struct {
@@ -153,7 +141,7 @@ type AiFeatureGroup struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of feature group. eg us-central1
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -217,7 +205,7 @@ type aiFeatureGroupState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of feature group. eg us-central1
 	Region *string `pulumi:"region"`
@@ -247,7 +235,7 @@ type AiFeatureGroupState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region of feature group. eg us-central1
 	Region pulumi.StringPtrInput
@@ -430,7 +418,8 @@ func (o AiFeatureGroupOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AiFeatureGroupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiFeatureGroup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

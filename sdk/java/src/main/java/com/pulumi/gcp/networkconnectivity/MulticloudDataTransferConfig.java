@@ -78,22 +78,14 @@ import javax.annotation.Nullable;
  * MulticloudDataTransferConfig can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, MulticloudDataTransferConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig default projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig default {{location}}/{{name}}
  * ```
  * 
@@ -258,7 +250,7 @@ public class MulticloudDataTransferConfig extends com.pulumi.resources.CustomRes
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -266,7 +258,7 @@ public class MulticloudDataTransferConfig extends com.pulumi.resources.CustomRes
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

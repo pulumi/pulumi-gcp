@@ -7,6 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
+ *
+ * Read more about sensitive data in state. Passwords will not be retrieved when running
+ * "terraform import".
+ *
  * ## Example Usage
  *
  * Example creating a SQL User.
@@ -29,6 +34,31 @@ import * as utilities from "../utilities";
  *     instance: main.name,
  *     host: "me.com",
  *     password: "changeme",
+ * });
+ * ```
+ *
+ * Example creating a SQL User with database roles(applicable for Postgres/MySQL
+ * only).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
+ * const main = new gcp.sql.DatabaseInstance("main", {
+ *     name: `main-instance-${dbNameSuffix.hex}`,
+ *     databaseVersion: "POSTGRES_15",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ * });
+ * const users = new gcp.sql.User("users", {
+ *     name: "me",
+ *     instance: main.name,
+ *     host: "me.com",
+ *     password: "changeme",
+ *     databaseRoles: ["cloudsqlsuperuser"],
  * });
  * ```
  *
@@ -156,7 +186,13 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
-     * A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+     * A list of database roles to be assigned to the user.
+     * This option is only available for MySQL 8+ and PostgreSQL instances. You
+     * can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+     * own custom roles. Custom roles must be created in the database before
+     * you can assign them. You can create roles using the CREATE ROLE
+     * statement for both MySQL and PostgreSQL.
+     * **Note**: This property is write-only and will not be read from the API.
      */
     declare public readonly databaseRoles: pulumi.Output<string[] | undefined>;
     /**
@@ -174,7 +210,7 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly host: pulumi.Output<string>;
     /**
-     * The email address for MySQL IAM database users.
+     * IAM email address for MySQL IAM database users.
      */
     declare public /*out*/ readonly iamEmail: pulumi.Output<string>;
     /**
@@ -280,7 +316,13 @@ export class User extends pulumi.CustomResource {
  */
 export interface UserState {
     /**
-     * A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+     * A list of database roles to be assigned to the user.
+     * This option is only available for MySQL 8+ and PostgreSQL instances. You
+     * can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+     * own custom roles. Custom roles must be created in the database before
+     * you can assign them. You can create roles using the CREATE ROLE
+     * statement for both MySQL and PostgreSQL.
+     * **Note**: This property is write-only and will not be read from the API.
      */
     databaseRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -298,7 +340,7 @@ export interface UserState {
      */
     host?: pulumi.Input<string>;
     /**
-     * The email address for MySQL IAM database users.
+     * IAM email address for MySQL IAM database users.
      */
     iamEmail?: pulumi.Input<string>;
     /**
@@ -353,7 +395,13 @@ export interface UserState {
  */
 export interface UserArgs {
     /**
-     * A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+     * A list of database roles to be assigned to the user.
+     * This option is only available for MySQL 8+ and PostgreSQL instances. You
+     * can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+     * own custom roles. Custom roles must be created in the database before
+     * you can assign them. You can create roles using the CREATE ROLE
+     * statement for both MySQL and PostgreSQL.
+     * **Note**: This property is write-only and will not be read from the API.
      */
     databaseRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**

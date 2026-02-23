@@ -37,6 +37,9 @@ class MetastoreFederationArgs:
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
         :param pulumi.Input[_builtins.str] version: The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the federation. Defaults to false.
+               When the field is set to true in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the federation will fail.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the metastore federation.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -103,6 +106,11 @@ class MetastoreFederationArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the federation. Defaults to false.
+        When the field is set to true in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the federation will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -188,6 +196,9 @@ class _MetastoreFederationState:
         :param pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the metastore federation was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the federation. Defaults to false.
+               When the field is set to true in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the federation will fail.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint_uri: The URI of the endpoint used to access the metastore federation.
         :param pulumi.Input[_builtins.str] federation_id: The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -201,7 +212,7 @@ class _MetastoreFederationState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The current state of the metastore federation.
         :param pulumi.Input[_builtins.str] state_message: Additional information about the current state of the metastore federation, if available.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
@@ -274,6 +285,11 @@ class _MetastoreFederationState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the federation. Defaults to false.
+        When the field is set to true in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the federation will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -374,7 +390,7 @@ class _MetastoreFederationState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -540,22 +556,14 @@ class MetastoreFederation(pulumi.CustomResource):
         Federation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}`
-
         * `{{project}}/{{location}}/{{federation_id}}`
-
         * `{{location}}/{{federation_id}}`
 
         When using the `pulumi import` command, Federation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default projects/{{project}}/locations/{{location}}/federations/{{federation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{project}}/{{location}}/{{federation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{location}}/{{federation_id}}
         ```
 
@@ -563,6 +571,9 @@ class MetastoreFederation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetastoreFederationBackendMetastoreArgs', 'MetastoreFederationBackendMetastoreArgsDict']]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the federation. Defaults to false.
+               When the field is set to true in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the federation will fail.
         :param pulumi.Input[_builtins.str] federation_id: The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
@@ -651,22 +662,14 @@ class MetastoreFederation(pulumi.CustomResource):
         Federation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}`
-
         * `{{project}}/{{location}}/{{federation_id}}`
-
         * `{{location}}/{{federation_id}}`
 
         When using the `pulumi import` command, Federation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default projects/{{project}}/locations/{{location}}/federations/{{federation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{project}}/{{location}}/{{federation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{location}}/{{federation_id}}
         ```
 
@@ -764,6 +767,9 @@ class MetastoreFederation(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetastoreFederationBackendMetastoreArgs', 'MetastoreFederationBackendMetastoreArgsDict']]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the metastore federation was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the federation. Defaults to false.
+               When the field is set to true in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the federation will fail.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint_uri: The URI of the endpoint used to access the metastore federation.
         :param pulumi.Input[_builtins.str] federation_id: The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -777,7 +783,7 @@ class MetastoreFederation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The current state of the metastore federation.
         :param pulumi.Input[_builtins.str] state_message: Additional information about the current state of the metastore federation, if available.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
@@ -830,6 +836,11 @@ class MetastoreFederation(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the federation. Defaults to false.
+        When the field is set to true in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the federation will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -898,7 +909,7 @@ class MetastoreFederation(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// A map of VLAN tags to appliances and optional inner mapping rules.
-        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.InterconnectAttachmentL2ForwardingApplianceMapping> ApplianceMappings;
         /// <summary>
@@ -24,7 +23,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? DefaultApplianceIpAddress;
         /// <summary>
         /// GeneveHeader related configurations.
-        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.InterconnectAttachmentL2ForwardingGeneveHeader? GeneveHeader;
         /// <summary>

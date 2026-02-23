@@ -144,22 +144,14 @@ import (
 // RegionalParameter can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
-//
 // * `{{project}}/{{location}}/{{parameter_id}}`
-//
 // * `{{location}}/{{parameter_id}}`
 //
 // When using the `pulumi import` command, RegionalParameter can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:parametermanager/regionalParameter:RegionalParameter default projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:parametermanager/regionalParameter:RegionalParameter default {{project}}/{{location}}/{{parameter_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:parametermanager/regionalParameter:RegionalParameter default {{location}}/{{parameter_id}}
 // ```
 type RegionalParameter struct {
@@ -202,7 +194,7 @@ type RegionalParameter struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The time at which the regional Parameter was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -286,7 +278,7 @@ type regionalParameterState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The time at which the regional Parameter was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -330,7 +322,7 @@ type RegionalParameterState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The time at which the regional Parameter was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -553,7 +545,8 @@ func (o RegionalParameterOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RegionalParameterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RegionalParameter) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

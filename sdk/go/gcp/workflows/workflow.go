@@ -206,8 +206,14 @@ type Workflow struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The KMS key used to encrypt workflow and execution data.
 	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
-	CryptoKeyName      pulumi.StringPtrOutput `pulumi:"cryptoKeyName"`
-	DeletionProtection pulumi.BoolPtrOutput   `pulumi:"deletionProtection"`
+	CryptoKeyName pulumi.StringPtrOutput `pulumi:"cryptoKeyName"`
+	// Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the workflow,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the workflow will fail.
+	// When the field is set to false, deleting the workflow is allowed.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -231,7 +237,7 @@ type Workflow struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the workflow.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
@@ -303,8 +309,14 @@ type workflowState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The KMS key used to encrypt workflow and execution data.
 	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
-	CryptoKeyName      *string `pulumi:"cryptoKeyName"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	CryptoKeyName *string `pulumi:"cryptoKeyName"`
+	// Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the workflow,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the workflow will fail.
+	// When the field is set to false, deleting the workflow is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -328,7 +340,7 @@ type workflowState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the workflow.
 	Region *string `pulumi:"region"`
@@ -366,7 +378,13 @@ type WorkflowState struct {
 	CreateTime pulumi.StringPtrInput
 	// The KMS key used to encrypt workflow and execution data.
 	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
-	CryptoKeyName      pulumi.StringPtrInput
+	CryptoKeyName pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the workflow,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the workflow will fail.
+	// When the field is set to false, deleting the workflow is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringPtrInput
@@ -391,7 +409,7 @@ type WorkflowState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region of the workflow.
 	Region pulumi.StringPtrInput
@@ -431,8 +449,14 @@ type workflowArgs struct {
 	CallLogLevel *string `pulumi:"callLogLevel"`
 	// The KMS key used to encrypt workflow and execution data.
 	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
-	CryptoKeyName      *string `pulumi:"cryptoKeyName"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	CryptoKeyName *string `pulumi:"cryptoKeyName"`
+	// Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the workflow,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the workflow will fail.
+	// When the field is set to false, deleting the workflow is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description *string `pulumi:"description"`
 	// Describes the level of execution history to be stored for this workflow. This configuration
@@ -482,7 +506,13 @@ type WorkflowArgs struct {
 	CallLogLevel pulumi.StringPtrInput
 	// The KMS key used to encrypt workflow and execution data.
 	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
-	CryptoKeyName      pulumi.StringPtrInput
+	CryptoKeyName pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the workflow,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the workflow will fail.
+	// When the field is set to false, deleting the workflow is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringPtrInput
@@ -630,6 +660,12 @@ func (o WorkflowOutput) CryptoKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.CryptoKeyName }).(pulumi.StringPtrOutput)
 }
 
+// Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+// When a`terraform destroy` or `pulumi up` would delete the workflow,
+// the command will fail if this field is not set to false in Terraform state.
+// When the field is set to true or unset in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the workflow will fail.
+// When the field is set to false, deleting the workflow is allowed.
 func (o WorkflowOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -678,7 +714,8 @@ func (o WorkflowOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o WorkflowOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

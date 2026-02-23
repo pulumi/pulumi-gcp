@@ -162,9 +162,9 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// ## Import
     /// 
-    /// Storage Transfer Jobs can be imported using the Transfer Job's `project` and `name` (without the `transferJob/` prefix), e.g.
+    /// Storage Transfer Jobs can be imported using the Transfer Job's `Project` and `Name` (without the `transferJob/` prefix), e.g.
     /// 
-    /// * `{{project_id}}/{{name}}`, where `name` is a numeric value.
+    /// * `{{project_id}}/{{name}}`, where `Name` is a numeric value.
     /// 
     /// When using the `pulumi import` command, Storage Transfer Jobs can be imported using one of the formats above. For example:
     /// 

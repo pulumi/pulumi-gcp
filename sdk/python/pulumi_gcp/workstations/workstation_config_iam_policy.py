@@ -242,16 +242,149 @@ class WorkstationConfigIamPolicy(pulumi.CustomResource):
                  workstation_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for Cloud Workstations WorkstationConfig. Each of these resources serves a different use case:
+
+        * `workstations.WorkstationConfigIamPolicy`: Authoritative. Sets the IAM policy for the workstationconfig and replaces any existing policy already attached.
+        * `workstations.WorkstationConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workstationconfig are preserved.
+        * `workstations.WorkstationConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workstationconfig are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `workstations.WorkstationConfigIamPolicy`: Retrieves the IAM policy for the workstationconfig
+
+        > **Note:** `workstations.WorkstationConfigIamPolicy` **cannot** be used in conjunction with `workstations.WorkstationConfigIamBinding` and `workstations.WorkstationConfigIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `workstations.WorkstationConfigIamBinding` resources **can be** used in conjunction with `workstations.WorkstationConfigIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## workstations.WorkstationConfigIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.workstations.WorkstationConfigIamPolicy("policy",
+            project=default["project"],
+            location=default["location"],
+            workstation_cluster_id=default["workstationClusterId"],
+            workstation_config_id=default["workstationConfigId"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## workstations.WorkstationConfigIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.workstations.WorkstationConfigIamBinding("binding",
+            project=default["project"],
+            location=default["location"],
+            workstation_cluster_id=default["workstationClusterId"],
+            workstation_config_id=default["workstationConfigId"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## workstations.WorkstationConfigIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.workstations.WorkstationConfigIamMember("member",
+            project=default["project"],
+            location=default["location"],
+            workstation_cluster_id=default["workstationClusterId"],
+            workstation_config_id=default["workstationConfigId"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Cloud Workstations WorkstationConfig
+
+        Three different resources help you manage your IAM policy for Cloud Workstations WorkstationConfig. Each of these resources serves a different use case:
+
+        * `workstations.WorkstationConfigIamPolicy`: Authoritative. Sets the IAM policy for the workstationconfig and replaces any existing policy already attached.
+        * `workstations.WorkstationConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workstationconfig are preserved.
+        * `workstations.WorkstationConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workstationconfig are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `workstations.WorkstationConfigIamPolicy`: Retrieves the IAM policy for the workstationconfig
+
+        > **Note:** `workstations.WorkstationConfigIamPolicy` **cannot** be used in conjunction with `workstations.WorkstationConfigIamBinding` and `workstations.WorkstationConfigIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `workstations.WorkstationConfigIamBinding` resources **can be** used in conjunction with `workstations.WorkstationConfigIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## workstations.WorkstationConfigIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.workstations.WorkstationConfigIamPolicy("policy",
+            project=default["project"],
+            location=default["location"],
+            workstation_cluster_id=default["workstationClusterId"],
+            workstation_config_id=default["workstationConfigId"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## workstations.WorkstationConfigIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.workstations.WorkstationConfigIamBinding("binding",
+            project=default["project"],
+            location=default["location"],
+            workstation_cluster_id=default["workstationClusterId"],
+            workstation_config_id=default["workstationConfigId"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## workstations.WorkstationConfigIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.workstations.WorkstationConfigIamMember("member",
+            project=default["project"],
+            location=default["location"],
+            workstation_cluster_id=default["workstationClusterId"],
+            workstation_config_id=default["workstationConfigId"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}
-
         * {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
-
         * {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
-
         * {{workstation_config_id}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -259,25 +392,21 @@ class WorkstationConfigIamPolicy(pulumi.CustomResource):
         Cloud Workstations workstationconfig IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer user:jane@example.com"
+        $ terraform import google_workstations_workstation_config_iam_member.editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer"
+        $ terraform import google_workstations_workstation_config_iam_binding.editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy editor projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
@@ -301,16 +430,149 @@ class WorkstationConfigIamPolicy(pulumi.CustomResource):
                  args: WorkstationConfigIamPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for Cloud Workstations WorkstationConfig. Each of these resources serves a different use case:
+
+        * `workstations.WorkstationConfigIamPolicy`: Authoritative. Sets the IAM policy for the workstationconfig and replaces any existing policy already attached.
+        * `workstations.WorkstationConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workstationconfig are preserved.
+        * `workstations.WorkstationConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workstationconfig are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `workstations.WorkstationConfigIamPolicy`: Retrieves the IAM policy for the workstationconfig
+
+        > **Note:** `workstations.WorkstationConfigIamPolicy` **cannot** be used in conjunction with `workstations.WorkstationConfigIamBinding` and `workstations.WorkstationConfigIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `workstations.WorkstationConfigIamBinding` resources **can be** used in conjunction with `workstations.WorkstationConfigIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## workstations.WorkstationConfigIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.workstations.WorkstationConfigIamPolicy("policy",
+            project=default["project"],
+            location=default["location"],
+            workstation_cluster_id=default["workstationClusterId"],
+            workstation_config_id=default["workstationConfigId"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## workstations.WorkstationConfigIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.workstations.WorkstationConfigIamBinding("binding",
+            project=default["project"],
+            location=default["location"],
+            workstation_cluster_id=default["workstationClusterId"],
+            workstation_config_id=default["workstationConfigId"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## workstations.WorkstationConfigIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.workstations.WorkstationConfigIamMember("member",
+            project=default["project"],
+            location=default["location"],
+            workstation_cluster_id=default["workstationClusterId"],
+            workstation_config_id=default["workstationConfigId"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Cloud Workstations WorkstationConfig
+
+        Three different resources help you manage your IAM policy for Cloud Workstations WorkstationConfig. Each of these resources serves a different use case:
+
+        * `workstations.WorkstationConfigIamPolicy`: Authoritative. Sets the IAM policy for the workstationconfig and replaces any existing policy already attached.
+        * `workstations.WorkstationConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workstationconfig are preserved.
+        * `workstations.WorkstationConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workstationconfig are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `workstations.WorkstationConfigIamPolicy`: Retrieves the IAM policy for the workstationconfig
+
+        > **Note:** `workstations.WorkstationConfigIamPolicy` **cannot** be used in conjunction with `workstations.WorkstationConfigIamBinding` and `workstations.WorkstationConfigIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `workstations.WorkstationConfigIamBinding` resources **can be** used in conjunction with `workstations.WorkstationConfigIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## workstations.WorkstationConfigIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.workstations.WorkstationConfigIamPolicy("policy",
+            project=default["project"],
+            location=default["location"],
+            workstation_cluster_id=default["workstationClusterId"],
+            workstation_config_id=default["workstationConfigId"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## workstations.WorkstationConfigIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.workstations.WorkstationConfigIamBinding("binding",
+            project=default["project"],
+            location=default["location"],
+            workstation_cluster_id=default["workstationClusterId"],
+            workstation_config_id=default["workstationConfigId"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## workstations.WorkstationConfigIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.workstations.WorkstationConfigIamMember("member",
+            project=default["project"],
+            location=default["location"],
+            workstation_cluster_id=default["workstationClusterId"],
+            workstation_config_id=default["workstationConfigId"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}
-
         * {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
-
         * {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
-
         * {{workstation_config_id}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -318,25 +580,21 @@ class WorkstationConfigIamPolicy(pulumi.CustomResource):
         Cloud Workstations workstationconfig IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer user:jane@example.com"
+        $ terraform import google_workstations_workstation_config_iam_member.editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer"
+        $ terraform import google_workstations_workstation_config_iam_binding.editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy editor projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.

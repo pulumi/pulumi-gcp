@@ -178,29 +178,8 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// ## Import
     /// 
-    /// ### Importing IAM policies
-    /// 
-    /// IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
-    /// 
-    /// * `"projects/{project}/instances/{instance}"`
-    /// 
-    /// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-    /// 
-    /// tf
-    /// 
-    /// import {
-    /// 
-    ///   id = "projects/{project}/instances/{instance}"
-    /// 
-    ///   to = google_bigtable_instance_iam_policy.default
-    /// 
-    /// }
-    /// 
-    /// The `pulumi import` command can also be used:
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:bigtable/instanceIamPolicy:InstanceIamPolicy default projects/{project}/instances/{instance}
-    /// ```
+    /// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:bigtable/instanceIamPolicy:InstanceIamPolicy")]
     public partial class InstanceIamPolicy : global::Pulumi.CustomResource
@@ -222,6 +201,10 @@ namespace Pulumi.Gcp.BigTable
         [Output("policyData")]
         public Output<string> PolicyData { get; private set; } = null!;
 
+        /// <summary>
+        /// The project in which the instance belongs. If it
+        /// is not provided, Terraform will use the provider default.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -282,6 +265,10 @@ namespace Pulumi.Gcp.BigTable
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
 
+        /// <summary>
+        /// The project in which the instance belongs. If it
+        /// is not provided, Terraform will use the provider default.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -310,6 +297,10 @@ namespace Pulumi.Gcp.BigTable
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }
 
+        /// <summary>
+        /// The project in which the instance belongs. If it
+        /// is not provided, Terraform will use the provider default.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

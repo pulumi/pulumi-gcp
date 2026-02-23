@@ -511,7 +511,7 @@ class Router(pulumi.CustomResource):
             name="net-spoke",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_52865",
+            name="tf-test-subnet_85840",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
@@ -560,28 +560,16 @@ class Router(pulumi.CustomResource):
         Router can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/routers/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Router can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/router:Router default projects/{{project}}/regions/{{region}}/routers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/router:Router default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/router:Router default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/router:Router default {{name}}
         ```
 
@@ -679,7 +667,7 @@ class Router(pulumi.CustomResource):
             name="net-spoke",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_52865",
+            name="tf-test-subnet_85840",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
@@ -728,28 +716,16 @@ class Router(pulumi.CustomResource):
         Router can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/routers/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Router can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/router:Router default projects/{{project}}/regions/{{region}}/routers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/router:Router default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/router:Router default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/router:Router default {{name}}
         ```
 

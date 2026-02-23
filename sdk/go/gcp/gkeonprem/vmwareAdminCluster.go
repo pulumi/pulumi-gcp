@@ -304,22 +304,14 @@ import (
 // VmwareAdminCluster can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/vmwareAdminClusters/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, VmwareAdminCluster can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default projects/{{project}}/locations/{{location}}/vmwareAdminClusters/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default {{location}}/{{name}}
 // ```
 type VmwareAdminCluster struct {
@@ -358,7 +350,8 @@ type VmwareAdminCluster struct {
 	// The time the cluster was created, in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A human readable description of this VMware admin cluster.
-	Description          pulumi.StringOutput    `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// If set, the advanced cluster feature is enabled.
 	EnableAdvancedCluster pulumi.BoolOutput `pulumi:"enableAdvancedCluster"`
@@ -496,7 +489,8 @@ type vmwareAdminClusterState struct {
 	// The time the cluster was created, in RFC3339 text format.
 	CreateTime *string `pulumi:"createTime"`
 	// A human readable description of this VMware admin cluster.
-	Description          *string           `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// If set, the advanced cluster feature is enabled.
 	EnableAdvancedCluster *bool `pulumi:"enableAdvancedCluster"`
@@ -599,7 +593,8 @@ type VmwareAdminClusterState struct {
 	// The time the cluster was created, in RFC3339 text format.
 	CreateTime pulumi.StringPtrInput
 	// A human readable description of this VMware admin cluster.
-	Description          pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// If set, the advanced cluster feature is enabled.
 	EnableAdvancedCluster pulumi.BoolPtrInput
@@ -953,6 +948,7 @@ func (o VmwareAdminClusterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o VmwareAdminClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

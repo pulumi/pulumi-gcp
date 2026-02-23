@@ -606,7 +606,7 @@ class _RegionDiskState:
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput
                mb per second that the disk can handle. Values must be greater than or equal to 1.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: A reference to the region where the disk resides.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_zones: URLs of the zones where the disk should be replicated to.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
@@ -1018,7 +1018,7 @@ class _RegionDiskState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1348,28 +1348,16 @@ class RegionDisk(pulumi.CustomResource):
         RegionDisk can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/disks/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionDisk can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default projects/{{project}}/regions/{{region}}/disks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{name}}
         ```
 
@@ -1596,28 +1584,16 @@ class RegionDisk(pulumi.CustomResource):
         RegionDisk can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/disks/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionDisk can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default projects/{{project}}/regions/{{region}}/disks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{name}}
         ```
 
@@ -1817,7 +1793,7 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput
                mb per second that the disk can handle. Values must be greater than or equal to 1.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: A reference to the region where the disk resides.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_zones: URLs of the zones where the disk should be replicated to.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
@@ -2114,7 +2090,7 @@ class RegionDisk(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

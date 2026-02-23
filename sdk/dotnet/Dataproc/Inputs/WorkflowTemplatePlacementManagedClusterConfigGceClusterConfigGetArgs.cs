@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
+        /// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityGetArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
-        /// The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+        /// The (https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _serviceAccountScopes;
 
         /// <summary>
-        /// The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+        /// The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
         /// </summary>
         public InputList<string> ServiceAccountScopes
         {
@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+        /// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://docs.cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
         /// </summary>
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigGetArgs>? ShieldedInstanceConfig { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+        /// The Compute Engine tags to add to all instances (see [Manage tags for resources](https://docs.cloud.google.com/compute/docs/tag-resources)).
         /// </summary>
         public InputList<string> Tags
         {

@@ -18,14 +18,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigAr
     public static final WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs Empty = new WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs();
 
     /**
-     * The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as &#34;1.2&#34; (including a subminor version, such as &#34;1.2.29&#34;), or the [&#34;preview&#34; version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+     * The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as &#34;1.2&#34; (including a subminor version, such as &#34;1.2.29&#34;), or the [&#34;preview&#34; version](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
      * 
      */
     @Import(name="imageVersion")
     private @Nullable Output<String> imageVersion;
 
     /**
-     * @return The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as &#34;1.2&#34; (including a subminor version, such as &#34;1.2.29&#34;), or the [&#34;preview&#34; version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+     * @return The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as &#34;1.2&#34; (including a subminor version, such as &#34;1.2.29&#34;), or the [&#34;preview&#34; version](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
      * 
      */
     public Optional<Output<String>> imageVersion() {
@@ -62,7 +62,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigAr
      * * spark: `spark-defaults.conf`
      * * yarn: `yarn-site.xml`
      * 
-     * For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * For more information, see [Cluster properties](https://docs.cloud.google.com/dataproc/docs/concepts/cluster-properties).
      * 
      */
     @Import(name="properties")
@@ -83,7 +83,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigAr
      * * spark: `spark-defaults.conf`
      * * yarn: `yarn-site.xml`
      * 
-     * For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * For more information, see [Cluster properties](https://docs.cloud.google.com/dataproc/docs/concepts/cluster-properties).
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -117,7 +117,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigAr
         }
 
         /**
-         * @param imageVersion The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as &#34;1.2&#34; (including a subminor version, such as &#34;1.2.29&#34;), or the [&#34;preview&#34; version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+         * @param imageVersion The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as &#34;1.2&#34; (including a subminor version, such as &#34;1.2.29&#34;), or the [&#34;preview&#34; version](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigAr
         }
 
         /**
-         * @param imageVersion The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as &#34;1.2&#34; (including a subminor version, such as &#34;1.2.29&#34;), or the [&#34;preview&#34; version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+         * @param imageVersion The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as &#34;1.2&#34; (including a subminor version, such as &#34;1.2.29&#34;), or the [&#34;preview&#34; version](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigAr
          * * spark: `spark-defaults.conf`
          * * yarn: `yarn-site.xml`
          * 
-         * For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+         * For more information, see [Cluster properties](https://docs.cloud.google.com/dataproc/docs/concepts/cluster-properties).
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigAr
          * * spark: `spark-defaults.conf`
          * * yarn: `yarn-site.xml`
          * 
-         * For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+         * For more information, see [Cluster properties](https://docs.cloud.google.com/dataproc/docs/concepts/cluster-properties).
          * 
          * @return builder
          * 

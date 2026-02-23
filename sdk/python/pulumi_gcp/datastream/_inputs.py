@@ -313,13 +313,8 @@ __all__ = [
     'StreamSourceConfigSqlServerSourceConfigTransactionLogsArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ConnectionProfileBigqueryProfileArgsDict(TypedDict):
-        pass
-elif False:
-    ConnectionProfileBigqueryProfileArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileBigqueryProfileArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class ConnectionProfileBigqueryProfileArgs:
@@ -327,32 +322,29 @@ class ConnectionProfileBigqueryProfileArgs:
         pass
 
 
-if not MYPY:
-    class ConnectionProfileForwardSshConnectivityArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        Hostname for the SSH tunnel.
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        Username for the SSH tunnel.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SSH password.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port for the SSH tunnel.
-        """
-        private_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SSH private key.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    ConnectionProfileForwardSshConnectivityArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileForwardSshConnectivityArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    Hostname for the SSH tunnel.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    Username for the SSH tunnel.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SSH password.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port for the SSH tunnel.
+    """
+    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SSH private key.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class ConnectionProfileForwardSshConnectivityArgs:
@@ -443,18 +435,15 @@ class ConnectionProfileForwardSshConnectivityArgs:
         pulumi.set(self, "private_key", value)
 
 
-if not MYPY:
-    class ConnectionProfileGcsProfileArgsDict(TypedDict):
-        bucket: pulumi.Input[_builtins.str]
-        """
-        The Cloud Storage bucket name.
-        """
-        root_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The root path inside the Cloud Storage bucket.
-        """
-elif False:
-    ConnectionProfileGcsProfileArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileGcsProfileArgsDict(TypedDict):
+    bucket: pulumi.Input[_builtins.str]
+    """
+    The Cloud Storage bucket name.
+    """
+    root_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The root path inside the Cloud Storage bucket.
+    """
 
 @pulumi.input_type
 class ConnectionProfileGcsProfileArgs:
@@ -494,50 +483,47 @@ class ConnectionProfileGcsProfileArgs:
         pulumi.set(self, "root_path", value)
 
 
-if not MYPY:
-    class ConnectionProfileMongodbProfileArgsDict(TypedDict):
-        host_addresses: pulumi.Input[Sequence[pulumi.Input['ConnectionProfileMongodbProfileHostAddressArgsDict']]]
-        """
-        List of host addresses for a MongoDB cluster.
-        Structure is documented below.
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        Username for the MongoDB connection.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for the MongoDB connection. Mutually exclusive with
-        secretManagerStoredPassword.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        replica_set: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the replica set.
-        """
-        secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A reference to a Secret Manager resource name storing the MongoDB
-        connection password. Mutually exclusive with password.
-        """
-        srv_connection_format: NotRequired[pulumi.Input['ConnectionProfileMongodbProfileSrvConnectionFormatArgsDict']]
-        """
-        Srv connection format. Mutually exclusive with
-        standard_connection_Format.
-        """
-        ssl_config: NotRequired[pulumi.Input['ConnectionProfileMongodbProfileSslConfigArgsDict']]
-        """
-        SSL configuration for the MongoDB connection.
-        Structure is documented below.
-        """
-        standard_connection_format: NotRequired[pulumi.Input['ConnectionProfileMongodbProfileStandardConnectionFormatArgsDict']]
-        """
-        Standard connection format. Mutually exclusive with
-        srv_connection_format.
-        Structure is documented below.
-        """
-elif False:
-    ConnectionProfileMongodbProfileArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileMongodbProfileArgsDict(TypedDict):
+    host_addresses: pulumi.Input[Sequence[pulumi.Input['ConnectionProfileMongodbProfileHostAddressArgsDict']]]
+    """
+    List of host addresses for a MongoDB cluster.
+    Structure is documented below.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    Username for the MongoDB connection.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for the MongoDB connection. Mutually exclusive with
+    secretManagerStoredPassword.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    replica_set: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the replica set.
+    """
+    secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A reference to a Secret Manager resource name storing the MongoDB
+    connection password. Mutually exclusive with password.
+    """
+    srv_connection_format: NotRequired[pulumi.Input['ConnectionProfileMongodbProfileSrvConnectionFormatArgsDict']]
+    """
+    Srv connection format. Mutually exclusive with
+    standard_connection_Format.
+    """
+    ssl_config: NotRequired[pulumi.Input['ConnectionProfileMongodbProfileSslConfigArgsDict']]
+    """
+    SSL configuration for the MongoDB connection.
+    Structure is documented below.
+    """
+    standard_connection_format: NotRequired[pulumi.Input['ConnectionProfileMongodbProfileStandardConnectionFormatArgsDict']]
+    """
+    Standard connection format. Mutually exclusive with
+    srv_connection_format.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectionProfileMongodbProfileArgs:
@@ -688,18 +674,15 @@ class ConnectionProfileMongodbProfileArgs:
         pulumi.set(self, "standard_connection_format", value)
 
 
-if not MYPY:
-    class ConnectionProfileMongodbProfileHostAddressArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        Hostname for the connection.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port for the connection.
-        """
-elif False:
-    ConnectionProfileMongodbProfileHostAddressArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileMongodbProfileHostAddressArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    Hostname for the connection.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port for the connection.
+    """
 
 @pulumi.input_type
 class ConnectionProfileMongodbProfileHostAddressArgs:
@@ -739,11 +722,8 @@ class ConnectionProfileMongodbProfileHostAddressArgs:
         pulumi.set(self, "port", value)
 
 
-if not MYPY:
-    class ConnectionProfileMongodbProfileSrvConnectionFormatArgsDict(TypedDict):
-        pass
-elif False:
-    ConnectionProfileMongodbProfileSrvConnectionFormatArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileMongodbProfileSrvConnectionFormatArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class ConnectionProfileMongodbProfileSrvConnectionFormatArgs:
@@ -751,52 +731,49 @@ class ConnectionProfileMongodbProfileSrvConnectionFormatArgs:
         pass
 
 
-if not MYPY:
-    class ConnectionProfileMongodbProfileSslConfigArgsDict(TypedDict):
-        ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM-encoded certificate of the CA that signed the source database
-        server's certificate.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        ca_certificate_set: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Indicates whether the clientKey field is set.
-        """
-        client_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM-encoded certificate that will be used by the replica to
-        authenticate against the source database server. If this field
-        is used then the 'clientKey' and the 'caCertificate' fields are
-        mandatory.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        client_certificate_set: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Indicates whether the clientCertificate field is set.
-        """
-        client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM-encoded private key associated with the Client Certificate.
-        If this field is used then the 'client_certificate' and the
-        'ca_certificate' fields are mandatory.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        client_key_set: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Indicates whether the clientKey field is set.
-        """
-        secret_manager_stored_client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A reference to a Secret Manager resource name storing the
-        PEM-encoded private key. Mutually exclusive with clientKey.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    ConnectionProfileMongodbProfileSslConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileMongodbProfileSslConfigArgsDict(TypedDict):
+    ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM-encoded certificate of the CA that signed the source database
+    server's certificate.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    ca_certificate_set: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Indicates whether the clientKey field is set.
+    """
+    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM-encoded certificate that will be used by the replica to
+    authenticate against the source database server. If this field
+    is used then the 'clientKey' and the 'caCertificate' fields are
+    mandatory.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    client_certificate_set: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Indicates whether the clientCertificate field is set.
+    """
+    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM-encoded private key associated with the Client Certificate.
+    If this field is used then the 'client_certificate' and the
+    'ca_certificate' fields are mandatory.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    client_key_set: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Indicates whether the clientKey field is set.
+    """
+    secret_manager_stored_client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A reference to a Secret Manager resource name storing the
+    PEM-encoded private key. Mutually exclusive with clientKey.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class ConnectionProfileMongodbProfileSslConfigArgs:
@@ -945,15 +922,12 @@ class ConnectionProfileMongodbProfileSslConfigArgs:
         pulumi.set(self, "secret_manager_stored_client_key", value)
 
 
-if not MYPY:
-    class ConnectionProfileMongodbProfileStandardConnectionFormatArgsDict(TypedDict):
-        direct_connection: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the client connects directly to the
-        host[:port] in the connection URI.
-        """
-elif False:
-    ConnectionProfileMongodbProfileStandardConnectionFormatArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileMongodbProfileStandardConnectionFormatArgsDict(TypedDict):
+    direct_connection: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether the client connects directly to the
+    host[:port] in the connection URI.
+    """
 
 @pulumi.input_type
 class ConnectionProfileMongodbProfileStandardConnectionFormatArgs:
@@ -980,36 +954,33 @@ class ConnectionProfileMongodbProfileStandardConnectionFormatArgs:
         pulumi.set(self, "direct_connection", value)
 
 
-if not MYPY:
-    class ConnectionProfileMysqlProfileArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        Hostname for the MySQL connection.
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        Username for the MySQL connection.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for the MySQL connection.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port for the MySQL connection.
-        """
-        secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A reference to a Secret Manager resource name storing the user's password.
-        """
-        ssl_config: NotRequired[pulumi.Input['ConnectionProfileMysqlProfileSslConfigArgsDict']]
-        """
-        SSL configuration for the MySQL connection.
-        Structure is documented below.
-        """
-elif False:
-    ConnectionProfileMysqlProfileArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileMysqlProfileArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    Hostname for the MySQL connection.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    Username for the MySQL connection.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for the MySQL connection.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port for the MySQL connection.
+    """
+    secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A reference to a Secret Manager resource name storing the user's password.
+    """
+    ssl_config: NotRequired[pulumi.Input['ConnectionProfileMysqlProfileSslConfigArgsDict']]
+    """
+    SSL configuration for the MySQL connection.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectionProfileMysqlProfileArgs:
@@ -1116,46 +1087,43 @@ class ConnectionProfileMysqlProfileArgs:
         pulumi.set(self, "ssl_config", value)
 
 
-if not MYPY:
-    class ConnectionProfileMysqlProfileSslConfigArgsDict(TypedDict):
-        ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM-encoded certificate of the CA that signed the source database
-        server's certificate.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        ca_certificate_set: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Indicates whether the clientKey field is set.
-        """
-        client_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM-encoded certificate that will be used by the replica to
-        authenticate against the source database server. If this field
-        is used then the 'clientKey' and the 'caCertificate' fields are
-        mandatory.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        client_certificate_set: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Indicates whether the clientCertificate field is set.
-        """
-        client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM-encoded private key associated with the Client Certificate.
-        If this field is used then the 'client_certificate' and the
-        'ca_certificate' fields are mandatory.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        client_key_set: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Indicates whether the clientKey field is set.
-        """
-elif False:
-    ConnectionProfileMysqlProfileSslConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileMysqlProfileSslConfigArgsDict(TypedDict):
+    ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM-encoded certificate of the CA that signed the source database
+    server's certificate.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    ca_certificate_set: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Indicates whether the clientKey field is set.
+    """
+    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM-encoded certificate that will be used by the replica to
+    authenticate against the source database server. If this field
+    is used then the 'clientKey' and the 'caCertificate' fields are
+    mandatory.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    client_certificate_set: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Indicates whether the clientCertificate field is set.
+    """
+    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM-encoded private key associated with the Client Certificate.
+    If this field is used then the 'client_certificate' and the
+    'ca_certificate' fields are mandatory.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    client_key_set: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Indicates whether the clientKey field is set.
+    """
 
 @pulumi.input_type
 class ConnectionProfileMysqlProfileSslConfigArgs:
@@ -1284,39 +1252,36 @@ class ConnectionProfileMysqlProfileSslConfigArgs:
         pulumi.set(self, "client_key_set", value)
 
 
-if not MYPY:
-    class ConnectionProfileOracleProfileArgsDict(TypedDict):
-        database_service: pulumi.Input[_builtins.str]
-        """
-        Database for the Oracle connection.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        Hostname for the Oracle connection.
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        Username for the Oracle connection.
-        """
-        connection_attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Connection string attributes
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for the Oracle connection.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port for the Oracle connection.
-        """
-        secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A reference to a Secret Manager resource name storing the user's password.
-        """
-elif False:
-    ConnectionProfileOracleProfileArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileOracleProfileArgsDict(TypedDict):
+    database_service: pulumi.Input[_builtins.str]
+    """
+    Database for the Oracle connection.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    Hostname for the Oracle connection.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    Username for the Oracle connection.
+    """
+    connection_attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Connection string attributes
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for the Oracle connection.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port for the Oracle connection.
+    """
+    secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A reference to a Secret Manager resource name storing the user's password.
+    """
 
 @pulumi.input_type
 class ConnectionProfileOracleProfileArgs:
@@ -1436,40 +1401,37 @@ class ConnectionProfileOracleProfileArgs:
         pulumi.set(self, "secret_manager_stored_password", value)
 
 
-if not MYPY:
-    class ConnectionProfilePostgresqlProfileArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        Database for the PostgreSQL connection.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        Hostname for the PostgreSQL connection.
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        Username for the PostgreSQL connection.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for the PostgreSQL connection.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port for the PostgreSQL connection.
-        """
-        secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A reference to a Secret Manager resource name storing the user's password.
-        """
-        ssl_config: NotRequired[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigArgsDict']]
-        """
-        SSL configuration for the PostgreSQL connection.
-        Structure is documented below.
-        """
-elif False:
-    ConnectionProfilePostgresqlProfileArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfilePostgresqlProfileArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    Database for the PostgreSQL connection.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    Hostname for the PostgreSQL connection.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    Username for the PostgreSQL connection.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for the PostgreSQL connection.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port for the PostgreSQL connection.
+    """
+    secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A reference to a Secret Manager resource name storing the user's password.
+    """
+    ssl_config: NotRequired[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigArgsDict']]
+    """
+    SSL configuration for the PostgreSQL connection.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectionProfilePostgresqlProfileArgs:
@@ -1591,22 +1553,19 @@ class ConnectionProfilePostgresqlProfileArgs:
         pulumi.set(self, "ssl_config", value)
 
 
-if not MYPY:
-    class ConnectionProfilePostgresqlProfileSslConfigArgsDict(TypedDict):
-        server_and_client_verification: NotRequired[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgsDict']]
-        """
-        If this field is set, the communication will be encrypted with TLS encryption
-        and both the server identity and the client identity will be authenticated.
-        Structure is documented below.
-        """
-        server_verification: NotRequired[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgsDict']]
-        """
-        If this field is set, the communication will be encrypted with TLS encryption
-        and the server identity will be authenticated.
-        Structure is documented below.
-        """
-elif False:
-    ConnectionProfilePostgresqlProfileSslConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfilePostgresqlProfileSslConfigArgsDict(TypedDict):
+    server_and_client_verification: NotRequired[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgsDict']]
+    """
+    If this field is set, the communication will be encrypted with TLS encryption
+    and both the server identity and the client identity will be authenticated.
+    Structure is documented below.
+    """
+    server_verification: NotRequired[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgsDict']]
+    """
+    If this field is set, the communication will be encrypted with TLS encryption
+    and the server identity will be authenticated.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectionProfilePostgresqlProfileSslConfigArgs:
@@ -1655,32 +1614,29 @@ class ConnectionProfilePostgresqlProfileSslConfigArgs:
         pulumi.set(self, "server_verification", value)
 
 
-if not MYPY:
-    class ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgsDict(TypedDict):
-        ca_certificate: pulumi.Input[_builtins.str]
-        """
-        PEM-encoded server root CA certificate.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        client_certificate: pulumi.Input[_builtins.str]
-        """
-        PEM-encoded certificate used by the source database to authenticate the
-        client identity (i.e., the Datastream's identity). This certificate is
-        signed by either a root certificate trusted by the server or one or more
-        intermediate certificates (which is stored with the leaf certificate) to
-        link to this certificate to the trusted root certificate.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        client_key: pulumi.Input[_builtins.str]
-        """
-        PEM-encoded private key associated with the client certificate.
-        This value will be used during the SSL/TLS handshake, allowing
-        the PostgreSQL server to authenticate the client's identity,
-        i.e. identity of the stream.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgsDict(TypedDict):
+    ca_certificate: pulumi.Input[_builtins.str]
+    """
+    PEM-encoded server root CA certificate.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    client_certificate: pulumi.Input[_builtins.str]
+    """
+    PEM-encoded certificate used by the source database to authenticate the
+    client identity (i.e., the Datastream's identity). This certificate is
+    signed by either a root certificate trusted by the server or one or more
+    intermediate certificates (which is stored with the leaf certificate) to
+    link to this certificate to the trusted root certificate.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    client_key: pulumi.Input[_builtins.str]
+    """
+    PEM-encoded private key associated with the client certificate.
+    This value will be used during the SSL/TLS handshake, allowing
+    the PostgreSQL server to authenticate the client's identity,
+    i.e. identity of the stream.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs:
@@ -1754,15 +1710,12 @@ class ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs
         pulumi.set(self, "client_key", value)
 
 
-if not MYPY:
-    class ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgsDict(TypedDict):
-        ca_certificate: pulumi.Input[_builtins.str]
-        """
-        PEM-encoded server root CA certificate.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgsDict(TypedDict):
+    ca_certificate: pulumi.Input[_builtins.str]
+    """
+    PEM-encoded server root CA certificate.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs:
@@ -1788,14 +1741,11 @@ class ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs:
         pulumi.set(self, "ca_certificate", value)
 
 
-if not MYPY:
-    class ConnectionProfilePrivateConnectivityArgsDict(TypedDict):
-        private_connection: pulumi.Input[_builtins.str]
-        """
-        A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
-        """
-elif False:
-    ConnectionProfilePrivateConnectivityArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfilePrivateConnectivityArgsDict(TypedDict):
+    private_connection: pulumi.Input[_builtins.str]
+    """
+    A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
+    """
 
 @pulumi.input_type
 class ConnectionProfilePrivateConnectivityArgs:
@@ -1819,24 +1769,21 @@ class ConnectionProfilePrivateConnectivityArgs:
         pulumi.set(self, "private_connection", value)
 
 
-if not MYPY:
-    class ConnectionProfileSalesforceProfileArgsDict(TypedDict):
-        domain: pulumi.Input[_builtins.str]
-        """
-        Domain for the Salesforce Org.
-        """
-        oauth2_client_credentials: NotRequired[pulumi.Input['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgsDict']]
-        """
-        OAuth credentials to use for Salesforce authentication.
-        Structure is documented below.
-        """
-        user_credentials: NotRequired[pulumi.Input['ConnectionProfileSalesforceProfileUserCredentialsArgsDict']]
-        """
-        User credentials to use for Salesforce authentication.
-        Structure is documented below.
-        """
-elif False:
-    ConnectionProfileSalesforceProfileArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileSalesforceProfileArgsDict(TypedDict):
+    domain: pulumi.Input[_builtins.str]
+    """
+    Domain for the Salesforce Org.
+    """
+    oauth2_client_credentials: NotRequired[pulumi.Input['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgsDict']]
+    """
+    OAuth credentials to use for Salesforce authentication.
+    Structure is documented below.
+    """
+    user_credentials: NotRequired[pulumi.Input['ConnectionProfileSalesforceProfileUserCredentialsArgsDict']]
+    """
+    User credentials to use for Salesforce authentication.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectionProfileSalesforceProfileArgs:
@@ -1896,22 +1843,19 @@ class ConnectionProfileSalesforceProfileArgs:
         pulumi.set(self, "user_credentials", value)
 
 
-if not MYPY:
-    class ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgsDict(TypedDict):
-        client_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Client ID to use for authentication.
-        """
-        client_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Client secret to use for authentication.
-        """
-        secret_manager_stored_client_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A reference to a Secret Manager resource name storing the client secret.
-        """
-elif False:
-    ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgsDict(TypedDict):
+    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Client ID to use for authentication.
+    """
+    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Client secret to use for authentication.
+    """
+    secret_manager_stored_client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A reference to a Secret Manager resource name storing the client secret.
+    """
 
 @pulumi.input_type
 class ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs:
@@ -1968,32 +1912,29 @@ class ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs:
         pulumi.set(self, "secret_manager_stored_client_secret", value)
 
 
-if not MYPY:
-    class ConnectionProfileSalesforceProfileUserCredentialsArgsDict(TypedDict):
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password of the user.
-        """
-        secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A reference to a Secret Manager resource name storing the user's password.
-        """
-        secret_manager_stored_security_token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A reference to a Secret Manager resource name storing the user's security token.
+class ConnectionProfileSalesforceProfileUserCredentialsArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password of the user.
+    """
+    secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A reference to a Secret Manager resource name storing the user's password.
+    """
+    secret_manager_stored_security_token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A reference to a Secret Manager resource name storing the user's security token.
 
-        <a name="nested_salesforce_profile_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
-        """
-        security_token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Security token of the user.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Username to use for authentication.
-        """
-elif False:
-    ConnectionProfileSalesforceProfileUserCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_salesforce_profile_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
+    """
+    security_token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Security token of the user.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Username to use for authentication.
+    """
 
 @pulumi.input_type
 class ConnectionProfileSalesforceProfileUserCredentialsArgs:
@@ -2086,20 +2027,17 @@ class ConnectionProfileSalesforceProfileUserCredentialsArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ConnectionProfileSpannerProfileArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The full project and resource path for Spanner database. Format:
-        projects/{project}/instances/{instance}/databases/{database}.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The regional Spanner endpoint. Format:
-        https://spanner.{region}.rep.googleapis.com.
-        """
-elif False:
-    ConnectionProfileSpannerProfileArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileSpannerProfileArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The full project and resource path for Spanner database. Format:
+    projects/{project}/instances/{instance}/databases/{database}.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The regional Spanner endpoint. Format:
+    https://spanner.{region}.rep.googleapis.com.
+    """
 
 @pulumi.input_type
 class ConnectionProfileSpannerProfileArgs:
@@ -2143,35 +2081,32 @@ class ConnectionProfileSpannerProfileArgs:
         pulumi.set(self, "host", value)
 
 
-if not MYPY:
-    class ConnectionProfileSqlServerProfileArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        Database for the SQL Server connection.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        Hostname for the SQL Server connection.
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        Username for the SQL Server connection.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for the SQL Server connection.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port for the SQL Server connection.
-        """
-        secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A reference to a Secret Manager resource name storing the user's password.
-        """
-elif False:
-    ConnectionProfileSqlServerProfileArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionProfileSqlServerProfileArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    Database for the SQL Server connection.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    Hostname for the SQL Server connection.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    Username for the SQL Server connection.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for the SQL Server connection.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port for the SQL Server connection.
+    """
+    secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A reference to a Secret Manager resource name storing the user's password.
+    """
 
 @pulumi.input_type
 class ConnectionProfileSqlServerProfileArgs:
@@ -2275,18 +2210,15 @@ class ConnectionProfileSqlServerProfileArgs:
         pulumi.set(self, "secret_manager_stored_password", value)
 
 
-if not MYPY:
-    class PrivateConnectionErrorArgsDict(TypedDict):
-        details: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A list of messages that carry the error details.
-        """
-        message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A message containing more information about the error that occurred.
-        """
-elif False:
-    PrivateConnectionErrorArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateConnectionErrorArgsDict(TypedDict):
+    details: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A list of messages that carry the error details.
+    """
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A message containing more information about the error that occurred.
+    """
 
 @pulumi.input_type
 class PrivateConnectionErrorArgs:
@@ -2327,19 +2259,16 @@ class PrivateConnectionErrorArgs:
         pulumi.set(self, "message", value)
 
 
-if not MYPY:
-    class PrivateConnectionPscInterfaceConfigArgsDict(TypedDict):
-        network_attachment: pulumi.Input[_builtins.str]
-        """
-        Fully qualified name of the network attachment that Datastream will connect to.
-        Format: projects/{project}/regions/{region}/networkAttachments/{name}
-        To get Datastream project for the accepted list:
-        `gcloud datastream private-connections create [PC ID] --location=[LOCATION] --network-attachment=[NA URI] --validate-only --display-name=[ANY STRING]`
-        Add Datastream project to the attachment accepted list:
-        `gcloud compute network-attachments update [NA URI] --region=[NA region] --producer-accept-list=[TP from prev command]`
-        """
-elif False:
-    PrivateConnectionPscInterfaceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateConnectionPscInterfaceConfigArgsDict(TypedDict):
+    network_attachment: pulumi.Input[_builtins.str]
+    """
+    Fully qualified name of the network attachment that Datastream will connect to.
+    Format: projects/{project}/regions/{region}/networkAttachments/{name}
+    To get Datastream project for the accepted list:
+    `gcloud datastream private-connections create [PC ID] --location=[LOCATION] --network-attachment=[NA URI] --validate-only --display-name=[ANY STRING]`
+    Add Datastream project to the attachment accepted list:
+    `gcloud compute network-attachments update [NA URI] --region=[NA region] --producer-accept-list=[TP from prev command]`
+    """
 
 @pulumi.input_type
 class PrivateConnectionPscInterfaceConfigArgs:
@@ -2373,19 +2302,16 @@ class PrivateConnectionPscInterfaceConfigArgs:
         pulumi.set(self, "network_attachment", value)
 
 
-if not MYPY:
-    class PrivateConnectionVpcPeeringConfigArgsDict(TypedDict):
-        subnet: pulumi.Input[_builtins.str]
-        """
-        A free subnet for peering. (CIDR of /29)
-        """
-        vpc: pulumi.Input[_builtins.str]
-        """
-        Fully qualified name of the VPC that Datastream will peer to.
-        Format: projects/{project}/global/{networks}/{name}
-        """
-elif False:
-    PrivateConnectionVpcPeeringConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateConnectionVpcPeeringConfigArgsDict(TypedDict):
+    subnet: pulumi.Input[_builtins.str]
+    """
+    A free subnet for peering. (CIDR of /29)
+    """
+    vpc: pulumi.Input[_builtins.str]
+    """
+    Fully qualified name of the VPC that Datastream will peer to.
+    Format: projects/{project}/global/{networks}/{name}
+    """
 
 @pulumi.input_type
 class PrivateConnectionVpcPeeringConfigArgs:
@@ -2426,45 +2352,42 @@ class PrivateConnectionVpcPeeringConfigArgs:
         pulumi.set(self, "vpc", value)
 
 
-if not MYPY:
-    class StreamBackfillAllArgsDict(TypedDict):
-        mongodb_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsArgsDict']]
-        """
-        MongoDB data source objects to avoid backfilling.
-        Structure is documented below.
-        """
-        mysql_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgsDict']]
-        """
-        MySQL data source objects to avoid backfilling.
-        Structure is documented below.
-        """
-        oracle_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgsDict']]
-        """
-        PostgreSQL data source objects to avoid backfilling.
-        Structure is documented below.
-        """
-        postgresql_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgsDict']]
-        """
-        PostgreSQL data source objects to avoid backfilling.
-        Structure is documented below.
-        """
-        salesforce_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsArgsDict']]
-        """
-        Salesforce objects to avoid backfilling.
-        Structure is documented below.
-        """
-        spanner_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsArgsDict']]
-        """
-        Spanner objects to avoid backfilling.
-        Structure is documented below.
-        """
-        sql_server_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsArgsDict']]
-        """
-        SQL Server data source objects to avoid backfilling.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllArgsDict(TypedDict):
+    mongodb_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsArgsDict']]
+    """
+    MongoDB data source objects to avoid backfilling.
+    Structure is documented below.
+    """
+    mysql_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgsDict']]
+    """
+    MySQL data source objects to avoid backfilling.
+    Structure is documented below.
+    """
+    oracle_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgsDict']]
+    """
+    PostgreSQL data source objects to avoid backfilling.
+    Structure is documented below.
+    """
+    postgresql_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgsDict']]
+    """
+    PostgreSQL data source objects to avoid backfilling.
+    Structure is documented below.
+    """
+    salesforce_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsArgsDict']]
+    """
+    Salesforce objects to avoid backfilling.
+    Structure is documented below.
+    """
+    spanner_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsArgsDict']]
+    """
+    Spanner objects to avoid backfilling.
+    Structure is documented below.
+    """
+    sql_server_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsArgsDict']]
+    """
+    SQL Server data source objects to avoid backfilling.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllArgs:
@@ -2599,15 +2522,12 @@ class StreamBackfillAllArgs:
         pulumi.set(self, "sql_server_excluded_objects", value)
 
 
-if not MYPY:
-    class StreamBackfillAllMongodbExcludedObjectsArgsDict(TypedDict):
-        databases: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseArgsDict']]]
-        """
-        MongoDB databases in the cluster.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllMongodbExcludedObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllMongodbExcludedObjectsArgsDict(TypedDict):
+    databases: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseArgsDict']]]
+    """
+    MongoDB databases in the cluster.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllMongodbExcludedObjectsArgs:
@@ -2633,19 +2553,16 @@ class StreamBackfillAllMongodbExcludedObjectsArgs:
         pulumi.set(self, "databases", value)
 
 
-if not MYPY:
-    class StreamBackfillAllMongodbExcludedObjectsDatabaseArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        Database name.
-        """
-        collections: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgsDict']]]]
-        """
-        Collections in the database.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllMongodbExcludedObjectsDatabaseArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllMongodbExcludedObjectsDatabaseArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    Database name.
+    """
+    collections: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgsDict']]]]
+    """
+    Collections in the database.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllMongodbExcludedObjectsDatabaseArgs:
@@ -2687,19 +2604,16 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseArgs:
         pulumi.set(self, "collections", value)
 
 
-if not MYPY:
-    class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgsDict(TypedDict):
-        collection: pulumi.Input[_builtins.str]
-        """
-        Collection name.
-        """
-        fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgsDict']]]]
-        """
-        Fields in the collection.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgsDict(TypedDict):
+    collection: pulumi.Input[_builtins.str]
+    """
+    Collection name.
+    """
+    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgsDict']]]]
+    """
+    Fields in the collection.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs:
@@ -2741,14 +2655,11 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs:
         pulumi.set(self, "fields", value)
 
 
-if not MYPY:
-    class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgsDict(TypedDict):
-        field: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field name.
-        """
-elif False:
-    StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgsDict(TypedDict):
+    field: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field name.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs:
@@ -2773,15 +2684,12 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs:
         pulumi.set(self, "field", value)
 
 
-if not MYPY:
-    class StreamBackfillAllMysqlExcludedObjectsArgsDict(TypedDict):
-        mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgsDict']]]
-        """
-        MySQL databases on the server
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllMysqlExcludedObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllMysqlExcludedObjectsArgsDict(TypedDict):
+    mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgsDict']]]
+    """
+    MySQL databases on the server
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllMysqlExcludedObjectsArgs:
@@ -2807,19 +2715,16 @@ class StreamBackfillAllMysqlExcludedObjectsArgs:
         pulumi.set(self, "mysql_databases", value)
 
 
-if not MYPY:
-    class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        Database name.
-        """
-        mysql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgsDict']]]]
-        """
-        Tables in the database.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    Database name.
+    """
+    mysql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgsDict']]]]
+    """
+    Tables in the database.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs:
@@ -2861,19 +2766,16 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs:
         pulumi.set(self, "mysql_tables", value)
 
 
-if not MYPY:
-    class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        mysql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict']]]]
-        """
-        MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    mysql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict']]]]
+    """
+    MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs:
@@ -2915,40 +2817,37 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs:
         pulumi.set(self, "mysql_columns", value)
 
 
-if not MYPY:
-    class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict(TypedDict):
-        collation: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column collation.
-        """
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The MySQL data type. Full data types list can be found here:
-        https://dev.mysql.com/doc/refman/8.0/en/data-types.html
-        """
-        length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column length.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not the column can accept a null value.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ordinal position of the column in the table.
-        """
-        primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not the column represents a primary key.
-        """
-elif False:
-    StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict(TypedDict):
+    collation: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column collation.
+    """
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The MySQL data type. Full data types list can be found here:
+    https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+    """
+    length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column length.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not the column can accept a null value.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ordinal position of the column in the table.
+    """
+    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not the column represents a primary key.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs:
@@ -3073,15 +2972,12 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
         pulumi.set(self, "primary_key", value)
 
 
-if not MYPY:
-    class StreamBackfillAllOracleExcludedObjectsArgsDict(TypedDict):
-        oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaArgsDict']]]
-        """
-        Oracle schemas/databases in the database server
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllOracleExcludedObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllOracleExcludedObjectsArgsDict(TypedDict):
+    oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaArgsDict']]]
+    """
+    Oracle schemas/databases in the database server
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllOracleExcludedObjectsArgs:
@@ -3107,19 +3003,16 @@ class StreamBackfillAllOracleExcludedObjectsArgs:
         pulumi.set(self, "oracle_schemas", value)
 
 
-if not MYPY:
-    class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        Schema name.
-        """
-        oracle_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgsDict']]]]
-        """
-        Tables in the database.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllOracleExcludedObjectsOracleSchemaArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    Schema name.
+    """
+    oracle_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgsDict']]]]
+    """
+    Tables in the database.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs:
@@ -3161,19 +3054,16 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs:
         pulumi.set(self, "oracle_tables", value)
 
 
-if not MYPY:
-    class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        oracle_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgsDict']]]]
-        """
-        Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    oracle_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgsDict']]]]
+    """
+    Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs:
@@ -3215,54 +3105,51 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs:
         pulumi.set(self, "oracle_columns", value)
 
 
-if not MYPY:
-    class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgsDict(TypedDict):
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Oracle data type. Full data types list can be found here:
-        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
-        """
-        encoding: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Column encoding.
-        """
-        length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column length.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether or not the column can accept a null value.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The ordinal position of the column in the table.
-        """
-        precision: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column precision.
-        """
-        primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether or not the column represents a primary key.
-        """
-        scale: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column scale.
-        """
-elif False:
-    StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgsDict(TypedDict):
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Oracle data type. Full data types list can be found here:
+    https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+    """
+    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Column encoding.
+    """
+    length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column length.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether or not the column can accept a null value.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The ordinal position of the column in the table.
+    """
+    precision: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column precision.
+    """
+    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether or not the column represents a primary key.
+    """
+    scale: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column scale.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs:
@@ -3431,15 +3318,12 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
         pulumi.set(self, "scale", value)
 
 
-if not MYPY:
-    class StreamBackfillAllPostgresqlExcludedObjectsArgsDict(TypedDict):
-        postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgsDict']]]
-        """
-        PostgreSQL schemas on the server
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllPostgresqlExcludedObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllPostgresqlExcludedObjectsArgsDict(TypedDict):
+    postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgsDict']]]
+    """
+    PostgreSQL schemas on the server
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllPostgresqlExcludedObjectsArgs:
@@ -3465,19 +3349,16 @@ class StreamBackfillAllPostgresqlExcludedObjectsArgs:
         pulumi.set(self, "postgresql_schemas", value)
 
 
-if not MYPY:
-    class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        Database name.
-        """
-        postgresql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgsDict']]]]
-        """
-        Tables in the schema.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    Database name.
+    """
+    postgresql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgsDict']]]]
+    """
+    Tables in the schema.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs:
@@ -3519,19 +3400,16 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs:
         pulumi.set(self, "postgresql_tables", value)
 
 
-if not MYPY:
-    class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        postgresql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict']]]]
-        """
-        PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    postgresql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict']]]]
+    """
+    PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs:
@@ -3573,46 +3451,43 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableA
         pulumi.set(self, "postgresql_columns", value)
 
 
-if not MYPY:
-    class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict(TypedDict):
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The PostgreSQL data type. Full data types list can be found here:
-        https://www.postgresql.org/docs/current/datatype.html
-        """
-        length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column length.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not the column can accept a null value.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ordinal position of the column in the table.
-        """
-        precision: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column precision.
-        """
-        primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not the column represents a primary key.
-        """
-        scale: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column scale.
-        """
-elif False:
-    StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict(TypedDict):
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The PostgreSQL data type. Full data types list can be found here:
+    https://www.postgresql.org/docs/current/datatype.html
+    """
+    length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column length.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not the column can accept a null value.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ordinal position of the column in the table.
+    """
+    precision: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column precision.
+    """
+    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not the column represents a primary key.
+    """
+    scale: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column scale.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs:
@@ -3757,15 +3632,12 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
         pulumi.set(self, "scale", value)
 
 
-if not MYPY:
-    class StreamBackfillAllSalesforceExcludedObjectsArgsDict(TypedDict):
-        objects: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectArgsDict']]]
-        """
-        Salesforce objects in Salesforce Org.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllSalesforceExcludedObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllSalesforceExcludedObjectsArgsDict(TypedDict):
+    objects: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectArgsDict']]]
+    """
+    Salesforce objects in Salesforce Org.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllSalesforceExcludedObjectsArgs:
@@ -3791,19 +3663,16 @@ class StreamBackfillAllSalesforceExcludedObjectsArgs:
         pulumi.set(self, "objects", value)
 
 
-if not MYPY:
-    class StreamBackfillAllSalesforceExcludedObjectsObjectArgsDict(TypedDict):
-        fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgsDict']]]]
-        """
-        Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
-        Structure is documented below.
-        """
-        object_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of object in Salesforce Org.
-        """
-elif False:
-    StreamBackfillAllSalesforceExcludedObjectsObjectArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllSalesforceExcludedObjectsObjectArgsDict(TypedDict):
+    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgsDict']]]]
+    """
+    Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+    Structure is documented below.
+    """
+    object_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of object in Salesforce Org.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllSalesforceExcludedObjectsObjectArgs:
@@ -3846,14 +3715,11 @@ class StreamBackfillAllSalesforceExcludedObjectsObjectArgs:
         pulumi.set(self, "object_name", value)
 
 
-if not MYPY:
-    class StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field name.
-        """
-elif False:
-    StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field name.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs:
@@ -3878,15 +3744,12 @@ class StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class StreamBackfillAllSpannerExcludedObjectsArgsDict(TypedDict):
-        schemas: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaArgsDict']]]
-        """
-        Spanner schemas in the database
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllSpannerExcludedObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllSpannerExcludedObjectsArgsDict(TypedDict):
+    schemas: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaArgsDict']]]
+    """
+    Spanner schemas in the database
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllSpannerExcludedObjectsArgs:
@@ -3912,19 +3775,16 @@ class StreamBackfillAllSpannerExcludedObjectsArgs:
         pulumi.set(self, "schemas", value)
 
 
-if not MYPY:
-    class StreamBackfillAllSpannerExcludedObjectsSchemaArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        Schema name.
-        """
-        tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableArgsDict']]]]
-        """
-        Tables in the schema.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllSpannerExcludedObjectsSchemaArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllSpannerExcludedObjectsSchemaArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    Schema name.
+    """
+    tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableArgsDict']]]]
+    """
+    Tables in the schema.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllSpannerExcludedObjectsSchemaArgs:
@@ -3966,19 +3826,16 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaArgs:
         pulumi.set(self, "tables", value)
 
 
-if not MYPY:
-    class StreamBackfillAllSpannerExcludedObjectsSchemaTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgsDict']]]]
-        """
-        Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllSpannerExcludedObjectsSchemaTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllSpannerExcludedObjectsSchemaTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgsDict']]]]
+    """
+    Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs:
@@ -4020,30 +3877,27 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs:
         pulumi.set(self, "columns", value)
 
 
-if not MYPY:
-    class StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgsDict(TypedDict):
-        column: pulumi.Input[_builtins.str]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Spanner data type. Full data types list can be found here:
-        https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
-        """
-        is_primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the column is a primary key.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The ordinal position of the column in the table.
-        """
-elif False:
-    StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgsDict(TypedDict):
+    column: pulumi.Input[_builtins.str]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Spanner data type. Full data types list can be found here:
+    https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+    """
+    is_primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the column is a primary key.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The ordinal position of the column in the table.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs:
@@ -4123,15 +3977,12 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs:
         pulumi.set(self, "ordinal_position", value)
 
 
-if not MYPY:
-    class StreamBackfillAllSqlServerExcludedObjectsArgsDict(TypedDict):
-        schemas: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaArgsDict']]]
-        """
-        SQL Server schemas/databases in the database server
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllSqlServerExcludedObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllSqlServerExcludedObjectsArgsDict(TypedDict):
+    schemas: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaArgsDict']]]
+    """
+    SQL Server schemas/databases in the database server
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllSqlServerExcludedObjectsArgs:
@@ -4157,19 +4008,16 @@ class StreamBackfillAllSqlServerExcludedObjectsArgs:
         pulumi.set(self, "schemas", value)
 
 
-if not MYPY:
-    class StreamBackfillAllSqlServerExcludedObjectsSchemaArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        Schema name.
-        """
-        tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgsDict']]]]
-        """
-        Tables in the schema.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllSqlServerExcludedObjectsSchemaArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllSqlServerExcludedObjectsSchemaArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    Schema name.
+    """
+    tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgsDict']]]]
+    """
+    Tables in the schema.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllSqlServerExcludedObjectsSchemaArgs:
@@ -4211,19 +4059,16 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaArgs:
         pulumi.set(self, "tables", value)
 
 
-if not MYPY:
-    class StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgsDict']]]]
-        """
-        Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgsDict']]]]
+    """
+    Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs:
@@ -4265,50 +4110,47 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs:
         pulumi.set(self, "columns", value)
 
 
-if not MYPY:
-    class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgsDict(TypedDict):
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Spanner data type. Full data types list can be found here:
-        https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
-        """
-        length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column length.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether or not the column can accept a null value.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The ordinal position of the column in the table.
-        """
-        precision: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column precision.
-        """
-        primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether or not the column represents a primary key.
-        """
-        scale: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column scale.
-        """
-elif False:
-    StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgsDict(TypedDict):
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Spanner data type. Full data types list can be found here:
+    https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+    """
+    length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column length.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether or not the column can accept a null value.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The ordinal position of the column in the table.
+    """
+    precision: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column precision.
+    """
+    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether or not the column represents a primary key.
+    """
+    scale: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column scale.
+    """
 
 @pulumi.input_type
 class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs:
@@ -4461,11 +4303,8 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs:
         pulumi.set(self, "scale", value)
 
 
-if not MYPY:
-    class StreamBackfillNoneArgsDict(TypedDict):
-        pass
-elif False:
-    StreamBackfillNoneArgsDict: TypeAlias = Mapping[str, Any]
+class StreamBackfillNoneArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class StreamBackfillNoneArgs:
@@ -4473,24 +4312,21 @@ class StreamBackfillNoneArgs:
         pass
 
 
-if not MYPY:
-    class StreamDestinationConfigArgsDict(TypedDict):
-        destination_connection_profile: pulumi.Input[_builtins.str]
-        """
-        Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
-        """
-        bigquery_destination_config: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgsDict']]
-        """
-        A configuration for how data should be loaded to Google BigQuery.
-        Structure is documented below.
-        """
-        gcs_destination_config: NotRequired[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArgsDict']]
-        """
-        A configuration for how data should be loaded to Cloud Storage.
-        Structure is documented below.
-        """
-elif False:
-    StreamDestinationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class StreamDestinationConfigArgsDict(TypedDict):
+    destination_connection_profile: pulumi.Input[_builtins.str]
+    """
+    Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+    """
+    bigquery_destination_config: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgsDict']]
+    """
+    A configuration for how data should be loaded to Google BigQuery.
+    Structure is documented below.
+    """
+    gcs_destination_config: NotRequired[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArgsDict']]
+    """
+    A configuration for how data should be loaded to Cloud Storage.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamDestinationConfigArgs:
@@ -4550,44 +4386,41 @@ class StreamDestinationConfigArgs:
         pulumi.set(self, "gcs_destination_config", value)
 
 
-if not MYPY:
-    class StreamDestinationConfigBigqueryDestinationConfigArgsDict(TypedDict):
-        append_only: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgsDict']]
-        """
-        AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
-        events) to a source table will be written to the destination Google BigQuery table, retaining the
-        historical state of the data.
-        """
-        blmt_config: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgsDict']]
-        """
-        BigLake Managed Tables configuration for BigQuery streams.
-        Structure is documented below.
-        """
-        data_freshness: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The guaranteed data freshness (in seconds) when querying tables created by the stream.
-        Editing this field will only affect new tables created in the future, but existing tables
-        will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
-        """
-        merge: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigMergeArgsDict']]
-        """
-        Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
-        table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
-        in the source database. With Merge mode, no historical record of the change events is kept.
-        """
-        single_target_dataset: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgsDict']]
-        """
-        A single target dataset to which all data will be streamed.
-        Structure is documented below.
-        """
-        source_hierarchy_datasets: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgsDict']]
-        """
-        Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
-        Structure is documented below.
-        """
-elif False:
-    StreamDestinationConfigBigqueryDestinationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class StreamDestinationConfigBigqueryDestinationConfigArgsDict(TypedDict):
+    append_only: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgsDict']]
+    """
+    AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+    events) to a source table will be written to the destination Google BigQuery table, retaining the
+    historical state of the data.
+    """
+    blmt_config: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgsDict']]
+    """
+    BigLake Managed Tables configuration for BigQuery streams.
+    Structure is documented below.
+    """
+    data_freshness: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The guaranteed data freshness (in seconds) when querying tables created by the stream.
+    Editing this field will only affect new tables created in the future, but existing tables
+    will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+    """
+    merge: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigMergeArgsDict']]
+    """
+    Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+    table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+    in the source database. With Merge mode, no historical record of the change events is kept.
+    """
+    single_target_dataset: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgsDict']]
+    """
+    A single target dataset to which all data will be streamed.
+    Structure is documented below.
+    """
+    source_hierarchy_datasets: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgsDict']]
+    """
+    Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamDestinationConfigBigqueryDestinationConfigArgs:
@@ -4712,11 +4545,8 @@ class StreamDestinationConfigBigqueryDestinationConfigArgs:
         pulumi.set(self, "source_hierarchy_datasets", value)
 
 
-if not MYPY:
-    class StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgsDict(TypedDict):
-        pass
-elif False:
-    StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgsDict: TypeAlias = Mapping[str, Any]
+class StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs:
@@ -4724,30 +4554,27 @@ class StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs:
         pass
 
 
-if not MYPY:
-    class StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgsDict(TypedDict):
-        bucket: pulumi.Input[_builtins.str]
-        """
-        The Cloud Storage bucket name.
-        """
-        connection_name: pulumi.Input[_builtins.str]
-        """
-        The bigquery connection. Format: `{project}.{location}.{name}`
-        """
-        file_format: pulumi.Input[_builtins.str]
-        """
-        The file format.
-        """
-        table_format: pulumi.Input[_builtins.str]
-        """
-        The table format.
-        """
-        root_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The root path inside the Cloud Storage bucket.
-        """
-elif False:
-    StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgsDict: TypeAlias = Mapping[str, Any]
+class StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgsDict(TypedDict):
+    bucket: pulumi.Input[_builtins.str]
+    """
+    The Cloud Storage bucket name.
+    """
+    connection_name: pulumi.Input[_builtins.str]
+    """
+    The bigquery connection. Format: `{project}.{location}.{name}`
+    """
+    file_format: pulumi.Input[_builtins.str]
+    """
+    The file format.
+    """
+    table_format: pulumi.Input[_builtins.str]
+    """
+    The table format.
+    """
+    root_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The root path inside the Cloud Storage bucket.
+    """
 
 @pulumi.input_type
 class StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs:
@@ -4832,11 +4659,8 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs:
         pulumi.set(self, "root_path", value)
 
 
-if not MYPY:
-    class StreamDestinationConfigBigqueryDestinationConfigMergeArgsDict(TypedDict):
-        pass
-elif False:
-    StreamDestinationConfigBigqueryDestinationConfigMergeArgsDict: TypeAlias = Mapping[str, Any]
+class StreamDestinationConfigBigqueryDestinationConfigMergeArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class StreamDestinationConfigBigqueryDestinationConfigMergeArgs:
@@ -4844,15 +4668,12 @@ class StreamDestinationConfigBigqueryDestinationConfigMergeArgs:
         pass
 
 
-if not MYPY:
-    class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        Dataset ID in the format projects/{project}/datasets/{dataset_id} or
-        {project}:{dataset_id}
-        """
-elif False:
-    StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgsDict: TypeAlias = Mapping[str, Any]
+class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+    {project}:{dataset_id}
+    """
 
 @pulumi.input_type
 class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs:
@@ -4878,19 +4699,16 @@ class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs:
         pulumi.set(self, "dataset_id", value)
 
 
-if not MYPY:
-    class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgsDict(TypedDict):
-        dataset_template: pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgsDict']
-        """
-        Dataset template used for dynamic dataset creation.
-        Structure is documented below.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
-        """
-elif False:
-    StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgsDict(TypedDict):
+    dataset_template: pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgsDict']
+    """
+    Dataset template used for dynamic dataset creation.
+    Structure is documented below.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+    """
 
 @pulumi.input_type
 class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs:
@@ -4932,27 +4750,24 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArg
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgsDict(TypedDict):
-        location: pulumi.Input[_builtins.str]
-        """
-        The geographic location where the dataset should reside.
-        See https://cloud.google.com/bigquery/docs/locations for supported locations.
-        """
-        dataset_id_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If supplied, every created dataset will have its name prefixed by the provided value.
-        The prefix and name will be separated by an underscore. i.e. _.
-        """
-        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
-        table. The BigQuery Service Account associated with your project requires access to this
-        encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
-        See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-        """
-elif False:
-    StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgsDict: TypeAlias = Mapping[str, Any]
+class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgsDict(TypedDict):
+    location: pulumi.Input[_builtins.str]
+    """
+    The geographic location where the dataset should reside.
+    See https://cloud.google.com/bigquery/docs/locations for supported locations.
+    """
+    dataset_id_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If supplied, every created dataset will have its name prefixed by the provided value.
+    The prefix and name will be separated by an underscore. i.e. _.
+    """
+    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+    table. The BigQuery Service Account associated with your project requires access to this
+    encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+    See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+    """
 
 @pulumi.input_type
 class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs:
@@ -5018,32 +4833,29 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class StreamDestinationConfigGcsDestinationConfigArgsDict(TypedDict):
-        avro_file_format: NotRequired[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgsDict']]
-        """
-        AVRO file format configuration.
-        """
-        file_rotation_interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum duration for which new events are added before a file is closed and a new file is created.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
-        """
-        file_rotation_mb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum file size to be saved in the bucket.
-        """
-        json_file_format: NotRequired[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgsDict']]
-        """
-        JSON file format configuration.
-        Structure is documented below.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Path inside the Cloud Storage bucket to write data to.
-        """
-elif False:
-    StreamDestinationConfigGcsDestinationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class StreamDestinationConfigGcsDestinationConfigArgsDict(TypedDict):
+    avro_file_format: NotRequired[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgsDict']]
+    """
+    AVRO file format configuration.
+    """
+    file_rotation_interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum duration for which new events are added before a file is closed and a new file is created.
+    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+    """
+    file_rotation_mb: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum file size to be saved in the bucket.
+    """
+    json_file_format: NotRequired[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgsDict']]
+    """
+    JSON file format configuration.
+    Structure is documented below.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path inside the Cloud Storage bucket to write data to.
+    """
 
 @pulumi.input_type
 class StreamDestinationConfigGcsDestinationConfigArgs:
@@ -5136,11 +4948,8 @@ class StreamDestinationConfigGcsDestinationConfigArgs:
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgsDict(TypedDict):
-        pass
-elif False:
-    StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgsDict: TypeAlias = Mapping[str, Any]
+class StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs:
@@ -5148,20 +4957,17 @@ class StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs:
         pass
 
 
-if not MYPY:
-    class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgsDict(TypedDict):
-        compression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Compression of the loaded JSON file.
-        Possible values are: `NO_COMPRESSION`, `GZIP`.
-        """
-        schema_file_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The schema file format along JSON data files.
-        Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
-        """
-elif False:
-    StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgsDict: TypeAlias = Mapping[str, Any]
+class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgsDict(TypedDict):
+    compression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Compression of the loaded JSON file.
+    Possible values are: `NO_COMPRESSION`, `GZIP`.
+    """
+    schema_file_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The schema file format along JSON data files.
+    Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
+    """
 
 @pulumi.input_type
 class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs:
@@ -5206,20 +5012,17 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs:
         pulumi.set(self, "schema_file_format", value)
 
 
-if not MYPY:
-    class StreamRuleSetArgsDict(TypedDict):
-        customization_rules: pulumi.Input[Sequence[pulumi.Input['StreamRuleSetCustomizationRuleArgsDict']]]
-        """
-        List of customization rules to apply.
-        Structure is documented below.
-        """
-        object_filter: pulumi.Input['StreamRuleSetObjectFilterArgsDict']
-        """
-        Object filter to apply the customization rules to.
-        Structure is documented below.
-        """
-elif False:
-    StreamRuleSetArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetArgsDict(TypedDict):
+    customization_rules: pulumi.Input[Sequence[pulumi.Input['StreamRuleSetCustomizationRuleArgsDict']]]
+    """
+    List of customization rules to apply.
+    Structure is documented below.
+    """
+    object_filter: pulumi.Input['StreamRuleSetObjectFilterArgsDict']
+    """
+    Object filter to apply the customization rules to.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamRuleSetArgs:
@@ -5262,20 +5065,17 @@ class StreamRuleSetArgs:
         pulumi.set(self, "object_filter", value)
 
 
-if not MYPY:
-    class StreamRuleSetCustomizationRuleArgsDict(TypedDict):
-        bigquery_clustering: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryClusteringArgsDict']]
-        """
-        BigQuery clustering rule.
-        Structure is documented below.
-        """
-        bigquery_partitioning: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningArgsDict']]
-        """
-        BigQuery partitioning rule.
-        Structure is documented below.
-        """
-elif False:
-    StreamRuleSetCustomizationRuleArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetCustomizationRuleArgsDict(TypedDict):
+    bigquery_clustering: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryClusteringArgsDict']]
+    """
+    BigQuery clustering rule.
+    Structure is documented below.
+    """
+    bigquery_partitioning: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningArgsDict']]
+    """
+    BigQuery partitioning rule.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamRuleSetCustomizationRuleArgs:
@@ -5320,14 +5120,11 @@ class StreamRuleSetCustomizationRuleArgs:
         pulumi.set(self, "bigquery_partitioning", value)
 
 
-if not MYPY:
-    class StreamRuleSetCustomizationRuleBigqueryClusteringArgsDict(TypedDict):
-        columns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Column names to set as clustering columns.
-        """
-elif False:
-    StreamRuleSetCustomizationRuleBigqueryClusteringArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetCustomizationRuleBigqueryClusteringArgsDict(TypedDict):
+    columns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Column names to set as clustering columns.
+    """
 
 @pulumi.input_type
 class StreamRuleSetCustomizationRuleBigqueryClusteringArgs:
@@ -5351,29 +5148,26 @@ class StreamRuleSetCustomizationRuleBigqueryClusteringArgs:
         pulumi.set(self, "columns", value)
 
 
-if not MYPY:
-    class StreamRuleSetCustomizationRuleBigqueryPartitioningArgsDict(TypedDict):
-        ingestion_time_partition: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgsDict']]
-        """
-        A nested object resource.
-        Structure is documented below.
-        """
-        integer_range_partition: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgsDict']]
-        """
-        A nested object resource.
-        Structure is documented below.
-        """
-        require_partition_filter: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, queries over the table require a partition filter.
-        """
-        time_unit_partition: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgsDict']]
-        """
-        A nested object resource.
-        Structure is documented below.
-        """
-elif False:
-    StreamRuleSetCustomizationRuleBigqueryPartitioningArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetCustomizationRuleBigqueryPartitioningArgsDict(TypedDict):
+    ingestion_time_partition: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgsDict']]
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
+    integer_range_partition: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgsDict']]
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
+    require_partition_filter: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, queries over the table require a partition filter.
+    """
+    time_unit_partition: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgsDict']]
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamRuleSetCustomizationRuleBigqueryPartitioningArgs:
@@ -5452,15 +5246,12 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningArgs:
         pulumi.set(self, "time_unit_partition", value)
 
 
-if not MYPY:
-    class StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgsDict(TypedDict):
-        partitioning_time_granularity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Partition granularity.
-        Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
-        """
-elif False:
-    StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgsDict(TypedDict):
+    partitioning_time_granularity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Partition granularity.
+    Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
+    """
 
 @pulumi.input_type
 class StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs:
@@ -5487,26 +5278,23 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionAr
         pulumi.set(self, "partitioning_time_granularity", value)
 
 
-if not MYPY:
-    class StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgsDict(TypedDict):
-        column: pulumi.Input[_builtins.str]
-        """
-        The partitioning column.
-        """
-        end: pulumi.Input[_builtins.int]
-        """
-        The ending value for range partitioning (exclusive).
-        """
-        interval: pulumi.Input[_builtins.int]
-        """
-        The interval of each range within the partition.
-        """
-        start: pulumi.Input[_builtins.int]
-        """
-        The starting value for range partitioning (inclusive).
-        """
-elif False:
-    StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgsDict(TypedDict):
+    column: pulumi.Input[_builtins.str]
+    """
+    The partitioning column.
+    """
+    end: pulumi.Input[_builtins.int]
+    """
+    The ending value for range partitioning (exclusive).
+    """
+    interval: pulumi.Input[_builtins.int]
+    """
+    The interval of each range within the partition.
+    """
+    start: pulumi.Input[_builtins.int]
+    """
+    The starting value for range partitioning (inclusive).
+    """
 
 @pulumi.input_type
 class StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs:
@@ -5575,19 +5363,16 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArg
         pulumi.set(self, "start", value)
 
 
-if not MYPY:
-    class StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgsDict(TypedDict):
-        column: pulumi.Input[_builtins.str]
-        """
-        The partitioning column.
-        """
-        partitioning_time_granularity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Partition granularity.
-        Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
-        """
-elif False:
-    StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgsDict(TypedDict):
+    column: pulumi.Input[_builtins.str]
+    """
+    The partitioning column.
+    """
+    partitioning_time_granularity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Partition granularity.
+    Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
+    """
 
 @pulumi.input_type
 class StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs:
@@ -5629,15 +5414,12 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs:
         pulumi.set(self, "partitioning_time_granularity", value)
 
 
-if not MYPY:
-    class StreamRuleSetObjectFilterArgsDict(TypedDict):
-        source_object_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierArgsDict']]
-        """
-        Specific source object identifier.
-        Structure is documented below.
-        """
-elif False:
-    StreamRuleSetObjectFilterArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetObjectFilterArgsDict(TypedDict):
+    source_object_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierArgsDict']]
+    """
+    Specific source object identifier.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamRuleSetObjectFilterArgs:
@@ -5664,45 +5446,42 @@ class StreamRuleSetObjectFilterArgs:
         pulumi.set(self, "source_object_identifier", value)
 
 
-if not MYPY:
-    class StreamRuleSetObjectFilterSourceObjectIdentifierArgsDict(TypedDict):
-        mongodb_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgsDict']]
-        """
-        A nested object resource.
-        Structure is documented below.
-        """
-        mysql_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgsDict']]
-        """
-        A nested object resource.
-        Structure is documented below.
-        """
-        oracle_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgsDict']]
-        """
-        A nested object resource.
-        Structure is documented below.
-        """
-        postgresql_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgsDict']]
-        """
-        A nested object resource.
-        Structure is documented below.
-        """
-        salesforce_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgsDict']]
-        """
-        A nested object resource.
-        Structure is documented below.
-        """
-        spanner_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgsDict']]
-        """
-        A nested object resource.
-        Structure is documented below.
-        """
-        sql_server_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgsDict']]
-        """
-        A nested object resource.
-        Structure is documented below.
-        """
-elif False:
-    StreamRuleSetObjectFilterSourceObjectIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetObjectFilterSourceObjectIdentifierArgsDict(TypedDict):
+    mongodb_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgsDict']]
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
+    mysql_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgsDict']]
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
+    oracle_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgsDict']]
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
+    postgresql_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgsDict']]
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
+    salesforce_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgsDict']]
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
+    spanner_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgsDict']]
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
+    sql_server_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgsDict']]
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamRuleSetObjectFilterSourceObjectIdentifierArgs:
@@ -5837,18 +5616,15 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierArgs:
         pulumi.set(self, "sql_server_identifier", value)
 
 
-if not MYPY:
-    class StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgsDict(TypedDict):
-        collection: pulumi.Input[_builtins.str]
-        """
-        The MongoDB collection name.
-        """
-        database: pulumi.Input[_builtins.str]
-        """
-        The MongoDB database name.
-        """
-elif False:
-    StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgsDict(TypedDict):
+    collection: pulumi.Input[_builtins.str]
+    """
+    The MongoDB collection name.
+    """
+    database: pulumi.Input[_builtins.str]
+    """
+    The MongoDB database name.
+    """
 
 @pulumi.input_type
 class StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs:
@@ -5887,18 +5663,15 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs:
         pulumi.set(self, "database", value)
 
 
-if not MYPY:
-    class StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The database name.
-        """
-        table: pulumi.Input[_builtins.str]
-        """
-        The table name.
-        """
-elif False:
-    StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The database name.
+    """
+    table: pulumi.Input[_builtins.str]
+    """
+    The table name.
+    """
 
 @pulumi.input_type
 class StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs:
@@ -5937,18 +5710,15 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs:
         pulumi.set(self, "table", value)
 
 
-if not MYPY:
-    class StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        The schema name.
-        """
-        table: pulumi.Input[_builtins.str]
-        """
-        The table name.
-        """
-elif False:
-    StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    The schema name.
+    """
+    table: pulumi.Input[_builtins.str]
+    """
+    The table name.
+    """
 
 @pulumi.input_type
 class StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs:
@@ -5987,18 +5757,15 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs:
         pulumi.set(self, "table", value)
 
 
-if not MYPY:
-    class StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        The schema name.
-        """
-        table: pulumi.Input[_builtins.str]
-        """
-        The table name.
-        """
-elif False:
-    StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    The schema name.
+    """
+    table: pulumi.Input[_builtins.str]
+    """
+    The table name.
+    """
 
 @pulumi.input_type
 class StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs:
@@ -6037,14 +5804,11 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs:
         pulumi.set(self, "table", value)
 
 
-if not MYPY:
-    class StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgsDict(TypedDict):
-        object_name: pulumi.Input[_builtins.str]
-        """
-        The Salesforce object name.
-        """
-elif False:
-    StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgsDict(TypedDict):
+    object_name: pulumi.Input[_builtins.str]
+    """
+    The Salesforce object name.
+    """
 
 @pulumi.input_type
 class StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs:
@@ -6068,18 +5832,15 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs:
         pulumi.set(self, "object_name", value)
 
 
-if not MYPY:
-    class StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        The table name.
-        """
-        schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The schema name.
-        """
-elif False:
-    StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    The table name.
+    """
+    schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The schema name.
+    """
 
 @pulumi.input_type
 class StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs:
@@ -6119,18 +5880,15 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs:
         pulumi.set(self, "schema", value)
 
 
-if not MYPY:
-    class StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        The schema name.
-        """
-        table: pulumi.Input[_builtins.str]
-        """
-        The table name.
-        """
-elif False:
-    StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    The schema name.
+    """
+    table: pulumi.Input[_builtins.str]
+    """
+    The table name.
+    """
 
 @pulumi.input_type
 class StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs:
@@ -6169,49 +5927,46 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs:
         pulumi.set(self, "table", value)
 
 
-if not MYPY:
-    class StreamSourceConfigArgsDict(TypedDict):
-        source_connection_profile: pulumi.Input[_builtins.str]
-        """
-        Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
-        """
-        mongodb_source_config: NotRequired[pulumi.Input['StreamSourceConfigMongodbSourceConfigArgsDict']]
-        """
-        MongoDB source configuration.
-        Structure is documented below.
-        """
-        mysql_source_config: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigArgsDict']]
-        """
-        MySQL data source configuration.
-        Structure is documented below.
-        """
-        oracle_source_config: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigArgsDict']]
-        """
-        MySQL data source configuration.
-        Structure is documented below.
-        """
-        postgresql_source_config: NotRequired[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgsDict']]
-        """
-        PostgreSQL data source configuration.
-        Structure is documented below.
-        """
-        salesforce_source_config: NotRequired[pulumi.Input['StreamSourceConfigSalesforceSourceConfigArgsDict']]
-        """
-        Salesforce data source configuration.
-        Structure is documented below.
-        """
-        spanner_source_config: NotRequired[pulumi.Input['StreamSourceConfigSpannerSourceConfigArgsDict']]
-        """
-        Spanner data source configuration.
-        Structure is documented below.
-        """
-        sql_server_source_config: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigArgsDict']]
-        """
-        SQL Server data source configuration.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigArgsDict(TypedDict):
+    source_connection_profile: pulumi.Input[_builtins.str]
+    """
+    Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+    """
+    mongodb_source_config: NotRequired[pulumi.Input['StreamSourceConfigMongodbSourceConfigArgsDict']]
+    """
+    MongoDB source configuration.
+    Structure is documented below.
+    """
+    mysql_source_config: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigArgsDict']]
+    """
+    MySQL data source configuration.
+    Structure is documented below.
+    """
+    oracle_source_config: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigArgsDict']]
+    """
+    MySQL data source configuration.
+    Structure is documented below.
+    """
+    postgresql_source_config: NotRequired[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgsDict']]
+    """
+    PostgreSQL data source configuration.
+    Structure is documented below.
+    """
+    salesforce_source_config: NotRequired[pulumi.Input['StreamSourceConfigSalesforceSourceConfigArgsDict']]
+    """
+    Salesforce data source configuration.
+    Structure is documented below.
+    """
+    spanner_source_config: NotRequired[pulumi.Input['StreamSourceConfigSpannerSourceConfigArgsDict']]
+    """
+    Spanner data source configuration.
+    Structure is documented below.
+    """
+    sql_server_source_config: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigArgsDict']]
+    """
+    SQL Server data source configuration.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigArgs:
@@ -6361,26 +6116,23 @@ class StreamSourceConfigArgs:
         pulumi.set(self, "sql_server_source_config", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMongodbSourceConfigArgsDict(TypedDict):
-        exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsArgsDict']]
-        """
-        MongoDB collections to include in the stream.
-        Structure is documented below.
-        """
-        include_objects: NotRequired[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsArgsDict']]
-        """
-        MongoDB collections to include in the stream.
-        Structure is documented below.
-        """
-        max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optional. Maximum number of concurrent backfill tasks. The number
-        should be non-negative and less than or equal to 50. If not set
-        (or set to 0), the system''s default value is used
-        """
-elif False:
-    StreamSourceConfigMongodbSourceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMongodbSourceConfigArgsDict(TypedDict):
+    exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsArgsDict']]
+    """
+    MongoDB collections to include in the stream.
+    Structure is documented below.
+    """
+    include_objects: NotRequired[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsArgsDict']]
+    """
+    MongoDB collections to include in the stream.
+    Structure is documented below.
+    """
+    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optional. Maximum number of concurrent backfill tasks. The number
+    should be non-negative and less than or equal to 50. If not set
+    (or set to 0), the system''s default value is used
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigArgs:
@@ -6445,15 +6197,12 @@ class StreamSourceConfigMongodbSourceConfigArgs:
         pulumi.set(self, "max_concurrent_backfill_tasks", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMongodbSourceConfigExcludeObjectsArgsDict(TypedDict):
-        databases: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgsDict']]]]
-        """
-        MongoDB databases in the cluster.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigMongodbSourceConfigExcludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMongodbSourceConfigExcludeObjectsArgsDict(TypedDict):
+    databases: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgsDict']]]]
+    """
+    MongoDB databases in the cluster.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs:
@@ -6480,19 +6229,16 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs:
         pulumi.set(self, "databases", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgsDict(TypedDict):
-        collections: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgsDict']]]]
-        """
-        Collections in the database.
-        Structure is documented below.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Database name.
-        """
-elif False:
-    StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgsDict(TypedDict):
+    collections: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgsDict']]]]
+    """
+    Collections in the database.
+    Structure is documented below.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Database name.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs:
@@ -6535,19 +6281,16 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs:
         pulumi.set(self, "database", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgsDict(TypedDict):
-        collection: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Collection name.
-        """
-        fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgsDict']]]]
-        """
-        Fields in the collection.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgsDict(TypedDict):
+    collection: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Collection name.
+    """
+    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgsDict']]]]
+    """
+    Fields in the collection.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs:
@@ -6590,14 +6333,11 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs:
         pulumi.set(self, "fields", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgsDict(TypedDict):
-        field: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field name.
-        """
-elif False:
-    StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgsDict(TypedDict):
+    field: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field name.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs:
@@ -6622,15 +6362,12 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField
         pulumi.set(self, "field", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMongodbSourceConfigIncludeObjectsArgsDict(TypedDict):
-        databases: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgsDict']]]]
-        """
-        MongoDB databases in the cluster.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigMongodbSourceConfigIncludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMongodbSourceConfigIncludeObjectsArgsDict(TypedDict):
+    databases: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgsDict']]]]
+    """
+    MongoDB databases in the cluster.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs:
@@ -6657,19 +6394,16 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs:
         pulumi.set(self, "databases", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgsDict(TypedDict):
-        collections: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgsDict']]]]
-        """
-        Collections in the database.
-        Structure is documented below.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Database name.
-        """
-elif False:
-    StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgsDict(TypedDict):
+    collections: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgsDict']]]]
+    """
+    Collections in the database.
+    Structure is documented below.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Database name.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs:
@@ -6712,19 +6446,16 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs:
         pulumi.set(self, "database", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgsDict(TypedDict):
-        collection: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Collection name.
-        """
-        fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgsDict']]]]
-        """
-        Fields in the collection.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgsDict(TypedDict):
+    collection: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Collection name.
+    """
+    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgsDict']]]]
+    """
+    Fields in the collection.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs:
@@ -6767,14 +6498,11 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs:
         pulumi.set(self, "fields", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgsDict(TypedDict):
-        field: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field name.
-        """
-elif False:
-    StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgsDict(TypedDict):
+    field: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field name.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs:
@@ -6799,38 +6527,35 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField
         pulumi.set(self, "field", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMysqlSourceConfigArgsDict(TypedDict):
-        binary_log_position: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgsDict']]
-        """
-        CDC reader reads from binary logs replication cdc method.
-        """
-        exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgsDict']]
-        """
-        MySQL objects to exclude from the stream.
-        Structure is documented below.
-        """
-        gtid: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigGtidArgsDict']]
-        """
-        CDC reader reads from gtid based replication.
-        """
-        include_objects: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgsDict']]
-        """
-        MySQL objects to retrieve from the source.
-        Structure is documented below.
-        """
-        max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of concurrent backfill tasks. The number should be non negative.
-        If not set (or set to 0), the system's default value will be used.
-        """
-        max_concurrent_cdc_tasks: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of concurrent CDC tasks. The number should be non negative.
-        If not set (or set to 0), the system's default value will be used.
-        """
-elif False:
-    StreamSourceConfigMysqlSourceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMysqlSourceConfigArgsDict(TypedDict):
+    binary_log_position: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgsDict']]
+    """
+    CDC reader reads from binary logs replication cdc method.
+    """
+    exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgsDict']]
+    """
+    MySQL objects to exclude from the stream.
+    Structure is documented below.
+    """
+    gtid: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigGtidArgsDict']]
+    """
+    CDC reader reads from gtid based replication.
+    """
+    include_objects: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgsDict']]
+    """
+    MySQL objects to retrieve from the source.
+    Structure is documented below.
+    """
+    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of concurrent backfill tasks. The number should be non negative.
+    If not set (or set to 0), the system's default value will be used.
+    """
+    max_concurrent_cdc_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of concurrent CDC tasks. The number should be non negative.
+    If not set (or set to 0), the system's default value will be used.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigArgs:
@@ -6943,11 +6668,8 @@ class StreamSourceConfigMysqlSourceConfigArgs:
         pulumi.set(self, "max_concurrent_cdc_tasks", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgsDict(TypedDict):
-        pass
-elif False:
-    StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs:
@@ -6955,15 +6677,12 @@ class StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs:
         pass
 
 
-if not MYPY:
-    class StreamSourceConfigMysqlSourceConfigExcludeObjectsArgsDict(TypedDict):
-        mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgsDict']]]
-        """
-        MySQL databases on the server
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigMysqlSourceConfigExcludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMysqlSourceConfigExcludeObjectsArgsDict(TypedDict):
+    mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgsDict']]]
+    """
+    MySQL databases on the server
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs:
@@ -6989,19 +6708,16 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs:
         pulumi.set(self, "mysql_databases", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        Database name.
-        """
-        mysql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgsDict']]]]
-        """
-        Tables in the database.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    Database name.
+    """
+    mysql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgsDict']]]]
+    """
+    Tables in the database.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs:
@@ -7043,19 +6759,16 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs:
         pulumi.set(self, "mysql_tables", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        mysql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict']]]]
-        """
-        MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    mysql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict']]]]
+    """
+    MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs:
@@ -7097,40 +6810,37 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableAr
         pulumi.set(self, "mysql_columns", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict(TypedDict):
-        collation: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column collation.
-        """
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The MySQL data type. Full data types list can be found here:
-        https://dev.mysql.com/doc/refman/8.0/en/data-types.html
-        """
-        length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column length.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not the column can accept a null value.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ordinal position of the column in the table.
-        """
-        primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not the column represents a primary key.
-        """
-elif False:
-    StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict(TypedDict):
+    collation: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column collation.
+    """
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The MySQL data type. Full data types list can be found here:
+    https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+    """
+    length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column length.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not the column can accept a null value.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ordinal position of the column in the table.
+    """
+    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not the column represents a primary key.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs:
@@ -7255,11 +6965,8 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
         pulumi.set(self, "primary_key", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMysqlSourceConfigGtidArgsDict(TypedDict):
-        pass
-elif False:
-    StreamSourceConfigMysqlSourceConfigGtidArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMysqlSourceConfigGtidArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigGtidArgs:
@@ -7267,15 +6974,12 @@ class StreamSourceConfigMysqlSourceConfigGtidArgs:
         pass
 
 
-if not MYPY:
-    class StreamSourceConfigMysqlSourceConfigIncludeObjectsArgsDict(TypedDict):
-        mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgsDict']]]
-        """
-        MySQL databases on the server
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigMysqlSourceConfigIncludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMysqlSourceConfigIncludeObjectsArgsDict(TypedDict):
+    mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgsDict']]]
+    """
+    MySQL databases on the server
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs:
@@ -7301,19 +7005,16 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs:
         pulumi.set(self, "mysql_databases", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        Database name.
-        """
-        mysql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgsDict']]]]
-        """
-        Tables in the database.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    Database name.
+    """
+    mysql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgsDict']]]]
+    """
+    Tables in the database.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs:
@@ -7355,19 +7056,16 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs:
         pulumi.set(self, "mysql_tables", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        mysql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict']]]]
-        """
-        MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    mysql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict']]]]
+    """
+    MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs:
@@ -7409,40 +7107,37 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableAr
         pulumi.set(self, "mysql_columns", value)
 
 
-if not MYPY:
-    class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict(TypedDict):
-        collation: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column collation.
-        """
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The MySQL data type. Full data types list can be found here:
-        https://dev.mysql.com/doc/refman/8.0/en/data-types.html
-        """
-        length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column length.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not the column can accept a null value.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ordinal position of the column in the table.
-        """
-        primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not the column represents a primary key.
-        """
-elif False:
-    StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict(TypedDict):
+    collation: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column collation.
+    """
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The MySQL data type. Full data types list can be found here:
+    https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+    """
+    length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column length.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not the column can accept a null value.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ordinal position of the column in the table.
+    """
+    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not the column represents a primary key.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs:
@@ -7567,38 +7262,35 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
         pulumi.set(self, "primary_key", value)
 
 
-if not MYPY:
-    class StreamSourceConfigOracleSourceConfigArgsDict(TypedDict):
-        drop_large_objects: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgsDict']]
-        """
-        Configuration to drop large object values.
-        """
-        exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgsDict']]
-        """
-        Oracle objects to exclude from the stream.
-        Structure is documented below.
-        """
-        include_objects: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArgsDict']]
-        """
-        Oracle objects to retrieve from the source.
-        Structure is documented below.
-        """
-        max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of concurrent backfill tasks. The number should be non negative.
-        If not set (or set to 0), the system's default value will be used.
-        """
-        max_concurrent_cdc_tasks: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of concurrent CDC tasks. The number should be non negative.
-        If not set (or set to 0), the system's default value will be used.
-        """
-        stream_large_objects: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgsDict']]
-        """
-        Configuration to drop large object values.
-        """
-elif False:
-    StreamSourceConfigOracleSourceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigOracleSourceConfigArgsDict(TypedDict):
+    drop_large_objects: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgsDict']]
+    """
+    Configuration to drop large object values.
+    """
+    exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgsDict']]
+    """
+    Oracle objects to exclude from the stream.
+    Structure is documented below.
+    """
+    include_objects: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArgsDict']]
+    """
+    Oracle objects to retrieve from the source.
+    Structure is documented below.
+    """
+    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of concurrent backfill tasks. The number should be non negative.
+    If not set (or set to 0), the system's default value will be used.
+    """
+    max_concurrent_cdc_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of concurrent CDC tasks. The number should be non negative.
+    If not set (or set to 0), the system's default value will be used.
+    """
+    stream_large_objects: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgsDict']]
+    """
+    Configuration to drop large object values.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigOracleSourceConfigArgs:
@@ -7711,11 +7403,8 @@ class StreamSourceConfigOracleSourceConfigArgs:
         pulumi.set(self, "stream_large_objects", value)
 
 
-if not MYPY:
-    class StreamSourceConfigOracleSourceConfigDropLargeObjectsArgsDict(TypedDict):
-        pass
-elif False:
-    StreamSourceConfigOracleSourceConfigDropLargeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigOracleSourceConfigDropLargeObjectsArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs:
@@ -7723,15 +7412,12 @@ class StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs:
         pass
 
 
-if not MYPY:
-    class StreamSourceConfigOracleSourceConfigExcludeObjectsArgsDict(TypedDict):
-        oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgsDict']]]
-        """
-        Oracle schemas/databases in the database server
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigOracleSourceConfigExcludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigOracleSourceConfigExcludeObjectsArgsDict(TypedDict):
+    oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgsDict']]]
+    """
+    Oracle schemas/databases in the database server
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigOracleSourceConfigExcludeObjectsArgs:
@@ -7757,19 +7443,16 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsArgs:
         pulumi.set(self, "oracle_schemas", value)
 
 
-if not MYPY:
-    class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        Schema name.
-        """
-        oracle_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgsDict']]]]
-        """
-        Tables in the database.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    Schema name.
+    """
+    oracle_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgsDict']]]]
+    """
+    Tables in the database.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs:
@@ -7811,19 +7494,16 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs:
         pulumi.set(self, "oracle_tables", value)
 
 
-if not MYPY:
-    class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        oracle_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgsDict']]]]
-        """
-        Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    oracle_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgsDict']]]]
+    """
+    Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs:
@@ -7865,54 +7545,51 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableA
         pulumi.set(self, "oracle_columns", value)
 
 
-if not MYPY:
-    class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgsDict(TypedDict):
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Oracle data type. Full data types list can be found here:
-        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
-        """
-        encoding: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Column encoding.
-        """
-        length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column length.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether or not the column can accept a null value.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The ordinal position of the column in the table.
-        """
-        precision: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column precision.
-        """
-        primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether or not the column represents a primary key.
-        """
-        scale: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column scale.
-        """
-elif False:
-    StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgsDict(TypedDict):
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Oracle data type. Full data types list can be found here:
+    https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+    """
+    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Column encoding.
+    """
+    length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column length.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether or not the column can accept a null value.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The ordinal position of the column in the table.
+    """
+    precision: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column precision.
+    """
+    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether or not the column represents a primary key.
+    """
+    scale: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column scale.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs:
@@ -8081,15 +7758,12 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
         pulumi.set(self, "scale", value)
 
 
-if not MYPY:
-    class StreamSourceConfigOracleSourceConfigIncludeObjectsArgsDict(TypedDict):
-        oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgsDict']]]
-        """
-        Oracle schemas/databases in the database server
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigOracleSourceConfigIncludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigOracleSourceConfigIncludeObjectsArgsDict(TypedDict):
+    oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgsDict']]]
+    """
+    Oracle schemas/databases in the database server
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigOracleSourceConfigIncludeObjectsArgs:
@@ -8115,19 +7789,16 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsArgs:
         pulumi.set(self, "oracle_schemas", value)
 
 
-if not MYPY:
-    class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        Schema name.
-        """
-        oracle_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgsDict']]]]
-        """
-        Tables in the database.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    Schema name.
+    """
+    oracle_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgsDict']]]]
+    """
+    Tables in the database.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs:
@@ -8169,19 +7840,16 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs:
         pulumi.set(self, "oracle_tables", value)
 
 
-if not MYPY:
-    class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        oracle_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgsDict']]]]
-        """
-        Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    oracle_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgsDict']]]]
+    """
+    Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs:
@@ -8223,54 +7891,51 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableA
         pulumi.set(self, "oracle_columns", value)
 
 
-if not MYPY:
-    class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgsDict(TypedDict):
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Oracle data type. Full data types list can be found here:
-        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
-        """
-        encoding: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Column encoding.
-        """
-        length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column length.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether or not the column can accept a null value.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The ordinal position of the column in the table.
-        """
-        precision: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column precision.
-        """
-        primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether or not the column represents a primary key.
-        """
-        scale: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column scale.
-        """
-elif False:
-    StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgsDict(TypedDict):
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Oracle data type. Full data types list can be found here:
+    https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+    """
+    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Column encoding.
+    """
+    length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column length.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether or not the column can accept a null value.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The ordinal position of the column in the table.
+    """
+    precision: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column precision.
+    """
+    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether or not the column represents a primary key.
+    """
+    scale: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column scale.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs:
@@ -8439,11 +8104,8 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
         pulumi.set(self, "scale", value)
 
 
-if not MYPY:
-    class StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgsDict(TypedDict):
-        pass
-elif False:
-    StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs:
@@ -8451,35 +8113,32 @@ class StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs:
         pass
 
 
-if not MYPY:
-    class StreamSourceConfigPostgresqlSourceConfigArgsDict(TypedDict):
-        publication: pulumi.Input[_builtins.str]
-        """
-        The name of the publication that includes the set of all tables
-        that are defined in the stream's include_objects.
-        """
-        replication_slot: pulumi.Input[_builtins.str]
-        """
-        The name of the logical replication slot that's configured with
-        the pgoutput plugin.
-        """
-        exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgsDict']]
-        """
-        PostgreSQL objects to exclude from the stream.
-        Structure is documented below.
-        """
-        include_objects: NotRequired[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgsDict']]
-        """
-        PostgreSQL objects to retrieve from the source.
-        Structure is documented below.
-        """
-        max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of concurrent backfill tasks. The number should be non
-        negative. If not set (or set to 0), the system's default value will be used.
-        """
-elif False:
-    StreamSourceConfigPostgresqlSourceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigPostgresqlSourceConfigArgsDict(TypedDict):
+    publication: pulumi.Input[_builtins.str]
+    """
+    The name of the publication that includes the set of all tables
+    that are defined in the stream's include_objects.
+    """
+    replication_slot: pulumi.Input[_builtins.str]
+    """
+    The name of the logical replication slot that's configured with
+    the pgoutput plugin.
+    """
+    exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgsDict']]
+    """
+    PostgreSQL objects to exclude from the stream.
+    Structure is documented below.
+    """
+    include_objects: NotRequired[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgsDict']]
+    """
+    PostgreSQL objects to retrieve from the source.
+    Structure is documented below.
+    """
+    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of concurrent backfill tasks. The number should be non
+    negative. If not set (or set to 0), the system's default value will be used.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigPostgresqlSourceConfigArgs:
@@ -8576,15 +8235,12 @@ class StreamSourceConfigPostgresqlSourceConfigArgs:
         pulumi.set(self, "max_concurrent_backfill_tasks", value)
 
 
-if not MYPY:
-    class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgsDict(TypedDict):
-        postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgsDict']]]
-        """
-        PostgreSQL schemas on the server
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgsDict(TypedDict):
+    postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgsDict']]]
+    """
+    PostgreSQL schemas on the server
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs:
@@ -8610,19 +8266,16 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs:
         pulumi.set(self, "postgresql_schemas", value)
 
 
-if not MYPY:
-    class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        Database name.
-        """
-        postgresql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgsDict']]]]
-        """
-        Tables in the schema.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    Database name.
+    """
+    postgresql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgsDict']]]]
+    """
+    Tables in the schema.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs:
@@ -8664,19 +8317,16 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs
         pulumi.set(self, "postgresql_tables", value)
 
 
-if not MYPY:
-    class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        postgresql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict']]]]
-        """
-        PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    postgresql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict']]]]
+    """
+    PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs:
@@ -8718,46 +8368,43 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
         pulumi.set(self, "postgresql_columns", value)
 
 
-if not MYPY:
-    class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict(TypedDict):
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The PostgreSQL data type. Full data types list can be found here:
-        https://www.postgresql.org/docs/current/datatype.html
-        """
-        length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column length.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not the column can accept a null value.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ordinal position of the column in the table.
-        """
-        precision: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column precision.
-        """
-        primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not the column represents a primary key.
-        """
-        scale: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column scale.
-        """
-elif False:
-    StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict(TypedDict):
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The PostgreSQL data type. Full data types list can be found here:
+    https://www.postgresql.org/docs/current/datatype.html
+    """
+    length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column length.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not the column can accept a null value.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ordinal position of the column in the table.
+    """
+    precision: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column precision.
+    """
+    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not the column represents a primary key.
+    """
+    scale: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column scale.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs:
@@ -8902,15 +8549,12 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
         pulumi.set(self, "scale", value)
 
 
-if not MYPY:
-    class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgsDict(TypedDict):
-        postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgsDict']]]
-        """
-        PostgreSQL schemas on the server
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgsDict(TypedDict):
+    postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgsDict']]]
+    """
+    PostgreSQL schemas on the server
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs:
@@ -8936,19 +8580,16 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs:
         pulumi.set(self, "postgresql_schemas", value)
 
 
-if not MYPY:
-    class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        Database name.
-        """
-        postgresql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgsDict']]]]
-        """
-        Tables in the schema.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    Database name.
+    """
+    postgresql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgsDict']]]]
+    """
+    Tables in the schema.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs:
@@ -8990,19 +8631,16 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs
         pulumi.set(self, "postgresql_tables", value)
 
 
-if not MYPY:
-    class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        postgresql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict']]]]
-        """
-        PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    postgresql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict']]]]
+    """
+    PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs:
@@ -9044,46 +8682,43 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
         pulumi.set(self, "postgresql_columns", value)
 
 
-if not MYPY:
-    class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict(TypedDict):
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The PostgreSQL data type. Full data types list can be found here:
-        https://www.postgresql.org/docs/current/datatype.html
-        """
-        length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column length.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not the column can accept a null value.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ordinal position of the column in the table.
-        """
-        precision: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column precision.
-        """
-        primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not the column represents a primary key.
-        """
-        scale: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column scale.
-        """
-elif False:
-    StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict(TypedDict):
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The PostgreSQL data type. Full data types list can be found here:
+    https://www.postgresql.org/docs/current/datatype.html
+    """
+    length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column length.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not the column can accept a null value.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ordinal position of the column in the table.
+    """
+    precision: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column precision.
+    """
+    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not the column represents a primary key.
+    """
+    scale: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column scale.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs:
@@ -9228,24 +8863,21 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
         pulumi.set(self, "scale", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSalesforceSourceConfigArgsDict(TypedDict):
-        polling_interval: pulumi.Input[_builtins.str]
-        """
-        Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
-        """
-        exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgsDict']]
-        """
-        Salesforce objects to exclude from the stream.
-        Structure is documented below.
-        """
-        include_objects: NotRequired[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgsDict']]
-        """
-        Salesforce objects to retrieve from the source.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSalesforceSourceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSalesforceSourceConfigArgsDict(TypedDict):
+    polling_interval: pulumi.Input[_builtins.str]
+    """
+    Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
+    """
+    exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgsDict']]
+    """
+    Salesforce objects to exclude from the stream.
+    Structure is documented below.
+    """
+    include_objects: NotRequired[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgsDict']]
+    """
+    Salesforce objects to retrieve from the source.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSalesforceSourceConfigArgs:
@@ -9305,15 +8937,12 @@ class StreamSourceConfigSalesforceSourceConfigArgs:
         pulumi.set(self, "include_objects", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgsDict(TypedDict):
-        objects: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgsDict']]]
-        """
-        Salesforce objects in data source.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgsDict(TypedDict):
+    objects: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgsDict']]]
+    """
+    Salesforce objects in data source.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs:
@@ -9339,19 +8968,16 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs:
         pulumi.set(self, "objects", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgsDict(TypedDict):
-        fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgsDict']]]]
-        """
-        Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
-        Structure is documented below.
-        """
-        object_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of object in Salesforce Org.
-        """
-elif False:
-    StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgsDict(TypedDict):
+    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgsDict']]]]
+    """
+    Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+    Structure is documented below.
+    """
+    object_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of object in Salesforce Org.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs:
@@ -9394,14 +9020,11 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs:
         pulumi.set(self, "object_name", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field name.
-        """
-elif False:
-    StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field name.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs:
@@ -9426,15 +9049,12 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgsDict(TypedDict):
-        objects: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgsDict']]]
-        """
-        Salesforce objects in Salesforce Org.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgsDict(TypedDict):
+    objects: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgsDict']]]
+    """
+    Salesforce objects in Salesforce Org.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs:
@@ -9460,19 +9080,16 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs:
         pulumi.set(self, "objects", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgsDict(TypedDict):
-        fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgsDict']]]]
-        """
-        Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
-        Structure is documented below.
-        """
-        object_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of object in Salesforce Org.
-        """
-elif False:
-    StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgsDict(TypedDict):
+    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgsDict']]]]
+    """
+    Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+    Structure is documented below.
+    """
+    object_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of object in Salesforce Org.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs:
@@ -9515,14 +9132,11 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs:
         pulumi.set(self, "object_name", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field name.
-        """
-elif False:
-    StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field name.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs:
@@ -9547,45 +9161,42 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSpannerSourceConfigArgsDict(TypedDict):
-        backfill_data_boost_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to use DataBoost for backfill queries.
-        """
-        change_stream_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Spanner change stream name to use.
-        """
-        exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsArgsDict']]
-        """
-        Spanner objects to retrieve from the source.
-        Structure is documented below.
-        """
-        fgac_role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The FGAC role to use for Spanner queries.
-        """
-        include_objects: NotRequired[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsArgsDict']]
-        """
-        Spanner objects to retrieve from the source.
-        Structure is documented below.
-        """
-        max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max concurrent backfill tasks.
-        """
-        max_concurrent_cdc_tasks: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max concurrent CDC tasks.
-        """
-        spanner_rpc_priority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The RPC priority to use for Spanner queries.
-        Possible values are: `LOW`, `MEDIUM`, `HIGH`.
-        """
-elif False:
-    StreamSourceConfigSpannerSourceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSpannerSourceConfigArgsDict(TypedDict):
+    backfill_data_boost_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to use DataBoost for backfill queries.
+    """
+    change_stream_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Spanner change stream name to use.
+    """
+    exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsArgsDict']]
+    """
+    Spanner objects to retrieve from the source.
+    Structure is documented below.
+    """
+    fgac_role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The FGAC role to use for Spanner queries.
+    """
+    include_objects: NotRequired[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsArgsDict']]
+    """
+    Spanner objects to retrieve from the source.
+    Structure is documented below.
+    """
+    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max concurrent backfill tasks.
+    """
+    max_concurrent_cdc_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max concurrent CDC tasks.
+    """
+    spanner_rpc_priority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The RPC priority to use for Spanner queries.
+    Possible values are: `LOW`, `MEDIUM`, `HIGH`.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSpannerSourceConfigArgs:
@@ -9728,15 +9339,12 @@ class StreamSourceConfigSpannerSourceConfigArgs:
         pulumi.set(self, "spanner_rpc_priority", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSpannerSourceConfigExcludeObjectsArgsDict(TypedDict):
-        schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgsDict']]]
-        """
-        Spanner schemas in the database
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSpannerSourceConfigExcludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSpannerSourceConfigExcludeObjectsArgsDict(TypedDict):
+    schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgsDict']]]
+    """
+    Spanner schemas in the database
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs:
@@ -9762,19 +9370,16 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs:
         pulumi.set(self, "schemas", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        Schema name.
-        """
-        tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgsDict']]]]
-        """
-        Tables in the schema.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    Schema name.
+    """
+    tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgsDict']]]]
+    """
+    Tables in the schema.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgs:
@@ -9816,19 +9421,16 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgs:
         pulumi.set(self, "tables", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgsDict']]]]
-        """
-        Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgsDict']]]]
+    """
+    Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs:
@@ -9870,30 +9472,27 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs:
         pulumi.set(self, "columns", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgsDict(TypedDict):
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Spanner data type. Full data types list can be found here:
-        https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
-        """
-        is_primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the column is a primary key.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The ordinal position of the column in the table.
-        """
-elif False:
-    StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgsDict(TypedDict):
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Spanner data type. Full data types list can be found here:
+    https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+    """
+    is_primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the column is a primary key.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The ordinal position of the column in the table.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs:
@@ -9974,15 +9573,12 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs:
         pulumi.set(self, "ordinal_position", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSpannerSourceConfigIncludeObjectsArgsDict(TypedDict):
-        schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgsDict']]]
-        """
-        Spanner schemas in the database
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSpannerSourceConfigIncludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSpannerSourceConfigIncludeObjectsArgsDict(TypedDict):
+    schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgsDict']]]
+    """
+    Spanner schemas in the database
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs:
@@ -10008,19 +9604,16 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs:
         pulumi.set(self, "schemas", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        Schema name.
-        """
-        tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgsDict']]]]
-        """
-        Tables in the schema.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    Schema name.
+    """
+    tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgsDict']]]]
+    """
+    Tables in the schema.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgs:
@@ -10062,19 +9655,16 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgs:
         pulumi.set(self, "tables", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgsDict']]]]
-        """
-        Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgsDict']]]]
+    """
+    Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs:
@@ -10116,30 +9706,27 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs:
         pulumi.set(self, "columns", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgsDict(TypedDict):
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Spanner data type. Full data types list can be found here:
-        https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
-        """
-        is_primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the column is a primary key.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The ordinal position of the column in the table.
-        """
-elif False:
-    StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgsDict(TypedDict):
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Spanner data type. Full data types list can be found here:
+    https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+    """
+    is_primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the column is a primary key.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The ordinal position of the column in the table.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs:
@@ -10220,36 +9807,33 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs:
         pulumi.set(self, "ordinal_position", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSqlServerSourceConfigArgsDict(TypedDict):
-        change_tables: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigChangeTablesArgsDict']]
-        """
-        CDC reader reads from change tables.
-        """
-        exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgsDict']]
-        """
-        SQL Server objects to exclude from the stream.
-        Structure is documented below.
-        """
-        include_objects: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgsDict']]
-        """
-        SQL Server objects to retrieve from the source.
-        Structure is documented below.
-        """
-        max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max concurrent backfill tasks.
-        """
-        max_concurrent_cdc_tasks: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max concurrent CDC tasks.
-        """
-        transaction_logs: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgsDict']]
-        """
-        CDC reader reads from transaction logs.
-        """
-elif False:
-    StreamSourceConfigSqlServerSourceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSqlServerSourceConfigArgsDict(TypedDict):
+    change_tables: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigChangeTablesArgsDict']]
+    """
+    CDC reader reads from change tables.
+    """
+    exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgsDict']]
+    """
+    SQL Server objects to exclude from the stream.
+    Structure is documented below.
+    """
+    include_objects: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgsDict']]
+    """
+    SQL Server objects to retrieve from the source.
+    Structure is documented below.
+    """
+    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max concurrent backfill tasks.
+    """
+    max_concurrent_cdc_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max concurrent CDC tasks.
+    """
+    transaction_logs: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgsDict']]
+    """
+    CDC reader reads from transaction logs.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigArgs:
@@ -10358,11 +9942,8 @@ class StreamSourceConfigSqlServerSourceConfigArgs:
         pulumi.set(self, "transaction_logs", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSqlServerSourceConfigChangeTablesArgsDict(TypedDict):
-        pass
-elif False:
-    StreamSourceConfigSqlServerSourceConfigChangeTablesArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSqlServerSourceConfigChangeTablesArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigChangeTablesArgs:
@@ -10370,15 +9951,12 @@ class StreamSourceConfigSqlServerSourceConfigChangeTablesArgs:
         pass
 
 
-if not MYPY:
-    class StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgsDict(TypedDict):
-        schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgsDict']]]
-        """
-        Spanner schemas in the database
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgsDict(TypedDict):
+    schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgsDict']]]
+    """
+    Spanner schemas in the database
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs:
@@ -10404,19 +9982,16 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs:
         pulumi.set(self, "schemas", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        Schema name.
-        """
-        tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgsDict']]]]
-        """
-        Tables in the schema.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    Schema name.
+    """
+    tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgsDict']]]]
+    """
+    Tables in the schema.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs:
@@ -10458,19 +10033,16 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs:
         pulumi.set(self, "tables", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgsDict']]]]
-        """
-        Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgsDict']]]]
+    """
+    Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs:
@@ -10512,50 +10084,47 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs:
         pulumi.set(self, "columns", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgsDict(TypedDict):
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Spanner data type. Full data types list can be found here:
-        https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
-        """
-        length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column length.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether or not the column can accept a null value.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The ordinal position of the column in the table.
-        """
-        precision: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column precision.
-        """
-        primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether or not the column represents a primary key.
-        """
-        scale: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column scale.
-        """
-elif False:
-    StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgsDict(TypedDict):
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Spanner data type. Full data types list can be found here:
+    https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+    """
+    length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column length.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether or not the column can accept a null value.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The ordinal position of the column in the table.
+    """
+    precision: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column precision.
+    """
+    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether or not the column represents a primary key.
+    """
+    scale: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column scale.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs:
@@ -10708,15 +10277,12 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs
         pulumi.set(self, "scale", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgsDict(TypedDict):
-        schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgsDict']]]
-        """
-        Spanner schemas in the database
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgsDict(TypedDict):
+    schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgsDict']]]
+    """
+    Spanner schemas in the database
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs:
@@ -10742,19 +10308,16 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs:
         pulumi.set(self, "schemas", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        Schema name.
-        """
-        tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgsDict']]]]
-        """
-        Tables in the schema.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    Schema name.
+    """
+    tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgsDict']]]]
+    """
+    Tables in the schema.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs:
@@ -10796,19 +10359,16 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs:
         pulumi.set(self, "tables", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        Table name.
-        """
-        columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgsDict']]]]
-        """
-        Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
-        Structure is documented below.
-        """
-elif False:
-    StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    Table name.
+    """
+    columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgsDict']]]]
+    """
+    Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs:
@@ -10850,50 +10410,47 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs:
         pulumi.set(self, "columns", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgsDict(TypedDict):
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Column name.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The Spanner data type. Full data types list can be found here:
-        https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
-        """
-        length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column length.
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether or not the column can accept a null value.
-        """
-        ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The ordinal position of the column in the table.
-        """
-        precision: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column precision.
-        """
-        primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether or not the column represents a primary key.
-        """
-        scale: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Column scale.
-        """
-elif False:
-    StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgsDict(TypedDict):
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column name.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The Spanner data type. Full data types list can be found here:
+    https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+    """
+    length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column length.
+    """
+    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether or not the column can accept a null value.
+    """
+    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The ordinal position of the column in the table.
+    """
+    precision: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column precision.
+    """
+    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether or not the column represents a primary key.
+    """
+    scale: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Column scale.
+    """
 
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs:
@@ -11046,11 +10603,8 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs
         pulumi.set(self, "scale", value)
 
 
-if not MYPY:
-    class StreamSourceConfigSqlServerSourceConfigTransactionLogsArgsDict(TypedDict):
-        pass
-elif False:
-    StreamSourceConfigSqlServerSourceConfigTransactionLogsArgsDict: TypeAlias = Mapping[str, Any]
+class StreamSourceConfigSqlServerSourceConfigTransactionLogsArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs:

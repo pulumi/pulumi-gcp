@@ -207,6 +207,7 @@ class _DeployPolicyState:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the DeployPolicy was created.
         :param pulumi.Input[_builtins.str] description: Description of the `DeployPolicy`. Max length is 255 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
@@ -217,7 +218,7 @@ class _DeployPolicyState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['DeployPolicyRuleArgs']]] rules: Rules to apply. At least one rule must be present.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DeployPolicySelectorArgs']]] selectors: Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
@@ -300,6 +301,9 @@ class _DeployPolicyState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -386,7 +390,7 @@ class _DeployPolicyState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -624,22 +628,14 @@ class DeployPolicy(pulumi.CustomResource):
         DeployPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/deployPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, DeployPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:clouddeploy/deployPolicy:DeployPolicy default projects/{{project}}/locations/{{location}}/deployPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/deployPolicy:DeployPolicy default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/deployPolicy:DeployPolicy default {{location}}/{{name}}
         ```
 
@@ -819,22 +815,14 @@ class DeployPolicy(pulumi.CustomResource):
         DeployPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/deployPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, DeployPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:clouddeploy/deployPolicy:DeployPolicy default projects/{{project}}/locations/{{location}}/deployPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/deployPolicy:DeployPolicy default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/deployPolicy:DeployPolicy default {{location}}/{{name}}
         ```
 
@@ -933,6 +921,7 @@ class DeployPolicy(pulumi.CustomResource):
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the DeployPolicy was created.
         :param pulumi.Input[_builtins.str] description: Description of the `DeployPolicy`. Max length is 255 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
@@ -943,7 +932,7 @@ class DeployPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeployPolicyRuleArgs', 'DeployPolicyRuleArgsDict']]]] rules: Rules to apply. At least one rule must be present.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeployPolicySelectorArgs', 'DeployPolicySelectorArgsDict']]]] selectors: Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
@@ -1003,6 +992,9 @@ class DeployPolicy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
@@ -1061,7 +1053,7 @@ class DeployPolicy(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

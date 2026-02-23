@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var destGroup = new TunnelDestGroup("destGroup", TunnelDestGroupArgs.builder()
  *             .region("us-central1")
- *             .groupName("testgroup_6529")
+ *             .groupName("testgroup_12618")
  *             .cidrs(            
  *                 "10.1.0.0/16",
  *                 "192.168.10.0/24")
@@ -68,40 +68,20 @@ import javax.annotation.Nullable;
  * TunnelDestGroup can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}`
- * 
  * * `{{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}`
- * 
  * * `{{project}}/{{region}}/{{group_name}}`
- * 
  * * `{{region}}/destGroups/{{group_name}}`
- * 
  * * `{{region}}/{{group_name}}`
- * 
  * * `{{group_name}}`
  * 
  * When using the `pulumi import` command, TunnelDestGroup can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default projects/{{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{project}}/{{region}}/{{group_name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{region}}/destGroups/{{group_name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{region}}/{{group_name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{group_name}}
  * ```
  * 

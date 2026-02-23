@@ -21,28 +21,23 @@ __all__ = [
     'RegionalParameterPolicyMemberArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ParameterPolicyMemberArgsDict(TypedDict):
-        iam_policy_name_principal: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a
-        resource is deleted and recreated with the same name, the binding will be applicable to the
-        new resource. Format:
-        `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/global/parameters/{{parameter_id}}`
-        """
-        iam_policy_uid_principal: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
-        If a resource is deleted and recreated with the same name, the binding will not be applicable to the
-        new resource. Format:
-        `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/global/parameters/{{uid}}`
-        """
-elif False:
-    ParameterPolicyMemberArgsDict: TypeAlias = Mapping[str, Any]
+class ParameterPolicyMemberArgsDict(TypedDict):
+    iam_policy_name_principal: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a
+    resource is deleted and recreated with the same name, the binding will be applicable to the
+    new resource. Format:
+    `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/global/parameters/{{parameter_id}}`
+    """
+    iam_policy_uid_principal: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+    If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+    new resource. Format:
+    `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/global/parameters/{{uid}}`
+    """
 
 @pulumi.input_type
 class ParameterPolicyMemberArgs:
@@ -99,25 +94,22 @@ class ParameterPolicyMemberArgs:
         pulumi.set(self, "iam_policy_uid_principal", value)
 
 
-if not MYPY:
-    class RegionalParameterPolicyMemberArgsDict(TypedDict):
-        iam_policy_name_principal: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is
-        deleted and recreated with the same name, the binding will be applicable to the new resource. Format:
-        `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/{{location}}/parameters/{{parameter_id}}`
-        """
-        iam_policy_uid_principal: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier. If
-        a resource is deleted and recreated with the same name, the binding will not be applicable to the new
-        resource. Format:
-        `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/{{location}}/parameters/{{uid}}`
-        """
-elif False:
-    RegionalParameterPolicyMemberArgsDict: TypeAlias = Mapping[str, Any]
+class RegionalParameterPolicyMemberArgsDict(TypedDict):
+    iam_policy_name_principal: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is
+    deleted and recreated with the same name, the binding will be applicable to the new resource. Format:
+    `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/{{location}}/parameters/{{parameter_id}}`
+    """
+    iam_policy_uid_principal: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier. If
+    a resource is deleted and recreated with the same name, the binding will not be applicable to the new
+    resource. Format:
+    `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/{{location}}/parameters/{{uid}}`
+    """
 
 @pulumi.input_type
 class RegionalParameterPolicyMemberArgs:

@@ -62,22 +62,14 @@ import javax.annotation.Nullable;
  * ReleaseChannelSetting can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}`
- * 
  * * `{{project}}/{{location}}/{{release_channel_setting_id}}`
- * 
  * * `{{location}}/{{release_channel_setting_id}}`
  * 
  * When using the `pulumi import` command, ReleaseChannelSetting can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{project}}/{{location}}/{{release_channel_setting_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{location}}/{{release_channel_setting_id}}
  * ```
  * 
@@ -178,7 +170,7 @@ public class ReleaseChannelSetting extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -186,7 +178,7 @@ public class ReleaseChannelSetting extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

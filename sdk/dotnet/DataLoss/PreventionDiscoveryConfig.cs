@@ -25,16 +25,12 @@ namespace Pulumi.Gcp.DataLoss
     /// DiscoveryConfig can be imported using any of these accepted formats:
     /// 
     /// * `{{parent}}/discoveryConfigs/{{name}}`
-    /// 
     /// * `{{parent}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, DiscoveryConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig default {{parent}}/discoveryConfigs/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig default {{parent}}/{{name}}
     /// ```
     /// </summary>

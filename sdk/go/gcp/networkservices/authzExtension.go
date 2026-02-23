@@ -117,34 +117,51 @@ import (
 //	}
 //
 // ```
+// ### Network Services Authz Extension Iap
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networkservices.NewAuthzExtension(ctx, "default", &networkservices.AuthzExtensionArgs{
+//				Name:      pulumi.String("my-authz-ext"),
+//				Location:  pulumi.String("us-west1"),
+//				Authority: pulumi.String("ext11.com"),
+//				Service:   pulumi.String("iap.googleapis.com"),
+//				Timeout:   pulumi.String("0.1s"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
 // AuthzExtension can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/authzExtensions/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, AuthzExtension can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default projects/{{project}}/locations/{{location}}/authzExtensions/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default {{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default {{name}}
 // ```
 type AuthzExtension struct {
@@ -170,10 +187,11 @@ type AuthzExtension struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
-	// For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+	// Required when the service points to a backend service. All backend services and forwarding rules referenced by
+	// this extension must share the same load balancing scheme. For more information, refer to
+	// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-	LoadBalancingScheme pulumi.StringOutput `pulumi:"loadBalancingScheme"`
+	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// The location of the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The metadata provided here is included as part of the metadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
@@ -185,18 +203,22 @@ type AuthzExtension struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// The reference to the service that runs the extension.
-	// To configure a callout extension, service must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
-	// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
+	// The service that runs the extension.
+	// The following values and formats are accepted:
+	// * `iap.googleapis.com` when the policyProfile is set to REQUEST_AUTHZ
+	// * `modelarmor.{{region}}.rep.googleapis.com` when the policyProfile is set to CONTENT_AUTHZ
+	// * A fully qualified domain name that can be resolved by the dataplane
+	// * Backend service resource URI of the form `https://www.googleapis.com/compute/v1/projects/{{project}}/regions/{{region}}/backendServices/{{name}}` or `https://www.googleapis.com/compute/v1/projects/{{project}}/global/backendServices/{{name}}}}`
 	Service pulumi.StringOutput `pulumi:"service"`
 	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
 	Timeout pulumi.StringOutput `pulumi:"timeout"`
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Specifies the communication protocol used by the callout extension
-	// to communicate with its backend service.
+	// The format of communication supported by the callout extension. Applicable only when the policyProfile is REQUEST_AUTHZ.
+	// This field is supported only for regional AuthzExtension resources. If not specified, the default value
+	// EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
 	// Supported values:
 	// - WIRE_FORMAT_UNSPECIFIED:
 	//   No wire format is explicitly specified. The backend automatically
@@ -223,9 +245,6 @@ func NewAuthzExtension(ctx *pulumi.Context,
 
 	if args.Authority == nil {
 		return nil, errors.New("invalid value for required argument 'Authority'")
-	}
-	if args.LoadBalancingScheme == nil {
-		return nil, errors.New("invalid value for required argument 'LoadBalancingScheme'")
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
@@ -284,8 +303,9 @@ type authzExtensionState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
-	// For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+	// Required when the service points to a backend service. All backend services and forwarding rules referenced by
+	// this extension must share the same load balancing scheme. For more information, refer to
+	// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The location of the resource.
@@ -299,18 +319,22 @@ type authzExtensionState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// The reference to the service that runs the extension.
-	// To configure a callout extension, service must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
-	// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
+	// The service that runs the extension.
+	// The following values and formats are accepted:
+	// * `iap.googleapis.com` when the policyProfile is set to REQUEST_AUTHZ
+	// * `modelarmor.{{region}}.rep.googleapis.com` when the policyProfile is set to CONTENT_AUTHZ
+	// * A fully qualified domain name that can be resolved by the dataplane
+	// * Backend service resource URI of the form `https://www.googleapis.com/compute/v1/projects/{{project}}/regions/{{region}}/backendServices/{{name}}` or `https://www.googleapis.com/compute/v1/projects/{{project}}/global/backendServices/{{name}}}}`
 	Service *string `pulumi:"service"`
 	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
 	Timeout *string `pulumi:"timeout"`
 	// The timestamp when the resource was updated.
 	UpdateTime *string `pulumi:"updateTime"`
-	// Specifies the communication protocol used by the callout extension
-	// to communicate with its backend service.
+	// The format of communication supported by the callout extension. Applicable only when the policyProfile is REQUEST_AUTHZ.
+	// This field is supported only for regional AuthzExtension resources. If not specified, the default value
+	// EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
 	// Supported values:
 	// - WIRE_FORMAT_UNSPECIFIED:
 	//   No wire format is explicitly specified. The backend automatically
@@ -349,8 +373,9 @@ type AuthzExtensionState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
-	// For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+	// Required when the service points to a backend service. All backend services and forwarding rules referenced by
+	// this extension must share the same load balancing scheme. For more information, refer to
+	// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The location of the resource.
@@ -364,18 +389,22 @@ type AuthzExtensionState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// The reference to the service that runs the extension.
-	// To configure a callout extension, service must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
-	// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
+	// The service that runs the extension.
+	// The following values and formats are accepted:
+	// * `iap.googleapis.com` when the policyProfile is set to REQUEST_AUTHZ
+	// * `modelarmor.{{region}}.rep.googleapis.com` when the policyProfile is set to CONTENT_AUTHZ
+	// * A fully qualified domain name that can be resolved by the dataplane
+	// * Backend service resource URI of the form `https://www.googleapis.com/compute/v1/projects/{{project}}/regions/{{region}}/backendServices/{{name}}` or `https://www.googleapis.com/compute/v1/projects/{{project}}/global/backendServices/{{name}}}}`
 	Service pulumi.StringPtrInput
 	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
 	Timeout pulumi.StringPtrInput
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringPtrInput
-	// Specifies the communication protocol used by the callout extension
-	// to communicate with its backend service.
+	// The format of communication supported by the callout extension. Applicable only when the policyProfile is REQUEST_AUTHZ.
+	// This field is supported only for regional AuthzExtension resources. If not specified, the default value
+	// EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
 	// Supported values:
 	// - WIRE_FORMAT_UNSPECIFIED:
 	//   No wire format is explicitly specified. The backend automatically
@@ -414,10 +443,11 @@ type authzExtensionArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
-	// For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+	// Required when the service points to a backend service. All backend services and forwarding rules referenced by
+	// this extension must share the same load balancing scheme. For more information, refer to
+	// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-	LoadBalancingScheme string `pulumi:"loadBalancingScheme"`
+	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The location of the resource.
 	Location string `pulumi:"location"`
 	// The metadata provided here is included as part of the metadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
@@ -428,14 +458,18 @@ type authzExtensionArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The reference to the service that runs the extension.
-	// To configure a callout extension, service must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
-	// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
+	// The service that runs the extension.
+	// The following values and formats are accepted:
+	// * `iap.googleapis.com` when the policyProfile is set to REQUEST_AUTHZ
+	// * `modelarmor.{{region}}.rep.googleapis.com` when the policyProfile is set to CONTENT_AUTHZ
+	// * A fully qualified domain name that can be resolved by the dataplane
+	// * Backend service resource URI of the form `https://www.googleapis.com/compute/v1/projects/{{project}}/regions/{{region}}/backendServices/{{name}}` or `https://www.googleapis.com/compute/v1/projects/{{project}}/global/backendServices/{{name}}}}`
 	Service string `pulumi:"service"`
 	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
 	Timeout string `pulumi:"timeout"`
-	// Specifies the communication protocol used by the callout extension
-	// to communicate with its backend service.
+	// The format of communication supported by the callout extension. Applicable only when the policyProfile is REQUEST_AUTHZ.
+	// This field is supported only for regional AuthzExtension resources. If not specified, the default value
+	// EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
 	// Supported values:
 	// - WIRE_FORMAT_UNSPECIFIED:
 	//   No wire format is explicitly specified. The backend automatically
@@ -471,10 +505,11 @@ type AuthzExtensionArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
-	// For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+	// Required when the service points to a backend service. All backend services and forwarding rules referenced by
+	// this extension must share the same load balancing scheme. For more information, refer to
+	// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-	LoadBalancingScheme pulumi.StringInput
+	LoadBalancingScheme pulumi.StringPtrInput
 	// The location of the resource.
 	Location pulumi.StringInput
 	// The metadata provided here is included as part of the metadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
@@ -485,14 +520,18 @@ type AuthzExtensionArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The reference to the service that runs the extension.
-	// To configure a callout extension, service must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
-	// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
+	// The service that runs the extension.
+	// The following values and formats are accepted:
+	// * `iap.googleapis.com` when the policyProfile is set to REQUEST_AUTHZ
+	// * `modelarmor.{{region}}.rep.googleapis.com` when the policyProfile is set to CONTENT_AUTHZ
+	// * A fully qualified domain name that can be resolved by the dataplane
+	// * Backend service resource URI of the form `https://www.googleapis.com/compute/v1/projects/{{project}}/regions/{{region}}/backendServices/{{name}}` or `https://www.googleapis.com/compute/v1/projects/{{project}}/global/backendServices/{{name}}}}`
 	Service pulumi.StringInput
 	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
 	Timeout pulumi.StringInput
-	// Specifies the communication protocol used by the callout extension
-	// to communicate with its backend service.
+	// The format of communication supported by the callout extension. Applicable only when the policyProfile is REQUEST_AUTHZ.
+	// This field is supported only for regional AuthzExtension resources. If not specified, the default value
+	// EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
 	// Supported values:
 	// - WIRE_FORMAT_UNSPECIFIED:
 	//   No wire format is explicitly specified. The backend automatically
@@ -638,11 +677,12 @@ func (o AuthzExtensionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AuthzExtension) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
-// For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+// Required when the service points to a backend service. All backend services and forwarding rules referenced by
+// this extension must share the same load balancing scheme. For more information, refer to
+// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
 // Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-func (o AuthzExtensionOutput) LoadBalancingScheme() pulumi.StringOutput {
-	return o.ApplyT(func(v *AuthzExtension) pulumi.StringOutput { return v.LoadBalancingScheme }).(pulumi.StringOutput)
+func (o AuthzExtensionOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzExtension) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
 }
 
 // The location of the resource.
@@ -668,14 +708,18 @@ func (o AuthzExtensionOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AuthzExtensionOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AuthzExtension) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// The reference to the service that runs the extension.
-// To configure a callout extension, service must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
-// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
+// The service that runs the extension.
+// The following values and formats are accepted:
+// * `iap.googleapis.com` when the policyProfile is set to REQUEST_AUTHZ
+// * `modelarmor.{{region}}.rep.googleapis.com` when the policyProfile is set to CONTENT_AUTHZ
+// * A fully qualified domain name that can be resolved by the dataplane
+// * Backend service resource URI of the form `https://www.googleapis.com/compute/v1/projects/{{project}}/regions/{{region}}/backendServices/{{name}}` or `https://www.googleapis.com/compute/v1/projects/{{project}}/global/backendServices/{{name}}}}`
 func (o AuthzExtensionOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthzExtension) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }
@@ -690,8 +734,9 @@ func (o AuthzExtensionOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthzExtension) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Specifies the communication protocol used by the callout extension
-// to communicate with its backend service.
+// The format of communication supported by the callout extension. Applicable only when the policyProfile is REQUEST_AUTHZ.
+// This field is supported only for regional AuthzExtension resources. If not specified, the default value
+// EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
 // Supported values:
 //   - WIRE_FORMAT_UNSPECIFIED:
 //     No wire format is explicitly specified. The backend automatically

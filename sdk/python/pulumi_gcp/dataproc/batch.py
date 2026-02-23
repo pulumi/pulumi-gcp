@@ -252,7 +252,7 @@ class _BatchState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['BatchPysparkBatchArgs'] pyspark_batch: PySpark batch config.
                Structure is documented below.
         :param pulumi.Input['BatchRuntimeConfigArgs'] runtime_config: Runtime configuration for the batch execution.
@@ -450,7 +450,7 @@ class _BatchState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -636,7 +636,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_spark = gcp.dataproc.Batch("example_batch_spark",
-            batch_id="tf-test-batch_55438",
+            batch_id="tf-test-batch_49082",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -759,7 +759,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparsql = gcp.dataproc.Batch("example_batch_sparsql",
-            batch_id="tf-test-batch_32706",
+            batch_id="tf-test-batch_60365",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -787,7 +787,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_pyspark = gcp.dataproc.Batch("example_batch_pyspark",
-            batch_id="tf-test-batch_49082",
+            batch_id="tf-test-batch_80215",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -820,7 +820,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparkr = gcp.dataproc.Batch("example_batch_sparkr",
-            batch_id="tf-test-batch_60365",
+            batch_id="tf-test-batch_59033",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -850,7 +850,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_autotuning = gcp.dataproc.Batch("example_batch_autotuning",
-            batch_id="tf-test-batch_80215",
+            batch_id="tf-test-batch_32081",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -887,22 +887,14 @@ class Batch(pulumi.CustomResource):
         Batch can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/batches/{{batch_id}}`
-
         * `{{project}}/{{location}}/{{batch_id}}`
-
         * `{{location}}/{{batch_id}}`
 
         When using the `pulumi import` command, Batch can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/batch:Batch default projects/{{project}}/locations/{{location}}/batches/{{batch_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/batch:Batch default {{project}}/{{location}}/{{batch_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/batch:Batch default {{location}}/{{batch_id}}
         ```
 
@@ -955,7 +947,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_spark = gcp.dataproc.Batch("example_batch_spark",
-            batch_id="tf-test-batch_55438",
+            batch_id="tf-test-batch_49082",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -1078,7 +1070,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparsql = gcp.dataproc.Batch("example_batch_sparsql",
-            batch_id="tf-test-batch_32706",
+            batch_id="tf-test-batch_60365",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -1106,7 +1098,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_pyspark = gcp.dataproc.Batch("example_batch_pyspark",
-            batch_id="tf-test-batch_49082",
+            batch_id="tf-test-batch_80215",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -1139,7 +1131,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparkr = gcp.dataproc.Batch("example_batch_sparkr",
-            batch_id="tf-test-batch_60365",
+            batch_id="tf-test-batch_59033",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -1169,7 +1161,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_autotuning = gcp.dataproc.Batch("example_batch_autotuning",
-            batch_id="tf-test-batch_80215",
+            batch_id="tf-test-batch_32081",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -1206,22 +1198,14 @@ class Batch(pulumi.CustomResource):
         Batch can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/batches/{{batch_id}}`
-
         * `{{project}}/{{location}}/{{batch_id}}`
-
         * `{{location}}/{{batch_id}}`
 
         When using the `pulumi import` command, Batch can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/batch:Batch default projects/{{project}}/locations/{{location}}/batches/{{batch_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/batch:Batch default {{project}}/{{location}}/{{batch_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/batch:Batch default {{location}}/{{batch_id}}
         ```
 
@@ -1339,7 +1323,7 @@ class Batch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['BatchPysparkBatchArgs', 'BatchPysparkBatchArgsDict']] pyspark_batch: PySpark batch config.
                Structure is documented below.
         :param pulumi.Input[Union['BatchRuntimeConfigArgs', 'BatchRuntimeConfigArgsDict']] runtime_config: Runtime configuration for the batch execution.
@@ -1480,7 +1464,7 @@ class Batch(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

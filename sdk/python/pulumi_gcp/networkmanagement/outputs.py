@@ -768,6 +768,7 @@ class GetConnectivityTestsConnectivityTestResult(dict):
         :param _builtins.str description: The user-supplied description of the Connectivity Test.
         :param Sequence['GetConnectivityTestsConnectivityTestDestinationArgs'] destinations: Destination specification of the Connectivity Test.
                Structure is documented below.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param Mapping[str, _builtins.str] labels: Resource labels to represent user-provided metadata.
         :param _builtins.str name: Unique name for the connectivity test.
         :param _builtins.str project: The ID of the project.
@@ -820,6 +821,9 @@ class GetConnectivityTestsConnectivityTestResult(dict):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property

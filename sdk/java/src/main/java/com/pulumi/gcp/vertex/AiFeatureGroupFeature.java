@@ -127,28 +127,16 @@ import javax.annotation.Nullable;
  * FeatureGroupFeature can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{feature_group}}/{{name}}`
- * 
  * * `{{region}}/{{feature_group}}/{{name}}`
- * 
  * * `{{feature_group}}/{{name}}`
  * 
  * When using the `pulumi import` command, FeatureGroupFeature can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{project}}/{{region}}/{{feature_group}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{region}}/{{feature_group}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{feature_group}}/{{name}}
  * ```
  * 
@@ -261,7 +249,7 @@ public class AiFeatureGroupFeature extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -269,7 +257,7 @@ public class AiFeatureGroupFeature extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

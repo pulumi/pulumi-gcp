@@ -10,6 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Alloydb
 {
     /// <summary>
+    /// A managed alloydb cluster instance.
+    /// 
+    /// To get more information about Instance, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.instances/create)
+    /// * How-to Guides
+    ///     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+    /// 
+    /// &gt; **Warning:** Deleting an instance with instanceType = SECONDARY does not delete the secondary instance, and abandons it instead.
+    /// Use DeletionPolicy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete the secondary cluster as well its associated secondary instance.
+    /// Users can undo the delete secondary instance action by importing the deleted secondary instance by calling terraform import.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Alloydb Instance Basic
@@ -198,22 +210,14 @@ namespace Pulumi.Gcp.Alloydb
     /// Instance can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{cluster}}/{{instance_id}}`
-    /// 
     /// * `{{location}}/{{cluster}}/{{instance_id}}`
     /// 
     /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:alloydb/instance:Instance default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:alloydb/instance:Instance default {{project}}/{{location}}/{{cluster}}/{{instance_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:alloydb/instance:Instance default {{location}}/{{cluster}}/{{instance_id}}
     /// ```
     /// </summary>
@@ -293,6 +297,9 @@ namespace Pulumi.Gcp.Alloydb
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -314,6 +321,16 @@ namespace Pulumi.Gcp.Alloydb
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of the instance.
+        /// If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the `DependsOn` meta-data attribute.
+        /// If the instance type is SECONDARY, point to the ClusterType of the associated secondary cluster instead of mentioning SECONDARY.
+        /// Example: {instance_type = google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY}
+        /// If the instance type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it instead.
+        /// Use DeletionPolicy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete the secondary cluster as well its associated secondary instance.
+        /// Users can undo the delete secondary instance action by importing the deleted secondary instance by calling terraform import.
+        /// Possible values are: `PRIMARY`, `READ_POOL`, `SECONDARY`.
+        /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
@@ -384,7 +401,7 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -569,6 +586,16 @@ namespace Pulumi.Gcp.Alloydb
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// The type of the instance.
+        /// If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the `DependsOn` meta-data attribute.
+        /// If the instance type is SECONDARY, point to the ClusterType of the associated secondary cluster instead of mentioning SECONDARY.
+        /// Example: {instance_type = google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY}
+        /// If the instance type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it instead.
+        /// Use DeletionPolicy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete the secondary cluster as well its associated secondary instance.
+        /// Users can undo the delete secondary instance action by importing the deleted secondary instance by calling terraform import.
+        /// Possible values are: `PRIMARY`, `READ_POOL`, `SECONDARY`.
+        /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
@@ -724,6 +751,10 @@ namespace Pulumi.Gcp.Alloydb
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
@@ -758,6 +789,16 @@ namespace Pulumi.Gcp.Alloydb
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
+        /// <summary>
+        /// The type of the instance.
+        /// If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the `DependsOn` meta-data attribute.
+        /// If the instance type is SECONDARY, point to the ClusterType of the associated secondary cluster instead of mentioning SECONDARY.
+        /// Example: {instance_type = google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY}
+        /// If the instance type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it instead.
+        /// Use DeletionPolicy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete the secondary cluster as well its associated secondary instance.
+        /// Users can undo the delete secondary instance action by importing the deleted secondary instance by calling terraform import.
+        /// Possible values are: `PRIMARY`, `READ_POOL`, `SECONDARY`.
+        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
@@ -843,7 +884,7 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

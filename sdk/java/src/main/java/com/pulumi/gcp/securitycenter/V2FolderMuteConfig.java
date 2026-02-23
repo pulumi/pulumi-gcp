@@ -76,16 +76,12 @@ import javax.annotation.Nullable;
  * FolderMuteConfig can be imported using any of these accepted formats:
  * 
  * * `folders/{{folder}}/locations/{{location}}/muteConfigs/{{mute_config_id}}`
- * 
  * * `{{folder}}/{{location}}/{{mute_config_id}}`
  * 
  * When using the `pulumi import` command, FolderMuteConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig default folders/{{folder}}/locations/{{location}}/muteConfigs/{{mute_config_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig default {{folder}}/{{location}}/{{mute_config_id}}
  * ```
  * 

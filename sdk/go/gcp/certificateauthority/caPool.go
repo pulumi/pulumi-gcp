@@ -239,22 +239,14 @@ import (
 // CaPool can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/caPools/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, CaPool can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:certificateauthority/caPool:CaPool default projects/{{project}}/locations/{{location}}/caPools/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:certificateauthority/caPool:CaPool default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:certificateauthority/caPool:CaPool default {{location}}/{{name}}
 // ```
 type CaPool struct {
@@ -289,7 +281,7 @@ type CaPool struct {
 	// Structure is documented below.
 	PublishingOptions CaPoolPublishingOptionsPtrOutput `pulumi:"publishingOptions"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The Tier of this CaPool.
 	// Possible values are: `ENTERPRISE`, `DEVOPS`.
@@ -366,7 +358,7 @@ type caPoolState struct {
 	// Structure is documented below.
 	PublishingOptions *CaPoolPublishingOptions `pulumi:"publishingOptions"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The Tier of this CaPool.
 	// Possible values are: `ENTERPRISE`, `DEVOPS`.
@@ -403,7 +395,7 @@ type CaPoolState struct {
 	// Structure is documented below.
 	PublishingOptions CaPoolPublishingOptionsPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The Tier of this CaPool.
 	// Possible values are: `ENTERPRISE`, `DEVOPS`.
@@ -619,7 +611,8 @@ func (o CaPoolOutput) PublishingOptions() CaPoolPublishingOptionsPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CaPoolOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CaPool) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

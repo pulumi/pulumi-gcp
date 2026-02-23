@@ -40,22 +40,14 @@ import * as utilities from "../utilities";
  * Interconnect can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/global/interconnects/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, Interconnect can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/interconnect:Interconnect default projects/{{project}}/global/interconnects/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/interconnect:Interconnect default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/interconnect:Interconnect default {{name}}
  * ```
  */
@@ -258,7 +250,7 @@ export class Interconnect extends pulumi.CustomResource {
     declare public /*out*/ readonly provisionedLinkCount: pulumi.Output<number>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -580,7 +572,7 @@ export interface InterconnectState {
     provisionedLinkCount?: pulumi.Input<number>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

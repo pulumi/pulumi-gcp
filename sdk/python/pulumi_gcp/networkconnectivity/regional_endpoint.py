@@ -231,7 +231,7 @@ class _RegionalEndpointState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] psc_forwarding_rule: The resource reference of the PSC Forwarding Rule created on behalf of the customer. Format: `//compute.googleapis.com/projects/{project}/regions/{region}/forwardingRules/{forwarding_rule_name}`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] subnetwork: The name of the subnetwork from which the IP address will be allocated. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`
         :param pulumi.Input[_builtins.str] target_google_api: The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \\"cloudkms.us-central1.rep.googleapis.com\\".
         :param pulumi.Input[_builtins.str] update_time: Time when the RegionalEndpoint was updated.
@@ -410,7 +410,7 @@ class _RegionalEndpointState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -539,22 +539,14 @@ class RegionalEndpoint(pulumi.CustomResource):
         RegionalEndpoint can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/regionalEndpoints/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, RegionalEndpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default projects/{{project}}/locations/{{location}}/regionalEndpoints/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default {{location}}/{{name}}
         ```
 
@@ -650,22 +642,14 @@ class RegionalEndpoint(pulumi.CustomResource):
         RegionalEndpoint can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/regionalEndpoints/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, RegionalEndpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default projects/{{project}}/locations/{{location}}/regionalEndpoints/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default {{location}}/{{name}}
         ```
 
@@ -776,7 +760,7 @@ class RegionalEndpoint(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] psc_forwarding_rule: The resource reference of the PSC Forwarding Rule created on behalf of the customer. Format: `//compute.googleapis.com/projects/{project}/regions/{region}/forwardingRules/{forwarding_rule_name}`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] subnetwork: The name of the subnetwork from which the IP address will be allocated. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`
         :param pulumi.Input[_builtins.str] target_google_api: The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \\"cloudkms.us-central1.rep.googleapis.com\\".
         :param pulumi.Input[_builtins.str] update_time: Time when the RegionalEndpoint was updated.
@@ -901,7 +885,7 @@ class RegionalEndpoint(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.discoveryengine.SearchEngineArgs;
 import com.pulumi.gcp.discoveryengine.inputs.SearchEngineState;
 import com.pulumi.gcp.discoveryengine.outputs.SearchEngineCommonConfig;
+import com.pulumi.gcp.discoveryengine.outputs.SearchEngineKnowledgeGraphConfig;
 import com.pulumi.gcp.discoveryengine.outputs.SearchEngineSearchEngineConfig;
 import java.lang.String;
 import java.util.List;
@@ -94,6 +95,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.discoveryengine.SearchEngine;
  * import com.pulumi.gcp.discoveryengine.SearchEngineArgs;
  * import com.pulumi.gcp.discoveryengine.inputs.SearchEngineSearchEngineConfigArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.SearchEngineKnowledgeGraphConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -127,6 +129,8 @@ import javax.annotation.Nullable;
  *             .appType("APP_TYPE_INTRANET")
  *             .searchEngineConfig(SearchEngineSearchEngineConfigArgs.builder()
  *                 .build())
+ *             .knowledgeGraphConfig(SearchEngineKnowledgeGraphConfigArgs.builder()
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -139,22 +143,14 @@ import javax.annotation.Nullable;
  * SearchEngine can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
- * 
  * * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
- * 
  * * `{{location}}/{{collection_id}}/{{engine_id}}`
  * 
  * When using the `pulumi import` command, SearchEngine can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{location}}/{{collection_id}}/{{engine_id}}
  * ```
  * 
@@ -316,6 +312,22 @@ public class SearchEngine extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> kmsKeyName() {
         return Codegen.optional(this.kmsKeyName);
+    }
+    /**
+     * Configurations for the Knowledge Graph.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="knowledgeGraphConfig", refs={SearchEngineKnowledgeGraphConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SearchEngineKnowledgeGraphConfig> knowledgeGraphConfig;
+
+    /**
+     * @return Configurations for the Knowledge Graph.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SearchEngineKnowledgeGraphConfig>> knowledgeGraphConfig() {
+        return Codegen.optional(this.knowledgeGraphConfig);
     }
     /**
      * Location.

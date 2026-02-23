@@ -52,22 +52,14 @@ import (
 // ReleaseChannelSetting can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}`
-//
 // * `{{project}}/{{location}}/{{release_channel_setting_id}}`
-//
 // * `{{location}}/{{release_channel_setting_id}}`
 //
 // When using the `pulumi import` command, ReleaseChannelSetting can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{project}}/{{location}}/{{release_channel_setting_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{location}}/{{release_channel_setting_id}}
 // ```
 type ReleaseChannelSetting struct {
@@ -90,7 +82,7 @@ type ReleaseChannelSetting struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Release channel to be used.
 	// Possible values:
@@ -161,7 +153,7 @@ type releaseChannelSettingState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Release channel to be used.
 	// Possible values:
@@ -192,7 +184,7 @@ type ReleaseChannelSettingState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Release channel to be used.
 	// Possible values:
@@ -370,7 +362,8 @@ func (o ReleaseChannelSettingOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ReleaseChannelSettingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ReleaseChannelSetting) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

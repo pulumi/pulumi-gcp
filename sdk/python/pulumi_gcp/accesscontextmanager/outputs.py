@@ -124,6 +124,8 @@ __all__ = [
     'ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation',
     'ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector',
     'ServicePerimetersServicePerimeterStatusVpcAccessibleServices',
+    'GetSupportedServiceSupportedMethodResult',
+    'GetSupportedServicesSupportedServiceResult',
 ]
 
 @pulumi.output_type
@@ -7555,5 +7557,107 @@ class ServicePerimetersServicePerimeterStatusVpcAccessibleServices(dict):
         list of APIs specified in 'allowedServices'.
         """
         return pulumi.get(self, "enable_restriction")
+
+
+@pulumi.output_type
+class GetSupportedServiceSupportedMethodResult(dict):
+    def __init__(__self__, *,
+                 method: _builtins.str,
+                 permission: _builtins.str):
+        """
+        :param _builtins.str method: A valid method name for the respective request mode. Must be a fully qualified name, for example, `storage.googleapis.com/BucketService.GetBucket`.
+        :param _builtins.str permission: A valid Cloud IAM permission for the respective request mode, for example, `storage.buckets.get`.
+        """
+        pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "permission", permission)
+
+    @_builtins.property
+    @pulumi.getter
+    def method(self) -> _builtins.str:
+        """
+        A valid method name for the respective request mode. Must be a fully qualified name, for example, `storage.googleapis.com/BucketService.GetBucket`.
+        """
+        return pulumi.get(self, "method")
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> _builtins.str:
+        """
+        A valid Cloud IAM permission for the respective request mode, for example, `storage.buckets.get`.
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class GetSupportedServicesSupportedServiceResult(dict):
+    def __init__(__self__, *,
+                 available_on_restricted_vip: _builtins.bool,
+                 known_limitations: _builtins.bool,
+                 name: _builtins.str,
+                 service_support_stage: _builtins.str,
+                 support_stage: _builtins.str,
+                 title: _builtins.str):
+        """
+        :param _builtins.bool available_on_restricted_vip: True if the service is available on the restricted VIP. Services on the restricted VIP typically either support VPC Service Controls or are core infrastructure services required for the functioning of Google Cloud.
+        :param _builtins.bool known_limitations: True if the service is supported with some limitations. Check [documentation](https://cloud.google.com/vpc-service-controls/docs/supported-products) for details.
+        :param _builtins.str name: The service name or address of the supported service, such as `storage.googleapis.com`.
+        :param _builtins.str service_support_stage: The support stage of the service. Values are `GA`, `PREVIEW`, and `DEPRECATED`.
+        :param _builtins.str support_stage: The support stage of the service.
+        :param _builtins.str title: The name of the supported product, such as 'Cloud Storage'.
+        """
+        pulumi.set(__self__, "available_on_restricted_vip", available_on_restricted_vip)
+        pulumi.set(__self__, "known_limitations", known_limitations)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service_support_stage", service_support_stage)
+        pulumi.set(__self__, "support_stage", support_stage)
+        pulumi.set(__self__, "title", title)
+
+    @_builtins.property
+    @pulumi.getter(name="availableOnRestrictedVip")
+    def available_on_restricted_vip(self) -> _builtins.bool:
+        """
+        True if the service is available on the restricted VIP. Services on the restricted VIP typically either support VPC Service Controls or are core infrastructure services required for the functioning of Google Cloud.
+        """
+        return pulumi.get(self, "available_on_restricted_vip")
+
+    @_builtins.property
+    @pulumi.getter(name="knownLimitations")
+    def known_limitations(self) -> _builtins.bool:
+        """
+        True if the service is supported with some limitations. Check [documentation](https://cloud.google.com/vpc-service-controls/docs/supported-products) for details.
+        """
+        return pulumi.get(self, "known_limitations")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The service name or address of the supported service, such as `storage.googleapis.com`.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceSupportStage")
+    def service_support_stage(self) -> _builtins.str:
+        """
+        The support stage of the service. Values are `GA`, `PREVIEW`, and `DEPRECATED`.
+        """
+        return pulumi.get(self, "service_support_stage")
+
+    @_builtins.property
+    @pulumi.getter(name="supportStage")
+    def support_stage(self) -> _builtins.str:
+        """
+        The support stage of the service.
+        """
+        return pulumi.get(self, "support_stage")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        """
+        The name of the supported product, such as 'Cloud Storage'.
+        """
+        return pulumi.get(self, "title")
 
 

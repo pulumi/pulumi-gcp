@@ -257,29 +257,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing IAM policies
- * 
- * IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
- * 
- * * `&#34;projects/{project}/instances/{instance}&#34;`
- * 
- * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
- * 
- * tf
- * 
- * import {
- * 
- *   id = &#34;projects/{project}/instances/{instance}&#34;
- * 
- *   to = google_bigtable_instance_iam_policy.default
- * 
- * }
- * 
- * The `pulumi import` command can also be used:
- * 
- * ```sh
- * $ pulumi import gcp:bigtable/instanceIamBinding:InstanceIamBinding default projects/{project}/instances/{instance}
- * ```
+ * &gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:bigtable/instanceIamBinding:InstanceIamBinding")
@@ -358,9 +337,19 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
     public Output<List<String>> members() {
         return this.members;
     }
+    /**
+     * The project in which the instance belongs. If it
+     * is not provided, Terraform will use the provider default.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The project in which the instance belongs. If it
+     * is not provided, Terraform will use the provider default.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

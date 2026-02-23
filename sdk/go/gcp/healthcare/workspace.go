@@ -91,7 +91,7 @@ type Workspace struct {
 	// The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Settings associated with this workspace.
 	// Structure is documented below.
@@ -152,7 +152,7 @@ type workspaceState struct {
 	// The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
 	Name *string `pulumi:"name"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Settings associated with this workspace.
 	// Structure is documented below.
@@ -173,7 +173,7 @@ type WorkspaceState struct {
 	// The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
 	Name pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Settings associated with this workspace.
 	// Structure is documented below.
@@ -329,7 +329,8 @@ func (o WorkspaceOutput) Name() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o WorkspaceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

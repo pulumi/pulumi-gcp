@@ -248,22 +248,14 @@ import javax.annotation.Nullable;
  * Instance can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
  * ```
  * 
@@ -325,6 +317,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+     * 
+     */
+    @Export(name="desiredReplicaState", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> desiredReplicaState;
+
+    /**
+     * @return The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+     * 
+     */
+    public Output<Optional<String>> desiredReplicaState() {
+        return Codegen.optional(this.desiredReplicaState);
     }
     /**
      * Directory Services configuration.
@@ -566,7 +572,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -574,7 +580,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

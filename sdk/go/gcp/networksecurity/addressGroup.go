@@ -195,7 +195,7 @@ type AddressGroup struct {
 	// The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// (Optional, Beta)
 	// List of supported purposes of the Address Group.
@@ -280,7 +280,7 @@ type addressGroupState struct {
 	// The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
 	Parent *string `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// (Optional, Beta)
 	// List of supported purposes of the Address Group.
@@ -322,7 +322,7 @@ type AddressGroupState struct {
 	// The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
 	Parent pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// (Optional, Beta)
 	// List of supported purposes of the Address Group.
@@ -540,7 +540,8 @@ func (o AddressGroupOutput) Parent() pulumi.StringPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AddressGroupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AddressGroup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

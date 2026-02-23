@@ -75,22 +75,14 @@ import javax.annotation.Nullable;
  * Scope can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/global/scopes/{{scope_id}}`
- * 
  * * `{{project}}/{{scope_id}}`
- * 
  * * `{{scope_id}}`
  * 
  * When using the `pulumi import` command, Scope can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:gkehub/scope:Scope default projects/{{project}}/locations/global/scopes/{{scope_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gkehub/scope:Scope default {{project}}/{{scope_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gkehub/scope:Scope default {{scope_id}}
  * ```
  * 
@@ -213,7 +205,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -221,7 +213,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

@@ -12,6 +12,15 @@ namespace Pulumi.Gcp.RuntimeConfig
     public static class GetConfig
     {
         /// <summary>
+        /// To get more information about RuntimeConfigs, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+        /// * How-to Guides
+        ///     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+        /// 
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta datasources.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +43,15 @@ namespace Pulumi.Gcp.RuntimeConfig
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConfigResult>("gcp:runtimeconfig/getConfig:getConfig", args ?? new GetConfigArgs(), options.WithDefaults());
 
         /// <summary>
+        /// To get more information about RuntimeConfigs, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+        /// * How-to Guides
+        ///     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+        /// 
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta datasources.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +74,15 @@ namespace Pulumi.Gcp.RuntimeConfig
             => global::Pulumi.Deployment.Instance.Invoke<GetConfigResult>("gcp:runtimeconfig/getConfig:getConfig", args ?? new GetConfigInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// To get more information about RuntimeConfigs, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+        /// * How-to Guides
+        ///     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+        /// 
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta datasources.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

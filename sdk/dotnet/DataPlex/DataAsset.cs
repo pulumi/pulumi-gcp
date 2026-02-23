@@ -10,6 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataPlex
 {
     /// <summary>
+    /// A data asset resource that can be packaged and shared via a data product.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about DataAsset, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts.dataAssets)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/dataplex/docs)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Dataplex Data Asset Basic
@@ -26,7 +37,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Project = "my-project-name",
     ///         Location = "us-central1",
-    ///         DataProductId = "tf-test-dp-_89605",
+    ///         DataProductId = "tf-test-dp-_95154",
     ///         DisplayName = "Parent Data Product",
     ///         OwnerEmails = new[]
     ///         {
@@ -41,7 +52,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 DisplayName = "Data Analyst",
     ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
     ///                 {
-    ///                     GoogleGroup = "tf-test-analysts-_56730@example.com",
+    ///                     GoogleGroup = "tf-test-analysts-_64336@example.com",
     ///                 },
     ///             },
     ///         },
@@ -50,7 +61,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var exampleDataset = new Gcp.BigQuery.Dataset("example", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         DatasetId = "tf_test_dataset__95154",
+    ///         DatasetId = "tf_test_dataset__34962",
     ///         Location = "us-central1",
     ///     });
     /// 
@@ -84,7 +95,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Project = "my-project-name",
     ///         Location = "us-central1",
-    ///         DataProductId = "tf-test-dp-_64336",
+    ///         DataProductId = "tf-test-dp-_74000",
     ///         DisplayName = "Full Example Parent DP",
     ///         OwnerEmails = new[]
     ///         {
@@ -118,7 +129,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var exampleDataset = new Gcp.BigQuery.Dataset("example", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         DatasetId = "tf_test_dataset__34962",
+    ///         DatasetId = "tf_test_dataset__75125",
     ///         Location = "us-central1",
     ///     });
     /// 
@@ -168,22 +179,14 @@ namespace Pulumi.Gcp.DataPlex
     /// DataAsset can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}/dataAssets/{{data_asset_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}`
-    /// 
     /// * `{{location}}/{{data_product_id}}/{{data_asset_id}}`
     /// 
     /// When using the `pulumi import` command, DataAsset can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataplex/dataAsset:DataAsset default projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}/dataAssets/{{data_asset_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{location}}/{{data_product_id}}/{{data_asset_id}}
     /// ```
     /// </summary>
@@ -238,7 +241,7 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -445,7 +448,7 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

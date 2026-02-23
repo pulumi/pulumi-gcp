@@ -120,22 +120,14 @@ import javax.annotation.Nullable;
  * Backup can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{vault_name}}/{{name}}`
- * 
  * * `{{location}}/{{vault_name}}/{{name}}`
  * 
  * When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:netapp/backup:Backup default projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:netapp/backup:Backup default {{project}}/{{location}}/{{vault_name}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:netapp/backup:Backup default {{location}}/{{vault_name}}/{{name}}
  * ```
  * 
@@ -294,7 +286,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -302,7 +294,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

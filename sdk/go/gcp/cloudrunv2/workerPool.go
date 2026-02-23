@@ -157,8 +157,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -371,8 +369,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -744,22 +740,14 @@ import (
 // WorkerPool can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{location}}/{{name}}
 // ```
 type WorkerPool struct {
@@ -795,10 +783,17 @@ type WorkerPool struct {
 	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
 	CustomAudiences pulumi.StringArrayOutput `pulumi:"customAudiences"`
 	// The deletion time.
-	DeleteTime         pulumi.StringOutput  `pulumi:"deleteTime"`
+	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the service. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the service,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the WorkerPool will fail.
+	// When the field is set to false, deleting the WorkerPool is allowed.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// User-provided description of the WorkerPool. This field currently has a 512-character limit.
-	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -842,7 +837,7 @@ type WorkerPool struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Returns true if the WorkerPool is currently being acted upon by the system to bring it into the desired state.
 	// When a new WorkerPool is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the WorkerPool to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the WorkerPool, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
@@ -935,10 +930,17 @@ type workerPoolState struct {
 	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
 	CustomAudiences []string `pulumi:"customAudiences"`
 	// The deletion time.
-	DeleteTime         *string `pulumi:"deleteTime"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the service. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the service,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the WorkerPool will fail.
+	// When the field is set to false, deleting the WorkerPool is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// User-provided description of the WorkerPool. This field currently has a 512-character limit.
-	Description          *string           `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -982,7 +984,7 @@ type workerPoolState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Returns true if the WorkerPool is currently being acted upon by the system to bring it into the desired state.
 	// When a new WorkerPool is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the WorkerPool to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the WorkerPool, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
@@ -1035,10 +1037,17 @@ type WorkerPoolState struct {
 	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
 	CustomAudiences pulumi.StringArrayInput
 	// The deletion time.
-	DeleteTime         pulumi.StringPtrInput
+	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the service. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the service,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the WorkerPool will fail.
+	// When the field is set to false, deleting the WorkerPool is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// User-provided description of the WorkerPool. This field currently has a 512-character limit.
-	Description          pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -1082,7 +1091,7 @@ type WorkerPoolState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Returns true if the WorkerPool is currently being acted upon by the system to bring it into the desired state.
 	// When a new WorkerPool is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the WorkerPool to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the WorkerPool, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
@@ -1130,8 +1139,14 @@ type workerPoolArgs struct {
 	// > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
 	//
 	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-	CustomAudiences    []string `pulumi:"customAudiences"`
-	DeletionProtection *bool    `pulumi:"deletionProtection"`
+	CustomAudiences []string `pulumi:"customAudiences"`
+	// Whether Terraform will be prevented from destroying the service. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the service,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the WorkerPool will fail.
+	// When the field is set to false, deleting the WorkerPool is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// User-provided description of the WorkerPool. This field currently has a 512-character limit.
 	Description *string `pulumi:"description"`
 	// Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
@@ -1187,7 +1202,13 @@ type WorkerPoolArgs struct {
 	// > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
 	//
 	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-	CustomAudiences    pulumi.StringArrayInput
+	CustomAudiences pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the service. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the service,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the WorkerPool will fail.
+	// When the field is set to false, deleting the WorkerPool is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// User-provided description of the WorkerPool. This field currently has a 512-character limit.
 	Description pulumi.StringPtrInput
@@ -1366,6 +1387,12 @@ func (o WorkerPoolOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the service. Defaults to true.
+// When a`terraform destroy` or `pulumi up` would delete the service,
+// the command will fail if this field is not set to false in Terraform state.
+// When the field is set to true or unset in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the WorkerPool will fail.
+// When the field is set to false, deleting the WorkerPool is allowed.
 func (o WorkerPoolOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -1375,6 +1402,7 @@ func (o WorkerPoolOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o WorkerPoolOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -1466,7 +1494,8 @@ func (o WorkerPoolOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o WorkerPoolOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

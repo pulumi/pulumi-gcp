@@ -61,22 +61,14 @@ import * as utilities from "../utilities";
  * Mesh can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/meshes/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, Mesh can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/{{location}}/meshes/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/mesh:Mesh default {{location}}/{{name}}
  * ```
  */
@@ -149,7 +141,7 @@ export class Mesh extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -251,7 +243,7 @@ export interface MeshState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

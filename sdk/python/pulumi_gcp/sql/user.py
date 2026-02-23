@@ -36,7 +36,13 @@ class UserArgs:
         The set of arguments for constructing a User resource.
         :param pulumi.Input[_builtins.str] instance: The name of the Cloud SQL instance. Changing this
                forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user.
+               This option is only available for MySQL 8+ and PostgreSQL instances. You
+               can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+               own custom roles. Custom roles must be created in the database before
+               you can assign them. You can create roles using the CREATE ROLE
+               statement for both MySQL and PostgreSQL.
+               **Note**: This property is write-only and will not be read from the API.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
                Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -105,7 +111,13 @@ class UserArgs:
     @pulumi.getter(name="databaseRoles")
     def database_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        A list of database roles to be assigned to the user.
+        This option is only available for MySQL 8+ and PostgreSQL instances. You
+        can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+        own custom roles. Custom roles must be created in the database before
+        you can assign them. You can create roles using the CREATE ROLE
+        statement for both MySQL and PostgreSQL.
+        **Note**: This property is write-only and will not be read from the API.
         """
         return pulumi.get(self, "database_roles")
 
@@ -257,7 +269,13 @@ class _UserState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user.
+               This option is only available for MySQL 8+ and PostgreSQL instances. You
+               can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+               own custom roles. Custom roles must be created in the database before
+               you can assign them. You can create roles using the CREATE ROLE
+               statement for both MySQL and PostgreSQL.
+               **Note**: This property is write-only and will not be read from the API.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
                Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -266,7 +284,7 @@ class _UserState:
         :param pulumi.Input[_builtins.str] host: The host the user can connect from. This is only supported
                for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
                Can be an IP address. Changing this forces a new resource to be created.
-        :param pulumi.Input[_builtins.str] iam_email: The email address for MySQL IAM database users.
+        :param pulumi.Input[_builtins.str] iam_email: IAM email address for MySQL IAM database users.
         :param pulumi.Input[_builtins.str] instance: The name of the Cloud SQL instance. Changing this
                forces a new resource to be created.
         :param pulumi.Input[_builtins.str] name: The name of the user. Changing this forces a new resource
@@ -321,7 +339,13 @@ class _UserState:
     @pulumi.getter(name="databaseRoles")
     def database_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        A list of database roles to be assigned to the user.
+        This option is only available for MySQL 8+ and PostgreSQL instances. You
+        can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+        own custom roles. Custom roles must be created in the database before
+        you can assign them. You can create roles using the CREATE ROLE
+        statement for both MySQL and PostgreSQL.
+        **Note**: This property is write-only and will not be read from the API.
         """
         return pulumi.get(self, "database_roles")
 
@@ -363,7 +387,7 @@ class _UserState:
     @pulumi.getter(name="iamEmail")
     def iam_email(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The email address for MySQL IAM database users.
+        IAM email address for MySQL IAM database users.
         """
         return pulumi.get(self, "iam_email")
 
@@ -508,6 +532,11 @@ class User(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
+
+        Read more about sensitive data in state. Passwords will not be retrieved when running
+        "terraform import".
+
         ## Example Usage
 
         Example creating a SQL User.
@@ -529,6 +558,29 @@ class User(pulumi.CustomResource):
             instance=main.name,
             host="me.com",
             password="changeme")
+        ```
+
+        Example creating a SQL User with database roles(applicable for Postgres/MySQL
+        only).
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        main = gcp.sql.DatabaseInstance("main",
+            name=f"main-instance-{db_name_suffix['hex']}",
+            database_version="POSTGRES_15",
+            settings={
+                "tier": "db-f1-micro",
+            })
+        users = gcp.sql.User("users",
+            name="me",
+            instance=main.name,
+            host="me.com",
+            password="changeme",
+            database_roles=["cloudsqlsuperuser"])
         ```
 
         Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
@@ -621,7 +673,13 @@ class User(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user.
+               This option is only available for MySQL 8+ and PostgreSQL instances. You
+               can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+               own custom roles. Custom roles must be created in the database before
+               you can assign them. You can create roles using the CREATE ROLE
+               statement for both MySQL and PostgreSQL.
+               **Note**: This property is write-only and will not be read from the API.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
                Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -660,6 +718,11 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
+
+        Read more about sensitive data in state. Passwords will not be retrieved when running
+        "terraform import".
+
         ## Example Usage
 
         Example creating a SQL User.
@@ -681,6 +744,29 @@ class User(pulumi.CustomResource):
             instance=main.name,
             host="me.com",
             password="changeme")
+        ```
+
+        Example creating a SQL User with database roles(applicable for Postgres/MySQL
+        only).
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        main = gcp.sql.DatabaseInstance("main",
+            name=f"main-instance-{db_name_suffix['hex']}",
+            database_version="POSTGRES_15",
+            settings={
+                "tier": "db-f1-micro",
+            })
+        users = gcp.sql.User("users",
+            name="me",
+            instance=main.name,
+            host="me.com",
+            password="changeme",
+            database_roles=["cloudsqlsuperuser"])
         ```
 
         Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
@@ -853,7 +939,13 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user.
+               This option is only available for MySQL 8+ and PostgreSQL instances. You
+               can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+               own custom roles. Custom roles must be created in the database before
+               you can assign them. You can create roles using the CREATE ROLE
+               statement for both MySQL and PostgreSQL.
+               **Note**: This property is write-only and will not be read from the API.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
                Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -862,7 +954,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] host: The host the user can connect from. This is only supported
                for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
                Can be an IP address. Changing this forces a new resource to be created.
-        :param pulumi.Input[_builtins.str] iam_email: The email address for MySQL IAM database users.
+        :param pulumi.Input[_builtins.str] iam_email: IAM email address for MySQL IAM database users.
         :param pulumi.Input[_builtins.str] instance: The name of the Cloud SQL instance. Changing this
                forces a new resource to be created.
         :param pulumi.Input[_builtins.str] name: The name of the user. Changing this forces a new resource
@@ -909,7 +1001,13 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="databaseRoles")
     def database_roles(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        A list of database roles to be assigned to the user.
+        This option is only available for MySQL 8+ and PostgreSQL instances. You
+        can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+        own custom roles. Custom roles must be created in the database before
+        you can assign them. You can create roles using the CREATE ROLE
+        statement for both MySQL and PostgreSQL.
+        **Note**: This property is write-only and will not be read from the API.
         """
         return pulumi.get(self, "database_roles")
 
@@ -939,7 +1037,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="iamEmail")
     def iam_email(self) -> pulumi.Output[_builtins.str]:
         """
-        The email address for MySQL IAM database users.
+        IAM email address for MySQL IAM database users.
         """
         return pulumi.get(self, "iam_email")
 

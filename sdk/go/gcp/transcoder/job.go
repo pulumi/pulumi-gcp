@@ -1006,22 +1006,14 @@ import (
 // Job can be imported using any of these accepted formats:
 //
 // * `{{project}}/{{name}}`
-//
 // * `{{project}} {{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:transcoder/job:Job default {{project}}/{{name}}
-// ```
-//
-// ```sh
-// $ pulumi import gcp:transcoder/job:Job default "{{project}} {{name}}"
-// ```
-//
-// ```sh
+// $ terraform import google_transcoder_job.default "{{project}} {{name}}"
 // $ pulumi import gcp:transcoder/job:Job default {{name}}
 // ```
 type Job struct {
@@ -1049,7 +1041,7 @@ type Job struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The time the transcoding started.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
@@ -1120,7 +1112,7 @@ type jobState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The time the transcoding started.
 	StartTime *string `pulumi:"startTime"`
@@ -1154,7 +1146,7 @@ type JobState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The time the transcoding started.
 	StartTime pulumi.StringPtrInput
@@ -1341,7 +1333,8 @@ func (o JobOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o JobOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

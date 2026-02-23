@@ -53,22 +53,14 @@ import * as utilities from "../utilities";
  * DeviceCheckConfig can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/apps/{{app_id}}/deviceCheckConfig`
- *
  * * `{{project}}/{{app_id}}`
- *
  * * `{{app_id}}`
  *
  * When using the `pulumi import` command, DeviceCheckConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig default projects/{{project}}/apps/{{app_id}}/deviceCheckConfig
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig default {{project}}/{{app_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig default {{app_id}}
  * ```
  */

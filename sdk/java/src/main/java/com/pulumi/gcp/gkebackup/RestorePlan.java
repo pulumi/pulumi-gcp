@@ -866,22 +866,14 @@ import javax.annotation.Nullable;
  * RestorePlan can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default {{location}}/{{name}}
  * ```
  * 
@@ -1016,7 +1008,7 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -1024,7 +1016,7 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

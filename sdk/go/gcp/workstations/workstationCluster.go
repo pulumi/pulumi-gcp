@@ -12,6 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A grouping of workstation configurations and the associated workstations in that region.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about WorkstationCluster, see:
+//
+// * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters/create)
+// * How-to Guides
+//   - [Workstations](https://cloud.google.com/workstations/docs/)
+//
 // ## Example Usage
 //
 // ### Workstation Cluster Basic
@@ -272,22 +283,14 @@ import (
 // WorkstationCluster can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
-//
 // * `{{project}}/{{location}}/{{workstation_cluster_id}}`
-//
 // * `{{location}}/{{workstation_cluster_id}}`
 //
 // When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{project}}/{{location}}/{{workstation_cluster_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
 // ```
 type WorkstationCluster struct {
@@ -312,8 +315,9 @@ type WorkstationCluster struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Configuration options for a custom domain.
 	// Structure is documented below.
-	DomainConfig         WorkstationClusterDomainConfigPtrOutput `pulumi:"domainConfig"`
-	EffectiveAnnotations pulumi.StringMapOutput                  `pulumi:"effectiveAnnotations"`
+	DomainConfig WorkstationClusterDomainConfigPtrOutput `pulumi:"domainConfig"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Checksum computed by the server.
@@ -337,7 +341,7 @@ type WorkstationCluster struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
@@ -416,8 +420,9 @@ type workstationClusterState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Configuration options for a custom domain.
 	// Structure is documented below.
-	DomainConfig         *WorkstationClusterDomainConfig `pulumi:"domainConfig"`
-	EffectiveAnnotations map[string]string               `pulumi:"effectiveAnnotations"`
+	DomainConfig *WorkstationClusterDomainConfig `pulumi:"domainConfig"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Checksum computed by the server.
@@ -441,7 +446,7 @@ type workstationClusterState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
@@ -477,7 +482,8 @@ type WorkstationClusterState struct {
 	DisplayName pulumi.StringPtrInput
 	// Configuration options for a custom domain.
 	// Structure is documented below.
-	DomainConfig         WorkstationClusterDomainConfigPtrInput
+	DomainConfig WorkstationClusterDomainConfigPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -502,7 +508,7 @@ type WorkstationClusterState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
@@ -725,6 +731,7 @@ func (o WorkstationClusterOutput) DomainConfig() WorkstationClusterDomainConfigP
 	return o.ApplyT(func(v *WorkstationCluster) WorkstationClusterDomainConfigPtrOutput { return v.DomainConfig }).(WorkstationClusterDomainConfigPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o WorkstationClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -778,7 +785,8 @@ func (o WorkstationClusterOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o WorkstationClusterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

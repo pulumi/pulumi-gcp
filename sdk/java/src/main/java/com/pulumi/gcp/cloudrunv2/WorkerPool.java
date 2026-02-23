@@ -791,22 +791,14 @@ import javax.annotation.Nullable;
  * WorkerPool can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{location}}/{{name}}
  * ```
  * 
@@ -965,9 +957,27 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
     public Output<String> deleteTime() {
         return this.deleteTime;
     }
+    /**
+     * Whether Terraform will be prevented from destroying the service. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the service,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the WorkerPool will fail.
+     * When the field is set to false, deleting the WorkerPool is allowed.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the service. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the service,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the WorkerPool will fail.
+     * When the field is set to false, deleting the WorkerPool is allowed.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
@@ -985,9 +995,17 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
@@ -1225,7 +1243,7 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -1233,7 +1251,7 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

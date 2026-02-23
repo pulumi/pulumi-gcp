@@ -69,30 +69,25 @@ __all__ = [
     'SpokeReasonArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DestinationEndpointArgsDict(TypedDict):
-        asn: pulumi.Input[_builtins.str]
-        """
-        The ASN of the remote IP prefix.
-        """
-        csp: pulumi.Input[_builtins.str]
-        """
-        The CSP of the remote IP prefix.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The state of the DestinationEndpoint resource.
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Time when the DestinationEndpoint resource was updated.
-        """
-elif False:
-    DestinationEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class DestinationEndpointArgsDict(TypedDict):
+    asn: pulumi.Input[_builtins.str]
+    """
+    The ASN of the remote IP prefix.
+    """
+    csp: pulumi.Input[_builtins.str]
+    """
+    The CSP of the remote IP prefix.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The state of the DestinationEndpoint resource.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Time when the DestinationEndpoint resource was updated.
+    """
 
 @pulumi.input_type
 class DestinationEndpointArgs:
@@ -167,16 +162,13 @@ class DestinationEndpointArgs:
         pulumi.set(self, "update_time", value)
 
 
-if not MYPY:
-    class DestinationStateTimelineArgsDict(TypedDict):
-        states: NotRequired[pulumi.Input[Sequence[pulumi.Input['DestinationStateTimelineStateArgsDict']]]]
-        """
-        (Output)
-        The state and activation time details of the resource state.
-        Structure is documented below.
-        """
-elif False:
-    DestinationStateTimelineArgsDict: TypeAlias = Mapping[str, Any]
+class DestinationStateTimelineArgsDict(TypedDict):
+    states: NotRequired[pulumi.Input[Sequence[pulumi.Input['DestinationStateTimelineStateArgsDict']]]]
+    """
+    (Output)
+    The state and activation time details of the resource state.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DestinationStateTimelineArgs:
@@ -205,24 +197,21 @@ class DestinationStateTimelineArgs:
         pulumi.set(self, "states", value)
 
 
-if not MYPY:
-    class DestinationStateTimelineStateArgsDict(TypedDict):
-        effective_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Accompanies only the transient states, which include `ADDING`,
-        `DELETING`, and `SUSPENDING`, to denote the time until which the
-        transient state of the resource will be effective. For instance, if the
-        state is `ADDING`, this field shows the time when the resource state
-        transitions to `ACTIVE`.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The state of the resource.
-        """
-elif False:
-    DestinationStateTimelineStateArgsDict: TypeAlias = Mapping[str, Any]
+class DestinationStateTimelineStateArgsDict(TypedDict):
+    effective_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Accompanies only the transient states, which include `ADDING`,
+    `DELETING`, and `SUSPENDING`, to denote the time until which the
+    transient state of the resource will be effective. For instance, if the
+    state is `ADDING`, this field shows the time when the resource state
+    transitions to `ACTIVE`.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The state of the resource.
+    """
 
 @pulumi.input_type
 class DestinationStateTimelineStateArgs:
@@ -275,14 +264,11 @@ class DestinationStateTimelineStateArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class GroupAutoAcceptArgsDict(TypedDict):
-        auto_accept_projects: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects.
-        """
-elif False:
-    GroupAutoAcceptArgsDict: TypeAlias = Mapping[str, Any]
+class GroupAutoAcceptArgsDict(TypedDict):
+    auto_accept_projects: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects.
+    """
 
 @pulumi.input_type
 class GroupAutoAcceptArgs:
@@ -306,14 +292,11 @@ class GroupAutoAcceptArgs:
         pulumi.set(self, "auto_accept_projects", value)
 
 
-if not MYPY:
-    class HubRoutingVpcArgsDict(TypedDict):
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URI of the VPC network.
-        """
-elif False:
-    HubRoutingVpcArgsDict: TypeAlias = Mapping[str, Any]
+class HubRoutingVpcArgsDict(TypedDict):
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URI of the VPC network.
+    """
 
 @pulumi.input_type
 class HubRoutingVpcArgs:
@@ -338,20 +321,17 @@ class HubRoutingVpcArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class InternalRangeAllocationOptionsArgsDict(TypedDict):
-        allocation_strategy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Sets the strategy used to automatically find a free range of a size given by prefixLength. Can be set only when trying to create a reservation that automatically finds the free range to reserve.
-        Possible values are: `RANDOM`, `FIRST_AVAILABLE`, `RANDOM_FIRST_N_AVAILABLE`, `FIRST_SMALLEST_FITTING`.
-        """
-        first_available_ranges_lookup_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Must be set when allocation_strategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
-        in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
-        """
-elif False:
-    InternalRangeAllocationOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class InternalRangeAllocationOptionsArgsDict(TypedDict):
+    allocation_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Sets the strategy used to automatically find a free range of a size given by prefixLength. Can be set only when trying to create a reservation that automatically finds the free range to reserve.
+    Possible values are: `RANDOM`, `FIRST_AVAILABLE`, `RANDOM_FIRST_N_AVAILABLE`, `FIRST_SMALLEST_FITTING`.
+    """
+    first_available_ranges_lookup_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Must be set when allocation_strategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
+    in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
+    """
 
 @pulumi.input_type
 class InternalRangeAllocationOptionsArgs:
@@ -396,24 +376,21 @@ class InternalRangeAllocationOptionsArgs:
         pulumi.set(self, "first_available_ranges_lookup_size", value)
 
 
-if not MYPY:
-    class InternalRangeMigrationArgsDict(TypedDict):
-        source: pulumi.Input[_builtins.str]
-        """
-        Resource path as an URI of the source resource, for example a subnet.
-        The project for the source resource should match the project for the
-        InternalRange.
-        An example /projects/{project}/regions/{region}/subnetworks/{subnet}
-        """
-        target: pulumi.Input[_builtins.str]
-        """
-        Resource path of the target resource. The target project can be
-        different, as in the cases when migrating to peer networks. The resource
-        may not exist yet.
-        For example /projects/{project}/regions/{region}/subnetworks/{subnet}
-        """
-elif False:
-    InternalRangeMigrationArgsDict: TypeAlias = Mapping[str, Any]
+class InternalRangeMigrationArgsDict(TypedDict):
+    source: pulumi.Input[_builtins.str]
+    """
+    Resource path as an URI of the source resource, for example a subnet.
+    The project for the source resource should match the project for the
+    InternalRange.
+    An example /projects/{project}/regions/{region}/subnetworks/{subnet}
+    """
+    target: pulumi.Input[_builtins.str]
+    """
+    Resource path of the target resource. The target project can be
+    different, as in the cases when migrating to peer networks. The resource
+    may not exist yet.
+    For example /projects/{project}/regions/{region}/subnetworks/{subnet}
+    """
 
 @pulumi.input_type
 class InternalRangeMigrationArgs:
@@ -464,24 +441,21 @@ class InternalRangeMigrationArgs:
         pulumi.set(self, "target", value)
 
 
-if not MYPY:
-    class MulticloudDataTransferConfigServiceArgsDict(TypedDict):
-        service_name: pulumi.Input[_builtins.str]
-        """
-        The name of the service, like "big-query" or "cloud-storage".
-        This corresponds to the map key in the API.
-        """
-        states: NotRequired[pulumi.Input[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceStateArgsDict']]]]
-        """
-        (Output)
-        The state and activation time details for the service.
-        Structure is documented below.
+class MulticloudDataTransferConfigServiceArgsDict(TypedDict):
+    service_name: pulumi.Input[_builtins.str]
+    """
+    The name of the service, like "big-query" or "cloud-storage".
+    This corresponds to the map key in the API.
+    """
+    states: NotRequired[pulumi.Input[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceStateArgsDict']]]]
+    """
+    (Output)
+    The state and activation time details for the service.
+    Structure is documented below.
 
 
-        <a name="nested_services_states"></a>The `states` block contains:
-        """
-elif False:
-    MulticloudDataTransferConfigServiceArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_services_states"></a>The `states` block contains:
+    """
 
 @pulumi.input_type
 class MulticloudDataTransferConfigServiceArgs:
@@ -533,18 +507,15 @@ class MulticloudDataTransferConfigServiceArgs:
         pulumi.set(self, "states", value)
 
 
-if not MYPY:
-    class MulticloudDataTransferConfigServiceStateArgsDict(TypedDict):
-        effective_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time when the state becomes effective
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The state of the resource.
-        """
-elif False:
-    MulticloudDataTransferConfigServiceStateArgsDict: TypeAlias = Mapping[str, Any]
+class MulticloudDataTransferConfigServiceStateArgsDict(TypedDict):
+    effective_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time when the state becomes effective
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The state of the resource.
+    """
 
 @pulumi.input_type
 class MulticloudDataTransferConfigServiceStateArgs:
@@ -585,27 +556,24 @@ class MulticloudDataTransferConfigServiceStateArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class PolicyBasedRouteFilterArgsDict(TypedDict):
-        protocol_version: pulumi.Input[_builtins.str]
-        """
-        Internet protocol versions this policy-based route applies to.
-        Possible values are: `IPV4`, `IPV6`.
-        """
-        dest_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
-        """
-        ip_protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
-        """
-        src_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
-        """
-elif False:
-    PolicyBasedRouteFilterArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyBasedRouteFilterArgsDict(TypedDict):
+    protocol_version: pulumi.Input[_builtins.str]
+    """
+    Internet protocol versions this policy-based route applies to.
+    Possible values are: `IPV4`, `IPV6`.
+    """
+    dest_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
+    """
+    ip_protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+    """
+    src_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
+    """
 
 @pulumi.input_type
 class PolicyBasedRouteFilterArgs:
@@ -679,14 +647,11 @@ class PolicyBasedRouteFilterArgs:
         pulumi.set(self, "src_range", value)
 
 
-if not MYPY:
-    class PolicyBasedRouteInterconnectAttachmentArgsDict(TypedDict):
-        region: pulumi.Input[_builtins.str]
-        """
-        Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
-        """
-elif False:
-    PolicyBasedRouteInterconnectAttachmentArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyBasedRouteInterconnectAttachmentArgsDict(TypedDict):
+    region: pulumi.Input[_builtins.str]
+    """
+    Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
+    """
 
 @pulumi.input_type
 class PolicyBasedRouteInterconnectAttachmentArgs:
@@ -710,14 +675,11 @@ class PolicyBasedRouteInterconnectAttachmentArgs:
         pulumi.set(self, "region", value)
 
 
-if not MYPY:
-    class PolicyBasedRouteVirtualMachineArgsDict(TypedDict):
-        tags: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of VM instance tags that this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
-        """
-elif False:
-    PolicyBasedRouteVirtualMachineArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyBasedRouteVirtualMachineArgsDict(TypedDict):
+    tags: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of VM instance tags that this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+    """
 
 @pulumi.input_type
 class PolicyBasedRouteVirtualMachineArgs:
@@ -741,25 +703,22 @@ class PolicyBasedRouteVirtualMachineArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class PolicyBasedRouteWarningArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A warning code, if applicable.
-        """
-        data: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
-        """
-        warning_message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A human-readable description of the warning code.
-        """
-elif False:
-    PolicyBasedRouteWarningArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyBasedRouteWarningArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A warning code, if applicable.
+    """
+    data: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
+    """
+    warning_message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A human-readable description of the warning code.
+    """
 
 @pulumi.input_type
 class PolicyBasedRouteWarningArgs:
@@ -822,36 +781,33 @@ class PolicyBasedRouteWarningArgs:
         pulumi.set(self, "warning_message", value)
 
 
-if not MYPY:
-    class ServiceConnectionPolicyPscConfigArgsDict(TypedDict):
-        subnetworks: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        IDs of the subnetworks or fully qualified identifiers for the subnetworks
-        """
-        allowed_google_producers_resource_hierarchy_levels: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
-        a network administrator can provide both 'organizations/foo' and 'projects/bar' as
-        allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer
-        instance within the 'foo' organization or the 'bar' project. By default,
-        allowedGoogleProducersResourceHierarchyLevel is empty. The format for each
-        allowedGoogleProducersResourceHierarchyLevel is / where is one of 'projects', 'folders', or 'organizations'
-        and is either the ID or the number of the resource type. Format for each
-        allowedGoogleProducersResourceHierarchyLevel value: 'projects/' or 'folders/' or 'organizations/' Eg.
-        [projects/my-project-id, projects/567, folders/891, organizations/123]
-        """
-        limit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Max number of PSC connections for this policy.
-        """
-        producer_instance_location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
-        the Producer instance can be within.
-        Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
-        """
-elif False:
-    ServiceConnectionPolicyPscConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceConnectionPolicyPscConfigArgsDict(TypedDict):
+    subnetworks: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    IDs of the subnetworks or fully qualified identifiers for the subnetworks
+    """
+    allowed_google_producers_resource_hierarchy_levels: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
+    a network administrator can provide both 'organizations/foo' and 'projects/bar' as
+    allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer
+    instance within the 'foo' organization or the 'bar' project. By default,
+    allowedGoogleProducersResourceHierarchyLevel is empty. The format for each
+    allowedGoogleProducersResourceHierarchyLevel is / where is one of 'projects', 'folders', or 'organizations'
+    and is either the ID or the number of the resource type. Format for each
+    allowedGoogleProducersResourceHierarchyLevel value: 'projects/' or 'folders/' or 'organizations/' Eg.
+    [projects/my-project-id, projects/567, folders/891, organizations/123]
+    """
+    limit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Max number of PSC connections for this policy.
+    """
+    producer_instance_location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
+    the Producer instance can be within.
+    Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
+    """
 
 @pulumi.input_type
 class ServiceConnectionPolicyPscConfigArgs:
@@ -943,51 +899,48 @@ class ServiceConnectionPolicyPscConfigArgs:
         pulumi.set(self, "producer_instance_location", value)
 
 
-if not MYPY:
-    class ServiceConnectionPolicyPscConnectionArgsDict(TypedDict):
-        consumer_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource reference of the consumer address.
-        """
-        consumer_forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource reference of the PSC Forwarding Rule within the consumer VPC.
-        """
-        consumer_target_project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The project where the PSC connection is created.
-        """
-        error: NotRequired[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArgsDict']]
-        """
-        The most recent error during operating this connection.
-        Structure is documented below.
-        """
-        error_info: NotRequired[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArgsDict']]
-        """
-        The error info for the latest error during operating this connection.
-        Structure is documented below.
-        """
-        error_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The error type indicates whether the error is consumer facing, producer
-        facing or system internal.
-        Possible values are: `CONNECTION_ERROR_TYPE_UNSPECIFIED`, `ERROR_INTERNAL`, `ERROR_CONSUMER_SIDE`, `ERROR_PRODUCER_SIDE`.
-        """
-        gce_operation: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The last Compute Engine operation to setup PSC connection.
-        """
-        psc_connection_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The PSC connection id of the PSC forwarding rule.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The state of the PSC connection.
-        Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
-        """
-elif False:
-    ServiceConnectionPolicyPscConnectionArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceConnectionPolicyPscConnectionArgsDict(TypedDict):
+    consumer_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource reference of the consumer address.
+    """
+    consumer_forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource reference of the PSC Forwarding Rule within the consumer VPC.
+    """
+    consumer_target_project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The project where the PSC connection is created.
+    """
+    error: NotRequired[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArgsDict']]
+    """
+    The most recent error during operating this connection.
+    Structure is documented below.
+    """
+    error_info: NotRequired[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArgsDict']]
+    """
+    The error info for the latest error during operating this connection.
+    Structure is documented below.
+    """
+    error_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The error type indicates whether the error is consumer facing, producer
+    facing or system internal.
+    Possible values are: `CONNECTION_ERROR_TYPE_UNSPECIFIED`, `ERROR_INTERNAL`, `ERROR_CONSUMER_SIDE`, `ERROR_PRODUCER_SIDE`.
+    """
+    gce_operation: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The last Compute Engine operation to setup PSC connection.
+    """
+    psc_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The PSC connection id of the PSC forwarding rule.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The state of the PSC connection.
+    Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
+    """
 
 @pulumi.input_type
 class ServiceConnectionPolicyPscConnectionArgs:
@@ -1150,23 +1103,20 @@ class ServiceConnectionPolicyPscConnectionArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class ServiceConnectionPolicyPscConnectionErrorArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The status code, which should be an enum value of [google.rpc.Code][].
-        """
-        details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]
-        """
-        (Output)
-        A list of messages that carry the error details.
-        """
-        message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A developer-facing error message.
-        """
-elif False:
-    ServiceConnectionPolicyPscConnectionErrorArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceConnectionPolicyPscConnectionErrorArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The status code, which should be an enum value of [google.rpc.Code][].
+    """
+    details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]
+    """
+    (Output)
+    A list of messages that carry the error details.
+    """
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A developer-facing error message.
+    """
 
 @pulumi.input_type
 class ServiceConnectionPolicyPscConnectionErrorArgs:
@@ -1225,22 +1175,19 @@ class ServiceConnectionPolicyPscConnectionErrorArgs:
         pulumi.set(self, "message", value)
 
 
-if not MYPY:
-    class ServiceConnectionPolicyPscConnectionErrorInfoArgsDict(TypedDict):
-        domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The logical grouping to which the "reason" belongs.
-        """
-        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Additional structured details about this error.
-        """
-        reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The reason of the error.
-        """
-elif False:
-    ServiceConnectionPolicyPscConnectionErrorInfoArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceConnectionPolicyPscConnectionErrorInfoArgsDict(TypedDict):
+    domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The logical grouping to which the "reason" belongs.
+    """
+    metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Additional structured details about this error.
+    """
+    reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The reason of the error.
+    """
 
 @pulumi.input_type
 class ServiceConnectionPolicyPscConnectionErrorInfoArgs:
@@ -1297,25 +1244,22 @@ class ServiceConnectionPolicyPscConnectionErrorInfoArgs:
         pulumi.set(self, "reason", value)
 
 
-if not MYPY:
-    class SpokeGatewayArgsDict(TypedDict):
-        capacity: pulumi.Input[_builtins.str]
-        """
-        the capacity of the gateway spoke, in Gbps.
-        Possible values are: `CAPACITY_1_GBPS`, `CAPACITY_10_GBPS`, `CAPACITY_100_GBPS`.
-        """
-        ip_range_reservations: pulumi.Input[Sequence[pulumi.Input['SpokeGatewayIpRangeReservationArgsDict']]]
-        """
-        A list of IP ranges that are reserved for this gateway's internal infrastructure.
-        Structure is documented below.
-        """
-        routers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output, Beta)
-        Set of Cloud Routers that are attached to this NCC-GW
-        """
-elif False:
-    SpokeGatewayArgsDict: TypeAlias = Mapping[str, Any]
+class SpokeGatewayArgsDict(TypedDict):
+    capacity: pulumi.Input[_builtins.str]
+    """
+    the capacity of the gateway spoke, in Gbps.
+    Possible values are: `CAPACITY_1_GBPS`, `CAPACITY_10_GBPS`, `CAPACITY_100_GBPS`.
+    """
+    ip_range_reservations: pulumi.Input[Sequence[pulumi.Input['SpokeGatewayIpRangeReservationArgsDict']]]
+    """
+    A list of IP ranges that are reserved for this gateway's internal infrastructure.
+    Structure is documented below.
+    """
+    routers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output, Beta)
+    Set of Cloud Routers that are attached to this NCC-GW
+    """
 
 @pulumi.input_type
 class SpokeGatewayArgs:
@@ -1376,14 +1320,11 @@ class SpokeGatewayArgs:
         pulumi.set(self, "routers", value)
 
 
-if not MYPY:
-    class SpokeGatewayIpRangeReservationArgsDict(TypedDict):
-        ip_range: pulumi.Input[_builtins.str]
-        """
-        A block of IP address ranges used to allocate supporting infrastructure for this gateway—for example, 10.1.2.0/23. The IP address block must be a /23 range. This IP address block must not overlap with subnets in any spoke or peer network that the gateway can communicate with.
-        """
-elif False:
-    SpokeGatewayIpRangeReservationArgsDict: TypeAlias = Mapping[str, Any]
+class SpokeGatewayIpRangeReservationArgsDict(TypedDict):
+    ip_range: pulumi.Input[_builtins.str]
+    """
+    A block of IP address ranges used to allocate supporting infrastructure for this gateway—for example, 10.1.2.0/23. The IP address block must be a /23 range. This IP address block must not overlap with subnets in any spoke or peer network that the gateway can communicate with.
+    """
 
 @pulumi.input_type
 class SpokeGatewayIpRangeReservationArgs:
@@ -1407,23 +1348,20 @@ class SpokeGatewayIpRangeReservationArgs:
         pulumi.set(self, "ip_range", value)
 
 
-if not MYPY:
-    class SpokeLinkedInterconnectAttachmentsArgsDict(TypedDict):
-        site_to_site_data_transfer: pulumi.Input[_builtins.bool]
-        """
-        A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
-        """
-        uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The URIs of linked interconnect attachment resources
-        """
-        include_import_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IP ranges allowed to be included during import from hub (does not control transit connectivity).
-        The only allowed value for now is "ALL_IPV4_RANGES".
-        """
-elif False:
-    SpokeLinkedInterconnectAttachmentsArgsDict: TypeAlias = Mapping[str, Any]
+class SpokeLinkedInterconnectAttachmentsArgsDict(TypedDict):
+    site_to_site_data_transfer: pulumi.Input[_builtins.bool]
+    """
+    A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+    """
+    uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The URIs of linked interconnect attachment resources
+    """
+    include_import_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IP ranges allowed to be included during import from hub (does not control transit connectivity).
+    The only allowed value for now is "ALL_IPV4_RANGES".
+    """
 
 @pulumi.input_type
 class SpokeLinkedInterconnectAttachmentsArgs:
@@ -1480,31 +1418,28 @@ class SpokeLinkedInterconnectAttachmentsArgs:
         pulumi.set(self, "include_import_ranges", value)
 
 
-if not MYPY:
-    class SpokeLinkedProducerVpcNetworkArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        The URI of the Service Consumer VPC that the Producer VPC is peered with.
-        """
-        peering: pulumi.Input[_builtins.str]
-        """
-        The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
-        """
-        exclude_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IP ranges encompassing the subnets to be excluded from peering.
-        """
-        include_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IP ranges allowed to be included from peering.
-        """
-        producer_network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The URI of the Producer VPC.
-        """
-elif False:
-    SpokeLinkedProducerVpcNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class SpokeLinkedProducerVpcNetworkArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    The URI of the Service Consumer VPC that the Producer VPC is peered with.
+    """
+    peering: pulumi.Input[_builtins.str]
+    """
+    The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
+    """
+    exclude_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IP ranges encompassing the subnets to be excluded from peering.
+    """
+    include_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IP ranges allowed to be included from peering.
+    """
+    producer_network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The URI of the Producer VPC.
+    """
 
 @pulumi.input_type
 class SpokeLinkedProducerVpcNetworkArgs:
@@ -1593,24 +1528,21 @@ class SpokeLinkedProducerVpcNetworkArgs:
         pulumi.set(self, "producer_network", value)
 
 
-if not MYPY:
-    class SpokeLinkedRouterApplianceInstancesArgsDict(TypedDict):
-        instances: pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArgsDict']]]
-        """
-        The list of router appliance instances
-        Structure is documented below.
-        """
-        site_to_site_data_transfer: pulumi.Input[_builtins.bool]
-        """
-        A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
-        """
-        include_import_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IP ranges allowed to be included during import from hub (does not control transit connectivity).
-        The only allowed value for now is "ALL_IPV4_RANGES".
-        """
-elif False:
-    SpokeLinkedRouterApplianceInstancesArgsDict: TypeAlias = Mapping[str, Any]
+class SpokeLinkedRouterApplianceInstancesArgsDict(TypedDict):
+    instances: pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArgsDict']]]
+    """
+    The list of router appliance instances
+    Structure is documented below.
+    """
+    site_to_site_data_transfer: pulumi.Input[_builtins.bool]
+    """
+    A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+    """
+    include_import_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IP ranges allowed to be included during import from hub (does not control transit connectivity).
+    The only allowed value for now is "ALL_IPV4_RANGES".
+    """
 
 @pulumi.input_type
 class SpokeLinkedRouterApplianceInstancesArgs:
@@ -1669,18 +1601,15 @@ class SpokeLinkedRouterApplianceInstancesArgs:
         pulumi.set(self, "include_import_ranges", value)
 
 
-if not MYPY:
-    class SpokeLinkedRouterApplianceInstancesInstanceArgsDict(TypedDict):
-        ip_address: pulumi.Input[_builtins.str]
-        """
-        The IP address on the VM to use for peering.
-        """
-        virtual_machine: pulumi.Input[_builtins.str]
-        """
-        The URI of the virtual machine resource
-        """
-elif False:
-    SpokeLinkedRouterApplianceInstancesInstanceArgsDict: TypeAlias = Mapping[str, Any]
+class SpokeLinkedRouterApplianceInstancesInstanceArgsDict(TypedDict):
+    ip_address: pulumi.Input[_builtins.str]
+    """
+    The IP address on the VM to use for peering.
+    """
+    virtual_machine: pulumi.Input[_builtins.str]
+    """
+    The URI of the virtual machine resource
+    """
 
 @pulumi.input_type
 class SpokeLinkedRouterApplianceInstancesInstanceArgs:
@@ -1719,22 +1648,19 @@ class SpokeLinkedRouterApplianceInstancesInstanceArgs:
         pulumi.set(self, "virtual_machine", value)
 
 
-if not MYPY:
-    class SpokeLinkedVpcNetworkArgsDict(TypedDict):
-        uri: pulumi.Input[_builtins.str]
-        """
-        The URI of the VPC network resource.
-        """
-        exclude_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IP ranges encompassing the subnets to be excluded from peering.
-        """
-        include_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IP ranges allowed to be included from peering.
-        """
-elif False:
-    SpokeLinkedVpcNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class SpokeLinkedVpcNetworkArgsDict(TypedDict):
+    uri: pulumi.Input[_builtins.str]
+    """
+    The URI of the VPC network resource.
+    """
+    exclude_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IP ranges encompassing the subnets to be excluded from peering.
+    """
+    include_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IP ranges allowed to be included from peering.
+    """
 
 @pulumi.input_type
 class SpokeLinkedVpcNetworkArgs:
@@ -1790,23 +1716,20 @@ class SpokeLinkedVpcNetworkArgs:
         pulumi.set(self, "include_export_ranges", value)
 
 
-if not MYPY:
-    class SpokeLinkedVpnTunnelsArgsDict(TypedDict):
-        site_to_site_data_transfer: pulumi.Input[_builtins.bool]
-        """
-        A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
-        """
-        uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The URIs of linked VPN tunnel resources.
-        """
-        include_import_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IP ranges allowed to be included during import from hub (does not control transit connectivity).
-        The only allowed value for now is "ALL_IPV4_RANGES".
-        """
-elif False:
-    SpokeLinkedVpnTunnelsArgsDict: TypeAlias = Mapping[str, Any]
+class SpokeLinkedVpnTunnelsArgsDict(TypedDict):
+    site_to_site_data_transfer: pulumi.Input[_builtins.bool]
+    """
+    A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+    """
+    uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The URIs of linked VPN tunnel resources.
+    """
+    include_import_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IP ranges allowed to be included during import from hub (does not control transit connectivity).
+    The only allowed value for now is "ALL_IPV4_RANGES".
+    """
 
 @pulumi.input_type
 class SpokeLinkedVpnTunnelsArgs:
@@ -1863,22 +1786,19 @@ class SpokeLinkedVpnTunnelsArgs:
         pulumi.set(self, "include_import_ranges", value)
 
 
-if not MYPY:
-    class SpokeReasonArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The code associated with this reason.
-        """
-        message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human-readable details about this reason.
-        """
-        user_details: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional information provided by the user in the RejectSpoke call.
-        """
-elif False:
-    SpokeReasonArgsDict: TypeAlias = Mapping[str, Any]
+class SpokeReasonArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The code associated with this reason.
+    """
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Human-readable details about this reason.
+    """
+    user_details: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional information provided by the user in the RejectSpoke call.
+    """
 
 @pulumi.input_type
 class SpokeReasonArgs:

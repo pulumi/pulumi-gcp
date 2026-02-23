@@ -37,6 +37,12 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         [Input("imageUri")]
         public Input<string>? ImageUri { get; set; }
 
+        /// <summary>
+        /// Instance flexibility Policy allowing a mixture of VM shapes.
+        /// </summary>
+        [Input("instanceFlexibilityPolicy")]
+        public Input<Inputs.ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs>? InstanceFlexibilityPolicy { get; set; }
+
         [Input("instanceNames")]
         private InputList<string>? _instanceNames;
 

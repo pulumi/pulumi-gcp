@@ -55,22 +55,14 @@ import (
 // CodeRepositoryIndex can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index_id}}`
-//
 // * `{{project}}/{{location}}/{{code_repository_index_id}}`
-//
 // * `{{location}}/{{code_repository_index_id}}`
 //
 // When using the `pulumi import` command, CodeRepositoryIndex can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default {{project}}/{{location}}/{{code_repository_index_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default {{location}}/{{code_repository_index_id}}
 // ```
 type CodeRepositoryIndex struct {
@@ -99,7 +91,7 @@ type CodeRepositoryIndex struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Code Repository Index instance State.
 	// Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
@@ -172,7 +164,7 @@ type codeRepositoryIndexState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Code Repository Index instance State.
 	// Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
@@ -205,7 +197,7 @@ type CodeRepositoryIndexState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. Code Repository Index instance State.
 	// Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
@@ -394,7 +386,8 @@ func (o CodeRepositoryIndexOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CodeRepositoryIndexOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CodeRepositoryIndex) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

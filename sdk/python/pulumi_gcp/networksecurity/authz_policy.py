@@ -29,6 +29,7 @@ class AuthzPolicyArgs:
                  http_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 policy_profile: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthzPolicy resource.
@@ -55,6 +56,13 @@ class AuthzPolicyArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the AuthzPolicy resource.
+        :param pulumi.Input[_builtins.str] policy_profile: Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+               authorization policies with Authz extensions will be allowed with ext_authz or ext_proc protocols. Extensions are
+               invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+               Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support ext_proc
+               protocol and be capable of receiving all ext_proc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+               RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+               Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -71,6 +79,8 @@ class AuthzPolicyArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if policy_profile is not None:
+            pulumi.set(__self__, "policy_profile", policy_profile)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -186,6 +196,24 @@ class AuthzPolicyArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="policyProfile")
+    def policy_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+        authorization policies with Authz extensions will be allowed with ext_authz or ext_proc protocols. Extensions are
+        invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+        Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support ext_proc
+        protocol and be capable of receiving all ext_proc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+        RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+        Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+        """
+        return pulumi.get(self, "policy_profile")
+
+    @policy_profile.setter
+    def policy_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy_profile", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -211,6 +239,7 @@ class _AuthzPolicyState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 policy_profile: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target: Optional[pulumi.Input['AuthzPolicyTargetArgs']] = None,
@@ -240,10 +269,17 @@ class _AuthzPolicyState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the AuthzPolicy resource.
+        :param pulumi.Input[_builtins.str] policy_profile: Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+               authorization policies with Authz extensions will be allowed with ext_authz or ext_proc protocols. Extensions are
+               invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+               Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support ext_proc
+               protocol and be capable of receiving all ext_proc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+               RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+               Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['AuthzPolicyTargetArgs'] target: Specifies the set of resources to which this policy should be applied to.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp when the resource was updated.
@@ -266,6 +302,8 @@ class _AuthzPolicyState:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if policy_profile is not None:
+            pulumi.set(__self__, "policy_profile", policy_profile)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -398,6 +436,24 @@ class _AuthzPolicyState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="policyProfile")
+    def policy_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+        authorization policies with Authz extensions will be allowed with ext_authz or ext_proc protocols. Extensions are
+        invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+        Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support ext_proc
+        protocol and be capable of receiving all ext_proc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+        RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+        Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+        """
+        return pulumi.get(self, "policy_profile")
+
+    @policy_profile.setter
+    def policy_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy_profile", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -415,7 +471,7 @@ class _AuthzPolicyState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -462,6 +518,7 @@ class AuthzPolicy(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 policy_profile: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  target: Optional[pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']]] = None,
                  __props__=None):
@@ -474,33 +531,58 @@ class AuthzPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Network Security Authz Policy Mcp
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        default = gcp.networksecurity.AuthzPolicy("default",
+            name="my-mcp-policy",
+            location="us-west1",
+            target={
+                "resources": [f"projects/{project.project_id}/locations/us-west1/agentGateways/gateway1"],
+            },
+            policy_profile="REQUEST_AUTHZ",
+            action="ALLOW",
+            http_rules=[{
+                "to": {
+                    "operations": [{
+                        "mcp": {
+                            "base_protocol_methods_option": "MATCH_BASE_PROTOCOL_METHODS",
+                            "methods": [
+                                {
+                                    "name": "tools",
+                                },
+                                {
+                                    "name": "tools/call",
+                                    "params": [{
+                                        "exact": "foo",
+                                    }],
+                                },
+                            ],
+                        },
+                    }],
+                },
+            }])
+        ```
+
         ## Import
 
         AuthzPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/authzPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, AuthzPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default projects/{{project}}/locations/{{location}}/authzPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{name}}
         ```
 
@@ -527,6 +609,13 @@ class AuthzPolicy(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the AuthzPolicy resource.
+        :param pulumi.Input[_builtins.str] policy_profile: Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+               authorization policies with Authz extensions will be allowed with ext_authz or ext_proc protocols. Extensions are
+               invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+               Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support ext_proc
+               protocol and be capable of receiving all ext_proc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+               RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+               Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']] target: Specifies the set of resources to which this policy should be applied to.
@@ -547,33 +636,58 @@ class AuthzPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Network Security Authz Policy Mcp
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        default = gcp.networksecurity.AuthzPolicy("default",
+            name="my-mcp-policy",
+            location="us-west1",
+            target={
+                "resources": [f"projects/{project.project_id}/locations/us-west1/agentGateways/gateway1"],
+            },
+            policy_profile="REQUEST_AUTHZ",
+            action="ALLOW",
+            http_rules=[{
+                "to": {
+                    "operations": [{
+                        "mcp": {
+                            "base_protocol_methods_option": "MATCH_BASE_PROTOCOL_METHODS",
+                            "methods": [
+                                {
+                                    "name": "tools",
+                                },
+                                {
+                                    "name": "tools/call",
+                                    "params": [{
+                                        "exact": "foo",
+                                    }],
+                                },
+                            ],
+                        },
+                    }],
+                },
+            }])
+        ```
+
         ## Import
 
         AuthzPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/authzPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, AuthzPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default projects/{{project}}/locations/{{location}}/authzPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{name}}
         ```
 
@@ -599,6 +713,7 @@ class AuthzPolicy(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 policy_profile: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  target: Optional[pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']]] = None,
                  __props__=None):
@@ -621,6 +736,7 @@ class AuthzPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
+            __props__.__dict__["policy_profile"] = policy_profile
             __props__.__dict__["project"] = project
             if target is None and not opts.urn:
                 raise TypeError("Missing required property 'target'")
@@ -650,6 +766,7 @@ class AuthzPolicy(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            policy_profile: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             target: Optional[pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']]] = None,
@@ -684,10 +801,17 @@ class AuthzPolicy(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the AuthzPolicy resource.
+        :param pulumi.Input[_builtins.str] policy_profile: Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+               authorization policies with Authz extensions will be allowed with ext_authz or ext_proc protocols. Extensions are
+               invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+               Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support ext_proc
+               protocol and be capable of receiving all ext_proc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+               RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+               Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']] target: Specifies the set of resources to which this policy should be applied to.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp when the resource was updated.
@@ -705,6 +829,7 @@ class AuthzPolicy(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
+        __props__.__dict__["policy_profile"] = policy_profile
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["target"] = target
@@ -798,6 +923,20 @@ class AuthzPolicy(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="policyProfile")
+    def policy_profile(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
+        authorization policies with Authz extensions will be allowed with ext_authz or ext_proc protocols. Extensions are
+        invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
+        Only CUSTOM action is allowed in this policy profile. AuthzExtensions in the custom provider must support ext_proc
+        protocol and be capable of receiving all ext_proc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+        RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
+        Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
+        """
+        return pulumi.get(self, "policy_profile")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
@@ -811,7 +950,7 @@ class AuthzPolicy(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

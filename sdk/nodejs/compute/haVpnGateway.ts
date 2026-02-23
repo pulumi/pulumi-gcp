@@ -127,28 +127,16 @@ import * as utilities from "../utilities";
  * HaVpnGateway can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{name}}
  * ```
  */
@@ -225,13 +213,19 @@ export class HaVpnGateway extends pulumi.CustomResource {
      */
     declare public readonly network: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.HaVpnGatewayParams | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -275,6 +269,7 @@ export class HaVpnGateway extends pulumi.CustomResource {
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["network"] = state?.network;
+            resourceInputs["params"] = state?.params;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["region"] = state?.region;
@@ -291,6 +286,7 @@ export class HaVpnGateway extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["network"] = args?.network;
+            resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
             resourceInputs["stackType"] = args?.stackType;
@@ -356,13 +352,19 @@ export interface HaVpnGatewayState {
      */
     network?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.HaVpnGatewayParams>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -423,6 +425,12 @@ export interface HaVpnGatewayArgs {
      * The network this VPN gateway is accepting traffic for.
      */
     network: pulumi.Input<string>;
+    /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.HaVpnGatewayParams>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

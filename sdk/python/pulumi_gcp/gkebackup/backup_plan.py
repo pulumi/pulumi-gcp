@@ -259,7 +259,7 @@ class _BackupPlanState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['BackupPlanRetentionPolicyArgs'] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The State of the BackupPlan.
@@ -466,7 +466,7 @@ class _BackupPlanState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -944,22 +944,14 @@ class BackupPlan(pulumi.CustomResource):
         BackupPlan can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backupPlans/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, BackupPlan can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default projects/{{project}}/locations/{{location}}/backupPlans/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default {{location}}/{{name}}
         ```
 
@@ -1397,22 +1389,14 @@ class BackupPlan(pulumi.CustomResource):
         BackupPlan can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backupPlans/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, BackupPlan can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default projects/{{project}}/locations/{{location}}/backupPlans/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default {{location}}/{{name}}
         ```
 
@@ -1536,7 +1520,7 @@ class BackupPlan(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The State of the BackupPlan.
@@ -1683,7 +1667,7 @@ class BackupPlan(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

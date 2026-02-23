@@ -12,6 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A gateway advertised route is a route that a gateway spoke advertises somewhere.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about GatewayAdvertisedRoute, see:
+//
+// * [API documentation](https://docs.cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes.gatewayAdvertisedRoutes)
+// * How-to Guides
+//   - [QUICKSTART_TITLE](https://docs.cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/ncc-gateway-overview)
+//
 // ## Example Usage
 //
 // ### Network Connectivity Gateway Advertised Route Basic
@@ -37,7 +48,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-subnet_32270"),
+//				Name:        pulumi.String("tf-test-subnet_42503"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,
@@ -103,22 +114,14 @@ import (
 // GatewayAdvertisedRoute can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/spokes/{{spoke}}/gatewayAdvertisedRoutes/{{name}}`
-//
 // * `{{project}}/{{location}}/{{spoke}}/{{name}}`
-//
 // * `{{location}}/{{spoke}}/{{name}}`
 //
 // When using the `pulumi import` command, GatewayAdvertisedRoute can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default projects/{{project}}/locations/{{location}}/spokes/{{spoke}}/gatewayAdvertisedRoutes/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{project}}/{{location}}/{{spoke}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{location}}/{{spoke}}/{{name}}
 // ```
 type GatewayAdvertisedRoute struct {
@@ -148,7 +151,7 @@ type GatewayAdvertisedRoute struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// the recipient of this advertised route
 	// Possible values are: `RECIPIENT_UNSPECIFIED`, `ADVERTISE_TO_HUB`.
@@ -230,7 +233,7 @@ type gatewayAdvertisedRouteState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// the recipient of this advertised route
 	// Possible values are: `RECIPIENT_UNSPECIFIED`, `ADVERTISE_TO_HUB`.
@@ -272,7 +275,7 @@ type GatewayAdvertisedRouteState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// the recipient of this advertised route
 	// Possible values are: `RECIPIENT_UNSPECIFIED`, `ADVERTISE_TO_HUB`.
@@ -486,7 +489,8 @@ func (o GatewayAdvertisedRouteOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GatewayAdvertisedRouteOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GatewayAdvertisedRoute) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

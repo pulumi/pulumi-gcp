@@ -78,22 +78,14 @@ import (
 // CodeToolsSettingBinding can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/codeToolsSettings/{{code_tools_setting_id}}/settingBindings/{{setting_binding_id}}`
-//
 // * `{{project}}/{{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}`
-//
 // * `{{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}`
 //
 // When using the `pulumi import` command, CodeToolsSettingBinding can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding default projects/{{project}}/locations/{{location}}/codeToolsSettings/{{code_tools_setting_id}}/settingBindings/{{setting_binding_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding default {{project}}/{{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding default {{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}
 // ```
 type CodeToolsSettingBinding struct {
@@ -121,7 +113,7 @@ type CodeToolsSettingBinding struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Id of the setting binding.
 	SettingBindingId pulumi.StringOutput `pulumi:"settingBindingId"`
@@ -197,7 +189,7 @@ type codeToolsSettingBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Id of the setting binding.
 	SettingBindingId *string `pulumi:"settingBindingId"`
@@ -230,7 +222,7 @@ type CodeToolsSettingBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Id of the setting binding.
 	SettingBindingId pulumi.StringPtrInput
@@ -420,7 +412,8 @@ func (o CodeToolsSettingBindingOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CodeToolsSettingBindingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CodeToolsSettingBinding) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

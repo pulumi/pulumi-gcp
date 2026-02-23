@@ -11,6 +11,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** This resource is deprecated at the API level and will be removed in a future version of Terraform.
+//
+// Represents a machine learning solution.
+//
+// A model can have multiple versions, each of which is a deployed, trained model
+// ready to receive prediction requests. The model itself is just a container.
+//
+// To get more information about Model, see:
+//
+// * [API documentation](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
+//
 // ## Example Usage
 //
 // ### Ml Model Basic
@@ -78,22 +91,14 @@ import (
 // Model can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/models/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Model can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:ml/engineModel:EngineModel default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
 // ```
 type EngineModel struct {
@@ -121,7 +126,7 @@ type EngineModel struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The list of regions where the model is going to be deployed.
 	// Currently only one region per model is supported
@@ -185,7 +190,7 @@ type engineModelState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The list of regions where the model is going to be deployed.
 	// Currently only one region per model is supported
@@ -215,7 +220,7 @@ type EngineModelState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The list of regions where the model is going to be deployed.
 	// Currently only one region per model is supported
@@ -410,7 +415,8 @@ func (o EngineModelOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o EngineModelOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EngineModel) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.Dataform
     public static class GetRepositoryIamPolicy
     {
         /// <summary>
+        /// Retrieves the current IAM policy data for repository
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +41,11 @@ namespace Pulumi.Gcp.Dataform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryIamPolicyResult>("gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for repository
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +70,11 @@ namespace Pulumi.Gcp.Dataform
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryIamPolicyResult>("gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for repository
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

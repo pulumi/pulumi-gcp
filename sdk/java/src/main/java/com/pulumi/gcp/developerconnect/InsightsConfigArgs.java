@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.developerconnect.inputs.InsightsConfigArtifactConfigArgs;
+import com.pulumi.gcp.developerconnect.inputs.InsightsConfigTargetProjectsArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -46,8 +47,8 @@ public final class InsightsConfigArgs extends com.pulumi.resources.ResourceArgs 
      * projects/{project}/locations/{location}/applications/{application}
      * 
      */
-    @Import(name="appHubApplication", required=true)
-    private Output<String> appHubApplication;
+    @Import(name="appHubApplication")
+    private @Nullable Output<String> appHubApplication;
 
     /**
      * @return The name of the App Hub Application.
@@ -55,8 +56,8 @@ public final class InsightsConfigArgs extends com.pulumi.resources.ResourceArgs 
      * projects/{project}/locations/{location}/applications/{application}
      * 
      */
-    public Output<String> appHubApplication() {
-        return this.appHubApplication;
+    public Optional<Output<String>> appHubApplication() {
+        return Optional.ofNullable(this.appHubApplication);
     }
 
     /**
@@ -142,6 +143,23 @@ public final class InsightsConfigArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The projects to track with the InsightsConfig.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="targetProjects")
+    private @Nullable Output<InsightsConfigTargetProjectsArgs> targetProjects;
+
+    /**
+     * @return The projects to track with the InsightsConfig.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InsightsConfigTargetProjectsArgs>> targetProjects() {
+        return Optional.ofNullable(this.targetProjects);
+    }
+
     private InsightsConfigArgs() {}
 
     private InsightsConfigArgs(InsightsConfigArgs $) {
@@ -152,6 +170,7 @@ public final class InsightsConfigArgs extends com.pulumi.resources.ResourceArgs 
         this.labels = $.labels;
         this.location = $.location;
         this.project = $.project;
+        this.targetProjects = $.targetProjects;
     }
 
     public static Builder builder() {
@@ -207,7 +226,7 @@ public final class InsightsConfigArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder appHubApplication(Output<String> appHubApplication) {
+        public Builder appHubApplication(@Nullable Output<String> appHubApplication) {
             $.appHubApplication = appHubApplication;
             return this;
         }
@@ -348,10 +367,30 @@ public final class InsightsConfigArgs extends com.pulumi.resources.ResourceArgs 
             return project(Output.of(project));
         }
 
+        /**
+         * @param targetProjects The projects to track with the InsightsConfig.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetProjects(@Nullable Output<InsightsConfigTargetProjectsArgs> targetProjects) {
+            $.targetProjects = targetProjects;
+            return this;
+        }
+
+        /**
+         * @param targetProjects The projects to track with the InsightsConfig.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetProjects(InsightsConfigTargetProjectsArgs targetProjects) {
+            return targetProjects(Output.of(targetProjects));
+        }
+
         public InsightsConfigArgs build() {
-            if ($.appHubApplication == null) {
-                throw new MissingRequiredPropertyException("InsightsConfigArgs", "appHubApplication");
-            }
             if ($.insightsConfigId == null) {
                 throw new MissingRequiredPropertyException("InsightsConfigArgs", "insightsConfigId");
             }

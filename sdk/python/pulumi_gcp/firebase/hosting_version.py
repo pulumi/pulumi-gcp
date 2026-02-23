@@ -145,6 +145,17 @@ class HostingVersion(pulumi.CustomResource):
                  site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A `Version` is a configuration which determine how a site is displayed. Static files are not supported at the moment.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Version, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.versions)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Version Redirect
@@ -333,16 +344,12 @@ class HostingVersion(pulumi.CustomResource):
         Version can be imported using any of these accepted formats:
 
         * `sites/{{site_id}}/versions/{{version_id}}`
-
         * `{{site_id}}/{{version_id}}`
 
         When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default sites/{{site_id}}/versions/{{version_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default {{site_id}}/{{version_id}}
         ```
 
@@ -359,6 +366,17 @@ class HostingVersion(pulumi.CustomResource):
                  args: HostingVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A `Version` is a configuration which determine how a site is displayed. Static files are not supported at the moment.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Version, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.versions)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Version Redirect
@@ -547,16 +565,12 @@ class HostingVersion(pulumi.CustomResource):
         Version can be imported using any of these accepted formats:
 
         * `sites/{{site_id}}/versions/{{version_id}}`
-
         * `{{site_id}}/{{version_id}}`
 
         When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default sites/{{site_id}}/versions/{{version_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default {{site_id}}/{{version_id}}
         ```
 

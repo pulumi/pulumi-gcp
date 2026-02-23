@@ -201,7 +201,7 @@ class _BackendAuthenticationConfigState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] trust_config: Reference to a TrustConfig resource from the certificatemanager.googleapis.com namespace.
                A BackendService uses the chain of trust represented by this TrustConfig, if specified, to validate the server certificates presented by the backend. Required unless wellKnownRoots is set to PUBLIC_ROOTS.
         :param pulumi.Input[_builtins.str] update_time: Time the BackendAuthenticationConfig was updated in UTC.
@@ -341,7 +341,7 @@ class _BackendAuthenticationConfigState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -510,22 +510,14 @@ class BackendAuthenticationConfig(pulumi.CustomResource):
         BackendAuthenticationConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backendAuthenticationConfigs/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, BackendAuthenticationConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig default projects/{{project}}/locations/{{location}}/backendAuthenticationConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig default {{location}}/{{name}}
         ```
 
@@ -660,22 +652,14 @@ class BackendAuthenticationConfig(pulumi.CustomResource):
         BackendAuthenticationConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backendAuthenticationConfigs/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, BackendAuthenticationConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig default projects/{{project}}/locations/{{location}}/backendAuthenticationConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig default {{location}}/{{name}}
         ```
 
@@ -768,7 +752,7 @@ class BackendAuthenticationConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] trust_config: Reference to a TrustConfig resource from the certificatemanager.googleapis.com namespace.
                A BackendService uses the chain of trust represented by this TrustConfig, if specified, to validate the server certificates presented by the backend. Required unless wellKnownRoots is set to PUBLIC_ROOTS.
         :param pulumi.Input[_builtins.str] update_time: Time the BackendAuthenticationConfig was updated in UTC.
@@ -869,7 +853,7 @@ class BackendAuthenticationConfig(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

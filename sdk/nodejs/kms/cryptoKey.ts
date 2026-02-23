@@ -65,16 +65,12 @@ import * as utilities from "../utilities";
  * CryptoKey can be imported using any of these accepted formats:
  *
  * * `{{key_ring}}/cryptoKeys/{{name}}`
- *
  * * `{{key_ring}}/{{name}}`
  *
  * When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/{{name}}
  * ```
  */
@@ -161,7 +157,7 @@ export class CryptoKey extends pulumi.CustomResource {
     declare public /*out*/ readonly primaries: pulumi.Output<outputs.kms.CryptoKeyPrimary[]>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -304,7 +300,7 @@ export interface CryptoKeyState {
     primaries?: pulumi.Input<pulumi.Input<inputs.kms.CryptoKeyPrimary>[]>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

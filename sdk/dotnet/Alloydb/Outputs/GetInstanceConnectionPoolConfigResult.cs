@@ -17,6 +17,17 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// Whether to enabled Managed Connection Pool.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Flags for configuring managed connection pooling when it is enabled.
+        /// These flags will only be set if 'connection_pool_config.enabled' is
+        /// true.
+        /// Please see
+        /// https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+        /// for a comprehensive list of flags that can be set. To specify the flags
+        /// in Terraform, please remove the "connection-pooling-" prefix and use
+        /// underscores instead of dashes in the name. For example,
+        /// "connection-pooling-pool-mode" would be "PoolMode".
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Flags;
         /// <summary>
         /// The number of running poolers per instance.

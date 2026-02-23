@@ -230,28 +230,16 @@ import (
 // Autoscaler can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}`
-//
 // * `{{project}}/{{zone}}/{{name}}`
-//
 // * `{{zone}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Autoscaler can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/autoscaler:Autoscaler default projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/autoscaler:Autoscaler default {{project}}/{{zone}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/autoscaler:Autoscaler default {{zone}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/autoscaler:Autoscaler default {{name}}
 // ```
 type Autoscaler struct {

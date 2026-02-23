@@ -259,22 +259,14 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// CaPool can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/caPools/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, CaPool can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:certificateauthority/caPool:CaPool default projects/{{project}}/locations/{{location}}/caPools/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:certificateauthority/caPool:CaPool default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:certificateauthority/caPool:CaPool default {{location}}/{{name}}
     /// ```
     /// </summary>
@@ -343,7 +335,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -562,7 +554,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

@@ -179,7 +179,7 @@ class _ApiHubInstanceState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: Output only. The current state of the ApiHub instance.
                Possible values:
                STATE_UNSPECIFIED
@@ -344,7 +344,7 @@ class _ApiHubInstanceState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -457,22 +457,14 @@ class ApiHubInstance(pulumi.CustomResource):
         ApiHubInstance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/apiHubInstances/{{api_hub_instance_id}}`
-
         * `{{project}}/{{location}}/{{api_hub_instance_id}}`
-
         * `{{location}}/{{api_hub_instance_id}}`
 
         When using the `pulumi import` command, ApiHubInstance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default projects/{{project}}/locations/{{location}}/apiHubInstances/{{api_hub_instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{project}}/{{location}}/{{api_hub_instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{location}}/{{api_hub_instance_id}}
         ```
 
@@ -547,22 +539,14 @@ class ApiHubInstance(pulumi.CustomResource):
         ApiHubInstance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/apiHubInstances/{{api_hub_instance_id}}`
-
         * `{{project}}/{{location}}/{{api_hub_instance_id}}`
-
         * `{{location}}/{{api_hub_instance_id}}`
 
         When using the `pulumi import` command, ApiHubInstance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default projects/{{project}}/locations/{{location}}/apiHubInstances/{{api_hub_instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{project}}/{{location}}/{{api_hub_instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{location}}/{{api_hub_instance_id}}
         ```
 
@@ -666,7 +650,7 @@ class ApiHubInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: Output only. The current state of the ApiHub instance.
                Possible values:
                STATE_UNSPECIFIED
@@ -787,7 +771,7 @@ class ApiHubInstance(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

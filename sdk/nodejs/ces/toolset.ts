@@ -302,28 +302,266 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Ces Toolset Mcp Service Account Auth Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cesAppForToolset = new gcp.ces.App("ces_app_for_toolset", {
+ *     appId: "app-id",
+ *     location: "us",
+ *     description: "App used as parent for CES Toolset example",
+ *     displayName: "my-app",
+ *     languageSettings: {
+ *         defaultLanguageCode: "en-US",
+ *         supportedLanguageCodes: [
+ *             "es-ES",
+ *             "fr-FR",
+ *         ],
+ *         enableMultilingualSupport: true,
+ *         fallbackAction: "escalate",
+ *     },
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const cesToolsetMcpServiceAccountAuthConfig = new gcp.ces.Toolset("ces_toolset_mcp_service_account_auth_config", {
+ *     toolsetId: "toolset1",
+ *     location: "us",
+ *     app: cesAppForToolset.appId,
+ *     displayName: "Basic toolset display name",
+ *     mcpToolset: {
+ *         serverAddress: "https://api.example.com/mcp/",
+ *         tlsConfig: {
+ *             caCerts: [{
+ *                 displayName: "example",
+ *                 cert: "ZXhhbXBsZQ==",
+ *             }],
+ *         },
+ *         serviceDirectoryConfig: {
+ *             service: "projects/example/locations/us/namespaces/namespace/services/service",
+ *         },
+ *         apiAuthentication: {
+ *             serviceAccountAuthConfig: {
+ *                 serviceAccount: "my@service-account.com",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Ces Toolset Mcp Oauth Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cesAppForToolset = new gcp.ces.App("ces_app_for_toolset", {
+ *     appId: "app-id",
+ *     location: "us",
+ *     description: "App used as parent for CES Toolset example",
+ *     displayName: "my-app",
+ *     languageSettings: {
+ *         defaultLanguageCode: "en-US",
+ *         supportedLanguageCodes: [
+ *             "es-ES",
+ *             "fr-FR",
+ *         ],
+ *         enableMultilingualSupport: true,
+ *         fallbackAction: "escalate",
+ *     },
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const cesToolsetMcpOauthConfig = new gcp.ces.Toolset("ces_toolset_mcp_oauth_config", {
+ *     toolsetId: "toolset1",
+ *     location: "us",
+ *     app: cesAppForToolset.appId,
+ *     displayName: "Basic toolset display name",
+ *     mcpToolset: {
+ *         serverAddress: "https://api.example.com/mcp/",
+ *         tlsConfig: {
+ *             caCerts: [{
+ *                 displayName: "example",
+ *                 cert: "ZXhhbXBsZQ==",
+ *             }],
+ *         },
+ *         serviceDirectoryConfig: {
+ *             service: "projects/example/locations/us/namespaces/namespace/services/service",
+ *         },
+ *         apiAuthentication: {
+ *             oauthConfig: {
+ *                 oauthGrantType: "CLIENT_CREDENTIAL",
+ *                 clientId: "example_client_id",
+ *                 clientSecretVersion: "projects/fake-project/secrets/fake-secret/versions/version1",
+ *                 tokenEndpoint: "123",
+ *                 scopes: ["scope1"],
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Ces Toolset Mcp Service Agent Id Token Auth Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cesAppForToolset = new gcp.ces.App("ces_app_for_toolset", {
+ *     appId: "app-id",
+ *     location: "us",
+ *     description: "App used as parent for CES Toolset example",
+ *     displayName: "my-app",
+ *     languageSettings: {
+ *         defaultLanguageCode: "en-US",
+ *         supportedLanguageCodes: [
+ *             "es-ES",
+ *             "fr-FR",
+ *         ],
+ *         enableMultilingualSupport: true,
+ *         fallbackAction: "escalate",
+ *     },
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const cesToolsetMcpServiceAgentIdTokenAuthConfig = new gcp.ces.Toolset("ces_toolset_mcp_service_agent_id_token_auth_config", {
+ *     toolsetId: "toolset1",
+ *     location: "us",
+ *     app: cesAppForToolset.appId,
+ *     displayName: "Basic toolset display name",
+ *     mcpToolset: {
+ *         serverAddress: "https://api.example.com/mcp/",
+ *         tlsConfig: {
+ *             caCerts: [{
+ *                 displayName: "example",
+ *                 cert: "ZXhhbXBsZQ==",
+ *             }],
+ *         },
+ *         serviceDirectoryConfig: {
+ *             service: "projects/example/locations/us/namespaces/namespace/services/service",
+ *         },
+ *         apiAuthentication: {
+ *             serviceAgentIdTokenAuthConfig: {},
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Ces Toolset Mcp Api Key Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cesAppForToolset = new gcp.ces.App("ces_app_for_toolset", {
+ *     appId: "app-id",
+ *     location: "us",
+ *     description: "App used as parent for CES Toolset example",
+ *     displayName: "my-app",
+ *     languageSettings: {
+ *         defaultLanguageCode: "en-US",
+ *         supportedLanguageCodes: [
+ *             "es-ES",
+ *             "fr-FR",
+ *         ],
+ *         enableMultilingualSupport: true,
+ *         fallbackAction: "escalate",
+ *     },
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const cesToolsetMcpApiKeyConfig = new gcp.ces.Toolset("ces_toolset_mcp_api_key_config", {
+ *     toolsetId: "toolset1",
+ *     location: "us",
+ *     app: cesAppForToolset.appId,
+ *     displayName: "Basic toolset display name",
+ *     description: "Test description",
+ *     executionType: "SYNCHRONOUS",
+ *     mcpToolset: {
+ *         serverAddress: "https://api.example.com/mcp/",
+ *         tlsConfig: {
+ *             caCerts: [{
+ *                 displayName: "example",
+ *                 cert: "ZXhhbXBsZQ==",
+ *             }],
+ *         },
+ *         serviceDirectoryConfig: {
+ *             service: "projects/example/locations/us/namespaces/namespace/services/service",
+ *         },
+ *         apiAuthentication: {
+ *             apiKeyConfig: {
+ *                 keyName: "ExampleKey",
+ *                 apiKeySecretVersion: "projects/fake-project/secrets/fake-secret/versions/version-1",
+ *                 requestLocation: "HEADER",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Ces Toolset Mcp Bearer Token Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cesAppForToolset = new gcp.ces.App("ces_app_for_toolset", {
+ *     appId: "app-id",
+ *     location: "us",
+ *     description: "App used as parent for CES Toolset example",
+ *     displayName: "my-app",
+ *     languageSettings: {
+ *         defaultLanguageCode: "en-US",
+ *         supportedLanguageCodes: [
+ *             "es-ES",
+ *             "fr-FR",
+ *         ],
+ *         enableMultilingualSupport: true,
+ *         fallbackAction: "escalate",
+ *     },
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const cesToolsetMcpBearerTokenConfig = new gcp.ces.Toolset("ces_toolset_mcp_bearer_token_config", {
+ *     toolsetId: "toolset1",
+ *     location: "us",
+ *     app: cesAppForToolset.appId,
+ *     displayName: "Basic toolset display name",
+ *     mcpToolset: {
+ *         serverAddress: "https://api.example.com/mcp/",
+ *         tlsConfig: {
+ *             caCerts: [{
+ *                 displayName: "example",
+ *                 cert: "ZXhhbXBsZQ==",
+ *             }],
+ *         },
+ *         serviceDirectoryConfig: {
+ *             service: "projects/example/locations/us/namespaces/namespace/services/service",
+ *         },
+ *         apiAuthentication: {
+ *             bearerTokenConfig: {
+ *                 token: "$context.variables.my_ces_toolset_auth_token",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
  * Toolset can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/apps/{{app}}/toolsets/{{toolset_id}}`
- *
  * * `{{project}}/{{location}}/{{app}}/{{toolset_id}}`
- *
  * * `{{location}}/{{app}}/{{toolset_id}}`
  *
  * When using the `pulumi import` command, Toolset can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:ces/toolset:Toolset default projects/{{project}}/locations/{{location}}/apps/{{app}}/toolsets/{{toolset_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:ces/toolset:Toolset default {{project}}/{{location}}/{{app}}/{{toolset_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:ces/toolset:Toolset default {{location}}/{{app}}/{{toolset_id}}
  * ```
  */
@@ -388,6 +626,12 @@ export class Toolset extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
+     * A toolset that contains a list of tools that are offered by the MCP
+     * server.
+     * Structure is documented below.
+     */
+    declare public readonly mcpToolset: pulumi.Output<outputs.ces.ToolsetMcpToolset | undefined>;
+    /**
      * Identifier. The unique identifier of the toolset.
      * Format:
      * `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
@@ -435,6 +679,7 @@ export class Toolset extends pulumi.CustomResource {
             resourceInputs["etag"] = state?.etag;
             resourceInputs["executionType"] = state?.executionType;
             resourceInputs["location"] = state?.location;
+            resourceInputs["mcpToolset"] = state?.mcpToolset;
             resourceInputs["name"] = state?.name;
             resourceInputs["openApiToolset"] = state?.openApiToolset;
             resourceInputs["project"] = state?.project;
@@ -456,6 +701,7 @@ export class Toolset extends pulumi.CustomResource {
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["executionType"] = args?.executionType;
             resourceInputs["location"] = args?.location;
+            resourceInputs["mcpToolset"] = args?.mcpToolset;
             resourceInputs["openApiToolset"] = args?.openApiToolset;
             resourceInputs["project"] = args?.project;
             resourceInputs["toolsetId"] = args?.toolsetId;
@@ -505,6 +751,12 @@ export interface ToolsetState {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location?: pulumi.Input<string>;
+    /**
+     * A toolset that contains a list of tools that are offered by the MCP
+     * server.
+     * Structure is documented below.
+     */
+    mcpToolset?: pulumi.Input<inputs.ces.ToolsetMcpToolset>;
     /**
      * Identifier. The unique identifier of the toolset.
      * Format:
@@ -560,6 +812,12 @@ export interface ToolsetArgs {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location: pulumi.Input<string>;
+    /**
+     * A toolset that contains a list of tools that are offered by the MCP
+     * server.
+     * Structure is documented below.
+     */
+    mcpToolset?: pulumi.Input<inputs.ces.ToolsetMcpToolset>;
     /**
      * A toolset that contains a list of tools that are defined by an OpenAPI
      * schema.

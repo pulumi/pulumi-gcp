@@ -100,22 +100,14 @@ import javax.annotation.Nullable;
  * InterceptEndpointGroupAssociation can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/interceptEndpointGroupAssociations/{{intercept_endpoint_group_association_id}}`
- * 
  * * `{{project}}/{{location}}/{{intercept_endpoint_group_association_id}}`
- * 
  * * `{{location}}/{{intercept_endpoint_group_association_id}}`
  * 
  * When using the `pulumi import` command, InterceptEndpointGroupAssociation can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default projects/{{project}}/locations/{{location}}/interceptEndpointGroupAssociations/{{intercept_endpoint_group_association_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default {{project}}/{{location}}/{{intercept_endpoint_group_association_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default {{location}}/{{intercept_endpoint_group_association_id}}
  * ```
  * 
@@ -318,7 +310,7 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -326,7 +318,7 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

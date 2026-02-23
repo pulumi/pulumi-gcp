@@ -96,6 +96,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///         IndustryVertical = "GENERIC",
     ///         AppType = "APP_TYPE_INTRANET",
     ///         SearchEngineConfig = null,
+    ///         KnowledgeGraphConfig = null,
     ///     });
     /// 
     /// });
@@ -106,22 +107,14 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// SearchEngine can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
-    /// 
     /// * `{{location}}/{{collection_id}}/{{engine_id}}`
     /// 
     /// When using the `pulumi import` command, SearchEngine can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{location}}/{{collection_id}}/{{engine_id}}
     /// ```
     /// </summary>
@@ -195,6 +188,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Output("kmsKeyName")]
         public Output<string?> KmsKeyName { get; private set; } = null!;
+
+        /// <summary>
+        /// Configurations for the Knowledge Graph.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("knowledgeGraphConfig")]
+        public Output<Outputs.SearchEngineKnowledgeGraphConfig?> KnowledgeGraphConfig { get; private set; } = null!;
 
         /// <summary>
         /// Location.
@@ -352,6 +352,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Input<string>? KmsKeyName { get; set; }
 
         /// <summary>
+        /// Configurations for the Knowledge Graph.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("knowledgeGraphConfig")]
+        public Input<Inputs.SearchEngineKnowledgeGraphConfigArgs>? KnowledgeGraphConfig { get; set; }
+
+        /// <summary>
         /// Location.
         /// </summary>
         [Input("location", required: true)]
@@ -458,6 +465,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
+
+        /// <summary>
+        /// Configurations for the Knowledge Graph.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("knowledgeGraphConfig")]
+        public Input<Inputs.SearchEngineKnowledgeGraphConfigGetArgs>? KnowledgeGraphConfig { get; set; }
 
         /// <summary>
         /// Location.

@@ -50,6 +50,10 @@ class AuthorityArgs:
         :param pulumi.Input[_builtins.str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
         :param pulumi.Input[_builtins.str] pool: The name of the CaPool this Certificate Authority belongs to.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the CertificateAuthority.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the CertificateAuthority will fail.
+               When the field is set to false, deleting the CertificateAuthority is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
                Possible values: ENABLED, DISABLED, STAGED.
         :param pulumi.Input[_builtins.str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
@@ -185,6 +189,12 @@ class AuthorityArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the CertificateAuthority.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the CertificateAuthority will fail.
+        When the field is set to false, deleting the CertificateAuthority is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -387,6 +397,10 @@ class _AuthorityState:
         :param pulumi.Input[_builtins.str] create_time: The time at which this CertificateAuthority was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the CertificateAuthority.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the CertificateAuthority will fail.
+               When the field is set to false, deleting the CertificateAuthority is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
                Possible values: ENABLED, DISABLED, STAGED.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -423,7 +437,7 @@ class _AuthorityState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as
                possible without a 30-day grace period where undeletion would have been
                allowed. If you proceed, there will be no way to recover this CA.
@@ -550,6 +564,12 @@ class _AuthorityState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the CertificateAuthority.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the CertificateAuthority will fail.
+        When the field is set to false, deleting the CertificateAuthority is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -739,7 +759,7 @@ class _AuthorityState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1165,22 +1185,14 @@ class Authority(pulumi.CustomResource):
         CertificateAuthority can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}`
-
         * `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}`
-
         * `{{location}}/{{pool}}/{{certificate_authority_id}}`
 
         When using the `pulumi import` command, CertificateAuthority can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/authority:Authority default {{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{pool}}/{{certificate_authority_id}}
         ```
 
@@ -1189,6 +1201,10 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
         :param pulumi.Input[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the CertificateAuthority.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the CertificateAuthority will fail.
+               When the field is set to false, deleting the CertificateAuthority is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
                Possible values: ENABLED, DISABLED, STAGED.
         :param pulumi.Input[_builtins.str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
@@ -1547,22 +1563,14 @@ class Authority(pulumi.CustomResource):
         CertificateAuthority can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}`
-
         * `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}`
-
         * `{{location}}/{{pool}}/{{certificate_authority_id}}`
 
         When using the `pulumi import` command, CertificateAuthority can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/authority:Authority default {{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{pool}}/{{certificate_authority_id}}
         ```
 
@@ -1694,6 +1702,10 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The time at which this CertificateAuthority was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the CertificateAuthority.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the CertificateAuthority will fail.
+               When the field is set to false, deleting the CertificateAuthority is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
                Possible values: ENABLED, DISABLED, STAGED.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1730,7 +1742,7 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as
                possible without a 30-day grace period where undeletion would have been
                allowed. If you proceed, there will be no way to recover this CA.
@@ -1821,6 +1833,12 @@ class Authority(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the CertificateAuthority.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the CertificateAuthority will fail.
+        When the field is set to false, deleting the CertificateAuthority is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -1954,7 +1972,7 @@ class Authority(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

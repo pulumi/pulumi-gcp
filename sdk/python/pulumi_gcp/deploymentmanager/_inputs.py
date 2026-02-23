@@ -25,20 +25,15 @@ __all__ = [
     'DeploymentTargetImportArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DeploymentLabelArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Key for label.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value of label.
-        """
-elif False:
-    DeploymentLabelArgsDict: TypeAlias = Mapping[str, Any]
+class DeploymentLabelArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Key for label.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value of label.
+    """
 
 @pulumi.input_type
 class DeploymentLabelArgs:
@@ -79,22 +74,19 @@ class DeploymentLabelArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class DeploymentTargetArgsDict(TypedDict):
-        config: pulumi.Input['DeploymentTargetConfigArgsDict']
-        """
-        The root configuration file to use for this deployment.
-        Structure is documented below.
-        """
-        imports: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgsDict']]]]
-        """
-        Specifies import files for this configuration. This can be
-        used to import templates or other files. For example, you might
-        import a text file in order to use the file in a template.
-        Structure is documented below.
-        """
-elif False:
-    DeploymentTargetArgsDict: TypeAlias = Mapping[str, Any]
+class DeploymentTargetArgsDict(TypedDict):
+    config: pulumi.Input['DeploymentTargetConfigArgsDict']
+    """
+    The root configuration file to use for this deployment.
+    Structure is documented below.
+    """
+    imports: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgsDict']]]]
+    """
+    Specifies import files for this configuration. This can be
+    used to import templates or other files. For example, you might
+    import a text file in order to use the file in a template.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DeploymentTargetArgs:
@@ -142,14 +134,11 @@ class DeploymentTargetArgs:
         pulumi.set(self, "imports", value)
 
 
-if not MYPY:
-    class DeploymentTargetConfigArgsDict(TypedDict):
-        content: pulumi.Input[_builtins.str]
-        """
-        The full YAML contents of your configuration file.
-        """
-elif False:
-    DeploymentTargetConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DeploymentTargetConfigArgsDict(TypedDict):
+    content: pulumi.Input[_builtins.str]
+    """
+    The full YAML contents of your configuration file.
+    """
 
 @pulumi.input_type
 class DeploymentTargetConfigArgs:
@@ -173,19 +162,16 @@ class DeploymentTargetConfigArgs:
         pulumi.set(self, "content", value)
 
 
-if not MYPY:
-    class DeploymentTargetImportArgsDict(TypedDict):
-        content: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full contents of the template that you want to import.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the template to import, as declared in the YAML
-        configuration.
-        """
-elif False:
-    DeploymentTargetImportArgsDict: TypeAlias = Mapping[str, Any]
+class DeploymentTargetImportArgsDict(TypedDict):
+    content: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full contents of the template that you want to import.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the template to import, as declared in the YAML
+    configuration.
+    """
 
 @pulumi.input_type
 class DeploymentTargetImportArgs:

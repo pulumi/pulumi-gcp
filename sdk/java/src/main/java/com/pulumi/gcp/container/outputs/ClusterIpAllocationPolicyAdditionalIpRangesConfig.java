@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -17,6 +18,14 @@ public final class ClusterIpAllocationPolicyAdditionalIpRangesConfig {
      * 
      */
     private @Nullable List<String> podIpv4RangeNames;
+    /**
+     * @return Status of the subnetwork. Additional subnet with DRAINING status will not be selected during new node pool creation
+     * Accepted values are:
+     * * `ACTIVE`: ACTIVE status indicates that the subnet is available for new node pool creation.
+     * * `DRAINING`: DRAINING status indicates that the subnet is not used for new node pool creation.
+     * 
+     */
+    private @Nullable String status;
     /**
      * @return Name of the subnetwork. This can be the full path of the subnetwork or just the name.
      * 
@@ -30,6 +39,16 @@ public final class ClusterIpAllocationPolicyAdditionalIpRangesConfig {
      */
     public List<String> podIpv4RangeNames() {
         return this.podIpv4RangeNames == null ? List.of() : this.podIpv4RangeNames;
+    }
+    /**
+     * @return Status of the subnetwork. Additional subnet with DRAINING status will not be selected during new node pool creation
+     * Accepted values are:
+     * * `ACTIVE`: ACTIVE status indicates that the subnet is available for new node pool creation.
+     * * `DRAINING`: DRAINING status indicates that the subnet is not used for new node pool creation.
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
     }
     /**
      * @return Name of the subnetwork. This can be the full path of the subnetwork or just the name.
@@ -49,11 +68,13 @@ public final class ClusterIpAllocationPolicyAdditionalIpRangesConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> podIpv4RangeNames;
+        private @Nullable String status;
         private String subnetwork;
         public Builder() {}
         public Builder(ClusterIpAllocationPolicyAdditionalIpRangesConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.podIpv4RangeNames = defaults.podIpv4RangeNames;
+    	      this.status = defaults.status;
     	      this.subnetwork = defaults.subnetwork;
         }
 
@@ -67,6 +88,12 @@ public final class ClusterIpAllocationPolicyAdditionalIpRangesConfig {
             return podIpv4RangeNames(List.of(podIpv4RangeNames));
         }
         @CustomType.Setter
+        public Builder status(@Nullable String status) {
+
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
             if (subnetwork == null) {
               throw new MissingRequiredPropertyException("ClusterIpAllocationPolicyAdditionalIpRangesConfig", "subnetwork");
@@ -77,6 +104,7 @@ public final class ClusterIpAllocationPolicyAdditionalIpRangesConfig {
         public ClusterIpAllocationPolicyAdditionalIpRangesConfig build() {
             final var _resultValue = new ClusterIpAllocationPolicyAdditionalIpRangesConfig();
             _resultValue.podIpv4RangeNames = podIpv4RangeNames;
+            _resultValue.status = status;
             _resultValue.subnetwork = subnetwork;
             return _resultValue;
         }

@@ -230,7 +230,7 @@ class _CertificateIssuanceConfigState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.int] rotation_window_percentage: It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
                Must be a number between 1-99, inclusive.
                You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
@@ -402,7 +402,7 @@ class _CertificateIssuanceConfigState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -535,22 +535,14 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         CertificateIssuanceConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, CertificateIssuanceConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default {{location}}/{{name}}
         ```
 
@@ -663,22 +655,14 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         CertificateIssuanceConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, CertificateIssuanceConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default {{location}}/{{name}}
         ```
 
@@ -790,7 +774,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.int] rotation_window_percentage: It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
                Must be a number between 1-99, inclusive.
                You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
@@ -914,7 +898,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

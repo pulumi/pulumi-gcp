@@ -252,31 +252,20 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// Instance group managers can be imported using any of these accepted formats:
     /// 
+    /// ```sh
     /// * `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}`
-    /// 
     /// * `{{project}}/{{zone}}/{{name}}`
-    /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{name}}`
+    /// 
     /// 
     /// When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example:
     /// 
-    /// ```sh
-    /// $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
     /// ```
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{zone}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{name}}
-    /// ```
+    /// $ terraform import google_compute_instance_group_manager.default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
+    /// $ terraform import google_compute_instance_group_manager.default {{project}}/{{zone}}/{{name}}
+    /// $ terraform import google_compute_instance_group_manager.default {{project}}/{{name}}
+    /// $ terraform import google_compute_instance_group_manager.default {{name}}
     /// </summary>
     [GcpResourceType("gcp:compute/instanceGroupManager:InstanceGroupManager")]
     public partial class InstanceGroupManager : global::Pulumi.CustomResource
@@ -440,7 +429,10 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> TargetPools { get; private set; } = null!;
 
         /// <summary>
-        /// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        /// The target number of running instances for this managed
+        /// instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+        /// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+        /// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         /// </summary>
         [Output("targetSize")]
         public Output<int> TargetSize { get; private set; } = null!;
@@ -693,7 +685,10 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        /// The target number of running instances for this managed
+        /// instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+        /// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+        /// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         /// </summary>
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }
@@ -959,7 +954,10 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        /// The target number of running instances for this managed
+        /// instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+        /// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+        /// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         /// </summary>
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }

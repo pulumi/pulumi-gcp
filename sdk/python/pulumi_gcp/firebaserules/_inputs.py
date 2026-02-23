@@ -23,16 +23,11 @@ __all__ = [
     'RulesetSourceFileArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class RulesetMetadataArgsDict(TypedDict):
-        services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
-        """
-elif False:
-    RulesetMetadataArgsDict: TypeAlias = Mapping[str, Any]
+class RulesetMetadataArgsDict(TypedDict):
+    services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
+    """
 
 @pulumi.input_type
 class RulesetMetadataArgs:
@@ -57,20 +52,17 @@ class RulesetMetadataArgs:
         pulumi.set(self, "services", value)
 
 
-if not MYPY:
-    class RulesetSourceArgsDict(TypedDict):
-        files: pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgsDict']]]
-        """
-        `File` set constituting the `Source` bundle.
-        """
-        language: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+class RulesetSourceArgsDict(TypedDict):
+    files: pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgsDict']]]
+    """
+    `File` set constituting the `Source` bundle.
+    """
+    language: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
 
-        - - -
-        """
-elif False:
-    RulesetSourceArgsDict: TypeAlias = Mapping[str, Any]
+    - - -
+    """
 
 @pulumi.input_type
 class RulesetSourceArgs:
@@ -114,22 +106,19 @@ class RulesetSourceArgs:
         pulumi.set(self, "language", value)
 
 
-if not MYPY:
-    class RulesetSourceFileArgsDict(TypedDict):
-        content: pulumi.Input[_builtins.str]
-        """
-        Textual Content.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        File name.
-        """
-        fingerprint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fingerprint (e.g. github sha) associated with the `File`.
-        """
-elif False:
-    RulesetSourceFileArgsDict: TypeAlias = Mapping[str, Any]
+class RulesetSourceFileArgsDict(TypedDict):
+    content: pulumi.Input[_builtins.str]
+    """
+    Textual Content.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    File name.
+    """
+    fingerprint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fingerprint (e.g. github sha) associated with the `File`.
+    """
 
 @pulumi.input_type
 class RulesetSourceFileArgs:

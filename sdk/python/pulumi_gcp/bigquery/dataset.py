@@ -544,7 +544,7 @@ class _DatasetState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
                in the namespaced format, for example "123456789012/environment" where 123456789012 is the
                ID of the parent organization or project resource for this tag key. Tag value is expected
@@ -907,7 +907,7 @@ class _DatasetState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -985,6 +985,18 @@ class Dataset(pulumi.CustomResource):
                  storage_billing_model: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Datasets allow you to organize and control access to your tables.
+
+        To get more information about Dataset, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
+        * How-to Guides
+            * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
+
+        > **Warning:** You must specify the role field using the legacy format `OWNER` instead of `roles/bigquery.dataOwner`.
+        The API does accept both formats but it will always return the legacy format which results in Terraform
+        showing permanent diff on each plan and apply operation.
+
         ## Example Usage
 
         ### Bigquery Dataset Basic
@@ -1179,22 +1191,14 @@ class Dataset(pulumi.CustomResource):
         Dataset can be imported using any of these accepted formats:
 
         * `projects/{{project}}/datasets/{{dataset_id}}`
-
         * `{{project}}/{{dataset_id}}`
-
         * `{{dataset_id}}`
 
         When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
         ```
 
@@ -1288,6 +1292,18 @@ class Dataset(pulumi.CustomResource):
                  args: DatasetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Datasets allow you to organize and control access to your tables.
+
+        To get more information about Dataset, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
+        * How-to Guides
+            * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
+
+        > **Warning:** You must specify the role field using the legacy format `OWNER` instead of `roles/bigquery.dataOwner`.
+        The API does accept both formats but it will always return the legacy format which results in Terraform
+        showing permanent diff on each plan and apply operation.
+
         ## Example Usage
 
         ### Bigquery Dataset Basic
@@ -1482,22 +1498,14 @@ class Dataset(pulumi.CustomResource):
         Dataset can be imported using any of these accepted formats:
 
         * `projects/{{project}}/datasets/{{dataset_id}}`
-
         * `{{project}}/{{dataset_id}}`
-
         * `{{dataset_id}}`
 
         When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
         ```
 
@@ -1690,7 +1698,7 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
                in the namespaced format, for example "123456789012/environment" where 123456789012 is the
                ID of the parent organization or project resource for this tag key. Tag value is expected
@@ -1954,7 +1962,7 @@ class Dataset(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

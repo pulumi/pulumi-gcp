@@ -12,6 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ServiceLbPolicy holds global load balancing and traffic distribution configuration that can be applied to a BackendService.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about ServiceLbPolicies, see:
+//
+// * [API documentation](https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.serviceLbPolicies)
+//
 // ## Example Usage
 //
 // ### Network Services Service Lb Policies Basic
@@ -154,22 +163,14 @@ import (
 // ServiceLbPolicies can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, ServiceLbPolicies can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{location}}/{{name}}
 // ```
 type ServiceLbPolicies struct {
@@ -205,7 +206,7 @@ type ServiceLbPolicies struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Time the ServiceLbPolicy was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -279,7 +280,7 @@ type serviceLbPoliciesState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Time the ServiceLbPolicy was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -316,7 +317,7 @@ type ServiceLbPoliciesState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Time the ServiceLbPolicy was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
@@ -533,7 +534,8 @@ func (o ServiceLbPoliciesOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ServiceLbPoliciesOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceLbPolicies) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

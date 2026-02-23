@@ -15,8 +15,7 @@ namespace Pulumi.Gcp.Spanner.Inputs
         /// <summary>
         /// The encryption type of backups created by the backup schedule.
         /// Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
-        /// If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.
-        /// If your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION.
+        /// If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName or kmsKeyNames.
         /// Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
         /// </summary>
         [Input("encryptionType", required: true)]

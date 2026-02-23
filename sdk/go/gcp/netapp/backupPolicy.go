@@ -64,22 +64,14 @@ import (
 // BackupPolicy can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, BackupPolicy can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default {{location}}/{{name}}
 // ```
 type BackupPolicy struct {
@@ -113,7 +105,7 @@ type BackupPolicy struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The state of the backup policy.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -196,7 +188,7 @@ type backupPolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The state of the backup policy.
 	State *string `pulumi:"state"`
@@ -233,7 +225,7 @@ type BackupPolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The state of the backup policy.
 	State pulumi.StringPtrInput
@@ -446,7 +438,8 @@ func (o BackupPolicyOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o BackupPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

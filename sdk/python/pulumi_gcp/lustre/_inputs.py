@@ -21,34 +21,29 @@ __all__ = [
     'InstanceAccessRulesOptionsAccessRuleArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceAccessRulesOptionsArgsDict(TypedDict):
-        default_squash_mode: pulumi.Input[_builtins.str]
-        """
-        Set to "ROOT_SQUASH" to enable root squashing by default.
-        Other values include "NO_SQUASH".
-        Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
-        """
-        access_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceAccessRulesOptionsAccessRuleArgsDict']]]]
-        """
-        An array of access rule exceptions. Each rule defines IP address ranges
-        that should have different squash behavior than the default.
-        Structure is documented below.
-        """
-        default_squash_gid: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The GID to map the root user to when root squashing is enabled
-        (e.g., 65534 for nobody).
-        """
-        default_squash_uid: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The UID to map the root user to when root squashing is enabled
-        (e.g., 65534 for nobody).
-        """
-elif False:
-    InstanceAccessRulesOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAccessRulesOptionsArgsDict(TypedDict):
+    default_squash_mode: pulumi.Input[_builtins.str]
+    """
+    Set to "ROOT_SQUASH" to enable root squashing by default.
+    Other values include "NO_SQUASH".
+    Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
+    """
+    access_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceAccessRulesOptionsAccessRuleArgsDict']]]]
+    """
+    An array of access rule exceptions. Each rule defines IP address ranges
+    that should have different squash behavior than the default.
+    Structure is documented below.
+    """
+    default_squash_gid: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The GID to map the root user to when root squashing is enabled
+    (e.g., 65534 for nobody).
+    """
+    default_squash_uid: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The UID to map the root user to when root squashing is enabled
+    (e.g., 65534 for nobody).
+    """
 
 @pulumi.input_type
 class InstanceAccessRulesOptionsArgs:
@@ -132,24 +127,21 @@ class InstanceAccessRulesOptionsArgs:
         pulumi.set(self, "default_squash_uid", value)
 
 
-if not MYPY:
-    class InstanceAccessRulesOptionsAccessRuleArgsDict(TypedDict):
-        ip_address_ranges: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        An array of IP address strings or CIDR ranges that this rule applies to.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        A unique identifier for the access rule.
-        """
-        squash_mode: pulumi.Input[_builtins.str]
-        """
-        The squash mode for this specific rule. Currently, only "NO_SQUASH"
-        is supported for exceptions.
-        Possible values are: `NO_SQUASH`.
-        """
-elif False:
-    InstanceAccessRulesOptionsAccessRuleArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAccessRulesOptionsAccessRuleArgsDict(TypedDict):
+    ip_address_ranges: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    An array of IP address strings or CIDR ranges that this rule applies to.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    A unique identifier for the access rule.
+    """
+    squash_mode: pulumi.Input[_builtins.str]
+    """
+    The squash mode for this specific rule. Currently, only "NO_SQUASH"
+    is supported for exceptions.
+    Possible values are: `NO_SQUASH`.
+    """
 
 @pulumi.input_type
 class InstanceAccessRulesOptionsAccessRuleArgs:

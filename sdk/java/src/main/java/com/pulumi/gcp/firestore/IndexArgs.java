@@ -69,6 +69,27 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Deletion behavior for this index.
+     * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+     * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `DELETE`.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Deletion behavior for this index.
+     * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+     * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `DELETE`.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * The density configuration for this index.
      * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
      * 
@@ -199,6 +220,7 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
         this.apiScope = $.apiScope;
         this.collection = $.collection;
         this.database = $.database;
+        this.deletionPolicy = $.deletionPolicy;
         this.density = $.density;
         this.fields = $.fields;
         this.multikey = $.multikey;
@@ -291,6 +313,33 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder database(String database) {
             return database(Output.of(database));
+        }
+
+        /**
+         * @param deletionPolicy Deletion behavior for this index.
+         * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+         * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+         * The default value is `DELETE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Deletion behavior for this index.
+         * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+         * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+         * The default value is `DELETE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

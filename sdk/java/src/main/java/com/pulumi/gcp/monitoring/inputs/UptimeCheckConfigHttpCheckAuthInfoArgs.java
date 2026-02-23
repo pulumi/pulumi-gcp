@@ -18,6 +18,7 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
 
     /**
      * The password to authenticate.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="password")
@@ -25,6 +26,7 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
 
     /**
      * @return The password to authenticate.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> password() {
@@ -33,7 +35,11 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
      * The password to authenticate.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `password` or `passwordWo` can only be set.
      * 
      */
     @Import(name="passwordWo")
@@ -41,7 +47,11 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
      * The password to authenticate.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `password` or `passwordWo` can only be set.
      * 
      */
     public Optional<Output<String>> passwordWo() {
@@ -107,6 +117,7 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
 
         /**
          * @param password The password to authenticate.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -118,6 +129,7 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
 
         /**
          * @param password The password to authenticate.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -128,7 +140,11 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
          * The password to authenticate.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `password` or `passwordWo` can only be set.
          * 
          * @return builder
          * 
@@ -140,7 +156,11 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
          * The password to authenticate.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `password` or `passwordWo` can only be set.
          * 
          * @return builder
          * 

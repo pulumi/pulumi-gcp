@@ -155,7 +155,7 @@ class _DataSharingWithGoogleSettingState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Update time stamp.
         """
         if create_time is not None:
@@ -298,7 +298,7 @@ class _DataSharingWithGoogleSettingState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -358,22 +358,14 @@ class DataSharingWithGoogleSetting(pulumi.CustomResource):
         DataSharingWithGoogleSetting can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataSharingWithGoogleSettings/{{data_sharing_with_google_setting_id}}`
-
         * `{{project}}/{{location}}/{{data_sharing_with_google_setting_id}}`
-
         * `{{location}}/{{data_sharing_with_google_setting_id}}`
 
         When using the `pulumi import` command, DataSharingWithGoogleSetting can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default projects/{{project}}/locations/{{location}}/dataSharingWithGoogleSettings/{{data_sharing_with_google_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default {{project}}/{{location}}/{{data_sharing_with_google_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default {{location}}/{{data_sharing_with_google_setting_id}}
         ```
 
@@ -421,22 +413,14 @@ class DataSharingWithGoogleSetting(pulumi.CustomResource):
         DataSharingWithGoogleSetting can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataSharingWithGoogleSettings/{{data_sharing_with_google_setting_id}}`
-
         * `{{project}}/{{location}}/{{data_sharing_with_google_setting_id}}`
-
         * `{{location}}/{{data_sharing_with_google_setting_id}}`
 
         When using the `pulumi import` command, DataSharingWithGoogleSetting can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default projects/{{project}}/locations/{{location}}/dataSharingWithGoogleSettings/{{data_sharing_with_google_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default {{project}}/{{location}}/{{data_sharing_with_google_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default {{location}}/{{data_sharing_with_google_setting_id}}
         ```
 
@@ -527,7 +511,7 @@ class DataSharingWithGoogleSetting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Update time stamp.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -628,7 +612,7 @@ class DataSharingWithGoogleSetting(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -166,24 +166,15 @@ import (
 // ## Import
 //
 // Target can be imported using any of these accepted formats:
-//
 // * `projects/{{project}}/locations/{{location}}/targets/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Target can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:clouddeploy/target:Target default projects/{{project}}/locations/{{location}}/targets/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:clouddeploy/target:Target default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:clouddeploy/target:Target default {{location}}/{{name}}
 // ```
 type Target struct {
@@ -205,7 +196,8 @@ type Target struct {
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters pulumi.StringMapOutput `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
-	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -298,7 +290,8 @@ type targetState struct {
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
-	Description          *string           `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -354,7 +347,8 @@ type TargetState struct {
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters pulumi.StringMapInput
 	// Optional. Description of the `Target`. Max length is 255 characters.
-	Description          pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -605,6 +599,7 @@ func (o TargetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o TargetOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

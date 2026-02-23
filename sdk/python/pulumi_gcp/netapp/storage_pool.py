@@ -458,7 +458,7 @@ class _StoragePoolState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] qos_type: QoS (Quality of Service) type of the storage pool.
                Possible values are: AUTO, MANUAL.
                Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
@@ -780,7 +780,7 @@ class _StoragePoolState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -935,6 +935,35 @@ class StoragePool(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Storage pools act as containers for volumes. All volumes in a storage pool share the following information:
+        * Location
+        * Service level
+        * Virtual Private Cloud (VPC) network
+        * Active Directory policy
+        * LDAP use for NFS volumes, if applicable
+        * Customer-managed encryption key (CMEK) policy
+
+        The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
+        component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
+        independent of consumption at the volume level.
+
+        Storage pools of service level Flex are available as zonal (single zone) or regional (two zones in same region) pools.
+        Zonal and regional pools are high-available within the zone. On top of that, regional pools have `replica_zone` as
+        hot standby zone. All volume access is served from the `zone`. If `zone` fails, `replica_zone`
+        automatically becomes the active zone. This will cause state drift in your configuration.
+        If a zone switch (manual or automatic) is triggered outside of Terraform, you need to adjust the `zone`
+        and `replica_zone` values to reflect the current state, or Terraform will initiate a zone switch when running
+        the next apply. You can trigger a manual
+        [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones)
+        via Terraform by swapping the value of the `zone` and `replica_zone` parameters in your HCL code.
+
+        To get more information about StoragePool, see:
+
+        * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
+        * How-to Guides
+            * [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
+            * [Regional Flex zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones)
+
         ## Example Usage
 
         ### Storage Pool Create Doc
@@ -981,22 +1010,14 @@ class StoragePool(pulumi.CustomResource):
         StoragePool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/storagePools/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, StoragePool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/storagePool:StoragePool default projects/{{project}}/locations/{{location}}/storagePools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/storagePool:StoragePool default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/storagePool:StoragePool default {{location}}/{{name}}
         ```
 
@@ -1050,6 +1071,35 @@ class StoragePool(pulumi.CustomResource):
                  args: StoragePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Storage pools act as containers for volumes. All volumes in a storage pool share the following information:
+        * Location
+        * Service level
+        * Virtual Private Cloud (VPC) network
+        * Active Directory policy
+        * LDAP use for NFS volumes, if applicable
+        * Customer-managed encryption key (CMEK) policy
+
+        The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
+        component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
+        independent of consumption at the volume level.
+
+        Storage pools of service level Flex are available as zonal (single zone) or regional (two zones in same region) pools.
+        Zonal and regional pools are high-available within the zone. On top of that, regional pools have `replica_zone` as
+        hot standby zone. All volume access is served from the `zone`. If `zone` fails, `replica_zone`
+        automatically becomes the active zone. This will cause state drift in your configuration.
+        If a zone switch (manual or automatic) is triggered outside of Terraform, you need to adjust the `zone`
+        and `replica_zone` values to reflect the current state, or Terraform will initiate a zone switch when running
+        the next apply. You can trigger a manual
+        [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones)
+        via Terraform by swapping the value of the `zone` and `replica_zone` parameters in your HCL code.
+
+        To get more information about StoragePool, see:
+
+        * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
+        * How-to Guides
+            * [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
+            * [Regional Flex zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones)
+
         ## Example Usage
 
         ### Storage Pool Create Doc
@@ -1096,22 +1146,14 @@ class StoragePool(pulumi.CustomResource):
         StoragePool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/storagePools/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, StoragePool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/storagePool:StoragePool default projects/{{project}}/locations/{{location}}/storagePools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/storagePool:StoragePool default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/storagePool:StoragePool default {{location}}/{{name}}
         ```
 
@@ -1275,7 +1317,7 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] qos_type: QoS (Quality of Service) type of the storage pool.
                Possible values are: AUTO, MANUAL.
                Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
@@ -1497,7 +1539,7 @@ class StoragePool(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

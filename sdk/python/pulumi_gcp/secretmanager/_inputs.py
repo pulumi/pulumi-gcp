@@ -49,16 +49,11 @@ __all__ = [
     'SecretTopicArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class RegionalSecretCustomerManagedEncryptionArgsDict(TypedDict):
-        kms_key_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
-        """
-elif False:
-    RegionalSecretCustomerManagedEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+class RegionalSecretCustomerManagedEncryptionArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+    """
 
 @pulumi.input_type
 class RegionalSecretCustomerManagedEncryptionArgs:
@@ -82,19 +77,23 @@ class RegionalSecretCustomerManagedEncryptionArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class RegionalSecretIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RegionalSecretIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RegionalSecretIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class RegionalSecretIamBindingConditionArgs:
@@ -105,6 +104,11 @@ class RegionalSecretIamBindingConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -138,6 +142,13 @@ class RegionalSecretIamBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -145,19 +156,23 @@ class RegionalSecretIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RegionalSecretIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RegionalSecretIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RegionalSecretIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class RegionalSecretIamMemberConditionArgs:
@@ -168,6 +183,11 @@ class RegionalSecretIamMemberConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -201,6 +221,13 @@ class RegionalSecretIamMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -208,23 +235,20 @@ class RegionalSecretIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RegionalSecretRotationArgsDict(TypedDict):
-        next_rotation_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp in UTC at which the Secret is scheduled to rotate.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-        rotation_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
-        and at most 3153600000s (100 years). If rotationPeriod is set, `next_rotation_time` must
-        be set. `next_rotation_time` will be advanced by this period when the service
-        automatically sends rotation notifications.
-        """
-elif False:
-    RegionalSecretRotationArgsDict: TypeAlias = Mapping[str, Any]
+class RegionalSecretRotationArgsDict(TypedDict):
+    next_rotation_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp in UTC at which the Secret is scheduled to rotate.
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+    fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
+    rotation_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+    and at most 3153600000s (100 years). If rotationPeriod is set, `next_rotation_time` must
+    be set. `next_rotation_time` will be advanced by this period when the service
+    automatically sends rotation notifications.
+    """
 
 @pulumi.input_type
 class RegionalSecretRotationArgs:
@@ -275,16 +299,13 @@ class RegionalSecretRotationArgs:
         pulumi.set(self, "rotation_period", value)
 
 
-if not MYPY:
-    class RegionalSecretTopicArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the Pub/Sub topic that will be published to, in the following format:
-        projects/*/topics/*. For publication to succeed, the Secret Manager Service
-        Agent service account must have pubsub.publisher permissions on the topic.
-        """
-elif False:
-    RegionalSecretTopicArgsDict: TypeAlias = Mapping[str, Any]
+class RegionalSecretTopicArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the Pub/Sub topic that will be published to, in the following format:
+    projects/*/topics/*. For publication to succeed, the Secret Manager Service
+    Agent service account must have pubsub.publisher permissions on the topic.
+    """
 
 @pulumi.input_type
 class RegionalSecretTopicArgs:
@@ -312,15 +333,12 @@ class RegionalSecretTopicArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class RegionalSecretVersionCustomerManagedEncryptionArgsDict(TypedDict):
-        kms_key_version_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
-        """
-elif False:
-    RegionalSecretVersionCustomerManagedEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+class RegionalSecretVersionCustomerManagedEncryptionArgsDict(TypedDict):
+    kms_key_version_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+    """
 
 @pulumi.input_type
 class RegionalSecretVersionCustomerManagedEncryptionArgs:
@@ -347,19 +365,23 @@ class RegionalSecretVersionCustomerManagedEncryptionArgs:
         pulumi.set(self, "kms_key_version_name", value)
 
 
-if not MYPY:
-    class SecretIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SecretIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class SecretIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class SecretIamBindingConditionArgs:
@@ -370,6 +392,11 @@ class SecretIamBindingConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -403,6 +430,13 @@ class SecretIamBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -410,19 +444,23 @@ class SecretIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class SecretIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SecretIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class SecretIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class SecretIamMemberConditionArgs:
@@ -433,6 +471,11 @@ class SecretIamMemberConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -466,6 +509,13 @@ class SecretIamMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -473,20 +523,17 @@ class SecretIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class SecretReplicationArgsDict(TypedDict):
-        auto: NotRequired[pulumi.Input['SecretReplicationAutoArgsDict']]
-        """
-        The Secret will automatically be replicated without any restrictions.
-        Structure is documented below.
-        """
-        user_managed: NotRequired[pulumi.Input['SecretReplicationUserManagedArgsDict']]
-        """
-        The Secret will be replicated to the regions specified by the user.
-        Structure is documented below.
-        """
-elif False:
-    SecretReplicationArgsDict: TypeAlias = Mapping[str, Any]
+class SecretReplicationArgsDict(TypedDict):
+    auto: NotRequired[pulumi.Input['SecretReplicationAutoArgsDict']]
+    """
+    The Secret will automatically be replicated without any restrictions.
+    Structure is documented below.
+    """
+    user_managed: NotRequired[pulumi.Input['SecretReplicationUserManagedArgsDict']]
+    """
+    The Secret will be replicated to the regions specified by the user.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SecretReplicationArgs:
@@ -531,17 +578,14 @@ class SecretReplicationArgs:
         pulumi.set(self, "user_managed", value)
 
 
-if not MYPY:
-    class SecretReplicationAutoArgsDict(TypedDict):
-        customer_managed_encryption: NotRequired[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgsDict']]
-        """
-        The customer-managed encryption configuration of the Secret.
-        If no configuration is provided, Google-managed default
-        encryption is used.
-        Structure is documented below.
-        """
-elif False:
-    SecretReplicationAutoArgsDict: TypeAlias = Mapping[str, Any]
+class SecretReplicationAutoArgsDict(TypedDict):
+    customer_managed_encryption: NotRequired[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgsDict']]
+    """
+    The customer-managed encryption configuration of the Secret.
+    If no configuration is provided, Google-managed default
+    encryption is used.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SecretReplicationAutoArgs:
@@ -572,14 +616,11 @@ class SecretReplicationAutoArgs:
         pulumi.set(self, "customer_managed_encryption", value)
 
 
-if not MYPY:
-    class SecretReplicationAutoCustomerManagedEncryptionArgsDict(TypedDict):
-        kms_key_name: pulumi.Input[_builtins.str]
-        """
-        Describes the Cloud KMS encryption key that will be used to protect destination secret.
-        """
-elif False:
-    SecretReplicationAutoCustomerManagedEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+class SecretReplicationAutoCustomerManagedEncryptionArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    Describes the Cloud KMS encryption key that will be used to protect destination secret.
+    """
 
 @pulumi.input_type
 class SecretReplicationAutoCustomerManagedEncryptionArgs:
@@ -603,15 +644,12 @@ class SecretReplicationAutoCustomerManagedEncryptionArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class SecretReplicationUserManagedArgsDict(TypedDict):
-        replicas: pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArgsDict']]]
-        """
-        The list of Replicas for this Secret. Cannot be empty.
-        Structure is documented below.
-        """
-elif False:
-    SecretReplicationUserManagedArgsDict: TypeAlias = Mapping[str, Any]
+class SecretReplicationUserManagedArgsDict(TypedDict):
+    replicas: pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArgsDict']]]
+    """
+    The list of Replicas for this Secret. Cannot be empty.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SecretReplicationUserManagedArgs:
@@ -637,19 +675,16 @@ class SecretReplicationUserManagedArgs:
         pulumi.set(self, "replicas", value)
 
 
-if not MYPY:
-    class SecretReplicationUserManagedReplicaArgsDict(TypedDict):
-        location: pulumi.Input[_builtins.str]
-        """
-        The canonical IDs of the location to replicate data. For example: "us-east1".
-        """
-        customer_managed_encryption: NotRequired[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgsDict']]
-        """
-        Customer Managed Encryption for the secret.
-        Structure is documented below.
-        """
-elif False:
-    SecretReplicationUserManagedReplicaArgsDict: TypeAlias = Mapping[str, Any]
+class SecretReplicationUserManagedReplicaArgsDict(TypedDict):
+    location: pulumi.Input[_builtins.str]
+    """
+    The canonical IDs of the location to replicate data. For example: "us-east1".
+    """
+    customer_managed_encryption: NotRequired[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgsDict']]
+    """
+    Customer Managed Encryption for the secret.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SecretReplicationUserManagedReplicaArgs:
@@ -691,14 +726,11 @@ class SecretReplicationUserManagedReplicaArgs:
         pulumi.set(self, "customer_managed_encryption", value)
 
 
-if not MYPY:
-    class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgsDict(TypedDict):
-        kms_key_name: pulumi.Input[_builtins.str]
-        """
-        Describes the Cloud KMS encryption key that will be used to protect destination secret.
-        """
-elif False:
-    SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    Describes the Cloud KMS encryption key that will be used to protect destination secret.
+    """
 
 @pulumi.input_type
 class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs:
@@ -722,20 +754,17 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class SecretRotationArgsDict(TypedDict):
-        next_rotation_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp in UTC at which the Secret is scheduled to rotate.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-        rotation_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
-        If rotationPeriod is set, `next_rotation_time` must be set. `next_rotation_time` will be advanced by this period when the service automatically sends rotation notifications.
-        """
-elif False:
-    SecretRotationArgsDict: TypeAlias = Mapping[str, Any]
+class SecretRotationArgsDict(TypedDict):
+    next_rotation_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp in UTC at which the Secret is scheduled to rotate.
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
+    rotation_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+    If rotationPeriod is set, `next_rotation_time` must be set. `next_rotation_time` will be advanced by this period when the service automatically sends rotation notifications.
+    """
 
 @pulumi.input_type
 class SecretRotationArgs:
@@ -780,15 +809,12 @@ class SecretRotationArgs:
         pulumi.set(self, "rotation_period", value)
 
 
-if not MYPY:
-    class SecretTopicArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
-        For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
-        """
-elif False:
-    SecretTopicArgsDict: TypeAlias = Mapping[str, Any]
+class SecretTopicArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+    For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+    """
 
 @pulumi.input_type
 class SecretTopicArgs:

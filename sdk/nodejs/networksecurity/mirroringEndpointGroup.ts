@@ -78,22 +78,14 @@ import * as utilities from "../utilities";
  * MirroringEndpointGroup can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/mirroringEndpointGroups/{{mirroring_endpoint_group_id}}`
- *
  * * `{{project}}/{{location}}/{{mirroring_endpoint_group_id}}`
- *
  * * `{{location}}/{{mirroring_endpoint_group_id}}`
  *
  * When using the `pulumi import` command, MirroringEndpointGroup can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default projects/{{project}}/locations/{{location}}/mirroringEndpointGroups/{{mirroring_endpoint_group_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{project}}/{{location}}/{{mirroring_endpoint_group_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{location}}/{{mirroring_endpoint_group_id}}
  * ```
  */
@@ -167,7 +159,6 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
      */
     declare public readonly mirroringDeploymentGroup: pulumi.Output<string | undefined>;
     /**
-     * (Optional, Beta)
      * A list of the deployment groups that this BROKER endpoint group is
      * connected to, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -193,7 +184,7 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -213,7 +204,6 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * The type of the endpoint group.
      * If left unspecified, defaults to DIRECT.
      * Possible values:
@@ -336,7 +326,6 @@ export interface MirroringEndpointGroupState {
      */
     mirroringDeploymentGroup?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * A list of the deployment groups that this BROKER endpoint group is
      * connected to, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -362,7 +351,7 @@ export interface MirroringEndpointGroupState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -382,7 +371,6 @@ export interface MirroringEndpointGroupState {
      */
     state?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * The type of the endpoint group.
      * If left unspecified, defaults to DIRECT.
      * Possible values:
@@ -423,7 +411,6 @@ export interface MirroringEndpointGroupArgs {
      */
     mirroringDeploymentGroup?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * A list of the deployment groups that this BROKER endpoint group is
      * connected to, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -441,7 +428,6 @@ export interface MirroringEndpointGroupArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * The type of the endpoint group.
      * If left unspecified, defaults to DIRECT.
      * Possible values:

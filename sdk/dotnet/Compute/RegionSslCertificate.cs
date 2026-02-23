@@ -20,6 +20,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
     /// 
+    /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `PrivateKeyWo`.
+    /// Read more about Write-only Arguments.
+    /// 
     /// ## Example Usage
     /// 
     /// ## Import
@@ -27,28 +30,16 @@ namespace Pulumi.Gcp.Compute
     /// RegionSslCertificate can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}`
-    /// 
     /// * `{{project}}/{{region}}/{{name}}`
-    /// 
     /// * `{{region}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, RegionSslCertificate can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{project}}/{{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{name}}
     /// ```
     /// </summary>
@@ -119,7 +110,24 @@ namespace Pulumi.Gcp.Compute
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("privateKey")]
-        public Output<string> PrivateKey { get; private set; } = null!;
+        public Output<string?> PrivateKey { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// The write-only private key in PEM format.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `PrivateKey` or `PrivateKeyWo` can only be set.
+        /// </summary>
+        [Output("privateKeyWo")]
+        public Output<string?> PrivateKeyWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Triggers update of `PrivateKeyWo` write-only. Increment this value when an update to `PrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Output("privateKeyWoVersion")]
+        public Output<string?> PrivateKeyWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -168,6 +176,7 @@ namespace Pulumi.Gcp.Compute
                 {
                     "certificate",
                     "privateKey",
+                    "privateKeyWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -243,7 +252,7 @@ namespace Pulumi.Gcp.Compute
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        [Input("privateKey", required: true)]
+        [Input("privateKey")]
         private Input<string>? _privateKey;
 
         /// <summary>
@@ -259,6 +268,33 @@ namespace Pulumi.Gcp.Compute
                 _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("privateKeyWo")]
+        private Input<string>? _privateKeyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// The write-only private key in PEM format.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `PrivateKey` or `PrivateKeyWo` can only be set.
+        /// </summary>
+        public Input<string>? PrivateKeyWo
+        {
+            get => _privateKeyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKeyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `PrivateKeyWo` write-only. Increment this value when an update to `PrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("privateKeyWoVersion")]
+        public Input<string>? PrivateKeyWoVersion { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -367,6 +403,33 @@ namespace Pulumi.Gcp.Compute
                 _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("privateKeyWo")]
+        private Input<string>? _privateKeyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// The write-only private key in PEM format.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `PrivateKey` or `PrivateKeyWo` can only be set.
+        /// </summary>
+        public Input<string>? PrivateKeyWo
+        {
+            get => _privateKeyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKeyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `PrivateKeyWo` write-only. Increment this value when an update to `PrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("privateKeyWoVersion")]
+        public Input<string>? PrivateKeyWoVersion { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

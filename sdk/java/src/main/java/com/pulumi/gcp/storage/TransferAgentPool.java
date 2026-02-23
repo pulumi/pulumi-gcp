@@ -86,22 +86,14 @@ import javax.annotation.Nullable;
  * AgentPool can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/agentPools/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, AgentPool can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default projects/{{project}}/agentPools/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{name}}
  * ```
  * 

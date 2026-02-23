@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.VPNTunnelArgs;
 import com.pulumi.gcp.compute.inputs.VPNTunnelState;
 import com.pulumi.gcp.compute.outputs.VPNTunnelCipherSuite;
+import com.pulumi.gcp.compute.outputs.VPNTunnelParams;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -247,28 +248,16 @@ import javax.annotation.Nullable;
  * VpnTunnel can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{name}}`
- * 
  * * `{{region}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, VpnTunnel can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{project}}/{{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{name}}
  * ```
  * 
@@ -446,6 +435,24 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={VPNTunnelParams.class}, tree="[0]")
+    private Output</* @Nullable */ VPNTunnelParams> params;
+
+    /**
+     * @return (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<VPNTunnelParams>> params() {
+        return Codegen.optional(this.params);
+    }
+    /**
      * URL of the peer side external VPN gateway to which this VPN tunnel is connected.
      * 
      */
@@ -525,7 +532,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -533,7 +540,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

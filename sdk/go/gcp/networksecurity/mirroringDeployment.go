@@ -124,22 +124,14 @@ import (
 // MirroringDeployment can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/mirroringDeployments/{{mirroring_deployment_id}}`
-//
 // * `{{project}}/{{location}}/{{mirroring_deployment_id}}`
-//
 // * `{{location}}/{{mirroring_deployment_id}}`
 //
 // When using the `pulumi import` command, MirroringDeployment can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default projects/{{project}}/locations/{{location}}/mirroringDeployments/{{mirroring_deployment_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default {{project}}/{{location}}/{{mirroring_deployment_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default {{location}}/{{mirroring_deployment_id}}
 // ```
 type MirroringDeployment struct {
@@ -178,7 +170,7 @@ type MirroringDeployment struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This part of the normal
@@ -280,7 +272,7 @@ type mirroringDeploymentState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This part of the normal
@@ -336,7 +328,7 @@ type MirroringDeploymentState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This part of the normal
@@ -565,7 +557,8 @@ func (o MirroringDeploymentOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MirroringDeploymentOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MirroringDeployment) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

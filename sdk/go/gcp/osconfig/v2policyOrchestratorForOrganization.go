@@ -104,16 +104,12 @@ import (
 // PolicyOrchestratorForOrganization can be imported using any of these accepted formats:
 //
 // * `organizations/{{organization_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}`
-//
 // * `{{organization_id}}/{{policy_orchestrator_id}}`
 //
 // When using the `pulumi import` command, PolicyOrchestratorForOrganization can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization default organizations/{{organization_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization default {{organization_id}}/{{policy_orchestrator_id}}
 // ```
 type V2PolicyOrchestratorForOrganization struct {
@@ -168,7 +164,7 @@ type V2PolicyOrchestratorForOrganization struct {
 	// * Must be unique within the parent.
 	PolicyOrchestratorId pulumi.StringOutput `pulumi:"policyOrchestratorId"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Set to true, if the there are ongoing changes being applied by the
 	// orchestrator.
@@ -281,7 +277,7 @@ type v2policyOrchestratorForOrganizationState struct {
 	// * Must be unique within the parent.
 	PolicyOrchestratorId *string `pulumi:"policyOrchestratorId"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Set to true, if the there are ongoing changes being applied by the
 	// orchestrator.
@@ -348,7 +344,7 @@ type V2PolicyOrchestratorForOrganizationState struct {
 	// * Must be unique within the parent.
 	PolicyOrchestratorId pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. Set to true, if the there are ongoing changes being applied by the
 	// orchestrator.
@@ -634,7 +630,8 @@ func (o V2PolicyOrchestratorForOrganizationOutput) PolicyOrchestratorId() pulumi
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o V2PolicyOrchestratorForOrganizationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorForOrganization) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

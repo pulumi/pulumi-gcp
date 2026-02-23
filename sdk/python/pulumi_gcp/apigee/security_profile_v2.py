@@ -295,16 +295,12 @@ class SecurityProfileV2(pulumi.CustomResource):
         SecurityProfileV2 can be imported using any of these accepted formats:
 
         * `{{org_id}}/securityProfilesV2/{{profile_id}}`
-
         * `{{org_id}}/{{profile_id}}`
 
         When using the `pulumi import` command, SecurityProfileV2 can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/securityProfileV2:SecurityProfileV2 default {{org_id}}/securityProfilesV2/{{profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/securityProfileV2:SecurityProfileV2 default {{org_id}}/{{profile_id}}
         ```
 
@@ -390,16 +386,12 @@ class SecurityProfileV2(pulumi.CustomResource):
         SecurityProfileV2 can be imported using any of these accepted formats:
 
         * `{{org_id}}/securityProfilesV2/{{profile_id}}`
-
         * `{{org_id}}/{{profile_id}}`
 
         When using the `pulumi import` command, SecurityProfileV2 can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/securityProfileV2:SecurityProfileV2 default {{org_id}}/securityProfilesV2/{{profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/securityProfileV2:SecurityProfileV2 default {{org_id}}/{{profile_id}}
         ```
 

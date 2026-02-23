@@ -42,6 +42,7 @@ class ExascaleDbStorageVaultArgs:
         :param pulumi.Input['ExascaleDbStorageVaultPropertiesArgs'] properties: The properties of the ExascaleDbStorageVault.
                next ID: 12
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted.
                Example: us-east4-b-r2.
                If not specified, the system will pick a zone based on availability.
@@ -122,6 +123,9 @@ class ExascaleDbStorageVaultArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -189,6 +193,7 @@ class _ExascaleDbStorageVaultState:
         """
         Input properties used for looking up and filtering ExascaleDbStorageVault resources.
         :param pulumi.Input[_builtins.str] create_time: The date and time when the ExascaleDbStorageVault was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: The display name for the ExascaleDbStorageVault. The name does not have to
                be unique within your project. The name must be 1-255 characters long and
                can only contain alphanumeric characters.
@@ -215,7 +220,7 @@ class _ExascaleDbStorageVaultState:
                next ID: 12
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -259,6 +264,9 @@ class _ExascaleDbStorageVaultState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -405,7 +413,7 @@ class _ExascaleDbStorageVaultState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -484,27 +492,20 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
         ExascaleDbStorageVault can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/exascaleDbStorageVaults/{{exascale_db_storage_vault_id}}`
-
         * `{{project}}/{{location}}/{{exascale_db_storage_vault_id}}`
-
         * `{{location}}/{{exascale_db_storage_vault_id}}`
 
         When using the `pulumi import` command, ExascaleDbStorageVault can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default projects/{{project}}/locations/{{location}}/exascaleDbStorageVaults/{{exascale_db_storage_vault_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default {{project}}/{{location}}/{{exascale_db_storage_vault_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default {{location}}/{{exascale_db_storage_vault_id}}
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: The display name for the ExascaleDbStorageVault. The name does not have to
                be unique within your project. The name must be 1-255 characters long and
                can only contain alphanumeric characters.
@@ -586,22 +587,14 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
         ExascaleDbStorageVault can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/exascaleDbStorageVaults/{{exascale_db_storage_vault_id}}`
-
         * `{{project}}/{{location}}/{{exascale_db_storage_vault_id}}`
-
         * `{{location}}/{{exascale_db_storage_vault_id}}`
 
         When using the `pulumi import` command, ExascaleDbStorageVault can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default projects/{{project}}/locations/{{location}}/exascaleDbStorageVaults/{{exascale_db_storage_vault_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default {{project}}/{{location}}/{{exascale_db_storage_vault_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default {{location}}/{{exascale_db_storage_vault_id}}
         ```
 
@@ -691,6 +684,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The date and time when the ExascaleDbStorageVault was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: The display name for the ExascaleDbStorageVault. The name does not have to
                be unique within your project. The name must be 1-255 characters long and
                can only contain alphanumeric characters.
@@ -717,7 +711,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
                next ID: 12
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -749,6 +743,9 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -851,7 +848,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

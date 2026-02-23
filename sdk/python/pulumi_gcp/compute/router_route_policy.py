@@ -350,28 +350,16 @@ class RouterRoutePolicy(pulumi.CustomResource):
         RouterRoutePolicy can be imported using any of these accepted formats:
 
         * `{{project}}/{{region}}/{{router}}/routePolicies/{{name}}`
-
         * `{{project}}/{{region}}/{{router}}/{{name}}`
-
         * `{{region}}/{{router}}/{{name}}`
-
         * `{{router}}/{{name}}`
 
         When using the `pulumi import` command, RouterRoutePolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{project}}/{{region}}/{{router}}/routePolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{project}}/{{region}}/{{router}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{region}}/{{router}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{router}}/{{name}}
         ```
 
@@ -476,28 +464,16 @@ class RouterRoutePolicy(pulumi.CustomResource):
         RouterRoutePolicy can be imported using any of these accepted formats:
 
         * `{{project}}/{{region}}/{{router}}/routePolicies/{{name}}`
-
         * `{{project}}/{{region}}/{{router}}/{{name}}`
-
         * `{{region}}/{{router}}/{{name}}`
-
         * `{{router}}/{{name}}`
 
         When using the `pulumi import` command, RouterRoutePolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{project}}/{{region}}/{{router}}/routePolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{project}}/{{region}}/{{router}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{region}}/{{router}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{router}}/{{name}}
         ```
 

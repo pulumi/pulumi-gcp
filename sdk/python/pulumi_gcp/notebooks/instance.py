@@ -739,7 +739,7 @@ class _InstanceState:
                needed you can utilize `pulumi up -refresh-only` to await
                the population of this value.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: The service account on this instance, giving access to other
@@ -1199,7 +1199,7 @@ class _InstanceState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1506,22 +1506,14 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:notebooks/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:notebooks/instance:Instance default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:notebooks/instance:Instance default {{location}}/{{name}}
         ```
 
@@ -1747,22 +1739,14 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:notebooks/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:notebooks/instance:Instance default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:notebooks/instance:Instance default {{location}}/{{name}}
         ```
 
@@ -1981,7 +1965,7 @@ class Instance(pulumi.CustomResource):
                needed you can utilize `pulumi up -refresh-only` to await
                the population of this value.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['InstanceReservationAffinityArgs', 'InstanceReservationAffinityArgsDict']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: The service account on this instance, giving access to other
@@ -2301,7 +2285,7 @@ class Instance(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

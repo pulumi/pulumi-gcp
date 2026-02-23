@@ -130,22 +130,14 @@ import (
 // DatasetConfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/datasetConfigs/{{dataset_config_id}}`
-//
 // * `{{project}}/{{location}}/{{dataset_config_id}}`
-//
 // * `{{location}}/{{dataset_config_id}}`
 //
 // When using the `pulumi import` command, DatasetConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default projects/{{project}}/locations/{{location}}/datasetConfigs/{{dataset_config_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default {{project}}/{{location}}/{{dataset_config_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default {{location}}/{{dataset_config_id}}
 // ```
 type InsightsDatasetConfig struct {
@@ -178,7 +170,12 @@ type InsightsDatasetConfig struct {
 	IncludeCloudStorageLocations InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput `pulumi:"includeCloudStorageLocations"`
 	// If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
 	IncludeNewlyCreatedBuckets pulumi.BoolPtrOutput `pulumi:"includeNewlyCreatedBuckets"`
-	LinkDataset                pulumi.BoolPtrOutput `pulumi:"linkDataset"`
+	// A boolean terraform only flag to link/unlink dataset.
+	//
+	// Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+	// > **Note** A dataset config resource can only be destroyed once it is unlinked,
+	// so users must set this field to false to unlink the dataset and destroy the dataset config resource.
+	LinkDataset pulumi.BoolPtrOutput `pulumi:"linkDataset"`
 	// Details of the linked DatasetConfig.
 	// Structure is documented below.
 	Links InsightsDatasetConfigLinkArrayOutput `pulumi:"links"`
@@ -277,7 +274,12 @@ type insightsDatasetConfigState struct {
 	IncludeCloudStorageLocations *InsightsDatasetConfigIncludeCloudStorageLocations `pulumi:"includeCloudStorageLocations"`
 	// If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
 	IncludeNewlyCreatedBuckets *bool `pulumi:"includeNewlyCreatedBuckets"`
-	LinkDataset                *bool `pulumi:"linkDataset"`
+	// A boolean terraform only flag to link/unlink dataset.
+	//
+	// Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+	// > **Note** A dataset config resource can only be destroyed once it is unlinked,
+	// so users must set this field to false to unlink the dataset and destroy the dataset config resource.
+	LinkDataset *bool `pulumi:"linkDataset"`
 	// Details of the linked DatasetConfig.
 	// Structure is documented below.
 	Links []InsightsDatasetConfigLink `pulumi:"links"`
@@ -335,7 +337,12 @@ type InsightsDatasetConfigState struct {
 	IncludeCloudStorageLocations InsightsDatasetConfigIncludeCloudStorageLocationsPtrInput
 	// If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
 	IncludeNewlyCreatedBuckets pulumi.BoolPtrInput
-	LinkDataset                pulumi.BoolPtrInput
+	// A boolean terraform only flag to link/unlink dataset.
+	//
+	// Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+	// > **Note** A dataset config resource can only be destroyed once it is unlinked,
+	// so users must set this field to false to unlink the dataset and destroy the dataset config resource.
+	LinkDataset pulumi.BoolPtrInput
 	// Details of the linked DatasetConfig.
 	// Structure is documented below.
 	Links InsightsDatasetConfigLinkArrayInput
@@ -393,7 +400,12 @@ type insightsDatasetConfigArgs struct {
 	IncludeCloudStorageLocations *InsightsDatasetConfigIncludeCloudStorageLocations `pulumi:"includeCloudStorageLocations"`
 	// If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
 	IncludeNewlyCreatedBuckets *bool `pulumi:"includeNewlyCreatedBuckets"`
-	LinkDataset                *bool `pulumi:"linkDataset"`
+	// A boolean terraform only flag to link/unlink dataset.
+	//
+	// Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+	// > **Note** A dataset config resource can only be destroyed once it is unlinked,
+	// so users must set this field to false to unlink the dataset and destroy the dataset config resource.
+	LinkDataset *bool `pulumi:"linkDataset"`
 	// The location of the DatasetConfig.
 	Location string `pulumi:"location"`
 	// Organization resource ID that the source projects should belong to.
@@ -439,7 +451,12 @@ type InsightsDatasetConfigArgs struct {
 	IncludeCloudStorageLocations InsightsDatasetConfigIncludeCloudStorageLocationsPtrInput
 	// If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
 	IncludeNewlyCreatedBuckets pulumi.BoolPtrInput
-	LinkDataset                pulumi.BoolPtrInput
+	// A boolean terraform only flag to link/unlink dataset.
+	//
+	// Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+	// > **Note** A dataset config resource can only be destroyed once it is unlinked,
+	// so users must set this field to false to unlink the dataset and destroy the dataset config resource.
+	LinkDataset pulumi.BoolPtrInput
 	// The location of the DatasetConfig.
 	Location pulumi.StringInput
 	// Organization resource ID that the source projects should belong to.
@@ -615,6 +632,11 @@ func (o InsightsDatasetConfigOutput) IncludeNewlyCreatedBuckets() pulumi.BoolPtr
 	return o.ApplyT(func(v *InsightsDatasetConfig) pulumi.BoolPtrOutput { return v.IncludeNewlyCreatedBuckets }).(pulumi.BoolPtrOutput)
 }
 
+// A boolean terraform only flag to link/unlink dataset.
+//
+// Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+// > **Note** A dataset config resource can only be destroyed once it is unlinked,
+// so users must set this field to false to unlink the dataset and destroy the dataset config resource.
 func (o InsightsDatasetConfigOutput) LinkDataset() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InsightsDatasetConfig) pulumi.BoolPtrOutput { return v.LinkDataset }).(pulumi.BoolPtrOutput)
 }

@@ -37,6 +37,7 @@ class InterconnectAttachmentArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  mtu: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['InterconnectAttachmentParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  router: Optional[pulumi.Input[_builtins.str]] = None,
@@ -122,12 +123,10 @@ class InterconnectAttachmentArgs:
                `a-z?` which means the first character must be a
                lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input['InterconnectAttachmentParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-               
-               
-               
-               <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
         :param pulumi.Input[_builtins.str] region: Region where the regional interconnect attachment resides.
         :param pulumi.Input[_builtins.str] router: URL of the cloud router to be used for dynamic routing. This router must be in
                the same region as this InterconnectAttachment. The InterconnectAttachment will
@@ -182,6 +181,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -451,14 +452,23 @@ class InterconnectAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['InterconnectAttachmentParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['InterconnectAttachmentParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
-
-
-
-        <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
         """
         return pulumi.get(self, "project")
 
@@ -583,6 +593,7 @@ class _InterconnectAttachmentState:
                  mtu: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  pairing_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['InterconnectAttachmentParamsArgs']] = None,
                  partner_asn: Optional[pulumi.Input[_builtins.str]] = None,
                  private_interconnect_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -694,6 +705,8 @@ class _InterconnectAttachmentState:
         :param pulumi.Input[_builtins.str] pairing_key: [Output only for type PARTNER. Not present for DEDICATED]. The opaque
                identifier of an PARTNER attachment used to initiate provisioning with
                a selected partner. Of the form "XXXXX/region/domain"
+        :param pulumi.Input['InterconnectAttachmentParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] partner_asn: [Output only for type PARTNER. Not present for DEDICATED]. Optional
                BGP ASN for the router that should be supplied by a layer 3 Partner if
                they configured BGP on behalf of the customer.
@@ -702,12 +715,8 @@ class _InterconnectAttachmentState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-               
-               
-               
-               <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: Region where the regional interconnect attachment resides.
         :param pulumi.Input[_builtins.str] router: URL of the cloud router to be used for dynamic routing. This router must be in
                the same region as this InterconnectAttachment. The InterconnectAttachment will
@@ -784,6 +793,8 @@ class _InterconnectAttachmentState:
             pulumi.set(__self__, "name", name)
         if pairing_key is not None:
             pulumi.set(__self__, "pairing_key", pairing_key)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if partner_asn is not None:
             pulumi.set(__self__, "partner_asn", partner_asn)
         if private_interconnect_infos is not None:
@@ -1193,6 +1204,19 @@ class _InterconnectAttachmentState:
         pulumi.set(self, "pairing_key", value)
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['InterconnectAttachmentParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['InterconnectAttachmentParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
     @pulumi.getter(name="partnerAsn")
     def partner_asn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1226,10 +1250,6 @@ class _InterconnectAttachmentState:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
-
-
-
-        <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
         """
         return pulumi.get(self, "project")
 
@@ -1242,7 +1262,7 @@ class _InterconnectAttachmentState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1384,6 +1404,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  mtu: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  router: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1496,28 +1517,16 @@ class InterconnectAttachment(pulumi.CustomResource):
         InterconnectAttachment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
         ```
 
@@ -1599,12 +1608,10 @@ class InterconnectAttachment(pulumi.CustomResource):
                `a-z?` which means the first character must be a
                lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-               
-               
-               
-               <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
         :param pulumi.Input[_builtins.str] region: Region where the regional interconnect attachment resides.
         :param pulumi.Input[_builtins.str] router: URL of the cloud router to be used for dynamic routing. This router must be in
                the same region as this InterconnectAttachment. The InterconnectAttachment will
@@ -1737,28 +1744,16 @@ class InterconnectAttachment(pulumi.CustomResource):
         InterconnectAttachment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
         ```
 
@@ -1793,6 +1788,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  mtu: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  router: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1825,6 +1821,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["router"] = router
@@ -1885,6 +1882,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             mtu: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             pairing_key: Optional[pulumi.Input[_builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']]] = None,
             partner_asn: Optional[pulumi.Input[_builtins.str]] = None,
             private_interconnect_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentPrivateInterconnectInfoArgs', 'InterconnectAttachmentPrivateInterconnectInfoArgsDict']]]]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2001,6 +1999,8 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] pairing_key: [Output only for type PARTNER. Not present for DEDICATED]. The opaque
                identifier of an PARTNER attachment used to initiate provisioning with
                a selected partner. Of the form "XXXXX/region/domain"
+        :param pulumi.Input[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] partner_asn: [Output only for type PARTNER. Not present for DEDICATED]. Optional
                BGP ASN for the router that should be supplied by a layer 3 Partner if
                they configured BGP on behalf of the customer.
@@ -2009,12 +2009,8 @@ class InterconnectAttachment(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-               
-               
-               
-               <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: Region where the regional interconnect attachment resides.
         :param pulumi.Input[_builtins.str] router: URL of the cloud router to be used for dynamic routing. This router must be in
                the same region as this InterconnectAttachment. The InterconnectAttachment will
@@ -2069,6 +2065,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["name"] = name
         __props__.__dict__["pairing_key"] = pairing_key
+        __props__.__dict__["params"] = params
         __props__.__dict__["partner_asn"] = partner_asn
         __props__.__dict__["private_interconnect_infos"] = private_interconnect_infos
         __props__.__dict__["project"] = project
@@ -2363,6 +2360,15 @@ class InterconnectAttachment(pulumi.CustomResource):
         return pulumi.get(self, "pairing_key")
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.InterconnectAttachmentParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @_builtins.property
     @pulumi.getter(name="partnerAsn")
     def partner_asn(self) -> pulumi.Output[_builtins.str]:
         """
@@ -2388,10 +2394,6 @@ class InterconnectAttachment(pulumi.CustomResource):
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
-
-
-
-        <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
         """
         return pulumi.get(self, "project")
 
@@ -2400,7 +2402,7 @@ class InterconnectAttachment(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

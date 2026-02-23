@@ -20,14 +20,26 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     public static final UserState Empty = new UserState();
 
     /**
-     * A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+     * A list of database roles to be assigned to the user.
+     * This option is only available for MySQL 8+ and PostgreSQL instances. You
+     * can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+     * own custom roles. Custom roles must be created in the database before
+     * you can assign them. You can create roles using the CREATE ROLE
+     * statement for both MySQL and PostgreSQL.
+     * **Note**: This property is write-only and will not be read from the API.
      * 
      */
     @Import(name="databaseRoles")
     private @Nullable Output<List<String>> databaseRoles;
 
     /**
-     * @return A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+     * @return A list of database roles to be assigned to the user.
+     * This option is only available for MySQL 8+ and PostgreSQL instances. You
+     * can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+     * own custom roles. Custom roles must be created in the database before
+     * you can assign them. You can create roles using the CREATE ROLE
+     * statement for both MySQL and PostgreSQL.
+     * **Note**: This property is write-only and will not be read from the API.
      * 
      */
     public Optional<Output<List<String>>> databaseRoles() {
@@ -77,14 +89,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The email address for MySQL IAM database users.
+     * IAM email address for MySQL IAM database users.
      * 
      */
     @Import(name="iamEmail")
     private @Nullable Output<String> iamEmail;
 
     /**
-     * @return The email address for MySQL IAM database users.
+     * @return IAM email address for MySQL IAM database users.
      * 
      */
     public Optional<Output<String>> iamEmail() {
@@ -277,7 +289,13 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseRoles A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+         * @param databaseRoles A list of database roles to be assigned to the user.
+         * This option is only available for MySQL 8+ and PostgreSQL instances. You
+         * can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+         * own custom roles. Custom roles must be created in the database before
+         * you can assign them. You can create roles using the CREATE ROLE
+         * statement for both MySQL and PostgreSQL.
+         * **Note**: This property is write-only and will not be read from the API.
          * 
          * @return builder
          * 
@@ -288,7 +306,13 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseRoles A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+         * @param databaseRoles A list of database roles to be assigned to the user.
+         * This option is only available for MySQL 8+ and PostgreSQL instances. You
+         * can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+         * own custom roles. Custom roles must be created in the database before
+         * you can assign them. You can create roles using the CREATE ROLE
+         * statement for both MySQL and PostgreSQL.
+         * **Note**: This property is write-only and will not be read from the API.
          * 
          * @return builder
          * 
@@ -298,7 +322,13 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseRoles A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+         * @param databaseRoles A list of database roles to be assigned to the user.
+         * This option is only available for MySQL 8+ and PostgreSQL instances. You
+         * can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+         * own custom roles. Custom roles must be created in the database before
+         * you can assign them. You can create roles using the CREATE ROLE
+         * statement for both MySQL and PostgreSQL.
+         * **Note**: This property is write-only and will not be read from the API.
          * 
          * @return builder
          * 
@@ -362,7 +392,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param iamEmail The email address for MySQL IAM database users.
+         * @param iamEmail IAM email address for MySQL IAM database users.
          * 
          * @return builder
          * 
@@ -373,7 +403,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param iamEmail The email address for MySQL IAM database users.
+         * @param iamEmail IAM email address for MySQL IAM database users.
          * 
          * @return builder
          * 

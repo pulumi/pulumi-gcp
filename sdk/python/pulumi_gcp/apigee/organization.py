@@ -791,16 +791,12 @@ class Organization(pulumi.CustomResource):
         Organization can be imported using any of these accepted formats:
 
         * `organizations/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Organization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/organization:Organization default organizations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/organization:Organization default {{name}}
         ```
 
@@ -988,16 +984,12 @@ class Organization(pulumi.CustomResource):
         Organization can be imported using any of these accepted formats:
 
         * `organizations/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Organization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/organization:Organization default organizations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/organization:Organization default {{name}}
         ```
 

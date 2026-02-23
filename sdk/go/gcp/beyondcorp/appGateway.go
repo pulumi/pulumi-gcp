@@ -90,28 +90,16 @@ import (
 // AppGateway can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/appGateways/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, AppGateway can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:beyondcorp/appGateway:AppGateway default projects/{{project}}/locations/{{region}}/appGateways/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:beyondcorp/appGateway:AppGateway default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:beyondcorp/appGateway:AppGateway default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:beyondcorp/appGateway:AppGateway default {{name}}
 // ```
 type AppGateway struct {
@@ -139,7 +127,7 @@ type AppGateway struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the AppGateway.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
@@ -210,7 +198,7 @@ type appGatewayState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the AppGateway.
 	Region *string `pulumi:"region"`
@@ -247,7 +235,7 @@ type AppGatewayState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region of the AppGateway.
 	Region pulumi.StringPtrInput
@@ -446,7 +434,8 @@ func (o AppGatewayOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AppGatewayOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

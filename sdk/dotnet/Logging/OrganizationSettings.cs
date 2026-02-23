@@ -64,16 +64,12 @@ namespace Pulumi.Gcp.Logging
     /// OrganizationSettings can be imported using any of these accepted formats:
     /// 
     /// * `organizations/{{organization}}/settings`
-    /// 
     /// * `{{organization}}`
     /// 
     /// When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:logging/organizationSettings:OrganizationSettings default organizations/{{organization}}/settings
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:logging/organizationSettings:OrganizationSettings default {{organization}}
     /// ```
     /// </summary>

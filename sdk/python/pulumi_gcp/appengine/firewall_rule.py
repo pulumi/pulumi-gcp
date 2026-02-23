@@ -265,22 +265,14 @@ class FirewallRule(pulumi.CustomResource):
         FirewallRule can be imported using any of these accepted formats:
 
         * `apps/{{project}}/firewall/ingressRules/{{priority}}`
-
         * `{{project}}/{{priority}}`
-
         * `{{priority}}`
 
         When using the `pulumi import` command, FirewallRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:appengine/firewallRule:FirewallRule default apps/{{project}}/firewall/ingressRules/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{project}}/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{priority}}
         ```
 
@@ -343,22 +335,14 @@ class FirewallRule(pulumi.CustomResource):
         FirewallRule can be imported using any of these accepted formats:
 
         * `apps/{{project}}/firewall/ingressRules/{{priority}}`
-
         * `{{project}}/{{priority}}`
-
         * `{{priority}}`
 
         When using the `pulumi import` command, FirewallRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:appengine/firewallRule:FirewallRule default apps/{{project}}/firewall/ingressRules/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{project}}/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{priority}}
         ```
 

@@ -84,28 +84,16 @@ import (
 // DiskResourcePolicyAttachment can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}`
-//
 // * `{{project}}/{{zone}}/{{disk}}/{{name}}`
-//
 // * `{{zone}}/{{disk}}/{{name}}`
-//
 // * `{{disk}}/{{name}}`
 //
 // When using the `pulumi import` command, DiskResourcePolicyAttachment can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{project}}/{{zone}}/{{disk}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{zone}}/{{disk}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{disk}}/{{name}}
 // ```
 type DiskResourcePolicyAttachment struct {

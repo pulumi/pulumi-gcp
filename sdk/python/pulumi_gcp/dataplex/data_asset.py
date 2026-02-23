@@ -169,7 +169,7 @@ class _DataAssetState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] resource: Full resource name of the cloud resource.
         :param pulumi.Input[_builtins.str] uid: System generated unique ID.
         """
@@ -287,7 +287,7 @@ class _DataAssetState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -335,6 +335,17 @@ class DataAsset(pulumi.CustomResource):
                  resource: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A data asset resource that can be packaged and shared via a data product.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about DataAsset, see:
+
+        * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts.dataAssets)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataplex/docs)
+
         ## Example Usage
 
         ### Dataplex Data Asset Basic
@@ -346,7 +357,7 @@ class DataAsset(pulumi.CustomResource):
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
             location="us-central1",
-            data_product_id="tf-test-dp-_89605",
+            data_product_id="tf-test-dp-_95154",
             display_name="Parent Data Product",
             owner_emails=["gterraformtestuser@gmail.com"],
             access_groups=[{
@@ -354,12 +365,12 @@ class DataAsset(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_56730@example.com",
+                    "google_group": "tf-test-analysts-_64336@example.com",
                 },
             }])
         example_dataset = gcp.bigquery.Dataset("example",
             project="my-project-name",
-            dataset_id="tf_test_dataset__95154",
+            dataset_id="tf_test_dataset__34962",
             location="us-central1")
         example_data_asset = gcp.dataplex.DataAsset("example",
             project="my-project-name",
@@ -381,7 +392,7 @@ class DataAsset(pulumi.CustomResource):
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
             location="us-central1",
-            data_product_id="tf-test-dp-_64336",
+            data_product_id="tf-test-dp-_74000",
             display_name="Full Example Parent DP",
             owner_emails=["gterraformtestuser@gmail.com"],
             access_groups=[
@@ -404,7 +415,7 @@ class DataAsset(pulumi.CustomResource):
             ])
         example_dataset = gcp.bigquery.Dataset("example",
             project="my-project-name",
-            dataset_id="tf_test_dataset__34962",
+            dataset_id="tf_test_dataset__75125",
             location="us-central1")
         example_data_asset = gcp.dataplex.DataAsset("example",
             project="my-project-name",
@@ -437,22 +448,14 @@ class DataAsset(pulumi.CustomResource):
         DataAsset can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}/dataAssets/{{data_asset_id}}`
-
         * `{{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}`
-
         * `{{location}}/{{data_product_id}}/{{data_asset_id}}`
 
         When using the `pulumi import` command, DataAsset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/dataAsset:DataAsset default projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}/dataAssets/{{data_asset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{location}}/{{data_product_id}}/{{data_asset_id}}
         ```
 
@@ -477,6 +480,17 @@ class DataAsset(pulumi.CustomResource):
                  args: DataAssetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A data asset resource that can be packaged and shared via a data product.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about DataAsset, see:
+
+        * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts.dataAssets)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataplex/docs)
+
         ## Example Usage
 
         ### Dataplex Data Asset Basic
@@ -488,7 +502,7 @@ class DataAsset(pulumi.CustomResource):
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
             location="us-central1",
-            data_product_id="tf-test-dp-_89605",
+            data_product_id="tf-test-dp-_95154",
             display_name="Parent Data Product",
             owner_emails=["gterraformtestuser@gmail.com"],
             access_groups=[{
@@ -496,12 +510,12 @@ class DataAsset(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_56730@example.com",
+                    "google_group": "tf-test-analysts-_64336@example.com",
                 },
             }])
         example_dataset = gcp.bigquery.Dataset("example",
             project="my-project-name",
-            dataset_id="tf_test_dataset__95154",
+            dataset_id="tf_test_dataset__34962",
             location="us-central1")
         example_data_asset = gcp.dataplex.DataAsset("example",
             project="my-project-name",
@@ -523,7 +537,7 @@ class DataAsset(pulumi.CustomResource):
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
             location="us-central1",
-            data_product_id="tf-test-dp-_64336",
+            data_product_id="tf-test-dp-_74000",
             display_name="Full Example Parent DP",
             owner_emails=["gterraformtestuser@gmail.com"],
             access_groups=[
@@ -546,7 +560,7 @@ class DataAsset(pulumi.CustomResource):
             ])
         example_dataset = gcp.bigquery.Dataset("example",
             project="my-project-name",
-            dataset_id="tf_test_dataset__34962",
+            dataset_id="tf_test_dataset__75125",
             location="us-central1")
         example_data_asset = gcp.dataplex.DataAsset("example",
             project="my-project-name",
@@ -579,22 +593,14 @@ class DataAsset(pulumi.CustomResource):
         DataAsset can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}/dataAssets/{{data_asset_id}}`
-
         * `{{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}`
-
         * `{{location}}/{{data_product_id}}/{{data_asset_id}}`
 
         When using the `pulumi import` command, DataAsset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/dataAsset:DataAsset default projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}/dataAssets/{{data_asset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{location}}/{{data_product_id}}/{{data_asset_id}}
         ```
 
@@ -688,7 +694,7 @@ class DataAsset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] resource: Full resource name of the cloud resource.
         :param pulumi.Input[_builtins.str] uid: System generated unique ID.
         """
@@ -773,7 +779,7 @@ class DataAsset(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

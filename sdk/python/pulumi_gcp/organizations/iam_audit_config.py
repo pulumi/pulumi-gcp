@@ -176,7 +176,7 @@ class IamAuditConfig(pulumi.CustomResource):
         IAM audit config imports use the identifier of the resource in question and the service, e.g.
 
         ```sh
-        $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig config "your-organization-id foo.googleapis.com"
+        terraform import google_organization_iam_audit_config.config "your-organization-id foo.googleapis.com"
         ```
 
         :param str resource_name: The name of the resource.
@@ -214,7 +214,7 @@ class IamAuditConfig(pulumi.CustomResource):
         IAM audit config imports use the identifier of the resource in question and the service, e.g.
 
         ```sh
-        $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig config "your-organization-id foo.googleapis.com"
+        terraform import google_organization_iam_audit_config.config "your-organization-id foo.googleapis.com"
         ```
 
         :param str resource_name: The name of the resource.

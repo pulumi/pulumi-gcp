@@ -166,28 +166,16 @@ namespace Pulumi.Gcp.Compute
     /// InterconnectAttachment can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
-    /// 
     /// * `{{project}}/{{region}}/{{name}}`
-    /// 
     /// * `{{region}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
     /// ```
     /// </summary>
@@ -422,6 +410,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> PairingKey { get; private set; } = null!;
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.InterconnectAttachmentParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// [Output only for type PARTNER. Not present for DEDICATED]. Optional
         /// BGP ASN for the router that should be supplied by a layer 3 Partner if
         /// they configured BGP on behalf of the customer.
@@ -440,17 +435,13 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
-        /// 
-        /// 
-        /// 
-        /// &lt;a name="NestedL2Forwarding"&gt;&lt;/a&gt;The `L2Forwarding` block supports:
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -744,12 +735,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InterconnectAttachmentParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
-        /// 
-        /// 
-        /// 
-        /// &lt;a name="NestedL2Forwarding"&gt;&lt;/a&gt;The `L2Forwarding` block supports:
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -1069,6 +1063,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? PairingKey { get; set; }
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InterconnectAttachmentParamsGetArgs>? Params { get; set; }
+
+        /// <summary>
         /// [Output only for type PARTNER. Not present for DEDICATED]. Optional
         /// BGP ASN for the router that should be supplied by a layer 3 Partner if
         /// they configured BGP on behalf of the customer.
@@ -1093,10 +1094,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
-        /// 
-        /// 
-        /// 
-        /// &lt;a name="NestedL2Forwarding"&gt;&lt;/a&gt;The `L2Forwarding` block supports:
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -1106,7 +1103,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

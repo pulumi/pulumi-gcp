@@ -174,22 +174,14 @@ import javax.annotation.Nullable;
  * Parameter can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
- * 
  * * `{{project}}/{{parameter_id}}`
- * 
  * * `{{parameter_id}}`
  * 
  * When using the `pulumi import` command, Parameter can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:parametermanager/parameter:Parameter default projects/{{project}}/locations/global/parameters/{{parameter_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:parametermanager/parameter:Parameter default {{project}}/{{parameter_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:parametermanager/parameter:Parameter default {{parameter_id}}
  * ```
  * 
@@ -356,7 +348,7 @@ public class Parameter extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -364,7 +356,7 @@ public class Parameter extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

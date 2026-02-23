@@ -177,7 +177,7 @@ class _ConnectClusterState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The current state of the connect cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
         :param pulumi.Input[_builtins.str] update_time: The time when the cluster was last updated.
         """
@@ -338,7 +338,7 @@ class _ConnectClusterState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -444,22 +444,14 @@ class ConnectCluster(pulumi.CustomResource):
         ConnectCluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/connectClusters/{{connect_cluster_id}}`
-
         * `{{project}}/{{location}}/{{connect_cluster_id}}`
-
         * `{{location}}/{{connect_cluster_id}}`
 
         When using the `pulumi import` command, ConnectCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default projects/{{project}}/locations/{{location}}/connectClusters/{{connect_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default {{project}}/{{location}}/{{connect_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default {{location}}/{{connect_cluster_id}}
         ```
 
@@ -543,22 +535,14 @@ class ConnectCluster(pulumi.CustomResource):
         ConnectCluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/connectClusters/{{connect_cluster_id}}`
-
         * `{{project}}/{{location}}/{{connect_cluster_id}}`
-
         * `{{location}}/{{connect_cluster_id}}`
 
         When using the `pulumi import` command, ConnectCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default projects/{{project}}/locations/{{location}}/connectClusters/{{connect_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default {{project}}/{{location}}/{{connect_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default {{location}}/{{connect_cluster_id}}
         ```
 
@@ -664,7 +648,7 @@ class ConnectCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The current state of the connect cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
         :param pulumi.Input[_builtins.str] update_time: The time when the cluster was last updated.
         """
@@ -777,7 +761,7 @@ class ConnectCluster(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

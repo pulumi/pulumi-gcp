@@ -53,22 +53,14 @@ import (
 // Group can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/groups/{{group_id}}`
-//
 // * `{{project}}/{{location}}/{{group_id}}`
-//
 // * `{{location}}/{{group_id}}`
 //
 // When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:migrationcenter/group:Group default projects/{{project}}/locations/{{location}}/groups/{{group_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:migrationcenter/group:Group default {{project}}/{{location}}/{{group_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:migrationcenter/group:Group default {{location}}/{{group_id}}
 // ```
 type Group struct {
@@ -96,7 +88,7 @@ type Group struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. The timestamp when the group was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -165,7 +157,7 @@ type groupState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. The timestamp when the group was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -194,7 +186,7 @@ type GroupState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. The timestamp when the group was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -377,7 +369,8 @@ func (o GroupOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GroupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

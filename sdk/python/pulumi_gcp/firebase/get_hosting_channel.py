@@ -137,7 +137,11 @@ def get_hosting_channel(channel_id: Optional[_builtins.str] = None,
                         site_id: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHostingChannelResult:
     """
-    Use this data source to access information about an existing resource.
+    A Google Cloud Firebase Hosting Channel instance
+
+    > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
 
     :param _builtins.str channel_id: The ID of the channel. Use `channel_id = "live"` for the default channel of a site.
     :param _builtins.str site_id: The ID of the site this channel belongs to.
@@ -163,7 +167,11 @@ def get_hosting_channel_output(channel_id: Optional[pulumi.Input[_builtins.str]]
                                site_id: Optional[pulumi.Input[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostingChannelResult]:
     """
-    Use this data source to access information about an existing resource.
+    A Google Cloud Firebase Hosting Channel instance
+
+    > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
 
     :param _builtins.str channel_id: The ID of the channel. Use `channel_id = "live"` for the default channel of a site.
     :param _builtins.str site_id: The ID of the site this channel belongs to.

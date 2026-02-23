@@ -1377,6 +1377,11 @@ func (o LinkedDatasetBigqueryDatasetArrayOutput) Index(i pulumi.IntInput) Linked
 }
 
 type LogViewIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -1396,6 +1401,11 @@ type LogViewIamBindingConditionInput interface {
 }
 
 type LogViewIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -1480,6 +1490,11 @@ func (o LogViewIamBindingConditionOutput) ToLogViewIamBindingConditionPtrOutputW
 	}).(LogViewIamBindingConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o LogViewIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogViewIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1518,6 +1533,11 @@ func (o LogViewIamBindingConditionPtrOutput) Elem() LogViewIamBindingConditionOu
 	}).(LogViewIamBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o LogViewIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogViewIamBindingCondition) *string {
 		if v == nil {
@@ -1548,6 +1568,11 @@ func (o LogViewIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type LogViewIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -1567,6 +1592,11 @@ type LogViewIamMemberConditionInput interface {
 }
 
 type LogViewIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -1651,6 +1681,11 @@ func (o LogViewIamMemberConditionOutput) ToLogViewIamMemberConditionPtrOutputWit
 	}).(LogViewIamMemberConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o LogViewIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogViewIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1689,6 +1724,11 @@ func (o LogViewIamMemberConditionPtrOutput) Elem() LogViewIamMemberConditionOutp
 	}).(LogViewIamMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o LogViewIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogViewIamMemberCondition) *string {
 		if v == nil {

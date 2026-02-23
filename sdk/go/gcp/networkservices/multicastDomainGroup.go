@@ -94,22 +94,14 @@ import (
 // MulticastDomainGroup can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/multicastDomainGroups/{{multicast_domain_group_id}}`
-//
 // * `{{project}}/{{location}}/{{multicast_domain_group_id}}`
-//
 // * `{{location}}/{{multicast_domain_group_id}}`
 //
 // When using the `pulumi import` command, MulticastDomainGroup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default projects/{{project}}/locations/{{location}}/multicastDomainGroups/{{multicast_domain_group_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default {{project}}/{{location}}/{{multicast_domain_group_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default {{location}}/{{multicast_domain_group_id}}
 // ```
 type MulticastDomainGroup struct {
@@ -143,7 +135,7 @@ type MulticastDomainGroup struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// (Output)
 	// The state of the multicast resource.
@@ -235,7 +227,7 @@ type multicastDomainGroupState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// (Output)
 	// The state of the multicast resource.
@@ -287,7 +279,7 @@ type MulticastDomainGroupState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// (Output)
 	// The state of the multicast resource.
@@ -495,7 +487,8 @@ func (o MulticastDomainGroupOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MulticastDomainGroupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MulticastDomainGroup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

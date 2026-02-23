@@ -89,7 +89,10 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[_builtins.int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        :param pulumi.Input[_builtins.int] target_size: The target number of running instances for this managed
+               instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+               when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+               `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
@@ -385,7 +388,10 @@ class InstanceGroupManagerArgs:
     @pulumi.getter(name="targetSize")
     def target_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        The target number of running instances for this managed
+        instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+        when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+        `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         """
         return pulumi.get(self, "target_size")
 
@@ -555,7 +561,10 @@ class _InstanceGroupManagerState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[_builtins.int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        :param pulumi.Input[_builtins.int] target_size: The target number of running instances for this managed
+               instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+               when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+               `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
@@ -937,7 +946,10 @@ class _InstanceGroupManagerState:
     @pulumi.getter(name="targetSize")
     def target_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        The target number of running instances for this managed
+        instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+        when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+        `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         """
         return pulumi.get(self, "target_size")
 
@@ -1227,31 +1239,20 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         Instance group managers can be imported using any of these accepted formats:
 
+        ```sh
         * `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
+
 
         When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example:
 
-        ```sh
-        $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
         ```
-
-        ```sh
-        $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{name}}
-        ```
+        $ terraform import google_compute_instance_group_manager.default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
+        $ terraform import google_compute_instance_group_manager.default {{project}}/{{zone}}/{{name}}
+        $ terraform import google_compute_instance_group_manager.default {{project}}/{{name}}
+        $ terraform import google_compute_instance_group_manager.default {{name}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1294,7 +1295,10 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[_builtins.int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        :param pulumi.Input[_builtins.int] target_size: The target number of running instances for this managed
+               instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+               when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+               `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input[Union['InstanceGroupManagerUpdatePolicyArgs', 'InstanceGroupManagerUpdatePolicyArgsDict']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
@@ -1475,31 +1479,20 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         Instance group managers can be imported using any of these accepted formats:
 
+        ```sh
         * `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
+
 
         When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example:
 
-        ```sh
-        $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
         ```
-
-        ```sh
-        $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{name}}
-        ```
+        $ terraform import google_compute_instance_group_manager.default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
+        $ terraform import google_compute_instance_group_manager.default {{project}}/{{zone}}/{{name}}
+        $ terraform import google_compute_instance_group_manager.default {{project}}/{{name}}
+        $ terraform import google_compute_instance_group_manager.default {{name}}
 
         :param str resource_name: The name of the resource.
         :param InstanceGroupManagerArgs args: The arguments to use to populate this resource's properties.
@@ -1677,7 +1670,10 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[_builtins.int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        :param pulumi.Input[_builtins.int] target_size: The target number of running instances for this managed
+               instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+               when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+               `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input[Union['InstanceGroupManagerUpdatePolicyArgs', 'InstanceGroupManagerUpdatePolicyArgsDict']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
@@ -1941,7 +1937,10 @@ class InstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="targetSize")
     def target_size(self) -> pulumi.Output[_builtins.int]:
         """
-        The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        The target number of running instances for this managed
+        instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+        when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+        `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         """
         return pulumi.get(self, "target_size")
 

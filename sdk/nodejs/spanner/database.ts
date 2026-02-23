@@ -52,28 +52,16 @@ import * as utilities from "../utilities";
  * Database can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
- *
  * * `instances/{{instance}}/databases/{{name}}`
- *
  * * `{{project}}/{{instance}}/{{name}}`
- *
  * * `{{instance}}/{{name}}`
  *
  * When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:spanner/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:spanner/database:Database default instances/{{instance}}/databases/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:spanner/database:Database default {{project}}/{{instance}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
  * ```
  */
@@ -111,6 +99,16 @@ export class Database extends pulumi.CustomResource {
      * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      */
     declare public readonly databaseDialect: pulumi.Output<string>;
+    /**
+     * An optional list of DDL statements to run inside the database. Statements can create
+     * tables, indexes, etc.
+     * During creation these statements execute atomically with the creation of the database
+     * and if there is an error in any statement, the database is not created.
+     * Terraform does not perform drift detection on this field and assumes that the values
+     * recorded in state are accurate. Limited updates to this field are supported, and
+     * newly appended DDL statements can be executed in an update. However, modifications
+     * to prior statements will create a plan that marks the resource for recreation.
+     */
     declare public readonly ddls: pulumi.Output<string[] | undefined>;
     /**
      * The default time zone for the database. The default time zone must be a valid name
@@ -122,6 +120,15 @@ export class Database extends pulumi.CustomResource {
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether drop protection is enabled for this database. Defaults to false.
+     * Drop protection is different from
+     * the "deletionProtection" attribute in the following ways:
+     * (1) "deletionProtection" only protects the database from deletions in Terraform.
+     * whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+     * (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
+     * "deletionProtection" attribute does not provide protection against the deletion of the parent instance.
+     */
     declare public readonly enableDropProtection: pulumi.Output<boolean | undefined>;
     /**
      * Encryption configuration for the database
@@ -211,6 +218,16 @@ export interface DatabaseState {
      * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      */
     databaseDialect?: pulumi.Input<string>;
+    /**
+     * An optional list of DDL statements to run inside the database. Statements can create
+     * tables, indexes, etc.
+     * During creation these statements execute atomically with the creation of the database
+     * and if there is an error in any statement, the database is not created.
+     * Terraform does not perform drift detection on this field and assumes that the values
+     * recorded in state are accurate. Limited updates to this field are supported, and
+     * newly appended DDL statements can be executed in an update. However, modifications
+     * to prior statements will create a plan that marks the resource for recreation.
+     */
     ddls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The default time zone for the database. The default time zone must be a valid name
@@ -222,6 +239,15 @@ export interface DatabaseState {
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Whether drop protection is enabled for this database. Defaults to false.
+     * Drop protection is different from
+     * the "deletionProtection" attribute in the following ways:
+     * (1) "deletionProtection" only protects the database from deletions in Terraform.
+     * whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+     * (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
+     * "deletionProtection" attribute does not provide protection against the deletion of the parent instance.
+     */
     enableDropProtection?: pulumi.Input<boolean>;
     /**
      * Encryption configuration for the database
@@ -266,6 +292,16 @@ export interface DatabaseArgs {
      * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      */
     databaseDialect?: pulumi.Input<string>;
+    /**
+     * An optional list of DDL statements to run inside the database. Statements can create
+     * tables, indexes, etc.
+     * During creation these statements execute atomically with the creation of the database
+     * and if there is an error in any statement, the database is not created.
+     * Terraform does not perform drift detection on this field and assumes that the values
+     * recorded in state are accurate. Limited updates to this field are supported, and
+     * newly appended DDL statements can be executed in an update. However, modifications
+     * to prior statements will create a plan that marks the resource for recreation.
+     */
     ddls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The default time zone for the database. The default time zone must be a valid name
@@ -277,6 +313,15 @@ export interface DatabaseArgs {
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Whether drop protection is enabled for this database. Defaults to false.
+     * Drop protection is different from
+     * the "deletionProtection" attribute in the following ways:
+     * (1) "deletionProtection" only protects the database from deletions in Terraform.
+     * whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+     * (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
+     * "deletionProtection" attribute does not provide protection against the deletion of the parent instance.
+     */
     enableDropProtection?: pulumi.Input<boolean>;
     /**
      * Encryption configuration for the database

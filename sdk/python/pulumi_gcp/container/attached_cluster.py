@@ -397,6 +397,7 @@ class _AttachedClusterState:
         :param pulumi.Input[_builtins.str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks", "generic". The generic distribution provides the ability to register
                or migrate any CNCF conformant cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArgs']]] errors: A set of errors found in the cluster.
                Structure is documented below.
         :param pulumi.Input['AttachedClusterFleetArgs'] fleet: Fleet configuration.
@@ -607,6 +608,9 @@ class _AttachedClusterState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -989,22 +993,14 @@ class AttachedCluster(pulumi.CustomResource):
         Cluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/attachedCluster:AttachedCluster default projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{location}}/{{name}}
         ```
 
@@ -1189,22 +1185,14 @@ class AttachedCluster(pulumi.CustomResource):
         Cluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/attachedCluster:AttachedCluster default projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{location}}/{{name}}
         ```
 
@@ -1350,6 +1338,7 @@ class AttachedCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks", "generic". The generic distribution provides the ability to register
                or migrate any CNCF conformant cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AttachedClusterErrorArgs', 'AttachedClusterErrorArgsDict']]]] errors: A set of errors found in the cluster.
                Structure is documented below.
         :param pulumi.Input[Union['AttachedClusterFleetArgs', 'AttachedClusterFleetArgsDict']] fleet: Fleet configuration.
@@ -1504,6 +1493,9 @@ class AttachedCluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

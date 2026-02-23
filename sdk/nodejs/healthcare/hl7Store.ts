@@ -165,16 +165,12 @@ import * as utilities from "../utilities";
  * Hl7V2Store can be imported using any of these accepted formats:
  *
  * * `{{dataset}}/hl7V2Stores/{{name}}`
- *
  * * `{{dataset}}/{{name}}`
  *
  * When using the `pulumi import` command, Hl7V2Store can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/hl7V2Stores/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/{{name}}
  * ```
  */
@@ -258,7 +254,7 @@ export class Hl7Store extends pulumi.CustomResource {
     declare public readonly parserConfig: pulumi.Output<outputs.healthcare.Hl7StoreParserConfig>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -372,7 +368,7 @@ export interface Hl7StoreState {
     parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

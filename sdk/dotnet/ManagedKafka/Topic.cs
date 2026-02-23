@@ -71,22 +71,14 @@ namespace Pulumi.Gcp.ManagedKafka
     /// Topic can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/topics/{{topic_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{cluster}}/{{topic_id}}`
-    /// 
     /// * `{{location}}/{{cluster}}/{{topic_id}}`
     /// 
     /// When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:managedkafka/topic:Topic default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/topics/{{topic_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:managedkafka/topic:Topic default {{project}}/{{location}}/{{cluster}}/{{topic_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:managedkafka/topic:Topic default {{location}}/{{cluster}}/{{topic_id}}
     /// ```
     /// </summary>

@@ -16,6 +16,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RegionInstanceTemplateNetworkInterface {
+    /**
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet (this means that ssh provisioners will
+     * not work unless you are running Terraform can send traffic to the instance&#39;s
+     * network (e.g. via tunnel or because it is running on another cloud instance
+     * on that network). This block can be specified once per `networkInterface`. Structure documented below.
+     * 
+     */
     private @Nullable List<RegionInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
     /**
      * @return An
@@ -52,7 +61,8 @@ public final class RegionInstanceTemplateNetworkInterface {
      */
     private @Nullable String ipv6Address;
     /**
-     * @return The name of the network_interface.
+     * @return The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     private @Nullable String name;
@@ -64,6 +74,11 @@ public final class RegionInstanceTemplateNetworkInterface {
      */
     private @Nullable String network;
     /**
+     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * 
+     */
+    private @Nullable String networkAttachment;
+    /**
      * @return The private IP address to assign to the instance. If
      * empty, the address will be automatically assigned.
      * 
@@ -74,6 +89,11 @@ public final class RegionInstanceTemplateNetworkInterface {
      * 
      */
     private @Nullable String nicType;
+    /**
+     * @return Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    private @Nullable String parentNicName;
     /**
      * @return The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
      * 
@@ -97,8 +117,22 @@ public final class RegionInstanceTemplateNetworkInterface {
      * 
      */
     private @Nullable String subnetworkProject;
+    /**
+     * @return VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    private @Nullable Integer vlan;
 
     private RegionInstanceTemplateNetworkInterface() {}
+    /**
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet (this means that ssh provisioners will
+     * not work unless you are running Terraform can send traffic to the instance&#39;s
+     * network (e.g. via tunnel or because it is running on another cloud instance
+     * on that network). This block can be specified once per `networkInterface`. Structure documented below.
+     * 
+     */
     public List<RegionInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs() {
         return this.accessConfigs == null ? List.of() : this.accessConfigs;
     }
@@ -149,7 +183,8 @@ public final class RegionInstanceTemplateNetworkInterface {
         return Optional.ofNullable(this.ipv6Address);
     }
     /**
-     * @return The name of the network_interface.
+     * @return The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     public Optional<String> name() {
@@ -165,6 +200,13 @@ public final class RegionInstanceTemplateNetworkInterface {
         return Optional.ofNullable(this.network);
     }
     /**
+     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * 
+     */
+    public Optional<String> networkAttachment() {
+        return Optional.ofNullable(this.networkAttachment);
+    }
+    /**
      * @return The private IP address to assign to the instance. If
      * empty, the address will be automatically assigned.
      * 
@@ -178,6 +220,13 @@ public final class RegionInstanceTemplateNetworkInterface {
      */
     public Optional<String> nicType() {
         return Optional.ofNullable(this.nicType);
+    }
+    /**
+     * @return Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    public Optional<String> parentNicName() {
+        return Optional.ofNullable(this.parentNicName);
     }
     /**
      * @return The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
@@ -210,6 +259,13 @@ public final class RegionInstanceTemplateNetworkInterface {
     public Optional<String> subnetworkProject() {
         return Optional.ofNullable(this.subnetworkProject);
     }
+    /**
+     * @return VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    public Optional<Integer> vlan() {
+        return Optional.ofNullable(this.vlan);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -229,12 +285,15 @@ public final class RegionInstanceTemplateNetworkInterface {
         private @Nullable String ipv6Address;
         private @Nullable String name;
         private @Nullable String network;
+        private @Nullable String networkAttachment;
         private @Nullable String networkIp;
         private @Nullable String nicType;
+        private @Nullable String parentNicName;
         private @Nullable Integer queueCount;
         private @Nullable String stackType;
         private @Nullable String subnetwork;
         private @Nullable String subnetworkProject;
+        private @Nullable Integer vlan;
         public Builder() {}
         public Builder(RegionInstanceTemplateNetworkInterface defaults) {
     	      Objects.requireNonNull(defaults);
@@ -247,12 +306,15 @@ public final class RegionInstanceTemplateNetworkInterface {
     	      this.ipv6Address = defaults.ipv6Address;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.networkAttachment = defaults.networkAttachment;
     	      this.networkIp = defaults.networkIp;
     	      this.nicType = defaults.nicType;
+    	      this.parentNicName = defaults.parentNicName;
     	      this.queueCount = defaults.queueCount;
     	      this.stackType = defaults.stackType;
     	      this.subnetwork = defaults.subnetwork;
     	      this.subnetworkProject = defaults.subnetworkProject;
+    	      this.vlan = defaults.vlan;
         }
 
         @CustomType.Setter
@@ -319,6 +381,12 @@ public final class RegionInstanceTemplateNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder networkAttachment(@Nullable String networkAttachment) {
+
+            this.networkAttachment = networkAttachment;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkIp(@Nullable String networkIp) {
 
             this.networkIp = networkIp;
@@ -328,6 +396,12 @@ public final class RegionInstanceTemplateNetworkInterface {
         public Builder nicType(@Nullable String nicType) {
 
             this.nicType = nicType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parentNicName(@Nullable String parentNicName) {
+
+            this.parentNicName = parentNicName;
             return this;
         }
         @CustomType.Setter
@@ -354,6 +428,12 @@ public final class RegionInstanceTemplateNetworkInterface {
             this.subnetworkProject = subnetworkProject;
             return this;
         }
+        @CustomType.Setter
+        public Builder vlan(@Nullable Integer vlan) {
+
+            this.vlan = vlan;
+            return this;
+        }
         public RegionInstanceTemplateNetworkInterface build() {
             final var _resultValue = new RegionInstanceTemplateNetworkInterface();
             _resultValue.accessConfigs = accessConfigs;
@@ -365,12 +445,15 @@ public final class RegionInstanceTemplateNetworkInterface {
             _resultValue.ipv6Address = ipv6Address;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.networkAttachment = networkAttachment;
             _resultValue.networkIp = networkIp;
             _resultValue.nicType = nicType;
+            _resultValue.parentNicName = parentNicName;
             _resultValue.queueCount = queueCount;
             _resultValue.stackType = stackType;
             _resultValue.subnetwork = subnetwork;
             _resultValue.subnetworkProject = subnetworkProject;
+            _resultValue.vlan = vlan;
             return _resultValue;
         }
     }

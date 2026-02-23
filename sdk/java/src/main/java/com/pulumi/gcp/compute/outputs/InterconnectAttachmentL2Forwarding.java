@@ -16,7 +16,6 @@ import javax.annotation.Nullable;
 public final class InterconnectAttachmentL2Forwarding {
     /**
      * @return A map of VLAN tags to appliances and optional inner mapping rules.
-     * Structure is documented below.
      * 
      */
     private @Nullable List<InterconnectAttachmentL2ForwardingApplianceMapping> applianceMappings;
@@ -27,7 +26,6 @@ public final class InterconnectAttachmentL2Forwarding {
     private @Nullable String defaultApplianceIpAddress;
     /**
      * @return GeneveHeader related configurations.
-     * Structure is documented below.
      * 
      */
     private @Nullable InterconnectAttachmentL2ForwardingGeneveHeader geneveHeader;
@@ -45,7 +43,6 @@ public final class InterconnectAttachmentL2Forwarding {
     private InterconnectAttachmentL2Forwarding() {}
     /**
      * @return A map of VLAN tags to appliances and optional inner mapping rules.
-     * Structure is documented below.
      * 
      */
     public List<InterconnectAttachmentL2ForwardingApplianceMapping> applianceMappings() {
@@ -60,7 +57,6 @@ public final class InterconnectAttachmentL2Forwarding {
     }
     /**
      * @return GeneveHeader related configurations.
-     * Structure is documented below.
      * 
      */
     public Optional<InterconnectAttachmentL2ForwardingGeneveHeader> geneveHeader() {

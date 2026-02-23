@@ -197,7 +197,7 @@ class _DnsAuthorizationState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] type: type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
                be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
                FIXED_RECORD DNS authorization uses DNS-01 validation method
@@ -338,7 +338,7 @@ class _DnsAuthorizationState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -418,22 +418,14 @@ class DnsAuthorization(pulumi.CustomResource):
         DnsAuthorization can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{location}}/{{name}}
         ```
 
@@ -505,22 +497,14 @@ class DnsAuthorization(pulumi.CustomResource):
         DnsAuthorization can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{location}}/{{name}}
         ```
 
@@ -615,7 +599,7 @@ class DnsAuthorization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] type: type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
                be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
                FIXED_RECORD DNS authorization uses DNS-01 validation method
@@ -719,7 +703,7 @@ class DnsAuthorization(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

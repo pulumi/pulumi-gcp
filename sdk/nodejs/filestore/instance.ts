@@ -130,22 +130,14 @@ import * as utilities from "../utilities";
  * Instance can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
  * ```
  */
@@ -193,6 +185,10 @@ export class Instance extends pulumi.CustomResource {
      * A description of the instance.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+     */
+    declare public readonly desiredReplicaState: pulumi.Output<string | undefined>;
     /**
      * Directory Services configuration.
      * Should only be set if protocol is "NFS_V4_1".
@@ -272,7 +268,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly protocol: pulumi.Output<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -319,6 +315,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deletionProtectionEnabled"] = state?.deletionProtectionEnabled;
             resourceInputs["deletionProtectionReason"] = state?.deletionProtectionReason;
             resourceInputs["description"] = state?.description;
+            resourceInputs["desiredReplicaState"] = state?.desiredReplicaState;
             resourceInputs["directoryServices"] = state?.directoryServices;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["effectiveReplications"] = state?.effectiveReplications;
@@ -351,6 +348,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deletionProtectionEnabled"] = args?.deletionProtectionEnabled;
             resourceInputs["deletionProtectionReason"] = args?.deletionProtectionReason;
             resourceInputs["description"] = args?.description;
+            resourceInputs["desiredReplicaState"] = args?.desiredReplicaState;
             resourceInputs["directoryServices"] = args?.directoryServices;
             resourceInputs["fileShares"] = args?.fileShares;
             resourceInputs["initialReplication"] = args?.initialReplication;
@@ -398,6 +396,10 @@ export interface InstanceState {
      * A description of the instance.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+     */
+    desiredReplicaState?: pulumi.Input<string>;
     /**
      * Directory Services configuration.
      * Should only be set if protocol is "NFS_V4_1".
@@ -477,7 +479,7 @@ export interface InstanceState {
     protocol?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -524,6 +526,10 @@ export interface InstanceArgs {
      * A description of the instance.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+     */
+    desiredReplicaState?: pulumi.Input<string>;
     /**
      * Directory Services configuration.
      * Should only be set if protocol is "NFS_V4_1".

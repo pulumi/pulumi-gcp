@@ -20,6 +20,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Bigquery Analytics Hub Data Exchange subscription
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about DataExchangeSubscription, see:
+ * 
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.subscriptions)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+ * 
+ * &gt; **Note:** When importing the resource with `pulumi import`, provide the destination/subscriber&#39;s project and location
+ * in the format projects/{{subscriber_project}}/locations/{{subscriber_location}}/subscriptions/{{subscription_id}}
  * ## Example Usage
  * 
  * ### Bigquery Analyticshub Dataexchange Subscription Basic
@@ -154,22 +167,14 @@ import javax.annotation.Nullable;
  * DataExchangeSubscription can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}`
- * 
  * * `{{project}}/{{location}}/{{subscription_id}}`
- * 
  * * `{{location}}/{{subscription_id}}`
  * 
  * When using the `pulumi import` command, DataExchangeSubscription can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default {{project}}/{{location}}/{{subscription_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default {{location}}/{{subscription_id}}
  * ```
  * 
@@ -402,9 +407,23 @@ public class DataExchangeSubscription extends com.pulumi.resources.CustomResourc
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * Controls when the subscription is automatically refreshed by the provider.
+     * * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+     * * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+     * * `NEVER`: The provider will not automatically refresh the subscription.
+     * 
+     */
     @Export(name="refreshPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> refreshPolicy;
 
+    /**
+     * @return Controls when the subscription is automatically refreshed by the provider.
+     * * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+     * * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+     * * `NEVER`: The provider will not automatically refresh the subscription.
+     * 
+     */
     public Output<Optional<String>> refreshPolicy() {
         return Codegen.optional(this.refreshPolicy);
     }

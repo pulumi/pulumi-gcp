@@ -687,22 +687,14 @@ import (
 // Certificate can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}`
-//
 // * `{{project}}/{{location}}/{{pool}}/{{name}}`
-//
 // * `{{location}}/{{pool}}/{{name}}`
 //
 // When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{pool}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{pool}}/{{name}}
 // ```
 type Certificate struct {
@@ -758,7 +750,7 @@ type Certificate struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is
 	// considered revoked if and only if this field is present.
@@ -860,7 +852,7 @@ type certificateState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is
 	// considered revoked if and only if this field is present.
@@ -922,7 +914,7 @@ type CertificateState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is
 	// considered revoked if and only if this field is present.
@@ -1199,7 +1191,8 @@ func (o CertificateOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CertificateOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

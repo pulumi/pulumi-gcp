@@ -221,7 +221,7 @@ class _PipelineJobState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the pipeline job. This field is user-assigned.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['PipelineJobReconciliationPipelineJobArgs'] reconciliation_pipeline_job: Specifies reconciliation configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The fully qualified name of this dataset
@@ -364,7 +364,7 @@ class _PipelineJobState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -664,22 +664,14 @@ class PipelineJob(pulumi.CustomResource):
         PipelineJob can be imported using any of these accepted formats:
 
         * `{{dataset}}/pipelineJobs/{{name}}`
-
         * `{{dataset}}/pipelineJobs?pipelineJobId={{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, PipelineJob can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{dataset}}/pipelineJobs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{dataset}}/pipelineJobs?pipelineJobId={{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{name}}
         ```
 
@@ -966,22 +958,14 @@ class PipelineJob(pulumi.CustomResource):
         PipelineJob can be imported using any of these accepted formats:
 
         * `{{dataset}}/pipelineJobs/{{name}}`
-
         * `{{dataset}}/pipelineJobs?pipelineJobId={{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, PipelineJob can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{dataset}}/pipelineJobs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{dataset}}/pipelineJobs?pipelineJobId={{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{name}}
         ```
 
@@ -1085,7 +1069,7 @@ class PipelineJob(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the pipeline job. This field is user-assigned.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['PipelineJobReconciliationPipelineJobArgs', 'PipelineJobReconciliationPipelineJobArgsDict']] reconciliation_pipeline_job: Specifies reconciliation configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The fully qualified name of this dataset
@@ -1190,7 +1174,7 @@ class PipelineJob(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

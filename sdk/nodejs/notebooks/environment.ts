@@ -37,22 +37,14 @@ import * as utilities from "../utilities";
  * Environment can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/environments/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:notebooks/environment:Environment default projects/{{project}}/locations/{{location}}/environments/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:notebooks/environment:Environment default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:notebooks/environment:Environment default {{location}}/{{name}}
  * ```
  */

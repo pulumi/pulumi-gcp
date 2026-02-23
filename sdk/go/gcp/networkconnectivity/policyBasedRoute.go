@@ -126,22 +126,14 @@ import (
 // PolicyBasedRoute can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/global/policyBasedRoutes/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, PolicyBasedRoute can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default projects/{{project}}/locations/global/policyBasedRoutes/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{name}}
 // ```
 type PolicyBasedRoute struct {
@@ -181,7 +173,7 @@ type PolicyBasedRoute struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Time when the policy-based route was created.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -268,7 +260,7 @@ type policyBasedRouteState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Time when the policy-based route was created.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -315,7 +307,7 @@ type PolicyBasedRouteState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Time when the policy-based route was created.
 	UpdateTime pulumi.StringPtrInput
@@ -560,7 +552,8 @@ func (o PolicyBasedRouteOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o PolicyBasedRouteOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PolicyBasedRoute) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

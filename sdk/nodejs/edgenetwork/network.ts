@@ -38,34 +38,18 @@ import * as utilities from "../utilities";
  * Network can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
- *
  * * `{{project}}/{{location}}/{{zone}}/{{network_id}}`
- *
  * * `{{location}}/{{zone}}/{{network_id}}`
- *
  * * `{{location}}/{{network_id}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:edgenetwork/network:Network default projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:edgenetwork/network:Network default {{project}}/{{location}}/{{zone}}/{{network_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{zone}}/{{network_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{network_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:edgenetwork/network:Network default {{name}}
  * ```
  */
@@ -142,7 +126,7 @@ export class Network extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -261,7 +245,7 @@ export interface NetworkState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

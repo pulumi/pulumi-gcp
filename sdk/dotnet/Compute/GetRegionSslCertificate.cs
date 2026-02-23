@@ -179,6 +179,8 @@ namespace Pulumi.Gcp.Compute
         public readonly string Name;
         public readonly string NamePrefix;
         public readonly string PrivateKey;
+        public readonly string PrivateKeyWo;
+        public readonly string PrivateKeyWoVersion;
         public readonly string? Project;
         public readonly string? Region;
         public readonly string SelfLink;
@@ -203,6 +205,10 @@ namespace Pulumi.Gcp.Compute
 
             string privateKey,
 
+            string privateKeyWo,
+
+            string privateKeyWoVersion,
+
             string? project,
 
             string? region,
@@ -218,6 +224,8 @@ namespace Pulumi.Gcp.Compute
             Name = name;
             NamePrefix = namePrefix;
             PrivateKey = privateKey;
+            PrivateKeyWo = privateKeyWo;
+            PrivateKeyWoVersion = privateKeyWoVersion;
             Project = project;
             Region = region;
             SelfLink = selfLink;

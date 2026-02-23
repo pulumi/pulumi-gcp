@@ -37,16 +37,12 @@ import * as utilities from "../utilities";
  * OrganizationMuteConfig can be imported using any of these accepted formats:
  *
  * * `organizations/{{organization}}/locations/{{location}}/muteConfigs/{{mute_config_id}}`
- *
  * * `{{organization}}/{{location}}/{{mute_config_id}}`
  *
  * When using the `pulumi import` command, OrganizationMuteConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig default organizations/{{organization}}/locations/{{location}}/muteConfigs/{{mute_config_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig default {{organization}}/{{location}}/{{mute_config_id}}
  * ```
  */

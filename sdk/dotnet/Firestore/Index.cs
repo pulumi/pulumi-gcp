@@ -390,7 +390,6 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
-    /// 
     /// ## Import
     /// 
     /// Index can be imported using any of these accepted formats:
@@ -425,6 +424,15 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Output("database")]
         public Output<string?> Database { get; private set; } = null!;
+
+        /// <summary>
+        /// Deletion behavior for this index.
+        /// If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+        /// If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+        /// The default value is `DELETE`.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The density configuration for this index.
@@ -552,6 +560,15 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Database { get; set; }
 
         /// <summary>
+        /// Deletion behavior for this index.
+        /// If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+        /// If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+        /// The default value is `DELETE`.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The density configuration for this index.
         /// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         /// </summary>
@@ -636,6 +653,15 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
+
+        /// <summary>
+        /// Deletion behavior for this index.
+        /// If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+        /// If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+        /// The default value is `DELETE`.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The density configuration for this index.

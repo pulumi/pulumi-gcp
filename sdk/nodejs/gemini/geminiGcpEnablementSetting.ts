@@ -31,22 +31,14 @@ import * as utilities from "../utilities";
  * GeminiGcpEnablementSetting can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}`
- *
  * * `{{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}`
- *
  * * `{{location}}/{{gemini_gcp_enablement_setting_id}}`
  *
  * When using the `pulumi import` command, GeminiGcpEnablementSetting can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default {{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default {{location}}/{{gemini_gcp_enablement_setting_id}}
  * ```
  */
@@ -125,7 +117,7 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -244,7 +236,7 @@ export interface GeminiGcpEnablementSettingState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

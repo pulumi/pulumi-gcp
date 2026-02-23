@@ -408,22 +408,14 @@ import (
 // Pipeline can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/pipelines/{{pipeline_id}}`
-//
 // * `{{project}}/{{location}}/{{pipeline_id}}`
-//
 // * `{{location}}/{{pipeline_id}}`
 //
 // When using the `pulumi import` command, Pipeline can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:eventarc/pipeline:Pipeline default projects/{{project}}/locations/{{location}}/pipelines/{{pipeline_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:eventarc/pipeline:Pipeline default {{project}}/{{location}}/{{pipeline_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:eventarc/pipeline:Pipeline default {{location}}/{{pipeline_id}}
 // ```
 type Pipeline struct {
@@ -448,7 +440,8 @@ type Pipeline struct {
 	// Structure is documented below.
 	Destinations PipelineDestinationArrayOutput `pulumi:"destinations"`
 	// Display name of resource.
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -486,7 +479,7 @@ type Pipeline struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The retry policy configuration for the Pipeline. The pipeline
 	// exponentially backs off in case the destination is non responsive or
@@ -572,7 +565,8 @@ type pipelineState struct {
 	// Structure is documented below.
 	Destinations []PipelineDestination `pulumi:"destinations"`
 	// Display name of resource.
-	DisplayName          *string           `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -610,7 +604,7 @@ type pipelineState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The retry policy configuration for the Pipeline. The pipeline
 	// exponentially backs off in case the destination is non responsive or
@@ -653,7 +647,8 @@ type PipelineState struct {
 	// Structure is documented below.
 	Destinations PipelineDestinationArrayInput
 	// Display name of resource.
-	DisplayName          pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -691,7 +686,7 @@ type PipelineState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The retry policy configuration for the Pipeline. The pipeline
 	// exponentially backs off in case the destination is non responsive or
@@ -947,6 +942,7 @@ func (o PipelineOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o PipelineOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -1017,7 +1013,8 @@ func (o PipelineOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o PipelineOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

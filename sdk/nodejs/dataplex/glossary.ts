@@ -42,22 +42,14 @@ import * as utilities from "../utilities";
  * Glossary can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}`
- *
  * * `{{project}}/{{location}}/{{glossary_id}}`
- *
  * * `{{location}}/{{glossary_id}}`
  *
  * When using the `pulumi import` command, Glossary can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataplex/glossary:Glossary default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/glossary:Glossary default {{project}}/{{location}}/{{glossary_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/glossary:Glossary default {{location}}/{{glossary_id}}
  * ```
  */
@@ -135,7 +127,7 @@ export class Glossary extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -258,7 +250,7 @@ export interface GlossaryState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

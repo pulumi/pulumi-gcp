@@ -52,6 +52,9 @@ class SecretArgs:
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the secret. Defaults to false.
+               When the field is set to true in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the secret will fail.
         :param pulumi.Input[_builtins.str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
                Only one of `expire_time` or `ttl` can be provided.
@@ -159,6 +162,11 @@ class SecretArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the secret. Defaults to false.
+        When the field is set to true in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the secret will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -352,6 +360,10 @@ class _SecretState:
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: The time at which the Secret was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the secret. Defaults to false.
+               When the field is set to true in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the secret will fail.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -372,7 +384,7 @@ class _SecretState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['SecretReplicationArgs'] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
@@ -476,6 +488,11 @@ class _SecretState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the secret. Defaults to false.
+        When the field is set to true in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the secret will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -485,6 +502,9 @@ class _SecretState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -570,7 +590,7 @@ class _SecretState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -812,22 +832,14 @@ class Secret(pulumi.CustomResource):
         Secret can be imported using any of these accepted formats:
 
         * `projects/{{project}}/secrets/{{secret_id}}`
-
         * `{{project}}/{{secret_id}}`
-
         * `{{secret_id}}`
 
         When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
         ```
 
@@ -846,6 +858,9 @@ class Secret(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the secret. Defaults to false.
+               When the field is set to true in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the secret will fail.
         :param pulumi.Input[_builtins.str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
                Only one of `expire_time` or `ttl` can be provided.
@@ -994,22 +1009,14 @@ class Secret(pulumi.CustomResource):
         Secret can be imported using any of these accepted formats:
 
         * `projects/{{project}}/secrets/{{secret_id}}`
-
         * `{{project}}/{{secret_id}}`
-
         * `{{secret_id}}`
 
         When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
         ```
 
@@ -1121,6 +1128,10 @@ class Secret(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: The time at which the Secret was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the secret. Defaults to false.
+               When the field is set to true in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the secret will fail.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -1141,7 +1152,7 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
@@ -1224,11 +1235,19 @@ class Secret(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the secret. Defaults to false.
+        When the field is set to true in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the secret will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
@@ -1290,7 +1309,7 @@ class Secret(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

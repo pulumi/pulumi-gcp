@@ -24,6 +24,11 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeo {
      * 
      */
     private String location;
+    /**
+     * @return The string data for the records in this record set
+     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\&#34; \&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters\&#34; \&#34;morecharacters&#34;`).
+     * 
+     */
     private @Nullable List<String> rrdatas;
 
     private RecordSetRoutingPolicyPrimaryBackupBackupGeo() {}
@@ -41,6 +46,11 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeo {
     public String location() {
         return this.location;
     }
+    /**
+     * @return The string data for the records in this record set
+     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\&#34; \&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters\&#34; \&#34;morecharacters&#34;`).
+     * 
+     */
     public List<String> rrdatas() {
         return this.rrdatas == null ? List.of() : this.rrdatas;
     }

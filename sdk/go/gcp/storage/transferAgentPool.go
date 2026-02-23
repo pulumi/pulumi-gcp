@@ -28,8 +28,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -75,22 +73,14 @@ import (
 // AgentPool can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/agentPools/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, AgentPool can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default projects/{{project}}/agentPools/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{name}}
 // ```
 type TransferAgentPool struct {

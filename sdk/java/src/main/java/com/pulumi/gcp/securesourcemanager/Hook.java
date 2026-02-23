@@ -31,28 +31,16 @@ import javax.annotation.Nullable;
  * Hook can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/hooks/{{hook_id}}`
- * 
  * * `{{project}}/{{location}}/{{repository_id}}/{{hook_id}}`
- * 
  * * `{{location}}/{{repository_id}}/{{hook_id}}`
- * 
  * * `{{hook_id}}`
  * 
  * When using the `pulumi import` command, Hook can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:securesourcemanager/hook:Hook default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/hooks/{{hook_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:securesourcemanager/hook:Hook default {{project}}/{{location}}/{{repository_id}}/{{hook_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:securesourcemanager/hook:Hook default {{location}}/{{repository_id}}/{{hook_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:securesourcemanager/hook:Hook default {{hook_id}}
  * ```
  * 

@@ -317,22 +317,14 @@ import * as utilities from "../utilities";
  * Instance can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
- *
  * * `{{project}}/{{location}}/{{instance_id}}`
- *
  * * `{{location}}/{{instance_id}}`
  *
  * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:memorystore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:memorystore/instance:Instance default {{project}}/{{location}}/{{instance_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:memorystore/instance:Instance default {{location}}/{{instance_id}}
  * ```
  */
@@ -543,7 +535,7 @@ export class Instance extends pulumi.CustomResource {
     declare public /*out*/ readonly pscAutoConnections: pulumi.Output<outputs.memorystore.InstancePscAutoConnection[]>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -888,7 +880,7 @@ export interface InstanceState {
     pscAutoConnections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstancePscAutoConnection>[]>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

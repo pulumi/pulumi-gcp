@@ -20,9 +20,27 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
 
     public static final RegionInstanceTemplateNetworkInterfaceArgs Empty = new RegionInstanceTemplateNetworkInterfaceArgs();
 
+    /**
+     * Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet (this means that ssh provisioners will
+     * not work unless you are running Terraform can send traffic to the instance&#39;s
+     * network (e.g. via tunnel or because it is running on another cloud instance
+     * on that network). This block can be specified once per `networkInterface`. Structure documented below.
+     * 
+     */
     @Import(name="accessConfigs")
     private @Nullable Output<List<RegionInstanceTemplateNetworkInterfaceAccessConfigArgs>> accessConfigs;
 
+    /**
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet (this means that ssh provisioners will
+     * not work unless you are running Terraform can send traffic to the instance&#39;s
+     * network (e.g. via tunnel or because it is running on another cloud instance
+     * on that network). This block can be specified once per `networkInterface`. Structure documented below.
+     * 
+     */
     public Optional<Output<List<RegionInstanceTemplateNetworkInterfaceAccessConfigArgs>>> accessConfigs() {
         return Optional.ofNullable(this.accessConfigs);
     }
@@ -126,14 +144,16 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
     }
 
     /**
-     * The name of the network_interface.
+     * The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the network_interface.
+     * @return The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -157,6 +177,21 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
      */
     public Optional<Output<String>> network() {
         return Optional.ofNullable(this.network);
+    }
+
+    /**
+     * The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * 
+     */
+    @Import(name="networkAttachment")
+    private @Nullable Output<String> networkAttachment;
+
+    /**
+     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * 
+     */
+    public Optional<Output<String>> networkAttachment() {
+        return Optional.ofNullable(this.networkAttachment);
     }
 
     /**
@@ -189,6 +224,21 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
      */
     public Optional<Output<String>> nicType() {
         return Optional.ofNullable(this.nicType);
+    }
+
+    /**
+     * Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    @Import(name="parentNicName")
+    private @Nullable Output<String> parentNicName;
+
+    /**
+     * @return Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    public Optional<Output<String>> parentNicName() {
+        return Optional.ofNullable(this.parentNicName);
     }
 
     /**
@@ -257,6 +307,21 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
         return Optional.ofNullable(this.subnetworkProject);
     }
 
+    /**
+     * VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    @Import(name="vlan")
+    private @Nullable Output<Integer> vlan;
+
+    /**
+     * @return VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    public Optional<Output<Integer>> vlan() {
+        return Optional.ofNullable(this.vlan);
+    }
+
     private RegionInstanceTemplateNetworkInterfaceArgs() {}
 
     private RegionInstanceTemplateNetworkInterfaceArgs(RegionInstanceTemplateNetworkInterfaceArgs $) {
@@ -269,12 +334,15 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
         this.ipv6Address = $.ipv6Address;
         this.name = $.name;
         this.network = $.network;
+        this.networkAttachment = $.networkAttachment;
         this.networkIp = $.networkIp;
         this.nicType = $.nicType;
+        this.parentNicName = $.parentNicName;
         this.queueCount = $.queueCount;
         this.stackType = $.stackType;
         this.subnetwork = $.subnetwork;
         this.subnetworkProject = $.subnetworkProject;
+        this.vlan = $.vlan;
     }
 
     public static Builder builder() {
@@ -295,15 +363,48 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
             $ = new RegionInstanceTemplateNetworkInterfaceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessConfigs Access configurations, i.e. IPs via which this
+         * instance can be accessed via the Internet. Omit to ensure that the instance
+         * is not accessible from the Internet (this means that ssh provisioners will
+         * not work unless you are running Terraform can send traffic to the instance&#39;s
+         * network (e.g. via tunnel or because it is running on another cloud instance
+         * on that network). This block can be specified once per `networkInterface`. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessConfigs(@Nullable Output<List<RegionInstanceTemplateNetworkInterfaceAccessConfigArgs>> accessConfigs) {
             $.accessConfigs = accessConfigs;
             return this;
         }
 
+        /**
+         * @param accessConfigs Access configurations, i.e. IPs via which this
+         * instance can be accessed via the Internet. Omit to ensure that the instance
+         * is not accessible from the Internet (this means that ssh provisioners will
+         * not work unless you are running Terraform can send traffic to the instance&#39;s
+         * network (e.g. via tunnel or because it is running on another cloud instance
+         * on that network). This block can be specified once per `networkInterface`. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessConfigs(List<RegionInstanceTemplateNetworkInterfaceAccessConfigArgs> accessConfigs) {
             return accessConfigs(Output.of(accessConfigs));
         }
 
+        /**
+         * @param accessConfigs Access configurations, i.e. IPs via which this
+         * instance can be accessed via the Internet. Omit to ensure that the instance
+         * is not accessible from the Internet (this means that ssh provisioners will
+         * not work unless you are running Terraform can send traffic to the instance&#39;s
+         * network (e.g. via tunnel or because it is running on another cloud instance
+         * on that network). This block can be specified once per `networkInterface`. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessConfigs(RegionInstanceTemplateNetworkInterfaceAccessConfigArgs... accessConfigs) {
             return accessConfigs(List.of(accessConfigs));
         }
@@ -467,7 +568,8 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
         }
 
         /**
-         * @param name The name of the network_interface.
+         * @param name The name of the instance template. If you leave
+         * this blank, Terraform will auto-generate a unique name.
          * 
          * @return builder
          * 
@@ -478,7 +580,8 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
         }
 
         /**
-         * @param name The name of the network_interface.
+         * @param name The name of the instance template. If you leave
+         * this blank, Terraform will auto-generate a unique name.
          * 
          * @return builder
          * 
@@ -510,6 +613,27 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param networkAttachment The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkAttachment(@Nullable Output<String> networkAttachment) {
+            $.networkAttachment = networkAttachment;
+            return this;
+        }
+
+        /**
+         * @param networkAttachment The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkAttachment(String networkAttachment) {
+            return networkAttachment(Output.of(networkAttachment));
         }
 
         /**
@@ -554,6 +678,27 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
          */
         public Builder nicType(String nicType) {
             return nicType(Output.of(nicType));
+        }
+
+        /**
+         * @param parentNicName Name of the parent network interface of a dynamic network interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentNicName(@Nullable Output<String> parentNicName) {
+            $.parentNicName = parentNicName;
+            return this;
+        }
+
+        /**
+         * @param parentNicName Name of the parent network interface of a dynamic network interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentNicName(String parentNicName) {
+            return parentNicName(Output.of(parentNicName));
         }
 
         /**
@@ -644,6 +789,27 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
          */
         public Builder subnetworkProject(String subnetworkProject) {
             return subnetworkProject(Output.of(subnetworkProject));
+        }
+
+        /**
+         * @param vlan VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vlan(@Nullable Output<Integer> vlan) {
+            $.vlan = vlan;
+            return this;
+        }
+
+        /**
+         * @param vlan VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vlan(Integer vlan) {
+            return vlan(Output.of(vlan));
         }
 
         public RegionInstanceTemplateNetworkInterfaceArgs build() {

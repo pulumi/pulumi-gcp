@@ -668,22 +668,14 @@ class DataStore(pulumi.CustomResource):
         DataStore can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}`
-
         * `{{project}}/{{location}}/{{data_store_id}}`
-
         * `{{location}}/{{data_store_id}}`
 
         When using the `pulumi import` command, DataStore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/dataStore:DataStore default projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/dataStore:DataStore default {{project}}/{{location}}/{{data_store_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/dataStore:DataStore default {{location}}/{{data_store_id}}
         ```
 
@@ -827,22 +819,14 @@ class DataStore(pulumi.CustomResource):
         DataStore can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}`
-
         * `{{project}}/{{location}}/{{data_store_id}}`
-
         * `{{location}}/{{data_store_id}}`
 
         When using the `pulumi import` command, DataStore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/dataStore:DataStore default projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/dataStore:DataStore default {{project}}/{{location}}/{{data_store_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/dataStore:DataStore default {{location}}/{{data_store_id}}
         ```
 

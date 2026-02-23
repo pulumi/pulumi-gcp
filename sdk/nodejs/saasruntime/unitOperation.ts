@@ -185,22 +185,14 @@ import * as utilities from "../utilities";
  * UnitOperation can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/unitOperations/{{unit_operation_id}}`
- *
  * * `{{project}}/{{location}}/{{unit_operation_id}}`
- *
  * * `{{location}}/{{unit_operation_id}}`
  *
  * When using the `pulumi import` command, UnitOperation can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default projects/{{project}}/locations/{{location}}/unitOperations/{{unit_operation_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default {{project}}/{{location}}/{{unit_operation_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default {{location}}/{{unit_operation_id}}
  * ```
  */
@@ -257,6 +249,9 @@ export class UnitOperation extends pulumi.CustomResource {
      * provisioned.
      */
     declare public readonly deprovision: pulumi.Output<outputs.saasruntime.UnitOperationDeprovision | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -314,7 +309,7 @@ export class UnitOperation extends pulumi.CustomResource {
     declare public readonly provision: pulumi.Output<outputs.saasruntime.UnitOperationProvision | undefined>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -469,6 +464,9 @@ export interface UnitOperationState {
      * provisioned.
      */
     deprovision?: pulumi.Input<inputs.saasruntime.UnitOperationDeprovision>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -526,7 +524,7 @@ export interface UnitOperationState {
     provision?: pulumi.Input<inputs.saasruntime.UnitOperationProvision>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

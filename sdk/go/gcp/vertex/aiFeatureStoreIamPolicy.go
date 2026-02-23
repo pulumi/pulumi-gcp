@@ -12,16 +12,263 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Vertex AI Featurestore. Each of these resources serves a different use case:
+//
+// * `vertex.AiFeatureStoreIamPolicy`: Authoritative. Sets the IAM policy for the featurestore and replaces any existing policy already attached.
+// * `vertex.AiFeatureStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featurestore are preserved.
+// * `vertex.AiFeatureStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featurestore are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `vertex.AiFeatureStoreIamPolicy`: Retrieves the IAM policy for the featurestore
+//
+// > **Note:** `vertex.AiFeatureStoreIamPolicy` **cannot** be used in conjunction with `vertex.AiFeatureStoreIamBinding` and `vertex.AiFeatureStoreIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `vertex.AiFeatureStoreIamBinding` resources **can be** used in conjunction with `vertex.AiFeatureStoreIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// ## vertex.AiFeatureStoreIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiFeatureStoreIamPolicy(ctx, "policy", &vertex.AiFeatureStoreIamPolicyArgs{
+//				Project:      pulumi.Any(featurestore.Project),
+//				Region:       pulumi.Any(featurestore.Region),
+//				Featurestore: pulumi.Any(featurestore.Name),
+//				PolicyData:   pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## vertex.AiFeatureStoreIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiFeatureStoreIamBinding(ctx, "binding", &vertex.AiFeatureStoreIamBindingArgs{
+//				Project:      pulumi.Any(featurestore.Project),
+//				Region:       pulumi.Any(featurestore.Region),
+//				Featurestore: pulumi.Any(featurestore.Name),
+//				Role:         pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## vertex.AiFeatureStoreIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiFeatureStoreIamMember(ctx, "member", &vertex.AiFeatureStoreIamMemberArgs{
+//				Project:      pulumi.Any(featurestore.Project),
+//				Region:       pulumi.Any(featurestore.Region),
+//				Featurestore: pulumi.Any(featurestore.Name),
+//				Role:         pulumi.String("roles/viewer"),
+//				Member:       pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Vertex AI Featurestore
+//
+// Three different resources help you manage your IAM policy for Vertex AI Featurestore. Each of these resources serves a different use case:
+//
+// * `vertex.AiFeatureStoreIamPolicy`: Authoritative. Sets the IAM policy for the featurestore and replaces any existing policy already attached.
+// * `vertex.AiFeatureStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featurestore are preserved.
+// * `vertex.AiFeatureStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featurestore are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `vertex.AiFeatureStoreIamPolicy`: Retrieves the IAM policy for the featurestore
+//
+// > **Note:** `vertex.AiFeatureStoreIamPolicy` **cannot** be used in conjunction with `vertex.AiFeatureStoreIamBinding` and `vertex.AiFeatureStoreIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `vertex.AiFeatureStoreIamBinding` resources **can be** used in conjunction with `vertex.AiFeatureStoreIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// ## vertex.AiFeatureStoreIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiFeatureStoreIamPolicy(ctx, "policy", &vertex.AiFeatureStoreIamPolicyArgs{
+//				Project:      pulumi.Any(featurestore.Project),
+//				Region:       pulumi.Any(featurestore.Region),
+//				Featurestore: pulumi.Any(featurestore.Name),
+//				PolicyData:   pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## vertex.AiFeatureStoreIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiFeatureStoreIamBinding(ctx, "binding", &vertex.AiFeatureStoreIamBindingArgs{
+//				Project:      pulumi.Any(featurestore.Project),
+//				Region:       pulumi.Any(featurestore.Region),
+//				Featurestore: pulumi.Any(featurestore.Name),
+//				Role:         pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## vertex.AiFeatureStoreIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiFeatureStoreIamMember(ctx, "member", &vertex.AiFeatureStoreIamMemberArgs{
+//				Project:      pulumi.Any(featurestore.Project),
+//				Region:       pulumi.Any(featurestore.Region),
+//				Featurestore: pulumi.Any(featurestore.Name),
+//				Role:         pulumi.String("roles/viewer"),
+//				Member:       pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:
 //
 // * projects/{{project}}/locations/{{region}}/featurestores/{{name}}
-//
 // * {{project}}/{{region}}/{{name}}
-//
 // * {{region}}/{{name}}
-//
 // * {{name}}
 //
 // Any variables not passed in the import command will be taken from the provider configuration.
@@ -29,24 +276,21 @@ import (
 // Vertex AI featurestore IAM resources can be imported using the resource identifiers, role, and member.
 //
 // IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-//
 // ```sh
-// $ pulumi import gcp:vertex/aiFeatureStoreIamPolicy:AiFeatureStoreIamPolicy editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer user:jane@example.com"
+// $ terraform import google_vertex_ai_featurestore_iam_member.editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer user:jane@example.com"
 // ```
 //
 // IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-//
 // ```sh
-// $ pulumi import gcp:vertex/aiFeatureStoreIamPolicy:AiFeatureStoreIamPolicy editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer"
+// $ terraform import google_vertex_ai_featurestore_iam_binding.editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer"
 // ```
 //
 // IAM policy imports use the identifier of the resource in question, e.g.
-//
 // ```sh
 // $ pulumi import gcp:vertex/aiFeatureStoreIamPolicy:AiFeatureStoreIamPolicy editor projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}}
 // ```
 //
-// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+// > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
 //	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type AiFeatureStoreIamPolicy struct {

@@ -55,22 +55,14 @@ namespace Pulumi.Gcp.Gemini
     /// ReleaseChannelSettingBinding can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}/settingBindings/{{setting_binding_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{release_channel_setting_id}}/{{setting_binding_id}}`
-    /// 
     /// * `{{location}}/{{release_channel_setting_id}}/{{setting_binding_id}}`
     /// 
     /// When using the `pulumi import` command, ReleaseChannelSettingBinding can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:gemini/releaseChannelSettingBinding:ReleaseChannelSettingBinding default projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}/settingBindings/{{setting_binding_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gemini/releaseChannelSettingBinding:ReleaseChannelSettingBinding default {{project}}/{{location}}/{{release_channel_setting_id}}/{{setting_binding_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gemini/releaseChannelSettingBinding:ReleaseChannelSettingBinding default {{location}}/{{release_channel_setting_id}}/{{setting_binding_id}}
     /// ```
     /// </summary>
@@ -126,7 +118,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -334,7 +326,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

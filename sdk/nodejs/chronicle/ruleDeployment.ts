@@ -102,22 +102,14 @@ import * as utilities from "../utilities";
  * RuleDeployment can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/deployment`
- *
  * * `{{project}}/{{location}}/{{instance}}/{{rule}}`
- *
  * * `{{location}}/{{instance}}/{{rule}}`
  *
  * When using the `pulumi import` command, RuleDeployment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:chronicle/ruleDeployment:RuleDeployment default projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/deployment
- * ```
- *
- * ```sh
  * $ pulumi import gcp:chronicle/ruleDeployment:RuleDeployment default {{project}}/{{location}}/{{instance}}/{{rule}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:chronicle/ruleDeployment:RuleDeployment default {{location}}/{{instance}}/{{rule}}
  * ```
  */

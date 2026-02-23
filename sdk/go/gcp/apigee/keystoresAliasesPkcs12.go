@@ -25,16 +25,12 @@ import (
 // KeystoresAliasesPkcs12 can be imported using any of these accepted formats:
 //
 // * `organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}`
-//
 // * `{{org_id}}/{{environment}}/{{keystore}}/{{alias}}`
 //
 // When using the `pulumi import` command, KeystoresAliasesPkcs12 can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
 // ```
 type KeystoresAliasesPkcs12 struct {

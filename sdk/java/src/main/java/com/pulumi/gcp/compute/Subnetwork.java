@@ -537,28 +537,16 @@ import javax.annotation.Nullable;
  * Subnetwork can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/regions/{{region}}/subnetworks/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{name}}`
- * 
  * * `{{region}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, Subnetwork can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/subnetwork:Subnetwork default projects/{{project}}/regions/{{region}}/subnetworks/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/subnetwork:Subnetwork default {{project}}/{{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/subnetwork:Subnetwork default {{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/subnetwork:Subnetwork default {{name}}
  * ```
  * 
@@ -566,7 +554,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/subnetwork:Subnetwork")
 public class Subnetwork extends com.pulumi.resources.CustomResource {
     /**
-     * (Optional, Beta)
      * Typically packets destined to IPs within the subnetwork range that do not match
      * existing resources are dropped and prevented from leaving the VPC.
      * Setting this field to true will allow these packets to match dynamic routes injected
@@ -577,8 +564,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     private Output<Boolean> allowSubnetCidrRoutesOverlap;
 
     /**
-     * @return (Optional, Beta)
-     * Typically packets destined to IPs within the subnetwork range that do not match
+     * @return Typically packets destined to IPs within the subnetwork range that do not match
      * existing resources are dropped and prevented from leaving the VPC.
      * Setting this field to true will allow these packets to match dynamic routes injected
      * via BGP even if their destinations match existing subnet ranges.

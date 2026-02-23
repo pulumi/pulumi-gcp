@@ -1022,7 +1022,7 @@ class DatabaseInstanceSettings(dict):
         :param 'DatabaseInstanceSettingsDataCacheConfigArgs' data_cache_config: Data cache configurations.
         :param _builtins.int data_disk_provisioned_iops: Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
         :param _builtins.int data_disk_provisioned_throughput: Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
-        :param _builtins.bool deletion_protection_enabled: Configuration to protect against accidental instance deletion.
+        :param _builtins.bool deletion_protection_enabled: Enables deletion protection of an instance at the GCP level. Enabling this protection will guard against accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform) by enabling the [GCP Cloud SQL instance deletion protection](https://cloud.google.com/sql/docs/postgres/deletion-protection). Terraform provider support was introduced in version 4.48.0. Defaults to `false`.
         :param _builtins.bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
         :param _builtins.int disk_autoresize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param _builtins.int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
@@ -1224,7 +1224,7 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="deletionProtectionEnabled")
     def deletion_protection_enabled(self) -> Optional[_builtins.bool]:
         """
-        Configuration to protect against accidental instance deletion.
+        Enables deletion protection of an instance at the GCP level. Enabling this protection will guard against accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform) by enabling the [GCP Cloud SQL instance deletion protection](https://cloud.google.com/sql/docs/postgres/deletion-protection). Terraform provider support was introduced in version 4.48.0. Defaults to `false`.
         """
         return pulumi.get(self, "deletion_protection_enabled")
 
@@ -4938,16 +4938,21 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param Sequence['GetDatabaseInstancesInstanceCloneArgs'] clones: Configuration for creating a new instance as a clone of another instance.
         :param _builtins.str connection_name: The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
         :param _builtins.str database_version: To filter out the Cloud SQL instances which are of the specified database version.
+        :param _builtins.bool deletion_protection: Used to block Terraform from deleting a SQL Instance. Defaults to true.
         :param _builtins.str dns_name: The instance-level dns name of the instance for PSC instances or public IP CAS instances.
         :param Sequence['GetDatabaseInstancesInstanceDnsNameArgs'] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
         :param _builtins.str final_backup_description: The description of final backup if instance enable create final backup during instance deletion.
+        :param _builtins.str first_ip_address: The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
         :param _builtins.str instance_type: The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
         :param _builtins.str maintenance_version: Maintenance version.
         :param _builtins.str master_instance_name: The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
+        :param _builtins.str name: The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first created. This is done because after a name is used, it cannot be reused for up to one week.
         :param _builtins.int node_count: For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
         :param Sequence['GetDatabaseInstancesInstancePointInTimeRestoreContextArgs'] point_in_time_restore_contexts: Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        :param _builtins.str private_ip_address: IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
         :param _builtins.str project: The ID of the project in which the resources belong. If it is not provided, the provider project is used.
         :param _builtins.str psc_service_attachment_link: The link to service attachment of PSC instance.
+        :param _builtins.str public_ip_address: IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
         :param _builtins.str region: To filter out the Cloud SQL instances which are located in the specified region.
         :param Sequence['GetDatabaseInstancesInstanceReplicaConfigurationArgs'] replica_configurations: The configuration for replication.
         :param Sequence[_builtins.str] replica_names: The replicas of the instance.
@@ -5038,6 +5043,9 @@ class GetDatabaseInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> _builtins.bool:
+        """
+        Used to block Terraform from deleting a SQL Instance. Defaults to true.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -5072,6 +5080,9 @@ class GetDatabaseInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="firstIpAddress")
     def first_ip_address(self) -> _builtins.str:
+        """
+        The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
+        """
         return pulumi.get(self, "first_ip_address")
 
     @_builtins.property
@@ -5106,6 +5117,9 @@ class GetDatabaseInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first created. This is done because after a name is used, it cannot be reused for up to one week.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -5127,6 +5141,9 @@ class GetDatabaseInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="privateIpAddress")
     def private_ip_address(self) -> _builtins.str:
+        """
+        IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
+        """
         return pulumi.get(self, "private_ip_address")
 
     @_builtins.property
@@ -5148,6 +5165,9 @@ class GetDatabaseInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="publicIpAddress")
     def public_ip_address(self) -> _builtins.str:
+        """
+        IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
+        """
         return pulumi.get(self, "public_ip_address")
 
     @_builtins.property

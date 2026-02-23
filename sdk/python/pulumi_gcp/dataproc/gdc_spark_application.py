@@ -337,6 +337,7 @@ class _GdcSparkApplicationState:
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dependency_images: List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
         :param pulumi.Input[_builtins.str] display_name: User-provided human-readable name to be used in user interfaces.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this application. Labels may be used for filtering and billing tracking.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -350,7 +351,7 @@ class _GdcSparkApplicationState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: application-specific properties.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['GdcSparkApplicationPysparkApplicationConfigArgs'] pyspark_application_config: Represents the PySparkApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] reconciling: Whether the application is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
@@ -498,6 +499,9 @@ class _GdcSparkApplicationState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -620,7 +624,7 @@ class _GdcSparkApplicationState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -966,22 +970,14 @@ class GdcSparkApplication(pulumi.CustomResource):
         SparkApplication can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}`
-
         * `{{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}`
-
         * `{{location}}/{{serviceinstance}}/{{spark_application_id}}`
 
         When using the `pulumi import` command, SparkApplication can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{location}}/{{serviceinstance}}/{{spark_application_id}}
         ```
 
@@ -1177,22 +1173,14 @@ class GdcSparkApplication(pulumi.CustomResource):
         SparkApplication can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}`
-
         * `{{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}`
-
         * `{{location}}/{{serviceinstance}}/{{spark_application_id}}`
 
         When using the `pulumi import` command, SparkApplication can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{location}}/{{serviceinstance}}/{{spark_application_id}}
         ```
 
@@ -1324,6 +1312,7 @@ class GdcSparkApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dependency_images: List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
         :param pulumi.Input[_builtins.str] display_name: User-provided human-readable name to be used in user interfaces.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this application. Labels may be used for filtering and billing tracking.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1337,7 +1326,7 @@ class GdcSparkApplication(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: application-specific properties.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict']] pyspark_application_config: Represents the PySparkApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] reconciling: Whether the application is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
@@ -1442,6 +1431,9 @@ class GdcSparkApplication(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
@@ -1524,7 +1516,7 @@ class GdcSparkApplication(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

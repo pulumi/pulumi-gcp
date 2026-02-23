@@ -89,7 +89,6 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (Optional, Beta)
      * A list of the deployment groups that this BROKER endpoint group is
      * connected to, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -100,8 +99,7 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<String>> mirroringDeploymentGroups;
 
     /**
-     * @return (Optional, Beta)
-     * A list of the deployment groups that this BROKER endpoint group is
+     * @return A list of the deployment groups that this BROKER endpoint group is
      * connected to, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
      * See https://google.aip.dev/124.
@@ -146,7 +144,6 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (Optional, Beta)
      * The type of the endpoint group.
      * If left unspecified, defaults to DIRECT.
      * Possible values:
@@ -158,8 +155,7 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> type;
 
     /**
-     * @return (Optional, Beta)
-     * The type of the endpoint group.
+     * @return The type of the endpoint group.
      * If left unspecified, defaults to DIRECT.
      * Possible values:
      * DIRECT
@@ -296,8 +292,7 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mirroringDeploymentGroups (Optional, Beta)
-         * A list of the deployment groups that this BROKER endpoint group is
+         * @param mirroringDeploymentGroups A list of the deployment groups that this BROKER endpoint group is
          * connected to, for example:
          * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
          * See https://google.aip.dev/124.
@@ -311,8 +306,7 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mirroringDeploymentGroups (Optional, Beta)
-         * A list of the deployment groups that this BROKER endpoint group is
+         * @param mirroringDeploymentGroups A list of the deployment groups that this BROKER endpoint group is
          * connected to, for example:
          * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
          * See https://google.aip.dev/124.
@@ -325,8 +319,7 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mirroringDeploymentGroups (Optional, Beta)
-         * A list of the deployment groups that this BROKER endpoint group is
+         * @param mirroringDeploymentGroups A list of the deployment groups that this BROKER endpoint group is
          * connected to, for example:
          * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
          * See https://google.aip.dev/124.
@@ -385,8 +378,7 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type (Optional, Beta)
-         * The type of the endpoint group.
+         * @param type The type of the endpoint group.
          * If left unspecified, defaults to DIRECT.
          * Possible values:
          * DIRECT
@@ -401,8 +393,7 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type (Optional, Beta)
-         * The type of the endpoint group.
+         * @param type The type of the endpoint group.
          * If left unspecified, defaults to DIRECT.
          * Possible values:
          * DIRECT

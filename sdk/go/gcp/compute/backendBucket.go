@@ -201,22 +201,14 @@ import (
 // BackendBucket can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/global/backendBuckets/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, BackendBucket can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/backendBucket:BackendBucket default projects/{{project}}/global/backendBuckets/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/backendBucket:BackendBucket default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/backendBucket:BackendBucket default {{name}}
 // ```
 type BackendBucket struct {

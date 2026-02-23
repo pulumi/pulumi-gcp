@@ -28,22 +28,14 @@ import javax.annotation.Nullable;
  * Workload can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/applications/{{application_id}}/workloads/{{workload_id}}`
- * 
  * * `{{project}}/{{location}}/{{application_id}}/{{workload_id}}`
- * 
  * * `{{location}}/{{application_id}}/{{workload_id}}`
  * 
  * When using the `pulumi import` command, Workload can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:apphub/workload:Workload default projects/{{project}}/locations/{{location}}/applications/{{application_id}}/workloads/{{workload_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:apphub/workload:Workload default {{project}}/{{location}}/{{application_id}}/{{workload_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:apphub/workload:Workload default {{location}}/{{application_id}}/{{workload_id}}
  * ```
  * 

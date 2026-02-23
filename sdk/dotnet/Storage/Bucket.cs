@@ -284,32 +284,24 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// ## Import
     /// 
-    /// Storage buckets can be imported using the `name` or  `project/name`. If the project is not
-    /// 
+    /// Storage buckets can be imported using the `Name` or  `project/name`. If the project is not
     /// passed to the import command it will be inferred from the provider block or environment variables.
-    /// 
     /// If it cannot be inferred it will be queried from the Compute API (this will fail if the API is
-    /// 
     /// not enabled).
     /// 
     /// * `{{project_id}}/{{bucket}}`
-    /// 
     /// * `{{bucket}}`
     /// 
     /// When using the `pulumi import` command, Storage buckets can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
     /// ```
     /// 
-    /// `false` in state. If you've set it to `true` in config, run `pulumi up` to
-    /// 
+    /// &gt; **Note:** Terraform will import this resource with `ForceDestroy` set to
+    /// `False` in state. If you've set it to `True` in config, run `pulumi up` to
     /// update the value set in state. If you delete this resource before updating the
-    /// 
     /// value, objects in the bucket will not be destroyed.
     /// </summary>
     [GcpResourceType("gcp:storage/bucket:Bucket")]
@@ -339,6 +331,9 @@ namespace Pulumi.Gcp.Storage
         [Output("defaultEventBasedHold")]
         public Output<bool?> DefaultEventBasedHold { get; private set; } = null!;
 
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
@@ -454,7 +449,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
         /// </summary>
         [Output("softDeletePolicy")]
         public Output<Outputs.BucketSoftDeletePolicy> SoftDeletePolicy { get; private set; } = null!;
@@ -688,7 +683,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Rpo { get; set; }
 
         /// <summary>
-        /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
         /// </summary>
         [Input("softDeletePolicy")]
         public Input<Inputs.BucketSoftDeletePolicyArgs>? SoftDeletePolicy { get; set; }
@@ -757,6 +752,10 @@ namespace Pulumi.Gcp.Storage
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveLabels
         {
             get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
@@ -901,7 +900,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
         /// </summary>
         [Input("softDeletePolicy")]
         public Input<Inputs.BucketSoftDeletePolicyGetArgs>? SoftDeletePolicy { get; set; }

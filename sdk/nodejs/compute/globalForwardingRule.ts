@@ -397,22 +397,14 @@ import * as utilities from "../utilities";
  * GlobalForwardingRule can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/global/forwardingRules/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, GlobalForwardingRule can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default projects/{{project}}/global/forwardingRules/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default {{name}}
  * ```
  */
@@ -655,7 +647,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
     declare public /*out*/ readonly pscConnectionStatus: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -992,7 +984,7 @@ export interface GlobalForwardingRuleState {
     pscConnectionStatus?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

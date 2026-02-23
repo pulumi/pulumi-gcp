@@ -123,22 +123,14 @@ namespace Pulumi.Gcp.OracleDatabase
     /// DbSystem can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/dbSystems/{{db_system_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{db_system_id}}`
-    /// 
     /// * `{{location}}/{{db_system_id}}`
     /// 
     /// When using the `pulumi import` command, DbSystem can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default projects/{{project}}/locations/{{location}}/dbSystems/{{db_system_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{project}}/{{location}}/{{db_system_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{location}}/{{db_system_id}}
     /// ```
     /// </summary>
@@ -160,6 +152,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Output("dbSystemId")]
         public Output<string> DbSystemId { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -250,7 +245,7 @@ namespace Pulumi.Gcp.OracleDatabase
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -315,6 +310,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("dbSystemId", required: true)]
         public Input<string> DbSystemId { get; set; } = null!;
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -407,6 +405,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("dbSystemId")]
         public Input<string>? DbSystemId { get; set; }
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -516,7 +517,7 @@ namespace Pulumi.Gcp.OracleDatabase
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

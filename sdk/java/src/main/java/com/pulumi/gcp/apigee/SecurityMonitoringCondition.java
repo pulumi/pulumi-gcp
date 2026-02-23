@@ -133,16 +133,12 @@ import javax.annotation.Nullable;
  * SecurityMonitoringCondition can be imported using any of these accepted formats:
  * 
  * * `{{org_id}}/securityMonitoringConditions/{{condition_id}}`
- * 
  * * `{{org_id}}/{{condition_id}}`
  * 
  * When using the `pulumi import` command, SecurityMonitoringCondition can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition default {{org_id}}/securityMonitoringConditions/{{condition_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition default {{org_id}}/{{condition_id}}
  * ```
  * 

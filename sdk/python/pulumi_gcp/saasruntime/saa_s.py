@@ -168,6 +168,7 @@ class _SaaSState:
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: An opaque value that uniquely identifies a version or
                generation of a resource. It can be used to confirm that the client
@@ -186,7 +187,7 @@ class _SaaSState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] saas_id: The ID value for the new saas.
         :param pulumi.Input[_builtins.str] uid: The unique identifier of the resource. UID is unique in the time
                and space for this resource within the scope of the service. It is
@@ -258,6 +259,9 @@ class _SaaSState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -363,7 +367,7 @@ class _SaaSState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -428,6 +432,11 @@ class SaaS(pulumi.CustomResource):
                  saas_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A Saas resource is the top-level representation of a SaaS service managed by a producer. It contains a list of locations where the service is available, which is used by the Rollout system to generate a rollout plan.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ### Saas Runtime Saas Basic
@@ -454,22 +463,14 @@ class SaaS(pulumi.CustomResource):
         Saas can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/saas/{{saas_id}}`
-
         * `{{project}}/{{location}}/{{saas_id}}`
-
         * `{{location}}/{{saas_id}}`
 
         When using the `pulumi import` command, Saas can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:saasruntime/saaS:SaaS default projects/{{project}}/locations/{{location}}/saas/{{saas_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/saaS:SaaS default {{project}}/{{location}}/{{saas_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/saaS:SaaS default {{location}}/{{saas_id}}
         ```
 
@@ -500,6 +501,11 @@ class SaaS(pulumi.CustomResource):
                  args: SaaSArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Saas resource is the top-level representation of a SaaS service managed by a producer. It contains a list of locations where the service is available, which is used by the Rollout system to generate a rollout plan.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ### Saas Runtime Saas Basic
@@ -526,22 +532,14 @@ class SaaS(pulumi.CustomResource):
         Saas can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/saas/{{saas_id}}`
-
         * `{{project}}/{{location}}/{{saas_id}}`
-
         * `{{location}}/{{saas_id}}`
 
         When using the `pulumi import` command, Saas can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:saasruntime/saaS:SaaS default projects/{{project}}/locations/{{location}}/saas/{{saas_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/saaS:SaaS default {{project}}/{{location}}/{{saas_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/saaS:SaaS default {{location}}/{{saas_id}}
         ```
 
@@ -633,6 +631,7 @@ class SaaS(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: An opaque value that uniquely identifies a version or
                generation of a resource. It can be used to confirm that the client
@@ -651,7 +650,7 @@ class SaaS(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] saas_id: The ID value for the new saas.
         :param pulumi.Input[_builtins.str] uid: The unique identifier of the resource. UID is unique in the time
                and space for this resource within the scope of the service. It is
@@ -706,6 +705,9 @@ class SaaS(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
@@ -779,7 +781,7 @@ class SaaS(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

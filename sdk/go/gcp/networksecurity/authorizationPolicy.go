@@ -12,6 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// AuthorizationPolicy is a resource that specifies how a server should authorize incoming connections. This resource in itself does not change the configuration unless it's attached to a target https proxy or endpoint config selector resource.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about AuthorizationPolicy, see:
+//
+// * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.authorizationPolicies)
+//
 // ## Example Usage
 //
 // ### Network Security Authorization Policy Basic
@@ -125,22 +134,14 @@ import (
 // AuthorizationPolicy can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, AuthorizationPolicy can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{location}}/{{name}}
 // ```
 type AuthorizationPolicy struct {
@@ -168,7 +169,7 @@ type AuthorizationPolicy struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
 	// A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
@@ -238,7 +239,7 @@ type authorizationPolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
 	// A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
@@ -271,7 +272,7 @@ type AuthorizationPolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
 	// A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
@@ -467,7 +468,8 @@ func (o AuthorizationPolicyOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AuthorizationPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

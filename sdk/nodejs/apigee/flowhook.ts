@@ -18,16 +18,12 @@ import * as utilities from "../utilities";
  * Flowhook can be imported using any of these accepted formats:
  *
  * * `organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}`
- *
  * * `{{org_id}}/{{environment}}/{{flow_hook_point}}`
  *
  * When using the `pulumi import` command, Flowhook can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigee/flowhook:Flowhook default organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apigee/flowhook:Flowhook default {{org_id}}/{{environment}}/{{flow_hook_point}}
  * ```
  */

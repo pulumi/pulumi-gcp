@@ -96,6 +96,10 @@ def get_workload_identity_pool_iam_policy(project: Optional[_builtins.str] = Non
                                           workload_identity_pool_id: Optional[_builtins.str] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkloadIdentityPoolIamPolicyResult:
     """
+    Retrieves the current IAM policy data for workloadidentitypool
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python
@@ -127,6 +131,10 @@ def get_workload_identity_pool_iam_policy_output(project: Optional[pulumi.Input[
                                                  workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkloadIdentityPoolIamPolicyResult]:
     """
+    Retrieves the current IAM policy data for workloadidentitypool
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python

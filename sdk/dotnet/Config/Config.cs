@@ -1075,6 +1075,13 @@ namespace Pulumi.Gcp
             set => _parameterManagerRegionalCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _pollInterval = new __Value<string?>(() => __config.Get("pollInterval"));
+        public static string? PollInterval
+        {
+            get => _pollInterval.Get();
+            set => _pollInterval.Set(value);
+        }
+
         private static readonly __Value<string?> _privatecaCustomEndpoint = new __Value<string?>(() => __config.Get("privatecaCustomEndpoint"));
         public static string? PrivatecaCustomEndpoint
         {
@@ -1402,6 +1409,13 @@ namespace Pulumi.Gcp
         {
             get => _userProjectOverride.Get();
             set => _userProjectOverride.Set(value);
+        }
+
+        private static readonly __Value<string?> _vectorSearchCustomEndpoint = new __Value<string?>(() => __config.Get("vectorSearchCustomEndpoint"));
+        public static string? VectorSearchCustomEndpoint
+        {
+            get => _vectorSearchCustomEndpoint.Get();
+            set => _vectorSearchCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _vertexAiCustomEndpoint = new __Value<string?>(() => __config.Get("vertexAiCustomEndpoint"));

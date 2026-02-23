@@ -230,7 +230,7 @@ class _SubnetState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: Current stage of the resource to the device by config push.
         :param pulumi.Input[_builtins.str] subnet_id: A unique ID that identifies this subnet.
         :param pulumi.Input[_builtins.str] update_time: The time when the subnet was last updated.
@@ -405,7 +405,7 @@ class _SubnetState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -557,34 +557,18 @@ class Subnet(pulumi.CustomResource):
         Subnet can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
-
         * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
-
         * `{{location}}/{{zone}}/{{subnet_id}}`
-
         * `{{location}}/{{subnet_id}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{project}}/{{location}}/{{zone}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{zone}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{name}}
         ```
 
@@ -676,34 +660,18 @@ class Subnet(pulumi.CustomResource):
         Subnet can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
-
         * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
-
         * `{{location}}/{{zone}}/{{subnet_id}}`
-
         * `{{location}}/{{subnet_id}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{project}}/{{location}}/{{zone}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{zone}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{name}}
         ```
 
@@ -819,7 +787,7 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: Current stage of the resource to the device by config push.
         :param pulumi.Input[_builtins.str] subnet_id: A unique ID that identifies this subnet.
         :param pulumi.Input[_builtins.str] update_time: The time when the subnet was last updated.
@@ -943,7 +911,7 @@ class Subnet(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

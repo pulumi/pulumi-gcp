@@ -18,14 +18,24 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     public static final ProjectState Empty = new ProjectState();
 
     /**
-     * Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
+     * Controls whether the &#39;default&#39; network exists on the project. Defaults
+     * to `true`, where it is created. If set to `false`, the default network will still be created by GCP but
+     * will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
+     * network slot available to create the project successfully, even if you set `autoCreateNetwork` to
+     * `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
+     * with the GCE API and currently leaves it enabled.
      * 
      */
     @Import(name="autoCreateNetwork")
     private @Nullable Output<Boolean> autoCreateNetwork;
 
     /**
-     * @return Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
+     * @return Controls whether the &#39;default&#39; network exists on the project. Defaults
+     * to `true`, where it is created. If set to `false`, the default network will still be created by GCP but
+     * will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
+     * network slot available to create the project successfully, even if you set `autoCreateNetwork` to
+     * `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
+     * with the GCE API and currently leaves it enabled.
      * 
      */
     public Optional<Output<Boolean>> autoCreateNetwork() {
@@ -55,9 +65,23 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.billingAccount);
     }
 
+    /**
+     * The deletion policy for the Project. Setting PREVENT will protect the project
+     * against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
+     * to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
+     * the Google API. Possible values are: &#34;PREVENT&#34;, &#34;ABANDON&#34;, &#34;DELETE&#34;. Default value is `PREVENT`.
+     * 
+     */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
+    /**
+     * @return The deletion policy for the Project. Setting PREVENT will protect the project
+     * against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
+     * to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
+     * the Google API. Possible values are: &#34;PREVENT&#34;, &#34;ABANDON&#34;, &#34;DELETE&#34;. Default value is `PREVENT`.
+     * 
+     */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
     }
@@ -190,14 +214,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * (ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
     private @Nullable Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * @return (ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
@@ -255,7 +279,12 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoCreateNetwork Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
+         * @param autoCreateNetwork Controls whether the &#39;default&#39; network exists on the project. Defaults
+         * to `true`, where it is created. If set to `false`, the default network will still be created by GCP but
+         * will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
+         * network slot available to create the project successfully, even if you set `autoCreateNetwork` to
+         * `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
+         * with the GCE API and currently leaves it enabled.
          * 
          * @return builder
          * 
@@ -266,7 +295,12 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoCreateNetwork Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
+         * @param autoCreateNetwork Controls whether the &#39;default&#39; network exists on the project. Defaults
+         * to `true`, where it is created. If set to `false`, the default network will still be created by GCP but
+         * will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
+         * network slot available to create the project successfully, even if you set `autoCreateNetwork` to
+         * `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
+         * with the GCE API and currently leaves it enabled.
          * 
          * @return builder
          * 
@@ -304,11 +338,29 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
             return billingAccount(Output.of(billingAccount));
         }
 
+        /**
+         * @param deletionPolicy The deletion policy for the Project. Setting PREVENT will protect the project
+         * against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
+         * to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
+         * the Google API. Possible values are: &#34;PREVENT&#34;, &#34;ABANDON&#34;, &#34;DELETE&#34;. Default value is `PREVENT`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
             $.deletionPolicy = deletionPolicy;
             return this;
         }
 
+        /**
+         * @param deletionPolicy The deletion policy for the Project. Setting PREVENT will protect the project
+         * against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
+         * to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
+         * the Google API. Possible values are: &#34;PREVENT&#34;, &#34;ABANDON&#34;, &#34;DELETE&#34;. Default value is `PREVENT`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
         }
@@ -483,7 +535,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * @param pulumiLabels (ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -494,7 +546,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * @param pulumiLabels (ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.
          * 
          * @return builder
          * 

@@ -89,22 +89,14 @@ import (
 // VolumeQuotaRule can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}`
-//
 // * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
-//
 // * `{{location}}/{{volume_name}}/{{name}}`
 //
 // When using the `pulumi import` command, VolumeQuotaRule can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{project}}/{{location}}/{{volume_name}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{location}}/{{volume_name}}/{{name}}
 // ```
 type VolumeQuotaRule struct {
@@ -131,7 +123,7 @@ type VolumeQuotaRule struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The state of the quota rule. Possible Values : [STATE_UNSPECIFIED, CREATING, UPDATING, READY, DELETING, ERROR]
 	State pulumi.StringOutput `pulumi:"state"`
@@ -217,7 +209,7 @@ type volumeQuotaRuleState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The state of the quota rule. Possible Values : [STATE_UNSPECIFIED, CREATING, UPDATING, READY, DELETING, ERROR]
 	State *string `pulumi:"state"`
@@ -260,7 +252,7 @@ type VolumeQuotaRuleState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The state of the quota rule. Possible Values : [STATE_UNSPECIFIED, CREATING, UPDATING, READY, DELETING, ERROR]
 	State pulumi.StringPtrInput
@@ -482,7 +474,8 @@ func (o VolumeQuotaRuleOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o VolumeQuotaRuleOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VolumeQuotaRule) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

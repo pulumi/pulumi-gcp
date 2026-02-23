@@ -65,8 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myIcebergCatalog = new IcebergCatalog("myIcebergCatalog", IcebergCatalogArgs.builder()
- *             .name("my_iceberg_catalog")
+ *             .name(bucketForMyIcebergCatalog.name())
  *             .catalogType("CATALOG_TYPE_GCS_BUCKET")
+ *             .credentialMode("CREDENTIAL_MODE_VENDED_CREDENTIALS")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(bucketForMyIcebergCatalog)
  *                 .build());
@@ -81,22 +82,14 @@ import javax.annotation.Nullable;
  * IcebergCatalog can be imported using any of these accepted formats:
  * 
  * * `iceberg/v1/restcatalog/extensions/projects/{{project}}/catalogs/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, IcebergCatalog can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default iceberg/v1/restcatalog/extensions/projects/{{project}}/catalogs/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{name}}
  * ```
  * 
@@ -178,16 +171,20 @@ public class IcebergCatalog extends com.pulumi.resources.CustomResource {
         return this.defaultLocation;
     }
     /**
-     * The name of the IcebergCatalog. Format:
-     * projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+     * The name of the IcebergCatalog.
+     * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+     * exact same value of the GCS bucket&#39;s name. For example, for a bucket:
+     * gs://bucket-name, the catalog name will be exactly &#34;bucket-name&#34;.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the IcebergCatalog. Format:
-     * projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+     * @return The name of the IcebergCatalog.
+     * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+     * exact same value of the GCS bucket&#39;s name. For example, for a bucket:
+     * gs://bucket-name, the catalog name will be exactly &#34;bucket-name&#34;.
      * 
      */
     public Output<String> name() {

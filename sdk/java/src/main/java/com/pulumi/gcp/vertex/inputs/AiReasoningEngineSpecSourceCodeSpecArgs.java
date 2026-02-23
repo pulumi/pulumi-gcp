@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
 import java.util.Objects;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class AiReasoningEngineSpecSourceCodeSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiReasoningEngineSpecSourceCodeSpecArgs Empty = new AiReasoningEngineSpecSourceCodeSpecArgs();
+
+    /**
+     * Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="developerConnectSource")
+    private @Nullable Output<AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs> developerConnectSource;
+
+    /**
+     * @return Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs>> developerConnectSource() {
+        return Optional.ofNullable(this.developerConnectSource);
+    }
 
     /**
      * Source code is provided directly in the request.
@@ -53,6 +71,7 @@ public final class AiReasoningEngineSpecSourceCodeSpecArgs extends com.pulumi.re
     private AiReasoningEngineSpecSourceCodeSpecArgs() {}
 
     private AiReasoningEngineSpecSourceCodeSpecArgs(AiReasoningEngineSpecSourceCodeSpecArgs $) {
+        this.developerConnectSource = $.developerConnectSource;
         this.inlineSource = $.inlineSource;
         this.pythonSpec = $.pythonSpec;
     }
@@ -73,6 +92,29 @@ public final class AiReasoningEngineSpecSourceCodeSpecArgs extends com.pulumi.re
 
         public Builder(AiReasoningEngineSpecSourceCodeSpecArgs defaults) {
             $ = new AiReasoningEngineSpecSourceCodeSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param developerConnectSource Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder developerConnectSource(@Nullable Output<AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs> developerConnectSource) {
+            $.developerConnectSource = developerConnectSource;
+            return this;
+        }
+
+        /**
+         * @param developerConnectSource Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder developerConnectSource(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs developerConnectSource) {
+            return developerConnectSource(Output.of(developerConnectSource));
         }
 
         /**

@@ -42,22 +42,14 @@ import * as utilities from "../utilities";
  * Unit can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/units/{{unit_id}}`
- *
  * * `{{project}}/{{location}}/{{unit_id}}`
- *
  * * `{{location}}/{{unit_id}}`
  *
  * When using the `pulumi import` command, Unit can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:saasruntime/unit:Unit default projects/{{project}}/locations/{{location}}/units/{{unit_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:saasruntime/unit:Unit default {{project}}/{{location}}/{{unit_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:saasruntime/unit:Unit default {{location}}/{{unit_id}}
  * ```
  */
@@ -119,6 +111,9 @@ export class Unit extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public /*out*/ readonly dependents: pulumi.Output<outputs.saasruntime.UnitDependent[]>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -167,6 +162,13 @@ export class Unit extends pulumi.CustomResource {
      * List of concurrent UnitOperations that are operating on this Unit.
      */
     declare public /*out*/ readonly ongoingOperations: pulumi.Output<string[]>;
+    /**
+     * Set of key/value pairs corresponding to output variables from execution of
+     * actuation templates. The variables are declared in actuation configs (e.g
+     * in helm chart or terraform) and the values are fetched and returned by the
+     * actuation engine upon completion of execution.
+     * Structure is documented below.
+     */
     declare public /*out*/ readonly outputVariables: pulumi.Output<outputs.saasruntime.UnitOutputVariable[]>;
     /**
      * List of pending (wait to be executed) UnitOperations for this unit.
@@ -179,7 +181,7 @@ export class Unit extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -362,6 +364,9 @@ export interface UnitState {
      * Structure is documented below.
      */
     dependents?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitDependent>[]>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -410,6 +415,13 @@ export interface UnitState {
      * List of concurrent UnitOperations that are operating on this Unit.
      */
     ongoingOperations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of key/value pairs corresponding to output variables from execution of
+     * actuation templates. The variables are declared in actuation configs (e.g
+     * in helm chart or terraform) and the values are fetched and returned by the
+     * actuation engine upon completion of execution.
+     * Structure is documented below.
+     */
     outputVariables?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitOutputVariable>[]>;
     /**
      * List of pending (wait to be executed) UnitOperations for this unit.
@@ -422,7 +434,7 @@ export interface UnitState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

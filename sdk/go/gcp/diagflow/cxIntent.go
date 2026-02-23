@@ -103,16 +103,12 @@ import (
 // Intent can be imported using any of these accepted formats:
 //
 // * `{{parent}}/intents/{{name}}`
-//
 // * `{{parent}}/{{name}}`
 //
 // When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/intents/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/{{name}}
 // ```
 type CxIntent struct {
@@ -163,7 +159,7 @@ type CxIntent struct {
 	// If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The collection of training phrases the agent is trained on to identify the intent.
 	// Structure is documented below.
@@ -253,7 +249,7 @@ type cxIntentState struct {
 	// If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority *int `pulumi:"priority"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The collection of training phrases the agent is trained on to identify the intent.
 	// Structure is documented below.
@@ -306,7 +302,7 @@ type CxIntentState struct {
 	// If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority pulumi.IntPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The collection of training phrases the agent is trained on to identify the intent.
 	// Structure is documented below.
@@ -576,7 +572,8 @@ func (o CxIntentOutput) Priority() pulumi.IntPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CxIntentOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CxIntent) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

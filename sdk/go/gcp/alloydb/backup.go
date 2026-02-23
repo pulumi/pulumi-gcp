@@ -189,22 +189,14 @@ import (
 // Backup can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}`
-//
 // * `{{project}}/{{location}}/{{backup_id}}`
-//
 // * `{{location}}/{{backup_id}}`
 //
 // When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:alloydb/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{backup_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:alloydb/backup:Backup default {{project}}/{{location}}/{{backup_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:alloydb/backup:Backup default {{location}}/{{backup_id}}
 // ```
 type Backup struct {
@@ -231,7 +223,8 @@ type Backup struct {
 	// User-provided description of the backup.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User-settable and human-readable display name for the Backup.
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -263,7 +256,7 @@ type Backup struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
@@ -347,7 +340,8 @@ type backupState struct {
 	// User-provided description of the backup.
 	Description *string `pulumi:"description"`
 	// User-settable and human-readable display name for the Backup.
-	DisplayName          *string           `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -379,7 +373,7 @@ type backupState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
@@ -420,7 +414,8 @@ type BackupState struct {
 	// User-provided description of the backup.
 	Description pulumi.StringPtrInput
 	// User-settable and human-readable display name for the Backup.
-	DisplayName          pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -452,7 +447,7 @@ type BackupState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
@@ -675,6 +670,7 @@ func (o BackupOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o BackupOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -739,7 +735,8 @@ func (o BackupOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o BackupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

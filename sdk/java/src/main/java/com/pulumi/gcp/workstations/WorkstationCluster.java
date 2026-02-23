@@ -21,6 +21,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A grouping of workstation configurations and the associated workstations in that region.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about WorkstationCluster, see:
+ * 
+ * * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters/create)
+ * * How-to Guides
+ *     * [Workstations](https://cloud.google.com/workstations/docs/)
+ * 
  * ## Example Usage
  * 
  * ### Workstation Cluster Basic
@@ -290,22 +301,14 @@ import javax.annotation.Nullable;
  * WorkstationCluster can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
- * 
  * * `{{project}}/{{location}}/{{workstation_cluster_id}}`
- * 
  * * `{{location}}/{{workstation_cluster_id}}`
  * 
  * When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{project}}/{{location}}/{{workstation_cluster_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
  * ```
  * 
@@ -422,9 +425,17 @@ public class WorkstationCluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<WorkstationClusterDomainConfig>> domainConfig() {
         return Codegen.optional(this.domainConfig);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
@@ -554,7 +565,7 @@ public class WorkstationCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -562,7 +573,7 @@ public class WorkstationCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

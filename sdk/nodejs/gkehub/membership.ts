@@ -102,22 +102,14 @@ import * as utilities from "../utilities";
  * Membership can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}`
- *
  * * `{{project}}/{{location}}/{{membership_id}}`
- *
  * * `{{location}}/{{membership_id}}`
  *
  * When using the `pulumi import` command, Membership can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{location}}/{{membership_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
  * ```
  */
@@ -192,7 +184,7 @@ export class Membership extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
 
@@ -287,7 +279,7 @@ export interface MembershipState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

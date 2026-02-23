@@ -30,22 +30,14 @@ import * as utilities from "../utilities";
  * Template can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/templates/{{template_id}}`
- *
  * * `{{project}}/{{location}}/{{template_id}}`
- *
  * * `{{location}}/{{template_id}}`
  *
  * When using the `pulumi import` command, Template can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:modelarmor/template:Template default projects/{{project}}/locations/{{location}}/templates/{{template_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:modelarmor/template:Template default {{project}}/{{location}}/{{template_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:modelarmor/template:Template default {{location}}/{{template_id}}
  * ```
  */
@@ -111,7 +103,7 @@ export class Template extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -222,7 +214,7 @@ export interface TemplateState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

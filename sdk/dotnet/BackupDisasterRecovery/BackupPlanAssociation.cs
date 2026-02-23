@@ -211,22 +211,14 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// BackupPlanAssociation can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/backupPlanAssociations/{{backup_plan_association_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{backup_plan_association_id}}`
-    /// 
     /// * `{{location}}/{{backup_plan_association_id}}`
     /// 
     /// When using the `pulumi import` command, BackupPlanAssociation can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation default projects/{{project}}/locations/{{location}}/backupPlanAssociations/{{backup_plan_association_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation default {{project}}/{{location}}/{{backup_plan_association_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation default {{location}}/{{backup_plan_association_id}}
     /// ```
     /// </summary>

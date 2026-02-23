@@ -81,37 +81,32 @@ __all__ = [
     'WorkloadWorkloadReferenceArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ApplicationAttributesArgsDict(TypedDict):
-        business_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationAttributesBusinessOwnerArgsDict']]]]
-        """
-        Optional. Business team that ensures user needs are met and value is delivered
-        Structure is documented below.
-        """
-        criticality: NotRequired[pulumi.Input['ApplicationAttributesCriticalityArgsDict']]
-        """
-        Criticality of the Application, Service, or Workload
-        Structure is documented below.
-        """
-        developer_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationAttributesDeveloperOwnerArgsDict']]]]
-        """
-        Optional. Developer team that owns development and coding.
-        Structure is documented below.
-        """
-        environment: NotRequired[pulumi.Input['ApplicationAttributesEnvironmentArgsDict']]
-        """
-        Environment of the Application, Service, or Workload
-        Structure is documented below.
-        """
-        operator_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationAttributesOperatorOwnerArgsDict']]]]
-        """
-        Optional. Operator team that ensures runtime and operations.
-        Structure is documented below.
-        """
-elif False:
-    ApplicationAttributesArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationAttributesArgsDict(TypedDict):
+    business_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationAttributesBusinessOwnerArgsDict']]]]
+    """
+    Optional. Business team that ensures user needs are met and value is delivered
+    Structure is documented below.
+    """
+    criticality: NotRequired[pulumi.Input['ApplicationAttributesCriticalityArgsDict']]
+    """
+    Criticality of the Application, Service, or Workload
+    Structure is documented below.
+    """
+    developer_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationAttributesDeveloperOwnerArgsDict']]]]
+    """
+    Optional. Developer team that owns development and coding.
+    Structure is documented below.
+    """
+    environment: NotRequired[pulumi.Input['ApplicationAttributesEnvironmentArgsDict']]
+    """
+    Environment of the Application, Service, or Workload
+    Structure is documented below.
+    """
+    operator_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationAttributesOperatorOwnerArgsDict']]]]
+    """
+    Optional. Operator team that ensures runtime and operations.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ApplicationAttributesArgs:
@@ -210,18 +205,15 @@ class ApplicationAttributesArgs:
         pulumi.set(self, "operator_owners", value)
 
 
-if not MYPY:
-    class ApplicationAttributesBusinessOwnerArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        Required. Email address of the contacts.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Contact's name.
-        """
-elif False:
-    ApplicationAttributesBusinessOwnerArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationAttributesBusinessOwnerArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Required. Email address of the contacts.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Contact's name.
+    """
 
 @pulumi.input_type
 class ApplicationAttributesBusinessOwnerArgs:
@@ -261,15 +253,12 @@ class ApplicationAttributesBusinessOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class ApplicationAttributesCriticalityArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        Criticality type.
-        Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
-        """
-elif False:
-    ApplicationAttributesCriticalityArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationAttributesCriticalityArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Criticality type.
+    Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+    """
 
 @pulumi.input_type
 class ApplicationAttributesCriticalityArgs:
@@ -295,18 +284,15 @@ class ApplicationAttributesCriticalityArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ApplicationAttributesDeveloperOwnerArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        Required. Email address of the contacts.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Contact's name.
-        """
-elif False:
-    ApplicationAttributesDeveloperOwnerArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationAttributesDeveloperOwnerArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Required. Email address of the contacts.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Contact's name.
+    """
 
 @pulumi.input_type
 class ApplicationAttributesDeveloperOwnerArgs:
@@ -346,15 +332,12 @@ class ApplicationAttributesDeveloperOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class ApplicationAttributesEnvironmentArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        Environment type.
-        Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
-        """
-elif False:
-    ApplicationAttributesEnvironmentArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationAttributesEnvironmentArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Environment type.
+    Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
+    """
 
 @pulumi.input_type
 class ApplicationAttributesEnvironmentArgs:
@@ -380,18 +363,15 @@ class ApplicationAttributesEnvironmentArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ApplicationAttributesOperatorOwnerArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        Required. Email address of the contacts.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Contact's name.
-        """
-elif False:
-    ApplicationAttributesOperatorOwnerArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationAttributesOperatorOwnerArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Required. Email address of the contacts.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Contact's name.
+    """
 
 @pulumi.input_type
 class ApplicationAttributesOperatorOwnerArgs:
@@ -431,18 +411,15 @@ class ApplicationAttributesOperatorOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class ApplicationScopeArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        Required. Scope Type.
-        Possible values:
-        REGIONAL
-        GLOBAL
-        Possible values are: `REGIONAL`, `GLOBAL`.
-        """
-elif False:
-    ApplicationScopeArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationScopeArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Required. Scope Type.
+    Possible values:
+    REGIONAL
+    GLOBAL
+    Possible values are: `REGIONAL`, `GLOBAL`.
+    """
 
 @pulumi.input_type
 class ApplicationScopeArgs:
@@ -474,35 +451,32 @@ class ApplicationScopeArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ServiceAttributesArgsDict(TypedDict):
-        business_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceAttributesBusinessOwnerArgsDict']]]]
-        """
-        Business team that ensures user needs are met and value is delivered
-        Structure is documented below.
-        """
-        criticality: NotRequired[pulumi.Input['ServiceAttributesCriticalityArgsDict']]
-        """
-        Criticality of the Application, Service, or Workload
-        Structure is documented below.
-        """
-        developer_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceAttributesDeveloperOwnerArgsDict']]]]
-        """
-        Developer team that owns development and coding.
-        Structure is documented below.
-        """
-        environment: NotRequired[pulumi.Input['ServiceAttributesEnvironmentArgsDict']]
-        """
-        Environment of the Application, Service, or Workload
-        Structure is documented below.
-        """
-        operator_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceAttributesOperatorOwnerArgsDict']]]]
-        """
-        Operator team that ensures runtime and operations.
-        Structure is documented below.
-        """
-elif False:
-    ServiceAttributesArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceAttributesArgsDict(TypedDict):
+    business_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceAttributesBusinessOwnerArgsDict']]]]
+    """
+    Business team that ensures user needs are met and value is delivered
+    Structure is documented below.
+    """
+    criticality: NotRequired[pulumi.Input['ServiceAttributesCriticalityArgsDict']]
+    """
+    Criticality of the Application, Service, or Workload
+    Structure is documented below.
+    """
+    developer_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceAttributesDeveloperOwnerArgsDict']]]]
+    """
+    Developer team that owns development and coding.
+    Structure is documented below.
+    """
+    environment: NotRequired[pulumi.Input['ServiceAttributesEnvironmentArgsDict']]
+    """
+    Environment of the Application, Service, or Workload
+    Structure is documented below.
+    """
+    operator_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceAttributesOperatorOwnerArgsDict']]]]
+    """
+    Operator team that ensures runtime and operations.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ServiceAttributesArgs:
@@ -601,18 +575,15 @@ class ServiceAttributesArgs:
         pulumi.set(self, "operator_owners", value)
 
 
-if not MYPY:
-    class ServiceAttributesBusinessOwnerArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        Required. Email address of the contacts.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Contact's name.
-        """
-elif False:
-    ServiceAttributesBusinessOwnerArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceAttributesBusinessOwnerArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Required. Email address of the contacts.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Contact's name.
+    """
 
 @pulumi.input_type
 class ServiceAttributesBusinessOwnerArgs:
@@ -652,15 +623,12 @@ class ServiceAttributesBusinessOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class ServiceAttributesCriticalityArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        Criticality type.
-        Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
-        """
-elif False:
-    ServiceAttributesCriticalityArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceAttributesCriticalityArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Criticality type.
+    Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+    """
 
 @pulumi.input_type
 class ServiceAttributesCriticalityArgs:
@@ -686,18 +654,15 @@ class ServiceAttributesCriticalityArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ServiceAttributesDeveloperOwnerArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        Required. Email address of the contacts.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Contact's name.
-        """
-elif False:
-    ServiceAttributesDeveloperOwnerArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceAttributesDeveloperOwnerArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Required. Email address of the contacts.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Contact's name.
+    """
 
 @pulumi.input_type
 class ServiceAttributesDeveloperOwnerArgs:
@@ -737,15 +702,12 @@ class ServiceAttributesDeveloperOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class ServiceAttributesEnvironmentArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        Environment type.
-        Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
-        """
-elif False:
-    ServiceAttributesEnvironmentArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceAttributesEnvironmentArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Environment type.
+    Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
+    """
 
 @pulumi.input_type
 class ServiceAttributesEnvironmentArgs:
@@ -771,18 +733,15 @@ class ServiceAttributesEnvironmentArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ServiceAttributesOperatorOwnerArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        Required. Email address of the contacts.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Contact's name.
-        """
-elif False:
-    ServiceAttributesOperatorOwnerArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceAttributesOperatorOwnerArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Required. Email address of the contacts.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Contact's name.
+    """
 
 @pulumi.input_type
 class ServiceAttributesOperatorOwnerArgs:
@@ -822,48 +781,45 @@ class ServiceAttributesOperatorOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class ServiceServicePropertyArgsDict(TypedDict):
-        extended_metadatas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyExtendedMetadataArgsDict']]]]
-        """
-        (Output)
-        Output only. Additional metadata specific to the resource type.
-        Structure is documented below.
-        """
-        functional_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyFunctionalTypeArgsDict']]]]
-        """
-        (Output)
-        Output only. The type of the service.
-        Structure is documented below.
-        """
-        gcp_project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The service project identifier that the underlying cloud resource resides in.
-        """
-        identities: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyIdentityArgsDict']]]]
-        """
-        (Output)
-        The identity associated with the service.
-        Structure is documented below.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-        """
-        registration_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyRegistrationTypeArgsDict']]]]
-        """
-        (Output)
-        Output only. The registration type of the service.
-        Structure is documented below.
-        """
-        zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The location that the underlying resource resides in if it is zonal, for example, us-west1-a).
-        """
-elif False:
-    ServiceServicePropertyArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceServicePropertyArgsDict(TypedDict):
+    extended_metadatas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyExtendedMetadataArgsDict']]]]
+    """
+    (Output)
+    Output only. Additional metadata specific to the resource type.
+    Structure is documented below.
+    """
+    functional_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyFunctionalTypeArgsDict']]]]
+    """
+    (Output)
+    Output only. The type of the service.
+    Structure is documented below.
+    """
+    gcp_project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The service project identifier that the underlying cloud resource resides in.
+    """
+    identities: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyIdentityArgsDict']]]]
+    """
+    (Output)
+    The identity associated with the service.
+    Structure is documented below.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+    """
+    registration_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyRegistrationTypeArgsDict']]]]
+    """
+    (Output)
+    Output only. The registration type of the service.
+    Structure is documented below.
+    """
+    zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The location that the underlying resource resides in if it is zonal, for example, us-west1-a).
+    """
 
 @pulumi.input_type
 class ServiceServicePropertyArgs:
@@ -1004,21 +960,18 @@ class ServiceServicePropertyArgs:
         pulumi.set(self, "zone", value)
 
 
-if not MYPY:
-    class ServiceServicePropertyExtendedMetadataArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The key of the extended metadata.
-        """
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyExtendedMetadataValueArgsDict']]]]
-        """
-        (Output)
-        The value of the extended metadata.
-        Structure is documented below.
-        """
-elif False:
-    ServiceServicePropertyExtendedMetadataArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceServicePropertyExtendedMetadataArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The key of the extended metadata.
+    """
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyExtendedMetadataValueArgsDict']]]]
+    """
+    (Output)
+    The value of the extended metadata.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ServiceServicePropertyExtendedMetadataArgs:
@@ -1065,20 +1018,17 @@ class ServiceServicePropertyExtendedMetadataArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class ServiceServicePropertyExtendedMetadataValueArgsDict(TypedDict):
-        extended_metadata_schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The resource name for the Extended Metadata Schema.
-        """
-        metadata_struct: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The metadata contents as a JSON string.
-        """
-elif False:
-    ServiceServicePropertyExtendedMetadataValueArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceServicePropertyExtendedMetadataValueArgsDict(TypedDict):
+    extended_metadata_schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The resource name for the Extended Metadata Schema.
+    """
+    metadata_struct: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The metadata contents as a JSON string.
+    """
 
 @pulumi.input_type
 class ServiceServicePropertyExtendedMetadataValueArgs:
@@ -1123,15 +1073,12 @@ class ServiceServicePropertyExtendedMetadataValueArgs:
         pulumi.set(self, "metadata_struct", value)
 
 
-if not MYPY:
-    class ServiceServicePropertyFunctionalTypeArgsDict(TypedDict):
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The registration type of a service.
-        """
-elif False:
-    ServiceServicePropertyFunctionalTypeArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceServicePropertyFunctionalTypeArgsDict(TypedDict):
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The registration type of a service.
+    """
 
 @pulumi.input_type
 class ServiceServicePropertyFunctionalTypeArgs:
@@ -1158,15 +1105,12 @@ class ServiceServicePropertyFunctionalTypeArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ServiceServicePropertyIdentityArgsDict(TypedDict):
-        principal: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The principal of the identity.
-        """
-elif False:
-    ServiceServicePropertyIdentityArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceServicePropertyIdentityArgsDict(TypedDict):
+    principal: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The principal of the identity.
+    """
 
 @pulumi.input_type
 class ServiceServicePropertyIdentityArgs:
@@ -1193,15 +1137,12 @@ class ServiceServicePropertyIdentityArgs:
         pulumi.set(self, "principal", value)
 
 
-if not MYPY:
-    class ServiceServicePropertyRegistrationTypeArgsDict(TypedDict):
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The registration type of a service.
-        """
-elif False:
-    ServiceServicePropertyRegistrationTypeArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceServicePropertyRegistrationTypeArgsDict(TypedDict):
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The registration type of a service.
+    """
 
 @pulumi.input_type
 class ServiceServicePropertyRegistrationTypeArgs:
@@ -1228,16 +1169,13 @@ class ServiceServicePropertyRegistrationTypeArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ServiceServiceReferenceArgsDict(TypedDict):
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The underlying resource URI (For example, URI of Forwarding Rule, URL Map,
-        and Backend Service).
-        """
-elif False:
-    ServiceServiceReferenceArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceServiceReferenceArgsDict(TypedDict):
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The underlying resource URI (For example, URI of Forwarding Rule, URL Map,
+    and Backend Service).
+    """
 
 @pulumi.input_type
 class ServiceServiceReferenceArgs:
@@ -1266,35 +1204,32 @@ class ServiceServiceReferenceArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class WorkloadAttributesArgsDict(TypedDict):
-        business_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadAttributesBusinessOwnerArgsDict']]]]
-        """
-        Business team that ensures user needs are met and value is delivered
-        Structure is documented below.
-        """
-        criticality: NotRequired[pulumi.Input['WorkloadAttributesCriticalityArgsDict']]
-        """
-        Criticality of the Application, Service, or Workload
-        Structure is documented below.
-        """
-        developer_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadAttributesDeveloperOwnerArgsDict']]]]
-        """
-        Developer team that owns development and coding.
-        Structure is documented below.
-        """
-        environment: NotRequired[pulumi.Input['WorkloadAttributesEnvironmentArgsDict']]
-        """
-        Environment of the Application, Service, or Workload
-        Structure is documented below.
-        """
-        operator_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadAttributesOperatorOwnerArgsDict']]]]
-        """
-        Operator team that ensures runtime and operations.
-        Structure is documented below.
-        """
-elif False:
-    WorkloadAttributesArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadAttributesArgsDict(TypedDict):
+    business_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadAttributesBusinessOwnerArgsDict']]]]
+    """
+    Business team that ensures user needs are met and value is delivered
+    Structure is documented below.
+    """
+    criticality: NotRequired[pulumi.Input['WorkloadAttributesCriticalityArgsDict']]
+    """
+    Criticality of the Application, Service, or Workload
+    Structure is documented below.
+    """
+    developer_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadAttributesDeveloperOwnerArgsDict']]]]
+    """
+    Developer team that owns development and coding.
+    Structure is documented below.
+    """
+    environment: NotRequired[pulumi.Input['WorkloadAttributesEnvironmentArgsDict']]
+    """
+    Environment of the Application, Service, or Workload
+    Structure is documented below.
+    """
+    operator_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadAttributesOperatorOwnerArgsDict']]]]
+    """
+    Operator team that ensures runtime and operations.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class WorkloadAttributesArgs:
@@ -1393,18 +1328,15 @@ class WorkloadAttributesArgs:
         pulumi.set(self, "operator_owners", value)
 
 
-if not MYPY:
-    class WorkloadAttributesBusinessOwnerArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        Email address of the contacts.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Contact's name.
-        """
-elif False:
-    WorkloadAttributesBusinessOwnerArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadAttributesBusinessOwnerArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Email address of the contacts.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Contact's name.
+    """
 
 @pulumi.input_type
 class WorkloadAttributesBusinessOwnerArgs:
@@ -1444,15 +1376,12 @@ class WorkloadAttributesBusinessOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class WorkloadAttributesCriticalityArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        Criticality type.
-        Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
-        """
-elif False:
-    WorkloadAttributesCriticalityArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadAttributesCriticalityArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Criticality type.
+    Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+    """
 
 @pulumi.input_type
 class WorkloadAttributesCriticalityArgs:
@@ -1478,18 +1407,15 @@ class WorkloadAttributesCriticalityArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class WorkloadAttributesDeveloperOwnerArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        Email address of the contacts.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Contact's name.
-        """
-elif False:
-    WorkloadAttributesDeveloperOwnerArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadAttributesDeveloperOwnerArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Email address of the contacts.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Contact's name.
+    """
 
 @pulumi.input_type
 class WorkloadAttributesDeveloperOwnerArgs:
@@ -1529,15 +1455,12 @@ class WorkloadAttributesDeveloperOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class WorkloadAttributesEnvironmentArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        Environment type.
-        Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
-        """
-elif False:
-    WorkloadAttributesEnvironmentArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadAttributesEnvironmentArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Environment type.
+    Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
+    """
 
 @pulumi.input_type
 class WorkloadAttributesEnvironmentArgs:
@@ -1563,18 +1486,15 @@ class WorkloadAttributesEnvironmentArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class WorkloadAttributesOperatorOwnerArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        Email address of the contacts.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Contact's name.
-        """
-elif False:
-    WorkloadAttributesOperatorOwnerArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadAttributesOperatorOwnerArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Email address of the contacts.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Contact's name.
+    """
 
 @pulumi.input_type
 class WorkloadAttributesOperatorOwnerArgs:
@@ -1614,42 +1534,39 @@ class WorkloadAttributesOperatorOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class WorkloadWorkloadPropertyArgsDict(TypedDict):
-        extended_metadatas: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyExtendedMetadataArgsDict']]]]
-        """
-        (Output)
-        Output only. Additional metadata specific to the resource type.
-        Structure is documented below.
-        """
-        functional_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyFunctionalTypeArgsDict']]]]
-        """
-        (Output)
-        Output only. The functional type of a service or workload.
-        Structure is documented below.
-        """
-        gcp_project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
-        """
-        identities: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyIdentityArgsDict']]]]
-        """
-        (Output)
-        The identity associated with the workload.
-        Structure is documented below.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-        """
-        zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The location that the underlying compute resource resides in if it is zonal (e.g us-west1-a).
-        """
-elif False:
-    WorkloadWorkloadPropertyArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadWorkloadPropertyArgsDict(TypedDict):
+    extended_metadatas: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyExtendedMetadataArgsDict']]]]
+    """
+    (Output)
+    Output only. Additional metadata specific to the resource type.
+    Structure is documented below.
+    """
+    functional_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyFunctionalTypeArgsDict']]]]
+    """
+    (Output)
+    Output only. The functional type of a service or workload.
+    Structure is documented below.
+    """
+    gcp_project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
+    """
+    identities: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyIdentityArgsDict']]]]
+    """
+    (Output)
+    The identity associated with the workload.
+    Structure is documented below.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+    """
+    zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The location that the underlying compute resource resides in if it is zonal (e.g us-west1-a).
+    """
 
 @pulumi.input_type
 class WorkloadWorkloadPropertyArgs:
@@ -1770,21 +1687,18 @@ class WorkloadWorkloadPropertyArgs:
         pulumi.set(self, "zone", value)
 
 
-if not MYPY:
-    class WorkloadWorkloadPropertyExtendedMetadataArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The key of the extended metadata.
-        """
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyExtendedMetadataValueArgsDict']]]]
-        """
-        (Output)
-        The value of the extended metadata.
-        Structure is documented below.
-        """
-elif False:
-    WorkloadWorkloadPropertyExtendedMetadataArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadWorkloadPropertyExtendedMetadataArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The key of the extended metadata.
+    """
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyExtendedMetadataValueArgsDict']]]]
+    """
+    (Output)
+    The value of the extended metadata.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class WorkloadWorkloadPropertyExtendedMetadataArgs:
@@ -1831,20 +1745,17 @@ class WorkloadWorkloadPropertyExtendedMetadataArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class WorkloadWorkloadPropertyExtendedMetadataValueArgsDict(TypedDict):
-        extended_metadata_schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The resource name for the Extended Metadata Schema.
-        """
-        metadata_struct: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The metadata contents as a JSON string.
-        """
-elif False:
-    WorkloadWorkloadPropertyExtendedMetadataValueArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadWorkloadPropertyExtendedMetadataValueArgsDict(TypedDict):
+    extended_metadata_schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The resource name for the Extended Metadata Schema.
+    """
+    metadata_struct: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The metadata contents as a JSON string.
+    """
 
 @pulumi.input_type
 class WorkloadWorkloadPropertyExtendedMetadataValueArgs:
@@ -1889,15 +1800,12 @@ class WorkloadWorkloadPropertyExtendedMetadataValueArgs:
         pulumi.set(self, "metadata_struct", value)
 
 
-if not MYPY:
-    class WorkloadWorkloadPropertyFunctionalTypeArgsDict(TypedDict):
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The functional type of a service or workload.
-        """
-elif False:
-    WorkloadWorkloadPropertyFunctionalTypeArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadWorkloadPropertyFunctionalTypeArgsDict(TypedDict):
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The functional type of a service or workload.
+    """
 
 @pulumi.input_type
 class WorkloadWorkloadPropertyFunctionalTypeArgs:
@@ -1924,15 +1832,12 @@ class WorkloadWorkloadPropertyFunctionalTypeArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class WorkloadWorkloadPropertyIdentityArgsDict(TypedDict):
-        principal: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The principal of the identity.
-        """
-elif False:
-    WorkloadWorkloadPropertyIdentityArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadWorkloadPropertyIdentityArgsDict(TypedDict):
+    principal: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The principal of the identity.
+    """
 
 @pulumi.input_type
 class WorkloadWorkloadPropertyIdentityArgs:
@@ -1959,15 +1864,12 @@ class WorkloadWorkloadPropertyIdentityArgs:
         pulumi.set(self, "principal", value)
 
 
-if not MYPY:
-    class WorkloadWorkloadReferenceArgsDict(TypedDict):
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The underlying compute resource uri.
-        """
-elif False:
-    WorkloadWorkloadReferenceArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadWorkloadReferenceArgsDict(TypedDict):
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The underlying compute resource uri.
+    """
 
 @pulumi.input_type
 class WorkloadWorkloadReferenceArgs:

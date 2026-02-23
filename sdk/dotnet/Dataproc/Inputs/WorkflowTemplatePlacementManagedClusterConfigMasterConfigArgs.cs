@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<bool>? IsPreemptible { get; set; }
 
         /// <summary>
-        /// The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+        /// The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        /// Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://docs.cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         /// </summary>
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }

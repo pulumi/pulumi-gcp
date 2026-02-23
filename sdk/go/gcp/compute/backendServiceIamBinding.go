@@ -12,14 +12,490 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Compute Engine BackendService. Each of these resources serves a different use case:
+//
+// * `compute.BackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the backendservice and replaces any existing policy already attached.
+// * `compute.BackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backendservice are preserved.
+// * `compute.BackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backendservice are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `compute.BackendServiceIamPolicy`: Retrieves the IAM policy for the backendservice
+//
+// > **Note:** `compute.BackendServiceIamPolicy` **cannot** be used in conjunction with `compute.BackendServiceIamBinding` and `compute.BackendServiceIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `compute.BackendServiceIamBinding` resources **can be** used in conjunction with `compute.BackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// ## compute.BackendServiceIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/compute.admin",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendServiceIamPolicy(ctx, "policy", &compute.BackendServiceIamPolicyArgs{
+//				Project:    pulumi.Any(_default.Project),
+//				Name:       pulumi.Any(_default.Name),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/compute.admin",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: {
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendServiceIamPolicy(ctx, "policy", &compute.BackendServiceIamPolicyArgs{
+//				Project:    pulumi.Any(_default.Project),
+//				Name:       pulumi.Any(_default.Name),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## compute.BackendServiceIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendServiceIamBinding(ctx, "binding", &compute.BackendServiceIamBindingArgs{
+//				Project: pulumi.Any(_default.Project),
+//				Name:    pulumi.Any(_default.Name),
+//				Role:    pulumi.String("roles/compute.admin"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendServiceIamBinding(ctx, "binding", &compute.BackendServiceIamBindingArgs{
+//				Project: pulumi.Any(_default.Project),
+//				Name:    pulumi.Any(_default.Name),
+//				Role:    pulumi.String("roles/compute.admin"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &compute.BackendServiceIamBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## compute.BackendServiceIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendServiceIamMember(ctx, "member", &compute.BackendServiceIamMemberArgs{
+//				Project: pulumi.Any(_default.Project),
+//				Name:    pulumi.Any(_default.Name),
+//				Role:    pulumi.String("roles/compute.admin"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendServiceIamMember(ctx, "member", &compute.BackendServiceIamMemberArgs{
+//				Project: pulumi.Any(_default.Project),
+//				Name:    pulumi.Any(_default.Name),
+//				Role:    pulumi.String("roles/compute.admin"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//				Condition: &compute.BackendServiceIamMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Compute Engine BackendService
+//
+// Three different resources help you manage your IAM policy for Compute Engine BackendService. Each of these resources serves a different use case:
+//
+// * `compute.BackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the backendservice and replaces any existing policy already attached.
+// * `compute.BackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backendservice are preserved.
+// * `compute.BackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backendservice are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `compute.BackendServiceIamPolicy`: Retrieves the IAM policy for the backendservice
+//
+// > **Note:** `compute.BackendServiceIamPolicy` **cannot** be used in conjunction with `compute.BackendServiceIamBinding` and `compute.BackendServiceIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `compute.BackendServiceIamBinding` resources **can be** used in conjunction with `compute.BackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// ## compute.BackendServiceIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/compute.admin",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendServiceIamPolicy(ctx, "policy", &compute.BackendServiceIamPolicyArgs{
+//				Project:    pulumi.Any(_default.Project),
+//				Name:       pulumi.Any(_default.Name),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/compute.admin",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: {
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendServiceIamPolicy(ctx, "policy", &compute.BackendServiceIamPolicyArgs{
+//				Project:    pulumi.Any(_default.Project),
+//				Name:       pulumi.Any(_default.Name),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## compute.BackendServiceIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendServiceIamBinding(ctx, "binding", &compute.BackendServiceIamBindingArgs{
+//				Project: pulumi.Any(_default.Project),
+//				Name:    pulumi.Any(_default.Name),
+//				Role:    pulumi.String("roles/compute.admin"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendServiceIamBinding(ctx, "binding", &compute.BackendServiceIamBindingArgs{
+//				Project: pulumi.Any(_default.Project),
+//				Name:    pulumi.Any(_default.Name),
+//				Role:    pulumi.String("roles/compute.admin"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &compute.BackendServiceIamBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## compute.BackendServiceIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendServiceIamMember(ctx, "member", &compute.BackendServiceIamMemberArgs{
+//				Project: pulumi.Any(_default.Project),
+//				Name:    pulumi.Any(_default.Name),
+//				Role:    pulumi.String("roles/compute.admin"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendServiceIamMember(ctx, "member", &compute.BackendServiceIamMemberArgs{
+//				Project: pulumi.Any(_default.Project),
+//				Name:    pulumi.Any(_default.Name),
+//				Role:    pulumi.String("roles/compute.admin"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//				Condition: &compute.BackendServiceIamMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:
 //
 // * projects/{{project}}/global/backendServices/{{name}}
-//
 // * {{project}}/{{name}}
-//
 // * {{name}}
 //
 // Any variables not passed in the import command will be taken from the provider configuration.
@@ -27,24 +503,21 @@ import (
 // Compute Engine backendservice IAM resources can be imported using the resource identifiers, role, and member.
 //
 // IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-//
 // ```sh
-// $ pulumi import gcp:compute/backendServiceIamBinding:BackendServiceIamBinding editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin user:jane@example.com"
+// $ terraform import google_compute_backend_service_iam_member.editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin user:jane@example.com"
 // ```
 //
 // IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-//
 // ```sh
-// $ pulumi import gcp:compute/backendServiceIamBinding:BackendServiceIamBinding editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin"
+// $ terraform import google_compute_backend_service_iam_binding.editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin"
 // ```
 //
 // IAM policy imports use the identifier of the resource in question, e.g.
-//
 // ```sh
 // $ pulumi import gcp:compute/backendServiceIamBinding:BackendServiceIamBinding editor projects/{{project}}/global/backendServices/{{backend_service}}
 // ```
 //
-// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+// > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
 //	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type BackendServiceIamBinding struct {

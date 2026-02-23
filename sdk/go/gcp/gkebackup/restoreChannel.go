@@ -62,22 +62,14 @@ import (
 // RestoreChannel can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/restoreChannels/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, RestoreChannel can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default projects/{{project}}/locations/{{location}}/restoreChannels/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default {{location}}/{{name}}
 // ```
 type RestoreChannel struct {
@@ -116,7 +108,7 @@ type RestoreChannel struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Server generated, unique identifier of UUID format.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -196,7 +188,7 @@ type restoreChannelState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Server generated, unique identifier of UUID format.
 	Uid *string `pulumi:"uid"`
@@ -236,7 +228,7 @@ type RestoreChannelState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Server generated, unique identifier of UUID format.
 	Uid pulumi.StringPtrInput
@@ -440,7 +432,8 @@ func (o RestoreChannelOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RestoreChannelOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RestoreChannel) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

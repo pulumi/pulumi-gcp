@@ -58,22 +58,14 @@ import (
 // kmsconfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, kmsconfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:netapp/kmsconfig:Kmsconfig default projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/kmsconfig:Kmsconfig default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/kmsconfig:Kmsconfig default {{location}}/{{name}}
 // ```
 type Kmsconfig struct {
@@ -101,7 +93,7 @@ type Kmsconfig struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The Service account which needs to have access to the  provided KMS key.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
@@ -170,7 +162,7 @@ type kmsconfigState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The Service account which needs to have access to the  provided KMS key.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -199,7 +191,7 @@ type KmsconfigState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The Service account which needs to have access to the  provided KMS key.
 	ServiceAccount pulumi.StringPtrInput
@@ -381,7 +373,8 @@ func (o KmsconfigOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o KmsconfigOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Kmsconfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

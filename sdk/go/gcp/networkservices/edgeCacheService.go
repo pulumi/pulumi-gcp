@@ -544,22 +544,14 @@ import (
 // EdgeCacheService can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/global/edgeCacheServices/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, EdgeCacheService can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default projects/{{project}}/locations/global/edgeCacheServices/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default {{name}}
 // ```
 type EdgeCacheService struct {
@@ -599,7 +591,7 @@ type EdgeCacheService struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Require TLS (HTTPS) for all clients connecting to this service.
 	// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
@@ -685,7 +677,7 @@ type edgeCacheServiceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Require TLS (HTTPS) for all clients connecting to this service.
 	// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
@@ -734,7 +726,7 @@ type EdgeCacheServiceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Require TLS (HTTPS) for all clients connecting to this service.
 	// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
@@ -990,7 +982,8 @@ func (o EdgeCacheServiceOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o EdgeCacheServiceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

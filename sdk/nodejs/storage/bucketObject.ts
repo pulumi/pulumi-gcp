@@ -145,7 +145,15 @@ export class BucketObject extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly customerEncryption: pulumi.Output<outputs.storage.BucketObjectCustomerEncryption | undefined>;
+    /**
+     * When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+     */
     declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
+    /**
+     * Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+     *
+     * > **Warning:** For dynamically populated files or objects, `detectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `sourceMd5hash` instead.
+     */
     declare public readonly detectMd5hash: pulumi.Output<string | undefined>;
     /**
      * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -348,7 +356,15 @@ export interface BucketObjectState {
      * Structure is documented below.
      */
     customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
+    /**
+     * When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+     */
     deletionPolicy?: pulumi.Input<string>;
+    /**
+     * Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+     *
+     * > **Warning:** For dynamically populated files or objects, `detectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `sourceMd5hash` instead.
+     */
     detectMd5hash?: pulumi.Input<string>;
     /**
      * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -466,7 +482,15 @@ export interface BucketObjectArgs {
      * Structure is documented below.
      */
     customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
+    /**
+     * When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+     */
     deletionPolicy?: pulumi.Input<string>;
+    /**
+     * Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+     *
+     * > **Warning:** For dynamically populated files or objects, `detectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `sourceMd5hash` instead.
+     */
     detectMd5hash?: pulumi.Input<string>;
     /**
      * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).

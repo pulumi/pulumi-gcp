@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.SaaSRuntime.Inputs
 
     public sealed class ReleaseBlueprintArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Output)
+        /// Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
+        /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 

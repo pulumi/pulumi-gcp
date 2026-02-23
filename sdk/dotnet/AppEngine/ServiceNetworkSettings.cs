@@ -86,22 +86,14 @@ namespace Pulumi.Gcp.AppEngine
     /// ServiceNetworkSettings can be imported using any of these accepted formats:
     /// 
     /// * `apps/{{project}}/services/{{service}}`
-    /// 
     /// * `{{project}}/{{service}}`
-    /// 
     /// * `{{service}}`
     /// 
     /// When using the `pulumi import` command, ServiceNetworkSettings can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default apps/{{project}}/services/{{service}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default {{project}}/{{service}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default {{service}}
     /// ```
     /// </summary>

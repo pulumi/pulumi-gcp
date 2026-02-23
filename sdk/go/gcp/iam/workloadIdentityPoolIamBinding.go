@@ -12,14 +12,490 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Cloud IAM WorkloadIdentityPool. Each of these resources serves a different use case:
+//
+// * `iam.WorkloadIdentityPoolIamPolicy`: Authoritative. Sets the IAM policy for the workloadidentitypool and replaces any existing policy already attached.
+// * `iam.WorkloadIdentityPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workloadidentitypool are preserved.
+// * `iam.WorkloadIdentityPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workloadidentitypool are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `iam.WorkloadIdentityPoolIamPolicy`: Retrieves the IAM policy for the workloadidentitypool
+//
+// > **Note:** `iam.WorkloadIdentityPoolIamPolicy` **cannot** be used in conjunction with `iam.WorkloadIdentityPoolIamBinding` and `iam.WorkloadIdentityPoolIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `iam.WorkloadIdentityPoolIamBinding` resources **can be** used in conjunction with `iam.WorkloadIdentityPoolIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// ## iam.WorkloadIdentityPoolIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/iam.workloadIdentityPoolViewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkloadIdentityPoolIamPolicy(ctx, "policy", &iam.WorkloadIdentityPoolIamPolicyArgs{
+//				Project:                pulumi.Any(example.Project),
+//				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
+//				PolicyData:             pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/iam.workloadIdentityPoolViewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: {
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkloadIdentityPoolIamPolicy(ctx, "policy", &iam.WorkloadIdentityPoolIamPolicyArgs{
+//				Project:                pulumi.Any(example.Project),
+//				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
+//				PolicyData:             pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## iam.WorkloadIdentityPoolIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iam.NewWorkloadIdentityPoolIamBinding(ctx, "binding", &iam.WorkloadIdentityPoolIamBindingArgs{
+//				Project:                pulumi.Any(example.Project),
+//				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
+//				Role:                   pulumi.String("roles/iam.workloadIdentityPoolViewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iam.NewWorkloadIdentityPoolIamBinding(ctx, "binding", &iam.WorkloadIdentityPoolIamBindingArgs{
+//				Project:                pulumi.Any(example.Project),
+//				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
+//				Role:                   pulumi.String("roles/iam.workloadIdentityPoolViewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &iam.WorkloadIdentityPoolIamBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## iam.WorkloadIdentityPoolIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iam.NewWorkloadIdentityPoolIamMember(ctx, "member", &iam.WorkloadIdentityPoolIamMemberArgs{
+//				Project:                pulumi.Any(example.Project),
+//				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
+//				Role:                   pulumi.String("roles/iam.workloadIdentityPoolViewer"),
+//				Member:                 pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iam.NewWorkloadIdentityPoolIamMember(ctx, "member", &iam.WorkloadIdentityPoolIamMemberArgs{
+//				Project:                pulumi.Any(example.Project),
+//				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
+//				Role:                   pulumi.String("roles/iam.workloadIdentityPoolViewer"),
+//				Member:                 pulumi.String("user:jane@example.com"),
+//				Condition: &iam.WorkloadIdentityPoolIamMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Cloud IAM WorkloadIdentityPool
+//
+// Three different resources help you manage your IAM policy for Cloud IAM WorkloadIdentityPool. Each of these resources serves a different use case:
+//
+// * `iam.WorkloadIdentityPoolIamPolicy`: Authoritative. Sets the IAM policy for the workloadidentitypool and replaces any existing policy already attached.
+// * `iam.WorkloadIdentityPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workloadidentitypool are preserved.
+// * `iam.WorkloadIdentityPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workloadidentitypool are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `iam.WorkloadIdentityPoolIamPolicy`: Retrieves the IAM policy for the workloadidentitypool
+//
+// > **Note:** `iam.WorkloadIdentityPoolIamPolicy` **cannot** be used in conjunction with `iam.WorkloadIdentityPoolIamBinding` and `iam.WorkloadIdentityPoolIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `iam.WorkloadIdentityPoolIamBinding` resources **can be** used in conjunction with `iam.WorkloadIdentityPoolIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// ## iam.WorkloadIdentityPoolIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/iam.workloadIdentityPoolViewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkloadIdentityPoolIamPolicy(ctx, "policy", &iam.WorkloadIdentityPoolIamPolicyArgs{
+//				Project:                pulumi.Any(example.Project),
+//				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
+//				PolicyData:             pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/iam.workloadIdentityPoolViewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: {
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkloadIdentityPoolIamPolicy(ctx, "policy", &iam.WorkloadIdentityPoolIamPolicyArgs{
+//				Project:                pulumi.Any(example.Project),
+//				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
+//				PolicyData:             pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## iam.WorkloadIdentityPoolIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iam.NewWorkloadIdentityPoolIamBinding(ctx, "binding", &iam.WorkloadIdentityPoolIamBindingArgs{
+//				Project:                pulumi.Any(example.Project),
+//				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
+//				Role:                   pulumi.String("roles/iam.workloadIdentityPoolViewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iam.NewWorkloadIdentityPoolIamBinding(ctx, "binding", &iam.WorkloadIdentityPoolIamBindingArgs{
+//				Project:                pulumi.Any(example.Project),
+//				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
+//				Role:                   pulumi.String("roles/iam.workloadIdentityPoolViewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &iam.WorkloadIdentityPoolIamBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## iam.WorkloadIdentityPoolIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iam.NewWorkloadIdentityPoolIamMember(ctx, "member", &iam.WorkloadIdentityPoolIamMemberArgs{
+//				Project:                pulumi.Any(example.Project),
+//				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
+//				Role:                   pulumi.String("roles/iam.workloadIdentityPoolViewer"),
+//				Member:                 pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iam.NewWorkloadIdentityPoolIamMember(ctx, "member", &iam.WorkloadIdentityPoolIamMemberArgs{
+//				Project:                pulumi.Any(example.Project),
+//				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
+//				Role:                   pulumi.String("roles/iam.workloadIdentityPoolViewer"),
+//				Member:                 pulumi.String("user:jane@example.com"),
+//				Condition: &iam.WorkloadIdentityPoolIamMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:
 //
 // * projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
-//
 // * {{project}}/{{workload_identity_pool_id}}
-//
 // * {{workload_identity_pool_id}}
 //
 // Any variables not passed in the import command will be taken from the provider configuration.
@@ -27,24 +503,21 @@ import (
 // Cloud IAM workloadidentitypool IAM resources can be imported using the resource identifiers, role, and member.
 //
 // IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-//
 // ```sh
-// $ pulumi import gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer user:jane@example.com"
+// $ terraform import google_iam_workload_identity_pool_iam_member.editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer user:jane@example.com"
 // ```
 //
 // IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-//
 // ```sh
-// $ pulumi import gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer"
+// $ terraform import google_iam_workload_identity_pool_iam_binding.editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer"
 // ```
 //
 // IAM policy imports use the identifier of the resource in question, e.g.
-//
 // ```sh
 // $ pulumi import gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding editor projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
 // ```
 //
-// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+// > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
 //	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type WorkloadIdentityPoolIamBinding struct {

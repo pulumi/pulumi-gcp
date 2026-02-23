@@ -27,16 +27,12 @@ import * as utilities from "../utilities";
  * OrganizationVpcFlowLogsConfig can be imported using any of these accepted formats:
  *
  * * `organizations/{{organization}}/locations/{{location}}/vpcFlowLogsConfigs/{{vpc_flow_logs_config_id}}`
- *
  * * `{{organization}}/{{location}}/{{vpc_flow_logs_config_id}}`
  *
  * When using the `pulumi import` command, OrganizationVpcFlowLogsConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig default organizations/{{organization}}/locations/{{location}}/vpcFlowLogsConfigs/{{vpc_flow_logs_config_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig default {{organization}}/{{location}}/{{vpc_flow_logs_config_id}}
  * ```
  */
@@ -141,7 +137,7 @@ export class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
     declare public readonly organization: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -302,7 +298,7 @@ export interface OrganizationVpcFlowLogsConfigState {
     organization?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

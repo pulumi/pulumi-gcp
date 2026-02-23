@@ -99,16 +99,12 @@ namespace Pulumi.Gcp.Iam
     /// WorkforcePoolProviderScimTenant can be imported using any of these accepted formats:
     /// 
     /// * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}/scimTenants/{{scim_tenant_id}}`
-    /// 
     /// * `{{location}}/{{workforce_pool_id}}/{{provider_id}}/{{scim_tenant_id}}`
     /// 
     /// When using the `pulumi import` command, WorkforcePoolProviderScimTenant can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}/scimTenants/{{scim_tenant_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant default {{location}}/{{workforce_pool_id}}/{{provider_id}}/{{scim_tenant_id}}
     /// ```
     /// </summary>

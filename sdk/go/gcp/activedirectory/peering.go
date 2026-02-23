@@ -12,6 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a Peering for Managed AD instance.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about Peering, see:
+//
+// * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1beta1/projects.locations.global.peerings)
+// * How-to Guides
+//   - [Active Directory Domain Peering](https://cloud.google.com/managed-microsoft-ad/docs/domain-peering)
+//
 // ## Example Usage
 //
 // ### Active Directory Peering Basic
@@ -117,7 +128,7 @@ type Peering struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The current state of this Peering.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
@@ -187,7 +198,7 @@ type peeringState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The current state of this Peering.
 	Status *string `pulumi:"status"`
@@ -214,7 +225,7 @@ type PeeringState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The current state of this Peering.
 	Status pulumi.StringPtrInput
@@ -393,7 +404,8 @@ func (o PeeringOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o PeeringOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

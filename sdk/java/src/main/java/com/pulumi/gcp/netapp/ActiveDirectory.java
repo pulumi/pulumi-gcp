@@ -91,22 +91,14 @@ import javax.annotation.Nullable;
  * ActiveDirectory can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, ActiveDirectory can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default {{location}}/{{name}}
  * ```
  * 
@@ -379,9 +371,19 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
     public Output<String> organizationalUnit() {
         return this.organizationalUnit;
     }
+    /**
+     * Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
+    /**
+     * @return Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
     public Output<String> password() {
         return this.password;
     }
@@ -403,7 +405,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -411,7 +413,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

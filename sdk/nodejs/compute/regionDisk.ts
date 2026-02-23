@@ -143,28 +143,16 @@ import * as utilities from "../utilities";
  * RegionDisk can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/regions/{{region}}/disks/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, RegionDisk can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/regionDisk:RegionDisk default projects/{{project}}/regions/{{region}}/disks/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionDisk:RegionDisk default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionDisk:RegionDisk default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionDisk:RegionDisk default {{name}}
  * ```
  */
@@ -325,7 +313,7 @@ export class RegionDisk extends pulumi.CustomResource {
     declare public readonly provisionedThroughput: pulumi.Output<number>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -628,7 +616,7 @@ export interface RegionDiskState {
     provisionedThroughput?: pulumi.Input<number>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

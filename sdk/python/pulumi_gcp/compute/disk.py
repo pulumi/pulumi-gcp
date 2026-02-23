@@ -855,7 +855,7 @@ class _DiskState:
                Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
                allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_policies: (Optional, Beta)
                Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
@@ -1401,7 +1401,7 @@ class _DiskState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1810,28 +1810,16 @@ class Disk(pulumi.CustomResource):
         Disk can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{name}}
         ```
 
@@ -2069,28 +2057,16 @@ class Disk(pulumi.CustomResource):
         Disk can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{name}}
         ```
 
@@ -2336,7 +2312,7 @@ class Disk(pulumi.CustomResource):
                Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
                allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_policies: (Optional, Beta)
                Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
@@ -2736,7 +2712,7 @@ class Disk(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

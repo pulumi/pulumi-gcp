@@ -30,8 +30,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -79,8 +77,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -173,8 +169,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -223,22 +217,14 @@ import (
 // Cluster can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:container/attachedCluster:AttachedCluster default projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{location}}/{{name}}
 // ```
 type AttachedCluster struct {
@@ -274,7 +260,8 @@ type AttachedCluster struct {
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
 	// "eks", "aks", "generic". The generic distribution provides the ability to register
 	// or migrate any CNCF conformant cluster.
-	Distribution         pulumi.StringOutput    `pulumi:"distribution"`
+	Distribution pulumi.StringOutput `pulumi:"distribution"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// A set of errors found in the cluster.
 	// Structure is documented below.
@@ -411,7 +398,8 @@ type attachedClusterState struct {
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
 	// "eks", "aks", "generic". The generic distribution provides the ability to register
 	// or migrate any CNCF conformant cluster.
-	Distribution         *string           `pulumi:"distribution"`
+	Distribution *string `pulumi:"distribution"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// A set of errors found in the cluster.
 	// Structure is documented below.
@@ -504,7 +492,8 @@ type AttachedClusterState struct {
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
 	// "eks", "aks", "generic". The generic distribution provides the ability to register
 	// or migrate any CNCF conformant cluster.
-	Distribution         pulumi.StringPtrInput
+	Distribution pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// A set of errors found in the cluster.
 	// Structure is documented below.
@@ -849,6 +838,7 @@ func (o AttachedClusterOutput) Distribution() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.Distribution }).(pulumi.StringOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o AttachedClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

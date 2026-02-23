@@ -23,7 +23,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      */
     private @Nullable Boolean internalIpOnly;
     /**
-     * @return The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
+     * @return The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
      * 
      */
     private @Nullable Map<String,String> metadata;
@@ -48,17 +48,17 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity reservationAffinity;
     /**
-     * @return The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+     * @return The (https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
      * 
      */
     private @Nullable String serviceAccount;
     /**
-     * @return The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+     * @return The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
      * 
      */
     private @Nullable List<String> serviceAccountScopes;
     /**
-     * @return Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+     * @return Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://docs.cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
      * 
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig shieldedInstanceConfig;
@@ -68,7 +68,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      */
     private @Nullable String subnetwork;
     /**
-     * @return The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+     * @return The Compute Engine tags to add to all instances (see [Manage tags for resources](https://docs.cloud.google.com/compute/docs/tag-resources)).
      * 
      */
     private @Nullable List<String> tags;
@@ -87,7 +87,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         return Optional.ofNullable(this.internalIpOnly);
     }
     /**
-     * @return The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
+     * @return The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
      * 
      */
     public Map<String,String> metadata() {
@@ -122,21 +122,21 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         return Optional.ofNullable(this.reservationAffinity);
     }
     /**
-     * @return The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+     * @return The (https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
      * 
      */
     public Optional<String> serviceAccount() {
         return Optional.ofNullable(this.serviceAccount);
     }
     /**
-     * @return The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+     * @return The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
      * 
      */
     public List<String> serviceAccountScopes() {
         return this.serviceAccountScopes == null ? List.of() : this.serviceAccountScopes;
     }
     /**
-     * @return Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+     * @return Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://docs.cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
      * 
      */
     public Optional<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig> shieldedInstanceConfig() {
@@ -150,7 +150,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         return Optional.ofNullable(this.subnetwork);
     }
     /**
-     * @return The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+     * @return The Compute Engine tags to add to all instances (see [Manage tags for resources](https://docs.cloud.google.com/compute/docs/tag-resources)).
      * 
      */
     public List<String> tags() {

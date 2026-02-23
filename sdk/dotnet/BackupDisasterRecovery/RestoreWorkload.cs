@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BackupDisasterRecovery
 {
     /// <summary>
+    /// An imperative resource that triggers a GCBDR restoration event.
+    /// Creating this resource will initiate a restore operation from a specified backup.
+    /// The resource represents the restore operation and its result.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Backup Dr Restore Workload Compute Instance Basic
@@ -28,7 +32,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         BackupVaultId = "backup-vault",
     ///         DataSourceId = "data-source",
     ///         BackupId = "backup",
-    ///         Name = "projects/my-project/locations/us-central1/backups/my-backup",
     ///         ComputeInstanceTargetEnvironment = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceTargetEnvironmentArgs
     ///         {
     ///             Project = "my-project-name",
@@ -37,7 +40,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         ComputeInstanceRestoreProperties = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesArgs
     ///         {
     ///             Name = "restored-instance",
-    ///             MachineType = "e2-medium",
+    ///             MachineType = "zones/us-central1-a/machineTypes/e2-medium",
     ///         },
     ///     });
     /// 
@@ -59,7 +62,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         BackupVaultId = "backup-vault",
     ///         DataSourceId = "data-source",
     ///         BackupId = "backup",
-    ///         Name = "projects/my-project/locations/us-central1/backups/my-backup",
     ///         ComputeInstanceTargetEnvironment = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceTargetEnvironmentArgs
     ///         {
     ///             Project = "my-project-name",
@@ -68,15 +70,27 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         ComputeInstanceRestoreProperties = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesArgs
     ///         {
     ///             Name = "restored-instance-full",
-    ///             MachineType = "e2-medium",
+    ///             MachineType = "zones/us-central1-a/machineTypes/e2-medium",
     ///             Description = "Restored compute instance with advanced configuration",
     ///             CanIpForward = true,
     ///             DeletionProtection = false,
-    ///             Labels = 
+    ///             Labels = new[]
     ///             {
-    ///                 { "environment", "production" },
-    ///                 { "restored", "true" },
-    ///                 { "team", "infrastructure" },
+    ///                 new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs
+    ///                 {
+    ///                     Key = "environment",
+    ///                     Value = "production",
+    ///                 },
+    ///                 new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs
+    ///                 {
+    ///                     Key = "restored",
+    ///                     Value = "true",
+    ///                 },
+    ///                 new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs
+    ///                 {
+    ///                     Key = "team",
+    ///                     Value = "infrastructure",
+    ///                 },
     ///             },
     ///             Tags = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs
     ///             {
@@ -91,13 +105,13 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///             {
     ///                 new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs
     ///                 {
-    ///                     Network = "default",
+    ///                     Network = "projects/my-project-name/global/networks/default",
     ///                     Subnetwork = "projects/my-project-name/regions/us-central1/subnetworks/default",
     ///                     AccessConfigs = new[]
     ///                     {
     ///                         new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs
     ///                         {
-    ///                             Name = "External NAT",
+    ///                             Name = "ONE_TO_ONE_NAT",
     ///                             NetworkTier = "PREMIUM",
     ///                         },
     ///                     },
@@ -171,7 +185,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         BackupVaultId = "backup-vault",
     ///         DataSourceId = "data-source",
     ///         BackupId = "backup",
-    ///         Name = "projects/my-project/locations/us-central1/backups/my-backup",
     ///         DiskTargetEnvironment = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadDiskTargetEnvironmentArgs
     ///         {
     ///             Project = "my-project-name",
@@ -181,7 +194,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         {
     ///             Name = "restored-disk",
     ///             SizeGb = 100,
-    ///             Type = "pd-standard",
+    ///             Type = "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard",
     ///             Description = "Restored persistent disk from backup",
     ///             Labels = 
     ///             {
@@ -209,15 +222,14 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         BackupVaultId = "backup-vault",
     ///         DataSourceId = "data-source",
     ///         BackupId = "backup",
-    ///         Name = "projects/my-project/locations/us-central1/backups/my-backup",
     ///         RegionDiskTargetEnvironment = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadRegionDiskTargetEnvironmentArgs
     ///         {
     ///             Project = "my-project-name",
     ///             Region = "us-central1",
     ///             ReplicaZones = new[]
     ///             {
-    ///                 "us-central1-a",
-    ///                 "us-central1-b",
+    ///                 "projects/my-project-name/zones/us-central1-a",
+    ///                 "projects/my-project-name/zones/us-central1-b",
     ///             },
     ///         },
     ///         DiskRestoreProperties = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadDiskRestorePropertiesArgs
@@ -254,7 +266,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         BackupVaultId = "backup-vault",
     ///         DataSourceId = "data-source",
     ///         BackupId = "backup",
-    ///         Name = "projects/my-project/locations/us-central1/backups/my-backup",
     ///         DeleteRestoredInstance = false,
     ///         DiskTargetEnvironment = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadDiskTargetEnvironmentArgs
     ///         {
@@ -264,8 +275,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         DiskRestoreProperties = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadDiskRestorePropertiesArgs
     ///         {
     ///             Name = "persistent-disk",
-    ///             SizeGb = 50,
-    ///             Type = "pd-standard",
+    ///             SizeGb = 100,
+    ///             Type = "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard",
     ///         },
     ///     });
     /// 
@@ -277,16 +288,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// RestoreWorkload can be imported using any of these accepted formats:
     /// 
     /// * `/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, RestoreWorkload can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default /{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
     /// ```
     /// </summary>
@@ -331,6 +338,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         [Output("dataSourceId")]
         public Output<string> DataSourceId { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+        /// If false, only the restore record is removed from the state, leaving the resource active.
+        /// </summary>
         [Output("deleteRestoredInstance")]
         public Output<bool?> DeleteRestoredInstance { get; private set; } = null!;
 
@@ -355,7 +366,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The resource name of the backup instance.
+        /// (Optional, Deprecated)
+        /// The resource name of the backup instance.
+        /// 
+        /// &gt; **Warning:** `Name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -466,6 +480,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         [Input("dataSourceId", required: true)]
         public Input<string> DataSourceId { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+        /// If false, only the restore record is removed from the state, leaving the resource active.
+        /// </summary>
         [Input("deleteRestoredInstance")]
         public Input<bool>? DeleteRestoredInstance { get; set; }
 
@@ -490,7 +508,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. The resource name of the backup instance.
+        /// (Optional, Deprecated)
+        /// The resource name of the backup instance.
+        /// 
+        /// &gt; **Warning:** `Name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -556,6 +577,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         [Input("dataSourceId")]
         public Input<string>? DataSourceId { get; set; }
 
+        /// <summary>
+        /// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+        /// If false, only the restore record is removed from the state, leaving the resource active.
+        /// </summary>
         [Input("deleteRestoredInstance")]
         public Input<bool>? DeleteRestoredInstance { get; set; }
 
@@ -580,7 +605,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Required. The resource name of the backup instance.
+        /// (Optional, Deprecated)
+        /// The resource name of the backup instance.
+        /// 
+        /// &gt; **Warning:** `Name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

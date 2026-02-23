@@ -139,22 +139,14 @@ import javax.annotation.Nullable;
  * BlockchainNodes can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/blockchainNodes/{{blockchain_node_id}}`
- * 
  * * `{{project}}/{{location}}/{{blockchain_node_id}}`
- * 
  * * `{{location}}/{{blockchain_node_id}}`
  * 
  * When using the `pulumi import` command, BlockchainNodes can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default projects/{{project}}/locations/{{location}}/blockchainNodes/{{blockchain_node_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default {{project}}/{{location}}/{{blockchain_node_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default {{location}}/{{blockchain_node_id}}
  * ```
  * 
@@ -317,7 +309,7 @@ public class BlockchainNodes extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -325,7 +317,7 @@ public class BlockchainNodes extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

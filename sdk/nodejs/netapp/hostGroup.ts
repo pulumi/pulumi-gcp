@@ -36,22 +36,14 @@ import * as utilities from "../utilities";
  * HostGroup can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/hostGroups/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, HostGroup can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:netapp/hostGroup:HostGroup default projects/{{project}}/locations/{{location}}/hostGroups/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/hostGroup:HostGroup default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/hostGroup:HostGroup default {{location}}/{{name}}
  * ```
  */
@@ -128,7 +120,7 @@ export class HostGroup extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -249,7 +241,7 @@ export interface HostGroupState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

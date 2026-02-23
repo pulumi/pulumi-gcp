@@ -124,6 +124,22 @@ class ProjectKajPolicyConfig(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        `ProjectKajPolicyConfig` is a project-level singleton resource
+        used to configure the default KAJ policy of newly created key.
+
+        > **Note:**  ProjectKajPolicyConfig cannot be deleted from Google Cloud Platform.
+        Destroying a Terraform-managed  ProjectKajPolicyConfig will remove it from state but
+        *will not delete the resource from Google Cloud Platform.*
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about ProjectKajPolicyConfig, see:
+
+        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/KeyAccessJustificationsPolicyConfig)
+        * How-to Guides
+            * [Set default Key Access Justifications policy](https://cloud.google.com/assured-workloads/key-access-justifications/docs/set-default-policy)
+
         ## Example Usage
 
         ### Kms Project Kaj Policy Config Basic
@@ -164,16 +180,12 @@ class ProjectKajPolicyConfig(pulumi.CustomResource):
         ProjectKajPolicyConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/kajPolicyConfig`
-
         * `{{project}}`
 
         When using the `pulumi import` command, ProjectKajPolicyConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig default projects/{{project}}/kajPolicyConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig default {{project}}
         ```
 
@@ -193,6 +205,22 @@ class ProjectKajPolicyConfig(pulumi.CustomResource):
                  args: Optional[ProjectKajPolicyConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        `ProjectKajPolicyConfig` is a project-level singleton resource
+        used to configure the default KAJ policy of newly created key.
+
+        > **Note:**  ProjectKajPolicyConfig cannot be deleted from Google Cloud Platform.
+        Destroying a Terraform-managed  ProjectKajPolicyConfig will remove it from state but
+        *will not delete the resource from Google Cloud Platform.*
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about ProjectKajPolicyConfig, see:
+
+        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/KeyAccessJustificationsPolicyConfig)
+        * How-to Guides
+            * [Set default Key Access Justifications policy](https://cloud.google.com/assured-workloads/key-access-justifications/docs/set-default-policy)
+
         ## Example Usage
 
         ### Kms Project Kaj Policy Config Basic
@@ -233,16 +261,12 @@ class ProjectKajPolicyConfig(pulumi.CustomResource):
         ProjectKajPolicyConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/kajPolicyConfig`
-
         * `{{project}}`
 
         When using the `pulumi import` command, ProjectKajPolicyConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig default projects/{{project}}/kajPolicyConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig default {{project}}
         ```
 

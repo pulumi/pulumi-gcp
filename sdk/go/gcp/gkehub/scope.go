@@ -63,22 +63,14 @@ import (
 // Scope can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/global/scopes/{{scope_id}}`
-//
 // * `{{project}}/{{scope_id}}`
-//
 // * `{{scope_id}}`
 //
 // When using the `pulumi import` command, Scope can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkehub/scope:Scope default projects/{{project}}/locations/global/scopes/{{scope_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/scope:Scope default {{project}}/{{scope_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/scope:Scope default {{scope_id}}
 // ```
 type Scope struct {
@@ -107,7 +99,7 @@ type Scope struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The client-provided identifier of the scope.
 	ScopeId pulumi.StringOutput `pulumi:"scopeId"`
@@ -181,7 +173,7 @@ type scopeState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The client-provided identifier of the scope.
 	ScopeId *string `pulumi:"scopeId"`
@@ -218,7 +210,7 @@ type ScopeState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The client-provided identifier of the scope.
 	ScopeId pulumi.StringPtrInput
@@ -405,7 +397,8 @@ func (o ScopeOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ScopeOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Scope) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

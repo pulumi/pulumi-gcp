@@ -19,6 +19,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A resource represents a Dataform Git repository
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about Repository, see:
+ * 
+ * * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/dataform/docs/)
+ * 
  * ## Example Usage
  * 
  * ### Dataform Repository
@@ -120,28 +131,16 @@ import javax.annotation.Nullable;
  * Repository can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{region}}/repositories/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{name}}`
- * 
  * * `{{region}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataform/repository:Repository default projects/{{project}}/locations/{{region}}/repositories/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataform/repository:Repository default {{project}}/{{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataform/repository:Repository default {{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataform/repository:Repository default {{name}}
  * ```
  * 
@@ -290,7 +289,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -298,7 +297,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

@@ -27,6 +27,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? ImageUri;
         /// <summary>
+        /// Instance flexibility Policy allowing a mixture of VM shapes.
+        /// </summary>
+        public readonly Outputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy? InstanceFlexibilityPolicy;
+        /// <summary>
         /// List of master instance names which
         /// have been assigned to the cluster.
         /// </summary>
@@ -58,6 +62,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? imageUri,
 
+            Outputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy? instanceFlexibilityPolicy,
+
             ImmutableArray<string> instanceNames,
 
             string? machineType,
@@ -69,6 +75,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             Accelerators = accelerators;
             DiskConfig = diskConfig;
             ImageUri = imageUri;
+            InstanceFlexibilityPolicy = instanceFlexibilityPolicy;
             InstanceNames = instanceNames;
             MachineType = machineType;
             MinCpuPlatform = minCpuPlatform;

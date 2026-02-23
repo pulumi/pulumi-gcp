@@ -43,22 +43,14 @@ import * as utilities from "../utilities";
  * ServiceInstance can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/serviceInstances/{{service_instance_id}}`
- *
  * * `{{project}}/{{location}}/{{service_instance_id}}`
- *
  * * `{{location}}/{{service_instance_id}}`
  *
  * When using the `pulumi import` command, ServiceInstance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default projects/{{project}}/locations/{{location}}/serviceInstances/{{service_instance_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{project}}/{{location}}/{{service_instance_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{location}}/{{service_instance_id}}
  * ```
  */
@@ -132,7 +124,7 @@ export class GdcServiceInstance extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -303,7 +295,7 @@ export interface GdcServiceInstanceState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

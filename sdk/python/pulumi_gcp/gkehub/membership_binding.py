@@ -161,7 +161,7 @@ class _MembershipBindingState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] scope: A Workspace resource name in the format
                `projects/*/locations/*/scopes/*`.
         :param pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArgs']]] states: State of the membership binding resource.
@@ -315,7 +315,7 @@ class _MembershipBindingState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -412,16 +412,16 @@ class MembershipBinding(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
-            membership_id="tf-test-membership_8647",
+            membership_id="tf-test-membership_20665",
             endpoint={
                 "gke_cluster": {
                     "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[primary]))
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_50610")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_85160")
         membership_binding = gcp.gkehub.MembershipBinding("membership_binding",
-            membership_binding_id="tf-test-membership-binding_77124",
+            membership_binding_id="tf-test-membership-binding_92130",
             scope=scope.name,
             membership_id=membership.membership_id,
             location="global",
@@ -441,22 +441,14 @@ class MembershipBinding(pulumi.CustomResource):
         MembershipBinding can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}`
-
         * `{{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}`
-
         * `{{location}}/{{membership_id}}/{{membership_binding_id}}`
 
         When using the `pulumi import` command, MembershipBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default {{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default {{location}}/{{membership_id}}/{{membership_binding_id}}
         ```
 
@@ -505,16 +497,16 @@ class MembershipBinding(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
-            membership_id="tf-test-membership_8647",
+            membership_id="tf-test-membership_20665",
             endpoint={
                 "gke_cluster": {
                     "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[primary]))
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_50610")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_85160")
         membership_binding = gcp.gkehub.MembershipBinding("membership_binding",
-            membership_binding_id="tf-test-membership-binding_77124",
+            membership_binding_id="tf-test-membership-binding_92130",
             scope=scope.name,
             membership_id=membership.membership_id,
             location="global",
@@ -534,22 +526,14 @@ class MembershipBinding(pulumi.CustomResource):
         MembershipBinding can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}`
-
         * `{{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}`
-
         * `{{location}}/{{membership_id}}/{{membership_binding_id}}`
 
         When using the `pulumi import` command, MembershipBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default {{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default {{location}}/{{membership_id}}/{{membership_binding_id}}
         ```
 
@@ -652,7 +636,7 @@ class MembershipBinding(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] scope: A Workspace resource name in the format
                `projects/*/locations/*/scopes/*`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MembershipBindingStateArgs', 'MembershipBindingStateArgsDict']]]] states: State of the membership binding resource.
@@ -761,7 +745,7 @@ class MembershipBinding(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -191,6 +191,14 @@ namespace Pulumi.Gcp.Workflows
         [Output("cryptoKeyName")]
         public Output<string?> CryptoKeyName { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the workflow,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the workflow will fail.
+        /// When the field is set to false, deleting the workflow is allowed.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -246,7 +254,7 @@ namespace Pulumi.Gcp.Workflows
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -374,6 +382,14 @@ namespace Pulumi.Gcp.Workflows
         [Input("cryptoKeyName")]
         public Input<string>? CryptoKeyName { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the workflow,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the workflow will fail.
+        /// When the field is set to false, deleting the workflow is allowed.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -507,6 +523,14 @@ namespace Pulumi.Gcp.Workflows
         [Input("cryptoKeyName")]
         public Input<string>? CryptoKeyName { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the workflow,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the workflow will fail.
+        /// When the field is set to false, deleting the workflow is allowed.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -581,7 +605,7 @@ namespace Pulumi.Gcp.Workflows
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

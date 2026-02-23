@@ -39,14 +39,14 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional. The encryption configuration for the workflow template.
+     * Encryption settings for encrypting workflow template job arguments. Structure is documented below
      * 
      */
     @Import(name="encryptionConfig")
     private @Nullable Output<WorkflowTemplateEncryptionConfigArgs> encryptionConfig;
 
     /**
-     * @return Optional. The encryption configuration for the workflow template.
+     * @return Encryption settings for encrypting workflow template job arguments. Structure is documented below
      * 
      */
     public Optional<Output<WorkflowTemplateEncryptionConfigArgs>> encryptionConfig() {
@@ -54,14 +54,14 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Required. The Directed Acyclic Graph of Jobs to submit.
+     * (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
      * 
      */
     @Import(name="jobs", required=true)
     private Output<List<WorkflowTemplateJobArgs>> jobs;
 
     /**
-     * @return Required. The Directed Acyclic Graph of Jobs to submit.
+     * @return (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
      * 
      */
     public Output<List<WorkflowTemplateJobArgs>> jobs() {
@@ -105,14 +105,14 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+     * (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+     * @return (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -135,14 +135,14 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Required. WorkflowTemplate scheduling information.
+     * (Required) WorkflowTemplate scheduling information.
      * 
      */
     @Import(name="placement", required=true)
     private Output<WorkflowTemplatePlacementArgs> placement;
 
     /**
-     * @return Required. WorkflowTemplate scheduling information.
+     * @return (Required) WorkflowTemplate scheduling information.
      * 
      */
     public Output<WorkflowTemplatePlacementArgs> placement() {
@@ -242,7 +242,7 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param encryptionConfig Optional. The encryption configuration for the workflow template.
+         * @param encryptionConfig Encryption settings for encrypting workflow template job arguments. Structure is documented below
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param encryptionConfig Optional. The encryption configuration for the workflow template.
+         * @param encryptionConfig Encryption settings for encrypting workflow template job arguments. Structure is documented below
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param jobs Required. The Directed Acyclic Graph of Jobs to submit.
+         * @param jobs (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param jobs Required. The Directed Acyclic Graph of Jobs to submit.
+         * @param jobs (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param jobs Required. The Directed Acyclic Graph of Jobs to submit.
+         * @param jobs (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+         * @param name (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+         * @param name (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param placement Required. WorkflowTemplate scheduling information.
+         * @param placement (Required) WorkflowTemplate scheduling information.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param placement Required. WorkflowTemplate scheduling information.
+         * @param placement (Required) WorkflowTemplate scheduling information.
          * 
          * @return builder
          * 

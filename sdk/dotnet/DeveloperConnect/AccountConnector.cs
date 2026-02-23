@@ -196,22 +196,14 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// AccountConnector can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/accountConnectors/{{account_connector_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{account_connector_id}}`
-    /// 
     /// * `{{location}}/{{account_connector_id}}`
     /// 
     /// When using the `pulumi import` command, AccountConnector can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default projects/{{project}}/locations/{{location}}/accountConnectors/{{account_connector_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default {{project}}/{{location}}/{{account_connector_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default {{location}}/{{account_connector_id}}
     /// ```
     /// </summary>
@@ -241,6 +233,9 @@ namespace Pulumi.Gcp.DeveloperConnect
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -293,7 +288,7 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -451,6 +446,10 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
@@ -525,7 +524,7 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

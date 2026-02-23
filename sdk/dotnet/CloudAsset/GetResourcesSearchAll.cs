@@ -12,6 +12,13 @@ namespace Pulumi.Gcp.CloudAsset
     public static class GetResourcesSearchAll
     {
         /// <summary>
+        /// Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the
+        /// [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
+        /// for more details.
+        /// 
+        /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
         /// ## Example Usage
         /// 
         /// ### Searching For All Projects In An Org
@@ -85,6 +92,13 @@ namespace Pulumi.Gcp.CloudAsset
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourcesSearchAllResult>("gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll", args ?? new GetResourcesSearchAllArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the
+        /// [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
+        /// for more details.
+        /// 
+        /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
         /// ## Example Usage
         /// 
         /// ### Searching For All Projects In An Org
@@ -158,6 +172,13 @@ namespace Pulumi.Gcp.CloudAsset
             => global::Pulumi.Deployment.Instance.Invoke<GetResourcesSearchAllResult>("gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll", args ?? new GetResourcesSearchAllInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the
+        /// [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
+        /// for more details.
+        /// 
+        /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
         /// ## Example Usage
         /// 
         /// ### Searching For All Projects In An Org

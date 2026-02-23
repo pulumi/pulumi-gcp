@@ -333,6 +333,7 @@ class _ConnectionState:
         :param pulumi.Input[_builtins.bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection.
                Repository based API methods and webhooks processing for repositories in
                this connection will be disabled.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Optional. This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
@@ -358,7 +359,7 @@ class _ConnectionState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Output only. Set to true when the connection is being set up or updated in the
                background.
         :param pulumi.Input[_builtins.str] uid: Output only. A system-assigned unique identifier for a the GitRepositoryLink.
@@ -522,6 +523,9 @@ class _ConnectionState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -678,7 +682,7 @@ class _ConnectionState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1026,22 +1030,14 @@ class Connection(pulumi.CustomResource):
         Connection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`
-
         * `{{project}}/{{location}}/{{connection_id}}`
-
         * `{{location}}/{{connection_id}}`
 
         When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:developerconnect/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/connection:Connection default {{project}}/{{location}}/{{connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/connection:Connection default {{location}}/{{connection_id}}
         ```
 
@@ -1368,22 +1364,14 @@ class Connection(pulumi.CustomResource):
         Connection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`
-
         * `{{project}}/{{location}}/{{connection_id}}`
-
         * `{{location}}/{{connection_id}}`
 
         When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:developerconnect/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/connection:Connection default {{project}}/{{location}}/{{connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/connection:Connection default {{location}}/{{connection_id}}
         ```
 
@@ -1514,6 +1502,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection.
                Repository based API methods and webhooks processing for repositories in
                this connection will be disabled.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Optional. This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
@@ -1539,7 +1528,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Output only. Set to true when the connection is being set up or updated in the
                background.
         :param pulumi.Input[_builtins.str] uid: Output only. A system-assigned unique identifier for a the GitRepositoryLink.
@@ -1652,6 +1641,9 @@ class Connection(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
@@ -1760,7 +1752,7 @@ class Connection(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

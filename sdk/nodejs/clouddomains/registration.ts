@@ -7,6 +7,18 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Registers a new domain name and creates a corresponding Registration resource.
+ *
+ * To get more information about Registration, see:
+ *
+ * * [API documentation](https://cloud.google.com/domains/docs/reference/rest/v1/projects.locations.registrations)
+ * * How-to Guides
+ *     * [Register a domain with Cloud Domains](https://cloud.google.com/domains/docs/buy-register-domain)
+ *
+ * > **Warning:** The Terraform implementation of this resource will not actually delete a Registration during
+ * `terraform destroy`. Instead it will "abandon" the resource and remove it from state.
+ * For information on deleting a registered domain, see https://cloud.google.com/domains/docs/delete-domain
+ *
  * ## Example Usage
  *
  * ### Clouddomains Registration Full
@@ -82,22 +94,14 @@ import * as utilities from "../utilities";
  * Registration can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}`
- *
  * * `{{project}}/{{location}}/{{domain_name}}`
- *
  * * `{{location}}/{{domain_name}}`
  *
  * When using the `pulumi import` command, Registration can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:clouddomains/registration:Registration default projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:clouddomains/registration:Registration default {{project}}/{{location}}/{{domain_name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:clouddomains/registration:Registration default {{location}}/{{domain_name}}
  * ```
  */
@@ -193,7 +197,7 @@ export class Registration extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -356,7 +360,7 @@ export interface RegistrationState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

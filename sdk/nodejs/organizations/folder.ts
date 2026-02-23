@@ -26,16 +26,12 @@ import * as utilities from "../utilities";
  * Folders can be imported using the folder's id, e.g.
  *
  * * `folders/{{folder_id}}`
- *
  * * `{{folder_id}}`
  *
  * When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:organizations/folder:Folder default folders/{{folder_id}}
  * ```
  */
@@ -76,6 +72,9 @@ export class Folder extends pulumi.CustomResource {
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * The folder’s display name.
@@ -168,6 +167,9 @@ export interface FolderState {
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The folder’s display name.
@@ -205,6 +207,9 @@ export interface FolderState {
  * The set of arguments for constructing a Folder resource.
  */
 export interface FolderArgs {
+    /**
+     * Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The folder’s display name.

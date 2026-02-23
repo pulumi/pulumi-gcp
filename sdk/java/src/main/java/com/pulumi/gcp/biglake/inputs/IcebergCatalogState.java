@@ -97,16 +97,20 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the IcebergCatalog. Format:
-     * projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+     * The name of the IcebergCatalog.
+     * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+     * exact same value of the GCS bucket&#39;s name. For example, for a bucket:
+     * gs://bucket-name, the catalog name will be exactly &#34;bucket-name&#34;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the IcebergCatalog. Format:
-     * projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+     * @return The name of the IcebergCatalog.
+     * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+     * exact same value of the GCS bucket&#39;s name. For example, for a bucket:
+     * gs://bucket-name, the catalog name will be exactly &#34;bucket-name&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -320,8 +324,10 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name The name of the IcebergCatalog. Format:
-         * projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+         * @param name The name of the IcebergCatalog.
+         * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+         * exact same value of the GCS bucket&#39;s name. For example, for a bucket:
+         * gs://bucket-name, the catalog name will be exactly &#34;bucket-name&#34;.
          * 
          * @return builder
          * 
@@ -332,8 +338,10 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name The name of the IcebergCatalog. Format:
-         * projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+         * @param name The name of the IcebergCatalog.
+         * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+         * exact same value of the GCS bucket&#39;s name. For example, for a bucket:
+         * gs://bucket-name, the catalog name will be exactly &#34;bucket-name&#34;.
          * 
          * @return builder
          * 

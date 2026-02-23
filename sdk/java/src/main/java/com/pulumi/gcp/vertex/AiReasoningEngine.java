@@ -82,6 +82,66 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Vertex Ai Reasoning Engine Developer Connect Source
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.vertex.AiReasoningEngine;
+ * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
+ *             .displayName("reasoning-engine")
+ *             .description("A basic reasoning engine")
+ *             .region("us-central1")
+ *             .spec(AiReasoningEngineSpecArgs.builder()
+ *                 .sourceCodeSpec(AiReasoningEngineSpecSourceCodeSpecArgs.builder()
+ *                     .developerConnectSource(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs.builder()
+ *                         .config(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs.builder()
+ *                             .gitRepositoryLink(String.format("projects/%s/locations/us-central1/connections/tpg-test-bot-github/gitRepositoryLinks/tpg-test-vertex-reasoning", project.projectId()))
+ *                             .dir("source")
+ *                             .revision("main")
+ *                             .build())
+ *                         .build())
+ *                     .pythonSpec(AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs.builder()
+ *                         .version("3.14")
+ *                         .entrypointModule("simple_agent")
+ *                         .entrypointObject("fixed_name_generator")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Vertex Ai Reasoning Engine Psc Interface
  * 
  * <pre>
@@ -449,28 +509,16 @@ import javax.annotation.Nullable;
  * ReasoningEngine can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{region}}/reasoningEngines/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{name}}`
- * 
  * * `{{region}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, ReasoningEngine can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default projects/{{project}}/locations/{{region}}/reasoningEngines/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{project}}/{{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{name}}
  * ```
  * 

@@ -115,16 +115,56 @@ public final class RegionSslCertificateArgs extends com.pulumi.resources.Resourc
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="privateKey", required=true)
-    private Output<String> privateKey;
+    @Import(name="privateKey")
+    private @Nullable Output<String> privateKey;
 
     /**
      * @return The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> privateKey() {
-        return this.privateKey;
+    public Optional<Output<String>> privateKey() {
+        return Optional.ofNullable(this.privateKey);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The write-only private key in PEM format.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `privateKey` or `privateKeyWo` can only be set.
+     * 
+     */
+    @Import(name="privateKeyWo")
+    private @Nullable Output<String> privateKeyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The write-only private key in PEM format.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `privateKey` or `privateKeyWo` can only be set.
+     * 
+     */
+    public Optional<Output<String>> privateKeyWo() {
+        return Optional.ofNullable(this.privateKeyWo);
+    }
+
+    /**
+     * Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Import(name="privateKeyWoVersion")
+    private @Nullable Output<String> privateKeyWoVersion;
+
+    /**
+     * @return Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<Output<String>> privateKeyWoVersion() {
+        return Optional.ofNullable(this.privateKeyWoVersion);
     }
 
     /**
@@ -169,6 +209,8 @@ public final class RegionSslCertificateArgs extends com.pulumi.resources.Resourc
         this.name = $.name;
         this.namePrefix = $.namePrefix;
         this.privateKey = $.privateKey;
+        this.privateKeyWo = $.privateKeyWo;
+        this.privateKeyWoVersion = $.privateKeyWoVersion;
         this.project = $.project;
         this.region = $.region;
     }
@@ -316,7 +358,7 @@ public final class RegionSslCertificateArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder privateKey(Output<String> privateKey) {
+        public Builder privateKey(@Nullable Output<String> privateKey) {
             $.privateKey = privateKey;
             return this;
         }
@@ -330,6 +372,58 @@ public final class RegionSslCertificateArgs extends com.pulumi.resources.Resourc
          */
         public Builder privateKey(String privateKey) {
             return privateKey(Output.of(privateKey));
+        }
+
+        /**
+         * @param privateKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The write-only private key in PEM format.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `privateKey` or `privateKeyWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateKeyWo(@Nullable Output<String> privateKeyWo) {
+            $.privateKeyWo = privateKeyWo;
+            return this;
+        }
+
+        /**
+         * @param privateKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The write-only private key in PEM format.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `privateKey` or `privateKeyWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateKeyWo(String privateKeyWo) {
+            return privateKeyWo(Output.of(privateKeyWo));
+        }
+
+        /**
+         * @param privateKeyWoVersion Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateKeyWoVersion(@Nullable Output<String> privateKeyWoVersion) {
+            $.privateKeyWoVersion = privateKeyWoVersion;
+            return this;
+        }
+
+        /**
+         * @param privateKeyWoVersion Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateKeyWoVersion(String privateKeyWoVersion) {
+            return privateKeyWoVersion(Output.of(privateKeyWoVersion));
         }
 
         /**
@@ -381,9 +475,6 @@ public final class RegionSslCertificateArgs extends com.pulumi.resources.Resourc
         public RegionSslCertificateArgs build() {
             if ($.certificate == null) {
                 throw new MissingRequiredPropertyException("RegionSslCertificateArgs", "certificate");
-            }
-            if ($.privateKey == null) {
-                throw new MissingRequiredPropertyException("RegionSslCertificateArgs", "privateKey");
             }
             return $;
         }

@@ -121,28 +121,16 @@ import * as utilities from "../utilities";
  * Address can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/regions/{{region}}/addresses/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, Address can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/address:Address default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/address:Address default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/address:Address default {{name}}
  * ```
  */
@@ -267,7 +255,7 @@ export class Address extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -469,7 +457,7 @@ export interface AddressState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

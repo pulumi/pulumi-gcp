@@ -484,22 +484,14 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
         DataPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}`
-
         * `{{project}}/{{location}}/{{data_policy_id}}`
-
         * `{{location}}/{{data_policy_id}}`
 
         When using the `pulumi import` command, DataPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy default projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy default {{project}}/{{location}}/{{data_policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy default {{location}}/{{data_policy_id}}
         ```
 
@@ -620,22 +612,14 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
         DataPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}`
-
         * `{{project}}/{{location}}/{{data_policy_id}}`
-
         * `{{location}}/{{data_policy_id}}`
 
         When using the `pulumi import` command, DataPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy default projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy default {{project}}/{{location}}/{{data_policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy default {{location}}/{{data_policy_id}}
         ```
 

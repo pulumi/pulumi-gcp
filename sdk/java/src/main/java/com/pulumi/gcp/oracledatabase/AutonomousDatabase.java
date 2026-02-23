@@ -252,22 +252,14 @@ import javax.annotation.Nullable;
  * AutonomousDatabase can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/autonomousDatabases/{{autonomous_database_id}}`
- * 
  * * `{{project}}/{{location}}/{{autonomous_database_id}}`
- * 
  * * `{{location}}/{{autonomous_database_id}}`
  * 
  * When using the `pulumi import` command, AutonomousDatabase can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default projects/{{project}}/locations/{{location}}/autonomousDatabases/{{autonomous_database_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{project}}/{{location}}/{{autonomous_database_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{location}}/{{autonomous_database_id}}
  * ```
  * 
@@ -354,9 +346,17 @@ public class AutonomousDatabase extends com.pulumi.resources.CustomResource {
     public Output<String> database() {
         return this.database;
     }
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
@@ -572,7 +572,7 @@ public class AutonomousDatabase extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -580,7 +580,7 @@ public class AutonomousDatabase extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

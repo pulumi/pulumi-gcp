@@ -25,6 +25,11 @@ export type DbSystem = import("./dbSystem").DbSystem;
 export const DbSystem: typeof import("./dbSystem").DbSystem = null as any;
 utilities.lazyLoad(exports, ["DbSystem"], () => require("./dbSystem"));
 
+export { ExadbVmClusterArgs, ExadbVmClusterState } from "./exadbVmCluster";
+export type ExadbVmCluster = import("./exadbVmCluster").ExadbVmCluster;
+export const ExadbVmCluster: typeof import("./exadbVmCluster").ExadbVmCluster = null as any;
+utilities.lazyLoad(exports, ["ExadbVmCluster"], () => require("./exadbVmCluster"));
+
 export { ExascaleDbStorageVaultArgs, ExascaleDbStorageVaultState } from "./exascaleDbStorageVault";
 export type ExascaleDbStorageVault = import("./exascaleDbStorageVault").ExascaleDbStorageVault;
 export const ExascaleDbStorageVault: typeof import("./exascaleDbStorageVault").ExascaleDbStorageVault = null as any;
@@ -93,6 +98,8 @@ const _module = {
                 return new CloudVmCluster(name, <any>undefined, { urn })
             case "gcp:oracledatabase/dbSystem:DbSystem":
                 return new DbSystem(name, <any>undefined, { urn })
+            case "gcp:oracledatabase/exadbVmCluster:ExadbVmCluster":
+                return new ExadbVmCluster(name, <any>undefined, { urn })
             case "gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault":
                 return new ExascaleDbStorageVault(name, <any>undefined, { urn })
             case "gcp:oracledatabase/odbNetwork:OdbNetwork":
@@ -108,6 +115,7 @@ pulumi.runtime.registerResourceModule("gcp", "oracledatabase/autonomousDatabase"
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/cloudExadataInfrastructure", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/cloudVmCluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/dbSystem", _module)
+pulumi.runtime.registerResourceModule("gcp", "oracledatabase/exadbVmCluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/exascaleDbStorageVault", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/odbNetwork", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/odbSubnet", _module)

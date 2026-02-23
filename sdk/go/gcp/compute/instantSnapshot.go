@@ -69,28 +69,16 @@ import (
 // InstantSnapshot can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/zones/{{zone}}/instantSnapshots/{{name}}`
-//
 // * `{{project}}/{{zone}}/{{name}}`
-//
 // * `{{zone}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, InstantSnapshot can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default projects/{{project}}/zones/{{zone}}/instantSnapshots/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{project}}/{{zone}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{zone}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{name}}
 // ```
 type InstantSnapshot struct {
@@ -123,7 +111,7 @@ type InstantSnapshot struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -200,7 +188,7 @@ type instantSnapshotState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -240,7 +228,7 @@ type InstantSnapshotState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -443,7 +431,8 @@ func (o InstantSnapshotOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InstantSnapshotOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstantSnapshot) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

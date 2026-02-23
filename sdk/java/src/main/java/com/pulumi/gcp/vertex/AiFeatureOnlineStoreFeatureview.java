@@ -325,8 +325,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var project = new Project("project", ProjectArgs.builder()
- *             .projectId("tf-test_40472")
- *             .name("tf-test_44339")
+ *             .projectId("tf-test_55500")
+ *             .name("tf-test_12223")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")
@@ -608,28 +608,16 @@ import javax.annotation.Nullable;
  * FeatureOnlineStoreFeatureview can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}`
- * 
  * * `{{region}}/{{feature_online_store}}/{{name}}`
- * 
  * * `{{feature_online_store}}/{{name}}`
  * 
  * When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{project}}/{{region}}/{{feature_online_store}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{region}}/{{feature_online_store}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{feature_online_store}}/{{name}}
  * ```
  * 
@@ -762,7 +750,7 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -770,7 +758,7 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

@@ -34,6 +34,10 @@ export interface GetInstanceIamPolicyArgs {
      * The name or relative resource id of the instance to manage IAM policies for.
      */
     instance: string;
+    /**
+     * The project in which the instance belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     project?: string;
 }
 
@@ -86,5 +90,9 @@ export interface GetInstanceIamPolicyOutputArgs {
      * The name or relative resource id of the instance to manage IAM policies for.
      */
     instance: pulumi.Input<string>;
+    /**
+     * The project in which the instance belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     project?: pulumi.Input<string>;
 }

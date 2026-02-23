@@ -42,6 +42,9 @@ import javax.annotation.Nullable;
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
  * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `sensitive_labels.auth_token_wo`, `sensitive_labels.password_wo`, `sensitive_labels.service_key_wo`.
+ * Read more about Write-only Arguments.
+ * 
  * ## Example Usage
  * 
  * ### Notification Channel Basic

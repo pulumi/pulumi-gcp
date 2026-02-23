@@ -73,34 +73,18 @@ import (
 // InterconnectAttachment can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/interconnectAttachment/{{interconnect_attachment_id}}`
-//
 // * `{{project}}/{{location}}/{{zone}}/{{interconnect_attachment_id}}`
-//
 // * `{{location}}/{{zone}}/{{interconnect_attachment_id}}`
-//
 // * `{{location}}/{{interconnect_attachment_id}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default projects/{{project}}/locations/{{location}}/zones/{{zone}}/interconnectAttachment/{{interconnect_attachment_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default {{project}}/{{location}}/{{zone}}/{{interconnect_attachment_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default {{location}}/{{zone}}/{{interconnect_attachment_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default {{location}}/{{interconnect_attachment_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default {{name}}
 // ```
 type InterconnectAttachment struct {
@@ -137,7 +121,7 @@ type InterconnectAttachment struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The time when the resource was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -233,7 +217,7 @@ type interconnectAttachmentState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The time when the resource was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -277,7 +261,7 @@ type InterconnectAttachmentState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The time when the resource was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -501,7 +485,8 @@ func (o InterconnectAttachmentOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InterconnectAttachmentOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

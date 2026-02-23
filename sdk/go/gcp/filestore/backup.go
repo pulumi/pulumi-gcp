@@ -83,22 +83,14 @@ import (
 // Backup can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/backups/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:filestore/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:filestore/backup:Backup default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:filestore/backup:Backup default {{location}}/{{name}}
 // ```
 type Backup struct {
@@ -135,7 +127,7 @@ type Backup struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare pulumi.StringOutput `pulumi:"sourceFileShare"`
@@ -229,7 +221,7 @@ type backupState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare *string `pulumi:"sourceFileShare"`
@@ -280,7 +272,7 @@ type BackupState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare pulumi.StringPtrInput
@@ -516,7 +508,8 @@ func (o BackupOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o BackupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

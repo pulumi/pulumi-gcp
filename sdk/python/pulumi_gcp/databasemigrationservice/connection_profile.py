@@ -251,7 +251,7 @@ class _ConnectionProfileState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The current connection profile state.
         """
         if alloydb is not None:
@@ -484,7 +484,7 @@ class _ConnectionProfileState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -783,11 +783,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             alloydb={
-                "cluster_id": "tf-test-dbmsalloycluster_22811",
+                "cluster_id": "tf-test-dbmsalloycluster_91042",
                 "settings": {
                     "initial_user": {
-                        "user": "alloyuser_91042",
-                        "password": "alloypass_72490",
+                        "user": "alloyuser_72490",
+                        "password": "alloypass_89605",
                     },
                     "vpc_network": default.id,
                     "labels": {
@@ -917,22 +917,14 @@ class ConnectionProfile(pulumi.CustomResource):
         ConnectionProfile can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
-
         * `{{project}}/{{location}}/{{connection_profile_id}}`
-
         * `{{location}}/{{connection_profile_id}}`
 
         When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
         ```
 
@@ -1225,11 +1217,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             alloydb={
-                "cluster_id": "tf-test-dbmsalloycluster_22811",
+                "cluster_id": "tf-test-dbmsalloycluster_91042",
                 "settings": {
                     "initial_user": {
-                        "user": "alloyuser_91042",
-                        "password": "alloypass_72490",
+                        "user": "alloyuser_72490",
+                        "password": "alloypass_89605",
                     },
                     "vpc_network": default.id,
                     "labels": {
@@ -1359,22 +1351,14 @@ class ConnectionProfile(pulumi.CustomResource):
         ConnectionProfile can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
-
         * `{{project}}/{{location}}/{{connection_profile_id}}`
-
         * `{{location}}/{{connection_profile_id}}`
 
         When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
         ```
 
@@ -1493,7 +1477,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The current connection profile state.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1654,7 +1638,7 @@ class ConnectionProfile(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

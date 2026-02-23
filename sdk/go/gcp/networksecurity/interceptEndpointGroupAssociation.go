@@ -90,22 +90,14 @@ import (
 // InterceptEndpointGroupAssociation can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/interceptEndpointGroupAssociations/{{intercept_endpoint_group_association_id}}`
-//
 // * `{{project}}/{{location}}/{{intercept_endpoint_group_association_id}}`
-//
 // * `{{location}}/{{intercept_endpoint_group_association_id}}`
 //
 // When using the `pulumi import` command, InterceptEndpointGroupAssociation can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default projects/{{project}}/locations/{{location}}/interceptEndpointGroupAssociations/{{intercept_endpoint_group_association_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default {{project}}/{{location}}/{{intercept_endpoint_group_association_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default {{location}}/{{intercept_endpoint_group_association_id}}
 // ```
 type InterceptEndpointGroupAssociation struct {
@@ -154,7 +146,7 @@ type InterceptEndpointGroupAssociation struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This part of the normal
@@ -260,7 +252,7 @@ type interceptEndpointGroupAssociationState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This part of the normal
@@ -323,7 +315,7 @@ type InterceptEndpointGroupAssociationState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This part of the normal
@@ -564,7 +556,8 @@ func (o InterceptEndpointGroupAssociationOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InterceptEndpointGroupAssociationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InterceptEndpointGroupAssociation) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

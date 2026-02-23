@@ -107,29 +107,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ### Importing IAM policies
- *
- * IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
- *
- * * `"projects/{project}/instances/{instance}"`
- *
- * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
- *
- * tf
- *
- * import {
- *
- *   id = "projects/{project}/instances/{instance}"
- *
- *   to = google_bigtable_instance_iam_policy.default
- *
- * }
- *
- * The `pulumi import` command can also be used:
- *
- * ```sh
- * $ pulumi import gcp:bigtable/instanceIamPolicy:InstanceIamPolicy default projects/{project}/instances/{instance}
- * ```
+ * > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class InstanceIamPolicy extends pulumi.CustomResource {
     /**
@@ -170,6 +149,10 @@ export class InstanceIamPolicy extends pulumi.CustomResource {
      */
     declare public readonly instance: pulumi.Output<string>;
     declare public readonly policyData: pulumi.Output<string>;
+    /**
+     * The project in which the instance belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     declare public readonly project: pulumi.Output<string>;
 
     /**
@@ -222,6 +205,10 @@ export interface InstanceIamPolicyState {
      */
     instance?: pulumi.Input<string>;
     policyData?: pulumi.Input<string>;
+    /**
+     * The project in which the instance belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     project?: pulumi.Input<string>;
 }
 
@@ -236,5 +223,9 @@ export interface InstanceIamPolicyArgs {
      */
     instance: pulumi.Input<string>;
     policyData: pulumi.Input<string>;
+    /**
+     * The project in which the instance belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     project?: pulumi.Input<string>;
 }

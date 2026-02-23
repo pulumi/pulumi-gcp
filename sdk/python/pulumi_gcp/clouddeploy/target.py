@@ -323,6 +323,7 @@ class _TargetState:
         :param pulumi.Input['TargetCustomTargetArgs'] custom_target: Optional. Information specifying a Custom Target.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the `Target`. Max length is 255 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -483,6 +484,9 @@ class _TargetState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -802,24 +806,15 @@ class Target(pulumi.CustomResource):
         ## Import
 
         Target can be imported using any of these accepted formats:
-
         * `projects/{{project}}/locations/{{location}}/targets/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Target can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:clouddeploy/target:Target default projects/{{project}}/locations/{{location}}/targets/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/target:Target default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/target:Target default {{location}}/{{name}}
         ```
 
@@ -960,24 +955,15 @@ class Target(pulumi.CustomResource):
         ## Import
 
         Target can be imported using any of these accepted formats:
-
         * `projects/{{project}}/locations/{{location}}/targets/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Target can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:clouddeploy/target:Target default projects/{{project}}/locations/{{location}}/targets/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/target:Target default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/target:Target default {{location}}/{{name}}
         ```
 
@@ -1097,6 +1083,7 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']] custom_target: Optional. Information specifying a Custom Target.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the `Target`. Max length is 255 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -1211,6 +1198,9 @@ class Target(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

@@ -189,14 +189,16 @@ namespace Pulumi.Gcp.Dataproc
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
+        /// <summary>
+        /// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+        /// </summary>
         [Output("gracefulDecommissionTimeout")]
         public Output<string?> GracefulDecommissionTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-        /// 
-        /// 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
+        /// instances in the cluster.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -295,6 +297,9 @@ namespace Pulumi.Gcp.Dataproc
         [Input("clusterConfig")]
         public Input<Inputs.ClusterClusterConfigArgs>? ClusterConfig { get; set; }
 
+        /// <summary>
+        /// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+        /// </summary>
         [Input("gracefulDecommissionTimeout")]
         public Input<string>? GracefulDecommissionTimeout { get; set; }
 
@@ -302,10 +307,9 @@ namespace Pulumi.Gcp.Dataproc
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-        /// 
-        /// 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
+        /// instances in the cluster.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -376,6 +380,9 @@ namespace Pulumi.Gcp.Dataproc
             }
         }
 
+        /// <summary>
+        /// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+        /// </summary>
         [Input("gracefulDecommissionTimeout")]
         public Input<string>? GracefulDecommissionTimeout { get; set; }
 
@@ -383,10 +390,9 @@ namespace Pulumi.Gcp.Dataproc
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-        /// 
-        /// 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
+        /// instances in the cluster.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

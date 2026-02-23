@@ -229,7 +229,7 @@ class _EndpointPolicyState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] server_tls_policy: A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
         :param pulumi.Input['EndpointPolicyTrafficPortSelectorArgs'] traffic_port_selector: Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
                Structure is documented below.
@@ -383,7 +383,7 @@ class _EndpointPolicyState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -522,22 +522,14 @@ class EndpointPolicy(pulumi.CustomResource):
         EndpointPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/endpointPolicies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, EndpointPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default projects/{{project}}/locations/global/endpointPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default {{name}}
         ```
 
@@ -629,22 +621,14 @@ class EndpointPolicy(pulumi.CustomResource):
         EndpointPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/endpointPolicies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, EndpointPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default projects/{{project}}/locations/global/endpointPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default {{name}}
         ```
 
@@ -747,7 +731,7 @@ class EndpointPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] server_tls_policy: A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
         :param pulumi.Input[Union['EndpointPolicyTrafficPortSelectorArgs', 'EndpointPolicyTrafficPortSelectorArgsDict']] traffic_port_selector: Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
                Structure is documented below.
@@ -856,7 +840,7 @@ class EndpointPolicy(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

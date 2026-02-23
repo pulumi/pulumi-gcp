@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataproc.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigMasterConfigAccelerator;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigMasterConfigDiskConfig;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -31,6 +32,11 @@ public final class ClusterClusterConfigMasterConfig {
      * 
      */
     private @Nullable String imageUri;
+    /**
+     * @return Instance flexibility Policy allowing a mixture of VM shapes.
+     * 
+     */
+    private @Nullable ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy;
     /**
      * @return List of master instance names which
      * have been assigned to the cluster.
@@ -83,6 +89,13 @@ public final class ClusterClusterConfigMasterConfig {
         return Optional.ofNullable(this.imageUri);
     }
     /**
+     * @return Instance flexibility Policy allowing a mixture of VM shapes.
+     * 
+     */
+    public Optional<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy> instanceFlexibilityPolicy() {
+        return Optional.ofNullable(this.instanceFlexibilityPolicy);
+    }
+    /**
      * @return List of master instance names which
      * have been assigned to the cluster.
      * 
@@ -130,6 +143,7 @@ public final class ClusterClusterConfigMasterConfig {
         private @Nullable List<ClusterClusterConfigMasterConfigAccelerator> accelerators;
         private @Nullable ClusterClusterConfigMasterConfigDiskConfig diskConfig;
         private @Nullable String imageUri;
+        private @Nullable ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy;
         private @Nullable List<String> instanceNames;
         private @Nullable String machineType;
         private @Nullable String minCpuPlatform;
@@ -140,6 +154,7 @@ public final class ClusterClusterConfigMasterConfig {
     	      this.accelerators = defaults.accelerators;
     	      this.diskConfig = defaults.diskConfig;
     	      this.imageUri = defaults.imageUri;
+    	      this.instanceFlexibilityPolicy = defaults.instanceFlexibilityPolicy;
     	      this.instanceNames = defaults.instanceNames;
     	      this.machineType = defaults.machineType;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
@@ -165,6 +180,12 @@ public final class ClusterClusterConfigMasterConfig {
         public Builder imageUri(@Nullable String imageUri) {
 
             this.imageUri = imageUri;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceFlexibilityPolicy(@Nullable ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy) {
+
+            this.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
             return this;
         }
         @CustomType.Setter
@@ -199,6 +220,7 @@ public final class ClusterClusterConfigMasterConfig {
             _resultValue.accelerators = accelerators;
             _resultValue.diskConfig = diskConfig;
             _resultValue.imageUri = imageUri;
+            _resultValue.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
             _resultValue.instanceNames = instanceNames;
             _resultValue.machineType = machineType;
             _resultValue.minCpuPlatform = minCpuPlatform;

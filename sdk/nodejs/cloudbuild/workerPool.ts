@@ -75,22 +75,14 @@ import * as utilities from "../utilities";
  * WorkerPool can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{location}}/{{name}}
  * ```
  */
@@ -141,6 +133,9 @@ export class WorkerPool extends pulumi.CustomResource {
      * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The location for the resource
@@ -257,6 +252,9 @@ export interface WorkerPoolState {
      * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource

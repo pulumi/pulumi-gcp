@@ -134,16 +134,12 @@ namespace Pulumi.Gcp.Healthcare
     /// DicomStore can be imported using any of these accepted formats:
     /// 
     /// * `{{dataset}}/dicomStores/{{name}}`
-    /// 
     /// * `{{dataset}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, DicomStore can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
     /// ```
     /// </summary>
@@ -195,7 +191,7 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -396,7 +392,7 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

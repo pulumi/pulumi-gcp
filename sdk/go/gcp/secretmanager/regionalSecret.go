@@ -64,8 +64,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -110,8 +108,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
@@ -274,22 +270,14 @@ import (
 // RegionalSecret can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}`
-//
 // * `{{project}}/{{location}}/{{secret_id}}`
-//
 // * `{{location}}/{{secret_id}}`
 //
 // When using the `pulumi import` command, RegionalSecret can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default {{project}}/{{location}}/{{secret_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default {{location}}/{{secret_id}}
 // ```
 type RegionalSecret struct {
@@ -314,8 +302,12 @@ type RegionalSecret struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption RegionalSecretCustomerManagedEncryptionPtrOutput `pulumi:"customerManagedEncryption"`
-	DeletionProtection        pulumi.BoolPtrOutput                             `pulumi:"deletionProtection"`
-	EffectiveAnnotations      pulumi.StringMapOutput                           `pulumi:"effectiveAnnotations"`
+	// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the federation will fail.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
@@ -344,7 +336,7 @@ type RegionalSecret struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
 	// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
@@ -440,8 +432,12 @@ type regionalSecretState struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption *RegionalSecretCustomerManagedEncryption `pulumi:"customerManagedEncryption"`
-	DeletionProtection        *bool                                    `pulumi:"deletionProtection"`
-	EffectiveAnnotations      map[string]string                        `pulumi:"effectiveAnnotations"`
+	// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the federation will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
@@ -470,7 +466,7 @@ type regionalSecretState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
 	// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
@@ -526,8 +522,12 @@ type RegionalSecretState struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption RegionalSecretCustomerManagedEncryptionPtrInput
-	DeletionProtection        pulumi.BoolPtrInput
-	EffectiveAnnotations      pulumi.StringMapInput
+	// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the federation will fail.
+	DeletionProtection pulumi.BoolPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
@@ -556,7 +556,7 @@ type RegionalSecretState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
 	// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
@@ -614,7 +614,10 @@ type regionalSecretArgs struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption *RegionalSecretCustomerManagedEncryption `pulumi:"customerManagedEncryption"`
-	DeletionProtection        *bool                                    `pulumi:"deletionProtection"`
+	// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the federation will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
 	// output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
 	// nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
@@ -690,7 +693,10 @@ type RegionalSecretArgs struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption RegionalSecretCustomerManagedEncryptionPtrInput
-	DeletionProtection        pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the federation will fail.
+	DeletionProtection pulumi.BoolPtrInput
 	// Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
 	// output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
 	// nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
@@ -864,10 +870,14 @@ func (o RegionalSecretOutput) CustomerManagedEncryption() RegionalSecretCustomer
 	}).(RegionalSecretCustomerManagedEncryptionPtrOutput)
 }
 
+// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+// When the field is set to true in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the federation will fail.
 func (o RegionalSecretOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RegionalSecret) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o RegionalSecretOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RegionalSecret) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -918,7 +928,8 @@ func (o RegionalSecretOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RegionalSecretOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RegionalSecret) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

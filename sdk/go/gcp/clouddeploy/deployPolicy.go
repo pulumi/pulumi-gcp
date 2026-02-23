@@ -212,22 +212,14 @@ import (
 // DeployPolicy can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/deployPolicies/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, DeployPolicy can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:clouddeploy/deployPolicy:DeployPolicy default projects/{{project}}/locations/{{location}}/deployPolicies/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:clouddeploy/deployPolicy:DeployPolicy default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:clouddeploy/deployPolicy:DeployPolicy default {{location}}/{{name}}
 // ```
 type DeployPolicy struct {
@@ -240,7 +232,8 @@ type DeployPolicy struct {
 	// Output only. Time at which the DeployPolicy was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the `DeployPolicy`. Max length is 255 characters.
-	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -258,7 +251,7 @@ type DeployPolicy struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Rules to apply. At least one rule must be present.
 	// Structure is documented below.
@@ -325,7 +318,8 @@ type deployPolicyState struct {
 	// Output only. Time at which the DeployPolicy was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the `DeployPolicy`. Max length is 255 characters.
-	Description          *string           `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -343,7 +337,7 @@ type deployPolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Rules to apply. At least one rule must be present.
 	// Structure is documented below.
@@ -367,7 +361,8 @@ type DeployPolicyState struct {
 	// Output only. Time at which the DeployPolicy was created.
 	CreateTime pulumi.StringPtrInput
 	// Description of the `DeployPolicy`. Max length is 255 characters.
-	Description          pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -385,7 +380,7 @@ type DeployPolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Rules to apply. At least one rule must be present.
 	// Structure is documented below.
@@ -566,6 +561,7 @@ func (o DeployPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeployPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o DeployPolicyOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeployPolicy) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -604,7 +600,8 @@ func (o DeployPolicyOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DeployPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeployPolicy) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

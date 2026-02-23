@@ -438,11 +438,8 @@ class LakeIamBinding(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/locations/{{location}}/lakes/{{name}}
-
         * {{project}}/{{location}}/{{name}}
-
         * {{location}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -450,25 +447,21 @@ class LakeIamBinding(pulumi.CustomResource):
         Dataplex lake IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:dataplex/lakeIamBinding:LakeIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer user:jane@example.com"
+        $ terraform import google_dataplex_lake_iam_member.editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:dataplex/lakeIamBinding:LakeIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer"
+        $ terraform import google_dataplex_lake_iam_binding.editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:dataplex/lakeIamBinding:LakeIamBinding editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
@@ -631,11 +624,8 @@ class LakeIamBinding(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/locations/{{location}}/lakes/{{name}}
-
         * {{project}}/{{location}}/{{name}}
-
         * {{location}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -643,25 +633,21 @@ class LakeIamBinding(pulumi.CustomResource):
         Dataplex lake IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:dataplex/lakeIamBinding:LakeIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer user:jane@example.com"
+        $ terraform import google_dataplex_lake_iam_member.editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:dataplex/lakeIamBinding:LakeIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer"
+        $ terraform import google_dataplex_lake_iam_binding.editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:dataplex/lakeIamBinding:LakeIamBinding editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.

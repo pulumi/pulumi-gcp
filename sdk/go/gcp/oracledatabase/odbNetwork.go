@@ -107,29 +107,22 @@ import (
 // OdbNetwork can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/odbNetworks/{{odb_network_id}}`
-//
 // * `{{project}}/{{location}}/{{odb_network_id}}`
-//
 // * `{{location}}/{{odb_network_id}}`
 //
 // When using the `pulumi import` command, OdbNetwork can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:oracledatabase/odbNetwork:OdbNetwork default projects/{{project}}/locations/{{location}}/odbNetworks/{{odb_network_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oracledatabase/odbNetwork:OdbNetwork default {{project}}/{{location}}/{{odb_network_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oracledatabase/odbNetwork:OdbNetwork default {{location}}/{{odb_network_id}}
 // ```
 type OdbNetwork struct {
 	pulumi.CustomResourceState
 
 	// The date and time that the OdbNetwork was created.
-	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -160,7 +153,7 @@ type OdbNetwork struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// State of the ODB Network.
 	// Possible values:
@@ -216,8 +209,9 @@ func GetOdbNetwork(ctx *pulumi.Context,
 // Input properties used for looking up and filtering OdbNetwork resources.
 type odbNetworkState struct {
 	// The date and time that the OdbNetwork was created.
-	CreateTime         *string `pulumi:"createTime"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	CreateTime *string `pulumi:"createTime"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The ID of the subscription entitlement associated with the OdbNetwork.
@@ -247,7 +241,7 @@ type odbNetworkState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// State of the ODB Network.
 	// Possible values:
@@ -260,7 +254,8 @@ type odbNetworkState struct {
 
 type OdbNetworkState struct {
 	// The date and time that the OdbNetwork was created.
-	CreateTime         pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -291,7 +286,7 @@ type OdbNetworkState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// State of the ODB Network.
 	// Possible values:
@@ -307,6 +302,7 @@ func (OdbNetworkState) ElementType() reflect.Type {
 }
 
 type odbNetworkArgs struct {
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The GCP Oracle zone where OdbNetwork is hosted.
 	// Example: us-east4-b-r2.
@@ -333,6 +329,7 @@ type odbNetworkArgs struct {
 
 // The set of arguments for constructing a OdbNetwork resource.
 type OdbNetworkArgs struct {
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// The GCP Oracle zone where OdbNetwork is hosted.
 	// Example: us-east4-b-r2.
@@ -449,6 +446,7 @@ func (o OdbNetworkOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OdbNetwork) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 func (o OdbNetworkOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OdbNetwork) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -509,7 +507,8 @@ func (o OdbNetworkOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o OdbNetworkOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *OdbNetwork) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

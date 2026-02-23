@@ -7,27 +7,248 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Manages a VM instance template resource within GCE. For more information see
+ * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+ * and
+ * [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.serviceaccount.Account("default", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const disk = new gcp.compute.Disk("disk", {
+ *     name: "foo",
+ *     image: myImage.then(myImage => myImage.selfLink),
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const snapDisk = new gcp.compute.Snapshot("snap_disk", {
+ *     name: "snapDisk",
+ *     sourceDisk: disk.name,
+ *     zone: "us-central1-a",
+ * });
+ * const foobar = new gcp.compute.RegionDisk("foobar", {
+ *     name: "existing-disk",
+ *     snapshot: snapDisk.id,
+ *     type: "pd-ssd",
+ *     region: "us-central1",
+ *     physicalBlockSizeBytes: 4096,
+ *     replicaZones: [
+ *         "us-central1-a",
+ *         "us-central1-f",
+ *     ],
+ * });
+ * const dailyBackup = new gcp.compute.ResourcePolicy("daily_backup", {
+ *     name: "every-day-4am",
+ *     region: "us-central1",
+ *     snapshotSchedulePolicy: {
+ *         schedule: {
+ *             dailySchedule: {
+ *                 daysInCycle: 1,
+ *                 startTime: "04:00",
+ *             },
+ *         },
+ *     },
+ * });
+ * const defaultRegionInstanceTemplate = new gcp.compute.RegionInstanceTemplate("default", {
+ *     name: "appserver-template",
+ *     description: "This template is used to create app server instances.",
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     labels: {
+ *         environment: "dev",
+ *     },
+ *     instanceDescription: "description assigned to instances",
+ *     machineType: "e2-medium",
+ *     canIpForward: false,
+ *     scheduling: {
+ *         automaticRestart: true,
+ *         onHostMaintenance: "MIGRATE",
+ *     },
+ *     disks: [
+ *         {
+ *             sourceImage: "debian-cloud/debian-11",
+ *             autoDelete: true,
+ *             boot: true,
+ *             resourcePolicies: dailyBackup.id,
+ *         },
+ *         {
+ *             source: foobar.selfLink,
+ *             autoDelete: false,
+ *             boot: false,
+ *         },
+ *     ],
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     serviceAccount: {
+ *         email: _default.email,
+ *         scopes: ["cloud-platform"],
+ *     },
+ * });
+ * ```
+ *
+ * ### Automatic Envoy Deployment
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = gcp.compute.getDefaultServiceAccount({});
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const foobar = new gcp.compute.RegionInstanceTemplate("foobar", {
+ *     name: "appserver-template",
+ *     machineType: "e2-medium",
+ *     canIpForward: false,
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     disks: [{
+ *         sourceImage: myImage.then(myImage => myImage.selfLink),
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     scheduling: {
+ *         preemptible: false,
+ *         automaticRestart: true,
+ *     },
+ *     metadata: {
+ *         "gce-software-declaration": `{
+ *   \\"softwareRecipes\\": [{
+ *     \\"name\\": \\"install-gce-service-proxy-agent\\",
+ *     \\"desired_state\\": \\"INSTALLED\\",
+ *     \\"installSteps\\": [{
+ *       \\"scriptRun\\": {
+ *         \\"script\\": \\"#! /bin/bash\\
+ * ZONE=(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\\
+ * export SERVICE_PROXY_AGENT_DIRECTORY=(mktemp -d)\\
+ * sudo gsutil cp   gs://gce-service-proxy-\\"ZONE\\"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   \\"SERVICE_PROXY_AGENT_DIRECTORY\\"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     \\"SERVICE_PROXY_AGENT_DIRECTORY\\"\\
+ * sudo tar -xzf \\"SERVICE_PROXY_AGENT_DIRECTORY\\"/service-proxy-agent-0.2.tgz -C \\"SERVICE_PROXY_AGENT_DIRECTORY\\"\\
+ * \\"SERVICE_PROXY_AGENT_DIRECTORY\\"/service-proxy-agent/service-proxy-agent-bootstrap.sh\\"
+ *       }
+ *     }]
+ *   }]
+ * }
+ * `,
+ *         "gce-service-proxy": `{
+ *   \\"api-version\\": \\"0.2\\",
+ *   \\"proxy-spec\\": {
+ *     \\"proxy-port\\": 15001,
+ *     \\"network\\": \\"my-network\\",
+ *     \\"tracing\\": \\"ON\\",
+ *     \\"access-log\\": \\"/var/log/envoy/access.log\\"
+ *   }
+ *   \\"service\\": {
+ *     \\"serving-ports\\": [80, 81]
+ *   },
+ *  \\"labels\\": {
+ *    \\"app_name\\": \\"bookserver_app\\",
+ *    \\"app_version\\": \\"STABLE\\"
+ *   }
+ * }
+ * `,
+ *         "enable-guest-attributes": "true",
+ *         "enable-osconfig": "true",
+ *     },
+ *     serviceAccount: {
+ *         email: _default.then(_default => _default.email),
+ *         scopes: ["cloud-platform"],
+ *     },
+ *     labels: {
+ *         "gce-service-proxy": "on",
+ *     },
+ * });
+ * ```
+ *
+ * ## Deploying the Latest Image
+ *
+ * A common way to use instance templates and managed instance groups is to deploy the
+ * latest image in a family, usually the latest build of your application. There are two
+ * ways to do this in Terraform, and they have their pros and cons. The difference ends
+ * up being in how "latest" is interpreted. You can either deploy the latest image available
+ * when Terraform runs, or you can have each instance check what the latest image is when
+ * it's being created, either as part of a scaling event or being rebuilt by the instance
+ * group manager.
+ *
+ * If you're not sure, we recommend deploying the latest image available when Terraform runs,
+ * because this means all the instances in your group will be based on the same image, always,
+ * and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
+ * You can achieve this by using the `gcp.compute.Image`
+ * data source, which will retrieve the latest image on every `pulumi up`, and will update
+ * the template to use that specific image:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const instanceTemplate = new gcp.compute.RegionInstanceTemplate("instance_template", {
+ *     namePrefix: "instance-template-",
+ *     machineType: "e2-medium",
+ *     region: "us-central1",
+ *     disks: [{
+ *         sourceImage: myImage.then(myImage => myImage.selfLink),
+ *     }],
+ * });
+ * ```
+ *
+ * To have instances update to the latest on every scaling event or instance re-creation,
+ * use the family as the image for the disk, and it will use GCP's default behavior, setting
+ * the image for the template to the family:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instanceTemplate = new gcp.compute.RegionInstanceTemplate("instance_template", {
+ *     namePrefix: "instance-template-",
+ *     machineType: "e2-medium",
+ *     region: "us-central1",
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-11",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Instance templates can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default {{name}}
  * ```
  */
@@ -145,6 +366,10 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      */
     declare public readonly minCpuPlatform: pulumi.Output<string | undefined>;
+    /**
+     * The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
+     */
     declare public readonly name: pulumi.Output<string>;
     /**
      * Creates a unique name beginning with the specified
@@ -424,6 +649,10 @@ export interface RegionInstanceTemplateState {
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      */
     minCpuPlatform?: pulumi.Input<string>;
+    /**
+     * The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
+     */
     name?: pulumi.Input<string>;
     /**
      * Creates a unique name beginning with the specified
@@ -593,6 +822,10 @@ export interface RegionInstanceTemplateArgs {
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      */
     minCpuPlatform?: pulumi.Input<string>;
+    /**
+     * The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
+     */
     name?: pulumi.Input<string>;
     /**
      * Creates a unique name beginning with the specified

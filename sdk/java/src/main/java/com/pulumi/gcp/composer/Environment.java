@@ -19,29 +19,878 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Import
+ * An environment for running orchestration tasks.
  * 
- * Environment can be imported using any of these accepted formats:
+ * Environments run Apache Airflow software on Google infrastructure.
  * 
- * * `projects/{{project}}/locations/{{region}}/environments/{{name}}`
+ * To get more information about Environments, see:
  * 
- * * `{{project}}/{{region}}/{{name}}`
+ * * [Cloud Composer documentation](https://cloud.google.com/composer/docs)
+ * * [Cloud Composer API documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments)
+ * * How-to Guides (Cloud Composer 2)
+ *   * [Creating environments](https://cloud.google.com/composer/docs/composer-2/create-environments)
+ *   * [Scaling environments](https://cloud.google.com/composer/docs/composer-2/scale-environments)
+ *   * [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/composer-2/configure-shared-vpc)
+ * * How-to Guides (Cloud Composer 3)
+ *   * [Creating environments](https://cloud.google.com/composer/docs/composer-3/create-environments)
+ *   * [Scaling environments](https://cloud.google.com/composer/docs/composer-3/scale-environments)
+ *   * [Change environment networking type (Private or Public IP)](https://cloud.google.com/composer/docs/composer-3/change-networking-type)
+ *   * [Connect an environment to a VPC network](https://cloud.google.com/composer/docs/composer-3/connect-vpc-network)
+ * * [Apache Airflow Documentation](http://airflow.apache.org/)
  * 
- * * `{{name}}`
+ * &gt; **Note**
+ *   Cloud Composer 1 is in the post-maintenance mode. Google does
+ *   not release any further updates to Cloud Composer 1, including new versions
+ *   of Airflow, bugfixes, and security updates. We recommend using
+ *   Cloud Composer 2 or Cloud Composer 3 instead.
  * 
- * When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
+ * We **STRONGLY** recommend you read the [GCP
+ * guides](https://cloud.google.com/composer/docs/how-to) as the Environment resource requires a long
+ * deployment process and involves several layers of GCP infrastructure, including a Kubernetes Engine
+ * cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API, Pulumi
+ * will not be able to find or manage many of these underlying resources automatically. In particular:
+ * * Creating or updating an environment resource can take up to one hour. In addition, GCP may only
+ *   detect some errors in the configuration when they are used (e.g., ~40-50 minutes into the creation
+ *   process), and is prone to limited error reporting. If you encounter confusing or uninformative
+ *   errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs
+ *   against the provider.
+ * * **Environments create Google Cloud Storage buckets that are not automatically cleaned up** on environment deletion. [More about Composer&#39;s use of Cloud
+ *   Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
+ * * Please review the [known
+ *   issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having
+ *   problems.***
  * 
- * ```sh
- * $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
- * ```
+ * ## Example Usage
  * 
- * ```sh
- * $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
- * ```
+ * ### Basic Usage (Cloud Composer 3)
+ * <pre>
+ * {@code
+ * package generated_program;
  * 
- * ```sh
- * $ pulumi import gcp:composer/environment:Environment default {{name}}
- * ```
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.composer.Environment;
+ * import com.pulumi.gcp.composer.EnvironmentArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Environment("test", EnvironmentArgs.builder()
+ *             .name("example-composer-env")
+ *             .region("us-central1")
+ *             .config(EnvironmentConfigArgs.builder()
+ *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
+ *                     .imageVersion("composer-3-airflow-2")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Basic Usage (Cloud Composer 2)
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.composer.Environment;
+ * import com.pulumi.gcp.composer.EnvironmentArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Environment("test", EnvironmentArgs.builder()
+ *             .name("example-composer-env")
+ *             .region("us-central1")
+ *             .config(EnvironmentConfigArgs.builder()
+ *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
+ *                     .imageVersion("composer-2-airflow-2")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Basic Usage (Cloud Composer 1)
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.composer.Environment;
+ * import com.pulumi.gcp.composer.EnvironmentArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Environment("test", EnvironmentArgs.builder()
+ *             .name("example-composer-env")
+ *             .region("us-central1")
+ *             .config(EnvironmentConfigArgs.builder()
+ *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
+ *                     .imageVersion("composer-1-airflow-2")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### With GKE and Compute Resource Dependencies
+ * 
+ * &gt; **Note**
+ *   To use custom service accounts, you must give at least the
+ *   `role/composer.worker` role to the service account of the Cloud Composer
+ *   environment. For more information, see the
+ *   [Access Control](https://cloud.google.com/composer/docs/how-to/access-control)
+ *   page in the Cloud Composer documentation.
+ *   You might need to assign additional roles depending on specific workflows
+ *   that the Airflow DAGs will be running.
+ * 
+ * ### GKE and Compute Resource Dependencies (Cloud Composer 3)
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.composer.Environment;
+ * import com.pulumi.gcp.composer.EnvironmentArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigSchedulerArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigTriggererArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigDagProcessorArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigWebServerArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigWorkerArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigNodeConfigArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testAccount = new Account("testAccount", AccountArgs.builder()
+ *             .accountId("composer-env-account")
+ *             .displayName("Test Service Account for Composer Environment")
+ *             .build());
+ * 
+ *         var test = new Environment("test", EnvironmentArgs.builder()
+ *             .name("example-composer-env-tf-c3")
+ *             .region("us-central1")
+ *             .config(EnvironmentConfigArgs.builder()
+ *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
+ *                     .imageVersion("composer-3-airflow-2")
+ *                     .build())
+ *                 .workloadsConfig(EnvironmentConfigWorkloadsConfigArgs.builder()
+ *                     .scheduler(EnvironmentConfigWorkloadsConfigSchedulerArgs.builder()
+ *                         .cpu(0.5)
+ *                         .memoryGb(2.0)
+ *                         .storageGb(1.0)
+ *                         .count(1)
+ *                         .build())
+ *                     .triggerer(EnvironmentConfigWorkloadsConfigTriggererArgs.builder()
+ *                         .cpu(0.5)
+ *                         .memoryGb(1.0)
+ *                         .count(1)
+ *                         .build())
+ *                     .dagProcessor(EnvironmentConfigWorkloadsConfigDagProcessorArgs.builder()
+ *                         .cpu(1.0)
+ *                         .memoryGb(2.0)
+ *                         .storageGb(1.0)
+ *                         .count(1)
+ *                         .build())
+ *                     .webServer(EnvironmentConfigWorkloadsConfigWebServerArgs.builder()
+ *                         .cpu(0.5)
+ *                         .memoryGb(2.0)
+ *                         .storageGb(1.0)
+ *                         .build())
+ *                     .worker(EnvironmentConfigWorkloadsConfigWorkerArgs.builder()
+ *                         .cpu(0.5)
+ *                         .memoryGb(2.0)
+ *                         .storageGb(1.0)
+ *                         .minCount(1)
+ *                         .maxCount(3)
+ *                         .build())
+ *                     .build())
+ *                 .environmentSize("ENVIRONMENT_SIZE_SMALL")
+ *                 .nodeConfig(EnvironmentConfigNodeConfigArgs.builder()
+ *                     .serviceAccount(testAccount.name())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var composer_worker = new IAMMember("composer-worker", IAMMemberArgs.builder()
+ *             .project("your-project-id")
+ *             .role("roles/composer.worker")
+ *             .member(testAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### GKE and Compute Resource Dependencies (Cloud Composer 2)
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.composer.Environment;
+ * import com.pulumi.gcp.composer.EnvironmentArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigSchedulerArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigWebServerArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigWorkerArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigNodeConfigArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testNetwork = new Network("testNetwork", NetworkArgs.builder()
+ *             .name("composer-test-network3")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var testSubnetwork = new Subnetwork("testSubnetwork", SubnetworkArgs.builder()
+ *             .name("composer-test-subnetwork")
+ *             .ipCidrRange("10.2.0.0/16")
+ *             .region("us-central1")
+ *             .network(testNetwork.id())
+ *             .build());
+ * 
+ *         var testAccount = new Account("testAccount", AccountArgs.builder()
+ *             .accountId("composer-env-account")
+ *             .displayName("Test Service Account for Composer Environment")
+ *             .build());
+ * 
+ *         var test = new Environment("test", EnvironmentArgs.builder()
+ *             .name("example-composer-env-tf-c2")
+ *             .region("us-central1")
+ *             .config(EnvironmentConfigArgs.builder()
+ *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
+ *                     .imageVersion("composer-2-airflow-2")
+ *                     .build())
+ *                 .workloadsConfig(EnvironmentConfigWorkloadsConfigArgs.builder()
+ *                     .scheduler(EnvironmentConfigWorkloadsConfigSchedulerArgs.builder()
+ *                         .cpu(0.5)
+ *                         .memoryGb(1.875)
+ *                         .storageGb(1.0)
+ *                         .count(1)
+ *                         .build())
+ *                     .webServer(EnvironmentConfigWorkloadsConfigWebServerArgs.builder()
+ *                         .cpu(0.5)
+ *                         .memoryGb(1.875)
+ *                         .storageGb(1.0)
+ *                         .build())
+ *                     .worker(EnvironmentConfigWorkloadsConfigWorkerArgs.builder()
+ *                         .cpu(0.5)
+ *                         .memoryGb(1.875)
+ *                         .storageGb(1.0)
+ *                         .minCount(1)
+ *                         .maxCount(3)
+ *                         .build())
+ *                     .build())
+ *                 .environmentSize("ENVIRONMENT_SIZE_SMALL")
+ *                 .nodeConfig(EnvironmentConfigNodeConfigArgs.builder()
+ *                     .network(testNetwork.id())
+ *                     .subnetwork(testSubnetwork.id())
+ *                     .serviceAccount(testAccount.name())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var composer_worker = new IAMMember("composer-worker", IAMMemberArgs.builder()
+ *             .project("your-project-id")
+ *             .role("roles/composer.worker")
+ *             .member(testAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### GKE and Compute Resource Dependencies (Cloud Composer 1)
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.composer.Environment;
+ * import com.pulumi.gcp.composer.EnvironmentArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigNodeConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigDatabaseConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigWebServerConfigArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testNetwork = new Network("testNetwork", NetworkArgs.builder()
+ *             .name("composer-test-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var testSubnetwork = new Subnetwork("testSubnetwork", SubnetworkArgs.builder()
+ *             .name("composer-test-subnetwork")
+ *             .ipCidrRange("10.2.0.0/16")
+ *             .region("us-central1")
+ *             .network(testNetwork.id())
+ *             .build());
+ * 
+ *         var testAccount = new Account("testAccount", AccountArgs.builder()
+ *             .accountId("composer-env-account")
+ *             .displayName("Test Service Account for Composer Environment")
+ *             .build());
+ * 
+ *         var test = new Environment("test", EnvironmentArgs.builder()
+ *             .name("example-composer-env")
+ *             .region("us-central1")
+ *             .config(EnvironmentConfigArgs.builder()
+ *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
+ *                     .imageVersion("composer-1-airflow-2")
+ *                     .build())
+ *                 .nodeCount(4)
+ *                 .nodeConfig(EnvironmentConfigNodeConfigArgs.builder()
+ *                     .zone("us-central1-a")
+ *                     .machineType("n1-standard-1")
+ *                     .network(testNetwork.id())
+ *                     .subnetwork(testSubnetwork.id())
+ *                     .serviceAccount(testAccount.name())
+ *                     .build())
+ *                 .databaseConfig(EnvironmentConfigDatabaseConfigArgs.builder()
+ *                     .machineType("db-n1-standard-2")
+ *                     .build())
+ *                 .webServerConfig(EnvironmentConfigWebServerConfigArgs.builder()
+ *                     .machineType("composer-n1-webserver-2")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var composer_worker = new IAMMember("composer-worker", IAMMemberArgs.builder()
+ *             .role("roles/composer.worker")
+ *             .member(testAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Cloud Composer 3 networking configuration
+ * 
+ * In Cloud Composer 3, networking configuration is simplified compared to
+ * previous versions. You don&#39;t need to specify network ranges, and can attach
+ * custom VPC networks to your environment.
+ * 
+ * &gt; **Note**
+ *   It&#39;s not possible to detach a VPC network using Terraform. Instead, you can
+ *   attach a different VPC network in its place, or detach the network using
+ *   other tools like Google Cloud CLI.
+ * 
+ * Use Private IP networking:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.composer.Environment;
+ * import com.pulumi.gcp.composer.EnvironmentArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Environment("example", EnvironmentArgs.builder()
+ *             .name("example-environment")
+ *             .region("us-central1")
+ *             .config(EnvironmentConfigArgs.builder()
+ *                 .enablePrivateEnvironment(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Attach a custom VPC network (Cloud Composer creates a new network attachment):
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.composer.Environment;
+ * import com.pulumi.gcp.composer.EnvironmentArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigNodeConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Environment("example", EnvironmentArgs.builder()
+ *             .name("example-environment")
+ *             .region("us-central1")
+ *             .config(EnvironmentConfigArgs.builder()
+ *                 .nodeConfig(EnvironmentConfigNodeConfigArgs.builder()
+ *                     .network("projects/example-project/global/networks/example-network")
+ *                     .subnetwork("projects/example-project/regions/us-central1/subnetworks/example-subnetwork")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Attach a custom VPC network (use existing network attachment):
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.composer.Environment;
+ * import com.pulumi.gcp.composer.EnvironmentArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigNodeConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Environment("example", EnvironmentArgs.builder()
+ *             .name("example-environment")
+ *             .region("us-central1")
+ *             .config(EnvironmentConfigArgs.builder()
+ *                 .nodeConfig(EnvironmentConfigNodeConfigArgs.builder()
+ *                     .composerNetworkAttachment(Output.tuple(projects, example_project, regions, us_central1, networkAttachments, example_network_attachment).applyValue(values -> {
+ *                         var __convert = values.t1;
+ *                         var __convert1 = values.t2;
+ *                         var __convert2 = values.t3;
+ *                         var __convert3 = values.t4;
+ *                         var __convert4 = values.t5;
+ *                         var __convert5 = values.t6;
+ *                         return __convert / __convert1 / __convert2 / __convert3 / __convert4 / __convert5;
+ *                     }).applyValue(_n -> _n))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * If you specify an existing network attachment that you also manage in Terraform, then Terraform will revert changes
+ * to the attachment done by Cloud Composer when you apply configuration changes. As a result, the environment will no
+ * longer use the attachment. To address this problem, make sure that Terraform ignores changes to the
+ * `producerAcceptLists` parameter of the attachment, as follows:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.NetworkAttachment;
+ * import com.pulumi.gcp.composer.Environment;
+ * import com.pulumi.gcp.composer.EnvironmentArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigNodeConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new NetworkAttachment("example");
+ * 
+ *         var exampleEnvironment = new Environment("exampleEnvironment", EnvironmentArgs.builder()
+ *             .name("example-environment")
+ *             .region("us-central1")
+ *             .config(EnvironmentConfigArgs.builder()
+ *                 .nodeConfig(EnvironmentConfigNodeConfigArgs.builder()
+ *                     .composerNetworkAttachment(example.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Argument Reference - Cloud Composer 1
+ * 
+ * The following arguments are supported:
+ * 
+ * * `name` -
+ * (Required)
+ * Name of the environment
+ * 
+ * * `config` -
+ * (Optional)
+ * Configuration parameters for this environment  Structure is documented below.
+ * 
+ * * `labels` -
+ * (Optional)
+ * User-defined labels for this environment. The labels map can contain
+ * no more than 64 entries. Entries of the labels map are UTF8 strings
+ * that comply with the following restrictions:
+ * Label keys must be between 1 and 63 characters long and must conform
+ * to the following regular expression: `a-z?`.
+ * Label values must be between 0 and 63 characters long and must
+ * conform to the regular expression `(a-z?)?`.
+ * No more than 64 labels can be associated with a given environment.
+ * Both keys and values must be &lt;= 128 bytes in size.
+ *   
+ *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+ * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+ * 
+ * * `pulumiLabels` -
+ * The combination of labels configured directly on the resource and default labels configured on the provider.
+ * 
+ * * `effectiveLabels` -
+ * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+ * 
+ * * `region` -
+ * (Optional)
+ * The location or Compute Engine region for the environment.
+ * 
+ * * `project` -
+ * (Optional) The ID of the project in which the resource belongs.
+ * If it is not provided, the provider project is used.
+ * 
+ * &lt;a name=&#34;nestedConfigC1&#34;&gt;&lt;/a&gt;The `config` block supports:
+ * 
+ * * `nodeCount` -
+ * (Optional, Cloud Composer 1 only)
+ * The number of nodes in the Kubernetes Engine cluster of the environment.
+ * 
+ * * `nodeConfig` -
+ * (Optional)
+ * The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
+ * 
+ * * `softwareConfig` -
+ * (Optional)
+ * The configuration settings for software inside the environment.  Structure is documented below.
+ * 
+ * * `privateEnvironmentConfig` -
+ * (Optional)
+ * The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
+ * 
+ * * `webServerNetworkAccessControl` -
+ * The network-level access control policy for the Airflow web server.
+ * If unspecified, no network-level access restrictions are applied.
+ * 
+ * * `databaseConfig` -
+ * (Optional, Cloud Composer 1 only)
+ * The configuration settings for Cloud SQL instance used internally
+ * by Apache Airflow software.
+ * 
+ * * `webServerConfig` -
+ * (Optional, Cloud Composer 1 only)
+ * The configuration settings for the Airflow web server App Engine instance.
+ * 
+ * * `encryptionConfig` -
+ * (Optional)
+ * The encryption options for the Cloud Composer environment and its
+ * dependencies.
+ * 
+ * * `maintenanceWindow` -
+ * (Optional, Beta)
+ * The configuration settings for Cloud Composer maintenance windows.
+ * 
+ * * `masterAuthorizedNetworksConfig` -
+ * (Optional)
+ * Configuration options for the master authorized networks feature. Enabled
+ * master authorized networks will disallow all external traffic to access
+ * Kubernetes master through HTTPS except traffic from the given CIDR blocks,
+ * Google Compute Engine Public IPs and Google Prod IPs. Structure is
+ * documented below.
+ * 
+ * &lt;a name=&#34;nestedNodeConfigC1&#34;&gt;&lt;/a&gt;The `nodeConfig` block supports:
+ * 
+ * * `zone` -
+ * (Optional, Cloud Composer 1 only)
+ * The Compute Engine zone in which to deploy the VMs running the
+ * Apache Airflow software, specified as the zone name or
+ * relative resource name (e.g. &#34;projects/{project}/zones/{zone}&#34;). Must
+ * belong to the enclosing environment&#39;s project and region.
+ * 
+ * * `machineType` -
+ * (Optional, Cloud Composer 1 only)
+ * The Compute Engine machine type used for cluster instances,
+ * specified as a name or relative resource name. For example:
+ * &#34;projects/{project}/zones/{zone}/machineTypes/{machineType}&#34;. Must belong
+ * to the enclosing environment&#39;s project and region/zone.
+ * 
+ * * `network` -
+ * (Optional)
+ * The Compute Engine network to be used for machine
+ * communications, specified as a self-link, relative resource name
+ * (for example &#34;projects/{project}/global/networks/{network}&#34;), by name.
+ *   
+ *   The network must belong to the environment&#39;s project. If unspecified, the &#34;default&#34; network ID in the environment&#39;s
+ * project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
+ * 
+ * * `subnetwork` -
+ * (Optional)
+ * The Compute Engine subnetwork to be used for machine
+ * communications, specified as a self-link, relative resource name (for example,
+ * &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided,
+ * network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
+ * 
+ * * `diskSizeGb` -
+ * (Optional, Cloud Composer 1 only)
+ * The disk size in GB used for node VMs. Minimum size is 20GB.
+ * If unspecified, defaults to 100GB. Cannot be updated.
+ * 
+ * * `oauthScopes` -
+ * (Optional, Cloud Composer 1 only)
+ * The set of Google API scopes to be made available on all node
+ * VMs. Cannot be updated. If empty, defaults to
+ * `[&#34;https://www.googleapis.com/auth/cloud-platform&#34;]`.
+ * 
+ * * `serviceAccount` -
+ * (Optional)
+ * The Google Cloud Platform Service Account to be used by the
+ * node VMs. If a service account is not specified, the &#34;default&#34;
+ * Compute Engine service account is used. Cannot be updated. If given,
+ * note that the service account must have `roles/composer.worker`
+ * for any GCP resources created under the Cloud Composer Environment.
+ * 
+ * * `tags` -
+ * (Optional)
+ * The list of instance tags applied to all node VMs. Tags are
+ * used to identify valid sources or targets for network
+ * firewalls. Each tag within the list must comply with RFC1035.
+ * Cannot be updated.
+ * 
+ * * `ipAllocationPolicy` -
+ * (Optional)
+ * Configuration for controlling how IPs are allocated in the GKE cluster.
+ * Structure is documented below.
+ * Cannot be updated.
+ * 
+ * * `maxPodsPerNode` -
+ * (Optional, Beta,
+ * Cloud Composer 1 only)
+ * The maximum pods per node in the GKE cluster allocated during environment
+ * creation. Lowering this value reduces IP address consumption by the Cloud
+ * Composer Kubernetes cluster. This value can only be set if the environment is VPC-Native.
+ * The range of possible values is 8-110, and the default is 32.
+ * Cannot be updated.
+ * 
+ * * `enableIpMasqAgent` -
+ * (Optional)
+ * Deploys &#39;ip-masq-agent&#39; daemon set in the GKE cluster and defines
+ * nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
+ * all destination addresses, except between pods traffic.
+ * See the [documentation](https://cloud.google.com/composer/docs/enable-ip-masquerade-agent).
+ * 
+ * &lt;a name=&#34;nestedSoftwareConfigC1&#34;&gt;&lt;/a&gt;The `softwareConfig` block supports:
+ * 
+ * * `airflowConfigOverrides` -
+ * (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
+ * separated by a hyphen, for example &#34;core-dags_are_paused_at_creation&#34;.
+ *   
+ *   Section names must not contain hyphens (&#34;-&#34;), opening square brackets (&#34;[&#34;), or closing square brackets (&#34;]&#34;).
+ * The property name must not be empty and cannot contain &#34;=&#34; or &#34;;&#34;. Section and property names cannot contain
+ * characters: &#34;.&#34; Apache Airflow configuration property names must be written in snake_case. Property values can
+ * contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration
+ * property values are [blacklisted](https://cloud.google.com/composer/docs/concepts/airflow-configurations#airflow_configuration_blacklists),
+ * and cannot be overridden.
+ * 
+ * * `pypiPackages` -
+ * (Optional)
+ * Custom Python Package Index (PyPI) packages to be installed
+ * in the environment. Keys refer to the lowercase package name (e.g. &#34;numpy&#34;). Values are the lowercase extras and
+ * version specifier (e.g. &#34;==1.12.0&#34;, &#34;[devel,gcp_api]&#34;, &#34;[devel]&gt;=1.8.2, &lt;1.9.2&#34;). To specify a package without
+ * pinning it to a version specifier, use the empty string as the value.
+ * 
+ * * `envVariables` -
+ * (Optional)
+ * Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
+ * Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
+ * They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
+ * `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
+ *   AIRFLOW_HOME
+ *   C_FORCE_ROOT
+ *   CONTAINER_NAME
+ *   DAGS_FOLDER
+ *   GCP_PROJECT
+ *   GCS_BUCKET
+ *   GKE_CLUSTER_NAME
+ *   SQL_DATABASE
+ *   SQL_INSTANCE
+ *   SQL_PASSWORD
+ *   SQL_PROJECT
+ *   SQL_REGION
+ *   SQL_USER
+ * 
+ *   AIRFLOW_HOME
+ *   C_FORCE_ROOT
+ *   CONTAINER_NAME
+ *   DAGS_FOLDER
+ *   GCP_PROJECT
+ *   GCS_BUCKET
+ *   GKE_CLUSTER_NAME
+ *   SQL_DATABASE
+ *   SQL_INSTANCE
+ *   SQL_PASSWORD
+ *   SQL_PROJECT
+ *   SQL_REGION
+ *   SQL_USER
  * 
  */
 @ResourceType(type="gcp:composer/environment:Environment")
@@ -60,9 +909,17 @@ public class Environment extends com.pulumi.resources.CustomResource {
     public Output<EnvironmentConfig> config() {
         return this.config;
     }
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }

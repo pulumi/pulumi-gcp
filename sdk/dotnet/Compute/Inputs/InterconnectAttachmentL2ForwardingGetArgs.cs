@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// A map of VLAN tags to appliances and optional inner mapping rules.
-        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InterconnectAttachmentL2ForwardingApplianceMappingGetArgs> ApplianceMappings
         {
@@ -33,7 +32,6 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// GeneveHeader related configurations.
-        /// Structure is documented below.
         /// </summary>
         [Input("geneveHeader")]
         public Input<Inputs.InterconnectAttachmentL2ForwardingGeneveHeaderGetArgs>? GeneveHeader { get; set; }

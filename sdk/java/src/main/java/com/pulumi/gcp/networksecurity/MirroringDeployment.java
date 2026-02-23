@@ -133,22 +133,14 @@ import javax.annotation.Nullable;
  * MirroringDeployment can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/mirroringDeployments/{{mirroring_deployment_id}}`
- * 
  * * `{{project}}/{{location}}/{{mirroring_deployment_id}}`
- * 
  * * `{{location}}/{{mirroring_deployment_id}}`
  * 
  * When using the `pulumi import` command, MirroringDeployment can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default projects/{{project}}/locations/{{location}}/mirroringDeployments/{{mirroring_deployment_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default {{project}}/{{location}}/{{mirroring_deployment_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default {{location}}/{{mirroring_deployment_id}}
  * ```
  * 
@@ -321,7 +313,7 @@ public class MirroringDeployment extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -329,7 +321,7 @@ public class MirroringDeployment extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

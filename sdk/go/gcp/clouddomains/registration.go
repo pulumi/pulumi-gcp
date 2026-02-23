@@ -12,6 +12,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Registers a new domain name and creates a corresponding Registration resource.
+//
+// To get more information about Registration, see:
+//
+// * [API documentation](https://cloud.google.com/domains/docs/reference/rest/v1/projects.locations.registrations)
+// * How-to Guides
+//   - [Register a domain with Cloud Domains](https://cloud.google.com/domains/docs/buy-register-domain)
+//
+// > **Warning:** The Terraform implementation of this resource will not actually delete a Registration during
+// `terraform destroy`. Instead it will "abandon" the resource and remove it from state.
+// For information on deleting a registered domain, see https://cloud.google.com/domains/docs/delete-domain
+//
 // ## Example Usage
 //
 // ### Clouddomains Registration Full
@@ -114,22 +126,14 @@ import (
 // Registration can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}`
-//
 // * `{{project}}/{{location}}/{{domain_name}}`
-//
 // * `{{location}}/{{domain_name}}`
 //
 // When using the `pulumi import` command, Registration can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:clouddomains/registration:Registration default projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:clouddomains/registration:Registration default {{project}}/{{location}}/{{domain_name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:clouddomains/registration:Registration default {{location}}/{{domain_name}}
 // ```
 type Registration struct {
@@ -170,7 +174,7 @@ type Registration struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
 	RegisterFailureReason pulumi.StringOutput `pulumi:"registerFailureReason"`
@@ -266,7 +270,7 @@ type registrationState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
 	RegisterFailureReason *string `pulumi:"registerFailureReason"`
@@ -316,7 +320,7 @@ type RegistrationState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
 	RegisterFailureReason pulumi.StringPtrInput
@@ -561,7 +565,8 @@ func (o RegistrationOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RegistrationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Registration) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

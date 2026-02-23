@@ -45,22 +45,14 @@ import * as utilities from "../utilities";
  * MirroringDeploymentGroup can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/mirroringDeploymentGroups/{{mirroring_deployment_group_id}}`
- *
  * * `{{project}}/{{location}}/{{mirroring_deployment_group_id}}`
- *
  * * `{{location}}/{{mirroring_deployment_group_id}}`
  *
  * When using the `pulumi import` command, MirroringDeploymentGroup can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default projects/{{project}}/locations/{{location}}/mirroringDeploymentGroups/{{mirroring_deployment_group_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default {{project}}/{{location}}/{{mirroring_deployment_group_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default {{location}}/{{mirroring_deployment_group_id}}
  * ```
  */
@@ -151,7 +143,7 @@ export class MirroringDeploymentGroup extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -301,7 +293,7 @@ export interface MirroringDeploymentGroupState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

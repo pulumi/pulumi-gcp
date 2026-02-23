@@ -171,22 +171,14 @@ import * as utilities from "../utilities";
  * SparkApplication can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}`
- *
  * * `{{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}`
- *
  * * `{{location}}/{{serviceinstance}}/{{spark_application_id}}`
  *
  * When using the `pulumi import` command, SparkApplication can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{location}}/{{serviceinstance}}/{{spark_application_id}}
  * ```
  */
@@ -240,6 +232,9 @@ export class GdcSparkApplication extends pulumi.CustomResource {
      * User-provided human-readable name to be used in user interfaces.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -282,7 +277,7 @@ export class GdcSparkApplication extends pulumi.CustomResource {
     declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -460,6 +455,9 @@ export interface GdcSparkApplicationState {
      * User-provided human-readable name to be used in user interfaces.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -502,7 +500,7 @@ export interface GdcSparkApplicationState {
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

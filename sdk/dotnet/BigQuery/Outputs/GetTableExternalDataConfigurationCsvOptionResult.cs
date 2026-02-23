@@ -29,6 +29,9 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// The separator for fields in a CSV file.
         /// </summary>
         public readonly string FieldDelimiter;
+        /// <summary>
+        /// The value that is used to quote data sections in a CSV file. If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the AllowQuotedNewlines property to true. The API-side default is ", specified in Terraform escaped as \". Due to limitations with Terraform default values, this value is required to be explicitly set.
+        /// </summary>
         public readonly string Quote;
         /// <summary>
         /// The number of rows at the top of a CSV file that BigQuery will skip when reading the data.

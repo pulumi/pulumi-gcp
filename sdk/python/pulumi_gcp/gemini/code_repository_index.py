@@ -157,7 +157,7 @@ class _CodeRepositoryIndexState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: Output only. Code Repository Index instance State.
                Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
         :param pulumi.Input[_builtins.str] update_time: Output only. Update time stamp.
@@ -304,7 +304,7 @@ class _CodeRepositoryIndexState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -379,22 +379,14 @@ class CodeRepositoryIndex(pulumi.CustomResource):
         CodeRepositoryIndex can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index_id}}`
-
         * `{{project}}/{{location}}/{{code_repository_index_id}}`
-
         * `{{location}}/{{code_repository_index_id}}`
 
         When using the `pulumi import` command, CodeRepositoryIndex can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default {{project}}/{{location}}/{{code_repository_index_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default {{location}}/{{code_repository_index_id}}
         ```
 
@@ -445,22 +437,14 @@ class CodeRepositoryIndex(pulumi.CustomResource):
         CodeRepositoryIndex can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index_id}}`
-
         * `{{project}}/{{location}}/{{code_repository_index_id}}`
-
         * `{{location}}/{{code_repository_index_id}}`
 
         When using the `pulumi import` command, CodeRepositoryIndex can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default {{project}}/{{location}}/{{code_repository_index_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default {{location}}/{{code_repository_index_id}}
         ```
 
@@ -555,7 +539,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: Output only. Code Repository Index instance State.
                Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
         :param pulumi.Input[_builtins.str] update_time: Output only. Update time stamp.
@@ -659,7 +643,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

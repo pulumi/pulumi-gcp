@@ -21,24 +21,25 @@ __all__ = ['InsightsConfigArgs', 'InsightsConfig']
 @pulumi.input_type
 class InsightsConfigArgs:
     def __init__(__self__, *,
-                 app_hub_application: pulumi.Input[_builtins.str],
                  insights_config_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 app_hub_application: Optional[pulumi.Input[_builtins.str]] = None,
                  artifact_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 target_projects: Optional[pulumi.Input['InsightsConfigTargetProjectsArgs']] = None):
         """
         The set of arguments for constructing a InsightsConfig resource.
-        :param pulumi.Input[_builtins.str] app_hub_application: The name of the App Hub Application.
-               Format:
-               projects/{project}/locations/{location}/applications/{application}
         :param pulumi.Input[_builtins.str] insights_config_id: ID of the requesting InsightsConfig.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/148#annotations
                for more details such as format and size limitations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] app_hub_application: The name of the App Hub Application.
+               Format:
+               projects/{project}/locations/{location}/applications/{application}
         :param pulumi.Input[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]] artifact_configs: The artifact configurations of the artifacts that are deployed.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of labels associated with an InsightsConfig.
@@ -46,32 +47,23 @@ class InsightsConfigArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['InsightsConfigTargetProjectsArgs'] target_projects: The projects to track with the InsightsConfig.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "app_hub_application", app_hub_application)
         pulumi.set(__self__, "insights_config_id", insights_config_id)
         pulumi.set(__self__, "location", location)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if app_hub_application is not None:
+            pulumi.set(__self__, "app_hub_application", app_hub_application)
         if artifact_configs is not None:
             pulumi.set(__self__, "artifact_configs", artifact_configs)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @_builtins.property
-    @pulumi.getter(name="appHubApplication")
-    def app_hub_application(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the App Hub Application.
-        Format:
-        projects/{project}/locations/{location}/applications/{application}
-        """
-        return pulumi.get(self, "app_hub_application")
-
-    @app_hub_application.setter
-    def app_hub_application(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "app_hub_application", value)
+        if target_projects is not None:
+            pulumi.set(__self__, "target_projects", target_projects)
 
     @_builtins.property
     @pulumi.getter(name="insightsConfigId")
@@ -113,6 +105,20 @@ class InsightsConfigArgs:
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
+    @pulumi.getter(name="appHubApplication")
+    def app_hub_application(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the App Hub Application.
+        Format:
+        projects/{project}/locations/{location}/applications/{application}
+        """
+        return pulumi.get(self, "app_hub_application")
+
+    @app_hub_application.setter
+    def app_hub_application(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "app_hub_application", value)
+
+    @_builtins.property
     @pulumi.getter(name="artifactConfigs")
     def artifact_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]]:
         """
@@ -152,6 +158,19 @@ class InsightsConfigArgs:
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="targetProjects")
+    def target_projects(self) -> Optional[pulumi.Input['InsightsConfigTargetProjectsArgs']]:
+        """
+        The projects to track with the InsightsConfig.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "target_projects")
+
+    @target_projects.setter
+    def target_projects(self, value: Optional[pulumi.Input['InsightsConfigTargetProjectsArgs']]):
+        pulumi.set(self, "target_projects", value)
+
 
 @pulumi.input_type
 class _InsightsConfigState:
@@ -172,6 +191,7 @@ class _InsightsConfigState:
                  reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
                  runtime_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigRuntimeConfigArgs']]]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 target_projects: Optional[pulumi.Input['InsightsConfigTargetProjectsArgs']] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InsightsConfig resources.
@@ -185,6 +205,7 @@ class _InsightsConfigState:
         :param pulumi.Input[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]] artifact_configs: The artifact configurations of the artifacts that are deployed.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: [Output only] Create timestamp
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorArgs']]] errors: Any errors that occurred while setting up the InsightsConfig.
                Each error will be in the format: `field_name: error_message`, e.g.
@@ -202,7 +223,7 @@ class _InsightsConfigState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Reconciling (https://google.aip.dev/128#reconciliation).
                Set to true if the current state of InsightsConfig does not match the
                user's intended state, and the service is actively updating the resource to
@@ -216,6 +237,8 @@ class _InsightsConfigState:
                STATE_UNSPECIFIED
                LINKED
                UNLINKED
+        :param pulumi.Input['InsightsConfigTargetProjectsArgs'] target_projects: The projects to track with the InsightsConfig.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: [Output only] Update timestamp
         """
         if annotations is not None:
@@ -250,6 +273,8 @@ class _InsightsConfigState:
             pulumi.set(__self__, "runtime_configs", runtime_configs)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if target_projects is not None:
+            pulumi.set(__self__, "target_projects", target_projects)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -310,6 +335,9 @@ class _InsightsConfigState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -414,7 +442,7 @@ class _InsightsConfigState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -469,6 +497,19 @@ class _InsightsConfigState:
         pulumi.set(self, "state", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetProjects")
+    def target_projects(self) -> Optional[pulumi.Input['InsightsConfigTargetProjectsArgs']]:
+        """
+        The projects to track with the InsightsConfig.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "target_projects")
+
+    @target_projects.setter
+    def target_projects(self, value: Optional[pulumi.Input['InsightsConfigTargetProjectsArgs']]):
+        pulumi.set(self, "target_projects", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -494,6 +535,7 @@ class InsightsConfig(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 target_projects: Optional[pulumi.Input[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']]] = None,
                  __props__=None):
         """
         Description
@@ -509,7 +551,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_10393",
+            project_id="dci-tf-_3684",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -586,7 +628,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         my_apphub_application = gcp.apphub.Application("my_apphub_application",
             location="us-central1",
-            application_id="tf-test-example-application_33052",
+            application_id="tf-test-example-application_10719",
             scope={
                 "type": "REGIONAL",
             },
@@ -594,7 +636,7 @@ class InsightsConfig(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
         insights_config = gcp.developerconnect.InsightsConfig("insights_config",
             location="us-central1",
-            insights_config_id="tf-test-ic_3684",
+            insights_config_id="tf-test-ic-apphub-_1443",
             project=project.project_id,
             annotations={},
             labels={},
@@ -616,28 +658,124 @@ class InsightsConfig(pulumi.CustomResource):
             }],
             opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
         ```
+        ### Developer Connect Insights Config Projects
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="dci-tf-_26032",
+            name="Service Project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
+        # Grant Permissions
+        apphub_permissions = gcp.projects.IAMMember("apphub_permissions",
+            project=project.project_id,
+            role="roles/apphub.admin",
+            member="serviceAccount:hashicorp-test-runner@ci-test-project-188019.iam.gserviceaccount.com")
+        insights_agent = gcp.projects.IAMMember("insights_agent",
+            project=project.project_id,
+            role="roles/developerconnect.insightsAgent",
+            member="serviceAccount:66214305248-compute@developer.gserviceaccount.com")
+        # Enable APIs
+        apphub_api_service = gcp.projects.Service("apphub_api_service",
+            project=project.project_id,
+            service="apphub.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        containeranalysis_api = gcp.projects.Service("containeranalysis_api",
+            project=project.project_id,
+            service="containeranalysis.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        containerscanning_api = gcp.projects.Service("containerscanning_api",
+            project=project.project_id,
+            service="containerscanning.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        container_api = gcp.projects.Service("container_api",
+            project=project.project_id,
+            service="container.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        artifactregistry_api = gcp.projects.Service("artifactregistry_api",
+            project=project.project_id,
+            service="artifactregistry.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        cloudbuild_api = gcp.projects.Service("cloudbuild_api",
+            project=project.project_id,
+            service="cloudbuild.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        cloudasset_api = gcp.projects.Service("cloudasset_api",
+            project=project.project_id,
+            service="cloudasset.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        compute_api = gcp.projects.Service("compute_api",
+            project=project.project_id,
+            service="compute.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        devconnect_api = gcp.projects.Service("devconnect_api",
+            project=project.project_id,
+            service="developerconnect.googleapis.com",
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        # Wait delay after enabling APIs and granting permissions
+        wait_for_propagation = time.Sleep("wait_for_propagation", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[
+                apphub_permissions,
+                insights_agent,
+                apphub_api_service,
+                containeranalysis_api,
+                containerscanning_api,
+                container_api,
+                artifactregistry_api,
+                artifactregistry_api,
+                cloudbuild_api,
+                cloudasset_api,
+                compute_api,
+                devconnect_api,
+            ]))
+        insights_config_projects = gcp.developerconnect.InsightsConfig("insights_config_projects",
+            location="us-central1",
+            insights_config_id="tf-test-ic-projects-_8647",
+            project=project.project_id,
+            annotations={},
+            labels={},
+            target_projects={
+                "project_ids": [project.project_id.apply(lambda project_id: f"projects/{project_id}")],
+            },
+            artifact_configs=[{
+                "google_artifact_analysis": {
+                    "project_id": project.project_id,
+                },
+                "google_artifact_registry": {
+                    "artifact_registry_package": "my-package",
+                    "project_id": project.project_id,
+                },
+                "uri": "us-docker.pkg.dev/my-project/my-repo/my-image",
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
+        ```
 
         ## Import
 
         InsightsConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}`
-
         * `{{project}}/{{location}}/{{insights_config_id}}`
-
         * `{{location}}/{{insights_config_id}}`
 
         When using the `pulumi import` command, InsightsConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{project}}/{{location}}/{{insights_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{location}}/{{insights_config_id}}
         ```
 
@@ -659,6 +797,8 @@ class InsightsConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']] target_projects: The projects to track with the InsightsConfig.
+               Structure is documented below.
         """
         ...
     @overload
@@ -680,7 +820,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_10393",
+            project_id="dci-tf-_3684",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -757,7 +897,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         my_apphub_application = gcp.apphub.Application("my_apphub_application",
             location="us-central1",
-            application_id="tf-test-example-application_33052",
+            application_id="tf-test-example-application_10719",
             scope={
                 "type": "REGIONAL",
             },
@@ -765,7 +905,7 @@ class InsightsConfig(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
         insights_config = gcp.developerconnect.InsightsConfig("insights_config",
             location="us-central1",
-            insights_config_id="tf-test-ic_3684",
+            insights_config_id="tf-test-ic-apphub-_1443",
             project=project.project_id,
             annotations={},
             labels={},
@@ -787,28 +927,124 @@ class InsightsConfig(pulumi.CustomResource):
             }],
             opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
         ```
+        ### Developer Connect Insights Config Projects
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="dci-tf-_26032",
+            name="Service Project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
+        # Grant Permissions
+        apphub_permissions = gcp.projects.IAMMember("apphub_permissions",
+            project=project.project_id,
+            role="roles/apphub.admin",
+            member="serviceAccount:hashicorp-test-runner@ci-test-project-188019.iam.gserviceaccount.com")
+        insights_agent = gcp.projects.IAMMember("insights_agent",
+            project=project.project_id,
+            role="roles/developerconnect.insightsAgent",
+            member="serviceAccount:66214305248-compute@developer.gserviceaccount.com")
+        # Enable APIs
+        apphub_api_service = gcp.projects.Service("apphub_api_service",
+            project=project.project_id,
+            service="apphub.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        containeranalysis_api = gcp.projects.Service("containeranalysis_api",
+            project=project.project_id,
+            service="containeranalysis.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        containerscanning_api = gcp.projects.Service("containerscanning_api",
+            project=project.project_id,
+            service="containerscanning.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        container_api = gcp.projects.Service("container_api",
+            project=project.project_id,
+            service="container.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        artifactregistry_api = gcp.projects.Service("artifactregistry_api",
+            project=project.project_id,
+            service="artifactregistry.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        cloudbuild_api = gcp.projects.Service("cloudbuild_api",
+            project=project.project_id,
+            service="cloudbuild.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        cloudasset_api = gcp.projects.Service("cloudasset_api",
+            project=project.project_id,
+            service="cloudasset.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        compute_api = gcp.projects.Service("compute_api",
+            project=project.project_id,
+            service="compute.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        devconnect_api = gcp.projects.Service("devconnect_api",
+            project=project.project_id,
+            service="developerconnect.googleapis.com",
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        # Wait delay after enabling APIs and granting permissions
+        wait_for_propagation = time.Sleep("wait_for_propagation", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[
+                apphub_permissions,
+                insights_agent,
+                apphub_api_service,
+                containeranalysis_api,
+                containerscanning_api,
+                container_api,
+                artifactregistry_api,
+                artifactregistry_api,
+                cloudbuild_api,
+                cloudasset_api,
+                compute_api,
+                devconnect_api,
+            ]))
+        insights_config_projects = gcp.developerconnect.InsightsConfig("insights_config_projects",
+            location="us-central1",
+            insights_config_id="tf-test-ic-projects-_8647",
+            project=project.project_id,
+            annotations={},
+            labels={},
+            target_projects={
+                "project_ids": [project.project_id.apply(lambda project_id: f"projects/{project_id}")],
+            },
+            artifact_configs=[{
+                "google_artifact_analysis": {
+                    "project_id": project.project_id,
+                },
+                "google_artifact_registry": {
+                    "artifact_registry_package": "my-package",
+                    "project_id": project.project_id,
+                },
+                "uri": "us-docker.pkg.dev/my-project/my-repo/my-image",
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
+        ```
 
         ## Import
 
         InsightsConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}`
-
         * `{{project}}/{{location}}/{{insights_config_id}}`
-
         * `{{location}}/{{insights_config_id}}`
 
         When using the `pulumi import` command, InsightsConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{project}}/{{location}}/{{insights_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{location}}/{{insights_config_id}}
         ```
 
@@ -834,6 +1070,7 @@ class InsightsConfig(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 target_projects: Optional[pulumi.Input[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -844,8 +1081,6 @@ class InsightsConfig(pulumi.CustomResource):
             __props__ = InsightsConfigArgs.__new__(InsightsConfigArgs)
 
             __props__.__dict__["annotations"] = annotations
-            if app_hub_application is None and not opts.urn:
-                raise TypeError("Missing required property 'app_hub_application'")
             __props__.__dict__["app_hub_application"] = app_hub_application
             __props__.__dict__["artifact_configs"] = artifact_configs
             if insights_config_id is None and not opts.urn:
@@ -856,6 +1091,7 @@ class InsightsConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["target_projects"] = target_projects
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["effective_labels"] = None
@@ -894,6 +1130,7 @@ class InsightsConfig(pulumi.CustomResource):
             reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
             runtime_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigRuntimeConfigArgs', 'InsightsConfigRuntimeConfigArgsDict']]]]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
+            target_projects: Optional[pulumi.Input[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'InsightsConfig':
         """
         Get an existing InsightsConfig resource's state with the given name, id, and optional extra
@@ -912,6 +1149,7 @@ class InsightsConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]] artifact_configs: The artifact configurations of the artifacts that are deployed.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: [Output only] Create timestamp
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigErrorArgs', 'InsightsConfigErrorArgsDict']]]] errors: Any errors that occurred while setting up the InsightsConfig.
                Each error will be in the format: `field_name: error_message`, e.g.
@@ -929,7 +1167,7 @@ class InsightsConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Reconciling (https://google.aip.dev/128#reconciliation).
                Set to true if the current state of InsightsConfig does not match the
                user's intended state, and the service is actively updating the resource to
@@ -943,6 +1181,8 @@ class InsightsConfig(pulumi.CustomResource):
                STATE_UNSPECIFIED
                LINKED
                UNLINKED
+        :param pulumi.Input[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']] target_projects: The projects to track with the InsightsConfig.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: [Output only] Update timestamp
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -965,6 +1205,7 @@ class InsightsConfig(pulumi.CustomResource):
         __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["runtime_configs"] = runtime_configs
         __props__.__dict__["state"] = state
+        __props__.__dict__["target_projects"] = target_projects
         __props__.__dict__["update_time"] = update_time
         return InsightsConfig(resource_name, opts=opts, __props__=__props__)
 
@@ -981,7 +1222,7 @@ class InsightsConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="appHubApplication")
-    def app_hub_application(self) -> pulumi.Output[_builtins.str]:
+    def app_hub_application(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The name of the App Hub Application.
         Format:
@@ -1009,6 +1250,9 @@ class InsightsConfig(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
@@ -1081,7 +1325,7 @@ class InsightsConfig(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1118,6 +1362,15 @@ class InsightsConfig(pulumi.CustomResource):
         UNLINKED
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="targetProjects")
+    def target_projects(self) -> pulumi.Output[Optional['outputs.InsightsConfigTargetProjects']]:
+        """
+        The projects to track with the InsightsConfig.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "target_projects")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

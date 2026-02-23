@@ -186,22 +186,14 @@ class CrossSiteNetwork(pulumi.CustomResource):
         CrossSiteNetwork can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/crossSiteNetworks/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, CrossSiteNetwork can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default projects/{{project}}/global/crossSiteNetworks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default {{name}}
         ```
 
@@ -250,22 +242,14 @@ class CrossSiteNetwork(pulumi.CustomResource):
         CrossSiteNetwork can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/crossSiteNetworks/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, CrossSiteNetwork can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default projects/{{project}}/global/crossSiteNetworks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default {{name}}
         ```
 

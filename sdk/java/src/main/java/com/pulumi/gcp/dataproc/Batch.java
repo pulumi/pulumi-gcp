@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchSpark = new Batch("exampleBatchSpark", BatchArgs.builder()
- *             .batchId("tf-test-batch_55438")
+ *             .batchId("tf-test-batch_49082")
  *             .location("us-central1")
  *             .labels(Map.of("batch_test", "terraform"))
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
@@ -275,7 +275,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchSparsql = new Batch("exampleBatchSparsql", BatchArgs.builder()
- *             .batchId("tf-test-batch_32706")
+ *             .batchId("tf-test-batch_60365")
  *             .location("us-central1")
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
  *                 .properties(Map.ofEntries(
@@ -328,7 +328,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchPyspark = new Batch("exampleBatchPyspark", BatchArgs.builder()
- *             .batchId("tf-test-batch_49082")
+ *             .batchId("tf-test-batch_80215")
  *             .location("us-central1")
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
  *                 .properties(Map.ofEntries(
@@ -387,7 +387,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchSparkr = new Batch("exampleBatchSparkr", BatchArgs.builder()
- *             .batchId("tf-test-batch_60365")
+ *             .batchId("tf-test-batch_59033")
  *             .location("us-central1")
  *             .labels(Map.of("batch_test", "terraform"))
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
@@ -443,7 +443,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchAutotuning = new Batch("exampleBatchAutotuning", BatchArgs.builder()
- *             .batchId("tf-test-batch_80215")
+ *             .batchId("tf-test-batch_32081")
  *             .location("us-central1")
  *             .labels(Map.of("batch_test", "terraform"))
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
@@ -482,22 +482,14 @@ import javax.annotation.Nullable;
  * Batch can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/batches/{{batch_id}}`
- * 
  * * `{{project}}/{{location}}/{{batch_id}}`
- * 
  * * `{{location}}/{{batch_id}}`
  * 
  * When using the `pulumi import` command, Batch can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataproc/batch:Batch default projects/{{project}}/locations/{{location}}/batches/{{batch_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataproc/batch:Batch default {{project}}/{{location}}/{{batch_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataproc/batch:Batch default {{location}}/{{batch_id}}
  * ```
  * 
@@ -658,7 +650,7 @@ public class Batch extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -666,7 +658,7 @@ public class Batch extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

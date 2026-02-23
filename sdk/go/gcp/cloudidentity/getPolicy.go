@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := cloudidentity.GetPolicy(ctx, &cloudidentity.GetPolicyArgs{
+//			test, err := cloudidentity.LookupPolicy(ctx, &cloudidentity.LookupPolicyArgs{
 //				Name: "policies/{policy_id}",
 //			}, nil)
 //			if err != nil {
@@ -44,9 +44,9 @@ import (
 //	}
 //
 // ```
-func GetPolicy(ctx *pulumi.Context, args *GetPolicyArgs, opts ...pulumi.InvokeOption) (*GetPolicyResult, error) {
+func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetPolicyResult
+	var rv LookupPolicyResult
 	err := ctx.Invoke("gcp:cloudidentity/getPolicy:getPolicy", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -55,13 +55,13 @@ func GetPolicy(ctx *pulumi.Context, args *GetPolicyArgs, opts ...pulumi.InvokeOp
 }
 
 // A collection of arguments for invoking getPolicy.
-type GetPolicyArgs struct {
+type LookupPolicyArgs struct {
 	// The resource name of the policy to retrieve. Format: `policies/{policy_id}`.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getPolicy.
-type GetPolicyResult struct {
+type LookupPolicyResult struct {
 	// The customer that the policy belongs to.
 	Customer string `pulumi:"customer"`
 	// The provider-assigned unique ID for this managed resource.
@@ -76,70 +76,70 @@ type GetPolicyResult struct {
 	Type string `pulumi:"type"`
 }
 
-func GetPolicyOutput(ctx *pulumi.Context, args GetPolicyOutputArgs, opts ...pulumi.InvokeOption) GetPolicyResultOutput {
+func LookupPolicyOutput(ctx *pulumi.Context, args LookupPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupPolicyResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPolicyResultOutput, error) {
-			args := v.(GetPolicyArgs)
+		ApplyT(func(v interface{}) (LookupPolicyResultOutput, error) {
+			args := v.(LookupPolicyArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:cloudidentity/getPolicy:getPolicy", args, GetPolicyResultOutput{}, options).(GetPolicyResultOutput), nil
-		}).(GetPolicyResultOutput)
+			return ctx.InvokeOutput("gcp:cloudidentity/getPolicy:getPolicy", args, LookupPolicyResultOutput{}, options).(LookupPolicyResultOutput), nil
+		}).(LookupPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getPolicy.
-type GetPolicyOutputArgs struct {
+type LookupPolicyOutputArgs struct {
 	// The resource name of the policy to retrieve. Format: `policies/{policy_id}`.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
-func (GetPolicyOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPolicyArgs)(nil)).Elem()
+func (LookupPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPolicyArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getPolicy.
-type GetPolicyResultOutput struct{ *pulumi.OutputState }
+type LookupPolicyResultOutput struct{ *pulumi.OutputState }
 
-func (GetPolicyResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPolicyResult)(nil)).Elem()
+func (LookupPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPolicyResult)(nil)).Elem()
 }
 
-func (o GetPolicyResultOutput) ToGetPolicyResultOutput() GetPolicyResultOutput {
+func (o LookupPolicyResultOutput) ToLookupPolicyResultOutput() LookupPolicyResultOutput {
 	return o
 }
 
-func (o GetPolicyResultOutput) ToGetPolicyResultOutputWithContext(ctx context.Context) GetPolicyResultOutput {
+func (o LookupPolicyResultOutput) ToLookupPolicyResultOutputWithContext(ctx context.Context) LookupPolicyResultOutput {
 	return o
 }
 
 // The customer that the policy belongs to.
-func (o GetPolicyResultOutput) Customer() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPolicyResult) string { return v.Customer }).(pulumi.StringOutput)
+func (o LookupPolicyResultOutput) Customer() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyResult) string { return v.Customer }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetPolicyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The resource name of the policy.
-func (o GetPolicyResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPolicyResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupPolicyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // A list containing the CEL query that defines which entities the policy applies to. Structure is documented below.
-func (o GetPolicyResultOutput) PolicyQueries() GetPolicyPolicyQueryArrayOutput {
-	return o.ApplyT(func(v GetPolicyResult) []GetPolicyPolicyQuery { return v.PolicyQueries }).(GetPolicyPolicyQueryArrayOutput)
+func (o LookupPolicyResultOutput) PolicyQueries() GetPolicyPolicyQueryArrayOutput {
+	return o.ApplyT(func(v LookupPolicyResult) []GetPolicyPolicyQuery { return v.PolicyQueries }).(GetPolicyPolicyQueryArrayOutput)
 }
 
 // The setting configured by this policy, represented as a JSON string.
-func (o GetPolicyResultOutput) Setting() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPolicyResult) string { return v.Setting }).(pulumi.StringOutput)
+func (o LookupPolicyResultOutput) Setting() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyResult) string { return v.Setting }).(pulumi.StringOutput)
 }
 
 // The type of the policy.
-func (o GetPolicyResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPolicyResult) string { return v.Type }).(pulumi.StringOutput)
+func (o LookupPolicyResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetPolicyResultOutput{})
+	pulumi.RegisterOutputType(LookupPolicyResultOutput{})
 }

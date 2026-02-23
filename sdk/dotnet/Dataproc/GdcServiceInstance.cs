@@ -55,22 +55,14 @@ namespace Pulumi.Gcp.Dataproc
     /// ServiceInstance can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/serviceInstances/{{service_instance_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{service_instance_id}}`
-    /// 
     /// * `{{location}}/{{service_instance_id}}`
     /// 
     /// When using the `pulumi import` command, ServiceInstance can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default projects/{{project}}/locations/{{location}}/serviceInstances/{{service_instance_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{project}}/{{location}}/{{service_instance_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{location}}/{{service_instance_id}}
     /// ```
     /// </summary>
@@ -137,7 +129,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -410,7 +402,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

@@ -411,7 +411,7 @@ class _EdgeCacheOriginState:
                When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
                Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retry_conditions: Specifies one or more retry conditions for the configured origin.
                If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
                the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -664,7 +664,7 @@ class _EdgeCacheOriginState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -842,22 +842,14 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         EdgeCacheOrigin can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, EdgeCacheOrigin can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{name}}
         ```
 
@@ -1035,22 +1027,14 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         EdgeCacheOrigin can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, EdgeCacheOrigin can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{name}}
         ```
 
@@ -1190,7 +1174,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
                Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retry_conditions: Specifies one or more retry conditions for the configured origin.
                If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
                the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -1375,7 +1359,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -189,7 +189,7 @@ class _ScopeRbacRoleBindingState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['ScopeRbacRoleBindingRoleArgs'] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] scope_id: Id of the scope
@@ -329,7 +329,7 @@ class _ScopeRbacRoleBindingState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -458,9 +458,9 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_16199")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_6529")
         scope_rbac_role_binding = gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding",
-            scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_21563",
+            scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_16178",
             scope_id=scope.scope_id,
             user="test-email@gmail.com",
             role={
@@ -476,7 +476,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_25141")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_26317")
         rbacrolebindingactuation = gcp.gkehub.Feature("rbacrolebindingactuation",
             name="rbacrolebindingactuation",
             location="global",
@@ -486,7 +486,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
                 },
             })
         scope_rbac_role_binding = gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding",
-            scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_30827",
+            scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_4866",
             scope_id=scope.scope_id,
             user="test-email@gmail.com",
             role={
@@ -503,22 +503,14 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         ScopeRBACRoleBinding can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}`
-
         * `{{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}`
-
         * `{{scope_id}}/{{scope_rbac_role_binding_id}}`
 
         When using the `pulumi import` command, ScopeRBACRoleBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{scope_id}}/{{scope_rbac_role_binding_id}}
         ```
 
@@ -565,9 +557,9 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_16199")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_6529")
         scope_rbac_role_binding = gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding",
-            scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_21563",
+            scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_16178",
             scope_id=scope.scope_id,
             user="test-email@gmail.com",
             role={
@@ -583,7 +575,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_25141")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_26317")
         rbacrolebindingactuation = gcp.gkehub.Feature("rbacrolebindingactuation",
             name="rbacrolebindingactuation",
             location="global",
@@ -593,7 +585,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
                 },
             })
         scope_rbac_role_binding = gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding",
-            scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_30827",
+            scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_4866",
             scope_id=scope.scope_id,
             user="test-email@gmail.com",
             role={
@@ -610,22 +602,14 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         ScopeRBACRoleBinding can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}`
-
         * `{{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}`
-
         * `{{scope_id}}/{{scope_rbac_role_binding_id}}`
 
         When using the `pulumi import` command, ScopeRBACRoleBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{scope_id}}/{{scope_rbac_role_binding_id}}
         ```
 
@@ -729,7 +713,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['ScopeRbacRoleBindingRoleArgs', 'ScopeRbacRoleBindingRoleArgsDict']] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] scope_id: Id of the scope
@@ -831,7 +815,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

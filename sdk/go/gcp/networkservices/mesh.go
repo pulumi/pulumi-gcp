@@ -112,22 +112,14 @@ import (
 // Mesh can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/meshes/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Mesh can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/{{location}}/meshes/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/mesh:Mesh default {{location}}/{{name}}
 // ```
 type Mesh struct {
@@ -157,7 +149,7 @@ type Mesh struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -224,7 +216,7 @@ type meshState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Server-defined URL of this resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -257,7 +249,7 @@ type MeshState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringPtrInput
@@ -449,7 +441,8 @@ func (o MeshOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MeshOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Mesh) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

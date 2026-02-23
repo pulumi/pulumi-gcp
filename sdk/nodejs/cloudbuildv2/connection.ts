@@ -141,28 +141,16 @@ import * as utilities from "../utilities";
  * Connection can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/connections/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudbuildv2/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:cloudbuildv2/connection:Connection default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:cloudbuildv2/connection:Connection default {{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:cloudbuildv2/connection:Connection default {{name}}
  * ```
  */
@@ -218,6 +206,9 @@ export class Connection extends pulumi.CustomResource {
      * If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      */
     declare public readonly disabled: pulumi.Output<boolean | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -349,6 +340,9 @@ export interface ConnectionState {
      * If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      */
     disabled?: pulumi.Input<boolean>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.

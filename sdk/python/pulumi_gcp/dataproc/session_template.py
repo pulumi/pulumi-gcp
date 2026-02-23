@@ -206,7 +206,7 @@ class _SessionTemplateState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['SessionTemplateRuntimeConfigArgs'] runtime_config: Runtime configuration for the session template.
                Structure is documented below.
         :param pulumi.Input['SessionTemplateSparkConnectSessionArgs'] spark_connect_session: Spark connect configuration for an interactive session.
@@ -362,7 +362,7 @@ class _SessionTemplateState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -924,7 +924,7 @@ class SessionTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['SessionTemplateRuntimeConfigArgs', 'SessionTemplateRuntimeConfigArgsDict']] runtime_config: Runtime configuration for the session template.
                Structure is documented below.
         :param pulumi.Input[Union['SessionTemplateSparkConnectSessionArgs', 'SessionTemplateSparkConnectSessionArgsDict']] spark_connect_session: Spark connect configuration for an interactive session.
@@ -1035,7 +1035,7 @@ class SessionTemplate(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

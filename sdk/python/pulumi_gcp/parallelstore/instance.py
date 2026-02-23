@@ -385,7 +385,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] reserved_ip_range: Immutable. Contains the id of the allocated IP address range
                associated with the private service access connection for example, \\"test-default\\"
                associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
@@ -688,7 +688,7 @@ class _InstanceState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -844,22 +844,14 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-
         * `{{project}}/{{location}}/{{instance_id}}`
-
         * `{{location}}/{{instance_id}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:parallelstore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parallelstore/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parallelstore/instance:Instance default {{location}}/{{instance_id}}
         ```
 
@@ -1014,22 +1006,14 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-
         * `{{project}}/{{location}}/{{instance_id}}`
-
         * `{{location}}/{{instance_id}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:parallelstore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parallelstore/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parallelstore/instance:Instance default {{location}}/{{instance_id}}
         ```
 
@@ -1200,7 +1184,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] reserved_ip_range: Immutable. Contains the id of the allocated IP address range
                associated with the private service access connection for example, \\"test-default\\"
                associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
@@ -1424,7 +1408,7 @@ class Instance(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

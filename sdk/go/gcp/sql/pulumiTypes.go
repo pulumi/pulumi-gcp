@@ -1642,7 +1642,7 @@ type DatabaseInstanceSettings struct {
 	// Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
 	DataDiskProvisionedThroughput *int                                   `pulumi:"dataDiskProvisionedThroughput"`
 	DatabaseFlags                 []DatabaseInstanceSettingsDatabaseFlag `pulumi:"databaseFlags"`
-	// Configuration to protect against accidental instance deletion.
+	// Enables deletion protection of an instance at the GCP level. Enabling this protection will guard against accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform) by enabling the [GCP Cloud SQL instance deletion protection](https://cloud.google.com/sql/docs/postgres/deletion-protection). Terraform provider support was introduced in version 4.48.0. Defaults to `false`.
 	DeletionProtectionEnabled *bool                                          `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriod     *DatabaseInstanceSettingsDenyMaintenancePeriod `pulumi:"denyMaintenancePeriod"`
 	// Enables auto-resizing of the storage size. Defaults to `true`. Note that if `diskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in diskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `diskSize`.
@@ -1734,7 +1734,7 @@ type DatabaseInstanceSettingsArgs struct {
 	// Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
 	DataDiskProvisionedThroughput pulumi.IntPtrInput                             `pulumi:"dataDiskProvisionedThroughput"`
 	DatabaseFlags                 DatabaseInstanceSettingsDatabaseFlagArrayInput `pulumi:"databaseFlags"`
-	// Configuration to protect against accidental instance deletion.
+	// Enables deletion protection of an instance at the GCP level. Enabling this protection will guard against accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform) by enabling the [GCP Cloud SQL instance deletion protection](https://cloud.google.com/sql/docs/postgres/deletion-protection). Terraform provider support was introduced in version 4.48.0. Defaults to `false`.
 	DeletionProtectionEnabled pulumi.BoolPtrInput                                   `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriod     DatabaseInstanceSettingsDenyMaintenancePeriodPtrInput `pulumi:"denyMaintenancePeriod"`
 	// Enables auto-resizing of the storage size. Defaults to `true`. Note that if `diskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in diskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `diskSize`.
@@ -1935,7 +1935,7 @@ func (o DatabaseInstanceSettingsOutput) DatabaseFlags() DatabaseInstanceSettings
 	return o.ApplyT(func(v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
-// Configuration to protect against accidental instance deletion.
+// Enables deletion protection of an instance at the GCP level. Enabling this protection will guard against accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform) by enabling the [GCP Cloud SQL instance deletion protection](https://cloud.google.com/sql/docs/postgres/deletion-protection). Terraform provider support was introduced in version 4.48.0. Defaults to `false`.
 func (o DatabaseInstanceSettingsOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.DeletionProtectionEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -2219,7 +2219,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DatabaseFlags() DatabaseInstanceSetti
 	}).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
-// Configuration to protect against accidental instance deletion.
+// Enables deletion protection of an instance at the GCP level. Enabling this protection will guard against accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform) by enabling the [GCP Cloud SQL instance deletion protection](https://cloud.google.com/sql/docs/postgres/deletion-protection). Terraform provider support was introduced in version 4.48.0. Defaults to `false`.
 func (o DatabaseInstanceSettingsPtrOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *bool {
 		if v == nil {
@@ -10619,8 +10619,9 @@ type GetDatabaseInstancesInstance struct {
 	// The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
 	ConnectionName string `pulumi:"connectionName"`
 	// To filter out the Cloud SQL instances which are of the specified database version.
-	DatabaseVersion    string `pulumi:"databaseVersion"`
-	DeletionProtection bool   `pulumi:"deletionProtection"`
+	DatabaseVersion string `pulumi:"databaseVersion"`
+	// Used to block Terraform from deleting a SQL Instance. Defaults to true.
+	DeletionProtection bool `pulumi:"deletionProtection"`
 	// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
 	DnsName string `pulumi:"dnsName"`
 	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
@@ -10628,7 +10629,8 @@ type GetDatabaseInstancesInstance struct {
 	EncryptionKeyName string                                `pulumi:"encryptionKeyName"`
 	// The description of final backup if instance enable create final backup during instance deletion.
 	FinalBackupDescription string `pulumi:"finalBackupDescription"`
-	FirstIpAddress         string `pulumi:"firstIpAddress"`
+	// The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
+	FirstIpAddress string `pulumi:"firstIpAddress"`
 	// The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
 	InstanceType string                                  `pulumi:"instanceType"`
 	IpAddresses  []GetDatabaseInstancesInstanceIpAddress `pulumi:"ipAddresses"`
@@ -10636,17 +10638,20 @@ type GetDatabaseInstancesInstance struct {
 	MaintenanceVersion string `pulumi:"maintenanceVersion"`
 	// The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binaryLogEnabled set, as well as existing backups.
 	MasterInstanceName string `pulumi:"masterInstanceName"`
-	Name               string `pulumi:"name"`
+	// The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first created. This is done because after a name is used, it cannot be reused for up to one week.
+	Name string `pulumi:"name"`
 	// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
 	NodeCount int `pulumi:"nodeCount"`
 	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
 	PointInTimeRestoreContexts []GetDatabaseInstancesInstancePointInTimeRestoreContext `pulumi:"pointInTimeRestoreContexts"`
-	PrivateIpAddress           string                                                  `pulumi:"privateIpAddress"`
+	// IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
+	PrivateIpAddress string `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
 	Project string `pulumi:"project"`
 	// The link to service attachment of PSC instance.
 	PscServiceAttachmentLink string `pulumi:"pscServiceAttachmentLink"`
-	PublicIpAddress          string `pulumi:"publicIpAddress"`
+	// IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
+	PublicIpAddress string `pulumi:"publicIpAddress"`
 	// To filter out the Cloud SQL instances which are located in the specified region.
 	Region string `pulumi:"region"`
 	// The configuration for replication.
@@ -10693,8 +10698,9 @@ type GetDatabaseInstancesInstanceArgs struct {
 	// The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
 	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
 	// To filter out the Cloud SQL instances which are of the specified database version.
-	DatabaseVersion    pulumi.StringInput `pulumi:"databaseVersion"`
-	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
+	DatabaseVersion pulumi.StringInput `pulumi:"databaseVersion"`
+	// Used to block Terraform from deleting a SQL Instance. Defaults to true.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
 	DnsName pulumi.StringInput `pulumi:"dnsName"`
 	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
@@ -10702,7 +10708,8 @@ type GetDatabaseInstancesInstanceArgs struct {
 	EncryptionKeyName pulumi.StringInput                            `pulumi:"encryptionKeyName"`
 	// The description of final backup if instance enable create final backup during instance deletion.
 	FinalBackupDescription pulumi.StringInput `pulumi:"finalBackupDescription"`
-	FirstIpAddress         pulumi.StringInput `pulumi:"firstIpAddress"`
+	// The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
+	FirstIpAddress pulumi.StringInput `pulumi:"firstIpAddress"`
 	// The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
 	InstanceType pulumi.StringInput                              `pulumi:"instanceType"`
 	IpAddresses  GetDatabaseInstancesInstanceIpAddressArrayInput `pulumi:"ipAddresses"`
@@ -10710,17 +10717,20 @@ type GetDatabaseInstancesInstanceArgs struct {
 	MaintenanceVersion pulumi.StringInput `pulumi:"maintenanceVersion"`
 	// The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binaryLogEnabled set, as well as existing backups.
 	MasterInstanceName pulumi.StringInput `pulumi:"masterInstanceName"`
-	Name               pulumi.StringInput `pulumi:"name"`
+	// The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first created. This is done because after a name is used, it cannot be reused for up to one week.
+	Name pulumi.StringInput `pulumi:"name"`
 	// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
 	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
 	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
 	PointInTimeRestoreContexts GetDatabaseInstancesInstancePointInTimeRestoreContextArrayInput `pulumi:"pointInTimeRestoreContexts"`
-	PrivateIpAddress           pulumi.StringInput                                              `pulumi:"privateIpAddress"`
+	// IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
+	PrivateIpAddress pulumi.StringInput `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
 	Project pulumi.StringInput `pulumi:"project"`
 	// The link to service attachment of PSC instance.
 	PscServiceAttachmentLink pulumi.StringInput `pulumi:"pscServiceAttachmentLink"`
-	PublicIpAddress          pulumi.StringInput `pulumi:"publicIpAddress"`
+	// IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
+	PublicIpAddress pulumi.StringInput `pulumi:"publicIpAddress"`
 	// To filter out the Cloud SQL instances which are located in the specified region.
 	Region pulumi.StringInput `pulumi:"region"`
 	// The configuration for replication.
@@ -10822,6 +10832,7 @@ func (o GetDatabaseInstancesInstanceOutput) DatabaseVersion() pulumi.StringOutpu
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.DatabaseVersion }).(pulumi.StringOutput)
 }
 
+// Used to block Terraform from deleting a SQL Instance. Defaults to true.
 func (o GetDatabaseInstancesInstanceOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
@@ -10845,6 +10856,7 @@ func (o GetDatabaseInstancesInstanceOutput) FinalBackupDescription() pulumi.Stri
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.FinalBackupDescription }).(pulumi.StringOutput)
 }
 
+// The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
 func (o GetDatabaseInstancesInstanceOutput) FirstIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.FirstIpAddress }).(pulumi.StringOutput)
 }
@@ -10868,6 +10880,7 @@ func (o GetDatabaseInstancesInstanceOutput) MasterInstanceName() pulumi.StringOu
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.MasterInstanceName }).(pulumi.StringOutput)
 }
 
+// The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first created. This is done because after a name is used, it cannot be reused for up to one week.
 func (o GetDatabaseInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -10884,6 +10897,7 @@ func (o GetDatabaseInstancesInstanceOutput) PointInTimeRestoreContexts() GetData
 	}).(GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput)
 }
 
+// IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
 func (o GetDatabaseInstancesInstanceOutput) PrivateIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.PrivateIpAddress }).(pulumi.StringOutput)
 }
@@ -10898,6 +10912,7 @@ func (o GetDatabaseInstancesInstanceOutput) PscServiceAttachmentLink() pulumi.St
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.PscServiceAttachmentLink }).(pulumi.StringOutput)
 }
 
+// IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
 func (o GetDatabaseInstancesInstanceOutput) PublicIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.PublicIpAddress }).(pulumi.StringOutput)
 }

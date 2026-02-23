@@ -22,6 +22,9 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
 //
+// > **Note:**  All arguments marked as write-only values will not be stored in the state: `privateKeyWo`.
+// Read more about Write-only Arguments.
+//
 // ## Example Usage
 //
 // ## Import
@@ -29,22 +32,14 @@ import (
 // SslCertificate can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/global/sslCertificates/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, SslCertificate can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default projects/{{project}}/global/sslCertificates/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{name}}
 // ```
 type SSLCertificate struct {
@@ -83,7 +78,16 @@ type SSLCertificate struct {
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
+	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The write-only private key in PEM format.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `privateKey` or `privateKeyWo` can only be set.
+	PrivateKeyWo pulumi.StringPtrOutput `pulumi:"privateKeyWo"`
+	// Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PrivateKeyWoVersion pulumi.StringPtrOutput `pulumi:"privateKeyWoVersion"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -101,18 +105,19 @@ func NewSSLCertificate(ctx *pulumi.Context,
 	if args.Certificate == nil {
 		return nil, errors.New("invalid value for required argument 'Certificate'")
 	}
-	if args.PrivateKey == nil {
-		return nil, errors.New("invalid value for required argument 'PrivateKey'")
-	}
 	if args.Certificate != nil {
 		args.Certificate = pulumi.ToSecret(args.Certificate).(pulumi.StringInput)
 	}
 	if args.PrivateKey != nil {
-		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringInput)
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringPtrInput)
+	}
+	if args.PrivateKeyWo != nil {
+		args.PrivateKeyWo = pulumi.ToSecret(args.PrivateKeyWo).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"certificate",
 		"privateKey",
+		"privateKeyWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -172,6 +177,15 @@ type sslcertificateState struct {
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PrivateKey *string `pulumi:"privateKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The write-only private key in PEM format.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `privateKey` or `privateKeyWo` can only be set.
+	PrivateKeyWo *string `pulumi:"privateKeyWo"`
+	// Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PrivateKeyWoVersion *string `pulumi:"privateKeyWoVersion"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -214,6 +228,15 @@ type SSLCertificateState struct {
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PrivateKey pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The write-only private key in PEM format.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `privateKey` or `privateKeyWo` can only be set.
+	PrivateKeyWo pulumi.StringPtrInput
+	// Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PrivateKeyWoVersion pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -253,7 +276,16 @@ type sslcertificateArgs struct {
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	PrivateKey string `pulumi:"privateKey"`
+	PrivateKey *string `pulumi:"privateKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The write-only private key in PEM format.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `privateKey` or `privateKeyWo` can only be set.
+	PrivateKeyWo *string `pulumi:"privateKeyWo"`
+	// Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PrivateKeyWoVersion *string `pulumi:"privateKeyWoVersion"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -288,7 +320,16 @@ type SSLCertificateArgs struct {
 	NamePrefix pulumi.StringPtrInput
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	PrivateKey pulumi.StringInput
+	PrivateKey pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The write-only private key in PEM format.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `privateKey` or `privateKeyWo` can only be set.
+	PrivateKeyWo pulumi.StringPtrInput
+	// Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PrivateKeyWoVersion pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -435,8 +476,23 @@ func (o SSLCertificateOutput) NamePrefix() pulumi.StringOutput {
 
 // The write-only private key in PEM format.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o SSLCertificateOutput) PrivateKey() pulumi.StringOutput {
-	return o.ApplyT(func(v *SSLCertificate) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
+func (o SSLCertificateOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SSLCertificate) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The write-only private key in PEM format.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `privateKey` or `privateKeyWo` can only be set.
+func (o SSLCertificateOutput) PrivateKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SSLCertificate) pulumi.StringPtrOutput { return v.PrivateKeyWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o SSLCertificateOutput) PrivateKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SSLCertificate) pulumi.StringPtrOutput { return v.PrivateKeyWoVersion }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

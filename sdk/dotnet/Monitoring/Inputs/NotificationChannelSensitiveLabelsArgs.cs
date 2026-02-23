@@ -29,6 +29,33 @@ namespace Pulumi.Gcp.Monitoring.Inputs
             }
         }
 
+        [Input("authTokenWo")]
+        private Input<string>? _authTokenWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// An authorization token for a notification channel. Channel types that support this field include: slack
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `AuthToken` or `AuthTokenWo` can only be set.
+        /// </summary>
+        public Input<string>? AuthTokenWo
+        {
+            get => _authTokenWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authTokenWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `AuthTokenWo` write-only. Increment this value when an update to `AuthTokenWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("authTokenWoVersion")]
+        public Input<string>? AuthTokenWoVersion { get; set; }
+
         [Input("password")]
         private Input<string>? _password;
 
@@ -46,6 +73,33 @@ namespace Pulumi.Gcp.Monitoring.Inputs
             }
         }
 
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// An password for a notification channel. Channel types that support this field include: WebhookBasicauth
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `Password` or `PasswordWo` can only be set.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `PasswordWo` write-only. Increment this value when an update to `PasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<string>? PasswordWoVersion { get; set; }
+
         [Input("serviceKey")]
         private Input<string>? _serviceKey;
 
@@ -62,6 +116,33 @@ namespace Pulumi.Gcp.Monitoring.Inputs
                 _serviceKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("serviceKeyWo")]
+        private Input<string>? _serviceKeyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `ServiceKey` or `ServiceKeyWo` can only be set.
+        /// </summary>
+        public Input<string>? ServiceKeyWo
+        {
+            get => _serviceKeyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serviceKeyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `ServiceKeyWo` write-only. Increment this value when an update to `ServiceKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("serviceKeyWoVersion")]
+        public Input<string>? ServiceKeyWoVersion { get; set; }
 
         public NotificationChannelSensitiveLabelsArgs()
         {

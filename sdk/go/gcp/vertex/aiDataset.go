@@ -81,7 +81,7 @@ type AiDataset struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the dataset. eg us-central1
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -152,7 +152,7 @@ type aiDatasetState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the dataset. eg us-central1
 	Region *string `pulumi:"region"`
@@ -183,7 +183,7 @@ type AiDatasetState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region of the dataset. eg us-central1
 	Region pulumi.StringPtrInput
@@ -369,7 +369,8 @@ func (o AiDatasetOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AiDatasetOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiDataset) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

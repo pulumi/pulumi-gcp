@@ -85,22 +85,14 @@ import javax.annotation.Nullable;
  * Destination can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{multicloud_data_transfer_config}}/destinations/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{multicloud_data_transfer_config}}/{{name}}`
- * 
  * * `{{location}}/{{multicloud_data_transfer_config}}/{{name}}`
  * 
  * When using the `pulumi import` command, Destination can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networkconnectivity/destination:Destination default projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{multicloud_data_transfer_config}}/destinations/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkconnectivity/destination:Destination default {{project}}/{{location}}/{{multicloud_data_transfer_config}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkconnectivity/destination:Destination default {{location}}/{{multicloud_data_transfer_config}}/{{name}}
  * ```
  * 
@@ -277,7 +269,7 @@ public class Destination extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -285,7 +277,7 @@ public class Destination extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

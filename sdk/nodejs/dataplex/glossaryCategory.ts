@@ -16,14 +16,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const categoryTestId = new gcp.dataplex.Glossary("category_test_id", {
- *     glossaryId: "tf-test-glossary_91980",
+ *     glossaryId: "tf-test-glossary_80332",
  *     location: "us-central1",
  * });
  * const categoryTestIdGlossaryCategory = new gcp.dataplex.GlossaryCategory("category_test_id", {
  *     parent: pulumi.interpolate`projects/${categoryTestId.project}/locations/us-central1/glossaries/${categoryTestId.glossaryId}`,
  *     glossaryId: categoryTestId.glossaryId,
  *     location: "us-central1",
- *     categoryId: "tf-test-category-basic_37118",
+ *     categoryId: "tf-test-category-basic_13293",
  * });
  * ```
  * ### Dataplex Glossary Category Full
@@ -33,14 +33,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const categoryTestIdFull = new gcp.dataplex.Glossary("category_test_id_full", {
- *     glossaryId: "tf-test-glossary_80332",
+ *     glossaryId: "tf-test-glossary_40289",
  *     location: "us-central1",
  * });
  * const categoryTestIdFullGlossaryCategory = new gcp.dataplex.GlossaryCategory("category_test_id_full", {
  *     parent: pulumi.interpolate`projects/${categoryTestIdFull.project}/locations/us-central1/glossaries/${categoryTestIdFull.glossaryId}`,
  *     glossaryId: categoryTestIdFull.glossaryId,
  *     location: "us-central1",
- *     categoryId: "tf-test-category-full_13293",
+ *     categoryId: "tf-test-category-full_33395",
  *     labels: {
  *         tag: "test-tf",
  *     },
@@ -54,22 +54,14 @@ import * as utilities from "../utilities";
  * GlossaryCategory can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/categories/{{category_id}}`
- *
  * * `{{project}}/{{location}}/{{glossary_id}}/{{category_id}}`
- *
  * * `{{location}}/{{glossary_id}}/{{category_id}}`
  *
  * When using the `pulumi import` command, GlossaryCategory can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/categories/{{category_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{project}}/{{location}}/{{glossary_id}}/{{category_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{location}}/{{glossary_id}}/{{category_id}}
  * ```
  */
@@ -151,7 +143,7 @@ export class GlossaryCategory extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -274,7 +266,7 @@ export interface GlossaryCategoryState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

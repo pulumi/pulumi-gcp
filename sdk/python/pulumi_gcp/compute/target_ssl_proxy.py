@@ -449,10 +449,14 @@ class TargetSSLProxy(pulumi.CustomResource):
             name="backend-service",
             protocol="SSL",
             health_checks=default_health_check.id)
+        default_certificate_map = gcp.certificatemanager.CertificateMap("default",
+            name="certificate-map-test",
+            description="My acceptance test certificate map")
         default = gcp.compute.TargetSSLProxy("default",
             name="test-proxy",
             backend_service=default_backend_service.id,
-            ssl_certificates=[default_ssl_certificate.id])
+            ssl_certificates=[default_ssl_certificate.id],
+            certificate_map=default_certificate_map.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}"))
         ```
 
         ## Import
@@ -460,22 +464,14 @@ class TargetSSLProxy(pulumi.CustomResource):
         TargetSslProxy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/targetSslProxies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, TargetSslProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default projects/{{project}}/global/targetSslProxies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{name}}
         ```
 
@@ -547,10 +543,14 @@ class TargetSSLProxy(pulumi.CustomResource):
             name="backend-service",
             protocol="SSL",
             health_checks=default_health_check.id)
+        default_certificate_map = gcp.certificatemanager.CertificateMap("default",
+            name="certificate-map-test",
+            description="My acceptance test certificate map")
         default = gcp.compute.TargetSSLProxy("default",
             name="test-proxy",
             backend_service=default_backend_service.id,
-            ssl_certificates=[default_ssl_certificate.id])
+            ssl_certificates=[default_ssl_certificate.id],
+            certificate_map=default_certificate_map.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}"))
         ```
 
         ## Import
@@ -558,22 +558,14 @@ class TargetSSLProxy(pulumi.CustomResource):
         TargetSslProxy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/targetSslProxies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, TargetSslProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default projects/{{project}}/global/targetSslProxies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{name}}
         ```
 

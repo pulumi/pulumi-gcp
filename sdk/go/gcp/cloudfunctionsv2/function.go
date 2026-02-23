@@ -27,8 +27,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -88,8 +86,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
@@ -729,8 +725,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
@@ -825,8 +819,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
@@ -920,8 +912,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
@@ -995,8 +985,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
@@ -1123,8 +1111,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
@@ -1218,8 +1204,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
@@ -1315,8 +1299,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -1387,22 +1369,14 @@ import (
 // function can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/functions/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, function can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudfunctionsv2/function:Function default projects/{{project}}/locations/{{location}}/functions/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:cloudfunctionsv2/function:Function default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:cloudfunctionsv2/function:Function default {{location}}/{{name}}
 // ```
 type Function struct {
@@ -1439,7 +1413,7 @@ type Function struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Describes the Service being deployed.
 	// Structure is documented below.
@@ -1521,7 +1495,7 @@ type functionState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Describes the Service being deployed.
 	// Structure is documented below.
@@ -1566,7 +1540,7 @@ type FunctionState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Describes the Service being deployed.
 	// Structure is documented below.
@@ -1796,7 +1770,8 @@ func (o FunctionOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o FunctionOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

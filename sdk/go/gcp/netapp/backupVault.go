@@ -59,22 +59,14 @@ import (
 // BackupVault can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/backupVaults/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, BackupVault can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:netapp/backupVault:BackupVault default projects/{{project}}/locations/{{location}}/backupVaults/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/backupVault:BackupVault default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/backupVault:BackupVault default {{location}}/{{name}}
 // ```
 type BackupVault struct {
@@ -109,7 +101,7 @@ type BackupVault struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Name of the Backup vault created in source region.
 	SourceBackupVault pulumi.StringOutput `pulumi:"sourceBackupVault"`
@@ -186,7 +178,7 @@ type backupVaultState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Name of the Backup vault created in source region.
 	SourceBackupVault *string `pulumi:"sourceBackupVault"`
@@ -226,7 +218,7 @@ type BackupVaultState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Name of the Backup vault created in source region.
 	SourceBackupVault pulumi.StringPtrInput
@@ -440,7 +432,8 @@ func (o BackupVaultOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o BackupVaultOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

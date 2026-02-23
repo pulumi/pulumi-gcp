@@ -447,7 +447,7 @@ class _MetastoreServiceState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
@@ -753,7 +753,7 @@ class _MetastoreServiceState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1222,22 +1222,14 @@ class MetastoreService(pulumi.CustomResource):
         Service can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/services/{{service_id}}`
-
         * `{{project}}/{{location}}/{{service_id}}`
-
         * `{{location}}/{{service_id}}`
 
         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{project}}/{{location}}/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{location}}/{{service_id}}
         ```
 
@@ -1586,22 +1578,14 @@ class MetastoreService(pulumi.CustomResource):
         Service can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/services/{{service_id}}`
-
         * `{{project}}/{{location}}/{{service_id}}`
-
         * `{{location}}/{{service_id}}`
 
         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{project}}/{{location}}/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{location}}/{{service_id}}
         ```
 
@@ -1758,7 +1742,7 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
@@ -1972,7 +1956,7 @@ class MetastoreService(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -169,7 +169,7 @@ class _MirroringEndpointState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: The current state of the resource does not match the user's intended state,
                and the system is working to reconcile them. This part of the normal
                operation (e.g. linking a new association to the parent group).
@@ -336,7 +336,7 @@ class _MirroringEndpointState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -407,6 +407,11 @@ class MirroringEndpoint(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        An endpoint is a managed mirroring collector that provides enhanced packet
+        enrichment capabilities and support for multiple replica destinations.
+        Endpoints are always part of a global endpoint group which represents a
+        global "mirroring broker" service.
+
         ## Example Usage
 
         ### Network Security Mirroring Endpoint Basic
@@ -442,22 +447,14 @@ class MirroringEndpoint(pulumi.CustomResource):
         MirroringEndpoint can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/mirroringEndpoints/{{mirroring_endpoint_id}}`
-
         * `{{project}}/{{location}}/{{mirroring_endpoint_id}}`
-
         * `{{location}}/{{mirroring_endpoint_id}}`
 
         When using the `pulumi import` command, MirroringEndpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default projects/{{project}}/locations/{{location}}/mirroringEndpoints/{{mirroring_endpoint_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default {{project}}/{{location}}/{{mirroring_endpoint_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default {{location}}/{{mirroring_endpoint_id}}
         ```
 
@@ -484,6 +481,11 @@ class MirroringEndpoint(pulumi.CustomResource):
                  args: MirroringEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An endpoint is a managed mirroring collector that provides enhanced packet
+        enrichment capabilities and support for multiple replica destinations.
+        Endpoints are always part of a global endpoint group which represents a
+        global "mirroring broker" service.
+
         ## Example Usage
 
         ### Network Security Mirroring Endpoint Basic
@@ -519,22 +521,14 @@ class MirroringEndpoint(pulumi.CustomResource):
         MirroringEndpoint can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/mirroringEndpoints/{{mirroring_endpoint_id}}`
-
         * `{{project}}/{{location}}/{{mirroring_endpoint_id}}`
-
         * `{{location}}/{{mirroring_endpoint_id}}`
 
         When using the `pulumi import` command, MirroringEndpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default projects/{{project}}/locations/{{location}}/mirroringEndpoints/{{mirroring_endpoint_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default {{project}}/{{location}}/{{mirroring_endpoint_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default {{location}}/{{mirroring_endpoint_id}}
         ```
 
@@ -639,7 +633,7 @@ class MirroringEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: The current state of the resource does not match the user's intended state,
                and the system is working to reconcile them. This part of the normal
                operation (e.g. linking a new association to the parent group).
@@ -762,7 +756,7 @@ class MirroringEndpoint(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

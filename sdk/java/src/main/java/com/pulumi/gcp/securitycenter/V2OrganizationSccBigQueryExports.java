@@ -88,16 +88,12 @@ import javax.annotation.Nullable;
  * OrganizationSccBigQueryExports can be imported using any of these accepted formats:
  * 
  * * `organizations/{{organization}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}`
- * 
  * * `{{organization}}/{{location}}/{{big_query_export_id}}`
  * 
  * When using the `pulumi import` command, OrganizationSccBigQueryExports can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports default organizations/{{organization}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports default {{organization}}/{{location}}/{{big_query_export_id}}
  * ```
  * 

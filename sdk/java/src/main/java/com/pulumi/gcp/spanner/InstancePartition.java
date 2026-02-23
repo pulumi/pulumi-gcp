@@ -79,22 +79,14 @@ import javax.annotation.Nullable;
  * InstancePartition can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/instances/{{instance}}/instancePartitions/{{name}}`
- * 
  * * `{{project}}/{{instance}}/{{name}}`
- * 
  * * `{{instance}}/{{name}}`
  * 
  * When using the `pulumi import` command, InstancePartition can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:spanner/instancePartition:InstancePartition default projects/{{project}}/instances/{{instance}}/instancePartitions/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:spanner/instancePartition:InstancePartition default {{project}}/{{instance}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:spanner/instancePartition:InstancePartition default {{instance}}/{{name}}
  * ```
  * 

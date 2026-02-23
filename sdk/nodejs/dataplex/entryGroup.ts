@@ -44,22 +44,14 @@ import * as utilities from "../utilities";
  * EntryGroup can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}`
- *
  * * `{{project}}/{{location}}/{{entry_group_id}}`
- *
  * * `{{location}}/{{entry_group_id}}`
  *
  * When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataplex/entryGroup:EntryGroup default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{project}}/{{location}}/{{entry_group_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{location}}/{{entry_group_id}}
  * ```
  */
@@ -133,7 +125,7 @@ export class EntryGroup extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -245,7 +237,7 @@ export interface EntryGroupState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

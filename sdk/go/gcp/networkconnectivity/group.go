@@ -74,22 +74,14 @@ import (
 // Group can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/global/hubs/{{hub}}/groups/{{name}}`
-//
 // * `{{project}}/{{hub}}/{{name}}`
-//
 // * `{{hub}}/{{name}}`
 //
 // When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkconnectivity/group:Group default projects/{{project}}/locations/global/hubs/{{hub}}/groups/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkconnectivity/group:Group default {{project}}/{{hub}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkconnectivity/group:Group default {{hub}}/{{name}}
 // ```
 type Group struct {
@@ -117,7 +109,7 @@ type Group struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. The name of the route table that corresponds to this group. They use the following form: `projects/{projectNumber}/locations/global/hubs/{hubId}/routeTables/{route_table_id}`
 	RouteTable pulumi.StringOutput `pulumi:"routeTable"`
@@ -189,7 +181,7 @@ type groupState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. The name of the route table that corresponds to this group. They use the following form: `projects/{projectNumber}/locations/global/hubs/{hubId}/routeTables/{route_table_id}`
 	RouteTable *string `pulumi:"routeTable"`
@@ -224,7 +216,7 @@ type GroupState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. The name of the route table that corresponds to this group. They use the following form: `projects/{projectNumber}/locations/global/hubs/{hubId}/routeTables/{route_table_id}`
 	RouteTable pulumi.StringPtrInput
@@ -414,7 +406,8 @@ func (o GroupOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GroupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

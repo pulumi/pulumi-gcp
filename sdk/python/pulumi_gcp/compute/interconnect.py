@@ -520,7 +520,7 @@ class _InterconnectState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] provisioned_link_count: Number of links actually provisioned in this interconnect.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
                of Google's network that the interconnect is connected to.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] requested_features: List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
@@ -1011,7 +1011,7 @@ class _InterconnectState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1164,22 +1164,14 @@ class Interconnect(pulumi.CustomResource):
         Interconnect can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/interconnects/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Interconnect can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/interconnect:Interconnect default projects/{{project}}/global/interconnects/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnect:Interconnect default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnect:Interconnect default {{name}}
         ```
 
@@ -1285,22 +1277,14 @@ class Interconnect(pulumi.CustomResource):
         Interconnect can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/interconnects/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Interconnect can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/interconnect:Interconnect default projects/{{project}}/global/interconnects/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnect:Interconnect default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnect:Interconnect default {{name}}
         ```
 
@@ -1529,7 +1513,7 @@ class Interconnect(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] provisioned_link_count: Number of links actually provisioned in this interconnect.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
                of Google's network that the interconnect is connected to.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] requested_features: List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
@@ -1878,7 +1862,7 @@ class Interconnect(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

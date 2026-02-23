@@ -23,6 +23,18 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Datasets allow you to organize and control access to your tables.
+ * 
+ * To get more information about Dataset, see:
+ * 
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
+ * * How-to Guides
+ *     * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
+ * 
+ * &gt; **Warning:** You must specify the role field using the legacy format `OWNER` instead of `roles/bigquery.dataOwner`.
+ * The API does accept both formats but it will always return the legacy format which results in Terraform
+ * showing permanent diff on each plan and apply operation.
+ * 
  * ## Example Usage
  * 
  * ### Bigquery Dataset Basic
@@ -383,22 +395,14 @@ import javax.annotation.Nullable;
  * Dataset can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/datasets/{{dataset_id}}`
- * 
  * * `{{project}}/{{dataset_id}}`
- * 
  * * `{{dataset_id}}`
  * 
  * When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
  * ```
  * 
@@ -801,7 +805,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -809,7 +813,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

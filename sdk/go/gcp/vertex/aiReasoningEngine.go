@@ -69,6 +69,54 @@ import (
 //	}
 //
 // ```
+// ### Vertex Ai Reasoning Engine Developer Connect Source
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+//				DisplayName: pulumi.String("reasoning-engine"),
+//				Description: pulumi.String("A basic reasoning engine"),
+//				Region:      pulumi.String("us-central1"),
+//				Spec: &vertex.AiReasoningEngineSpecArgs{
+//					SourceCodeSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecArgs{
+//						DeveloperConnectSource: &vertex.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs{
+//							Config: &vertex.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs{
+//								GitRepositoryLink: pulumi.Sprintf("projects/%v/locations/us-central1/connections/tpg-test-bot-github/gitRepositoryLinks/tpg-test-vertex-reasoning", project.ProjectId),
+//								Dir:               pulumi.String("source"),
+//								Revision:          pulumi.String("main"),
+//							},
+//						},
+//						PythonSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{
+//							Version:          pulumi.String("3.14"),
+//							EntrypointModule: pulumi.String("simple_agent"),
+//							EntrypointObject: pulumi.String("fixed_name_generator"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Vertex Ai Reasoning Engine Psc Interface
 //
 // ```go
@@ -440,28 +488,16 @@ import (
 // ReasoningEngine can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/reasoningEngines/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, ReasoningEngine can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default projects/{{project}}/locations/{{region}}/reasoningEngines/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{name}}
 // ```
 type AiReasoningEngine struct {

@@ -474,22 +474,14 @@ import (
 // MigrationJob can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}`
-//
 // * `{{project}}/{{location}}/{{migration_job_id}}`
-//
 // * `{{location}}/{{migration_job_id}}`
 //
 // When using the `pulumi import` command, MigrationJob can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{project}}/{{location}}/{{migration_job_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{location}}/{{migration_job_id}}
 // ```
 type MigrationJob struct {
@@ -537,7 +529,7 @@ type MigrationJob struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The details of the VPC network that the source database is located in.
 	// Structure is documented below.
@@ -648,7 +640,7 @@ type migrationJobState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The details of the VPC network that the source database is located in.
 	// Structure is documented below.
@@ -713,7 +705,7 @@ type MigrationJobState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The details of the VPC network that the source database is located in.
 	// Structure is documented below.
@@ -1012,7 +1004,8 @@ func (o MigrationJobOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MigrationJobOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -201,16 +201,12 @@ import * as utilities from "../utilities";
  * FhirStore can be imported using any of these accepted formats:
  *
  * * `{{dataset}}/fhirStores/{{name}}`
- *
  * * `{{dataset}}/{{name}}`
  *
  * When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/{{name}}
  * ```
  */
@@ -346,7 +342,7 @@ export class FhirStore extends pulumi.CustomResource {
     declare public readonly notificationConfigs: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig[] | undefined>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -547,7 +543,7 @@ export interface FhirStoreState {
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>[]>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

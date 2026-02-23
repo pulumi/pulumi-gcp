@@ -17,11 +17,11 @@ namespace Pulumi.Gcp.Firebase.Inputs
 
         /// <summary>
         /// The value of the API key. The API key must have
-        /// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+        /// `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
         /// Note that this API is sometimes called the *Generative Language API* in
         /// the Google Cloud console.
-        /// 
         /// Do **not** add this Gemini API key into your app's codebase
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public Input<string>? ApiKey
         {
@@ -38,12 +38,15 @@ namespace Pulumi.Gcp.Firebase.Inputs
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
         /// The value of the API key. The API key must have
-        /// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+        /// `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
         /// Note that this API is sometimes called the *Generative Language API* in
         /// the Google Cloud console.
-        /// 
         /// Do **not** add this Gemini API key into your app's codebase
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `ApiKey` or `ApiKeyWo` can only be set.
         /// </summary>
         public Input<string>? ApiKeyWo
         {
@@ -56,7 +59,7 @@ namespace Pulumi.Gcp.Firebase.Inputs
         }
 
         /// <summary>
-        /// Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// Triggers update of `ApiKeyWo` write-only. Increment this value when an update to `ApiKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         /// </summary>
         [Input("apiKeyWoVersion")]
         public Input<string>? ApiKeyWoVersion { get; set; }

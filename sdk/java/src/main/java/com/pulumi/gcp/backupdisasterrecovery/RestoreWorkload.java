@@ -23,6 +23,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * An imperative resource that triggers a GCBDR restoration event.
+ * Creating this resource will initiate a restore operation from a specified backup.
+ * The resource represents the restore operation and its result.
+ * 
  * ## Example Usage
  * 
  * ### Backup Dr Restore Workload Compute Instance Basic
@@ -56,14 +60,13 @@ import javax.annotation.Nullable;
  *             .backupVaultId("backup-vault")
  *             .dataSourceId("data-source")
  *             .backupId("backup")
- *             .name("projects/my-project/locations/us-central1/backups/my-backup")
  *             .computeInstanceTargetEnvironment(RestoreWorkloadComputeInstanceTargetEnvironmentArgs.builder()
  *                 .project("my-project-name")
  *                 .zone("us-central1-a")
  *                 .build())
  *             .computeInstanceRestoreProperties(RestoreWorkloadComputeInstanceRestorePropertiesArgs.builder()
  *                 .name("restored-instance")
- *                 .machineType("e2-medium")
+ *                 .machineType("zones/us-central1-a/machineTypes/e2-medium")
  *                 .build())
  *             .build());
  * 
@@ -107,22 +110,29 @@ import javax.annotation.Nullable;
  *             .backupVaultId("backup-vault")
  *             .dataSourceId("data-source")
  *             .backupId("backup")
- *             .name("projects/my-project/locations/us-central1/backups/my-backup")
  *             .computeInstanceTargetEnvironment(RestoreWorkloadComputeInstanceTargetEnvironmentArgs.builder()
  *                 .project("my-project-name")
  *                 .zone("us-central1-a")
  *                 .build())
  *             .computeInstanceRestoreProperties(RestoreWorkloadComputeInstanceRestorePropertiesArgs.builder()
  *                 .name("restored-instance-full")
- *                 .machineType("e2-medium")
+ *                 .machineType("zones/us-central1-a/machineTypes/e2-medium")
  *                 .description("Restored compute instance with advanced configuration")
  *                 .canIpForward(true)
  *                 .deletionProtection(false)
- *                 .labels(RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs.builder()
- *                     .environment("production")
- *                     .restored("true")
- *                     .team("infrastructure")
- *                     .build())
+ *                 .labels(                
+ *                     RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs.builder()
+ *                         .key("environment")
+ *                         .value("production")
+ *                         .build(),
+ *                     RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs.builder()
+ *                         .key("restored")
+ *                         .value("true")
+ *                         .build(),
+ *                     RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs.builder()
+ *                         .key("team")
+ *                         .value("infrastructure")
+ *                         .build())
  *                 .tags(RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs.builder()
  *                     .items(                    
  *                         "web",
@@ -130,10 +140,10 @@ import javax.annotation.Nullable;
  *                         "restored")
  *                     .build())
  *                 .networkInterfaces(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs.builder()
- *                     .network("default")
+ *                     .network("projects/my-project-name/global/networks/default")
  *                     .subnetwork("projects/my-project-name/regions/us-central1/subnetworks/default")
  *                     .accessConfigs(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs.builder()
- *                         .name("External NAT")
+ *                         .name("ONE_TO_ONE_NAT")
  *                         .networkTier("PREMIUM")
  *                         .build())
  *                     .build())
@@ -209,7 +219,6 @@ import javax.annotation.Nullable;
  *             .backupVaultId("backup-vault")
  *             .dataSourceId("data-source")
  *             .backupId("backup")
- *             .name("projects/my-project/locations/us-central1/backups/my-backup")
  *             .diskTargetEnvironment(RestoreWorkloadDiskTargetEnvironmentArgs.builder()
  *                 .project("my-project-name")
  *                 .zone("us-central1-a")
@@ -217,7 +226,7 @@ import javax.annotation.Nullable;
  *             .diskRestoreProperties(RestoreWorkloadDiskRestorePropertiesArgs.builder()
  *                 .name("restored-disk")
  *                 .sizeGb(100)
- *                 .type("pd-standard")
+ *                 .type("projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard")
  *                 .description("Restored persistent disk from backup")
  *                 .labels(RestoreWorkloadDiskRestorePropertiesLabelArgs.builder()
  *                     .environment("production")
@@ -261,13 +270,12 @@ import javax.annotation.Nullable;
  *             .backupVaultId("backup-vault")
  *             .dataSourceId("data-source")
  *             .backupId("backup")
- *             .name("projects/my-project/locations/us-central1/backups/my-backup")
  *             .regionDiskTargetEnvironment(RestoreWorkloadRegionDiskTargetEnvironmentArgs.builder()
  *                 .project("my-project-name")
  *                 .region("us-central1")
  *                 .replicaZones(                
- *                     "us-central1-a",
- *                     "us-central1-b")
+ *                     "projects/my-project-name/zones/us-central1-a",
+ *                     "projects/my-project-name/zones/us-central1-b")
  *                 .build())
  *             .diskRestoreProperties(RestoreWorkloadDiskRestorePropertiesArgs.builder()
  *                 .name("restored-regional-disk")
@@ -318,7 +326,6 @@ import javax.annotation.Nullable;
  *             .backupVaultId("backup-vault")
  *             .dataSourceId("data-source")
  *             .backupId("backup")
- *             .name("projects/my-project/locations/us-central1/backups/my-backup")
  *             .deleteRestoredInstance(false)
  *             .diskTargetEnvironment(RestoreWorkloadDiskTargetEnvironmentArgs.builder()
  *                 .project("my-project-name")
@@ -326,8 +333,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .diskRestoreProperties(RestoreWorkloadDiskRestorePropertiesArgs.builder()
  *                 .name("persistent-disk")
- *                 .sizeGb(50)
- *                 .type("pd-standard")
+ *                 .sizeGb(100)
+ *                 .type("projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard")
  *                 .build())
  *             .build());
  * 
@@ -341,16 +348,12 @@ import javax.annotation.Nullable;
  * RestoreWorkload can be imported using any of these accepted formats:
  * 
  * * `/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, RestoreWorkload can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default /{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
  * ```
  * 
@@ -445,9 +448,19 @@ public class RestoreWorkload extends com.pulumi.resources.CustomResource {
     public Output<String> dataSourceId() {
         return this.dataSourceId;
     }
+    /**
+     * Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+     * If false, only the restore record is removed from the state, leaving the resource active.
+     * 
+     */
     @Export(name="deleteRestoredInstance", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteRestoredInstance;
 
+    /**
+     * @return Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+     * If false, only the restore record is removed from the state, leaving the resource active.
+     * 
+     */
     public Output<Optional<Boolean>> deleteRestoredInstance() {
         return Codegen.optional(this.deleteRestoredInstance);
     }
@@ -498,14 +511,24 @@ public class RestoreWorkload extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Required. The resource name of the backup instance.
+     * (Optional, Deprecated)
+     * The resource name of the backup instance.
+     * 
+     * &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
+     * 
+     * @deprecated
+     * `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
      * 
      */
+    @Deprecated /* `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id). */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Required. The resource name of the backup instance.
+     * @return (Optional, Deprecated)
+     * The resource name of the backup instance.
+     * 
+     * &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
      * 
      */
     public Output<String> name() {

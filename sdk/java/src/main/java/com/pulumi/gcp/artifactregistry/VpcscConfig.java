@@ -15,6 +15,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The Artifact Registry VPC SC config that applies to a Project.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about VPCSCConfig, see:
+ * 
+ * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/VPCSCConfig)
+ * 
+ * &gt; **Note:** VPC SC configs are automatically created for a given location. Creating a
+ * resource of this type will acquire and update the resource that already
+ * exists at the location. Deleting this resource will remove the config from
+ * your Terraform state but leave the resource as is.
  * ## Example Usage
  * 
  * ### Artifact Registry Vpcsc Config
@@ -56,22 +69,14 @@ import javax.annotation.Nullable;
  * VPCSCConfig can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, VPCSCConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default {{location}}/{{name}}
  * ```
  * 

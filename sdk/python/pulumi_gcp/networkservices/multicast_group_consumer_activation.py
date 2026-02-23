@@ -224,7 +224,7 @@ class _MulticastGroupConsumerActivationState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['MulticastGroupConsumerActivationStateArgs']]] states: (Output)
                The state of the multicast resource.
                Possible values:
@@ -426,7 +426,7 @@ class _MulticastGroupConsumerActivationState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -565,22 +565,14 @@ class MulticastGroupConsumerActivation(pulumi.CustomResource):
         MulticastGroupConsumerActivation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicastGroupConsumerActivations/{{multicast_group_consumer_activation_id}}`
-
         * `{{project}}/{{location}}/{{multicast_group_consumer_activation_id}}`
-
         * `{{location}}/{{multicast_group_consumer_activation_id}}`
 
         When using the `pulumi import` command, MulticastGroupConsumerActivation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation default projects/{{project}}/locations/{{location}}/multicastGroupConsumerActivations/{{multicast_group_consumer_activation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation default {{project}}/{{location}}/{{multicast_group_consumer_activation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation default {{location}}/{{multicast_group_consumer_activation_id}}
         ```
 
@@ -680,22 +672,14 @@ class MulticastGroupConsumerActivation(pulumi.CustomResource):
         MulticastGroupConsumerActivation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicastGroupConsumerActivations/{{multicast_group_consumer_activation_id}}`
-
         * `{{project}}/{{location}}/{{multicast_group_consumer_activation_id}}`
-
         * `{{location}}/{{multicast_group_consumer_activation_id}}`
 
         When using the `pulumi import` command, MulticastGroupConsumerActivation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation default projects/{{project}}/locations/{{location}}/multicastGroupConsumerActivations/{{multicast_group_consumer_activation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation default {{project}}/{{location}}/{{multicast_group_consumer_activation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation default {{location}}/{{multicast_group_consumer_activation_id}}
         ```
 
@@ -816,7 +800,7 @@ class MulticastGroupConsumerActivation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastGroupConsumerActivationStateArgs', 'MulticastGroupConsumerActivationStateArgsDict']]]] states: (Output)
                The state of the multicast resource.
                Possible values:
@@ -964,7 +948,7 @@ class MulticastGroupConsumerActivation(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

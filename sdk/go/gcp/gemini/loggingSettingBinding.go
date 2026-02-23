@@ -65,22 +65,14 @@ import (
 // LoggingSettingBinding can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/loggingSettings/{{logging_setting_id}}/settingBindings/{{setting_binding_id}}`
-//
 // * `{{project}}/{{location}}/{{logging_setting_id}}/{{setting_binding_id}}`
-//
 // * `{{location}}/{{logging_setting_id}}/{{setting_binding_id}}`
 //
 // When using the `pulumi import` command, LoggingSettingBinding can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gemini/loggingSettingBinding:LoggingSettingBinding default projects/{{project}}/locations/{{location}}/loggingSettings/{{logging_setting_id}}/settingBindings/{{setting_binding_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gemini/loggingSettingBinding:LoggingSettingBinding default {{project}}/{{location}}/{{logging_setting_id}}/{{setting_binding_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gemini/loggingSettingBinding:LoggingSettingBinding default {{location}}/{{logging_setting_id}}/{{setting_binding_id}}
 // ```
 type LoggingSettingBinding struct {
@@ -108,7 +100,7 @@ type LoggingSettingBinding struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Id of the setting binding.
 	SettingBindingId pulumi.StringOutput `pulumi:"settingBindingId"`
@@ -184,7 +176,7 @@ type loggingSettingBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Id of the setting binding.
 	SettingBindingId *string `pulumi:"settingBindingId"`
@@ -217,7 +209,7 @@ type LoggingSettingBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Id of the setting binding.
 	SettingBindingId pulumi.StringPtrInput
@@ -407,7 +399,8 @@ func (o LoggingSettingBindingOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o LoggingSettingBindingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LoggingSettingBinding) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

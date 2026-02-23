@@ -169,7 +169,7 @@ class _ManagedZoneState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] target_project: The name of the Target Project.
         :param pulumi.Input[_builtins.str] target_vpc: The name of the Target Project VPC Network.
         :param pulumi.Input[_builtins.str] update_time: Time the Namespace was updated in UTC.
@@ -290,7 +290,7 @@ class _ManagedZoneState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -367,8 +367,8 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         target_project = gcp.organizations.Project("target_project",
-            project_id="tf-test_16178",
-            name="tf-test_26317",
+            project_id="tf-test_32270",
+            name="tf-test_44703",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -389,8 +389,8 @@ class ManagedZone(pulumi.CustomResource):
             auto_create_subnetworks=False,
             opts = pulumi.ResourceOptions(depends_on=[compute]))
         zone = gcp.dns.ManagedZone("zone",
-            name="tf-test-dns_4866",
-            dns_name="private_12618.example.com.",
+            name="tf-test-dns_9329",
+            dns_name="private_37135.example.com.",
             visibility="private",
             private_visibility_config={
                 "networks": [{
@@ -418,22 +418,14 @@ class ManagedZone(pulumi.CustomResource):
         ManagedZone can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/managedZones/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default projects/{{project}}/locations/global/managedZones/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{name}}
         ```
 
@@ -475,8 +467,8 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         target_project = gcp.organizations.Project("target_project",
-            project_id="tf-test_16178",
-            name="tf-test_26317",
+            project_id="tf-test_32270",
+            name="tf-test_44703",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -497,8 +489,8 @@ class ManagedZone(pulumi.CustomResource):
             auto_create_subnetworks=False,
             opts = pulumi.ResourceOptions(depends_on=[compute]))
         zone = gcp.dns.ManagedZone("zone",
-            name="tf-test-dns_4866",
-            dns_name="private_12618.example.com.",
+            name="tf-test-dns_9329",
+            dns_name="private_37135.example.com.",
             visibility="private",
             private_visibility_config={
                 "networks": [{
@@ -526,22 +518,14 @@ class ManagedZone(pulumi.CustomResource):
         ManagedZone can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/managedZones/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default projects/{{project}}/locations/global/managedZones/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{name}}
         ```
 
@@ -635,7 +619,7 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] target_project: The name of the Target Project.
         :param pulumi.Input[_builtins.str] target_vpc: The name of the Target Project VPC Network.
         :param pulumi.Input[_builtins.str] update_time: Time the Namespace was updated in UTC.
@@ -722,7 +706,7 @@ class ManagedZone(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

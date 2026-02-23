@@ -293,22 +293,14 @@ import javax.annotation.Nullable;
  * Build can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/builds/{{build_id}}`
- * 
  * * `{{project}}/{{location}}/{{backend}}/{{build_id}}`
- * 
  * * `{{location}}/{{backend}}/{{build_id}}`
  * 
  * When using the `pulumi import` command, Build can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default projects/{{project}}/locations/{{location}}/backends/{{backend}}/builds/{{build_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{project}}/{{location}}/{{backend}}/{{build_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{location}}/{{backend}}/{{build_id}}
  * ```
  * 
@@ -411,9 +403,17 @@ public class AppHostingBuild extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
@@ -601,7 +601,7 @@ public class AppHostingBuild extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -609,7 +609,7 @@ public class AppHostingBuild extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

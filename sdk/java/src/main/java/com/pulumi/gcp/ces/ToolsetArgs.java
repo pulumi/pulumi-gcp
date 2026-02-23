@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -97,6 +98,25 @@ public final class ToolsetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A toolset that contains a list of tools that are offered by the MCP
+     * server.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="mcpToolset")
+    private @Nullable Output<ToolsetMcpToolsetArgs> mcpToolset;
+
+    /**
+     * @return A toolset that contains a list of tools that are offered by the MCP
+     * server.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ToolsetMcpToolsetArgs>> mcpToolset() {
+        return Optional.ofNullable(this.mcpToolset);
+    }
+
+    /**
      * A toolset that contains a list of tools that are defined by an OpenAPI
      * schema.
      * Structure is documented below.
@@ -159,6 +179,7 @@ public final class ToolsetArgs extends com.pulumi.resources.ResourceArgs {
         this.displayName = $.displayName;
         this.executionType = $.executionType;
         this.location = $.location;
+        this.mcpToolset = $.mcpToolset;
         this.openApiToolset = $.openApiToolset;
         this.project = $.project;
         this.toolsetId = $.toolsetId;
@@ -289,6 +310,31 @@ public final class ToolsetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param mcpToolset A toolset that contains a list of tools that are offered by the MCP
+         * server.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mcpToolset(@Nullable Output<ToolsetMcpToolsetArgs> mcpToolset) {
+            $.mcpToolset = mcpToolset;
+            return this;
+        }
+
+        /**
+         * @param mcpToolset A toolset that contains a list of tools that are offered by the MCP
+         * server.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mcpToolset(ToolsetMcpToolsetArgs mcpToolset) {
+            return mcpToolset(Output.of(mcpToolset));
         }
 
         /**

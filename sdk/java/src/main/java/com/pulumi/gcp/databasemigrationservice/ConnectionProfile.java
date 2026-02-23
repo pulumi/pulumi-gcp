@@ -512,11 +512,11 @@ import javax.annotation.Nullable;
  *             .displayName("my-profileid_display")
  *             .labels(Map.of("foo", "bar"))
  *             .alloydb(ConnectionProfileAlloydbArgs.builder()
- *                 .clusterId("tf-test-dbmsalloycluster_22811")
+ *                 .clusterId("tf-test-dbmsalloycluster_91042")
  *                 .settings(ConnectionProfileAlloydbSettingsArgs.builder()
  *                     .initialUser(ConnectionProfileAlloydbSettingsInitialUserArgs.builder()
- *                         .user("alloyuser_91042")
- *                         .password("alloypass_72490")
+ *                         .user("alloyuser_72490")
+ *                         .password("alloypass_89605")
  *                         .build())
  *                     .vpcNetwork(default_.id())
  *                     .labels(Map.of("alloyfoo", "alloybar"))
@@ -766,22 +766,14 @@ import javax.annotation.Nullable;
  * ConnectionProfile can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
- * 
  * * `{{project}}/{{location}}/{{connection_profile_id}}`
- * 
  * * `{{location}}/{{connection_profile_id}}`
  * 
  * When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
  * ```
  * 
@@ -1020,7 +1012,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -1028,7 +1020,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

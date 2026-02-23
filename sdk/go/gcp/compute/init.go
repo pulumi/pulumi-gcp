@@ -289,6 +289,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ResourcePolicy{}
 	case "gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment":
 		r = &ResourcePolicyAttachment{}
+	case "gcp:compute/rolloutPlan:RolloutPlan":
+		r = &RolloutPlan{}
 	case "gcp:compute/route:Route":
 		r = &Route{}
 	case "gcp:compute/router:Router":
@@ -1048,6 +1050,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/resourcePolicyAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/rolloutPlan",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

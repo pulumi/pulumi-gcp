@@ -104,6 +104,7 @@ __all__ = [
     'ClusterAddonsConfigRayOperatorConfig',
     'ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig',
     'ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig',
+    'ClusterAddonsConfigSliceControllerConfig',
     'ClusterAddonsConfigStatefulHaConfig',
     'ClusterAnonymousAuthenticationConfig',
     'ClusterAuthenticatorGroupsConfig',
@@ -383,6 +384,7 @@ __all__ = [
     'GetClusterAddonsConfigRayOperatorConfigResult',
     'GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigResult',
     'GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigResult',
+    'GetClusterAddonsConfigSliceControllerConfigResult',
     'GetClusterAddonsConfigStatefulHaConfigResult',
     'GetClusterAnonymousAuthenticationConfigResult',
     'GetClusterAuthenticatorGroupsConfigResult',
@@ -4046,6 +4048,8 @@ class ClusterAddonsConfig(dict):
             suggest = "pod_snapshot_config"
         elif key == "rayOperatorConfigs":
             suggest = "ray_operator_configs"
+        elif key == "sliceControllerConfig":
+            suggest = "slice_controller_config"
         elif key == "statefulHaConfig":
             suggest = "stateful_ha_config"
 
@@ -4077,6 +4081,7 @@ class ClusterAddonsConfig(dict):
                  parallelstore_csi_driver_config: Optional['outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig'] = None,
                  pod_snapshot_config: Optional['outputs.ClusterAddonsConfigPodSnapshotConfig'] = None,
                  ray_operator_configs: Optional[Sequence['outputs.ClusterAddonsConfigRayOperatorConfig']] = None,
+                 slice_controller_config: Optional['outputs.ClusterAddonsConfigSliceControllerConfig'] = None,
                  stateful_ha_config: Optional['outputs.ClusterAddonsConfigStatefulHaConfig'] = None):
         """
         :param 'ClusterAddonsConfigCloudrunConfigArgs' cloudrun_config: . Structure is documented below.
@@ -4148,6 +4153,7 @@ class ClusterAddonsConfig(dict):
                clusters on
                GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
                for more information.
+        :param 'ClusterAddonsConfigSliceControllerConfigArgs' slice_controller_config: The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
         :param 'ClusterAddonsConfigStatefulHaConfigArgs' stateful_ha_config: .
                The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
                It is disabled by default for Standard clusters. Set `enabled = true` to enable.
@@ -4184,6 +4190,8 @@ class ClusterAddonsConfig(dict):
             pulumi.set(__self__, "pod_snapshot_config", pod_snapshot_config)
         if ray_operator_configs is not None:
             pulumi.set(__self__, "ray_operator_configs", ray_operator_configs)
+        if slice_controller_config is not None:
+            pulumi.set(__self__, "slice_controller_config", slice_controller_config)
         if stateful_ha_config is not None:
             pulumi.set(__self__, "stateful_ha_config", stateful_ha_config)
 
@@ -4367,6 +4375,14 @@ class ClusterAddonsConfig(dict):
         for more information.
         """
         return pulumi.get(self, "ray_operator_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="sliceControllerConfig")
+    def slice_controller_config(self) -> Optional['outputs.ClusterAddonsConfigSliceControllerConfig']:
+        """
+        The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+        """
+        return pulumi.get(self, "slice_controller_config")
 
     @_builtins.property
     @pulumi.getter(name="statefulHaConfig")
@@ -4760,6 +4776,18 @@ class ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig(dict):
 
 @pulumi.output_type
 class ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterAddonsConfigSliceControllerConfig(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -6479,14 +6507,21 @@ class ClusterIpAllocationPolicyAdditionalIpRangesConfig(dict):
 
     def __init__(__self__, *,
                  subnetwork: _builtins.str,
-                 pod_ipv4_range_names: Optional[Sequence[_builtins.str]] = None):
+                 pod_ipv4_range_names: Optional[Sequence[_builtins.str]] = None,
+                 status: Optional[_builtins.str] = None):
         """
         :param _builtins.str subnetwork: Name of the subnetwork. This can be the full path of the subnetwork or just the name.
         :param Sequence[_builtins.str] pod_ipv4_range_names: List of secondary ranges names within this subnetwork that can be used for pod IPs.
+        :param _builtins.str status: Status of the subnetwork. Additional subnet with DRAINING status will not be selected during new node pool creation
+               Accepted values are:
+               * `ACTIVE`: ACTIVE status indicates that the subnet is available for new node pool creation.
+               * `DRAINING`: DRAINING status indicates that the subnet is not used for new node pool creation.
         """
         pulumi.set(__self__, "subnetwork", subnetwork)
         if pod_ipv4_range_names is not None:
             pulumi.set(__self__, "pod_ipv4_range_names", pod_ipv4_range_names)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter
@@ -6503,6 +6538,17 @@ class ClusterIpAllocationPolicyAdditionalIpRangesConfig(dict):
         List of secondary ranges names within this subnetwork that can be used for pod IPs.
         """
         return pulumi.get(self, "pod_ipv4_range_names")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Status of the subnetwork. Additional subnet with DRAINING status will not be selected during new node pool creation
+        Accepted values are:
+        * `ACTIVE`: ACTIVE status indicates that the subnet is available for new node pool creation.
+        * `DRAINING`: DRAINING status indicates that the subnet is not used for new node pool creation.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -10891,6 +10937,7 @@ class ClusterNodePool(dict):
         :param 'ClusterNodePoolPlacementPolicyArgs' placement_policy: Specifies the node placement policy
         :param 'ClusterNodePoolQueuedProvisioningArgs' queued_provisioning: Specifies the configuration of queued provisioning
         :param 'ClusterNodePoolUpgradeSettingsArgs' upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+        :param _builtins.str version: The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the container_get_engine_versions data source's version_prefix field to approximate fuzzy versions in a Terraform-compatible way.
         """
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
@@ -11081,6 +11128,9 @@ class ClusterNodePool(dict):
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[_builtins.str]:
+        """
+        The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the container_get_engine_versions data source's version_prefix field to approximate fuzzy versions in a Terraform-compatible way.
+        """
         return pulumi.get(self, "version")
 
 
@@ -21028,6 +21078,7 @@ class GetClusterAddonsConfigResult(dict):
                  parallelstore_csi_driver_configs: Sequence['outputs.GetClusterAddonsConfigParallelstoreCsiDriverConfigResult'],
                  pod_snapshot_configs: Sequence['outputs.GetClusterAddonsConfigPodSnapshotConfigResult'],
                  ray_operator_configs: Sequence['outputs.GetClusterAddonsConfigRayOperatorConfigResult'],
+                 slice_controller_configs: Sequence['outputs.GetClusterAddonsConfigSliceControllerConfigResult'],
                  stateful_ha_configs: Sequence['outputs.GetClusterAddonsConfigStatefulHaConfigResult']):
         """
         :param Sequence['GetClusterAddonsConfigCloudrunConfigArgs'] cloudrun_configs: The status of the CloudRun addon. It is disabled by default. Set disabled = false to enable.
@@ -21046,6 +21097,7 @@ class GetClusterAddonsConfigResult(dict):
         :param Sequence['GetClusterAddonsConfigParallelstoreCsiDriverConfigArgs'] parallelstore_csi_driver_configs: The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigPodSnapshotConfigArgs'] pod_snapshot_configs: Configuration for the Pod Snapshot feature.
         :param Sequence['GetClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
+        :param Sequence['GetClusterAddonsConfigSliceControllerConfigArgs'] slice_controller_configs: The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigStatefulHaConfigArgs'] stateful_ha_configs: The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
         """
         pulumi.set(__self__, "cloudrun_configs", cloudrun_configs)
@@ -21064,6 +21116,7 @@ class GetClusterAddonsConfigResult(dict):
         pulumi.set(__self__, "parallelstore_csi_driver_configs", parallelstore_csi_driver_configs)
         pulumi.set(__self__, "pod_snapshot_configs", pod_snapshot_configs)
         pulumi.set(__self__, "ray_operator_configs", ray_operator_configs)
+        pulumi.set(__self__, "slice_controller_configs", slice_controller_configs)
         pulumi.set(__self__, "stateful_ha_configs", stateful_ha_configs)
 
     @_builtins.property
@@ -21193,6 +21246,14 @@ class GetClusterAddonsConfigResult(dict):
         The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
         """
         return pulumi.get(self, "ray_operator_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="sliceControllerConfigs")
+    def slice_controller_configs(self) -> Sequence['outputs.GetClusterAddonsConfigSliceControllerConfigResult']:
+        """
+        The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+        """
+        return pulumi.get(self, "slice_controller_configs")
 
     @_builtins.property
     @pulumi.getter(name="statefulHaConfigs")
@@ -21482,6 +21543,18 @@ class GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigResult(dict)
 
 @pulumi.output_type
 class GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterAddonsConfigSliceControllerConfigResult(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -22591,12 +22664,15 @@ class GetClusterIpAllocationPolicyResult(dict):
 class GetClusterIpAllocationPolicyAdditionalIpRangesConfigResult(dict):
     def __init__(__self__, *,
                  pod_ipv4_range_names: Sequence[_builtins.str],
+                 status: _builtins.str,
                  subnetwork: _builtins.str):
         """
         :param Sequence[_builtins.str] pod_ipv4_range_names: List of secondary ranges names within this subnetwork that can be used for pod IPs.
+        :param _builtins.str status: Status of the subnetwork, If in draining status, subnet will not be selected for new node pools.
         :param _builtins.str subnetwork: Name of the subnetwork. This can be the full path of the subnetwork or just the name.
         """
         pulumi.set(__self__, "pod_ipv4_range_names", pod_ipv4_range_names)
+        pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "subnetwork", subnetwork)
 
     @_builtins.property
@@ -22606,6 +22682,14 @@ class GetClusterIpAllocationPolicyAdditionalIpRangesConfigResult(dict):
         List of secondary ranges names within this subnetwork that can be used for pod IPs.
         """
         return pulumi.get(self, "pod_ipv4_range_names")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Status of the subnetwork, If in draining status, subnet will not be selected for new node pools.
+        """
+        return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
@@ -25379,6 +25463,7 @@ class GetClusterNodePoolResult(dict):
         :param Sequence['GetClusterNodePoolPlacementPolicyArgs'] placement_policies: Specifies the node placement policy
         :param Sequence['GetClusterNodePoolQueuedProvisioningArgs'] queued_provisionings: Specifies the configuration of queued provisioning
         :param Sequence['GetClusterNodePoolUpgradeSettingArgs'] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+        :param _builtins.str version: The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the container_get_engine_versions data source's version_prefix field to approximate fuzzy versions in a Terraform-compatible way.
         """
         pulumi.set(__self__, "autoscalings", autoscalings)
         pulumi.set(__self__, "initial_node_count", initial_node_count)
@@ -25529,6 +25614,9 @@ class GetClusterNodePoolResult(dict):
     @_builtins.property
     @pulumi.getter
     def version(self) -> _builtins.str:
+        """
+        The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the container_get_engine_versions data source's version_prefix field to approximate fuzzy versions in a Terraform-compatible way.
+        """
         return pulumi.get(self, "version")
 
 

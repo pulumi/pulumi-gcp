@@ -392,22 +392,14 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// Connection can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/connections/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:integrationconnectors/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:integrationconnectors/connection:Connection default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:integrationconnectors/connection:Connection default {{location}}/{{name}}
     /// ```
     /// </summary>
@@ -550,7 +542,7 @@ namespace Pulumi.Gcp.IntegrationConnectors
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -972,7 +964,7 @@ namespace Pulumi.Gcp.IntegrationConnectors
 
         /// <summary>
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

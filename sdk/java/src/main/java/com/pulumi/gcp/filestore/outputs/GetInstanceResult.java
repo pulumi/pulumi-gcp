@@ -25,6 +25,7 @@ public final class GetInstanceResult {
     private Boolean deletionProtectionEnabled;
     private String deletionProtectionReason;
     private String description;
+    private String desiredReplicaState;
     private List<GetInstanceDirectoryService> directoryServices;
     private Map<String,String> effectiveLabels;
     private List<GetInstanceEffectiveReplication> effectiveReplications;
@@ -61,6 +62,9 @@ public final class GetInstanceResult {
     }
     public String description() {
         return this.description;
+    }
+    public String desiredReplicaState() {
+        return this.desiredReplicaState;
     }
     public List<GetInstanceDirectoryService> directoryServices() {
         return this.directoryServices;
@@ -137,6 +141,7 @@ public final class GetInstanceResult {
         private Boolean deletionProtectionEnabled;
         private String deletionProtectionReason;
         private String description;
+        private String desiredReplicaState;
         private List<GetInstanceDirectoryService> directoryServices;
         private Map<String,String> effectiveLabels;
         private List<GetInstanceEffectiveReplication> effectiveReplications;
@@ -163,6 +168,7 @@ public final class GetInstanceResult {
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
     	      this.deletionProtectionReason = defaults.deletionProtectionReason;
     	      this.description = defaults.description;
+    	      this.desiredReplicaState = defaults.desiredReplicaState;
     	      this.directoryServices = defaults.directoryServices;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.effectiveReplications = defaults.effectiveReplications;
@@ -214,6 +220,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder desiredReplicaState(String desiredReplicaState) {
+            if (desiredReplicaState == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "desiredReplicaState");
+            }
+            this.desiredReplicaState = desiredReplicaState;
             return this;
         }
         @CustomType.Setter
@@ -388,6 +402,7 @@ public final class GetInstanceResult {
             _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
             _resultValue.deletionProtectionReason = deletionProtectionReason;
             _resultValue.description = description;
+            _resultValue.desiredReplicaState = desiredReplicaState;
             _resultValue.directoryServices = directoryServices;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.effectiveReplications = effectiveReplications;

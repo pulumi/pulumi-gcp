@@ -293,7 +293,7 @@ class _CxIntentState:
                If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the Normal priority in the console.
                If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]] training_phrases: The collection of training phrases the agent is trained on to identify the intent.
                Structure is documented below.
         """
@@ -495,7 +495,7 @@ class _CxIntentState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -603,16 +603,12 @@ class CxIntent(pulumi.CustomResource):
         Intent can be imported using any of these accepted formats:
 
         * `{{parent}}/intents/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/intents/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/{{name}}
         ```
 
@@ -724,16 +720,12 @@ class CxIntent(pulumi.CustomResource):
         Intent can be imported using any of these accepted formats:
 
         * `{{parent}}/intents/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/intents/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/{{name}}
         ```
 
@@ -854,7 +846,7 @@ class CxIntent(pulumi.CustomResource):
                If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the Normal priority in the console.
                If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CxIntentTrainingPhraseArgs', 'CxIntentTrainingPhraseArgsDict']]]] training_phrases: The collection of training phrases the agent is trained on to identify the intent.
                Structure is documented below.
         """
@@ -999,7 +991,7 @@ class CxIntent(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -114,22 +114,14 @@ import (
 // Trigger can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/triggers/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:eventarc/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:eventarc/trigger:Trigger default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:eventarc/trigger:Trigger default {{location}}/{{name}}
 // ```
 type Trigger struct {
@@ -165,7 +157,7 @@ type Trigger struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The retry policy configuration for the Trigger.
 	// Can only be set with Cloud Run destinations.
@@ -256,7 +248,7 @@ type triggerState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The retry policy configuration for the Trigger.
 	// Can only be set with Cloud Run destinations.
@@ -304,7 +296,7 @@ type TriggerState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The retry policy configuration for the Trigger.
 	// Can only be set with Cloud Run destinations.
@@ -545,7 +537,8 @@ func (o TriggerOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o TriggerOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

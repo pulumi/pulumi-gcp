@@ -10,6 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
+    /// A Google Cloud Firebase web application instance
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about WebApp, see:
+    /// 
+    /// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://firebase.google.com/)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Firebase Web App Basic
@@ -122,34 +133,18 @@ namespace Pulumi.Gcp.Firebase
     /// WebApp can be imported using any of these accepted formats:
     /// 
     /// * `{{project}} projects/{{project}}/webApps/{{app_id}}`
-    /// 
     /// * `projects/{{project}}/webApps/{{app_id}}`
-    /// 
     /// * `{{project}}/{{project}}/{{app_id}}`
-    /// 
     /// * `webApps/{{app_id}}`
-    /// 
     /// * `{{app_id}}`
     /// 
     /// When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    /// $ pulumi import gcp:firebase/webApp:WebApp default "{{project}} projects/{{project}}/webApps/{{app_id}}"
-    /// ```
-    /// 
-    /// ```sh
+    /// $ terraform import google_firebase_web_app.default "{{project}} projects/{{project}}/webApps/{{app_id}}"
     /// $ pulumi import gcp:firebase/webApp:WebApp default projects/{{project}}/webApps/{{app_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{project}}/{{app_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/webApp:WebApp default webApps/{{app_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/webApp:WebApp default {{app_id}}
     /// ```
     /// </summary>
@@ -177,6 +172,11 @@ namespace Pulumi.Gcp.Firebase
         [Output("appUrls")]
         public Output<ImmutableArray<string>> AppUrls { get; private set; } = null!;
 
+        /// <summary>
+        /// Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+        /// rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+        /// serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+        /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
@@ -254,6 +254,11 @@ namespace Pulumi.Gcp.Firebase
         [Input("apiKeyId")]
         public Input<string>? ApiKeyId { get; set; }
 
+        /// <summary>
+        /// Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+        /// rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+        /// serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
@@ -305,6 +310,11 @@ namespace Pulumi.Gcp.Firebase
             set => _appUrls = value;
         }
 
+        /// <summary>
+        /// Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+        /// rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+        /// serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 

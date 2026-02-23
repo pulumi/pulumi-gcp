@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, create_time=None, deletion_protection_enabled=None, deletion_protection_reason=None, description=None, directory_services=None, effective_labels=None, effective_replications=None, etag=None, file_shares=None, id=None, initial_replications=None, kms_key_name=None, labels=None, location=None, name=None, networks=None, performance_configs=None, project=None, protocol=None, pulumi_labels=None, tags=None, tier=None, zone=None):
+    def __init__(__self__, create_time=None, deletion_protection_enabled=None, deletion_protection_reason=None, description=None, desired_replica_state=None, directory_services=None, effective_labels=None, effective_replications=None, etag=None, file_shares=None, id=None, initial_replications=None, kms_key_name=None, labels=None, location=None, name=None, networks=None, performance_configs=None, project=None, protocol=None, pulumi_labels=None, tags=None, tier=None, zone=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -40,6 +40,9 @@ class GetInstanceResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if desired_replica_state and not isinstance(desired_replica_state, str):
+            raise TypeError("Expected argument 'desired_replica_state' to be a str")
+        pulumi.set(__self__, "desired_replica_state", desired_replica_state)
         if directory_services and not isinstance(directory_services, list):
             raise TypeError("Expected argument 'directory_services' to be a list")
         pulumi.set(__self__, "directory_services", directory_services)
@@ -117,6 +120,11 @@ class GetInstanceResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="desiredReplicaState")
+    def desired_replica_state(self) -> _builtins.str:
+        return pulumi.get(self, "desired_replica_state")
 
     @_builtins.property
     @pulumi.getter(name="directoryServices")
@@ -227,6 +235,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             deletion_protection_enabled=self.deletion_protection_enabled,
             deletion_protection_reason=self.deletion_protection_reason,
             description=self.description,
+            desired_replica_state=self.desired_replica_state,
             directory_services=self.directory_services,
             effective_labels=self.effective_labels,
             effective_replications=self.effective_replications,
@@ -289,6 +298,7 @@ def get_instance(location: Optional[_builtins.str] = None,
         deletion_protection_enabled=pulumi.get(__ret__, 'deletion_protection_enabled'),
         deletion_protection_reason=pulumi.get(__ret__, 'deletion_protection_reason'),
         description=pulumi.get(__ret__, 'description'),
+        desired_replica_state=pulumi.get(__ret__, 'desired_replica_state'),
         directory_services=pulumi.get(__ret__, 'directory_services'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         effective_replications=pulumi.get(__ret__, 'effective_replications'),
@@ -348,6 +358,7 @@ def get_instance_output(location: Optional[pulumi.Input[Optional[_builtins.str]]
         deletion_protection_enabled=pulumi.get(__response__, 'deletion_protection_enabled'),
         deletion_protection_reason=pulumi.get(__response__, 'deletion_protection_reason'),
         description=pulumi.get(__response__, 'description'),
+        desired_replica_state=pulumi.get(__response__, 'desired_replica_state'),
         directory_services=pulumi.get(__response__, 'directory_services'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         effective_replications=pulumi.get(__response__, 'effective_replications'),

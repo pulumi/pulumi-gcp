@@ -7,6 +7,28 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A managed alloydb cluster.
+ *
+ * To get more information about Cluster, see:
+ *
+ * * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
+ * * How-to Guides
+ *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+ *
+ * > **Note:** Users can promote a secondary cluster to a primary cluster with the help of `clusterType`.
+ * To promote, users have to set the `clusterType` property as `PRIMARY` and remove the `secondaryConfig` field from cluster configuration.
+ * See Example.
+ *
+ * Switchover is supported in terraform by refreshing the state of the terraform configurations.
+ * The switchover operation still needs to be called outside of terraform.
+ * After the switchover operation is completed successfully:
+ *   1. Refresh the state of the AlloyDB resources by running `pulumi up -refresh-only --auto-approve` .
+ *   2. Manually update the terraform configuration file(s) to match the actual state of the resources by modifying the `clusterType` and `secondaryConfig` fields.
+ *   3. Verify the sync of terraform state by running `pulumi preview` and ensure that the infrastructure matches the configuration and no changes are required.
+ *
+ * > **Note:**  All arguments marked as write-only values will not be stored in the state: `initial_user.password_wo`.
+ * Read more about Write-only Arguments.
+ *
  * ## Example Usage
  *
  * ### Alloydb Cluster Basic
@@ -269,28 +291,16 @@ import * as utilities from "../utilities";
  * Cluster can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
- *
  * * `{{project}}/{{location}}/{{cluster_id}}`
- *
  * * `{{location}}/{{cluster_id}}`
- *
  * * `{{cluster_id}}`
  *
  * When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:alloydb/cluster:Cluster default {{project}}/{{location}}/{{cluster_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:alloydb/cluster:Cluster default {{location}}/{{cluster_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:alloydb/cluster:Cluster default {{cluster_id}}
  * ```
  */
@@ -378,11 +388,20 @@ export class Cluster extends pulumi.CustomResource {
      * Possible values: DEFAULT, FORCE
      */
     declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the cluster.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the cluster will fail.
+     * When the field is set to false, deleting the cluster is allowed.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * User-settable and human-readable display name for the Cluster.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -449,7 +468,7 @@ export class Cluster extends pulumi.CustomResource {
     declare public readonly pscConfig: pulumi.Output<outputs.alloydb.ClusterPscConfig | undefined>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -673,11 +692,20 @@ export interface ClusterState {
      * Possible values: DEFAULT, FORCE
      */
     deletionPolicy?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the cluster.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the cluster will fail.
+     * When the field is set to false, deleting the cluster is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * User-settable and human-readable display name for the Cluster.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -744,7 +772,7 @@ export interface ClusterState {
     pscConfig?: pulumi.Input<inputs.alloydb.ClusterPscConfig>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -849,6 +877,12 @@ export interface ClusterArgs {
      * Possible values: DEFAULT, FORCE
      */
     deletionPolicy?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the cluster.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the cluster will fail.
+     * When the field is set to false, deleting the cluster is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * User-settable and human-readable display name for the Cluster.

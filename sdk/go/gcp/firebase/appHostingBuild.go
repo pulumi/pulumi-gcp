@@ -267,22 +267,14 @@ import (
 // Build can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/builds/{{build_id}}`
-//
 // * `{{project}}/{{location}}/{{backend}}/{{build_id}}`
-//
 // * `{{location}}/{{backend}}/{{build_id}}`
 //
 // When using the `pulumi import` command, Build can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default projects/{{project}}/locations/{{location}}/backends/{{backend}}/builds/{{build_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{project}}/{{location}}/{{backend}}/{{build_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{location}}/{{backend}}/{{build_id}}
 // ```
 type AppHostingBuild struct {
@@ -305,7 +297,8 @@ type AppHostingBuild struct {
 	// Time at which the build was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Human-readable name. 63 character limit.
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -349,7 +342,7 @@ type AppHostingBuild struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The source for the build.
 	// Structure is documented below.
@@ -432,7 +425,8 @@ type appHostingBuildState struct {
 	// Time at which the build was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Human-readable name. 63 character limit.
-	DisplayName          *string           `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -476,7 +470,7 @@ type appHostingBuildState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The source for the build.
 	// Structure is documented below.
@@ -513,7 +507,8 @@ type AppHostingBuildState struct {
 	// Time at which the build was created.
 	CreateTime pulumi.StringPtrInput
 	// Human-readable name. 63 character limit.
-	DisplayName          pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -557,7 +552,7 @@ type AppHostingBuildState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The source for the build.
 	// Structure is documented below.
@@ -760,6 +755,7 @@ func (o AppHostingBuildOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppHostingBuild) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o AppHostingBuildOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppHostingBuild) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -836,7 +832,8 @@ func (o AppHostingBuildOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AppHostingBuildOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppHostingBuild) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * An imperative resource that triggers a GCBDR restoration event.
+ * Creating this resource will initiate a restore operation from a specified backup.
+ * The resource represents the restore operation and its result.
+ *
  * ## Example Usage
  *
  * ### Backup Dr Restore Workload Compute Instance Basic
@@ -20,14 +24,13 @@ import * as utilities from "../utilities";
  *     backupVaultId: "backup-vault",
  *     dataSourceId: "data-source",
  *     backupId: "backup",
- *     name: "projects/my-project/locations/us-central1/backups/my-backup",
  *     computeInstanceTargetEnvironment: {
  *         project: "my-project-name",
  *         zone: "us-central1-a",
  *     },
  *     computeInstanceRestoreProperties: {
  *         name: "restored-instance",
- *         machineType: "e2-medium",
+ *         machineType: "zones/us-central1-a/machineTypes/e2-medium",
  *     },
  * });
  * ```
@@ -42,22 +45,30 @@ import * as utilities from "../utilities";
  *     backupVaultId: "backup-vault",
  *     dataSourceId: "data-source",
  *     backupId: "backup",
- *     name: "projects/my-project/locations/us-central1/backups/my-backup",
  *     computeInstanceTargetEnvironment: {
  *         project: "my-project-name",
  *         zone: "us-central1-a",
  *     },
  *     computeInstanceRestoreProperties: {
  *         name: "restored-instance-full",
- *         machineType: "e2-medium",
+ *         machineType: "zones/us-central1-a/machineTypes/e2-medium",
  *         description: "Restored compute instance with advanced configuration",
  *         canIpForward: true,
  *         deletionProtection: false,
- *         labels: {
- *             environment: "production",
- *             restored: "true",
- *             team: "infrastructure",
- *         },
+ *         labels: [
+ *             {
+ *                 key: "environment",
+ *                 value: "production",
+ *             },
+ *             {
+ *                 key: "restored",
+ *                 value: "true",
+ *             },
+ *             {
+ *                 key: "team",
+ *                 value: "infrastructure",
+ *             },
+ *         ],
  *         tags: {
  *             items: [
  *                 "web",
@@ -66,10 +77,10 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *         networkInterfaces: [{
- *             network: "default",
+ *             network: "projects/my-project-name/global/networks/default",
  *             subnetwork: "projects/my-project-name/regions/us-central1/subnetworks/default",
  *             accessConfigs: [{
- *                 name: "External NAT",
+ *                 name: "ONE_TO_ONE_NAT",
  *                 networkTier: "PREMIUM",
  *             }],
  *         }],
@@ -122,7 +133,6 @@ import * as utilities from "../utilities";
  *     backupVaultId: "backup-vault",
  *     dataSourceId: "data-source",
  *     backupId: "backup",
- *     name: "projects/my-project/locations/us-central1/backups/my-backup",
  *     diskTargetEnvironment: {
  *         project: "my-project-name",
  *         zone: "us-central1-a",
@@ -130,7 +140,7 @@ import * as utilities from "../utilities";
  *     diskRestoreProperties: {
  *         name: "restored-disk",
  *         sizeGb: 100,
- *         type: "pd-standard",
+ *         type: "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard",
  *         description: "Restored persistent disk from backup",
  *         labels: {
  *             environment: "production",
@@ -150,13 +160,12 @@ import * as utilities from "../utilities";
  *     backupVaultId: "backup-vault",
  *     dataSourceId: "data-source",
  *     backupId: "backup",
- *     name: "projects/my-project/locations/us-central1/backups/my-backup",
  *     regionDiskTargetEnvironment: {
  *         project: "my-project-name",
  *         region: "us-central1",
  *         replicaZones: [
- *             "us-central1-a",
- *             "us-central1-b",
+ *             "projects/my-project-name/zones/us-central1-a",
+ *             "projects/my-project-name/zones/us-central1-b",
  *         ],
  *     },
  *     diskRestoreProperties: {
@@ -184,7 +193,6 @@ import * as utilities from "../utilities";
  *     backupVaultId: "backup-vault",
  *     dataSourceId: "data-source",
  *     backupId: "backup",
- *     name: "projects/my-project/locations/us-central1/backups/my-backup",
  *     deleteRestoredInstance: false,
  *     diskTargetEnvironment: {
  *         project: "my-project-name",
@@ -192,8 +200,8 @@ import * as utilities from "../utilities";
  *     },
  *     diskRestoreProperties: {
  *         name: "persistent-disk",
- *         sizeGb: 50,
- *         type: "pd-standard",
+ *         sizeGb: 100,
+ *         type: "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard",
  *     },
  * });
  * ```
@@ -203,16 +211,12 @@ import * as utilities from "../utilities";
  * RestoreWorkload can be imported using any of these accepted formats:
  *
  * * `/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, RestoreWorkload can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default /{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
  * ```
  */
@@ -270,6 +274,10 @@ export class RestoreWorkload extends pulumi.CustomResource {
      * Required. The ID of the data source.
      */
     declare public readonly dataSourceId: pulumi.Output<string>;
+    /**
+     * Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+     * If false, only the restore record is removed from the state, leaving the resource active.
+     */
     declare public readonly deleteRestoredInstance: pulumi.Output<boolean | undefined>;
     /**
      * Optional. Disk properties to be overridden during restore.
@@ -286,7 +294,12 @@ export class RestoreWorkload extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
-     * Required. The resource name of the backup instance.
+     * (Optional, Deprecated)
+     * The resource name of the backup instance.
+     *
+     * > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
+     *
+     * @deprecated `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -397,6 +410,10 @@ export interface RestoreWorkloadState {
      * Required. The ID of the data source.
      */
     dataSourceId?: pulumi.Input<string>;
+    /**
+     * Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+     * If false, only the restore record is removed from the state, leaving the resource active.
+     */
     deleteRestoredInstance?: pulumi.Input<boolean>;
     /**
      * Optional. Disk properties to be overridden during restore.
@@ -413,7 +430,12 @@ export interface RestoreWorkloadState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Required. The resource name of the backup instance.
+     * (Optional, Deprecated)
+     * The resource name of the backup instance.
+     *
+     * > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
+     *
+     * @deprecated `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
      */
     name?: pulumi.Input<string>;
     /**
@@ -464,6 +486,10 @@ export interface RestoreWorkloadArgs {
      * Required. The ID of the data source.
      */
     dataSourceId: pulumi.Input<string>;
+    /**
+     * Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+     * If false, only the restore record is removed from the state, leaving the resource active.
+     */
     deleteRestoredInstance?: pulumi.Input<boolean>;
     /**
      * Optional. Disk properties to be overridden during restore.
@@ -480,7 +506,12 @@ export interface RestoreWorkloadArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * Required. The resource name of the backup instance.
+     * (Optional, Deprecated)
+     * The resource name of the backup instance.
+     *
+     * > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
+     *
+     * @deprecated `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
      */
     name?: pulumi.Input<string>;
     /**

@@ -94,28 +94,16 @@ import * as utilities from "../utilities";
  * AppConnection can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{region}}/appConnections/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, AppConnection can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:beyondcorp/appConnection:AppConnection default projects/{{project}}/locations/{{region}}/appConnections/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{name}}
  * ```
  */
@@ -187,7 +175,7 @@ export class AppConnection extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -293,7 +281,7 @@ export interface AppConnectionState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

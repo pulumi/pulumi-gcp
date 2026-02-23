@@ -718,7 +718,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
@@ -726,16 +726,24 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
         return Optional.ofNullable(this.pulumiLabels);
     }
 
+    /**
+     * This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+     * 
+     */
     @Import(name="recreateClosedPsc")
     private @Nullable Output<Boolean> recreateClosedPsc;
 
+    /**
+     * @return This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+     * 
+     */
     public Optional<Output<Boolean>> recreateClosedPsc() {
         return Optional.ofNullable(this.recreateClosedPsc);
     }
@@ -1848,7 +1856,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -1860,7 +1868,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -1869,11 +1877,23 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
             return pulumiLabels(Output.of(pulumiLabels));
         }
 
+        /**
+         * @param recreateClosedPsc This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+         * 
+         * @return builder
+         * 
+         */
         public Builder recreateClosedPsc(@Nullable Output<Boolean> recreateClosedPsc) {
             $.recreateClosedPsc = recreateClosedPsc;
             return this;
         }
 
+        /**
+         * @param recreateClosedPsc This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+         * 
+         * @return builder
+         * 
+         */
         public Builder recreateClosedPsc(Boolean recreateClosedPsc) {
             return recreateClosedPsc(Output.of(recreateClosedPsc));
         }

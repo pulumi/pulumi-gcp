@@ -295,7 +295,7 @@ class _StreamState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]] rule_sets: Rule sets to apply to the stream.
                Structure is documented below.
         :param pulumi.Input['StreamSourceConfigArgs'] source_config: Source connection profile configuration.
@@ -496,7 +496,7 @@ class _StreamState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1376,8 +1376,8 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-            project_id="tf-test_59033",
-            name="tf-test_32081",
+            project_id="tf-test_10393",
+            name="tf-test_33052",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -1801,22 +1801,14 @@ class Stream(pulumi.CustomResource):
         Stream can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
-
         * `{{project}}/{{location}}/{{stream_id}}`
-
         * `{{location}}/{{stream_id}}`
 
         When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datastream/stream:Stream default projects/{{project}}/locations/{{location}}/streams/{{stream_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datastream/stream:Stream default {{project}}/{{location}}/{{stream_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datastream/stream:Stream default {{location}}/{{stream_id}}
         ```
 
@@ -2654,8 +2646,8 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-            project_id="tf-test_59033",
-            name="tf-test_32081",
+            project_id="tf-test_10393",
+            name="tf-test_33052",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -3079,22 +3071,14 @@ class Stream(pulumi.CustomResource):
         Stream can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
-
         * `{{project}}/{{location}}/{{stream_id}}`
-
         * `{{location}}/{{stream_id}}`
 
         When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datastream/stream:Stream default projects/{{project}}/locations/{{location}}/streams/{{stream_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datastream/stream:Stream default {{project}}/{{location}}/{{stream_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datastream/stream:Stream default {{location}}/{{stream_id}}
         ```
 
@@ -3220,7 +3204,7 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['StreamRuleSetArgs', 'StreamRuleSetArgsDict']]]] rule_sets: Rule sets to apply to the stream.
                Structure is documented below.
         :param pulumi.Input[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']] source_config: Source connection profile configuration.
@@ -3361,7 +3345,7 @@ class Stream(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

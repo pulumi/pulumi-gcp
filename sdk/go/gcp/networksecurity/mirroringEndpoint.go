@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An endpoint is a managed mirroring collector that provides enhanced packet
+// enrichment capabilities and support for multiple replica destinations.
+// Endpoints are always part of a global endpoint group which represents a
+// global "mirroring broker" service.
+//
 // ## Example Usage
 //
 // ### Network Security Mirroring Endpoint Basic
@@ -78,22 +83,14 @@ import (
 // MirroringEndpoint can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/mirroringEndpoints/{{mirroring_endpoint_id}}`
-//
 // * `{{project}}/{{location}}/{{mirroring_endpoint_id}}`
-//
 // * `{{location}}/{{mirroring_endpoint_id}}`
 //
 // When using the `pulumi import` command, MirroringEndpoint can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default projects/{{project}}/locations/{{location}}/mirroringEndpoints/{{mirroring_endpoint_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default {{project}}/{{location}}/{{mirroring_endpoint_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default {{location}}/{{mirroring_endpoint_id}}
 // ```
 type MirroringEndpoint struct {
@@ -128,7 +125,7 @@ type MirroringEndpoint struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This part of the normal
@@ -223,7 +220,7 @@ type mirroringEndpointState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This part of the normal
@@ -275,7 +272,7 @@ type MirroringEndpointState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The current state of the resource does not match the user's intended state,
 	// and the system is working to reconcile them. This part of the normal
@@ -489,7 +486,8 @@ func (o MirroringEndpointOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MirroringEndpointOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MirroringEndpoint) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

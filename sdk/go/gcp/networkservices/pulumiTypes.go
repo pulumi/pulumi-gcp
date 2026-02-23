@@ -13,6 +13,690 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AgentGatewayAgentGatewayCard struct {
+	// (Output)
+	// mTLS Endpoint associated with this AgentGateway.
+	MtlsEndpoint *string `pulumi:"mtlsEndpoint"`
+	// (Output)
+	// Root Certificates for Agents to validate this AgentGateway.
+	RootCertificates []string `pulumi:"rootCertificates"`
+	// (Output)
+	// Service Account used by Service Extensions to operate.
+	ServiceExtensionsServiceAccount *string `pulumi:"serviceExtensionsServiceAccount"`
+}
+
+// AgentGatewayAgentGatewayCardInput is an input type that accepts AgentGatewayAgentGatewayCardArgs and AgentGatewayAgentGatewayCardOutput values.
+// You can construct a concrete instance of `AgentGatewayAgentGatewayCardInput` via:
+//
+//	AgentGatewayAgentGatewayCardArgs{...}
+type AgentGatewayAgentGatewayCardInput interface {
+	pulumi.Input
+
+	ToAgentGatewayAgentGatewayCardOutput() AgentGatewayAgentGatewayCardOutput
+	ToAgentGatewayAgentGatewayCardOutputWithContext(context.Context) AgentGatewayAgentGatewayCardOutput
+}
+
+type AgentGatewayAgentGatewayCardArgs struct {
+	// (Output)
+	// mTLS Endpoint associated with this AgentGateway.
+	MtlsEndpoint pulumi.StringPtrInput `pulumi:"mtlsEndpoint"`
+	// (Output)
+	// Root Certificates for Agents to validate this AgentGateway.
+	RootCertificates pulumi.StringArrayInput `pulumi:"rootCertificates"`
+	// (Output)
+	// Service Account used by Service Extensions to operate.
+	ServiceExtensionsServiceAccount pulumi.StringPtrInput `pulumi:"serviceExtensionsServiceAccount"`
+}
+
+func (AgentGatewayAgentGatewayCardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentGatewayAgentGatewayCard)(nil)).Elem()
+}
+
+func (i AgentGatewayAgentGatewayCardArgs) ToAgentGatewayAgentGatewayCardOutput() AgentGatewayAgentGatewayCardOutput {
+	return i.ToAgentGatewayAgentGatewayCardOutputWithContext(context.Background())
+}
+
+func (i AgentGatewayAgentGatewayCardArgs) ToAgentGatewayAgentGatewayCardOutputWithContext(ctx context.Context) AgentGatewayAgentGatewayCardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewayAgentGatewayCardOutput)
+}
+
+// AgentGatewayAgentGatewayCardArrayInput is an input type that accepts AgentGatewayAgentGatewayCardArray and AgentGatewayAgentGatewayCardArrayOutput values.
+// You can construct a concrete instance of `AgentGatewayAgentGatewayCardArrayInput` via:
+//
+//	AgentGatewayAgentGatewayCardArray{ AgentGatewayAgentGatewayCardArgs{...} }
+type AgentGatewayAgentGatewayCardArrayInput interface {
+	pulumi.Input
+
+	ToAgentGatewayAgentGatewayCardArrayOutput() AgentGatewayAgentGatewayCardArrayOutput
+	ToAgentGatewayAgentGatewayCardArrayOutputWithContext(context.Context) AgentGatewayAgentGatewayCardArrayOutput
+}
+
+type AgentGatewayAgentGatewayCardArray []AgentGatewayAgentGatewayCardInput
+
+func (AgentGatewayAgentGatewayCardArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentGatewayAgentGatewayCard)(nil)).Elem()
+}
+
+func (i AgentGatewayAgentGatewayCardArray) ToAgentGatewayAgentGatewayCardArrayOutput() AgentGatewayAgentGatewayCardArrayOutput {
+	return i.ToAgentGatewayAgentGatewayCardArrayOutputWithContext(context.Background())
+}
+
+func (i AgentGatewayAgentGatewayCardArray) ToAgentGatewayAgentGatewayCardArrayOutputWithContext(ctx context.Context) AgentGatewayAgentGatewayCardArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewayAgentGatewayCardArrayOutput)
+}
+
+type AgentGatewayAgentGatewayCardOutput struct{ *pulumi.OutputState }
+
+func (AgentGatewayAgentGatewayCardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentGatewayAgentGatewayCard)(nil)).Elem()
+}
+
+func (o AgentGatewayAgentGatewayCardOutput) ToAgentGatewayAgentGatewayCardOutput() AgentGatewayAgentGatewayCardOutput {
+	return o
+}
+
+func (o AgentGatewayAgentGatewayCardOutput) ToAgentGatewayAgentGatewayCardOutputWithContext(ctx context.Context) AgentGatewayAgentGatewayCardOutput {
+	return o
+}
+
+// (Output)
+// mTLS Endpoint associated with this AgentGateway.
+func (o AgentGatewayAgentGatewayCardOutput) MtlsEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentGatewayAgentGatewayCard) *string { return v.MtlsEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Root Certificates for Agents to validate this AgentGateway.
+func (o AgentGatewayAgentGatewayCardOutput) RootCertificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AgentGatewayAgentGatewayCard) []string { return v.RootCertificates }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// Service Account used by Service Extensions to operate.
+func (o AgentGatewayAgentGatewayCardOutput) ServiceExtensionsServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentGatewayAgentGatewayCard) *string { return v.ServiceExtensionsServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+type AgentGatewayAgentGatewayCardArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentGatewayAgentGatewayCardArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentGatewayAgentGatewayCard)(nil)).Elem()
+}
+
+func (o AgentGatewayAgentGatewayCardArrayOutput) ToAgentGatewayAgentGatewayCardArrayOutput() AgentGatewayAgentGatewayCardArrayOutput {
+	return o
+}
+
+func (o AgentGatewayAgentGatewayCardArrayOutput) ToAgentGatewayAgentGatewayCardArrayOutputWithContext(ctx context.Context) AgentGatewayAgentGatewayCardArrayOutput {
+	return o
+}
+
+func (o AgentGatewayAgentGatewayCardArrayOutput) Index(i pulumi.IntInput) AgentGatewayAgentGatewayCardOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentGatewayAgentGatewayCard {
+		return vs[0].([]AgentGatewayAgentGatewayCard)[vs[1].(int)]
+	}).(AgentGatewayAgentGatewayCardOutput)
+}
+
+type AgentGatewayGoogleManaged struct {
+	// Operating Mode of Agent Gateway.
+	// Possible values are: `AGENT_TO_ANYWHERE`, `CLIENT_TO_AGENT`.
+	GovernedAccessPath string `pulumi:"governedAccessPath"`
+}
+
+// AgentGatewayGoogleManagedInput is an input type that accepts AgentGatewayGoogleManagedArgs and AgentGatewayGoogleManagedOutput values.
+// You can construct a concrete instance of `AgentGatewayGoogleManagedInput` via:
+//
+//	AgentGatewayGoogleManagedArgs{...}
+type AgentGatewayGoogleManagedInput interface {
+	pulumi.Input
+
+	ToAgentGatewayGoogleManagedOutput() AgentGatewayGoogleManagedOutput
+	ToAgentGatewayGoogleManagedOutputWithContext(context.Context) AgentGatewayGoogleManagedOutput
+}
+
+type AgentGatewayGoogleManagedArgs struct {
+	// Operating Mode of Agent Gateway.
+	// Possible values are: `AGENT_TO_ANYWHERE`, `CLIENT_TO_AGENT`.
+	GovernedAccessPath pulumi.StringInput `pulumi:"governedAccessPath"`
+}
+
+func (AgentGatewayGoogleManagedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentGatewayGoogleManaged)(nil)).Elem()
+}
+
+func (i AgentGatewayGoogleManagedArgs) ToAgentGatewayGoogleManagedOutput() AgentGatewayGoogleManagedOutput {
+	return i.ToAgentGatewayGoogleManagedOutputWithContext(context.Background())
+}
+
+func (i AgentGatewayGoogleManagedArgs) ToAgentGatewayGoogleManagedOutputWithContext(ctx context.Context) AgentGatewayGoogleManagedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewayGoogleManagedOutput)
+}
+
+func (i AgentGatewayGoogleManagedArgs) ToAgentGatewayGoogleManagedPtrOutput() AgentGatewayGoogleManagedPtrOutput {
+	return i.ToAgentGatewayGoogleManagedPtrOutputWithContext(context.Background())
+}
+
+func (i AgentGatewayGoogleManagedArgs) ToAgentGatewayGoogleManagedPtrOutputWithContext(ctx context.Context) AgentGatewayGoogleManagedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewayGoogleManagedOutput).ToAgentGatewayGoogleManagedPtrOutputWithContext(ctx)
+}
+
+// AgentGatewayGoogleManagedPtrInput is an input type that accepts AgentGatewayGoogleManagedArgs, AgentGatewayGoogleManagedPtr and AgentGatewayGoogleManagedPtrOutput values.
+// You can construct a concrete instance of `AgentGatewayGoogleManagedPtrInput` via:
+//
+//	        AgentGatewayGoogleManagedArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentGatewayGoogleManagedPtrInput interface {
+	pulumi.Input
+
+	ToAgentGatewayGoogleManagedPtrOutput() AgentGatewayGoogleManagedPtrOutput
+	ToAgentGatewayGoogleManagedPtrOutputWithContext(context.Context) AgentGatewayGoogleManagedPtrOutput
+}
+
+type agentGatewayGoogleManagedPtrType AgentGatewayGoogleManagedArgs
+
+func AgentGatewayGoogleManagedPtr(v *AgentGatewayGoogleManagedArgs) AgentGatewayGoogleManagedPtrInput {
+	return (*agentGatewayGoogleManagedPtrType)(v)
+}
+
+func (*agentGatewayGoogleManagedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentGatewayGoogleManaged)(nil)).Elem()
+}
+
+func (i *agentGatewayGoogleManagedPtrType) ToAgentGatewayGoogleManagedPtrOutput() AgentGatewayGoogleManagedPtrOutput {
+	return i.ToAgentGatewayGoogleManagedPtrOutputWithContext(context.Background())
+}
+
+func (i *agentGatewayGoogleManagedPtrType) ToAgentGatewayGoogleManagedPtrOutputWithContext(ctx context.Context) AgentGatewayGoogleManagedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewayGoogleManagedPtrOutput)
+}
+
+type AgentGatewayGoogleManagedOutput struct{ *pulumi.OutputState }
+
+func (AgentGatewayGoogleManagedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentGatewayGoogleManaged)(nil)).Elem()
+}
+
+func (o AgentGatewayGoogleManagedOutput) ToAgentGatewayGoogleManagedOutput() AgentGatewayGoogleManagedOutput {
+	return o
+}
+
+func (o AgentGatewayGoogleManagedOutput) ToAgentGatewayGoogleManagedOutputWithContext(ctx context.Context) AgentGatewayGoogleManagedOutput {
+	return o
+}
+
+func (o AgentGatewayGoogleManagedOutput) ToAgentGatewayGoogleManagedPtrOutput() AgentGatewayGoogleManagedPtrOutput {
+	return o.ToAgentGatewayGoogleManagedPtrOutputWithContext(context.Background())
+}
+
+func (o AgentGatewayGoogleManagedOutput) ToAgentGatewayGoogleManagedPtrOutputWithContext(ctx context.Context) AgentGatewayGoogleManagedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentGatewayGoogleManaged) *AgentGatewayGoogleManaged {
+		return &v
+	}).(AgentGatewayGoogleManagedPtrOutput)
+}
+
+// Operating Mode of Agent Gateway.
+// Possible values are: `AGENT_TO_ANYWHERE`, `CLIENT_TO_AGENT`.
+func (o AgentGatewayGoogleManagedOutput) GovernedAccessPath() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentGatewayGoogleManaged) string { return v.GovernedAccessPath }).(pulumi.StringOutput)
+}
+
+type AgentGatewayGoogleManagedPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentGatewayGoogleManagedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentGatewayGoogleManaged)(nil)).Elem()
+}
+
+func (o AgentGatewayGoogleManagedPtrOutput) ToAgentGatewayGoogleManagedPtrOutput() AgentGatewayGoogleManagedPtrOutput {
+	return o
+}
+
+func (o AgentGatewayGoogleManagedPtrOutput) ToAgentGatewayGoogleManagedPtrOutputWithContext(ctx context.Context) AgentGatewayGoogleManagedPtrOutput {
+	return o
+}
+
+func (o AgentGatewayGoogleManagedPtrOutput) Elem() AgentGatewayGoogleManagedOutput {
+	return o.ApplyT(func(v *AgentGatewayGoogleManaged) AgentGatewayGoogleManaged {
+		if v != nil {
+			return *v
+		}
+		var ret AgentGatewayGoogleManaged
+		return ret
+	}).(AgentGatewayGoogleManagedOutput)
+}
+
+// Operating Mode of Agent Gateway.
+// Possible values are: `AGENT_TO_ANYWHERE`, `CLIENT_TO_AGENT`.
+func (o AgentGatewayGoogleManagedPtrOutput) GovernedAccessPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentGatewayGoogleManaged) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GovernedAccessPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentGatewayNetworkConfig struct {
+	// Optional PSC-Interface network attachment for connectivity to your
+	// private VPCs network.
+	// Structure is documented below.
+	Egress AgentGatewayNetworkConfigEgress `pulumi:"egress"`
+}
+
+// AgentGatewayNetworkConfigInput is an input type that accepts AgentGatewayNetworkConfigArgs and AgentGatewayNetworkConfigOutput values.
+// You can construct a concrete instance of `AgentGatewayNetworkConfigInput` via:
+//
+//	AgentGatewayNetworkConfigArgs{...}
+type AgentGatewayNetworkConfigInput interface {
+	pulumi.Input
+
+	ToAgentGatewayNetworkConfigOutput() AgentGatewayNetworkConfigOutput
+	ToAgentGatewayNetworkConfigOutputWithContext(context.Context) AgentGatewayNetworkConfigOutput
+}
+
+type AgentGatewayNetworkConfigArgs struct {
+	// Optional PSC-Interface network attachment for connectivity to your
+	// private VPCs network.
+	// Structure is documented below.
+	Egress AgentGatewayNetworkConfigEgressInput `pulumi:"egress"`
+}
+
+func (AgentGatewayNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentGatewayNetworkConfig)(nil)).Elem()
+}
+
+func (i AgentGatewayNetworkConfigArgs) ToAgentGatewayNetworkConfigOutput() AgentGatewayNetworkConfigOutput {
+	return i.ToAgentGatewayNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i AgentGatewayNetworkConfigArgs) ToAgentGatewayNetworkConfigOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewayNetworkConfigOutput)
+}
+
+func (i AgentGatewayNetworkConfigArgs) ToAgentGatewayNetworkConfigPtrOutput() AgentGatewayNetworkConfigPtrOutput {
+	return i.ToAgentGatewayNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AgentGatewayNetworkConfigArgs) ToAgentGatewayNetworkConfigPtrOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewayNetworkConfigOutput).ToAgentGatewayNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// AgentGatewayNetworkConfigPtrInput is an input type that accepts AgentGatewayNetworkConfigArgs, AgentGatewayNetworkConfigPtr and AgentGatewayNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `AgentGatewayNetworkConfigPtrInput` via:
+//
+//	        AgentGatewayNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentGatewayNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToAgentGatewayNetworkConfigPtrOutput() AgentGatewayNetworkConfigPtrOutput
+	ToAgentGatewayNetworkConfigPtrOutputWithContext(context.Context) AgentGatewayNetworkConfigPtrOutput
+}
+
+type agentGatewayNetworkConfigPtrType AgentGatewayNetworkConfigArgs
+
+func AgentGatewayNetworkConfigPtr(v *AgentGatewayNetworkConfigArgs) AgentGatewayNetworkConfigPtrInput {
+	return (*agentGatewayNetworkConfigPtrType)(v)
+}
+
+func (*agentGatewayNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentGatewayNetworkConfig)(nil)).Elem()
+}
+
+func (i *agentGatewayNetworkConfigPtrType) ToAgentGatewayNetworkConfigPtrOutput() AgentGatewayNetworkConfigPtrOutput {
+	return i.ToAgentGatewayNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *agentGatewayNetworkConfigPtrType) ToAgentGatewayNetworkConfigPtrOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewayNetworkConfigPtrOutput)
+}
+
+type AgentGatewayNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (AgentGatewayNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentGatewayNetworkConfig)(nil)).Elem()
+}
+
+func (o AgentGatewayNetworkConfigOutput) ToAgentGatewayNetworkConfigOutput() AgentGatewayNetworkConfigOutput {
+	return o
+}
+
+func (o AgentGatewayNetworkConfigOutput) ToAgentGatewayNetworkConfigOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigOutput {
+	return o
+}
+
+func (o AgentGatewayNetworkConfigOutput) ToAgentGatewayNetworkConfigPtrOutput() AgentGatewayNetworkConfigPtrOutput {
+	return o.ToAgentGatewayNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AgentGatewayNetworkConfigOutput) ToAgentGatewayNetworkConfigPtrOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentGatewayNetworkConfig) *AgentGatewayNetworkConfig {
+		return &v
+	}).(AgentGatewayNetworkConfigPtrOutput)
+}
+
+// Optional PSC-Interface network attachment for connectivity to your
+// private VPCs network.
+// Structure is documented below.
+func (o AgentGatewayNetworkConfigOutput) Egress() AgentGatewayNetworkConfigEgressOutput {
+	return o.ApplyT(func(v AgentGatewayNetworkConfig) AgentGatewayNetworkConfigEgress { return v.Egress }).(AgentGatewayNetworkConfigEgressOutput)
+}
+
+type AgentGatewayNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentGatewayNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentGatewayNetworkConfig)(nil)).Elem()
+}
+
+func (o AgentGatewayNetworkConfigPtrOutput) ToAgentGatewayNetworkConfigPtrOutput() AgentGatewayNetworkConfigPtrOutput {
+	return o
+}
+
+func (o AgentGatewayNetworkConfigPtrOutput) ToAgentGatewayNetworkConfigPtrOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigPtrOutput {
+	return o
+}
+
+func (o AgentGatewayNetworkConfigPtrOutput) Elem() AgentGatewayNetworkConfigOutput {
+	return o.ApplyT(func(v *AgentGatewayNetworkConfig) AgentGatewayNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AgentGatewayNetworkConfig
+		return ret
+	}).(AgentGatewayNetworkConfigOutput)
+}
+
+// Optional PSC-Interface network attachment for connectivity to your
+// private VPCs network.
+// Structure is documented below.
+func (o AgentGatewayNetworkConfigPtrOutput) Egress() AgentGatewayNetworkConfigEgressPtrOutput {
+	return o.ApplyT(func(v *AgentGatewayNetworkConfig) *AgentGatewayNetworkConfigEgress {
+		if v == nil {
+			return nil
+		}
+		return &v.Egress
+	}).(AgentGatewayNetworkConfigEgressPtrOutput)
+}
+
+type AgentGatewayNetworkConfigEgress struct {
+	// The URI of the Network Attachment resource.
+	NetworkAttachment string `pulumi:"networkAttachment"`
+}
+
+// AgentGatewayNetworkConfigEgressInput is an input type that accepts AgentGatewayNetworkConfigEgressArgs and AgentGatewayNetworkConfigEgressOutput values.
+// You can construct a concrete instance of `AgentGatewayNetworkConfigEgressInput` via:
+//
+//	AgentGatewayNetworkConfigEgressArgs{...}
+type AgentGatewayNetworkConfigEgressInput interface {
+	pulumi.Input
+
+	ToAgentGatewayNetworkConfigEgressOutput() AgentGatewayNetworkConfigEgressOutput
+	ToAgentGatewayNetworkConfigEgressOutputWithContext(context.Context) AgentGatewayNetworkConfigEgressOutput
+}
+
+type AgentGatewayNetworkConfigEgressArgs struct {
+	// The URI of the Network Attachment resource.
+	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
+}
+
+func (AgentGatewayNetworkConfigEgressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentGatewayNetworkConfigEgress)(nil)).Elem()
+}
+
+func (i AgentGatewayNetworkConfigEgressArgs) ToAgentGatewayNetworkConfigEgressOutput() AgentGatewayNetworkConfigEgressOutput {
+	return i.ToAgentGatewayNetworkConfigEgressOutputWithContext(context.Background())
+}
+
+func (i AgentGatewayNetworkConfigEgressArgs) ToAgentGatewayNetworkConfigEgressOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigEgressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewayNetworkConfigEgressOutput)
+}
+
+func (i AgentGatewayNetworkConfigEgressArgs) ToAgentGatewayNetworkConfigEgressPtrOutput() AgentGatewayNetworkConfigEgressPtrOutput {
+	return i.ToAgentGatewayNetworkConfigEgressPtrOutputWithContext(context.Background())
+}
+
+func (i AgentGatewayNetworkConfigEgressArgs) ToAgentGatewayNetworkConfigEgressPtrOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigEgressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewayNetworkConfigEgressOutput).ToAgentGatewayNetworkConfigEgressPtrOutputWithContext(ctx)
+}
+
+// AgentGatewayNetworkConfigEgressPtrInput is an input type that accepts AgentGatewayNetworkConfigEgressArgs, AgentGatewayNetworkConfigEgressPtr and AgentGatewayNetworkConfigEgressPtrOutput values.
+// You can construct a concrete instance of `AgentGatewayNetworkConfigEgressPtrInput` via:
+//
+//	        AgentGatewayNetworkConfigEgressArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentGatewayNetworkConfigEgressPtrInput interface {
+	pulumi.Input
+
+	ToAgentGatewayNetworkConfigEgressPtrOutput() AgentGatewayNetworkConfigEgressPtrOutput
+	ToAgentGatewayNetworkConfigEgressPtrOutputWithContext(context.Context) AgentGatewayNetworkConfigEgressPtrOutput
+}
+
+type agentGatewayNetworkConfigEgressPtrType AgentGatewayNetworkConfigEgressArgs
+
+func AgentGatewayNetworkConfigEgressPtr(v *AgentGatewayNetworkConfigEgressArgs) AgentGatewayNetworkConfigEgressPtrInput {
+	return (*agentGatewayNetworkConfigEgressPtrType)(v)
+}
+
+func (*agentGatewayNetworkConfigEgressPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentGatewayNetworkConfigEgress)(nil)).Elem()
+}
+
+func (i *agentGatewayNetworkConfigEgressPtrType) ToAgentGatewayNetworkConfigEgressPtrOutput() AgentGatewayNetworkConfigEgressPtrOutput {
+	return i.ToAgentGatewayNetworkConfigEgressPtrOutputWithContext(context.Background())
+}
+
+func (i *agentGatewayNetworkConfigEgressPtrType) ToAgentGatewayNetworkConfigEgressPtrOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigEgressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewayNetworkConfigEgressPtrOutput)
+}
+
+type AgentGatewayNetworkConfigEgressOutput struct{ *pulumi.OutputState }
+
+func (AgentGatewayNetworkConfigEgressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentGatewayNetworkConfigEgress)(nil)).Elem()
+}
+
+func (o AgentGatewayNetworkConfigEgressOutput) ToAgentGatewayNetworkConfigEgressOutput() AgentGatewayNetworkConfigEgressOutput {
+	return o
+}
+
+func (o AgentGatewayNetworkConfigEgressOutput) ToAgentGatewayNetworkConfigEgressOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigEgressOutput {
+	return o
+}
+
+func (o AgentGatewayNetworkConfigEgressOutput) ToAgentGatewayNetworkConfigEgressPtrOutput() AgentGatewayNetworkConfigEgressPtrOutput {
+	return o.ToAgentGatewayNetworkConfigEgressPtrOutputWithContext(context.Background())
+}
+
+func (o AgentGatewayNetworkConfigEgressOutput) ToAgentGatewayNetworkConfigEgressPtrOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigEgressPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentGatewayNetworkConfigEgress) *AgentGatewayNetworkConfigEgress {
+		return &v
+	}).(AgentGatewayNetworkConfigEgressPtrOutput)
+}
+
+// The URI of the Network Attachment resource.
+func (o AgentGatewayNetworkConfigEgressOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentGatewayNetworkConfigEgress) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+}
+
+type AgentGatewayNetworkConfigEgressPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentGatewayNetworkConfigEgressPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentGatewayNetworkConfigEgress)(nil)).Elem()
+}
+
+func (o AgentGatewayNetworkConfigEgressPtrOutput) ToAgentGatewayNetworkConfigEgressPtrOutput() AgentGatewayNetworkConfigEgressPtrOutput {
+	return o
+}
+
+func (o AgentGatewayNetworkConfigEgressPtrOutput) ToAgentGatewayNetworkConfigEgressPtrOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigEgressPtrOutput {
+	return o
+}
+
+func (o AgentGatewayNetworkConfigEgressPtrOutput) Elem() AgentGatewayNetworkConfigEgressOutput {
+	return o.ApplyT(func(v *AgentGatewayNetworkConfigEgress) AgentGatewayNetworkConfigEgress {
+		if v != nil {
+			return *v
+		}
+		var ret AgentGatewayNetworkConfigEgress
+		return ret
+	}).(AgentGatewayNetworkConfigEgressOutput)
+}
+
+// The URI of the Network Attachment resource.
+func (o AgentGatewayNetworkConfigEgressPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentGatewayNetworkConfigEgress) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentGatewaySelfManaged struct {
+	// A supported Google Cloud networking proxy in the Project and Location.
+	ResourceUri string `pulumi:"resourceUri"`
+}
+
+// AgentGatewaySelfManagedInput is an input type that accepts AgentGatewaySelfManagedArgs and AgentGatewaySelfManagedOutput values.
+// You can construct a concrete instance of `AgentGatewaySelfManagedInput` via:
+//
+//	AgentGatewaySelfManagedArgs{...}
+type AgentGatewaySelfManagedInput interface {
+	pulumi.Input
+
+	ToAgentGatewaySelfManagedOutput() AgentGatewaySelfManagedOutput
+	ToAgentGatewaySelfManagedOutputWithContext(context.Context) AgentGatewaySelfManagedOutput
+}
+
+type AgentGatewaySelfManagedArgs struct {
+	// A supported Google Cloud networking proxy in the Project and Location.
+	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
+}
+
+func (AgentGatewaySelfManagedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentGatewaySelfManaged)(nil)).Elem()
+}
+
+func (i AgentGatewaySelfManagedArgs) ToAgentGatewaySelfManagedOutput() AgentGatewaySelfManagedOutput {
+	return i.ToAgentGatewaySelfManagedOutputWithContext(context.Background())
+}
+
+func (i AgentGatewaySelfManagedArgs) ToAgentGatewaySelfManagedOutputWithContext(ctx context.Context) AgentGatewaySelfManagedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewaySelfManagedOutput)
+}
+
+func (i AgentGatewaySelfManagedArgs) ToAgentGatewaySelfManagedPtrOutput() AgentGatewaySelfManagedPtrOutput {
+	return i.ToAgentGatewaySelfManagedPtrOutputWithContext(context.Background())
+}
+
+func (i AgentGatewaySelfManagedArgs) ToAgentGatewaySelfManagedPtrOutputWithContext(ctx context.Context) AgentGatewaySelfManagedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewaySelfManagedOutput).ToAgentGatewaySelfManagedPtrOutputWithContext(ctx)
+}
+
+// AgentGatewaySelfManagedPtrInput is an input type that accepts AgentGatewaySelfManagedArgs, AgentGatewaySelfManagedPtr and AgentGatewaySelfManagedPtrOutput values.
+// You can construct a concrete instance of `AgentGatewaySelfManagedPtrInput` via:
+//
+//	        AgentGatewaySelfManagedArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentGatewaySelfManagedPtrInput interface {
+	pulumi.Input
+
+	ToAgentGatewaySelfManagedPtrOutput() AgentGatewaySelfManagedPtrOutput
+	ToAgentGatewaySelfManagedPtrOutputWithContext(context.Context) AgentGatewaySelfManagedPtrOutput
+}
+
+type agentGatewaySelfManagedPtrType AgentGatewaySelfManagedArgs
+
+func AgentGatewaySelfManagedPtr(v *AgentGatewaySelfManagedArgs) AgentGatewaySelfManagedPtrInput {
+	return (*agentGatewaySelfManagedPtrType)(v)
+}
+
+func (*agentGatewaySelfManagedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentGatewaySelfManaged)(nil)).Elem()
+}
+
+func (i *agentGatewaySelfManagedPtrType) ToAgentGatewaySelfManagedPtrOutput() AgentGatewaySelfManagedPtrOutput {
+	return i.ToAgentGatewaySelfManagedPtrOutputWithContext(context.Background())
+}
+
+func (i *agentGatewaySelfManagedPtrType) ToAgentGatewaySelfManagedPtrOutputWithContext(ctx context.Context) AgentGatewaySelfManagedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewaySelfManagedPtrOutput)
+}
+
+type AgentGatewaySelfManagedOutput struct{ *pulumi.OutputState }
+
+func (AgentGatewaySelfManagedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentGatewaySelfManaged)(nil)).Elem()
+}
+
+func (o AgentGatewaySelfManagedOutput) ToAgentGatewaySelfManagedOutput() AgentGatewaySelfManagedOutput {
+	return o
+}
+
+func (o AgentGatewaySelfManagedOutput) ToAgentGatewaySelfManagedOutputWithContext(ctx context.Context) AgentGatewaySelfManagedOutput {
+	return o
+}
+
+func (o AgentGatewaySelfManagedOutput) ToAgentGatewaySelfManagedPtrOutput() AgentGatewaySelfManagedPtrOutput {
+	return o.ToAgentGatewaySelfManagedPtrOutputWithContext(context.Background())
+}
+
+func (o AgentGatewaySelfManagedOutput) ToAgentGatewaySelfManagedPtrOutputWithContext(ctx context.Context) AgentGatewaySelfManagedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentGatewaySelfManaged) *AgentGatewaySelfManaged {
+		return &v
+	}).(AgentGatewaySelfManagedPtrOutput)
+}
+
+// A supported Google Cloud networking proxy in the Project and Location.
+func (o AgentGatewaySelfManagedOutput) ResourceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentGatewaySelfManaged) string { return v.ResourceUri }).(pulumi.StringOutput)
+}
+
+type AgentGatewaySelfManagedPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentGatewaySelfManagedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentGatewaySelfManaged)(nil)).Elem()
+}
+
+func (o AgentGatewaySelfManagedPtrOutput) ToAgentGatewaySelfManagedPtrOutput() AgentGatewaySelfManagedPtrOutput {
+	return o
+}
+
+func (o AgentGatewaySelfManagedPtrOutput) ToAgentGatewaySelfManagedPtrOutputWithContext(ctx context.Context) AgentGatewaySelfManagedPtrOutput {
+	return o
+}
+
+func (o AgentGatewaySelfManagedPtrOutput) Elem() AgentGatewaySelfManagedOutput {
+	return o.ApplyT(func(v *AgentGatewaySelfManaged) AgentGatewaySelfManaged {
+		if v != nil {
+			return *v
+		}
+		var ret AgentGatewaySelfManaged
+		return ret
+	}).(AgentGatewaySelfManagedOutput)
+}
+
+// A supported Google Cloud networking proxy in the Project and Location.
+func (o AgentGatewaySelfManagedPtrOutput) ResourceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentGatewaySelfManaged) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceUri
+	}).(pulumi.StringPtrOutput)
+}
+
 type EdgeCacheKeysetPublicKey struct {
 	// The ID of the public key. The ID must be 1-63 characters long, and comply with RFC1035.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]*
@@ -13275,6 +13959,143 @@ func (o MulticastDomainStateTypeArrayOutput) Index(i pulumi.IntInput) MulticastD
 	}).(MulticastDomainStateTypeOutput)
 }
 
+type MulticastDomainUllMulticastDomain struct {
+	// The preconfigured Ultra-Low-Latency domain name.
+	PreconfiguredUllDomain *string `pulumi:"preconfiguredUllDomain"`
+}
+
+// MulticastDomainUllMulticastDomainInput is an input type that accepts MulticastDomainUllMulticastDomainArgs and MulticastDomainUllMulticastDomainOutput values.
+// You can construct a concrete instance of `MulticastDomainUllMulticastDomainInput` via:
+//
+//	MulticastDomainUllMulticastDomainArgs{...}
+type MulticastDomainUllMulticastDomainInput interface {
+	pulumi.Input
+
+	ToMulticastDomainUllMulticastDomainOutput() MulticastDomainUllMulticastDomainOutput
+	ToMulticastDomainUllMulticastDomainOutputWithContext(context.Context) MulticastDomainUllMulticastDomainOutput
+}
+
+type MulticastDomainUllMulticastDomainArgs struct {
+	// The preconfigured Ultra-Low-Latency domain name.
+	PreconfiguredUllDomain pulumi.StringPtrInput `pulumi:"preconfiguredUllDomain"`
+}
+
+func (MulticastDomainUllMulticastDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastDomainUllMulticastDomain)(nil)).Elem()
+}
+
+func (i MulticastDomainUllMulticastDomainArgs) ToMulticastDomainUllMulticastDomainOutput() MulticastDomainUllMulticastDomainOutput {
+	return i.ToMulticastDomainUllMulticastDomainOutputWithContext(context.Background())
+}
+
+func (i MulticastDomainUllMulticastDomainArgs) ToMulticastDomainUllMulticastDomainOutputWithContext(ctx context.Context) MulticastDomainUllMulticastDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainUllMulticastDomainOutput)
+}
+
+func (i MulticastDomainUllMulticastDomainArgs) ToMulticastDomainUllMulticastDomainPtrOutput() MulticastDomainUllMulticastDomainPtrOutput {
+	return i.ToMulticastDomainUllMulticastDomainPtrOutputWithContext(context.Background())
+}
+
+func (i MulticastDomainUllMulticastDomainArgs) ToMulticastDomainUllMulticastDomainPtrOutputWithContext(ctx context.Context) MulticastDomainUllMulticastDomainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainUllMulticastDomainOutput).ToMulticastDomainUllMulticastDomainPtrOutputWithContext(ctx)
+}
+
+// MulticastDomainUllMulticastDomainPtrInput is an input type that accepts MulticastDomainUllMulticastDomainArgs, MulticastDomainUllMulticastDomainPtr and MulticastDomainUllMulticastDomainPtrOutput values.
+// You can construct a concrete instance of `MulticastDomainUllMulticastDomainPtrInput` via:
+//
+//	        MulticastDomainUllMulticastDomainArgs{...}
+//
+//	or:
+//
+//	        nil
+type MulticastDomainUllMulticastDomainPtrInput interface {
+	pulumi.Input
+
+	ToMulticastDomainUllMulticastDomainPtrOutput() MulticastDomainUllMulticastDomainPtrOutput
+	ToMulticastDomainUllMulticastDomainPtrOutputWithContext(context.Context) MulticastDomainUllMulticastDomainPtrOutput
+}
+
+type multicastDomainUllMulticastDomainPtrType MulticastDomainUllMulticastDomainArgs
+
+func MulticastDomainUllMulticastDomainPtr(v *MulticastDomainUllMulticastDomainArgs) MulticastDomainUllMulticastDomainPtrInput {
+	return (*multicastDomainUllMulticastDomainPtrType)(v)
+}
+
+func (*multicastDomainUllMulticastDomainPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MulticastDomainUllMulticastDomain)(nil)).Elem()
+}
+
+func (i *multicastDomainUllMulticastDomainPtrType) ToMulticastDomainUllMulticastDomainPtrOutput() MulticastDomainUllMulticastDomainPtrOutput {
+	return i.ToMulticastDomainUllMulticastDomainPtrOutputWithContext(context.Background())
+}
+
+func (i *multicastDomainUllMulticastDomainPtrType) ToMulticastDomainUllMulticastDomainPtrOutputWithContext(ctx context.Context) MulticastDomainUllMulticastDomainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainUllMulticastDomainPtrOutput)
+}
+
+type MulticastDomainUllMulticastDomainOutput struct{ *pulumi.OutputState }
+
+func (MulticastDomainUllMulticastDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastDomainUllMulticastDomain)(nil)).Elem()
+}
+
+func (o MulticastDomainUllMulticastDomainOutput) ToMulticastDomainUllMulticastDomainOutput() MulticastDomainUllMulticastDomainOutput {
+	return o
+}
+
+func (o MulticastDomainUllMulticastDomainOutput) ToMulticastDomainUllMulticastDomainOutputWithContext(ctx context.Context) MulticastDomainUllMulticastDomainOutput {
+	return o
+}
+
+func (o MulticastDomainUllMulticastDomainOutput) ToMulticastDomainUllMulticastDomainPtrOutput() MulticastDomainUllMulticastDomainPtrOutput {
+	return o.ToMulticastDomainUllMulticastDomainPtrOutputWithContext(context.Background())
+}
+
+func (o MulticastDomainUllMulticastDomainOutput) ToMulticastDomainUllMulticastDomainPtrOutputWithContext(ctx context.Context) MulticastDomainUllMulticastDomainPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MulticastDomainUllMulticastDomain) *MulticastDomainUllMulticastDomain {
+		return &v
+	}).(MulticastDomainUllMulticastDomainPtrOutput)
+}
+
+// The preconfigured Ultra-Low-Latency domain name.
+func (o MulticastDomainUllMulticastDomainOutput) PreconfiguredUllDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastDomainUllMulticastDomain) *string { return v.PreconfiguredUllDomain }).(pulumi.StringPtrOutput)
+}
+
+type MulticastDomainUllMulticastDomainPtrOutput struct{ *pulumi.OutputState }
+
+func (MulticastDomainUllMulticastDomainPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MulticastDomainUllMulticastDomain)(nil)).Elem()
+}
+
+func (o MulticastDomainUllMulticastDomainPtrOutput) ToMulticastDomainUllMulticastDomainPtrOutput() MulticastDomainUllMulticastDomainPtrOutput {
+	return o
+}
+
+func (o MulticastDomainUllMulticastDomainPtrOutput) ToMulticastDomainUllMulticastDomainPtrOutputWithContext(ctx context.Context) MulticastDomainUllMulticastDomainPtrOutput {
+	return o
+}
+
+func (o MulticastDomainUllMulticastDomainPtrOutput) Elem() MulticastDomainUllMulticastDomainOutput {
+	return o.ApplyT(func(v *MulticastDomainUllMulticastDomain) MulticastDomainUllMulticastDomain {
+		if v != nil {
+			return *v
+		}
+		var ret MulticastDomainUllMulticastDomain
+		return ret
+	}).(MulticastDomainUllMulticastDomainOutput)
+}
+
+// The preconfigured Ultra-Low-Latency domain name.
+func (o MulticastDomainUllMulticastDomainPtrOutput) PreconfiguredUllDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MulticastDomainUllMulticastDomain) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreconfiguredUllDomain
+	}).(pulumi.StringPtrOutput)
+}
+
 type MulticastGroupConsumerActivationLogConfig struct {
 	// Whether to enable logging or not.
 	Enabled *bool `pulumi:"enabled"`
@@ -16056,6 +16877,16 @@ func (o WasmPluginVersionArrayOutput) Index(i pulumi.IntInput) WasmPluginVersion
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayAgentGatewayCardInput)(nil)).Elem(), AgentGatewayAgentGatewayCardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayAgentGatewayCardArrayInput)(nil)).Elem(), AgentGatewayAgentGatewayCardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayGoogleManagedInput)(nil)).Elem(), AgentGatewayGoogleManagedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayGoogleManagedPtrInput)(nil)).Elem(), AgentGatewayGoogleManagedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayNetworkConfigInput)(nil)).Elem(), AgentGatewayNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayNetworkConfigPtrInput)(nil)).Elem(), AgentGatewayNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayNetworkConfigEgressInput)(nil)).Elem(), AgentGatewayNetworkConfigEgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayNetworkConfigEgressPtrInput)(nil)).Elem(), AgentGatewayNetworkConfigEgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewaySelfManagedInput)(nil)).Elem(), AgentGatewaySelfManagedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewaySelfManagedPtrInput)(nil)).Elem(), AgentGatewaySelfManagedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetPublicKeyInput)(nil)).Elem(), EdgeCacheKeysetPublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetPublicKeyArrayInput)(nil)).Elem(), EdgeCacheKeysetPublicKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetValidationSharedKeyInput)(nil)).Elem(), EdgeCacheKeysetValidationSharedKeyArgs{})
@@ -16211,6 +17042,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainGroupStateTypeArrayInput)(nil)).Elem(), MulticastDomainGroupStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainStateTypeInput)(nil)).Elem(), MulticastDomainStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainStateTypeArrayInput)(nil)).Elem(), MulticastDomainStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainUllMulticastDomainInput)(nil)).Elem(), MulticastDomainUllMulticastDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainUllMulticastDomainPtrInput)(nil)).Elem(), MulticastDomainUllMulticastDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupConsumerActivationLogConfigInput)(nil)).Elem(), MulticastGroupConsumerActivationLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupConsumerActivationLogConfigPtrInput)(nil)).Elem(), MulticastGroupConsumerActivationLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupConsumerActivationStateTypeInput)(nil)).Elem(), MulticastGroupConsumerActivationStateTypeArgs{})
@@ -16253,6 +17086,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WasmPluginUsedByArrayInput)(nil)).Elem(), WasmPluginUsedByArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WasmPluginVersionInput)(nil)).Elem(), WasmPluginVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WasmPluginVersionArrayInput)(nil)).Elem(), WasmPluginVersionArray{})
+	pulumi.RegisterOutputType(AgentGatewayAgentGatewayCardOutput{})
+	pulumi.RegisterOutputType(AgentGatewayAgentGatewayCardArrayOutput{})
+	pulumi.RegisterOutputType(AgentGatewayGoogleManagedOutput{})
+	pulumi.RegisterOutputType(AgentGatewayGoogleManagedPtrOutput{})
+	pulumi.RegisterOutputType(AgentGatewayNetworkConfigOutput{})
+	pulumi.RegisterOutputType(AgentGatewayNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(AgentGatewayNetworkConfigEgressOutput{})
+	pulumi.RegisterOutputType(AgentGatewayNetworkConfigEgressPtrOutput{})
+	pulumi.RegisterOutputType(AgentGatewaySelfManagedOutput{})
+	pulumi.RegisterOutputType(AgentGatewaySelfManagedPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetPublicKeyOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetValidationSharedKeyOutput{})
@@ -16408,6 +17251,8 @@ func init() {
 	pulumi.RegisterOutputType(MulticastDomainGroupStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(MulticastDomainStateTypeOutput{})
 	pulumi.RegisterOutputType(MulticastDomainStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(MulticastDomainUllMulticastDomainOutput{})
+	pulumi.RegisterOutputType(MulticastDomainUllMulticastDomainPtrOutput{})
 	pulumi.RegisterOutputType(MulticastGroupConsumerActivationLogConfigOutput{})
 	pulumi.RegisterOutputType(MulticastGroupConsumerActivationLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(MulticastGroupConsumerActivationStateTypeOutput{})

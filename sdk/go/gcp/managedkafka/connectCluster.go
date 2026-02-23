@@ -113,22 +113,14 @@ import (
 // ConnectCluster can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/connectClusters/{{connect_cluster_id}}`
-//
 // * `{{project}}/{{location}}/{{connect_cluster_id}}`
-//
 // * `{{location}}/{{connect_cluster_id}}`
 //
 // When using the `pulumi import` command, ConnectCluster can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default projects/{{project}}/locations/{{location}}/connectClusters/{{connect_cluster_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default {{project}}/{{location}}/{{connect_cluster_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default {{location}}/{{connect_cluster_id}}
 // ```
 type ConnectCluster struct {
@@ -160,7 +152,7 @@ type ConnectCluster struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The current state of the connect cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -244,7 +236,7 @@ type connectClusterState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The current state of the connect cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
 	State *string `pulumi:"state"`
@@ -279,7 +271,7 @@ type ConnectClusterState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The current state of the connect cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
 	State pulumi.StringPtrInput
@@ -479,7 +471,8 @@ func (o ConnectClusterOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ConnectClusterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectCluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

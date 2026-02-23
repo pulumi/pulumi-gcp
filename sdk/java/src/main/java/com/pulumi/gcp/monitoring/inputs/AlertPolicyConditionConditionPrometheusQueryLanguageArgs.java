@@ -49,9 +49,27 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
         return Optional.ofNullable(this.alertRule);
     }
 
+    /**
+     * Whether to disable metric existence validation for this condition.
+     * This allows alerting policies to be defined on metrics that do not yet
+     * exist, improving advanced customer workflows such as configuring
+     * alerting policies using Terraform.
+     * Users with the `monitoring.alertPolicyViewer` role are able to see the
+     * name of the non-existent metric in the alerting policy condition.
+     * 
+     */
     @Import(name="disableMetricValidation")
     private @Nullable Output<Boolean> disableMetricValidation;
 
+    /**
+     * @return Whether to disable metric existence validation for this condition.
+     * This allows alerting policies to be defined on metrics that do not yet
+     * exist, improving advanced customer workflows such as configuring
+     * alerting policies using Terraform.
+     * Users with the `monitoring.alertPolicyViewer` role are able to see the
+     * name of the non-existent metric in the alerting policy condition.
+     * 
+     */
     public Optional<Output<Boolean>> disableMetricValidation() {
         return Optional.ofNullable(this.disableMetricValidation);
     }
@@ -240,11 +258,33 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
             return alertRule(Output.of(alertRule));
         }
 
+        /**
+         * @param disableMetricValidation Whether to disable metric existence validation for this condition.
+         * This allows alerting policies to be defined on metrics that do not yet
+         * exist, improving advanced customer workflows such as configuring
+         * alerting policies using Terraform.
+         * Users with the `monitoring.alertPolicyViewer` role are able to see the
+         * name of the non-existent metric in the alerting policy condition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableMetricValidation(@Nullable Output<Boolean> disableMetricValidation) {
             $.disableMetricValidation = disableMetricValidation;
             return this;
         }
 
+        /**
+         * @param disableMetricValidation Whether to disable metric existence validation for this condition.
+         * This allows alerting policies to be defined on metrics that do not yet
+         * exist, improving advanced customer workflows such as configuring
+         * alerting policies using Terraform.
+         * Users with the `monitoring.alertPolicyViewer` role are able to see the
+         * name of the non-existent metric in the alerting policy condition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableMetricValidation(Boolean disableMetricValidation) {
             return disableMetricValidation(Output.of(disableMetricValidation));
         }

@@ -17,6 +17,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A consumable API that can be used by multiple Gateways.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about Gateway, see:
+ * 
+ * * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+ * 
  * ## Example Usage
  * 
  * ## Import
@@ -24,28 +35,16 @@ import javax.annotation.Nullable;
  * Gateway can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}`
- * 
  * * `{{project}}/{{region}}/{{gateway_id}}`
- * 
  * * `{{region}}/{{gateway_id}}`
- * 
  * * `{{gateway_id}}`
  * 
  * When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:apigateway/gateway:Gateway default {{project}}/{{region}}/{{gateway_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:apigateway/gateway:Gateway default {{region}}/{{gateway_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:apigateway/gateway:Gateway default {{gateway_id}}
  * ```
  * 
@@ -178,7 +177,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -186,7 +185,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

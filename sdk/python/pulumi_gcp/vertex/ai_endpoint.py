@@ -306,7 +306,7 @@ class _AiEndpointState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region for the resource
         :param pulumi.Input[_builtins.str] traffic_split: A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
                If a DeployedModel's id is not listed in this map, then it receives no traffic.
@@ -576,7 +576,7 @@ class _AiEndpointState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -717,10 +717,10 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", name="psc-network-_3686")
+        default = gcp.compute.Network("default", name="psc-network-_44339")
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_54136",
+            name="endpoint-name_34599",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -744,7 +744,7 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_11171",
+            name="endpoint-name_79513",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -761,22 +761,14 @@ class AiEndpoint(pulumi.CustomResource):
         Endpoint can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{location}}/{{name}}
         ```
 
@@ -884,10 +876,10 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", name="psc-network-_3686")
+        default = gcp.compute.Network("default", name="psc-network-_44339")
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_54136",
+            name="endpoint-name_34599",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -911,7 +903,7 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_11171",
+            name="endpoint-name_79513",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -928,22 +920,14 @@ class AiEndpoint(pulumi.CustomResource):
         Endpoint can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{location}}/{{name}}
         ```
 
@@ -1075,7 +1059,7 @@ class AiEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region for the resource
         :param pulumi.Input[_builtins.str] traffic_split: A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
                If a DeployedModel's id is not listed in this map, then it receives no traffic.
@@ -1261,7 +1245,7 @@ class AiEndpoint(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

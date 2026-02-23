@@ -63,22 +63,14 @@ import * as utilities from "../utilities";
  * ExascaleDbStorageVault can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/exascaleDbStorageVaults/{{exascale_db_storage_vault_id}}`
- *
  * * `{{project}}/{{location}}/{{exascale_db_storage_vault_id}}`
- *
  * * `{{location}}/{{exascale_db_storage_vault_id}}`
  *
  * When using the `pulumi import` command, ExascaleDbStorageVault can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default projects/{{project}}/locations/{{location}}/exascaleDbStorageVaults/{{exascale_db_storage_vault_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default {{project}}/{{location}}/{{exascale_db_storage_vault_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default {{location}}/{{exascale_db_storage_vault_id}}
  * ```
  */
@@ -114,6 +106,9 @@ export class ExascaleDbStorageVault extends pulumi.CustomResource {
      * The date and time when the ExascaleDbStorageVault was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * The display name for the ExascaleDbStorageVault. The name does not have to
@@ -172,7 +167,7 @@ export class ExascaleDbStorageVault extends pulumi.CustomResource {
     declare public readonly properties: pulumi.Output<outputs.oracledatabase.ExascaleDbStorageVaultProperties>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
 
@@ -245,6 +240,9 @@ export interface ExascaleDbStorageVaultState {
      * The date and time when the ExascaleDbStorageVault was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The display name for the ExascaleDbStorageVault. The name does not have to
@@ -303,7 +301,7 @@ export interface ExascaleDbStorageVaultState {
     properties?: pulumi.Input<inputs.oracledatabase.ExascaleDbStorageVaultProperties>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -312,6 +310,9 @@ export interface ExascaleDbStorageVaultState {
  * The set of arguments for constructing a ExascaleDbStorageVault resource.
  */
 export interface ExascaleDbStorageVaultArgs {
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The display name for the ExascaleDbStorageVault. The name does not have to

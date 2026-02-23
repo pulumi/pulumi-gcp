@@ -170,6 +170,362 @@ import (
 //	}
 //
 // ```
+// ### Vmware Engine Cluster Nfs Datastore Filestore
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Use this network for filestore instance
+//			fsNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: "filestore_nw",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Create a filestore instance with delete protection enabled
+//			// ### Use ip range of private cloud service subnet in the 'nfs_export_options'
+//			testInstance, err := filestore.NewInstance(ctx, "test_instance", &filestore.InstanceArgs{
+//				Name:                      pulumi.String("test-fs-filestore"),
+//				Location:                  pulumi.String(""),
+//				Tier:                      pulumi.String("ZONAL"),
+//				DeletionProtectionEnabled: pulumi.Bool("yes"),
+//				FileShares: &filestore.InstanceFileSharesArgs{
+//					CapacityGb: pulumi.Int(1024),
+//					Name:       pulumi.String("share101"),
+//					NfsExportOptions: filestore.InstanceFileSharesNfsExportOptionArray{
+//						&filestore.InstanceFileSharesNfsExportOptionArgs{
+//							IpRanges: pulumi.StringArray{
+//								pulumi.String("10.0.0.0/24"),
+//							},
+//						},
+//					},
+//				},
+//				Networks: filestore.InstanceNetworkArray{
+//					&filestore.InstanceNetworkArgs{
+//						Network: pulumi.String(fsNetwork.Id),
+//						Modes: pulumi.StringArray{
+//							pulumi.String("MODE_IPV4"),
+//						},
+//						ConnectMode: pulumi.String("PRIVATE_SERVICE_ACCESS"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cluster_nw, err := vmwareengine.NewNetwork(ctx, "cluster-nw", &vmwareengine.NetworkArgs{
+//				Name:        pulumi.String("pc-nw"),
+//				Type:        pulumi.String("STANDARD"),
+//				Location:    pulumi.String("global"),
+//				Description: pulumi.String("PC network description."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cluster_pc, err := vmwareengine.NewPrivateCloud(ctx, "cluster-pc", &vmwareengine.PrivateCloudArgs{
+//				Location:    pulumi.String(""),
+//				Name:        pulumi.String("sample-pc"),
+//				Description: pulumi.String("Sample test PC."),
+//				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
+//					ManagementCidr:      pulumi.String("192.168.30.0/24"),
+//					VmwareEngineNetwork: cluster_nw.ID(),
+//				},
+//				ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
+//					ClusterId: pulumi.String("sample-mgmt-cluster"),
+//					NodeTypeConfigs: vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArray{
+//						&vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs{
+//							NodeTypeId:      pulumi.String("standard-72"),
+//							NodeCount:       pulumi.Int(3),
+//							CustomCoreCount: pulumi.Int(32),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Update service subnet
+//			// ###  Service subnet is used by nfs datastore mounts
+//			// ### ip_cidr_range configured on subnet must also be allowed in filestore instance's 'nfs_export_options'
+//			cluster_pc_subnet, err := vmwareengine.NewSubnet(ctx, "cluster-pc-subnet", &vmwareengine.SubnetArgs{
+//				Name:        pulumi.String("service-1"),
+//				Parent:      cluster_pc.ID(),
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Read network peering
+//			// ### This peering is created by filestore instance
+//			snPeering, err := compute.LookupNetworkPeering(ctx, &compute.LookupNetworkPeeringArgs{
+//				Name:    "servicenetworking-googleapis-com",
+//				Network: fsNetwork.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeTrimprefix, err := std.Trimprefix(ctx, &std.TrimprefixArgs{
+//				Input:  snPeering.PeerNetwork,
+//				Prefix: "https://www.googleapis.com/compute/v1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Create vmware engine network peering
+//			// ## vmware network peering is required for filestore mount on cluster
+//			psaNetworkPeering, err := vmwareengine.NewNetworkPeering(ctx, "psa_network_peering", &vmwareengine.NetworkPeeringArgs{
+//				Name:                pulumi.String("tf-test-psa-network-peering"),
+//				Description:         pulumi.String("test description"),
+//				VmwareEngineNetwork: cluster_nw.ID(),
+//				PeerNetwork:         pulumi.String(invokeTrimprefix.Result),
+//				PeerNetworkType:     pulumi.String("PRIVATE_SERVICES_ACCESS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testFsDatastore, err := vmwareengine.NewDatastore(ctx, "test_fs_datastore", &vmwareengine.DatastoreArgs{
+//				Name:        pulumi.String("ext-fs-datastore"),
+//				Location:    pulumi.String(""),
+//				Description: pulumi.String("test description"),
+//				NfsDatastore: &vmwareengine.DatastoreNfsDatastoreArgs{
+//					GoogleFileService: &vmwareengine.DatastoreNfsDatastoreGoogleFileServiceArgs{
+//						FilestoreInstance: testInstance.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vmwareengine.NewCluster(ctx, "vmw-ext-cluster", &vmwareengine.ClusterArgs{
+//				Name:   pulumi.String("ext-cluster"),
+//				Parent: cluster_pc.ID(),
+//				NodeTypeConfigs: vmwareengine.ClusterNodeTypeConfigArray{
+//					&vmwareengine.ClusterNodeTypeConfigArgs{
+//						NodeTypeId: pulumi.String("standard-72"),
+//						NodeCount:  pulumi.Int(3),
+//					},
+//				},
+//				DatastoreMountConfigs: vmwareengine.ClusterDatastoreMountConfigArray{
+//					&vmwareengine.ClusterDatastoreMountConfigArgs{
+//						Datastore: testFsDatastore.ID(),
+//						DatastoreNetwork: &vmwareengine.ClusterDatastoreMountConfigDatastoreNetworkArgs{
+//							Subnet:          cluster_pc_subnet.ID(),
+//							ConnectionCount: pulumi.Int(4),
+//							Mtu:             pulumi.Int(1500),
+//						},
+//						NfsVersion:       pulumi.String("NFS_V3"),
+//						AccessMode:       pulumi.String("READ_WRITE"),
+//						IgnoreColocation: pulumi.Bool(false),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				psaNetworkPeering,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Vmware Engine Cluster Nfs Datastore Netapp
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Use this network for netapp volume
+//			npNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: "netapp_nw",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster_nw, err := vmwareengine.NewNetwork(ctx, "cluster-nw", &vmwareengine.NetworkArgs{
+//				Name:        pulumi.String("pc-nw"),
+//				Type:        pulumi.String("STANDARD"),
+//				Location:    pulumi.String("global"),
+//				Description: pulumi.String("PC network description."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Read network peering
+//			// ### This peering is created by netapp volume
+//			snPeering, err := compute.LookupNetworkPeering(ctx, &compute.LookupNetworkPeeringArgs{
+//				Name:    "sn-netapp-prod",
+//				Network: npNetwork.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeTrimprefix, err := std.Trimprefix(ctx, &std.TrimprefixArgs{
+//				Input:  snPeering.PeerNetwork,
+//				Prefix: "https://www.googleapis.com/compute/v1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Create vmware engine network peering
+//			// ### vmware network peering is required for netapp mount on cluster
+//			gcnvNetworkPeering, err := vmwareengine.NewNetworkPeering(ctx, "gcnv_network_peering", &vmwareengine.NetworkPeeringArgs{
+//				Name:                pulumi.String("tf-test-gcnv-network-peering"),
+//				Description:         pulumi.String("test description"),
+//				VmwareEngineNetwork: cluster_nw.ID(),
+//				PeerNetwork:         pulumi.String(invokeTrimprefix.Result),
+//				PeerNetworkType:     pulumi.String("GOOGLE_CLOUD_NETAPP_VOLUMES"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cluster_pc, err := vmwareengine.NewPrivateCloud(ctx, "cluster-pc", &vmwareengine.PrivateCloudArgs{
+//				Location:    pulumi.String(""),
+//				Name:        pulumi.String("sample-pc"),
+//				Description: pulumi.String("Sample test PC."),
+//				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
+//					ManagementCidr:      pulumi.String("192.168.30.0/24"),
+//					VmwareEngineNetwork: cluster_nw.ID(),
+//				},
+//				ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
+//					ClusterId: pulumi.String("sample-mgmt-cluster"),
+//					NodeTypeConfigs: vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArray{
+//						&vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs{
+//							NodeTypeId:      pulumi.String("standard-72"),
+//							NodeCount:       pulumi.Int(3),
+//							CustomCoreCount: pulumi.Int(32),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Update service subnet
+//			// ###  Service subnet is used by nfs datastore mounts
+//			// ### ip_cidr_range configured on subnet must also be allowed in in netapp volumes's 'export_policy'
+//			cluster_pc_subnet, err := vmwareengine.NewSubnet(ctx, "cluster-pc-subnet", &vmwareengine.SubnetArgs{
+//				Name:        pulumi.String("service-1"),
+//				Parent:      cluster_pc.ID(),
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := netapp.NewStoragePool(ctx, "default", &netapp.StoragePoolArgs{
+//				Name:         pulumi.String("tf-test-test-pool"),
+//				Location:     pulumi.String("us-west1"),
+//				ServiceLevel: pulumi.String("PREMIUM"),
+//				CapacityGib:  pulumi.String("2048"),
+//				Network:      pulumi.String(npNetwork.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a netapp volume with delete protection enabled
+//			// ## Use ip range of private cloud service subnet in the 'export_policy'
+//			testVolume, err := netapp.NewVolume(ctx, "test_volume", &netapp.VolumeArgs{
+//				Location:    pulumi.String("us-west1"),
+//				Name:        pulumi.String("tf-test-test-volume"),
+//				CapacityGib: pulumi.String("100"),
+//				ShareName:   pulumi.String("tf-test-test-volume"),
+//				StoragePool: _default.Name,
+//				Protocols: pulumi.StringArray{
+//					pulumi.String("NFSV3"),
+//				},
+//				ExportPolicy: &netapp.VolumeExportPolicyArgs{
+//					Rules: netapp.VolumeExportPolicyRuleArray{
+//						&netapp.VolumeExportPolicyRuleArgs{
+//							AccessType:          pulumi.String("READ_WRITE"),
+//							AllowedClients:      pulumi.String("10.0.0.0/24"),
+//							HasRootAccess:       pulumi.String("true"),
+//							Kerberos5ReadOnly:   pulumi.Bool(false),
+//							Kerberos5ReadWrite:  pulumi.Bool(false),
+//							Kerberos5iReadOnly:  pulumi.Bool(false),
+//							Kerberos5iReadWrite: pulumi.Bool(false),
+//							Kerberos5pReadOnly:  pulumi.Bool(false),
+//							Kerberos5pReadWrite: pulumi.Bool(false),
+//							Nfsv3:               pulumi.Bool(true),
+//							Nfsv4:               pulumi.Bool(false),
+//						},
+//					},
+//				},
+//				RestrictedActions: pulumi.StringArray{
+//					pulumi.String("DELETE"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testFsDatastore, err := vmwareengine.NewDatastore(ctx, "test_fs_datastore", &vmwareengine.DatastoreArgs{
+//				Name:        pulumi.String("ext-fs-datastore"),
+//				Location:    pulumi.String("us-west1"),
+//				Description: pulumi.String("example google_file_service.netapp datastore."),
+//				NfsDatastore: &vmwareengine.DatastoreNfsDatastoreArgs{
+//					GoogleFileService: &vmwareengine.DatastoreNfsDatastoreGoogleFileServiceArgs{
+//						NetappVolume: testVolume.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vmwareengine.NewCluster(ctx, "vmw-ext-cluster", &vmwareengine.ClusterArgs{
+//				Name:   pulumi.String("ext-cluster"),
+//				Parent: cluster_pc.ID(),
+//				NodeTypeConfigs: vmwareengine.ClusterNodeTypeConfigArray{
+//					&vmwareengine.ClusterNodeTypeConfigArgs{
+//						NodeTypeId: pulumi.String("standard-72"),
+//						NodeCount:  pulumi.Int(3),
+//					},
+//				},
+//				DatastoreMountConfigs: vmwareengine.ClusterDatastoreMountConfigArray{
+//					&vmwareengine.ClusterDatastoreMountConfigArgs{
+//						Datastore: testFsDatastore.ID(),
+//						DatastoreNetwork: &vmwareengine.ClusterDatastoreMountConfigDatastoreNetworkArgs{
+//							Subnet:          cluster_pc_subnet.ID(),
+//							ConnectionCount: pulumi.Int(4),
+//							Mtu:             pulumi.Int(1500),
+//						},
+//						NfsVersion:       pulumi.String("NFS_V3"),
+//						AccessMode:       pulumi.String("READ_WRITE"),
+//						IgnoreColocation: pulumi.Bool(true),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				gcnvNetworkPeering,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -192,6 +548,12 @@ type Cluster struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
 	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. Configuration to mount a datastore.
+	// Mount can be done along with cluster create or during cluster update
+	// Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+	// for unmount remove 'datastore_mount_config' config from the update of cluster resource
+	// Structure is documented below.
+	DatastoreMountConfigs ClusterDatastoreMountConfigArrayOutput `pulumi:"datastoreMountConfigs"`
 	// True if the cluster is a management cluster; false otherwise.
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management pulumi.BoolOutput `pulumi:"management"`
@@ -255,6 +617,12 @@ type clusterState struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
 	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
+	// Optional. Configuration to mount a datastore.
+	// Mount can be done along with cluster create or during cluster update
+	// Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+	// for unmount remove 'datastore_mount_config' config from the update of cluster resource
+	// Structure is documented below.
+	DatastoreMountConfigs []ClusterDatastoreMountConfig `pulumi:"datastoreMountConfigs"`
 	// True if the cluster is a management cluster; false otherwise.
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management *bool `pulumi:"management"`
@@ -286,6 +654,12 @@ type ClusterState struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
 	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
+	// Optional. Configuration to mount a datastore.
+	// Mount can be done along with cluster create or during cluster update
+	// Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+	// for unmount remove 'datastore_mount_config' config from the update of cluster resource
+	// Structure is documented below.
+	DatastoreMountConfigs ClusterDatastoreMountConfigArrayInput
 	// True if the cluster is a management cluster; false otherwise.
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management pulumi.BoolPtrInput
@@ -317,6 +691,12 @@ type clusterArgs struct {
 	// Configuration of the autoscaling applied to this cluster
 	// Structure is documented below.
 	AutoscalingSettings *ClusterAutoscalingSettings `pulumi:"autoscalingSettings"`
+	// Optional. Configuration to mount a datastore.
+	// Mount can be done along with cluster create or during cluster update
+	// Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+	// for unmount remove 'datastore_mount_config' config from the update of cluster resource
+	// Structure is documented below.
+	DatastoreMountConfigs []ClusterDatastoreMountConfig `pulumi:"datastoreMountConfigs"`
 	// The ID of the Cluster.
 	Name *string `pulumi:"name"`
 	// The map of cluster node types in this cluster,
@@ -334,6 +714,12 @@ type ClusterArgs struct {
 	// Configuration of the autoscaling applied to this cluster
 	// Structure is documented below.
 	AutoscalingSettings ClusterAutoscalingSettingsPtrInput
+	// Optional. Configuration to mount a datastore.
+	// Mount can be done along with cluster create or during cluster update
+	// Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+	// for unmount remove 'datastore_mount_config' config from the update of cluster resource
+	// Structure is documented below.
+	DatastoreMountConfigs ClusterDatastoreMountConfigArrayInput
 	// The ID of the Cluster.
 	Name pulumi.StringPtrInput
 	// The map of cluster node types in this cluster,
@@ -444,6 +830,15 @@ func (o ClusterOutput) AutoscalingSettings() ClusterAutoscalingSettingsPtrOutput
 // up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o ClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Configuration to mount a datastore.
+// Mount can be done along with cluster create or during cluster update
+// Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+// for unmount remove 'datastore_mount_config' config from the update of cluster resource
+// Structure is documented below.
+func (o ClusterOutput) DatastoreMountConfigs() ClusterDatastoreMountConfigArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterDatastoreMountConfigArrayOutput { return v.DatastoreMountConfigs }).(ClusterDatastoreMountConfigArrayOutput)
 }
 
 // True if the cluster is a management cluster; false otherwise.

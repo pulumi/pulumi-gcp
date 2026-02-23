@@ -210,22 +210,14 @@ import (
 // User can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}`
-//
 // * `{{project}}/{{location}}/{{cluster}}/{{user_id}}`
-//
 // * `{{location}}/{{cluster}}/{{user_id}}`
 //
 // When using the `pulumi import` command, User can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:alloydb/user:User default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:alloydb/user:User default {{project}}/{{location}}/{{cluster}}/{{user_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:alloydb/user:User default {{location}}/{{cluster}}/{{user_id}}
 // ```
 type User struct {

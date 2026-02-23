@@ -85,6 +85,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+     * 
+     */
+    @Import(name="desiredReplicaState")
+    private @Nullable Output<String> desiredReplicaState;
+
+    /**
+     * @return The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+     * 
+     */
+    public Optional<Output<String>> desiredReplicaState() {
+        return Optional.ofNullable(this.desiredReplicaState);
+    }
+
+    /**
      * Directory Services configuration.
      * Should only be set if protocol is &#34;NFS_V4_1&#34;.
      * Structure is documented below.
@@ -338,7 +353,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
@@ -346,7 +361,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
@@ -437,6 +452,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.deletionProtectionReason = $.deletionProtectionReason;
         this.description = $.description;
+        this.desiredReplicaState = $.desiredReplicaState;
         this.directoryServices = $.directoryServices;
         this.effectiveLabels = $.effectiveLabels;
         this.effectiveReplications = $.effectiveReplications;
@@ -557,6 +573,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param desiredReplicaState The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredReplicaState(@Nullable Output<String> desiredReplicaState) {
+            $.desiredReplicaState = desiredReplicaState;
+            return this;
+        }
+
+        /**
+         * @param desiredReplicaState The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredReplicaState(String desiredReplicaState) {
+            return desiredReplicaState(Output.of(desiredReplicaState));
         }
 
         /**
@@ -920,7 +957,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -932,7 +969,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param pulumiLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 

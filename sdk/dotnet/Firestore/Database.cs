@@ -284,28 +284,44 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// ### Firestore Database Data Access
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var firestoreAccessDatabase = new Gcp.Firestore.Database("firestore_access_database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "data-access-database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DatabaseEdition = "ENTERPRISE",
+    ///         FirestoreDataAccessMode = "DATA_ACCESS_MODE_ENABLED",
+    ///         MongodbCompatibleDataAccessMode = "DATA_ACCESS_MODE_DISABLED",
+    ///         RealtimeUpdatesMode = "REALTIME_UPDATES_MODE_DISABLED",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
     /// Database can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/databases/{{name}}`
-    /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:firestore/database:Database default projects/{{project}}/databases/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firestore/database:Database default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firestore/database:Database default {{name}}
     /// ```
     /// </summary>
@@ -342,15 +358,30 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The database edition.
+        /// The database edition. When set to 'ENTERPRISE', then type must be set to
+        /// 'FIRESTORE_NATIVE'.
         /// Possible values are: `STANDARD`, `ENTERPRISE`.
         /// </summary>
         [Output("databaseEdition")]
         public Output<string> DatabaseEdition { get; private set; } = null!;
 
+        /// <summary>
+        /// State of delete protection for the database.
+        /// When delete protection is enabled, this database cannot be deleted.
+        /// The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+        /// **Note:** Additionally, to delete this database using `terraform destroy`, `DeletionPolicy` must be set to `DELETE`.
+        /// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        /// </summary>
         [Output("deleteProtectionState")]
         public Output<string> DeleteProtectionState { get; private set; } = null!;
 
+        /// <summary>
+        /// Deletion behavior for this database.
+        /// If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+        /// If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+        /// The default value is `ABANDON`.
+        /// See also `DeleteProtection`.
+        /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
@@ -371,6 +402,14 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// The Firestore API data access mode to use for this database. Can only be
+        /// specified for 'ENTERPRISE' edition databases.
+        /// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+        /// </summary>
+        [Output("firestoreDataAccessMode")]
+        public Output<string> FirestoreDataAccessMode { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. The keyPrefix for this database.
         /// This keyPrefix is used, in combination with the project id ("~") to construct the application id
         /// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
@@ -385,6 +424,14 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Output("locationId")]
         public Output<string> LocationId { get; private set; } = null!;
+
+        /// <summary>
+        /// The MongoDB compatible API data access mode to use for this database. Can
+        /// only be specified for 'ENTERPRISE' edition databases.
+        /// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+        /// </summary>
+        [Output("mongodbCompatibleDataAccessMode")]
+        public Output<string> MongodbCompatibleDataAccessMode { get; private set; } = null!;
 
         /// <summary>
         /// The ID to use for the database, which will become the final
@@ -415,6 +462,14 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The Realtime Updates mode to use for this database. Can only be specified
+        /// for 'ENTERPRISE' edition databases.
+        /// Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+        /// </summary>
+        [Output("realtimeUpdatesMode")]
+        public Output<string> RealtimeUpdatesMode { get; private set; } = null!;
 
         /// <summary>
         /// Input only. A map of resource manager tags. Resource manager tag keys
@@ -527,17 +582,40 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? ConcurrencyMode { get; set; }
 
         /// <summary>
-        /// The database edition.
+        /// The database edition. When set to 'ENTERPRISE', then type must be set to
+        /// 'FIRESTORE_NATIVE'.
         /// Possible values are: `STANDARD`, `ENTERPRISE`.
         /// </summary>
         [Input("databaseEdition")]
         public Input<string>? DatabaseEdition { get; set; }
 
+        /// <summary>
+        /// State of delete protection for the database.
+        /// When delete protection is enabled, this database cannot be deleted.
+        /// The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+        /// **Note:** Additionally, to delete this database using `terraform destroy`, `DeletionPolicy` must be set to `DELETE`.
+        /// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        /// </summary>
         [Input("deleteProtectionState")]
         public Input<string>? DeleteProtectionState { get; set; }
 
+        /// <summary>
+        /// Deletion behavior for this database.
+        /// If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+        /// If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+        /// The default value is `ABANDON`.
+        /// See also `DeleteProtection`.
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
+        /// The Firestore API data access mode to use for this database. Can only be
+        /// specified for 'ENTERPRISE' edition databases.
+        /// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+        /// </summary>
+        [Input("firestoreDataAccessMode")]
+        public Input<string>? FirestoreDataAccessMode { get; set; }
 
         /// <summary>
         /// The location of the database. Available locations are listed at
@@ -545,6 +623,14 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("locationId", required: true)]
         public Input<string> LocationId { get; set; } = null!;
+
+        /// <summary>
+        /// The MongoDB compatible API data access mode to use for this database. Can
+        /// only be specified for 'ENTERPRISE' edition databases.
+        /// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+        /// </summary>
+        [Input("mongodbCompatibleDataAccessMode")]
+        public Input<string>? MongodbCompatibleDataAccessMode { get; set; }
 
         /// <summary>
         /// The ID to use for the database, which will become the final
@@ -575,6 +661,14 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The Realtime Updates mode to use for this database. Can only be specified
+        /// for 'ENTERPRISE' edition databases.
+        /// Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+        /// </summary>
+        [Input("realtimeUpdatesMode")]
+        public Input<string>? RealtimeUpdatesMode { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -640,15 +734,30 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The database edition.
+        /// The database edition. When set to 'ENTERPRISE', then type must be set to
+        /// 'FIRESTORE_NATIVE'.
         /// Possible values are: `STANDARD`, `ENTERPRISE`.
         /// </summary>
         [Input("databaseEdition")]
         public Input<string>? DatabaseEdition { get; set; }
 
+        /// <summary>
+        /// State of delete protection for the database.
+        /// When delete protection is enabled, this database cannot be deleted.
+        /// The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+        /// **Note:** Additionally, to delete this database using `terraform destroy`, `DeletionPolicy` must be set to `DELETE`.
+        /// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        /// </summary>
         [Input("deleteProtectionState")]
         public Input<string>? DeleteProtectionState { get; set; }
 
+        /// <summary>
+        /// Deletion behavior for this database.
+        /// If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+        /// If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+        /// The default value is `ABANDON`.
+        /// See also `DeleteProtection`.
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
@@ -669,6 +778,14 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Etag { get; set; }
 
         /// <summary>
+        /// The Firestore API data access mode to use for this database. Can only be
+        /// specified for 'ENTERPRISE' edition databases.
+        /// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+        /// </summary>
+        [Input("firestoreDataAccessMode")]
+        public Input<string>? FirestoreDataAccessMode { get; set; }
+
+        /// <summary>
         /// Output only. The keyPrefix for this database.
         /// This keyPrefix is used, in combination with the project id ("~") to construct the application id
         /// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
@@ -683,6 +800,14 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("locationId")]
         public Input<string>? LocationId { get; set; }
+
+        /// <summary>
+        /// The MongoDB compatible API data access mode to use for this database. Can
+        /// only be specified for 'ENTERPRISE' edition databases.
+        /// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+        /// </summary>
+        [Input("mongodbCompatibleDataAccessMode")]
+        public Input<string>? MongodbCompatibleDataAccessMode { get; set; }
 
         /// <summary>
         /// The ID to use for the database, which will become the final
@@ -713,6 +838,14 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The Realtime Updates mode to use for this database. Can only be specified
+        /// for 'ENTERPRISE' edition databases.
+        /// Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+        /// </summary>
+        [Input("realtimeUpdatesMode")]
+        public Input<string>? RealtimeUpdatesMode { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;

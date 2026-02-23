@@ -34,8 +34,9 @@ import * as utilities from "../utilities";
  *     uniformBucketLevelAccess: true,
  * });
  * const myIcebergCatalog = new gcp.biglake.IcebergCatalog("my_iceberg_catalog", {
- *     name: "my_iceberg_catalog",
+ *     name: bucketForMyIcebergCatalog.name,
  *     catalogType: "CATALOG_TYPE_GCS_BUCKET",
+ *     credentialMode: "CREDENTIAL_MODE_VENDED_CREDENTIALS",
  * }, {
  *     dependsOn: [bucketForMyIcebergCatalog],
  * });
@@ -46,22 +47,14 @@ import * as utilities from "../utilities";
  * IcebergCatalog can be imported using any of these accepted formats:
  *
  * * `iceberg/v1/restcatalog/extensions/projects/{{project}}/catalogs/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, IcebergCatalog can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default iceberg/v1/restcatalog/extensions/projects/{{project}}/catalogs/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{name}}
  * ```
  */
@@ -116,8 +109,10 @@ export class IcebergCatalog extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly defaultLocation: pulumi.Output<string>;
     /**
-     * The name of the IcebergCatalog. Format:
-     * projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+     * The name of the IcebergCatalog.
+     * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+     * exact same value of the GCS bucket's name. For example, for a bucket:
+     * gs://bucket-name, the catalog name will be exactly "bucket-name".
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -210,8 +205,10 @@ export interface IcebergCatalogState {
      */
     defaultLocation?: pulumi.Input<string>;
     /**
-     * The name of the IcebergCatalog. Format:
-     * projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+     * The name of the IcebergCatalog.
+     * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+     * exact same value of the GCS bucket's name. For example, for a bucket:
+     * gs://bucket-name, the catalog name will be exactly "bucket-name".
      */
     name?: pulumi.Input<string>;
     /**
@@ -249,8 +246,10 @@ export interface IcebergCatalogArgs {
      */
     credentialMode?: pulumi.Input<string>;
     /**
-     * The name of the IcebergCatalog. Format:
-     * projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+     * The name of the IcebergCatalog.
+     * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+     * exact same value of the GCS bucket's name. For example, for a bucket:
+     * gs://bucket-name, the catalog name will be exactly "bucket-name".
      */
     name?: pulumi.Input<string>;
     /**

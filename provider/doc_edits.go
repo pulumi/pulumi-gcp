@@ -19,7 +19,19 @@ func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 		substituteRandomSuffix,
 		rewritemembersField,
 		skipBetaWarning,
+		simpleReplace("terraformLabels", "pulumiLabels"),
+		simpleReplace("terraform_labels", "pulumi_labels"),
 	)
+}
+
+func simpleReplace(from, to string) tfbridge.DocsEdit {
+	fromB, toB := []byte(from), []byte(to)
+	return tfbridge.DocsEdit{
+		Path: "*",
+		Edit: func(_ string, content []byte) ([]byte, error) {
+			return bytes.ReplaceAll(content, fromB, toB), nil
+		},
+	}
 }
 
 const effectiveLabels = `including the labels configured through Terraform`

@@ -120,28 +120,16 @@ import (
 // VpnGateway can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, VpnGateway can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/vPNGateway:VPNGateway default projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{name}}
 // ```
 type VPNGateway struct {
@@ -163,6 +151,10 @@ type VPNGateway struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network this VPN gateway is accepting traffic for.
 	Network pulumi.StringOutput `pulumi:"network"`
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params VPNGatewayParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -221,6 +213,10 @@ type vpngatewayState struct {
 	Name *string `pulumi:"name"`
 	// The network this VPN gateway is accepting traffic for.
 	Network *string `pulumi:"network"`
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *VPNGatewayParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -247,6 +243,10 @@ type VPNGatewayState struct {
 	Name pulumi.StringPtrInput
 	// The network this VPN gateway is accepting traffic for.
 	Network pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params VPNGatewayParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -273,6 +273,10 @@ type vpngatewayArgs struct {
 	Name *string `pulumi:"name"`
 	// The network this VPN gateway is accepting traffic for.
 	Network string `pulumi:"network"`
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *VPNGatewayParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -294,6 +298,10 @@ type VPNGatewayArgs struct {
 	Name pulumi.StringPtrInput
 	// The network this VPN gateway is accepting traffic for.
 	Network pulumi.StringInput
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params VPNGatewayParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -417,6 +425,13 @@ func (o VPNGatewayOutput) Name() pulumi.StringOutput {
 // The network this VPN gateway is accepting traffic for.
 func (o VPNGatewayOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *VPNGateway) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// (Optional, Beta)
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o VPNGatewayOutput) Params() VPNGatewayParamsPtrOutput {
+	return o.ApplyT(func(v *VPNGateway) VPNGatewayParamsPtrOutput { return v.Params }).(VPNGatewayParamsPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

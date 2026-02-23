@@ -131,6 +131,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterAddonsConfigRayOperatorConfig> RayOperatorConfigs;
         /// <summary>
+        /// The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigSliceControllerConfig? SliceControllerConfig;
+        /// <summary>
         /// .
         /// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
         /// It is disabled by default for Standard clusters. Set `enabled = true` to enable.
@@ -171,6 +175,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs,
 
+            Outputs.ClusterAddonsConfigSliceControllerConfig? sliceControllerConfig,
+
             Outputs.ClusterAddonsConfigStatefulHaConfig? statefulHaConfig)
         {
             CloudrunConfig = cloudrunConfig;
@@ -189,6 +195,7 @@ namespace Pulumi.Gcp.Container.Outputs
             ParallelstoreCsiDriverConfig = parallelstoreCsiDriverConfig;
             PodSnapshotConfig = podSnapshotConfig;
             RayOperatorConfigs = rayOperatorConfigs;
+            SliceControllerConfig = sliceControllerConfig;
             StatefulHaConfig = statefulHaConfig;
         }
     }

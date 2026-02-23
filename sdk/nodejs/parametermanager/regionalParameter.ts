@@ -75,22 +75,14 @@ import * as utilities from "../utilities";
  * RegionalParameter can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
- *
  * * `{{project}}/{{location}}/{{parameter_id}}`
- *
  * * `{{location}}/{{parameter_id}}`
  *
  * When using the `pulumi import` command, RegionalParameter can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:parametermanager/regionalParameter:RegionalParameter default projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:parametermanager/regionalParameter:RegionalParameter default {{project}}/{{location}}/{{parameter_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:parametermanager/regionalParameter:RegionalParameter default {{location}}/{{parameter_id}}
  * ```
  */
@@ -180,7 +172,7 @@ export class RegionalParameter extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -303,7 +295,7 @@ export interface RegionalParameterState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

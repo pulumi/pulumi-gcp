@@ -12,6 +12,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Datasets allow you to organize and control access to your tables.
+//
+// To get more information about Dataset, see:
+//
+// * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
+// * How-to Guides
+//   - [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
+//
+// > **Warning:** You must specify the role field using the legacy format `OWNER` instead of `roles/bigquery.dataOwner`.
+// The API does accept both formats but it will always return the legacy format which results in Terraform
+// showing permanent diff on each plan and apply operation.
+//
 // ## Example Usage
 //
 // ### Bigquery Dataset Basic
@@ -352,22 +364,14 @@ import (
 // Dataset can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/datasets/{{dataset_id}}`
-//
 // * `{{project}}/{{dataset_id}}`
-//
 // * `{{dataset_id}}`
 //
 // When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
 // ```
 type Dataset struct {
@@ -471,7 +475,7 @@ type Dataset struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
 	// in the namespaced format, for example "123456789012/environment" where 123456789012 is the
@@ -624,7 +628,7 @@ type datasetState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
 	// in the namespaced format, for example "123456789012/environment" where 123456789012 is the
@@ -740,7 +744,7 @@ type DatasetState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
 	// in the namespaced format, for example "123456789012/environment" where 123456789012 is the
@@ -1211,7 +1215,8 @@ func (o DatasetOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DatasetOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

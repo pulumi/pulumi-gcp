@@ -44,28 +44,16 @@ import * as utilities from "../utilities";
  * InstantSnapshot can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/zones/{{zone}}/instantSnapshots/{{name}}`
- *
  * * `{{project}}/{{zone}}/{{name}}`
- *
  * * `{{zone}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, InstantSnapshot can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default projects/{{project}}/zones/{{zone}}/instantSnapshots/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{project}}/{{zone}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{zone}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{name}}
  * ```
  */
@@ -141,7 +129,7 @@ export class InstantSnapshot extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -261,7 +249,7 @@ export interface InstantSnapshotState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

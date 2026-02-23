@@ -160,7 +160,7 @@ class _GatewayState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region of the gateway for the API.
         """
         if api_config is not None:
@@ -291,7 +291,7 @@ class _GatewayState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -326,6 +326,17 @@ class Gateway(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A consumable API that can be used by multiple Gateways.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Gateway, see:
+
+        * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+
         ## Example Usage
 
         ## Import
@@ -333,28 +344,16 @@ class Gateway(pulumi.CustomResource):
         Gateway can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}`
-
         * `{{project}}/{{region}}/{{gateway_id}}`
-
         * `{{region}}/{{gateway_id}}`
-
         * `{{gateway_id}}`
 
         When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/gateway:Gateway default {{project}}/{{region}}/{{gateway_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/gateway:Gateway default {{region}}/{{gateway_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/gateway:Gateway default {{gateway_id}}
         ```
 
@@ -380,6 +379,17 @@ class Gateway(pulumi.CustomResource):
                  args: GatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A consumable API that can be used by multiple Gateways.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Gateway, see:
+
+        * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+
         ## Example Usage
 
         ## Import
@@ -387,28 +397,16 @@ class Gateway(pulumi.CustomResource):
         Gateway can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}`
-
         * `{{project}}/{{region}}/{{gateway_id}}`
-
         * `{{region}}/{{gateway_id}}`
-
         * `{{gateway_id}}`
 
         When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/gateway:Gateway default {{project}}/{{region}}/{{gateway_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/gateway:Gateway default {{region}}/{{gateway_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/gateway:Gateway default {{gateway_id}}
         ```
 
@@ -500,7 +498,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region of the gateway for the API.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -594,7 +592,7 @@ class Gateway(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

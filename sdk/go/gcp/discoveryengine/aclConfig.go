@@ -57,22 +57,14 @@ import (
 // AclConfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/aclConfig`
-//
 // * `{{project}}/{{location}}`
-//
 // * `{{location}}`
 //
 // When using the `pulumi import` command, AclConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:discoveryengine/aclConfig:AclConfig default projects/{{project}}/locations/{{location}}/aclConfig
-// ```
-//
-// ```sh
 // $ pulumi import gcp:discoveryengine/aclConfig:AclConfig default {{project}}/{{location}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:discoveryengine/aclConfig:AclConfig default {{location}}
 // ```
 type AclConfig struct {

@@ -324,22 +324,14 @@ import * as utilities from "../utilities";
  * MigrationJob can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}`
- *
  * * `{{project}}/{{location}}/{{migration_job_id}}`
- *
  * * `{{location}}/{{migration_job_id}}`
  *
  * When using the `pulumi import` command, MigrationJob can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{project}}/{{location}}/{{migration_job_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{location}}/{{migration_job_id}}
  * ```
  */
@@ -444,7 +436,7 @@ export class MigrationJob extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -634,7 +626,7 @@ export interface MigrationJobState {
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
