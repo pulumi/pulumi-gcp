@@ -288,7 +288,7 @@ type AccountConnector struct {
 	// Structure is documented below.
 	ProviderOauthConfig AccountConnectorProviderOauthConfigPtrOutput `pulumi:"providerOauthConfig"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. The timestamp when the userConnection was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -368,7 +368,7 @@ type accountConnectorState struct {
 	// Structure is documented below.
 	ProviderOauthConfig *AccountConnectorProviderOauthConfig `pulumi:"providerOauthConfig"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. The timestamp when the userConnection was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -408,7 +408,7 @@ type AccountConnectorState struct {
 	// Structure is documented below.
 	ProviderOauthConfig AccountConnectorProviderOauthConfigPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. The timestamp when the userConnection was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -620,7 +620,8 @@ func (o AccountConnectorOutput) ProviderOauthConfig() AccountConnectorProviderOa
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AccountConnectorOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

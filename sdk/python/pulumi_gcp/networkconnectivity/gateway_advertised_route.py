@@ -213,7 +213,7 @@ class _GatewayAdvertisedRouteState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] recipient: the recipient of this advertised route
                Possible values are: `RECIPIENT_UNSPECIFIED`, `ADVERTISE_TO_HUB`.
         :param pulumi.Input[_builtins.str] spoke: The name of the spoke
@@ -372,7 +372,7 @@ class _GatewayAdvertisedRouteState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -743,7 +743,7 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] recipient: the recipient of this advertised route
                Possible values are: `RECIPIENT_UNSPECIFIED`, `ADVERTISE_TO_HUB`.
         :param pulumi.Input[_builtins.str] spoke: The name of the spoke
@@ -856,7 +856,7 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -310,7 +310,7 @@ class _OrganizationVpcFlowLogsConfigState:
         :param pulumi.Input[_builtins.str] name: Identifier. Unique name of the configuration using the form:     `organizations/{org_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
         :param pulumi.Input[_builtins.str] organization: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: Optional. The state of the VPC Flow Log configuration. Default value
                is ENABLED. When creating a new configuration, it must be enabled.
                Possible values: ENABLED DISABLED
@@ -532,7 +532,7 @@ class _OrganizationVpcFlowLogsConfigState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -830,7 +830,7 @@ class OrganizationVpcFlowLogsConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Identifier. Unique name of the configuration using the form:     `organizations/{org_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
         :param pulumi.Input[_builtins.str] organization: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: Optional. The state of the VPC Flow Log configuration. Default value
                is ENABLED. When creating a new configuration, it must be enabled.
                Possible values: ENABLED DISABLED
@@ -988,7 +988,7 @@ class OrganizationVpcFlowLogsConfig(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

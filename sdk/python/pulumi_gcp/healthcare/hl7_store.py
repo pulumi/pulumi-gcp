@@ -224,7 +224,7 @@ class _Hl7StoreState:
         :param pulumi.Input['Hl7StoreParserConfigArgs'] parser_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reject_duplicate_message: Determines whether duplicate messages are allowed.
         :param pulumi.Input[_builtins.str] self_link: The fully qualified name of this dataset
         """
@@ -362,7 +362,7 @@ class _Hl7StoreState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -869,7 +869,7 @@ class Hl7Store(pulumi.CustomResource):
         :param pulumi.Input[Union['Hl7StoreParserConfigArgs', 'Hl7StoreParserConfigArgsDict']] parser_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reject_duplicate_message: Determines whether duplicate messages are allowed.
         :param pulumi.Input[_builtins.str] self_link: The fully qualified name of this dataset
         """
@@ -971,7 +971,7 @@ class Hl7Store(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

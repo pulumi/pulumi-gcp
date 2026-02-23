@@ -324,7 +324,7 @@ type UnitOperation struct {
 	// Structure is documented below.
 	Provision UnitOperationProvisionPtrOutput `pulumi:"provision"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// UnitOperationState describes the current state of the unit operation.
 	// Possible values:
@@ -460,7 +460,7 @@ type unitOperationState struct {
 	// Structure is documented below.
 	Provision *UnitOperationProvision `pulumi:"provision"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// UnitOperationState describes the current state of the unit operation.
 	// Possible values:
@@ -553,7 +553,7 @@ type UnitOperationState struct {
 	// Structure is documented below.
 	Provision UnitOperationProvisionPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// UnitOperationState describes the current state of the unit operation.
 	// Possible values:
@@ -861,7 +861,8 @@ func (o UnitOperationOutput) Provision() UnitOperationProvisionPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o UnitOperationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *UnitOperation) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

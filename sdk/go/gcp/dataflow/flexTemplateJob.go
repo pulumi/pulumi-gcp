@@ -84,8 +84,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataflow"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -100,20 +98,18 @@ import (
 //			if param := cfg.Get("bigDataJobSubscriptionId"); param != "" {
 //				bigDataJobSubscriptionId = param
 //			}
-//			bigDataJobNameSuffix, err := random.NewRandomId(ctx, "big_data_job_name_suffix", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(4),
-//				Keepers: pulumi.StringMap{
-//					"region":          pulumi.Any(region),
-//					"subscription_id": pulumi.String(bigDataJobSubscriptionId),
+//			bigDataJobNameSuffix, err := random.NewId(ctx, "big_data_job_name_suffix", &random.IdArgs{
+//				ByteLength: 4,
+//				Keepers: map[string]interface{}{
+//					"region":         region,
+//					"subscriptionId": bigDataJobSubscriptionId,
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dataflow.NewFlexTemplateJob(ctx, "big_data_job", &dataflow.FlexTemplateJobArgs{
-//				Name: bigDataJobNameSuffix.Dec.ApplyT(func(dec string) (string, error) {
-//					return fmt.Sprintf("dataflow-flextemplates-job-%v", dec), nil
-//				}).(pulumi.StringOutput),
+//				Name:                     pulumi.Sprintf("dataflow-flextemplates-job-%v", bigDataJobNameSuffix.Dec),
 //				Region:                   pulumi.Any(region),
 //				ContainerSpecGcsPath:     pulumi.String("gs://my-bucket/templates/template.json"),
 //				SkipWaitOnJobTermination: pulumi.Bool(true),

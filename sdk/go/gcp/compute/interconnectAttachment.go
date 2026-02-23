@@ -345,7 +345,7 @@ type InterconnectAttachment struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Region where the regional interconnect attachment resides.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -553,7 +553,7 @@ type interconnectAttachmentState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Region where the regional interconnect attachment resides.
 	Region *string `pulumi:"region"`
@@ -727,7 +727,7 @@ type InterconnectAttachmentState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Region where the regional interconnect attachment resides.
 	Region pulumi.StringPtrInput
@@ -1340,7 +1340,8 @@ func (o InterconnectAttachmentOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InterconnectAttachmentOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

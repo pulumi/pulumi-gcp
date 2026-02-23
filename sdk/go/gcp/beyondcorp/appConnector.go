@@ -146,7 +146,7 @@ type AppConnector struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the AppConnector.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
@@ -210,7 +210,7 @@ type appConnectorState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the AppConnector.
 	Region *string `pulumi:"region"`
@@ -237,7 +237,7 @@ type AppConnectorState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region of the AppConnector.
 	Region pulumi.StringPtrInput
@@ -413,7 +413,8 @@ func (o AppConnectorOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AppConnectorOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppConnector) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -171,7 +171,7 @@ type Volume struct {
 	// Name of the Private Service Access allocated range. Inherited from storage pool.
 	PsaRange pulumi.StringOutput `pulumi:"psaRange"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Specifies the replica zone for regional volume.
 	ReplicaZone pulumi.StringOutput `pulumi:"replicaZone"`
@@ -339,7 +339,7 @@ type volumeState struct {
 	// Name of the Private Service Access allocated range. Inherited from storage pool.
 	PsaRange *string `pulumi:"psaRange"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Specifies the replica zone for regional volume.
 	ReplicaZone *string `pulumi:"replicaZone"`
@@ -461,7 +461,7 @@ type VolumeState struct {
 	// Name of the Private Service Access allocated range. Inherited from storage pool.
 	PsaRange pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Specifies the replica zone for regional volume.
 	ReplicaZone pulumi.StringPtrInput
@@ -922,7 +922,8 @@ func (o VolumeOutput) PsaRange() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o VolumeOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

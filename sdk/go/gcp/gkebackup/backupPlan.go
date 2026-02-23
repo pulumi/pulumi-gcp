@@ -647,7 +647,7 @@ type BackupPlan struct {
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount pulumi.IntOutput `pulumi:"protectedPodCount"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// RetentionPolicy governs lifecycle of Backups created under this plan.
 	// Structure is documented below.
@@ -742,7 +742,7 @@ type backupPlanState struct {
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount *int `pulumi:"protectedPodCount"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// RetentionPolicy governs lifecycle of Backups created under this plan.
 	// Structure is documented below.
@@ -797,7 +797,7 @@ type BackupPlanState struct {
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount pulumi.IntPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// RetentionPolicy governs lifecycle of Backups created under this plan.
 	// Structure is documented below.
@@ -1049,7 +1049,8 @@ func (o BackupPlanOutput) ProtectedPodCount() pulumi.IntOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o BackupPlanOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

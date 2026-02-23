@@ -88,7 +88,7 @@ type CertificateMapResource struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds with up to nine fractional digits.
@@ -154,7 +154,7 @@ type certificateMapResourceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds with up to nine fractional digits.
@@ -186,7 +186,7 @@ type CertificateMapResourceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds with up to nine fractional digits.
@@ -362,7 +362,8 @@ func (o CertificateMapResourceOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CertificateMapResourceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

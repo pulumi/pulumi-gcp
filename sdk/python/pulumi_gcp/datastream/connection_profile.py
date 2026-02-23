@@ -377,7 +377,7 @@ class _ConnectionProfileState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['ConnectionProfileSalesforceProfileArgs'] salesforce_profile: (Optional, Beta)
                Salesforce profile.
                Structure is documented below.
@@ -635,7 +635,7 @@ class _ConnectionProfileState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -775,13 +775,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd.result)
+            password=pwd["result"])
         nat_vm = gcp.compute.Instance("nat_vm",
             name="nat-vm",
             machine_type="e2-medium",
@@ -903,13 +903,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd.result)
+            password=pwd["result"])
         default = gcp.datastream.ConnectionProfile("default",
             display_name="Connection profile",
             location="us-central1",
@@ -1003,13 +1003,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd.result)
+            password=pwd["result"])
         client_cert = gcp.sql.SslCert("client_cert",
             common_name="client-name",
             instance=instance.name)
@@ -1021,7 +1021,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "hostname": instance.public_ip_address,
                 "port": 5432,
                 "username": "user",
-                "password": pwd.result,
+                "password": pwd["result"],
                 "database": db.name,
                 "ssl_config": {
                     "server_and_client_verification": {
@@ -1233,13 +1233,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd.result)
+            password=pwd["result"])
         nat_vm = gcp.compute.Instance("nat_vm",
             name="nat-vm",
             machine_type="e2-medium",
@@ -1361,13 +1361,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd.result)
+            password=pwd["result"])
         default = gcp.datastream.ConnectionProfile("default",
             display_name="Connection profile",
             location="us-central1",
@@ -1461,13 +1461,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd.result)
+            password=pwd["result"])
         client_cert = gcp.sql.SslCert("client_cert",
             common_name="client-name",
             instance=instance.name)
@@ -1479,7 +1479,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "hostname": instance.public_ip_address,
                 "port": 5432,
                 "username": "user",
-                "password": pwd.result,
+                "password": pwd["result"],
                 "database": db.name,
                 "ssl_config": {
                     "server_and_client_verification": {
@@ -1717,7 +1717,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']] salesforce_profile: (Optional, Beta)
                Salesforce profile.
                Structure is documented below.
@@ -1896,7 +1896,7 @@ class ConnectionProfile(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

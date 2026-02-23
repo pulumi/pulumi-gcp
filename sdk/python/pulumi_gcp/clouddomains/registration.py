@@ -243,7 +243,7 @@ class _RegistrationState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] register_failure_reason: Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
         :param pulumi.Input[_builtins.str] state: Output only. The current state of the Registration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_privacies: Output only. Set of options for the contactSettings.privacy field that this Registration supports.
@@ -469,7 +469,7 @@ class _RegistrationState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -888,7 +888,7 @@ class Registration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] register_failure_reason: Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
         :param pulumi.Input[_builtins.str] state: Output only. The current state of the Registration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_privacies: Output only. Set of options for the contactSettings.privacy field that this Registration supports.
@@ -1044,7 +1044,7 @@ class Registration(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

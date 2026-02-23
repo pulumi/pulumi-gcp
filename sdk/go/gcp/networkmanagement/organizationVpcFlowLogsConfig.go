@@ -106,7 +106,7 @@ type OrganizationVpcFlowLogsConfig struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Organization pulumi.StringOutput `pulumi:"organization"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Optional. The state of the VPC Flow Log configuration. Default value
 	// is ENABLED. When creating a new configuration, it must be enabled.
@@ -208,7 +208,7 @@ type organizationVpcFlowLogsConfigState struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Organization *string `pulumi:"organization"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Optional. The state of the VPC Flow Log configuration. Default value
 	// is ENABLED. When creating a new configuration, it must be enabled.
@@ -267,7 +267,7 @@ type OrganizationVpcFlowLogsConfigState struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Organization pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Optional. The state of the VPC Flow Log configuration. Default value
 	// is ENABLED. When creating a new configuration, it must be enabled.
@@ -552,7 +552,8 @@ func (o OrganizationVpcFlowLogsConfigOutput) Organization() pulumi.StringOutput 
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o OrganizationVpcFlowLogsConfigOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *OrganizationVpcFlowLogsConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

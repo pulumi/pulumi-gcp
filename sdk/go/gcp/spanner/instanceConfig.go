@@ -64,7 +64,7 @@ type InstanceConfig struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The geographic placement of nodes in this instance configuration and their replication properties.
 	// Structure is documented below.
@@ -135,7 +135,7 @@ type instanceConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The geographic placement of nodes in this instance configuration and their replication properties.
 	// Structure is documented below.
@@ -166,7 +166,7 @@ type InstanceConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The geographic placement of nodes in this instance configuration and their replication properties.
 	// Structure is documented below.
@@ -357,7 +357,8 @@ func (o InstanceConfigOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InstanceConfigOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

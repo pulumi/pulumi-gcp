@@ -178,7 +178,7 @@ class _AccountConnectorState:
         :param pulumi.Input['AccountConnectorProviderOauthConfigArgs'] provider_oauth_config: ProviderOAuthConfig is the OAuth config for a provider.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Output only. The timestamp when the userConnection was updated.
         """
         if account_connector_id is not None:
@@ -355,7 +355,7 @@ class _AccountConnectorState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -754,7 +754,7 @@ class AccountConnector(pulumi.CustomResource):
         :param pulumi.Input[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict']] provider_oauth_config: ProviderOAuthConfig is the OAuth config for a provider.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Output only. The timestamp when the userConnection was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -879,7 +879,7 @@ class AccountConnector(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

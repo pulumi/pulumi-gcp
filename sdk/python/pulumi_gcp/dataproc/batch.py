@@ -252,7 +252,7 @@ class _BatchState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['BatchPysparkBatchArgs'] pyspark_batch: PySpark batch config.
                Structure is documented below.
         :param pulumi.Input['BatchRuntimeConfigArgs'] runtime_config: Runtime configuration for the batch execution.
@@ -450,7 +450,7 @@ class _BatchState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1323,7 +1323,7 @@ class Batch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['BatchPysparkBatchArgs', 'BatchPysparkBatchArgsDict']] pyspark_batch: PySpark batch config.
                Structure is documented below.
         :param pulumi.Input[Union['BatchRuntimeConfigArgs', 'BatchRuntimeConfigArgsDict']] runtime_config: Runtime configuration for the batch execution.
@@ -1464,7 +1464,7 @@ class Batch(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -289,7 +289,7 @@ type AutonomousDatabase struct {
 	// Structure is documented below.
 	Properties AutonomousDatabasePropertiesOutput `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The source Autonomous Database configuration for the standby Autonomous Database.
 	// Structure is documented below.
@@ -395,7 +395,7 @@ type autonomousDatabaseState struct {
 	// Structure is documented below.
 	Properties *AutonomousDatabaseProperties `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The source Autonomous Database configuration for the standby Autonomous Database.
 	// Structure is documented below.
@@ -461,7 +461,7 @@ type AutonomousDatabaseState struct {
 	// Structure is documented below.
 	Properties AutonomousDatabasePropertiesPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The source Autonomous Database configuration for the standby Autonomous Database.
 	// Structure is documented below.
@@ -773,7 +773,8 @@ func (o AutonomousDatabaseOutput) Properties() AutonomousDatabasePropertiesOutpu
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AutonomousDatabaseOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

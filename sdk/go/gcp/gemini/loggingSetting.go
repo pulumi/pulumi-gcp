@@ -89,7 +89,7 @@ type LoggingSetting struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Update time stamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -159,7 +159,7 @@ type loggingSettingState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Update time stamp.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -189,7 +189,7 @@ type LoggingSettingState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Update time stamp.
 	UpdateTime pulumi.StringPtrInput
@@ -373,7 +373,8 @@ func (o LoggingSettingOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o LoggingSettingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LoggingSetting) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

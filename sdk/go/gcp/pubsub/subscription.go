@@ -927,7 +927,7 @@ type Subscription struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// If push delivery is used with this subscription, this field is used to
 	// configure it. An empty pushConfig signifies that the subscriber will
@@ -1083,7 +1083,7 @@ type subscriptionState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// If push delivery is used with this subscription, this field is used to
 	// configure it. An empty pushConfig signifies that the subscriber will
@@ -1202,7 +1202,7 @@ type SubscriptionState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// If push delivery is used with this subscription, this field is used to
 	// configure it. An empty pushConfig signifies that the subscriber will
@@ -1682,7 +1682,8 @@ func (o SubscriptionOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o SubscriptionOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

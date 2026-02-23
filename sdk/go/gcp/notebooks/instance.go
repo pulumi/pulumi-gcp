@@ -343,7 +343,7 @@ type Instance struct {
 	// the population of this value.
 	ProxyUri pulumi.StringOutput `pulumi:"proxyUri"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
@@ -506,7 +506,7 @@ type instanceState struct {
 	// the population of this value.
 	ProxyUri *string `pulumi:"proxyUri"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
@@ -629,7 +629,7 @@ type InstanceState struct {
 	// the population of this value.
 	ProxyUri pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
@@ -1146,7 +1146,8 @@ func (o InstanceOutput) ProxyUri() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

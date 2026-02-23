@@ -279,7 +279,7 @@ class _AuthzPolicyState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['AuthzPolicyTargetArgs'] target: Specifies the set of resources to which this policy should be applied to.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp when the resource was updated.
@@ -471,7 +471,7 @@ class _AuthzPolicyState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -811,7 +811,7 @@ class AuthzPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']] target: Specifies the set of resources to which this policy should be applied to.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp when the resource was updated.
@@ -950,7 +950,7 @@ class AuthzPolicy(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -254,7 +254,7 @@ export class Hl7Store extends pulumi.CustomResource {
     declare public readonly parserConfig: pulumi.Output<outputs.healthcare.Hl7StoreParserConfig>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -368,7 +368,7 @@ export interface Hl7StoreState {
     parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

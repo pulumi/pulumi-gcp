@@ -647,7 +647,7 @@ type AiFeatureOnlineStoreFeatureview struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region for the resource. It should be the same as the featureonlinestore region.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -723,7 +723,7 @@ type aiFeatureOnlineStoreFeatureviewState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region for the resource. It should be the same as the featureonlinestore region.
 	Region *string `pulumi:"region"`
@@ -762,7 +762,7 @@ type AiFeatureOnlineStoreFeatureviewState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region for the resource. It should be the same as the featureonlinestore region.
 	Region pulumi.StringPtrInput
@@ -980,7 +980,8 @@ func (o AiFeatureOnlineStoreFeatureviewOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AiFeatureOnlineStoreFeatureviewOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureview) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

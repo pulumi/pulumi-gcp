@@ -203,7 +203,7 @@ type AiFeatureOnlineStore struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of feature online store. eg us-central1
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -285,7 +285,7 @@ type aiFeatureOnlineStoreState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of feature online store. eg us-central1
 	Region *string `pulumi:"region"`
@@ -333,7 +333,7 @@ type AiFeatureOnlineStoreState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region of feature online store. eg us-central1
 	Region pulumi.StringPtrInput
@@ -582,7 +582,8 @@ func (o AiFeatureOnlineStoreOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AiFeatureOnlineStoreOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStore) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

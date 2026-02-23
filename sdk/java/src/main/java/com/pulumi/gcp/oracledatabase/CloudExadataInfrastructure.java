@@ -343,7 +343,7 @@ public class CloudExadataInfrastructure extends com.pulumi.resources.CustomResou
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -351,7 +351,7 @@ public class CloudExadataInfrastructure extends com.pulumi.resources.CustomResou
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

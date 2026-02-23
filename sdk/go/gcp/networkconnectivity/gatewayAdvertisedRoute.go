@@ -151,7 +151,7 @@ type GatewayAdvertisedRoute struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// the recipient of this advertised route
 	// Possible values are: `RECIPIENT_UNSPECIFIED`, `ADVERTISE_TO_HUB`.
@@ -233,7 +233,7 @@ type gatewayAdvertisedRouteState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// the recipient of this advertised route
 	// Possible values are: `RECIPIENT_UNSPECIFIED`, `ADVERTISE_TO_HUB`.
@@ -275,7 +275,7 @@ type GatewayAdvertisedRouteState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// the recipient of this advertised route
 	// Possible values are: `RECIPIENT_UNSPECIFIED`, `ADVERTISE_TO_HUB`.
@@ -489,7 +489,8 @@ func (o GatewayAdvertisedRouteOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GatewayAdvertisedRouteOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GatewayAdvertisedRoute) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

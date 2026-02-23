@@ -153,7 +153,7 @@ type GoogleApiSource struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Server assigned unique identifier for the channel. The value is a UUID4
 	// string and guaranteed to remain unchanged until the resource is deleted.
@@ -251,7 +251,7 @@ type googleApiSourceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Server assigned unique identifier for the channel. The value is a UUID4
 	// string and guaranteed to remain unchanged until the resource is deleted.
@@ -306,7 +306,7 @@ type GoogleApiSourceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Server assigned unique identifier for the channel. The value is a UUID4
 	// string and guaranteed to remain unchanged until the resource is deleted.
@@ -562,7 +562,8 @@ func (o GoogleApiSourceOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GoogleApiSourceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleApiSource) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -151,7 +151,7 @@ type CertificateMapEntry struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A serving state of this Certificate Map Entry.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -237,7 +237,7 @@ type certificateMapEntryState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A serving state of this Certificate Map Entry.
 	State *string `pulumi:"state"`
@@ -283,7 +283,7 @@ type CertificateMapEntryState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// A serving state of this Certificate Map Entry.
 	State pulumi.StringPtrInput
@@ -512,7 +512,8 @@ func (o CertificateMapEntryOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CertificateMapEntryOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

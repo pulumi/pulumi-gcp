@@ -289,7 +289,7 @@ class _UnitState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] release: The current Release object for this Unit.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scheduled_operations: List of scheduled UnitOperations for this unit.
         :param pulumi.Input[_builtins.str] state: Current lifecycle state of the resource (e.g. if it's being
@@ -617,7 +617,7 @@ class _UnitState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1068,7 +1068,7 @@ class Unit(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] release: The current Release object for this Unit.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scheduled_operations: List of scheduled UnitOperations for this unit.
         :param pulumi.Input[_builtins.str] state: Current lifecycle state of the resource (e.g. if it's being
@@ -1305,7 +1305,7 @@ class Unit(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

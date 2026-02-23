@@ -313,7 +313,7 @@ type AppHostingBackend struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The name of the service account used for Cloud Build and Cloud Run.
 	// Should have the role roles/firebaseapphosting.computeRunner
@@ -433,7 +433,7 @@ type appHostingBackendState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The name of the service account used for Cloud Build and Cloud Run.
 	// Should have the role roles/firebaseapphosting.computeRunner
@@ -504,7 +504,7 @@ type AppHostingBackendState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The name of the service account used for Cloud Build and Cloud Run.
 	// Should have the role roles/firebaseapphosting.computeRunner
@@ -802,7 +802,8 @@ func (o AppHostingBackendOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AppHostingBackendOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppHostingBackend) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

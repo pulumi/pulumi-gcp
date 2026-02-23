@@ -349,7 +349,7 @@ class _AutonomousDatabaseState:
         :param pulumi.Input['AutonomousDatabasePropertiesArgs'] properties: The properties of an Autonomous Database.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['AutonomousDatabaseSourceConfigArgs'] source_config: The source Autonomous Database configuration for the standby Autonomous Database.
                Structure is documented below.
         """
@@ -648,7 +648,7 @@ class _AutonomousDatabaseState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1154,7 +1154,7 @@ class AutonomousDatabase(pulumi.CustomResource):
         :param pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']] properties: The properties of an Autonomous Database.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict']] source_config: The source Autonomous Database configuration for the standby Autonomous Database.
                Structure is documented below.
         """
@@ -1361,7 +1361,7 @@ class AutonomousDatabase(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

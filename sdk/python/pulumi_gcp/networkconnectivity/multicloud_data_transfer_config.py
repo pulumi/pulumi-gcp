@@ -171,7 +171,7 @@ class _MulticloudDataTransferConfigState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceArgs']]] services: Maps services to their current or planned states. Service names are keys,
                and the associated values describe the state of the service.
                Structure is documented below.
@@ -343,7 +343,7 @@ class _MulticloudDataTransferConfigState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -625,7 +625,7 @@ class MulticloudDataTransferConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MulticloudDataTransferConfigServiceArgs', 'MulticloudDataTransferConfigServiceArgsDict']]]] services: Maps services to their current or planned states. Service names are keys,
                and the associated values describe the state of the service.
                Structure is documented below.
@@ -748,7 +748,7 @@ class MulticloudDataTransferConfig(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

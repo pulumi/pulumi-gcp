@@ -351,7 +351,7 @@ class _GdcSparkApplicationState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: application-specific properties.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['GdcSparkApplicationPysparkApplicationConfigArgs'] pyspark_application_config: Represents the PySparkApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] reconciling: Whether the application is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
@@ -624,7 +624,7 @@ class _GdcSparkApplicationState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1326,7 +1326,7 @@ class GdcSparkApplication(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: application-specific properties.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict']] pyspark_application_config: Represents the PySparkApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] reconciling: Whether the application is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
@@ -1516,7 +1516,7 @@ class GdcSparkApplication(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

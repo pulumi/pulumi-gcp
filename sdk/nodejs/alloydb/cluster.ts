@@ -468,7 +468,7 @@ export class Cluster extends pulumi.CustomResource {
     declare public readonly pscConfig: pulumi.Output<outputs.alloydb.ClusterPscConfig | undefined>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -772,7 +772,7 @@ export interface ClusterState {
     pscConfig?: pulumi.Input<inputs.alloydb.ClusterPscConfig>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -192,7 +192,7 @@ type VolumeReplication struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
 	// and act independently from the source volume.
@@ -321,7 +321,7 @@ type volumeReplicationState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
 	// and act independently from the source volume.
@@ -407,7 +407,7 @@ type VolumeReplicationState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
 	// and act independently from the source volume.
@@ -732,7 +732,8 @@ func (o VolumeReplicationOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o VolumeReplicationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VolumeReplication) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

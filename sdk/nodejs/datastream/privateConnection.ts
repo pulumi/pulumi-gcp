@@ -165,7 +165,7 @@ export class PrivateConnection extends pulumi.CustomResource {
     declare public readonly pscInterfaceConfig: pulumi.Output<outputs.datastream.PrivateConnectionPscInterfaceConfig | undefined>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -289,7 +289,7 @@ export interface PrivateConnectionState {
     pscInterfaceConfig?: pulumi.Input<inputs.datastream.PrivateConnectionPscInterfaceConfig>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

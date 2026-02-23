@@ -221,7 +221,7 @@ type DataAsset struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Full resource name of the cloud resource.
 	Resource pulumi.StringOutput `pulumi:"resource"`
@@ -295,7 +295,7 @@ type dataAssetState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Full resource name of the cloud resource.
 	Resource *string `pulumi:"resource"`
@@ -323,7 +323,7 @@ type DataAssetState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Full resource name of the cloud resource.
 	Resource pulumi.StringPtrInput
@@ -505,7 +505,8 @@ func (o DataAssetOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DataAssetOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DataAsset) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

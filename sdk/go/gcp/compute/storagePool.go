@@ -186,7 +186,7 @@ type StoragePool struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Status information for the storage pool resource.
 	// Structure is documented below.
@@ -295,7 +295,7 @@ type storagePoolState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Status information for the storage pool resource.
 	// Structure is documented below.
@@ -361,7 +361,7 @@ type StoragePoolState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Status information for the storage pool resource.
 	// Structure is documented below.
@@ -656,7 +656,8 @@ func (o StoragePoolOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o StoragePoolOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -150,9 +150,8 @@ class DomainMappingMetadataArgsDict(TypedDict):
     """
     pulumi_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
     """
-    (Output)
     The combination of labels configured directly on the resource
-    and default labels configured on the provider.
+     and default labels configured on the provider.
     """
     resource_version: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -214,9 +213,8 @@ class DomainMappingMetadataArgs:
                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: (Output)
-               The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] resource_version: (Output)
                An opaque value that represents the internal version of this object that
                can be used by clients to determine when objects have changed. May be used
@@ -344,9 +342,8 @@ class DomainMappingMetadataArgs:
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        (Output)
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -928,9 +925,8 @@ class ServiceMetadataArgsDict(TypedDict):
     """
     pulumi_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
     """
-    (Output)
     The combination of labels configured directly on the resource
-    and default labels configured on the provider.
+     and default labels configured on the provider.
     """
     resource_version: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -1003,9 +999,8 @@ class ServiceMetadataArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] namespace: In Cloud Run the namespace must be equal to either the
                project ID or project number.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: (Output)
-               The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] resource_version: (Output)
                An opaque value that represents the internal version of this object that
                can be used by clients to determine when objects have changed. May be used
@@ -1145,9 +1140,8 @@ class ServiceMetadataArgs:
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        (Output)
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

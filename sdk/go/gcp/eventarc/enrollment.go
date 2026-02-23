@@ -136,7 +136,7 @@ type Enrollment struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Server assigned unique identifier for the channel. The value is a UUID4
 	// string and guaranteed to remain unchanged until the resource is deleted.
@@ -237,7 +237,7 @@ type enrollmentState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Server assigned unique identifier for the channel. The value is a UUID4
 	// string and guaranteed to remain unchanged until the resource is deleted.
@@ -289,7 +289,7 @@ type EnrollmentState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Server assigned unique identifier for the channel. The value is a UUID4
 	// string and guaranteed to remain unchanged until the resource is deleted.
@@ -536,7 +536,8 @@ func (o EnrollmentOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o EnrollmentOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Enrollment) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -544,7 +544,7 @@ class _DatasetState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
                in the namespaced format, for example "123456789012/environment" where 123456789012 is the
                ID of the parent organization or project resource for this tag key. Tag value is expected
@@ -907,7 +907,7 @@ class _DatasetState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1698,7 +1698,7 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
                in the namespaced format, for example "123456789012/environment" where 123456789012 is the
                ID of the parent organization or project resource for this tag key. Tag value is expected
@@ -1962,7 +1962,7 @@ class Dataset(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -151,7 +151,7 @@ type GlobalAddress struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
@@ -245,7 +245,7 @@ type globalAddressState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
@@ -305,7 +305,7 @@ type GlobalAddressState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
@@ -588,7 +588,8 @@ func (o GlobalAddressOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GlobalAddressOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -197,7 +197,7 @@ class _FirewallEndpointAssociationState:
         :param pulumi.Input[_builtins.str] parent: The name of the parent this firewall endpoint association belongs to.
                Format: projects/{project_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Whether reconciling is in progress, recommended per https://google.aip.dev/128.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[_builtins.str] state: The current state of the endpoint.
@@ -354,7 +354,7 @@ class _FirewallEndpointAssociationState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -630,7 +630,7 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The name of the parent this firewall endpoint association belongs to.
                Format: projects/{project_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Whether reconciling is in progress, recommended per https://google.aip.dev/128.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[_builtins.str] state: The current state of the endpoint.
@@ -741,7 +741,7 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

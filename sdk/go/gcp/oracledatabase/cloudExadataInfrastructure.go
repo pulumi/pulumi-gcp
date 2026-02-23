@@ -175,7 +175,7 @@ type CloudExadataInfrastructure struct {
 	// Structure is documented below.
 	Properties CloudExadataInfrastructurePropertiesPtrOutput `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
@@ -254,7 +254,7 @@ type cloudExadataInfrastructureState struct {
 	// Structure is documented below.
 	Properties *CloudExadataInfrastructureProperties `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
@@ -293,7 +293,7 @@ type CloudExadataInfrastructureState struct {
 	// Structure is documented below.
 	Properties CloudExadataInfrastructurePropertiesPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 }
 
@@ -511,7 +511,8 @@ func (o CloudExadataInfrastructureOutput) Properties() CloudExadataInfrastructur
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CloudExadataInfrastructureOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CloudExadataInfrastructure) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

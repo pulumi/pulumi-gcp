@@ -477,7 +477,7 @@ type InsightsConfig struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Reconciling (https://google.aip.dev/128#reconciliation).
 	// Set to true if the current state of InsightsConfig does not match the
@@ -583,7 +583,7 @@ type insightsConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Reconciling (https://google.aip.dev/128#reconciliation).
 	// Set to true if the current state of InsightsConfig does not match the
@@ -649,7 +649,7 @@ type InsightsConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Reconciling (https://google.aip.dev/128#reconciliation).
 	// Set to true if the current state of InsightsConfig does not match the
@@ -900,7 +900,8 @@ func (o InsightsConfigOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InsightsConfigOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InsightsConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

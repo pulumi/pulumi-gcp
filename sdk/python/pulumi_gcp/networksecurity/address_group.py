@@ -216,7 +216,7 @@ class _AddressGroupState:
         :param pulumi.Input[_builtins.str] name: Name of the AddressGroup resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] purposes: (Optional, Beta)
                List of supported purposes of the Address Group.
                Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
@@ -373,7 +373,7 @@ class _AddressGroupState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -730,7 +730,7 @@ class AddressGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the AddressGroup resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] purposes: (Optional, Beta)
                List of supported purposes of the Address Group.
                Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
@@ -843,7 +843,7 @@ class AddressGroup(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

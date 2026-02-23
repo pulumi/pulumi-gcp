@@ -244,9 +244,8 @@ class _JobState:
         :param pulumi.Input[_builtins.str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: (Output)
-               The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
         :param pulumi.Input['JobQueryArgs'] query: Configures a query job.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] reservation: (Optional, Beta)
@@ -420,9 +419,8 @@ class _JobState:
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        (Output)
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1415,9 +1413,8 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: (Output)
-               The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
         :param pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']] query: Configures a query job.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] reservation: (Optional, Beta)
@@ -1541,9 +1538,8 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
-        (Output)
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

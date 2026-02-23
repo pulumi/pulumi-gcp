@@ -475,7 +475,7 @@ type Dataset struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
 	// in the namespaced format, for example "123456789012/environment" where 123456789012 is the
@@ -628,7 +628,7 @@ type datasetState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
 	// in the namespaced format, for example "123456789012/environment" where 123456789012 is the
@@ -744,7 +744,7 @@ type DatasetState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
 	// in the namespaced format, for example "123456789012/environment" where 123456789012 is the
@@ -1215,7 +1215,8 @@ func (o DatasetOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DatasetOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

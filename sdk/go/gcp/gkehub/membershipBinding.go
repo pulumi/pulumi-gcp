@@ -135,7 +135,7 @@ type MembershipBinding struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A Workspace resource name in the format
 	// `projects/*/locations/*/scopes/*`.
@@ -219,7 +219,7 @@ type membershipBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A Workspace resource name in the format
 	// `projects/*/locations/*/scopes/*`.
@@ -257,7 +257,7 @@ type MembershipBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// A Workspace resource name in the format
 	// `projects/*/locations/*/scopes/*`.
@@ -453,7 +453,8 @@ func (o MembershipBindingOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o MembershipBindingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MembershipBinding) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

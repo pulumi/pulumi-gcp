@@ -1055,7 +1055,7 @@ type Repository struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
 	RegistryUri pulumi.StringOutput `pulumi:"registryUri"`
@@ -1176,7 +1176,7 @@ type repositoryState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
 	RegistryUri *string `pulumi:"registryUri"`
@@ -1257,7 +1257,7 @@ type RepositoryState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
 	RegistryUri pulumi.StringPtrInput
@@ -1605,7 +1605,8 @@ func (o RepositoryOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RepositoryOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

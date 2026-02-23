@@ -602,7 +602,7 @@ class _VolumeState:
                Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
         :param pulumi.Input[_builtins.str] psa_range: Name of the Private Service Access allocated range. Inherited from storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional volume.
         :param pulumi.Input['VolumeRestoreParametersArgs'] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
                Structure is documented below.
@@ -1081,7 +1081,7 @@ class _VolumeState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1724,7 +1724,7 @@ class Volume(pulumi.CustomResource):
                Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
         :param pulumi.Input[_builtins.str] psa_range: Name of the Private Service Access allocated range. Inherited from storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional volume.
         :param pulumi.Input[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict']] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
                Structure is documented below.
@@ -2050,7 +2050,7 @@ class Volume(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

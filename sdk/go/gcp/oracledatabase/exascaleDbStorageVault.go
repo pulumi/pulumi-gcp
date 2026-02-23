@@ -151,7 +151,7 @@ type ExascaleDbStorageVault struct {
 	// Structure is documented below.
 	Properties ExascaleDbStorageVaultPropertiesOutput `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
@@ -242,7 +242,7 @@ type exascaleDbStorageVaultState struct {
 	// Structure is documented below.
 	Properties *ExascaleDbStorageVaultProperties `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
@@ -287,7 +287,7 @@ type ExascaleDbStorageVaultState struct {
 	// Structure is documented below.
 	Properties ExascaleDbStorageVaultPropertiesPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 }
 
@@ -521,7 +521,8 @@ func (o ExascaleDbStorageVaultOutput) Properties() ExascaleDbStorageVaultPropert
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ExascaleDbStorageVaultOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ExascaleDbStorageVault) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

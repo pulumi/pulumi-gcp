@@ -42,9 +42,8 @@ type DomainMappingMetadata struct {
 	// In Cloud Run the namespace must be equal to either the
 	// project ID or project number.
 	Namespace string `pulumi:"namespace"`
-	// (Output)
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// (Output)
 	// An opaque value that represents the internal version of this object that
@@ -105,9 +104,8 @@ type DomainMappingMetadataArgs struct {
 	// In Cloud Run the namespace must be equal to either the
 	// project ID or project number.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
-	// (Output)
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
 	// (Output)
 	// An opaque value that represents the internal version of this object that
@@ -251,9 +249,9 @@ func (o DomainMappingMetadataOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainMappingMetadata) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
-// (Output)
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DomainMappingMetadataOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
@@ -384,9 +382,9 @@ func (o DomainMappingMetadataPtrOutput) Namespace() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DomainMappingMetadataPtrOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DomainMappingMetadata) map[string]string {
 		if v == nil {
@@ -1416,9 +1414,8 @@ type ServiceMetadata struct {
 	// In Cloud Run the namespace must be equal to either the
 	// project ID or project number.
 	Namespace *string `pulumi:"namespace"`
-	// (Output)
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// (Output)
 	// An opaque value that represents the internal version of this object that
@@ -1490,9 +1487,8 @@ type ServiceMetadataArgs struct {
 	// In Cloud Run the namespace must be equal to either the
 	// project ID or project number.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	// (Output)
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
 	// (Output)
 	// An opaque value that represents the internal version of this object that
@@ -1647,9 +1643,9 @@ func (o ServiceMetadataOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ServiceMetadataOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
@@ -1791,9 +1787,9 @@ func (o ServiceMetadataPtrOutput) Namespace() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ServiceMetadataPtrOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceMetadata) map[string]string {
 		if v == nil {

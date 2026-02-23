@@ -169,7 +169,7 @@ type DataProduct struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// System generated unique ID.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -253,7 +253,7 @@ type dataProductState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// System generated unique ID.
 	Uid *string `pulumi:"uid"`
@@ -291,7 +291,7 @@ type DataProductState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// System generated unique ID.
 	Uid pulumi.StringPtrInput
@@ -502,7 +502,8 @@ func (o DataProductOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DataProductOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DataProduct) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

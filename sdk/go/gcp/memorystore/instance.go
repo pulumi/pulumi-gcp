@@ -603,7 +603,7 @@ type Instance struct {
 	// Deprecated: `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
 	PscAutoConnections InstancePscAutoConnectionArrayOutput `pulumi:"pscAutoConnections"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
 	ReplicaCount pulumi.IntOutput `pulumi:"replicaCount"`
@@ -789,7 +789,7 @@ type instanceState struct {
 	// Deprecated: `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
 	PscAutoConnections []InstancePscAutoConnection `pulumi:"pscAutoConnections"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
 	ReplicaCount *int `pulumi:"replicaCount"`
@@ -932,7 +932,7 @@ type InstanceState struct {
 	// Deprecated: `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
 	PscAutoConnections InstancePscAutoConnectionArrayInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
 	ReplicaCount pulumi.IntPtrInput
@@ -1437,7 +1437,8 @@ func (o InstanceOutput) PscAutoConnections() InstancePscAutoConnectionArrayOutpu
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

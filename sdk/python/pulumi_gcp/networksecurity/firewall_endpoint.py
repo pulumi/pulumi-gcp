@@ -166,7 +166,7 @@ class _FirewallEndpointState:
         :param pulumi.Input[_builtins.str] parent: The name of the parent this firewall endpoint belongs to.
                Format: organizations/{organization_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Whether reconciling is in progress, recommended per https://google.aip.dev/128.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[_builtins.str] state: The current state of the endpoint.
@@ -322,7 +322,7 @@ class _FirewallEndpointState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -609,7 +609,7 @@ class FirewallEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The name of the parent this firewall endpoint belongs to.
                Format: organizations/{organization_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Whether reconciling is in progress, recommended per https://google.aip.dev/128.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[_builtins.str] state: The current state of the endpoint.
@@ -720,7 +720,7 @@ class FirewallEndpoint(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -28,14 +28,14 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
     /// 
     ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
     ///     {
-    ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"main-instance-{hex}"),
+    ///         Name = $"main-instance-{dbNameSuffix.Hex}",
     ///         DatabaseVersion = "MYSQL_5_7",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
@@ -66,14 +66,14 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
     /// 
     ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
     ///     {
-    ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"main-instance-{hex}"),
+    ///         Name = $"main-instance-{dbNameSuffix.Hex}",
     ///         DatabaseVersion = "POSTGRES_15",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
@@ -108,14 +108,14 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
     /// 
     ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
     ///     {
-    ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"main-instance-{hex}"),
+    ///         Name = $"main-instance-{dbNameSuffix.Hex}",
     ///         DatabaseVersion = "POSTGRES_15",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
@@ -163,14 +163,14 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
     /// 
     ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
     ///     {
-    ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"main-instance-{hex}"),
+    ///         Name = $"main-instance-{dbNameSuffix.Hex}",
     ///         DatabaseVersion = "MYSQL_8_0",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {

@@ -259,7 +259,7 @@ class _BackupPlanState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['BackupPlanRetentionPolicyArgs'] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The State of the BackupPlan.
@@ -466,7 +466,7 @@ class _BackupPlanState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1520,7 +1520,7 @@ class BackupPlan(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The State of the BackupPlan.
@@ -1667,7 +1667,7 @@ class BackupPlan(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

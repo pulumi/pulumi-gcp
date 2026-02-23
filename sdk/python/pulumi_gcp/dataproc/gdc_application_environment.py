@@ -218,7 +218,7 @@ class _GdcApplicationEnvironmentState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] serviceinstance: The id of the service instance to which this application environment belongs.
         :param pulumi.Input['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs'] spark_application_environment_config: Represents the SparkApplicationEnvironmentConfig.
                Structure is documented below.
@@ -400,7 +400,7 @@ class _GdcApplicationEnvironmentState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -737,7 +737,7 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] serviceinstance: The id of the service instance to which this application environment belongs.
         :param pulumi.Input[Union['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs', 'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict']] spark_application_environment_config: Represents the SparkApplicationEnvironmentConfig.
                Structure is documented below.
@@ -864,7 +864,7 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

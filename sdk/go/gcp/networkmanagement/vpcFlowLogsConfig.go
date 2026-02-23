@@ -345,7 +345,7 @@ type VpcFlowLogsConfig struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Optional. The state of the VPC Flow Log configuration. Default value
 	// is ENABLED. When creating a new configuration, it must be enabled.
@@ -452,7 +452,7 @@ type vpcFlowLogsConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Optional. The state of the VPC Flow Log configuration. Default value
 	// is ENABLED. When creating a new configuration, it must be enabled.
@@ -519,7 +519,7 @@ type VpcFlowLogsConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Optional. The state of the VPC Flow Log configuration. Default value
 	// is ENABLED. When creating a new configuration, it must be enabled.
@@ -817,7 +817,8 @@ func (o VpcFlowLogsConfigOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o VpcFlowLogsConfigOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VpcFlowLogsConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

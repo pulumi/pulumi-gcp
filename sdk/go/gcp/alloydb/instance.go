@@ -318,7 +318,7 @@ type Instance struct {
 	// endpoint for an end-user application.
 	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Configuration for query insights.
 	// Structure is documented below.
@@ -464,7 +464,7 @@ type instanceState struct {
 	// endpoint for an end-user application.
 	PublicIpAddress *string `pulumi:"publicIpAddress"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Configuration for query insights.
 	// Structure is documented below.
@@ -567,7 +567,7 @@ type InstanceState struct {
 	// endpoint for an end-user application.
 	PublicIpAddress pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Configuration for query insights.
 	// Structure is documented below.
@@ -978,7 +978,8 @@ func (o InstanceOutput) PublicIpAddress() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

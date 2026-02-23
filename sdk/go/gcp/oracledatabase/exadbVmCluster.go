@@ -229,7 +229,7 @@ type ExadbVmCluster struct {
 	// Structure is documented below.
 	Properties ExadbVmClusterPropertiesOutput `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
@@ -337,7 +337,7 @@ type exadbVmClusterState struct {
 	// Structure is documented below.
 	Properties *ExadbVmClusterProperties `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
@@ -393,7 +393,7 @@ type ExadbVmClusterState struct {
 	// Structure is documented below.
 	Properties ExadbVmClusterPropertiesPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 }
 
@@ -663,7 +663,8 @@ func (o ExadbVmClusterOutput) Properties() ExadbVmClusterPropertiesOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ExadbVmClusterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ExadbVmCluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

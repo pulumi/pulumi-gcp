@@ -157,7 +157,7 @@ class _HostingChannelState:
         :param pulumi.Input[_builtins.str] name: The fully-qualified resource name for the channel, in the format:
                sites/SITE_ID/channels/CHANNEL_ID
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.int] retained_release_count: The number of previous releases to retain on the channel for rollback or other
                purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[_builtins.str] site_id: Required. The ID of the site in which to create this channel.
@@ -254,7 +254,7 @@ class _HostingChannelState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -543,7 +543,7 @@ class HostingChannel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The fully-qualified resource name for the channel, in the format:
                sites/SITE_ID/channels/CHANNEL_ID
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.int] retained_release_count: The number of previous releases to retain on the channel for rollback or other
                purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[_builtins.str] site_id: Required. The ID of the site in which to create this channel.
@@ -616,7 +616,7 @@ class HostingChannel(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

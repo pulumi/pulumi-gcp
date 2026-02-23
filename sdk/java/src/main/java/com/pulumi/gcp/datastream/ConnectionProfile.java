@@ -102,8 +102,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
  * import com.pulumi.gcp.sql.Database;
  * import com.pulumi.gcp.sql.DatabaseArgs;
- * import com.pulumi.random.RandomPassword;
- * import com.pulumi.random.RandomPasswordArgs;
+ * import com.pulumi.random.Password;
+ * import com.pulumi.random.PasswordArgs;
  * import com.pulumi.gcp.sql.User;
  * import com.pulumi.gcp.sql.UserArgs;
  * import com.pulumi.gcp.compute.Instance;
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()
+ *         var pwd = new Password("pwd", PasswordArgs.builder()
  *             .length(16)
  *             .special(false)
  *             .build());
@@ -320,8 +320,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
  * import com.pulumi.gcp.sql.Database;
  * import com.pulumi.gcp.sql.DatabaseArgs;
- * import com.pulumi.random.RandomPassword;
- * import com.pulumi.random.RandomPasswordArgs;
+ * import com.pulumi.random.Password;
+ * import com.pulumi.random.PasswordArgs;
  * import com.pulumi.gcp.sql.User;
  * import com.pulumi.gcp.sql.UserArgs;
  * import com.pulumi.gcp.datastream.ConnectionProfile;
@@ -373,7 +373,7 @@ import javax.annotation.Nullable;
  *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()
+ *         var pwd = new Password("pwd", PasswordArgs.builder()
  *             .length(16)
  *             .special(false)
  *             .build());
@@ -933,7 +933,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
     }
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -941,7 +941,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

@@ -595,7 +595,7 @@ class _InstanceState:
                Output only. User inputs and resource details of the auto-created PSC connections.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.int] replica_count: Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the instance.
         :param pulumi.Input[_builtins.str] state: Output only. Current state of the instance.
@@ -1152,7 +1152,7 @@ class _InstanceState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -2187,7 +2187,7 @@ class Instance(pulumi.CustomResource):
                Output only. User inputs and resource details of the auto-created PSC connections.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.int] replica_count: Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the instance.
         :param pulumi.Input[_builtins.str] state: Output only. Current state of the instance.
@@ -2566,7 +2566,7 @@ class Instance(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

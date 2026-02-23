@@ -477,7 +477,7 @@ class _InstanceState:
                networkConfig.enablePublicIp is set to true. This is the connection
                endpoint for an end-user application.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['InstanceQueryInsightsConfigArgs'] query_insights_config: Configuration for query insights.
                Structure is documented below.
         :param pulumi.Input['InstanceReadPoolConfigArgs'] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
@@ -866,7 +866,7 @@ class _InstanceState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1478,7 +1478,7 @@ class Instance(pulumi.CustomResource):
                networkConfig.enablePublicIp is set to true. This is the connection
                endpoint for an end-user application.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['InstanceQueryInsightsConfigArgs', 'InstanceQueryInsightsConfigArgsDict']] query_insights_config: Configuration for query insights.
                Structure is documented below.
         :param pulumi.Input[Union['InstanceReadPoolConfigArgs', 'InstanceReadPoolConfigArgsDict']] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
@@ -1750,7 +1750,7 @@ class Instance(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

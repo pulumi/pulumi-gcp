@@ -247,7 +247,7 @@ class _V2PolicyOrchestratorState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Output only. Set to true, if the there are ongoing changes being applied by the
                orchestrator.
         :param pulumi.Input[_builtins.str] state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
@@ -447,7 +447,7 @@ class _V2PolicyOrchestratorState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -808,7 +808,7 @@ class V2PolicyOrchestrator(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Output only. Set to true, if the there are ongoing changes being applied by the
                orchestrator.
         :param pulumi.Input[_builtins.str] state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
@@ -954,7 +954,7 @@ class V2PolicyOrchestrator(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

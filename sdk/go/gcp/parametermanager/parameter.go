@@ -188,7 +188,7 @@ type Parameter struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The time at which the Parameter was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -267,7 +267,7 @@ type parameterState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The time at which the Parameter was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -309,7 +309,7 @@ type ParameterState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The time at which the Parameter was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -523,7 +523,8 @@ func (o ParameterOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ParameterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Parameter) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

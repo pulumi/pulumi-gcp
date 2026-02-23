@@ -535,7 +535,7 @@ export class Instance extends pulumi.CustomResource {
     declare public /*out*/ readonly pscAutoConnections: pulumi.Output<outputs.memorystore.InstancePscAutoConnection[]>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -880,7 +880,7 @@ export interface InstanceState {
     pscAutoConnections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstancePscAutoConnection>[]>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -518,7 +518,7 @@ namespace Pulumi.Gcp.Composer
     ///   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
     /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
     /// 
-    /// * `TerraformLabels` -
+    /// * `PulumiLabels` -
     /// The combination of labels configured directly on the resource and default labels configured on the provider.
     /// 
     /// * `EffectiveLabels` -

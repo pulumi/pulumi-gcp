@@ -303,7 +303,7 @@ class _SpokeState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['SpokeReasonArgs']]] reasons: The reasons for the current state in the lifecycle
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: Output only. The current lifecycle state of this spoke.
@@ -546,7 +546,7 @@ class _SpokeState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1698,7 +1698,7 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SpokeReasonArgs', 'SpokeReasonArgsDict']]]] reasons: The reasons for the current state in the lifecycle
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: Output only. The current lifecycle state of this spoke.
@@ -1866,7 +1866,7 @@ class Spoke(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

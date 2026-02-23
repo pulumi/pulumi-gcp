@@ -79,7 +79,7 @@ type ApiConfig struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
 	ServiceConfigId pulumi.StringOutput `pulumi:"serviceConfigId"`
@@ -159,7 +159,7 @@ type apiConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
 	ServiceConfigId *string `pulumi:"serviceConfigId"`
@@ -202,7 +202,7 @@ type ApiConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
 	ServiceConfigId pulumi.StringPtrInput
@@ -440,7 +440,8 @@ func (o ApiConfigOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ApiConfigOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

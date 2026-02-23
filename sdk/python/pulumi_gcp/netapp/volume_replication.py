@@ -324,7 +324,7 @@ class _VolumeReplicationState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] replication_enabled: Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
                and act independently from the source volume.
                Set to true to enable/resume the mirror. WARNING: Resuming a mirror overwrites any changes
@@ -615,7 +615,7 @@ class _VolumeReplicationState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1128,7 +1128,7 @@ class VolumeReplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] replication_enabled: Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
                and act independently from the source volume.
                Set to true to enable/resume the mirror. WARNING: Resuming a mirror overwrites any changes
@@ -1334,7 +1334,7 @@ class VolumeReplication(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

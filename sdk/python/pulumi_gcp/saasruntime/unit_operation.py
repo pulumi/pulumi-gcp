@@ -288,7 +288,7 @@ class _UnitOperationState:
                provisioned.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: UnitOperationState describes the current state of the unit operation.
                Possible values:
                UNIT_OPERATION_STATE_UNKNOWN
@@ -560,7 +560,7 @@ class _UnitOperationState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1216,7 +1216,7 @@ class UnitOperation(pulumi.CustomResource):
                provisioned.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: UnitOperationState describes the current state of the unit operation.
                Possible values:
                UNIT_OPERATION_STATE_UNKNOWN
@@ -1415,7 +1415,7 @@ class UnitOperation(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

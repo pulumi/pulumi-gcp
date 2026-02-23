@@ -68,9 +68,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly string? Namespace;
         /// <summary>
-        /// (Output)
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? PulumiLabels;
         /// <summary>

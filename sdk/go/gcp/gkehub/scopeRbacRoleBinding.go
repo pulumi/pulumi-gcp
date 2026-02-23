@@ -156,7 +156,7 @@ type ScopeRbacRoleBinding struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Role to bind to the principal.
 	// Structure is documented below.
@@ -244,7 +244,7 @@ type scopeRbacRoleBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Role to bind to the principal.
 	// Structure is documented below.
@@ -289,7 +289,7 @@ type ScopeRbacRoleBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Role to bind to the principal.
 	// Structure is documented below.
@@ -500,7 +500,8 @@ func (o ScopeRbacRoleBindingOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ScopeRbacRoleBindingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -110,9 +110,8 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         private InputMap<string>? _pulumiLabels;
 
         /// <summary>
-        /// (Output)
         /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        ///  and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

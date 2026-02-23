@@ -191,7 +191,7 @@ type Interconnect struct {
 	// Number of links actually provisioned in this interconnect.
 	ProvisionedLinkCount pulumi.IntOutput `pulumi:"provisionedLinkCount"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
 	// of Google's network that the interconnect is connected to.
@@ -382,7 +382,7 @@ type interconnectState struct {
 	// Number of links actually provisioned in this interconnect.
 	ProvisionedLinkCount *int `pulumi:"provisionedLinkCount"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
 	// of Google's network that the interconnect is connected to.
@@ -527,7 +527,7 @@ type InterconnectState struct {
 	// Number of links actually provisioned in this interconnect.
 	ProvisionedLinkCount pulumi.IntPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
 	// of Google's network that the interconnect is connected to.
@@ -1011,7 +1011,8 @@ func (o InterconnectOutput) ProvisionedLinkCount() pulumi.IntOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InterconnectOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

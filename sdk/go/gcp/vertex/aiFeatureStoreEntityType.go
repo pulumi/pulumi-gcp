@@ -183,7 +183,7 @@ type AiFeatureStoreEntityType struct {
 	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
 	OfflineStorageTtlDays pulumi.IntPtrOutput `pulumi:"offlineStorageTtlDays"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the EntityType.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -254,7 +254,7 @@ type aiFeatureStoreEntityTypeState struct {
 	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
 	OfflineStorageTtlDays *int `pulumi:"offlineStorageTtlDays"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the EntityType.
 	Region *string `pulumi:"region"`
@@ -288,7 +288,7 @@ type AiFeatureStoreEntityTypeState struct {
 	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
 	OfflineStorageTtlDays pulumi.IntPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region of the EntityType.
 	Region pulumi.StringPtrInput
@@ -484,7 +484,8 @@ func (o AiFeatureStoreEntityTypeOutput) OfflineStorageTtlDays() pulumi.IntPtrOut
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AiFeatureStoreEntityTypeOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

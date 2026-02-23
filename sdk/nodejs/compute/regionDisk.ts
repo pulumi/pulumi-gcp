@@ -313,7 +313,7 @@ export class RegionDisk extends pulumi.CustomResource {
     declare public readonly provisionedThroughput: pulumi.Output<number>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -616,7 +616,7 @@ export interface RegionDiskState {
     provisionedThroughput?: pulumi.Input<number>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

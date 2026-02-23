@@ -169,7 +169,7 @@ type AuthorizationPolicy struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
 	// A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
@@ -239,7 +239,7 @@ type authorizationPolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
 	// A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
@@ -272,7 +272,7 @@ type AuthorizationPolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
 	// A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
@@ -468,7 +468,8 @@ func (o AuthorizationPolicyOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AuthorizationPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

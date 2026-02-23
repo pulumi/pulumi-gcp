@@ -244,7 +244,7 @@ type Secret struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed
 	// after the Secret has been created.
@@ -367,7 +367,7 @@ type secretState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed
 	// after the Secret has been created.
@@ -453,7 +453,7 @@ type SecretState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The replication policy of the secret data attached to the Secret. It cannot be changed
 	// after the Secret has been created.
@@ -805,7 +805,8 @@ func (o SecretOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o SecretOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

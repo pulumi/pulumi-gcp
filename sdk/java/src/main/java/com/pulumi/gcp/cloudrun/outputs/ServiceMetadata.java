@@ -74,9 +74,8 @@ public final class ServiceMetadata {
      */
     private @Nullable String namespace;
     /**
-     * @return (Output)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
      * 
      */
     private @Nullable Map<String,String> pulumiLabels;
@@ -178,9 +177,8 @@ public final class ServiceMetadata {
         return Optional.ofNullable(this.namespace);
     }
     /**
-     * @return (Output)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
      * 
      */
     public Map<String,String> pulumiLabels() {

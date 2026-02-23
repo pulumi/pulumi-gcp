@@ -183,7 +183,7 @@ class _EdgeCacheKeysetState:
                Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]] validation_shared_keys: An ordered list of shared keys to use for validating signed requests.
                Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
                You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
@@ -295,7 +295,7 @@ class _EdgeCacheKeysetState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -592,7 +592,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]] validation_shared_keys: An ordered list of shared keys to use for validating signed requests.
                Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
                You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
@@ -677,7 +677,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

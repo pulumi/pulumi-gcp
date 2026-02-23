@@ -374,7 +374,7 @@ type SecurityProfile struct {
 	// Format: organizations/{organization_id}.
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -462,7 +462,7 @@ type securityProfileState struct {
 	// Format: organizations/{organization_id}.
 	Parent *string `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Server-defined URL of this resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -513,7 +513,7 @@ type SecurityProfileState struct {
 	// Format: organizations/{organization_id}.
 	Parent pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringPtrInput
@@ -761,7 +761,8 @@ func (o SecurityProfileOutput) Parent() pulumi.StringPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o SecurityProfileOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SecurityProfile) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

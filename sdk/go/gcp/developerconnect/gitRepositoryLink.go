@@ -165,7 +165,7 @@ type GitRepositoryLink struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Set to true when the connection is being set up or updated in the
 	// background.
@@ -260,7 +260,7 @@ type gitRepositoryLinkState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Set to true when the connection is being set up or updated in the
 	// background.
@@ -309,7 +309,7 @@ type GitRepositoryLinkState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. Set to true when the connection is being set up or updated in the
 	// background.
@@ -544,7 +544,8 @@ func (o GitRepositoryLinkOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GitRepositoryLinkOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GitRepositoryLink) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

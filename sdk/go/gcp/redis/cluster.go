@@ -922,7 +922,7 @@ type Cluster struct {
 	// Structure is documented below.
 	PscServiceAttachments ClusterPscServiceAttachmentArrayOutput `pulumi:"pscServiceAttachments"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
 	// Please check Memorystore documentation for the list of supported parameters:
@@ -1074,7 +1074,7 @@ type clusterState struct {
 	// Structure is documented below.
 	PscServiceAttachments []ClusterPscServiceAttachment `pulumi:"pscServiceAttachments"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
 	// Please check Memorystore documentation for the list of supported parameters:
@@ -1189,7 +1189,7 @@ type ClusterState struct {
 	// Structure is documented below.
 	PscServiceAttachments ClusterPscServiceAttachmentArrayInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
 	// Please check Memorystore documentation for the list of supported parameters:
@@ -1615,7 +1615,8 @@ func (o ClusterOutput) PscServiceAttachments() ClusterPscServiceAttachmentArrayO
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ClusterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

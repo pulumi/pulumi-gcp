@@ -132,9 +132,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
-//				Length:  pulumi.Int(16),
-//				Special: pulumi.Bool(false),
+//			pwd, err := random.NewPassword(ctx, "pwd", &random.PasswordArgs{
+//				Length:  16,
+//				Special: false,
 //			})
 //			if err != nil {
 //				return err
@@ -342,9 +342,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
-//				Length:  pulumi.Int(16),
-//				Special: pulumi.Bool(false),
+//			pwd, err := random.NewPassword(ctx, "pwd", &random.PasswordArgs{
+//				Length:  16,
+//				Special: false,
 //			})
 //			if err != nil {
 //				return err
@@ -665,7 +665,7 @@ type ConnectionProfile struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// (Optional, Beta)
 	// Salesforce profile.
@@ -767,7 +767,7 @@ type connectionProfileState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// (Optional, Beta)
 	// Salesforce profile.
@@ -826,7 +826,7 @@ type ConnectionProfileState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// (Optional, Beta)
 	// Salesforce profile.
@@ -1130,7 +1130,8 @@ func (o ConnectionProfileOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ConnectionProfileOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

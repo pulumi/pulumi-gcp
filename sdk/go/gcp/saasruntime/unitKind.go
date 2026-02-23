@@ -153,7 +153,7 @@ type UnitKind struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A reference to the Saas that defines the product (managed service) that
 	// the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
@@ -267,7 +267,7 @@ type unitKindState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A reference to the Saas that defines the product (managed service) that
 	// the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
@@ -338,7 +338,7 @@ type UnitKindState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// A reference to the Saas that defines the product (managed service) that
 	// the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
@@ -627,7 +627,8 @@ func (o UnitKindOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o UnitKindOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *UnitKind) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -106,18 +106,21 @@ namespace Pulumi.Gcp.ServiceAccount
     ///         ServiceAccountId = myaccount.Name,
     ///     });
     /// 
-    ///     var google_application_credentials = new Kubernetes.Core.V1.Secret("google-application-credentials", new()
+    ///     var google_application_credentials = new Kubernetes.Index.Secret("google-application-credentials", new()
     ///     {
-    ///         Metadata = new Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs
+    ///         Metadata = new[]
     ///         {
-    ///             Name = "google-application-credentials",
+    ///             
+    ///             {
+    ///                 { "name", "google-application-credentials" },
+    ///             },
     ///         },
     ///         Data = 
     ///         {
     ///             { "credentials.json", Std.Base64decode.Invoke(new()
     ///             {
     ///                 Input = mykey.PrivateKey,
-    ///             }).Apply(invoke =&gt; invoke.Result) },
+    ///             }).Result },
     ///         },
     ///     });
     /// 

@@ -336,7 +336,7 @@ type RegionalSecret struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
 	// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
@@ -466,7 +466,7 @@ type regionalSecretState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
 	// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
@@ -556,7 +556,7 @@ type RegionalSecretState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
 	// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
@@ -928,7 +928,8 @@ func (o RegionalSecretOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RegionalSecretOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RegionalSecret) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

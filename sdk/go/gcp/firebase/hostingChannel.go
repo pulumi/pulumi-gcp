@@ -131,7 +131,7 @@ type HostingChannel struct {
 	// sites/SITE_ID/channels/CHANNEL_ID
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The number of previous releases to retain on the channel for rollback or other
 	// purposes. Must be a number between 1-100. Defaults to 10 for new channels.
@@ -201,7 +201,7 @@ type hostingChannelState struct {
 	// sites/SITE_ID/channels/CHANNEL_ID
 	Name *string `pulumi:"name"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The number of previous releases to retain on the channel for rollback or other
 	// purposes. Must be a number between 1-100. Defaults to 10 for new channels.
@@ -231,7 +231,7 @@ type HostingChannelState struct {
 	// sites/SITE_ID/channels/CHANNEL_ID
 	Name pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The number of previous releases to retain on the channel for rollback or other
 	// purposes. Must be a number between 1-100. Defaults to 10 for new channels.
@@ -411,7 +411,8 @@ func (o HostingChannelOutput) Name() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o HostingChannelOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HostingChannel) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

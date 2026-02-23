@@ -217,7 +217,7 @@ class _SecurityProfileGroupState:
         :param pulumi.Input[_builtins.str] parent: The name of the parent this security profile group belongs to.
                Format: organizations/{organization_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] threat_prevention_profile: Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
         :param pulumi.Input[_builtins.str] update_time: Time the security profile group was updated in UTC.
         :param pulumi.Input[_builtins.str] url_filtering_profile: (Optional, Beta)
@@ -384,7 +384,7 @@ class _SecurityProfileGroupState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -844,7 +844,7 @@ class SecurityProfileGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The name of the parent this security profile group belongs to.
                Format: organizations/{organization_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] threat_prevention_profile: Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
         :param pulumi.Input[_builtins.str] update_time: Time the security profile group was updated in UTC.
         :param pulumi.Input[_builtins.str] url_filtering_profile: (Optional, Beta)
@@ -962,7 +962,7 @@ class SecurityProfileGroup(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

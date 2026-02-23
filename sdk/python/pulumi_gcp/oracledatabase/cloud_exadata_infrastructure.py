@@ -206,7 +206,7 @@ class _CloudExadataInfrastructureState:
         :param pulumi.Input['CloudExadataInfrastructurePropertiesArgs'] properties: Various properties of Exadata Infrastructure.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         """
         if cloud_exadata_infrastructure_id is not None:
             pulumi.set(__self__, "cloud_exadata_infrastructure_id", cloud_exadata_infrastructure_id)
@@ -393,7 +393,7 @@ class _CloudExadataInfrastructureState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -720,7 +720,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
         :param pulumi.Input[Union['CloudExadataInfrastructurePropertiesArgs', 'CloudExadataInfrastructurePropertiesArgsDict']] properties: Various properties of Exadata Infrastructure.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -851,7 +851,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

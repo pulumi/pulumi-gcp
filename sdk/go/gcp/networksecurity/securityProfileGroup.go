@@ -286,7 +286,7 @@ type SecurityProfileGroup struct {
 	// Format: organizations/{organization_id}.
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
 	ThreatPreventionProfile pulumi.StringPtrOutput `pulumi:"threatPreventionProfile"`
@@ -360,7 +360,7 @@ type securityProfileGroupState struct {
 	// Format: organizations/{organization_id}.
 	Parent *string `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
 	ThreatPreventionProfile *string `pulumi:"threatPreventionProfile"`
@@ -400,7 +400,7 @@ type SecurityProfileGroupState struct {
 	// Format: organizations/{organization_id}.
 	Parent pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
 	ThreatPreventionProfile pulumi.StringPtrInput
@@ -615,7 +615,8 @@ func (o SecurityProfileGroupOutput) Parent() pulumi.StringPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o SecurityProfileGroupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SecurityProfileGroup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

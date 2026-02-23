@@ -275,7 +275,7 @@ export class CaPool extends pulumi.CustomResource {
     declare public readonly publishingOptions: pulumi.Output<outputs.certificateauthority.CaPoolPublishingOptions | undefined>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -383,7 +383,7 @@ export interface CaPoolState {
     publishingOptions?: pulumi.Input<inputs.certificateauthority.CaPoolPublishingOptions>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

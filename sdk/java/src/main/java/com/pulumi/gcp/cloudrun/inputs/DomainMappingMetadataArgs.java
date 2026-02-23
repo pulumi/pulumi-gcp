@@ -141,18 +141,16 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (Output)
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
     private @Nullable Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return (Output)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
@@ -418,9 +416,8 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param pulumiLabels (Output)
-         * The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -431,9 +428,8 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param pulumiLabels (Output)
-         * The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         *  and default labels configured on the provider.
          * 
          * @return builder
          * 

@@ -68,14 +68,14 @@ import * as utilities from "../utilities";
  *     displayName: "My Service Account",
  * });
  * const mykey = new gcp.serviceaccount.Key("mykey", {serviceAccountId: myaccount.name});
- * const google_application_credentials = new kubernetes.core.v1.Secret("google-application-credentials", {
- *     metadata: {
+ * const google_application_credentials = new kubernetes.index.Secret("google-application-credentials", {
+ *     metadata: [{
  *         name: "google-application-credentials",
- *     },
+ *     }],
  *     data: {
  *         "credentials.json": std.base64decodeOutput({
  *             input: mykey.privateKey,
- *         }).apply(invoke => invoke.result),
+ *         }).result,
  *     },
  * });
  * ```

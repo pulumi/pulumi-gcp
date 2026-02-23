@@ -278,7 +278,7 @@ class _RolloutKindState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] rollout_kind_id: The ID value for the new rollout kind.
         :param pulumi.Input[_builtins.str] rollout_orchestration_strategy: The strategy used for executing a Rollout. This is a required field.
                There are two supported values strategies which are used to control a rollout.
@@ -468,7 +468,7 @@ class _RolloutKindState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -860,7 +860,7 @@ class RolloutKind(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] rollout_kind_id: The ID value for the new rollout kind.
         :param pulumi.Input[_builtins.str] rollout_orchestration_strategy: The strategy used for executing a Rollout. This is a required field.
                There are two supported values strategies which are used to control a rollout.
@@ -1002,7 +1002,7 @@ class RolloutKind(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

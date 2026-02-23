@@ -239,7 +239,7 @@ type V2PolicyOrchestratorForFolder struct {
 	// * Must be unique within the parent.
 	PolicyOrchestratorId pulumi.StringOutput `pulumi:"policyOrchestratorId"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Set to true, if the there are ongoing changes being applied by the
 	// orchestrator.
@@ -349,7 +349,7 @@ type v2policyOrchestratorForFolderState struct {
 	// * Must be unique within the parent.
 	PolicyOrchestratorId *string `pulumi:"policyOrchestratorId"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Set to true, if the there are ongoing changes being applied by the
 	// orchestrator.
@@ -413,7 +413,7 @@ type V2PolicyOrchestratorForFolderState struct {
 	// * Must be unique within the parent.
 	PolicyOrchestratorId pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Set to true, if the there are ongoing changes being applied by the
 	// orchestrator.
@@ -690,7 +690,8 @@ func (o V2PolicyOrchestratorForFolderOutput) PolicyOrchestratorId() pulumi.Strin
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o V2PolicyOrchestratorForFolderOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorForFolder) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

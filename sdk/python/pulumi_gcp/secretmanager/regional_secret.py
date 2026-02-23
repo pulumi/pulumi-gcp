@@ -408,7 +408,7 @@ class _RegionalSecretState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input['RegionalSecretRotationArgs'] rotation: The rotation time and period for a regional secret. At `next_rotation_time`, Secret Manager
                will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
                set to configure rotation.
@@ -641,7 +641,7 @@ class _RegionalSecretState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1278,7 +1278,7 @@ class RegionalSecret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Union['RegionalSecretRotationArgs', 'RegionalSecretRotationArgsDict']] rotation: The rotation time and period for a regional secret. At `next_rotation_time`, Secret Manager
                will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
                set to configure rotation.
@@ -1453,7 +1453,7 @@ class RegionalSecret(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

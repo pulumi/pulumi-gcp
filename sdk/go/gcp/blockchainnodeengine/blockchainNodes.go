@@ -160,7 +160,7 @@ type BlockchainNodes struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The timestamp at which the blockchain node was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -235,7 +235,7 @@ type blockchainNodesState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The timestamp at which the blockchain node was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -270,7 +270,7 @@ type BlockchainNodesState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The timestamp at which the blockchain node was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -468,7 +468,8 @@ func (o BlockchainNodesOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o BlockchainNodesOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BlockchainNodes) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -117,7 +117,7 @@ type Glossary struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The number of terms in the glossary.
 	TermCount pulumi.IntOutput `pulumi:"termCount"`
@@ -193,7 +193,7 @@ type glossaryState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The number of terms in the glossary.
 	TermCount *int `pulumi:"termCount"`
@@ -229,7 +229,7 @@ type GlossaryState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The number of terms in the glossary.
 	TermCount pulumi.IntPtrInput
@@ -424,7 +424,8 @@ func (o GlossaryOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GlossaryOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Glossary) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

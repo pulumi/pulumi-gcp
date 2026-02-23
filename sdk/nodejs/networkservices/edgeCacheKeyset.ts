@@ -148,7 +148,7 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
     declare public readonly publicKeys: pulumi.Output<outputs.networkservices.EdgeCacheKeysetPublicKey[] | undefined>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -240,7 +240,7 @@ export interface EdgeCacheKeysetState {
     publicKeys?: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetPublicKey>[]>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

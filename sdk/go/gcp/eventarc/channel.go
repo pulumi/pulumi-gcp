@@ -91,7 +91,7 @@ type Channel struct {
 	// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 	PubsubTopic pulumi.StringOutput `pulumi:"pubsubTopic"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The state of a Channel.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -163,7 +163,7 @@ type channelState struct {
 	// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 	PubsubTopic *string `pulumi:"pubsubTopic"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The state of a Channel.
 	State *string `pulumi:"state"`
@@ -198,7 +198,7 @@ type ChannelState struct {
 	// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 	PubsubTopic pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The state of a Channel.
 	State pulumi.StringPtrInput
@@ -387,7 +387,8 @@ func (o ChannelOutput) PubsubTopic() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ChannelOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

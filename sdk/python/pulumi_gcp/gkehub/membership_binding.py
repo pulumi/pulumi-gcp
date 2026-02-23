@@ -161,7 +161,7 @@ class _MembershipBindingState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] scope: A Workspace resource name in the format
                `projects/*/locations/*/scopes/*`.
         :param pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArgs']]] states: State of the membership binding resource.
@@ -315,7 +315,7 @@ class _MembershipBindingState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -636,7 +636,7 @@ class MembershipBinding(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] scope: A Workspace resource name in the format
                `projects/*/locations/*/scopes/*`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MembershipBindingStateArgs', 'MembershipBindingStateArgsDict']]]] states: State of the membership binding resource.
@@ -745,7 +745,7 @@ class MembershipBinding(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

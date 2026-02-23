@@ -528,7 +528,7 @@ type ManagedZone struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// (Optional, Beta)
 	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
@@ -634,7 +634,7 @@ type managedZoneState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// (Optional, Beta)
 	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
@@ -700,7 +700,7 @@ type ManagedZoneState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// (Optional, Beta)
 	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
@@ -1008,7 +1008,8 @@ func (o ManagedZoneOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ManagedZoneOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

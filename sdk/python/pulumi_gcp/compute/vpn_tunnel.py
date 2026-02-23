@@ -502,7 +502,7 @@ class _VPNTunnelState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] remote_traffic_selectors: Remote traffic selector to use when establishing the VPN tunnel with
                peer VPN gateway. The value should be a CIDR formatted string,
@@ -807,7 +807,7 @@ class _VPNTunnelState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1512,7 +1512,7 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] remote_traffic_selectors: Remote traffic selector to use when establishing the VPN tunnel with
                peer VPN gateway. The value should be a CIDR formatted string,
@@ -1729,7 +1729,7 @@ class VPNTunnel(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

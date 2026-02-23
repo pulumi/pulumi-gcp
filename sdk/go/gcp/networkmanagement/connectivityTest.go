@@ -283,7 +283,7 @@ type ConnectivityTest struct {
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Other projects that may be relevant for reachability analysis.
 	// This is applicable to scenarios where a test can cross project
@@ -371,7 +371,7 @@ type connectivityTestState struct {
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol *string `pulumi:"protocol"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Other projects that may be relevant for reachability analysis.
 	// This is applicable to scenarios where a test can cross project
@@ -419,7 +419,7 @@ type ConnectivityTestState struct {
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Other projects that may be relevant for reachability analysis.
 	// This is applicable to scenarios where a test can cross project
@@ -668,7 +668,8 @@ func (o ConnectivityTestOutput) Protocol() pulumi.StringPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ConnectivityTestOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

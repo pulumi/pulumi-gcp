@@ -238,7 +238,7 @@ type RuntimeTemplate struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Runtime Shielded VM spec.
 	// Structure is documented below.
@@ -327,7 +327,7 @@ type runtimeTemplateState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Runtime Shielded VM spec.
 	// Structure is documented below.
@@ -376,7 +376,7 @@ type RuntimeTemplateState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Runtime Shielded VM spec.
 	// Structure is documented below.
@@ -646,7 +646,8 @@ func (o RuntimeTemplateOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RuntimeTemplateOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RuntimeTemplate) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

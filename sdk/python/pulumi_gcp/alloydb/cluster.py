@@ -588,7 +588,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterPscConfigArgs'] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation).
                Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
                This can happen due to user-triggered updates or system actions like failover or maintenance.
@@ -1036,7 +1036,7 @@ class _ClusterState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -2031,7 +2031,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation).
                Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
                This can happen due to user-triggered updates or system actions like failover or maintenance.
@@ -2342,7 +2342,7 @@ class Cluster(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -226,7 +226,7 @@ export class V2PolicyOrchestratorForFolder extends pulumi.CustomResource {
     declare public readonly policyOrchestratorId: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -391,7 +391,7 @@ export interface V2PolicyOrchestratorForFolderState {
     policyOrchestratorId?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

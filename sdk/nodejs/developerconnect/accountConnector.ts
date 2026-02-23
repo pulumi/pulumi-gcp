@@ -217,7 +217,7 @@ export class AccountConnector extends pulumi.CustomResource {
     declare public readonly providerOauthConfig: pulumi.Output<outputs.developerconnect.AccountConnectorProviderOauthConfig | undefined>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -340,7 +340,7 @@ export interface AccountConnectorState {
     providerOauthConfig?: pulumi.Input<inputs.developerconnect.AccountConnectorProviderOauthConfig>;
     /**
      * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

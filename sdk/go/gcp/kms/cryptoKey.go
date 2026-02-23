@@ -153,7 +153,7 @@ type CryptoKey struct {
 	// Structure is documented below.
 	Primaries CryptoKeyPrimaryArrayOutput `pulumi:"primaries"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The immutable purpose of this CryptoKey. See the
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
@@ -249,7 +249,7 @@ type cryptoKeyState struct {
 	// Structure is documented below.
 	Primaries []CryptoKeyPrimary `pulumi:"primaries"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The immutable purpose of this CryptoKey. See the
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
@@ -308,7 +308,7 @@ type CryptoKeyState struct {
 	// Structure is documented below.
 	Primaries CryptoKeyPrimaryArrayInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The immutable purpose of this CryptoKey. See the
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
@@ -587,7 +587,8 @@ func (o CryptoKeyOutput) Primaries() CryptoKeyPrimaryArrayOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CryptoKeyOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

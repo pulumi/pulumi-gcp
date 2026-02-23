@@ -528,7 +528,7 @@ type Authority struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// If this flag is set, the Certificate Authority will be deleted as soon as
 	// possible without a 30-day grace period where undeletion would have been
@@ -673,7 +673,7 @@ type authorityState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// If this flag is set, the Certificate Authority will be deleted as soon as
 	// possible without a 30-day grace period where undeletion would have been
@@ -769,7 +769,7 @@ type AuthorityState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// If this flag is set, the Certificate Authority will be deleted as soon as
 	// possible without a 30-day grace period where undeletion would have been
@@ -1150,7 +1150,8 @@ func (o AuthorityOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AuthorityOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

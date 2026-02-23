@@ -117,7 +117,7 @@ type Destination struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The timeline of the expected `Destination` states or the current rest
 	// state. If a state change is expected, the value is `ADDING`,
@@ -210,7 +210,7 @@ type destinationState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The timeline of the expected `Destination` states or the current rest
 	// state. If a state change is expected, the value is `ADDING`,
@@ -257,7 +257,7 @@ type DestinationState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The timeline of the expected `Destination` states or the current rest
 	// state. If a state change is expected, the value is `ADDING`,
@@ -476,7 +476,8 @@ func (o DestinationOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DestinationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

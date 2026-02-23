@@ -402,7 +402,7 @@ class _V2VmState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] queued_resource: The qualified name of the QueuedResource that requested this Node.
         :param pulumi.Input[_builtins.str] runtime_version: Runtime version for the TPU.
         :param pulumi.Input['V2VmSchedulingConfigArgs'] scheduling_config: The scheduling options for this node.
@@ -699,7 +699,7 @@ class _V2VmState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1271,7 +1271,7 @@ class V2Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] queued_resource: The qualified name of the QueuedResource that requested this Node.
         :param pulumi.Input[_builtins.str] runtime_version: Runtime version for the TPU.
         :param pulumi.Input[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']] scheduling_config: The scheduling options for this node.
@@ -1478,7 +1478,7 @@ class V2Vm(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

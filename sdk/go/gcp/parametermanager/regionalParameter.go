@@ -194,7 +194,7 @@ type RegionalParameter struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The time at which the regional Parameter was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -278,7 +278,7 @@ type regionalParameterState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The time at which the regional Parameter was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -322,7 +322,7 @@ type RegionalParameterState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The time at which the regional Parameter was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -545,7 +545,8 @@ func (o RegionalParameterOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RegionalParameterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RegionalParameter) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

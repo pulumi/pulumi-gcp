@@ -96,7 +96,7 @@ type SacAttachment struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// SAC Realm which owns the attachment. This can be input as an ID or a full resource name.
 	SacRealm pulumi.StringOutput `pulumi:"sacRealm"`
@@ -176,7 +176,7 @@ type sacAttachmentState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// SAC Realm which owns the attachment. This can be input as an ID or a full resource name.
 	SacRealm *string `pulumi:"sacRealm"`
@@ -213,7 +213,7 @@ type SacAttachmentState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// SAC Realm which owns the attachment. This can be input as an ID or a full resource name.
 	SacRealm pulumi.StringPtrInput
@@ -417,7 +417,8 @@ func (o SacAttachmentOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o SacAttachmentOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SacAttachment) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

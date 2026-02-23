@@ -71,7 +71,7 @@ type FirewallEndpointAssociation struct {
 	// Format: projects/{project_id}.
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
@@ -154,7 +154,7 @@ type firewallEndpointAssociationState struct {
 	// Format: projects/{project_id}.
 	Parent *string `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
 	Reconciling *bool `pulumi:"reconciling"`
@@ -194,7 +194,7 @@ type FirewallEndpointAssociationState struct {
 	// Format: projects/{project_id}.
 	Parent pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
 	Reconciling pulumi.BoolPtrInput
@@ -402,7 +402,8 @@ func (o FirewallEndpointAssociationOutput) Parent() pulumi.StringPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o FirewallEndpointAssociationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FirewallEndpointAssociation) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

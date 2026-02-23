@@ -320,7 +320,7 @@ type RegionDisk struct {
 	// mb per second that the disk can handle. Values must be greater than or equal to 1.
 	ProvisionedThroughput pulumi.IntOutput `pulumi:"provisionedThroughput"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A reference to the region where the disk resides.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -500,7 +500,7 @@ type regionDiskState struct {
 	// mb per second that the disk can handle. Values must be greater than or equal to 1.
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A reference to the region where the disk resides.
 	Region *string `pulumi:"region"`
@@ -643,7 +643,7 @@ type RegionDiskState struct {
 	// mb per second that the disk can handle. Values must be greater than or equal to 1.
 	ProvisionedThroughput pulumi.IntPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// A reference to the region where the disk resides.
 	Region pulumi.StringPtrInput
@@ -1162,7 +1162,8 @@ func (o RegionDiskOutput) ProvisionedThroughput() pulumi.IntOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RegionDiskOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -208,7 +208,7 @@ class _AspectTypeState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] transfer_status: Denotes the transfer status of the Aspect Type. It is unspecified
                for Aspect Type created from Dataplex API.
         :param pulumi.Input[_builtins.str] uid: System generated globally unique ID for the AspectType. This ID will be different if the AspectType is deleted and re-created with the same name.
@@ -390,7 +390,7 @@ class _AspectTypeState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -987,7 +987,7 @@ class AspectType(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] transfer_status: Denotes the transfer status of the Aspect Type. It is unspecified
                for Aspect Type created from Dataplex API.
         :param pulumi.Input[_builtins.str] uid: System generated globally unique ID for the AspectType. This ID will be different if the AspectType is deleted and re-created with the same name.
@@ -1115,7 +1115,7 @@ class AspectType(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

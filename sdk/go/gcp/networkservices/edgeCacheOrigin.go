@@ -252,7 +252,7 @@ type EdgeCacheOrigin struct {
 	// Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Specifies one or more retry conditions for the configured origin.
 	// If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
@@ -368,7 +368,7 @@ type edgeCacheOriginState struct {
 	// Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
 	Protocol *string `pulumi:"protocol"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Specifies one or more retry conditions for the configured origin.
 	// If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
@@ -447,7 +447,7 @@ type EdgeCacheOriginState struct {
 	// Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
 	Protocol pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Specifies one or more retry conditions for the configured origin.
 	// If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
@@ -807,7 +807,8 @@ func (o EdgeCacheOriginOutput) Protocol() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o EdgeCacheOriginOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

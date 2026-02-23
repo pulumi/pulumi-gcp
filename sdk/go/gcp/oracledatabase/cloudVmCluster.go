@@ -318,7 +318,7 @@ type CloudVmCluster struct {
 	// Structure is documented below.
 	Properties CloudVmClusterPropertiesPtrOutput `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
@@ -423,7 +423,7 @@ type cloudVmClusterState struct {
 	// Structure is documented below.
 	Properties *CloudVmClusterProperties `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
@@ -485,7 +485,7 @@ type CloudVmClusterState struct {
 	// Structure is documented below.
 	Properties CloudVmClusterPropertiesPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 }
 
@@ -790,7 +790,8 @@ func (o CloudVmClusterOutput) Properties() CloudVmClusterPropertiesPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CloudVmClusterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -333,7 +333,7 @@ type CertificateTemplate struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. The time at which this CertificateTemplate was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -406,7 +406,7 @@ type certificateTemplateState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. The time at which this CertificateTemplate was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -442,7 +442,7 @@ type CertificateTemplateState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. The time at which this CertificateTemplate was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -660,7 +660,8 @@ func (o CertificateTemplateOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CertificateTemplateOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

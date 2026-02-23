@@ -100,7 +100,7 @@ type LoggingSettingBinding struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Id of the setting binding.
 	SettingBindingId pulumi.StringOutput `pulumi:"settingBindingId"`
@@ -176,7 +176,7 @@ type loggingSettingBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Id of the setting binding.
 	SettingBindingId *string `pulumi:"settingBindingId"`
@@ -209,7 +209,7 @@ type LoggingSettingBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Id of the setting binding.
 	SettingBindingId pulumi.StringPtrInput
@@ -399,7 +399,8 @@ func (o LoggingSettingBindingOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o LoggingSettingBindingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LoggingSettingBinding) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

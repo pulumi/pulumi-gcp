@@ -122,7 +122,7 @@ type RolloutKind struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The ID value for the new rollout kind.
 	RolloutKindId pulumi.StringOutput `pulumi:"rolloutKindId"`
@@ -236,7 +236,7 @@ type rolloutKindState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The ID value for the new rollout kind.
 	RolloutKindId *string `pulumi:"rolloutKindId"`
@@ -307,7 +307,7 @@ type RolloutKindState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The ID value for the new rollout kind.
 	RolloutKindId pulumi.StringPtrInput
@@ -592,7 +592,8 @@ func (o RolloutKindOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RolloutKindOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RolloutKind) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

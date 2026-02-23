@@ -254,7 +254,7 @@ class _AgentGatewayState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of protocols supported by an Agent Gateway.
                Each value may be one of: `MCP`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] registries: A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
                Note: Currently limited to project-scoped registries Must be of format
                `//agentregistry.googleapis.com/{version}/projects/{{project}}/locations/{{location}}`
@@ -457,7 +457,7 @@ class _AgentGatewayState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -836,7 +836,7 @@ class AgentGateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of protocols supported by an Agent Gateway.
                Each value may be one of: `MCP`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] registries: A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
                Note: Currently limited to project-scoped registries Must be of format
                `//agentregistry.googleapis.com/{version}/projects/{{project}}/locations/{{location}}`
@@ -980,7 +980,7 @@ class AgentGateway(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

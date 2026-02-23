@@ -194,7 +194,7 @@ type AgentGateway struct {
 	// Each value may be one of: `MCP`.
 	Protocols pulumi.StringArrayOutput `pulumi:"protocols"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
 	// Note: Currently limited to project-scoped registries Must be of format
@@ -286,7 +286,7 @@ type agentGatewayState struct {
 	// Each value may be one of: `MCP`.
 	Protocols []string `pulumi:"protocols"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
 	// Note: Currently limited to project-scoped registries Must be of format
@@ -338,7 +338,7 @@ type AgentGatewayState struct {
 	// Each value may be one of: `MCP`.
 	Protocols pulumi.StringArrayInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
 	// Note: Currently limited to project-scoped registries Must be of format
@@ -587,7 +587,8 @@ func (o AgentGatewayOutput) Protocols() pulumi.StringArrayOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AgentGatewayOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AgentGateway) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

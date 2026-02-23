@@ -282,7 +282,7 @@ type Hl7Store struct {
 	// Structure is documented below.
 	ParserConfig Hl7StoreParserConfigOutput `pulumi:"parserConfig"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Determines whether duplicate messages are allowed.
 	RejectDuplicateMessage pulumi.BoolPtrOutput `pulumi:"rejectDuplicateMessage"`
@@ -365,7 +365,7 @@ type hl7StoreState struct {
 	// Structure is documented below.
 	ParserConfig *Hl7StoreParserConfig `pulumi:"parserConfig"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Determines whether duplicate messages are allowed.
 	RejectDuplicateMessage *bool `pulumi:"rejectDuplicateMessage"`
@@ -411,7 +411,7 @@ type Hl7StoreState struct {
 	// Structure is documented below.
 	ParserConfig Hl7StoreParserConfigPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Determines whether duplicate messages are allowed.
 	RejectDuplicateMessage pulumi.BoolPtrInput
@@ -647,7 +647,8 @@ func (o Hl7StoreOutput) ParserConfig() Hl7StoreParserConfigOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o Hl7StoreOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Hl7Store) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

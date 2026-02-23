@@ -177,7 +177,7 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * (ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -300,7 +300,7 @@ export interface ProjectState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * (ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -148,7 +148,7 @@ type V2PolicyOrchestrator struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Set to true, if the there are ongoing changes being applied by the
 	// orchestrator.
@@ -252,7 +252,7 @@ type v2policyOrchestratorState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Set to true, if the there are ongoing changes being applied by the
 	// orchestrator.
@@ -313,7 +313,7 @@ type V2PolicyOrchestratorState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. Set to true, if the there are ongoing changes being applied by the
 	// orchestrator.
@@ -586,7 +586,8 @@ func (o V2PolicyOrchestratorOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o V2PolicyOrchestratorOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestrator) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

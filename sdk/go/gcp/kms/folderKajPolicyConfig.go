@@ -37,8 +37,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
@@ -59,20 +57,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			projectSuffix, err := random.NewRandomId(ctx, "project_suffix", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(4),
+//			projectSuffix, err := random.NewId(ctx, "project_suffix", &random.IdArgs{
+//				ByteLength: 4,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a project for enabling KMS API.
 //			kmsProject, err := organizations.NewProject(ctx, "kms_project", &organizations.ProjectArgs{
-//				ProjectId: projectSuffix.Hex.ApplyT(func(hex string) (string, error) {
-//					return fmt.Sprintf("kms-api-project%v", hex), nil
-//				}).(pulumi.StringOutput),
-//				Name: projectSuffix.Hex.ApplyT(func(hex string) (string, error) {
-//					return fmt.Sprintf("kms-api-project%v", hex), nil
-//				}).(pulumi.StringOutput),
+//				ProjectId:      pulumi.Sprintf("kms-api-project%v", projectSuffix.Hex),
+//				Name:           pulumi.Sprintf("kms-api-project%v", projectSuffix.Hex),
 //				FolderId:       kajFolder.FolderId,
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),

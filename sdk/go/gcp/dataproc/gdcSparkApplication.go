@@ -352,7 +352,7 @@ type GdcSparkApplication struct {
 	// application-specific properties.
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Represents the PySparkApplicationConfig.
 	// Structure is documented below.
@@ -472,7 +472,7 @@ type gdcSparkApplicationState struct {
 	// application-specific properties.
 	Properties map[string]string `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Represents the PySparkApplicationConfig.
 	// Structure is documented below.
@@ -549,7 +549,7 @@ type GdcSparkApplicationState struct {
 	// application-specific properties.
 	Properties pulumi.StringMapInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Represents the PySparkApplicationConfig.
 	// Structure is documented below.
@@ -850,7 +850,8 @@ func (o GdcSparkApplicationOutput) Properties() pulumi.StringMapOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o GdcSparkApplicationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GdcSparkApplication) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

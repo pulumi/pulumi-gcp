@@ -341,7 +341,7 @@ type WorkstationCluster struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
@@ -446,7 +446,7 @@ type workstationClusterState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
@@ -508,7 +508,7 @@ type WorkstationClusterState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
@@ -785,7 +785,8 @@ func (o WorkstationClusterOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o WorkstationClusterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

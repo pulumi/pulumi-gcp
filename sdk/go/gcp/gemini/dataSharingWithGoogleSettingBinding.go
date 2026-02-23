@@ -100,7 +100,7 @@ type DataSharingWithGoogleSettingBinding struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Required. Id of the setting binding.
 	SettingBindingId pulumi.StringOutput `pulumi:"settingBindingId"`
@@ -175,7 +175,7 @@ type dataSharingWithGoogleSettingBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Required. Id of the setting binding.
 	SettingBindingId *string `pulumi:"settingBindingId"`
@@ -207,7 +207,7 @@ type DataSharingWithGoogleSettingBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Required. Id of the setting binding.
 	SettingBindingId pulumi.StringPtrInput
@@ -396,7 +396,8 @@ func (o DataSharingWithGoogleSettingBindingOutput) Project() pulumi.StringOutput
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DataSharingWithGoogleSettingBindingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DataSharingWithGoogleSettingBinding) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

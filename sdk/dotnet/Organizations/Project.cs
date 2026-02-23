@@ -201,7 +201,7 @@ namespace Pulumi.Gcp.Organizations
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// (ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -463,7 +463,7 @@ namespace Pulumi.Gcp.Organizations
         private InputMap<string>? _pulumiLabels;
 
         /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// (ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

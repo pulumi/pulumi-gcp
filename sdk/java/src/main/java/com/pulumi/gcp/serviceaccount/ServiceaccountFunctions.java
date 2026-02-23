@@ -82,9 +82,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
      * import com.pulumi.gcp.serviceaccount.Key;
      * import com.pulumi.gcp.serviceaccount.KeyArgs;
-     * import com.pulumi.kubernetes.core_v1.Secret;
-     * import com.pulumi.kubernetes.core_v1.SecretArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.kubernetes.Secret;
+     * import com.pulumi.kubernetes.SecretArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.Base64decodeArgs;
      * import java.util.List;
@@ -109,12 +108,10 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("google-application-credentials")
-     *                 .build())
+     *             .metadata(List.of(Map.of("name", "google-application-credentials")))
      *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
      *                 .input(mykey.privateKey())
-     *                 .build()).applyValue(_invoke -> _invoke.result())))
+     *                 .build()).result()))
      *             .build());
      * 
      *     }
@@ -175,9 +172,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
      * import com.pulumi.gcp.serviceaccount.Key;
      * import com.pulumi.gcp.serviceaccount.KeyArgs;
-     * import com.pulumi.kubernetes.core_v1.Secret;
-     * import com.pulumi.kubernetes.core_v1.SecretArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.kubernetes.Secret;
+     * import com.pulumi.kubernetes.SecretArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.Base64decodeArgs;
      * import java.util.List;
@@ -202,12 +198,10 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("google-application-credentials")
-     *                 .build())
+     *             .metadata(List.of(Map.of("name", "google-application-credentials")))
      *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
      *                 .input(mykey.privateKey())
-     *                 .build()).applyValue(_invoke -> _invoke.result())))
+     *                 .build()).result()))
      *             .build());
      * 
      *     }
@@ -268,9 +262,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
      * import com.pulumi.gcp.serviceaccount.Key;
      * import com.pulumi.gcp.serviceaccount.KeyArgs;
-     * import com.pulumi.kubernetes.core_v1.Secret;
-     * import com.pulumi.kubernetes.core_v1.SecretArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.kubernetes.Secret;
+     * import com.pulumi.kubernetes.SecretArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.Base64decodeArgs;
      * import java.util.List;
@@ -295,12 +288,10 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("google-application-credentials")
-     *                 .build())
+     *             .metadata(List.of(Map.of("name", "google-application-credentials")))
      *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
      *                 .input(mykey.privateKey())
-     *                 .build()).applyValue(_invoke -> _invoke.result())))
+     *                 .build()).result()))
      *             .build());
      * 
      *     }
@@ -361,9 +352,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
      * import com.pulumi.gcp.serviceaccount.Key;
      * import com.pulumi.gcp.serviceaccount.KeyArgs;
-     * import com.pulumi.kubernetes.core_v1.Secret;
-     * import com.pulumi.kubernetes.core_v1.SecretArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.kubernetes.Secret;
+     * import com.pulumi.kubernetes.SecretArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.Base64decodeArgs;
      * import java.util.List;
@@ -388,12 +378,10 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("google-application-credentials")
-     *                 .build())
+     *             .metadata(List.of(Map.of("name", "google-application-credentials")))
      *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
      *                 .input(mykey.privateKey())
-     *                 .build()).applyValue(_invoke -> _invoke.result())))
+     *                 .build()).result()))
      *             .build());
      * 
      *     }
@@ -454,9 +442,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
      * import com.pulumi.gcp.serviceaccount.Key;
      * import com.pulumi.gcp.serviceaccount.KeyArgs;
-     * import com.pulumi.kubernetes.core_v1.Secret;
-     * import com.pulumi.kubernetes.core_v1.SecretArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.kubernetes.Secret;
+     * import com.pulumi.kubernetes.SecretArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.Base64decodeArgs;
      * import java.util.List;
@@ -481,12 +468,10 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("google-application-credentials")
-     *                 .build())
+     *             .metadata(List.of(Map.of("name", "google-application-credentials")))
      *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
      *                 .input(mykey.privateKey())
-     *                 .build()).applyValue(_invoke -> _invoke.result())))
+     *                 .build()).result()))
      *             .build());
      * 
      *     }

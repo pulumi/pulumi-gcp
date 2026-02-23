@@ -696,7 +696,7 @@ import javax.annotation.Nullable;
  *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
  * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
  * 
- * * `terraformLabels` -
+ * * `pulumiLabels` -
  * The combination of labels configured directly on the resource and default labels configured on the provider.
  * 
  * * `effectiveLabels` -

@@ -326,7 +326,7 @@ type Task struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 	// Structure is documented below.
@@ -421,7 +421,7 @@ type taskState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 	// Structure is documented below.
@@ -476,7 +476,7 @@ type TaskState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 	// Structure is documented below.
@@ -724,7 +724,8 @@ func (o TaskOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o TaskOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Task) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

@@ -576,7 +576,7 @@ type Cluster struct {
 	// Structure is documented below.
 	PscConfig ClusterPscConfigPtrOutput `pulumi:"pscConfig"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
 	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
@@ -737,7 +737,7 @@ type clusterState struct {
 	// Structure is documented below.
 	PscConfig *ClusterPscConfig `pulumi:"pscConfig"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
 	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
@@ -858,7 +858,7 @@ type ClusterState struct {
 	// Structure is documented below.
 	PscConfig ClusterPscConfigPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
 	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
@@ -1318,7 +1318,8 @@ func (o ClusterOutput) PscConfig() ClusterPscConfigPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ClusterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

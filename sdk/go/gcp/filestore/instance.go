@@ -295,7 +295,7 @@ type Instance struct {
 	// Possible values are: `NFS_V3`, `NFS_V4_1`.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A map of resource manager tags. Resource manager tag keys
 	// and values have the same definition as resource manager
@@ -423,7 +423,7 @@ type instanceState struct {
 	// Possible values are: `NFS_V3`, `NFS_V4_1`.
 	Protocol *string `pulumi:"protocol"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A map of resource manager tags. Resource manager tag keys
 	// and values have the same definition as resource manager
@@ -508,7 +508,7 @@ type InstanceState struct {
 	// Possible values are: `NFS_V3`, `NFS_V4_1`.
 	Protocol pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// A map of resource manager tags. Resource manager tag keys
 	// and values have the same definition as resource manager
@@ -885,7 +885,8 @@ func (o InstanceOutput) Protocol() pulumi.StringPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

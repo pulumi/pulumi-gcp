@@ -62,7 +62,7 @@ type RolloutSequence struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The user-provided identifier of the RolloutSequence.
 	RolloutSequenceId pulumi.StringOutput `pulumi:"rolloutSequenceId"`
@@ -137,7 +137,7 @@ type rolloutSequenceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The user-provided identifier of the RolloutSequence.
 	RolloutSequenceId *string `pulumi:"rolloutSequenceId"`
@@ -172,7 +172,7 @@ type RolloutSequenceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The user-provided identifier of the RolloutSequence.
 	RolloutSequenceId pulumi.StringPtrInput
@@ -358,7 +358,8 @@ func (o RolloutSequenceOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o RolloutSequenceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RolloutSequence) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

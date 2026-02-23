@@ -240,7 +240,7 @@ type CustomTargetType struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Unique identifier of the `CustomTargetType`.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -317,7 +317,7 @@ type customTargetTypeState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Unique identifier of the `CustomTargetType`.
 	Uid *string `pulumi:"uid"`
@@ -357,7 +357,7 @@ type CustomTargetTypeState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Unique identifier of the `CustomTargetType`.
 	Uid pulumi.StringPtrInput
@@ -570,7 +570,8 @@ func (o CustomTargetTypeOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CustomTargetTypeOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CustomTargetType) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

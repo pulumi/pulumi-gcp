@@ -126,7 +126,7 @@ type EngineModel struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The list of regions where the model is going to be deployed.
 	// Currently only one region per model is supported
@@ -190,7 +190,7 @@ type engineModelState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The list of regions where the model is going to be deployed.
 	// Currently only one region per model is supported
@@ -220,7 +220,7 @@ type EngineModelState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The list of regions where the model is going to be deployed.
 	// Currently only one region per model is supported
@@ -415,7 +415,8 @@ func (o EngineModelOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o EngineModelOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EngineModel) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

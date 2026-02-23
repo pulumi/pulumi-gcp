@@ -218,7 +218,7 @@ type AiIndexEndpoint struct {
 	// If true, the deployed index will be accessible through public endpoint.
 	PublicEndpointEnabled pulumi.BoolPtrOutput `pulumi:"publicEndpointEnabled"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the index endpoint. eg us-central1
 	Region pulumi.StringPtrOutput `pulumi:"region"`
@@ -299,7 +299,7 @@ type aiIndexEndpointState struct {
 	// If true, the deployed index will be accessible through public endpoint.
 	PublicEndpointEnabled *bool `pulumi:"publicEndpointEnabled"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the index endpoint. eg us-central1
 	Region *string `pulumi:"region"`
@@ -343,7 +343,7 @@ type AiIndexEndpointState struct {
 	// If true, the deployed index will be accessible through public endpoint.
 	PublicEndpointEnabled pulumi.BoolPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region of the index endpoint. eg us-central1
 	Region pulumi.StringPtrInput
@@ -577,7 +577,8 @@ func (o AiIndexEndpointOutput) PublicEndpointEnabled() pulumi.BoolPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o AiIndexEndpointOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

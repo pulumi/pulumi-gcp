@@ -252,7 +252,7 @@ type V2Vm struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The qualified name of the QueuedResource that requested this Node.
 	QueuedResource pulumi.StringOutput `pulumi:"queuedResource"`
@@ -369,7 +369,7 @@ type v2vmState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The qualified name of the QueuedResource that requested this Node.
 	QueuedResource *string `pulumi:"queuedResource"`
@@ -449,7 +449,7 @@ type V2VmState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The qualified name of the QueuedResource that requested this Node.
 	QueuedResource pulumi.StringPtrInput
@@ -783,7 +783,8 @@ func (o V2VmOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o V2VmOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *V2Vm) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

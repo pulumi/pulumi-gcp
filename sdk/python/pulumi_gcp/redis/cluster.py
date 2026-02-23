@@ -512,7 +512,7 @@ class _ClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterPscServiceAttachmentArgs']]] psc_service_attachments: Service attachment details to configure Psc connections.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
@@ -953,7 +953,7 @@ class _ClusterState:
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -2454,7 +2454,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscServiceAttachmentArgs', 'ClusterPscServiceAttachmentArgsDict']]]] psc_service_attachments: Service attachment details to configure Psc connections.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+                and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
@@ -2759,7 +2759,7 @@ class Cluster(pulumi.CustomResource):
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

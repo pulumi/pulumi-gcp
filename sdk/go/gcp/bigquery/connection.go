@@ -85,9 +85,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
-//				Length:  pulumi.Int(16),
-//				Special: pulumi.Bool(false),
+//			pwd, err := random.NewPassword(ctx, "pwd", &random.PasswordArgs{
+//				Length:  16,
+//				Special: false,
 //			})
 //			if err != nil {
 //				return err
@@ -157,9 +157,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
-//				Length:  pulumi.Int(16),
-//				Special: pulumi.Bool(false),
+//			pwd, err := random.NewPassword(ctx, "pwd", &random.PasswordArgs{
+//				Length:  16,
+//				Special: false,
 //			})
 //			if err != nil {
 //				return err

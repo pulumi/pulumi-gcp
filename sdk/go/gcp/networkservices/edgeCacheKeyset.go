@@ -154,7 +154,7 @@ type EdgeCacheKeyset struct {
 	// Structure is documented below.
 	PublicKeys EdgeCacheKeysetPublicKeyArrayOutput `pulumi:"publicKeys"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// An ordered list of shared keys to use for validating signed requests.
 	// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
@@ -223,7 +223,7 @@ type edgeCacheKeysetState struct {
 	// Structure is documented below.
 	PublicKeys []EdgeCacheKeysetPublicKey `pulumi:"publicKeys"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// An ordered list of shared keys to use for validating signed requests.
 	// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
@@ -258,7 +258,7 @@ type EdgeCacheKeysetState struct {
 	// Structure is documented below.
 	PublicKeys EdgeCacheKeysetPublicKeyArrayInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// An ordered list of shared keys to use for validating signed requests.
 	// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
@@ -462,7 +462,8 @@ func (o EdgeCacheKeysetOutput) PublicKeys() EdgeCacheKeysetPublicKeyArrayOutput 
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o EdgeCacheKeysetOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EdgeCacheKeyset) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

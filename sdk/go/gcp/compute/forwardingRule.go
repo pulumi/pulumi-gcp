@@ -1434,7 +1434,7 @@ type ForwardingRule struct {
 	// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
 	PscConnectionStatus pulumi.StringOutput `pulumi:"pscConnectionStatus"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
 	RecreateClosedPsc pulumi.BoolPtrOutput `pulumi:"recreateClosedPsc"`
@@ -1721,7 +1721,7 @@ type forwardingRuleState struct {
 	// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
 	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
 	RecreateClosedPsc *bool `pulumi:"recreateClosedPsc"`
@@ -1974,7 +1974,7 @@ type ForwardingRuleState struct {
 	// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
 	PscConnectionStatus pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
 	RecreateClosedPsc pulumi.BoolPtrInput
@@ -2856,7 +2856,8 @@ func (o ForwardingRuleOutput) PscConnectionStatus() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o ForwardingRuleOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

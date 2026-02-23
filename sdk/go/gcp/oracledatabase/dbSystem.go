@@ -192,7 +192,7 @@ type DbSystem struct {
 	// Structure is documented below.
 	Properties DbSystemPropertiesPtrOutput `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
@@ -290,7 +290,7 @@ type dbSystemState struct {
 	// Structure is documented below.
 	Properties *DbSystemProperties `pulumi:"properties"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
@@ -342,7 +342,7 @@ type DbSystemState struct {
 	// Structure is documented below.
 	Properties DbSystemPropertiesPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 }
 
@@ -606,7 +606,8 @@ func (o DbSystemOutput) Properties() DbSystemPropertiesPtrOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o DbSystemOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DbSystem) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

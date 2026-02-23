@@ -127,7 +127,7 @@ type Collection struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// [Output only] Update time stamp
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -210,7 +210,7 @@ type collectionState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// [Output only] Update time stamp
 	UpdateTime *string `pulumi:"updateTime"`
@@ -253,7 +253,7 @@ type CollectionState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// [Output only] Update time stamp
 	UpdateTime pulumi.StringPtrInput
@@ -481,7 +481,8 @@ func (o CollectionOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CollectionOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Collection) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

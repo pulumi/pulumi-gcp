@@ -163,7 +163,7 @@ type CertificateIssuanceConfig struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 	// Must be a number between 1-99, inclusive.
@@ -255,7 +255,7 @@ type certificateIssuanceConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 	// Must be a number between 1-99, inclusive.
@@ -301,7 +301,7 @@ type CertificateIssuanceConfigState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 	// Must be a number between 1-99, inclusive.
@@ -536,7 +536,8 @@ func (o CertificateIssuanceConfigOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o CertificateIssuanceConfigOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

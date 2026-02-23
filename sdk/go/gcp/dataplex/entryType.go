@@ -164,7 +164,7 @@ type EntryType struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// AspectInfo for the entry type.
 	// Structure is documented below.
@@ -239,7 +239,7 @@ type entryTypeState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// AspectInfo for the entry type.
 	// Structure is documented below.
@@ -280,7 +280,7 @@ type EntryTypeState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// AspectInfo for the entry type.
 	// Structure is documented below.
@@ -498,7 +498,8 @@ func (o EntryTypeOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource
-// and default labels configured on the provider.
+//
+//	and default labels configured on the provider.
 func (o EntryTypeOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EntryType) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
