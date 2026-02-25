@@ -1,4 +1,5 @@
 [tools]
+golangci-lint = "2.7.0"
 "vfox-pulumi:pulumi/pulumi-random" = "4.18.5"
 "vfox-pulumi:pulumi/pulumi-kubernetes" = "4.24.1"
 "vfox-pulumi:pulumi/pulumi-std" = "2.2.0"
