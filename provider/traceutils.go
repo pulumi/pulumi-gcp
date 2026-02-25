@@ -30,7 +30,7 @@ type Span map[string]string
 func (s Span) Start() (time.Time, error) {
 	spanStart, err := parseTime(s[spanStartKey])
 	if err != nil {
-		err = fmt.Errorf("Failed to parse %s time: %w", spanStartKey, err)
+		err = fmt.Errorf("failed to parse %s time: %w", spanStartKey, err)
 		return time.Time{}, err
 	}
 	return spanStart, nil
@@ -39,7 +39,7 @@ func (s Span) Start() (time.Time, error) {
 func (s Span) End() (time.Time, error) {
 	spanEnd, err := parseTime(s[spanEndKey])
 	if err != nil {
-		err = fmt.Errorf("Failed to parse %s time: %w", spanEndKey, err)
+		err = fmt.Errorf("failed to parse %s time: %w", spanEndKey, err)
 		return time.Time{}, err
 	}
 	return spanEnd, nil
@@ -146,7 +146,7 @@ var _ = SpanIter(TraceFileSpanIter{})
 
 func (i TraceFileSpanIter) WalkSpans(onSpan func(s Span) error) error {
 	return walkTracesFromFile(i.File, func(s *appdash.Span) error {
-		m := s.Annotations.StringMap()
+		m := s.StringMap()
 		m[spanIDKey] = s.ID.String()
 		return onSpan(m)
 	})
