@@ -111,6 +111,7 @@ const (
 	gcpGkeHub                   = "GkeHub"                   // Gke Hub resources
 	gcpGkeOnPrem                = "GkeOnPrem"                // Gke On Prem resources
 	gcpHealthcare               = "Healthcare"               // Healthcare resources
+	gcpHyperComputeCluster      = "HyperComputeCluster"      // HyperComputeCluster resources
 	gcpIAM                      = "Iam"                      // IAM resources
 	gcpIAP                      = "Iap"                      // IAP resources
 	gcpIdentityPlatform         = "IdentityPlatform"         // IdentityPlatform resources
@@ -254,6 +255,7 @@ var moduleMapping = map[string]string{
 	"gke_hub":                    gcpGkeHub,
 	"gkeonprem":                  gcpGkeOnPrem,
 	"healthcare":                 gcpHealthcare,
+	"hypercomputecluster":        gcpHyperComputeCluster,
 	"iam":                        gcpIAM,
 	"iap":                        gcpIAP,
 	"identity_platform":          gcpIdentityPlatform,
