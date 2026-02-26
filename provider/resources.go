@@ -111,6 +111,7 @@ const (
 	gcpGkeHub                   = "GkeHub"                   // Gke Hub resources
 	gcpGkeOnPrem                = "GkeOnPrem"                // Gke On Prem resources
 	gcpHealthcare               = "Healthcare"               // Healthcare resources
+	gcpHypercomputeCluster      = "HypercomputeCluster"      // HypercomputeCluster resources
 	gcpIAM                      = "Iam"                      // IAM resources
 	gcpIAP                      = "Iap"                      // IAP resources
 	gcpIdentityPlatform         = "IdentityPlatform"         // IdentityPlatform resources
@@ -254,6 +255,7 @@ var moduleMapping = map[string]string{
 	"gke_hub":                    gcpGkeHub,
 	"gkeonprem":                  gcpGkeOnPrem,
 	"healthcare":                 gcpHealthcare,
+	"hypercomputecluster":        gcpHypercomputeCluster,
 	"iam":                        gcpIAM,
 	"iap":                        gcpIAP,
 	"identity_platform":          gcpIdentityPlatform,
@@ -2589,6 +2591,9 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "google_organization.html.markdown",
 				},
+			},
+			"google_organization_iam_policy": {
+				Tok: gcpDataSource(gcpOrganization, "getOrganizationIamPolicy"),
 			},
 
 			"google_privateca_certificate_authority": {Tok: gcpDataSource(gcpCertificateAuthority, "getAuthority")},
