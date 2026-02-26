@@ -70,8 +70,8 @@ class CryptoKeyIAMBindingConditionArgsDict(TypedDict):
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-    > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-    identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
     consider it to be an entirely different resource and will treat it as such.
     """
 
@@ -86,8 +86,8 @@ class CryptoKeyIAMBindingConditionArgs:
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
         :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
                
-               > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
                consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
@@ -125,8 +125,8 @@ class CryptoKeyIAMBindingConditionArgs:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
@@ -149,8 +149,8 @@ class CryptoKeyIAMMemberConditionArgsDict(TypedDict):
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-    > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-    identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
     consider it to be an entirely different resource and will treat it as such.
     """
 
@@ -165,8 +165,8 @@ class CryptoKeyIAMMemberConditionArgs:
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
         :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
                
-               > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
                consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
@@ -204,8 +204,8 @@ class CryptoKeyIAMMemberConditionArgs:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
@@ -1141,8 +1141,8 @@ class KeyRingIAMBindingConditionArgsDict(TypedDict):
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-    > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-    identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
     consider it to be an entirely different resource and will treat it as such.
     """
 
@@ -1157,8 +1157,8 @@ class KeyRingIAMBindingConditionArgs:
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
         :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
                
-               > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
                consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
@@ -1196,8 +1196,8 @@ class KeyRingIAMBindingConditionArgs:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
@@ -1220,8 +1220,8 @@ class KeyRingIAMMemberConditionArgsDict(TypedDict):
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-    > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-    identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
     consider it to be an entirely different resource and will treat it as such.
     """
 
@@ -1236,8 +1236,8 @@ class KeyRingIAMMemberConditionArgs:
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
         :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
                
-               > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
                consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
@@ -1275,8 +1275,8 @@ class KeyRingIAMMemberConditionArgs:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")

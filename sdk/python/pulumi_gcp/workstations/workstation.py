@@ -31,6 +31,7 @@ class WorkstationArgs:
                  source_workstation: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Workstation resource.
+
         :param pulumi.Input[_builtins.str] location: The location where the workstation parent resources reside.
         :param pulumi.Input[_builtins.str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[_builtins.str] workstation_config_id: The ID of the parent workstation cluster config.
@@ -215,6 +216,7 @@ class _WorkstationState:
                  workstation_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Workstation resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -605,6 +607,7 @@ class Workstation(pulumi.CustomResource):
         $ pulumi import gcp:workstations/workstation:Workstation default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Client-specified annotations. This is distinct from labels.
@@ -711,6 +714,7 @@ class Workstation(pulumi.CustomResource):
         $ pulumi import gcp:workstations/workstation:Workstation default {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
         $ pulumi import gcp:workstations/workstation:Workstation default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkstationArgs args: The arguments to use to populate this resource's properties.

@@ -32,6 +32,7 @@ class TableArgs:
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Table resource.
+
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input['TableAutomatedBackupPolicyArgs'] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automated_backup_policy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automated_backup_policy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
                
@@ -49,7 +50,7 @@ class TableArgs:
                					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
                					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+               !> **Warning:** Modifying the `split_keys` of an existing table will cause Terraform
                to delete/recreate the entire `bigtable.Table` resource.
         """
         pulumi.set(__self__, "instance_name", instance_name)
@@ -179,7 +180,7 @@ class TableArgs:
     def split_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of predefined keys to split the table on.
-        !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+        !> **Warning:** Modifying the `split_keys` of an existing table will cause Terraform
         to delete/recreate the entire `bigtable.Table` resource.
         """
         return pulumi.get(self, "split_keys")
@@ -203,6 +204,7 @@ class _TableState:
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Table resources.
+
         :param pulumi.Input['TableAutomatedBackupPolicyArgs'] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automated_backup_policy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automated_backup_policy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
                
                -----
@@ -220,7 +222,7 @@ class _TableState:
                					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
                					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+               !> **Warning:** Modifying the `split_keys` of an existing table will cause Terraform
                to delete/recreate the entire `bigtable.Table` resource.
         """
         if automated_backup_policy is not None:
@@ -351,7 +353,7 @@ class _TableState:
     def split_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of predefined keys to split the table on.
-        !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+        !> **Warning:** Modifying the `split_keys` of an existing table will cause Terraform
         to delete/recreate the entire `bigtable.Table` resource.
         """
         return pulumi.get(self, "split_keys")
@@ -382,6 +384,11 @@ class Table(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/bigtable/) and
         [API](https://cloud.google.com/bigtable/docs/go/reference).
 
+        > **Note:** It is strongly recommended to set `lifecycle { prevent_destroy = true }`
+        on tables in order to prevent accidental data loss. See
+        Terraform docs
+        for more information on lifecycle parameters.
+
         ## Example Usage
 
         ```python
@@ -453,6 +460,7 @@ class Table(pulumi.CustomResource):
         $ pulumi import gcp:bigtable/table:Table default {{project}}/{{instance_name}}/{{name}}
         $ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -473,7 +481,7 @@ class Table(pulumi.CustomResource):
                					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
                					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+               !> **Warning:** Modifying the `split_keys` of an existing table will cause Terraform
                to delete/recreate the entire `bigtable.Table` resource.
         """
         ...
@@ -486,6 +494,11 @@ class Table(pulumi.CustomResource):
         Creates a Google Cloud Bigtable table inside an instance. For more information see
         [the official documentation](https://cloud.google.com/bigtable/) and
         [API](https://cloud.google.com/bigtable/docs/go/reference).
+
+        > **Note:** It is strongly recommended to set `lifecycle { prevent_destroy = true }`
+        on tables in order to prevent accidental data loss. See
+        Terraform docs
+        for more information on lifecycle parameters.
 
         ## Example Usage
 
@@ -558,6 +571,7 @@ class Table(pulumi.CustomResource):
         $ pulumi import gcp:bigtable/table:Table default {{project}}/{{instance_name}}/{{name}}
         $ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TableArgs args: The arguments to use to populate this resource's properties.
@@ -646,7 +660,7 @@ class Table(pulumi.CustomResource):
                					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
                					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+               !> **Warning:** Modifying the `split_keys` of an existing table will cause Terraform
                to delete/recreate the entire `bigtable.Table` resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -741,7 +755,7 @@ class Table(pulumi.CustomResource):
     def split_keys(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
         A list of predefined keys to split the table on.
-        !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+        !> **Warning:** Modifying the `split_keys` of an existing table will cause Terraform
         to delete/recreate the entire `bigtable.Table` resource.
         """
         return pulumi.get(self, "split_keys")

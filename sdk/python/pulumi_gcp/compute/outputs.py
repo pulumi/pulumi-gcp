@@ -375,6 +375,8 @@ __all__ = [
     'RegionAutoscalerAutoscalingPolicyScaleInControl',
     'RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas',
     'RegionAutoscalerAutoscalingPolicyScalingSchedule',
+    'RegionBackendBucketIamBindingCondition',
+    'RegionBackendBucketIamMemberCondition',
     'RegionBackendServiceBackend',
     'RegionBackendServiceBackendCustomMetric',
     'RegionBackendServiceCdnPolicy',
@@ -10438,8 +10440,8 @@ class ImageIamBindingCondition(dict):
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
         :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
                
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
                consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
@@ -10469,8 +10471,8 @@ class ImageIamBindingCondition(dict):
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
@@ -10487,8 +10489,8 @@ class ImageIamMemberCondition(dict):
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
         :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
                
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
                consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
@@ -10518,8 +10520,8 @@ class ImageIamMemberCondition(dict):
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
@@ -17996,8 +17998,8 @@ class InstanceIAMBindingCondition(dict):
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
         :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
                
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
                consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
@@ -18027,8 +18029,8 @@ class InstanceIAMBindingCondition(dict):
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
@@ -18045,8 +18047,8 @@ class InstanceIAMMemberCondition(dict):
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
         :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
                
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
                consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
@@ -18076,8 +18078,8 @@ class InstanceIAMMemberCondition(dict):
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
@@ -20586,7 +20588,7 @@ class InstanceTemplateNetworkInterface(dict):
         :param Sequence['InstanceTemplateNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
                instance can be accessed via the Internet. Omit to ensure that the instance
                is not accessible from the Internet (this means that ssh provisioners will
-               not work unless you can send traffic to the instance's
+               not work unless you are running Terraform can send traffic to the instance's
                network (e.g. via tunnel or because it is running on another cloud instance
                on that network). This block can be specified once per `network_interface`. Structure documented below.
         :param Sequence['InstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
@@ -20600,7 +20602,7 @@ class InstanceTemplateNetworkInterface(dict):
         :param _builtins.str ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
         :param _builtins.str ipv6_address: An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         :param _builtins.str name: The name of the instance template. If you leave
-               this blank, the provider will auto-generate a unique name.
+               this blank, Terraform will auto-generate a unique name.
         :param _builtins.str network: The name or self_link of the network to attach this interface to.
                Use `network` attribute for Legacy or Auto subnetted networks and
                `subnetwork` for custom subnetted networks.
@@ -20662,7 +20664,7 @@ class InstanceTemplateNetworkInterface(dict):
         Access configurations, i.e. IPs via which this
         instance can be accessed via the Internet. Omit to ensure that the instance
         is not accessible from the Internet (this means that ssh provisioners will
-        not work unless you can send traffic to the instance's
+        not work unless you are running Terraform can send traffic to the instance's
         network (e.g. via tunnel or because it is running on another cloud instance
         on that network). This block can be specified once per `network_interface`. Structure documented below.
         """
@@ -20725,7 +20727,7 @@ class InstanceTemplateNetworkInterface(dict):
     def name(self) -> Optional[_builtins.str]:
         """
         The name of the instance template. If you leave
-        this blank, the provider will auto-generate a unique name.
+        this blank, Terraform will auto-generate a unique name.
         """
         return pulumi.get(self, "name")
 
@@ -20981,7 +20983,7 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
         :param _builtins.str external_ipv6: The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
         :param _builtins.str external_ipv6_prefix_length: The prefix length of the external IPv6 range.
         :param _builtins.str name: The name of the instance template. If you leave
-               this blank, the provider will auto-generate a unique name.
+               this blank, Terraform will auto-generate a unique name.
         :param _builtins.str public_ptr_domain_name: The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
         """
         pulumi.set(__self__, "network_tier", network_tier)
@@ -21023,7 +21025,7 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
     def name(self) -> Optional[_builtins.str]:
         """
         The name of the instance template. If you leave
-        this blank, the provider will auto-generate a unique name.
+        this blank, Terraform will auto-generate a unique name.
         """
         return pulumi.get(self, "name")
 
@@ -23913,6 +23915,10 @@ class MachineImageIamBindingCondition(dict):
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
         :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -23940,6 +23946,10 @@ class MachineImageIamBindingCondition(dict):
     def description(self) -> Optional[_builtins.str]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
 
@@ -23954,6 +23964,10 @@ class MachineImageIamMemberCondition(dict):
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
         :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -23981,6 +23995,10 @@ class MachineImageIamMemberCondition(dict):
     def description(self) -> Optional[_builtins.str]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
 
@@ -28363,6 +28381,104 @@ class RegionAutoscalerAutoscalingPolicyScalingSchedule(dict):
         The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
         """
         return pulumi.get(self, "time_zone")
+
+
+@pulumi.output_type
+class RegionBackendBucketIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class RegionBackendBucketIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type
@@ -56103,8 +56219,8 @@ class SubnetworkIAMBindingCondition(dict):
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
         :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
                
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
                consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
@@ -56134,8 +56250,8 @@ class SubnetworkIAMBindingCondition(dict):
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
@@ -56152,8 +56268,8 @@ class SubnetworkIAMMemberCondition(dict):
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
         :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
                
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
                consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
@@ -56183,8 +56299,8 @@ class SubnetworkIAMMemberCondition(dict):
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
@@ -69473,7 +69589,7 @@ class GetInstanceAttachedDiskResult(dict):
         :param _builtins.str disk_encryption_key_rsa: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         :param _builtins.str disk_encryption_key_sha256: The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                encoded SHA-256 hash of the [customer-supplied encryption key]
-               (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         :param _builtins.str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
         :param _builtins.bool force_attach: Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
         :param _builtins.str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
@@ -69521,7 +69637,7 @@ class GetInstanceAttachedDiskResult(dict):
         """
         The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         encoded SHA-256 hash of the [customer-supplied encryption key]
-        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         """
         return pulumi.get(self, "disk_encryption_key_sha256")
 
@@ -69590,7 +69706,7 @@ class GetInstanceBootDiskResult(dict):
         :param _builtins.str disk_encryption_key_rsa: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         :param _builtins.str disk_encryption_key_sha256: The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                encoded SHA-256 hash of the [customer-supplied encryption key]
-               (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         :param _builtins.str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
         :param _builtins.bool force_attach: Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
         :param Sequence[_builtins.str] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images.
@@ -69654,7 +69770,7 @@ class GetInstanceBootDiskResult(dict):
         """
         The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         encoded SHA-256 hash of the [customer-supplied encryption key]
-        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         """
         return pulumi.get(self, "disk_encryption_key_sha256")
 
@@ -72398,7 +72514,7 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         :param Sequence['GetInstanceTemplateNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
                instance can be accessed via the Internet. Omit to ensure that the instance
                is not accessible from the Internet (this means that ssh provisioners will
-               not work unless you are running the provider can send traffic to the instance's
+               not work unless you are running Terraform can send traffic to the instance's
                network (e.g. via tunnel or because it is running on another cloud instance
                on that network). This block can be repeated multiple times. Structure documented below.
         :param Sequence['GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
@@ -72453,7 +72569,7 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         Access configurations, i.e. IPs via which this
         instance can be accessed via the Internet. Omit to ensure that the instance
         is not accessible from the Internet (this means that ssh provisioners will
-        not work unless you are running the provider can send traffic to the instance's
+        not work unless you are running Terraform can send traffic to the instance's
         network (e.g. via tunnel or because it is running on another cloud instance
         on that network). This block can be repeated multiple times. Structure documented below.
         """

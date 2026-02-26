@@ -88,8 +88,8 @@ export class Service extends pulumi.CustomResource {
     /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
-     * destroyed. If `false` or unset, an error will be generated if any enabled
-     * services depend on this service when destroying it.
+     * destroyed. If `false` or unset, an error will be returned if any enabled
+     * services depend on this service when attempting to destroy it.
      */
     declare public readonly disableDependentServices: pulumi.Output<boolean | undefined>;
     /**
@@ -156,8 +156,8 @@ export interface ServiceState {
     /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
-     * destroyed. If `false` or unset, an error will be generated if any enabled
-     * services depend on this service when destroying it.
+     * destroyed. If `false` or unset, an error will be returned if any enabled
+     * services depend on this service when attempting to destroy it.
      */
     disableDependentServices?: pulumi.Input<boolean>;
     /**
@@ -191,8 +191,8 @@ export interface ServiceArgs {
     /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
-     * destroyed. If `false` or unset, an error will be generated if any enabled
-     * services depend on this service when destroying it.
+     * destroyed. If `false` or unset, an error will be returned if any enabled
+     * services depend on this service when attempting to destroy it.
      */
     disableDependentServices?: pulumi.Input<boolean>;
     /**

@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *
  * // Create a new service account
  * const serviceAccount = new gcp.serviceaccount.Account("service_account", {accountId: "my-svc-acc"});
- * //Create the HMAC key for the associated service account
+ * //Create the HMAC key for the associated service account 
  * const key = new gcp.storage.HmacKey("key", {serviceAccountEmail: serviceAccount.email});
  * ```
  *

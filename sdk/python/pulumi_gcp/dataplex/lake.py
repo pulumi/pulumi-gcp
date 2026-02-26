@@ -30,6 +30,7 @@ class LakeArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Lake resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] description: Optional. Description of the lake.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
@@ -172,6 +173,7 @@ class _LakeState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Lake resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['LakeAssetStatusArgs']]] asset_statuses: Output only. Aggregated status of the underlying assets of the lake.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the lake was created.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the lake.
@@ -480,6 +482,7 @@ class Lake(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/lake:Lake default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the lake.
@@ -539,6 +542,7 @@ class Lake(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/lake:Lake default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:dataplex/lake:Lake default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LakeArgs args: The arguments to use to populate this resource's properties.

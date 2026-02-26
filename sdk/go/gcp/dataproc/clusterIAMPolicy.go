@@ -243,10 +243,10 @@ type ClusterIAMPolicy struct {
 	// ***
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 	// The project in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region pulumi.StringOutput `pulumi:"region"`
 }
 
@@ -297,10 +297,10 @@ type clusterIAMPolicyState struct {
 	// ***
 	PolicyData *string `pulumi:"policyData"`
 	// The project in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project *string `pulumi:"project"`
 	// The region in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region *string `pulumi:"region"`
 }
 
@@ -316,10 +316,10 @@ type ClusterIAMPolicyState struct {
 	// ***
 	PolicyData pulumi.StringPtrInput
 	// The project in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringPtrInput
 	// The region in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region pulumi.StringPtrInput
 }
 
@@ -337,10 +337,10 @@ type clusterIAMPolicyArgs struct {
 	// ***
 	PolicyData string `pulumi:"policyData"`
 	// The project in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project *string `pulumi:"project"`
 	// The region in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region *string `pulumi:"region"`
 }
 
@@ -355,10 +355,10 @@ type ClusterIAMPolicyArgs struct {
 	// ***
 	PolicyData pulumi.StringInput
 	// The project in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringPtrInput
 	// The region in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region pulumi.StringPtrInput
 }
 
@@ -469,13 +469,13 @@ func (o ClusterIAMPolicyOutput) PolicyData() pulumi.StringOutput {
 }
 
 // The project in which the cluster belongs. If it
-// is not provided, the provider will use a default.
+// is not provided, Terraform will use the provider default.
 func (o ClusterIAMPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterIAMPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The region in which the cluster belongs. If it
-// is not provided, the provider will use a default.
+// is not provided, Terraform will use the provider default.
 func (o ClusterIAMPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterIAMPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

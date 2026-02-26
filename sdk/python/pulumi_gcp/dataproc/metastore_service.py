@@ -42,6 +42,7 @@ class MetastoreServiceArgs:
                  tier: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MetastoreService resource.
+
         :param pulumi.Input[_builtins.str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
@@ -414,6 +415,7 @@ class _MetastoreServiceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetastoreService resources.
+
         :param pulumi.Input[_builtins.str] artifact_gcs_uri: A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the metastore service was created.
         :param pulumi.Input[_builtins.str] database_type: The database type that the Metastore service stores its data.
@@ -1233,6 +1235,7 @@ class MetastoreService(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{location}}/{{service_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_type: The database type that the Metastore service stores its data.
@@ -1588,6 +1591,7 @@ class MetastoreService(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{project}}/{{location}}/{{service_id}}
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{location}}/{{service_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MetastoreServiceArgs args: The arguments to use to populate this resource's properties.

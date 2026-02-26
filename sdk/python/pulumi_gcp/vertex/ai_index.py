@@ -31,6 +31,7 @@ class AiIndexArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiIndex resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input['AiIndexMetadataArgs'] metadata: Additional information about the Index.
                Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
@@ -192,6 +193,7 @@ class _AiIndexState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiIndex resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]] deployed_indexes: The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
                Structure is documented below.
@@ -607,6 +609,7 @@ class AiIndex(pulumi.CustomResource):
         $ pulumi import gcp:vertex/aiIndex:AiIndex default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the Index.
@@ -750,6 +753,7 @@ class AiIndex(pulumi.CustomResource):
         $ pulumi import gcp:vertex/aiIndex:AiIndex default {{region}}/{{name}}
         $ pulumi import gcp:vertex/aiIndex:AiIndex default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiIndexArgs args: The arguments to use to populate this resource's properties.

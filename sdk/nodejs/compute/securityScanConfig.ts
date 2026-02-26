@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *
  * const scannerStaticIp = new gcp.compute.Address("scanner_static_ip", {name: "scan-basic-static-ip"});
  * const scan_config = new gcp.compute.SecurityScanConfig("scan-config", {
- *     displayName: "scan-config",
+ *     displayName: "terraform-scan-config",
  *     startingUrls: [pulumi.interpolate`http://${scannerStaticIp.address}`],
  *     targetPlatforms: ["COMPUTE"],
  * });

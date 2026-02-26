@@ -161,7 +161,7 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
      * with real resources.
      * ~&gt;**NOTE:** Deployment Manager does not allow update
      * of a deployment in preview (unless updating to preview=false). Thus,
-     * the provider will force-recreate deployments if either preview is updated
+     * Terraform will force-recreate deployments if either preview is updated
      * to true or if other fields are updated while preview is true.
      * 
      */
@@ -175,7 +175,7 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
      * with real resources.
      * ~&gt;**NOTE:** Deployment Manager does not allow update
      * of a deployment in preview (unless updating to preview=false). Thus,
-     * the provider will force-recreate deployments if either preview is updated
+     * Terraform will force-recreate deployments if either preview is updated
      * to true or if other fields are updated while preview is true.
      * 
      */
@@ -463,7 +463,7 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
          * with real resources.
          * ~&gt;**NOTE:** Deployment Manager does not allow update
          * of a deployment in preview (unless updating to preview=false). Thus,
-         * the provider will force-recreate deployments if either preview is updated
+         * Terraform will force-recreate deployments if either preview is updated
          * to true or if other fields are updated while preview is true.
          * 
          * @return builder
@@ -481,7 +481,7 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
          * with real resources.
          * ~&gt;**NOTE:** Deployment Manager does not allow update
          * of a deployment in preview (unless updating to preview=false). Thus,
-         * the provider will force-recreate deployments if either preview is updated
+         * Terraform will force-recreate deployments if either preview is updated
          * to true or if other fields are updated while preview is true.
          * 
          * @return builder

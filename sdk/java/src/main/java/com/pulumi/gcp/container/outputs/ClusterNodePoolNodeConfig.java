@@ -123,6 +123,10 @@ public final class ClusterNodePoolNodeConfig {
     /**
      * @return List of the type and count of accelerator cards attached to the instance.
      * Structure documented below.
+     * **Note**: As of 6.0.0, argument syntax
+     * is no longer supported for this field in favor of block syntax.
+     * To dynamically set a list of guest accelerators, use dynamic blocks.
+     * To set an empty list, use a single `guestAccelerator` block with `count = 0`.
      * 
      */
     private @Nullable List<ClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators;
@@ -203,7 +207,7 @@ public final class ClusterNodePoolNodeConfig {
      * @return The metadata key/value pairs assigned to instances in
      * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      * `true` by the API; if `metadata` is set but that default value is not
-     * included, the provider will attempt to unset the value. To avoid this, set the
+     * included, Terraform will attempt to unset the value. To avoid this, set the
      * value in your config.
      * 
      */
@@ -300,14 +304,13 @@ public final class ClusterNodePoolNodeConfig {
      */
     private @Nullable List<String> tags;
     /**
-     * @return A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-     * to apply to nodes. GKE&#39;s API can only set this field on cluster creation.
-     * However, GKE will add taints to your nodes if you enable certain features such
-     * as GPUs. If this field is set, any diffs on this field will cause the provider to
-     * recreate the underlying resource. Taint values can be updated safely in
-     * Kubernetes (eg. through `kubectl`), and it&#39;s recommended that you do not use
-     * this field to manage taints. If you do, `lifecycle.ignore_changes` is
-     * recommended. Structure is documented below.
+     * @return A list of
+     * [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+     * to apply to nodes. This field will only report drift on taint keys that are
+     * already managed with Terraform, use `effectiveTaints` to view the list of
+     * GKE-managed taints on the node pool from all sources. Importing this resource
+     * will not record any taints as being Terraform-managed, and will cause drift with
+     * any configured taints. Structure is documented below.
      * 
      */
     private @Nullable List<ClusterNodePoolNodeConfigTaint> taints;
@@ -437,6 +440,10 @@ public final class ClusterNodePoolNodeConfig {
     /**
      * @return List of the type and count of accelerator cards attached to the instance.
      * Structure documented below.
+     * **Note**: As of 6.0.0, argument syntax
+     * is no longer supported for this field in favor of block syntax.
+     * To dynamically set a list of guest accelerators, use dynamic blocks.
+     * To set an empty list, use a single `guestAccelerator` block with `count = 0`.
      * 
      */
     public List<ClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators() {
@@ -543,7 +550,7 @@ public final class ClusterNodePoolNodeConfig {
      * @return The metadata key/value pairs assigned to instances in
      * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      * `true` by the API; if `metadata` is set but that default value is not
-     * included, the provider will attempt to unset the value. To avoid this, set the
+     * included, Terraform will attempt to unset the value. To avoid this, set the
      * value in your config.
      * 
      */
@@ -672,14 +679,13 @@ public final class ClusterNodePoolNodeConfig {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-     * to apply to nodes. GKE&#39;s API can only set this field on cluster creation.
-     * However, GKE will add taints to your nodes if you enable certain features such
-     * as GPUs. If this field is set, any diffs on this field will cause the provider to
-     * recreate the underlying resource. Taint values can be updated safely in
-     * Kubernetes (eg. through `kubectl`), and it&#39;s recommended that you do not use
-     * this field to manage taints. If you do, `lifecycle.ignore_changes` is
-     * recommended. Structure is documented below.
+     * @return A list of
+     * [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+     * to apply to nodes. This field will only report drift on taint keys that are
+     * already managed with Terraform, use `effectiveTaints` to view the list of
+     * GKE-managed taints on the node pool from all sources. Importing this resource
+     * will not record any taints as being Terraform-managed, and will cause drift with
+     * any configured taints. Structure is documented below.
      * 
      */
     public List<ClusterNodePoolNodeConfigTaint> taints() {

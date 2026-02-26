@@ -27,6 +27,7 @@ class IAMMemberArgs:
                  condition: Optional[pulumi.Input['IAMMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a IAMMember resource.
+
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -113,6 +114,7 @@ class _IAMMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IAMMember resources.
+
         :param pulumi.Input['IAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the organization's IAM policy.
@@ -238,9 +240,9 @@ class IAMMember(pulumi.CustomResource):
            resources. This resource makes it easy to remove your own access to
            an organization, which will require a call to Google Support to have
            fixed, and can take multiple days to resolve.
-
+           <br /><br />
            In general, this resource should only be used with organizations
-           fully managed by this provider.I f you do use this resource,
+           fully managed by Terraform.If you do use this resource,
            the best way to be sure that you are not making dangerous changes is to start
            by **importing** your existing policy, and examining the diff very closely.
 
@@ -444,6 +446,7 @@ class IAMMember(pulumi.CustomResource):
 
         > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
          to include the title of condition, e.g. `terraform import google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -486,9 +489,9 @@ class IAMMember(pulumi.CustomResource):
            resources. This resource makes it easy to remove your own access to
            an organization, which will require a call to Google Support to have
            fixed, and can take multiple days to resolve.
-
+           <br /><br />
            In general, this resource should only be used with organizations
-           fully managed by this provider.I f you do use this resource,
+           fully managed by Terraform.If you do use this resource,
            the best way to be sure that you are not making dangerous changes is to start
            by **importing** your existing policy, and examining the diff very closely.
 
@@ -692,6 +695,7 @@ class IAMMember(pulumi.CustomResource):
 
         > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
          to include the title of condition, e.g. `terraform import google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
+
 
         :param str resource_name: The name of the resource.
         :param IAMMemberArgs args: The arguments to use to populate this resource's properties.

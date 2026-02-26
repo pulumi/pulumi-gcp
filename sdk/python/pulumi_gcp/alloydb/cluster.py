@@ -48,6 +48,7 @@ class ClusterArgs:
                  subscription_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[_builtins.str] location: The location where the alloydb cluster should reside.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
@@ -531,6 +532,7 @@ class _ClusterState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -1490,6 +1492,7 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import gcp:alloydb/cluster:Cluster default {{cluster_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
@@ -1825,6 +1828,7 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import gcp:alloydb/cluster:Cluster default {{location}}/{{cluster_id}}
         $ pulumi import gcp:alloydb/cluster:Cluster default {{cluster_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

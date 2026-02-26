@@ -70,8 +70,7 @@ public final class ClusterNodePool {
      */
     private @Nullable String namePrefix;
     /**
-     * @return Configuration for
-     * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+     * @return Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
      * 
      */
     private @Nullable ClusterNodePoolNetworkConfig networkConfig;
@@ -79,8 +78,8 @@ public final class ClusterNodePool {
      * @return Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
      * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
+     * manages the default node pool, which isn&#39;t recommended to be used with
+     * Terraform. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolNodeConfig nodeConfig;
@@ -196,8 +195,7 @@ public final class ClusterNodePool {
         return Optional.ofNullable(this.namePrefix);
     }
     /**
-     * @return Configuration for
-     * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+     * @return Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
      * 
      */
     public Optional<ClusterNodePoolNetworkConfig> networkConfig() {
@@ -207,8 +205,8 @@ public final class ClusterNodePool {
      * @return Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
      * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
+     * manages the default node pool, which isn&#39;t recommended to be used with
+     * Terraform. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolNodeConfig> nodeConfig() {

@@ -465,7 +465,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Whether to wait for all instances to be created/updated before
-        /// returning. Note that if this is set to true and the operation does not succeed, this provider will
+        /// returning. Note that if this is set to true and the operation does not succeed, Terraform will
         /// continue trying until it times out.
         /// </summary>
         [Output("waitForInstances")]
@@ -727,7 +727,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Whether to wait for all instances to be created/updated before
-        /// returning. Note that if this is set to true and the operation does not succeed, this provider will
+        /// returning. Note that if this is set to true and the operation does not succeed, Terraform will
         /// continue trying until it times out.
         /// </summary>
         [Input("waitForInstances")]
@@ -996,7 +996,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Whether to wait for all instances to be created/updated before
-        /// returning. Note that if this is set to true and the operation does not succeed, this provider will
+        /// returning. Note that if this is set to true and the operation does not succeed, Terraform will
         /// continue trying until it times out.
         /// </summary>
         [Input("waitForInstances")]

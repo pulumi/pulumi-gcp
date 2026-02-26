@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Allows creation and management of a Google Cloud Billing Subaccount.
  * 
- * !&gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
+ * !&gt; **WARNING:** Deleting this Terraform resource will not delete or close the billing subaccount.
  * 
  * <pre>
  * {@code
@@ -83,7 +83,7 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
     }
     /**
      * If set to &#34;RENAME_ON_DESTROY&#34; the billing account displayName
-     * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
+     * will be changed to &#34;Terraform Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
      * Default is &#34;&#34;.
      * 
      */
@@ -92,7 +92,7 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
 
     /**
      * @return If set to &#34;RENAME_ON_DESTROY&#34; the billing account displayName
-     * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
+     * will be changed to &#34;Terraform Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
      * Default is &#34;&#34;.
      * 
      */

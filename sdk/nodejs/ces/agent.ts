@@ -82,7 +82,7 @@ import * as utilities from "../utilities";
  *     displayName: "child agent",
  *     instruction: "You are a helpful assistant for this example.",
  *     modelSettings: {
- *         model: "gemini-1.5-flash",
+ *         model: "gemini-2.5-flash-001",
  *         temperature: 0.5,
  *     },
  *     llmAgent: {},
@@ -117,44 +117,38 @@ import * as utilities from "../utilities";
  *     description: "test agent",
  *     instruction: "You are a helpful assistant for this example.",
  *     modelSettings: {
- *         model: "gemini-1.5-flash",
+ *         model: "gemini-2.5-flash-001",
  *         temperature: 0.5,
  *     },
+ *     beforeAgentCallbacks: [{
+ *         description: "Example callback",
+ *         disabled: true,
+ *         pythonCode: "def before_agent_callback(callback_context): return None",
+ *     }],
  *     afterAgentCallbacks: [{
  *         description: "Example callback",
  *         disabled: true,
- *         pythonCode: `def callback(context):
- *     return {'override': False}`,
- *     }],
- *     beforeAgentCallbacks: [{
- *         description: "Example callback",
- *         disabled: false,
- *         pythonCode: `def callback(context):
- *     return {'override': False}`,
- *     }],
- *     afterModelCallbacks: [{
- *         description: "Example callback",
- *         disabled: true,
- *         pythonCode: `def callback(context):
- *     return {'override': False}`,
+ *         pythonCode: "def after_agent_callback(callback_context): return None",
  *     }],
  *     beforeModelCallbacks: [{
  *         description: "Example callback",
  *         disabled: true,
- *         pythonCode: `def callback(context):
- *     return {'override': False}`,
+ *         pythonCode: "def before_model_callback(callback_context, llm_request): return None",
  *     }],
- *     afterToolCallbacks: [{
+ *     afterModelCallbacks: [{
  *         description: "Example callback",
  *         disabled: true,
- *         pythonCode: `def callback(context):
- *     return {'override': False}`,
+ *         pythonCode: "def after_model_callback(callback_context, llm_response): return None",
  *     }],
  *     beforeToolCallbacks: [{
  *         description: "Example callback",
  *         disabled: true,
- *         pythonCode: `def callback(context):
- *     return {'override': False}`,
+ *         pythonCode: "def before_tool_callback(tool, input, callback_context): return None",
+ *     }],
+ *     afterToolCallbacks: [{
+ *         description: "Example callback",
+ *         disabled: true,
+ *         pythonCode: "def after_tool_callback(tool, input, callback_context, tool_response): return None",
  *     }],
  *     tools: [cesToolForAgent.id],
  *     guardrails: [cesGuardrailForAgent.id],

@@ -30,6 +30,7 @@ class ExternalVpnGatewayArgs:
                  redundancy_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExternalVpnGateway resource.
+
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
@@ -180,6 +181,7 @@ class _ExternalVpnGatewayState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExternalVpnGateway resources.
+
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]] interfaces: A list of interfaces on this external VPN gateway.
@@ -503,6 +505,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
         $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -642,6 +645,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
         $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{project}}/{{name}}
         $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ExternalVpnGatewayArgs args: The arguments to use to populate this resource's properties.

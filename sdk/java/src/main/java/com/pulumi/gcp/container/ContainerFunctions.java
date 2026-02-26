@@ -1323,7 +1323,7 @@ public final class ContainerFunctions {
      *             .build());
      * 
      *         var foo = new Cluster("foo", ClusterArgs.builder()
-     *             .name("test-cluster")
+     *             .name("terraform-test-cluster")
      *             .location("us-central1-b")
      *             .nodeVersion(central1b.latestNodeVersion())
      *             .initialNodeCount(1)
@@ -1384,7 +1384,7 @@ public final class ContainerFunctions {
      *             .build());
      * 
      *         var foo = new Cluster("foo", ClusterArgs.builder()
-     *             .name("test-cluster")
+     *             .name("terraform-test-cluster")
      *             .location("us-central1-b")
      *             .nodeVersion(central1b.latestNodeVersion())
      *             .initialNodeCount(1)
@@ -1445,7 +1445,7 @@ public final class ContainerFunctions {
      *             .build());
      * 
      *         var foo = new Cluster("foo", ClusterArgs.builder()
-     *             .name("test-cluster")
+     *             .name("terraform-test-cluster")
      *             .location("us-central1-b")
      *             .nodeVersion(central1b.latestNodeVersion())
      *             .initialNodeCount(1)
@@ -1506,7 +1506,7 @@ public final class ContainerFunctions {
      *             .build());
      * 
      *         var foo = new Cluster("foo", ClusterArgs.builder()
-     *             .name("test-cluster")
+     *             .name("terraform-test-cluster")
      *             .location("us-central1-b")
      *             .nodeVersion(central1b.latestNodeVersion())
      *             .initialNodeCount(1)
@@ -1567,7 +1567,7 @@ public final class ContainerFunctions {
      *             .build());
      * 
      *         var foo = new Cluster("foo", ClusterArgs.builder()
-     *             .name("test-cluster")
+     *             .name("terraform-test-cluster")
      *             .location("us-central1-b")
      *             .nodeVersion(central1b.latestNodeVersion())
      *             .initialNodeCount(1)
@@ -1628,7 +1628,7 @@ public final class ContainerFunctions {
      *             .build());
      * 
      *         var foo = new Cluster("foo", ClusterArgs.builder()
-     *             .name("test-cluster")
+     *             .name("terraform-test-cluster")
      *             .location("us-central1-b")
      *             .nodeVersion(central1b.latestNodeVersion())
      *             .initialNodeCount(1)
@@ -1689,7 +1689,7 @@ public final class ContainerFunctions {
      *             .build());
      * 
      *         var foo = new Cluster("foo", ClusterArgs.builder()
-     *             .name("test-cluster")
+     *             .name("terraform-test-cluster")
      *             .location("us-central1-b")
      *             .nodeVersion(central1b.latestNodeVersion())
      *             .initialNodeCount(1)

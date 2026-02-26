@@ -22,6 +22,11 @@ import javax.annotation.Nullable;
  * [the official documentation](https://cloud.google.com/bigtable/) and
  * [API](https://cloud.google.com/bigtable/docs/go/reference).
  * 
+ * &gt; **Note:** It is strongly recommended to set `lifecycle { preventDestroy = true }`
+ * on tables in order to prevent accidental data loss. See
+ * Terraform docs
+ * for more information on lifecycle parameters.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -256,7 +261,7 @@ public class Table extends com.pulumi.resources.CustomResource {
     }
     /**
      * A list of predefined keys to split the table on.
-     * !&gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+     * !&gt; **Warning:** Modifying the `splitKeys` of an existing table will cause Terraform
      * to delete/recreate the entire `gcp.bigtable.Table` resource.
      * 
      */
@@ -265,7 +270,7 @@ public class Table extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A list of predefined keys to split the table on.
-     * !&gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+     * !&gt; **Warning:** Modifying the `splitKeys` of an existing table will cause Terraform
      * to delete/recreate the entire `gcp.bigtable.Table` resource.
      * 
      */

@@ -218,14 +218,14 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The project in which the cluster belongs. If it
-        /// is not provided, the provider will use a default.
+        /// is not provided, Terraform will use the provider default.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The region in which the cluster belongs. If it
-        /// is not provided, the provider will use a default.
+        /// is not provided, Terraform will use the provider default.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -312,14 +312,14 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The project in which the cluster belongs. If it
-        /// is not provided, the provider will use a default.
+        /// is not provided, Terraform will use the provider default.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The region in which the cluster belongs. If it
-        /// is not provided, the provider will use a default.
+        /// is not provided, Terraform will use the provider default.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -374,14 +374,14 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The project in which the cluster belongs. If it
-        /// is not provided, the provider will use a default.
+        /// is not provided, Terraform will use the provider default.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The region in which the cluster belongs. If it
-        /// is not provided, the provider will use a default.
+        /// is not provided, Terraform will use the provider default.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

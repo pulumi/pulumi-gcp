@@ -208,17 +208,17 @@ import * as utilities from "../utilities";
  *
  * A common way to use instance templates and managed instance groups is to deploy the
  * latest image in a family, usually the latest build of your application. There are two
- * ways to do this in the provider, and they have their pros and cons. The difference ends
+ * ways to do this in Terraform, and they have their pros and cons. The difference ends
  * up being in how "latest" is interpreted. You can either deploy the latest image available
- * when the provider runs, or you can have each instance check what the latest image is when
+ * when Terraform runs, or you can have each instance check what the latest image is when
  * it's being created, either as part of a scaling event or being rebuilt by the instance
  * group manager.
  *
- * If you're not sure, we recommend deploying the latest image available when the provider runs,
+ * If you're not sure, we recommend deploying the latest image available when Terraform runs,
  * because this means all the instances in your group will be based on the same image, always,
  * and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
  * You can achieve this by using the `gcp.compute.Image`
- * data source, which will retrieve the latest image on every `pulumi apply`, and will update
+ * data source, which will retrieve the latest image on every `pulumi up`, and will update
  * the template to use that specific image:
  *
  * ```typescript
@@ -392,7 +392,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
     declare public readonly minCpuPlatform: pulumi.Output<string | undefined>;
     /**
      * The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * this blank, Terraform will auto-generate a unique name.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -689,7 +689,7 @@ export interface InstanceTemplateState {
     minCpuPlatform?: pulumi.Input<string>;
     /**
      * The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * this blank, Terraform will auto-generate a unique name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -874,7 +874,7 @@ export interface InstanceTemplateArgs {
     minCpuPlatform?: pulumi.Input<string>;
     /**
      * The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * this blank, Terraform will auto-generate a unique name.
      */
     name?: pulumi.Input<string>;
     /**

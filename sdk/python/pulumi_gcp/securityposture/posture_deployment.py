@@ -28,6 +28,7 @@ class PostureDeploymentArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PostureDeployment resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the resource, eg. global`.
         :param pulumi.Input[_builtins.str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[_builtins.str] posture_deployment_id: ID of the posture deployment.
@@ -159,6 +160,7 @@ class _PostureDeploymentState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PostureDeployment resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the posture deployment was created in UTC.
         :param pulumi.Input[_builtins.str] description: Description of the posture deployment.
         :param pulumi.Input[_builtins.str] desired_posture_id: This is an output only optional field which will be filled in case when
@@ -465,6 +467,7 @@ class PostureDeployment(pulumi.CustomResource):
         $ pulumi import gcp:securityposture/postureDeployment:PostureDeployment default {{parent}}/locations/{{location}}/postureDeployments/{{posture_deployment_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the posture deployment.
@@ -509,6 +512,7 @@ class PostureDeployment(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:securityposture/postureDeployment:PostureDeployment default {{parent}}/locations/{{location}}/postureDeployments/{{posture_deployment_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PostureDeploymentArgs args: The arguments to use to populate this resource's properties.

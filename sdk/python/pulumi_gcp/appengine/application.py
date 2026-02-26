@@ -31,6 +31,7 @@ class ApplicationArgs:
                  ssl_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Application resource.
+
         :param pulumi.Input[_builtins.str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
                to serve the app from.
         :param pulumi.Input[_builtins.str] auth_domain: The domain to authenticate users with when using App Engine's User API.
@@ -189,6 +190,7 @@ class _ApplicationState:
                  url_dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering Application resources.
+
         :param pulumi.Input[_builtins.str] app_id: Identifier of the app, usually `{PROJECT_ID}`
         :param pulumi.Input[_builtins.str] auth_domain: The domain to authenticate users with when using App Engine's User API.
         :param pulumi.Input[_builtins.str] code_bucket: The GCS bucket code is being stored in for this app.
@@ -452,9 +454,9 @@ class Application(pulumi.CustomResource):
         Allows creation and management of an App Engine application.
 
         > App Engine applications cannot be deleted once they're created; you have to delete the
-           entire project to delete the application. This provider will report the application has been
-           successfully deleted; this is a limitation of the provider, and will go away in the future.
-           This provider is not able to delete App Engine applications.
+           entire project to delete the application. Terraform will report the application has been
+           successfully deleted; this is a limitation of Terraform, and will go away in the future.
+           Terraform is not able to delete App Engine applications.
 
         ## Example Usage
 
@@ -482,6 +484,7 @@ class Application(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:appengine/application:Application default {{project-id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -512,9 +515,9 @@ class Application(pulumi.CustomResource):
         Allows creation and management of an App Engine application.
 
         > App Engine applications cannot be deleted once they're created; you have to delete the
-           entire project to delete the application. This provider will report the application has been
-           successfully deleted; this is a limitation of the provider, and will go away in the future.
-           This provider is not able to delete App Engine applications.
+           entire project to delete the application. Terraform will report the application has been
+           successfully deleted; this is a limitation of Terraform, and will go away in the future.
+           Terraform is not able to delete App Engine applications.
 
         ## Example Usage
 
@@ -542,6 +545,7 @@ class Application(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:appengine/application:Application default {{project-id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationArgs args: The arguments to use to populate this resource's properties.

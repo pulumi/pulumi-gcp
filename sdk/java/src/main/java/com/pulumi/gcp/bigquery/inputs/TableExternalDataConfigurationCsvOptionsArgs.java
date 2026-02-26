@@ -91,8 +91,8 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
      * CSV file. If your data does not contain quoted sections, set the
      * property value to an empty string. If your data contains quoted newline
      * characters, you must also set the `allowQuotedNewlines` property to true.
-     * The API-side default is `&#34;`, specified in the provider escaped as `\&#34;`. Due to
-     * limitations with default values, this value is required to be
+     * The API-side default is `&#34;`, specified in Terraform escaped as `\&#34;`. Due to
+     * limitations with Terraform default values, this value is required to be
      * explicitly set.
      * 
      */
@@ -104,8 +104,8 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
      * CSV file. If your data does not contain quoted sections, set the
      * property value to an empty string. If your data contains quoted newline
      * characters, you must also set the `allowQuotedNewlines` property to true.
-     * The API-side default is `&#34;`, specified in the provider escaped as `\&#34;`. Due to
-     * limitations with default values, this value is required to be
+     * The API-side default is `&#34;`, specified in Terraform escaped as `\&#34;`. Due to
+     * limitations with Terraform default values, this value is required to be
      * explicitly set.
      * 
      */
@@ -282,8 +282,8 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
          * CSV file. If your data does not contain quoted sections, set the
          * property value to an empty string. If your data contains quoted newline
          * characters, you must also set the `allowQuotedNewlines` property to true.
-         * The API-side default is `&#34;`, specified in the provider escaped as `\&#34;`. Due to
-         * limitations with default values, this value is required to be
+         * The API-side default is `&#34;`, specified in Terraform escaped as `\&#34;`. Due to
+         * limitations with Terraform default values, this value is required to be
          * explicitly set.
          * 
          * @return builder
@@ -299,8 +299,8 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
          * CSV file. If your data does not contain quoted sections, set the
          * property value to an empty string. If your data contains quoted newline
          * characters, you must also set the `allowQuotedNewlines` property to true.
-         * The API-side default is `&#34;`, specified in the provider escaped as `\&#34;`. Due to
-         * limitations with default values, this value is required to be
+         * The API-side default is `&#34;`, specified in Terraform escaped as `\&#34;`. Due to
+         * limitations with Terraform default values, this value is required to be
          * explicitly set.
          * 
          * @return builder

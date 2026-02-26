@@ -19,19 +19,20 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## subcategory: &#34;Cloud Bigtable&#34;
- * 
- * description: |-
- *   Creates a Google Bigtable instance.
- * ---
- * 
- * # gcp.bigtable.Instance
- * 
  * Creates a Google Bigtable instance. For more information see:
  * 
  * * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/bigtable/docs)
+ * 
+ * &gt; **Note**: It is strongly recommended to set `lifecycle { preventDestroy = true }`
+ * on instances in order to prevent accidental data loss. See
+ * Terraform docs
+ * for more information on lifecycle parameters.
+ * 
+ * &gt; **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
+ * (and run `pulumi up` to write the field to state) in order to destroy an instance.
+ * It is recommended to not set this field (or set it to true) until you&#39;re ready to destroy.
  * 
  * ## Example Usage
  * 
@@ -170,16 +171,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.clusters;
     }
     /**
-     * Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+     * Whether Terraform will be prevented from destroying the instance.
+     * When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+     * the instance will fail. When the field is set to false, deleting the instance is allowed.
      * 
      */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
-     * @return Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+     * @return Whether Terraform will be prevented from destroying the instance.
+     * When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+     * the instance will fail. When the field is set to false, deleting the instance is allowed.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
@@ -218,14 +221,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+     * Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
      * 
      */
     @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
-     * @return Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+     * @return Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
      * 
      */
     public Output<Optional<Boolean>> forceDestroy() {

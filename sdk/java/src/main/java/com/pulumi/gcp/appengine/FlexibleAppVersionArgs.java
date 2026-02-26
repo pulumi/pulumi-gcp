@@ -165,14 +165,14 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+     * Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
      * 
      */
     @Import(name="envVariables")
     private @Nullable Output<Map<String,String>> envVariables;
 
     /**
-     * @return Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+     * @return Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
      * 
      */
     public Optional<Output<Map<String,String>>> envVariables() {
@@ -768,7 +768,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param envVariables Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+         * @param envVariables Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
          * 
          * @return builder
          * 
@@ -779,7 +779,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param envVariables Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+         * @param envVariables Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
          * 
          * @return builder
          * 

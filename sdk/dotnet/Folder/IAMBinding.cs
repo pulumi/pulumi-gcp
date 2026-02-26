@@ -10,18 +10,29 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Folder
 {
     /// <summary>
-    /// Allows creation and management of a single binding within IAM policy for
-    /// an existing Google Cloud Platform folder.
+    /// Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
     /// 
-    /// &gt; **Note:** This resource _must not_ be used in conjunction with
-    ///    `gcp.folder.IAMPolicy` or they will fight over what your policy
-    ///    should be.
+    /// * `gcp.folder.IAMPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
+    /// * `gcp.folder.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
+    /// * `gcp.folder.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
+    /// * `gcp.folder.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
     /// 
-    /// &gt; **Note:** On create, this resource will overwrite members of any existing roles.
-    ///     Use `pulumi import` and inspect the output to ensure
-    ///     your existing members are preserved.
+    /// &gt; **Note:** `gcp.folder.IAMPolicy` **cannot** be used in conjunction with `gcp.folder.IAMBinding`, `gcp.folder.IAMMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
     /// 
-    /// ## Example Usage
+    /// &gt; **Note:** `gcp.folder.IAMBinding` resources **can be** used in conjunction with `gcp.folder.IAMMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// &gt; **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
+    ///    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
+    /// 
+    /// ## gcp.folder.IAMPolicy
+    /// 
+    /// !&gt; **Be careful!** You can accidentally lock yourself out of your folder
+    ///    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
+    ///    from anyone without permissions on its parent folder/organization. Proceed with caution.
+    ///    It's not recommended to use `gcp.folder.IAMPolicy` with your provider folder
+    ///    to avoid locking yourself out, and it should generally only be used with folders
+    ///    fully managed by Terraform. If you do use this resource, it is recommended to **import** the policy before
+    ///    applying the change.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -31,19 +42,328 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var department1 = new Gcp.Organizations.Folder("department1", new()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         DisplayName = "Department 1",
-    ///         Parent = "organizations/1234567",
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
-    ///     var admin = new Gcp.Folder.IAMBinding("admin", new()
+    ///     var folder = new Gcp.Folder.IAMPolicy("folder", new()
     ///     {
-    ///         Folder = department1.Name,
+    ///         Folder = "folders/1234567",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/compute.admin",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var folder = new Gcp.Folder.IAMPolicy("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.folder.IAMBinding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IAMBinding("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
     ///         Role = "roles/editor",
     ///         Members = new[]
     ///         {
-    ///             "user:alice@gmail.com",
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IAMBinding("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         Role = "roles/container.admin",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Folder.Inputs.IAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.folder.IAMMember
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IAMMember("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IAMMember("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         Role = "roles/firebase.admin",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Folder.Inputs.IAMMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.folder.IamAuditConfig
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IamAuditConfig("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         Service = "allServices",
+    ///         AuditLogConfigs = new[]
+    ///         {
+    ///             new Gcp.Folder.Inputs.IamAuditConfigAuditLogConfigArgs
+    ///             {
+    ///                 LogType = "ADMIN_READ",
+    ///             },
+    ///             new Gcp.Folder.Inputs.IamAuditConfigAuditLogConfigArgs
+    ///             {
+    ///                 LogType = "DATA_READ",
+    ///                 ExemptedMembers = new[]
+    ///                 {
+    ///                     "user:joebloggs@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.folder.IAMBinding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IAMBinding("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         Role = "roles/editor",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IAMBinding("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         Role = "roles/container.admin",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Folder.Inputs.IAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.folder.IAMMember
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IAMMember("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IAMMember("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         Role = "roles/firebase.admin",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Folder.Inputs.IAMMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.folder.IamAuditConfig
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IamAuditConfig("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         Service = "allServices",
+    ///         AuditLogConfigs = new[]
+    ///         {
+    ///             new Gcp.Folder.Inputs.IamAuditConfigAuditLogConfigArgs
+    ///             {
+    ///                 LogType = "ADMIN_READ",
+    ///             },
+    ///             new Gcp.Folder.Inputs.IamAuditConfigAuditLogConfigArgs
+    ///             {
+    ///                 LogType = "DATA_READ",
+    ///                 ExemptedMembers = new[]
+    ///                 {
+    ///                     "user:joebloggs@example.com",
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 
@@ -52,18 +372,19 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// ## Import
     /// 
-    /// IAM binding imports use space-delimited identifiers; first the resource in question and then the role.  These bindings can be imported using the `Folder` and role, e.g.
+    /// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+    ///  full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
     /// 
-    /// ```sh
-    /// $ terraform import google_folder_iam_binding.viewer "folder-name roles/viewer"
-    /// ```
-    /// 
-    /// &gt; **Custom Roles**: If you're importing a IAM binding with a custom role, make sure to use the
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// &gt; **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
+    ///  to include the title of condition, e.g. `terraform import google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
     /// </summary>
     [GcpResourceType("gcp:folder/iAMBinding:IAMBinding")]
     public partial class IAMBinding : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.IAMBindingCondition?> Condition { get; private set; } = null!;
 
@@ -80,13 +401,12 @@ namespace Pulumi.Gcp.Folder
         public Output<string> Folder { get; private set; } = null!;
 
         /// <summary>
-        /// An array of identities that will be granted the privilege in the `Role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
-        /// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        /// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
@@ -94,7 +414,7 @@ namespace Pulumi.Gcp.Folder
         /// <summary>
         /// The role that should be applied. Only one
         /// `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// `organizations/{{org_id}}/roles/{{role_id}}`.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -145,6 +465,10 @@ namespace Pulumi.Gcp.Folder
 
     public sealed class IAMBindingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.IAMBindingConditionArgs>? Condition { get; set; }
 
@@ -158,13 +482,12 @@ namespace Pulumi.Gcp.Folder
         private InputList<string>? _members;
 
         /// <summary>
-        /// An array of identities that will be granted the privilege in the `Role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
-        /// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        /// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         /// </summary>
         public InputList<string> Members
         {
@@ -175,7 +498,7 @@ namespace Pulumi.Gcp.Folder
         /// <summary>
         /// The role that should be applied. Only one
         /// `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// `organizations/{{org_id}}/roles/{{role_id}}`.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -188,6 +511,10 @@ namespace Pulumi.Gcp.Folder
 
     public sealed class IAMBindingState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.IAMBindingConditionGetArgs>? Condition { get; set; }
 
@@ -207,13 +534,12 @@ namespace Pulumi.Gcp.Folder
         private InputList<string>? _members;
 
         /// <summary>
-        /// An array of identities that will be granted the privilege in the `Role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
-        /// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        /// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         /// </summary>
         public InputList<string> Members
         {
@@ -224,7 +550,7 @@ namespace Pulumi.Gcp.Folder
         /// <summary>
         /// The role that should be applied. Only one
         /// `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// `organizations/{{org_id}}/roles/{{role_id}}`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

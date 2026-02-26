@@ -571,7 +571,6 @@ class CertificateSelfManagedArgsDict(TypedDict):
     """
     The certificate chain in PEM-encoded form.
     Leaf certificate comes first, followed by intermediate ones if any.
-    **Note**: This property is sensitive and will not be displayed in the plan.
     """
     pem_private_key: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -603,7 +602,6 @@ class CertificateSelfManagedArgs:
                > **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
         :param pulumi.Input[_builtins.str] pem_certificate: The certificate chain in PEM-encoded form.
                Leaf certificate comes first, followed by intermediate ones if any.
-               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] pem_private_key: The private key of the leaf certificate in PEM-encoded form.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] private_key_pem: (Optional, Deprecated)
@@ -651,7 +649,6 @@ class CertificateSelfManagedArgs:
         """
         The certificate chain in PEM-encoded form.
         Leaf certificate comes first, followed by intermediate ones if any.
-        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "pem_certificate")
 

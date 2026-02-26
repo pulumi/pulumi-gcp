@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.BigTable
     /// [the official documentation](https://cloud.google.com/bigtable/) and
     /// [API](https://cloud.google.com/bigtable/docs/go/reference).
     /// 
+    /// &gt; **Note:** It is strongly recommended to set `lifecycle { PreventDestroy = true }`
+    /// on tables in order to prevent accidental data loss. See
+    /// Terraform docs
+    /// for more information on lifecycle parameters.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -168,7 +173,7 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// A list of predefined keys to split the table on.
-        /// !&gt; **Warning:** Modifying the `SplitKeys` of an existing table will cause the provider
+        /// !&gt; **Warning:** Modifying the `SplitKeys` of an existing table will cause Terraform
         /// to delete/recreate the entire `gcp.bigtable.Table` resource.
         /// </summary>
         [Output("splitKeys")]
@@ -287,7 +292,7 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// A list of predefined keys to split the table on.
-        /// !&gt; **Warning:** Modifying the `SplitKeys` of an existing table will cause the provider
+        /// !&gt; **Warning:** Modifying the `SplitKeys` of an existing table will cause Terraform
         /// to delete/recreate the entire `gcp.bigtable.Table` resource.
         /// </summary>
         public InputList<string> SplitKeys
@@ -371,7 +376,7 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// A list of predefined keys to split the table on.
-        /// !&gt; **Warning:** Modifying the `SplitKeys` of an existing table will cause the provider
+        /// !&gt; **Warning:** Modifying the `SplitKeys` of an existing table will cause Terraform
         /// to delete/recreate the entire `gcp.bigtable.Table` resource.
         /// </summary>
         public InputList<string> SplitKeys

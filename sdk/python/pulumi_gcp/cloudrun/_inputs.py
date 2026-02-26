@@ -119,7 +119,7 @@ class DomainMappingMetadataArgsDict(TypedDict):
     may be set by external tools to store and retrieve arbitrary metadata.
     More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
     **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-    If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+    If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
     or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
     **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
     Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -197,7 +197,7 @@ class DomainMappingMetadataArgs:
                may be set by external tools to store and retrieve arbitrary metadata.
                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
                **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-               If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+               If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -271,7 +271,7 @@ class DomainMappingMetadataArgs:
         may be set by external tools to store and retrieve arbitrary metadata.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
         **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-        If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+        If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -875,7 +875,7 @@ class ServiceMetadataArgsDict(TypedDict):
     may be set by external tools to store and retrieve arbitrary metadata.
     More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
     **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-    If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+    If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
     or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
     Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
     keys to configure features on a Service:
@@ -967,7 +967,7 @@ class ServiceMetadataArgs:
                may be set by external tools to store and retrieve arbitrary metadata.
                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
                **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-               If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+               If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
                Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
                keys to configure features on a Service:
@@ -1042,7 +1042,7 @@ class ServiceMetadataArgs:
         may be set by external tools to store and retrieve arbitrary metadata.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
         **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-        If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+        If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
         Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
         keys to configure features on a Service:
@@ -1682,7 +1682,7 @@ class ServiceTemplateMetadataArgsDict(TypedDict):
     may be set by external tools to store and retrieve arbitrary metadata.
     More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
     **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-    If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+    If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
     or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
     Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
     keys to configure features on a Service:
@@ -1763,7 +1763,7 @@ class ServiceTemplateMetadataArgs:
                may be set by external tools to store and retrieve arbitrary metadata.
                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
                **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-               If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+               If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
                Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
                keys to configure features on a Service:
@@ -1831,7 +1831,7 @@ class ServiceTemplateMetadataArgs:
         may be set by external tools to store and retrieve arbitrary metadata.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
         **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-        If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+        If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
         Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
         keys to configure features on a Service:
@@ -2191,8 +2191,7 @@ class ServiceTemplateSpecContainerArgsDict(TypedDict):
     """
     liveness_probe: NotRequired[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArgsDict']]
     """
-    Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-    https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+    Periodic probe of container liveness. Container will be restarted if the probe fails.
     Structure is documented below.
     """
     name: NotRequired[pulumi.Input[_builtins.str]]
@@ -2271,8 +2270,7 @@ class ServiceTemplateSpecContainerArgs:
                > **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvArgs']]] envs: List of environment variables to set in the container.
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-               https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the container
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerPortArgs']]] ports: List of open ports in the container.
@@ -2404,8 +2402,7 @@ class ServiceTemplateSpecContainerArgs:
     @pulumi.getter(name="livenessProbe")
     def liveness_probe(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArgs']]:
         """
-        Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-        https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Periodic probe of container liveness. Container will be restarted if the probe fails.
         Structure is documented below.
         """
         return pulumi.get(self, "liveness_probe")

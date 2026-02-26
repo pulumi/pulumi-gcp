@@ -47,7 +47,7 @@ public final class DatabaseInstanceDnsNameArgs extends com.pulumi.resources.Reso
 
     /**
      * The name of the instance. If the name is left
-     * blank, the provider will randomly generate one when the instance is first
+     * blank, Terraform will randomly generate one when the instance is first
      * created. This is done because after a name is used, it cannot be reused for
      * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      * 
@@ -57,7 +57,7 @@ public final class DatabaseInstanceDnsNameArgs extends com.pulumi.resources.Reso
 
     /**
      * @return The name of the instance. If the name is left
-     * blank, the provider will randomly generate one when the instance is first
+     * blank, Terraform will randomly generate one when the instance is first
      * created. This is done because after a name is used, it cannot be reused for
      * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      * 
@@ -136,7 +136,7 @@ public final class DatabaseInstanceDnsNameArgs extends com.pulumi.resources.Reso
 
         /**
          * @param name The name of the instance. If the name is left
-         * blank, the provider will randomly generate one when the instance is first
+         * blank, Terraform will randomly generate one when the instance is first
          * created. This is done because after a name is used, it cannot be reused for
          * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
          * 
@@ -150,7 +150,7 @@ public final class DatabaseInstanceDnsNameArgs extends com.pulumi.resources.Reso
 
         /**
          * @param name The name of the instance. If the name is left
-         * blank, the provider will randomly generate one when the instance is first
+         * blank, Terraform will randomly generate one when the instance is first
          * created. This is done because after a name is used, it cannot be reused for
          * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
          * 

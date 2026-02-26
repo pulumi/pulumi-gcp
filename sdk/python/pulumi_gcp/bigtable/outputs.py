@@ -365,10 +365,8 @@ class InstanceCluster(dict):
                
                > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
                
-               !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-               
                !> **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
-               `cluster_id`) will cause the provider to delete/recreate the entire
+               `cluster_id`) will cause Terraform to delete/recreate the entire
                `bigtable.Instance` resource. If these values are changing, use a new
                `cluster_id`.
         :param _builtins.int num_nodes: The number of nodes in the cluster.
@@ -428,10 +426,8 @@ class InstanceCluster(dict):
 
         > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
 
-        !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-
         !> **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
-        `cluster_id`) will cause the provider to delete/recreate the entire
+        `cluster_id`) will cause Terraform to delete/recreate the entire
         `bigtable.Instance` resource. If these values are changing, use a new
         `cluster_id`.
         """

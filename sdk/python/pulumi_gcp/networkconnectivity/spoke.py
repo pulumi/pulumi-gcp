@@ -36,6 +36,7 @@ class SpokeArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Spoke resource.
+
         :param pulumi.Input[_builtins.str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] description: An optional description of the spoke.
@@ -277,6 +278,7 @@ class _SpokeState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Spoke resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. The time the spoke was created.
         :param pulumi.Input[_builtins.str] description: An optional description of the spoke.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -717,15 +719,15 @@ class Spoke(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         network = gcp.compute.Network("network",
-            name="tf-test-network_9991",
+            name="tf-test-network_64612",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_12125",
+            name="tf-test-subnet_34242",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
         instance = gcp.compute.Instance("instance",
-            name="tf-test-instance_82749",
+            name="tf-test-instance_9723",
             machine_type="e2-medium",
             can_ip_forward=True,
             zone="us-central1-a",
@@ -742,13 +744,13 @@ class Spoke(pulumi.CustomResource):
                 }],
             }])
         basic_hub = gcp.networkconnectivity.Hub("basic_hub",
-            name="tf-test-hub_15022",
+            name="tf-test-hub_22061",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
-            name="tf-test-name_89648",
+            name="tf-test-name_60461",
             location="us-central1",
             description="A sample spoke with a linked routher appliance instance",
             labels={
@@ -980,8 +982,8 @@ class Spoke(pulumi.CustomResource):
             hub=star_hub.id,
             auto_accept={
                 "auto_accept_projects": [
-                    "foo_64612",
-                    "bar_34242",
+                    "foo_45397",
+                    "bar_16451",
                 ],
             })
         primary = gcp.networkconnectivity.Spoke("primary",
@@ -1038,7 +1040,7 @@ class Spoke(pulumi.CustomResource):
             name="net-spoke",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_9723",
+            name="tf-test-subnet_3686",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
@@ -1081,6 +1083,7 @@ class Spoke(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1207,15 +1210,15 @@ class Spoke(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         network = gcp.compute.Network("network",
-            name="tf-test-network_9991",
+            name="tf-test-network_64612",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_12125",
+            name="tf-test-subnet_34242",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
         instance = gcp.compute.Instance("instance",
-            name="tf-test-instance_82749",
+            name="tf-test-instance_9723",
             machine_type="e2-medium",
             can_ip_forward=True,
             zone="us-central1-a",
@@ -1232,13 +1235,13 @@ class Spoke(pulumi.CustomResource):
                 }],
             }])
         basic_hub = gcp.networkconnectivity.Hub("basic_hub",
-            name="tf-test-hub_15022",
+            name="tf-test-hub_22061",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
-            name="tf-test-name_89648",
+            name="tf-test-name_60461",
             location="us-central1",
             description="A sample spoke with a linked routher appliance instance",
             labels={
@@ -1470,8 +1473,8 @@ class Spoke(pulumi.CustomResource):
             hub=star_hub.id,
             auto_accept={
                 "auto_accept_projects": [
-                    "foo_64612",
-                    "bar_34242",
+                    "foo_45397",
+                    "bar_16451",
                 ],
             })
         primary = gcp.networkconnectivity.Spoke("primary",
@@ -1528,7 +1531,7 @@ class Spoke(pulumi.CustomResource):
             name="net-spoke",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_9723",
+            name="tf-test-subnet_3686",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
@@ -1571,6 +1574,7 @@ class Spoke(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SpokeArgs args: The arguments to use to populate this resource's properties.

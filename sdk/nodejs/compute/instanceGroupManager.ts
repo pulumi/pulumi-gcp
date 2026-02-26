@@ -353,7 +353,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     declare public readonly versions: pulumi.Output<outputs.compute.InstanceGroupManagerVersion[]>;
     /**
      * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, this provider will
+     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
      * continue trying until it times out.
      */
     declare public readonly waitForInstances: pulumi.Output<boolean | undefined>;
@@ -604,7 +604,7 @@ export interface InstanceGroupManagerState {
     versions?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerVersion>[]>;
     /**
      * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, this provider will
+     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
      * continue trying until it times out.
      */
     waitForInstances?: pulumi.Input<boolean>;
@@ -742,7 +742,7 @@ export interface InstanceGroupManagerArgs {
     versions: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerVersion>[]>;
     /**
      * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, this provider will
+     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
      * continue trying until it times out.
      */
     waitForInstances?: pulumi.Input<boolean>;

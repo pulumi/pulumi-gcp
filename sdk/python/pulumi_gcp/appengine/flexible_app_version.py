@@ -53,6 +53,7 @@ class FlexibleAppVersionArgs:
                  vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']] = None):
         """
         The set of arguments for constructing a FlexibleAppVersion resource.
+
         :param pulumi.Input['FlexibleAppVersionLivenessCheckArgs'] liveness_check: Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionReadinessCheckArgs'] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
@@ -73,7 +74,7 @@ class FlexibleAppVersionArgs:
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
         :param pulumi.Input['FlexibleAppVersionFlexibleRuntimeSettingsArgs'] flexible_runtime_settings: Runtime settings for App Engine flexible environment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
@@ -323,7 +324,7 @@ class FlexibleAppVersionArgs:
     @pulumi.getter(name="envVariables")
     def env_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
         """
         return pulumi.get(self, "env_variables")
 
@@ -590,6 +591,7 @@ class _FlexibleAppVersionState:
                  vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']] = None):
         """
         Input properties used for looking up and filtering FlexibleAppVersion resources.
+
         :param pulumi.Input['FlexibleAppVersionApiConfigArgs'] api_config: Serving configuration for Google Cloud Endpoints.
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionAutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
@@ -604,7 +606,7 @@ class _FlexibleAppVersionState:
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
         :param pulumi.Input['FlexibleAppVersionFlexibleRuntimeSettingsArgs'] flexible_runtime_settings: Runtime settings for App Engine flexible environment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
@@ -817,7 +819,7 @@ class _FlexibleAppVersionState:
     @pulumi.getter(name="envVariables")
     def env_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
         """
         return pulumi.get(self, "env_variables")
 
@@ -1273,6 +1275,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{service}}/{{version_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FlexibleAppVersionApiConfigArgs', 'FlexibleAppVersionApiConfigArgsDict']] api_config: Serving configuration for Google Cloud Endpoints.
@@ -1289,7 +1292,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['FlexibleAppVersionEntrypointArgs', 'FlexibleAppVersionEntrypointArgsDict']] entrypoint: The entrypoint for the application.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
         :param pulumi.Input[Union['FlexibleAppVersionFlexibleRuntimeSettingsArgs', 'FlexibleAppVersionFlexibleRuntimeSettingsArgsDict']] flexible_runtime_settings: Runtime settings for App Engine flexible environment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FlexibleAppVersionHandlerArgs', 'FlexibleAppVersionHandlerArgsDict']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
@@ -1464,6 +1467,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{service}}/{{version_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param FlexibleAppVersionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1619,7 +1623,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['FlexibleAppVersionEntrypointArgs', 'FlexibleAppVersionEntrypointArgsDict']] entrypoint: The entrypoint for the application.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
         :param pulumi.Input[Union['FlexibleAppVersionFlexibleRuntimeSettingsArgs', 'FlexibleAppVersionFlexibleRuntimeSettingsArgsDict']] flexible_runtime_settings: Runtime settings for App Engine flexible environment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FlexibleAppVersionHandlerArgs', 'FlexibleAppVersionHandlerArgsDict']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
@@ -1774,7 +1778,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
     @pulumi.getter(name="envVariables")
     def env_variables(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
         """
         return pulumi.get(self, "env_variables")
 

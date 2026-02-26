@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
  * 
- * &gt; You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.ProjectSink`
+ * &gt; You can specify exclusions for log sinks created by terraform by using the exclusions field of `gcp.logging.ProjectSink`
  * 
  * ## Example Usage
  * 

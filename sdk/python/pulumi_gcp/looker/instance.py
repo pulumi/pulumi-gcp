@@ -46,6 +46,7 @@ class InstanceArgs:
                  user_metadata: Optional[pulumi.Input['InstanceUserMetadataArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input['InstanceOauthConfigArgs'] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input['InstanceAdminSettingsArgs'] admin_settings: Looker instance Admin settings.
@@ -510,6 +511,7 @@ class _InstanceState:
                  user_metadata: Optional[pulumi.Input['InstanceUserMetadataArgs']] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input['InstanceAdminSettingsArgs'] admin_settings: Looker instance Admin settings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
@@ -1315,6 +1317,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:looker/instance:Instance default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']] admin_settings: Looker instance Admin settings.
@@ -1623,6 +1626,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:looker/instance:Instance default {{region}}/{{name}}
         $ pulumi import gcp:looker/instance:Instance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

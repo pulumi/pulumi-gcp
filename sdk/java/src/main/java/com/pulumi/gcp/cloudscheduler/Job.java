@@ -508,14 +508,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.pubsubTarget);
     }
     /**
-     * Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+     * Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+     * @return Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
      * 
      */
     public Output<String> region() {

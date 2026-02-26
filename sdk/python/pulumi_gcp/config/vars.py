@@ -342,10 +342,6 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_bool('disableGlobalProjectWarning') or (_utilities.get_env_bool('PULUMI_GCP_DISABLE_GLOBAL_PROJECT_WARNING') or False)
 
     @_builtins.property
-    def disable_google_partner_name(self) -> Optional[bool]:
-        return __config__.get_bool('disableGooglePartnerName')
-
-    @_builtins.property
     def discovery_engine_custom_endpoint(self) -> Optional[str]:
         return __config__.get('discoveryEngineCustomEndpoint')
 
@@ -450,12 +446,12 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('gkeonpremCustomEndpoint')
 
     @_builtins.property
-    def google_partner_name(self) -> Optional[str]:
-        return __config__.get('googlePartnerName')
-
-    @_builtins.property
     def healthcare_custom_endpoint(self) -> Optional[str]:
         return __config__.get('healthcareCustomEndpoint')
+
+    @_builtins.property
+    def hypercomputecluster_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('hypercomputeclusterCustomEndpoint')
 
     @_builtins.property
     def iam2_custom_endpoint(self) -> Optional[str]:

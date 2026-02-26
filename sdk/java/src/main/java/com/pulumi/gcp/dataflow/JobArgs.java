@@ -160,14 +160,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * One of &#34;drain&#34; or &#34;cancel&#34;.  Specifies behavior of deletion during `pulumi destroy`.  See above note.
+     * One of &#34;drain&#34; or &#34;cancel&#34;.  Specifies behavior of deletion during `terraform destroy`.  See above note.
      * 
      */
     @Import(name="onDelete")
     private @Nullable Output<String> onDelete;
 
     /**
-     * @return One of &#34;drain&#34; or &#34;cancel&#34;.  Specifies behavior of deletion during `pulumi destroy`.  See above note.
+     * @return One of &#34;drain&#34; or &#34;cancel&#34;.  Specifies behavior of deletion during `terraform destroy`.  See above note.
      * 
      */
     public Optional<Output<String>> onDelete() {
@@ -239,14 +239,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+     * If set to `true`, terraform will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from terraform state and move on.  See above note.
      * 
      */
     @Import(name="skipWaitOnJobTermination")
     private @Nullable Output<Boolean> skipWaitOnJobTermination;
 
     /**
-     * @return If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+     * @return If set to `true`, terraform will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from terraform state and move on.  See above note.
      * 
      */
     public Optional<Output<Boolean>> skipWaitOnJobTermination() {
@@ -579,7 +579,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param onDelete One of &#34;drain&#34; or &#34;cancel&#34;.  Specifies behavior of deletion during `pulumi destroy`.  See above note.
+         * @param onDelete One of &#34;drain&#34; or &#34;cancel&#34;.  Specifies behavior of deletion during `terraform destroy`.  See above note.
          * 
          * @return builder
          * 
@@ -590,7 +590,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param onDelete One of &#34;drain&#34; or &#34;cancel&#34;.  Specifies behavior of deletion during `pulumi destroy`.  See above note.
+         * @param onDelete One of &#34;drain&#34; or &#34;cancel&#34;.  Specifies behavior of deletion during `terraform destroy`.  See above note.
          * 
          * @return builder
          * 
@@ -688,7 +688,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipWaitOnJobTermination If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+         * @param skipWaitOnJobTermination If set to `true`, terraform will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from terraform state and move on.  See above note.
          * 
          * @return builder
          * 
@@ -699,7 +699,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipWaitOnJobTermination If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+         * @param skipWaitOnJobTermination If set to `true`, terraform will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from terraform state and move on.  See above note.
          * 
          * @return builder
          * 

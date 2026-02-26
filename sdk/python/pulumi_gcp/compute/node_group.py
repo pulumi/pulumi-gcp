@@ -34,6 +34,7 @@ class NodeGroupArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NodeGroup resource.
+
         :param pulumi.Input[_builtins.str] node_template: The URL of the node template to which this node group belongs.
         :param pulumi.Input['NodeGroupAutoscalingPolicyArgs'] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
@@ -240,6 +241,7 @@ class _NodeGroupState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NodeGroup resources.
+
         :param pulumi.Input['NodeGroupAutoscalingPolicyArgs'] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
                One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
@@ -500,11 +502,6 @@ class NodeGroup(pulumi.CustomResource):
         * How-to Guides
             * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
-        > **Warning:** Due to limitations of the API, this provider cannot update the
-        number of nodes in a node group and changes to node group size either
-        through provider config or through external changes will cause
-        the provider to delete and recreate the node group.
-
         ## Example Usage
 
         ### Node Group Basic
@@ -519,8 +516,8 @@ class NodeGroup(pulumi.CustomResource):
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
             name="soletenant-group",
-            zone="us-central1-a",
-            description="example google_compute_node_group for the Google Provider",
+            zone="us-central1-f",
+            description="example google_compute_node_group for Terraform Google Provider",
             initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
@@ -554,8 +551,8 @@ class NodeGroup(pulumi.CustomResource):
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
             name="soletenant-group",
-            zone="us-central1-a",
-            description="example google_compute_node_group for Google Provider",
+            zone="us-central1-f",
+            description="example google_compute_node_group for Terraform Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
             maintenance_window={
                 "start_time": "08:00",
@@ -615,6 +612,7 @@ class NodeGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{zone}}/{{name}}
         $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -655,11 +653,6 @@ class NodeGroup(pulumi.CustomResource):
         * How-to Guides
             * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
-        > **Warning:** Due to limitations of the API, this provider cannot update the
-        number of nodes in a node group and changes to node group size either
-        through provider config or through external changes will cause
-        the provider to delete and recreate the node group.
-
         ## Example Usage
 
         ### Node Group Basic
@@ -674,8 +667,8 @@ class NodeGroup(pulumi.CustomResource):
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
             name="soletenant-group",
-            zone="us-central1-a",
-            description="example google_compute_node_group for the Google Provider",
+            zone="us-central1-f",
+            description="example google_compute_node_group for Terraform Google Provider",
             initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
@@ -709,8 +702,8 @@ class NodeGroup(pulumi.CustomResource):
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
             name="soletenant-group",
-            zone="us-central1-a",
-            description="example google_compute_node_group for Google Provider",
+            zone="us-central1-f",
+            description="example google_compute_node_group for Terraform Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
             maintenance_window={
                 "start_time": "08:00",
@@ -770,6 +763,7 @@ class NodeGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{zone}}/{{name}}
         $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodeGroupArgs args: The arguments to use to populate this resource's properties.

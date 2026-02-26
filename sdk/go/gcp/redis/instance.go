@@ -86,7 +86,7 @@ import (
 //				AlternativeLocationId: pulumi.String("us-central1-f"),
 //				AuthorizedNetwork:     pulumi.String(redis_network.Id),
 //				RedisVersion:          pulumi.String("REDIS_7_2"),
-//				DisplayName:           pulumi.String("Test Instance"),
+//				DisplayName:           pulumi.String("Terraform Test Instance"),
 //				ReservedIpRange:       pulumi.String("192.168.0.0/29"),
 //				Labels: pulumi.StringMap{
 //					"my_key":    pulumi.String("my_val"),
@@ -206,7 +206,7 @@ import (
 //				AuthorizedNetwork:     redis_network.ID(),
 //				ConnectMode:           pulumi.String("PRIVATE_SERVICE_ACCESS"),
 //				RedisVersion:          pulumi.String("REDIS_7_2"),
-//				DisplayName:           pulumi.String("Test Instance"),
+//				DisplayName:           pulumi.String("Terraform Test Instance"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				privateServiceConnection,
 //			}))

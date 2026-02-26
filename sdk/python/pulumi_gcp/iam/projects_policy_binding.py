@@ -32,6 +32,7 @@ class ProjectsPolicyBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectsPolicyBinding resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the Policy Binding
         :param pulumi.Input[_builtins.str] policy: Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
         :param pulumi.Input[_builtins.str] policy_binding_id: The Policy Binding ID.
@@ -247,6 +248,7 @@ class _ProjectsPolicyBindingState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectsPolicyBinding resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -621,6 +623,7 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
         $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default {{location}}/{{policy_binding_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
@@ -723,6 +726,7 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
         $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default {{project}}/{{location}}/{{policy_binding_id}}
         $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default {{location}}/{{policy_binding_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectsPolicyBindingArgs args: The arguments to use to populate this resource's properties.

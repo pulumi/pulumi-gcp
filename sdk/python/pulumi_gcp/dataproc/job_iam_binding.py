@@ -29,6 +29,7 @@ class JobIAMBindingArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a JobIAMBinding resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -43,9 +44,9 @@ class JobIAMBindingArgs:
                
                `dataproc.JobIAMPolicy` only:
         :param pulumi.Input[_builtins.str] project: The project in which the job belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] region: The region in which the job belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         """
         pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "members", members)
@@ -115,7 +116,7 @@ class JobIAMBindingArgs:
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The project in which the job belongs. If it
-        is not provided, the provider will use a default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "project")
 
@@ -128,7 +129,7 @@ class JobIAMBindingArgs:
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The region in which the job belongs. If it
-        is not provided, the provider will use a default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "region")
 
@@ -149,6 +150,7 @@ class _JobIAMBindingState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering JobIAMBinding resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the jobs's IAM policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -159,9 +161,9 @@ class _JobIAMBindingState:
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[_builtins.str] project: The project in which the job belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] region: The region in which the job belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -237,7 +239,7 @@ class _JobIAMBindingState:
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The project in which the job belongs. If it
-        is not provided, the provider will use a default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "project")
 
@@ -250,7 +252,7 @@ class _JobIAMBindingState:
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The region in which the job belongs. If it
-        is not provided, the provider will use a default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "region")
 
@@ -386,6 +388,7 @@ class JobIAMBinding(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
@@ -397,9 +400,9 @@ class JobIAMBinding(pulumi.CustomResource):
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[_builtins.str] project: The project in which the job belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] region: The region in which the job belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -510,6 +513,7 @@ class JobIAMBinding(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
+
         :param str resource_name: The name of the resource.
         :param JobIAMBindingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -587,9 +591,9 @@ class JobIAMBinding(pulumi.CustomResource):
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[_builtins.str] project: The project in which the job belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] region: The region in which the job belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -647,7 +651,7 @@ class JobIAMBinding(pulumi.CustomResource):
     def project(self) -> pulumi.Output[_builtins.str]:
         """
         The project in which the job belongs. If it
-        is not provided, the provider will use a default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "project")
 
@@ -656,7 +660,7 @@ class JobIAMBinding(pulumi.CustomResource):
     def region(self) -> pulumi.Output[_builtins.str]:
         """
         The region in which the job belongs. If it
-        is not provided, the provider will use a default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "region")
 

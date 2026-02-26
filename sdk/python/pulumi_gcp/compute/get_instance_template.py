@@ -310,7 +310,7 @@ class GetInstanceTemplateResult:
     def name(self) -> Optional[_builtins.str]:
         """
         The name of the instance template. If you leave
-        this blank, the provider will auto-generate a unique name.
+        this blank, Terraform will auto-generate a unique name.
         """
         return pulumi.get(self, "name")
 

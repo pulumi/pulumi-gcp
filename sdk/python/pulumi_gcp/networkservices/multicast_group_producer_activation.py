@@ -30,6 +30,7 @@ class MulticastGroupProducerActivationArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MulticastGroupProducerActivation resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] multicast_group_producer_activation_id: A unique name for the multicast group producer activation.
                The name is restricted to letters, numbers, and hyphen, with the first
@@ -177,6 +178,7 @@ class _MulticastGroupProducerActivationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MulticastGroupProducerActivation resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the multicast group producer activation was created.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast group producer activation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -537,6 +539,7 @@ class MulticastGroupProducerActivation(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/multicastGroupProducerActivation:MulticastGroupProducerActivation default {{location}}/{{multicast_group_producer_activation_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast group producer activation.
@@ -641,6 +644,7 @@ class MulticastGroupProducerActivation(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/multicastGroupProducerActivation:MulticastGroupProducerActivation default {{project}}/{{location}}/{{multicast_group_producer_activation_id}}
         $ pulumi import gcp:networkservices/multicastGroupProducerActivation:MulticastGroupProducerActivation default {{location}}/{{multicast_group_producer_activation_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MulticastGroupProducerActivationArgs args: The arguments to use to populate this resource's properties.

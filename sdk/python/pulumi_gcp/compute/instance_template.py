@@ -51,6 +51,7 @@ class InstanceTemplateArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a InstanceTemplate resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
                documented below.
@@ -87,7 +88,7 @@ class InstanceTemplateArgs:
         :param pulumi.Input[_builtins.str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
         :param pulumi.Input[_builtins.str] name: The name of the instance template. If you leave
-               this blank, the provider will auto-generate a unique name.
+               this blank, Terraform will auto-generate a unique name.
         :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name beginning with the specified
                prefix. Conflicts with `name`. Max length is 54 characters.
                Prefixes with lengths longer than 37 characters will use a shortened
@@ -375,7 +376,7 @@ class InstanceTemplateArgs:
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The name of the instance template. If you leave
-        this blank, the provider will auto-generate a unique name.
+        this blank, Terraform will auto-generate a unique name.
         """
         return pulumi.get(self, "name")
 
@@ -605,6 +606,7 @@ class _InstanceTemplateState:
                  tags_fingerprint: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceTemplate resources.
+
         :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
@@ -644,7 +646,7 @@ class _InstanceTemplateState:
         :param pulumi.Input[_builtins.str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
         :param pulumi.Input[_builtins.str] name: The name of the instance template. If you leave
-               this blank, the provider will auto-generate a unique name.
+               this blank, Terraform will auto-generate a unique name.
         :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name beginning with the specified
                prefix. Conflicts with `name`. Max length is 54 characters.
                Prefixes with lengths longer than 37 characters will use a shortened
@@ -992,7 +994,7 @@ class _InstanceTemplateState:
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The name of the instance template. If you leave
-        this blank, the provider will auto-generate a unique name.
+        this blank, Terraform will auto-generate a unique name.
         """
         return pulumi.get(self, "name")
 
@@ -1468,17 +1470,17 @@ class InstanceTemplate(pulumi.CustomResource):
 
         A common way to use instance templates and managed instance groups is to deploy the
         latest image in a family, usually the latest build of your application. There are two
-        ways to do this in the provider, and they have their pros and cons. The difference ends
+        ways to do this in Terraform, and they have their pros and cons. The difference ends
         up being in how "latest" is interpreted. You can either deploy the latest image available
-        when the provider runs, or you can have each instance check what the latest image is when
+        when Terraform runs, or you can have each instance check what the latest image is when
         it's being created, either as part of a scaling event or being rebuilt by the instance
         group manager.
 
-        If you're not sure, we recommend deploying the latest image available when the provider runs,
+        If you're not sure, we recommend deploying the latest image available when Terraform runs,
         because this means all the instances in your group will be based on the same image, always,
         and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
         You can achieve this by using the `compute.Image`
-        data source, which will retrieve the latest image on every `pulumi apply`, and will update
+        data source, which will retrieve the latest image on every `pulumi up`, and will update
         the template to use that specific image:
 
         ```python
@@ -1529,6 +1531,7 @@ class InstanceTemplate(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceTemplateAdvancedMachineFeaturesArgs', 'InstanceTemplateAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
@@ -1567,7 +1570,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
         :param pulumi.Input[_builtins.str] name: The name of the instance template. If you leave
-               this blank, the provider will auto-generate a unique name.
+               this blank, Terraform will auto-generate a unique name.
         :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name beginning with the specified
                prefix. Conflicts with `name`. Max length is 54 characters.
                Prefixes with lengths longer than 37 characters will use a shortened
@@ -1803,17 +1806,17 @@ class InstanceTemplate(pulumi.CustomResource):
 
         A common way to use instance templates and managed instance groups is to deploy the
         latest image in a family, usually the latest build of your application. There are two
-        ways to do this in the provider, and they have their pros and cons. The difference ends
+        ways to do this in Terraform, and they have their pros and cons. The difference ends
         up being in how "latest" is interpreted. You can either deploy the latest image available
-        when the provider runs, or you can have each instance check what the latest image is when
+        when Terraform runs, or you can have each instance check what the latest image is when
         it's being created, either as part of a scaling event or being rebuilt by the instance
         group manager.
 
-        If you're not sure, we recommend deploying the latest image available when the provider runs,
+        If you're not sure, we recommend deploying the latest image available when Terraform runs,
         because this means all the instances in your group will be based on the same image, always,
         and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
         You can achieve this by using the `compute.Image`
-        data source, which will retrieve the latest image on every `pulumi apply`, and will update
+        data source, which will retrieve the latest image on every `pulumi up`, and will update
         the template to use that specific image:
 
         ```python
@@ -1863,6 +1866,7 @@ class InstanceTemplate(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceTemplateArgs args: The arguments to use to populate this resource's properties.
@@ -2050,7 +2054,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
         :param pulumi.Input[_builtins.str] name: The name of the instance template. If you leave
-               this blank, the provider will auto-generate a unique name.
+               this blank, Terraform will auto-generate a unique name.
         :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name beginning with the specified
                prefix. Conflicts with `name`. Max length is 54 characters.
                Prefixes with lengths longer than 37 characters will use a shortened
@@ -2299,7 +2303,7 @@ class InstanceTemplate(pulumi.CustomResource):
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the instance template. If you leave
-        this blank, the provider will auto-generate a unique name.
+        this blank, Terraform will auto-generate a unique name.
         """
         return pulumi.get(self, "name")
 

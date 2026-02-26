@@ -326,16 +326,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta)
-     * Used to enable/disable IAP for the service.
+     * Used to enable/disable IAP for the cloud-run service.
      * 
      */
     @Import(name="iapEnabled")
     private @Nullable Output<Boolean> iapEnabled;
 
     /**
-     * @return (Optional, Beta)
-     * Used to enable/disable IAP for the service.
+     * @return Used to enable/disable IAP for the cloud-run service.
      * 
      */
     public Optional<Output<Boolean>> iapEnabled() {
@@ -1223,8 +1221,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param iapEnabled (Optional, Beta)
-         * Used to enable/disable IAP for the service.
+         * @param iapEnabled Used to enable/disable IAP for the cloud-run service.
          * 
          * @return builder
          * 
@@ -1235,8 +1232,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param iapEnabled (Optional, Beta)
-         * Used to enable/disable IAP for the service.
+         * @param iapEnabled Used to enable/disable IAP for the cloud-run service.
          * 
          * @return builder
          * 

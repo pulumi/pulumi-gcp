@@ -26,9 +26,9 @@ public final class BucketEncryptionArgs extends com.pulumi.resources.ResourceArg
      * until a relevant action has occurred which triggers its creation.
      * You should use the [`gcp.storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
      * address for the service account when configuring IAM policy on the Cloud KMS key.
-     * This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+     * This data source calls an API which creates the account if required, ensuring your Terraform applies cleanly and repeatedly irrespective of the
      * state of the project.
-     * You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+     * You should take care for race conditions when the same Terraform manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
      * 
      */
     @Import(name="defaultKmsKeyName", required=true)
@@ -46,9 +46,9 @@ public final class BucketEncryptionArgs extends com.pulumi.resources.ResourceArg
      * until a relevant action has occurred which triggers its creation.
      * You should use the [`gcp.storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
      * address for the service account when configuring IAM policy on the Cloud KMS key.
-     * This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+     * This data source calls an API which creates the account if required, ensuring your Terraform applies cleanly and repeatedly irrespective of the
      * state of the project.
-     * You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+     * You should take care for race conditions when the same Terraform manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
      * 
      */
     public Output<String> defaultKmsKeyName() {
@@ -91,9 +91,9 @@ public final class BucketEncryptionArgs extends com.pulumi.resources.ResourceArg
          * until a relevant action has occurred which triggers its creation.
          * You should use the [`gcp.storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
          * address for the service account when configuring IAM policy on the Cloud KMS key.
-         * This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+         * This data source calls an API which creates the account if required, ensuring your Terraform applies cleanly and repeatedly irrespective of the
          * state of the project.
-         * You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+         * You should take care for race conditions when the same Terraform manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
          * 
          * @return builder
          * 
@@ -115,9 +115,9 @@ public final class BucketEncryptionArgs extends com.pulumi.resources.ResourceArg
          * until a relevant action has occurred which triggers its creation.
          * You should use the [`gcp.storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
          * address for the service account when configuring IAM policy on the Cloud KMS key.
-         * This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+         * This data source calls an API which creates the account if required, ensuring your Terraform applies cleanly and repeatedly irrespective of the
          * state of the project.
-         * You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+         * You should take care for race conditions when the same Terraform manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
          * 
          * @return builder
          * 

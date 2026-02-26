@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes;
+import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,14 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollec
      * 
      */
     private @Nullable PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes includeRegexes;
+    /**
+     * @return For a resource to match the tag filters, the resource must have all of the
+     * provided tags attached. Tags refer to Resource Manager tags bound to the
+     * resource or its ancestors.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags includeTags;
 
     private PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection() {}
     /**
@@ -26,6 +35,16 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollec
      */
     public Optional<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes> includeRegexes() {
         return Optional.ofNullable(this.includeRegexes);
+    }
+    /**
+     * @return For a resource to match the tag filters, the resource must have all of the
+     * provided tags attached. Tags refer to Resource Manager tags bound to the
+     * resource or its ancestors.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags> includeTags() {
+        return Optional.ofNullable(this.includeTags);
     }
 
     public static Builder builder() {
@@ -38,10 +57,12 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollec
     @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes includeRegexes;
+        private @Nullable PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags includeTags;
         public Builder() {}
         public Builder(PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.includeRegexes = defaults.includeRegexes;
+    	      this.includeTags = defaults.includeTags;
         }
 
         @CustomType.Setter
@@ -50,9 +71,16 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollec
             this.includeRegexes = includeRegexes;
             return this;
         }
+        @CustomType.Setter
+        public Builder includeTags(@Nullable PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags includeTags) {
+
+            this.includeTags = includeTags;
+            return this;
+        }
         public PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection build() {
             final var _resultValue = new PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection();
             _resultValue.includeRegexes = includeRegexes;
+            _resultValue.includeTags = includeTags;
             return _resultValue;
         }
     }

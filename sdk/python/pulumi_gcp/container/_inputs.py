@@ -8915,6 +8915,10 @@ class ClusterNodeConfigArgsDict(TypedDict):
     """
     List of the type and count of accelerator cards attached to the instance.
     Structure documented below.
+    **Note**: As of 6.0.0, argument syntax
+    is no longer supported for this field in favor of block syntax.
+    To dynamically set a list of guest accelerators, use dynamic blocks.
+    To set an empty list, use a single `guest_accelerator` block with `count = 0`.
     """
     gvnic: NotRequired[pulumi.Input['ClusterNodeConfigGvnicArgsDict']]
     """
@@ -8991,7 +8995,7 @@ class ClusterNodeConfigArgsDict(TypedDict):
     The metadata key/value pairs assigned to instances in
     the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
     `true` by the API; if `metadata` is set but that default value is not
-    included, the provider will attempt to unset the value. To avoid this, set the
+    included, Terraform will attempt to unset the value. To avoid this, set the
     value in your config.
     """
     min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
@@ -9072,14 +9076,13 @@ class ClusterNodeConfigArgsDict(TypedDict):
     """
     taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgsDict']]]]
     """
-    A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-    to apply to nodes. GKE's API can only set this field on cluster creation.
-    However, GKE will add taints to your nodes if you enable certain features such
-    as GPUs. If this field is set, any diffs on this field will cause the provider to
-    recreate the underlying resource. Taint values can be updated safely in
-    Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-    this field to manage taints. If you do, `lifecycle.ignore_changes` is
-    recommended. Structure is documented below.
+    A list of
+    [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+    to apply to nodes. This field will only report drift on taint keys that are
+    already managed with Terraform, use `effective_taints` to view the list of
+    GKE-managed taints on the node pool from all sources. Importing this resource
+    will not record any taints as being Terraform-managed, and will cause drift with
+    any configured taints. Structure is documented below.
     """
     windows_node_config: NotRequired[pulumi.Input['ClusterNodeConfigWindowsNodeConfigArgsDict']]
     """
@@ -9169,6 +9172,10 @@ class ClusterNodeConfigArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
+               **Note**: As of 6.0.0, argument syntax
+               is no longer supported for this field in favor of block syntax.
+               To dynamically set a list of guest accelerators, use dynamic blocks.
+               To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         :param pulumi.Input['ClusterNodeConfigGvnicArgs'] gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
                Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
@@ -9206,7 +9213,7 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: The metadata key/value pairs assigned to instances in
                the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
                `true` by the API; if `metadata` is set but that default value is not
-               included, the provider will attempt to unset the value. To avoid this, set the
+               included, Terraform will attempt to unset the value. To avoid this, set the
                value in your config.
         :param pulumi.Input[_builtins.str] min_cpu_platform: Minimum CPU platform to be used by this instance.
                The instance may be scheduled on the specified or newer CPU platform. Applicable
@@ -9239,14 +9246,13 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-               to apply to nodes. GKE's API can only set this field on cluster creation.
-               However, GKE will add taints to your nodes if you enable certain features such
-               as GPUs. If this field is set, any diffs on this field will cause the provider to
-               recreate the underlying resource. Taint values can be updated safely in
-               Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-               this field to manage taints. If you do, `lifecycle.ignore_changes` is
-               recommended. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]] taints: A list of
+               [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+               to apply to nodes. This field will only report drift on taint keys that are
+               already managed with Terraform, use `effective_taints` to view the list of
+               GKE-managed taints on the node pool from all sources. Importing this resource
+               will not record any taints as being Terraform-managed, and will cause drift with
+               any configured taints. Structure is documented below.
         :param pulumi.Input['ClusterNodeConfigWindowsNodeConfigArgs'] windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
         :param pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArgs'] workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
@@ -9530,6 +9536,10 @@ class ClusterNodeConfigArgs:
         """
         List of the type and count of accelerator cards attached to the instance.
         Structure documented below.
+        **Note**: As of 6.0.0, argument syntax
+        is no longer supported for this field in favor of block syntax.
+        To dynamically set a list of guest accelerators, use dynamic blocks.
+        To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         """
         return pulumi.get(self, "guest_accelerators")
 
@@ -9710,7 +9720,7 @@ class ClusterNodeConfigArgs:
         The metadata key/value pairs assigned to instances in
         the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
         `true` by the API; if `metadata` is set but that default value is not
-        included, the provider will attempt to unset the value. To avoid this, set the
+        included, Terraform will attempt to unset the value. To avoid this, set the
         value in your config.
         """
         return pulumi.get(self, "metadata")
@@ -9919,14 +9929,13 @@ class ClusterNodeConfigArgs:
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]]]:
         """
-        A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-        to apply to nodes. GKE's API can only set this field on cluster creation.
-        However, GKE will add taints to your nodes if you enable certain features such
-        as GPUs. If this field is set, any diffs on this field will cause the provider to
-        recreate the underlying resource. Taint values can be updated safely in
-        Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-        this field to manage taints. If you do, `lifecycle.ignore_changes` is
-        recommended. Structure is documented below.
+        A list of
+        [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+        to apply to nodes. This field will only report drift on taint keys that are
+        already managed with Terraform, use `effective_taints` to view the list of
+        GKE-managed taints on the node pool from all sources. Importing this resource
+        will not record any taints as being Terraform-managed, and will cause drift with
+        any configured taints. Structure is documented below.
         """
         return pulumi.get(self, "taints")
 
@@ -12883,7 +12892,7 @@ class ClusterNodeConfigWorkloadMetadataConfigArgsDict(TypedDict):
     """
     How to expose the node metadata to the workload running on the node.
     Accepted values are:
-    * UNSPECIFIED: Not Set
+    * MODE_UNSPECIFIED: Not Set
     * GCE_METADATA: Expose all Compute Engine metadata to pods.
     * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
     """
@@ -12895,7 +12904,7 @@ class ClusterNodeConfigWorkloadMetadataConfigArgs:
         """
         :param pulumi.Input[_builtins.str] mode: How to expose the node metadata to the workload running on the node.
                Accepted values are:
-               * UNSPECIFIED: Not Set
+               * MODE_UNSPECIFIED: Not Set
                * GCE_METADATA: Expose all Compute Engine metadata to pods.
                * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
         """
@@ -12907,7 +12916,7 @@ class ClusterNodeConfigWorkloadMetadataConfigArgs:
         """
         How to expose the node metadata to the workload running on the node.
         Accepted values are:
-        * UNSPECIFIED: Not Set
+        * MODE_UNSPECIFIED: Not Set
         * GCE_METADATA: Expose all Compute Engine metadata to pods.
         * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
         """
@@ -12961,16 +12970,15 @@ class ClusterNodePoolArgsDict(TypedDict):
     """
     network_config: NotRequired[pulumi.Input['ClusterNodePoolNetworkConfigArgsDict']]
     """
-    Configuration for
-    [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+    Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
     """
     node_config: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigArgsDict']]
     """
     Parameters used in creating the default node pool.
     Generally, this field should not be used at the same time as a
     `container.NodePool` or a `node_pool` block; this configuration
-    manages the default node pool, which isn't recommended to be used.
-    Structure is documented below.
+    manages the default node pool, which isn't recommended to be used with
+    Terraform. Structure is documented below.
     """
     node_count: NotRequired[pulumi.Input[_builtins.int]]
     """
@@ -13048,13 +13056,12 @@ class ClusterNodePoolArgs:
                
                - - -
         :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
-        :param pulumi.Input['ClusterNodePoolNetworkConfigArgs'] network_config: Configuration for
-               [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+        :param pulumi.Input['ClusterNodePoolNetworkConfigArgs'] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input['ClusterNodePoolNodeConfigArgs'] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
-               manages the default node pool, which isn't recommended to be used.
-               Structure is documented below.
+               manages the default node pool, which isn't recommended to be used with
+               Terraform. Structure is documented below.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeDrainConfigArgs']]] node_drain_configs: Node drain configuration for this NodePool.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the cluster's nodes
@@ -13216,8 +13223,7 @@ class ClusterNodePoolArgs:
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> Optional[pulumi.Input['ClusterNodePoolNetworkConfigArgs']]:
         """
-        Configuration for
-        [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+        Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         """
         return pulumi.get(self, "network_config")
 
@@ -13232,8 +13238,8 @@ class ClusterNodePoolArgs:
         Parameters used in creating the default node pool.
         Generally, this field should not be used at the same time as a
         `container.NodePool` or a `node_pool` block; this configuration
-        manages the default node pool, which isn't recommended to be used.
-        Structure is documented below.
+        manages the default node pool, which isn't recommended to be used with
+        Terraform. Structure is documented below.
         """
         return pulumi.get(self, "node_config")
 
@@ -14973,6 +14979,10 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     """
     List of the type and count of accelerator cards attached to the instance.
     Structure documented below.
+    **Note**: As of 6.0.0, argument syntax
+    is no longer supported for this field in favor of block syntax.
+    To dynamically set a list of guest accelerators, use dynamic blocks.
+    To set an empty list, use a single `guest_accelerator` block with `count = 0`.
     """
     gvnic: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigGvnicArgsDict']]
     """
@@ -15049,7 +15059,7 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     The metadata key/value pairs assigned to instances in
     the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
     `true` by the API; if `metadata` is set but that default value is not
-    included, the provider will attempt to unset the value. To avoid this, set the
+    included, Terraform will attempt to unset the value. To avoid this, set the
     value in your config.
     """
     min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
@@ -15130,14 +15140,13 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     """
     taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgsDict']]]]
     """
-    A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-    to apply to nodes. GKE's API can only set this field on cluster creation.
-    However, GKE will add taints to your nodes if you enable certain features such
-    as GPUs. If this field is set, any diffs on this field will cause the provider to
-    recreate the underlying resource. Taint values can be updated safely in
-    Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-    this field to manage taints. If you do, `lifecycle.ignore_changes` is
-    recommended. Structure is documented below.
+    A list of
+    [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+    to apply to nodes. This field will only report drift on taint keys that are
+    already managed with Terraform, use `effective_taints` to view the list of
+    GKE-managed taints on the node pool from all sources. Importing this resource
+    will not record any taints as being Terraform-managed, and will cause drift with
+    any configured taints. Structure is documented below.
     """
     windows_node_config: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigWindowsNodeConfigArgsDict']]
     """
@@ -15227,6 +15236,10 @@ class ClusterNodePoolNodeConfigArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
+               **Note**: As of 6.0.0, argument syntax
+               is no longer supported for this field in favor of block syntax.
+               To dynamically set a list of guest accelerators, use dynamic blocks.
+               To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         :param pulumi.Input['ClusterNodePoolNodeConfigGvnicArgs'] gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
                Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
@@ -15264,7 +15277,7 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: The metadata key/value pairs assigned to instances in
                the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
                `true` by the API; if `metadata` is set but that default value is not
-               included, the provider will attempt to unset the value. To avoid this, set the
+               included, Terraform will attempt to unset the value. To avoid this, set the
                value in your config.
         :param pulumi.Input[_builtins.str] min_cpu_platform: Minimum CPU platform to be used by this instance.
                The instance may be scheduled on the specified or newer CPU platform. Applicable
@@ -15297,14 +15310,13 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-               to apply to nodes. GKE's API can only set this field on cluster creation.
-               However, GKE will add taints to your nodes if you enable certain features such
-               as GPUs. If this field is set, any diffs on this field will cause the provider to
-               recreate the underlying resource. Taint values can be updated safely in
-               Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-               this field to manage taints. If you do, `lifecycle.ignore_changes` is
-               recommended. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]] taints: A list of
+               [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+               to apply to nodes. This field will only report drift on taint keys that are
+               already managed with Terraform, use `effective_taints` to view the list of
+               GKE-managed taints on the node pool from all sources. Importing this resource
+               will not record any taints as being Terraform-managed, and will cause drift with
+               any configured taints. Structure is documented below.
         :param pulumi.Input['ClusterNodePoolNodeConfigWindowsNodeConfigArgs'] windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
         :param pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs'] workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
@@ -15588,6 +15600,10 @@ class ClusterNodePoolNodeConfigArgs:
         """
         List of the type and count of accelerator cards attached to the instance.
         Structure documented below.
+        **Note**: As of 6.0.0, argument syntax
+        is no longer supported for this field in favor of block syntax.
+        To dynamically set a list of guest accelerators, use dynamic blocks.
+        To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         """
         return pulumi.get(self, "guest_accelerators")
 
@@ -15768,7 +15784,7 @@ class ClusterNodePoolNodeConfigArgs:
         The metadata key/value pairs assigned to instances in
         the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
         `true` by the API; if `metadata` is set but that default value is not
-        included, the provider will attempt to unset the value. To avoid this, set the
+        included, Terraform will attempt to unset the value. To avoid this, set the
         value in your config.
         """
         return pulumi.get(self, "metadata")
@@ -15977,14 +15993,13 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]]]:
         """
-        A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-        to apply to nodes. GKE's API can only set this field on cluster creation.
-        However, GKE will add taints to your nodes if you enable certain features such
-        as GPUs. If this field is set, any diffs on this field will cause the provider to
-        recreate the underlying resource. Taint values can be updated safely in
-        Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-        this field to manage taints. If you do, `lifecycle.ignore_changes` is
-        recommended. Structure is documented below.
+        A list of
+        [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+        to apply to nodes. This field will only report drift on taint keys that are
+        already managed with Terraform, use `effective_taints` to view the list of
+        GKE-managed taints on the node pool from all sources. Importing this resource
+        will not record any taints as being Terraform-managed, and will cause drift with
+        any configured taints. Structure is documented below.
         """
         return pulumi.get(self, "taints")
 
@@ -18941,7 +18956,7 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfigArgsDict(TypedDict):
     """
     How to expose the node metadata to the workload running on the node.
     Accepted values are:
-    * UNSPECIFIED: Not Set
+    * MODE_UNSPECIFIED: Not Set
     * GCE_METADATA: Expose all Compute Engine metadata to pods.
     * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
     """
@@ -18953,7 +18968,7 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs:
         """
         :param pulumi.Input[_builtins.str] mode: How to expose the node metadata to the workload running on the node.
                Accepted values are:
-               * UNSPECIFIED: Not Set
+               * MODE_UNSPECIFIED: Not Set
                * GCE_METADATA: Expose all Compute Engine metadata to pods.
                * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
         """
@@ -18965,7 +18980,7 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs:
         """
         How to expose the node metadata to the workload running on the node.
         Accepted values are:
-        * UNSPECIFIED: Not Set
+        * MODE_UNSPECIFIED: Not Set
         * GCE_METADATA: Expose all Compute Engine metadata to pods.
         * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
         """
@@ -19573,7 +19588,7 @@ class ClusterPrivateClusterConfigArgsDict(TypedDict):
     master_global_access_config: NotRequired[pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArgsDict']]
     """
     Controls cluster master global
-    access settings. If unset, the provider will no longer manage this field and will
+    access settings. If unset, Terraform will no longer manage this field and will
     not modify the previously-set value. Structure is documented below.
     """
     master_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
@@ -19628,7 +19643,7 @@ class ClusterPrivateClusterConfigArgs:
                have RFC 1918 private addresses and communicate with the master's private
                endpoint via private networking.
         :param pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs'] master_global_access_config: Controls cluster master global
-               access settings. If unset, the provider will no longer manage this field and will
+               access settings. If unset, Terraform will no longer manage this field and will
                not modify the previously-set value. Structure is documented below.
         :param pulumi.Input[_builtins.str] master_ipv4_cidr_block: The IP range in CIDR notation to use for
                the hosted master network. This range will be used for assigning private IP
@@ -19698,7 +19713,7 @@ class ClusterPrivateClusterConfigArgs:
     def master_global_access_config(self) -> Optional[pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs']]:
         """
         Controls cluster master global
-        access settings. If unset, the provider will no longer manage this field and will
+        access settings. If unset, Terraform will no longer manage this field and will
         not modify the previously-set value. Structure is documented below.
         """
         return pulumi.get(self, "master_global_access_config")

@@ -44,21 +44,24 @@ import javax.annotation.Nullable;
  *   of Airflow, bugfixes, and security updates. We recommend using
  *   Cloud Composer 2 or Cloud Composer 3 instead.
  * 
- * We **STRONGLY** recommend you read the [GCP
- * guides](https://cloud.google.com/composer/docs/how-to) as the Environment resource requires a long
- * deployment process and involves several layers of GCP infrastructure, including a Kubernetes Engine
- * cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API, Pulumi
- * will not be able to find or manage many of these underlying resources automatically. In particular:
- * * Creating or updating an environment resource can take up to one hour. In addition, GCP may only
- *   detect some errors in the configuration when they are used (e.g., ~40-50 minutes into the creation
- *   process), and is prone to limited error reporting. If you encounter confusing or uninformative
- *   errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs
- *   against the provider.
- * * **Environments create Google Cloud Storage buckets that are not automatically cleaned up** on environment deletion. [More about Composer&#39;s use of Cloud
- *   Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
- * * Please review the [known
- *   issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having
- *   problems.***
+ * Several special considerations apply to managing Cloud Composer environments
+ * with Terraform:
+ * 
+ * * The Environment resource is based on several layers of GCP infrastructure.
+ *     Terraform does not manage these underlying resources. For example, in Cloud
+ *     Composer 2, this includes a Kubernetes Engine cluster, Cloud Storage, and
+ *     Compute networking resources.
+ * * Creating or updating an environment usually takes around 25 minutes.
+ * * In some cases errors in the configuration will be detected and reported only
+ *     during the process of the environment creation. If you encounter such
+ *     errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs for the Terraform provider.
+ * * **Environments have Google Cloud Storage buckets that are not automatically
+ *     deleted** with the environment.
+ *     See [Delete environments](https://cloud.google.com/composer/docs/composer-2/delete-environments)
+ *     for more information.
+ * * Please refer to
+ *     [Troubleshooting pages](https://cloud.devsite.corp.google.com/composer/docs/composer-2/troubleshooting-environment-creation) if you encounter
+ *     problems.
  * 
  * ## Example Usage
  * 

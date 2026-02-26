@@ -69,6 +69,7 @@ type LookupSecurityGatewayResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                   string                                  `pulumi:"id"`
 	Location             string                                  `pulumi:"location"`
+	Loggings             []GetSecurityGatewayLogging             `pulumi:"loggings"`
 	Name                 string                                  `pulumi:"name"`
 	Project              *string                                 `pulumi:"project"`
 	ProxyProtocolConfigs []GetSecurityGatewayProxyProtocolConfig `pulumi:"proxyProtocolConfigs"`
@@ -144,6 +145,10 @@ func (o LookupSecurityGatewayResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupSecurityGatewayResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityGatewayResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupSecurityGatewayResultOutput) Loggings() GetSecurityGatewayLoggingArrayOutput {
+	return o.ApplyT(func(v LookupSecurityGatewayResult) []GetSecurityGatewayLogging { return v.Loggings }).(GetSecurityGatewayLoggingArrayOutput)
 }
 
 func (o LookupSecurityGatewayResultOutput) Name() pulumi.StringOutput {

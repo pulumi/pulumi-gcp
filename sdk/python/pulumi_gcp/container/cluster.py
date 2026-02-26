@@ -105,6 +105,7 @@ class ClusterArgs:
                  workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input['ClusterAddonsConfigArgs'] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
@@ -217,7 +218,8 @@ class ClusterArgs:
                If unset, the cluster's version will be set by GKE to the version of the most recent
                official release (which is not necessarily the latest version).  Most users will find
                the `container_get_engine_versions` data source useful - it indicates which versions
-               are available. If you intend to specify versions manually,
+               are available, and can be use to approximate fuzzy versions in a
+               Terraform-compatible way. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
                
@@ -249,8 +251,8 @@ class ClusterArgs:
         :param pulumi.Input['ClusterNodeConfigArgs'] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
-               manages the default node pool, which isn't recommended to be used.
-               Structure is documented below.
+               manages the default node pool, which isn't recommended to be used with
+               Terraform. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
@@ -276,9 +278,9 @@ class ClusterArgs:
                or set to the same value as `min_master_version` on create. Defaults to the default
                version set by GKE which is not necessarily the latest version. This only affects
                nodes in the default node pool. While a fuzzy version can be specified, it's
-               recommended that you specify explicit versions as the provider will see spurious diffs
+               recommended that you specify explicit versions as Terraform will see spurious diffs
                when fuzzy versions are used. See the `container_get_engine_versions` data source's
-               `version_prefix` field to approximate fuzzy versions.
+               `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         :param pulumi.Input['ClusterPodAutoscalingArgs'] pod_autoscaling: Configuration for the
@@ -302,7 +304,7 @@ class ClusterArgs:
                [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
                for more details; the `container_get_engine_versions` datasource can provide
                the default version for a channel. Note that removing the `release_channel`
-               field from your config will cause the provider to stop managing your cluster's
+               field from your config will cause Terraform to stop managing your cluster's
                release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
                channel. Structure is documented below.
         :param pulumi.Input[_builtins.bool] remove_default_node_pool: If `true`, deletes the default node
@@ -1127,7 +1129,8 @@ class ClusterArgs:
         If unset, the cluster's version will be set by GKE to the version of the most recent
         official release (which is not necessarily the latest version).  Most users will find
         the `container_get_engine_versions` data source useful - it indicates which versions
-        are available. If you intend to specify versions manually,
+        are available, and can be use to approximate fuzzy versions in a
+        Terraform-compatible way. If you intend to specify versions manually,
         [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         describe the various acceptable formats for this field.
 
@@ -1247,8 +1250,8 @@ class ClusterArgs:
         Parameters used in creating the default node pool.
         Generally, this field should not be used at the same time as a
         `container.NodePool` or a `node_pool` block; this configuration
-        manages the default node pool, which isn't recommended to be used.
-        Structure is documented below.
+        manages the default node pool, which isn't recommended to be used with
+        Terraform. Structure is documented below.
         """
         return pulumi.get(self, "node_config")
 
@@ -1329,9 +1332,9 @@ class ClusterArgs:
         or set to the same value as `min_master_version` on create. Defaults to the default
         version set by GKE which is not necessarily the latest version. This only affects
         nodes in the default node pool. While a fuzzy version can be specified, it's
-        recommended that you specify explicit versions as the provider will see spurious diffs
+        recommended that you specify explicit versions as Terraform will see spurious diffs
         when fuzzy versions are used. See the `container_get_engine_versions` data source's
-        `version_prefix` field to approximate fuzzy versions.
+        `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
         To update nodes in other node pools, use the `version` attribute on the node pool.
         """
         return pulumi.get(self, "node_version")
@@ -1454,7 +1457,7 @@ class ClusterArgs:
         [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
         for more details; the `container_get_engine_versions` datasource can provide
         the default version for a channel. Note that removing the `release_channel`
-        field from your config will cause the provider to stop managing your cluster's
+        field from your config will cause Terraform to stop managing your cluster's
         release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
         channel. Structure is documented below.
         """
@@ -1734,6 +1737,7 @@ class _ClusterState:
                  workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input['ClusterAddonsConfigArgs'] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
@@ -1850,7 +1854,8 @@ class _ClusterState:
                If unset, the cluster's version will be set by GKE to the version of the most recent
                official release (which is not necessarily the latest version).  Most users will find
                the `container_get_engine_versions` data source useful - it indicates which versions
-               are available. If you intend to specify versions manually,
+               are available, and can be use to approximate fuzzy versions in a
+               Terraform-compatible way. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
                
@@ -1882,8 +1887,8 @@ class _ClusterState:
         :param pulumi.Input['ClusterNodeConfigArgs'] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
-               manages the default node pool, which isn't recommended to be used.
-               Structure is documented below.
+               manages the default node pool, which isn't recommended to be used with
+               Terraform. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
@@ -1909,9 +1914,9 @@ class _ClusterState:
                or set to the same value as `min_master_version` on create. Defaults to the default
                version set by GKE which is not necessarily the latest version. This only affects
                nodes in the default node pool. While a fuzzy version can be specified, it's
-               recommended that you specify explicit versions as the provider will see spurious diffs
+               recommended that you specify explicit versions as Terraform will see spurious diffs
                when fuzzy versions are used. See the `container_get_engine_versions` data source's
-               `version_prefix` field to approximate fuzzy versions.
+               `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         :param pulumi.Input['ClusterPodAutoscalingArgs'] pod_autoscaling: Configuration for the
@@ -1936,7 +1941,7 @@ class _ClusterState:
                [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
                for more details; the `container_get_engine_versions` datasource can provide
                the default version for a channel. Note that removing the `release_channel`
-               field from your config will cause the provider to stop managing your cluster's
+               field from your config will cause Terraform to stop managing your cluster's
                release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
                channel. Structure is documented below.
         :param pulumi.Input[_builtins.bool] remove_default_node_pool: If `true`, deletes the default node
@@ -2830,7 +2835,8 @@ class _ClusterState:
         If unset, the cluster's version will be set by GKE to the version of the most recent
         official release (which is not necessarily the latest version).  Most users will find
         the `container_get_engine_versions` data source useful - it indicates which versions
-        are available. If you intend to specify versions manually,
+        are available, and can be use to approximate fuzzy versions in a
+        Terraform-compatible way. If you intend to specify versions manually,
         [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         describe the various acceptable formats for this field.
 
@@ -2950,8 +2956,8 @@ class _ClusterState:
         Parameters used in creating the default node pool.
         Generally, this field should not be used at the same time as a
         `container.NodePool` or a `node_pool` block; this configuration
-        manages the default node pool, which isn't recommended to be used.
-        Structure is documented below.
+        manages the default node pool, which isn't recommended to be used with
+        Terraform. Structure is documented below.
         """
         return pulumi.get(self, "node_config")
 
@@ -3032,9 +3038,9 @@ class _ClusterState:
         or set to the same value as `min_master_version` on create. Defaults to the default
         version set by GKE which is not necessarily the latest version. This only affects
         nodes in the default node pool. While a fuzzy version can be specified, it's
-        recommended that you specify explicit versions as the provider will see spurious diffs
+        recommended that you specify explicit versions as Terraform will see spurious diffs
         when fuzzy versions are used. See the `container_get_engine_versions` data source's
-        `version_prefix` field to approximate fuzzy versions.
+        `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
         To update nodes in other node pools, use the `version` attribute on the node pool.
         """
         return pulumi.get(self, "node_version")
@@ -3178,7 +3184,7 @@ class _ClusterState:
         [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
         for more details; the `container_get_engine_versions` datasource can provide
         the default version for a channel. Note that removing the `release_channel`
-        field from your config will cause the provider to stop managing your cluster's
+        field from your config will cause Terraform to stop managing your cluster's
         release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
         channel. Structure is documented below.
         """
@@ -3495,6 +3501,9 @@ class Cluster(pulumi.CustomResource):
           * How-to guides
             * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
             * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
+          * Terraform guidance
+            * Using GKE with Terraform
+            * Provision a GKE Cluster (Google Cloud) Learn tutorial
 
         > On version 5.0.0+ of the provider, you must explicitly set `deletion_protection = false`
         and run `pulumi up` to write the field to state in order to destroy a cluster.
@@ -3561,20 +3570,6 @@ class Cluster(pulumi.CustomResource):
             })
         ```
 
-        ### Autopilot
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.serviceaccount.Account("default",
-            account_id="service-account-id",
-            display_name="Service Account")
-        primary = gcp.container.Cluster("primary",
-            name="marcellus-wallace",
-            location="us-central1-a",
-            enable_autopilot=True)
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -3690,7 +3685,8 @@ class Cluster(pulumi.CustomResource):
                If unset, the cluster's version will be set by GKE to the version of the most recent
                official release (which is not necessarily the latest version).  Most users will find
                the `container_get_engine_versions` data source useful - it indicates which versions
-               are available. If you intend to specify versions manually,
+               are available, and can be use to approximate fuzzy versions in a
+               Terraform-compatible way. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
                
@@ -3722,8 +3718,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
-               manages the default node pool, which isn't recommended to be used.
-               Structure is documented below.
+               manages the default node pool, which isn't recommended to be used with
+               Terraform. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
@@ -3749,9 +3745,9 @@ class Cluster(pulumi.CustomResource):
                or set to the same value as `min_master_version` on create. Defaults to the default
                version set by GKE which is not necessarily the latest version. This only affects
                nodes in the default node pool. While a fuzzy version can be specified, it's
-               recommended that you specify explicit versions as the provider will see spurious diffs
+               recommended that you specify explicit versions as Terraform will see spurious diffs
                when fuzzy versions are used. See the `container_get_engine_versions` data source's
-               `version_prefix` field to approximate fuzzy versions.
+               `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']] pod_autoscaling: Configuration for the
@@ -3775,7 +3771,7 @@ class Cluster(pulumi.CustomResource):
                [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
                for more details; the `container_get_engine_versions` datasource can provide
                the default version for a channel. Note that removing the `release_channel`
-               field from your config will cause the provider to stop managing your cluster's
+               field from your config will cause Terraform to stop managing your cluster's
                release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
                channel. Structure is documented below.
         :param pulumi.Input[_builtins.bool] remove_default_node_pool: If `true`, deletes the default node
@@ -3823,6 +3819,9 @@ class Cluster(pulumi.CustomResource):
           * How-to guides
             * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
             * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
+          * Terraform guidance
+            * Using GKE with Terraform
+            * Provision a GKE Cluster (Google Cloud) Learn tutorial
 
         > On version 5.0.0+ of the provider, you must explicitly set `deletion_protection = false`
         and run `pulumi up` to write the field to state in order to destroy a cluster.
@@ -3889,20 +3888,6 @@ class Cluster(pulumi.CustomResource):
             })
         ```
 
-        ### Autopilot
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.serviceaccount.Account("default",
-            account_id="service-account-id",
-            display_name="Service Account")
-        primary = gcp.container.Cluster("primary",
-            name="marcellus-wallace",
-            location="us-central1-a",
-            enable_autopilot=True)
-        ```
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.
@@ -4327,7 +4312,8 @@ class Cluster(pulumi.CustomResource):
                If unset, the cluster's version will be set by GKE to the version of the most recent
                official release (which is not necessarily the latest version).  Most users will find
                the `container_get_engine_versions` data source useful - it indicates which versions
-               are available. If you intend to specify versions manually,
+               are available, and can be use to approximate fuzzy versions in a
+               Terraform-compatible way. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
                
@@ -4359,8 +4345,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
-               manages the default node pool, which isn't recommended to be used.
-               Structure is documented below.
+               manages the default node pool, which isn't recommended to be used with
+               Terraform. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
@@ -4386,9 +4372,9 @@ class Cluster(pulumi.CustomResource):
                or set to the same value as `min_master_version` on create. Defaults to the default
                version set by GKE which is not necessarily the latest version. This only affects
                nodes in the default node pool. While a fuzzy version can be specified, it's
-               recommended that you specify explicit versions as the provider will see spurious diffs
+               recommended that you specify explicit versions as Terraform will see spurious diffs
                when fuzzy versions are used. See the `container_get_engine_versions` data source's
-               `version_prefix` field to approximate fuzzy versions.
+               `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']] pod_autoscaling: Configuration for the
@@ -4413,7 +4399,7 @@ class Cluster(pulumi.CustomResource):
                [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
                for more details; the `container_get_engine_versions` datasource can provide
                the default version for a channel. Note that removing the `release_channel`
-               field from your config will cause the provider to stop managing your cluster's
+               field from your config will cause Terraform to stop managing your cluster's
                release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
                channel. Structure is documented below.
         :param pulumi.Input[_builtins.bool] remove_default_node_pool: If `true`, deletes the default node
@@ -5018,7 +5004,8 @@ class Cluster(pulumi.CustomResource):
         If unset, the cluster's version will be set by GKE to the version of the most recent
         official release (which is not necessarily the latest version).  Most users will find
         the `container_get_engine_versions` data source useful - it indicates which versions
-        are available. If you intend to specify versions manually,
+        are available, and can be use to approximate fuzzy versions in a
+        Terraform-compatible way. If you intend to specify versions manually,
         [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         describe the various acceptable formats for this field.
 
@@ -5106,8 +5093,8 @@ class Cluster(pulumi.CustomResource):
         Parameters used in creating the default node pool.
         Generally, this field should not be used at the same time as a
         `container.NodePool` or a `node_pool` block; this configuration
-        manages the default node pool, which isn't recommended to be used.
-        Structure is documented below.
+        manages the default node pool, which isn't recommended to be used with
+        Terraform. Structure is documented below.
         """
         return pulumi.get(self, "node_config")
 
@@ -5168,9 +5155,9 @@ class Cluster(pulumi.CustomResource):
         or set to the same value as `min_master_version` on create. Defaults to the default
         version set by GKE which is not necessarily the latest version. This only affects
         nodes in the default node pool. While a fuzzy version can be specified, it's
-        recommended that you specify explicit versions as the provider will see spurious diffs
+        recommended that you specify explicit versions as Terraform will see spurious diffs
         when fuzzy versions are used. See the `container_get_engine_versions` data source's
-        `version_prefix` field to approximate fuzzy versions.
+        `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
         To update nodes in other node pools, use the `version` attribute on the node pool.
         """
         return pulumi.get(self, "node_version")
@@ -5270,7 +5257,7 @@ class Cluster(pulumi.CustomResource):
         [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
         for more details; the `container_get_engine_versions` datasource can provide
         the default version for a channel. Note that removing the `release_channel`
-        field from your config will cause the provider to stop managing your cluster's
+        field from your config will cause Terraform to stop managing your cluster's
         release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
         channel. Structure is documented below.
         """

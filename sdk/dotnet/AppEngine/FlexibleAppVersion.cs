@@ -243,7 +243,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<Outputs.FlexibleAppVersionEntrypoint?> Entrypoint { get; private set; } = null!;
 
         /// <summary>
-        /// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        /// Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
         /// </summary>
         [Output("envVariables")]
         public Output<ImmutableDictionary<string, string>?> EnvVariables { get; private set; } = null!;
@@ -510,7 +510,7 @@ namespace Pulumi.Gcp.AppEngine
         private InputMap<string>? _envVariables;
 
         /// <summary>
-        /// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        /// Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
         /// </summary>
         public InputMap<string> EnvVariables
         {
@@ -748,7 +748,7 @@ namespace Pulumi.Gcp.AppEngine
         private InputMap<string>? _envVariables;
 
         /// <summary>
-        /// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        /// Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
         /// </summary>
         public InputMap<string> EnvVariables
         {

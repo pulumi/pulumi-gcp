@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const rigm = new gcp.compute.RegionInstanceGroupManager("rigm", {
- *     description: "Demo test instance group manager",
+ *     description: "Terraform test instance group manager",
  *     name: "my-rigm",
  *     versions: [{
  *         name: "prod",

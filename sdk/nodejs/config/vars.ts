@@ -649,14 +649,6 @@ Object.defineProperty(exports, "disableGlobalProjectWarning", {
     enumerable: true,
 });
 
-export declare const disableGooglePartnerName: boolean | undefined;
-Object.defineProperty(exports, "disableGooglePartnerName", {
-    get() {
-        return __config.getObject<boolean>("disableGooglePartnerName");
-    },
-    enumerable: true,
-});
-
 export declare const discoveryEngineCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "discoveryEngineCustomEndpoint", {
     get() {
@@ -865,18 +857,18 @@ Object.defineProperty(exports, "gkeonpremCustomEndpoint", {
     enumerable: true,
 });
 
-export declare const googlePartnerName: string | undefined;
-Object.defineProperty(exports, "googlePartnerName", {
-    get() {
-        return __config.get("googlePartnerName");
-    },
-    enumerable: true,
-});
-
 export declare const healthcareCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "healthcareCustomEndpoint", {
     get() {
         return __config.get("healthcareCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const hypercomputeclusterCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "hypercomputeclusterCustomEndpoint", {
+    get() {
+        return __config.get("hypercomputeclusterCustomEndpoint");
     },
     enumerable: true,
 });

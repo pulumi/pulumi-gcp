@@ -58,7 +58,7 @@ export interface GetManagedZoneResult {
      */
     readonly description: string;
     /**
-     * The fully qualified DNS name of this zone, e.g. `example.io.`.
+     * The fully qualified DNS name of this zone, e.g. `terraform.io.`.
      */
     readonly dnsName: string;
     readonly id: string;

@@ -27,6 +27,7 @@ class IAMCustomRoleArgs:
                  stage: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IAMCustomRole resource.
+
         :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization in which you want to create a custom role.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
         :param pulumi.Input[_builtins.str] title: A human-readable title for the role.
@@ -134,6 +135,7 @@ class _IAMCustomRoleState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IAMCustomRole resources.
+
         :param pulumi.Input[_builtins.bool] deleted: (Optional) The current deleted state of the role.
         :param pulumi.Input[_builtins.str] description: A human-readable description for the role.
         :param pulumi.Input[_builtins.str] name: The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
@@ -285,7 +287,7 @@ class IAMCustomRole(pulumi.CustomResource):
          same name, possibly causing confusing behavior between undelete and update. 2) A deleted role is permanently deleted
          after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
          made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
-         by the provider, and new roles cannot share that name.
+         by Terraform, and new roles cannot share that name.
 
         ## Example Usage
 
@@ -314,6 +316,7 @@ class IAMCustomRole(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -343,7 +346,7 @@ class IAMCustomRole(pulumi.CustomResource):
          same name, possibly causing confusing behavior between undelete and update. 2) A deleted role is permanently deleted
          after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
          made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
-         by the provider, and new roles cannot share that name.
+         by Terraform, and new roles cannot share that name.
 
         ## Example Usage
 
@@ -372,6 +375,7 @@ class IAMCustomRole(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IAMCustomRoleArgs args: The arguments to use to populate this resource's properties.

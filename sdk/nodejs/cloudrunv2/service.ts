@@ -547,7 +547,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     deletionProtection: false,
  *     ingress: "INGRESS_TRAFFIC_ALL",
- *     launchStage: "BETA",
  *     iapEnabled: true,
  *     template: {
  *         containers: [{
@@ -726,8 +725,7 @@ export class Service extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly generation: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
-     * Used to enable/disable IAP for the service.
+     * Used to enable/disable IAP for the cloud-run service.
      */
     declare public readonly iapEnabled: pulumi.Output<boolean | undefined>;
     /**
@@ -1048,8 +1046,7 @@ export interface ServiceState {
      */
     generation?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
-     * Used to enable/disable IAP for the service.
+     * Used to enable/disable IAP for the cloud-run service.
      */
     iapEnabled?: pulumi.Input<boolean>;
     /**
@@ -1221,8 +1218,7 @@ export interface ServiceArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
-     * Used to enable/disable IAP for the service.
+     * Used to enable/disable IAP for the cloud-run service.
      */
     iapEnabled?: pulumi.Input<boolean>;
     /**

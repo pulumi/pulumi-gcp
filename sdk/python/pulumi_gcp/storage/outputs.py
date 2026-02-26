@@ -765,9 +765,9 @@ class BucketEncryption(dict):
                until a relevant action has occurred which triggers its creation.
                You should use the [`storage_get_project_service_account`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
                address for the service account when configuring IAM policy on the Cloud KMS key.
-               This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+               This data source calls an API which creates the account if required, ensuring your Terraform applies cleanly and repeatedly irrespective of the
                state of the project.
-               You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+               You should take care for race conditions when the same Terraform manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
         """
         pulumi.set(__self__, "default_kms_key_name", default_kms_key_name)
 
@@ -786,9 +786,9 @@ class BucketEncryption(dict):
         until a relevant action has occurred which triggers its creation.
         You should use the [`storage_get_project_service_account`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
         address for the service account when configuring IAM policy on the Cloud KMS key.
-        This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+        This data source calls an API which creates the account if required, ensuring your Terraform applies cleanly and repeatedly irrespective of the
         state of the project.
-        You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+        You should take care for race conditions when the same Terraform manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
         """
         return pulumi.get(self, "default_kms_key_name")
 
@@ -822,8 +822,8 @@ class BucketIAMBindingCondition(dict):
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
         :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
                
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
                consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
@@ -853,8 +853,8 @@ class BucketIAMBindingCondition(dict):
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
@@ -871,8 +871,8 @@ class BucketIAMMemberCondition(dict):
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
         :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
                
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
                consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
@@ -902,8 +902,8 @@ class BucketIAMMemberCondition(dict):
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")

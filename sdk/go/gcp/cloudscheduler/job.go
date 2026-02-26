@@ -343,7 +343,7 @@ type Job struct {
 	// a message to the provided topic
 	// Structure is documented below.
 	PubsubTarget JobPubsubTargetPtrOutput `pulumi:"pubsubTarget"`
-	// Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+	// Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// By default, if a job does not complete successfully,
 	// meaning that an acknowledgement is not received from the handler,
@@ -423,7 +423,7 @@ type jobState struct {
 	// a message to the provided topic
 	// Structure is documented below.
 	PubsubTarget *JobPubsubTarget `pulumi:"pubsubTarget"`
-	// Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+	// Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
 	Region *string `pulumi:"region"`
 	// By default, if a job does not complete successfully,
 	// meaning that an acknowledgement is not received from the handler,
@@ -474,7 +474,7 @@ type JobState struct {
 	// a message to the provided topic
 	// Structure is documented below.
 	PubsubTarget JobPubsubTargetPtrInput
-	// Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+	// Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
 	Region pulumi.StringPtrInput
 	// By default, if a job does not complete successfully,
 	// meaning that an acknowledgement is not received from the handler,
@@ -529,7 +529,7 @@ type jobArgs struct {
 	// a message to the provided topic
 	// Structure is documented below.
 	PubsubTarget *JobPubsubTarget `pulumi:"pubsubTarget"`
-	// Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+	// Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
 	Region *string `pulumi:"region"`
 	// By default, if a job does not complete successfully,
 	// meaning that an acknowledgement is not received from the handler,
@@ -579,7 +579,7 @@ type JobArgs struct {
 	// a message to the provided topic
 	// Structure is documented below.
 	PubsubTarget JobPubsubTargetPtrInput
-	// Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+	// Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
 	Region pulumi.StringPtrInput
 	// By default, if a job does not complete successfully,
 	// meaning that an acknowledgement is not received from the handler,
@@ -738,7 +738,7 @@ func (o JobOutput) PubsubTarget() JobPubsubTargetPtrOutput {
 	return o.ApplyT(func(v *Job) JobPubsubTargetPtrOutput { return v.PubsubTarget }).(JobPubsubTargetPtrOutput)
 }
 
-// Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+// Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
 func (o JobOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

@@ -85,16 +85,24 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
+     * Whether Terraform will be prevented from destroying the database. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the database,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the database will fail.
+     * When the field is set to false, deleting the database is allowed.
      * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
     /**
-     * @return Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
+     * @return Whether Terraform will be prevented from destroying the database. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the database,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the database will fail.
+     * When the field is set to false, deleting the database is allowed.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -351,8 +359,12 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-         * in state, a `destroy` or `update` that would delete the instance will fail.
+         * @param deletionProtection Whether Terraform will be prevented from destroying the database. Defaults to true.
+         * When a`terraform destroy` or `pulumi up` would delete the database,
+         * the command will fail if this field is not set to false in Terraform state.
+         * When the field is set to true or unset in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the database will fail.
+         * When the field is set to false, deleting the database is allowed.
          * 
          * @return builder
          * 
@@ -363,8 +375,12 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-         * in state, a `destroy` or `update` that would delete the instance will fail.
+         * @param deletionProtection Whether Terraform will be prevented from destroying the database. Defaults to true.
+         * When a`terraform destroy` or `pulumi up` would delete the database,
+         * the command will fail if this field is not set to false in Terraform state.
+         * When the field is set to true or unset in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the database will fail.
+         * When the field is set to false, deleting the database is allowed.
          * 
          * @return builder
          * 

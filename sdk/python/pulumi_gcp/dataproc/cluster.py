@@ -30,9 +30,18 @@ class ClusterArgs:
                  virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input['ClusterClusterConfigArgs'] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
-        :param pulumi.Input[_builtins.str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+        :param pulumi.Input[_builtins.str] graceful_decommission_timeout: Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+               Does not affect auto scaling decomissioning from an autoscaling policy.
+               Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+               Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+               Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+               [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+               Only supported on Dataproc image versions 1.2 and higher.
+               For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
                instances in the cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -79,7 +88,15 @@ class ClusterArgs:
     @pulumi.getter(name="gracefulDecommissionTimeout")
     def graceful_decommission_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+        Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+        Does not affect auto scaling decomissioning from an autoscaling policy.
+        Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+        Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+        Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+        [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        Only supported on Dataproc image versions 1.2 and higher.
+        For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+        - - -
         """
         return pulumi.get(self, "graceful_decommission_timeout")
 
@@ -170,12 +187,21 @@ class _ClusterState:
                  virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input['ClusterClusterConfigArgs'] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
                which is the name of the cluster.
-        :param pulumi.Input[_builtins.str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+        :param pulumi.Input[_builtins.str] graceful_decommission_timeout: Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+               Does not affect auto scaling decomissioning from an autoscaling policy.
+               Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+               Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+               Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+               [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+               Only supported on Dataproc image versions 1.2 and higher.
+               For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
                instances in the cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -241,7 +267,15 @@ class _ClusterState:
     @pulumi.getter(name="gracefulDecommissionTimeout")
     def graceful_decommission_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+        Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+        Does not affect auto scaling decomissioning from an autoscaling policy.
+        Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+        Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+        Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+        [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        Only supported on Dataproc image versions 1.2 and higher.
+        For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+        - - -
         """
         return pulumi.get(self, "graceful_decommission_timeout")
 
@@ -454,11 +488,20 @@ class Cluster(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
-        :param pulumi.Input[_builtins.str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+        :param pulumi.Input[_builtins.str] graceful_decommission_timeout: Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+               Does not affect auto scaling decomissioning from an autoscaling policy.
+               Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+               Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+               Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+               [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+               Only supported on Dataproc image versions 1.2 and higher.
+               For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
                instances in the cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -589,6 +632,7 @@ class Cluster(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -662,7 +706,15 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
                which is the name of the cluster.
-        :param pulumi.Input[_builtins.str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+        :param pulumi.Input[_builtins.str] graceful_decommission_timeout: Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+               Does not affect auto scaling decomissioning from an autoscaling policy.
+               Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+               Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+               Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+               [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+               Only supported on Dataproc image versions 1.2 and higher.
+               For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
                instances in the cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -716,7 +768,15 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="gracefulDecommissionTimeout")
     def graceful_decommission_timeout(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+        Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+        Does not affect auto scaling decomissioning from an autoscaling policy.
+        Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+        Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+        Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+        [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        Only supported on Dataproc image versions 1.2 and higher.
+        For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+        - - -
         """
         return pulumi.get(self, "graceful_decommission_timeout")
 

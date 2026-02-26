@@ -223,6 +223,12 @@ namespace Pulumi.Gcp.Dataproc
         [Output("statuses")]
         public Output<ImmutableArray<Outputs.JobStatus>> Statuses { get; private set; } = null!;
 
+        /// <summary>
+        /// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+        /// </summary>
+        [Output("waitForCompletion")]
+        public Output<bool?> WaitForCompletion { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Job resource with the given unique name, arguments, and options.
@@ -369,6 +375,12 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("sparksqlConfig")]
         public Input<Inputs.JobSparksqlConfigArgs>? SparksqlConfig { get; set; }
+
+        /// <summary>
+        /// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+        /// </summary>
+        [Input("waitForCompletion")]
+        public Input<bool>? WaitForCompletion { get; set; }
 
         public JobArgs()
         {
@@ -533,6 +545,12 @@ namespace Pulumi.Gcp.Dataproc
             get => _statuses ?? (_statuses = new InputList<Inputs.JobStatusGetArgs>());
             set => _statuses = value;
         }
+
+        /// <summary>
+        /// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+        /// </summary>
+        [Input("waitForCompletion")]
+        public Input<bool>? WaitForCompletion { get; set; }
 
         public JobState()
         {

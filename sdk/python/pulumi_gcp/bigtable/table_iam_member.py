@@ -29,6 +29,7 @@ class TableIamMemberArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TableIamMember resource.
+
         :param pulumi.Input[_builtins.str] instance_name: The name or relative resource id of the instance that owns the table.
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -47,7 +48,7 @@ class TableIamMemberArgs:
                
                For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
         :param pulumi.Input[_builtins.str] project: The project in which the table belongs. If it
-               is not provided, this provider will use the provider default.
+               is not provided, Terraform will use the provider default.
         """
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "member", member)
@@ -133,7 +134,7 @@ class TableIamMemberArgs:
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The project in which the table belongs. If it
-        is not provided, this provider will use the provider default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "project")
 
@@ -154,6 +155,7 @@ class _TableIamMemberState:
                  table: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TableIamMember resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the tables's IAM policy.
         :param pulumi.Input[_builtins.str] instance_name: The name or relative resource id of the instance that owns the table.
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
@@ -165,7 +167,7 @@ class _TableIamMemberState:
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[_builtins.str] project: The project in which the table belongs. If it
-               is not provided, this provider will use the provider default.
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -247,7 +249,7 @@ class _TableIamMemberState:
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The project in which the table belongs. If it
-        is not provided, this provider will use the provider default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "project")
 
@@ -401,6 +403,7 @@ class TableIamMember(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_name: The name or relative resource id of the instance that owns the table.
@@ -413,7 +416,7 @@ class TableIamMember(pulumi.CustomResource):
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[_builtins.str] project: The project in which the table belongs. If it
-               is not provided, this provider will use the provider default.
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -531,6 +534,7 @@ class TableIamMember(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
+
         :param str resource_name: The name of the resource.
         :param TableIamMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -611,7 +615,7 @@ class TableIamMember(pulumi.CustomResource):
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[_builtins.str] project: The project in which the table belongs. If it
-               is not provided, this provider will use the provider default.
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -675,7 +679,7 @@ class TableIamMember(pulumi.CustomResource):
     def project(self) -> pulumi.Output[_builtins.str]:
         """
         The project in which the table belongs. If it
-        is not provided, this provider will use the provider default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "project")
 

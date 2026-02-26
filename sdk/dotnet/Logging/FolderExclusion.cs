@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Logging
     /// * How-to Guides
     ///     * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
     /// 
-    /// &gt; You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.FolderSink`
+    /// &gt; You can specify exclusions for log sinks created by terraform by using the exclusions field of `gcp.logging.FolderSink`
     /// 
     /// ## Example Usage
     /// 

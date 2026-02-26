@@ -178,47 +178,32 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// ### Certificate Manager Certificate Basic
+    /// ### Certificate Manager Self Managed Certificate
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var instance = new Gcp.CertificateManager.DnsAuthorization("instance", new()
-    ///     {
-    ///         Name = "dns-auth",
-    ///         Description = "The default dnss",
-    ///         Domain = "subdomain.hashicorptest.com",
-    ///     });
-    /// 
-    ///     var instance2 = new Gcp.CertificateManager.DnsAuthorization("instance2", new()
-    ///     {
-    ///         Name = "dns-auth2",
-    ///         Description = "The default dnss",
-    ///         Domain = "subdomain2.hashicorptest.com",
-    ///     });
-    /// 
     ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
     ///     {
     ///         Name = "self-managed-cert",
     ///         Description = "Global cert",
-    ///         Scope = "EDGE_CACHE",
-    ///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
+    ///         Scope = "ALL_REGIONS",
+    ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
     ///         {
-    ///             Domains = new[]
+    ///             PemCertificate = Std.File.Invoke(new()
     ///             {
-    ///                 instance.Domain,
-    ///                 instance2.Domain,
-    ///             },
-    ///             DnsAuthorizations = new[]
+    ///                 Input = "test-fixtures/cert.pem",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             PemPrivateKey = Std.File.Invoke(new()
     ///             {
-    ///                 instance.Id,
-    ///                 instance2.Id,
-    ///             },
+    ///                 Input = "test-fixtures/private-key.pem",
+    ///             }).Apply(invoke =&gt; invoke.Result),
     ///         },
     ///     });
     /// 

@@ -25,6 +25,21 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Beyondcorp Security Gateway Logging
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example_logging = new gcp.beyondcorp.SecurityGateway("example-logging", {
+ *     securityGatewayId: "default-logging",
+ *     displayName: "My Security Gateway resource with logging enabled",
+ *     hubs: [{
+ *         region: "us-central1",
+ *     }],
+ *     logging: {},
+ * });
+ * ```
  * ### Beyondcorp Security Gateway Spa
  *
  * ```typescript
@@ -146,6 +161,10 @@ export class SecurityGateway extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
+     * Settings related to Cloud Logging.
+     */
+    declare public readonly logging: pulumi.Output<outputs.beyondcorp.SecurityGatewayLogging | undefined>;
+    /**
      * Identifier. Name of the resource.
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
@@ -207,6 +226,7 @@ export class SecurityGateway extends pulumi.CustomResource {
             resourceInputs["externalIps"] = state?.externalIps;
             resourceInputs["hubs"] = state?.hubs;
             resourceInputs["location"] = state?.location;
+            resourceInputs["logging"] = state?.logging;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["proxyProtocolConfig"] = state?.proxyProtocolConfig;
@@ -222,6 +242,7 @@ export class SecurityGateway extends pulumi.CustomResource {
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["hubs"] = args?.hubs;
             resourceInputs["location"] = args?.location;
+            resourceInputs["logging"] = args?.logging;
             resourceInputs["project"] = args?.project;
             resourceInputs["proxyProtocolConfig"] = args?.proxyProtocolConfig;
             resourceInputs["securityGatewayId"] = args?.securityGatewayId;
@@ -275,6 +296,10 @@ export interface SecurityGatewayState {
      * @deprecated `location` is deprecated and will be removed in a future major release.
      */
     location?: pulumi.Input<string>;
+    /**
+     * Settings related to Cloud Logging.
+     */
+    logging?: pulumi.Input<inputs.beyondcorp.SecurityGatewayLogging>;
     /**
      * Identifier. Name of the resource.
      */
@@ -343,6 +368,10 @@ export interface SecurityGatewayArgs {
      * @deprecated `location` is deprecated and will be removed in a future major release.
      */
     location?: pulumi.Input<string>;
+    /**
+     * Settings related to Cloud Logging.
+     */
+    logging?: pulumi.Input<inputs.beyondcorp.SecurityGatewayLogging>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

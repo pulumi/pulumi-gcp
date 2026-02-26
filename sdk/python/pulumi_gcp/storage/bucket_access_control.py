@@ -24,6 +24,7 @@ class BucketAccessControlArgs:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketAccessControl resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[_builtins.str] entity: The entity holding the permission, in one of the following forms:
                user-userId
@@ -110,6 +111,7 @@ class _BucketAccessControlState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketAccessControl resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[_builtins.str] domain: The domain associated with the entity.
         :param pulumi.Input[_builtins.str] email: The email address associated with the entity.
@@ -229,29 +231,6 @@ class BucketAccessControl(pulumi.CustomResource):
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Bucket ACLs can be managed authoritatively using the
-        `storage_bucket_acl` resource. Do not use these two resources in conjunction to manage the same bucket.
-
-        The BucketAccessControls resource manages the Access Control List
-        (ACLs) for a single entity/role pairing on a bucket. ACLs let you specify who
-        has access to your data and to what extent.
-
-        There are three roles that can be assigned to an entity:
-
-        READERs can get the bucket, though no acl property will be returned, and
-        list the bucket's objects.  WRITERs are READERs, and they can insert
-        objects into the bucket and delete the bucket's objects.  OWNERs are
-        WRITERs, and they can get the acl property of a bucket, update a bucket,
-        and call all BucketAccessControls methods on the bucket.  For more
-        information, see Access Control, with the caveat that this API uses
-        READER, WRITER, and OWNER instead of READ, WRITE, and FULL_CONTROL.
-
-        To get more information about BucketAccessControl, see:
-
-        * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
-
         ## Example Usage
 
         ### Storage Bucket Access Control Public Bucket
@@ -280,6 +259,7 @@ class BucketAccessControl(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:storage/bucketAccessControl:BucketAccessControl default {{bucket}}/{{entity}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -309,29 +289,6 @@ class BucketAccessControl(pulumi.CustomResource):
                  args: BucketAccessControlArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Bucket ACLs can be managed authoritatively using the
-        `storage_bucket_acl` resource. Do not use these two resources in conjunction to manage the same bucket.
-
-        The BucketAccessControls resource manages the Access Control List
-        (ACLs) for a single entity/role pairing on a bucket. ACLs let you specify who
-        has access to your data and to what extent.
-
-        There are three roles that can be assigned to an entity:
-
-        READERs can get the bucket, though no acl property will be returned, and
-        list the bucket's objects.  WRITERs are READERs, and they can insert
-        objects into the bucket and delete the bucket's objects.  OWNERs are
-        WRITERs, and they can get the acl property of a bucket, update a bucket,
-        and call all BucketAccessControls methods on the bucket.  For more
-        information, see Access Control, with the caveat that this API uses
-        READER, WRITER, and OWNER instead of READ, WRITE, and FULL_CONTROL.
-
-        To get more information about BucketAccessControl, see:
-
-        * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
-
         ## Example Usage
 
         ### Storage Bucket Access Control Public Bucket
@@ -360,6 +317,7 @@ class BucketAccessControl(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:storage/bucketAccessControl:BucketAccessControl default {{bucket}}/{{entity}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketAccessControlArgs args: The arguments to use to populate this resource's properties.

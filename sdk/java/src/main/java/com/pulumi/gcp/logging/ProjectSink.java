@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; You can specify exclusions for log sinks created by terraform by using the exclusions field of `gcp.logging.FolderSink`
  * 
- * &gt; **Note:** You must have [granted the &#34;Logs Configuration Writer&#34;](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with this provider.
+ * &gt; **Note:** You must have [granted the &#34;Logs Configuration Writer&#34;](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with terraform.
  * 
  * &gt; **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
  * 

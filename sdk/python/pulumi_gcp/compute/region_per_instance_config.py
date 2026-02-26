@@ -32,6 +32,7 @@ class RegionPerInstanceConfigArgs:
                  remove_instance_state_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RegionPerInstanceConfig resource.
+
         :param pulumi.Input[_builtins.str] region_instance_group_manager: The region instance group manager this instance config is part of.
         :param pulumi.Input[_builtins.str] minimal_action: The minimal action to perform on the instance during an update.
                Default is `NONE`. Possible values are:
@@ -213,6 +214,7 @@ class _RegionPerInstanceConfigState:
                  remove_instance_state_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering RegionPerInstanceConfig resources.
+
         :param pulumi.Input[_builtins.str] minimal_action: The minimal action to perform on the instance during an update.
                Default is `NONE`. Possible values are:
                * REPLACE
@@ -442,7 +444,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                 ],
             })
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
-            description="Demo test instance group manager",
+            description="Terraform test instance group manager",
             name="my-rigm",
             versions=[{
                 "name": "prod",
@@ -496,6 +498,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region}}/{{region_instance_group_manager}}/{{name}}
         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region_instance_group_manager}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -575,7 +578,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                 ],
             })
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
-            description="Demo test instance group manager",
+            description="Terraform test instance group manager",
             name="my-rigm",
             versions=[{
                 "name": "prod",
@@ -629,6 +632,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region}}/{{region_instance_group_manager}}/{{name}}
         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region_instance_group_manager}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionPerInstanceConfigArgs args: The arguments to use to populate this resource's properties.

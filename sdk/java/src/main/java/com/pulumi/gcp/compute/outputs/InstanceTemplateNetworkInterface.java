@@ -20,7 +20,7 @@ public final class InstanceTemplateNetworkInterface {
      * @return Access configurations, i.e. IPs via which this
      * instance can be accessed via the Internet. Omit to ensure that the instance
      * is not accessible from the Internet (this means that ssh provisioners will
-     * not work unless you can send traffic to the instance&#39;s
+     * not work unless you are running Terraform can send traffic to the instance&#39;s
      * network (e.g. via tunnel or because it is running on another cloud instance
      * on that network). This block can be specified once per `networkInterface`. Structure documented below.
      * 
@@ -62,7 +62,7 @@ public final class InstanceTemplateNetworkInterface {
     private @Nullable String ipv6Address;
     /**
      * @return The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     private @Nullable String name;
@@ -128,7 +128,7 @@ public final class InstanceTemplateNetworkInterface {
      * @return Access configurations, i.e. IPs via which this
      * instance can be accessed via the Internet. Omit to ensure that the instance
      * is not accessible from the Internet (this means that ssh provisioners will
-     * not work unless you can send traffic to the instance&#39;s
+     * not work unless you are running Terraform can send traffic to the instance&#39;s
      * network (e.g. via tunnel or because it is running on another cloud instance
      * on that network). This block can be specified once per `networkInterface`. Structure documented below.
      * 
@@ -184,7 +184,7 @@ public final class InstanceTemplateNetworkInterface {
     }
     /**
      * @return The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     public Optional<String> name() {

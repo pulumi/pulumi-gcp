@@ -249,10 +249,10 @@ type ClusterIAMMember struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The project in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -318,10 +318,10 @@ type clusterIAMMemberState struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Member *string `pulumi:"member"`
 	// The project in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project *string `pulumi:"project"`
 	// The region in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -349,10 +349,10 @@ type ClusterIAMMemberState struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Member pulumi.StringPtrInput
 	// The project in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringPtrInput
 	// The region in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -382,10 +382,10 @@ type clusterIAMMemberArgs struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Member string `pulumi:"member"`
 	// The project in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project *string `pulumi:"project"`
 	// The region in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -412,10 +412,10 @@ type ClusterIAMMemberArgs struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Member pulumi.StringInput
 	// The project in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringPtrInput
 	// The region in which the cluster belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -541,13 +541,13 @@ func (o ClusterIAMMemberOutput) Member() pulumi.StringOutput {
 }
 
 // The project in which the cluster belongs. If it
-// is not provided, the provider will use a default.
+// is not provided, Terraform will use the provider default.
 func (o ClusterIAMMemberOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterIAMMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The region in which the cluster belongs. If it
-// is not provided, the provider will use a default.
+// is not provided, Terraform will use the provider default.
 func (o ClusterIAMMemberOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterIAMMember) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

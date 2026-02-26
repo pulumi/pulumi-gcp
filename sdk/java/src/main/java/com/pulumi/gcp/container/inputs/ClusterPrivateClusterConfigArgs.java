@@ -61,7 +61,7 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
 
     /**
      * Controls cluster master global
-     * access settings. If unset, the provider will no longer manage this field and will
+     * access settings. If unset, Terraform will no longer manage this field and will
      * not modify the previously-set value. Structure is documented below.
      * 
      */
@@ -70,7 +70,7 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
 
     /**
      * @return Controls cluster master global
-     * access settings. If unset, the provider will no longer manage this field and will
+     * access settings. If unset, Terraform will no longer manage this field and will
      * not modify the previously-set value. Structure is documented below.
      * 
      */
@@ -260,7 +260,7 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
 
         /**
          * @param masterGlobalAccessConfig Controls cluster master global
-         * access settings. If unset, the provider will no longer manage this field and will
+         * access settings. If unset, Terraform will no longer manage this field and will
          * not modify the previously-set value. Structure is documented below.
          * 
          * @return builder
@@ -273,7 +273,7 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
 
         /**
          * @param masterGlobalAccessConfig Controls cluster master global
-         * access settings. If unset, the provider will no longer manage this field and will
+         * access settings. If unset, Terraform will no longer manage this field and will
          * not modify the previously-set value. Structure is documented below.
          * 
          * @return builder

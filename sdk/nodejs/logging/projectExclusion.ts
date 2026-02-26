@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
  *
- * > You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.ProjectSink`
+ * > You can specify exclusions for log sinks created by terraform by using the exclusions field of `gcp.logging.ProjectSink`
  *
  * ## Example Usage
  *

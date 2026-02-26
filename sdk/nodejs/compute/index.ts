@@ -350,6 +350,11 @@ export const getNodeTypes: typeof import("./getNodeTypes").getNodeTypes = null a
 export const getNodeTypesOutput: typeof import("./getNodeTypes").getNodeTypesOutput = null as any;
 utilities.lazyLoad(exports, ["getNodeTypes","getNodeTypesOutput"], () => require("./getNodeTypes"));
 
+export { GetRegionBackendBucketIamPolicyArgs, GetRegionBackendBucketIamPolicyResult, GetRegionBackendBucketIamPolicyOutputArgs } from "./getRegionBackendBucketIamPolicy";
+export const getRegionBackendBucketIamPolicy: typeof import("./getRegionBackendBucketIamPolicy").getRegionBackendBucketIamPolicy = null as any;
+export const getRegionBackendBucketIamPolicyOutput: typeof import("./getRegionBackendBucketIamPolicy").getRegionBackendBucketIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionBackendBucketIamPolicy","getRegionBackendBucketIamPolicyOutput"], () => require("./getRegionBackendBucketIamPolicy"));
+
 export { GetRegionBackendServiceArgs, GetRegionBackendServiceResult, GetRegionBackendServiceOutputArgs } from "./getRegionBackendService";
 export const getRegionBackendService: typeof import("./getRegionBackendService").getRegionBackendService = null as any;
 export const getRegionBackendServiceOutput: typeof import("./getRegionBackendService").getRegionBackendServiceOutput = null as any;
@@ -854,6 +859,26 @@ export { RegionAutoscalerArgs, RegionAutoscalerState } from "./regionAutoscaler"
 export type RegionAutoscaler = import("./regionAutoscaler").RegionAutoscaler;
 export const RegionAutoscaler: typeof import("./regionAutoscaler").RegionAutoscaler = null as any;
 utilities.lazyLoad(exports, ["RegionAutoscaler"], () => require("./regionAutoscaler"));
+
+export { RegionBackendBucketArgs, RegionBackendBucketState } from "./regionBackendBucket";
+export type RegionBackendBucket = import("./regionBackendBucket").RegionBackendBucket;
+export const RegionBackendBucket: typeof import("./regionBackendBucket").RegionBackendBucket = null as any;
+utilities.lazyLoad(exports, ["RegionBackendBucket"], () => require("./regionBackendBucket"));
+
+export { RegionBackendBucketIamBindingArgs, RegionBackendBucketIamBindingState } from "./regionBackendBucketIamBinding";
+export type RegionBackendBucketIamBinding = import("./regionBackendBucketIamBinding").RegionBackendBucketIamBinding;
+export const RegionBackendBucketIamBinding: typeof import("./regionBackendBucketIamBinding").RegionBackendBucketIamBinding = null as any;
+utilities.lazyLoad(exports, ["RegionBackendBucketIamBinding"], () => require("./regionBackendBucketIamBinding"));
+
+export { RegionBackendBucketIamMemberArgs, RegionBackendBucketIamMemberState } from "./regionBackendBucketIamMember";
+export type RegionBackendBucketIamMember = import("./regionBackendBucketIamMember").RegionBackendBucketIamMember;
+export const RegionBackendBucketIamMember: typeof import("./regionBackendBucketIamMember").RegionBackendBucketIamMember = null as any;
+utilities.lazyLoad(exports, ["RegionBackendBucketIamMember"], () => require("./regionBackendBucketIamMember"));
+
+export { RegionBackendBucketIamPolicyArgs, RegionBackendBucketIamPolicyState } from "./regionBackendBucketIamPolicy";
+export type RegionBackendBucketIamPolicy = import("./regionBackendBucketIamPolicy").RegionBackendBucketIamPolicy;
+export const RegionBackendBucketIamPolicy: typeof import("./regionBackendBucketIamPolicy").RegionBackendBucketIamPolicy = null as any;
+utilities.lazyLoad(exports, ["RegionBackendBucketIamPolicy"], () => require("./regionBackendBucketIamPolicy"));
 
 export { RegionBackendServiceArgs, RegionBackendServiceState } from "./regionBackendService";
 export type RegionBackendService = import("./regionBackendService").RegionBackendService;
@@ -1441,6 +1466,14 @@ const _module = {
                 return new PublicDelegatedPrefix(name, <any>undefined, { urn })
             case "gcp:compute/regionAutoscaler:RegionAutoscaler":
                 return new RegionAutoscaler(name, <any>undefined, { urn })
+            case "gcp:compute/regionBackendBucket:RegionBackendBucket":
+                return new RegionBackendBucket(name, <any>undefined, { urn })
+            case "gcp:compute/regionBackendBucketIamBinding:RegionBackendBucketIamBinding":
+                return new RegionBackendBucketIamBinding(name, <any>undefined, { urn })
+            case "gcp:compute/regionBackendBucketIamMember:RegionBackendBucketIamMember":
+                return new RegionBackendBucketIamMember(name, <any>undefined, { urn })
+            case "gcp:compute/regionBackendBucketIamPolicy:RegionBackendBucketIamPolicy":
+                return new RegionBackendBucketIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/regionBackendService:RegionBackendService":
                 return new RegionBackendService(name, <any>undefined, { urn })
             case "gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding":
@@ -1696,6 +1729,10 @@ pulumi.runtime.registerResourceModule("gcp", "compute/projectMetadataItem", _mod
 pulumi.runtime.registerResourceModule("gcp", "compute/publicAdvertisedPrefix", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/publicDelegatedPrefix", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionAutoscaler", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendBucket", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendBucketIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendBucketIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendBucketIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendService", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendServiceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendServiceIamMember", _module)

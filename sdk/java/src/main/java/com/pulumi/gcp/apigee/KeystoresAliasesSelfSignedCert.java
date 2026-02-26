@@ -101,8 +101,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(servicenetworking)
  *                 .build());
  * 
- *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
- *             .createDuration("120s")
+ *         var wait300Seconds = new Sleep("wait300Seconds", SleepArgs.builder()
+ *             .createDuration("300s")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(compute)
  *                 .build());
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *             .name("apigee-network")
  *             .project(project.projectId())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(wait120Seconds)
+ *                 .dependsOn(wait300Seconds)
  *                 .build());
  * 
  *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()

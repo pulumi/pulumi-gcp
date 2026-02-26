@@ -162,16 +162,14 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Configuration for
-     * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+     * Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
      * 
      */
     @Import(name="networkConfig")
     private @Nullable Output<ClusterNodePoolNetworkConfigArgs> networkConfig;
 
     /**
-     * @return Configuration for
-     * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+     * @return Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
      * 
      */
     public Optional<Output<ClusterNodePoolNetworkConfigArgs>> networkConfig() {
@@ -182,8 +180,8 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
      * Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
      * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
+     * manages the default node pool, which isn&#39;t recommended to be used with
+     * Terraform. Structure is documented below.
      * 
      */
     @Import(name="nodeConfig")
@@ -193,8 +191,8 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
      * @return Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
      * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
+     * manages the default node pool, which isn&#39;t recommended to be used with
+     * Terraform. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodePoolNodeConfigArgs>> nodeConfig() {
@@ -571,8 +569,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networkConfig Configuration for
-         * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+         * @param networkConfig Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
          * 
          * @return builder
          * 
@@ -583,8 +580,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networkConfig Configuration for
-         * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+         * @param networkConfig Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
          * 
          * @return builder
          * 
@@ -597,8 +593,8 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
          * @param nodeConfig Parameters used in creating the default node pool.
          * Generally, this field should not be used at the same time as a
          * `gcp.container.NodePool` or a `nodePool` block; this configuration
-         * manages the default node pool, which isn&#39;t recommended to be used.
-         * Structure is documented below.
+         * manages the default node pool, which isn&#39;t recommended to be used with
+         * Terraform. Structure is documented below.
          * 
          * @return builder
          * 
@@ -612,8 +608,8 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
          * @param nodeConfig Parameters used in creating the default node pool.
          * Generally, this field should not be used at the same time as a
          * `gcp.container.NodePool` or a `nodePool` block; this configuration
-         * manages the default node pool, which isn&#39;t recommended to be used.
-         * Structure is documented below.
+         * manages the default node pool, which isn&#39;t recommended to be used with
+         * Terraform. Structure is documented below.
          * 
          * @return builder
          * 

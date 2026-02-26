@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Storage
     ///         AccountId = "my-svc-acc",
     ///     });
     /// 
-    ///     //Create the HMAC key for the associated service account
+    ///     //Create the HMAC key for the associated service account 
     ///     var key = new Gcp.Storage.HmacKey("key", new()
     ///     {
     ///         ServiceAccountEmail = serviceAccount.Email,

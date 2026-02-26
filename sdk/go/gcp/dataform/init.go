@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RepositoryReleaseConfig{}
 	case "gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig":
 		r = &RepositoryWorkflowConfig{}
+	case "gcp:dataform/teamFolder:TeamFolder":
+		r = &TeamFolder{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -81,6 +83,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataform/repositoryWorkflowConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataform/teamFolder",
 		&module{version},
 	)
 }

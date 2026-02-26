@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Allows creation and management of a Google Cloud Billing Subaccount.
  *
- * !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
+ * !> **WARNING:** Deleting this Terraform resource will not delete or close the billing subaccount.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -65,7 +65,7 @@ export class SubAccount extends pulumi.CustomResource {
     declare public /*out*/ readonly billingAccountId: pulumi.Output<string>;
     /**
      * If set to "RENAME_ON_DESTROY" the billing account displayName
-     * will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+     * will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
      * Default is "".
      */
     declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
@@ -136,7 +136,7 @@ export interface SubAccountState {
     billingAccountId?: pulumi.Input<string>;
     /**
      * If set to "RENAME_ON_DESTROY" the billing account displayName
-     * will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+     * will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
      * Default is "".
      */
     deletionPolicy?: pulumi.Input<string>;
@@ -165,7 +165,7 @@ export interface SubAccountState {
 export interface SubAccountArgs {
     /**
      * If set to "RENAME_ON_DESTROY" the billing account displayName
-     * will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+     * will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
      * Default is "".
      */
     deletionPolicy?: pulumi.Input<string>;

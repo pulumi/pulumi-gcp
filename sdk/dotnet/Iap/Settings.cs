@@ -129,6 +129,58 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// });
     /// ```
+    /// ### Iap Settings Oauth Storage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "iap-bs-health-check-oauth",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "iap-settings-oauth",
+    ///         Region = "us-central1",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///         ConnectionDrainingTimeoutSec = 10,
+    ///         SessionAffinity = "CLIENT_IP",
+    ///     });
+    /// 
+    ///     var iapSettingsOauth = new Gcp.Iap.Settings("iap_settings_oauth", new()
+    ///     {
+    ///         Name = Output.Tuple(project, @default.Name).Apply(values =&gt;
+    ///         {
+    ///             var project = values.Item1;
+    ///             var name = values.Item2;
+    ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/iap_web/compute-us-central1/services/{name}";
+    ///         }),
+    ///         AccessSettings = new Gcp.Iap.Inputs.SettingsAccessSettingsArgs
+    ///         {
+    ///             OauthSettings = new Gcp.Iap.Inputs.SettingsAccessSettingsOauthSettingsArgs
+    ///             {
+    ///                 ClientId = "test-client-id",
+    ///                 ClientSecret = "test-client-secret",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -41,15 +41,13 @@ public final class FunctionServiceConfig {
      */
     private @Nullable String binaryAuthorizationPolicy;
     /**
-     * @return (Optional, Beta)
-     * Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+     * @return Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
      * Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
      * 
      */
     private @Nullable String directVpcEgress;
     /**
-     * @return (Optional, Beta)
-     * The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+     * @return The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
      * Structure is documented below.
      * 
      */
@@ -169,8 +167,7 @@ public final class FunctionServiceConfig {
         return Optional.ofNullable(this.binaryAuthorizationPolicy);
     }
     /**
-     * @return (Optional, Beta)
-     * Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+     * @return Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
      * Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
      * 
      */
@@ -178,8 +175,7 @@ public final class FunctionServiceConfig {
         return Optional.ofNullable(this.directVpcEgress);
     }
     /**
-     * @return (Optional, Beta)
-     * The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+     * @return The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
      * Structure is documented below.
      * 
      */

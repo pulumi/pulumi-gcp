@@ -11,21 +11,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## subcategory: "Cloud Bigtable"
-//
-// description: |-
-//
-//	Creates a Google Bigtable instance.
-//
-// ---
-//
-// # bigtable.Instance
-//
 // Creates a Google Bigtable instance. For more information see:
 //
 // * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/bigtable/docs)
+//
+// > **Note**: It is strongly recommended to set `lifecycle { preventDestroy = true }`
+// on instances in order to prevent accidental data loss. See
+// Terraform docs
+// for more information on lifecycle parameters.
+//
+// > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
+// (and run `pulumi up` to write the field to state) in order to destroy an instance.
+// It is recommended to not set this field (or set it to true) until you're ready to destroy.
 //
 // ## Example Usage
 //
@@ -136,8 +135,9 @@ type Instance struct {
 	//
 	// ***
 	Clusters InstanceClusterArrayOutput `pulumi:"clusters"`
-	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+	// Whether Terraform will be prevented from destroying the instance.
+	// When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+	// the instance will fail. When the field is set to false, deleting the instance is allowed.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -145,7 +145,7 @@ type Instance struct {
 	//
 	// ***
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -210,8 +210,9 @@ type instanceState struct {
 	//
 	// ***
 	Clusters []InstanceCluster `pulumi:"clusters"`
-	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+	// Whether Terraform will be prevented from destroying the instance.
+	// When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+	// the instance will fail. When the field is set to false, deleting the instance is allowed.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName *string `pulumi:"displayName"`
@@ -219,7 +220,7 @@ type instanceState struct {
 	//
 	// ***
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -250,8 +251,9 @@ type InstanceState struct {
 	//
 	// ***
 	Clusters InstanceClusterArrayInput
-	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+	// Whether Terraform will be prevented from destroying the instance.
+	// When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+	// the instance will fail. When the field is set to false, deleting the instance is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName pulumi.StringPtrInput
@@ -259,7 +261,7 @@ type InstanceState struct {
 	//
 	// ***
 	EffectiveLabels pulumi.StringMapInput
-	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
 	ForceDestroy pulumi.BoolPtrInput
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -294,12 +296,13 @@ type instanceArgs struct {
 	//
 	// ***
 	Clusters []InstanceCluster `pulumi:"clusters"`
-	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+	// Whether Terraform will be prevented from destroying the instance.
+	// When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+	// the instance will fail. When the field is set to false, deleting the instance is allowed.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName *string `pulumi:"displayName"`
-	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -329,12 +332,13 @@ type InstanceArgs struct {
 	//
 	// ***
 	Clusters InstanceClusterArrayInput
-	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+	// Whether Terraform will be prevented from destroying the instance.
+	// When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+	// the instance will fail. When the field is set to false, deleting the instance is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName pulumi.StringPtrInput
-	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
 	ForceDestroy pulumi.BoolPtrInput
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -452,8 +456,9 @@ func (o InstanceOutput) Clusters() InstanceClusterArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceClusterArrayOutput { return v.Clusters }).(InstanceClusterArrayOutput)
 }
 
-// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+// Whether Terraform will be prevented from destroying the instance.
+// When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+// the instance will fail. When the field is set to false, deleting the instance is allowed.
 func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -470,7 +475,7 @@ func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
 func (o InstanceOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }

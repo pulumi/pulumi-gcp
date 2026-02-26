@@ -113,7 +113,7 @@ import (
 //				DisplayName: pulumi.String("child agent"),
 //				Instruction: pulumi.String("You are a helpful assistant for this example."),
 //				ModelSettings: &ces.AgentModelSettingsArgs{
-//					Model:       pulumi.String("gemini-1.5-flash"),
+//					Model:       pulumi.String("gemini-2.5-flash-001"),
 //					Temperature: pulumi.Float64(0.5),
 //				},
 //				LlmAgent: &ces.AgentLlmAgentArgs{},
@@ -158,49 +158,49 @@ import (
 //				Description: pulumi.String("test agent"),
 //				Instruction: pulumi.String("You are a helpful assistant for this example."),
 //				ModelSettings: &ces.AgentModelSettingsArgs{
-//					Model:       pulumi.String("gemini-1.5-flash"),
+//					Model:       pulumi.String("gemini-2.5-flash-001"),
 //					Temperature: pulumi.Float64(0.5),
+//				},
+//				BeforeAgentCallbacks: ces.AgentBeforeAgentCallbackArray{
+//					&ces.AgentBeforeAgentCallbackArgs{
+//						Description: pulumi.String("Example callback"),
+//						Disabled:    pulumi.Bool(true),
+//						PythonCode:  pulumi.String("def before_agent_callback(callback_context): return None"),
+//					},
 //				},
 //				AfterAgentCallbacks: ces.AgentAfterAgentCallbackArray{
 //					&ces.AgentAfterAgentCallbackArgs{
 //						Description: pulumi.String("Example callback"),
 //						Disabled:    pulumi.Bool(true),
-//						PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
-//					},
-//				},
-//				BeforeAgentCallbacks: ces.AgentBeforeAgentCallbackArray{
-//					&ces.AgentBeforeAgentCallbackArgs{
-//						Description: pulumi.String("Example callback"),
-//						Disabled:    pulumi.Bool(false),
-//						PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
-//					},
-//				},
-//				AfterModelCallbacks: ces.AgentAfterModelCallbackArray{
-//					&ces.AgentAfterModelCallbackArgs{
-//						Description: pulumi.String("Example callback"),
-//						Disabled:    pulumi.Bool(true),
-//						PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
+//						PythonCode:  pulumi.String("def after_agent_callback(callback_context): return None"),
 //					},
 //				},
 //				BeforeModelCallbacks: ces.AgentBeforeModelCallbackArray{
 //					&ces.AgentBeforeModelCallbackArgs{
 //						Description: pulumi.String("Example callback"),
 //						Disabled:    pulumi.Bool(true),
-//						PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
+//						PythonCode:  pulumi.String("def before_model_callback(callback_context, llm_request): return None"),
 //					},
 //				},
-//				AfterToolCallbacks: ces.AgentAfterToolCallbackArray{
-//					&ces.AgentAfterToolCallbackArgs{
+//				AfterModelCallbacks: ces.AgentAfterModelCallbackArray{
+//					&ces.AgentAfterModelCallbackArgs{
 //						Description: pulumi.String("Example callback"),
 //						Disabled:    pulumi.Bool(true),
-//						PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
+//						PythonCode:  pulumi.String("def after_model_callback(callback_context, llm_response): return None"),
 //					},
 //				},
 //				BeforeToolCallbacks: ces.AgentBeforeToolCallbackArray{
 //					&ces.AgentBeforeToolCallbackArgs{
 //						Description: pulumi.String("Example callback"),
 //						Disabled:    pulumi.Bool(true),
-//						PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
+//						PythonCode:  pulumi.String("def before_tool_callback(tool, input, callback_context): return None"),
+//					},
+//				},
+//				AfterToolCallbacks: ces.AgentAfterToolCallbackArray{
+//					&ces.AgentAfterToolCallbackArgs{
+//						Description: pulumi.String("Example callback"),
+//						Disabled:    pulumi.Bool(true),
+//						PythonCode:  pulumi.String("def after_tool_callback(tool, input, callback_context, tool_response): return None"),
 //					},
 //				},
 //				Tools: pulumi.StringArray{

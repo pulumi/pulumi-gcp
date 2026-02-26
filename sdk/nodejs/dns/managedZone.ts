@@ -24,10 +24,12 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
  *
+ * const rnd = new random.index.Id("rnd", {byteLength: 4});
  * const example_zone = new gcp.dns.ManagedZone("example-zone", {
  *     name: "example-zone",
- *     dnsName: "my-domain.com.",
+ *     dnsName: `example-${rnd.hex}.com.`,
  *     description: "Example DNS zone",
  *     labels: {
  *         foo: "bar",
@@ -337,7 +339,7 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTime: pulumi.Output<string>;
     /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
+     * A textual description field. Defaults to 'Managed by Terraform'.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
@@ -507,7 +509,7 @@ export interface ManagedZoneState {
      */
     creationTime?: pulumi.Input<string>;
     /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
+     * A textual description field. Defaults to 'Managed by Terraform'.
      */
     description?: pulumi.Input<string>;
     /**
@@ -609,7 +611,7 @@ export interface ManagedZoneArgs {
      */
     cloudLoggingConfig?: pulumi.Input<inputs.dns.ManagedZoneCloudLoggingConfig>;
     /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
+     * A textual description field. Defaults to 'Managed by Terraform'.
      */
     description?: pulumi.Input<string>;
     /**

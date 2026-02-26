@@ -32,6 +32,7 @@ class GatewaySecurityPolicyRuleArgs:
                  tls_inspection_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GatewaySecurityPolicyRule resource.
+
         :param pulumi.Input[_builtins.str] basic_profile: Profile which tells what the primitive action should be. Possible values are: * ALLOW * DENY.
                Possible values are: `BASIC_PROFILE_UNSPECIFIED`, `ALLOW`, `DENY`.
         :param pulumi.Input[_builtins.bool] enabled: Whether the rule is enforced.
@@ -221,6 +222,7 @@ class _GatewaySecurityPolicyRuleState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewaySecurityPolicyRule resources.
+
         :param pulumi.Input[_builtins.str] application_matcher: CEL expression for matching on L7/application level criteria.
         :param pulumi.Input[_builtins.str] basic_profile: Profile which tells what the primitive action should be. Possible values are: * ALLOW * DENY.
                Possible values are: `BASIC_PROFILE_UNSPECIFIED`, `ALLOW`, `DENY`.
@@ -537,6 +539,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default {{location}}/{{gateway_security_policy}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_matcher: CEL expression for matching on L7/application level criteria.
@@ -629,6 +632,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default {{project}}/{{location}}/{{gateway_security_policy}}/{{name}}
         $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default {{location}}/{{gateway_security_policy}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewaySecurityPolicyRuleArgs args: The arguments to use to populate this resource's properties.

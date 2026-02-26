@@ -24,6 +24,7 @@ class KeyRingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeyRing resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the KeyRing.
                A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[_builtins.str] name: The resource name for the KeyRing.
@@ -83,6 +84,7 @@ class _KeyRingState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyRing resources.
+
         :param pulumi.Input[_builtins.str] location: The location for the KeyRing.
                A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[_builtins.str] name: The resource name for the KeyRing.
@@ -149,7 +151,7 @@ class KeyRing(pulumi.CustomResource):
         A `KeyRing` is a toplevel logical grouping of `CryptoKeys`.
 
         > **Note:** KeyRings cannot be deleted from Google Cloud Platform.
-        Destroying a provider-managed KeyRing will remove it from state but
+        Destroying a Terraform-managed KeyRing will remove it from state but
         *will not delete the resource from the project.*
 
         To get more information about KeyRing, see:
@@ -186,6 +188,7 @@ class KeyRing(pulumi.CustomResource):
         $ pulumi import gcp:kms/keyRing:KeyRing default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:kms/keyRing:KeyRing default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -205,7 +208,7 @@ class KeyRing(pulumi.CustomResource):
         A `KeyRing` is a toplevel logical grouping of `CryptoKeys`.
 
         > **Note:** KeyRings cannot be deleted from Google Cloud Platform.
-        Destroying a provider-managed KeyRing will remove it from state but
+        Destroying a Terraform-managed KeyRing will remove it from state but
         *will not delete the resource from the project.*
 
         To get more information about KeyRing, see:
@@ -242,6 +245,7 @@ class KeyRing(pulumi.CustomResource):
         $ pulumi import gcp:kms/keyRing:KeyRing default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:kms/keyRing:KeyRing default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeyRingArgs args: The arguments to use to populate this resource's properties.

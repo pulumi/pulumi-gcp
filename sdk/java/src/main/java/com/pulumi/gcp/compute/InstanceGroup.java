@@ -22,6 +22,10 @@ import javax.annotation.Nullable;
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
  * 
+ * &gt; Recreating an instance group that&#39;s in use by another resource will give a
+ * `resourceInUseByAnotherResource` error. You can avoid this error with a
+ * Terraform `lifecycle` block as outlined in the example below.
+ * 
  * ## Example Usage
  * 
  * ### Empty Instance Group
@@ -49,8 +53,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new InstanceGroup("test", InstanceGroupArgs.builder()
- *             .name("test")
- *             .description("Test instance group")
+ *             .name("terraform-test")
+ *             .description("Terraform test instance group")
  *             .zone("us-central1-a")
  *             .network(default_.id())
  *             .build());
@@ -86,8 +90,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var webservers = new InstanceGroup("webservers", InstanceGroupArgs.builder()
- *             .name("webservers")
- *             .description("Test instance group")
+ *             .name("terraform-webservers")
+ *             .description("Terraform test instance group")
  *             .instances(            
  *                 test.id(),
  *                 test2.id())

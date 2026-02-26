@@ -215,7 +215,7 @@ namespace Pulumi.Gcp.Compute
         public readonly bool? MostRecent;
         /// <summary>
         /// The name of the instance template. If you leave
-        /// this blank, the provider will auto-generate a unique name.
+        /// this blank, Terraform will auto-generate a unique name.
         /// </summary>
         public readonly string? Name;
         /// <summary>

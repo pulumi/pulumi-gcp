@@ -168,7 +168,7 @@ export class TableIamBinding extends pulumi.CustomResource {
     declare public readonly members: pulumi.Output<string[]>;
     /**
      * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, Terraform will use the provider default.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
@@ -259,7 +259,7 @@ export interface TableIamBindingState {
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, Terraform will use the provider default.
      */
     project?: pulumi.Input<string>;
     /**
@@ -300,7 +300,7 @@ export interface TableIamBindingArgs {
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, Terraform will use the provider default.
      */
     project?: pulumi.Input<string>;
     /**

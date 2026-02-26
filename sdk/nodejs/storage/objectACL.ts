@@ -93,6 +93,10 @@ export class ObjectACL extends pulumi.CustomResource {
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
      * Must be set if `predefinedAcl` is not.
+     *
+     * > The object's creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+     * adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+     * `Create` time, where the object role/entity pair is omitted if not explicitly set.
      */
     declare public readonly roleEntities: pulumi.Output<string[]>;
 
@@ -152,6 +156,10 @@ export interface ObjectACLState {
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
      * Must be set if `predefinedAcl` is not.
+     *
+     * > The object's creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+     * adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+     * `Create` time, where the object role/entity pair is omitted if not explicitly set.
      */
     roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -177,6 +185,10 @@ export interface ObjectACLArgs {
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
      * Must be set if `predefinedAcl` is not.
+     *
+     * > The object's creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+     * adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+     * `Create` time, where the object role/entity pair is omitted if not explicitly set.
      */
     roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -24,7 +24,7 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfig {
     private @Nullable String externalIpv6PrefixLength;
     /**
      * @return The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     private @Nullable String name;
@@ -56,7 +56,7 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfig {
     }
     /**
      * @return The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     public Optional<String> name() {

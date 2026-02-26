@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var basicEntryGroup = new EntryGroup("basicEntryGroup", EntryGroupArgs.builder()
  *             .entryGroupId("my_group")
- *             .displayName("entry group")
- *             .description("example entry group")
+ *             .displayName("terraform entry group")
+ *             .description("entry group created by Terraform")
  *             .build());
  * 
  *     }

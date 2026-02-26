@@ -37,10 +37,11 @@ class ManagedZoneArgs:
                  visibility: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ManagedZone resource.
+
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input['ManagedZoneCloudLoggingConfigArgs'] cloud_logging_config: Cloud logging configuration
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Terraform'.
         :param pulumi.Input['ManagedZoneDnssecConfigArgs'] dnssec_config: DNSSEC configuration
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_destroy: Set this true to delete all records in the zone.
@@ -133,7 +134,7 @@ class ManagedZoneArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A textual description field. Defaults to 'Managed by Pulumi'.
+        A textual description field. Defaults to 'Managed by Terraform'.
         """
         return pulumi.get(self, "description")
 
@@ -319,11 +320,12 @@ class _ManagedZoneState:
                  visibility: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManagedZone resources.
+
         :param pulumi.Input['ManagedZoneCloudLoggingConfigArgs'] cloud_logging_config: Cloud logging configuration
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_time: The time that this resource was created on the server.
                This is in RFC3339 text format.
-        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Terraform'.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input['ManagedZoneDnssecConfigArgs'] dnssec_config: DNSSEC configuration
                Structure is documented below.
@@ -435,7 +437,7 @@ class _ManagedZoneState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A textual description field. Defaults to 'Managed by Pulumi'.
+        A textual description field. Defaults to 'Managed by Terraform'.
         """
         return pulumi.get(self, "description")
 
@@ -698,10 +700,12 @@ class ManagedZone(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_random as random
 
+        rnd = random.index.Id("rnd", byte_length=4)
         example_zone = gcp.dns.ManagedZone("example-zone",
             name="example-zone",
-            dns_name="my-domain.com.",
+            dns_name=f"example-{rnd['hex']}.com.",
             description="Example DNS zone",
             labels={
                 "foo": "bar",
@@ -952,11 +956,12 @@ class ManagedZone(pulumi.CustomResource):
         $ pulumi import gcp:dns/managedZone:ManagedZone default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ManagedZoneCloudLoggingConfigArgs', 'ManagedZoneCloudLoggingConfigArgsDict']] cloud_logging_config: Cloud logging configuration
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Terraform'.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[Union['ManagedZoneDnssecConfigArgs', 'ManagedZoneDnssecConfigArgsDict']] dnssec_config: DNSSEC configuration
                Structure is documented below.
@@ -1015,10 +1020,12 @@ class ManagedZone(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_random as random
 
+        rnd = random.index.Id("rnd", byte_length=4)
         example_zone = gcp.dns.ManagedZone("example-zone",
             name="example-zone",
-            dns_name="my-domain.com.",
+            dns_name=f"example-{rnd['hex']}.com.",
             description="Example DNS zone",
             labels={
                 "foo": "bar",
@@ -1268,6 +1275,7 @@ class ManagedZone(pulumi.CustomResource):
         $ pulumi import gcp:dns/managedZone:ManagedZone default {{project}}/{{name}}
         $ pulumi import gcp:dns/managedZone:ManagedZone default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ManagedZoneArgs args: The arguments to use to populate this resource's properties.
@@ -1372,7 +1380,7 @@ class ManagedZone(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_time: The time that this resource was created on the server.
                This is in RFC3339 text format.
-        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Terraform'.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[Union['ManagedZoneDnssecConfigArgs', 'ManagedZoneDnssecConfigArgsDict']] dnssec_config: DNSSEC configuration
                Structure is documented below.
@@ -1460,7 +1468,7 @@ class ManagedZone(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        A textual description field. Defaults to 'Managed by Pulumi'.
+        A textual description field. Defaults to 'Managed by Terraform'.
         """
         return pulumi.get(self, "description")
 

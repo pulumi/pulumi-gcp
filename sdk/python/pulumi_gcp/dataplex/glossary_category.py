@@ -29,6 +29,7 @@ class GlossaryCategoryArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlossaryCategory resource.
+
         :param pulumi.Input[_builtins.str] location: The location where the glossary category should reside.
         :param pulumi.Input[_builtins.str] parent: The immediate parent of the GlossaryCategory in the resource-hierarchy. It can either be a Glossary or a Category. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
         :param pulumi.Input[_builtins.str] category_id: The category id for creation.
@@ -177,6 +178,7 @@ class _GlossaryCategoryState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlossaryCategory resources.
+
         :param pulumi.Input[_builtins.str] category_id: The category id for creation.
         :param pulumi.Input[_builtins.str] create_time: The time at which the GlossaryCategory was created.
         :param pulumi.Input[_builtins.str] description: The user-mutable description of the GlossaryCategory.
@@ -427,7 +429,7 @@ class GlossaryCategory(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         category_test_id = gcp.dataplex.Glossary("category_test_id",
-            glossary_id="tf-test-glossary_80332",
+            glossary_id="tf-test-glossary_69391",
             location="us-central1")
         category_test_id_glossary_category = gcp.dataplex.GlossaryCategory("category_test_id",
             parent=pulumi.Output.all(
@@ -437,7 +439,7 @@ class GlossaryCategory(pulumi.CustomResource):
         ,
             glossary_id=category_test_id.glossary_id,
             location="us-central1",
-            category_id="tf-test-category-basic_13293")
+            category_id="tf-test-category-basic_8270")
         ```
         ### Dataplex Glossary Category Full
 
@@ -446,7 +448,7 @@ class GlossaryCategory(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         category_test_id_full = gcp.dataplex.Glossary("category_test_id_full",
-            glossary_id="tf-test-glossary_40289",
+            glossary_id="tf-test-glossary_41150",
             location="us-central1")
         category_test_id_full_glossary_category = gcp.dataplex.GlossaryCategory("category_test_id_full",
             parent=pulumi.Output.all(
@@ -456,7 +458,7 @@ class GlossaryCategory(pulumi.CustomResource):
         ,
             glossary_id=category_test_id_full.glossary_id,
             location="us-central1",
-            category_id="tf-test-category-full_33395",
+            category_id="tf-test-category-full_89313",
             labels={
                 "tag": "test-tf",
             },
@@ -479,6 +481,7 @@ class GlossaryCategory(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{project}}/{{location}}/{{glossary_id}}/{{category_id}}
         $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{location}}/{{glossary_id}}/{{category_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -513,7 +516,7 @@ class GlossaryCategory(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         category_test_id = gcp.dataplex.Glossary("category_test_id",
-            glossary_id="tf-test-glossary_80332",
+            glossary_id="tf-test-glossary_69391",
             location="us-central1")
         category_test_id_glossary_category = gcp.dataplex.GlossaryCategory("category_test_id",
             parent=pulumi.Output.all(
@@ -523,7 +526,7 @@ class GlossaryCategory(pulumi.CustomResource):
         ,
             glossary_id=category_test_id.glossary_id,
             location="us-central1",
-            category_id="tf-test-category-basic_13293")
+            category_id="tf-test-category-basic_8270")
         ```
         ### Dataplex Glossary Category Full
 
@@ -532,7 +535,7 @@ class GlossaryCategory(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         category_test_id_full = gcp.dataplex.Glossary("category_test_id_full",
-            glossary_id="tf-test-glossary_40289",
+            glossary_id="tf-test-glossary_41150",
             location="us-central1")
         category_test_id_full_glossary_category = gcp.dataplex.GlossaryCategory("category_test_id_full",
             parent=pulumi.Output.all(
@@ -542,7 +545,7 @@ class GlossaryCategory(pulumi.CustomResource):
         ,
             glossary_id=category_test_id_full.glossary_id,
             location="us-central1",
-            category_id="tf-test-category-full_33395",
+            category_id="tf-test-category-full_89313",
             labels={
                 "tag": "test-tf",
             },
@@ -565,6 +568,7 @@ class GlossaryCategory(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{project}}/{{location}}/{{glossary_id}}/{{category_id}}
         $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{location}}/{{glossary_id}}/{{category_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GlossaryCategoryArgs args: The arguments to use to populate this resource's properties.

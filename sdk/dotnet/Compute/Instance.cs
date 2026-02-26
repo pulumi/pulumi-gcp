@@ -189,7 +189,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceAdvancedMachineFeatures?> AdvancedMachineFeatures { get; private set; } = null!;
 
         /// <summary>
-        /// If true, allows this prvider to stop the instance to update its properties.
+        /// If true, allows Terraform to stop the instance to update its properties.
         /// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         /// </summary>
         [Output("allowStoppingForUpdate")]
@@ -242,7 +242,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable deletion protection on this instance. Defaults to false.
-        /// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        /// **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -276,6 +276,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
         /// **Note:** GPU accelerators can only be used with `OnHostMaintenance` option set to TERMINATE.
+        /// **Note**: As of 6.0.0, argument syntax
+        /// is no longer supported for this field in favor of block syntax.
+        /// To dynamically set a list of guest accelerators, use dynamic blocks.
+        /// To set an empty list, use a single `GuestAccelerator` block with `count = 0`.
         /// </summary>
         [Output("guestAccelerators")]
         public Output<ImmutableArray<Outputs.InstanceGuestAccelerator>> GuestAccelerators { get; private set; } = null!;
@@ -368,7 +372,8 @@ namespace Pulumi.Gcp.Compute
         /// modification.  On import, `MetadataStartupScript` will not be set - if you
         /// choose to specify it you will see a diff immediately after import causing a
         /// destroy/recreate operation. If importing an instance and specifying this value
-        /// is desired, you will need to modify your state file.
+        /// is desired, you will need to modify your state file manually using
+        /// `terraform state` commands.
         /// </summary>
         [Output("metadataStartupScript")]
         public Output<string?> MetadataStartupScript { get; private set; } = null!;
@@ -558,7 +563,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
 
         /// <summary>
-        /// If true, allows this prvider to stop the instance to update its properties.
+        /// If true, allows Terraform to stop the instance to update its properties.
         /// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         /// </summary>
         [Input("allowStoppingForUpdate")]
@@ -599,7 +604,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable deletion protection on this instance. Defaults to false.
-        /// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        /// **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -630,6 +635,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
         /// **Note:** GPU accelerators can only be used with `OnHostMaintenance` option set to TERMINATE.
+        /// **Note**: As of 6.0.0, argument syntax
+        /// is no longer supported for this field in favor of block syntax.
+        /// To dynamically set a list of guest accelerators, use dynamic blocks.
+        /// To set an empty list, use a single `GuestAccelerator` block with `count = 0`.
         /// </summary>
         public InputList<Inputs.InstanceGuestAcceleratorArgs> GuestAccelerators
         {
@@ -719,7 +728,8 @@ namespace Pulumi.Gcp.Compute
         /// modification.  On import, `MetadataStartupScript` will not be set - if you
         /// choose to specify it you will see a diff immediately after import causing a
         /// destroy/recreate operation. If importing an instance and specifying this value
-        /// is desired, you will need to modify your state file.
+        /// is desired, you will need to modify your state file manually using
+        /// `terraform state` commands.
         /// </summary>
         [Input("metadataStartupScript")]
         public Input<string>? MetadataStartupScript { get; set; }
@@ -872,7 +882,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceAdvancedMachineFeaturesGetArgs>? AdvancedMachineFeatures { get; set; }
 
         /// <summary>
-        /// If true, allows this prvider to stop the instance to update its properties.
+        /// If true, allows Terraform to stop the instance to update its properties.
         /// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         /// </summary>
         [Input("allowStoppingForUpdate")]
@@ -931,7 +941,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable deletion protection on this instance. Defaults to false.
-        /// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        /// **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -978,6 +988,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
         /// **Note:** GPU accelerators can only be used with `OnHostMaintenance` option set to TERMINATE.
+        /// **Note**: As of 6.0.0, argument syntax
+        /// is no longer supported for this field in favor of block syntax.
+        /// To dynamically set a list of guest accelerators, use dynamic blocks.
+        /// To set an empty list, use a single `GuestAccelerator` block with `count = 0`.
         /// </summary>
         public InputList<Inputs.InstanceGuestAcceleratorGetArgs> GuestAccelerators
         {
@@ -1085,7 +1099,8 @@ namespace Pulumi.Gcp.Compute
         /// modification.  On import, `MetadataStartupScript` will not be set - if you
         /// choose to specify it you will see a diff immediately after import causing a
         /// destroy/recreate operation. If importing an instance and specifying this value
-        /// is desired, you will need to modify your state file.
+        /// is desired, you will need to modify your state file manually using
+        /// `terraform state` commands.
         /// </summary>
         [Input("metadataStartupScript")]
         public Input<string>? MetadataStartupScript { get; set; }

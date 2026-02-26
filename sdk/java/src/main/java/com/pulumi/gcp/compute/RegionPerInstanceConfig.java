@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var rigm = new RegionInstanceGroupManager("rigm", RegionInstanceGroupManagerArgs.builder()
- *             .description("Demo test instance group manager")
+ *             .description("Terraform test instance group manager")
  *             .name("my-rigm")
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
  *                 .name("prod")

@@ -13,6 +13,23 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingsAccessSettingsOauthSettings {
     /**
+     * @return OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+     * 
+     */
+    private @Nullable String clientId;
+    /**
+     * @return OAuth secret paired with client ID.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    private @Nullable String clientSecret;
+    /**
+     * @return (Output)
+     * OAuth secret sha256 paired with client ID.
+     * 
+     */
+    private @Nullable String clientSecretSha256;
+    /**
      * @return Domain hint to send as hd=? parameter in OAuth request flow.
      * Enables redirect to primary IDP by skipping Google&#39;s login screen.
      * (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
@@ -29,6 +46,29 @@ public final class SettingsAccessSettingsOauthSettings {
     private @Nullable List<String> programmaticClients;
 
     private SettingsAccessSettingsOauthSettings() {}
+    /**
+     * @return OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+     * 
+     */
+    public Optional<String> clientId() {
+        return Optional.ofNullable(this.clientId);
+    }
+    /**
+     * @return OAuth secret paired with client ID.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    public Optional<String> clientSecret() {
+        return Optional.ofNullable(this.clientSecret);
+    }
+    /**
+     * @return (Output)
+     * OAuth secret sha256 paired with client ID.
+     * 
+     */
+    public Optional<String> clientSecretSha256() {
+        return Optional.ofNullable(this.clientSecretSha256);
+    }
     /**
      * @return Domain hint to send as hd=? parameter in OAuth request flow.
      * Enables redirect to primary IDP by skipping Google&#39;s login screen.
@@ -58,15 +98,39 @@ public final class SettingsAccessSettingsOauthSettings {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String clientId;
+        private @Nullable String clientSecret;
+        private @Nullable String clientSecretSha256;
         private @Nullable String loginHint;
         private @Nullable List<String> programmaticClients;
         public Builder() {}
         public Builder(SettingsAccessSettingsOauthSettings defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.clientId = defaults.clientId;
+    	      this.clientSecret = defaults.clientSecret;
+    	      this.clientSecretSha256 = defaults.clientSecretSha256;
     	      this.loginHint = defaults.loginHint;
     	      this.programmaticClients = defaults.programmaticClients;
         }
 
+        @CustomType.Setter
+        public Builder clientId(@Nullable String clientId) {
+
+            this.clientId = clientId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clientSecret(@Nullable String clientSecret) {
+
+            this.clientSecret = clientSecret;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clientSecretSha256(@Nullable String clientSecretSha256) {
+
+            this.clientSecretSha256 = clientSecretSha256;
+            return this;
+        }
         @CustomType.Setter
         public Builder loginHint(@Nullable String loginHint) {
 
@@ -84,6 +148,9 @@ public final class SettingsAccessSettingsOauthSettings {
         }
         public SettingsAccessSettingsOauthSettings build() {
             final var _resultValue = new SettingsAccessSettingsOauthSettings();
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.clientSecretSha256 = clientSecretSha256;
             _resultValue.loginHint = loginHint;
             _resultValue.programmaticClients = programmaticClients;
             return _resultValue;

@@ -23,7 +23,7 @@ public final class DatabaseInstanceDnsName {
     private @Nullable String dnsScope;
     /**
      * @return The name of the instance. If the name is left
-     * blank, the provider will randomly generate one when the instance is first
+     * blank, Terraform will randomly generate one when the instance is first
      * created. This is done because after a name is used, it cannot be reused for
      * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      * 
@@ -47,7 +47,7 @@ public final class DatabaseInstanceDnsName {
     }
     /**
      * @return The name of the instance. If the name is left
-     * blank, the provider will randomly generate one when the instance is first
+     * blank, Terraform will randomly generate one when the instance is first
      * created. This is done because after a name is used, it cannot be reused for
      * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      * 

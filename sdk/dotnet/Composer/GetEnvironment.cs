@@ -190,6 +190,7 @@ namespace Pulumi.Gcp.Composer
     {
         /// <summary>
         /// Configuration parameters for the environment.
+        /// Full structure is provided by composer environment resource documentation.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigResult> Configs;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;

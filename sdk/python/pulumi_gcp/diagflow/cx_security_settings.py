@@ -35,6 +35,7 @@ class CxSecuritySettingsArgs:
                  retention_window_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a CxSecuritySettings resource.
+
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the security settings, unique within the location.
         :param pulumi.Input[_builtins.str] location: The location these settings are located in. Settings can only be applied to an agent in the same location.
                See [Available Regions](https://cloud.google.com/dialogflow/cx/docs/concept/region#avail) for a list of supported locations.
@@ -274,6 +275,7 @@ class _CxSecuritySettingsState:
                  retention_window_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering CxSecuritySettings resources.
+
         :param pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs'] audio_export_settings: Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
                If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
                If audio export is enabled, audio is recorded and saved to gcs_bucket, subject to retention policy of gcs_bucket.
@@ -627,6 +629,7 @@ class CxSecuritySettings(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxSecuritySettings:CxSecuritySettings default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['CxSecuritySettingsAudioExportSettingsArgs', 'CxSecuritySettingsAudioExportSettingsArgsDict']] audio_export_settings: Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
@@ -761,6 +764,7 @@ class CxSecuritySettings(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxSecuritySettings:CxSecuritySettings default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:diagflow/cxSecuritySettings:CxSecuritySettings default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CxSecuritySettingsArgs args: The arguments to use to populate this resource's properties.

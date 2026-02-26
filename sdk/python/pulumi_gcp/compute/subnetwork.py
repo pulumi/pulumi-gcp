@@ -45,6 +45,7 @@ class SubnetworkArgs:
                  stack_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Subnetwork resource.
+
         :param pulumi.Input[_builtins.str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
         :param pulumi.Input[_builtins.bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
@@ -117,6 +118,9 @@ class SubnetworkArgs:
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
                to either primary or secondary ranges.
+               **Note**: This field uses attr-as-block mode to avoid
+               breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+               set `send_secondary_ip_range_if_empty = true`
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] send_secondary_ip_range_if_empty: Controls the removal behavior of secondary_ip_range.
                When false, removing secondary_ip_range from config will not produce a diff as
@@ -457,6 +461,9 @@ class SubnetworkArgs:
         contained in this subnetwork. The primary IP of such VM must belong
         to the primary ipCidrRange of the subnetwork. The alias IPs may belong
         to either primary or secondary ranges.
+        **Note**: This field uses attr-as-block mode to avoid
+        breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+        set `send_secondary_ip_range_if_empty = true`
         Structure is documented below.
         """
         return pulumi.get(self, "secondary_ip_ranges")
@@ -532,6 +539,7 @@ class _SubnetworkState:
                  subnetwork_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Subnetwork resources.
+
         :param pulumi.Input[_builtins.bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
                existing resources are dropped and prevented from leaving the VPC.
                Setting this field to true will allow these packets to match dynamic routes injected
@@ -614,6 +622,9 @@ class _SubnetworkState:
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
                to either primary or secondary ranges.
+               **Note**: This field uses attr-as-block mode to avoid
+               breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+               set `send_secondary_ip_range_if_empty = true`
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.bool] send_secondary_ip_range_if_empty: Controls the removal behavior of secondary_ip_range.
@@ -1046,6 +1057,9 @@ class _SubnetworkState:
         contained in this subnetwork. The primary IP of such VM must belong
         to the primary ipCidrRange of the subnetwork. The alias IPs may belong
         to either primary or secondary ranges.
+        **Note**: This field uses attr-as-block mode to avoid
+        breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+        set `send_secondary_ip_range_if_empty = true`
         Structure is documented below.
         """
         return pulumi.get(self, "secondary_ip_ranges")
@@ -1401,6 +1415,7 @@ class Subnetwork(pulumi.CustomResource):
         $ pulumi import gcp:compute/subnetwork:Subnetwork default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
@@ -1475,6 +1490,9 @@ class Subnetwork(pulumi.CustomResource):
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
                to either primary or secondary ranges.
+               **Note**: This field uses attr-as-block mode to avoid
+               breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+               set `send_secondary_ip_range_if_empty = true`
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] send_secondary_ip_range_if_empty: Controls the removal behavior of secondary_ip_range.
                When false, removing secondary_ip_range from config will not produce a diff as
@@ -1739,6 +1757,7 @@ class Subnetwork(pulumi.CustomResource):
         $ pulumi import gcp:compute/subnetwork:Subnetwork default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param SubnetworkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1946,6 +1965,9 @@ class Subnetwork(pulumi.CustomResource):
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
                to either primary or secondary ranges.
+               **Note**: This field uses attr-as-block mode to avoid
+               breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+               set `send_secondary_ip_range_if_empty = true`
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.bool] send_secondary_ip_range_if_empty: Controls the removal behavior of secondary_ip_range.
@@ -2254,6 +2276,9 @@ class Subnetwork(pulumi.CustomResource):
         contained in this subnetwork. The primary IP of such VM must belong
         to the primary ipCidrRange of the subnetwork. The alias IPs may belong
         to either primary or secondary ranges.
+        **Note**: This field uses attr-as-block mode to avoid
+        breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+        set `send_secondary_ip_range_if_empty = true`
         Structure is documented below.
         """
         return pulumi.get(self, "secondary_ip_ranges")

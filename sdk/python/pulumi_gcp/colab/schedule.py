@@ -34,6 +34,7 @@ class ScheduleArgs:
                  start_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Schedule resource.
+
         :param pulumi.Input['ScheduleCreateNotebookExecutionJobRequestArgs'] create_notebook_execution_job_request: Request for google_colab_notebook_execution.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
@@ -219,6 +220,7 @@ class _ScheduleState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Schedule resources.
+
         :param pulumi.Input[_builtins.bool] allow_queueing: Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         :param pulumi.Input['ScheduleCreateNotebookExecutionJobRequestArgs'] create_notebook_execution_job_request: Request for google_colab_notebook_execution.
                Structure is documented below.
@@ -730,6 +732,7 @@ class Schedule(pulumi.CustomResource):
         $ pulumi import gcp:colab/schedule:Schedule default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_queueing: Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
@@ -1042,6 +1045,7 @@ class Schedule(pulumi.CustomResource):
         $ pulumi import gcp:colab/schedule:Schedule default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:colab/schedule:Schedule default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ScheduleArgs args: The arguments to use to populate this resource's properties.

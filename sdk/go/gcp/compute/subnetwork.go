@@ -602,6 +602,9 @@ type Subnetwork struct {
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
 	// to either primary or secondary ranges.
+	// **Note**: This field uses attr-as-block mode to avoid
+	// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+	// set `sendSecondaryIpRangeIfEmpty = true`
 	// Structure is documented below.
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayOutput `pulumi:"secondaryIpRanges"`
 	// The URI of the created resource.
@@ -767,6 +770,9 @@ type subnetworkState struct {
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
 	// to either primary or secondary ranges.
+	// **Note**: This field uses attr-as-block mode to avoid
+	// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+	// set `sendSecondaryIpRangeIfEmpty = true`
 	// Structure is documented below.
 	SecondaryIpRanges []SubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
 	// The URI of the created resource.
@@ -900,6 +906,9 @@ type SubnetworkState struct {
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
 	// to either primary or secondary ranges.
+	// **Note**: This field uses attr-as-block mode to avoid
+	// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+	// set `sendSecondaryIpRangeIfEmpty = true`
 	// Structure is documented below.
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayInput
 	// The URI of the created resource.
@@ -1020,6 +1029,9 @@ type subnetworkArgs struct {
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
 	// to either primary or secondary ranges.
+	// **Note**: This field uses attr-as-block mode to avoid
+	// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+	// set `sendSecondaryIpRangeIfEmpty = true`
 	// Structure is documented below.
 	SecondaryIpRanges []SubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
 	// Controls the removal behavior of secondary_ip_range.
@@ -1128,6 +1140,9 @@ type SubnetworkArgs struct {
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
 	// to either primary or secondary ranges.
+	// **Note**: This field uses attr-as-block mode to avoid
+	// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+	// set `sendSecondaryIpRangeIfEmpty = true`
 	// Structure is documented below.
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayInput
 	// Controls the removal behavior of secondary_ip_range.
@@ -1410,6 +1425,9 @@ func (o SubnetworkOutput) Role() pulumi.StringPtrOutput {
 // contained in this subnetwork. The primary IP of such VM must belong
 // to the primary ipCidrRange of the subnetwork. The alias IPs may belong
 // to either primary or secondary ranges.
+// **Note**: This field uses attr-as-block mode to avoid
+// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+// set `sendSecondaryIpRangeIfEmpty = true`
 // Structure is documented below.
 func (o SubnetworkOutput) SecondaryIpRanges() SubnetworkSecondaryIpRangeArrayOutput {
 	return o.ApplyT(func(v *Subnetwork) SubnetworkSecondaryIpRangeArrayOutput { return v.SecondaryIpRanges }).(SubnetworkSecondaryIpRangeArrayOutput)

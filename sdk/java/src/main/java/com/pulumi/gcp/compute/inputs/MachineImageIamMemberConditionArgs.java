@@ -19,12 +19,20 @@ public final class MachineImageIamMemberConditionArgs extends com.pulumi.resourc
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
+     * &gt; **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+     * identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+     * consider it to be an entirely different resource and will treat it as such.
+     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * 
+     * &gt; **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+     * identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+     * consider it to be an entirely different resource and will treat it as such.
      * 
      */
     public Optional<Output<String>> description() {
@@ -90,6 +98,10 @@ public final class MachineImageIamMemberConditionArgs extends com.pulumi.resourc
         /**
          * @param description An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          * 
+         * &gt; **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+         * consider it to be an entirely different resource and will treat it as such.
+         * 
          * @return builder
          * 
          */
@@ -100,6 +112,10 @@ public final class MachineImageIamMemberConditionArgs extends com.pulumi.resourc
 
         /**
          * @param description An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         * 
+         * &gt; **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+         * consider it to be an entirely different resource and will treat it as such.
          * 
          * @return builder
          * 

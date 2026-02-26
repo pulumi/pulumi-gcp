@@ -217,6 +217,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PublicDelegatedPrefix{}
 	case "gcp:compute/regionAutoscaler:RegionAutoscaler":
 		r = &RegionAutoscaler{}
+	case "gcp:compute/regionBackendBucket:RegionBackendBucket":
+		r = &RegionBackendBucket{}
+	case "gcp:compute/regionBackendBucketIamBinding:RegionBackendBucketIamBinding":
+		r = &RegionBackendBucketIamBinding{}
+	case "gcp:compute/regionBackendBucketIamMember:RegionBackendBucketIamMember":
+		r = &RegionBackendBucketIamMember{}
+	case "gcp:compute/regionBackendBucketIamPolicy:RegionBackendBucketIamPolicy":
+		r = &RegionBackendBucketIamPolicy{}
 	case "gcp:compute/regionBackendService:RegionBackendService":
 		r = &RegionBackendService{}
 	case "gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding":
@@ -870,6 +878,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/regionAutoscaler",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionBackendBucket",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionBackendBucketIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionBackendBucketIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionBackendBucketIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

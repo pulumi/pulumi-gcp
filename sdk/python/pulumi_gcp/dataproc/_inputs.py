@@ -4822,6 +4822,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigArgsDict(TypedDict):
     * PREEMPTIBILITY_UNSPECIFIED
     * NON_PREEMPTIBLE
     * PREEMPTIBLE
+    * SPOT
     """
 
 @pulumi.input_type
@@ -4844,6 +4845,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigArgs:
                * PREEMPTIBILITY_UNSPECIFIED
                * NON_PREEMPTIBLE
                * PREEMPTIBLE
+               * SPOT
         """
         if disk_config is not None:
             pulumi.set(__self__, "disk_config", disk_config)
@@ -4915,6 +4917,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigArgs:
         * PREEMPTIBILITY_UNSPECIFIED
         * NON_PREEMPTIBLE
         * PREEMPTIBLE
+        * SPOT
         """
         return pulumi.get(self, "preemptibility")
 

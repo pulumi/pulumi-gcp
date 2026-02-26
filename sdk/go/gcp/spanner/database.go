@@ -24,7 +24,9 @@ import (
 // (and run `pulumi up` to write the field to state) in order to destroy an instance.
 // It is recommended to not set this field (or set it to true) until you're ready to destroy.
 // On older versions, it is strongly recommended to set `lifecycle { preventDestroy = true }`
-// on databases in order to prevent accidental data loss.
+// on databases in order to prevent accidental data loss. See
+// Terraform docs
+// for more information on lifecycle parameters.
 //
 // ## Example Usage
 //
@@ -106,8 +108,12 @@ type Database struct {
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
 	DefaultTimeZone pulumi.StringPtrOutput `pulumi:"defaultTimeZone"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
+	// Whether Terraform will be prevented from destroying the database. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the database,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the database will fail.
+	// When the field is set to false, deleting the database is allowed.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Whether drop protection is enabled for this database. Defaults to false.
 	// Drop protection is different from
@@ -187,8 +193,12 @@ type databaseState struct {
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
 	DefaultTimeZone *string `pulumi:"defaultTimeZone"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
+	// Whether Terraform will be prevented from destroying the database. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the database,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the database will fail.
+	// When the field is set to false, deleting the database is allowed.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Whether drop protection is enabled for this database. Defaults to false.
 	// Drop protection is different from
@@ -236,8 +246,12 @@ type DatabaseState struct {
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
 	DefaultTimeZone pulumi.StringPtrInput
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
+	// Whether Terraform will be prevented from destroying the database. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the database,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the database will fail.
+	// When the field is set to false, deleting the database is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// Whether drop protection is enabled for this database. Defaults to false.
 	// Drop protection is different from
@@ -289,8 +303,12 @@ type databaseArgs struct {
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
 	DefaultTimeZone *string `pulumi:"defaultTimeZone"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
+	// Whether Terraform will be prevented from destroying the database. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the database,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the database will fail.
+	// When the field is set to false, deleting the database is allowed.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Whether drop protection is enabled for this database. Defaults to false.
 	// Drop protection is different from
@@ -337,8 +355,12 @@ type DatabaseArgs struct {
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
 	DefaultTimeZone pulumi.StringPtrInput
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
+	// Whether Terraform will be prevented from destroying the database. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the database,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the database will fail.
+	// When the field is set to false, deleting the database is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// Whether drop protection is enabled for this database. Defaults to false.
 	// Drop protection is different from
@@ -479,8 +501,12 @@ func (o DatabaseOutput) DefaultTimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.DefaultTimeZone }).(pulumi.StringPtrOutput)
 }
 
-// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-// in state, a `destroy` or `update` that would delete the instance will fail.
+// Whether Terraform will be prevented from destroying the database. Defaults to true.
+// When a`terraform destroy` or `pulumi up` would delete the database,
+// the command will fail if this field is not set to false in Terraform state.
+// When the field is set to true or unset in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the database will fail.
+// When the field is set to false, deleting the database is allowed.
 func (o DatabaseOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }

@@ -398,7 +398,7 @@ namespace Pulumi.Gcp.Compute
         /// If you specify this field along with `Image` or `Snapshot`,
         /// the value must not be less than the size of the image
         /// or the size of the snapshot.
-        /// ~&gt;**NOTE** If you change the size, the provider updates the disk size
+        /// ~&gt;**NOTE** If you change the size, Terraform updates the disk size
         /// if upsizing is detected but recreates the disk if downsizing is requested.
         /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
         /// and recreating.
@@ -805,7 +805,7 @@ namespace Pulumi.Gcp.Compute
         /// If you specify this field along with `Image` or `Snapshot`,
         /// the value must not be less than the size of the image
         /// or the size of the snapshot.
-        /// ~&gt;**NOTE** If you change the size, the provider updates the disk size
+        /// ~&gt;**NOTE** If you change the size, Terraform updates the disk size
         /// if upsizing is detected but recreates the disk if downsizing is requested.
         /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
         /// and recreating.
@@ -1193,7 +1193,7 @@ namespace Pulumi.Gcp.Compute
         /// If you specify this field along with `Image` or `Snapshot`,
         /// the value must not be less than the size of the image
         /// or the size of the snapshot.
-        /// ~&gt;**NOTE** If you change the size, the provider updates the disk size
+        /// ~&gt;**NOTE** If you change the size, Terraform updates the disk size
         /// if upsizing is detected but recreates the disk if downsizing is requested.
         /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
         /// and recreating.

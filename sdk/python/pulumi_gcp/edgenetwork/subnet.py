@@ -31,6 +31,7 @@ class SubnetArgs:
                  vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Subnet resource.
+
         :param pulumi.Input[_builtins.str] location: The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
         :param pulumi.Input[_builtins.str] network: The ID of the network to which this router belongs.
                Must be of the form: `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
@@ -211,6 +212,7 @@ class _SubnetState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Subnet resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the subnet was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
@@ -572,6 +574,7 @@ class Subnet(pulumi.CustomResource):
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
@@ -674,6 +677,7 @@ class Subnet(pulumi.CustomResource):
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{subnet_id}}
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SubnetArgs args: The arguments to use to populate this resource's properties.

@@ -218,7 +218,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.advancedMachineFeatures);
     }
     /**
-     * If true, allows this prvider to stop the instance to update its properties.
+     * If true, allows Terraform to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      * 
      */
@@ -226,7 +226,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> allowStoppingForUpdate;
 
     /**
-     * @return If true, allows this prvider to stop the instance to update its properties.
+     * @return If true, allows Terraform to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      * 
      */
@@ -339,7 +339,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Enable deletion protection on this instance. Defaults to false.
-     * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+     * **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
      * 
      */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
@@ -347,7 +347,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enable deletion protection on this instance. Defaults to false.
-     * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+     * **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
@@ -416,6 +416,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+     * **Note**: As of 6.0.0, argument syntax
+     * is no longer supported for this field in favor of block syntax.
+     * To dynamically set a list of guest accelerators, use dynamic blocks.
+     * To set an empty list, use a single `guestAccelerator` block with `count = 0`.
      * 
      */
     @Export(name="guestAccelerators", refs={List.class,InstanceGuestAccelerator.class}, tree="[0,1]")
@@ -424,6 +428,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+     * **Note**: As of 6.0.0, argument syntax
+     * is no longer supported for this field in favor of block syntax.
+     * To dynamically set a list of guest accelerators, use dynamic blocks.
+     * To set an empty list, use a single `guestAccelerator` block with `count = 0`.
      * 
      */
     public Output<List<InstanceGuestAccelerator>> guestAccelerators() {
@@ -613,7 +621,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * modification.  On import, `metadataStartupScript` will not be set - if you
      * choose to specify it you will see a diff immediately after import causing a
      * destroy/recreate operation. If importing an instance and specifying this value
-     * is desired, you will need to modify your state file.
+     * is desired, you will need to modify your state file manually using
+     * `terraform state` commands.
      * 
      */
     @Export(name="metadataStartupScript", refs={String.class}, tree="[0]")
@@ -629,7 +638,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * modification.  On import, `metadataStartupScript` will not be set - if you
      * choose to specify it you will see a diff immediately after import causing a
      * destroy/recreate operation. If importing an instance and specifying this value
-     * is desired, you will need to modify your state file.
+     * is desired, you will need to modify your state file manually using
+     * `terraform state` commands.
      * 
      */
     public Output<Optional<String>> metadataStartupScript() {

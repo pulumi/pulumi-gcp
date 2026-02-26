@@ -14,7 +14,7 @@ import (
 
 // Allows creation and management of a Google Cloud Billing Subaccount.
 //
-// !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
+// !> **WARNING:** Deleting this Terraform resource will not delete or close the billing subaccount.
 //
 // ```go
 // package main
@@ -58,7 +58,7 @@ type SubAccount struct {
 	// The billing account id.
 	BillingAccountId pulumi.StringOutput `pulumi:"billingAccountId"`
 	// If set to "RENAME_ON_DESTROY" the billing account displayName
-	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+	// will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
 	// Default is "".
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The display name of the billing account.
@@ -111,7 +111,7 @@ type subAccountState struct {
 	// The billing account id.
 	BillingAccountId *string `pulumi:"billingAccountId"`
 	// If set to "RENAME_ON_DESTROY" the billing account displayName
-	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+	// will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
 	// Default is "".
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the billing account.
@@ -129,7 +129,7 @@ type SubAccountState struct {
 	// The billing account id.
 	BillingAccountId pulumi.StringPtrInput
 	// If set to "RENAME_ON_DESTROY" the billing account displayName
-	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+	// will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
 	// Default is "".
 	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the billing account.
@@ -149,7 +149,7 @@ func (SubAccountState) ElementType() reflect.Type {
 
 type subAccountArgs struct {
 	// If set to "RENAME_ON_DESTROY" the billing account displayName
-	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+	// will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
 	// Default is "".
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the billing account.
@@ -162,7 +162,7 @@ type subAccountArgs struct {
 // The set of arguments for constructing a SubAccount resource.
 type SubAccountArgs struct {
 	// If set to "RENAME_ON_DESTROY" the billing account displayName
-	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+	// will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
 	// Default is "".
 	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the billing account.
@@ -265,7 +265,7 @@ func (o SubAccountOutput) BillingAccountId() pulumi.StringOutput {
 }
 
 // If set to "RENAME_ON_DESTROY" the billing account displayName
-// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+// will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
 // Default is "".
 func (o SubAccountOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubAccount) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)

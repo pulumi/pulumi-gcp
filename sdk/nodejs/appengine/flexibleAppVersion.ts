@@ -205,7 +205,7 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
      */
     declare public readonly entrypoint: pulumi.Output<outputs.appengine.FlexibleAppVersionEntrypoint | undefined>;
     /**
-     * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+     * Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
      */
     declare public readonly envVariables: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -455,7 +455,7 @@ export interface FlexibleAppVersionState {
      */
     entrypoint?: pulumi.Input<inputs.appengine.FlexibleAppVersionEntrypoint>;
     /**
-     * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+     * Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
      */
     envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -611,7 +611,7 @@ export interface FlexibleAppVersionArgs {
      */
     entrypoint?: pulumi.Input<inputs.appengine.FlexibleAppVersionEntrypoint>;
     /**
-     * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+     * Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.
      */
     envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

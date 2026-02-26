@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * getting new data from (e.g.) a GCS bucket, and outputting data continuously.
  * Some jobs process a set amount of data then terminate. All jobs can fail while
  * running due to programming errors or other issues. In this way, Dataflow jobs
- * are different from most other provider / Google resources.
+ * are different from most other Terraform / Google resources.
  * 
  * The Dataflow resource is considered &#39;existing&#39; while it is in a nonterminal
  * state.  If it reaches a terminal state (e.g. &#39;FAILED&#39;, &#39;COMPLETE&#39;,
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  * new data will be processed.  If &#34;drained&#34;, no new data will enter the pipeline,
  * but any data currently in the pipeline will finish being processed.  The default
  * is &#34;cancelled&#34;, but if a user sets `onDelete` to `&#34;drain&#34;` in the
- * configuration, you may experience a long wait for your `pulumi destroy` to
+ * configuration, you may experience a long wait for your `terraform destroy` to
  * complete.
  * 
  * You can potentially short-circuit the wait by setting `skipWaitOnJobTermination`
@@ -208,14 +208,14 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return this.containerSpecGcsPath;
     }
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
     /**
-     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
     public Output<Map<String,String>> effectiveLabels() {
@@ -280,11 +280,8 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * page.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -293,11 +290,8 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
     /**
      * @return User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * page.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -389,7 +383,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
     }
     /**
      * One of &#34;drain&#34; or &#34;cancel&#34;. Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
+     * deletion during `terraform destroy`.  See above note.
      * 
      */
     @Export(name="onDelete", refs={String.class}, tree="[0]")
@@ -397,7 +391,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
 
     /**
      * @return One of &#34;drain&#34; or &#34;cancel&#34;. Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
+     * deletion during `terraform destroy`.  See above note.
      * 
      */
     public Output<Optional<String>> onDelete() {

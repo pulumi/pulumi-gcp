@@ -62,6 +62,7 @@ export interface GetEnvironmentArgs {
 export interface GetEnvironmentResult {
     /**
      * Configuration parameters for the environment.
+     * Full structure is provided by composer environment resource documentation.
      */
     readonly configs: outputs.composer.GetEnvironmentConfig[];
     readonly effectiveLabels: {[key: string]: string};

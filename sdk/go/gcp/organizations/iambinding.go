@@ -12,20 +12,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Allows creation and management of a single binding within IAM policy for
-// an existing Google Cloud Platform Organization.
+// Four different resources help you manage your IAM policy for a organization. Each of these resources serves a different use case:
 //
-// > **Note:** This resource __must not__ be used in conjunction with
+// * `organizations.IAMPolicy`: Authoritative. Sets the IAM policy for the organization and replaces any existing policy already attached.
+// * `organizations.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organization are preserved.
+// * `organizations.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organization are preserved.
+// * `organizations.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
 //
-//	`organizations.IAMMember` for the __same role__ or they will fight over
-//	what your policy should be.
+// > **Note:** `organizations.IAMPolicy` **cannot** be used in conjunction with `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig` or they will fight over what your policy should be.
 //
-// > **Note:** On create, this resource will overwrite members of any existing roles.
+// > **Note:** `organizations.IAMBinding` resources **can be** used in conjunction with `organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
 //
-//	Use `pulumi import` and inspect the `output to ensure
-//	your existing members are preserved.
+// ## organizations.IAMPolicy
 //
-// ## Example Usage
+// !> **Warning:** New organizations have several default policies which will,
+//
+//	without extreme caution, be **overwritten** by use of this resource.
+//	The safest alternative is to use multiple `organizations.IAMBinding`
+//	resources. This resource makes it easy to remove your own access to
+//	an organization, which will require a call to Google Support to have
+//	fixed, and can take multiple days to resolve.
+//	<br /><br />
+//	In general, this resource should only be used with organizations
+//	fully managed by Terraform.If you do use this resource,
+//	the best way to be sure that you are not making dangerous changes is to start
+//	by **importing** your existing policy, and examining the diff very closely.
 //
 // ```go
 // package main
@@ -39,11 +50,398 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewIAMBinding(ctx, "binding", &organizations.IAMBindingArgs{
-//				OrgId: pulumi.String("123456789"),
-//				Role:  pulumi.String("roles/browser"),
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.NewIAMPolicy(ctx, "organization", &organizations.IAMPolicyArgs{
+//				OrgId:      pulumi.String("1234567890"),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: {
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.NewIAMPolicy(ctx, "organization", &organizations.IAMPolicyArgs{
+//				OrgId:      pulumi.String("1234567890"),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## organizations.IAMBinding
+//
+// > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMBinding(ctx, "organization", &organizations.IAMBindingArgs{
+//				OrgId: pulumi.String("1234567890"),
+//				Role:  pulumi.String("roles/editor"),
 //				Members: pulumi.StringArray{
-//					pulumi.String("user:alice@gmail.com"),
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMBinding(ctx, "organization", &organizations.IAMBindingArgs{
+//				OrgId: pulumi.String("1234567890"),
+//				Role:  pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &organizations.IAMBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## organizations.IAMMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMMember(ctx, "organization", &organizations.IAMMemberArgs{
+//				OrgId:  pulumi.String("1234567890"),
+//				Role:   pulumi.String("roles/editor"),
+//				Member: pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMMember(ctx, "organization", &organizations.IAMMemberArgs{
+//				OrgId:  pulumi.String("1234567890"),
+//				Role:   pulumi.String("roles/editor"),
+//				Member: pulumi.String("user:jane@example.com"),
+//				Condition: &organizations.IAMMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## organizations.IamAuditConfig
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIamAuditConfig(ctx, "organization", &organizations.IamAuditConfigArgs{
+//				OrgId:   pulumi.String("1234567890"),
+//				Service: pulumi.String("allServices"),
+//				AuditLogConfigs: organizations.IamAuditConfigAuditLogConfigArray{
+//					&organizations.IamAuditConfigAuditLogConfigArgs{
+//						LogType: pulumi.String("ADMIN_READ"),
+//					},
+//					&organizations.IamAuditConfigAuditLogConfigArgs{
+//						LogType: pulumi.String("DATA_READ"),
+//						ExemptedMembers: pulumi.StringArray{
+//							pulumi.String("user:joebloggs@example.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## organizations.IAMBinding
+//
+// > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMBinding(ctx, "organization", &organizations.IAMBindingArgs{
+//				OrgId: pulumi.String("1234567890"),
+//				Role:  pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMBinding(ctx, "organization", &organizations.IAMBindingArgs{
+//				OrgId: pulumi.String("1234567890"),
+//				Role:  pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &organizations.IAMBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## organizations.IAMMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMMember(ctx, "organization", &organizations.IAMMemberArgs{
+//				OrgId:  pulumi.String("1234567890"),
+//				Role:   pulumi.String("roles/editor"),
+//				Member: pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMMember(ctx, "organization", &organizations.IAMMemberArgs{
+//				OrgId:  pulumi.String("1234567890"),
+//				Role:   pulumi.String("roles/editor"),
+//				Member: pulumi.String("user:jane@example.com"),
+//				Condition: &organizations.IAMMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## organizations.IamAuditConfig
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIamAuditConfig(ctx, "organization", &organizations.IamAuditConfigArgs{
+//				OrgId:   pulumi.String("1234567890"),
+//				Service: pulumi.String("allServices"),
+//				AuditLogConfigs: organizations.IamAuditConfigAuditLogConfigArray{
+//					&organizations.IamAuditConfigAuditLogConfigArgs{
+//						LogType: pulumi.String("ADMIN_READ"),
+//					},
+//					&organizations.IamAuditConfigAuditLogConfigArgs{
+//						LogType: pulumi.String("DATA_READ"),
+//						ExemptedMembers: pulumi.StringArray{
+//							pulumi.String("user:joebloggs@example.com"),
+//						},
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -57,28 +455,33 @@ import (
 //
 // ## Import
 //
-// IAM binding imports use space-delimited identifiers; first the resource in question and then the role.  These bindings can be imported using the `orgId` and role, e.g.
+// > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
-// ```sh
-// $ terraform import google_organization_iam_binding.my_org "your-org-id roles/viewer"
-// ```
+//	full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
 //
-// > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+// > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
 //
-//	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+//	to include the title of condition, e.g. `terraform import google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
 type IAMBinding struct {
 	pulumi.CustomResourceState
 
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition IAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the organization's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// The numeric ID of the organization in which you want to create a custom role.
+	// The organization id of the target organization.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// The role that should be applied. Only one
 	// `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -121,30 +524,44 @@ func GetIAMBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IAMBinding resources.
 type iambindingState struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *IAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the organization's IAM policy.
 	Etag *string `pulumi:"etag"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
-	// The numeric ID of the organization in which you want to create a custom role.
+	// The organization id of the target organization.
 	OrgId *string `pulumi:"orgId"`
 	// The role that should be applied. Only one
 	// `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role *string `pulumi:"role"`
 }
 
 type IAMBindingState struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition IAMBindingConditionPtrInput
 	// (Computed) The etag of the organization's IAM policy.
 	Etag pulumi.StringPtrInput
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
-	// The numeric ID of the organization in which you want to create a custom role.
+	// The organization id of the target organization.
 	OrgId pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role pulumi.StringPtrInput
 }
 
@@ -153,27 +570,41 @@ func (IAMBindingState) ElementType() reflect.Type {
 }
 
 type iambindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *IAMBindingCondition `pulumi:"condition"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
-	// The numeric ID of the organization in which you want to create a custom role.
+	// The organization id of the target organization.
 	OrgId string `pulumi:"orgId"`
 	// The role that should be applied. Only one
 	// `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a IAMBinding resource.
 type IAMBindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition IAMBindingConditionPtrInput
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
-	// The numeric ID of the organization in which you want to create a custom role.
+	// The organization id of the target organization.
 	OrgId pulumi.StringInput
 	// The role that should be applied. Only one
 	// `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role pulumi.StringInput
 }
 
@@ -264,6 +695,8 @@ func (o IAMBindingOutput) ToIAMBindingOutputWithContext(ctx context.Context) IAM
 	return o
 }
 
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// Structure is documented below.
 func (o IAMBindingOutput) Condition() IAMBindingConditionPtrOutput {
 	return o.ApplyT(func(v *IAMBinding) IAMBindingConditionPtrOutput { return v.Condition }).(IAMBindingConditionPtrOutput)
 }
@@ -273,19 +706,24 @@ func (o IAMBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+// Identities that will be granted the privilege in `role`.
+// Each entry can have one of the following values:
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o IAMBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IAMBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// The numeric ID of the organization in which you want to create a custom role.
+// The organization id of the target organization.
 func (o IAMBindingOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
 // `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+// `organizations/{{org_id}}/roles/{{role_id}}`.
 func (o IAMBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

@@ -26,6 +26,7 @@ class OrganizationExclusionArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrganizationExclusion resource.
+
         :param pulumi.Input[_builtins.str] filter: The filter to apply when excluding logs. Only log entries that match the filter are excluded.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
                write a filter.
@@ -118,6 +119,7 @@ class _OrganizationExclusionState:
                  org_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationExclusion resources.
+
         :param pulumi.Input[_builtins.str] description: A human-readable description.
         :param pulumi.Input[_builtins.bool] disabled: Whether this exclusion rule should be disabled or not. This defaults to
                false.
@@ -221,7 +223,7 @@ class OrganizationExclusion(pulumi.CustomResource):
         * How-to Guides
             * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
 
-        > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.OrganizationSink`
+        > You can specify exclusions for log sinks created by terraform by using the exclusions field of `logging.OrganizationSink`
 
         ## Example Usage
 
@@ -247,6 +249,7 @@ class OrganizationExclusion(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/organizationExclusion:OrganizationExclusion default organizations/{{organization}}/exclusions/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -272,7 +275,7 @@ class OrganizationExclusion(pulumi.CustomResource):
         * How-to Guides
             * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
 
-        > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.OrganizationSink`
+        > You can specify exclusions for log sinks created by terraform by using the exclusions field of `logging.OrganizationSink`
 
         ## Example Usage
 
@@ -298,6 +301,7 @@ class OrganizationExclusion(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/organizationExclusion:OrganizationExclusion default organizations/{{organization}}/exclusions/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationExclusionArgs args: The arguments to use to populate this resource's properties.

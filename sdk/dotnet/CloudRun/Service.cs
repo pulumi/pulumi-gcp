@@ -23,95 +23,6 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// ## Example Usage
     /// 
-    /// ### Cloud Run Service Pubsub
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.CloudRun.Service("default", new()
-    ///     {
-    ///         Name = "cloud_run_service_name",
-    ///         Location = "us-central1",
-    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
-    ///         {
-    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
-    ///             {
-    ///                 Containers = new[]
-    ///                 {
-    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
-    ///                     {
-    ///                         Image = "gcr.io/cloudrun/hello",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///         Traffics = new[]
-    ///         {
-    ///             new Gcp.CloudRun.Inputs.ServiceTrafficArgs
-    ///             {
-    ///                 Percent = 100,
-    ///                 LatestRevision = true,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
-    ///     {
-    ///         AccountId = "cloud-run-pubsub-invoker",
-    ///         DisplayName = "Cloud Run Pub/Sub Invoker",
-    ///     });
-    /// 
-    ///     var binding = new Gcp.CloudRun.IamBinding("binding", new()
-    ///     {
-    ///         Location = @default.Location,
-    ///         Service = @default.Name,
-    ///         Role = "roles/run.invoker",
-    ///         Members = new[]
-    ///         {
-    ///             sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         },
-    ///     });
-    /// 
-    ///     var project = new Gcp.Projects.IAMBinding("project", new()
-    ///     {
-    ///         Role = "roles/iam.serviceAccountTokenCreator",
-    ///         Members = new[]
-    ///         {
-    ///             sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         },
-    ///     });
-    /// 
-    ///     var topic = new Gcp.PubSub.Topic("topic", new()
-    ///     {
-    ///         Name = "pubsub_topic",
-    ///     });
-    /// 
-    ///     var subscription = new Gcp.PubSub.Subscription("subscription", new()
-    ///     {
-    ///         Name = "pubsub_subscription",
-    ///         Topic = topic.Name,
-    ///         PushConfig = new Gcp.PubSub.Inputs.SubscriptionPushConfigArgs
-    ///         {
-    ///             PushEndpoint = @default.Statuses.Apply(statuses =&gt; statuses[0].Url),
-    ///             OidcToken = new Gcp.PubSub.Inputs.SubscriptionPushConfigOidcTokenArgs
-    ///             {
-    ///                 ServiceAccountEmail = sa.Email,
-    ///             },
-    ///             Attributes = 
-    ///             {
-    ///                 { "x-goog-version", "v1" },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ### Cloud Run Service Basic
     /// 
     /// ```csharp
@@ -254,7 +165,7 @@ namespace Pulumi.Gcp.CloudRun
     ///                 {
     ///                     { "autoscaling.knative.dev/maxScale", "1000" },
     ///                     { "run.googleapis.com/cloudsql-instances", instance.ConnectionName },
-    ///                     { "run.googleapis.com/client-name", "demo" },
+    ///                     { "run.googleapis.com/client-name", "terraform" },
     ///                 },
     ///             },
     ///         },
@@ -550,7 +461,6 @@ namespace Pulumi.Gcp.CloudRun
     ///         {
     ///             Annotations = 
     ///             {
-    ///                 { "run.googleapis.com/launch-stage", "BETA" },
     ///                 { "run.googleapis.com/iap-enabled", "true" },
     ///             },
     ///         },

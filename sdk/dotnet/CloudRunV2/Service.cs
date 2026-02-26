@@ -890,7 +890,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
-    ///         LaunchStage = "BETA",
     ///         IapEnabled = true,
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
@@ -1112,8 +1111,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> Generation { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
-        /// Used to enable/disable IAP for the service.
+        /// Used to enable/disable IAP for the cloud-run service.
         /// </summary>
         [Output("iapEnabled")]
         public Output<bool?> IapEnabled { get; private set; } = null!;
@@ -1408,8 +1406,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
-        /// Used to enable/disable IAP for the service.
+        /// Used to enable/disable IAP for the cloud-run service.
         /// </summary>
         [Input("iapEnabled")]
         public Input<bool>? IapEnabled { get; set; }
@@ -1671,8 +1668,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string>? Generation { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
-        /// Used to enable/disable IAP for the service.
+        /// Used to enable/disable IAP for the cloud-run service.
         /// </summary>
         [Input("iapEnabled")]
         public Input<bool>? IapEnabled { get; set; }

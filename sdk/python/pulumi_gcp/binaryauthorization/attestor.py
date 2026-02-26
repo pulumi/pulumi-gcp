@@ -27,6 +27,7 @@ class AttestorArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Attestor resource.
+
         :param pulumi.Input['AttestorAttestationAuthorityNoteArgs'] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A descriptive comment. This field may be updated. The field may be
@@ -104,6 +105,7 @@ class _AttestorState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Attestor resources.
+
         :param pulumi.Input['AttestorAttestationAuthorityNoteArgs'] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A descriptive comment. This field may be updated. The field may be
@@ -286,6 +288,7 @@ class Attestor(pulumi.CustomResource):
         $ pulumi import gcp:binaryauthorization/attestor:Attestor default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
@@ -403,6 +406,7 @@ class Attestor(pulumi.CustomResource):
         $ pulumi import gcp:binaryauthorization/attestor:Attestor default {{project}}/{{name}}
         $ pulumi import gcp:binaryauthorization/attestor:Attestor default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AttestorArgs args: The arguments to use to populate this resource's properties.

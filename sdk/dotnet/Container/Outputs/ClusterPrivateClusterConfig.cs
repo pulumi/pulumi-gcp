@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly bool? EnablePrivateNodes;
         /// <summary>
         /// Controls cluster master global
-        /// access settings. If unset, the provider will no longer manage this field and will
+        /// access settings. If unset, Terraform will no longer manage this field and will
         /// not modify the previously-set value. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterPrivateClusterConfigMasterGlobalAccessConfig? MasterGlobalAccessConfig;

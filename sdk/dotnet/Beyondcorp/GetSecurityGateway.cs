@@ -145,6 +145,7 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         public readonly string Id;
         public readonly string Location;
+        public readonly ImmutableArray<Outputs.GetSecurityGatewayLoggingResult> Loggings;
         public readonly string Name;
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetSecurityGatewayProxyProtocolConfigResult> ProxyProtocolConfigs;
@@ -169,6 +170,8 @@ namespace Pulumi.Gcp.Beyondcorp
 
             string location,
 
+            ImmutableArray<Outputs.GetSecurityGatewayLoggingResult> loggings,
+
             string name,
 
             string? project,
@@ -190,6 +193,7 @@ namespace Pulumi.Gcp.Beyondcorp
             Hubs = hubs;
             Id = id;
             Location = location;
+            Loggings = loggings;
             Name = name;
             Project = project;
             ProxyProtocolConfigs = proxyProtocolConfigs;

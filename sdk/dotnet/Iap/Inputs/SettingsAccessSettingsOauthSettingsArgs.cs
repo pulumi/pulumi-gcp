@@ -13,6 +13,36 @@ namespace Pulumi.Gcp.Iap.Inputs
     public sealed class SettingsAccessSettingsOauthSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+        /// </summary>
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
+        /// <summary>
+        /// OAuth secret paired with client ID.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// (Output)
+        /// OAuth secret sha256 paired with client ID.
+        /// </summary>
+        [Input("clientSecretSha256")]
+        public Input<string>? ClientSecretSha256 { get; set; }
+
+        /// <summary>
         /// Domain hint to send as hd=? parameter in OAuth request flow.
         /// Enables redirect to primary IDP by skipping Google's login screen.
         /// (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)

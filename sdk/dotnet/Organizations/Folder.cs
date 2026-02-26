@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// Folders created live inside an Organization. See the [Organization documentation](https://docs.cloud.google.com/resource-manager/docs/quickstarts) for more details.
     /// 
-    /// The service account used to run the provider when creating a `gcp.organizations.Folder`
+    /// The service account used to run Terraform when creating a `gcp.organizations.Folder`
     /// resource must have `roles/resourcemanager.folderCreator`. See the
     /// [Access Control for Folders Using IAM](https://docs.cloud.google.com/resource-manager/docs/access-control-folders)
     /// doc for more information.

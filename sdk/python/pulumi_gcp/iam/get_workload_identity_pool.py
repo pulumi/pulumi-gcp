@@ -150,6 +150,7 @@ def get_workload_identity_pool(project: Optional[_builtins.str] = None,
     See Provider Versions for more details on beta resources.
 
     > **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
+
     ## Example Usage
 
     ```python
@@ -195,6 +196,7 @@ def get_workload_identity_pool_output(project: Optional[pulumi.Input[Optional[_b
     See Provider Versions for more details on beta resources.
 
     > **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
+
     ## Example Usage
 
     ```python

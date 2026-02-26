@@ -36,6 +36,7 @@ class StreamArgs:
                  rule_sets: Optional[pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]]] = None):
         """
         The set of arguments for constructing a Stream resource.
+
         :param pulumi.Input['StreamDestinationConfigArgs'] destination_config: Destination connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Display name.
@@ -273,6 +274,7 @@ class _StreamState:
                  stream_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Stream resources.
+
         :param pulumi.Input['StreamBackfillAllArgs'] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
                Structure is documented below.
         :param pulumi.Input['StreamBackfillNoneArgs'] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
@@ -1376,8 +1378,8 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-            project_id="tf-test_10393",
-            name="tf-test_33052",
+            project_id="tf-test_26032",
+            name="tf-test_8647",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -1811,6 +1813,7 @@ class Stream(pulumi.CustomResource):
         $ pulumi import gcp:datastream/stream:Stream default {{project}}/{{location}}/{{stream_id}}
         $ pulumi import gcp:datastream/stream:Stream default {{location}}/{{stream_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2646,8 +2649,8 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-            project_id="tf-test_10393",
-            name="tf-test_33052",
+            project_id="tf-test_26032",
+            name="tf-test_8647",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -3081,6 +3084,7 @@ class Stream(pulumi.CustomResource):
         $ pulumi import gcp:datastream/stream:Stream default {{project}}/{{location}}/{{stream_id}}
         $ pulumi import gcp:datastream/stream:Stream default {{location}}/{{stream_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StreamArgs args: The arguments to use to populate this resource's properties.

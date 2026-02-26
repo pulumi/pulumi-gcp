@@ -75,6 +75,7 @@ from .get_network_endpoint_group import *
 from .get_network_peering import *
 from .get_networks import *
 from .get_node_types import *
+from .get_region_backend_bucket_iam_policy import *
 from .get_region_backend_service import *
 from .get_region_backend_service_iam_policy import *
 from .get_region_disk import *
@@ -176,6 +177,10 @@ from .project_metadata_item import *
 from .public_advertised_prefix import *
 from .public_delegated_prefix import *
 from .region_autoscaler import *
+from .region_backend_bucket import *
+from .region_backend_bucket_iam_binding import *
+from .region_backend_bucket_iam_member import *
+from .region_backend_bucket_iam_policy import *
 from .region_backend_service import *
 from .region_backend_service_iam_binding import *
 from .region_backend_service_iam_member import *

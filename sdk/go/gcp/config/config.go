@@ -259,9 +259,6 @@ func GetDisableGlobalProjectWarning(ctx *pulumi.Context) bool {
 	}
 	return value
 }
-func GetDisableGooglePartnerName(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "gcp:disableGooglePartnerName")
-}
 func GetDiscoveryEngineCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:discoveryEngineCustomEndpoint")
 }
@@ -340,11 +337,11 @@ func GetGkeHubCustomEndpoint(ctx *pulumi.Context) string {
 func GetGkeonpremCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:gkeonpremCustomEndpoint")
 }
-func GetGooglePartnerName(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:googlePartnerName")
-}
 func GetHealthcareCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:healthcareCustomEndpoint")
+}
+func GetHypercomputeclusterCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:hypercomputeclusterCustomEndpoint")
 }
 func GetIam2CustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:iam2CustomEndpoint")

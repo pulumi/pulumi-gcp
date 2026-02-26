@@ -10,9 +10,9 @@ import * as utilities from "../utilities";
  * A `CryptoKey` represents a logical key that can be used for cryptographic operations.
  *
  * > **Note:** CryptoKeys cannot be deleted from Google Cloud Platform.
- * Destroying a provider-managed CryptoKey will remove it from state
+ * Destroying a Terraform-managed CryptoKey will remove it from state
  * and delete all CryptoKeyVersions, rendering the key unusable, but *will
- * not delete the resource from the project.* When the provider destroys these keys,
+ * not delete the resource from the project.* When Terraform destroys these keys,
  * any data previously encrypted with these keys will be irrecoverable.
  * For this reason, it is strongly recommended that you use Pulumi's [protect resource option](https://www.pulumi.com/docs/concepts/options/protect/).
  *

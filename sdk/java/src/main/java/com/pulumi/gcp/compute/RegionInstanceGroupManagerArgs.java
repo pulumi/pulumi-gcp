@@ -453,7 +453,7 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
 
     /**
      * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, the provider will
+     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
      * continue trying until it times out.
      * 
      */
@@ -462,7 +462,7 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
 
     /**
      * @return Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, the provider will
+     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
      * continue trying until it times out.
      * 
      */
@@ -1182,7 +1182,7 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
 
         /**
          * @param waitForInstances Whether to wait for all instances to be created/updated before
-         * returning. Note that if this is set to true and the operation does not succeed, the provider will
+         * returning. Note that if this is set to true and the operation does not succeed, Terraform will
          * continue trying until it times out.
          * 
          * @return builder
@@ -1195,7 +1195,7 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
 
         /**
          * @param waitForInstances Whether to wait for all instances to be created/updated before
-         * returning. Note that if this is set to true and the operation does not succeed, the provider will
+         * returning. Note that if this is set to true and the operation does not succeed, Terraform will
          * continue trying until it times out.
          * 
          * @return builder

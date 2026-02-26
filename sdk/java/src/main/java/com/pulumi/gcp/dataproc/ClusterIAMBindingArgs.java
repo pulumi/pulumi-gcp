@@ -75,7 +75,7 @@ public final class ClusterIAMBindingArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The project in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     @Import(name="project")
@@ -83,7 +83,7 @@ public final class ClusterIAMBindingArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The project in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     public Optional<Output<String>> project() {
@@ -92,7 +92,7 @@ public final class ClusterIAMBindingArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The region in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     @Import(name="region")
@@ -100,7 +100,7 @@ public final class ClusterIAMBindingArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The region in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     public Optional<Output<String>> region() {
@@ -247,7 +247,7 @@ public final class ClusterIAMBindingArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param project The project in which the cluster belongs. If it
-         * is not provided, the provider will use a default.
+         * is not provided, Terraform will use the provider default.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class ClusterIAMBindingArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param project The project in which the cluster belongs. If it
-         * is not provided, the provider will use a default.
+         * is not provided, Terraform will use the provider default.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class ClusterIAMBindingArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param region The region in which the cluster belongs. If it
-         * is not provided, the provider will use a default.
+         * is not provided, Terraform will use the provider default.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class ClusterIAMBindingArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param region The region in which the cluster belongs. If it
-         * is not provided, the provider will use a default.
+         * is not provided, Terraform will use the provider default.
          * 
          * @return builder
          * 

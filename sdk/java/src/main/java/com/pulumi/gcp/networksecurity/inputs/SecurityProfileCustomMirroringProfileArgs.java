@@ -18,7 +18,6 @@ public final class SecurityProfileCustomMirroringProfileArgs extends com.pulumi.
     public static final SecurityProfileCustomMirroringProfileArgs Empty = new SecurityProfileCustomMirroringProfileArgs();
 
     /**
-     * (Optional, Beta)
      * The target downstream Mirroring Deployment Groups.
      * This field is used for Packet Broker mirroring endpoint groups to specify
      * the deployment groups that the packet should be mirrored to by the broker.
@@ -29,8 +28,7 @@ public final class SecurityProfileCustomMirroringProfileArgs extends com.pulumi.
     private @Nullable Output<List<String>> mirroringDeploymentGroups;
 
     /**
-     * @return (Optional, Beta)
-     * The target downstream Mirroring Deployment Groups.
+     * @return The target downstream Mirroring Deployment Groups.
      * This field is used for Packet Broker mirroring endpoint groups to specify
      * the deployment groups that the packet should be mirrored to by the broker.
      * Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
@@ -62,7 +60,7 @@ public final class SecurityProfileCustomMirroringProfileArgs extends com.pulumi.
     }
 
     /**
-     * (Output, Beta)
+     * (Output)
      * The type of the mirroring endpoint group this profile is attached to.
      * Possible values:
      * DIRECT
@@ -73,7 +71,7 @@ public final class SecurityProfileCustomMirroringProfileArgs extends com.pulumi.
     private @Nullable Output<String> mirroringEndpointGroupType;
 
     /**
-     * @return (Output, Beta)
+     * @return (Output)
      * The type of the mirroring endpoint group this profile is attached to.
      * Possible values:
      * DIRECT
@@ -111,8 +109,7 @@ public final class SecurityProfileCustomMirroringProfileArgs extends com.pulumi.
         }
 
         /**
-         * @param mirroringDeploymentGroups (Optional, Beta)
-         * The target downstream Mirroring Deployment Groups.
+         * @param mirroringDeploymentGroups The target downstream Mirroring Deployment Groups.
          * This field is used for Packet Broker mirroring endpoint groups to specify
          * the deployment groups that the packet should be mirrored to by the broker.
          * Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
@@ -126,8 +123,7 @@ public final class SecurityProfileCustomMirroringProfileArgs extends com.pulumi.
         }
 
         /**
-         * @param mirroringDeploymentGroups (Optional, Beta)
-         * The target downstream Mirroring Deployment Groups.
+         * @param mirroringDeploymentGroups The target downstream Mirroring Deployment Groups.
          * This field is used for Packet Broker mirroring endpoint groups to specify
          * the deployment groups that the packet should be mirrored to by the broker.
          * Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
@@ -140,8 +136,7 @@ public final class SecurityProfileCustomMirroringProfileArgs extends com.pulumi.
         }
 
         /**
-         * @param mirroringDeploymentGroups (Optional, Beta)
-         * The target downstream Mirroring Deployment Groups.
+         * @param mirroringDeploymentGroups The target downstream Mirroring Deployment Groups.
          * This field is used for Packet Broker mirroring endpoint groups to specify
          * the deployment groups that the packet should be mirrored to by the broker.
          * Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
@@ -181,7 +176,7 @@ public final class SecurityProfileCustomMirroringProfileArgs extends com.pulumi.
         }
 
         /**
-         * @param mirroringEndpointGroupType (Output, Beta)
+         * @param mirroringEndpointGroupType (Output)
          * The type of the mirroring endpoint group this profile is attached to.
          * Possible values:
          * DIRECT
@@ -196,7 +191,7 @@ public final class SecurityProfileCustomMirroringProfileArgs extends com.pulumi.
         }
 
         /**
-         * @param mirroringEndpointGroupType (Output, Beta)
+         * @param mirroringEndpointGroupType (Output)
          * The type of the mirroring endpoint group this profile is attached to.
          * Possible values:
          * DIRECT

@@ -35,6 +35,7 @@ class VolumeReplicationArgs:
                  wait_for_mirror: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a VolumeReplication resource.
+
         :param pulumi.Input[_builtins.str] location: Name of region for this resource. The resource needs to be created in the region of the destination volume.
         :param pulumi.Input[_builtins.str] replication_schedule: Specifies the replication interval.
                Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
@@ -286,6 +287,7 @@ class _VolumeReplicationState:
                  wait_for_mirror: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering VolumeReplication resources.
+
         :param pulumi.Input[_builtins.str] create_time: Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[_builtins.bool] delete_destination_volume: A destination volume is created as part of replication creation. The destination volume will not became
                under Terraform management unless you import it manually. If you delete the replication, this volume
@@ -848,6 +850,7 @@ class VolumeReplication(pulumi.CustomResource):
         $ pulumi import gcp:netapp/volumeReplication:VolumeReplication default {{location}}/{{volume_name}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] delete_destination_volume: A destination volume is created as part of replication creation. The destination volume will not became
@@ -976,6 +979,7 @@ class VolumeReplication(pulumi.CustomResource):
         $ pulumi import gcp:netapp/volumeReplication:VolumeReplication default {{project}}/{{location}}/{{volume_name}}/{{name}}
         $ pulumi import gcp:netapp/volumeReplication:VolumeReplication default {{location}}/{{volume_name}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VolumeReplicationArgs args: The arguments to use to populate this resource's properties.

@@ -245,7 +245,7 @@ type TableIamPolicy struct {
 	// ***
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name or relative resource id of the table to manage IAM policies for.
 	//
@@ -301,7 +301,7 @@ type tableIamPolicyState struct {
 	// ***
 	PolicyData *string `pulumi:"policyData"`
 	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, Terraform will use the provider default.
 	Project *string `pulumi:"project"`
 	// The name or relative resource id of the table to manage IAM policies for.
 	//
@@ -319,7 +319,7 @@ type TableIamPolicyState struct {
 	// ***
 	PolicyData pulumi.StringPtrInput
 	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringPtrInput
 	// The name or relative resource id of the table to manage IAM policies for.
 	//
@@ -339,7 +339,7 @@ type tableIamPolicyArgs struct {
 	// ***
 	PolicyData string `pulumi:"policyData"`
 	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, Terraform will use the provider default.
 	Project *string `pulumi:"project"`
 	// The name or relative resource id of the table to manage IAM policies for.
 	//
@@ -356,7 +356,7 @@ type TableIamPolicyArgs struct {
 	// ***
 	PolicyData pulumi.StringInput
 	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringPtrInput
 	// The name or relative resource id of the table to manage IAM policies for.
 	//
@@ -469,7 +469,7 @@ func (o TableIamPolicyOutput) PolicyData() pulumi.StringOutput {
 }
 
 // The project in which the table belongs. If it
-// is not provided, this provider will use the provider default.
+// is not provided, Terraform will use the provider default.
 func (o TableIamPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TableIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

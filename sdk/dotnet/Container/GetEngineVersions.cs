@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     var foo = new Gcp.Container.Cluster("foo", new()
         ///     {
-        ///         Name = "test-cluster",
+        ///         Name = "terraform-test-cluster",
         ///         Location = "us-central1-b",
         ///         NodeVersion = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.LatestNodeVersion),
         ///         InitialNodeCount = 1,
@@ -88,7 +88,7 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     var foo = new Gcp.Container.Cluster("foo", new()
         ///     {
-        ///         Name = "test-cluster",
+        ///         Name = "terraform-test-cluster",
         ///         Location = "us-central1-b",
         ///         NodeVersion = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.LatestNodeVersion),
         ///         InitialNodeCount = 1,
@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     var foo = new Gcp.Container.Cluster("foo", new()
         ///     {
-        ///         Name = "test-cluster",
+        ///         Name = "terraform-test-cluster",
         ///         Location = "us-central1-b",
         ///         NodeVersion = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.LatestNodeVersion),
         ///         InitialNodeCount = 1,
@@ -173,7 +173,7 @@ namespace Pulumi.Gcp.Container
         public string? Project { get; set; }
 
         /// <summary>
-        /// If provided, the provider will only return versions
+        /// If provided, Terraform will only return versions
         /// that match the string prefix. For example, `1.11.` will match all `1.11` series
         /// releases. Since this is just a string match, it's recommended that you append a
         /// `.` after minor versions to ensure that prefixes such as `1.1` don't match
@@ -208,7 +208,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// If provided, the provider will only return versions
+        /// If provided, Terraform will only return versions
         /// that match the string prefix. For example, `1.11.` will match all `1.11` series
         /// releases. Since this is just a string match, it's recommended that you append a
         /// `.` after minor versions to ensure that prefixes such as `1.1` don't match

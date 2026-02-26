@@ -28,6 +28,7 @@ class ProjectNotificationConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectNotificationConfig resource.
+
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
                "projects/[project_id]/topics/[topic]".
@@ -121,6 +122,7 @@ class _ProjectNotificationConfigState:
                  streaming_config: Optional[pulumi.Input['ProjectNotificationConfigStreamingConfigArgs']] = None):
         """
         Input properties used for looking up and filtering ProjectNotificationConfig resources.
+
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] description: The description of the notification config (max of 1024 characters).
         :param pulumi.Input[_builtins.str] name: The resource name of this notification config, in the format
@@ -297,6 +299,7 @@ class ProjectNotificationConfig(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the organization.
@@ -359,6 +362,7 @@ class ProjectNotificationConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectNotificationConfigArgs args: The arguments to use to populate this resource's properties.

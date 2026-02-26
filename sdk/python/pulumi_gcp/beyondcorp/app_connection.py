@@ -32,6 +32,7 @@ class AppConnectionArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppConnection resource.
+
         :param pulumi.Input['AppConnectionApplicationEndpointArgs'] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
@@ -201,6 +202,7 @@ class _AppConnectionState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppConnection resources.
+
         :param pulumi.Input['AppConnectionApplicationEndpointArgs'] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
@@ -497,6 +499,7 @@ class AppConnection(pulumi.CustomResource):
         $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
@@ -616,6 +619,7 @@ class AppConnection(pulumi.CustomResource):
         $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{region}}/{{name}}
         $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppConnectionArgs args: The arguments to use to populate this resource's properties.

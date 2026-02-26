@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-b",
  * });
  * const tmpl = new gcp.compute.NodeTemplate("tmpl", {
- *     name: "test-tmpl",
+ *     name: "terraform-test-tmpl",
  *     region: "us-central1",
  *     nodeType: types.names[0],
  * });
@@ -79,7 +79,7 @@ export interface GetNodeTypesResult {
  *     zone: "us-central1-b",
  * });
  * const tmpl = new gcp.compute.NodeTemplate("tmpl", {
- *     name: "test-tmpl",
+ *     name: "terraform-test-tmpl",
  *     region: "us-central1",
  *     nodeType: types.names[0],
  * });

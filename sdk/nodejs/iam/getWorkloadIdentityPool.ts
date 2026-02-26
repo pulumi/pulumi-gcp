@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * See Provider Versions for more details on beta resources.
  *
  * > **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -76,6 +77,7 @@ export interface GetWorkloadIdentityPoolResult {
  * See Provider Versions for more details on beta resources.
  *
  * > **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
+ *
  * ## Example Usage
  *
  * ```typescript

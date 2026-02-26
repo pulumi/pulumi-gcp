@@ -105,7 +105,7 @@ def get_zones(project: Optional[_builtins.str] = None,
     def create_foo(range_body):
         for range in [{"value": i} for i in range(0, range_body)]:
             foo.append(gcp.compute.InstanceGroupManager(f"foo-{range['value']}",
-                name=f"test-{range['value']}",
+                name=f"terraform-test-{range['value']}",
                 instance_template=foobar["selfLink"],
                 base_instance_name=f"foobar-{range['value']}",
                 zone=available.names[range["value"]],
@@ -150,7 +150,7 @@ def get_zones_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = 
     def create_foo(range_body):
         for range in [{"value": i} for i in range(0, range_body)]:
             foo.append(gcp.compute.InstanceGroupManager(f"foo-{range['value']}",
-                name=f"test-{range['value']}",
+                name=f"terraform-test-{range['value']}",
                 instance_template=foobar["selfLink"],
                 base_instance_name=f"foobar-{range['value']}",
                 zone=available.names[range["value"]],

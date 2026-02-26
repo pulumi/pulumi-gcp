@@ -136,6 +136,10 @@ export class SearchEngine extends pulumi.CustomResource {
      */
     declare public readonly dataStoreIds: pulumi.Output<string[]>;
     /**
+     * Whether to disable analytics for searches performed on this engine.
+     */
+    declare public readonly disableAnalytics: pulumi.Output<boolean | undefined>;
+    /**
      * Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -210,6 +214,7 @@ export class SearchEngine extends pulumi.CustomResource {
             resourceInputs["commonConfig"] = state?.commonConfig;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataStoreIds"] = state?.dataStoreIds;
+            resourceInputs["disableAnalytics"] = state?.disableAnalytics;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["engineId"] = state?.engineId;
             resourceInputs["features"] = state?.features;
@@ -245,6 +250,7 @@ export class SearchEngine extends pulumi.CustomResource {
             resourceInputs["collectionId"] = args?.collectionId;
             resourceInputs["commonConfig"] = args?.commonConfig;
             resourceInputs["dataStoreIds"] = args?.dataStoreIds;
+            resourceInputs["disableAnalytics"] = args?.disableAnalytics;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["engineId"] = args?.engineId;
             resourceInputs["features"] = args?.features;
@@ -289,6 +295,10 @@ export interface SearchEngineState {
      * The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
      */
     dataStoreIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to disable analytics for searches performed on this engine.
+     */
+    disableAnalytics?: pulumi.Input<boolean>;
     /**
      * Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
      */
@@ -369,6 +379,10 @@ export interface SearchEngineArgs {
      * The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
      */
     dataStoreIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to disable analytics for searches performed on this engine.
+     */
+    disableAnalytics?: pulumi.Input<boolean>;
     /**
      * Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
      */

@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Compute
         ///         var range = new { Value = rangeIndex };
         ///         foo.Add(new Gcp.Compute.InstanceGroupManager($"foo-{range.Value}", new()
         ///         {
-        ///             Name = $"test-{range.Value}",
+        ///             Name = $"terraform-test-{range.Value}",
         ///             InstanceTemplate = foobar.SelfLink,
         ///             BaseInstanceName = $"foobar-{range.Value}",
         ///             Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],
@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Compute
         ///         var range = new { Value = rangeIndex };
         ///         foo.Add(new Gcp.Compute.InstanceGroupManager($"foo-{range.Value}", new()
         ///         {
-        ///             Name = $"test-{range.Value}",
+        ///             Name = $"terraform-test-{range.Value}",
         ///             InstanceTemplate = foobar.SelfLink,
         ///             BaseInstanceName = $"foobar-{range.Value}",
         ///             Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Compute
         ///         var range = new { Value = rangeIndex };
         ///         foo.Add(new Gcp.Compute.InstanceGroupManager($"foo-{range.Value}", new()
         ///         {
-        ///             Name = $"test-{range.Value}",
+        ///             Name = $"terraform-test-{range.Value}",
         ///             InstanceTemplate = foobar.SelfLink,
         ///             BaseInstanceName = $"foobar-{range.Value}",
         ///             Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],

@@ -91,7 +91,7 @@ public final class NotificationChannelArgs extends com.pulumi.resources.Resource
      * Configuration fields that define the channel and its behavior. The
      * permissible and required labels are specified in the
      * NotificationChannelDescriptor corresponding to the type field.
-     * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+     * Labels with sensitive data are obfuscated by the API and therefore Terraform cannot
      * determine if there are upstream changes to these fields. They can also be configured via
      * the sensitiveLabels block, but cannot be configured in both places.
      * 
@@ -103,7 +103,7 @@ public final class NotificationChannelArgs extends com.pulumi.resources.Resource
      * @return Configuration fields that define the channel and its behavior. The
      * permissible and required labels are specified in the
      * NotificationChannelDescriptor corresponding to the type field.
-     * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+     * Labels with sensitive data are obfuscated by the API and therefore Terraform cannot
      * determine if there are upstream changes to these fields. They can also be configured via
      * the sensitiveLabels block, but cannot be configured in both places.
      * 
@@ -314,7 +314,7 @@ public final class NotificationChannelArgs extends com.pulumi.resources.Resource
          * @param labels Configuration fields that define the channel and its behavior. The
          * permissible and required labels are specified in the
          * NotificationChannelDescriptor corresponding to the type field.
-         * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+         * Labels with sensitive data are obfuscated by the API and therefore Terraform cannot
          * determine if there are upstream changes to these fields. They can also be configured via
          * the sensitiveLabels block, but cannot be configured in both places.
          * 
@@ -330,7 +330,7 @@ public final class NotificationChannelArgs extends com.pulumi.resources.Resource
          * @param labels Configuration fields that define the channel and its behavior. The
          * permissible and required labels are specified in the
          * NotificationChannelDescriptor corresponding to the type field.
-         * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+         * Labels with sensitive data are obfuscated by the API and therefore Terraform cannot
          * determine if there are upstream changes to these fields. They can also be configured via
          * the sensitiveLabels block, but cannot be configured in both places.
          * 

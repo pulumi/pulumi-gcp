@@ -267,7 +267,7 @@ type DatabaseInstanceDnsName struct {
 	// The scope that the DNS name applies to.
 	DnsScope *string `pulumi:"dnsScope"`
 	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
+	// blank, Terraform will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name *string `pulumi:"name"`
@@ -290,7 +290,7 @@ type DatabaseInstanceDnsNameArgs struct {
 	// The scope that the DNS name applies to.
 	DnsScope pulumi.StringPtrInput `pulumi:"dnsScope"`
 	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
+	// blank, Terraform will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -358,7 +358,7 @@ func (o DatabaseInstanceDnsNameOutput) DnsScope() pulumi.StringPtrOutput {
 }
 
 // The name of the instance. If the name is left
-// blank, the provider will randomly generate one when the instance is first
+// blank, Terraform will randomly generate one when the instance is first
 // created. This is done because after a name is used, it cannot be reused for
 // up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 func (o DatabaseInstanceDnsNameOutput) Name() pulumi.StringPtrOutput {

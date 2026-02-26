@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     displayName: "tf-test",
+ *     displayName: "tf-test_22811",
  *     parent: "organizations/123456789",
  *     type: "FIREWALL",
  * });

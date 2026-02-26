@@ -25,6 +25,11 @@ export type ExternalAddress = import("./externalAddress").ExternalAddress;
 export const ExternalAddress: typeof import("./externalAddress").ExternalAddress = null as any;
 utilities.lazyLoad(exports, ["ExternalAddress"], () => require("./externalAddress"));
 
+export { GetAnnouncementsArgs, GetAnnouncementsResult, GetAnnouncementsOutputArgs } from "./getAnnouncements";
+export const getAnnouncements: typeof import("./getAnnouncements").getAnnouncements = null as any;
+export const getAnnouncementsOutput: typeof import("./getAnnouncements").getAnnouncementsOutput = null as any;
+utilities.lazyLoad(exports, ["getAnnouncements","getAnnouncementsOutput"], () => require("./getAnnouncements"));
+
 export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getCluster";
 export const getCluster: typeof import("./getCluster").getCluster = null as any;
 export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
@@ -74,6 +79,11 @@ export { GetSubnetArgs, GetSubnetResult, GetSubnetOutputArgs } from "./getSubnet
 export const getSubnet: typeof import("./getSubnet").getSubnet = null as any;
 export const getSubnetOutput: typeof import("./getSubnet").getSubnetOutput = null as any;
 utilities.lazyLoad(exports, ["getSubnet","getSubnetOutput"], () => require("./getSubnet"));
+
+export { GetUpgradesArgs, GetUpgradesResult, GetUpgradesOutputArgs } from "./getUpgrades";
+export const getUpgrades: typeof import("./getUpgrades").getUpgrades = null as any;
+export const getUpgradesOutput: typeof import("./getUpgrades").getUpgradesOutput = null as any;
+utilities.lazyLoad(exports, ["getUpgrades","getUpgradesOutput"], () => require("./getUpgrades"));
 
 export { GetVcenterCredentialsArgs, GetVcenterCredentialsResult, GetVcenterCredentialsOutputArgs } from "./getVcenterCredentials";
 export const getVcenterCredentials: typeof import("./getVcenterCredentials").getVcenterCredentials = null as any;

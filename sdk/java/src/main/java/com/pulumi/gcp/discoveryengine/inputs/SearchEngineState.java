@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.discoveryengine.inputs.SearchEngineCommonConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.SearchEngineKnowledgeGraphConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.SearchEngineSearchEngineConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -97,6 +98,21 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> dataStoreIds() {
         return Optional.ofNullable(this.dataStoreIds);
+    }
+
+    /**
+     * Whether to disable analytics for searches performed on this engine.
+     * 
+     */
+    @Import(name="disableAnalytics")
+    private @Nullable Output<Boolean> disableAnalytics;
+
+    /**
+     * @return Whether to disable analytics for searches performed on this engine.
+     * 
+     */
+    public Optional<Output<Boolean>> disableAnalytics() {
+        return Optional.ofNullable(this.disableAnalytics);
     }
 
     /**
@@ -296,6 +312,7 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
         this.commonConfig = $.commonConfig;
         this.createTime = $.createTime;
         this.dataStoreIds = $.dataStoreIds;
+        this.disableAnalytics = $.disableAnalytics;
         this.displayName = $.displayName;
         this.engineId = $.engineId;
         this.features = $.features;
@@ -444,6 +461,27 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dataStoreIds(String... dataStoreIds) {
             return dataStoreIds(List.of(dataStoreIds));
+        }
+
+        /**
+         * @param disableAnalytics Whether to disable analytics for searches performed on this engine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableAnalytics(@Nullable Output<Boolean> disableAnalytics) {
+            $.disableAnalytics = disableAnalytics;
+            return this;
+        }
+
+        /**
+         * @param disableAnalytics Whether to disable analytics for searches performed on this engine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableAnalytics(Boolean disableAnalytics) {
+            return disableAnalytics(Output.of(disableAnalytics));
         }
 
         /**

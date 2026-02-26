@@ -94,7 +94,7 @@ def get_node_types(project: Optional[_builtins.str] = None,
 
     central1b = gcp.compute.get_node_types(zone="us-central1-b")
     tmpl = gcp.compute.NodeTemplate("tmpl",
-        name="test-tmpl",
+        name="terraform-test-tmpl",
         region="us-central1",
         node_type=types["names"][0])
     ```
@@ -132,7 +132,7 @@ def get_node_types_output(project: Optional[pulumi.Input[Optional[_builtins.str]
 
     central1b = gcp.compute.get_node_types(zone="us-central1-b")
     tmpl = gcp.compute.NodeTemplate("tmpl",
-        name="test-tmpl",
+        name="terraform-test-tmpl",
         region="us-central1",
         node_type=types["names"][0])
     ```

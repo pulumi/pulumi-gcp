@@ -77,8 +77,8 @@ namespace Pulumi.Gcp.Projects
         /// <summary>
         /// If `True`, services that are enabled
         /// and which depend on this service should also be disabled when this service is
-        /// destroyed. If `False` or unset, an error will be generated if any enabled
-        /// services depend on this service when destroying it.
+        /// destroyed. If `False` or unset, an error will be returned if any enabled
+        /// services depend on this service when attempting to destroy it.
         /// </summary>
         [Output("disableDependentServices")]
         public Output<bool?> DisableDependentServices { get; private set; } = null!;
@@ -162,8 +162,8 @@ namespace Pulumi.Gcp.Projects
         /// <summary>
         /// If `True`, services that are enabled
         /// and which depend on this service should also be disabled when this service is
-        /// destroyed. If `False` or unset, an error will be generated if any enabled
-        /// services depend on this service when destroying it.
+        /// destroyed. If `False` or unset, an error will be returned if any enabled
+        /// services depend on this service when attempting to destroy it.
         /// </summary>
         [Input("disableDependentServices")]
         public Input<bool>? DisableDependentServices { get; set; }
@@ -209,8 +209,8 @@ namespace Pulumi.Gcp.Projects
         /// <summary>
         /// If `True`, services that are enabled
         /// and which depend on this service should also be disabled when this service is
-        /// destroyed. If `False` or unset, an error will be generated if any enabled
-        /// services depend on this service when destroying it.
+        /// destroyed. If `False` or unset, an error will be returned if any enabled
+        /// services depend on this service when attempting to destroy it.
         /// </summary>
         [Input("disableDependentServices")]
         public Input<bool>? DisableDependentServices { get; set; }

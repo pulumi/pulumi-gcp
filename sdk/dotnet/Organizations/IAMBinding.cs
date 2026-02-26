@@ -10,18 +10,30 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Organizations
 {
     /// <summary>
-    /// Allows creation and management of a single binding within IAM policy for
-    /// an existing Google Cloud Platform Organization.
+    /// Four different resources help you manage your IAM policy for a organization. Each of these resources serves a different use case:
     /// 
-    /// &gt; **Note:** This resource __must not__ be used in conjunction with
-    ///    `gcp.organizations.IAMMember` for the __same role__ or they will fight over
-    ///    what your policy should be.
+    /// * `gcp.organizations.IAMPolicy`: Authoritative. Sets the IAM policy for the organization and replaces any existing policy already attached.
+    /// * `gcp.organizations.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organization are preserved.
+    /// * `gcp.organizations.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organization are preserved.
+    /// * `gcp.organizations.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
     /// 
-    /// &gt; **Note:** On create, this resource will overwrite members of any existing roles.
-    ///     Use `pulumi import` and inspect the `output to ensure
-    ///     your existing members are preserved.
+    /// &gt; **Note:** `gcp.organizations.IAMPolicy` **cannot** be used in conjunction with `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig` or they will fight over what your policy should be.
     /// 
-    /// ## Example Usage
+    /// &gt; **Note:** `gcp.organizations.IAMBinding` resources **can be** used in conjunction with `gcp.organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## gcp.organizations.IAMPolicy
+    /// 
+    /// !&gt; **Warning:** New organizations have several default policies which will,
+    ///    without extreme caution, be **overwritten** by use of this resource.
+    ///    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
+    ///    resources. This resource makes it easy to remove your own access to
+    ///    an organization, which will require a call to Google Support to have
+    ///    fixed, and can take multiple days to resolve.
+    ///    &lt;br /&gt;&lt;br /&gt;
+    ///    In general, this resource should only be used with organizations
+    ///    fully managed by Terraform.If you do use this resource,
+    ///    the best way to be sure that you are not making dangerous changes is to start
+    ///    by **importing** your existing policy, and examining the diff very closely.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -31,13 +43,332 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var binding = new Gcp.Organizations.IAMBinding("binding", new()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         OrgId = "123456789",
-    ///         Role = "roles/browser",
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var organization = new Gcp.Organizations.IAMPolicy("organization", new()
+    ///     {
+    ///         OrgId = "1234567890",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var organization = new Gcp.Organizations.IAMPolicy("organization", new()
+    ///     {
+    ///         OrgId = "1234567890",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.organizations.IAMBinding
+    /// 
+    /// &gt; **Note:** If `Role` is set to `roles/owner` and you don't specify a user or service account you have access to in `Members`, you can lock yourself out of your organization.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IAMBinding("organization", new()
+    ///     {
+    ///         OrgId = "1234567890",
+    ///         Role = "roles/editor",
     ///         Members = new[]
     ///         {
-    ///             "user:alice@gmail.com",
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IAMBinding("organization", new()
+    ///     {
+    ///         OrgId = "1234567890",
+    ///         Role = "roles/editor",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Organizations.Inputs.IAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.organizations.IAMMember
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IAMMember("organization", new()
+    ///     {
+    ///         OrgId = "1234567890",
+    ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IAMMember("organization", new()
+    ///     {
+    ///         OrgId = "1234567890",
+    ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Organizations.Inputs.IAMMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.organizations.IamAuditConfig
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IamAuditConfig("organization", new()
+    ///     {
+    ///         OrgId = "1234567890",
+    ///         Service = "allServices",
+    ///         AuditLogConfigs = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.IamAuditConfigAuditLogConfigArgs
+    ///             {
+    ///                 LogType = "ADMIN_READ",
+    ///             },
+    ///             new Gcp.Organizations.Inputs.IamAuditConfigAuditLogConfigArgs
+    ///             {
+    ///                 LogType = "DATA_READ",
+    ///                 ExemptedMembers = new[]
+    ///                 {
+    ///                     "user:joebloggs@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.organizations.IAMBinding
+    /// 
+    /// &gt; **Note:** If `Role` is set to `roles/owner` and you don't specify a user or service account you have access to in `Members`, you can lock yourself out of your organization.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IAMBinding("organization", new()
+    ///     {
+    ///         OrgId = "1234567890",
+    ///         Role = "roles/editor",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IAMBinding("organization", new()
+    ///     {
+    ///         OrgId = "1234567890",
+    ///         Role = "roles/editor",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Organizations.Inputs.IAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.organizations.IAMMember
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IAMMember("organization", new()
+    ///     {
+    ///         OrgId = "1234567890",
+    ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IAMMember("organization", new()
+    ///     {
+    ///         OrgId = "1234567890",
+    ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Organizations.Inputs.IAMMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.organizations.IamAuditConfig
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IamAuditConfig("organization", new()
+    ///     {
+    ///         OrgId = "1234567890",
+    ///         Service = "allServices",
+    ///         AuditLogConfigs = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.IamAuditConfigAuditLogConfigArgs
+    ///             {
+    ///                 LogType = "ADMIN_READ",
+    ///             },
+    ///             new Gcp.Organizations.Inputs.IamAuditConfigAuditLogConfigArgs
+    ///             {
+    ///                 LogType = "DATA_READ",
+    ///                 ExemptedMembers = new[]
+    ///                 {
+    ///                     "user:joebloggs@example.com",
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 
@@ -46,18 +377,19 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// ## Import
     /// 
-    /// IAM binding imports use space-delimited identifiers; first the resource in question and then the role.  These bindings can be imported using the `OrgId` and role, e.g.
+    /// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+    ///  full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
     /// 
-    /// ```sh
-    /// $ terraform import google_organization_iam_binding.my_org "your-org-id roles/viewer"
-    /// ```
-    /// 
-    /// &gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// &gt; **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
+    ///  to include the title of condition, e.g. `terraform import google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
     /// </summary>
     [GcpResourceType("gcp:organizations/iAMBinding:IAMBinding")]
     public partial class IAMBinding : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.IAMBindingCondition?> Condition { get; private set; } = null!;
 
@@ -68,13 +400,18 @@ namespace Pulumi.Gcp.Organizations
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        /// Identities that will be granted the privilege in `Role`.
+        /// Each entry can have one of the following values:
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
         /// <summary>
-        /// The numeric ID of the organization in which you want to create a custom role.
+        /// The organization id of the target organization.
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
@@ -82,7 +419,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The role that should be applied. Only one
         /// `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// `organizations/{{org_id}}/roles/{{role_id}}`.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -133,6 +470,10 @@ namespace Pulumi.Gcp.Organizations
 
     public sealed class IAMBindingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.IAMBindingConditionArgs>? Condition { get; set; }
 
@@ -140,7 +481,12 @@ namespace Pulumi.Gcp.Organizations
         private InputList<string>? _members;
 
         /// <summary>
-        /// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        /// Identities that will be granted the privilege in `Role`.
+        /// Each entry can have one of the following values:
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         public InputList<string> Members
         {
@@ -149,7 +495,7 @@ namespace Pulumi.Gcp.Organizations
         }
 
         /// <summary>
-        /// The numeric ID of the organization in which you want to create a custom role.
+        /// The organization id of the target organization.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
@@ -157,7 +503,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The role that should be applied. Only one
         /// `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// `organizations/{{org_id}}/roles/{{role_id}}`.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -170,6 +516,10 @@ namespace Pulumi.Gcp.Organizations
 
     public sealed class IAMBindingState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.IAMBindingConditionGetArgs>? Condition { get; set; }
 
@@ -183,7 +533,12 @@ namespace Pulumi.Gcp.Organizations
         private InputList<string>? _members;
 
         /// <summary>
-        /// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        /// Identities that will be granted the privilege in `Role`.
+        /// Each entry can have one of the following values:
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         public InputList<string> Members
         {
@@ -192,7 +547,7 @@ namespace Pulumi.Gcp.Organizations
         }
 
         /// <summary>
-        /// The numeric ID of the organization in which you want to create a custom role.
+        /// The organization id of the target organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
@@ -200,7 +555,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The role that should be applied. Only one
         /// `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// `organizations/{{org_id}}/roles/{{role_id}}`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

@@ -22,13 +22,15 @@ import javax.annotation.Nullable;
  * A collection of resources that are deployed and managed together using
  * a configuration file
  * 
- * &gt; **Warning:** This resource is intended only to manage a Deployment resource,
- * and attempts to manage the Deployment&#39;s resources in the provider as well
+ * &gt; **Warning:** Deployment Manager shares similar behavior with Terraform as both
+ * products manage GCP resource lifecycle and state. This Terraform
+ * resource is intended only to manage a Deployment resource,
+ * and attempts to manage the Deployment&#39;s resources in Terraform as well
  * will likely result in errors or unexpected behavior as the two tools
  * fight over ownership. We strongly discourage doing so unless you are an
  * experienced user of both tools.
  * 
- * In addition, due to limitations of the API, the provider will treat
+ * In addition, due to limitations of the API, Terraform will treat
  * deployments in preview as recreate-only for any update operation other
  * than actually deploying an in-preview deployment (i.e. `preview=true` to
  * `preview=false`).
@@ -237,7 +239,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * with real resources.
      * ~&gt;**NOTE:** Deployment Manager does not allow update
      * of a deployment in preview (unless updating to preview=false). Thus,
-     * the provider will force-recreate deployments if either preview is updated
+     * Terraform will force-recreate deployments if either preview is updated
      * to true or if other fields are updated while preview is true.
      * 
      */
@@ -251,7 +253,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * with real resources.
      * ~&gt;**NOTE:** Deployment Manager does not allow update
      * of a deployment in preview (unless updating to preview=false). Thus,
-     * the provider will force-recreate deployments if either preview is updated
+     * Terraform will force-recreate deployments if either preview is updated
      * to true or if other fields are updated while preview is true.
      * 
      */

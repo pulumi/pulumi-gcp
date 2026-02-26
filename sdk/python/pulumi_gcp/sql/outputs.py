@@ -257,7 +257,7 @@ class DatabaseInstanceDnsName(dict):
         :param _builtins.str connection_type: The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
         :param _builtins.str dns_scope: The scope that the DNS name applies to.
         :param _builtins.str name: The name of the instance. If the name is left
-               blank, the provider will randomly generate one when the instance is first
+               blank, Terraform will randomly generate one when the instance is first
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         """
@@ -289,7 +289,7 @@ class DatabaseInstanceDnsName(dict):
     def name(self) -> Optional[_builtins.str]:
         """
         The name of the instance. If the name is left
-        blank, the provider will randomly generate one when the instance is first
+        blank, Terraform will randomly generate one when the instance is first
         created. This is done because after a name is used, it cannot be reused for
         up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         """

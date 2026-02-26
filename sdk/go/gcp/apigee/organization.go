@@ -233,7 +233,7 @@ import (
 //			_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:                  pulumi.String("us-central1"),
 //				DisplayName:                      pulumi.String("apigee-org"),
-//				Description:                      pulumi.String("Auto-provisioned Apigee Org."),
+//				Description:                      pulumi.String("Terraform-provisioned Apigee Org."),
 //				ProjectId:                        pulumi.String(current.Project),
 //				AuthorizedNetwork:                apigeeNetwork.ID(),
 //				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),

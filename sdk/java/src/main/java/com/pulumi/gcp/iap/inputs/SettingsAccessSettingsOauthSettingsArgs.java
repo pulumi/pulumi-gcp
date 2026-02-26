@@ -17,6 +17,55 @@ public final class SettingsAccessSettingsOauthSettingsArgs extends com.pulumi.re
     public static final SettingsAccessSettingsOauthSettingsArgs Empty = new SettingsAccessSettingsOauthSettingsArgs();
 
     /**
+     * OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+     * 
+     */
+    @Import(name="clientId")
+    private @Nullable Output<String> clientId;
+
+    /**
+     * @return OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+     * 
+     */
+    public Optional<Output<String>> clientId() {
+        return Optional.ofNullable(this.clientId);
+    }
+
+    /**
+     * OAuth secret paired with client ID.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    @Import(name="clientSecret")
+    private @Nullable Output<String> clientSecret;
+
+    /**
+     * @return OAuth secret paired with client ID.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    public Optional<Output<String>> clientSecret() {
+        return Optional.ofNullable(this.clientSecret);
+    }
+
+    /**
+     * (Output)
+     * OAuth secret sha256 paired with client ID.
+     * 
+     */
+    @Import(name="clientSecretSha256")
+    private @Nullable Output<String> clientSecretSha256;
+
+    /**
+     * @return (Output)
+     * OAuth secret sha256 paired with client ID.
+     * 
+     */
+    public Optional<Output<String>> clientSecretSha256() {
+        return Optional.ofNullable(this.clientSecretSha256);
+    }
+
+    /**
      * Domain hint to send as hd=? parameter in OAuth request flow.
      * Enables redirect to primary IDP by skipping Google&#39;s login screen.
      * (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
@@ -59,6 +108,9 @@ public final class SettingsAccessSettingsOauthSettingsArgs extends com.pulumi.re
     private SettingsAccessSettingsOauthSettingsArgs() {}
 
     private SettingsAccessSettingsOauthSettingsArgs(SettingsAccessSettingsOauthSettingsArgs $) {
+        this.clientId = $.clientId;
+        this.clientSecret = $.clientSecret;
+        this.clientSecretSha256 = $.clientSecretSha256;
         this.loginHint = $.loginHint;
         this.programmaticClients = $.programmaticClients;
     }
@@ -79,6 +131,73 @@ public final class SettingsAccessSettingsOauthSettingsArgs extends com.pulumi.re
 
         public Builder(SettingsAccessSettingsOauthSettingsArgs defaults) {
             $ = new SettingsAccessSettingsOauthSettingsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param clientId OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientId(@Nullable Output<String> clientId) {
+            $.clientId = clientId;
+            return this;
+        }
+
+        /**
+         * @param clientId OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientId(String clientId) {
+            return clientId(Output.of(clientId));
+        }
+
+        /**
+         * @param clientSecret OAuth secret paired with client ID.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecret(@Nullable Output<String> clientSecret) {
+            $.clientSecret = clientSecret;
+            return this;
+        }
+
+        /**
+         * @param clientSecret OAuth secret paired with client ID.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecret(String clientSecret) {
+            return clientSecret(Output.of(clientSecret));
+        }
+
+        /**
+         * @param clientSecretSha256 (Output)
+         * OAuth secret sha256 paired with client ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecretSha256(@Nullable Output<String> clientSecretSha256) {
+            $.clientSecretSha256 = clientSecretSha256;
+            return this;
+        }
+
+        /**
+         * @param clientSecretSha256 (Output)
+         * OAuth secret sha256 paired with client ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecretSha256(String clientSecretSha256) {
+            return clientSecretSha256(Output.of(clientSecretSha256));
         }
 
         /**

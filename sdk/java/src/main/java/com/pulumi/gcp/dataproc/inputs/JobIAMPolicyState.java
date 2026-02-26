@@ -58,7 +58,7 @@ public final class JobIAMPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The project in which the job belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     @Import(name="project")
@@ -66,7 +66,7 @@ public final class JobIAMPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The project in which the job belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     public Optional<Output<String>> project() {
@@ -75,7 +75,7 @@ public final class JobIAMPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The region in which the job belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     @Import(name="region")
@@ -83,7 +83,7 @@ public final class JobIAMPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The region in which the job belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     public Optional<Output<String>> region() {
@@ -175,7 +175,7 @@ public final class JobIAMPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param project The project in which the job belongs. If it
-         * is not provided, the provider will use a default.
+         * is not provided, Terraform will use the provider default.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class JobIAMPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param project The project in which the job belongs. If it
-         * is not provided, the provider will use a default.
+         * is not provided, Terraform will use the provider default.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class JobIAMPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param region The region in which the job belongs. If it
-         * is not provided, the provider will use a default.
+         * is not provided, Terraform will use the provider default.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class JobIAMPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param region The region in which the job belongs. If it
-         * is not provided, the provider will use a default.
+         * is not provided, Terraform will use the provider default.
          * 
          * @return builder
          * 

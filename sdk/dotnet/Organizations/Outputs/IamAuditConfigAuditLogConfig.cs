@@ -14,12 +14,7 @@ namespace Pulumi.Gcp.Organizations.Outputs
     public sealed class IamAuditConfigAuditLogConfig
     {
         /// <summary>
-        /// Identities that do not cause logging for this type of permission.
-        /// Each entry can have one of the following values:
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// Identities that do not cause logging for this type of permission.  The format is the same as that for `Members`.
         /// </summary>
         public readonly ImmutableArray<string> ExemptedMembers;
         /// <summary>

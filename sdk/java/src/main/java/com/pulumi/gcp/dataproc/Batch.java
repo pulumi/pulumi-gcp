@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchSpark = new Batch("exampleBatchSpark", BatchArgs.builder()
- *             .batchId("tf-test-batch_49082")
+ *             .batchId("tf-test-batch_10393")
  *             .location("us-central1")
  *             .labels(Map.of("batch_test", "terraform"))
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
@@ -275,7 +275,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchSparsql = new Batch("exampleBatchSparsql", BatchArgs.builder()
- *             .batchId("tf-test-batch_60365")
+ *             .batchId("tf-test-batch_33052")
  *             .location("us-central1")
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
  *                 .properties(Map.ofEntries(
@@ -328,7 +328,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchPyspark = new Batch("exampleBatchPyspark", BatchArgs.builder()
- *             .batchId("tf-test-batch_80215")
+ *             .batchId("tf-test-batch_3684")
  *             .location("us-central1")
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
  *                 .properties(Map.ofEntries(
@@ -387,7 +387,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchSparkr = new Batch("exampleBatchSparkr", BatchArgs.builder()
- *             .batchId("tf-test-batch_59033")
+ *             .batchId("tf-test-batch_10719")
  *             .location("us-central1")
  *             .labels(Map.of("batch_test", "terraform"))
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
@@ -443,7 +443,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchAutotuning = new Batch("exampleBatchAutotuning", BatchArgs.builder()
- *             .batchId("tf-test-batch_32081")
+ *             .batchId("tf-test-batch_1443")
  *             .location("us-central1")
  *             .labels(Map.of("batch_test", "terraform"))
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()

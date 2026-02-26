@@ -24,6 +24,8 @@ import com.pulumi.gcp.organizations.inputs.GetIamCustomRolePlainArgs;
 import com.pulumi.gcp.organizations.inputs.GetIamCustomRolesArgs;
 import com.pulumi.gcp.organizations.inputs.GetIamCustomRolesPlainArgs;
 import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
+import com.pulumi.gcp.organizations.inputs.GetOrganizationIamPolicyArgs;
+import com.pulumi.gcp.organizations.inputs.GetOrganizationIamPolicyPlainArgs;
 import com.pulumi.gcp.organizations.inputs.GetOrganizationPlainArgs;
 import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 import com.pulumi.gcp.organizations.inputs.GetProjectPlainArgs;
@@ -38,6 +40,7 @@ import com.pulumi.gcp.organizations.outputs.GetFoldersResult;
 import com.pulumi.gcp.organizations.outputs.GetIAMPolicyResult;
 import com.pulumi.gcp.organizations.outputs.GetIamCustomRoleResult;
 import com.pulumi.gcp.organizations.outputs.GetIamCustomRolesResult;
+import com.pulumi.gcp.organizations.outputs.GetOrganizationIamPolicyResult;
 import com.pulumi.gcp.organizations.outputs.GetOrganizationResult;
 import com.pulumi.gcp.organizations.outputs.GetProjectResult;
 import com.pulumi.gcp.organizations.outputs.GetSResult;
@@ -2641,6 +2644,206 @@ public final class OrganizationsFunctions {
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:organizations/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a organization.
+     * 
+     * ## example
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetOrganizationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = OrganizationsFunctions.getOrganizationIamPolicy(GetOrganizationIamPolicyArgs.builder()
+     *             .orgId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationIamPolicyResult> getOrganizationIamPolicy(GetOrganizationIamPolicyArgs args) {
+        return getOrganizationIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a organization.
+     * 
+     * ## example
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetOrganizationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = OrganizationsFunctions.getOrganizationIamPolicy(GetOrganizationIamPolicyArgs.builder()
+     *             .orgId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationIamPolicyResult> getOrganizationIamPolicyPlain(GetOrganizationIamPolicyPlainArgs args) {
+        return getOrganizationIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a organization.
+     * 
+     * ## example
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetOrganizationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = OrganizationsFunctions.getOrganizationIamPolicy(GetOrganizationIamPolicyArgs.builder()
+     *             .orgId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationIamPolicyResult> getOrganizationIamPolicy(GetOrganizationIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getOrganizationIamPolicy:getOrganizationIamPolicy", TypeShape.of(GetOrganizationIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a organization.
+     * 
+     * ## example
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetOrganizationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = OrganizationsFunctions.getOrganizationIamPolicy(GetOrganizationIamPolicyArgs.builder()
+     *             .orgId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationIamPolicyResult> getOrganizationIamPolicy(GetOrganizationIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getOrganizationIamPolicy:getOrganizationIamPolicy", TypeShape.of(GetOrganizationIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a organization.
+     * 
+     * ## example
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetOrganizationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = OrganizationsFunctions.getOrganizationIamPolicy(GetOrganizationIamPolicyArgs.builder()
+     *             .orgId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationIamPolicyResult> getOrganizationIamPolicyPlain(GetOrganizationIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:organizations/getOrganizationIamPolicy:getOrganizationIamPolicy", TypeShape.of(GetOrganizationIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get project details.

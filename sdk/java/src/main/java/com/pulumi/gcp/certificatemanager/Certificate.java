@@ -204,7 +204,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * ### Certificate Manager Certificate Basic
+ * ### Certificate Manager Self Managed Certificate
  * 
  * <pre>
  * {@code
@@ -213,11 +213,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.certificatemanager.DnsAuthorization;
- * import com.pulumi.gcp.certificatemanager.DnsAuthorizationArgs;
  * import com.pulumi.gcp.certificatemanager.Certificate;
  * import com.pulumi.gcp.certificatemanager.CertificateArgs;
- * import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -231,29 +231,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()
- *             .name("dns-auth")
- *             .description("The default dnss")
- *             .domain("subdomain.hashicorptest.com")
- *             .build());
- * 
- *         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()
- *             .name("dns-auth2")
- *             .description("The default dnss")
- *             .domain("subdomain2.hashicorptest.com")
- *             .build());
- * 
  *         var default_ = new Certificate("default", CertificateArgs.builder()
  *             .name("self-managed-cert")
  *             .description("Global cert")
- *             .scope("EDGE_CACHE")
- *             .managed(CertificateManagedArgs.builder()
- *                 .domains(                
- *                     instance.domain(),
- *                     instance2.domain())
- *                 .dnsAuthorizations(                
- *                     instance.id(),
- *                     instance2.id())
+ *             .scope("ALL_REGIONS")
+ *             .selfManaged(CertificateSelfManagedArgs.builder()
+ *                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                     .input("test-fixtures/cert.pem")
+ *                     .build()).result())
+ *                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
+ *                     .input("test-fixtures/private-key.pem")
+ *                     .build()).result())
  *                 .build())
  *             .build());
  * 

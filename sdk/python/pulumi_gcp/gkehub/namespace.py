@@ -29,6 +29,7 @@ class NamespaceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
+
         :param pulumi.Input[_builtins.str] scope: The name of the Scope instance.
         :param pulumi.Input[_builtins.str] scope_id: Id of the scope
         :param pulumi.Input[_builtins.str] scope_namespace_id: The client-provided identifier of the namespace.
@@ -154,6 +155,7 @@ class _NamespaceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the Namespace was created in UTC.
         :param pulumi.Input[_builtins.str] delete_time: Time the Namespace was deleted in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -417,9 +419,9 @@ class Namespace(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_25141")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_4866")
         namespace = gcp.gkehub.Namespace("namespace",
-            scope_namespace_id="tf-test-namespace_30827",
+            scope_namespace_id="tf-test-namespace_12618",
             scope_id=scope.scope_id,
             scope=scope.name,
             namespace_labels={
@@ -450,6 +452,7 @@ class Namespace(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/namespace:Namespace default {{project}}/{{scope_id}}/{{scope_namespace_id}}
         $ pulumi import gcp:gkehub/namespace:Namespace default {{scope_id}}/{{scope_namespace_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -491,9 +494,9 @@ class Namespace(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_25141")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_4866")
         namespace = gcp.gkehub.Namespace("namespace",
-            scope_namespace_id="tf-test-namespace_30827",
+            scope_namespace_id="tf-test-namespace_12618",
             scope_id=scope.scope_id,
             scope=scope.name,
             namespace_labels={
@@ -524,6 +527,7 @@ class Namespace(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/namespace:Namespace default {{project}}/{{scope_id}}/{{scope_namespace_id}}
         $ pulumi import gcp:gkehub/namespace:Namespace default {{scope_id}}/{{scope_namespace_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NamespaceArgs args: The arguments to use to populate this resource's properties.

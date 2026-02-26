@@ -16,6 +16,11 @@ import (
 // [the official documentation](https://cloud.google.com/bigtable/) and
 // [API](https://cloud.google.com/bigtable/docs/go/reference).
 //
+// > **Note:** It is strongly recommended to set `lifecycle { preventDestroy = true }`
+// on tables in order to prevent accidental data loss. See
+// Terraform docs
+// for more information on lifecycle parameters.
+//
 // ## Example Usage
 //
 // ```go
@@ -139,7 +144,7 @@ type Table struct {
 	//                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
 	RowKeySchema pulumi.StringPtrOutput `pulumi:"rowKeySchema"`
 	// A list of predefined keys to split the table on.
-	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause Terraform
 	// to delete/recreate the entire `bigtable.Table` resource.
 	SplitKeys pulumi.StringArrayOutput `pulumi:"splitKeys"`
 }
@@ -202,7 +207,7 @@ type tableState struct {
 	//                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
 	RowKeySchema *string `pulumi:"rowKeySchema"`
 	// A list of predefined keys to split the table on.
-	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause Terraform
 	// to delete/recreate the entire `bigtable.Table` resource.
 	SplitKeys []string `pulumi:"splitKeys"`
 }
@@ -233,7 +238,7 @@ type TableState struct {
 	//                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
 	RowKeySchema pulumi.StringPtrInput
 	// A list of predefined keys to split the table on.
-	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause Terraform
 	// to delete/recreate the entire `bigtable.Table` resource.
 	SplitKeys pulumi.StringArrayInput
 }
@@ -268,7 +273,7 @@ type tableArgs struct {
 	//                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
 	RowKeySchema *string `pulumi:"rowKeySchema"`
 	// A list of predefined keys to split the table on.
-	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause Terraform
 	// to delete/recreate the entire `bigtable.Table` resource.
 	SplitKeys []string `pulumi:"splitKeys"`
 }
@@ -300,7 +305,7 @@ type TableArgs struct {
 	//                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
 	RowKeySchema pulumi.StringPtrInput
 	// A list of predefined keys to split the table on.
-	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause Terraform
 	// to delete/recreate the entire `bigtable.Table` resource.
 	SplitKeys pulumi.StringArrayInput
 }
@@ -442,7 +447,7 @@ func (o TableOutput) RowKeySchema() pulumi.StringPtrOutput {
 }
 
 // A list of predefined keys to split the table on.
-// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+// !> **Warning:** Modifying the `splitKeys` of an existing table will cause Terraform
 // to delete/recreate the entire `bigtable.Table` resource.
 func (o TableOutput) SplitKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringArrayOutput { return v.SplitKeys }).(pulumi.StringArrayOutput)

@@ -87,6 +87,38 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Iap Settings Oauth Storage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "iap-bs-health-check-oauth",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     name: "iap-settings-oauth",
+ *     region: "us-central1",
+ *     healthChecks: defaultHealthCheck.id,
+ *     connectionDrainingTimeoutSec: 10,
+ *     sessionAffinity: "CLIENT_IP",
+ * });
+ * const iapSettingsOauth = new gcp.iap.Settings("iap_settings_oauth", {
+ *     name: pulumi.all([project, _default.name]).apply(([project, name]) => `projects/${project.number}/iap_web/compute-us-central1/services/${name}`),
+ *     accessSettings: {
+ *         oauthSettings: {
+ *             clientId: "test-client-id",
+ *             clientSecret: "test-client-secret",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

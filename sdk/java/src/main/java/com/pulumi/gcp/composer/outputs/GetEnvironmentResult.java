@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 public final class GetEnvironmentResult {
     /**
      * @return Configuration parameters for the environment.
+     * Full structure is provided by composer environment resource documentation.
      * 
      */
     private List<GetEnvironmentConfig> configs;
@@ -37,6 +38,7 @@ public final class GetEnvironmentResult {
     private GetEnvironmentResult() {}
     /**
      * @return Configuration parameters for the environment.
+     * Full structure is provided by composer environment resource documentation.
      * 
      */
     public List<GetEnvironmentConfig> configs() {

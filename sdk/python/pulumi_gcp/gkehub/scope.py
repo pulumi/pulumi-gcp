@@ -27,6 +27,7 @@ class ScopeArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Scope resource.
+
         :param pulumi.Input[_builtins.str] scope_id: The client-provided identifier of the scope.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for this Scope.
                
@@ -122,6 +123,7 @@ class _ScopeState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Scope resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the Scope was created in UTC.
         :param pulumi.Input[_builtins.str] delete_time: Time the Scope was deleted in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -383,6 +385,7 @@ class Scope(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/scope:Scope default {{scope_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for this Scope.
@@ -450,6 +453,7 @@ class Scope(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/scope:Scope default {{project}}/{{scope_id}}
         $ pulumi import gcp:gkehub/scope:Scope default {{scope_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ScopeArgs args: The arguments to use to populate this resource's properties.

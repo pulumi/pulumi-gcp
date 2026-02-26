@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute
     /// see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
     /// and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
     /// 
-    /// Security Policy is used by google_compute_backend_service.
+    /// Security Policy is used by `gcp.compute.BackendService`.
     /// 
     /// ## Example Usage
     /// 

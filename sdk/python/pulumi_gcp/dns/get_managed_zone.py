@@ -64,7 +64,7 @@ class GetManagedZoneResult:
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> _builtins.str:
         """
-        The fully qualified DNS name of this zone, e.g. `example.io.`.
+        The fully qualified DNS name of this zone, e.g. `terraform.io.`.
         """
         return pulumi.get(self, "dns_name")
 

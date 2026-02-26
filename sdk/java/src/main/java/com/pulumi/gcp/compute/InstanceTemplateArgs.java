@@ -283,7 +283,7 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     @Import(name="name")
@@ -291,7 +291,7 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -952,7 +952,7 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param name The name of the instance template. If you leave
-         * this blank, the provider will auto-generate a unique name.
+         * this blank, Terraform will auto-generate a unique name.
          * 
          * @return builder
          * 
@@ -964,7 +964,7 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param name The name of the instance template. If you leave
-         * this blank, the provider will auto-generate a unique name.
+         * this blank, Terraform will auto-generate a unique name.
          * 
          * @return builder
          * 

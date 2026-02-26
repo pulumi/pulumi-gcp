@@ -61,6 +61,7 @@ class GetEnvironmentResult:
     def configs(self) -> Sequence['outputs.GetEnvironmentConfigResult']:
         """
         Configuration parameters for the environment.
+        Full structure is provided by composer environment resource documentation.
         """
         return pulumi.get(self, "configs")
 

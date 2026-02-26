@@ -32,6 +32,7 @@ class NotificationChannelArgs:
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a NotificationChannel resource.
+
         :param pulumi.Input[_builtins.str] type: The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
         :param pulumi.Input[_builtins.str] description: An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
         :param pulumi.Input[_builtins.str] display_name: An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
@@ -44,7 +45,7 @@ class NotificationChannelArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Configuration fields that define the channel and its behavior. The
                permissible and required labels are specified in the
                NotificationChannelDescriptor corresponding to the type field.
-               Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+               Labels with sensitive data are obfuscated by the API and therefore Terraform cannot
                determine if there are upstream changes to these fields. They can also be configured via
                the sensitive_labels block, but cannot be configured in both places.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -147,7 +148,7 @@ class NotificationChannelArgs:
         Configuration fields that define the channel and its behavior. The
         permissible and required labels are specified in the
         NotificationChannelDescriptor corresponding to the type field.
-        Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+        Labels with sensitive data are obfuscated by the API and therefore Terraform cannot
         determine if there are upstream changes to these fields. They can also be configured via
         the sensitive_labels block, but cannot be configured in both places.
         """
@@ -217,6 +218,7 @@ class _NotificationChannelState:
                  verification_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NotificationChannel resources.
+
         :param pulumi.Input[_builtins.str] description: An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
         :param pulumi.Input[_builtins.str] display_name: An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
         :param pulumi.Input[_builtins.bool] enabled: Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
@@ -228,7 +230,7 @@ class _NotificationChannelState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Configuration fields that define the channel and its behavior. The
                permissible and required labels are specified in the
                NotificationChannelDescriptor corresponding to the type field.
-               Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+               Labels with sensitive data are obfuscated by the API and therefore Terraform cannot
                determine if there are upstream changes to these fields. They can also be configured via
                the sensitive_labels block, but cannot be configured in both places.
         :param pulumi.Input[_builtins.str] name: The full REST resource name for this channel. The syntax is:
@@ -329,7 +331,7 @@ class _NotificationChannelState:
         Configuration fields that define the channel and its behavior. The
         permissible and required labels are specified in the
         NotificationChannelDescriptor corresponding to the type field.
-        Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+        Labels with sensitive data are obfuscated by the API and therefore Terraform cannot
         determine if there are upstream changes to these fields. They can also be configured via
         the sensitive_labels block, but cannot be configured in both places.
         """
@@ -448,7 +450,7 @@ class NotificationChannel(pulumi.CustomResource):
         present for that channel to be correctly configured. The labels that are required to be
         present for one channel `type` are often different than those required for another.
         Due to these loose constraints it's often best to set up a channel through the UI
-        and import it to the provider when setting up a brand new channel type to determine which
+        and import to Terraform when setting up a brand new channel type to determine which
         labels are required.
 
         A list of supported channels per project the `list` endpoint can be
@@ -510,6 +512,7 @@ class NotificationChannel(pulumi.CustomResource):
         $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
@@ -523,7 +526,7 @@ class NotificationChannel(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Configuration fields that define the channel and its behavior. The
                permissible and required labels are specified in the
                NotificationChannelDescriptor corresponding to the type field.
-               Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+               Labels with sensitive data are obfuscated by the API and therefore Terraform cannot
                determine if there are upstream changes to these fields. They can also be configured via
                the sensitive_labels block, but cannot be configured in both places.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -555,7 +558,7 @@ class NotificationChannel(pulumi.CustomResource):
         present for that channel to be correctly configured. The labels that are required to be
         present for one channel `type` are often different than those required for another.
         Due to these loose constraints it's often best to set up a channel through the UI
-        and import it to the provider when setting up a brand new channel type to determine which
+        and import to Terraform when setting up a brand new channel type to determine which
         labels are required.
 
         A list of supported channels per project the `list` endpoint can be
@@ -616,6 +619,7 @@ class NotificationChannel(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NotificationChannelArgs args: The arguments to use to populate this resource's properties.
@@ -702,7 +706,7 @@ class NotificationChannel(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Configuration fields that define the channel and its behavior. The
                permissible and required labels are specified in the
                NotificationChannelDescriptor corresponding to the type field.
-               Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+               Labels with sensitive data are obfuscated by the API and therefore Terraform cannot
                determine if there are upstream changes to these fields. They can also be configured via
                the sensitive_labels block, but cannot be configured in both places.
         :param pulumi.Input[_builtins.str] name: The full REST resource name for this channel. The syntax is:
@@ -781,7 +785,7 @@ class NotificationChannel(pulumi.CustomResource):
         Configuration fields that define the channel and its behavior. The
         permissible and required labels are specified in the
         NotificationChannelDescriptor corresponding to the type field.
-        Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+        Labels with sensitive data are obfuscated by the API and therefore Terraform cannot
         determine if there are upstream changes to these fields. They can also be configured via
         the sensitive_labels block, but cannot be configured in both places.
         """

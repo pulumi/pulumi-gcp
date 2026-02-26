@@ -45,8 +45,8 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// CSV file. If your data does not contain quoted sections, set the
         /// property value to an empty string. If your data contains quoted newline
         /// characters, you must also set the `AllowQuotedNewlines` property to true.
-        /// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
-        /// limitations with default values, this value is required to be
+        /// The API-side default is `"`, specified in Terraform escaped as `\"`. Due to
+        /// limitations with Terraform default values, this value is required to be
         /// explicitly set.
         /// </summary>
         [Input("quote", required: true)]

@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.Compute.RolloutPlan("default", new()
     ///     {
-    ///         Name = "tf-test-rollout-plan-_52865",
+    ///         Name = "tf-test-rollout-plan-_91042",
     ///         Description = "A test rollout plan",
     ///         LocationScope = "ZONAL",
     ///         Waves = new[]

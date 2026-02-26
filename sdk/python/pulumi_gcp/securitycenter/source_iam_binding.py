@@ -28,6 +28,7 @@ class SourceIamBindingArgs:
                  condition: Optional[pulumi.Input['SourceIamBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a SourceIamBinding resource.
+
         :param pulumi.Input[_builtins.str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
         """
@@ -99,6 +100,7 @@ class _SourceIamBindingState:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SourceIamBinding resources.
+
         :param pulumi.Input[_builtins.str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
         """
@@ -226,6 +228,7 @@ class SourceIamBinding(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/sourceIamBinding:SourceIamBinding default {{organization}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] organization: The organization whose Cloud Security Command Center the Source
@@ -276,6 +279,7 @@ class SourceIamBinding(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/sourceIamBinding:SourceIamBinding default organizations/{{organization}}/sources/{{name}}
         $ pulumi import gcp:securitycenter/sourceIamBinding:SourceIamBinding default {{organization}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SourceIamBindingArgs args: The arguments to use to populate this resource's properties.

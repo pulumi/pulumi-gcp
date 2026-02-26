@@ -22,7 +22,9 @@ namespace Pulumi.Gcp.Spanner
     /// (and run `pulumi up` to write the field to state) in order to destroy an instance.
     /// It is recommended to not set this field (or set it to true) until you're ready to destroy.
     /// On older versions, it is strongly recommended to set `lifecycle { PreventDestroy = true }`
-    /// on databases in order to prevent accidental data loss.
+    /// on databases in order to prevent accidental data loss. See
+    /// Terraform docs
+    /// for more information on lifecycle parameters.
     /// 
     /// ## Example Usage
     /// 
@@ -110,8 +112,12 @@ namespace Pulumi.Gcp.Spanner
         public Output<string?> DefaultTimeZone { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        /// in state, a `Destroy` or `Update` that would delete the instance will fail.
+        /// Whether Terraform will be prevented from destroying the database. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the database,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the database will fail.
+        /// When the field is set to false, deleting the database is allowed.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -252,8 +258,12 @@ namespace Pulumi.Gcp.Spanner
         public Input<string>? DefaultTimeZone { get; set; }
 
         /// <summary>
-        /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        /// in state, a `Destroy` or `Update` that would delete the instance will fail.
+        /// Whether Terraform will be prevented from destroying the database. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the database,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the database will fail.
+        /// When the field is set to false, deleting the database is allowed.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -350,8 +360,12 @@ namespace Pulumi.Gcp.Spanner
         public Input<string>? DefaultTimeZone { get; set; }
 
         /// <summary>
-        /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        /// in state, a `Destroy` or `Update` that would delete the instance will fail.
+        /// Whether Terraform will be prevented from destroying the database. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the database,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the database will fail.
+        /// When the field is set to false, deleting the database is allowed.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }

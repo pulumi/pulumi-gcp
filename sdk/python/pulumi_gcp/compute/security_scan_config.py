@@ -33,6 +33,7 @@ class SecurityScanConfigArgs:
                  user_agent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityScanConfig resource.
+
         :param pulumi.Input[_builtins.str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] starting_urls: The starting URLs from which the scanner finds site pages.
         :param pulumi.Input['SecurityScanConfigAuthenticationArgs'] authentication: The authentication configuration.
@@ -222,6 +223,7 @@ class _SecurityScanConfigState:
                  user_agent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityScanConfig resources.
+
         :param pulumi.Input['SecurityScanConfigAuthenticationArgs'] authentication: The authentication configuration.
                If specified, service will use the authentication configuration during scanning.
                Structure is documented below.
@@ -453,7 +455,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
         scanner_static_ip = gcp.compute.Address("scanner_static_ip", name="scan-basic-static-ip")
         scan_config = gcp.compute.SecurityScanConfig("scan-config",
-            display_name="scan-config",
+            display_name="terraform-scan-config",
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"])
         ```
@@ -473,6 +475,7 @@ class SecurityScanConfig(pulumi.CustomResource):
         $ terraform import google_security_scanner_scan_config.default "{{project}} {{name}}"
         $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -526,7 +529,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
         scanner_static_ip = gcp.compute.Address("scanner_static_ip", name="scan-basic-static-ip")
         scan_config = gcp.compute.SecurityScanConfig("scan-config",
-            display_name="scan-config",
+            display_name="terraform-scan-config",
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"])
         ```
@@ -546,6 +549,7 @@ class SecurityScanConfig(pulumi.CustomResource):
         $ terraform import google_security_scanner_scan_config.default "{{project}} {{name}}"
         $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityScanConfigArgs args: The arguments to use to populate this resource's properties.

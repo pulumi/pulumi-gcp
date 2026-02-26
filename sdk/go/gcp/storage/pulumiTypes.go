@@ -1725,9 +1725,9 @@ type BucketEncryption struct {
 	// until a relevant action has occurred which triggers its creation.
 	// You should use the [`storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
 	// address for the service account when configuring IAM policy on the Cloud KMS key.
-	// This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+	// This data source calls an API which creates the account if required, ensuring your Terraform applies cleanly and repeatedly irrespective of the
 	// state of the project.
-	// You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+	// You should take care for race conditions when the same Terraform manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
 	DefaultKmsKeyName string `pulumi:"defaultKmsKeyName"`
 }
 
@@ -1754,9 +1754,9 @@ type BucketEncryptionArgs struct {
 	// until a relevant action has occurred which triggers its creation.
 	// You should use the [`storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
 	// address for the service account when configuring IAM policy on the Cloud KMS key.
-	// This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+	// This data source calls an API which creates the account if required, ensuring your Terraform applies cleanly and repeatedly irrespective of the
 	// state of the project.
-	// You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+	// You should take care for race conditions when the same Terraform manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
 	DefaultKmsKeyName pulumi.StringInput `pulumi:"defaultKmsKeyName"`
 }
 
@@ -1848,9 +1848,9 @@ func (o BucketEncryptionOutput) ToBucketEncryptionPtrOutputWithContext(ctx conte
 // until a relevant action has occurred which triggers its creation.
 // You should use the [`storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
 // address for the service account when configuring IAM policy on the Cloud KMS key.
-// This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+// This data source calls an API which creates the account if required, ensuring your Terraform applies cleanly and repeatedly irrespective of the
 // state of the project.
-// You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+// You should take care for race conditions when the same Terraform manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
 func (o BucketEncryptionOutput) DefaultKmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketEncryption) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
 }
@@ -1890,9 +1890,9 @@ func (o BucketEncryptionPtrOutput) Elem() BucketEncryptionOutput {
 // until a relevant action has occurred which triggers its creation.
 // You should use the [`storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
 // address for the service account when configuring IAM policy on the Cloud KMS key.
-// This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+// This data source calls an API which creates the account if required, ensuring your Terraform applies cleanly and repeatedly irrespective of the
 // state of the project.
-// You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+// You should take care for race conditions when the same Terraform manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
 func (o BucketEncryptionPtrOutput) DefaultKmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketEncryption) *string {
 		if v == nil {
@@ -2042,8 +2042,8 @@ func (o BucketHierarchicalNamespacePtrOutput) Enabled() pulumi.BoolPtrOutput {
 type BucketIAMBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
 	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
@@ -2066,8 +2066,8 @@ type BucketIAMBindingConditionInput interface {
 type BucketIAMBindingConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
 	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
@@ -2155,8 +2155,8 @@ func (o BucketIAMBindingConditionOutput) ToBucketIAMBindingConditionPtrOutputWit
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 //
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
 // consider it to be an entirely different resource and will treat it as such.
 func (o BucketIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -2198,8 +2198,8 @@ func (o BucketIAMBindingConditionPtrOutput) Elem() BucketIAMBindingConditionOutp
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 //
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
 // consider it to be an entirely different resource and will treat it as such.
 func (o BucketIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketIAMBindingCondition) *string {
@@ -2233,8 +2233,8 @@ func (o BucketIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 type BucketIAMMemberCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
 	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
@@ -2257,8 +2257,8 @@ type BucketIAMMemberConditionInput interface {
 type BucketIAMMemberConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
 	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
@@ -2346,8 +2346,8 @@ func (o BucketIAMMemberConditionOutput) ToBucketIAMMemberConditionPtrOutputWithC
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 //
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
 // consider it to be an entirely different resource and will treat it as such.
 func (o BucketIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -2389,8 +2389,8 @@ func (o BucketIAMMemberConditionPtrOutput) Elem() BucketIAMMemberConditionOutput
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 //
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
 // consider it to be an entirely different resource and will treat it as such.
 func (o BucketIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketIAMMemberCondition) *string {

@@ -33,6 +33,7 @@ class WorkflowTemplateArgs:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a WorkflowTemplate resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]] jobs: (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: (Required) WorkflowTemplate scheduling information.
@@ -212,6 +213,7 @@ class _WorkflowTemplateState:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering WorkflowTemplate resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. The time template was created.
         :param pulumi.Input[_builtins.str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
@@ -596,6 +598,7 @@ class WorkflowTemplate(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
@@ -761,6 +764,7 @@ class WorkflowTemplate(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkflowTemplateArgs args: The arguments to use to populate this resource's properties.

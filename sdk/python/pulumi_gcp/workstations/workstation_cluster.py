@@ -34,6 +34,7 @@ class WorkstationClusterArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a WorkstationCluster resource.
+
         :param pulumi.Input[_builtins.str] network: The relative resource name of the VPC network on which the instance can be accessed.
                It is specified in the following form: "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input[_builtins.str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
@@ -249,6 +250,7 @@ class _WorkstationClusterState:
                  workstation_cluster_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkstationCluster resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -774,6 +776,7 @@ class WorkstationCluster(pulumi.CustomResource):
         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Client-specified annotations. This is distinct from labels.
@@ -960,6 +963,7 @@ class WorkstationCluster(pulumi.CustomResource):
         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{project}}/{{location}}/{{workstation_cluster_id}}
         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkstationClusterArgs args: The arguments to use to populate this resource's properties.

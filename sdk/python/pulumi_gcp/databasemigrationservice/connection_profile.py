@@ -33,6 +33,7 @@ class ConnectionProfileArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
+
         :param pulumi.Input[_builtins.str] connection_profile_id: The ID of the connection profile.
         :param pulumi.Input['ConnectionProfileAlloydbArgs'] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
                Structure is documented below.
@@ -225,6 +226,7 @@ class _ConnectionProfileState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
+
         :param pulumi.Input['ConnectionProfileAlloydbArgs'] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
                Structure is documented below.
         :param pulumi.Input['ConnectionProfileCloudsqlArgs'] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
@@ -783,11 +785,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             alloydb={
-                "cluster_id": "tf-test-dbmsalloycluster_91042",
+                "cluster_id": "tf-test-dbmsalloycluster_95154",
                 "settings": {
                     "initial_user": {
-                        "user": "alloyuser_72490",
-                        "password": "alloypass_89605",
+                        "user": "alloyuser_64336",
+                        "password": "alloypass_34962",
                     },
                     "vpc_network": default.id,
                     "labels": {
@@ -927,6 +929,7 @@ class ConnectionProfile(pulumi.CustomResource):
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1217,11 +1220,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             alloydb={
-                "cluster_id": "tf-test-dbmsalloycluster_91042",
+                "cluster_id": "tf-test-dbmsalloycluster_95154",
                 "settings": {
                     "initial_user": {
-                        "user": "alloyuser_72490",
-                        "password": "alloypass_89605",
+                        "user": "alloyuser_64336",
+                        "password": "alloypass_34962",
                     },
                     "vpc_network": default.id,
                     "labels": {
@@ -1361,6 +1364,7 @@ class ConnectionProfile(pulumi.CustomResource):
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionProfileArgs args: The arguments to use to populate this resource's properties.

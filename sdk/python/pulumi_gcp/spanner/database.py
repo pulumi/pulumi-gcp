@@ -33,6 +33,7 @@ class DatabaseArgs:
                  version_retention_period: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
+
         :param pulumi.Input[_builtins.str] instance: The instance to create the database on.
         :param pulumi.Input[_builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
@@ -47,8 +48,12 @@ class DatabaseArgs:
                to prior statements will create a plan that marks the resource for recreation.
         :param pulumi.Input[_builtins.str] default_time_zone: The default time zone for the database. The default time zone must be a valid name
                from the tz database. Default value is "America/Los_angeles".
-        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-               in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the database. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the database,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the database will fail.
+               When the field is set to false, deleting the database is allowed.
         :param pulumi.Input[_builtins.bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false.
                Drop protection is different from
                the "deletion_protection" attribute in the following ways:
@@ -150,8 +155,12 @@ class DatabaseArgs:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        in state, a `destroy` or `update` that would delete the instance will fail.
+        Whether Terraform will be prevented from destroying the database. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the database,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the database will fail.
+        When the field is set to false, deleting the database is allowed.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -249,6 +258,7 @@ class _DatabaseState:
                  version_retention_period: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
+
         :param pulumi.Input[_builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
                Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
@@ -262,8 +272,12 @@ class _DatabaseState:
                to prior statements will create a plan that marks the resource for recreation.
         :param pulumi.Input[_builtins.str] default_time_zone: The default time zone for the database. The default time zone must be a valid name
                from the tz database. Default value is "America/Los_angeles".
-        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-               in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the database. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the database,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the database will fail.
+               When the field is set to false, deleting the database is allowed.
         :param pulumi.Input[_builtins.bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false.
                Drop protection is different from
                the "deletion_protection" attribute in the following ways:
@@ -358,8 +372,12 @@ class _DatabaseState:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        in state, a `destroy` or `update` that would delete the instance will fail.
+        Whether Terraform will be prevented from destroying the database. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the database,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the database will fail.
+        When the field is set to false, deleting the database is allowed.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -495,7 +513,9 @@ class Database(pulumi.CustomResource):
         (and run `pulumi up` to write the field to state) in order to destroy an instance.
         It is recommended to not set this field (or set it to true) until you're ready to destroy.
         On older versions, it is strongly recommended to set `lifecycle { prevent_destroy = true }`
-        on databases in order to prevent accidental data loss.
+        on databases in order to prevent accidental data loss. See
+        Terraform docs
+        for more information on lifecycle parameters.
 
         ## Example Usage
 
@@ -539,6 +559,7 @@ class Database(pulumi.CustomResource):
         $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
@@ -554,8 +575,12 @@ class Database(pulumi.CustomResource):
                to prior statements will create a plan that marks the resource for recreation.
         :param pulumi.Input[_builtins.str] default_time_zone: The default time zone for the database. The default time zone must be a valid name
                from the tz database. Default value is "America/Los_angeles".
-        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-               in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the database. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the database,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the database will fail.
+               When the field is set to false, deleting the database is allowed.
         :param pulumi.Input[_builtins.bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false.
                Drop protection is different from
                the "deletion_protection" attribute in the following ways:
@@ -595,7 +620,9 @@ class Database(pulumi.CustomResource):
         (and run `pulumi up` to write the field to state) in order to destroy an instance.
         It is recommended to not set this field (or set it to true) until you're ready to destroy.
         On older versions, it is strongly recommended to set `lifecycle { prevent_destroy = true }`
-        on databases in order to prevent accidental data loss.
+        on databases in order to prevent accidental data loss. See
+        Terraform docs
+        for more information on lifecycle parameters.
 
         ## Example Usage
 
@@ -638,6 +665,7 @@ class Database(pulumi.CustomResource):
         $ pulumi import gcp:spanner/database:Database default {{project}}/{{instance}}/{{name}}
         $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.
@@ -727,8 +755,12 @@ class Database(pulumi.CustomResource):
                to prior statements will create a plan that marks the resource for recreation.
         :param pulumi.Input[_builtins.str] default_time_zone: The default time zone for the database. The default time zone must be a valid name
                from the tz database. Default value is "America/Los_angeles".
-        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-               in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the database. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the database,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the database will fail.
+               When the field is set to false, deleting the database is allowed.
         :param pulumi.Input[_builtins.bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false.
                Drop protection is different from
                the "deletion_protection" attribute in the following ways:
@@ -805,8 +837,12 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        in state, a `destroy` or `update` that would delete the instance will fail.
+        Whether Terraform will be prevented from destroying the database. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the database,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the database will fail.
+        When the field is set to false, deleting the database is allowed.
         """
         return pulumi.get(self, "deletion_protection")
 

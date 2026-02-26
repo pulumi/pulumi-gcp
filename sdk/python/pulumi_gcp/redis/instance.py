@@ -47,6 +47,7 @@ class InstanceArgs:
                  transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[_builtins.str] alternative_location_id: Only applicable to STANDARD_HA tier which protects the instance
                against zonal failures by provisioning it across two zones.
@@ -554,6 +555,7 @@ class _InstanceState:
                  transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] alternative_location_id: Only applicable to STANDARD_HA tier which protects the instance
                against zonal failures by provisioning it across two zones.
                If provided, it must be a different zone from the one provided in
@@ -1345,7 +1347,7 @@ class Instance(pulumi.CustomResource):
             alternative_location_id="us-central1-f",
             authorized_network=redis_network.id,
             redis_version="REDIS_7_2",
-            display_name="Test Instance",
+            display_name="Terraform Test Instance",
             reserved_ip_range="192.168.0.0/29",
             labels={
                 "my_key": "my_val",
@@ -1414,7 +1416,7 @@ class Instance(pulumi.CustomResource):
             authorized_network=redis_network.id,
             connect_mode="PRIVATE_SERVICE_ACCESS",
             redis_version="REDIS_7_2",
-            display_name="Test Instance",
+            display_name="Terraform Test Instance",
             opts = pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
         ### Redis Instance Mrr
@@ -1502,6 +1504,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:redis/instance:Instance default {{region}}/{{name}}
         $ pulumi import gcp:redis/instance:Instance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1632,7 +1635,7 @@ class Instance(pulumi.CustomResource):
             alternative_location_id="us-central1-f",
             authorized_network=redis_network.id,
             redis_version="REDIS_7_2",
-            display_name="Test Instance",
+            display_name="Terraform Test Instance",
             reserved_ip_range="192.168.0.0/29",
             labels={
                 "my_key": "my_val",
@@ -1701,7 +1704,7 @@ class Instance(pulumi.CustomResource):
             authorized_network=redis_network.id,
             connect_mode="PRIVATE_SERVICE_ACCESS",
             redis_version="REDIS_7_2",
-            display_name="Test Instance",
+            display_name="Terraform Test Instance",
             opts = pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
         ### Redis Instance Mrr
@@ -1789,6 +1792,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:redis/instance:Instance default {{region}}/{{name}}
         $ pulumi import gcp:redis/instance:Instance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

@@ -16,9 +16,275 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
+ * Four different resources help you manage your IAM policy for a organization. Each of these resources serves a different use case:
  * 
- * ## Example Usage
+ * * `gcp.organizations.IAMPolicy`: Authoritative. Sets the IAM policy for the organization and replaces any existing policy already attached.
+ * * `gcp.organizations.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organization are preserved.
+ * * `gcp.organizations.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organization are preserved.
+ * * `gcp.organizations.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
+ * 
+ * &gt; **Note:** `gcp.organizations.IAMPolicy` **cannot** be used in conjunction with `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.organizations.IAMBinding` resources **can be** used in conjunction with `gcp.organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## gcp.organizations.IAMPolicy
+ * 
+ * !&gt; **Warning:** New organizations have several default policies which will,
+ *    without extreme caution, be **overwritten** by use of this resource.
+ *    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
+ *    resources. This resource makes it easy to remove your own access to
+ *    an organization, which will require a call to Google Support to have
+ *    fixed, and can take multiple days to resolve.
+ *    &lt;br /&gt;&lt;br /&gt;
+ *    In general, this resource should only be used with organizations
+ *    fully managed by Terraform.If you do use this resource,
+ *    the best way to be sure that you are not making dangerous changes is to start
+ *    by **importing** your existing policy, and examining the diff very closely.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.IAMPolicy;
+ * import com.pulumi.gcp.organizations.IAMPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/editor")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var organization = new IAMPolicy("organization", IAMPolicyArgs.builder()
+ *             .orgId("1234567890")
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.IAMPolicy;
+ * import com.pulumi.gcp.organizations.IAMPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/editor")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var organization = new IAMPolicy("organization", IAMPolicyArgs.builder()
+ *             .orgId("1234567890")
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.organizations.IAMBinding
+ * 
+ * &gt; **Note:** If `role` is set to `roles/owner` and you don&#39;t specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.IAMBinding;
+ * import com.pulumi.gcp.organizations.IAMBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var organization = new IAMBinding("organization", IAMBindingArgs.builder()
+ *             .orgId("1234567890")
+ *             .role("roles/editor")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.IAMBinding;
+ * import com.pulumi.gcp.organizations.IAMBindingArgs;
+ * import com.pulumi.gcp.organizations.inputs.IAMBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var organization = new IAMBinding("organization", IAMBindingArgs.builder()
+ *             .orgId("1234567890")
+ *             .role("roles/editor")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .condition(IAMBindingConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.organizations.IAMMember
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.IAMMember;
+ * import com.pulumi.gcp.organizations.IAMMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var organization = new IAMMember("organization", IAMMemberArgs.builder()
+ *             .orgId("1234567890")
+ *             .role("roles/editor")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.IAMMember;
+ * import com.pulumi.gcp.organizations.IAMMemberArgs;
+ * import com.pulumi.gcp.organizations.inputs.IAMMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var organization = new IAMMember("organization", IAMMemberArgs.builder()
+ *             .orgId("1234567890")
+ *             .role("roles/editor")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .condition(IAMMemberConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.organizations.IamAuditConfig
  * 
  * <pre>
  * {@code
@@ -43,13 +309,214 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var config = new IamAuditConfig("config", IamAuditConfigArgs.builder()
- *             .orgId("your-organization-id")
+ *         var organization = new IamAuditConfig("organization", IamAuditConfigArgs.builder()
+ *             .orgId("1234567890")
  *             .service("allServices")
- *             .auditLogConfigs(IamAuditConfigAuditLogConfigArgs.builder()
- *                 .logType("DATA_READ")
- *                 .exemptedMembers("user:joebloggs}{@literal @}{@code example.com")
+ *             .auditLogConfigs(            
+ *                 IamAuditConfigAuditLogConfigArgs.builder()
+ *                     .logType("ADMIN_READ")
+ *                     .build(),
+ *                 IamAuditConfigAuditLogConfigArgs.builder()
+ *                     .logType("DATA_READ")
+ *                     .exemptedMembers("user:joebloggs}{@literal @}{@code example.com")
+ *                     .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.organizations.IAMBinding
+ * 
+ * &gt; **Note:** If `role` is set to `roles/owner` and you don&#39;t specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.IAMBinding;
+ * import com.pulumi.gcp.organizations.IAMBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var organization = new IAMBinding("organization", IAMBindingArgs.builder()
+ *             .orgId("1234567890")
+ *             .role("roles/editor")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.IAMBinding;
+ * import com.pulumi.gcp.organizations.IAMBindingArgs;
+ * import com.pulumi.gcp.organizations.inputs.IAMBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var organization = new IAMBinding("organization", IAMBindingArgs.builder()
+ *             .orgId("1234567890")
+ *             .role("roles/editor")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .condition(IAMBindingConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.organizations.IAMMember
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.IAMMember;
+ * import com.pulumi.gcp.organizations.IAMMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var organization = new IAMMember("organization", IAMMemberArgs.builder()
+ *             .orgId("1234567890")
+ *             .role("roles/editor")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.IAMMember;
+ * import com.pulumi.gcp.organizations.IAMMemberArgs;
+ * import com.pulumi.gcp.organizations.inputs.IAMMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var organization = new IAMMember("organization", IAMMemberArgs.builder()
+ *             .orgId("1234567890")
+ *             .role("roles/editor")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .condition(IAMMemberConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.organizations.IamAuditConfig
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.IamAuditConfig;
+ * import com.pulumi.gcp.organizations.IamAuditConfigArgs;
+ * import com.pulumi.gcp.organizations.inputs.IamAuditConfigAuditLogConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var organization = new IamAuditConfig("organization", IamAuditConfigArgs.builder()
+ *             .orgId("1234567890")
+ *             .service("allServices")
+ *             .auditLogConfigs(            
+ *                 IamAuditConfigAuditLogConfigArgs.builder()
+ *                     .logType("ADMIN_READ")
+ *                     .build(),
+ *                 IamAuditConfigAuditLogConfigArgs.builder()
+ *                     .logType("DATA_READ")
+ *                     .exemptedMembers("user:joebloggs}{@literal @}{@code example.com")
+ *                     .build())
  *             .build());
  * 
  *     }}{@code
@@ -59,11 +526,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * IAM audit config imports use the identifier of the resource in question and the service, e.g.
+ * &gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
  * 
- * ```sh
- * terraform import google_organization_iam_audit_config.config &#34;your-organization-id foo.googleapis.com&#34;
- * ```
+ * &gt; **Conditional IAM Bindings**: If you&#39;re importing a IAM binding with a condition block, make sure
+ *  to include the title of condition, e.g. `terraform import google_organization_iam_binding.my_organization &#34;your-org-id roles/{{role_id}} condition-title&#34;`
  * 
  */
 @ResourceType(type="gcp:organizations/iamAuditConfig:IamAuditConfig")
@@ -83,42 +550,42 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
         return this.auditLogConfigs;
     }
     /**
-     * The etag of iam policy
+     * (Computed) The etag of the organization&#39;s IAM policy.
      * 
      */
     @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
-     * @return The etag of iam policy
+     * @return (Computed) The etag of the organization&#39;s IAM policy.
      * 
      */
     public Output<String> etag() {
         return this.etag;
     }
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization id of the target organization.
      * 
      */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
-     * @return The numeric ID of the organization in which you want to manage the audit logging config.
+     * @return The organization id of the target organization.
      * 
      */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      * 
      */
     @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**
-     * @return Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+     * @return Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      * 
      */
     public Output<String> service() {

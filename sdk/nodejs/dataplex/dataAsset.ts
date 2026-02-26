@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const example = new gcp.dataplex.DataProduct("example", {
  *     project: "my-project-name",
  *     location: "us-central1",
- *     dataProductId: "tf-test-dp-_95154",
+ *     dataProductId: "tf-test-dp-_88722",
  *     displayName: "Parent Data Product",
  *     ownerEmails: ["gterraformtestuser@gmail.com"],
  *     accessGroups: [{
@@ -37,13 +37,13 @@ import * as utilities from "../utilities";
  *         groupId: "analyst",
  *         displayName: "Data Analyst",
  *         principal: {
- *             googleGroup: "tf-test-analysts-_64336@example.com",
+ *             googleGroup: "tf-test-analysts-_39249@example.com",
  *         },
  *     }],
  * });
  * const exampleDataset = new gcp.bigquery.Dataset("example", {
  *     project: "my-project-name",
- *     datasetId: "tf_test_dataset__34962",
+ *     datasetId: "tf_test_dataset__74391",
  *     location: "us-central1",
  * });
  * const exampleDataAsset = new gcp.dataplex.DataAsset("example", {
@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * const example = new gcp.dataplex.DataProduct("example", {
  *     project: "my-project-name",
  *     location: "us-central1",
- *     dataProductId: "tf-test-dp-_74000",
+ *     dataProductId: "tf-test-dp-_16511",
  *     displayName: "Full Example Parent DP",
  *     ownerEmails: ["gterraformtestuser@gmail.com"],
  *     accessGroups: [
@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  * });
  * const exampleDataset = new gcp.bigquery.Dataset("example", {
  *     project: "my-project-name",
- *     datasetId: "tf_test_dataset__75125",
+ *     datasetId: "tf_test_dataset__8493",
  *     location: "us-central1",
  * });
  * const exampleDataAsset = new gcp.dataplex.DataAsset("example", {

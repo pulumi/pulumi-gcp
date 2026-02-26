@@ -24,6 +24,7 @@ class HostingSiteArgs:
                  site_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostingSite resource.
+
         :param pulumi.Input[_builtins.str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
                associated with the Hosting site.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -91,6 +92,7 @@ class _HostingSiteState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostingSite resources.
+
         :param pulumi.Input[_builtins.str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
                associated with the Hosting site.
         :param pulumi.Input[_builtins.str] default_url: The default URL for the site in the form of https://{name}.web.app
@@ -281,6 +283,7 @@ class HostingSite(pulumi.CustomResource):
         $ pulumi import gcp:firebase/hostingSite:HostingSite default {{site_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
@@ -363,6 +366,7 @@ class HostingSite(pulumi.CustomResource):
         $ pulumi import gcp:firebase/hostingSite:HostingSite default sites/{{site_id}}
         $ pulumi import gcp:firebase/hostingSite:HostingSite default {{site_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HostingSiteArgs args: The arguments to use to populate this resource's properties.

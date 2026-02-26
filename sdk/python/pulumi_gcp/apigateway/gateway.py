@@ -27,6 +27,7 @@ class GatewayArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
+
         :param pulumi.Input[_builtins.str] api_config: Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
                When changing api configs please ensure the new config is a new resource and the
                lifecycle rule `create_before_destroy` is set.
@@ -145,6 +146,7 @@ class _GatewayState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
+
         :param pulumi.Input[_builtins.str] api_config: Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
                When changing api configs please ensure the new config is a new resource and the
                lifecycle rule `create_before_destroy` is set.
@@ -357,6 +359,7 @@ class Gateway(pulumi.CustomResource):
         $ pulumi import gcp:apigateway/gateway:Gateway default {{gateway_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_config: Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
@@ -409,6 +412,7 @@ class Gateway(pulumi.CustomResource):
         $ pulumi import gcp:apigateway/gateway:Gateway default {{region}}/{{gateway_id}}
         $ pulumi import gcp:apigateway/gateway:Gateway default {{gateway_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayArgs args: The arguments to use to populate this resource's properties.

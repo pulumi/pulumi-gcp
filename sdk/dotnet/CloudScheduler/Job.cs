@@ -325,7 +325,7 @@ namespace Pulumi.Gcp.CloudScheduler
         public Output<Outputs.JobPubsubTarget?> PubsubTarget { get; private set; } = null!;
 
         /// <summary>
-        /// Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+        /// Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -471,7 +471,7 @@ namespace Pulumi.Gcp.CloudScheduler
         public Input<Inputs.JobPubsubTargetArgs>? PubsubTarget { get; set; }
 
         /// <summary>
-        /// Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+        /// Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -573,7 +573,7 @@ namespace Pulumi.Gcp.CloudScheduler
         public Input<Inputs.JobPubsubTargetGetArgs>? PubsubTarget { get; set; }
 
         /// <summary>
-        /// Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+        /// Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

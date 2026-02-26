@@ -31,6 +31,7 @@ class DeploymentArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Deployment resource.
+
         :param pulumi.Input['DeploymentTargetArgs'] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
                Structure is documented below.
@@ -59,7 +60,7 @@ class DeploymentArgs:
                with real resources.
                ~>**NOTE:** Deployment Manager does not allow update
                of a deployment in preview (unless updating to preview=false). Thus,
-               the provider will force-recreate deployments if either preview is updated
+               Terraform will force-recreate deployments if either preview is updated
                to true or if other fields are updated while preview is true.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -178,7 +179,7 @@ class DeploymentArgs:
         with real resources.
         ~>**NOTE:** Deployment Manager does not allow update
         of a deployment in preview (unless updating to preview=false). Thus,
-        the provider will force-recreate deployments if either preview is updated
+        Terraform will force-recreate deployments if either preview is updated
         to true or if other fields are updated while preview is true.
         """
         return pulumi.get(self, "preview")
@@ -217,6 +218,7 @@ class _DeploymentState:
                  target: Optional[pulumi.Input['DeploymentTargetArgs']] = None):
         """
         Input properties used for looking up and filtering Deployment resources.
+
         :param pulumi.Input[_builtins.str] create_policy: Set the policy to use for creating new resources. Only used on
                create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
                `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
@@ -245,7 +247,7 @@ class _DeploymentState:
                with real resources.
                ~>**NOTE:** Deployment Manager does not allow update
                of a deployment in preview (unless updating to preview=false). Thus,
-               the provider will force-recreate deployments if either preview is updated
+               Terraform will force-recreate deployments if either preview is updated
                to true or if other fields are updated while preview is true.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -386,7 +388,7 @@ class _DeploymentState:
         with real resources.
         ~>**NOTE:** Deployment Manager does not allow update
         of a deployment in preview (unless updating to preview=false). Thus,
-        the provider will force-recreate deployments if either preview is updated
+        Terraform will force-recreate deployments if either preview is updated
         to true or if other fields are updated while preview is true.
         """
         return pulumi.get(self, "preview")
@@ -454,13 +456,15 @@ class Deployment(pulumi.CustomResource):
         A collection of resources that are deployed and managed together using
         a configuration file
 
-        > **Warning:** This resource is intended only to manage a Deployment resource,
-        and attempts to manage the Deployment's resources in the provider as well
+        > **Warning:** Deployment Manager shares similar behavior with Terraform as both
+        products manage GCP resource lifecycle and state. This Terraform
+        resource is intended only to manage a Deployment resource,
+        and attempts to manage the Deployment's resources in Terraform as well
         will likely result in errors or unexpected behavior as the two tools
         fight over ownership. We strongly discourage doing so unless you are an
         experienced user of both tools.
 
-        In addition, due to limitations of the API, the provider will treat
+        In addition, due to limitations of the API, Terraform will treat
         deployments in preview as recreate-only for any update operation other
         than actually deploying an in-preview deployment (i.e. `preview=true` to
         `preview=false`).
@@ -501,6 +505,7 @@ class Deployment(pulumi.CustomResource):
         $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{project}}/{{name}}
         $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -529,7 +534,7 @@ class Deployment(pulumi.CustomResource):
                with real resources.
                ~>**NOTE:** Deployment Manager does not allow update
                of a deployment in preview (unless updating to preview=false). Thus,
-               the provider will force-recreate deployments if either preview is updated
+               Terraform will force-recreate deployments if either preview is updated
                to true or if other fields are updated while preview is true.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -547,13 +552,15 @@ class Deployment(pulumi.CustomResource):
         A collection of resources that are deployed and managed together using
         a configuration file
 
-        > **Warning:** This resource is intended only to manage a Deployment resource,
-        and attempts to manage the Deployment's resources in the provider as well
+        > **Warning:** Deployment Manager shares similar behavior with Terraform as both
+        products manage GCP resource lifecycle and state. This Terraform
+        resource is intended only to manage a Deployment resource,
+        and attempts to manage the Deployment's resources in Terraform as well
         will likely result in errors or unexpected behavior as the two tools
         fight over ownership. We strongly discourage doing so unless you are an
         experienced user of both tools.
 
-        In addition, due to limitations of the API, the provider will treat
+        In addition, due to limitations of the API, Terraform will treat
         deployments in preview as recreate-only for any update operation other
         than actually deploying an in-preview deployment (i.e. `preview=true` to
         `preview=false`).
@@ -594,6 +601,7 @@ class Deployment(pulumi.CustomResource):
         $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{project}}/{{name}}
         $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeploymentArgs args: The arguments to use to populate this resource's properties.
@@ -696,7 +704,7 @@ class Deployment(pulumi.CustomResource):
                with real resources.
                ~>**NOTE:** Deployment Manager does not allow update
                of a deployment in preview (unless updating to preview=false). Thus,
-               the provider will force-recreate deployments if either preview is updated
+               Terraform will force-recreate deployments if either preview is updated
                to true or if other fields are updated while preview is true.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -803,7 +811,7 @@ class Deployment(pulumi.CustomResource):
         with real resources.
         ~>**NOTE:** Deployment Manager does not allow update
         of a deployment in preview (unless updating to preview=false). Thus,
-        the provider will force-recreate deployments if either preview is updated
+        Terraform will force-recreate deployments if either preview is updated
         to true or if other fields are updated while preview is true.
         """
         return pulumi.get(self, "preview")

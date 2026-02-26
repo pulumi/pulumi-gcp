@@ -33,14 +33,14 @@ namespace Pulumi.Gcp.Storage
         /// Use of this data source calls the relevant API endpoint to obtain the service account's identity and thus ensures it exists prior to any API operations
         /// which demand its existence, such as specifying it in Cloud IAM policy.
         /// Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
-        /// provider update errors in cases where the service account does not yet exist.
+        /// pulumi up errors in cases where the service account does not yet exist.
         /// 
-        /// &gt;  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+        /// &gt;  When you write Terraform code which uses features depending on this service account *and* your Terraform code adds the service account in IAM policy on other resources,
         ///    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
         ///    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
         ///    bucket configuration, otherwise the API calls will fail.
         ///    You may need to use `DependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
-        ///    See the examples here and in the `gcp.storage.Notification` resource.
+        ///    See the examples here and in the [`gcp.storage.Notification`](https://www.terraform.io/docs/providers/google/r/storage_notification.html) resource.
         /// 
         /// For more information see
         /// [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
@@ -139,14 +139,14 @@ namespace Pulumi.Gcp.Storage
         /// Use of this data source calls the relevant API endpoint to obtain the service account's identity and thus ensures it exists prior to any API operations
         /// which demand its existence, such as specifying it in Cloud IAM policy.
         /// Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
-        /// provider update errors in cases where the service account does not yet exist.
+        /// pulumi up errors in cases where the service account does not yet exist.
         /// 
-        /// &gt;  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+        /// &gt;  When you write Terraform code which uses features depending on this service account *and* your Terraform code adds the service account in IAM policy on other resources,
         ///    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
         ///    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
         ///    bucket configuration, otherwise the API calls will fail.
         ///    You may need to use `DependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
-        ///    See the examples here and in the `gcp.storage.Notification` resource.
+        ///    See the examples here and in the [`gcp.storage.Notification`](https://www.terraform.io/docs/providers/google/r/storage_notification.html) resource.
         /// 
         /// For more information see
         /// [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
@@ -245,14 +245,14 @@ namespace Pulumi.Gcp.Storage
         /// Use of this data source calls the relevant API endpoint to obtain the service account's identity and thus ensures it exists prior to any API operations
         /// which demand its existence, such as specifying it in Cloud IAM policy.
         /// Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
-        /// provider update errors in cases where the service account does not yet exist.
+        /// pulumi up errors in cases where the service account does not yet exist.
         /// 
-        /// &gt;  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+        /// &gt;  When you write Terraform code which uses features depending on this service account *and* your Terraform code adds the service account in IAM policy on other resources,
         ///    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
         ///    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
         ///    bucket configuration, otherwise the API calls will fail.
         ///    You may need to use `DependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
-        ///    See the examples here and in the `gcp.storage.Notification` resource.
+        ///    See the examples here and in the [`gcp.storage.Notification`](https://www.terraform.io/docs/providers/google/r/storage_notification.html) resource.
         /// 
         /// For more information see
         /// [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).

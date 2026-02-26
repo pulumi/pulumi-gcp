@@ -898,7 +898,6 @@ import (
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
-//				LaunchStage:        pulumi.String("BETA"),
 //				IapEnabled:         pulumi.Bool(true),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
@@ -1055,8 +1054,7 @@ type Service struct {
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation pulumi.StringOutput `pulumi:"generation"`
-	// (Optional, Beta)
-	// Used to enable/disable IAP for the service.
+	// Used to enable/disable IAP for the cloud-run service.
 	IapEnabled pulumi.BoolPtrOutput `pulumi:"iapEnabled"`
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 	// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -1218,8 +1216,7 @@ type serviceState struct {
 	ExpireTime *string `pulumi:"expireTime"`
 	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation *string `pulumi:"generation"`
-	// (Optional, Beta)
-	// Used to enable/disable IAP for the service.
+	// Used to enable/disable IAP for the cloud-run service.
 	IapEnabled *bool `pulumi:"iapEnabled"`
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 	// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -1341,8 +1338,7 @@ type ServiceState struct {
 	ExpireTime pulumi.StringPtrInput
 	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation pulumi.StringPtrInput
-	// (Optional, Beta)
-	// Used to enable/disable IAP for the service.
+	// Used to enable/disable IAP for the cloud-run service.
 	IapEnabled pulumi.BoolPtrInput
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 	// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -1449,8 +1445,7 @@ type serviceArgs struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description *string `pulumi:"description"`
-	// (Optional, Beta)
-	// Used to enable/disable IAP for the service.
+	// Used to enable/disable IAP for the cloud-run service.
 	IapEnabled *bool `pulumi:"iapEnabled"`
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 	// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -1523,8 +1518,7 @@ type ServiceArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description pulumi.StringPtrInput
-	// (Optional, Beta)
-	// Used to enable/disable IAP for the service.
+	// Used to enable/disable IAP for the cloud-run service.
 	IapEnabled pulumi.BoolPtrInput
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 	// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -1755,8 +1749,7 @@ func (o ServiceOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Generation }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
-// Used to enable/disable IAP for the service.
+// Used to enable/disable IAP for the cloud-run service.
 func (o ServiceOutput) IapEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.IapEnabled }).(pulumi.BoolPtrOutput)
 }

@@ -30,6 +30,7 @@ class ProjectArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.bool] auto_create_network: Controls whether the 'default' network exists on the project. Defaults
                to `true`, where it is created. If set to `false`, the default network will still be created by GCP but
                will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
@@ -37,8 +38,8 @@ class ProjectArgs:
                `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
                with the GCE API and currently leaves it enabled.
         :param pulumi.Input[_builtins.str] billing_account: The alphanumeric ID of the billing account this project
-               belongs to. The user or service account performing this operation with the provider
-               must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+               belongs to. The user or service account performing this operation with Terraform
+               must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
                See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
                for more details.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the Project. Setting PREVENT will protect the project
@@ -104,8 +105,8 @@ class ProjectArgs:
     def billing_account(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The alphanumeric ID of the billing account this project
-        belongs to. The user or service account performing this operation with the provider
-        must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+        belongs to. The user or service account performing this operation with Terraform
+        must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
         See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
         for more details.
         """
@@ -231,6 +232,7 @@ class _ProjectState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[_builtins.bool] auto_create_network: Controls whether the 'default' network exists on the project. Defaults
                to `true`, where it is created. If set to `false`, the default network will still be created by GCP but
                will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
@@ -238,8 +240,8 @@ class _ProjectState:
                `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
                with the GCE API and currently leaves it enabled.
         :param pulumi.Input[_builtins.str] billing_account: The alphanumeric ID of the billing account this project
-               belongs to. The user or service account performing this operation with the provider
-               must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+               belongs to. The user or service account performing this operation with Terraform
+               must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
                See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
                for more details.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the Project. Setting PREVENT will protect the project
@@ -314,8 +316,8 @@ class _ProjectState:
     def billing_account(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The alphanumeric ID of the billing account this project
-        belongs to. The user or service account performing this operation with the provider
-        must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+        belongs to. The user or service account performing this operation with Terraform
+        must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
         See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
         for more details.
         """
@@ -482,7 +484,7 @@ class Project(pulumi.CustomResource):
         Projects created with this resource must be associated with an Organization.
         See the [Organization documentation](https://docs.cloud.google.com/resource-manager/docs/quickstarts) for more details.
 
-        The user or service account that is running this provider when creating a `organizations.Project`
+        The user or service account that is running Terraform when creating a `organizations.Project`
         resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
         [Access Control for Organizations Using IAM](https://docs.cloud.google.com/resource-manager/docs/access-control-org)
         doc for more information.
@@ -553,6 +555,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import gcp:organizations/project:Project default {{project_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_create_network: Controls whether the 'default' network exists on the project. Defaults
@@ -562,8 +565,8 @@ class Project(pulumi.CustomResource):
                `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
                with the GCE API and currently leaves it enabled.
         :param pulumi.Input[_builtins.str] billing_account: The alphanumeric ID of the billing account this project
-               belongs to. The user or service account performing this operation with the provider
-               must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+               belongs to. The user or service account performing this operation with Terraform
+               must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
                See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
                for more details.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the Project. Setting PREVENT will protect the project
@@ -600,7 +603,7 @@ class Project(pulumi.CustomResource):
         Projects created with this resource must be associated with an Organization.
         See the [Organization documentation](https://docs.cloud.google.com/resource-manager/docs/quickstarts) for more details.
 
-        The user or service account that is running this provider when creating a `organizations.Project`
+        The user or service account that is running Terraform when creating a `organizations.Project`
         resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
         [Access Control for Organizations Using IAM](https://docs.cloud.google.com/resource-manager/docs/access-control-org)
         doc for more information.
@@ -670,6 +673,7 @@ class Project(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:organizations/project:Project default {{project_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
@@ -754,8 +758,8 @@ class Project(pulumi.CustomResource):
                `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
                with the GCE API and currently leaves it enabled.
         :param pulumi.Input[_builtins.str] billing_account: The alphanumeric ID of the billing account this project
-               belongs to. The user or service account performing this operation with the provider
-               must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+               belongs to. The user or service account performing this operation with Terraform
+               must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
                See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
                for more details.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the Project. Setting PREVENT will protect the project
@@ -819,8 +823,8 @@ class Project(pulumi.CustomResource):
     def billing_account(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The alphanumeric ID of the billing account this project
-        belongs to. The user or service account performing this operation with the provider
-        must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+        belongs to. The user or service account performing this operation with Terraform
+        must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
         See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
         for more details.
         """

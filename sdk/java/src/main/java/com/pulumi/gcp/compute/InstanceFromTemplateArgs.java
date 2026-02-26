@@ -462,14 +462,16 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The scratch disks attached to the instance.
+     * * `network_interface.alias_ip_range`
+     * * `network_interface.access_config`
      * 
      */
     @Import(name="scratchDisks")
     private @Nullable Output<List<InstanceFromTemplateScratchDiskArgs>> scratchDisks;
 
     /**
-     * @return The scratch disks attached to the instance.
+     * @return * `network_interface.alias_ip_range`
+     * * `network_interface.access_config`
      * 
      */
     public Optional<Output<List<InstanceFromTemplateScratchDiskArgs>>> scratchDisks() {
@@ -552,6 +554,9 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
      * as a way to override the properties in the template. All exported attributes
      * from `gcp.compute.Instance` are likewise exported here.
      * 
+     * To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+     * are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
+     * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
@@ -563,6 +568,9 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
      * In addition to these, all arguments from `gcp.compute.Instance` are supported
      * as a way to override the properties in the template. All exported attributes
      * from `gcp.compute.Instance` are likewise exported here.
+     * 
+     * To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+     * are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
      * 
      */
     public Optional<Output<String>> zone() {
@@ -1253,7 +1261,8 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scratchDisks The scratch disks attached to the instance.
+         * @param scratchDisks * `network_interface.alias_ip_range`
+         * * `network_interface.access_config`
          * 
          * @return builder
          * 
@@ -1264,7 +1273,8 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scratchDisks The scratch disks attached to the instance.
+         * @param scratchDisks * `network_interface.alias_ip_range`
+         * * `network_interface.access_config`
          * 
          * @return builder
          * 
@@ -1274,7 +1284,8 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scratchDisks The scratch disks attached to the instance.
+         * @param scratchDisks * `network_interface.alias_ip_range`
+         * * `network_interface.access_config`
          * 
          * @return builder
          * 
@@ -1393,6 +1404,9 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
          * as a way to override the properties in the template. All exported attributes
          * from `gcp.compute.Instance` are likewise exported here.
          * 
+         * To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+         * are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
+         * 
          * @return builder
          * 
          */
@@ -1408,6 +1422,9 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
          * In addition to these, all arguments from `gcp.compute.Instance` are supported
          * as a way to override the properties in the template. All exported attributes
          * from `gcp.compute.Instance` are likewise exported here.
+         * 
+         * To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+         * are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
          * 
          * @return builder
          * 

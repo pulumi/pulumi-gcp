@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * present for that channel to be correctly configured. The labels that are required to be
  * present for one channel `type` are often different than those required for another.
  * Due to these loose constraints it&#39;s often best to set up a channel through the UI
- * and import it to the provider when setting up a brand new channel type to determine which
+ * and import to Terraform when setting up a brand new channel type to determine which
  * labels are required.
  * 
  * A list of supported channels per project the `list` endpoint can be
@@ -204,7 +204,7 @@ public class NotificationChannel extends com.pulumi.resources.CustomResource {
      * Configuration fields that define the channel and its behavior. The
      * permissible and required labels are specified in the
      * NotificationChannelDescriptor corresponding to the type field.
-     * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+     * Labels with sensitive data are obfuscated by the API and therefore Terraform cannot
      * determine if there are upstream changes to these fields. They can also be configured via
      * the sensitiveLabels block, but cannot be configured in both places.
      * 
@@ -216,7 +216,7 @@ public class NotificationChannel extends com.pulumi.resources.CustomResource {
      * @return Configuration fields that define the channel and its behavior. The
      * permissible and required labels are specified in the
      * NotificationChannelDescriptor corresponding to the type field.
-     * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+     * Labels with sensitive data are obfuscated by the API and therefore Terraform cannot
      * determine if there are upstream changes to these fields. They can also be configured via
      * the sensitiveLabels block, but cannot be configured in both places.
      * 

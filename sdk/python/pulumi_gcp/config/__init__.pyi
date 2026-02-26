@@ -175,8 +175,6 @@ dialogflowCxCustomEndpoint: Optional[str]
 
 disableGlobalProjectWarning: bool
 
-disableGooglePartnerName: Optional[bool]
-
 discoveryEngineCustomEndpoint: Optional[str]
 
 dnsCustomEndpoint: Optional[str]
@@ -229,9 +227,9 @@ gkeHubCustomEndpoint: Optional[str]
 
 gkeonpremCustomEndpoint: Optional[str]
 
-googlePartnerName: Optional[str]
-
 healthcareCustomEndpoint: Optional[str]
+
+hypercomputeclusterCustomEndpoint: Optional[str]
 
 iam2CustomEndpoint: Optional[str]
 

@@ -321,11 +321,11 @@ namespace Pulumi.Gcp
         [Output("gkeonpremCustomEndpoint")]
         public Output<string?> GkeonpremCustomEndpoint { get; private set; } = null!;
 
-        [Output("googlePartnerName")]
-        public Output<string?> GooglePartnerName { get; private set; } = null!;
-
         [Output("healthcareCustomEndpoint")]
         public Output<string?> HealthcareCustomEndpoint { get; private set; } = null!;
+
+        [Output("hypercomputeclusterCustomEndpoint")]
+        public Output<string?> HypercomputeclusterCustomEndpoint { get; private set; } = null!;
 
         [Output("iam2CustomEndpoint")]
         public Output<string?> Iam2CustomEndpoint { get; private set; } = null!;
@@ -892,9 +892,6 @@ namespace Pulumi.Gcp
         [Input("dialogflowCxCustomEndpoint")]
         public Input<string>? DialogflowCxCustomEndpoint { get; set; }
 
-        [Input("disableGooglePartnerName", json: true)]
-        public Input<bool>? DisableGooglePartnerName { get; set; }
-
         [Input("discoveryEngineCustomEndpoint")]
         public Input<string>? DiscoveryEngineCustomEndpoint { get; set; }
 
@@ -973,11 +970,11 @@ namespace Pulumi.Gcp
         [Input("gkeonpremCustomEndpoint")]
         public Input<string>? GkeonpremCustomEndpoint { get; set; }
 
-        [Input("googlePartnerName")]
-        public Input<string>? GooglePartnerName { get; set; }
-
         [Input("healthcareCustomEndpoint")]
         public Input<string>? HealthcareCustomEndpoint { get; set; }
+
+        [Input("hypercomputeclusterCustomEndpoint")]
+        public Input<string>? HypercomputeclusterCustomEndpoint { get; set; }
 
         [Input("iam2CustomEndpoint")]
         public Input<string>? Iam2CustomEndpoint { get; set; }

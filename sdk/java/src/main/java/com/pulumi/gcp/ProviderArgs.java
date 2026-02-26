@@ -574,13 +574,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dialogflowCxCustomEndpoint);
     }
 
-    @Import(name="disableGooglePartnerName", json=true)
-    private @Nullable Output<Boolean> disableGooglePartnerName;
-
-    public Optional<Output<Boolean>> disableGooglePartnerName() {
-        return Optional.ofNullable(this.disableGooglePartnerName);
-    }
-
     @Import(name="discoveryEngineCustomEndpoint")
     private @Nullable Output<String> discoveryEngineCustomEndpoint;
 
@@ -763,18 +756,18 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.gkeonpremCustomEndpoint);
     }
 
-    @Import(name="googlePartnerName")
-    private @Nullable Output<String> googlePartnerName;
-
-    public Optional<Output<String>> googlePartnerName() {
-        return Optional.ofNullable(this.googlePartnerName);
-    }
-
     @Import(name="healthcareCustomEndpoint")
     private @Nullable Output<String> healthcareCustomEndpoint;
 
     public Optional<Output<String>> healthcareCustomEndpoint() {
         return Optional.ofNullable(this.healthcareCustomEndpoint);
+    }
+
+    @Import(name="hypercomputeclusterCustomEndpoint")
+    private @Nullable Output<String> hypercomputeclusterCustomEndpoint;
+
+    public Optional<Output<String>> hypercomputeclusterCustomEndpoint() {
+        return Optional.ofNullable(this.hypercomputeclusterCustomEndpoint);
     }
 
     @Import(name="iam2CustomEndpoint")
@@ -1524,7 +1517,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.developerConnectCustomEndpoint = $.developerConnectCustomEndpoint;
         this.dialogflowCustomEndpoint = $.dialogflowCustomEndpoint;
         this.dialogflowCxCustomEndpoint = $.dialogflowCxCustomEndpoint;
-        this.disableGooglePartnerName = $.disableGooglePartnerName;
         this.discoveryEngineCustomEndpoint = $.discoveryEngineCustomEndpoint;
         this.dnsCustomEndpoint = $.dnsCustomEndpoint;
         this.documentAiCustomEndpoint = $.documentAiCustomEndpoint;
@@ -1551,8 +1543,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.gkeHub2CustomEndpoint = $.gkeHub2CustomEndpoint;
         this.gkeHubCustomEndpoint = $.gkeHubCustomEndpoint;
         this.gkeonpremCustomEndpoint = $.gkeonpremCustomEndpoint;
-        this.googlePartnerName = $.googlePartnerName;
         this.healthcareCustomEndpoint = $.healthcareCustomEndpoint;
+        this.hypercomputeclusterCustomEndpoint = $.hypercomputeclusterCustomEndpoint;
         this.iam2CustomEndpoint = $.iam2CustomEndpoint;
         this.iam3CustomEndpoint = $.iam3CustomEndpoint;
         this.iamBetaCustomEndpoint = $.iamBetaCustomEndpoint;
@@ -2379,15 +2371,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return dialogflowCxCustomEndpoint(Output.of(dialogflowCxCustomEndpoint));
         }
 
-        public Builder disableGooglePartnerName(@Nullable Output<Boolean> disableGooglePartnerName) {
-            $.disableGooglePartnerName = disableGooglePartnerName;
-            return this;
-        }
-
-        public Builder disableGooglePartnerName(Boolean disableGooglePartnerName) {
-            return disableGooglePartnerName(Output.of(disableGooglePartnerName));
-        }
-
         public Builder discoveryEngineCustomEndpoint(@Nullable Output<String> discoveryEngineCustomEndpoint) {
             $.discoveryEngineCustomEndpoint = discoveryEngineCustomEndpoint;
             return this;
@@ -2622,15 +2605,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return gkeonpremCustomEndpoint(Output.of(gkeonpremCustomEndpoint));
         }
 
-        public Builder googlePartnerName(@Nullable Output<String> googlePartnerName) {
-            $.googlePartnerName = googlePartnerName;
-            return this;
-        }
-
-        public Builder googlePartnerName(String googlePartnerName) {
-            return googlePartnerName(Output.of(googlePartnerName));
-        }
-
         public Builder healthcareCustomEndpoint(@Nullable Output<String> healthcareCustomEndpoint) {
             $.healthcareCustomEndpoint = healthcareCustomEndpoint;
             return this;
@@ -2638,6 +2612,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder healthcareCustomEndpoint(String healthcareCustomEndpoint) {
             return healthcareCustomEndpoint(Output.of(healthcareCustomEndpoint));
+        }
+
+        public Builder hypercomputeclusterCustomEndpoint(@Nullable Output<String> hypercomputeclusterCustomEndpoint) {
+            $.hypercomputeclusterCustomEndpoint = hypercomputeclusterCustomEndpoint;
+            return this;
+        }
+
+        public Builder hypercomputeclusterCustomEndpoint(String hypercomputeclusterCustomEndpoint) {
+            return hypercomputeclusterCustomEndpoint(Output.of(hypercomputeclusterCustomEndpoint));
         }
 
         public Builder iam2CustomEndpoint(@Nullable Output<String> iam2CustomEndpoint) {

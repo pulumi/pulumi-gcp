@@ -38,6 +38,7 @@ class EdgeCacheOriginArgs:
                  timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']] = None):
         """
         The set of arguments for constructing a EdgeCacheOrigin resource.
+
         :param pulumi.Input[_builtins.str] origin_address: A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
                This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
                When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
@@ -369,6 +370,7 @@ class _EdgeCacheOriginState:
                  timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']] = None):
         """
         Input properties used for looking up and filtering EdgeCacheOrigin resources.
+
         :param pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs'] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
@@ -853,6 +855,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EdgeCacheOriginAwsV4AuthenticationArgs', 'EdgeCacheOriginAwsV4AuthenticationArgsDict']] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
@@ -1037,6 +1040,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{project}}/{{name}}
         $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EdgeCacheOriginArgs args: The arguments to use to populate this resource's properties.

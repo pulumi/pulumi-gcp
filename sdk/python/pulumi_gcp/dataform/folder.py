@@ -25,6 +25,7 @@ class FolderArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Folder resource.
+
         :param pulumi.Input[_builtins.str] display_name: Required. The Folder's user-friendly name.
         :param pulumi.Input[_builtins.str] region: A reference to the region
         :param pulumi.Input[_builtins.str] containing_folder: Optional. The containing Folder resource name.
@@ -101,6 +102,7 @@ class _FolderState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Folder resources.
+
         :param pulumi.Input[_builtins.str] containing_folder: Optional. The containing Folder resource name.
                Format: `projects/*/locations/*/folders/*` or `projects/*/locations/*/teamFolders/*`.
         :param pulumi.Input[_builtins.str] display_name: Required. The Folder's user-friendly name.
@@ -231,7 +233,7 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_basic = gcp.dataform.Folder("dataform_folder_basic",
             region="us-central1",
-            display_name="Basic Folder-_56730")
+            display_name="Basic Folder-_74000")
         ```
         ### Dataform Folder Full
 
@@ -267,6 +269,7 @@ class Folder(pulumi.CustomResource):
         $ pulumi import gcp:dataform/folder:Folder default {{folder_id}}
         $ pulumi import gcp:dataform/folder:Folder default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -305,7 +308,7 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_basic = gcp.dataform.Folder("dataform_folder_basic",
             region="us-central1",
-            display_name="Basic Folder-_56730")
+            display_name="Basic Folder-_74000")
         ```
         ### Dataform Folder Full
 
@@ -341,6 +344,7 @@ class Folder(pulumi.CustomResource):
         $ pulumi import gcp:dataform/folder:Folder default {{folder_id}}
         $ pulumi import gcp:dataform/folder:Folder default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FolderArgs args: The arguments to use to populate this resource's properties.

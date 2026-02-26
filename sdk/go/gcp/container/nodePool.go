@@ -12,129 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > See the Using GKE with Terraform
+// guide for more information about using GKE with Terraform.
+//
 // Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
 // the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
 // and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
-//
-// ## Example Usage
-//
-// ### Using A Separately Managed Node Pool (Recommended)
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := serviceaccount.NewAccount(ctx, "default", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("service-account-id"),
-//				DisplayName: pulumi.String("Service Account"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				Name:                  pulumi.String("my-gke-cluster"),
-//				Location:              pulumi.String("us-central1"),
-//				RemoveDefaultNodePool: pulumi.Bool(true),
-//				InitialNodeCount:      pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = container.NewNodePool(ctx, "primary_preemptible_nodes", &container.NodePoolArgs{
-//				Name:      pulumi.String("my-node-pool"),
-//				Cluster:   primary.ID(),
-//				NodeCount: pulumi.Int(1),
-//				NodeConfig: &container.NodePoolNodeConfigArgs{
-//					Preemptible:    pulumi.Bool(true),
-//					MachineType:    pulumi.String("e2-medium"),
-//					ServiceAccount: _default.Email,
-//					OauthScopes: pulumi.StringArray{
-//						pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := serviceaccount.NewAccount(ctx, "default", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("service-account-id"),
-//				DisplayName: pulumi.String("Service Account"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				Name:             pulumi.String("marcellus-wallace"),
-//				Location:         pulumi.String("us-central1-a"),
-//				InitialNodeCount: pulumi.Int(3),
-//				NodeLocations: pulumi.StringArray{
-//					pulumi.String("us-central1-c"),
-//				},
-//				NodeConfig: &container.ClusterNodeConfigArgs{
-//					ServiceAccount: _default.Email,
-//					OauthScopes: pulumi.StringArray{
-//						pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
-//					},
-//					GuestAccelerators: container.ClusterNodeConfigGuestAcceleratorArray{
-//						&container.ClusterNodeConfigGuestAcceleratorArgs{
-//							Type:  pulumi.String("nvidia-tesla-k80"),
-//							Count: pulumi.Int(1),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = container.NewNodePool(ctx, "np", &container.NodePoolArgs{
-//				Name:    pulumi.String("my-node-pool"),
-//				Cluster: primary.ID(),
-//				NodeConfig: &container.NodePoolNodeConfigArgs{
-//					MachineType:    pulumi.String("e2-medium"),
-//					ServiceAccount: _default.Email,
-//					OauthScopes: pulumi.StringArray{
-//						pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
@@ -165,9 +48,9 @@ type NodePool struct {
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
 	// may change this value in your existing cluster, which will trigger destruction
-	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
+	// and recreation on the next Terraform run (to rectify the discrepancy).  If you don't
 	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-	// ignore subsqeuent changes to this field.
+	// ignore subsequent changes to this field.
 	InitialNodeCount pulumi.IntOutput `pulumi:"initialNodeCount"`
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayOutput `pulumi:"instanceGroupUrls"`
@@ -186,7 +69,7 @@ type NodePool struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	MaxPodsPerNode pulumi.IntOutput `pulumi:"maxPodsPerNode"`
-	// The name of the node pool. If left blank, the provider will
+	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Creates a unique name for the node pool beginning
@@ -231,9 +114,9 @@ type NodePool struct {
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-	// recommended that you specify explicit versions as the provider will see spurious diffs
+	// recommended that you specify explicit versions as Terraform will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+	// `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
 
@@ -281,9 +164,9 @@ type nodePoolState struct {
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
 	// may change this value in your existing cluster, which will trigger destruction
-	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
+	// and recreation on the next Terraform run (to rectify the discrepancy).  If you don't
 	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-	// ignore subsqeuent changes to this field.
+	// ignore subsequent changes to this field.
 	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
@@ -302,7 +185,7 @@ type nodePoolState struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	MaxPodsPerNode *int `pulumi:"maxPodsPerNode"`
-	// The name of the node pool. If left blank, the provider will
+	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name for the node pool beginning
@@ -347,9 +230,9 @@ type nodePoolState struct {
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-	// recommended that you specify explicit versions as the provider will see spurious diffs
+	// recommended that you specify explicit versions as Terraform will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+	// `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
 	Version *string `pulumi:"version"`
 }
 
@@ -365,9 +248,9 @@ type NodePoolState struct {
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
 	// may change this value in your existing cluster, which will trigger destruction
-	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
+	// and recreation on the next Terraform run (to rectify the discrepancy).  If you don't
 	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-	// ignore subsqeuent changes to this field.
+	// ignore subsequent changes to this field.
 	InitialNodeCount pulumi.IntPtrInput
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayInput
@@ -386,7 +269,7 @@ type NodePoolState struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	MaxPodsPerNode pulumi.IntPtrInput
-	// The name of the node pool. If left blank, the provider will
+	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name for the node pool beginning
@@ -431,9 +314,9 @@ type NodePoolState struct {
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-	// recommended that you specify explicit versions as the provider will see spurious diffs
+	// recommended that you specify explicit versions as Terraform will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+	// `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
 	Version pulumi.StringPtrInput
 }
 
@@ -453,9 +336,9 @@ type nodePoolArgs struct {
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
 	// may change this value in your existing cluster, which will trigger destruction
-	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
+	// and recreation on the next Terraform run (to rectify the discrepancy).  If you don't
 	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-	// ignore subsqeuent changes to this field.
+	// ignore subsequent changes to this field.
 	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// The location (region or zone) of the cluster.
 	//
@@ -470,7 +353,7 @@ type nodePoolArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	MaxPodsPerNode *int `pulumi:"maxPodsPerNode"`
-	// The name of the node pool. If left blank, the provider will
+	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name for the node pool beginning
@@ -514,9 +397,9 @@ type nodePoolArgs struct {
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-	// recommended that you specify explicit versions as the provider will see spurious diffs
+	// recommended that you specify explicit versions as Terraform will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+	// `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
 	Version *string `pulumi:"version"`
 }
 
@@ -533,9 +416,9 @@ type NodePoolArgs struct {
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
 	// may change this value in your existing cluster, which will trigger destruction
-	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
+	// and recreation on the next Terraform run (to rectify the discrepancy).  If you don't
 	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-	// ignore subsqeuent changes to this field.
+	// ignore subsequent changes to this field.
 	InitialNodeCount pulumi.IntPtrInput
 	// The location (region or zone) of the cluster.
 	//
@@ -550,7 +433,7 @@ type NodePoolArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	MaxPodsPerNode pulumi.IntPtrInput
-	// The name of the node pool. If left blank, the provider will
+	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name for the node pool beginning
@@ -594,9 +477,9 @@ type NodePoolArgs struct {
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-	// recommended that you specify explicit versions as the provider will see spurious diffs
+	// recommended that you specify explicit versions as Terraform will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+	// `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
 	Version pulumi.StringPtrInput
 }
 
@@ -704,9 +587,9 @@ func (o NodePoolOutput) Cluster() pulumi.StringOutput {
 // regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 // this will force recreation of the resource. WARNING: Resizing your node pool manually
 // may change this value in your existing cluster, which will trigger destruction
-// and recreation on the next provider run (to rectify the discrepancy).  If you don't
+// and recreation on the next Terraform run (to rectify the discrepancy).  If you don't
 // need this value, don't set it.  If you do need it, you can use a lifecycle block to
-// ignore subsqeuent changes to this field.
+// ignore subsequent changes to this field.
 func (o NodePoolOutput) InitialNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.InitialNodeCount }).(pulumi.IntOutput)
 }
@@ -743,7 +626,7 @@ func (o NodePoolOutput) MaxPodsPerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.MaxPodsPerNode }).(pulumi.IntOutput)
 }
 
-// The name of the node pool. If left blank, the provider will
+// The name of the node pool. If left blank, Terraform will
 // auto-generate a unique name.
 func (o NodePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -824,9 +707,9 @@ func (o NodePoolOutput) UpgradeSettings() NodePoolUpgradeSettingsOutput {
 // The Kubernetes version for the nodes in this pool. Note that if this field
 // and `autoUpgrade` are both specified, they will fight each other for what the node version should
 // be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-// recommended that you specify explicit versions as the provider will see spurious diffs
+// recommended that you specify explicit versions as Terraform will see spurious diffs
 // when fuzzy versions are used. See the `container.getEngineVersions` data source's
-// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+// `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
 func (o NodePoolOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }

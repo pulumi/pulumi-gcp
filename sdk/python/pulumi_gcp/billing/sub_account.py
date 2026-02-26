@@ -24,11 +24,12 @@ class SubAccountArgs:
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SubAccount resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name of the billing account.
         :param pulumi.Input[_builtins.str] master_billing_account: The name of the master billing account that the subaccount
                will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
         :param pulumi.Input[_builtins.str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
-               will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+               will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
                Default is "".
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -66,7 +67,7 @@ class SubAccountArgs:
     def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         If set to "RENAME_ON_DESTROY" the billing account display_name
-        will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+        will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
         Default is "".
         """
         return pulumi.get(self, "deletion_policy")
@@ -87,9 +88,10 @@ class _SubAccountState:
                  open: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering SubAccount resources.
+
         :param pulumi.Input[_builtins.str] billing_account_id: The billing account id.
         :param pulumi.Input[_builtins.str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
-               will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+               will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
                Default is "".
         :param pulumi.Input[_builtins.str] display_name: The display name of the billing account.
         :param pulumi.Input[_builtins.str] master_billing_account: The name of the master billing account that the subaccount
@@ -127,7 +129,7 @@ class _SubAccountState:
     def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         If set to "RENAME_ON_DESTROY" the billing account display_name
-        will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+        will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
         Default is "".
         """
         return pulumi.get(self, "deletion_policy")
@@ -199,7 +201,7 @@ class SubAccount(pulumi.CustomResource):
         """
         Allows creation and management of a Google Cloud Billing Subaccount.
 
-        !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
+        !> **WARNING:** Deleting this Terraform resource will not delete or close the billing subaccount.
 
         ```python
         import pulumi
@@ -222,10 +224,11 @@ class SubAccount(pulumi.CustomResource):
         $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
-               will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+               will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
                Default is "".
         :param pulumi.Input[_builtins.str] display_name: The display name of the billing account.
         :param pulumi.Input[_builtins.str] master_billing_account: The name of the master billing account that the subaccount
@@ -240,7 +243,7 @@ class SubAccount(pulumi.CustomResource):
         """
         Allows creation and management of a Google Cloud Billing Subaccount.
 
-        !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
+        !> **WARNING:** Deleting this Terraform resource will not delete or close the billing subaccount.
 
         ```python
         import pulumi
@@ -262,6 +265,7 @@ class SubAccount(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SubAccountArgs args: The arguments to use to populate this resource's properties.
@@ -325,7 +329,7 @@ class SubAccount(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_account_id: The billing account id.
         :param pulumi.Input[_builtins.str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
-               will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+               will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
                Default is "".
         :param pulumi.Input[_builtins.str] display_name: The display name of the billing account.
         :param pulumi.Input[_builtins.str] master_billing_account: The name of the master billing account that the subaccount
@@ -358,7 +362,7 @@ class SubAccount(pulumi.CustomResource):
     def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         If set to "RENAME_ON_DESTROY" the billing account display_name
-        will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+        will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
         Default is "".
         """
         return pulumi.get(self, "deletion_policy")

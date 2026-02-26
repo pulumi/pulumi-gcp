@@ -19,7 +19,9 @@ import * as utilities from "../utilities";
  * (and run `pulumi up` to write the field to state) in order to destroy an instance.
  * It is recommended to not set this field (or set it to true) until you're ready to destroy.
  * On older versions, it is strongly recommended to set `lifecycle { preventDestroy = true }`
- * on databases in order to prevent accidental data loss.
+ * on databases in order to prevent accidental data loss. See
+ * Terraform docs
+ * for more information on lifecycle parameters.
  *
  * ## Example Usage
  *
@@ -116,8 +118,12 @@ export class Database extends pulumi.CustomResource {
      */
     declare public readonly defaultTimeZone: pulumi.Output<string | undefined>;
     /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
+     * Whether Terraform will be prevented from destroying the database. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the database,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the database will fail.
+     * When the field is set to false, deleting the database is allowed.
      */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
@@ -235,8 +241,12 @@ export interface DatabaseState {
      */
     defaultTimeZone?: pulumi.Input<string>;
     /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
+     * Whether Terraform will be prevented from destroying the database. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the database,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the database will fail.
+     * When the field is set to false, deleting the database is allowed.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -309,8 +319,12 @@ export interface DatabaseArgs {
      */
     defaultTimeZone?: pulumi.Input<string>;
     /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
+     * Whether Terraform will be prevented from destroying the database. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the database,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the database will fail.
+     * When the field is set to false, deleting the database is allowed.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**

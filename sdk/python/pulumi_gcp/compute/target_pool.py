@@ -31,6 +31,7 @@ class TargetPoolArgs:
                  session_affinity: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TargetPool resource.
+
         :param pulumi.Input[_builtins.str] backup_pool: URL to the backup target pool. Must also set
                failover_ratio.
         :param pulumi.Input[_builtins.str] description: Textual description field.
@@ -41,7 +42,7 @@ class TargetPoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: List of instances in the pool. They can be given as
                URLs, or in the form of "zone/name". Note that the instances need not exist
                at the time of target pool creation, so there is no need to use the
-               interpolation to create a dependency on the instances from the
+               Terraform interpolators to create a dependency on the instances from the
                target pool.
         :param pulumi.Input[_builtins.str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
@@ -135,7 +136,7 @@ class TargetPoolArgs:
         List of instances in the pool. They can be given as
         URLs, or in the form of "zone/name". Note that the instances need not exist
         at the time of target pool creation, so there is no need to use the
-        interpolation to create a dependency on the instances from the
+        Terraform interpolators to create a dependency on the instances from the
         target pool.
         """
         return pulumi.get(self, "instances")
@@ -228,6 +229,7 @@ class _TargetPoolState:
                  session_affinity: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TargetPool resources.
+
         :param pulumi.Input[_builtins.str] backup_pool: URL to the backup target pool. Must also set
                failover_ratio.
         :param pulumi.Input[_builtins.str] description: Textual description field.
@@ -238,7 +240,7 @@ class _TargetPoolState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: List of instances in the pool. They can be given as
                URLs, or in the form of "zone/name". Note that the instances need not exist
                at the time of target pool creation, so there is no need to use the
-               interpolation to create a dependency on the instances from the
+               Terraform interpolators to create a dependency on the instances from the
                target pool.
         :param pulumi.Input[_builtins.str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
@@ -335,7 +337,7 @@ class _TargetPoolState:
         List of instances in the pool. They can be given as
         URLs, or in the form of "zone/name". Note that the instances need not exist
         at the time of target pool creation, so there is no need to use the
-        interpolation to create a dependency on the instances from the
+        Terraform interpolators to create a dependency on the instances from the
         target pool.
         """
         return pulumi.get(self, "instances")
@@ -486,6 +488,7 @@ class TargetPool(pulumi.CustomResource):
         $ pulumi import gcp:compute/targetPool:TargetPool default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_pool: URL to the backup target pool. Must also set
@@ -498,7 +501,7 @@ class TargetPool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: List of instances in the pool. They can be given as
                URLs, or in the form of "zone/name". Note that the instances need not exist
                at the time of target pool creation, so there is no need to use the
-               interpolation to create a dependency on the instances from the
+               Terraform interpolators to create a dependency on the instances from the
                target pool.
         :param pulumi.Input[_builtins.str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
@@ -563,6 +566,7 @@ class TargetPool(pulumi.CustomResource):
         $ pulumi import gcp:compute/targetPool:TargetPool default {{region}}/{{name}}
         $ pulumi import gcp:compute/targetPool:TargetPool default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TargetPoolArgs args: The arguments to use to populate this resource's properties.
@@ -647,7 +651,7 @@ class TargetPool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: List of instances in the pool. They can be given as
                URLs, or in the form of "zone/name". Note that the instances need not exist
                at the time of target pool creation, so there is no need to use the
-               interpolation to create a dependency on the instances from the
+               Terraform interpolators to create a dependency on the instances from the
                target pool.
         :param pulumi.Input[_builtins.str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
@@ -722,7 +726,7 @@ class TargetPool(pulumi.CustomResource):
         List of instances in the pool. They can be given as
         URLs, or in the form of "zone/name". Note that the instances need not exist
         at the time of target pool creation, so there is no need to use the
-        interpolation to create a dependency on the instances from the
+        Terraform interpolators to create a dependency on the instances from the
         target pool.
         """
         return pulumi.get(self, "instances")

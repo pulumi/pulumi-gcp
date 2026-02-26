@@ -404,7 +404,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
 
     /**
      * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, this provider will
+     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
      * continue trying until it times out.
      * 
      */
@@ -413,7 +413,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, this provider will
+     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
      * continue trying until it times out.
      * 
      */
@@ -1074,7 +1074,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param waitForInstances Whether to wait for all instances to be created/updated before
-         * returning. Note that if this is set to true and the operation does not succeed, this provider will
+         * returning. Note that if this is set to true and the operation does not succeed, Terraform will
          * continue trying until it times out.
          * 
          * @return builder
@@ -1087,7 +1087,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param waitForInstances Whether to wait for all instances to be created/updated before
-         * returning. Note that if this is set to true and the operation does not succeed, this provider will
+         * returning. Note that if this is set to true and the operation does not succeed, Terraform will
          * continue trying until it times out.
          * 
          * @return builder

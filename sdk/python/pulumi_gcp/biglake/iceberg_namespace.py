@@ -25,6 +25,7 @@ class IcebergNamespaceArgs:
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a IcebergNamespace resource.
+
         :param pulumi.Input[_builtins.str] catalog: The name of the IcebergCatalog.
         :param pulumi.Input[_builtins.str] namespace_id: The unique identifier of the namespace.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -97,6 +98,7 @@ class _IcebergNamespaceState:
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering IcebergNamespace resources.
+
         :param pulumi.Input[_builtins.str] catalog: The name of the IcebergCatalog.
         :param pulumi.Input[_builtins.str] namespace_id: The unique identifier of the namespace.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -216,6 +218,7 @@ class IcebergNamespace(pulumi.CustomResource):
         $ pulumi import gcp:biglake/icebergNamespace:IcebergNamespace default {{catalog}}/{{namespace_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] catalog: The name of the IcebergCatalog.
@@ -272,6 +275,7 @@ class IcebergNamespace(pulumi.CustomResource):
         $ pulumi import gcp:biglake/icebergNamespace:IcebergNamespace default {{project}}/{{catalog}}/{{namespace_id}}
         $ pulumi import gcp:biglake/icebergNamespace:IcebergNamespace default {{catalog}}/{{namespace_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IcebergNamespaceArgs args: The arguments to use to populate this resource's properties.

@@ -176,7 +176,7 @@ namespace Pulumi.Gcp.Dns
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The fully qualified DNS name of this zone, e.g. `example.io.`.
+        /// The fully qualified DNS name of this zone, e.g. `terraform.io.`.
         /// </summary>
         public readonly string DnsName;
         public readonly string Id;

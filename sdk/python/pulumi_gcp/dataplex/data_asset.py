@@ -30,6 +30,7 @@ class DataAssetArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataAsset resource.
+
         :param pulumi.Input[_builtins.str] data_asset_id: The ID of the data asset.
         :param pulumi.Input[_builtins.str] data_product_id: The ID of the parent data product.
         :param pulumi.Input[_builtins.str] location: The location for the data asset.
@@ -157,6 +158,7 @@ class _DataAssetState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataAsset resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['DataAssetAccessGroupConfigArgs']]] access_group_configs: Access groups configurations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_asset_id: The ID of the data asset.
@@ -357,7 +359,7 @@ class DataAsset(pulumi.CustomResource):
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
             location="us-central1",
-            data_product_id="tf-test-dp-_95154",
+            data_product_id="tf-test-dp-_88722",
             display_name="Parent Data Product",
             owner_emails=["gterraformtestuser@gmail.com"],
             access_groups=[{
@@ -365,12 +367,12 @@ class DataAsset(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_64336@example.com",
+                    "google_group": "tf-test-analysts-_39249@example.com",
                 },
             }])
         example_dataset = gcp.bigquery.Dataset("example",
             project="my-project-name",
-            dataset_id="tf_test_dataset__34962",
+            dataset_id="tf_test_dataset__74391",
             location="us-central1")
         example_data_asset = gcp.dataplex.DataAsset("example",
             project="my-project-name",
@@ -392,7 +394,7 @@ class DataAsset(pulumi.CustomResource):
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
             location="us-central1",
-            data_product_id="tf-test-dp-_74000",
+            data_product_id="tf-test-dp-_16511",
             display_name="Full Example Parent DP",
             owner_emails=["gterraformtestuser@gmail.com"],
             access_groups=[
@@ -415,7 +417,7 @@ class DataAsset(pulumi.CustomResource):
             ])
         example_dataset = gcp.bigquery.Dataset("example",
             project="my-project-name",
-            dataset_id="tf_test_dataset__75125",
+            dataset_id="tf_test_dataset__8493",
             location="us-central1")
         example_data_asset = gcp.dataplex.DataAsset("example",
             project="my-project-name",
@@ -458,6 +460,7 @@ class DataAsset(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}
         $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{location}}/{{data_product_id}}/{{data_asset_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -502,7 +505,7 @@ class DataAsset(pulumi.CustomResource):
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
             location="us-central1",
-            data_product_id="tf-test-dp-_95154",
+            data_product_id="tf-test-dp-_88722",
             display_name="Parent Data Product",
             owner_emails=["gterraformtestuser@gmail.com"],
             access_groups=[{
@@ -510,12 +513,12 @@ class DataAsset(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_64336@example.com",
+                    "google_group": "tf-test-analysts-_39249@example.com",
                 },
             }])
         example_dataset = gcp.bigquery.Dataset("example",
             project="my-project-name",
-            dataset_id="tf_test_dataset__34962",
+            dataset_id="tf_test_dataset__74391",
             location="us-central1")
         example_data_asset = gcp.dataplex.DataAsset("example",
             project="my-project-name",
@@ -537,7 +540,7 @@ class DataAsset(pulumi.CustomResource):
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
             location="us-central1",
-            data_product_id="tf-test-dp-_74000",
+            data_product_id="tf-test-dp-_16511",
             display_name="Full Example Parent DP",
             owner_emails=["gterraformtestuser@gmail.com"],
             access_groups=[
@@ -560,7 +563,7 @@ class DataAsset(pulumi.CustomResource):
             ])
         example_dataset = gcp.bigquery.Dataset("example",
             project="my-project-name",
-            dataset_id="tf_test_dataset__75125",
+            dataset_id="tf_test_dataset__8493",
             location="us-central1")
         example_data_asset = gcp.dataplex.DataAsset("example",
             project="my-project-name",
@@ -603,6 +606,7 @@ class DataAsset(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}
         $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{location}}/{{data_product_id}}/{{data_asset_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataAssetArgs args: The arguments to use to populate this resource's properties.

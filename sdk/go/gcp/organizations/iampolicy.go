@@ -32,9 +32,9 @@ import (
 //	resources. This resource makes it easy to remove your own access to
 //	an organization, which will require a call to Google Support to have
 //	fixed, and can take multiple days to resolve.
-//
+//	<br /><br />
 //	In general, this resource should only be used with organizations
-//	fully managed by this provider.I f you do use this resource,
+//	fully managed by Terraform.If you do use this resource,
 //	the best way to be sure that you are not making dangerous changes is to start
 //	by **importing** your existing policy, and examining the diff very closely.
 //

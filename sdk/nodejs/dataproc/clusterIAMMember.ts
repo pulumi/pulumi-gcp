@@ -166,12 +166,12 @@ export class ClusterIAMMember extends pulumi.CustomResource {
     declare public readonly member: pulumi.Output<string>;
     /**
      * The project in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
      * The region in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
@@ -255,12 +255,12 @@ export interface ClusterIAMMemberState {
     member?: pulumi.Input<string>;
     /**
      * The project in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      */
     project?: pulumi.Input<string>;
     /**
      * The region in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      */
     region?: pulumi.Input<string>;
     /**
@@ -297,12 +297,12 @@ export interface ClusterIAMMemberArgs {
     member: pulumi.Input<string>;
     /**
      * The project in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      */
     project?: pulumi.Input<string>;
     /**
      * The region in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      */
     region?: pulumi.Input<string>;
     /**

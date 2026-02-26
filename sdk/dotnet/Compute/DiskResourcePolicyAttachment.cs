@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute
     /// Adds existing resource policies to a disk. You can only add one policy
     /// which will be applied to this disk for scheduling snapshot creation.
     /// 
-    /// &gt; **Note:** This resource does not support regional disks (`gcp.compute.RegionDisk`). For regional disks, please refer to the `gcp.compute.RegionDiskResourcePolicyAttachment` resource.
+    /// &gt; **Note:** This resource does not support regional disks (`gcp.compute.RegionDisk`). For regional disks, please refer to `gcp.compute.RegionDiskResourcePolicyAttachment`
     /// 
     /// ## Example Usage
     /// 

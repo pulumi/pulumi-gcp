@@ -57,6 +57,7 @@ class InstanceFromTemplateArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceFromTemplate resource.
+
         :param pulumi.Input[_builtins.str] source_instance_template: Name or self link of an instance
                template to create the instance based on. It is recommended to reference
                instance templates through their unique id (`self_link_unique` attribute).
@@ -94,7 +95,8 @@ class InstanceFromTemplateArgs:
         :param pulumi.Input['InstanceFromTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[_builtins.str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceFromTemplateSchedulingArgs'] scheduling: The scheduling strategy being used by the instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]] scratch_disks: * `network_interface.alias_ip_range`
+               * `network_interface.access_config`
         :param pulumi.Input['InstanceFromTemplateServiceAccountArgs'] service_account: The service account to attach to the instance.
         :param pulumi.Input['InstanceFromTemplateShieldedInstanceConfigArgs'] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags attached to the instance.
@@ -104,6 +106,9 @@ class InstanceFromTemplateArgs:
                In addition to these, all arguments from `compute.Instance` are supported
                as a way to override the properties in the template. All exported attributes
                from `compute.Instance` are likewise exported here.
+               
+               To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+               are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
         """
         pulumi.set(__self__, "source_instance_template", source_instance_template)
         if advanced_machine_features is not None:
@@ -533,7 +538,8 @@ class InstanceFromTemplateArgs:
     @pulumi.getter(name="scratchDisks")
     def scratch_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]]]:
         """
-        The scratch disks attached to the instance.
+        * `network_interface.alias_ip_range`
+        * `network_interface.access_config`
         """
         return pulumi.get(self, "scratch_disks")
 
@@ -587,6 +593,9 @@ class InstanceFromTemplateArgs:
         In addition to these, all arguments from `compute.Instance` are supported
         as a way to override the properties in the template. All exported attributes
         from `compute.Instance` are likewise exported here.
+
+        To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+        are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
         """
         return pulumi.get(self, "zone")
 
@@ -644,6 +653,7 @@ class _InstanceFromTemplateState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceFromTemplate resources.
+
         :param pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateAttachedDiskArgs']]] attached_disks: List of disks attached to the instance
@@ -686,7 +696,8 @@ class _InstanceFromTemplateState:
         :param pulumi.Input['InstanceFromTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[_builtins.str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceFromTemplateSchedulingArgs'] scheduling: The scheduling strategy being used by the instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]] scratch_disks: * `network_interface.alias_ip_range`
+               * `network_interface.access_config`
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input['InstanceFromTemplateServiceAccountArgs'] service_account: The service account to attach to the instance.
         :param pulumi.Input['InstanceFromTemplateShieldedInstanceConfigArgs'] shielded_instance_config: The shielded vm config being used by the instance.
@@ -703,6 +714,9 @@ class _InstanceFromTemplateState:
                In addition to these, all arguments from `compute.Instance` are supported
                as a way to override the properties in the template. All exported attributes
                from `compute.Instance` are likewise exported here.
+               
+               To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+               are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
         """
         if advanced_machine_features is not None:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -1235,7 +1249,8 @@ class _InstanceFromTemplateState:
     @pulumi.getter(name="scratchDisks")
     def scratch_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]]]:
         """
-        The scratch disks attached to the instance.
+        * `network_interface.alias_ip_range`
+        * `network_interface.access_config`
         """
         return pulumi.get(self, "scratch_disks")
 
@@ -1329,6 +1344,9 @@ class _InstanceFromTemplateState:
         In addition to these, all arguments from `compute.Instance` are supported
         as a way to override the properties in the template. All exported attributes
         from `compute.Instance` are likewise exported here.
+
+        To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+        are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
         """
         return pulumi.get(self, "zone")
 
@@ -1424,6 +1442,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceFromTemplateAdvancedMachineFeaturesArgs', 'InstanceFromTemplateAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Controls for advanced machine-related behavior features.
@@ -1458,7 +1477,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceFromTemplateReservationAffinityArgs', 'InstanceFromTemplateReservationAffinityArgsDict']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[_builtins.str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[Union['InstanceFromTemplateSchedulingArgs', 'InstanceFromTemplateSchedulingArgsDict']] scheduling: The scheduling strategy being used by the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateScratchDiskArgs', 'InstanceFromTemplateScratchDiskArgsDict']]]] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateScratchDiskArgs', 'InstanceFromTemplateScratchDiskArgsDict']]]] scratch_disks: * `network_interface.alias_ip_range`
+               * `network_interface.access_config`
         :param pulumi.Input[Union['InstanceFromTemplateServiceAccountArgs', 'InstanceFromTemplateServiceAccountArgsDict']] service_account: The service account to attach to the instance.
         :param pulumi.Input[Union['InstanceFromTemplateShieldedInstanceConfigArgs', 'InstanceFromTemplateShieldedInstanceConfigArgsDict']] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[_builtins.str] source_instance_template: Name or self link of an instance
@@ -1473,6 +1493,9 @@ class InstanceFromTemplate(pulumi.CustomResource):
                In addition to these, all arguments from `compute.Instance` are supported
                as a way to override the properties in the template. All exported attributes
                from `compute.Instance` are likewise exported here.
+               
+               To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+               are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
         """
         ...
     @overload
@@ -1525,6 +1548,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param InstanceFromTemplateArgs args: The arguments to use to populate this resource's properties.
@@ -1735,7 +1759,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceFromTemplateReservationAffinityArgs', 'InstanceFromTemplateReservationAffinityArgsDict']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[_builtins.str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[Union['InstanceFromTemplateSchedulingArgs', 'InstanceFromTemplateSchedulingArgsDict']] scheduling: The scheduling strategy being used by the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateScratchDiskArgs', 'InstanceFromTemplateScratchDiskArgsDict']]]] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateScratchDiskArgs', 'InstanceFromTemplateScratchDiskArgsDict']]]] scratch_disks: * `network_interface.alias_ip_range`
+               * `network_interface.access_config`
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[Union['InstanceFromTemplateServiceAccountArgs', 'InstanceFromTemplateServiceAccountArgsDict']] service_account: The service account to attach to the instance.
         :param pulumi.Input[Union['InstanceFromTemplateShieldedInstanceConfigArgs', 'InstanceFromTemplateShieldedInstanceConfigArgsDict']] shielded_instance_config: The shielded vm config being used by the instance.
@@ -1752,6 +1777,9 @@ class InstanceFromTemplate(pulumi.CustomResource):
                In addition to these, all arguments from `compute.Instance` are supported
                as a way to override the properties in the template. All exported attributes
                from `compute.Instance` are likewise exported here.
+               
+               To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+               are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2101,7 +2129,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
     @pulumi.getter(name="scratchDisks")
     def scratch_disks(self) -> pulumi.Output[Sequence['outputs.InstanceFromTemplateScratchDisk']]:
         """
-        The scratch disks attached to the instance.
+        * `network_interface.alias_ip_range`
+        * `network_interface.access_config`
         """
         return pulumi.get(self, "scratch_disks")
 
@@ -2167,6 +2196,9 @@ class InstanceFromTemplate(pulumi.CustomResource):
         In addition to these, all arguments from `compute.Instance` are supported
         as a way to override the properties in the template. All exported attributes
         from `compute.Instance` are likewise exported here.
+
+        To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+        are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
         """
         return pulumi.get(self, "zone")
 

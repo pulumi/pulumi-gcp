@@ -7,31 +7,247 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
+ * Four different resources help you manage your IAM policy for a organization. Each of these resources serves a different use case:
  *
- * ## Example Usage
+ * * `gcp.organizations.IAMPolicy`: Authoritative. Sets the IAM policy for the organization and replaces any existing policy already attached.
+ * * `gcp.organizations.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organization are preserved.
+ * * `gcp.organizations.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organization are preserved.
+ * * `gcp.organizations.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
+ *
+ * > **Note:** `gcp.organizations.IAMPolicy` **cannot** be used in conjunction with `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.organizations.IAMBinding` resources **can be** used in conjunction with `gcp.organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## gcp.organizations.IAMPolicy
+ *
+ * !> **Warning:** New organizations have several default policies which will,
+ *    without extreme caution, be **overwritten** by use of this resource.
+ *    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
+ *    resources. This resource makes it easy to remove your own access to
+ *    an organization, which will require a call to Google Support to have
+ *    fixed, and can take multiple days to resolve.
+ *    <br /><br />
+ *    In general, this resource should only be used with organizations
+ *    fully managed by Terraform.If you do use this resource,
+ *    the best way to be sure that you are not making dangerous changes is to start
+ *    by **importing** your existing policy, and examining the diff very closely.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const config = new gcp.organizations.IamAuditConfig("config", {
- *     orgId: "your-organization-id",
- *     service: "allServices",
- *     auditLogConfigs: [{
- *         logType: "DATA_READ",
- *         exemptedMembers: ["user:joebloggs@example.com"],
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
  *     }],
+ * });
+ * const organization = new gcp.organizations.IAMPolicy("organization", {
+ *     orgId: "1234567890",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const organization = new gcp.organizations.IAMPolicy("organization", {
+ *     orgId: "1234567890",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## gcp.organizations.IAMBinding
+ *
+ * > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMBinding("organization", {
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMBinding("organization", {
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * ## gcp.organizations.IAMMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMMember("organization", {
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMMember("organization", {
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * ## gcp.organizations.IamAuditConfig
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IamAuditConfig("organization", {
+ *     orgId: "1234567890",
+ *     service: "allServices",
+ *     auditLogConfigs: [
+ *         {
+ *             logType: "ADMIN_READ",
+ *         },
+ *         {
+ *             logType: "DATA_READ",
+ *             exemptedMembers: ["user:joebloggs@example.com"],
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## gcp.organizations.IAMBinding
+ *
+ * > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMBinding("organization", {
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMBinding("organization", {
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * ## gcp.organizations.IAMMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMMember("organization", {
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMMember("organization", {
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * ## gcp.organizations.IamAuditConfig
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IamAuditConfig("organization", {
+ *     orgId: "1234567890",
+ *     service: "allServices",
+ *     auditLogConfigs: [
+ *         {
+ *             logType: "ADMIN_READ",
+ *         },
+ *         {
+ *             logType: "DATA_READ",
+ *             exemptedMembers: ["user:joebloggs@example.com"],
+ *         },
+ *     ],
  * });
  * ```
  *
  * ## Import
  *
- * IAM audit config imports use the identifier of the resource in question and the service, e.g.
+ * > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
  *
- * ```sh
- * terraform import google_organization_iam_audit_config.config "your-organization-id foo.googleapis.com"
- * ```
+ * > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
+ *  to include the title of condition, e.g. `terraform import google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
  */
 export class IamAuditConfig extends pulumi.CustomResource {
     /**
@@ -66,15 +282,15 @@ export class IamAuditConfig extends pulumi.CustomResource {
      */
     declare public readonly auditLogConfigs: pulumi.Output<outputs.organizations.IamAuditConfigAuditLogConfig[]>;
     /**
-     * The etag of iam policy
+     * (Computed) The etag of the organization's IAM policy.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization id of the target organization.
      */
     declare public readonly orgId: pulumi.Output<string>;
     /**
-     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
     declare public readonly service: pulumi.Output<string>;
 
@@ -125,15 +341,15 @@ export interface IamAuditConfigState {
      */
     auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.organizations.IamAuditConfigAuditLogConfig>[]>;
     /**
-     * The etag of iam policy
+     * (Computed) The etag of the organization's IAM policy.
      */
     etag?: pulumi.Input<string>;
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization id of the target organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
     service?: pulumi.Input<string>;
 }
@@ -147,11 +363,11 @@ export interface IamAuditConfigArgs {
      */
     auditLogConfigs: pulumi.Input<pulumi.Input<inputs.organizations.IamAuditConfigAuditLogConfig>[]>;
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization id of the target organization.
      */
     orgId: pulumi.Input<string>;
     /**
-     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
     service: pulumi.Input<string>;
 }

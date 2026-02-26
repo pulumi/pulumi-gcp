@@ -16,12 +16,12 @@ import (
 // or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
 //
 // > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
-// default 'root'@'%' user with no password. This user will be deleted by the provider on
+// default 'root'@'%' user with no password. This user will be deleted by Terraform on
 // instance creation. You should use `sql.User` to define a custom user with
 // a restricted host and strong password.
 //
 // > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
-// (and run `pulumi update` to write the field to state) in order to destroy an instance.
+// (and run `pulumi up` to write the field to state) in order to destroy an instance.
 // It is recommended to not set this field (or set it to true) until you're ready to destroy the instance and its databases.
 //
 // ## Example Usage
@@ -499,7 +499,7 @@ type DatabaseInstance struct {
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	BackupdrBackup pulumi.StringPtrOutput `pulumi:"backupdrBackup"`
 	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
+	// resource creation, Terraform will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
 	Clone DatabaseInstanceClonePtrOutput `pulumi:"clone"`
 	// The connection name of the instance to be used in
@@ -515,17 +515,19 @@ type DatabaseInstance struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+	// Whether Terraform will be prevented from destroying the instance.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
 	//
-	// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
+	// > **NOTE:** This flag only protects instances from deletion within Terraform. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform), use the API flag `settings.deletion_protection_enabled`.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
 	DnsNames DatabaseInstanceDnsNameArrayOutput `pulumi:"dnsNames"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
-	// up disk encryption currently requires manual steps outside of this provider.
+	// up disk encryption currently requires manual steps outside of Terraform.
 	// The provided key must be in the same region as the SQL instance.  In order
 	// to use this feature, a special kind of service account must be created and
 	// granted permission on this key.  This step can currently only be done
@@ -535,7 +537,9 @@ type DatabaseInstance struct {
 	EncryptionKeyName pulumi.StringOutput `pulumi:"encryptionKeyName"`
 	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
 	FinalBackupDescription pulumi.StringPtrOutput `pulumi:"finalBackupDescription"`
-	// The first IPv4 address of any type assigned.
+	// The first IPv4 address of any type assigned. This is to
+	// support accessing the first address in the list in a terraform output
+	// when the resource is configured with a `count`.
 	FirstIpAddress pulumi.StringOutput `pulumi:"firstIpAddress"`
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType pulumi.StringOutput                  `pulumi:"instanceType"`
@@ -547,7 +551,7 @@ type DatabaseInstance struct {
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringOutput `pulumi:"masterInstanceName"`
 	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
+	// blank, Terraform will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -558,14 +562,20 @@ type DatabaseInstance struct {
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	PointInTimeRestoreContext DatabaseInstancePointInTimeRestoreContextPtrOutput `pulumi:"pointInTimeRestoreContext"`
-	// The first private (`PRIVATE`) IPv4 address assigned.
+	// The first private (`PRIVATE`) IPv4 address assigned. This is
+	// a workaround for an issue fixed in Terraform 0.12
+	// but also provides a convenient way to access an IP of a specific type without
+	// performing filtering in a Terraform config.
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// the URI that points to the service attachment of the instance.
 	PscServiceAttachmentLink pulumi.StringOutput `pulumi:"pscServiceAttachmentLink"`
-	// The first public (`PRIMARY`) IPv4 address assigned.
+	// The first public (`PRIMARY`) IPv4 address assigned. This is
+	// a workaround for an issue fixed in Terraform 0.12
+	// but also provides a convenient way to access an IP of a specific type without
+	// performing filtering in a Terraform config.
 	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
 	// The region the instance will sit in. If a region is not provided in the resource definition,
 	// the provider region will be used instead.
@@ -580,8 +590,8 @@ type DatabaseInstance struct {
 	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
 	ReplicationCluster DatabaseInstanceReplicationClusterOutput `pulumi:"replicationCluster"`
 	// The context needed to restore the database to a backup run. This field will
-	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+	// cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrOutput `pulumi:"restoreBackupContext"`
 	// Initial root password. Can be updated. Required for MS SQL Server.
@@ -661,7 +671,7 @@ type databaseInstanceState struct {
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	BackupdrBackup *string `pulumi:"backupdrBackup"`
 	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
+	// resource creation, Terraform will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
 	Clone *DatabaseInstanceClone `pulumi:"clone"`
 	// The connection name of the instance to be used in
@@ -677,17 +687,19 @@ type databaseInstanceState struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+	// Whether Terraform will be prevented from destroying the instance.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
 	//
-	// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
+	// > **NOTE:** This flag only protects instances from deletion within Terraform. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform), use the API flag `settings.deletion_protection_enabled`.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
 	DnsName *string `pulumi:"dnsName"`
 	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
 	DnsNames []DatabaseInstanceDnsName `pulumi:"dnsNames"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
-	// up disk encryption currently requires manual steps outside of this provider.
+	// up disk encryption currently requires manual steps outside of Terraform.
 	// The provided key must be in the same region as the SQL instance.  In order
 	// to use this feature, a special kind of service account must be created and
 	// granted permission on this key.  This step can currently only be done
@@ -697,7 +709,9 @@ type databaseInstanceState struct {
 	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
 	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
 	FinalBackupDescription *string `pulumi:"finalBackupDescription"`
-	// The first IPv4 address of any type assigned.
+	// The first IPv4 address of any type assigned. This is to
+	// support accessing the first address in the list in a terraform output
+	// when the resource is configured with a `count`.
 	FirstIpAddress *string `pulumi:"firstIpAddress"`
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType *string                     `pulumi:"instanceType"`
@@ -709,7 +723,7 @@ type databaseInstanceState struct {
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName *string `pulumi:"masterInstanceName"`
 	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
+	// blank, Terraform will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name *string `pulumi:"name"`
@@ -720,14 +734,20 @@ type databaseInstanceState struct {
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	PointInTimeRestoreContext *DatabaseInstancePointInTimeRestoreContext `pulumi:"pointInTimeRestoreContext"`
-	// The first private (`PRIVATE`) IPv4 address assigned.
+	// The first private (`PRIVATE`) IPv4 address assigned. This is
+	// a workaround for an issue fixed in Terraform 0.12
+	// but also provides a convenient way to access an IP of a specific type without
+	// performing filtering in a Terraform config.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// the URI that points to the service attachment of the instance.
 	PscServiceAttachmentLink *string `pulumi:"pscServiceAttachmentLink"`
-	// The first public (`PRIMARY`) IPv4 address assigned.
+	// The first public (`PRIMARY`) IPv4 address assigned. This is
+	// a workaround for an issue fixed in Terraform 0.12
+	// but also provides a convenient way to access an IP of a specific type without
+	// performing filtering in a Terraform config.
 	PublicIpAddress *string `pulumi:"publicIpAddress"`
 	// The region the instance will sit in. If a region is not provided in the resource definition,
 	// the provider region will be used instead.
@@ -742,8 +762,8 @@ type databaseInstanceState struct {
 	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
 	ReplicationCluster *DatabaseInstanceReplicationCluster `pulumi:"replicationCluster"`
 	// The context needed to restore the database to a backup run. This field will
-	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+	// cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext *DatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContext"`
 	// Initial root password. Can be updated. Required for MS SQL Server.
@@ -775,7 +795,7 @@ type DatabaseInstanceState struct {
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	BackupdrBackup pulumi.StringPtrInput
 	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
+	// resource creation, Terraform will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
 	Clone DatabaseInstanceClonePtrInput
 	// The connection name of the instance to be used in
@@ -791,17 +811,19 @@ type DatabaseInstanceState struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrInput
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+	// Whether Terraform will be prevented from destroying the instance.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
 	//
-	// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
+	// > **NOTE:** This flag only protects instances from deletion within Terraform. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform), use the API flag `settings.deletion_protection_enabled`.
 	DeletionProtection pulumi.BoolPtrInput
 	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
 	DnsName pulumi.StringPtrInput
 	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
 	DnsNames DatabaseInstanceDnsNameArrayInput
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
-	// up disk encryption currently requires manual steps outside of this provider.
+	// up disk encryption currently requires manual steps outside of Terraform.
 	// The provided key must be in the same region as the SQL instance.  In order
 	// to use this feature, a special kind of service account must be created and
 	// granted permission on this key.  This step can currently only be done
@@ -811,7 +833,9 @@ type DatabaseInstanceState struct {
 	EncryptionKeyName pulumi.StringPtrInput
 	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
 	FinalBackupDescription pulumi.StringPtrInput
-	// The first IPv4 address of any type assigned.
+	// The first IPv4 address of any type assigned. This is to
+	// support accessing the first address in the list in a terraform output
+	// when the resource is configured with a `count`.
 	FirstIpAddress pulumi.StringPtrInput
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType pulumi.StringPtrInput
@@ -823,7 +847,7 @@ type DatabaseInstanceState struct {
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringPtrInput
 	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
+	// blank, Terraform will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringPtrInput
@@ -834,14 +858,20 @@ type DatabaseInstanceState struct {
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	PointInTimeRestoreContext DatabaseInstancePointInTimeRestoreContextPtrInput
-	// The first private (`PRIVATE`) IPv4 address assigned.
+	// The first private (`PRIVATE`) IPv4 address assigned. This is
+	// a workaround for an issue fixed in Terraform 0.12
+	// but also provides a convenient way to access an IP of a specific type without
+	// performing filtering in a Terraform config.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// the URI that points to the service attachment of the instance.
 	PscServiceAttachmentLink pulumi.StringPtrInput
-	// The first public (`PRIMARY`) IPv4 address assigned.
+	// The first public (`PRIMARY`) IPv4 address assigned. This is
+	// a workaround for an issue fixed in Terraform 0.12
+	// but also provides a convenient way to access an IP of a specific type without
+	// performing filtering in a Terraform config.
 	PublicIpAddress pulumi.StringPtrInput
 	// The region the instance will sit in. If a region is not provided in the resource definition,
 	// the provider region will be used instead.
@@ -856,8 +886,8 @@ type DatabaseInstanceState struct {
 	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
 	ReplicationCluster DatabaseInstanceReplicationClusterPtrInput
 	// The context needed to restore the database to a backup run. This field will
-	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+	// cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrInput
 	// Initial root password. Can be updated. Required for MS SQL Server.
@@ -891,7 +921,7 @@ type databaseInstanceArgs struct {
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	BackupdrBackup *string `pulumi:"backupdrBackup"`
 	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
+	// resource creation, Terraform will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
 	Clone *DatabaseInstanceClone `pulumi:"clone"`
 	// The MySQL, PostgreSQL or
@@ -904,13 +934,15 @@ type databaseInstanceArgs struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion string `pulumi:"databaseVersion"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+	// Whether Terraform will be prevented from destroying the instance.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
 	//
-	// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
+	// > **NOTE:** This flag only protects instances from deletion within Terraform. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform), use the API flag `settings.deletion_protection_enabled`.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
-	// up disk encryption currently requires manual steps outside of this provider.
+	// up disk encryption currently requires manual steps outside of Terraform.
 	// The provided key must be in the same region as the SQL instance.  In order
 	// to use this feature, a special kind of service account must be created and
 	// granted permission on this key.  This step can currently only be done
@@ -929,7 +961,7 @@ type databaseInstanceArgs struct {
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName *string `pulumi:"masterInstanceName"`
 	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
+	// blank, Terraform will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name *string `pulumi:"name"`
@@ -956,8 +988,8 @@ type databaseInstanceArgs struct {
 	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
 	ReplicationCluster *DatabaseInstanceReplicationCluster `pulumi:"replicationCluster"`
 	// The context needed to restore the database to a backup run. This field will
-	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+	// cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext *DatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContext"`
 	// Initial root password. Can be updated. Required for MS SQL Server.
@@ -982,7 +1014,7 @@ type DatabaseInstanceArgs struct {
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	BackupdrBackup pulumi.StringPtrInput
 	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
+	// resource creation, Terraform will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
 	Clone DatabaseInstanceClonePtrInput
 	// The MySQL, PostgreSQL or
@@ -995,13 +1027,15 @@ type DatabaseInstanceArgs struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringInput
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+	// Whether Terraform will be prevented from destroying the instance.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
 	//
-	// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
+	// > **NOTE:** This flag only protects instances from deletion within Terraform. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform), use the API flag `settings.deletion_protection_enabled`.
 	DeletionProtection pulumi.BoolPtrInput
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
-	// up disk encryption currently requires manual steps outside of this provider.
+	// up disk encryption currently requires manual steps outside of Terraform.
 	// The provided key must be in the same region as the SQL instance.  In order
 	// to use this feature, a special kind of service account must be created and
 	// granted permission on this key.  This step can currently only be done
@@ -1020,7 +1054,7 @@ type DatabaseInstanceArgs struct {
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringPtrInput
 	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
+	// blank, Terraform will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringPtrInput
@@ -1047,8 +1081,8 @@ type DatabaseInstanceArgs struct {
 	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
 	ReplicationCluster DatabaseInstanceReplicationClusterPtrInput
 	// The context needed to restore the database to a backup run. This field will
-	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+	// cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrInput
 	// Initial root password. Can be updated. Required for MS SQL Server.
@@ -1166,7 +1200,7 @@ func (o DatabaseInstanceOutput) BackupdrBackup() pulumi.StringPtrOutput {
 }
 
 // The context needed to create this instance as a clone of another instance. When this field is set during
-// resource creation, this provider will attempt to clone another instance as indicated in the context. The
+// resource creation, Terraform will attempt to clone another instance as indicated in the context. The
 // configuration is detailed below.
 func (o DatabaseInstanceOutput) Clone() DatabaseInstanceClonePtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceClonePtrOutput { return v.Clone }).(DatabaseInstanceClonePtrOutput)
@@ -1191,10 +1225,12 @@ func (o DatabaseInstanceOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.DatabaseVersion }).(pulumi.StringOutput)
 }
 
-// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+// Whether Terraform will be prevented from destroying the instance.
+// When the field is set to true or unset in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the instance will fail.
+// When the field is set to false, deleting the instance is allowed.
 //
-// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
+// > **NOTE:** This flag only protects instances from deletion within Terraform. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform), use the API flag `settings.deletion_protection_enabled`.
 func (o DatabaseInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -1210,7 +1246,7 @@ func (o DatabaseInstanceOutput) DnsNames() DatabaseInstanceDnsNameArrayOutput {
 }
 
 // The full path to the encryption key used for the CMEK disk encryption.  Setting
-// up disk encryption currently requires manual steps outside of this provider.
+// up disk encryption currently requires manual steps outside of Terraform.
 // The provided key must be in the same region as the SQL instance.  In order
 // to use this feature, a special kind of service account must be created and
 // granted permission on this key.  This step can currently only be done
@@ -1226,7 +1262,9 @@ func (o DatabaseInstanceOutput) FinalBackupDescription() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringPtrOutput { return v.FinalBackupDescription }).(pulumi.StringPtrOutput)
 }
 
-// The first IPv4 address of any type assigned.
+// The first IPv4 address of any type assigned. This is to
+// support accessing the first address in the list in a terraform output
+// when the resource is configured with a `count`.
 func (o DatabaseInstanceOutput) FirstIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.FirstIpAddress }).(pulumi.StringOutput)
 }
@@ -1253,7 +1291,7 @@ func (o DatabaseInstanceOutput) MasterInstanceName() pulumi.StringOutput {
 }
 
 // The name of the instance. If the name is left
-// blank, the provider will randomly generate one when the instance is first
+// blank, Terraform will randomly generate one when the instance is first
 // created. This is done because after a name is used, it cannot be reused for
 // up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 func (o DatabaseInstanceOutput) Name() pulumi.StringOutput {
@@ -1275,7 +1313,10 @@ func (o DatabaseInstanceOutput) PointInTimeRestoreContext() DatabaseInstancePoin
 	}).(DatabaseInstancePointInTimeRestoreContextPtrOutput)
 }
 
-// The first private (`PRIVATE`) IPv4 address assigned.
+// The first private (`PRIVATE`) IPv4 address assigned. This is
+// a workaround for an issue fixed in Terraform 0.12
+// but also provides a convenient way to access an IP of a specific type without
+// performing filtering in a Terraform config.
 func (o DatabaseInstanceOutput) PrivateIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.PrivateIpAddress }).(pulumi.StringOutput)
 }
@@ -1291,7 +1332,10 @@ func (o DatabaseInstanceOutput) PscServiceAttachmentLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.PscServiceAttachmentLink }).(pulumi.StringOutput)
 }
 
-// The first public (`PRIMARY`) IPv4 address assigned.
+// The first public (`PRIMARY`) IPv4 address assigned. This is
+// a workaround for an issue fixed in Terraform 0.12
+// but also provides a convenient way to access an IP of a specific type without
+// performing filtering in a Terraform config.
 func (o DatabaseInstanceOutput) PublicIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.PublicIpAddress }).(pulumi.StringOutput)
 }
@@ -1321,8 +1365,8 @@ func (o DatabaseInstanceOutput) ReplicationCluster() DatabaseInstanceReplication
 }
 
 // The context needed to restore the database to a backup run. This field will
-// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+// cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
 // block during resource creation/update will trigger the restore action after the resource is created/updated.
 func (o DatabaseInstanceOutput) RestoreBackupContext() DatabaseInstanceRestoreBackupContextPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceRestoreBackupContextPtrOutput { return v.RestoreBackupContext }).(DatabaseInstanceRestoreBackupContextPtrOutput)

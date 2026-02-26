@@ -592,13 +592,6 @@ namespace Pulumi.Gcp
             set => _disableGlobalProjectWarning.Set(value);
         }
 
-        private static readonly __Value<bool?> _disableGooglePartnerName = new __Value<bool?>(() => __config.GetBoolean("disableGooglePartnerName"));
-        public static bool? DisableGooglePartnerName
-        {
-            get => _disableGooglePartnerName.Get();
-            set => _disableGooglePartnerName.Set(value);
-        }
-
         private static readonly __Value<string?> _discoveryEngineCustomEndpoint = new __Value<string?>(() => __config.Get("discoveryEngineCustomEndpoint"));
         public static string? DiscoveryEngineCustomEndpoint
         {
@@ -781,18 +774,18 @@ namespace Pulumi.Gcp
             set => _gkeonpremCustomEndpoint.Set(value);
         }
 
-        private static readonly __Value<string?> _googlePartnerName = new __Value<string?>(() => __config.Get("googlePartnerName"));
-        public static string? GooglePartnerName
-        {
-            get => _googlePartnerName.Get();
-            set => _googlePartnerName.Set(value);
-        }
-
         private static readonly __Value<string?> _healthcareCustomEndpoint = new __Value<string?>(() => __config.Get("healthcareCustomEndpoint"));
         public static string? HealthcareCustomEndpoint
         {
             get => _healthcareCustomEndpoint.Get();
             set => _healthcareCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _hypercomputeclusterCustomEndpoint = new __Value<string?>(() => __config.Get("hypercomputeclusterCustomEndpoint"));
+        public static string? HypercomputeclusterCustomEndpoint
+        {
+            get => _hypercomputeclusterCustomEndpoint.Get();
+            set => _hypercomputeclusterCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _iam2CustomEndpoint = new __Value<string?>(() => __config.Get("iam2CustomEndpoint"));

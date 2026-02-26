@@ -27,6 +27,7 @@ class AccountArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input[_builtins.str] account_id: The account id that is used to generate the service
                account email address and a stable unique id. It is unique within a project,
                must be 6-30 characters long, and match the regular expression `a-z`
@@ -149,6 +150,7 @@ class _AccountState:
                  unique_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input[_builtins.str] account_id: The account id that is used to generate the service
                account email address and a stable unique id. It is unique within a project,
                must be 6-30 characters long, and match the regular expression `a-z`
@@ -344,7 +346,8 @@ class Account(pulumi.CustomResource):
 
         > Creation of service accounts is eventually consistent, and that can lead to
         errors when you try to apply ACLs to service accounts immediately after
-        creation.
+        creation. If using these resources in the same config, you can add a
+        `sleep` using `local-exec`.
 
         ## Example Usage
 
@@ -370,6 +373,7 @@ class Account(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:serviceaccount/account:Account default projects/{{project_id}}/serviceAccounts/{{email}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -404,7 +408,8 @@ class Account(pulumi.CustomResource):
 
         > Creation of service accounts is eventually consistent, and that can lead to
         errors when you try to apply ACLs to service accounts immediately after
-        creation.
+        creation. If using these resources in the same config, you can add a
+        `sleep` using `local-exec`.
 
         ## Example Usage
 
@@ -430,6 +435,7 @@ class Account(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:serviceaccount/account:Account default projects/{{project_id}}/serviceAccounts/{{email}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

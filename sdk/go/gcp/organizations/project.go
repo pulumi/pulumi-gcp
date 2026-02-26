@@ -16,7 +16,7 @@ import (
 // Projects created with this resource must be associated with an Organization.
 // See the [Organization documentation](https://docs.cloud.google.com/resource-manager/docs/quickstarts) for more details.
 //
-// The user or service account that is running this provider when creating a `organizations.Project`
+// The user or service account that is running Terraform when creating a `organizations.Project`
 // resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
 // [Access Control for Organizations Using IAM](https://docs.cloud.google.com/resource-manager/docs/access-control-org)
 // doc for more information.
@@ -149,8 +149,8 @@ type Project struct {
 	// with the GCE API and currently leaves it enabled.
 	AutoCreateNetwork pulumi.BoolPtrOutput `pulumi:"autoCreateNetwork"`
 	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// belongs to. The user or service account performing this operation with Terraform
+	// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount pulumi.StringPtrOutput `pulumi:"billingAccount"`
@@ -233,8 +233,8 @@ type projectState struct {
 	// with the GCE API and currently leaves it enabled.
 	AutoCreateNetwork *bool `pulumi:"autoCreateNetwork"`
 	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// belongs to. The user or service account performing this operation with Terraform
+	// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount *string `pulumi:"billingAccount"`
@@ -283,8 +283,8 @@ type ProjectState struct {
 	// with the GCE API and currently leaves it enabled.
 	AutoCreateNetwork pulumi.BoolPtrInput
 	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// belongs to. The user or service account performing this operation with Terraform
+	// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount pulumi.StringPtrInput
@@ -337,8 +337,8 @@ type projectArgs struct {
 	// with the GCE API and currently leaves it enabled.
 	AutoCreateNetwork *bool `pulumi:"autoCreateNetwork"`
 	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// belongs to. The user or service account performing this operation with Terraform
+	// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount *string `pulumi:"billingAccount"`
@@ -382,8 +382,8 @@ type ProjectArgs struct {
 	// with the GCE API and currently leaves it enabled.
 	AutoCreateNetwork pulumi.BoolPtrInput
 	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// belongs to. The user or service account performing this operation with Terraform
+	// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount pulumi.StringPtrInput
@@ -515,8 +515,8 @@ func (o ProjectOutput) AutoCreateNetwork() pulumi.BoolPtrOutput {
 }
 
 // The alphanumeric ID of the billing account this project
-// belongs to. The user or service account performing this operation with the provider
-// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+// belongs to. The user or service account performing this operation with Terraform
+// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
 // See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 // for more details.
 func (o ProjectOutput) BillingAccount() pulumi.StringPtrOutput {

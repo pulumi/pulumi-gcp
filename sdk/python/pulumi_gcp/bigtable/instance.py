@@ -31,15 +31,17 @@ class InstanceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up
+
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
                
                -----
-        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-               in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance. 
+               When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+               the instance will fail. When the field is set to false, deleting the instance is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
-        :param pulumi.Input[_builtins.bool] force_destroy: Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        :param pulumi.Input[_builtins.bool] force_destroy: Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
         :param pulumi.Input[_builtins.str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
                It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
                and all instances will become `"PRODUCTION"` instances. This means that new and existing `"DEVELOPMENT"` instances will be converted to
@@ -77,7 +79,7 @@ class InstanceArgs:
     @pulumi.getter
     def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]]]:
         """
-        A block of cluster configuration options. This can be specified at least once, and up
+        A block of cluster configuration options. This can be specified at least once, and up 
         to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         to default to the backend value. See structure below.
 
@@ -93,8 +95,9 @@ class InstanceArgs:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-        in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        Whether Terraform will be prevented from destroying the instance. 
+        When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+        the instance will fail. When the field is set to false, deleting the instance is allowed.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -118,7 +121,7 @@ class InstanceArgs:
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
         """
         return pulumi.get(self, "force_destroy")
 
@@ -199,18 +202,20 @@ class _InstanceState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up
+
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
                
                -----
-        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-               in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance. 
+               When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+               the instance will fail. When the field is set to false, deleting the instance is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
                
                -----
-        :param pulumi.Input[_builtins.bool] force_destroy: Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        :param pulumi.Input[_builtins.bool] force_destroy: Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
         :param pulumi.Input[_builtins.str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
                It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
                and all instances will become `"PRODUCTION"` instances. This means that new and existing `"DEVELOPMENT"` instances will be converted to
@@ -253,7 +258,7 @@ class _InstanceState:
     @pulumi.getter
     def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]]]:
         """
-        A block of cluster configuration options. This can be specified at least once, and up
+        A block of cluster configuration options. This can be specified at least once, and up 
         to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         to default to the backend value. See structure below.
 
@@ -269,8 +274,9 @@ class _InstanceState:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-        in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        Whether Terraform will be prevented from destroying the instance. 
+        When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+        the instance will fail. When the field is set to false, deleting the instance is allowed.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -308,7 +314,7 @@ class _InstanceState:
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
         """
         return pulumi.get(self, "force_destroy")
 
@@ -402,19 +408,20 @@ class Instance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        ## subcategory: "Cloud Bigtable"
-
-        description: |-
-          Creates a Google Bigtable instance.
-        ---
-
-        # bigtable.Instance
-
         Creates a Google Bigtable instance. For more information see:
 
         * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/bigtable/docs)
+
+        > **Note**: It is strongly recommended to set `lifecycle { prevent_destroy = true }`
+        on instances in order to prevent accidental data loss. See
+        Terraform docs
+        for more information on lifecycle parameters.
+
+        > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
+        (and run `pulumi up` to write the field to state) in order to destroy an instance.
+        It is recommended to not set this field (or set it to true) until you're ready to destroy.
 
         ## Example Usage
 
@@ -483,17 +490,19 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:bigtable/instance:Instance default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceClusterArgs', 'InstanceClusterArgsDict']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceClusterArgs', 'InstanceClusterArgsDict']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
                
                -----
-        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-               in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance. 
+               When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+               the instance will fail. When the field is set to false, deleting the instance is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
-        :param pulumi.Input[_builtins.bool] force_destroy: Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        :param pulumi.Input[_builtins.bool] force_destroy: Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
         :param pulumi.Input[_builtins.str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
                It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
                and all instances will become `"PRODUCTION"` instances. This means that new and existing `"DEVELOPMENT"` instances will be converted to
@@ -514,19 +523,20 @@ class Instance(pulumi.CustomResource):
                  args: Optional[InstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## subcategory: "Cloud Bigtable"
-
-        description: |-
-          Creates a Google Bigtable instance.
-        ---
-
-        # bigtable.Instance
-
         Creates a Google Bigtable instance. For more information see:
 
         * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/bigtable/docs)
+
+        > **Note**: It is strongly recommended to set `lifecycle { prevent_destroy = true }`
+        on instances in order to prevent accidental data loss. See
+        Terraform docs
+        for more information on lifecycle parameters.
+
+        > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
+        (and run `pulumi up` to write the field to state) in order to destroy an instance.
+        It is recommended to not set this field (or set it to true) until you're ready to destroy.
 
         ## Example Usage
 
@@ -594,6 +604,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:bigtable/instance:Instance default {{project}}/{{name}}
         $ pulumi import gcp:bigtable/instance:Instance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.
@@ -666,18 +677,19 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceClusterArgs', 'InstanceClusterArgsDict']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceClusterArgs', 'InstanceClusterArgsDict']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
                
                -----
-        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-               in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance. 
+               When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+               the instance will fail. When the field is set to false, deleting the instance is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
                
                -----
-        :param pulumi.Input[_builtins.bool] force_destroy: Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        :param pulumi.Input[_builtins.bool] force_destroy: Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
         :param pulumi.Input[_builtins.str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
                It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
                and all instances will become `"PRODUCTION"` instances. This means that new and existing `"DEVELOPMENT"` instances will be converted to
@@ -712,7 +724,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def clusters(self) -> pulumi.Output[Sequence['outputs.InstanceCluster']]:
         """
-        A block of cluster configuration options. This can be specified at least once, and up
+        A block of cluster configuration options. This can be specified at least once, and up 
         to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         to default to the backend value. See structure below.
 
@@ -724,8 +736,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-        in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        Whether Terraform will be prevented from destroying the instance. 
+        When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+        the instance will fail. When the field is set to false, deleting the instance is allowed.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -751,7 +764,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
         """
         return pulumi.get(self, "force_destroy")
 

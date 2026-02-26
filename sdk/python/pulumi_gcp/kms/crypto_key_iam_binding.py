@@ -27,6 +27,7 @@ class CryptoKeyIAMBindingArgs:
                  condition: Optional[pulumi.Input['CryptoKeyIAMBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a CryptoKeyIAMBinding resource.
+
         :param pulumi.Input[_builtins.str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
                `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -121,6 +122,7 @@ class _CryptoKeyIAMBindingState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CryptoKeyIAMBinding resources.
+
         :param pulumi.Input['CryptoKeyIAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] crypto_key_id: The crypto key ID, in the form
@@ -265,7 +267,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -292,7 +294,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -319,7 +321,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -337,6 +339,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         ```
 
         ## Import
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -394,7 +397,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -421,7 +424,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -448,7 +451,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -466,6 +469,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         ```
 
         ## Import
+
 
         :param str resource_name: The name of the resource.
         :param CryptoKeyIAMBindingArgs args: The arguments to use to populate this resource's properties.

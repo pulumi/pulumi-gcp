@@ -14,7 +14,7 @@ import (
 
 // Manages a single key/value pair on metadata common to all instances for
 // a project in GCE. Using `compute.ProjectMetadataItem` lets you
-// manage a single key/value setting in the provider rather than the entire
+// manage a single key/value setting in Terraform rather than the entire
 // project metadata map.
 //
 // ## Example Usage

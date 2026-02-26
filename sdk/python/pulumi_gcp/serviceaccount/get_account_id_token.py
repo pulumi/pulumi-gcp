@@ -122,7 +122,7 @@ def get_account_id_token(delegates: Optional[Sequence[_builtins.str]] = None,
     ```
 
     ### Service Account Impersonation.
-      `serviceaccount_get_account_id_token` will use background impersonated credentials provided by `serviceaccount_get_account_access_token`.
+      `serviceaccount_get_account_id_token` will use background impersonated credentials provided by google_service_account_access_token.
 
       Note: to use the following, you must grant `target_service_account` the
       `roles/iam.serviceAccountTokenCreator` role on itself.
@@ -143,23 +143,6 @@ def get_account_id_token(delegates: Optional[Sequence[_builtins.str]] = None,
       include_email=True,
       target_audience="https://foo.bar/")
     pulumi.export("oidcToken", oidc.id_token)
-    ```
-
-    ### Invoking Cloud Run Endpoint
-
-      The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-    import pulumi_http as http
-
-    oidc = gcp.serviceaccount.get_account_id_token(target_audience="https://your.cloud.run.app/")
-    cloudrun = http.get_http(url="https://your.cloud.run.app/",
-        request_headers={
-            "Authorization": f"Bearer {oidc.id_token}",
-        })
-    pulumi.export("cloudRunResponse", cloudrun.body)
     ```
 
 
@@ -208,7 +191,7 @@ def get_account_id_token_output(delegates: Optional[pulumi.Input[Optional[Sequen
     ```
 
     ### Service Account Impersonation.
-      `serviceaccount_get_account_id_token` will use background impersonated credentials provided by `serviceaccount_get_account_access_token`.
+      `serviceaccount_get_account_id_token` will use background impersonated credentials provided by google_service_account_access_token.
 
       Note: to use the following, you must grant `target_service_account` the
       `roles/iam.serviceAccountTokenCreator` role on itself.
@@ -229,23 +212,6 @@ def get_account_id_token_output(delegates: Optional[pulumi.Input[Optional[Sequen
       include_email=True,
       target_audience="https://foo.bar/")
     pulumi.export("oidcToken", oidc.id_token)
-    ```
-
-    ### Invoking Cloud Run Endpoint
-
-      The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-    import pulumi_http as http
-
-    oidc = gcp.serviceaccount.get_account_id_token(target_audience="https://your.cloud.run.app/")
-    cloudrun = http.get_http(url="https://your.cloud.run.app/",
-        request_headers={
-            "Authorization": f"Bearer {oidc.id_token}",
-        })
-    pulumi.export("cloudRunResponse", cloudrun.body)
     ```
 
 

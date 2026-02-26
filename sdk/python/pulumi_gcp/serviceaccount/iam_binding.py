@@ -27,6 +27,7 @@ class IAMBindingArgs:
                  condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a IAMBinding resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -117,6 +118,7 @@ class _IAMBindingState:
                  service_account_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IAMBinding resources.
+
         :param pulumi.Input['IAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the service account IAM policy.
@@ -239,9 +241,7 @@ class IAMBinding(pulumi.CustomResource):
 
         > **Note:** `serviceaccount.IAMBinding` resources **can be** used in conjunction with `serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## Example Usage
-
-        ### Service Account IAM Policy
+        ## serviceaccount.IAMPolicy
 
         ```python
         import pulumi
@@ -259,7 +259,7 @@ class IAMBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ### Service Account IAM Binding
+        ## serviceaccount.IAMBinding
 
         ```python
         import pulumi
@@ -274,7 +274,7 @@ class IAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ### Service Account IAM Binding With IAM Conditions:
+        With IAM Conditions:
 
         ```python
         import pulumi
@@ -294,7 +294,7 @@ class IAMBinding(pulumi.CustomResource):
             })
         ```
 
-        ### Service Account IAM Member
+        ## serviceaccount.IAMMember
 
         ```python
         import pulumi
@@ -315,7 +315,7 @@ class IAMBinding(pulumi.CustomResource):
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
 
-        ### Service Account IAM Member With IAM Conditions:
+        With IAM Conditions:
 
         ```python
         import pulumi
@@ -335,27 +335,7 @@ class IAMBinding(pulumi.CustomResource):
             })
         ```
 
-        ### Additional Examples
-
-        ### Service Account IAM Policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/iam.serviceAccountUser",
-            "members": ["user:jane@example.com"],
-        }])
-        sa = gcp.serviceaccount.Account("sa",
-            account_id="my-service-account",
-            display_name="A service account that only Jane can interact with")
-        admin_account_iam = gcp.serviceaccount.IAMPolicy("admin-account-iam",
-            service_account_id=sa.name,
-            policy_data=admin.policy_data)
-        ```
-
-        ### Service Account IAM Binding
+        ## serviceaccount.IAMBinding
 
         ```python
         import pulumi
@@ -370,7 +350,7 @@ class IAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ### Service Account IAM Binding With IAM Conditions:
+        With IAM Conditions:
 
         ```python
         import pulumi
@@ -390,7 +370,7 @@ class IAMBinding(pulumi.CustomResource):
             })
         ```
 
-        ### Service Account IAM Member
+        ## serviceaccount.IAMMember
 
         ```python
         import pulumi
@@ -411,7 +391,7 @@ class IAMBinding(pulumi.CustomResource):
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
 
-        ### Service Account IAM Member With IAM Conditions:
+        With IAM Conditions:
 
         ```python
         import pulumi
@@ -445,6 +425,7 @@ class IAMBinding(pulumi.CustomResource):
 
         $ terraform import google_service_account_iam_member.admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -482,9 +463,7 @@ class IAMBinding(pulumi.CustomResource):
 
         > **Note:** `serviceaccount.IAMBinding` resources **can be** used in conjunction with `serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## Example Usage
-
-        ### Service Account IAM Policy
+        ## serviceaccount.IAMPolicy
 
         ```python
         import pulumi
@@ -502,7 +481,7 @@ class IAMBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ### Service Account IAM Binding
+        ## serviceaccount.IAMBinding
 
         ```python
         import pulumi
@@ -517,7 +496,7 @@ class IAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ### Service Account IAM Binding With IAM Conditions:
+        With IAM Conditions:
 
         ```python
         import pulumi
@@ -537,7 +516,7 @@ class IAMBinding(pulumi.CustomResource):
             })
         ```
 
-        ### Service Account IAM Member
+        ## serviceaccount.IAMMember
 
         ```python
         import pulumi
@@ -558,7 +537,7 @@ class IAMBinding(pulumi.CustomResource):
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
 
-        ### Service Account IAM Member With IAM Conditions:
+        With IAM Conditions:
 
         ```python
         import pulumi
@@ -578,27 +557,7 @@ class IAMBinding(pulumi.CustomResource):
             })
         ```
 
-        ### Additional Examples
-
-        ### Service Account IAM Policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/iam.serviceAccountUser",
-            "members": ["user:jane@example.com"],
-        }])
-        sa = gcp.serviceaccount.Account("sa",
-            account_id="my-service-account",
-            display_name="A service account that only Jane can interact with")
-        admin_account_iam = gcp.serviceaccount.IAMPolicy("admin-account-iam",
-            service_account_id=sa.name,
-            policy_data=admin.policy_data)
-        ```
-
-        ### Service Account IAM Binding
+        ## serviceaccount.IAMBinding
 
         ```python
         import pulumi
@@ -613,7 +572,7 @@ class IAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ### Service Account IAM Binding With IAM Conditions:
+        With IAM Conditions:
 
         ```python
         import pulumi
@@ -633,7 +592,7 @@ class IAMBinding(pulumi.CustomResource):
             })
         ```
 
-        ### Service Account IAM Member
+        ## serviceaccount.IAMMember
 
         ```python
         import pulumi
@@ -654,7 +613,7 @@ class IAMBinding(pulumi.CustomResource):
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
 
-        ### Service Account IAM Member With IAM Conditions:
+        With IAM Conditions:
 
         ```python
         import pulumi
@@ -688,6 +647,7 @@ class IAMBinding(pulumi.CustomResource):
 
         $ terraform import google_service_account_iam_member.admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IAMBindingArgs args: The arguments to use to populate this resource's properties.

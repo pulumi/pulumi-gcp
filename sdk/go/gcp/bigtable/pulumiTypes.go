@@ -1026,10 +1026,8 @@ type InstanceCluster struct {
 	//
 	// > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
 	//
-	// !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-	//
 	// !> **Warning:** Modifying the `storageType`, `zone` or `kmsKeyName` of an existing cluster (by
-	// `clusterId`) will cause the provider to delete/recreate the entire
+	// `clusterId`) will cause Terraform to delete/recreate the entire
 	// `bigtable.Instance` resource. If these values are changing, use a new
 	// `clusterId`.
 	NodeScalingFactor *string `pulumi:"nodeScalingFactor"`
@@ -1069,10 +1067,8 @@ type InstanceClusterArgs struct {
 	//
 	// > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
 	//
-	// !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-	//
 	// !> **Warning:** Modifying the `storageType`, `zone` or `kmsKeyName` of an existing cluster (by
-	// `clusterId`) will cause the provider to delete/recreate the entire
+	// `clusterId`) will cause Terraform to delete/recreate the entire
 	// `bigtable.Instance` resource. If these values are changing, use a new
 	// `clusterId`.
 	NodeScalingFactor pulumi.StringPtrInput `pulumi:"nodeScalingFactor"`
@@ -1160,10 +1156,8 @@ func (o InstanceClusterOutput) KmsKeyName() pulumi.StringPtrOutput {
 //
 // > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
 //
-// !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-//
 // !> **Warning:** Modifying the `storageType`, `zone` or `kmsKeyName` of an existing cluster (by
-// `clusterId`) will cause the provider to delete/recreate the entire
+// `clusterId`) will cause Terraform to delete/recreate the entire
 // `bigtable.Instance` resource. If these values are changing, use a new
 // `clusterId`.
 func (o InstanceClusterOutput) NodeScalingFactor() pulumi.StringPtrOutput {

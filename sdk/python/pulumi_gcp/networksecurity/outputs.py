@@ -3948,12 +3948,11 @@ class SecurityProfileCustomMirroringProfile(dict):
                When a mirroring rule with this security profile attached matches a packet,
                a replica will be mirrored to the location-local target in this group.
                Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
-        :param Sequence[_builtins.str] mirroring_deployment_groups: (Optional, Beta)
-               The target downstream Mirroring Deployment Groups.
+        :param Sequence[_builtins.str] mirroring_deployment_groups: The target downstream Mirroring Deployment Groups.
                This field is used for Packet Broker mirroring endpoint groups to specify
                the deployment groups that the packet should be mirrored to by the broker.
                Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
-        :param _builtins.str mirroring_endpoint_group_type: (Output, Beta)
+        :param _builtins.str mirroring_endpoint_group_type: (Output)
                The type of the mirroring endpoint group this profile is attached to.
                Possible values:
                DIRECT
@@ -3980,7 +3979,6 @@ class SecurityProfileCustomMirroringProfile(dict):
     @pulumi.getter(name="mirroringDeploymentGroups")
     def mirroring_deployment_groups(self) -> Optional[Sequence[_builtins.str]]:
         """
-        (Optional, Beta)
         The target downstream Mirroring Deployment Groups.
         This field is used for Packet Broker mirroring endpoint groups to specify
         the deployment groups that the packet should be mirrored to by the broker.
@@ -3992,7 +3990,7 @@ class SecurityProfileCustomMirroringProfile(dict):
     @pulumi.getter(name="mirroringEndpointGroupType")
     def mirroring_endpoint_group_type(self) -> Optional[_builtins.str]:
         """
-        (Output, Beta)
+        (Output)
         The type of the mirroring endpoint group this profile is attached to.
         Possible values:
         DIRECT

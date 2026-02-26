@@ -6,6 +6,7 @@ package com.pulumi.gcp.beyondcorp.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.beyondcorp.outputs.GetSecurityGatewayHub;
+import com.pulumi.gcp.beyondcorp.outputs.GetSecurityGatewayLogging;
 import com.pulumi.gcp.beyondcorp.outputs.GetSecurityGatewayProxyProtocolConfig;
 import com.pulumi.gcp.beyondcorp.outputs.GetSecurityGatewayServiceDiscovery;
 import java.lang.String;
@@ -27,6 +28,7 @@ public final class GetSecurityGatewayResult {
      */
     private String id;
     private String location;
+    private List<GetSecurityGatewayLogging> loggings;
     private String name;
     private @Nullable String project;
     private List<GetSecurityGatewayProxyProtocolConfig> proxyProtocolConfigs;
@@ -60,6 +62,9 @@ public final class GetSecurityGatewayResult {
     }
     public String location() {
         return this.location;
+    }
+    public List<GetSecurityGatewayLogging> loggings() {
+        return this.loggings;
     }
     public String name() {
         return this.name;
@@ -99,6 +104,7 @@ public final class GetSecurityGatewayResult {
         private List<GetSecurityGatewayHub> hubs;
         private String id;
         private String location;
+        private List<GetSecurityGatewayLogging> loggings;
         private String name;
         private @Nullable String project;
         private List<GetSecurityGatewayProxyProtocolConfig> proxyProtocolConfigs;
@@ -116,6 +122,7 @@ public final class GetSecurityGatewayResult {
     	      this.hubs = defaults.hubs;
     	      this.id = defaults.id;
     	      this.location = defaults.location;
+    	      this.loggings = defaults.loggings;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.proxyProtocolConfigs = defaults.proxyProtocolConfigs;
@@ -188,6 +195,17 @@ public final class GetSecurityGatewayResult {
             return this;
         }
         @CustomType.Setter
+        public Builder loggings(List<GetSecurityGatewayLogging> loggings) {
+            if (loggings == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGatewayResult", "loggings");
+            }
+            this.loggings = loggings;
+            return this;
+        }
+        public Builder loggings(GetSecurityGatewayLogging... loggings) {
+            return loggings(List.of(loggings));
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetSecurityGatewayResult", "name");
@@ -256,6 +274,7 @@ public final class GetSecurityGatewayResult {
             _resultValue.hubs = hubs;
             _resultValue.id = id;
             _resultValue.location = location;
+            _resultValue.loggings = loggings;
             _resultValue.name = name;
             _resultValue.project = project;
             _resultValue.proxyProtocolConfigs = proxyProtocolConfigs;

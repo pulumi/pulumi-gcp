@@ -75,6 +75,7 @@ type LookupEnvironmentArgs struct {
 // A collection of values returned by getEnvironment.
 type LookupEnvironmentResult struct {
 	// Configuration parameters for the environment.
+	// Full structure is provided by composer environment resource documentation.
 	Configs         []GetEnvironmentConfig `pulumi:"configs"`
 	EffectiveLabels map[string]string      `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
@@ -127,6 +128,7 @@ func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContex
 }
 
 // Configuration parameters for the environment.
+// Full structure is provided by composer environment resource documentation.
 func (o LookupEnvironmentResultOutput) Configs() GetEnvironmentConfigArrayOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) []GetEnvironmentConfig { return v.Configs }).(GetEnvironmentConfigArrayOutput)
 }

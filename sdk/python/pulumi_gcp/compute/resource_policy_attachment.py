@@ -25,6 +25,7 @@ class ResourcePolicyAttachmentArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResourcePolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] instance: The name of the instance in which the resource policies are attached to.
         :param pulumi.Input[_builtins.str] name: The resource policy to be attached to the instance for scheduling start/stop
                operations. Do not specify the self link.
@@ -100,6 +101,7 @@ class _ResourcePolicyAttachmentState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResourcePolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] instance: The name of the instance in which the resource policies are attached to.
         :param pulumi.Input[_builtins.str] name: The resource policy to be attached to the instance for scheduling start/stop
                operations. Do not specify the self link.
@@ -243,6 +245,7 @@ class ResourcePolicyAttachment(pulumi.CustomResource):
         $ pulumi import gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment default {{instance}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance: The name of the instance in which the resource policies are attached to.
@@ -322,6 +325,7 @@ class ResourcePolicyAttachment(pulumi.CustomResource):
         $ pulumi import gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment default {{zone}}/{{instance}}/{{name}}
         $ pulumi import gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment default {{instance}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourcePolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

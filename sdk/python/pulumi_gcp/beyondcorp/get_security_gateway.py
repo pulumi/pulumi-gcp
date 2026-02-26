@@ -27,7 +27,7 @@ class GetSecurityGatewayResult:
     """
     A collection of values returned by getSecurityGateway.
     """
-    def __init__(__self__, create_time=None, delegating_service_account=None, display_name=None, external_ips=None, hubs=None, id=None, location=None, name=None, project=None, proxy_protocol_configs=None, security_gateway_id=None, service_discoveries=None, state=None, update_time=None):
+    def __init__(__self__, create_time=None, delegating_service_account=None, display_name=None, external_ips=None, hubs=None, id=None, location=None, loggings=None, name=None, project=None, proxy_protocol_configs=None, security_gateway_id=None, service_discoveries=None, state=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -49,6 +49,9 @@ class GetSecurityGatewayResult:
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
+        if loggings and not isinstance(loggings, list):
+            raise TypeError("Expected argument 'loggings' to be a list")
+        pulumi.set(__self__, "loggings", loggings)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -111,6 +114,11 @@ class GetSecurityGatewayResult:
 
     @_builtins.property
     @pulumi.getter
+    def loggings(self) -> Sequence['outputs.GetSecurityGatewayLoggingResult']:
+        return pulumi.get(self, "loggings")
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> _builtins.str:
         return pulumi.get(self, "name")
 
@@ -158,6 +166,7 @@ class AwaitableGetSecurityGatewayResult(GetSecurityGatewayResult):
             hubs=self.hubs,
             id=self.id,
             location=self.location,
+            loggings=self.loggings,
             name=self.name,
             project=self.project,
             proxy_protocol_configs=self.proxy_protocol_configs,
@@ -203,6 +212,7 @@ def get_security_gateway(project: Optional[_builtins.str] = None,
         hubs=pulumi.get(__ret__, 'hubs'),
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
+        loggings=pulumi.get(__ret__, 'loggings'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         proxy_protocol_configs=pulumi.get(__ret__, 'proxy_protocol_configs'),
@@ -245,6 +255,7 @@ def get_security_gateway_output(project: Optional[pulumi.Input[Optional[_builtin
         hubs=pulumi.get(__response__, 'hubs'),
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),
+        loggings=pulumi.get(__response__, 'loggings'),
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),
         proxy_protocol_configs=pulumi.get(__response__, 'proxy_protocol_configs'),

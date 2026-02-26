@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .alternativeLocationId("us-central1-f")
  *             .authorizedNetwork(redis_network.id())
  *             .redisVersion("REDIS_7_2")
- *             .displayName("Test Instance")
+ *             .displayName("Terraform Test Instance")
  *             .reservedIpRange("192.168.0.0/29")
  *             .labels(Map.ofEntries(
  *                 Map.entry("my_key", "my_val"),
@@ -245,7 +245,7 @@ import javax.annotation.Nullable;
  *             .authorizedNetwork(redis_network.id())
  *             .connectMode("PRIVATE_SERVICE_ACCESS")
  *             .redisVersion("REDIS_7_2")
- *             .displayName("Test Instance")
+ *             .displayName("Terraform Test Instance")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(privateServiceConnection)
  *                 .build());

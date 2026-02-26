@@ -984,13 +984,11 @@ class FunctionServiceConfigArgsDict(TypedDict):
     """
     direct_vpc_egress: NotRequired[pulumi.Input[_builtins.str]]
     """
-    (Optional, Beta)
     Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
     Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
     """
     direct_vpc_network_interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigDirectVpcNetworkInterfaceArgsDict']]]]
     """
-    (Optional, Beta)
     The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
     Structure is documented below.
     """
@@ -1093,11 +1091,9 @@ class FunctionServiceConfigArgs:
                Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
                supplied the value is interpreted as bytes.
         :param pulumi.Input[_builtins.str] binary_authorization_policy: The binary authorization policy to be checked when deploying the Cloud Run service.
-        :param pulumi.Input[_builtins.str] direct_vpc_egress: (Optional, Beta)
-               Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+        :param pulumi.Input[_builtins.str] direct_vpc_egress: Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
                Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
-        :param pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigDirectVpcNetworkInterfaceArgs']]] direct_vpc_network_interfaces: (Optional, Beta)
-               The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigDirectVpcNetworkInterfaceArgs']]] direct_vpc_network_interfaces: The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: Environment variables that shall be available during function execution.
         :param pulumi.Input[_builtins.str] gcf_uri: (Output)
@@ -1221,7 +1217,6 @@ class FunctionServiceConfigArgs:
     @pulumi.getter(name="directVpcEgress")
     def direct_vpc_egress(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Optional, Beta)
         Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
         Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
         """
@@ -1235,7 +1230,6 @@ class FunctionServiceConfigArgs:
     @pulumi.getter(name="directVpcNetworkInterfaces")
     def direct_vpc_network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigDirectVpcNetworkInterfaceArgs']]]]:
         """
-        (Optional, Beta)
         The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
         Structure is documented below.
         """

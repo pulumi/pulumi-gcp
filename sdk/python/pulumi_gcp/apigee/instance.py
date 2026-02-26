@@ -33,6 +33,7 @@ class InstanceArgs:
                  peering_cidr_range: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] location: Required. Compute Engine location where the instance resides.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
@@ -230,6 +231,7 @@ class _InstanceState:
                  service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input['InstanceAccessLoggingConfigArgs'] access_logging_config: Access logging configuration enables the access logging feature at the instance.
                Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
                Structure is documented below.
@@ -608,7 +610,7 @@ class Instance(pulumi.CustomResource):
         apigee_org = gcp.apigee.Organization("apigee_org",
             analytics_region="us-central1",
             display_name="apigee-org",
-            description="Auto-provisioned Apigee Org.",
+            description="Terraform-provisioned Apigee Org.",
             project_id=current.project,
             authorized_network=apigee_network.id,
             runtime_database_encryption_key_name=apigee_key.id,
@@ -619,7 +621,7 @@ class Instance(pulumi.CustomResource):
         apigee_instance = gcp.apigee.Instance("apigee_instance",
             name="my-instance-name",
             location="us-central1",
-            description="Auto-managed Apigee Runtime Instance",
+            description="Terraform-managed Apigee Runtime Instance",
             display_name="my-instance-name",
             org_id=apigee_org.id,
             disk_encryption_key_name=apigee_key.id)
@@ -638,6 +640,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:apigee/instance:Instance default {{org_id}}/instances/{{name}}
         $ pulumi import gcp:apigee/instance:Instance default {{org_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -803,7 +806,7 @@ class Instance(pulumi.CustomResource):
         apigee_org = gcp.apigee.Organization("apigee_org",
             analytics_region="us-central1",
             display_name="apigee-org",
-            description="Auto-provisioned Apigee Org.",
+            description="Terraform-provisioned Apigee Org.",
             project_id=current.project,
             authorized_network=apigee_network.id,
             runtime_database_encryption_key_name=apigee_key.id,
@@ -814,7 +817,7 @@ class Instance(pulumi.CustomResource):
         apigee_instance = gcp.apigee.Instance("apigee_instance",
             name="my-instance-name",
             location="us-central1",
-            description="Auto-managed Apigee Runtime Instance",
+            description="Terraform-managed Apigee Runtime Instance",
             display_name="my-instance-name",
             org_id=apigee_org.id,
             disk_encryption_key_name=apigee_key.id)
@@ -833,6 +836,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:apigee/instance:Instance default {{org_id}}/instances/{{name}}
         $ pulumi import gcp:apigee/instance:Instance default {{org_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

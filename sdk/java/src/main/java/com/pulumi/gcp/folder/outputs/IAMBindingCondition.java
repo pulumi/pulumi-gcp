@@ -12,17 +12,49 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class IAMBindingCondition {
+    /**
+     * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * 
+     * &gt; **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+     * identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+     * consider it to be an entirely different resource and will treat it as such.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return Textual representation of an expression in Common Expression Language syntax.
+     * 
+     */
     private String expression;
+    /**
+     * @return A title for the expression, i.e. a short string describing its purpose.
+     * 
+     */
     private String title;
 
     private IAMBindingCondition() {}
+    /**
+     * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * 
+     * &gt; **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+     * identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+     * consider it to be an entirely different resource and will treat it as such.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Textual representation of an expression in Common Expression Language syntax.
+     * 
+     */
     public String expression() {
         return this.expression;
     }
+    /**
+     * @return A title for the expression, i.e. a short string describing its purpose.
+     * 
+     */
     public String title() {
         return this.title;
     }

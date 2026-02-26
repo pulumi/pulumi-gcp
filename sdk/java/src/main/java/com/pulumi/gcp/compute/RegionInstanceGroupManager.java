@@ -710,7 +710,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
     }
     /**
      * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, the provider will
+     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
      * continue trying until it times out.
      * 
      */
@@ -719,7 +719,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
 
     /**
      * @return Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, the provider will
+     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
      * continue trying until it times out.
      * 
      */

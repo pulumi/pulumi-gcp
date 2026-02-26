@@ -52,7 +52,7 @@ public final class TableIamPolicyArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     @Import(name="project")
@@ -60,7 +60,7 @@ public final class TableIamPolicyArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     public Optional<Output<String>> project() {
@@ -161,7 +161,7 @@ public final class TableIamPolicyArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param project The project in which the table belongs. If it
-         * is not provided, this provider will use the provider default.
+         * is not provided, Terraform will use the provider default.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class TableIamPolicyArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param project The project in which the table belongs. If it
-         * is not provided, this provider will use the provider default.
+         * is not provided, Terraform will use the provider default.
          * 
          * @return builder
          * 

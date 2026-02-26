@@ -302,7 +302,7 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The project in which the job belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
@@ -310,7 +310,7 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The project in which the job belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     public Output<String> project() {
@@ -318,7 +318,7 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The region in which the job belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
@@ -326,7 +326,7 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The region in which the job belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     public Output<String> region() {

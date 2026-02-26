@@ -27,6 +27,7 @@ class PolicyArgs:
                  spec: Optional[pulumi.Input['PolicySpecArgs']] = None):
         """
         The set of arguments for constructing a Policy resource.
+
         :param pulumi.Input[_builtins.str] parent: The parent of the resource.
         :param pulumi.Input['PolicyDryRunSpecArgs'] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
                Structure is documented below.
@@ -103,6 +104,7 @@ class _PolicyState:
                  spec: Optional[pulumi.Input['PolicySpecArgs']] = None):
         """
         Input properties used for looking up and filtering Policy resources.
+
         :param pulumi.Input['PolicyDryRunSpecArgs'] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -302,7 +304,7 @@ class Policy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         constraint = gcp.orgpolicy.CustomConstraint("constraint",
-            name="custom.disableGkeAutoUpgrade_3686",
+            name="custom.disableGkeAutoUpgrade_34599",
             parent="organizations/123456789",
             display_name="Disable GKE auto upgrade",
             description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -366,6 +368,7 @@ class Policy(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/policies/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -488,7 +491,7 @@ class Policy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         constraint = gcp.orgpolicy.CustomConstraint("constraint",
-            name="custom.disableGkeAutoUpgrade_3686",
+            name="custom.disableGkeAutoUpgrade_34599",
             parent="organizations/123456789",
             display_name="Disable GKE auto upgrade",
             description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -552,6 +555,7 @@ class Policy(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/policies/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

@@ -165,7 +165,8 @@ type Agent struct {
 	// * TIER_ENTERPRISE: Enterprise tier (Essentials).
 	// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
 	//   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-	//   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+	//   the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+	//   Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
 	Tier pulumi.StringPtrOutput `pulumi:"tier"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
@@ -258,7 +259,8 @@ type agentState struct {
 	// * TIER_ENTERPRISE: Enterprise tier (Essentials).
 	// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
 	//   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-	//   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+	//   the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+	//   Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
 	Tier *string `pulumi:"tier"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
@@ -313,7 +315,8 @@ type AgentState struct {
 	// * TIER_ENTERPRISE: Enterprise tier (Essentials).
 	// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
 	//   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-	//   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+	//   the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+	//   Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
 	Tier pulumi.StringPtrInput
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
@@ -369,7 +372,8 @@ type agentArgs struct {
 	// * TIER_ENTERPRISE: Enterprise tier (Essentials).
 	// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
 	//   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-	//   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+	//   the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+	//   Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
 	Tier *string `pulumi:"tier"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
@@ -422,7 +426,8 @@ type AgentArgs struct {
 	// * TIER_ENTERPRISE: Enterprise tier (Essentials).
 	// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
 	//   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-	//   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+	//   the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+	//   Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
 	Tier pulumi.StringPtrInput
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
@@ -596,7 +601,8 @@ func (o AgentOutput) SupportedLanguageCodes() pulumi.StringArrayOutput {
 //   - TIER_ENTERPRISE: Enterprise tier (Essentials).
 //   - TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
 //     NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-//     the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+//     the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+//     Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
 func (o AgentOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringPtrOutput { return v.Tier }).(pulumi.StringPtrOutput)
 }

@@ -43,16 +43,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+     * Whether Terraform will be prevented from destroying the instance.
+     * When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+     * the instance will fail. When the field is set to false, deleting the instance is allowed.
      * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
     /**
-     * @return Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+     * @return Whether Terraform will be prevented from destroying the instance.
+     * When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+     * the instance will fail. When the field is set to false, deleting the instance is allowed.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -94,14 +96,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+     * Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
      * 
      */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
     /**
-     * @return Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+     * @return Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
      * 
      */
     public Optional<Output<Boolean>> forceDestroy() {
@@ -284,8 +286,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-         * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+         * @param deletionProtection Whether Terraform will be prevented from destroying the instance.
+         * When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+         * the instance will fail. When the field is set to false, deleting the instance is allowed.
          * 
          * @return builder
          * 
@@ -296,8 +299,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-         * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+         * @param deletionProtection Whether Terraform will be prevented from destroying the instance.
+         * When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+         * the instance will fail. When the field is set to false, deleting the instance is allowed.
          * 
          * @return builder
          * 
@@ -353,7 +357,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDestroy Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+         * @param forceDestroy Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
          * 
          * @return builder
          * 
@@ -364,7 +368,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDestroy Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+         * @param forceDestroy Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
          * 
          * @return builder
          * 

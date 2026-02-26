@@ -256,9 +256,6 @@ public final class Config {
     public Optional<Boolean> disableGlobalProjectWarning() {
         return Codegen.booleanProp("disableGlobalProjectWarning").config(config).env("PULUMI_GCP_DISABLE_GLOBAL_PROJECT_WARNING").def(false).get();
     }
-    public Optional<Boolean> disableGooglePartnerName() {
-        return Codegen.booleanProp("disableGooglePartnerName").config(config).get();
-    }
     public Optional<String> discoveryEngineCustomEndpoint() {
         return Codegen.stringProp("discoveryEngineCustomEndpoint").config(config).get();
     }
@@ -337,11 +334,11 @@ public final class Config {
     public Optional<String> gkeonpremCustomEndpoint() {
         return Codegen.stringProp("gkeonpremCustomEndpoint").config(config).get();
     }
-    public Optional<String> googlePartnerName() {
-        return Codegen.stringProp("googlePartnerName").config(config).get();
-    }
     public Optional<String> healthcareCustomEndpoint() {
         return Codegen.stringProp("healthcareCustomEndpoint").config(config).get();
+    }
+    public Optional<String> hypercomputeclusterCustomEndpoint() {
+        return Codegen.stringProp("hypercomputeclusterCustomEndpoint").config(config).get();
     }
     public Optional<String> iam2CustomEndpoint() {
         return Codegen.stringProp("iam2CustomEndpoint").config(config).get();

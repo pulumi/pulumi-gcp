@@ -75,6 +75,9 @@ import javax.annotation.Nullable;
  *   * How-to guides
  *     * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
  *     * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
+ *   * Terraform guidance
+ *     * Using GKE with Terraform
+ *     * Provision a GKE Cluster (Google Cloud) Learn tutorial
  * 
  * &gt; On version 5.0.0+ of the provider, you must explicitly set `deletionProtection = false`
  * and run `pulumi up` to write the field to state in order to destroy a cluster.
@@ -191,48 +194,6 @@ import javax.annotation.Nullable;
  *                     "foo",
  *                     "bar")
  *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ### Autopilot
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.serviceaccount.Account;
- * import com.pulumi.gcp.serviceaccount.AccountArgs;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new Account("default", AccountArgs.builder()
- *             .accountId("service-account-id")
- *             .displayName("Service Account")
- *             .build());
- * 
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("marcellus-wallace")
- *             .location("us-central1-a")
- *             .enableAutopilot(true)
  *             .build());
  * 
  *     }
@@ -1074,7 +1035,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * If unset, the cluster&#39;s version will be set by GKE to the version of the most recent
      * official release (which is not necessarily the latest version).  Most users will find
      * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-     * are available. If you intend to specify versions manually,
+     * are available, and can be use to approximate fuzzy versions in a
+     * Terraform-compatible way. If you intend to specify versions manually,
      * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      * describe the various acceptable formats for this field.
      * 
@@ -1093,7 +1055,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * If unset, the cluster&#39;s version will be set by GKE to the version of the most recent
      * official release (which is not necessarily the latest version).  Most users will find
      * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-     * are available. If you intend to specify versions manually,
+     * are available, and can be use to approximate fuzzy versions in a
+     * Terraform-compatible way. If you intend to specify versions manually,
      * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      * describe the various acceptable formats for this field.
      * 
@@ -1237,8 +1200,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
      * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
+     * manages the default node pool, which isn&#39;t recommended to be used with
+     * Terraform. Structure is documented below.
      * 
      */
     @Export(name="nodeConfig", refs={ClusterNodeConfig.class}, tree="[0]")
@@ -1248,8 +1211,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * @return Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
      * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
+     * manages the default node pool, which isn&#39;t recommended to be used with
+     * Terraform. Structure is documented below.
      * 
      */
     public Output<ClusterNodeConfig> nodeConfig() {
@@ -1350,9 +1313,9 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * or set to the same value as `minMasterVersion` on create. Defaults to the default
      * version set by GKE which is not necessarily the latest version. This only affects
      * nodes in the default node pool. While a fuzzy version can be specified, it&#39;s
-     * recommended that you specify explicit versions as the provider will see spurious diffs
+     * recommended that you specify explicit versions as Terraform will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-     * `versionPrefix` field to approximate fuzzy versions.
+     * `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      * 
      */
@@ -1364,9 +1327,9 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * or set to the same value as `minMasterVersion` on create. Defaults to the default
      * version set by GKE which is not necessarily the latest version. This only affects
      * nodes in the default node pool. While a fuzzy version can be specified, it&#39;s
-     * recommended that you specify explicit versions as the provider will see spurious diffs
+     * recommended that you specify explicit versions as Terraform will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-     * `versionPrefix` field to approximate fuzzy versions.
+     * `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      * 
      */
@@ -1528,7 +1491,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
      * for more details; the `gcp.container.getEngineVersions` datasource can provide
      * the default version for a channel. Note that removing the `releaseChannel`
-     * field from your config will cause the provider to stop managing your cluster&#39;s
+     * field from your config will cause Terraform to stop managing your cluster&#39;s
      * release channel, but will not unenroll it. Instead, use the `&#34;UNSPECIFIED&#34;`
      * channel. Structure is documented below.
      * 
@@ -1543,7 +1506,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
      * for more details; the `gcp.container.getEngineVersions` datasource can provide
      * the default version for a channel. Note that removing the `releaseChannel`
-     * field from your config will cause the provider to stop managing your cluster&#39;s
+     * field from your config will cause Terraform to stop managing your cluster&#39;s
      * release channel, but will not unenroll it. Instead, use the `&#34;UNSPECIFIED&#34;`
      * channel. Structure is documented below.
      * 

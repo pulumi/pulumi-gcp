@@ -24,6 +24,7 @@ class ServiceProjectAttachmentArgs:
                  service_project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceProjectAttachment resource.
+
         :param pulumi.Input[_builtins.str] service_project_attachment_id: Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -89,6 +90,7 @@ class _ServiceProjectAttachmentState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceProjectAttachment resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. Create time.
         :param pulumi.Input[_builtins.str] name: "Identifier. The resource name of a ServiceProjectAttachment. Format:\\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\\""
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -271,6 +273,7 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         $ pulumi import gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment default {{service_project_attachment_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -343,6 +346,7 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         $ pulumi import gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment default {{project}}/{{service_project_attachment_id}}
         $ pulumi import gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment default {{service_project_attachment_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceProjectAttachmentArgs args: The arguments to use to populate this resource's properties.

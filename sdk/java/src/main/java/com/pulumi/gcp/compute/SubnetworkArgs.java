@@ -409,6 +409,9 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
      * to either primary or secondary ranges.
+     * **Note**: This field uses attr-as-block mode to avoid
+     * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+     * set `sendSecondaryIpRangeIfEmpty = true`
      * Structure is documented below.
      * 
      */
@@ -420,6 +423,9 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
      * to either primary or secondary ranges.
+     * **Note**: This field uses attr-as-block mode to avoid
+     * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+     * set `sendSecondaryIpRangeIfEmpty = true`
      * Structure is documented below.
      * 
      */
@@ -1018,6 +1024,9 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
          * contained in this subnetwork. The primary IP of such VM must belong
          * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
          * to either primary or secondary ranges.
+         * **Note**: This field uses attr-as-block mode to avoid
+         * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+         * set `sendSecondaryIpRangeIfEmpty = true`
          * Structure is documented below.
          * 
          * @return builder
@@ -1033,6 +1042,9 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
          * contained in this subnetwork. The primary IP of such VM must belong
          * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
          * to either primary or secondary ranges.
+         * **Note**: This field uses attr-as-block mode to avoid
+         * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+         * set `sendSecondaryIpRangeIfEmpty = true`
          * Structure is documented below.
          * 
          * @return builder
@@ -1047,6 +1059,9 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
          * contained in this subnetwork. The primary IP of such VM must belong
          * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
          * to either primary or secondary ranges.
+         * **Note**: This field uses attr-as-block mode to avoid
+         * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+         * set `sendSecondaryIpRangeIfEmpty = true`
          * Structure is documented below.
          * 
          * @return builder

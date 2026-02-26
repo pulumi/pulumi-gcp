@@ -240,10 +240,10 @@ type JobIAMPolicy struct {
 	// ***
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 	// The project in which the job belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region in which the job belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region pulumi.StringOutput `pulumi:"region"`
 }
 
@@ -291,10 +291,10 @@ type jobIAMPolicyState struct {
 	// ***
 	PolicyData *string `pulumi:"policyData"`
 	// The project in which the job belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project *string `pulumi:"project"`
 	// The region in which the job belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region *string `pulumi:"region"`
 }
 
@@ -307,10 +307,10 @@ type JobIAMPolicyState struct {
 	// ***
 	PolicyData pulumi.StringPtrInput
 	// The project in which the job belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringPtrInput
 	// The region in which the job belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region pulumi.StringPtrInput
 }
 
@@ -325,10 +325,10 @@ type jobIAMPolicyArgs struct {
 	// ***
 	PolicyData string `pulumi:"policyData"`
 	// The project in which the job belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project *string `pulumi:"project"`
 	// The region in which the job belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region *string `pulumi:"region"`
 }
 
@@ -340,10 +340,10 @@ type JobIAMPolicyArgs struct {
 	// ***
 	PolicyData pulumi.StringInput
 	// The project in which the job belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringPtrInput
 	// The region in which the job belongs. If it
-	// is not provided, the provider will use a default.
+	// is not provided, Terraform will use the provider default.
 	Region pulumi.StringPtrInput
 }
 
@@ -451,13 +451,13 @@ func (o JobIAMPolicyOutput) PolicyData() pulumi.StringOutput {
 }
 
 // The project in which the job belongs. If it
-// is not provided, the provider will use a default.
+// is not provided, Terraform will use the provider default.
 func (o JobIAMPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobIAMPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The region in which the job belongs. If it
-// is not provided, the provider will use a default.
+// is not provided, Terraform will use the provider default.
 func (o JobIAMPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobIAMPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

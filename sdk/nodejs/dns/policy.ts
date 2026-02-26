@@ -110,7 +110,7 @@ export class Policy extends pulumi.CustomResource {
      */
     declare public readonly alternativeNameServerConfig: pulumi.Output<outputs.dns.PolicyAlternativeNameServerConfig | undefined>;
     /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
+     * A textual description field. Defaults to 'Managed by Terraform'.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -194,7 +194,7 @@ export interface PolicyState {
      */
     alternativeNameServerConfig?: pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfig>;
     /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
+     * A textual description field. Defaults to 'Managed by Terraform'.
      */
     description?: pulumi.Input<string>;
     /**
@@ -242,7 +242,7 @@ export interface PolicyArgs {
      */
     alternativeNameServerConfig?: pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfig>;
     /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
+     * A textual description field. Defaults to 'Managed by Terraform'.
      */
     description?: pulumi.Input<string>;
     /**

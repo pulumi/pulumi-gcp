@@ -10,19 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigTable
 {
     /// <summary>
-    /// ## subcategory: "Cloud Bigtable"
-    /// 
-    /// description: |-
-    ///   Creates a Google Bigtable instance.
-    /// ---
-    /// 
-    /// # gcp.bigtable.Instance
-    /// 
     /// Creates a Google Bigtable instance. For more information see:
     /// 
     /// * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/bigtable/docs)
+    /// 
+    /// &gt; **Note**: It is strongly recommended to set `lifecycle { PreventDestroy = true }`
+    /// on instances in order to prevent accidental data loss. See
+    /// Terraform docs
+    /// for more information on lifecycle parameters.
+    /// 
+    /// &gt; **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
+    /// (and run `pulumi up` to write the field to state) in order to destroy an instance.
+    /// It is recommended to not set this field (or set it to true) until you're ready to destroy.
     /// 
     /// ## Example Usage
     /// 
@@ -121,7 +122,7 @@ namespace Pulumi.Gcp.BigTable
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A block of cluster configuration options. This can be specified at least once, and up
+        /// A block of cluster configuration options. This can be specified at least once, and up 
         /// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         /// to default to the backend value. See structure below.
         /// 
@@ -131,8 +132,9 @@ namespace Pulumi.Gcp.BigTable
         public Output<ImmutableArray<Outputs.InstanceCluster>> Clusters { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-        /// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        /// Whether Terraform will be prevented from destroying the instance. 
+        /// When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+        /// the instance will fail. When the field is set to false, deleting the instance is allowed.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -152,7 +154,7 @@ namespace Pulumi.Gcp.BigTable
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `ForceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `ForceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
@@ -250,7 +252,7 @@ namespace Pulumi.Gcp.BigTable
         private InputList<Inputs.InstanceClusterArgs>? _clusters;
 
         /// <summary>
-        /// A block of cluster configuration options. This can be specified at least once, and up
+        /// A block of cluster configuration options. This can be specified at least once, and up 
         /// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         /// to default to the backend value. See structure below.
         /// 
@@ -263,8 +265,9 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
-        /// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-        /// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        /// Whether Terraform will be prevented from destroying the instance. 
+        /// When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+        /// the instance will fail. When the field is set to false, deleting the instance is allowed.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -276,7 +279,7 @@ namespace Pulumi.Gcp.BigTable
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `ForceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `ForceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -331,7 +334,7 @@ namespace Pulumi.Gcp.BigTable
         private InputList<Inputs.InstanceClusterGetArgs>? _clusters;
 
         /// <summary>
-        /// A block of cluster configuration options. This can be specified at least once, and up
+        /// A block of cluster configuration options. This can be specified at least once, and up 
         /// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         /// to default to the backend value. See structure below.
         /// 
@@ -344,8 +347,9 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
-        /// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-        /// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        /// Whether Terraform will be prevented from destroying the instance. 
+        /// When the field is set to true or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete
+        /// the instance will fail. When the field is set to false, deleting the instance is allowed.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -375,7 +379,7 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
-        /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `ForceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `ForceDestroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }

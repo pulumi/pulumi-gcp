@@ -28,6 +28,7 @@ class ManagedZoneArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ManagedZone resource.
+
         :param pulumi.Input[_builtins.str] dns: DNS Name of the resource.
         :param pulumi.Input[_builtins.str] target_project: The name of the Target Project.
         :param pulumi.Input[_builtins.str] target_vpc: The name of the Target Project VPC Network.
@@ -157,6 +158,7 @@ class _ManagedZoneState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManagedZone resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the Namespace was created in UTC.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] dns: DNS Name of the resource.
@@ -367,8 +369,8 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         target_project = gcp.organizations.Project("target_project",
-            project_id="tf-test_32270",
-            name="tf-test_44703",
+            project_id="tf-test_9991",
+            name="tf-test_12125",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -389,8 +391,8 @@ class ManagedZone(pulumi.CustomResource):
             auto_create_subnetworks=False,
             opts = pulumi.ResourceOptions(depends_on=[compute]))
         zone = gcp.dns.ManagedZone("zone",
-            name="tf-test-dns_9329",
-            dns_name="private_37135.example.com.",
+            name="tf-test-dns_82749",
+            dns_name="private_15022.example.com.",
             visibility="private",
             private_visibility_config={
                 "networks": [{
@@ -428,6 +430,7 @@ class ManagedZone(pulumi.CustomResource):
         $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{project}}/{{name}}
         $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -467,8 +470,8 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         target_project = gcp.organizations.Project("target_project",
-            project_id="tf-test_32270",
-            name="tf-test_44703",
+            project_id="tf-test_9991",
+            name="tf-test_12125",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -489,8 +492,8 @@ class ManagedZone(pulumi.CustomResource):
             auto_create_subnetworks=False,
             opts = pulumi.ResourceOptions(depends_on=[compute]))
         zone = gcp.dns.ManagedZone("zone",
-            name="tf-test-dns_9329",
-            dns_name="private_37135.example.com.",
+            name="tf-test-dns_82749",
+            dns_name="private_15022.example.com.",
             visibility="private",
             private_visibility_config={
                 "networks": [{
@@ -528,6 +531,7 @@ class ManagedZone(pulumi.CustomResource):
         $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{project}}/{{name}}
         $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ManagedZoneArgs args: The arguments to use to populate this resource's properties.

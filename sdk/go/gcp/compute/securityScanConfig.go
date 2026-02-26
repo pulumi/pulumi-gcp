@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSecurityScanConfig(ctx, "scan-config", &compute.SecurityScanConfigArgs{
-//				DisplayName: pulumi.String("scan-config"),
+//				DisplayName: pulumi.String("terraform-scan-config"),
 //				StartingUrls: pulumi.StringArray{
 //					scannerStaticIp.Address.ApplyT(func(address string) (string, error) {
 //						return fmt.Sprintf("http://%v", address), nil

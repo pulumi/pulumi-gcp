@@ -48,7 +48,7 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
 
     /**
      * The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     @Import(name="name")
@@ -56,7 +56,7 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
 
     /**
      * @return The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -165,7 +165,7 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
 
         /**
          * @param name The name of the instance template. If you leave
-         * this blank, the provider will auto-generate a unique name.
+         * this blank, Terraform will auto-generate a unique name.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
 
         /**
          * @param name The name of the instance template. If you leave
-         * this blank, the provider will auto-generate a unique name.
+         * this blank, Terraform will auto-generate a unique name.
          * 
          * @return builder
          * 

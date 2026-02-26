@@ -120,7 +120,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> CacheControl { get; private set; } = null!;
 
         /// <summary>
-        /// Data as `String` to be uploaded. Must be defined if `Source` is not. **Note**: The `Content` field is marked as sensitive.
+        /// Data as `String` to be uploaded. Must be defined if `Source` is not. **Note**: The `Content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
         /// </summary>
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
@@ -354,7 +354,7 @@ namespace Pulumi.Gcp.Storage
         private Input<string>? _content;
 
         /// <summary>
-        /// Data as `String` to be uploaded. Must be defined if `Source` is not. **Note**: The `Content` field is marked as sensitive.
+        /// Data as `String` to be uploaded. Must be defined if `Source` is not. **Note**: The `Content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
         /// </summary>
         public Input<string>? Content
         {
@@ -525,7 +525,7 @@ namespace Pulumi.Gcp.Storage
         private Input<string>? _content;
 
         /// <summary>
-        /// Data as `String` to be uploaded. Must be defined if `Source` is not. **Note**: The `Content` field is marked as sensitive.
+        /// Data as `String` to be uploaded. Must be defined if `Source` is not. **Note**: The `Content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
         /// </summary>
         public Input<string>? Content
         {

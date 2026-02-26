@@ -32,21 +32,21 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var securityPolicyTarget = new Gcp.Organizations.Folder("security_policy_target", new()
     ///     {
-    ///         DisplayName = "tf-test-secpol",
+    ///         DisplayName = "tf-test-secpol-_52865",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         DisplayName = "tf-test",
+    ///         ShortName = "tf-test_85840",
     ///         Parent = securityPolicyTarget.Name,
     ///         Type = "CLOUD_ARMOR",
     ///     });
     /// 
     ///     var policyOrganizationSecurityPolicyAssociation = new Gcp.Compute.OrganizationSecurityPolicyAssociation("policy", new()
     ///     {
-    ///         Name = "tf-test",
+    ///         Name = "tf-test_60302",
     ///         AttachmentId = policy.Parent,
     ///         PolicyId = policy.Id,
     ///     });

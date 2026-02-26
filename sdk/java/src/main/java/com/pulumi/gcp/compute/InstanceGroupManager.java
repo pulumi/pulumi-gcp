@@ -763,7 +763,7 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, this provider will
+     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
      * continue trying until it times out.
      * 
      */
@@ -772,7 +772,7 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, this provider will
+     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
      * continue trying until it times out.
      * 
      */

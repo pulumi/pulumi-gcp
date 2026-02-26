@@ -161,7 +161,8 @@ type InstanceFromTemplate struct {
 	ResourcePolicies pulumi.StringOutput `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromTemplateSchedulingOutput `pulumi:"scheduling"`
-	// The scratch disks attached to the instance.
+	// * `network_interface.alias_ip_range`
+	// * `network_interface.access_config`
 	ScratchDisks InstanceFromTemplateScratchDiskArrayOutput `pulumi:"scratchDisks"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -185,6 +186,9 @@ type InstanceFromTemplate struct {
 	// In addition to these, all arguments from `compute.Instance` are supported
 	// as a way to override the properties in the template. All exported attributes
 	// from `compute.Instance` are likewise exported here.
+	//
+	// To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+	// are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -304,7 +308,8 @@ type instanceFromTemplateState struct {
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling *InstanceFromTemplateScheduling `pulumi:"scheduling"`
-	// The scratch disks attached to the instance.
+	// * `network_interface.alias_ip_range`
+	// * `network_interface.access_config`
 	ScratchDisks []InstanceFromTemplateScratchDisk `pulumi:"scratchDisks"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -328,6 +333,9 @@ type instanceFromTemplateState struct {
 	// In addition to these, all arguments from `compute.Instance` are supported
 	// as a way to override the properties in the template. All exported attributes
 	// from `compute.Instance` are likewise exported here.
+	//
+	// To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+	// are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
 	Zone *string `pulumi:"zone"`
 }
 
@@ -410,7 +418,8 @@ type InstanceFromTemplateState struct {
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromTemplateSchedulingPtrInput
-	// The scratch disks attached to the instance.
+	// * `network_interface.alias_ip_range`
+	// * `network_interface.access_config`
 	ScratchDisks InstanceFromTemplateScratchDiskArrayInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -434,6 +443,9 @@ type InstanceFromTemplateState struct {
 	// In addition to these, all arguments from `compute.Instance` are supported
 	// as a way to override the properties in the template. All exported attributes
 	// from `compute.Instance` are likewise exported here.
+	//
+	// To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+	// are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
 	Zone pulumi.StringPtrInput
 }
 
@@ -502,7 +514,8 @@ type instanceFromTemplateArgs struct {
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling *InstanceFromTemplateScheduling `pulumi:"scheduling"`
-	// The scratch disks attached to the instance.
+	// * `network_interface.alias_ip_range`
+	// * `network_interface.access_config`
 	ScratchDisks []InstanceFromTemplateScratchDisk `pulumi:"scratchDisks"`
 	// The service account to attach to the instance.
 	ServiceAccount *InstanceFromTemplateServiceAccount `pulumi:"serviceAccount"`
@@ -522,6 +535,9 @@ type instanceFromTemplateArgs struct {
 	// In addition to these, all arguments from `compute.Instance` are supported
 	// as a way to override the properties in the template. All exported attributes
 	// from `compute.Instance` are likewise exported here.
+	//
+	// To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+	// are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
 	Zone *string `pulumi:"zone"`
 }
 
@@ -587,7 +603,8 @@ type InstanceFromTemplateArgs struct {
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromTemplateSchedulingPtrInput
-	// The scratch disks attached to the instance.
+	// * `network_interface.alias_ip_range`
+	// * `network_interface.access_config`
 	ScratchDisks InstanceFromTemplateScratchDiskArrayInput
 	// The service account to attach to the instance.
 	ServiceAccount InstanceFromTemplateServiceAccountPtrInput
@@ -607,6 +624,9 @@ type InstanceFromTemplateArgs struct {
 	// In addition to these, all arguments from `compute.Instance` are supported
 	// as a way to override the properties in the template. All exported attributes
 	// from `compute.Instance` are likewise exported here.
+	//
+	// To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+	// are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
 	Zone pulumi.StringPtrInput
 }
 
@@ -898,7 +918,8 @@ func (o InstanceFromTemplateOutput) Scheduling() InstanceFromTemplateSchedulingO
 	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplateSchedulingOutput { return v.Scheduling }).(InstanceFromTemplateSchedulingOutput)
 }
 
-// The scratch disks attached to the instance.
+// * `network_interface.alias_ip_range`
+// * `network_interface.access_config`
 func (o InstanceFromTemplateOutput) ScratchDisks() InstanceFromTemplateScratchDiskArrayOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplateScratchDiskArrayOutput { return v.ScratchDisks }).(InstanceFromTemplateScratchDiskArrayOutput)
 }
@@ -945,6 +966,9 @@ func (o InstanceFromTemplateOutput) TagsFingerprint() pulumi.StringOutput {
 // In addition to these, all arguments from `compute.Instance` are supported
 // as a way to override the properties in the template. All exported attributes
 // from `compute.Instance` are likewise exported here.
+//
+// To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+// are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
 func (o InstanceFromTemplateOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

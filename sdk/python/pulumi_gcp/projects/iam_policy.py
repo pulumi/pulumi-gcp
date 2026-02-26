@@ -23,6 +23,7 @@ class IAMPolicyArgs:
                  project: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a IAMPolicy resource.
+
         :param pulumi.Input[_builtins.str] policy_data: The `organizations_get_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
                merged with any existing policy applied to the project.
@@ -78,6 +79,7 @@ class _IAMPolicyState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IAMPolicy resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the project's IAM policy.
         :param pulumi.Input[_builtins.str] policy_data: The `organizations_get_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
@@ -173,7 +175,7 @@ class IAMPolicy(pulumi.CustomResource):
            from anyone without organization-level access to the project. Proceed with caution.
            It's not recommended to use `projects.IAMPolicy` with your provider project
            to avoid locking yourself out, and it should generally only be used with projects
-           fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+           fully managed by Terraform. If you do use this resource, it is recommended to **import** the policy before
            applying the change.
 
         ```python
@@ -294,7 +296,7 @@ class IAMPolicy(pulumi.CustomResource):
            from anyone without organization-level access to the project. Proceed with caution.
            It's not recommended to use `projects.IAMPolicy` with your provider project
            to avoid locking yourself out, and it should generally only be used with projects
-           fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+           fully managed by Terraform. If you do use this resource, it is recommended to **import** the policy before
            applying the change.
 
         ```python
@@ -415,6 +417,7 @@ class IAMPolicy(pulumi.CustomResource):
 
         > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
          to include the title of condition, e.g. `terraform import google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -457,7 +460,7 @@ class IAMPolicy(pulumi.CustomResource):
            from anyone without organization-level access to the project. Proceed with caution.
            It's not recommended to use `projects.IAMPolicy` with your provider project
            to avoid locking yourself out, and it should generally only be used with projects
-           fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+           fully managed by Terraform. If you do use this resource, it is recommended to **import** the policy before
            applying the change.
 
         ```python
@@ -578,7 +581,7 @@ class IAMPolicy(pulumi.CustomResource):
            from anyone without organization-level access to the project. Proceed with caution.
            It's not recommended to use `projects.IAMPolicy` with your provider project
            to avoid locking yourself out, and it should generally only be used with projects
-           fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+           fully managed by Terraform. If you do use this resource, it is recommended to **import** the policy before
            applying the change.
 
         ```python
@@ -699,6 +702,7 @@ class IAMPolicy(pulumi.CustomResource):
 
         > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
          to include the title of condition, e.g. `terraform import google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
+
 
         :param str resource_name: The name of the resource.
         :param IAMPolicyArgs args: The arguments to use to populate this resource's properties.

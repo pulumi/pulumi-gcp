@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewNodeTemplate(ctx, "tmpl", &compute.NodeTemplateArgs{
-//				Name:     pulumi.String("test-tmpl"),
+//				Name:     pulumi.String("terraform-test-tmpl"),
 //				Region:   pulumi.String("us-central1"),
 //				NodeType: pulumi.Any(types.Names[0]),
 //			})

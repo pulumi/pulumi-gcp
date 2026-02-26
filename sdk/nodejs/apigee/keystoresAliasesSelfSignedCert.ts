@@ -47,14 +47,14 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [servicenetworking],
  * });
- * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ * const wait300Seconds = new time.Sleep("wait_300_seconds", {createDuration: "300s"}, {
  *     dependsOn: [compute],
  * });
  * const apigeeNetwork = new gcp.compute.Network("apigee_network", {
  *     name: "apigee-network",
  *     project: project.projectId,
  * }, {
- *     dependsOn: [wait120Seconds],
+ *     dependsOn: [wait300Seconds],
  * });
  * const apigeeRange = new gcp.compute.GlobalAddress("apigee_range", {
  *     name: "apigee-range",

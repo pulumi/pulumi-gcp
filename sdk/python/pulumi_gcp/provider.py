@@ -99,7 +99,6 @@ class ProviderArgs:
                  developer_connect_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_google_partner_name: Optional[pulumi.Input[_builtins.bool]] = None,
                  discovery_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -126,8 +125,8 @@ class ProviderArgs:
                  gke_hub2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gkeonprem_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_partner_name: Optional[pulumi.Input[_builtins.str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 hypercomputecluster_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -384,8 +383,6 @@ class ProviderArgs:
             pulumi.set(__self__, "dialogflow_custom_endpoint", dialogflow_custom_endpoint)
         if dialogflow_cx_custom_endpoint is not None:
             pulumi.set(__self__, "dialogflow_cx_custom_endpoint", dialogflow_cx_custom_endpoint)
-        if disable_google_partner_name is not None:
-            pulumi.set(__self__, "disable_google_partner_name", disable_google_partner_name)
         if discovery_engine_custom_endpoint is not None:
             pulumi.set(__self__, "discovery_engine_custom_endpoint", discovery_engine_custom_endpoint)
         if dns_custom_endpoint is not None:
@@ -438,10 +435,10 @@ class ProviderArgs:
             pulumi.set(__self__, "gke_hub_custom_endpoint", gke_hub_custom_endpoint)
         if gkeonprem_custom_endpoint is not None:
             pulumi.set(__self__, "gkeonprem_custom_endpoint", gkeonprem_custom_endpoint)
-        if google_partner_name is not None:
-            pulumi.set(__self__, "google_partner_name", google_partner_name)
         if healthcare_custom_endpoint is not None:
             pulumi.set(__self__, "healthcare_custom_endpoint", healthcare_custom_endpoint)
+        if hypercomputecluster_custom_endpoint is not None:
+            pulumi.set(__self__, "hypercomputecluster_custom_endpoint", hypercomputecluster_custom_endpoint)
         if iam2_custom_endpoint is not None:
             pulumi.set(__self__, "iam2_custom_endpoint", iam2_custom_endpoint)
         if iam3_custom_endpoint is not None:
@@ -1351,15 +1348,6 @@ class ProviderArgs:
         pulumi.set(self, "dialogflow_cx_custom_endpoint", value)
 
     @_builtins.property
-    @pulumi.getter(name="disableGooglePartnerName")
-    def disable_google_partner_name(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        return pulumi.get(self, "disable_google_partner_name")
-
-    @disable_google_partner_name.setter
-    def disable_google_partner_name(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "disable_google_partner_name", value)
-
-    @_builtins.property
     @pulumi.getter(name="discoveryEngineCustomEndpoint")
     def discovery_engine_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "discovery_engine_custom_endpoint")
@@ -1594,15 +1582,6 @@ class ProviderArgs:
         pulumi.set(self, "gkeonprem_custom_endpoint", value)
 
     @_builtins.property
-    @pulumi.getter(name="googlePartnerName")
-    def google_partner_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "google_partner_name")
-
-    @google_partner_name.setter
-    def google_partner_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "google_partner_name", value)
-
-    @_builtins.property
     @pulumi.getter(name="healthcareCustomEndpoint")
     def healthcare_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "healthcare_custom_endpoint")
@@ -1610,6 +1589,15 @@ class ProviderArgs:
     @healthcare_custom_endpoint.setter
     def healthcare_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "healthcare_custom_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hypercomputeclusterCustomEndpoint")
+    def hypercomputecluster_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "hypercomputecluster_custom_endpoint")
+
+    @hypercomputecluster_custom_endpoint.setter
+    def hypercomputecluster_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hypercomputecluster_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="iam2CustomEndpoint")
@@ -2552,7 +2540,6 @@ class Provider(pulumi.ProviderResource):
                  developer_connect_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_google_partner_name: Optional[pulumi.Input[_builtins.bool]] = None,
                  discovery_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2579,8 +2566,8 @@ class Provider(pulumi.ProviderResource):
                  gke_hub2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gkeonprem_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_partner_name: Optional[pulumi.Input[_builtins.str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 hypercomputecluster_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2683,6 +2670,7 @@ class Provider(pulumi.ProviderResource):
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -2697,6 +2685,7 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
 
         :param str resource_name: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.
@@ -2792,7 +2781,6 @@ class Provider(pulumi.ProviderResource):
                  developer_connect_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_google_partner_name: Optional[pulumi.Input[_builtins.bool]] = None,
                  discovery_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2819,8 +2807,8 @@ class Provider(pulumi.ProviderResource):
                  gke_hub2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gkeonprem_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_partner_name: Optional[pulumi.Input[_builtins.str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 hypercomputecluster_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3004,7 +2992,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["developer_connect_custom_endpoint"] = developer_connect_custom_endpoint
             __props__.__dict__["dialogflow_custom_endpoint"] = dialogflow_custom_endpoint
             __props__.__dict__["dialogflow_cx_custom_endpoint"] = dialogflow_cx_custom_endpoint
-            __props__.__dict__["disable_google_partner_name"] = pulumi.Output.from_input(disable_google_partner_name).apply(pulumi.runtime.to_json) if disable_google_partner_name is not None else None
             __props__.__dict__["discovery_engine_custom_endpoint"] = discovery_engine_custom_endpoint
             __props__.__dict__["dns_custom_endpoint"] = dns_custom_endpoint
             __props__.__dict__["document_ai_custom_endpoint"] = document_ai_custom_endpoint
@@ -3031,8 +3018,8 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["gke_hub2_custom_endpoint"] = gke_hub2_custom_endpoint
             __props__.__dict__["gke_hub_custom_endpoint"] = gke_hub_custom_endpoint
             __props__.__dict__["gkeonprem_custom_endpoint"] = gkeonprem_custom_endpoint
-            __props__.__dict__["google_partner_name"] = google_partner_name
             __props__.__dict__["healthcare_custom_endpoint"] = healthcare_custom_endpoint
+            __props__.__dict__["hypercomputecluster_custom_endpoint"] = hypercomputecluster_custom_endpoint
             __props__.__dict__["iam2_custom_endpoint"] = iam2_custom_endpoint
             __props__.__dict__["iam3_custom_endpoint"] = iam3_custom_endpoint
             __props__.__dict__["iam_beta_custom_endpoint"] = iam_beta_custom_endpoint
@@ -3648,14 +3635,14 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "gkeonprem_custom_endpoint")
 
     @_builtins.property
-    @pulumi.getter(name="googlePartnerName")
-    def google_partner_name(self) -> pulumi.Output[Optional[_builtins.str]]:
-        return pulumi.get(self, "google_partner_name")
-
-    @_builtins.property
     @pulumi.getter(name="healthcareCustomEndpoint")
     def healthcare_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "healthcare_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="hypercomputeclusterCustomEndpoint")
+    def hypercomputecluster_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "hypercomputecluster_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="iam2CustomEndpoint")

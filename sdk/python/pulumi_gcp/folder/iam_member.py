@@ -27,6 +27,7 @@ class IAMMemberArgs:
                  condition: Optional[pulumi.Input['IAMMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a IAMMember resource.
+
         :param pulumi.Input[_builtins.str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -113,6 +114,7 @@ class _IAMMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IAMMember resources.
+
         :param pulumi.Input['IAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the folder's IAM policy.
@@ -240,7 +242,7 @@ class IAMMember(pulumi.CustomResource):
            from anyone without permissions on its parent folder/organization. Proceed with caution.
            It's not recommended to use `folder.IAMPolicy` with your provider folder
            to avoid locking yourself out, and it should generally only be used with folders
-           fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+           fully managed by Terraform. If you do use this resource, it is recommended to **import** the policy before
            applying the change.
 
         ```python
@@ -439,6 +441,7 @@ class IAMMember(pulumi.CustomResource):
 
         > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
          to include the title of condition, e.g. `terraform import google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -483,7 +486,7 @@ class IAMMember(pulumi.CustomResource):
            from anyone without permissions on its parent folder/organization. Proceed with caution.
            It's not recommended to use `folder.IAMPolicy` with your provider folder
            to avoid locking yourself out, and it should generally only be used with folders
-           fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+           fully managed by Terraform. If you do use this resource, it is recommended to **import** the policy before
            applying the change.
 
         ```python
@@ -682,6 +685,7 @@ class IAMMember(pulumi.CustomResource):
 
         > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
          to include the title of condition, e.g. `terraform import google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
+
 
         :param str resource_name: The name of the resource.
         :param IAMMemberArgs args: The arguments to use to populate this resource's properties.

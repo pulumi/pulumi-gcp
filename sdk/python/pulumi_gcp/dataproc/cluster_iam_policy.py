@@ -25,6 +25,7 @@ class ClusterIAMPolicyArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClusterIAMPolicy resource.
+
         :param pulumi.Input[_builtins.str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
                
                For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
@@ -32,9 +33,9 @@ class ClusterIAMPolicyArgs:
                
                - - -
         :param pulumi.Input[_builtins.str] project: The project in which the cluster belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] region: The region in which the cluster belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         """
         pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "policy_data", policy_data)
@@ -76,7 +77,7 @@ class ClusterIAMPolicyArgs:
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The project in which the cluster belongs. If it
-        is not provided, the provider will use a default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "project")
 
@@ -89,7 +90,7 @@ class ClusterIAMPolicyArgs:
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The region in which the cluster belongs. If it
-        is not provided, the provider will use a default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "region")
 
@@ -108,6 +109,7 @@ class _ClusterIAMPolicyState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClusterIAMPolicy resources.
+
         :param pulumi.Input[_builtins.str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
                
                For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
@@ -116,9 +118,9 @@ class _ClusterIAMPolicyState:
                
                - - -
         :param pulumi.Input[_builtins.str] project: The project in which the cluster belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] region: The region in which the cluster belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
@@ -176,7 +178,7 @@ class _ClusterIAMPolicyState:
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The project in which the cluster belongs. If it
-        is not provided, the provider will use a default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "project")
 
@@ -189,7 +191,7 @@ class _ClusterIAMPolicyState:
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The region in which the cluster belongs. If it
-        is not provided, the provider will use a default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "region")
 
@@ -307,6 +309,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
@@ -316,9 +319,9 @@ class ClusterIAMPolicy(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[_builtins.str] project: The project in which the cluster belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] region: The region in which the cluster belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         """
         ...
     @overload
@@ -424,6 +427,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
+
         :param str resource_name: The name of the resource.
         :param ClusterIAMPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -491,9 +495,9 @@ class ClusterIAMPolicy(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[_builtins.str] project: The project in which the cluster belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] region: The region in which the cluster belongs. If it
-               is not provided, the provider will use a default.
+               is not provided, Terraform will use the provider default.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -539,7 +543,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
     def project(self) -> pulumi.Output[_builtins.str]:
         """
         The project in which the cluster belongs. If it
-        is not provided, the provider will use a default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "project")
 
@@ -548,7 +552,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
     def region(self) -> pulumi.Output[_builtins.str]:
         """
         The region in which the cluster belongs. If it
-        is not provided, the provider will use a default.
+        is not provided, Terraform will use the provider default.
         """
         return pulumi.get(self, "region")
 

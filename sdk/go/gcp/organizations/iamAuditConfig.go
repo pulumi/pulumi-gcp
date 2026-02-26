@@ -12,9 +12,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
+// Four different resources help you manage your IAM policy for a organization. Each of these resources serves a different use case:
 //
-// ## Example Usage
+// * `organizations.IAMPolicy`: Authoritative. Sets the IAM policy for the organization and replaces any existing policy already attached.
+// * `organizations.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organization are preserved.
+// * `organizations.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organization are preserved.
+// * `organizations.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
+//
+// > **Note:** `organizations.IAMPolicy` **cannot** be used in conjunction with `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig` or they will fight over what your policy should be.
+//
+// > **Note:** `organizations.IAMBinding` resources **can be** used in conjunction with `organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## organizations.IAMPolicy
+//
+// !> **Warning:** New organizations have several default policies which will,
+//
+//	without extreme caution, be **overwritten** by use of this resource.
+//	The safest alternative is to use multiple `organizations.IAMBinding`
+//	resources. This resource makes it easy to remove your own access to
+//	an organization, which will require a call to Google Support to have
+//	fixed, and can take multiple days to resolve.
+//	<br /><br />
+//	In general, this resource should only be used with organizations
+//	fully managed by Terraform.If you do use this resource,
+//	the best way to be sure that you are not making dangerous changes is to start
+//	by **importing** your existing policy, and examining the diff very closely.
 //
 // ```go
 // package main
@@ -28,10 +50,392 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewIamAuditConfig(ctx, "config", &organizations.IamAuditConfigArgs{
-//				OrgId:   pulumi.String("your-organization-id"),
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.NewIAMPolicy(ctx, "organization", &organizations.IAMPolicyArgs{
+//				OrgId:      pulumi.String("1234567890"),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: {
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.NewIAMPolicy(ctx, "organization", &organizations.IAMPolicyArgs{
+//				OrgId:      pulumi.String("1234567890"),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## organizations.IAMBinding
+//
+// > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMBinding(ctx, "organization", &organizations.IAMBindingArgs{
+//				OrgId: pulumi.String("1234567890"),
+//				Role:  pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMBinding(ctx, "organization", &organizations.IAMBindingArgs{
+//				OrgId: pulumi.String("1234567890"),
+//				Role:  pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &organizations.IAMBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## organizations.IAMMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMMember(ctx, "organization", &organizations.IAMMemberArgs{
+//				OrgId:  pulumi.String("1234567890"),
+//				Role:   pulumi.String("roles/editor"),
+//				Member: pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMMember(ctx, "organization", &organizations.IAMMemberArgs{
+//				OrgId:  pulumi.String("1234567890"),
+//				Role:   pulumi.String("roles/editor"),
+//				Member: pulumi.String("user:jane@example.com"),
+//				Condition: &organizations.IAMMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## organizations.IamAuditConfig
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIamAuditConfig(ctx, "organization", &organizations.IamAuditConfigArgs{
+//				OrgId:   pulumi.String("1234567890"),
 //				Service: pulumi.String("allServices"),
 //				AuditLogConfigs: organizations.IamAuditConfigAuditLogConfigArray{
+//					&organizations.IamAuditConfigAuditLogConfigArgs{
+//						LogType: pulumi.String("ADMIN_READ"),
+//					},
+//					&organizations.IamAuditConfigAuditLogConfigArgs{
+//						LogType: pulumi.String("DATA_READ"),
+//						ExemptedMembers: pulumi.StringArray{
+//							pulumi.String("user:joebloggs@example.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## organizations.IAMBinding
+//
+// > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMBinding(ctx, "organization", &organizations.IAMBindingArgs{
+//				OrgId: pulumi.String("1234567890"),
+//				Role:  pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMBinding(ctx, "organization", &organizations.IAMBindingArgs{
+//				OrgId: pulumi.String("1234567890"),
+//				Role:  pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &organizations.IAMBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## organizations.IAMMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMMember(ctx, "organization", &organizations.IAMMemberArgs{
+//				OrgId:  pulumi.String("1234567890"),
+//				Role:   pulumi.String("roles/editor"),
+//				Member: pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMMember(ctx, "organization", &organizations.IAMMemberArgs{
+//				OrgId:  pulumi.String("1234567890"),
+//				Role:   pulumi.String("roles/editor"),
+//				Member: pulumi.String("user:jane@example.com"),
+//				Condition: &organizations.IAMMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## organizations.IamAuditConfig
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIamAuditConfig(ctx, "organization", &organizations.IamAuditConfigArgs{
+//				OrgId:   pulumi.String("1234567890"),
+//				Service: pulumi.String("allServices"),
+//				AuditLogConfigs: organizations.IamAuditConfigAuditLogConfigArray{
+//					&organizations.IamAuditConfigAuditLogConfigArgs{
+//						LogType: pulumi.String("ADMIN_READ"),
+//					},
 //					&organizations.IamAuditConfigAuditLogConfigArgs{
 //						LogType: pulumi.String("DATA_READ"),
 //						ExemptedMembers: pulumi.StringArray{
@@ -51,21 +455,23 @@ import (
 //
 // ## Import
 //
-// IAM audit config imports use the identifier of the resource in question and the service, e.g.
+// > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
-// ```sh
-// terraform import google_organization_iam_audit_config.config "your-organization-id foo.googleapis.com"
-// ```
+//	full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
+//
+// > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
+//
+//	to include the title of condition, e.g. `terraform import google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
 type IamAuditConfig struct {
 	pulumi.CustomResourceState
 
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 	AuditLogConfigs IamAuditConfigAuditLogConfigArrayOutput `pulumi:"auditLogConfigs"`
-	// The etag of iam policy
+	// (Computed) The etag of the organization's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The numeric ID of the organization in which you want to manage the audit logging config.
+	// The organization id of the target organization.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service pulumi.StringOutput `pulumi:"service"`
 }
 
@@ -110,22 +516,22 @@ func GetIamAuditConfig(ctx *pulumi.Context,
 type iamAuditConfigState struct {
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 	AuditLogConfigs []IamAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
-	// The etag of iam policy
+	// (Computed) The etag of the organization's IAM policy.
 	Etag *string `pulumi:"etag"`
-	// The numeric ID of the organization in which you want to manage the audit logging config.
+	// The organization id of the target organization.
 	OrgId *string `pulumi:"orgId"`
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service *string `pulumi:"service"`
 }
 
 type IamAuditConfigState struct {
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 	AuditLogConfigs IamAuditConfigAuditLogConfigArrayInput
-	// The etag of iam policy
+	// (Computed) The etag of the organization's IAM policy.
 	Etag pulumi.StringPtrInput
-	// The numeric ID of the organization in which you want to manage the audit logging config.
+	// The organization id of the target organization.
 	OrgId pulumi.StringPtrInput
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service pulumi.StringPtrInput
 }
 
@@ -136,9 +542,9 @@ func (IamAuditConfigState) ElementType() reflect.Type {
 type iamAuditConfigArgs struct {
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 	AuditLogConfigs []IamAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
-	// The numeric ID of the organization in which you want to manage the audit logging config.
+	// The organization id of the target organization.
 	OrgId string `pulumi:"orgId"`
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service string `pulumi:"service"`
 }
 
@@ -146,9 +552,9 @@ type iamAuditConfigArgs struct {
 type IamAuditConfigArgs struct {
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 	AuditLogConfigs IamAuditConfigAuditLogConfigArrayInput
-	// The numeric ID of the organization in which you want to manage the audit logging config.
+	// The organization id of the target organization.
 	OrgId pulumi.StringInput
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service pulumi.StringInput
 }
 
@@ -244,17 +650,17 @@ func (o IamAuditConfigOutput) AuditLogConfigs() IamAuditConfigAuditLogConfigArra
 	return o.ApplyT(func(v *IamAuditConfig) IamAuditConfigAuditLogConfigArrayOutput { return v.AuditLogConfigs }).(IamAuditConfigAuditLogConfigArrayOutput)
 }
 
-// The etag of iam policy
+// (Computed) The etag of the organization's IAM policy.
 func (o IamAuditConfigOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *IamAuditConfig) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The numeric ID of the organization in which you want to manage the audit logging config.
+// The organization id of the target organization.
 func (o IamAuditConfigOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IamAuditConfig) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 func (o IamAuditConfigOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *IamAuditConfig) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }

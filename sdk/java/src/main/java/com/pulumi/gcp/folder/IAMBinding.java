@@ -17,18 +17,29 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Allows creation and management of a single binding within IAM policy for
- * an existing Google Cloud Platform folder.
+ * Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
  * 
- * &gt; **Note:** This resource _must not_ be used in conjunction with
- *    `gcp.folder.IAMPolicy` or they will fight over what your policy
- *    should be.
+ * * `gcp.folder.IAMPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
+ * * `gcp.folder.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
+ * * `gcp.folder.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
+ * * `gcp.folder.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
  * 
- * &gt; **Note:** On create, this resource will overwrite members of any existing roles.
- *     Use `pulumi import` and inspect the output to ensure
- *     your existing members are preserved.
+ * &gt; **Note:** `gcp.folder.IAMPolicy` **cannot** be used in conjunction with `gcp.folder.IAMBinding`, `gcp.folder.IAMMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
  * 
- * ## Example Usage
+ * &gt; **Note:** `gcp.folder.IAMBinding` resources **can be** used in conjunction with `gcp.folder.IAMMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * &gt; **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
+ *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
+ * 
+ * ## gcp.folder.IAMPolicy
+ * 
+ * !&gt; **Be careful!** You can accidentally lock yourself out of your folder
+ *    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
+ *    from anyone without permissions on its parent folder/organization. Proceed with caution.
+ *    It&#39;s not recommended to use `gcp.folder.IAMPolicy` with your provider folder
+ *    to avoid locking yourself out, and it should generally only be used with folders
+ *    fully managed by Terraform. If you do use this resource, it is recommended to **import** the policy before
+ *    applying the change.
  * 
  * <pre>
  * {@code
@@ -37,8 +48,97 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.Folder;
- * import com.pulumi.gcp.organizations.FolderArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.folder.IAMPolicy;
+ * import com.pulumi.gcp.folder.IAMPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/editor")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()
+ *             .folder("folders/1234567")
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.folder.IAMPolicy;
+ * import com.pulumi.gcp.folder.IAMPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/compute.admin")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()
+ *             .folder("folders/1234567")
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.folder.IAMBinding
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
  * import com.pulumi.gcp.folder.IAMBinding;
  * import com.pulumi.gcp.folder.IAMBindingArgs;
  * import java.util.List;
@@ -54,15 +154,365 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var department1 = new Folder("department1", FolderArgs.builder()
- *             .displayName("Department 1")
- *             .parent("organizations/1234567")
+ *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()
+ *             .folder("folders/1234567")
+ *             .role("roles/editor")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *         var admin = new IAMBinding("admin", IAMBindingArgs.builder()
- *             .folder(department1.name())
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.folder.IAMBinding;
+ * import com.pulumi.gcp.folder.IAMBindingArgs;
+ * import com.pulumi.gcp.folder.inputs.IAMBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()
+ *             .folder("folders/1234567")
+ *             .role("roles/container.admin")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .condition(IAMBindingConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.folder.IAMMember
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.folder.IAMMember;
+ * import com.pulumi.gcp.folder.IAMMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var folder = new IAMMember("folder", IAMMemberArgs.builder()
+ *             .folder("folders/1234567")
  *             .role("roles/editor")
- *             .members("user:alice}{@literal @}{@code gmail.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.folder.IAMMember;
+ * import com.pulumi.gcp.folder.IAMMemberArgs;
+ * import com.pulumi.gcp.folder.inputs.IAMMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var folder = new IAMMember("folder", IAMMemberArgs.builder()
+ *             .folder("folders/1234567")
+ *             .role("roles/firebase.admin")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .condition(IAMMemberConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.folder.IamAuditConfig
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.folder.IamAuditConfig;
+ * import com.pulumi.gcp.folder.IamAuditConfigArgs;
+ * import com.pulumi.gcp.folder.inputs.IamAuditConfigAuditLogConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var folder = new IamAuditConfig("folder", IamAuditConfigArgs.builder()
+ *             .folder("folders/1234567")
+ *             .service("allServices")
+ *             .auditLogConfigs(            
+ *                 IamAuditConfigAuditLogConfigArgs.builder()
+ *                     .logType("ADMIN_READ")
+ *                     .build(),
+ *                 IamAuditConfigAuditLogConfigArgs.builder()
+ *                     .logType("DATA_READ")
+ *                     .exemptedMembers("user:joebloggs}{@literal @}{@code example.com")
+ *                     .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.folder.IAMBinding
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.folder.IAMBinding;
+ * import com.pulumi.gcp.folder.IAMBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()
+ *             .folder("folders/1234567")
+ *             .role("roles/editor")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.folder.IAMBinding;
+ * import com.pulumi.gcp.folder.IAMBindingArgs;
+ * import com.pulumi.gcp.folder.inputs.IAMBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()
+ *             .folder("folders/1234567")
+ *             .role("roles/container.admin")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .condition(IAMBindingConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.folder.IAMMember
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.folder.IAMMember;
+ * import com.pulumi.gcp.folder.IAMMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var folder = new IAMMember("folder", IAMMemberArgs.builder()
+ *             .folder("folders/1234567")
+ *             .role("roles/editor")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.folder.IAMMember;
+ * import com.pulumi.gcp.folder.IAMMemberArgs;
+ * import com.pulumi.gcp.folder.inputs.IAMMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var folder = new IAMMember("folder", IAMMemberArgs.builder()
+ *             .folder("folders/1234567")
+ *             .role("roles/firebase.admin")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .condition(IAMMemberConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.folder.IamAuditConfig
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.folder.IamAuditConfig;
+ * import com.pulumi.gcp.folder.IamAuditConfigArgs;
+ * import com.pulumi.gcp.folder.inputs.IamAuditConfigAuditLogConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var folder = new IamAuditConfig("folder", IamAuditConfigArgs.builder()
+ *             .folder("folders/1234567")
+ *             .service("allServices")
+ *             .auditLogConfigs(            
+ *                 IamAuditConfigAuditLogConfigArgs.builder()
+ *                     .logType("ADMIN_READ")
+ *                     .build(),
+ *                 IamAuditConfigAuditLogConfigArgs.builder()
+ *                     .logType("DATA_READ")
+ *                     .exemptedMembers("user:joebloggs}{@literal @}{@code example.com")
+ *                     .build())
  *             .build());
  * 
  *     }}{@code
@@ -72,21 +522,28 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * IAM binding imports use space-delimited identifiers; first the resource in question and then the role.  These bindings can be imported using the `folder` and role, e.g.
+ * &gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
  * 
- * ```sh
- * $ terraform import google_folder_iam_binding.viewer &#34;folder-name roles/viewer&#34;
- * ```
- * 
- * &gt; **Custom Roles**: If you&#39;re importing a IAM binding with a custom role, make sure to use the
- *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * &gt; **Conditional IAM Bindings**: If you&#39;re importing a IAM binding with a condition block, make sure
+ *  to include the title of condition, e.g. `terraform import google_folder_iam_binding.my_folder &#34;folder roles/{{role_id}} condition-title&#34;`
  * 
  */
 @ResourceType(type="gcp:folder/iAMBinding:IAMBinding")
 public class IAMBinding extends com.pulumi.resources.CustomResource {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     @Export(name="condition", refs={IAMBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ IAMBindingCondition> condition;
 
+    /**
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     public Output<Optional<IAMBindingCondition>> condition() {
         return Codegen.optional(this.condition);
     }
@@ -119,26 +576,24 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
         return this.folder;
     }
     /**
-     * An array of identities that will be granted the privilege in the `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice{@literal @}gmail.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      * 
      */
     @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     /**
-     * @return An array of identities that will be granted the privilege in the `role`.
+     * @return Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice{@literal @}gmail.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      * 
      */
     public Output<List<String>> members() {
@@ -147,7 +602,7 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     /**
      * The role that should be applied. Only one
      * `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * `organizations/{{org_id}}/roles/{{role_id}}`.
      * 
      */
     @Export(name="role", refs={String.class}, tree="[0]")
@@ -156,7 +611,7 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     /**
      * @return The role that should be applied. Only one
      * `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * `organizations/{{org_id}}/roles/{{role_id}}`.
      * 
      */
     public Output<String> role() {

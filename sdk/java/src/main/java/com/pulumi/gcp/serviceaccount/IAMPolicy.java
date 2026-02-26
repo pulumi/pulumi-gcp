@@ -28,9 +28,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.serviceaccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## Example Usage
- * 
- * ### Service Account IAM Policy
+ * ## gcp.serviceaccount.IAMPolicy
  * 
  * <pre>
  * {@code
@@ -80,7 +78,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Service Account IAM Binding
+ * ## gcp.serviceaccount.IAMBinding
  * 
  * <pre>
  * {@code
@@ -122,7 +120,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Service Account IAM Binding With IAM Conditions:
+ * With IAM Conditions:
  * 
  * <pre>
  * {@code
@@ -170,7 +168,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Service Account IAM Member
+ * ## gcp.serviceaccount.IAMMember
  * 
  * <pre>
  * {@code
@@ -224,7 +222,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Service Account IAM Member With IAM Conditions:
+ * With IAM Conditions:
  * 
  * <pre>
  * {@code
@@ -272,59 +270,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Additional Examples
- * 
- * ### Service Account IAM Policy
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.serviceaccount.Account;
- * import com.pulumi.gcp.serviceaccount.AccountArgs;
- * import com.pulumi.gcp.serviceaccount.IAMPolicy;
- * import com.pulumi.gcp.serviceaccount.IAMPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role("roles/iam.serviceAccountUser")
- *                 .members("user:jane}{@literal @}{@code example.com")
- *                 .build())
- *             .build());
- * 
- *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("my-service-account")
- *             .displayName("A service account that only Jane can interact with")
- *             .build());
- * 
- *         var admin_account_iam = new IAMPolicy("admin-account-iam", IAMPolicyArgs.builder()
- *             .serviceAccountId(sa.name())
- *             .policyData(admin.policyData())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * 
- * ### Service Account IAM Binding
+ * ## gcp.serviceaccount.IAMBinding
  * 
  * <pre>
  * {@code
@@ -366,7 +312,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Service Account IAM Binding With IAM Conditions:
+ * With IAM Conditions:
  * 
  * <pre>
  * {@code
@@ -414,7 +360,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Service Account IAM Member
+ * ## gcp.serviceaccount.IAMMember
  * 
  * <pre>
  * {@code
@@ -468,7 +414,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Service Account IAM Member With IAM Conditions:
+ * With IAM Conditions:
  * 
  * <pre>
  * {@code

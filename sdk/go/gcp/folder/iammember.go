@@ -35,7 +35,7 @@ import (
 //	from anyone without permissions on its parent folder/organization. Proceed with caution.
 //	It's not recommended to use `folder.IAMPolicy` with your provider folder
 //	to avoid locking yourself out, and it should generally only be used with folders
-//	fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+//	fully managed by Terraform. If you do use this resource, it is recommended to **import** the policy before
 //	applying the change.
 //
 // ```go

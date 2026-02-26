@@ -70,9 +70,9 @@ namespace Pulumi.Gcp.Apigee
     ///         },
     ///     });
     /// 
-    ///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
+    ///     var wait300Seconds = new Time.Sleep("wait_300_seconds", new()
     ///     {
-    ///         CreateDuration = "120s",
+    ///         CreateDuration = "300s",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.Apigee
     ///     {
     ///         DependsOn =
     ///         {
-    ///             wait120Seconds,
+    ///             wait300Seconds,
     ///         },
     ///     });
     /// 

@@ -25,6 +25,7 @@ class DiskResourcePolicyAttachmentArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DiskResourcePolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] disk: The name of the disk in which the resource policies are attached to.
         :param pulumi.Input[_builtins.str] name: The resource policy to be attached to the disk for scheduling snapshot
                creation. Do not specify the self link.
@@ -100,6 +101,7 @@ class _DiskResourcePolicyAttachmentState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DiskResourcePolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] disk: The name of the disk in which the resource policies are attached to.
         :param pulumi.Input[_builtins.str] name: The resource policy to be attached to the disk for scheduling snapshot
                creation. Do not specify the self link.
@@ -182,7 +184,7 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         Adds existing resource policies to a disk. You can only add one policy
         which will be applied to this disk for scheduling snapshot creation.
 
-        > **Note:** This resource does not support regional disks (`compute.RegionDisk`). For regional disks, please refer to the `compute.RegionDiskResourcePolicyAttachment` resource.
+        > **Note:** This resource does not support regional disks (`compute.RegionDisk`). For regional disks, please refer to `compute.RegionDiskResourcePolicyAttachment`
 
         ## Example Usage
 
@@ -234,6 +236,7 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{zone}}/{{disk}}/{{name}}
         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{disk}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -254,7 +257,7 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         Adds existing resource policies to a disk. You can only add one policy
         which will be applied to this disk for scheduling snapshot creation.
 
-        > **Note:** This resource does not support regional disks (`compute.RegionDisk`). For regional disks, please refer to the `compute.RegionDiskResourcePolicyAttachment` resource.
+        > **Note:** This resource does not support regional disks (`compute.RegionDisk`). For regional disks, please refer to `compute.RegionDiskResourcePolicyAttachment`
 
         ## Example Usage
 
@@ -306,6 +309,7 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{zone}}/{{disk}}/{{name}}
         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{disk}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiskResourcePolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

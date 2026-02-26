@@ -32,15 +32,22 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dns.NewManagedZone(ctx, "example-zone", &dns.ManagedZoneArgs{
+//			rnd, err := random.NewId(ctx, "rnd", &random.IdArgs{
+//				ByteLength: 4,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewManagedZone(ctx, "example-zone", &dns.ManagedZoneArgs{
 //				Name:        pulumi.String("example-zone"),
-//				DnsName:     pulumi.String("my-domain.com."),
+//				DnsName:     pulumi.Sprintf("example-%v.com.", rnd.Hex),
 //				Description: pulumi.String("Example DNS zone"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
@@ -487,7 +494,7 @@ type ManagedZone struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
-	// A textual description field. Defaults to 'Managed by Pulumi'.
+	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
@@ -593,7 +600,7 @@ type managedZoneState struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreationTime *string `pulumi:"creationTime"`
-	// A textual description field. Defaults to 'Managed by Pulumi'.
+	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description *string `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName *string `pulumi:"dnsName"`
@@ -659,7 +666,7 @@ type ManagedZoneState struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreationTime pulumi.StringPtrInput
-	// A textual description field. Defaults to 'Managed by Pulumi'.
+	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description pulumi.StringPtrInput
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName pulumi.StringPtrInput
@@ -726,7 +733,7 @@ type managedZoneArgs struct {
 	// Cloud logging configuration
 	// Structure is documented below.
 	CloudLoggingConfig *ManagedZoneCloudLoggingConfig `pulumi:"cloudLoggingConfig"`
-	// A textual description field. Defaults to 'Managed by Pulumi'.
+	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description *string `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName string `pulumi:"dnsName"`
@@ -780,7 +787,7 @@ type ManagedZoneArgs struct {
 	// Cloud logging configuration
 	// Structure is documented below.
 	CloudLoggingConfig ManagedZoneCloudLoggingConfigPtrInput
-	// A textual description field. Defaults to 'Managed by Pulumi'.
+	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description pulumi.StringPtrInput
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName pulumi.StringInput
@@ -928,7 +935,7 @@ func (o ManagedZoneOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// A textual description field. Defaults to 'Managed by Pulumi'.
+// A textual description field. Defaults to 'Managed by Terraform'.
 func (o ManagedZoneOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }

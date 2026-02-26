@@ -332,7 +332,7 @@ public class TableIamMember extends com.pulumi.resources.CustomResource {
     }
     /**
      * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
@@ -340,7 +340,7 @@ public class TableIamMember extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, Terraform will use the provider default.
      * 
      */
     public Output<String> project() {

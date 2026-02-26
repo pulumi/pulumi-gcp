@@ -197,7 +197,7 @@ def get_engine_versions(location: Optional[_builtins.str] = None,
     central1b = gcp.container.get_engine_versions(location="us-central1-b",
         version_prefix="1.12.")
     foo = gcp.container.Cluster("foo",
-        name="test-cluster",
+        name="terraform-test-cluster",
         location="us-central1-b",
         node_version=central1b.latest_node_version,
         initial_node_count=1)
@@ -212,7 +212,7 @@ def get_engine_versions(location: Optional[_builtins.str] = None,
            specified, the provider-level zone must be set and is used instead.
     :param _builtins.str project: ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
            Defaults to the project that the provider is authenticated with.
-    :param _builtins.str version_prefix: If provided, the provider will only return versions
+    :param _builtins.str version_prefix: If provided, Terraform will only return versions
            that match the string prefix. For example, `1.11.` will match all `1.11` series
            releases. Since this is just a string match, it's recommended that you append a
            `.` after minor versions to ensure that prefixes such as `1.1` don't match
@@ -264,7 +264,7 @@ def get_engine_versions_output(location: Optional[pulumi.Input[Optional[_builtin
     central1b = gcp.container.get_engine_versions(location="us-central1-b",
         version_prefix="1.12.")
     foo = gcp.container.Cluster("foo",
-        name="test-cluster",
+        name="terraform-test-cluster",
         location="us-central1-b",
         node_version=central1b.latest_node_version,
         initial_node_count=1)
@@ -279,7 +279,7 @@ def get_engine_versions_output(location: Optional[pulumi.Input[Optional[_builtin
            specified, the provider-level zone must be set and is used instead.
     :param _builtins.str project: ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
            Defaults to the project that the provider is authenticated with.
-    :param _builtins.str version_prefix: If provided, the provider will only return versions
+    :param _builtins.str version_prefix: If provided, Terraform will only return versions
            that match the string prefix. For example, `1.11.` will match all `1.11` series
            releases. Since this is just a string match, it's recommended that you append a
            `.` after minor versions to ensure that prefixes such as `1.1` don't match

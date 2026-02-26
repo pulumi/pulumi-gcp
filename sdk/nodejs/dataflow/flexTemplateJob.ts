@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * getting new data from (e.g.) a GCS bucket, and outputting data continuously.
  * Some jobs process a set amount of data then terminate. All jobs can fail while
  * running due to programming errors or other issues. In this way, Dataflow jobs
- * are different from most other provider / Google resources.
+ * are different from most other Terraform / Google resources.
  *
  * The Dataflow resource is considered 'existing' while it is in a nonterminal
  * state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE',
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * new data will be processed.  If "drained", no new data will enter the pipeline,
  * but any data currently in the pipeline will finish being processed.  The default
  * is "cancelled", but if a user sets `onDelete` to `"drain"` in the
- * configuration, you may experience a long wait for your `pulumi destroy` to
+ * configuration, you may experience a long wait for your `terraform destroy` to
  * complete.
  *
  * You can potentially short-circuit the wait by setting `skipWaitOnJobTermination`
@@ -134,7 +134,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     declare public readonly containerSpecGcsPath: pulumi.Output<string>;
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -156,11 +156,8 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * page.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -189,7 +186,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     declare public readonly numWorkers: pulumi.Output<number>;
     /**
      * One of "drain" or "cancel". Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
+     * deletion during `terraform destroy`.  See above note.
      */
     declare public readonly onDelete: pulumi.Output<string | undefined>;
     /**
@@ -360,7 +357,7 @@ export interface FlexTemplateJobState {
      */
     containerSpecGcsPath?: pulumi.Input<string>;
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -382,11 +379,8 @@ export interface FlexTemplateJobState {
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * page.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -415,7 +409,7 @@ export interface FlexTemplateJobState {
     numWorkers?: pulumi.Input<number>;
     /**
      * One of "drain" or "cancel". Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
+     * deletion during `terraform destroy`.  See above note.
      */
     onDelete?: pulumi.Input<string>;
     /**
@@ -515,11 +509,8 @@ export interface FlexTemplateJobArgs {
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * page.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -548,7 +539,7 @@ export interface FlexTemplateJobArgs {
     numWorkers?: pulumi.Input<number>;
     /**
      * One of "drain" or "cancel". Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
+     * deletion during `terraform destroy`.  See above note.
      */
     onDelete?: pulumi.Input<string>;
     /**

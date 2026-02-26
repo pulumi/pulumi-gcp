@@ -166,12 +166,12 @@ export class ClusterIAMBinding extends pulumi.CustomResource {
     declare public readonly members: pulumi.Output<string[]>;
     /**
      * The project in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
      * The region in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
@@ -255,12 +255,12 @@ export interface ClusterIAMBindingState {
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      */
     project?: pulumi.Input<string>;
     /**
      * The region in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      */
     region?: pulumi.Input<string>;
     /**
@@ -297,12 +297,12 @@ export interface ClusterIAMBindingArgs {
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      */
     project?: pulumi.Input<string>;
     /**
      * The region in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
+     * is not provided, Terraform will use the provider default.
      */
     region?: pulumi.Input<string>;
     /**

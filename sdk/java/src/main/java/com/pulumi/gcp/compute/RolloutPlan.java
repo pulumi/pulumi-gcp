@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new RolloutPlan("default", RolloutPlanArgs.builder()
- *             .name("tf-test-rollout-plan-_52865")
+ *             .name("tf-test-rollout-plan-_91042")
  *             .description("A test rollout plan")
  *             .locationScope("ZONAL")
  *             .waves(RolloutPlanWaveArgs.builder()

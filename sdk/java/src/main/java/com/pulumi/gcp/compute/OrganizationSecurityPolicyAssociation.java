@@ -53,19 +53,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var securityPolicyTarget = new Folder("securityPolicyTarget", FolderArgs.builder()
- *             .displayName("tf-test-secpol")
+ *             .displayName("tf-test-secpol-_52865")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());
  * 
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .displayName("tf-test")
+ *             .shortName("tf-test_85840")
  *             .parent(securityPolicyTarget.name())
  *             .type("CLOUD_ARMOR")
  *             .build());
  * 
  *         var policyOrganizationSecurityPolicyAssociation = new OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation", OrganizationSecurityPolicyAssociationArgs.builder()
- *             .name("tf-test")
+ *             .name("tf-test_60302")
  *             .attachmentId(policy.parent())
  *             .policyId(policy.id())
  *             .build());

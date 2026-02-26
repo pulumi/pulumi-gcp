@@ -33,6 +33,7 @@ class BatchArgs:
                  spark_sql_batch: Optional[pulumi.Input['BatchSparkSqlBatchArgs']] = None):
         """
         The set of arguments for constructing a Batch resource.
+
         :param pulumi.Input[_builtins.str] batch_id: The ID to use for the batch, which will become the final component of the batch's resource name.
                This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
         :param pulumi.Input['BatchEnvironmentConfigArgs'] environment_config: Environment configuration for the batch execution.
@@ -235,6 +236,7 @@ class _BatchState:
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Batch resources.
+
         :param pulumi.Input[_builtins.str] batch_id: The ID to use for the batch, which will become the final component of the batch's resource name.
                This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
         :param pulumi.Input[_builtins.str] create_time: The time when the batch was created.
@@ -636,7 +638,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_spark = gcp.dataproc.Batch("example_batch_spark",
-            batch_id="tf-test-batch_49082",
+            batch_id="tf-test-batch_10393",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -759,7 +761,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparsql = gcp.dataproc.Batch("example_batch_sparsql",
-            batch_id="tf-test-batch_60365",
+            batch_id="tf-test-batch_33052",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -787,7 +789,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_pyspark = gcp.dataproc.Batch("example_batch_pyspark",
-            batch_id="tf-test-batch_80215",
+            batch_id="tf-test-batch_3684",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -820,7 +822,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparkr = gcp.dataproc.Batch("example_batch_sparkr",
-            batch_id="tf-test-batch_59033",
+            batch_id="tf-test-batch_10719",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -850,7 +852,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_autotuning = gcp.dataproc.Batch("example_batch_autotuning",
-            batch_id="tf-test-batch_32081",
+            batch_id="tf-test-batch_1443",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -897,6 +899,7 @@ class Batch(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/batch:Batch default {{project}}/{{location}}/{{batch_id}}
         $ pulumi import gcp:dataproc/batch:Batch default {{location}}/{{batch_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -947,7 +950,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_spark = gcp.dataproc.Batch("example_batch_spark",
-            batch_id="tf-test-batch_49082",
+            batch_id="tf-test-batch_10393",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -1070,7 +1073,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparsql = gcp.dataproc.Batch("example_batch_sparsql",
-            batch_id="tf-test-batch_60365",
+            batch_id="tf-test-batch_33052",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -1098,7 +1101,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_pyspark = gcp.dataproc.Batch("example_batch_pyspark",
-            batch_id="tf-test-batch_80215",
+            batch_id="tf-test-batch_3684",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -1131,7 +1134,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparkr = gcp.dataproc.Batch("example_batch_sparkr",
-            batch_id="tf-test-batch_59033",
+            batch_id="tf-test-batch_10719",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -1161,7 +1164,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_autotuning = gcp.dataproc.Batch("example_batch_autotuning",
-            batch_id="tf-test-batch_32081",
+            batch_id="tf-test-batch_1443",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -1208,6 +1211,7 @@ class Batch(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/batch:Batch default {{project}}/{{location}}/{{batch_id}}
         $ pulumi import gcp:dataproc/batch:Batch default {{location}}/{{batch_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BatchArgs args: The arguments to use to populate this resource's properties.

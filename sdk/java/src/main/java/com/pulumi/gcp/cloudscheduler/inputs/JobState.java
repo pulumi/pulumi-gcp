@@ -177,14 +177,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+     * Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+     * @return Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
      * 
      */
     public Optional<Output<String>> region() {
@@ -500,7 +500,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+         * @param region Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
+         * @param region Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
          * 
          * @return builder
          * 

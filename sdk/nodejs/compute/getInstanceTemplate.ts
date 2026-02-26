@@ -141,7 +141,7 @@ export interface GetInstanceTemplateResult {
     readonly mostRecent?: boolean;
     /**
      * The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * this blank, Terraform will auto-generate a unique name.
      */
     readonly name?: string;
     /**

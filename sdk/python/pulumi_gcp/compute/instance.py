@@ -56,6 +56,7 @@ class InstanceArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input['InstanceBootDiskArgs'] boot_disk: The boot disk for the instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
@@ -72,7 +73,7 @@ class InstanceArgs:
                
                - - -
         :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
-        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
+        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether to allow sending and receiving of
@@ -80,7 +81,7 @@ class InstanceArgs:
                This defaults to false.
         :param pulumi.Input['InstanceConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[_builtins.bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
-               **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+               **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
         :param pulumi.Input[_builtins.str] description: A brief description of this resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either
                `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
@@ -88,6 +89,10 @@ class InstanceArgs:
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
                **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+               **Note**: As of 6.0.0, argument syntax
+               is no longer supported for this field in favor of block syntax.
+               To dynamically set a list of guest accelerators, use dynamic blocks.
+               To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -118,7 +123,8 @@ class InstanceArgs:
                modification.  On import, `metadata_startup_script` will not be set - if you
                choose to specify it you will see a diff immediately after import causing a
                destroy/recreate operation. If importing an instance and specifying this value
-               is desired, you will need to modify your state file.
+               is desired, you will need to modify your state file manually using
+               `terraform state` commands.
         :param pulumi.Input[_builtins.str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
@@ -278,7 +284,7 @@ class InstanceArgs:
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, allows this prvider to stop the instance to update its properties.
+        If true, allows Terraform to stop the instance to update its properties.
         If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         """
         return pulumi.get(self, "allow_stopping_for_update")
@@ -330,7 +336,7 @@ class InstanceArgs:
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Enable deletion protection on this instance. Defaults to false.
-        **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -382,6 +388,10 @@ class InstanceArgs:
         """
         List of the type and count of accelerator cards attached to the instance. Structure documented below.
         **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        **Note**: As of 6.0.0, argument syntax
+        is no longer supported for this field in favor of block syntax.
+        To dynamically set a list of guest accelerators, use dynamic blocks.
+        To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         """
         return pulumi.get(self, "guest_accelerators")
 
@@ -478,7 +488,8 @@ class InstanceArgs:
         modification.  On import, `metadata_startup_script` will not be set - if you
         choose to specify it you will see a diff immediately after import causing a
         destroy/recreate operation. If importing an instance and specifying this value
-        is desired, you will need to modify your state file.
+        is desired, you will need to modify your state file manually using
+        `terraform state` commands.
         """
         return pulumi.get(self, "metadata_startup_script")
 
@@ -719,8 +730,9 @@ class _InstanceState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
-        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
+        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         :param pulumi.Input['InstanceBootDiskArgs'] boot_disk: The boot disk for the instance.
@@ -733,7 +745,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] current_status: The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         :param pulumi.Input[_builtins.bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
-               **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+               **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
         :param pulumi.Input[_builtins.str] description: A brief description of this resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either
                `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
@@ -742,6 +754,10 @@ class _InstanceState:
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
                **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+               **Note**: As of 6.0.0, argument syntax
+               is no longer supported for this field in favor of block syntax.
+               To dynamically set a list of guest accelerators, use dynamic blocks.
+               To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -784,7 +800,8 @@ class _InstanceState:
                modification.  On import, `metadata_startup_script` will not be set - if you
                choose to specify it you will see a diff immediately after import causing a
                destroy/recreate operation. If importing an instance and specifying this value
-               is desired, you will need to modify your state file.
+               is desired, you will need to modify your state file manually using
+               `terraform state` commands.
         :param pulumi.Input[_builtins.str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
@@ -926,7 +943,7 @@ class _InstanceState:
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, allows this prvider to stop the instance to update its properties.
+        If true, allows Terraform to stop the instance to update its properties.
         If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         """
         return pulumi.get(self, "allow_stopping_for_update")
@@ -1027,7 +1044,7 @@ class _InstanceState:
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Enable deletion protection on this instance. Defaults to false.
-        **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -1091,6 +1108,10 @@ class _InstanceState:
         """
         List of the type and count of accelerator cards attached to the instance. Structure documented below.
         **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        **Note**: As of 6.0.0, argument syntax
+        is no longer supported for this field in favor of block syntax.
+        To dynamically set a list of guest accelerators, use dynamic blocks.
+        To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         """
         return pulumi.get(self, "guest_accelerators")
 
@@ -1243,7 +1264,8 @@ class _InstanceState:
         modification.  On import, `metadata_startup_script` will not be set - if you
         choose to specify it you will see a diff immediately after import causing a
         destroy/recreate operation. If importing an instance and specifying this value
-        is desired, you will need to modify your state file.
+        is desired, you will need to modify your state file manually using
+        `terraform state` commands.
         """
         return pulumi.get(self, "metadata_startup_script")
 
@@ -1636,10 +1658,11 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:compute/instance:Instance default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceAdvancedMachineFeaturesArgs', 'InstanceAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
-        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
+        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAttachedDiskArgs', 'InstanceAttachedDiskArgsDict']]]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         :param pulumi.Input[Union['InstanceBootDiskArgs', 'InstanceBootDiskArgsDict']] boot_disk: The boot disk for the instance.
@@ -1649,7 +1672,7 @@ class Instance(pulumi.CustomResource):
                This defaults to false.
         :param pulumi.Input[Union['InstanceConfidentialInstanceConfigArgs', 'InstanceConfidentialInstanceConfigArgsDict']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[_builtins.bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
-               **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+               **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
         :param pulumi.Input[_builtins.str] description: A brief description of this resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either
                `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
@@ -1657,6 +1680,10 @@ class Instance(pulumi.CustomResource):
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGuestAcceleratorArgs', 'InstanceGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
                **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+               **Note**: As of 6.0.0, argument syntax
+               is no longer supported for this field in favor of block syntax.
+               To dynamically set a list of guest accelerators, use dynamic blocks.
+               To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -1696,7 +1723,8 @@ class Instance(pulumi.CustomResource):
                modification.  On import, `metadata_startup_script` will not be set - if you
                choose to specify it you will see a diff immediately after import causing a
                destroy/recreate operation. If importing an instance and specifying this value
-               is desired, you will need to modify your state file.
+               is desired, you will need to modify your state file manually using
+               `terraform state` commands.
         :param pulumi.Input[_builtins.str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
@@ -1846,6 +1874,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:compute/instance:Instance default {{project}}/{{zone}}/{{name}}
         $ pulumi import gcp:compute/instance:Instance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.
@@ -2016,7 +2045,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceAdvancedMachineFeaturesArgs', 'InstanceAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
-        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
+        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAttachedDiskArgs', 'InstanceAttachedDiskArgsDict']]]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         :param pulumi.Input[Union['InstanceBootDiskArgs', 'InstanceBootDiskArgsDict']] boot_disk: The boot disk for the instance.
@@ -2029,7 +2058,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] current_status: The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         :param pulumi.Input[_builtins.bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
-               **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+               **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
         :param pulumi.Input[_builtins.str] description: A brief description of this resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either
                `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
@@ -2038,6 +2067,10 @@ class Instance(pulumi.CustomResource):
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGuestAcceleratorArgs', 'InstanceGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
                **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+               **Note**: As of 6.0.0, argument syntax
+               is no longer supported for this field in favor of block syntax.
+               To dynamically set a list of guest accelerators, use dynamic blocks.
+               To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -2080,7 +2113,8 @@ class Instance(pulumi.CustomResource):
                modification.  On import, `metadata_startup_script` will not be set - if you
                choose to specify it you will see a diff immediately after import causing a
                destroy/recreate operation. If importing an instance and specifying this value
-               is desired, you will need to modify your state file.
+               is desired, you will need to modify your state file manually using
+               `terraform state` commands.
         :param pulumi.Input[_builtins.str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
@@ -2180,7 +2214,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        If true, allows this prvider to stop the instance to update its properties.
+        If true, allows Terraform to stop the instance to update its properties.
         If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         """
         return pulumi.get(self, "allow_stopping_for_update")
@@ -2249,7 +2283,7 @@ class Instance(pulumi.CustomResource):
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Enable deletion protection on this instance. Defaults to false.
-        **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -2293,6 +2327,10 @@ class Instance(pulumi.CustomResource):
         """
         List of the type and count of accelerator cards attached to the instance. Structure documented below.
         **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        **Note**: As of 6.0.0, argument syntax
+        is no longer supported for this field in favor of block syntax.
+        To dynamically set a list of guest accelerators, use dynamic blocks.
+        To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         """
         return pulumi.get(self, "guest_accelerators")
 
@@ -2405,7 +2443,8 @@ class Instance(pulumi.CustomResource):
         modification.  On import, `metadata_startup_script` will not be set - if you
         choose to specify it you will see a diff immediately after import causing a
         destroy/recreate operation. If importing an instance and specifying this value
-        is desired, you will need to modify your state file.
+        is desired, you will need to modify your state file manually using
+        `terraform state` commands.
         """
         return pulumi.get(self, "metadata_startup_script")
 

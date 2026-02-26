@@ -15,6 +15,10 @@ import (
 // For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
 // and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 //
+// > Recreating an instance group that's in use by another resource will give a
+// `resourceInUseByAnotherResource` error. You can avoid this error with a
+// Terraform `lifecycle` block as outlined in the example below.
+//
 // ## Example Usage
 //
 // ### Empty Instance Group
@@ -32,8 +36,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewInstanceGroup(ctx, "test", &compute.InstanceGroupArgs{
-//				Name:        pulumi.String("test"),
-//				Description: pulumi.String("Test instance group"),
+//				Name:        pulumi.String("terraform-test"),
+//				Description: pulumi.String("Terraform test instance group"),
 //				Zone:        pulumi.String("us-central1-a"),
 //				Network:     pulumi.Any(_default.Id),
 //			})
@@ -61,8 +65,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewInstanceGroup(ctx, "webservers", &compute.InstanceGroupArgs{
-//				Name:        pulumi.String("webservers"),
-//				Description: pulumi.String("Test instance group"),
+//				Name:        pulumi.String("terraform-webservers"),
+//				Description: pulumi.String("Terraform test instance group"),
 //				Instances: pulumi.StringArray{
 //					test.Id,
 //					test2.Id,

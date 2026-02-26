@@ -122,7 +122,7 @@ public final class GetInstanceTemplateResult {
     private @Nullable Boolean mostRecent;
     /**
      * @return The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     private @Nullable String name;
@@ -346,7 +346,7 @@ public final class GetInstanceTemplateResult {
     }
     /**
      * @return The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     public Optional<String> name() {

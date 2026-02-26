@@ -10,13 +10,15 @@ import * as utilities from "../utilities";
  * A collection of resources that are deployed and managed together using
  * a configuration file
  *
- * > **Warning:** This resource is intended only to manage a Deployment resource,
- * and attempts to manage the Deployment's resources in the provider as well
+ * > **Warning:** Deployment Manager shares similar behavior with Terraform as both
+ * products manage GCP resource lifecycle and state. This Terraform
+ * resource is intended only to manage a Deployment resource,
+ * and attempts to manage the Deployment's resources in Terraform as well
  * will likely result in errors or unexpected behavior as the two tools
  * fight over ownership. We strongly discourage doing so unless you are an
  * experienced user of both tools.
  *
- * In addition, due to limitations of the API, the provider will treat
+ * In addition, due to limitations of the API, Terraform will treat
  * deployments in preview as recreate-only for any update operation other
  * than actually deploying an in-preview deployment (i.e. `preview=true` to
  * `preview=false`).
@@ -139,7 +141,7 @@ export class Deployment extends pulumi.CustomResource {
      * with real resources.
      * ~>**NOTE:** Deployment Manager does not allow update
      * of a deployment in preview (unless updating to preview=false). Thus,
-     * the provider will force-recreate deployments if either preview is updated
+     * Terraform will force-recreate deployments if either preview is updated
      * to true or if other fields are updated while preview is true.
      */
     declare public readonly preview: pulumi.Output<boolean | undefined>;
@@ -259,7 +261,7 @@ export interface DeploymentState {
      * with real resources.
      * ~>**NOTE:** Deployment Manager does not allow update
      * of a deployment in preview (unless updating to preview=false). Thus,
-     * the provider will force-recreate deployments if either preview is updated
+     * Terraform will force-recreate deployments if either preview is updated
      * to true or if other fields are updated while preview is true.
      */
     preview?: pulumi.Input<boolean>;
@@ -325,7 +327,7 @@ export interface DeploymentArgs {
      * with real resources.
      * ~>**NOTE:** Deployment Manager does not allow update
      * of a deployment in preview (unless updating to preview=false). Thus,
-     * the provider will force-recreate deployments if either preview is updated
+     * Terraform will force-recreate deployments if either preview is updated
      * to true or if other fields are updated while preview is true.
      */
     preview?: pulumi.Input<boolean>;

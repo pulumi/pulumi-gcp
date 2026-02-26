@@ -61,9 +61,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
  * ### Streaming Job
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -129,11 +127,11 @@ import javax.annotation.Nullable;
  * 
  * ## Note on &#34;destroy&#34; / &#34;apply&#34;
  * 
- * There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.
+ * There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Terraform / Google resources.
  * 
  * The Dataflow resource is considered &#39;existing&#39; while it is in a nonterminal state.  If it reaches a terminal state (e.g. &#39;FAILED&#39;, &#39;COMPLETE&#39;, &#39;CANCELLED&#39;), it will be recreated on the next &#39;apply&#39;.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
  * 
- * A Dataflow job which is &#39;destroyed&#39; may be &#34;cancelled&#34; or &#34;drained&#34;.  If &#34;cancelled&#34;, the job terminates - any data written remains where it is, but no new data will be processed.  If &#34;drained&#34;, no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is &#34;drain&#34;. When `onDelete` is set to `&#34;drain&#34;` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
+ * A Dataflow job which is &#39;destroyed&#39; may be &#34;cancelled&#34; or &#34;drained&#34;.  If &#34;cancelled&#34;, the job terminates - any data written remains where it is, but no new data will be processed.  If &#34;drained&#34;, no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is &#34;drain&#34;. When `onDelete` is set to `&#34;drain&#34;` in the configuration, you may experience a long wait for your `terraform destroy` to complete.
  * 
  * You can potentially short-circuit the wait by setting `skipWaitOnJobTermination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a randomId resource, for example:
  * 
@@ -358,14 +356,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.network);
     }
     /**
-     * One of &#34;drain&#34; or &#34;cancel&#34;.  Specifies behavior of deletion during `pulumi destroy`.  See above note.
+     * One of &#34;drain&#34; or &#34;cancel&#34;.  Specifies behavior of deletion during `terraform destroy`.  See above note.
      * 
      */
     @Export(name="onDelete", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> onDelete;
 
     /**
-     * @return One of &#34;drain&#34; or &#34;cancel&#34;.  Specifies behavior of deletion during `pulumi destroy`.  See above note.
+     * @return One of &#34;drain&#34; or &#34;cancel&#34;.  Specifies behavior of deletion during `terraform destroy`.  See above note.
      * 
      */
     public Output<Optional<String>> onDelete() {
@@ -446,14 +444,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceAccountEmail);
     }
     /**
-     * If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+     * If set to `true`, terraform will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from terraform state and move on.  See above note.
      * 
      */
     @Export(name="skipWaitOnJobTermination", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipWaitOnJobTermination;
 
     /**
-     * @return If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+     * @return If set to `true`, terraform will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from terraform state and move on.  See above note.
      * 
      */
     public Output<Optional<Boolean>> skipWaitOnJobTermination() {

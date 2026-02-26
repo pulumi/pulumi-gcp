@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .accountId("my-svc-acc")
  *             .build());
  * 
- *         //Create the HMAC key for the associated service account
+ *         //Create the HMAC key for the associated service account 
  *         var key = new HmacKey("key", HmacKeyArgs.builder()
  *             .serviceAccountEmail(serviceAccount.email())
  *             .build());

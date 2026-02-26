@@ -22,17 +22,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const securityPolicyTarget = new gcp.organizations.Folder("security_policy_target", {
- *     displayName: "tf-test-secpol",
+ *     displayName: "tf-test-secpol-_52865",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     displayName: "tf-test",
+ *     shortName: "tf-test_85840",
  *     parent: securityPolicyTarget.name,
  *     type: "CLOUD_ARMOR",
  * });
  * const policyOrganizationSecurityPolicyAssociation = new gcp.compute.OrganizationSecurityPolicyAssociation("policy", {
- *     name: "tf-test",
+ *     name: "tf-test_60302",
  *     attachmentId: policy.parent,
  *     policyId: policy.id,
  * });

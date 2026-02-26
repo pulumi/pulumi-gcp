@@ -283,7 +283,7 @@ type RegionInstanceGroupManager struct {
 	// Structure is documented below.
 	Versions RegionInstanceGroupManagerVersionArrayOutput `pulumi:"versions"`
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, the provider will
+	// returning. Note that if this is set to true and the operation does not succeed, Terraform will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrOutput `pulumi:"waitForInstances"`
 	// When used with `waitForInstances` it specifies the status to wait for.
@@ -420,7 +420,7 @@ type regionInstanceGroupManagerState struct {
 	// Structure is documented below.
 	Versions []RegionInstanceGroupManagerVersion `pulumi:"versions"`
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, the provider will
+	// returning. Note that if this is set to true and the operation does not succeed, Terraform will
 	// continue trying until it times out.
 	WaitForInstances *bool `pulumi:"waitForInstances"`
 	// When used with `waitForInstances` it specifies the status to wait for.
@@ -522,7 +522,7 @@ type RegionInstanceGroupManagerState struct {
 	// Structure is documented below.
 	Versions RegionInstanceGroupManagerVersionArrayInput
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, the provider will
+	// returning. Note that if this is set to true and the operation does not succeed, Terraform will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrInput
 	// When used with `waitForInstances` it specifies the status to wait for.
@@ -616,7 +616,7 @@ type regionInstanceGroupManagerArgs struct {
 	// Structure is documented below.
 	Versions []RegionInstanceGroupManagerVersion `pulumi:"versions"`
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, the provider will
+	// returning. Note that if this is set to true and the operation does not succeed, Terraform will
 	// continue trying until it times out.
 	WaitForInstances *bool `pulumi:"waitForInstances"`
 	// When used with `waitForInstances` it specifies the status to wait for.
@@ -707,7 +707,7 @@ type RegionInstanceGroupManagerArgs struct {
 	// Structure is documented below.
 	Versions RegionInstanceGroupManagerVersionArrayInput
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, the provider will
+	// returning. Note that if this is set to true and the operation does not succeed, Terraform will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrInput
 	// When used with `waitForInstances` it specifies the status to wait for.
@@ -1005,7 +1005,7 @@ func (o RegionInstanceGroupManagerOutput) Versions() RegionInstanceGroupManagerV
 }
 
 // Whether to wait for all instances to be created/updated before
-// returning. Note that if this is set to true and the operation does not succeed, the provider will
+// returning. Note that if this is set to true and the operation does not succeed, Terraform will
 // continue trying until it times out.
 func (o RegionInstanceGroupManagerOutput) WaitForInstances() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.BoolPtrOutput { return v.WaitForInstances }).(pulumi.BoolPtrOutput)

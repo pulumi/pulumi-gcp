@@ -33,6 +33,7 @@ class ProjectSinkArgs:
                  unique_writer_identity: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectSink resource.
+
         :param pulumi.Input[_builtins.str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
                
                - `storage.googleapis.com/[GCS_BUCKET]`
@@ -233,6 +234,7 @@ class _ProjectSinkState:
                  writer_identity: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectSink resources.
+
         :param pulumi.Input['ProjectSinkBigqueryOptionsArgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[_builtins.str] custom_writer_identity: A user managed service account that will be used to write
                the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
@@ -461,7 +463,7 @@ class ProjectSink(pulumi.CustomResource):
 
         > You can specify exclusions for log sinks created by terraform by using the exclusions field of `logging.FolderSink`
 
-        > **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with this provider.
+        > **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with terraform.
 
         > **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
 
@@ -596,6 +598,7 @@ class ProjectSink(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/projectSink:ProjectSink default projects/{{project_id}}/sinks/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -641,7 +644,7 @@ class ProjectSink(pulumi.CustomResource):
 
         > You can specify exclusions for log sinks created by terraform by using the exclusions field of `logging.FolderSink`
 
-        > **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with this provider.
+        > **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with terraform.
 
         > **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
 
@@ -776,6 +779,7 @@ class ProjectSink(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/projectSink:ProjectSink default projects/{{project_id}}/sinks/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectSinkArgs args: The arguments to use to populate this resource's properties.

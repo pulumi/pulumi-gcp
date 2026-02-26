@@ -7,75 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > See the Using GKE with Terraform
+ * guide for more information about using GKE with Terraform.
+ *
  * Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
  * the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
  * and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
- *
- * ## Example Usage
- *
- * ### Using A Separately Managed Node Pool (Recommended)
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.serviceaccount.Account("default", {
- *     accountId: "service-account-id",
- *     displayName: "Service Account",
- * });
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "my-gke-cluster",
- *     location: "us-central1",
- *     removeDefaultNodePool: true,
- *     initialNodeCount: 1,
- * });
- * const primaryPreemptibleNodes = new gcp.container.NodePool("primary_preemptible_nodes", {
- *     name: "my-node-pool",
- *     cluster: primary.id,
- *     nodeCount: 1,
- *     nodeConfig: {
- *         preemptible: true,
- *         machineType: "e2-medium",
- *         serviceAccount: _default.email,
- *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
- *     },
- * });
- * ```
- *
- * ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.serviceaccount.Account("default", {
- *     accountId: "service-account-id",
- *     displayName: "Service Account",
- * });
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "marcellus-wallace",
- *     location: "us-central1-a",
- *     initialNodeCount: 3,
- *     nodeLocations: ["us-central1-c"],
- *     nodeConfig: {
- *         serviceAccount: _default.email,
- *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
- *         guestAccelerators: [{
- *             type: "nvidia-tesla-k80",
- *             count: 1,
- *         }],
- *     },
- * });
- * const np = new gcp.container.NodePool("np", {
- *     name: "my-node-pool",
- *     cluster: primary.id,
- *     nodeConfig: {
- *         machineType: "e2-medium",
- *         serviceAccount: _default.email,
- *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
- *     },
- * });
- * ```
  *
  * ## Import
  *
@@ -137,9 +74,9 @@ export class NodePool extends pulumi.CustomResource {
      * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
      * this will force recreation of the resource. WARNING: Resizing your node pool manually
      * may change this value in your existing cluster, which will trigger destruction
-     * and recreation on the next provider run (to rectify the discrepancy).  If you don't
+     * and recreation on the next Terraform run (to rectify the discrepancy).  If you don't
      * need this value, don't set it.  If you do need it, you can use a lifecycle block to
-     * ignore subsqeuent changes to this field.
+     * ignore subsequent changes to this field.
      */
     declare public readonly initialNodeCount: pulumi.Output<number>;
     /**
@@ -170,7 +107,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     declare public readonly maxPodsPerNode: pulumi.Output<number>;
     /**
-     * The name of the node pool. If left blank, the provider will
+     * The name of the node pool. If left blank, Terraform will
      * auto-generate a unique name.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -237,9 +174,9 @@ export class NodePool extends pulumi.CustomResource {
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `autoUpgrade` are both specified, they will fight each other for what the node version should
      * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-     * recommended that you specify explicit versions as the provider will see spurious diffs
+     * recommended that you specify explicit versions as Terraform will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+     * `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
      */
     declare public readonly version: pulumi.Output<string>;
 
@@ -329,9 +266,9 @@ export interface NodePoolState {
      * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
      * this will force recreation of the resource. WARNING: Resizing your node pool manually
      * may change this value in your existing cluster, which will trigger destruction
-     * and recreation on the next provider run (to rectify the discrepancy).  If you don't
+     * and recreation on the next Terraform run (to rectify the discrepancy).  If you don't
      * need this value, don't set it.  If you do need it, you can use a lifecycle block to
-     * ignore subsqeuent changes to this field.
+     * ignore subsequent changes to this field.
      */
     initialNodeCount?: pulumi.Input<number>;
     /**
@@ -362,7 +299,7 @@ export interface NodePoolState {
      */
     maxPodsPerNode?: pulumi.Input<number>;
     /**
-     * The name of the node pool. If left blank, the provider will
+     * The name of the node pool. If left blank, Terraform will
      * auto-generate a unique name.
      */
     name?: pulumi.Input<string>;
@@ -429,9 +366,9 @@ export interface NodePoolState {
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `autoUpgrade` are both specified, they will fight each other for what the node version should
      * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-     * recommended that you specify explicit versions as the provider will see spurious diffs
+     * recommended that you specify explicit versions as Terraform will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+     * `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
      */
     version?: pulumi.Input<string>;
 }
@@ -456,9 +393,9 @@ export interface NodePoolArgs {
      * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
      * this will force recreation of the resource. WARNING: Resizing your node pool manually
      * may change this value in your existing cluster, which will trigger destruction
-     * and recreation on the next provider run (to rectify the discrepancy).  If you don't
+     * and recreation on the next Terraform run (to rectify the discrepancy).  If you don't
      * need this value, don't set it.  If you do need it, you can use a lifecycle block to
-     * ignore subsqeuent changes to this field.
+     * ignore subsequent changes to this field.
      */
     initialNodeCount?: pulumi.Input<number>;
     /**
@@ -481,7 +418,7 @@ export interface NodePoolArgs {
      */
     maxPodsPerNode?: pulumi.Input<number>;
     /**
-     * The name of the node pool. If left blank, the provider will
+     * The name of the node pool. If left blank, Terraform will
      * auto-generate a unique name.
      */
     name?: pulumi.Input<string>;
@@ -547,9 +484,9 @@ export interface NodePoolArgs {
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `autoUpgrade` are both specified, they will fight each other for what the node version should
      * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-     * recommended that you specify explicit versions as the provider will see spurious diffs
+     * recommended that you specify explicit versions as Terraform will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+     * `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
      */
     version?: pulumi.Input<string>;
 }

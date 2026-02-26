@@ -128,8 +128,8 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly gkeHub2CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly gkeHubCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly gkeonpremCustomEndpoint: pulumi.Output<string | undefined>;
-    declare public readonly googlePartnerName: pulumi.Output<string | undefined>;
     declare public readonly healthcareCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly hypercomputeclusterCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly iam2CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly iam3CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly iamBetaCustomEndpoint: pulumi.Output<string | undefined>;
@@ -313,7 +313,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["developerConnectCustomEndpoint"] = args?.developerConnectCustomEndpoint;
             resourceInputs["dialogflowCustomEndpoint"] = args?.dialogflowCustomEndpoint;
             resourceInputs["dialogflowCxCustomEndpoint"] = args?.dialogflowCxCustomEndpoint;
-            resourceInputs["disableGooglePartnerName"] = pulumi.output(args?.disableGooglePartnerName).apply(JSON.stringify);
             resourceInputs["discoveryEngineCustomEndpoint"] = args?.discoveryEngineCustomEndpoint;
             resourceInputs["dnsCustomEndpoint"] = args?.dnsCustomEndpoint;
             resourceInputs["documentAiCustomEndpoint"] = args?.documentAiCustomEndpoint;
@@ -340,8 +339,8 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["gkeHub2CustomEndpoint"] = args?.gkeHub2CustomEndpoint;
             resourceInputs["gkeHubCustomEndpoint"] = args?.gkeHubCustomEndpoint;
             resourceInputs["gkeonpremCustomEndpoint"] = args?.gkeonpremCustomEndpoint;
-            resourceInputs["googlePartnerName"] = args?.googlePartnerName;
             resourceInputs["healthcareCustomEndpoint"] = args?.healthcareCustomEndpoint;
+            resourceInputs["hypercomputeclusterCustomEndpoint"] = args?.hypercomputeclusterCustomEndpoint;
             resourceInputs["iam2CustomEndpoint"] = args?.iam2CustomEndpoint;
             resourceInputs["iam3CustomEndpoint"] = args?.iam3CustomEndpoint;
             resourceInputs["iamBetaCustomEndpoint"] = args?.iamBetaCustomEndpoint;
@@ -537,7 +536,6 @@ export interface ProviderArgs {
     developerConnectCustomEndpoint?: pulumi.Input<string>;
     dialogflowCustomEndpoint?: pulumi.Input<string>;
     dialogflowCxCustomEndpoint?: pulumi.Input<string>;
-    disableGooglePartnerName?: pulumi.Input<boolean>;
     discoveryEngineCustomEndpoint?: pulumi.Input<string>;
     dnsCustomEndpoint?: pulumi.Input<string>;
     documentAiCustomEndpoint?: pulumi.Input<string>;
@@ -564,8 +562,8 @@ export interface ProviderArgs {
     gkeHub2CustomEndpoint?: pulumi.Input<string>;
     gkeHubCustomEndpoint?: pulumi.Input<string>;
     gkeonpremCustomEndpoint?: pulumi.Input<string>;
-    googlePartnerName?: pulumi.Input<string>;
     healthcareCustomEndpoint?: pulumi.Input<string>;
+    hypercomputeclusterCustomEndpoint?: pulumi.Input<string>;
     iam2CustomEndpoint?: pulumi.Input<string>;
     iam3CustomEndpoint?: pulumi.Input<string>;
     iamBetaCustomEndpoint?: pulumi.Input<string>;

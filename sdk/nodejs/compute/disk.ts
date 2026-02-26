@@ -331,7 +331,7 @@ export class Disk extends pulumi.CustomResource {
      * If you specify this field along with `image` or `snapshot`,
      * the value must not be less than the size of the image
      * or the size of the snapshot.
-     * ~>**NOTE** If you change the size, the provider updates the disk size
+     * ~>**NOTE** If you change the size, Terraform updates the disk size
      * if upsizing is detected but recreates the disk if downsizing is requested.
      * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
      * and recreating.
@@ -743,7 +743,7 @@ export interface DiskState {
      * If you specify this field along with `image` or `snapshot`,
      * the value must not be less than the size of the image
      * or the size of the snapshot.
-     * ~>**NOTE** If you change the size, the provider updates the disk size
+     * ~>**NOTE** If you change the size, Terraform updates the disk size
      * if upsizing is detected but recreates the disk if downsizing is requested.
      * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
      * and recreating.
@@ -1011,7 +1011,7 @@ export interface DiskArgs {
      * If you specify this field along with `image` or `snapshot`,
      * the value must not be less than the size of the image
      * or the size of the snapshot.
-     * ~>**NOTE** If you change the size, the provider updates the disk size
+     * ~>**NOTE** If you change the size, Terraform updates the disk size
      * if upsizing is detected but recreates the disk if downsizing is requested.
      * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
      * and recreating.

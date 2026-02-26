@@ -44,6 +44,7 @@ class ServiceArgs:
                  traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None):
         """
         The set of arguments for constructing a Service resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the cloud run service
         :param pulumi.Input['ServiceTemplateArgs'] template: The template used to create revisions for this Service.
                Structure is documented below.
@@ -69,8 +70,7 @@ class ServiceArgs:
                or `terraform destroy` that would delete the service will fail.
                When the field is set to false, deleting the service is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of the Service. This field currently has a 512-character limit.
-        :param pulumi.Input[_builtins.bool] iap_enabled: (Optional, Beta)
-               Used to enable/disable IAP for the service.
+        :param pulumi.Input[_builtins.bool] iap_enabled: Used to enable/disable IAP for the cloud-run service.
         :param pulumi.Input[_builtins.str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
                Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
         :param pulumi.Input[_builtins.bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
@@ -285,8 +285,7 @@ class ServiceArgs:
     @pulumi.getter(name="iapEnabled")
     def iap_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        (Optional, Beta)
-        Used to enable/disable IAP for the service.
+        Used to enable/disable IAP for the cloud-run service.
         """
         return pulumi.get(self, "iap_enabled")
 
@@ -463,6 +462,7 @@ class _ServiceState:
                  urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Service resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
                All system annotations in v1 now have a corresponding field in v2 Service.
@@ -495,8 +495,7 @@ class _ServiceState:
         :param pulumi.Input[_builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[_builtins.str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
         :param pulumi.Input[_builtins.str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
-        :param pulumi.Input[_builtins.bool] iap_enabled: (Optional, Beta)
-               Used to enable/disable IAP for the service.
+        :param pulumi.Input[_builtins.bool] iap_enabled: Used to enable/disable IAP for the cloud-run service.
         :param pulumi.Input[_builtins.str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
                Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
         :param pulumi.Input[_builtins.bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
@@ -861,8 +860,7 @@ class _ServiceState:
     @pulumi.getter(name="iapEnabled")
     def iap_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        (Optional, Beta)
-        Used to enable/disable IAP for the service.
+        Used to enable/disable IAP for the cloud-run service.
         """
         return pulumi.get(self, "iap_enabled")
 
@@ -1705,7 +1703,6 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
-            launch_stage="BETA",
             iap_enabled=True,
             template={
                 "containers": [{
@@ -1765,6 +1762,7 @@ class Service(pulumi.CustomResource):
         $ pulumi import gcp:cloudrunv2/service:Service default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -1789,8 +1787,7 @@ class Service(pulumi.CustomResource):
                or `terraform destroy` that would delete the service will fail.
                When the field is set to false, deleting the service is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of the Service. This field currently has a 512-character limit.
-        :param pulumi.Input[_builtins.bool] iap_enabled: (Optional, Beta)
-               Used to enable/disable IAP for the service.
+        :param pulumi.Input[_builtins.bool] iap_enabled: Used to enable/disable IAP for the cloud-run service.
         :param pulumi.Input[_builtins.str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
                Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
         :param pulumi.Input[_builtins.bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
@@ -2332,7 +2329,6 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
-            launch_stage="BETA",
             iap_enabled=True,
             template={
                 "containers": [{
@@ -2391,6 +2387,7 @@ class Service(pulumi.CustomResource):
         $ pulumi import gcp:cloudrunv2/service:Service default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:cloudrunv2/service:Service default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.
@@ -2576,8 +2573,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[_builtins.str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
         :param pulumi.Input[_builtins.str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
-        :param pulumi.Input[_builtins.bool] iap_enabled: (Optional, Beta)
-               Used to enable/disable IAP for the service.
+        :param pulumi.Input[_builtins.bool] iap_enabled: Used to enable/disable IAP for the cloud-run service.
         :param pulumi.Input[_builtins.str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
                Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
         :param pulumi.Input[_builtins.bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
@@ -2833,8 +2829,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="iapEnabled")
     def iap_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        (Optional, Beta)
-        Used to enable/disable IAP for the service.
+        Used to enable/disable IAP for the cloud-run service.
         """
         return pulumi.get(self, "iap_enabled")
 

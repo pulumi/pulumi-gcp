@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute
     /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
     /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
     /// 
+    /// &gt; Recreating an instance group that's in use by another resource will give a
+    /// `resourceInUseByAnotherResource` error. You can avoid this error with a
+    /// Terraform `Lifecycle` block as outlined in the example below.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Empty Instance Group
@@ -28,8 +32,8 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var test = new Gcp.Compute.InstanceGroup("test", new()
     ///     {
-    ///         Name = "test",
-    ///         Description = "Test instance group",
+    ///         Name = "terraform-test",
+    ///         Description = "Terraform test instance group",
     ///         Zone = "us-central1-a",
     ///         Network = @default.Id,
     ///     });
@@ -49,8 +53,8 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var webservers = new Gcp.Compute.InstanceGroup("webservers", new()
     ///     {
-    ///         Name = "webservers",
-    ///         Description = "Test instance group",
+    ///         Name = "terraform-webservers",
+    ///         Description = "Terraform test instance group",
     ///         Instances = new[]
     ///         {
     ///             test.Id,

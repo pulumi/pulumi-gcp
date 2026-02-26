@@ -10,9 +10,9 @@ import * as utilities from "../utilities";
  * Allows creation and management of an App Engine application.
  *
  * > App Engine applications cannot be deleted once they're created; you have to delete the
- *    entire project to delete the application. This provider will report the application has been
- *    successfully deleted; this is a limitation of the provider, and will go away in the future.
- *    This provider is not able to delete App Engine applications.
+ *    entire project to delete the application. Terraform will report the application has been
+ *    successfully deleted; this is a limitation of Terraform, and will go away in the future.
+ *    Terraform is not able to delete App Engine applications.
  *
  * ## Example Usage
  *

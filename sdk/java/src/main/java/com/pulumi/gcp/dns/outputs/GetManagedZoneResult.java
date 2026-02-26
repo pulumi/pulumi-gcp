@@ -19,7 +19,7 @@ public final class GetManagedZoneResult {
      */
     private String description;
     /**
-     * @return The fully qualified DNS name of this zone, e.g. `example.io.`.
+     * @return The fully qualified DNS name of this zone, e.g. `terraform.io.`.
      * 
      */
     private String dnsName;
@@ -50,7 +50,7 @@ public final class GetManagedZoneResult {
         return this.description;
     }
     /**
-     * @return The fully qualified DNS name of this zone, e.g. `example.io.`.
+     * @return The fully qualified DNS name of this zone, e.g. `terraform.io.`.
      * 
      */
     public String dnsName() {

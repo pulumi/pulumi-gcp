@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Billing
     /// <summary>
     /// Allows creation and management of a Google Cloud Billing Subaccount.
     /// 
-    /// !&gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
+    /// !&gt; **WARNING:** Deleting this Terraform resource will not delete or close the billing subaccount.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Billing
 
         /// <summary>
         /// If set to "RENAME_ON_DESTROY" the billing account DisplayName
-        /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+        /// will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
         /// Default is "".
         /// </summary>
         [Output("deletionPolicy")]
@@ -133,7 +133,7 @@ namespace Pulumi.Gcp.Billing
     {
         /// <summary>
         /// If set to "RENAME_ON_DESTROY" the billing account DisplayName
-        /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+        /// will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
         /// Default is "".
         /// </summary>
         [Input("deletionPolicy")]
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Billing
 
         /// <summary>
         /// If set to "RENAME_ON_DESTROY" the billing account DisplayName
-        /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+        /// will be changed to "Terraform Destroyed" along with a timestamp.  If set to "" this will not occur.
         /// Default is "".
         /// </summary>
         [Input("deletionPolicy")]

@@ -60,14 +60,14 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
+     * A textual description field. Defaults to &#39;Managed by Terraform&#39;.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
+     * @return A textual description field. Defaults to &#39;Managed by Terraform&#39;.
      * 
      */
     public Optional<Output<String>> description() {
@@ -449,7 +449,7 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
+         * @param description A textual description field. Defaults to &#39;Managed by Terraform&#39;.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
+         * @param description A textual description field. Defaults to &#39;Managed by Terraform&#39;.
          * 
          * @return builder
          * 

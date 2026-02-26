@@ -47,6 +47,7 @@ class TriggerArgs:
                  webhook_config: Optional[pulumi.Input['TriggerWebhookConfigArgs']] = None):
         """
         The set of arguments for constructing a Trigger resource.
+
         :param pulumi.Input['TriggerApprovalConfigArgs'] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
                Builds created by this trigger will require approval before they execute.
                Any user with a Cloud Build Approver role for the project can approve a build.
@@ -533,6 +534,7 @@ class _TriggerState:
                  webhook_config: Optional[pulumi.Input['TriggerWebhookConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Trigger resources.
+
         :param pulumi.Input['TriggerApprovalConfigArgs'] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
                Builds created by this trigger will require approval before they execute.
                Any user with a Cloud Build Approver role for the project can approve a build.
@@ -1716,6 +1718,7 @@ class Trigger(pulumi.CustomResource):
         $ pulumi import gcp:cloudbuild/trigger:Trigger default {{trigger_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
@@ -2461,6 +2464,7 @@ class Trigger(pulumi.CustomResource):
         $ pulumi import gcp:cloudbuild/trigger:Trigger default {{project}}/{{trigger_id}}
         $ pulumi import gcp:cloudbuild/trigger:Trigger default {{trigger_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TriggerArgs args: The arguments to use to populate this resource's properties.

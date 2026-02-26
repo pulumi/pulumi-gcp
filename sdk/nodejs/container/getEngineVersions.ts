@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     versionPrefix: "1.12.",
  * });
  * const foo = new gcp.container.Cluster("foo", {
- *     name: "test-cluster",
+ *     name: "terraform-test-cluster",
  *     location: "us-central1-b",
  *     nodeVersion: central1b.then(central1b => central1b.latestNodeVersion),
  *     initialNodeCount: 1,
@@ -63,7 +63,7 @@ export interface GetEngineVersionsArgs {
      */
     project?: string;
     /**
-     * If provided, the provider will only return versions
+     * If provided, Terraform will only return versions
      * that match the string prefix. For example, `1.11.` will match all `1.11` series
      * releases. Since this is just a string match, it's recommended that you append a
      * `.` after minor versions to ensure that prefixes such as `1.1` don't match
@@ -140,7 +140,7 @@ export interface GetEngineVersionsResult {
  *     versionPrefix: "1.12.",
  * });
  * const foo = new gcp.container.Cluster("foo", {
- *     name: "test-cluster",
+ *     name: "terraform-test-cluster",
  *     location: "us-central1-b",
  *     nodeVersion: central1b.then(central1b => central1b.latestNodeVersion),
  *     initialNodeCount: 1,
@@ -176,7 +176,7 @@ export interface GetEngineVersionsOutputArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * If provided, the provider will only return versions
+     * If provided, Terraform will only return versions
      * that match the string prefix. For example, `1.11.` will match all `1.11` series
      * releases. Since this is just a string match, it's recommended that you append a
      * `.` after minor versions to ensure that prefixes such as `1.1` don't match

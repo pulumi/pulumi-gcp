@@ -82,8 +82,8 @@ type Service struct {
 	CheckIfServiceHasUsageOnDestroy pulumi.BoolPtrOutput `pulumi:"checkIfServiceHasUsageOnDestroy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
-	// destroyed. If `false` or unset, an error will be generated if any enabled
-	// services depend on this service when destroying it.
+	// destroyed. If `false` or unset, an error will be returned if any enabled
+	// services depend on this service when attempting to destroy it.
 	DisableDependentServices pulumi.BoolPtrOutput `pulumi:"disableDependentServices"`
 	// If `true`, disable the service when the
 	// Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
@@ -136,8 +136,8 @@ type serviceState struct {
 	CheckIfServiceHasUsageOnDestroy *bool `pulumi:"checkIfServiceHasUsageOnDestroy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
-	// destroyed. If `false` or unset, an error will be generated if any enabled
-	// services depend on this service when destroying it.
+	// destroyed. If `false` or unset, an error will be returned if any enabled
+	// services depend on this service when attempting to destroy it.
 	DisableDependentServices *bool `pulumi:"disableDependentServices"`
 	// If `true`, disable the service when the
 	// Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
@@ -158,8 +158,8 @@ type ServiceState struct {
 	CheckIfServiceHasUsageOnDestroy pulumi.BoolPtrInput
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
-	// destroyed. If `false` or unset, an error will be generated if any enabled
-	// services depend on this service when destroying it.
+	// destroyed. If `false` or unset, an error will be returned if any enabled
+	// services depend on this service when attempting to destroy it.
 	DisableDependentServices pulumi.BoolPtrInput
 	// If `true`, disable the service when the
 	// Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
@@ -184,8 +184,8 @@ type serviceArgs struct {
 	CheckIfServiceHasUsageOnDestroy *bool `pulumi:"checkIfServiceHasUsageOnDestroy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
-	// destroyed. If `false` or unset, an error will be generated if any enabled
-	// services depend on this service when destroying it.
+	// destroyed. If `false` or unset, an error will be returned if any enabled
+	// services depend on this service when attempting to destroy it.
 	DisableDependentServices *bool `pulumi:"disableDependentServices"`
 	// If `true`, disable the service when the
 	// Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
@@ -207,8 +207,8 @@ type ServiceArgs struct {
 	CheckIfServiceHasUsageOnDestroy pulumi.BoolPtrInput
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
-	// destroyed. If `false` or unset, an error will be generated if any enabled
-	// services depend on this service when destroying it.
+	// destroyed. If `false` or unset, an error will be returned if any enabled
+	// services depend on this service when attempting to destroy it.
 	DisableDependentServices pulumi.BoolPtrInput
 	// If `true`, disable the service when the
 	// Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
@@ -318,8 +318,8 @@ func (o ServiceOutput) CheckIfServiceHasUsageOnDestroy() pulumi.BoolPtrOutput {
 
 // If `true`, services that are enabled
 // and which depend on this service should also be disabled when this service is
-// destroyed. If `false` or unset, an error will be generated if any enabled
-// services depend on this service when destroying it.
+// destroyed. If `false` or unset, an error will be returned if any enabled
+// services depend on this service when attempting to destroy it.
 func (o ServiceOutput) DisableDependentServices() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.DisableDependentServices }).(pulumi.BoolPtrOutput)
 }

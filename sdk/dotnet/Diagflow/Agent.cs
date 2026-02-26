@@ -191,7 +191,8 @@ namespace Pulumi.Gcp.Diagflow
         /// * TIER_ENTERPRISE: Enterprise tier (Essentials).
         /// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
         /// NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-        /// the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+        /// the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+        /// Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
         /// </summary>
         [Output("tier")]
         public Output<string?> Tier { get; private set; } = null!;
@@ -340,7 +341,8 @@ namespace Pulumi.Gcp.Diagflow
         /// * TIER_ENTERPRISE: Enterprise tier (Essentials).
         /// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
         /// NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-        /// the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+        /// the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+        /// Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
@@ -458,7 +460,8 @@ namespace Pulumi.Gcp.Diagflow
         /// * TIER_ENTERPRISE: Enterprise tier (Essentials).
         /// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
         /// NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-        /// the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+        /// the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+        /// Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }

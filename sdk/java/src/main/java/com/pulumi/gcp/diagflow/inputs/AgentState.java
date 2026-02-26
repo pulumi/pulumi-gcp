@@ -229,7 +229,8 @@ public final class AgentState extends com.pulumi.resources.ResourceArgs {
      * * TIER_ENTERPRISE: Enterprise tier (Essentials).
      * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
      *   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-     *   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+     *   the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+     *   Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
      * 
      */
     @Import(name="tier")
@@ -241,7 +242,8 @@ public final class AgentState extends com.pulumi.resources.ResourceArgs {
      * * TIER_ENTERPRISE: Enterprise tier (Essentials).
      * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
      *   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-     *   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+     *   the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+     *   Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
      * 
      */
     public Optional<Output<String>> tier() {
@@ -588,7 +590,8 @@ public final class AgentState extends com.pulumi.resources.ResourceArgs {
          * * TIER_ENTERPRISE: Enterprise tier (Essentials).
          * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
          *   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-         *   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+         *   the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+         *   Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
          * 
          * @return builder
          * 
@@ -604,7 +607,8 @@ public final class AgentState extends com.pulumi.resources.ResourceArgs {
          * * TIER_ENTERPRISE: Enterprise tier (Essentials).
          * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
          *   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-         *   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+         *   the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+         *   Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
          * 
          * @return builder
          * 

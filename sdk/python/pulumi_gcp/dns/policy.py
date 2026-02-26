@@ -31,11 +31,12 @@ class PolicyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Policy resource.
+
         :param pulumi.Input['PolicyAlternativeNameServerConfigArgs'] alternative_name_server_config: Sets an alternative name server for the associated networks.
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Terraform'.
         :param pulumi.Input['PolicyDns64ConfigArgs'] dns64_config: Configurations related to DNS64 for this Policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
@@ -86,7 +87,7 @@ class PolicyArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A textual description field. Defaults to 'Managed by Pulumi'.
+        A textual description field. Defaults to 'Managed by Terraform'.
         """
         return pulumi.get(self, "description")
 
@@ -187,11 +188,12 @@ class _PolicyState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
+
         :param pulumi.Input['PolicyAlternativeNameServerConfigArgs'] alternative_name_server_config: Sets an alternative name server for the associated networks.
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Terraform'.
         :param pulumi.Input['PolicyDns64ConfigArgs'] dns64_config: Configurations related to DNS64 for this Policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
@@ -242,7 +244,7 @@ class _PolicyState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A textual description field. Defaults to 'Managed by Pulumi'.
+        A textual description field. Defaults to 'Managed by Terraform'.
         """
         return pulumi.get(self, "description")
 
@@ -410,13 +412,14 @@ class Policy(pulumi.CustomResource):
         $ pulumi import gcp:dns/policy:Policy default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PolicyAlternativeNameServerConfigArgs', 'PolicyAlternativeNameServerConfigArgsDict']] alternative_name_server_config: Sets an alternative name server for the associated networks.
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Terraform'.
         :param pulumi.Input[Union['PolicyDns64ConfigArgs', 'PolicyDns64ConfigArgsDict']] dns64_config: Configurations related to DNS64 for this Policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
@@ -502,6 +505,7 @@ class Policy(pulumi.CustomResource):
         $ pulumi import gcp:dns/policy:Policy default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -571,7 +575,7 @@ class Policy(pulumi.CustomResource):
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Terraform'.
         :param pulumi.Input[Union['PolicyDns64ConfigArgs', 'PolicyDns64ConfigArgsDict']] dns64_config: Configurations related to DNS64 for this Policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
@@ -615,7 +619,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        A textual description field. Defaults to 'Managed by Pulumi'.
+        A textual description field. Defaults to 'Managed by Terraform'.
         """
         return pulumi.get(self, "description")
 

@@ -30,6 +30,7 @@ class InstanceGroupArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceGroup resource.
+
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The list of instances in the group, in `self_link` format.
@@ -176,6 +177,7 @@ class _InstanceGroupState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceGroup resources.
+
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The list of instances in the group, in `self_link` format.
@@ -357,6 +359,10 @@ class InstanceGroup(pulumi.CustomResource):
         For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
         and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 
+        > Recreating an instance group that's in use by another resource will give a
+        `resourceInUseByAnotherResource` error. You can avoid this error with a
+        Terraform `lifecycle` block as outlined in the example below.
+
         ## Example Usage
 
         ### Empty Instance Group
@@ -366,8 +372,8 @@ class InstanceGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test = gcp.compute.InstanceGroup("test",
-            name="test",
-            description="Test instance group",
+            name="terraform-test",
+            description="Terraform test instance group",
             zone="us-central1-a",
             network=default["id"])
         ```
@@ -379,8 +385,8 @@ class InstanceGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         webservers = gcp.compute.InstanceGroup("webservers",
-            name="webservers",
-            description="Test instance group",
+            name="terraform-webservers",
+            description="Terraform test instance group",
             instances=[
                 test["id"],
                 test2["id"],
@@ -413,6 +419,7 @@ class InstanceGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceGroup:InstanceGroup default {{project_id}}/{{zone}}/{{instance_group_id}}
         $ pulumi import gcp:compute/instanceGroup:InstanceGroup default projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -447,6 +454,10 @@ class InstanceGroup(pulumi.CustomResource):
         For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
         and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 
+        > Recreating an instance group that's in use by another resource will give a
+        `resourceInUseByAnotherResource` error. You can avoid this error with a
+        Terraform `lifecycle` block as outlined in the example below.
+
         ## Example Usage
 
         ### Empty Instance Group
@@ -456,8 +467,8 @@ class InstanceGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test = gcp.compute.InstanceGroup("test",
-            name="test",
-            description="Test instance group",
+            name="terraform-test",
+            description="Terraform test instance group",
             zone="us-central1-a",
             network=default["id"])
         ```
@@ -469,8 +480,8 @@ class InstanceGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         webservers = gcp.compute.InstanceGroup("webservers",
-            name="webservers",
-            description="Test instance group",
+            name="terraform-webservers",
+            description="Terraform test instance group",
             instances=[
                 test["id"],
                 test2["id"],
@@ -503,6 +514,7 @@ class InstanceGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceGroup:InstanceGroup default {{project_id}}/{{zone}}/{{instance_group_id}}
         $ pulumi import gcp:compute/instanceGroup:InstanceGroup default projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceGroupArgs args: The arguments to use to populate this resource's properties.

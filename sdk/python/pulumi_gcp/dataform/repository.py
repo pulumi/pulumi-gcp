@@ -34,6 +34,7 @@ class RepositoryArgs:
                  workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']] = None):
         """
         The set of arguments for constructing a Repository resource.
+
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
         :param pulumi.Input[_builtins.str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input['RepositoryGitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
@@ -236,6 +237,7 @@ class _RepositoryState:
                  workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']] = None):
         """
         Input properties used for looking up and filtering Repository resources.
+
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
         :param pulumi.Input[_builtins.str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -548,6 +550,7 @@ class Repository(pulumi.CustomResource):
         $ pulumi import gcp:dataform/repository:Repository default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
@@ -653,6 +656,7 @@ class Repository(pulumi.CustomResource):
         $ pulumi import gcp:dataform/repository:Repository default {{region}}/{{name}}
         $ pulumi import gcp:dataform/repository:Repository default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RepositoryArgs args: The arguments to use to populate this resource's properties.

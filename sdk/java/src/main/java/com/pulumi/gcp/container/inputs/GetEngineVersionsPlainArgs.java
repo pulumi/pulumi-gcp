@@ -53,7 +53,7 @@ public final class GetEngineVersionsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * If provided, the provider will only return versions
+     * If provided, Terraform will only return versions
      * that match the string prefix. For example, `1.11.` will match all `1.11` series
      * releases. Since this is just a string match, it&#39;s recommended that you append a
      * `.` after minor versions to ensure that prefixes such as `1.1` don&#39;t match
@@ -65,7 +65,7 @@ public final class GetEngineVersionsPlainArgs extends com.pulumi.resources.Invok
     private @Nullable String versionPrefix;
 
     /**
-     * @return If provided, the provider will only return versions
+     * @return If provided, Terraform will only return versions
      * that match the string prefix. For example, `1.11.` will match all `1.11` series
      * releases. Since this is just a string match, it&#39;s recommended that you append a
      * `.` after minor versions to ensure that prefixes such as `1.1` don&#39;t match
@@ -130,7 +130,7 @@ public final class GetEngineVersionsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param versionPrefix If provided, the provider will only return versions
+         * @param versionPrefix If provided, Terraform will only return versions
          * that match the string prefix. For example, `1.11.` will match all `1.11` series
          * releases. Since this is just a string match, it&#39;s recommended that you append a
          * `.` after minor versions to ensure that prefixes such as `1.1` don&#39;t match

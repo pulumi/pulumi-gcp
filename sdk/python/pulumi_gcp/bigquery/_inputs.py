@@ -3469,8 +3469,8 @@ class JobLoadArgsDict(TypedDict):
     """
     null_marker: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-    property to a custom value, BigQuery throws an error if an
+    Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value
+    when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
     empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
     an empty value.
     """
@@ -3602,8 +3602,8 @@ class JobLoadArgs:
                GeoJSON: set to GEOJSON.
         :param pulumi.Input[_builtins.int] max_bad_records: The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
                an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
-        :param pulumi.Input[_builtins.str] null_marker: Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-               property to a custom value, BigQuery throws an error if an
+        :param pulumi.Input[_builtins.str] null_marker: Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value
+               when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
                empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
                an empty value.
         :param pulumi.Input['JobLoadParquetOptionsArgs'] parquet_options: Parquet Options for load and make external tables.
@@ -3862,8 +3862,8 @@ class JobLoadArgs:
     @pulumi.getter(name="nullMarker")
     def null_marker(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-        property to a custom value, BigQuery throws an error if an
+        Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value
+        when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
         empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
         an empty value.
         """
@@ -7594,8 +7594,8 @@ class TableExternalDataConfigurationCsvOptionsArgsDict(TypedDict):
     CSV file. If your data does not contain quoted sections, set the
     property value to an empty string. If your data contains quoted newline
     characters, you must also set the `allow_quoted_newlines` property to true.
-    The API-side default is `"`, specified in the provider escaped as `\\"`. Due to
-    limitations with default values, this value is required to be
+    The API-side default is `"`, specified in Terraform escaped as `\\"`. Due to
+    limitations with Terraform default values, this value is required to be
     explicitly set.
     """
     allow_jagged_rows: NotRequired[pulumi.Input[_builtins.bool]]
@@ -7648,8 +7648,8 @@ class TableExternalDataConfigurationCsvOptionsArgs:
                CSV file. If your data does not contain quoted sections, set the
                property value to an empty string. If your data contains quoted newline
                characters, you must also set the `allow_quoted_newlines` property to true.
-               The API-side default is `"`, specified in the provider escaped as `\\"`. Due to
-               limitations with default values, this value is required to be
+               The API-side default is `"`, specified in Terraform escaped as `\\"`. Due to
+               limitations with Terraform default values, this value is required to be
                explicitly set.
         :param pulumi.Input[_builtins.bool] allow_jagged_rows: Indicates if BigQuery should accept rows
                that are missing trailing optional columns.
@@ -7690,8 +7690,8 @@ class TableExternalDataConfigurationCsvOptionsArgs:
         CSV file. If your data does not contain quoted sections, set the
         property value to an empty string. If your data contains quoted newline
         characters, you must also set the `allow_quoted_newlines` property to true.
-        The API-side default is `"`, specified in the provider escaped as `\\"`. Due to
-        limitations with default values, this value is required to be
+        The API-side default is `"`, specified in Terraform escaped as `\\"`. Due to
+        limitations with Terraform default values, this value is required to be
         explicitly set.
         """
         return pulumi.get(self, "quote")

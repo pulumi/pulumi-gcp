@@ -33,6 +33,7 @@ class RouterArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Router resource.
+
         :param pulumi.Input['RouterBgpArgs'] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -225,6 +226,7 @@ class _RouterState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Router resources.
+
         :param pulumi.Input['RouterBgpArgs'] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -511,7 +513,7 @@ class Router(pulumi.CustomResource):
             name="net-spoke",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_85840",
+            name="tf-test-subnet_72490",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
@@ -572,6 +574,7 @@ class Router(pulumi.CustomResource):
         $ pulumi import gcp:compute/router:Router default {{region}}/{{name}}
         $ pulumi import gcp:compute/router:Router default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -667,7 +670,7 @@ class Router(pulumi.CustomResource):
             name="net-spoke",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_85840",
+            name="tf-test-subnet_72490",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
@@ -728,6 +731,7 @@ class Router(pulumi.CustomResource):
         $ pulumi import gcp:compute/router:Router default {{region}}/{{name}}
         $ pulumi import gcp:compute/router:Router default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterArgs args: The arguments to use to populate this resource's properties.

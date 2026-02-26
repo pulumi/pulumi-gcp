@@ -168,7 +168,7 @@ export class TableIamMember extends pulumi.CustomResource {
     declare public readonly member: pulumi.Output<string>;
     /**
      * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, Terraform will use the provider default.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
@@ -259,7 +259,7 @@ export interface TableIamMemberState {
     member?: pulumi.Input<string>;
     /**
      * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, Terraform will use the provider default.
      */
     project?: pulumi.Input<string>;
     /**
@@ -300,7 +300,7 @@ export interface TableIamMemberArgs {
     member: pulumi.Input<string>;
     /**
      * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, Terraform will use the provider default.
      */
     project?: pulumi.Input<string>;
     /**

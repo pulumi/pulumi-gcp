@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var scan_config = new SecurityScanConfig("scan-config", SecurityScanConfigArgs.builder()
- *             .displayName("scan-config")
+ *             .displayName("terraform-scan-config")
  *             .startingUrls(scannerStaticIp.address().applyValue(_address -> String.format("http://%s", _address)))
  *             .targetPlatforms("COMPUTE")
  *             .build());

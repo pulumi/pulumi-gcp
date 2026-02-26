@@ -305,17 +305,17 @@ import (
 //
 // A common way to use instance templates and managed instance groups is to deploy the
 // latest image in a family, usually the latest build of your application. There are two
-// ways to do this in the provider, and they have their pros and cons. The difference ends
+// ways to do this in Terraform, and they have their pros and cons. The difference ends
 // up being in how "latest" is interpreted. You can either deploy the latest image available
-// when the provider runs, or you can have each instance check what the latest image is when
+// when Terraform runs, or you can have each instance check what the latest image is when
 // it's being created, either as part of a scaling event or being rebuilt by the instance
 // group manager.
 //
-// If you're not sure, we recommend deploying the latest image available when the provider runs,
+// If you're not sure, we recommend deploying the latest image available when Terraform runs,
 // because this means all the instances in your group will be based on the same image, always,
 // and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
 // You can achieve this by using the `compute.Image`
-// data source, which will retrieve the latest image on every `pulumi apply`, and will update
+// data source, which will retrieve the latest image on every `pulumi up`, and will update
 // the template to use that specific image:
 //
 // ```go
@@ -465,7 +465,7 @@ type InstanceTemplate struct {
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform pulumi.StringPtrOutput `pulumi:"minCpuPlatform"`
 	// The name of the instance template. If you leave
-	// this blank, the provider will auto-generate a unique name.
+	// this blank, Terraform will auto-generate a unique name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`. Max length is 54 characters.
@@ -627,7 +627,7 @@ type instanceTemplateState struct {
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The name of the instance template. If you leave
-	// this blank, the provider will auto-generate a unique name.
+	// this blank, Terraform will auto-generate a unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`. Max length is 54 characters.
@@ -749,7 +749,7 @@ type InstanceTemplateState struct {
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform pulumi.StringPtrInput
 	// The name of the instance template. If you leave
-	// this blank, the provider will auto-generate a unique name.
+	// this blank, Terraform will auto-generate a unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`. Max length is 54 characters.
@@ -869,7 +869,7 @@ type instanceTemplateArgs struct {
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The name of the instance template. If you leave
-	// this blank, the provider will auto-generate a unique name.
+	// this blank, Terraform will auto-generate a unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`. Max length is 54 characters.
@@ -975,7 +975,7 @@ type InstanceTemplateArgs struct {
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform pulumi.StringPtrInput
 	// The name of the instance template. If you leave
-	// this blank, the provider will auto-generate a unique name.
+	// this blank, Terraform will auto-generate a unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`. Max length is 54 characters.
@@ -1227,7 +1227,7 @@ func (o InstanceTemplateOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 }
 
 // The name of the instance template. If you leave
-// this blank, the provider will auto-generate a unique name.
+// this blank, Terraform will auto-generate a unique name.
 func (o InstanceTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

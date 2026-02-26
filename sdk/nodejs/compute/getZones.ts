@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * available.then(available => available.names).length.apply(rangeBody => {
  *     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
  *         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range.value}`, {
- *             name: `test-${range.value}`,
+ *             name: `terraform-test-${range.value}`,
  *             instanceTemplate: foobar.selfLink,
  *             baseInstanceName: `foobar-${range.value}`,
  *             zone: available.then(available => available.names[range.value]),
@@ -85,7 +85,7 @@ export interface GetZonesResult {
  * available.then(available => available.names).length.apply(rangeBody => {
  *     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
  *         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range.value}`, {
- *             name: `test-${range.value}`,
+ *             name: `terraform-test-${range.value}`,
  *             instanceTemplate: foobar.selfLink,
  *             baseInstanceName: `foobar-${range.value}`,
  *             zone: available.then(available => available.names[range.value]),

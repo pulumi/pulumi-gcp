@@ -18,11 +18,22 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes? IncludeRegexes;
+        /// <summary>
+        /// For a resource to match the tag filters, the resource must have all of the
+        /// provided tags attached. Tags refer to Resource Manager tags bound to the
+        /// resource or its ancestors.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags? IncludeTags;
 
         [OutputConstructor]
-        private PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection(Outputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes? includeRegexes)
+        private PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection(
+            Outputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes? includeRegexes,
+
+            Outputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags? includeTags)
         {
             IncludeRegexes = includeRegexes;
+            IncludeTags = includeTags;
         }
     }
 }

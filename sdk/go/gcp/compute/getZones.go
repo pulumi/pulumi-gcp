@@ -37,7 +37,7 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := compute.NewInstanceGroupManager(ctx, fmt.Sprintf("foo-%v", key0), &compute.InstanceGroupManagerArgs{
-//					Name:             pulumi.Sprintf("test-%v", val0),
+//					Name:             pulumi.Sprintf("terraform-test-%v", val0),
 //					InstanceTemplate: foobar.SelfLink,
 //					BaseInstanceName: pulumi.Sprintf("foobar-%v", val0),
 //					Zone:             pulumi.String(available.Names[val0]),

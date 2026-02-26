@@ -87,7 +87,7 @@ public final class TargetPoolState extends com.pulumi.resources.ResourceArgs {
      * List of instances in the pool. They can be given as
      * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
      * at the time of target pool creation, so there is no need to use the
-     * interpolation to create a dependency on the instances from the
+     * Terraform interpolators to create a dependency on the instances from the
      * target pool.
      * 
      */
@@ -98,7 +98,7 @@ public final class TargetPoolState extends com.pulumi.resources.ResourceArgs {
      * @return List of instances in the pool. They can be given as
      * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
      * at the time of target pool creation, so there is no need to use the
-     * interpolation to create a dependency on the instances from the
+     * Terraform interpolators to create a dependency on the instances from the
      * target pool.
      * 
      */
@@ -338,7 +338,7 @@ public final class TargetPoolState extends com.pulumi.resources.ResourceArgs {
          * @param instances List of instances in the pool. They can be given as
          * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
          * at the time of target pool creation, so there is no need to use the
-         * interpolation to create a dependency on the instances from the
+         * Terraform interpolators to create a dependency on the instances from the
          * target pool.
          * 
          * @return builder
@@ -353,7 +353,7 @@ public final class TargetPoolState extends com.pulumi.resources.ResourceArgs {
          * @param instances List of instances in the pool. They can be given as
          * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
          * at the time of target pool creation, so there is no need to use the
-         * interpolation to create a dependency on the instances from the
+         * Terraform interpolators to create a dependency on the instances from the
          * target pool.
          * 
          * @return builder
@@ -367,7 +367,7 @@ public final class TargetPoolState extends com.pulumi.resources.ResourceArgs {
          * @param instances List of instances in the pool. They can be given as
          * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
          * at the time of target pool creation, so there is no need to use the
-         * interpolation to create a dependency on the instances from the
+         * Terraform interpolators to create a dependency on the instances from the
          * target pool.
          * 
          * @return builder

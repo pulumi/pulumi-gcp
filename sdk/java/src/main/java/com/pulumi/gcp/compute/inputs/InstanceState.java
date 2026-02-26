@@ -48,7 +48,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, allows this prvider to stop the instance to update its properties.
+     * If true, allows Terraform to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      * 
      */
@@ -56,7 +56,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> allowStoppingForUpdate;
 
     /**
-     * @return If true, allows this prvider to stop the instance to update its properties.
+     * @return If true, allows Terraform to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      * 
      */
@@ -177,7 +177,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Enable deletion protection on this instance. Defaults to false.
-     * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+     * **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
      * 
      */
     @Import(name="deletionProtection")
@@ -185,7 +185,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Enable deletion protection on this instance. Defaults to false.
-     * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+     * **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -259,6 +259,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+     * **Note**: As of 6.0.0, argument syntax
+     * is no longer supported for this field in favor of block syntax.
+     * To dynamically set a list of guest accelerators, use dynamic blocks.
+     * To set an empty list, use a single `guestAccelerator` block with `count = 0`.
      * 
      */
     @Import(name="guestAccelerators")
@@ -267,6 +271,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+     * **Note**: As of 6.0.0, argument syntax
+     * is no longer supported for this field in favor of block syntax.
+     * To dynamically set a list of guest accelerators, use dynamic blocks.
+     * To set an empty list, use a single `guestAccelerator` block with `count = 0`.
      * 
      */
     public Optional<Output<List<InstanceGuestAcceleratorArgs>>> guestAccelerators() {
@@ -466,7 +474,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * modification.  On import, `metadataStartupScript` will not be set - if you
      * choose to specify it you will see a diff immediately after import causing a
      * destroy/recreate operation. If importing an instance and specifying this value
-     * is desired, you will need to modify your state file.
+     * is desired, you will need to modify your state file manually using
+     * `terraform state` commands.
      * 
      */
     @Import(name="metadataStartupScript")
@@ -482,7 +491,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * modification.  On import, `metadataStartupScript` will not be set - if you
      * choose to specify it you will see a diff immediately after import causing a
      * destroy/recreate operation. If importing an instance and specifying this value
-     * is desired, you will need to modify your state file.
+     * is desired, you will need to modify your state file manually using
+     * `terraform state` commands.
      * 
      */
     public Optional<Output<String>> metadataStartupScript() {
@@ -885,7 +895,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowStoppingForUpdate If true, allows this prvider to stop the instance to update its properties.
+         * @param allowStoppingForUpdate If true, allows Terraform to stop the instance to update its properties.
          * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
          * 
          * @return builder
@@ -897,7 +907,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowStoppingForUpdate If true, allows this prvider to stop the instance to update its properties.
+         * @param allowStoppingForUpdate If true, allows Terraform to stop the instance to update its properties.
          * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
          * 
          * @return builder
@@ -1072,7 +1082,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deletionProtection Enable deletion protection on this instance. Defaults to false.
-         * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+         * **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
          * 
          * @return builder
          * 
@@ -1084,7 +1094,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deletionProtection Enable deletion protection on this instance. Defaults to false.
-         * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+         * **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
          * 
          * @return builder
          * 
@@ -1184,6 +1194,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param guestAccelerators List of the type and count of accelerator cards attached to the instance. Structure documented below.
          * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+         * **Note**: As of 6.0.0, argument syntax
+         * is no longer supported for this field in favor of block syntax.
+         * To dynamically set a list of guest accelerators, use dynamic blocks.
+         * To set an empty list, use a single `guestAccelerator` block with `count = 0`.
          * 
          * @return builder
          * 
@@ -1196,6 +1210,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param guestAccelerators List of the type and count of accelerator cards attached to the instance. Structure documented below.
          * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+         * **Note**: As of 6.0.0, argument syntax
+         * is no longer supported for this field in favor of block syntax.
+         * To dynamically set a list of guest accelerators, use dynamic blocks.
+         * To set an empty list, use a single `guestAccelerator` block with `count = 0`.
          * 
          * @return builder
          * 
@@ -1207,6 +1225,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param guestAccelerators List of the type and count of accelerator cards attached to the instance. Structure documented below.
          * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+         * **Note**: As of 6.0.0, argument syntax
+         * is no longer supported for this field in favor of block syntax.
+         * To dynamically set a list of guest accelerators, use dynamic blocks.
+         * To set an empty list, use a single `guestAccelerator` block with `count = 0`.
          * 
          * @return builder
          * 
@@ -1462,7 +1484,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * modification.  On import, `metadataStartupScript` will not be set - if you
          * choose to specify it you will see a diff immediately after import causing a
          * destroy/recreate operation. If importing an instance and specifying this value
-         * is desired, you will need to modify your state file.
+         * is desired, you will need to modify your state file manually using
+         * `terraform state` commands.
          * 
          * @return builder
          * 
@@ -1482,7 +1505,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * modification.  On import, `metadataStartupScript` will not be set - if you
          * choose to specify it you will see a diff immediately after import causing a
          * destroy/recreate operation. If importing an instance and specifying this value
-         * is desired, you will need to modify your state file.
+         * is desired, you will need to modify your state file manually using
+         * `terraform state` commands.
          * 
          * @return builder
          * 

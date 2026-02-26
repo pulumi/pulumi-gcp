@@ -31,6 +31,7 @@ class CertificateArgs:
                  self_managed: Optional[pulumi.Input['CertificateSelfManagedArgs']] = None):
         """
         The set of arguments for constructing a Certificate resource.
+
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the Certificate resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -208,6 +209,7 @@ class _CertificateState:
                  self_managed: Optional[pulumi.Input['CertificateSelfManagedArgs']] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
+
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the Certificate resource.
@@ -541,33 +543,20 @@ class Certificate(pulumi.CustomResource):
                 "issuance_config": issuanceconfig.id,
             })
         ```
-        ### Certificate Manager Certificate Basic
+        ### Certificate Manager Self Managed Certificate
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        instance = gcp.certificatemanager.DnsAuthorization("instance",
-            name="dns-auth",
-            description="The default dnss",
-            domain="subdomain.hashicorptest.com")
-        instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
-            name="dns-auth2",
-            description="The default dnss",
-            domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
             name="self-managed-cert",
             description="Global cert",
-            scope="EDGE_CACHE",
-            managed={
-                "domains": [
-                    instance.domain,
-                    instance2.domain,
-                ],
-                "dns_authorizations": [
-                    instance.id,
-                    instance2.id,
-                ],
+            scope="ALL_REGIONS",
+            self_managed={
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
         ### Certificate Manager Self Managed Certificate Regional
@@ -734,6 +723,7 @@ class Certificate(pulumi.CustomResource):
         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -881,33 +871,20 @@ class Certificate(pulumi.CustomResource):
                 "issuance_config": issuanceconfig.id,
             })
         ```
-        ### Certificate Manager Certificate Basic
+        ### Certificate Manager Self Managed Certificate
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        instance = gcp.certificatemanager.DnsAuthorization("instance",
-            name="dns-auth",
-            description="The default dnss",
-            domain="subdomain.hashicorptest.com")
-        instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
-            name="dns-auth2",
-            description="The default dnss",
-            domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
             name="self-managed-cert",
             description="Global cert",
-            scope="EDGE_CACHE",
-            managed={
-                "domains": [
-                    instance.domain,
-                    instance2.domain,
-                ],
-                "dns_authorizations": [
-                    instance.id,
-                    instance2.id,
-                ],
+            scope="ALL_REGIONS",
+            self_managed={
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
         ### Certificate Manager Self Managed Certificate Regional
@@ -1074,6 +1051,7 @@ class Certificate(pulumi.CustomResource):
         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.

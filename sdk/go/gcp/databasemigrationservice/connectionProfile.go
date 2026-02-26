@@ -462,11 +462,11 @@ import (
 //					"foo": pulumi.String("bar"),
 //				},
 //				Alloydb: &databasemigrationservice.ConnectionProfileAlloydbArgs{
-//					ClusterId: pulumi.String("tf-test-dbmsalloycluster_91042"),
+//					ClusterId: pulumi.String("tf-test-dbmsalloycluster_95154"),
 //					Settings: &databasemigrationservice.ConnectionProfileAlloydbSettingsArgs{
 //						InitialUser: &databasemigrationservice.ConnectionProfileAlloydbSettingsInitialUserArgs{
-//							User:     pulumi.String("alloyuser_72490"),
-//							Password: pulumi.String("alloypass_89605"),
+//							User:     pulumi.String("alloyuser_64336"),
+//							Password: pulumi.String("alloypass_34962"),
 //						},
 //						VpcNetwork: _default.ID(),
 //						Labels: pulumi.StringMap{

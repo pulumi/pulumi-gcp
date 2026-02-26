@@ -182,7 +182,7 @@ type Instance struct {
 
 	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrOutput `pulumi:"advancedMachineFeatures"`
-	// If true, allows this prvider to stop the instance to update its properties.
+	// If true, allows Terraform to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrOutput `pulumi:"allowStoppingForUpdate"`
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -203,7 +203,7 @@ type Instance struct {
 	// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus pulumi.StringOutput `pulumi:"currentStatus"`
 	// Enable deletion protection on this instance. Defaults to false.
-	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+	// **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// A brief description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -217,6 +217,10 @@ type Instance struct {
 	EnableDisplay pulumi.BoolPtrOutput `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+	// **Note**: As of 6.0.0, argument syntax
+	// is no longer supported for this field in favor of block syntax.
+	// To dynamically set a list of guest accelerators, use dynamic blocks.
+	// To set an empty list, use a single `guestAccelerator` block with `count = 0`.
 	GuestAccelerators InstanceGuestAcceleratorArrayOutput `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -269,7 +273,8 @@ type Instance struct {
 	// modification.  On import, `metadataStartupScript` will not be set - if you
 	// choose to specify it you will see a diff immediately after import causing a
 	// destroy/recreate operation. If importing an instance and specifying this value
-	// is desired, you will need to modify your state file.
+	// is desired, you will need to modify your state file manually using
+	// `terraform state` commands.
 	MetadataStartupScript pulumi.StringPtrOutput `pulumi:"metadataStartupScript"`
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -374,7 +379,7 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures *InstanceAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
-	// If true, allows this prvider to stop the instance to update its properties.
+	// If true, allows Terraform to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -395,7 +400,7 @@ type instanceState struct {
 	// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus *string `pulumi:"currentStatus"`
 	// Enable deletion protection on this instance. Defaults to false.
-	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+	// **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
@@ -409,6 +414,10 @@ type instanceState struct {
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+	// **Note**: As of 6.0.0, argument syntax
+	// is no longer supported for this field in favor of block syntax.
+	// To dynamically set a list of guest accelerators, use dynamic blocks.
+	// To set an empty list, use a single `guestAccelerator` block with `count = 0`.
 	GuestAccelerators []InstanceGuestAccelerator `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -461,7 +470,8 @@ type instanceState struct {
 	// modification.  On import, `metadataStartupScript` will not be set - if you
 	// choose to specify it you will see a diff immediately after import causing a
 	// destroy/recreate operation. If importing an instance and specifying this value
-	// is desired, you will need to modify your state file.
+	// is desired, you will need to modify your state file manually using
+	// `terraform state` commands.
 	MetadataStartupScript *string `pulumi:"metadataStartupScript"`
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -523,7 +533,7 @@ type instanceState struct {
 type InstanceState struct {
 	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrInput
-	// If true, allows this prvider to stop the instance to update its properties.
+	// If true, allows Terraform to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrInput
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -544,7 +554,7 @@ type InstanceState struct {
 	// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus pulumi.StringPtrInput
 	// Enable deletion protection on this instance. Defaults to false.
-	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+	// **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
 	DeletionProtection pulumi.BoolPtrInput
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput
@@ -558,6 +568,10 @@ type InstanceState struct {
 	EnableDisplay pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+	// **Note**: As of 6.0.0, argument syntax
+	// is no longer supported for this field in favor of block syntax.
+	// To dynamically set a list of guest accelerators, use dynamic blocks.
+	// To set an empty list, use a single `guestAccelerator` block with `count = 0`.
 	GuestAccelerators InstanceGuestAcceleratorArrayInput
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -610,7 +624,8 @@ type InstanceState struct {
 	// modification.  On import, `metadataStartupScript` will not be set - if you
 	// choose to specify it you will see a diff immediately after import causing a
 	// destroy/recreate operation. If importing an instance and specifying this value
-	// is desired, you will need to modify your state file.
+	// is desired, you will need to modify your state file manually using
+	// `terraform state` commands.
 	MetadataStartupScript pulumi.StringPtrInput
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -676,7 +691,7 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures *InstanceAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
-	// If true, allows this prvider to stop the instance to update its properties.
+	// If true, allows Terraform to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -691,7 +706,7 @@ type instanceArgs struct {
 	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig *InstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Enable deletion protection on this instance. Defaults to false.
-	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+	// **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
@@ -703,6 +718,10 @@ type instanceArgs struct {
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+	// **Note**: As of 6.0.0, argument syntax
+	// is no longer supported for this field in favor of block syntax.
+	// To dynamically set a list of guest accelerators, use dynamic blocks.
+	// To set an empty list, use a single `guestAccelerator` block with `count = 0`.
 	GuestAccelerators []InstanceGuestAccelerator `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -749,7 +768,8 @@ type instanceArgs struct {
 	// modification.  On import, `metadataStartupScript` will not be set - if you
 	// choose to specify it you will see a diff immediately after import causing a
 	// destroy/recreate operation. If importing an instance and specifying this value
-	// is desired, you will need to modify your state file.
+	// is desired, you will need to modify your state file manually using
+	// `terraform state` commands.
 	MetadataStartupScript *string `pulumi:"metadataStartupScript"`
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -806,7 +826,7 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrInput
-	// If true, allows this prvider to stop the instance to update its properties.
+	// If true, allows Terraform to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrInput
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -821,7 +841,7 @@ type InstanceArgs struct {
 	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigPtrInput
 	// Enable deletion protection on this instance. Defaults to false.
-	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+	// **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
 	DeletionProtection pulumi.BoolPtrInput
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput
@@ -833,6 +853,10 @@ type InstanceArgs struct {
 	EnableDisplay pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+	// **Note**: As of 6.0.0, argument syntax
+	// is no longer supported for this field in favor of block syntax.
+	// To dynamically set a list of guest accelerators, use dynamic blocks.
+	// To set an empty list, use a single `guestAccelerator` block with `count = 0`.
 	GuestAccelerators InstanceGuestAcceleratorArrayInput
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -879,7 +903,8 @@ type InstanceArgs struct {
 	// modification.  On import, `metadataStartupScript` will not be set - if you
 	// choose to specify it you will see a diff immediately after import causing a
 	// destroy/recreate operation. If importing an instance and specifying this value
-	// is desired, you will need to modify your state file.
+	// is desired, you will need to modify your state file manually using
+	// `terraform state` commands.
 	MetadataStartupScript pulumi.StringPtrInput
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -1024,7 +1049,7 @@ func (o InstanceOutput) AdvancedMachineFeatures() InstanceAdvancedMachineFeature
 	return o.ApplyT(func(v *Instance) InstanceAdvancedMachineFeaturesPtrOutput { return v.AdvancedMachineFeatures }).(InstanceAdvancedMachineFeaturesPtrOutput)
 }
 
-// If true, allows this prvider to stop the instance to update its properties.
+// If true, allows Terraform to stop the instance to update its properties.
 // If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 func (o InstanceOutput) AllowStoppingForUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AllowStoppingForUpdate }).(pulumi.BoolPtrOutput)
@@ -1069,7 +1094,7 @@ func (o InstanceOutput) CurrentStatus() pulumi.StringOutput {
 }
 
 // Enable deletion protection on this instance. Defaults to false.
-// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+// **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
 func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -1098,6 +1123,10 @@ func (o InstanceOutput) EnableDisplay() pulumi.BoolPtrOutput {
 
 // List of the type and count of accelerator cards attached to the instance. Structure documented below.
 // **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+// **Note**: As of 6.0.0, argument syntax
+// is no longer supported for this field in favor of block syntax.
+// To dynamically set a list of guest accelerators, use dynamic blocks.
+// To set an empty list, use a single `guestAccelerator` block with `count = 0`.
 func (o InstanceOutput) GuestAccelerators() InstanceGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceGuestAcceleratorArrayOutput { return v.GuestAccelerators }).(InstanceGuestAcceleratorArrayOutput)
 }
@@ -1180,7 +1209,8 @@ func (o InstanceOutput) MetadataFingerprint() pulumi.StringOutput {
 // modification.  On import, `metadataStartupScript` will not be set - if you
 // choose to specify it you will see a diff immediately after import causing a
 // destroy/recreate operation. If importing an instance and specifying this value
-// is desired, you will need to modify your state file.
+// is desired, you will need to modify your state file manually using
+// `terraform state` commands.
 func (o InstanceOutput) MetadataStartupScript() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.MetadataStartupScript }).(pulumi.StringPtrOutput)
 }

@@ -102,7 +102,7 @@ export class TargetPool extends pulumi.CustomResource {
      * List of instances in the pool. They can be given as
      * URLs, or in the form of "zone/name". Note that the instances need not exist
      * at the time of target pool creation, so there is no need to use the
-     * interpolation to create a dependency on the instances from the
+     * Terraform interpolators to create a dependency on the instances from the
      * target pool.
      */
     declare public readonly instances: pulumi.Output<string[]>;
@@ -208,7 +208,7 @@ export interface TargetPoolState {
      * List of instances in the pool. They can be given as
      * URLs, or in the form of "zone/name". Note that the instances need not exist
      * at the time of target pool creation, so there is no need to use the
-     * interpolation to create a dependency on the instances from the
+     * Terraform interpolators to create a dependency on the instances from the
      * target pool.
      */
     instances?: pulumi.Input<pulumi.Input<string>[]>;
@@ -272,7 +272,7 @@ export interface TargetPoolArgs {
      * List of instances in the pool. They can be given as
      * URLs, or in the form of "zone/name". Note that the instances need not exist
      * at the time of target pool creation, so there is no need to use the
-     * interpolation to create a dependency on the instances from the
+     * Terraform interpolators to create a dependency on the instances from the
      * target pool.
      */
     instances?: pulumi.Input<pulumi.Input<string>[]>;

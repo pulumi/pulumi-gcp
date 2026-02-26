@@ -34,6 +34,7 @@ class AppHostingBackendArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppHostingBackend resource.
+
         :param pulumi.Input[_builtins.str] app_id: The [ID of a Web
                App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
                associated with the backend.
@@ -262,6 +263,7 @@ class _AppHostingBackendState:
                  uri: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppHostingBackend resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Unstructured key value map that may be set by external tools to
                store and arbitrary metadata. They are not queryable and should be
                preserved when modifying objects.
@@ -806,6 +808,7 @@ class AppHostingBackend(pulumi.CustomResource):
         $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default {{location}}/{{backend_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Unstructured key value map that may be set by external tools to
@@ -989,6 +992,7 @@ class AppHostingBackend(pulumi.CustomResource):
         $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default {{project}}/{{location}}/{{backend_id}}
         $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default {{location}}/{{backend_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppHostingBackendArgs args: The arguments to use to populate this resource's properties.

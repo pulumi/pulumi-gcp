@@ -124,35 +124,24 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Certificate Manager Certificate Basic
+ * ### Certificate Manager Self Managed Certificate
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
- * const instance = new gcp.certificatemanager.DnsAuthorization("instance", {
- *     name: "dns-auth",
- *     description: "The default dnss",
- *     domain: "subdomain.hashicorptest.com",
- * });
- * const instance2 = new gcp.certificatemanager.DnsAuthorization("instance2", {
- *     name: "dns-auth2",
- *     description: "The default dnss",
- *     domain: "subdomain2.hashicorptest.com",
- * });
  * const _default = new gcp.certificatemanager.Certificate("default", {
  *     name: "self-managed-cert",
  *     description: "Global cert",
- *     scope: "EDGE_CACHE",
- *     managed: {
- *         domains: [
- *             instance.domain,
- *             instance2.domain,
- *         ],
- *         dnsAuthorizations: [
- *             instance.id,
- *             instance2.id,
- *         ],
+ *     scope: "ALL_REGIONS",
+ *     selfManaged: {
+ *         pemCertificate: std.file({
+ *             input: "test-fixtures/cert.pem",
+ *         }).then(invoke => invoke.result),
+ *         pemPrivateKey: std.file({
+ *             input: "test-fixtures/private-key.pem",
+ *         }).then(invoke => invoke.result),
  *     },
  * });
  * ```

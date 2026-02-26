@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  *    from anyone without organization-level access to the project. Proceed with caution.
  *    It&#39;s not recommended to use `gcp.projects.IAMPolicy` with your provider project
  *    to avoid locking yourself out, and it should generally only be used with projects
- *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+ *    fully managed by Terraform. If you do use this resource, it is recommended to **import** the policy before
  *    applying the change.
  * 
  * <pre>
@@ -331,7 +331,7 @@ import javax.annotation.Nullable;
  *    from anyone without organization-level access to the project. Proceed with caution.
  *    It&#39;s not recommended to use `gcp.projects.IAMPolicy` with your provider project
  *    to avoid locking yourself out, and it should generally only be used with projects
- *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+ *    fully managed by Terraform. If you do use this resource, it is recommended to **import** the policy before
  *    applying the change.
  * 
  * <pre>

@@ -39,6 +39,32 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// });
     /// ```
+    /// ### Beyondcorp Security Gateway Logging
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example_logging = new Gcp.Beyondcorp.SecurityGateway("example-logging", new()
+    ///     {
+    ///         SecurityGatewayId = "default-logging",
+    ///         DisplayName = "My Security Gateway resource with logging enabled",
+    ///         Hubs = new[]
+    ///         {
+    ///             new Gcp.Beyondcorp.Inputs.SecurityGatewayHubArgs
+    ///             {
+    ///                 Region = "us-central1",
+    ///             },
+    ///         },
+    ///         Logging = null,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Beyondcorp Security Gateway Spa
     /// 
     /// ```csharp
@@ -160,6 +186,12 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings related to Cloud Logging.
+        /// </summary>
+        [Output("logging")]
+        public Output<Outputs.SecurityGatewayLogging?> Logging { get; private set; } = null!;
 
         /// <summary>
         /// Identifier. Name of the resource.
@@ -294,6 +326,12 @@ namespace Pulumi.Gcp.Beyondcorp
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// Settings related to Cloud Logging.
+        /// </summary>
+        [Input("logging")]
+        public Input<Inputs.SecurityGatewayLoggingArgs>? Logging { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -385,6 +423,12 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Settings related to Cloud Logging.
+        /// </summary>
+        [Input("logging")]
+        public Input<Inputs.SecurityGatewayLoggingGetArgs>? Logging { get; set; }
 
         /// <summary>
         /// Identifier. Name of the resource.

@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var scan_config = new Gcp.Compute.SecurityScanConfig("scan-config", new()
     ///     {
-    ///         DisplayName = "scan-config",
+    ///         DisplayName = "terraform-scan-config",
     ///         StartingUrls = new[]
     ///         {
     ///             scannerStaticIp.IPAddress.Apply(address =&gt; $"http://{address}"),

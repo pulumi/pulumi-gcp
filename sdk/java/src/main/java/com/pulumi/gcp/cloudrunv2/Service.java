@@ -980,7 +980,6 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .deletionProtection(false)
  *             .ingress("INGRESS_TRAFFIC_ALL")
- *             .launchStage("BETA")
  *             .iapEnabled(true)
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
@@ -1366,16 +1365,14 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.generation;
     }
     /**
-     * (Optional, Beta)
-     * Used to enable/disable IAP for the service.
+     * Used to enable/disable IAP for the cloud-run service.
      * 
      */
     @Export(name="iapEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> iapEnabled;
 
     /**
-     * @return (Optional, Beta)
-     * Used to enable/disable IAP for the service.
+     * @return Used to enable/disable IAP for the cloud-run service.
      * 
      */
     public Output<Optional<Boolean>> iapEnabled() {

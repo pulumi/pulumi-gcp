@@ -36,6 +36,7 @@ class RegionNetworkEndpointGroupArgs:
                  subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionNetworkEndpointGroup resource.
+
         :param pulumi.Input[_builtins.str] region: A reference to the region where the regional NEGs reside.
         :param pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs'] app_engine: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
@@ -302,6 +303,7 @@ class _RegionNetworkEndpointGroupState:
                  subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionNetworkEndpointGroup resources.
+
         :param pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs'] app_engine: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
@@ -589,6 +591,14 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         A regional NEG that can support Serverless Products, proxying traffic to
         external backends and providing traffic to the PSC port mapping endpoints.
 
+        When in use by a resource that can be updated, recreating a RegionNetworkEndpointGroup
+        will give a `resourceInUseByAnotherResource` error because Terraform will attempt to
+        delete the  RegionNetworkEndpointGroup first, but an in-use RegionNetworkEndpointGroup
+        can't be deleted in the API. Use `lifecycle.create_before_destroy` to reorder the plan
+        and create the new resource first, allowing the deletion to go through successfully.
+        This is only recommended when strictly necessary, as the `create_before_destroy`
+        directive can be passed onto further dependencies, creating unexpected plans.
+
         To get more information about RegionNetworkEndpointGroup, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
@@ -876,6 +886,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{region}}/{{name}}
         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -928,6 +939,14 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         A regional NEG that can support Serverless Products, proxying traffic to
         external backends and providing traffic to the PSC port mapping endpoints.
 
+        When in use by a resource that can be updated, recreating a RegionNetworkEndpointGroup
+        will give a `resourceInUseByAnotherResource` error because Terraform will attempt to
+        delete the  RegionNetworkEndpointGroup first, but an in-use RegionNetworkEndpointGroup
+        can't be deleted in the API. Use `lifecycle.create_before_destroy` to reorder the plan
+        and create the new resource first, allowing the deletion to go through successfully.
+        This is only recommended when strictly necessary, as the `create_before_destroy`
+        directive can be passed onto further dependencies, creating unexpected plans.
+
         To get more information about RegionNetworkEndpointGroup, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
@@ -1215,6 +1234,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{region}}/{{name}}
         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionNetworkEndpointGroupArgs args: The arguments to use to populate this resource's properties.

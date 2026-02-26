@@ -91,7 +91,7 @@ type TargetPool struct {
 	// List of instances in the pool. They can be given as
 	// URLs, or in the form of "zone/name". Note that the instances need not exist
 	// at the time of target pool creation, so there is no need to use the
-	// interpolation to create a dependency on the instances from the
+	// Terraform interpolators to create a dependency on the instances from the
 	// target pool.
 	Instances pulumi.StringArrayOutput `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
@@ -159,7 +159,7 @@ type targetPoolState struct {
 	// List of instances in the pool. They can be given as
 	// URLs, or in the form of "zone/name". Note that the instances need not exist
 	// at the time of target pool creation, so there is no need to use the
-	// interpolation to create a dependency on the instances from the
+	// Terraform interpolators to create a dependency on the instances from the
 	// target pool.
 	Instances []string `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
@@ -198,7 +198,7 @@ type TargetPoolState struct {
 	// List of instances in the pool. They can be given as
 	// URLs, or in the form of "zone/name". Note that the instances need not exist
 	// at the time of target pool creation, so there is no need to use the
-	// interpolation to create a dependency on the instances from the
+	// Terraform interpolators to create a dependency on the instances from the
 	// target pool.
 	Instances pulumi.StringArrayInput
 	// A unique name for the resource, required by GCE. Changing
@@ -241,7 +241,7 @@ type targetPoolArgs struct {
 	// List of instances in the pool. They can be given as
 	// URLs, or in the form of "zone/name". Note that the instances need not exist
 	// at the time of target pool creation, so there is no need to use the
-	// interpolation to create a dependency on the instances from the
+	// Terraform interpolators to create a dependency on the instances from the
 	// target pool.
 	Instances []string `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
@@ -279,7 +279,7 @@ type TargetPoolArgs struct {
 	// List of instances in the pool. They can be given as
 	// URLs, or in the form of "zone/name". Note that the instances need not exist
 	// at the time of target pool creation, so there is no need to use the
-	// interpolation to create a dependency on the instances from the
+	// Terraform interpolators to create a dependency on the instances from the
 	// target pool.
 	Instances pulumi.StringArrayInput
 	// A unique name for the resource, required by GCE. Changing
@@ -414,7 +414,7 @@ func (o TargetPoolOutput) HealthChecks() pulumi.StringPtrOutput {
 // List of instances in the pool. They can be given as
 // URLs, or in the form of "zone/name". Note that the instances need not exist
 // at the time of target pool creation, so there is no need to use the
-// interpolation to create a dependency on the instances from the
+// Terraform interpolators to create a dependency on the instances from the
 // target pool.
 func (o TargetPoolOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringArrayOutput { return v.Instances }).(pulumi.StringArrayOutput)

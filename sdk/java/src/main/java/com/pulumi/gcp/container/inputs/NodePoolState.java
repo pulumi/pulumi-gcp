@@ -66,9 +66,9 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
      * this will force recreation of the resource. WARNING: Resizing your node pool manually
      * may change this value in your existing cluster, which will trigger destruction
-     * and recreation on the next provider run (to rectify the discrepancy).  If you don&#39;t
+     * and recreation on the next Terraform run (to rectify the discrepancy).  If you don&#39;t
      * need this value, don&#39;t set it.  If you do need it, you can use a lifecycle block to
-     * ignore subsqeuent changes to this field.
+     * ignore subsequent changes to this field.
      * 
      */
     @Import(name="initialNodeCount")
@@ -79,9 +79,9 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
      * this will force recreation of the resource. WARNING: Resizing your node pool manually
      * may change this value in your existing cluster, which will trigger destruction
-     * and recreation on the next provider run (to rectify the discrepancy).  If you don&#39;t
+     * and recreation on the next Terraform run (to rectify the discrepancy).  If you don&#39;t
      * need this value, don&#39;t set it.  If you do need it, you can use a lifecycle block to
-     * ignore subsqeuent changes to this field.
+     * ignore subsequent changes to this field.
      * 
      */
     public Optional<Output<Integer>> initialNodeCount() {
@@ -178,7 +178,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the node pool. If left blank, the provider will
+     * The name of the node pool. If left blank, Terraform will
      * auto-generate a unique name.
      * 
      */
@@ -186,7 +186,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the node pool. If left blank, the provider will
+     * @return The name of the node pool. If left blank, Terraform will
      * auto-generate a unique name.
      * 
      */
@@ -391,9 +391,9 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `autoUpgrade` are both specified, they will fight each other for what the node version should
      * be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s
-     * recommended that you specify explicit versions as the provider will see spurious diffs
+     * recommended that you specify explicit versions as Terraform will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+     * `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
      * 
      */
     @Import(name="version")
@@ -403,9 +403,9 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      * @return The Kubernetes version for the nodes in this pool. Note that if this field
      * and `autoUpgrade` are both specified, they will fight each other for what the node version should
      * be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s
-     * recommended that you specify explicit versions as the provider will see spurious diffs
+     * recommended that you specify explicit versions as Terraform will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+     * `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
      * 
      */
     public Optional<Output<String>> version() {
@@ -509,9 +509,9 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
          * this will force recreation of the resource. WARNING: Resizing your node pool manually
          * may change this value in your existing cluster, which will trigger destruction
-         * and recreation on the next provider run (to rectify the discrepancy).  If you don&#39;t
+         * and recreation on the next Terraform run (to rectify the discrepancy).  If you don&#39;t
          * need this value, don&#39;t set it.  If you do need it, you can use a lifecycle block to
-         * ignore subsqeuent changes to this field.
+         * ignore subsequent changes to this field.
          * 
          * @return builder
          * 
@@ -526,9 +526,9 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
          * this will force recreation of the resource. WARNING: Resizing your node pool manually
          * may change this value in your existing cluster, which will trigger destruction
-         * and recreation on the next provider run (to rectify the discrepancy).  If you don&#39;t
+         * and recreation on the next Terraform run (to rectify the discrepancy).  If you don&#39;t
          * need this value, don&#39;t set it.  If you do need it, you can use a lifecycle block to
-         * ignore subsqeuent changes to this field.
+         * ignore subsequent changes to this field.
          * 
          * @return builder
          * 
@@ -677,7 +677,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the node pool. If left blank, the provider will
+         * @param name The name of the node pool. If left blank, Terraform will
          * auto-generate a unique name.
          * 
          * @return builder
@@ -689,7 +689,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the node pool. If left blank, the provider will
+         * @param name The name of the node pool. If left blank, Terraform will
          * auto-generate a unique name.
          * 
          * @return builder
@@ -985,9 +985,9 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * @param version The Kubernetes version for the nodes in this pool. Note that if this field
          * and `autoUpgrade` are both specified, they will fight each other for what the node version should
          * be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s
-         * recommended that you specify explicit versions as the provider will see spurious diffs
+         * recommended that you specify explicit versions as Terraform will see spurious diffs
          * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-         * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+         * `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
          * 
          * @return builder
          * 
@@ -1001,9 +1001,9 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * @param version The Kubernetes version for the nodes in this pool. Note that if this field
          * and `autoUpgrade` are both specified, they will fight each other for what the node version should
          * be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s
-         * recommended that you specify explicit versions as the provider will see spurious diffs
+         * recommended that you specify explicit versions as Terraform will see spurious diffs
          * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-         * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+         * `versionPrefix` field to approximate fuzzy versions in a Terraform-compatible way.
          * 
          * @return builder
          * 

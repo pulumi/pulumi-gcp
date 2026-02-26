@@ -7,44 +7,242 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Allows creation and management of a single binding within IAM policy for
- * an existing Google Cloud Platform folder.
+ * Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
  *
- * > **Note:** This resource _must not_ be used in conjunction with
- *    `gcp.folder.IAMPolicy` or they will fight over what your policy
- *    should be.
+ * * `gcp.folder.IAMPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
+ * * `gcp.folder.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
+ * * `gcp.folder.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
+ * * `gcp.folder.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
  *
- * > **Note:** On create, this resource will overwrite members of any existing roles.
- *     Use `pulumi import` and inspect the output to ensure
- *     your existing members are preserved.
+ * > **Note:** `gcp.folder.IAMPolicy` **cannot** be used in conjunction with `gcp.folder.IAMBinding`, `gcp.folder.IAMMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
  *
- * ## Example Usage
+ * > **Note:** `gcp.folder.IAMBinding` resources **can be** used in conjunction with `gcp.folder.IAMMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
+ *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
+ *
+ * ## gcp.folder.IAMPolicy
+ *
+ * !> **Be careful!** You can accidentally lock yourself out of your folder
+ *    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
+ *    from anyone without permissions on its parent folder/organization. Proceed with caution.
+ *    It's not recommended to use `gcp.folder.IAMPolicy` with your provider folder
+ *    to avoid locking yourself out, and it should generally only be used with folders
+ *    fully managed by Terraform. If you do use this resource, it is recommended to **import** the policy before
+ *    applying the change.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const department1 = new gcp.organizations.Folder("department1", {
- *     displayName: "Department 1",
- *     parent: "organizations/1234567",
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
  * });
- * const admin = new gcp.folder.IAMBinding("admin", {
- *     folder: department1.name,
+ * const folder = new gcp.folder.IAMPolicy("folder", {
+ *     folder: "folders/1234567",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/compute.admin",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const folder = new gcp.folder.IAMPolicy("folder", {
+ *     folder: "folders/1234567",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## gcp.folder.IAMBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IAMBinding("folder", {
+ *     folder: "folders/1234567",
  *     role: "roles/editor",
- *     members: ["user:alice@gmail.com"],
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IAMBinding("folder", {
+ *     folder: "folders/1234567",
+ *     role: "roles/container.admin",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * ## gcp.folder.IAMMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IAMMember("folder", {
+ *     folder: "folders/1234567",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IAMMember("folder", {
+ *     folder: "folders/1234567",
+ *     role: "roles/firebase.admin",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * ## gcp.folder.IamAuditConfig
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IamAuditConfig("folder", {
+ *     folder: "folders/1234567",
+ *     service: "allServices",
+ *     auditLogConfigs: [
+ *         {
+ *             logType: "ADMIN_READ",
+ *         },
+ *         {
+ *             logType: "DATA_READ",
+ *             exemptedMembers: ["user:joebloggs@example.com"],
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## gcp.folder.IAMBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IAMBinding("folder", {
+ *     folder: "folders/1234567",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IAMBinding("folder", {
+ *     folder: "folders/1234567",
+ *     role: "roles/container.admin",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * ## gcp.folder.IAMMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IAMMember("folder", {
+ *     folder: "folders/1234567",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IAMMember("folder", {
+ *     folder: "folders/1234567",
+ *     role: "roles/firebase.admin",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * ## gcp.folder.IamAuditConfig
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IamAuditConfig("folder", {
+ *     folder: "folders/1234567",
+ *     service: "allServices",
+ *     auditLogConfigs: [
+ *         {
+ *             logType: "ADMIN_READ",
+ *         },
+ *         {
+ *             logType: "DATA_READ",
+ *             exemptedMembers: ["user:joebloggs@example.com"],
+ *         },
+ *     ],
  * });
  * ```
  *
  * ## Import
  *
- * IAM binding imports use space-delimited identifiers; first the resource in question and then the role.  These bindings can be imported using the `folder` and role, e.g.
+ * > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
  *
- * ```sh
- * $ terraform import google_folder_iam_binding.viewer "folder-name roles/viewer"
- * ```
- *
- * > **Custom Roles**: If you're importing a IAM binding with a custom role, make sure to use the
- *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
+ *  to include the title of condition, e.g. `terraform import google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
  */
 export class IAMBinding extends pulumi.CustomResource {
     /**
@@ -74,6 +272,10 @@ export class IAMBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === IAMBinding.__pulumiType;
     }
 
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     declare public readonly condition: pulumi.Output<outputs.folder.IAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the folder's IAM policy.
@@ -84,19 +286,18 @@ export class IAMBinding extends pulumi.CustomResource {
      */
     declare public readonly folder: pulumi.Output<string>;
     /**
-     * An array of identities that will be granted the privilege in the `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     declare public readonly members: pulumi.Output<string[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * `organizations/{{org_id}}/roles/{{role_id}}`.
      */
     declare public readonly role: pulumi.Output<string>;
 
@@ -144,6 +345,10 @@ export class IAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMBinding resources.
  */
 export interface IAMBindingState {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.folder.IAMBindingCondition>;
     /**
      * (Computed) The etag of the folder's IAM policy.
@@ -154,19 +359,18 @@ export interface IAMBindingState {
      */
     folder?: pulumi.Input<string>;
     /**
-     * An array of identities that will be granted the privilege in the `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * `organizations/{{org_id}}/roles/{{role_id}}`.
      */
     role?: pulumi.Input<string>;
 }
@@ -175,25 +379,28 @@ export interface IAMBindingState {
  * The set of arguments for constructing a IAMBinding resource.
  */
 export interface IAMBindingArgs {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.folder.IAMBindingCondition>;
     /**
      * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
      */
     folder: pulumi.Input<string>;
     /**
-     * An array of identities that will be granted the privilege in the `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * `organizations/{{org_id}}/roles/{{role_id}}`.
      */
     role: pulumi.Input<string>;
 }

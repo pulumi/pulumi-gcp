@@ -26,14 +26,15 @@ class ServiceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Service resource.
+
         :param pulumi.Input[_builtins.str] service: The service to enable.
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
                If `true`, the usage of the service to be disabled will be checked and an error
                will be returned if the service to be disabled has usage in last 30 days.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
-               destroyed. If `false` or unset, an error will be generated if any enabled
-               services depend on this service when destroying it.
+               destroyed. If `false` or unset, an error will be returned if any enabled
+               services depend on this service when attempting to destroy it.
         :param pulumi.Input[_builtins.bool] disable_on_destroy: If `true`, disable the service when the
                Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
                the Terraform resource is destroyed. It should generally only
@@ -83,8 +84,8 @@ class ServiceArgs:
         """
         If `true`, services that are enabled
         and which depend on this service should also be disabled when this service is
-        destroyed. If `false` or unset, an error will be generated if any enabled
-        services depend on this service when destroying it.
+        destroyed. If `false` or unset, an error will be returned if any enabled
+        services depend on this service when attempting to destroy it.
         """
         return pulumi.get(self, "disable_dependent_services")
 
@@ -131,13 +132,14 @@ class _ServiceState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Service resources.
+
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
                If `true`, the usage of the service to be disabled will be checked and an error
                will be returned if the service to be disabled has usage in last 30 days.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
-               destroyed. If `false` or unset, an error will be generated if any enabled
-               services depend on this service when destroying it.
+               destroyed. If `false` or unset, an error will be returned if any enabled
+               services depend on this service when attempting to destroy it.
         :param pulumi.Input[_builtins.bool] disable_on_destroy: If `true`, disable the service when the
                Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
                the Terraform resource is destroyed. It should generally only
@@ -177,8 +179,8 @@ class _ServiceState:
         """
         If `true`, services that are enabled
         and which depend on this service should also be disabled when this service is
-        destroyed. If `false` or unset, an error will be generated if any enabled
-        services depend on this service when destroying it.
+        destroyed. If `false` or unset, an error will be returned if any enabled
+        services depend on this service when attempting to destroy it.
         """
         return pulumi.get(self, "disable_dependent_services")
 
@@ -285,6 +287,7 @@ class Service(pulumi.CustomResource):
         import the `projects.Service` resources or treat them as new
         infrastructure and run `pulumi up` to add them to state.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
@@ -292,8 +295,8 @@ class Service(pulumi.CustomResource):
                will be returned if the service to be disabled has usage in last 30 days.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
-               destroyed. If `false` or unset, an error will be generated if any enabled
-               services depend on this service when destroying it.
+               destroyed. If `false` or unset, an error will be returned if any enabled
+               services depend on this service when attempting to destroy it.
         :param pulumi.Input[_builtins.bool] disable_on_destroy: If `true`, disable the service when the
                Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
                the Terraform resource is destroyed. It should generally only
@@ -353,6 +356,7 @@ class Service(pulumi.CustomResource):
         This means that when importing existing resources into Terraform, you can either
         import the `projects.Service` resources or treat them as new
         infrastructure and run `pulumi up` to add them to state.
+
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.
@@ -417,8 +421,8 @@ class Service(pulumi.CustomResource):
                will be returned if the service to be disabled has usage in last 30 days.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
-               destroyed. If `false` or unset, an error will be generated if any enabled
-               services depend on this service when destroying it.
+               destroyed. If `false` or unset, an error will be returned if any enabled
+               services depend on this service when attempting to destroy it.
         :param pulumi.Input[_builtins.bool] disable_on_destroy: If `true`, disable the service when the
                Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
                the Terraform resource is destroyed. It should generally only
@@ -454,8 +458,8 @@ class Service(pulumi.CustomResource):
         """
         If `true`, services that are enabled
         and which depend on this service should also be disabled when this service is
-        destroyed. If `false` or unset, an error will be generated if any enabled
-        services depend on this service when destroying it.
+        destroyed. If `false` or unset, an error will be returned if any enabled
+        services depend on this service when attempting to destroy it.
         """
         return pulumi.get(self, "disable_dependent_services")
 

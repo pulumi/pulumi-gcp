@@ -54,6 +54,7 @@ class DiskArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Disk resource.
+
         :param pulumi.Input[_builtins.str] access_mode: The access mode of the disk.
                For example:
                * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
@@ -140,7 +141,7 @@ class DiskArgs:
                If you specify this field along with `image` or `snapshot`,
                the value must not be less than the size of the image
                or the size of the snapshot.
-               ~>**NOTE** If you change the size, the provider updates the disk size
+               ~>**NOTE** If you change the size, Terraform updates the disk size
                if upsizing is detected but recreates the disk if downsizing is requested.
                You can add `lifecycle.prevent_destroy` in the config to prevent destroying
                and recreating.
@@ -574,7 +575,7 @@ class DiskArgs:
         If you specify this field along with `image` or `snapshot`,
         the value must not be less than the size of the image
         or the size of the snapshot.
-        ~>**NOTE** If you change the size, the provider updates the disk size
+        ~>**NOTE** If you change the size, Terraform updates the disk size
         if upsizing is detected but recreates the disk if downsizing is requested.
         You can add `lifecycle.prevent_destroy` in the config to prevent destroying
         and recreating.
@@ -775,6 +776,7 @@ class _DiskState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Disk resources.
+
         :param pulumi.Input[_builtins.str] access_mode: The access mode of the disk.
                For example:
                * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
@@ -871,7 +873,7 @@ class _DiskState:
                If you specify this field along with `image` or `snapshot`,
                the value must not be less than the size of the image
                or the size of the snapshot.
-               ~>**NOTE** If you change the size, the provider updates the disk size
+               ~>**NOTE** If you change the size, Terraform updates the disk size
                if upsizing is detected but recreates the disk if downsizing is requested.
                You can add `lifecycle.prevent_destroy` in the config to prevent destroying
                and recreating.
@@ -1450,7 +1452,7 @@ class _DiskState:
         If you specify this field along with `image` or `snapshot`,
         the value must not be less than the size of the image
         or the size of the snapshot.
-        ~>**NOTE** If you change the size, the provider updates the disk size
+        ~>**NOTE** If you change the size, Terraform updates the disk size
         if upsizing is detected but recreates the disk if downsizing is requested.
         You can add `lifecycle.prevent_destroy` in the config to prevent destroying
         and recreating.
@@ -1823,6 +1825,7 @@ class Disk(pulumi.CustomResource):
         $ pulumi import gcp:compute/disk:Disk default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_mode: The access mode of the disk.
@@ -1911,7 +1914,7 @@ class Disk(pulumi.CustomResource):
                If you specify this field along with `image` or `snapshot`,
                the value must not be less than the size of the image
                or the size of the snapshot.
-               ~>**NOTE** If you change the size, the provider updates the disk size
+               ~>**NOTE** If you change the size, Terraform updates the disk size
                if upsizing is detected but recreates the disk if downsizing is requested.
                You can add `lifecycle.prevent_destroy` in the config to prevent destroying
                and recreating.
@@ -2069,6 +2072,7 @@ class Disk(pulumi.CustomResource):
         $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
         $ pulumi import gcp:compute/disk:Disk default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiskArgs args: The arguments to use to populate this resource's properties.
@@ -2328,7 +2332,7 @@ class Disk(pulumi.CustomResource):
                If you specify this field along with `image` or `snapshot`,
                the value must not be less than the size of the image
                or the size of the snapshot.
-               ~>**NOTE** If you change the size, the provider updates the disk size
+               ~>**NOTE** If you change the size, Terraform updates the disk size
                if upsizing is detected but recreates the disk if downsizing is requested.
                You can add `lifecycle.prevent_destroy` in the config to prevent destroying
                and recreating.
@@ -2749,7 +2753,7 @@ class Disk(pulumi.CustomResource):
         If you specify this field along with `image` or `snapshot`,
         the value must not be less than the size of the image
         or the size of the snapshot.
-        ~>**NOTE** If you change the size, the provider updates the disk size
+        ~>**NOTE** If you change the size, Terraform updates the disk size
         if upsizing is detected but recreates the disk if downsizing is requested.
         You can add `lifecycle.prevent_destroy` in the config to prevent destroying
         and recreating.

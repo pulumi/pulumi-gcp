@@ -251,7 +251,7 @@ type TableIamBinding struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
@@ -322,7 +322,7 @@ type tableIamBindingState struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
 	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, Terraform will use the provider default.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
@@ -352,7 +352,7 @@ type TableIamBindingState struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
 	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
@@ -384,7 +384,7 @@ type tableIamBindingArgs struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
 	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, Terraform will use the provider default.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
@@ -413,7 +413,7 @@ type TableIamBindingArgs struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
 	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
@@ -541,7 +541,7 @@ func (o TableIamBindingOutput) Members() pulumi.StringArrayOutput {
 }
 
 // The project in which the table belongs. If it
-// is not provided, this provider will use the provider default.
+// is not provided, Terraform will use the provider default.
 func (o TableIamBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TableIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

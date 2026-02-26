@@ -26,9 +26,10 @@ class IamAuditConfigArgs:
                  service: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a IamAuditConfig resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-        :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
-        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        :param pulumi.Input[_builtins.str] org_id: The organization id of the target organization.
+        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         pulumi.set(__self__, "audit_log_configs", audit_log_configs)
         pulumi.set(__self__, "org_id", org_id)
@@ -50,7 +51,7 @@ class IamAuditConfigArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The numeric ID of the organization in which you want to manage the audit logging config.
+        The organization id of the target organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -62,7 +63,7 @@ class IamAuditConfigArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[_builtins.str]:
         """
-        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         return pulumi.get(self, "service")
 
@@ -80,10 +81,11 @@ class _IamAuditConfigState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IamAuditConfig resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-        :param pulumi.Input[_builtins.str] etag: The etag of iam policy
-        :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
-        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the organization's IAM policy.
+        :param pulumi.Input[_builtins.str] org_id: The organization id of the target organization.
+        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         if audit_log_configs is not None:
             pulumi.set(__self__, "audit_log_configs", audit_log_configs)
@@ -110,7 +112,7 @@ class _IamAuditConfigState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The etag of iam policy
+        (Computed) The etag of the organization's IAM policy.
         """
         return pulumi.get(self, "etag")
 
@@ -122,7 +124,7 @@ class _IamAuditConfigState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The numeric ID of the organization in which you want to manage the audit logging config.
+        The organization id of the target organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -134,7 +136,7 @@ class _IamAuditConfigState:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         return pulumi.get(self, "service")
 
@@ -154,36 +156,238 @@ class IamAuditConfig(pulumi.CustomResource):
                  service: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
+        Four different resources help you manage your IAM policy for a organization. Each of these resources serves a different use case:
 
-        ## Example Usage
+        * `organizations.IAMPolicy`: Authoritative. Sets the IAM policy for the organization and replaces any existing policy already attached.
+        * `organizations.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organization are preserved.
+        * `organizations.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organization are preserved.
+        * `organizations.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
+
+        > **Note:** `organizations.IAMPolicy` **cannot** be used in conjunction with `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig` or they will fight over what your policy should be.
+
+        > **Note:** `organizations.IAMBinding` resources **can be** used in conjunction with `organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## organizations.IAMPolicy
+
+        !> **Warning:** New organizations have several default policies which will,
+           without extreme caution, be **overwritten** by use of this resource.
+           The safest alternative is to use multiple `organizations.IAMBinding`
+           resources. This resource makes it easy to remove your own access to
+           an organization, which will require a call to Google Support to have
+           fixed, and can take multiple days to resolve.
+           <br /><br />
+           In general, this resource should only be used with organizations
+           fully managed by Terraform.If you do use this resource,
+           the best way to be sure that you are not making dangerous changes is to start
+           by **importing** your existing policy, and examining the diff very closely.
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        config = gcp.organizations.IamAuditConfig("config",
-            org_id="your-organization-id",
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
+        organization = gcp.organizations.IAMPolicy("organization",
+            org_id="1234567890",
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        organization = gcp.organizations.IAMPolicy("organization",
+            org_id="1234567890",
+            policy_data=admin.policy_data)
+        ```
+
+        ## organizations.IAMBinding
+
+        > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMBinding("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMBinding("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## organizations.IAMMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMMember("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMMember("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## organizations.IamAuditConfig
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IamAuditConfig("organization",
+            org_id="1234567890",
             service="allServices",
-            audit_log_configs=[{
-                "log_type": "DATA_READ",
-                "exempted_members": ["user:joebloggs@example.com"],
-            }])
+            audit_log_configs=[
+                {
+                    "log_type": "ADMIN_READ",
+                },
+                {
+                    "log_type": "DATA_READ",
+                    "exempted_members": ["user:joebloggs@example.com"],
+                },
+            ])
+        ```
+
+        ## organizations.IAMBinding
+
+        > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMBinding("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMBinding("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## organizations.IAMMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMMember("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMMember("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## organizations.IamAuditConfig
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IamAuditConfig("organization",
+            org_id="1234567890",
+            service="allServices",
+            audit_log_configs=[
+                {
+                    "log_type": "ADMIN_READ",
+                },
+                {
+                    "log_type": "DATA_READ",
+                    "exempted_members": ["user:joebloggs@example.com"],
+                },
+            ])
         ```
 
         ## Import
 
-        IAM audit config imports use the identifier of the resource in question and the service, e.g.
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
 
-        ```sh
-        terraform import google_organization_iam_audit_config.config "your-organization-id foo.googleapis.com"
-        ```
+        > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
+         to include the title of condition, e.g. `terraform import google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-        :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
-        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        :param pulumi.Input[_builtins.str] org_id: The organization id of the target organization.
+        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         ...
     @overload
@@ -192,30 +396,232 @@ class IamAuditConfig(pulumi.CustomResource):
                  args: IamAuditConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
+        Four different resources help you manage your IAM policy for a organization. Each of these resources serves a different use case:
 
-        ## Example Usage
+        * `organizations.IAMPolicy`: Authoritative. Sets the IAM policy for the organization and replaces any existing policy already attached.
+        * `organizations.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organization are preserved.
+        * `organizations.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organization are preserved.
+        * `organizations.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
+
+        > **Note:** `organizations.IAMPolicy` **cannot** be used in conjunction with `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig` or they will fight over what your policy should be.
+
+        > **Note:** `organizations.IAMBinding` resources **can be** used in conjunction with `organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## organizations.IAMPolicy
+
+        !> **Warning:** New organizations have several default policies which will,
+           without extreme caution, be **overwritten** by use of this resource.
+           The safest alternative is to use multiple `organizations.IAMBinding`
+           resources. This resource makes it easy to remove your own access to
+           an organization, which will require a call to Google Support to have
+           fixed, and can take multiple days to resolve.
+           <br /><br />
+           In general, this resource should only be used with organizations
+           fully managed by Terraform.If you do use this resource,
+           the best way to be sure that you are not making dangerous changes is to start
+           by **importing** your existing policy, and examining the diff very closely.
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        config = gcp.organizations.IamAuditConfig("config",
-            org_id="your-organization-id",
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
+        organization = gcp.organizations.IAMPolicy("organization",
+            org_id="1234567890",
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        organization = gcp.organizations.IAMPolicy("organization",
+            org_id="1234567890",
+            policy_data=admin.policy_data)
+        ```
+
+        ## organizations.IAMBinding
+
+        > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMBinding("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMBinding("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## organizations.IAMMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMMember("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMMember("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## organizations.IamAuditConfig
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IamAuditConfig("organization",
+            org_id="1234567890",
             service="allServices",
-            audit_log_configs=[{
-                "log_type": "DATA_READ",
-                "exempted_members": ["user:joebloggs@example.com"],
-            }])
+            audit_log_configs=[
+                {
+                    "log_type": "ADMIN_READ",
+                },
+                {
+                    "log_type": "DATA_READ",
+                    "exempted_members": ["user:joebloggs@example.com"],
+                },
+            ])
+        ```
+
+        ## organizations.IAMBinding
+
+        > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMBinding("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMBinding("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## organizations.IAMMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMMember("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMMember("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## organizations.IamAuditConfig
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IamAuditConfig("organization",
+            org_id="1234567890",
+            service="allServices",
+            audit_log_configs=[
+                {
+                    "log_type": "ADMIN_READ",
+                },
+                {
+                    "log_type": "DATA_READ",
+                    "exempted_members": ["user:joebloggs@example.com"],
+                },
+            ])
         ```
 
         ## Import
 
-        IAM audit config imports use the identifier of the resource in question and the service, e.g.
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
 
-        ```sh
-        terraform import google_organization_iam_audit_config.config "your-organization-id foo.googleapis.com"
-        ```
+        > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
+         to include the title of condition, e.g. `terraform import google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
+
 
         :param str resource_name: The name of the resource.
         :param IamAuditConfigArgs args: The arguments to use to populate this resource's properties.
@@ -276,9 +682,9 @@ class IamAuditConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-        :param pulumi.Input[_builtins.str] etag: The etag of iam policy
-        :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
-        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the organization's IAM policy.
+        :param pulumi.Input[_builtins.str] org_id: The organization id of the target organization.
+        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -302,7 +708,7 @@ class IamAuditConfig(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
         """
-        The etag of iam policy
+        (Computed) The etag of the organization's IAM policy.
         """
         return pulumi.get(self, "etag")
 
@@ -310,7 +716,7 @@ class IamAuditConfig(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The numeric ID of the organization in which you want to manage the audit logging config.
+        The organization id of the target organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -318,7 +724,7 @@ class IamAuditConfig(pulumi.CustomResource):
     @pulumi.getter
     def service(self) -> pulumi.Output[_builtins.str]:
         """
-        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         return pulumi.get(self, "service")
 

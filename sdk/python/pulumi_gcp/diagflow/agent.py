@@ -33,6 +33,7 @@ class AgentArgs:
                  tier: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Agent resource.
+
         :param pulumi.Input[_builtins.str] default_language_code: The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
                for a list of the currently supported language codes. This field cannot be updated after creation.
         :param pulumi.Input[_builtins.str] display_name: The name of this agent.
@@ -69,7 +70,8 @@ class AgentArgs:
                * TIER_ENTERPRISE: Enterprise tier (Essentials).
                * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
                NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-               the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+               the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+               Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
         """
         pulumi.set(__self__, "default_language_code", default_language_code)
         pulumi.set(__self__, "display_name", display_name)
@@ -254,7 +256,8 @@ class AgentArgs:
         * TIER_ENTERPRISE: Enterprise tier (Essentials).
         * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
         NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-        the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+        the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+        Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
         """
         return pulumi.get(self, "tier")
 
@@ -281,6 +284,7 @@ class _AgentState:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Agent resources.
+
         :param pulumi.Input[_builtins.str] api_version: API version displayed in Dialogflow console. If not specified, V2 API is assumed. Clients are free to query
                different service endpoints for different API versions. However, bots connectors and webhook calls will follow
                the specified API version.
@@ -317,7 +321,8 @@ class _AgentState:
                * TIER_ENTERPRISE: Enterprise tier (Essentials).
                * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
                NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-               the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+               the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+               Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
         :param pulumi.Input[_builtins.str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
         """
@@ -509,7 +514,8 @@ class _AgentState:
         * TIER_ENTERPRISE: Enterprise tier (Essentials).
         * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
         NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-        the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+        the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+        Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
         """
         return pulumi.get(self, "tier")
 
@@ -615,6 +621,7 @@ class Agent(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/agent:Agent default {{project}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_version: API version displayed in Dialogflow console. If not specified, V2 API is assumed. Clients are free to query
@@ -651,7 +658,8 @@ class Agent(pulumi.CustomResource):
                * TIER_ENTERPRISE: Enterprise tier (Essentials).
                * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
                NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-               the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+               the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+               Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
         :param pulumi.Input[_builtins.str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
         """
@@ -725,6 +733,7 @@ class Agent(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:diagflow/agent:Agent default {{project}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AgentArgs args: The arguments to use to populate this resource's properties.
@@ -847,7 +856,8 @@ class Agent(pulumi.CustomResource):
                * TIER_ENTERPRISE: Enterprise tier (Essentials).
                * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
                NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-               the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+               the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+               Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
         :param pulumi.Input[_builtins.str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
         """
@@ -987,7 +997,8 @@ class Agent(pulumi.CustomResource):
         * TIER_ENTERPRISE: Enterprise tier (Essentials).
         * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
         NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-        the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+        the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
+        Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.
         """
         return pulumi.get(self, "tier")
 

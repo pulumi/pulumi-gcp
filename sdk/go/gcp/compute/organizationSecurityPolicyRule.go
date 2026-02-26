@@ -40,7 +40,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				DisplayName: pulumi.String("tf-test"),
+//				DisplayName: pulumi.String("tf-test_22811"),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				Type:        pulumi.String("FIREWALL"),
 //			})
