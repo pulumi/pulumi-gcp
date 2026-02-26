@@ -24,6 +24,7 @@ class AppCheckServiceConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppCheckServiceConfig resource.
+
         :param pulumi.Input[_builtins.str] service_id: The identifier of the service to configure enforcement. Currently, the following service IDs are supported:
                firebasestorage.googleapis.com (Cloud Storage for Firebase)
                firebasedatabase.googleapis.com (Firebase Realtime Database)
@@ -140,6 +141,7 @@ class _AppCheckServiceConfigState:
                  service_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppCheckServiceConfig resources.
+
         :param pulumi.Input[_builtins.str] enforcement_mode: The App Check enforcement mode for a service supported by App Check. Valid values are
                (Unset)
                Firebase App Check is not enforced for the service, nor are App Check metrics collected.
@@ -345,6 +347,7 @@ class AppCheckServiceConfig(pulumi.CustomResource):
         $ pulumi import gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig default {{service_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] enforcement_mode: The App Check enforcement mode for a service supported by App Check. Valid values are
@@ -458,6 +461,7 @@ class AppCheckServiceConfig(pulumi.CustomResource):
         $ pulumi import gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig default {{project}}/{{service_id}}
         $ pulumi import gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig default {{service_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppCheckServiceConfigArgs args: The arguments to use to populate this resource's properties.

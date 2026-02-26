@@ -41,6 +41,7 @@ class DatasetArgs:
                  storage_billing_model: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Dataset resource.
+
         :param pulumi.Input[_builtins.str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
@@ -466,6 +467,7 @@ class _DatasetState:
                  storage_billing_model: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Dataset resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] creation_time: The time when this dataset was created, in milliseconds since the
@@ -1202,6 +1204,7 @@ class Dataset(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict']]]] accesses: An array of objects that define dataset access for one or more entities.
@@ -1508,6 +1511,7 @@ class Dataset(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
         $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatasetArgs args: The arguments to use to populate this resource's properties.

@@ -49,6 +49,7 @@ class RegionInstanceGroupManagerArgs:
                  wait_for_instances_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionInstanceGroupManager resource.
+
         :param pulumi.Input[_builtins.str] base_instance_name: The base instance name to use for
                instances in this group. The value must be a valid
                [RFC1035](https://www.ietf.org/rfc/rfc1035.txt) name. Supported characters
@@ -547,6 +548,7 @@ class _RegionInstanceGroupManagerState:
                  wait_for_instances_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionInstanceGroupManager resources.
+
         :param pulumi.Input['RegionInstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
@@ -1252,6 +1254,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RegionInstanceGroupManagerAllInstancesConfigArgs', 'RegionInstanceGroupManagerAllInstancesConfigArgsDict']] all_instances_config: Properties to set on all instances in the group. After setting
@@ -1440,6 +1443,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionInstanceGroupManagerArgs args: The arguments to use to populate this resource's properties.

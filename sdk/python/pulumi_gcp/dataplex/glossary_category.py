@@ -29,6 +29,7 @@ class GlossaryCategoryArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlossaryCategory resource.
+
         :param pulumi.Input[_builtins.str] location: The location where the glossary category should reside.
         :param pulumi.Input[_builtins.str] parent: The immediate parent of the GlossaryCategory in the resource-hierarchy. It can either be a Glossary or a Category. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
         :param pulumi.Input[_builtins.str] category_id: The category id for creation.
@@ -177,6 +178,7 @@ class _GlossaryCategoryState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlossaryCategory resources.
+
         :param pulumi.Input[_builtins.str] category_id: The category id for creation.
         :param pulumi.Input[_builtins.str] create_time: The time at which the GlossaryCategory was created.
         :param pulumi.Input[_builtins.str] description: The user-mutable description of the GlossaryCategory.
@@ -480,6 +482,7 @@ class GlossaryCategory(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{location}}/{{glossary_id}}/{{category_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] category_id: The category id for creation.
@@ -565,6 +568,7 @@ class GlossaryCategory(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{project}}/{{location}}/{{glossary_id}}/{{category_id}}
         $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{location}}/{{glossary_id}}/{{category_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GlossaryCategoryArgs args: The arguments to use to populate this resource's properties.

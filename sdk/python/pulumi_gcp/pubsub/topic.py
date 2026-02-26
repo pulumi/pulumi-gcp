@@ -33,6 +33,7 @@ class TopicArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Topic resource.
+
         :param pulumi.Input['TopicIngestionDataSourceSettingsArgs'] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
@@ -261,6 +262,7 @@ class _TopicState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['TopicIngestionDataSourceSettingsArgs'] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
                Structure is documented below.
@@ -798,6 +800,7 @@ class Topic(pulumi.CustomResource):
         $ pulumi import gcp:pubsub/topic:Topic default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict']] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
@@ -1122,6 +1125,7 @@ class Topic(pulumi.CustomResource):
         $ pulumi import gcp:pubsub/topic:Topic default {{project}}/{{name}}
         $ pulumi import gcp:pubsub/topic:Topic default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TopicArgs args: The arguments to use to populate this resource's properties.

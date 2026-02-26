@@ -32,6 +32,7 @@ class FoldersPolicyBindingArgs:
                  policy_kind: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FoldersPolicyBinding resource.
+
         :param pulumi.Input[_builtins.str] folder: The parent folder for the PolicyBinding.
         :param pulumi.Input[_builtins.str] location: The location of the PolicyBinding.
         :param pulumi.Input[_builtins.str] policy: Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
@@ -244,6 +245,7 @@ class _FoldersPolicyBindingState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FoldersPolicyBinding resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -617,6 +619,7 @@ class FoldersPolicyBinding(pulumi.CustomResource):
         $ pulumi import gcp:iam/foldersPolicyBinding:FoldersPolicyBinding default {{folder}}/{{location}}/{{policy_binding_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
@@ -719,6 +722,7 @@ class FoldersPolicyBinding(pulumi.CustomResource):
         $ pulumi import gcp:iam/foldersPolicyBinding:FoldersPolicyBinding default folders/{{folder}}/locations/{{location}}/policyBindings/{{policy_binding_id}}
         $ pulumi import gcp:iam/foldersPolicyBinding:FoldersPolicyBinding default {{folder}}/{{location}}/{{policy_binding_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FoldersPolicyBindingArgs args: The arguments to use to populate this resource's properties.

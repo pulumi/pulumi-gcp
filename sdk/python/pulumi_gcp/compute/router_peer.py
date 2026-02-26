@@ -51,6 +51,7 @@ class RouterPeerArgs:
                  zero_custom_learned_route_priority: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RouterPeer resource.
+
         :param pulumi.Input[_builtins.str] interface: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[_builtins.int] peer_asn: Peer BGP Autonomous System Number (ASN).
                Each BGP interface may use a different value.
@@ -623,6 +624,7 @@ class _RouterPeerState:
                  zero_custom_learned_route_priority: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering RouterPeer resources.
+
         :param pulumi.Input[_builtins.str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
                Valid values of this enum field are: `DEFAULT`, `CUSTOM`
                Default value is `DEFAULT`.
@@ -1583,6 +1585,7 @@ class RouterPeer(pulumi.CustomResource):
         $ pulumi import gcp:compute/routerPeer:RouterPeer default {{router}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
@@ -2002,6 +2005,7 @@ class RouterPeer(pulumi.CustomResource):
         $ pulumi import gcp:compute/routerPeer:RouterPeer default {{region}}/{{router}}/{{name}}
         $ pulumi import gcp:compute/routerPeer:RouterPeer default {{router}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterPeerArgs args: The arguments to use to populate this resource's properties.

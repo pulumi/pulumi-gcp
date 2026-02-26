@@ -28,6 +28,7 @@ class EndpointArgs:
                  threat_exceptions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Endpoint resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the endpoint.
         :param pulumi.Input[_builtins.str] network: Name of the VPC network that is connected to the IDS endpoint. This can either contain the VPC network name itself (like "src-net") or the full URL to the network (like "projects/{project_id}/global/networks/src-net").
         :param pulumi.Input[_builtins.str] severity: The minimum alert severity level that is reported by the endpoint.
@@ -153,6 +154,7 @@ class _EndpointState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Endpoint resources.
+
         :param pulumi.Input[_builtins.str] create_time: Creation timestamp in RFC 3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_forwarding_rule: URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
@@ -389,6 +391,7 @@ class Endpoint(pulumi.CustomResource):
         $ pulumi import gcp:cloudids/endpoint:Endpoint default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of the endpoint.
@@ -456,6 +459,7 @@ class Endpoint(pulumi.CustomResource):
         $ pulumi import gcp:cloudids/endpoint:Endpoint default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:cloudids/endpoint:Endpoint default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EndpointArgs args: The arguments to use to populate this resource's properties.

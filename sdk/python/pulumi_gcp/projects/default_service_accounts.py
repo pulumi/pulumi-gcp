@@ -24,6 +24,7 @@ class DefaultServiceAccountsArgs:
                  restore_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DefaultServiceAccounts resource.
+
         :param pulumi.Input[_builtins.str] action: The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
         :param pulumi.Input[_builtins.str] project: The project ID where service accounts are created.
         :param pulumi.Input[_builtins.str] restore_policy: The action to be performed in the default service accounts on the resource destroy.
@@ -85,6 +86,7 @@ class _DefaultServiceAccountsState:
                  service_accounts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DefaultServiceAccounts resources.
+
         :param pulumi.Input[_builtins.str] action: The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
         :param pulumi.Input[_builtins.str] project: The project ID where service accounts are created.
         :param pulumi.Input[_builtins.str] restore_policy: The action to be performed in the default service accounts on the resource destroy.
@@ -207,6 +209,7 @@ class DefaultServiceAccounts(pulumi.CustomResource):
 
         This resource does not support import
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
@@ -264,6 +267,7 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         ## Import
 
         This resource does not support import
+
 
         :param str resource_name: The name of the resource.
         :param DefaultServiceAccountsArgs args: The arguments to use to populate this resource's properties.

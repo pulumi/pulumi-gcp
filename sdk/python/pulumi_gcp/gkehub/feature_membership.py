@@ -31,6 +31,7 @@ class FeatureMembershipArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FeatureMembership resource.
+
         :param pulumi.Input[_builtins.str] feature: The name of the feature
         :param pulumi.Input[_builtins.str] location: The location of the feature
         :param pulumi.Input[_builtins.str] membership: The name of the membership
@@ -164,6 +165,7 @@ class _FeatureMembershipState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FeatureMembership resources.
+
         :param pulumi.Input['FeatureMembershipConfigmanagementArgs'] configmanagement: Config Management-specific spec. Structure is documented below.
         :param pulumi.Input[_builtins.str] feature: The name of the feature
         :param pulumi.Input[_builtins.str] location: The location of the feature
@@ -605,6 +607,7 @@ class FeatureMembership(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default {{location}}/{{feature}}/{{membership}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']] configmanagement: Config Management-specific spec. Structure is documented below.
@@ -924,6 +927,7 @@ class FeatureMembership(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default {{project}}/{{location}}/{{feature}}/{{membership}}
         $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default {{location}}/{{feature}}/{{membership}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FeatureMembershipArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class BackendBucketSignedUrlKeyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackendBucketSignedUrlKey resource.
+
         :param pulumi.Input[_builtins.str] backend_bucket: The backend bucket this signed URL key belongs.
         :param pulumi.Input[_builtins.str] key_value: 128-bit key value used for signing the URL. The key value must be a
                valid RFC 4648 Section 5 base64url encoded string.
@@ -101,6 +102,7 @@ class _BackendBucketSignedUrlKeyState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackendBucketSignedUrlKey resources.
+
         :param pulumi.Input[_builtins.str] backend_bucket: The backend bucket this signed URL key belongs.
         :param pulumi.Input[_builtins.str] key_value: 128-bit key value used for signing the URL. The key value must be a
                valid RFC 4648 Section 5 base64url encoded string.
@@ -218,6 +220,7 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backend_bucket: The backend bucket this signed URL key belongs.
@@ -270,6 +273,7 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param BackendBucketSignedUrlKeyArgs args: The arguments to use to populate this resource's properties.

@@ -32,6 +32,7 @@ class HookArgs:
                  sensitive_query_string: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Hook resource.
+
         :param pulumi.Input[_builtins.str] hook_id: The ID for the Hook.
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
@@ -194,6 +195,7 @@ class _HookState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Hook resources.
+
         :param pulumi.Input[_builtins.str] create_time: Create timestamp.
         :param pulumi.Input[_builtins.bool] disabled: Determines if the hook disabled or not.
                Set to true to stop sending traffic.
@@ -447,6 +449,7 @@ class Hook(pulumi.CustomResource):
         $ pulumi import gcp:securesourcemanager/hook:Hook default {{hook_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disabled: Determines if the hook disabled or not.
@@ -496,6 +499,7 @@ class Hook(pulumi.CustomResource):
         $ pulumi import gcp:securesourcemanager/hook:Hook default {{location}}/{{repository_id}}/{{hook_id}}
         $ pulumi import gcp:securesourcemanager/hook:Hook default {{hook_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HookArgs args: The arguments to use to populate this resource's properties.

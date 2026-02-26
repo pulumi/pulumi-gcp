@@ -28,6 +28,7 @@ class AppHostingDomainArgs:
                  serve: Optional[pulumi.Input['AppHostingDomainServeArgs']] = None):
         """
         The set of arguments for constructing a AppHostingDomain resource.
+
         :param pulumi.Input[_builtins.str] backend: The ID of the Backend that this Domain is associated with
         :param pulumi.Input[_builtins.str] domain_id: Id of the domain to create.
                Must be a valid domain name, such as "foo.com"
@@ -129,6 +130,7 @@ class _AppHostingDomainState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppHostingDomain resources.
+
         :param pulumi.Input[_builtins.str] backend: The ID of the Backend that this Domain is associated with
         :param pulumi.Input[_builtins.str] create_time: Time at which the domain was created.
         :param pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusArgs']]] custom_domain_statuses: The status of a custom domain's linkage to the Backend.
@@ -431,6 +433,7 @@ class AppHostingDomain(pulumi.CustomResource):
         $ pulumi import gcp:firebase/appHostingDomain:AppHostingDomain default {{location}}/{{backend}}/{{domain_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backend: The ID of the Backend that this Domain is associated with
@@ -524,6 +527,7 @@ class AppHostingDomain(pulumi.CustomResource):
         $ pulumi import gcp:firebase/appHostingDomain:AppHostingDomain default {{project}}/{{location}}/{{backend}}/{{domain_id}}
         $ pulumi import gcp:firebase/appHostingDomain:AppHostingDomain default {{location}}/{{backend}}/{{domain_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppHostingDomainArgs args: The arguments to use to populate this resource's properties.

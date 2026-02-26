@@ -30,6 +30,7 @@ class CustomTargetTypeArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomTargetType resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the source.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -169,6 +170,7 @@ class _CustomTargetTypeState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomTargetType resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -545,6 +547,7 @@ class CustomTargetType(pulumi.CustomResource):
         $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
@@ -686,6 +689,7 @@ class CustomTargetType(pulumi.CustomResource):
         $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomTargetTypeArgs args: The arguments to use to populate this resource's properties.

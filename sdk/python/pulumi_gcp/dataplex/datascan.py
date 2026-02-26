@@ -35,6 +35,7 @@ class DatascanArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Datascan resource.
+
         :param pulumi.Input['DatascanDataArgs'] data: The data source for DataScan.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
@@ -258,6 +259,7 @@ class _DatascanState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Datascan resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the scan was created.
         :param pulumi.Input['DatascanDataArgs'] data: The data source for DataScan.
                Structure is documented below.
@@ -1210,6 +1212,7 @@ class Datascan(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/datascan:Datascan default {{data_scan_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DatascanDataArgs', 'DatascanDataArgsDict']] data: The data source for DataScan.
@@ -1832,6 +1835,7 @@ class Datascan(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/datascan:Datascan default {{location}}/{{data_scan_id}}
         $ pulumi import gcp:dataplex/datascan:Datascan default {{data_scan_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatascanArgs args: The arguments to use to populate this resource's properties.

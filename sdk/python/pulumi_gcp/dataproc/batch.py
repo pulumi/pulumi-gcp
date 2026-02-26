@@ -33,6 +33,7 @@ class BatchArgs:
                  spark_sql_batch: Optional[pulumi.Input['BatchSparkSqlBatchArgs']] = None):
         """
         The set of arguments for constructing a Batch resource.
+
         :param pulumi.Input[_builtins.str] batch_id: The ID to use for the batch, which will become the final component of the batch's resource name.
                This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
         :param pulumi.Input['BatchEnvironmentConfigArgs'] environment_config: Environment configuration for the batch execution.
@@ -235,6 +236,7 @@ class _BatchState:
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Batch resources.
+
         :param pulumi.Input[_builtins.str] batch_id: The ID to use for the batch, which will become the final component of the batch's resource name.
                This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
         :param pulumi.Input[_builtins.str] create_time: The time when the batch was created.
@@ -898,6 +900,7 @@ class Batch(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/batch:Batch default {{location}}/{{batch_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] batch_id: The ID to use for the batch, which will become the final component of the batch's resource name.
@@ -1208,6 +1211,7 @@ class Batch(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/batch:Batch default {{project}}/{{location}}/{{batch_id}}
         $ pulumi import gcp:dataproc/batch:Batch default {{location}}/{{batch_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BatchArgs args: The arguments to use to populate this resource's properties.

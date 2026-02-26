@@ -30,6 +30,7 @@ class ProjectArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.bool] auto_create_network: Controls whether the 'default' network exists on the project. Defaults
                to `true`, where it is created. If set to `false`, the default network will still be created by GCP but
                will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
@@ -231,6 +232,7 @@ class _ProjectState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[_builtins.bool] auto_create_network: Controls whether the 'default' network exists on the project. Defaults
                to `true`, where it is created. If set to `false`, the default network will still be created by GCP but
                will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
@@ -553,6 +555,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import gcp:organizations/project:Project default {{project_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_create_network: Controls whether the 'default' network exists on the project. Defaults
@@ -670,6 +673,7 @@ class Project(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:organizations/project:Project default {{project_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class PeeringArgs:
                  status_message: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Peering resource.
+
         :param pulumi.Input[_builtins.str] authorized_network: The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
         :param pulumi.Input[_builtins.str] domain_resource: Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
         :param pulumi.Input[_builtins.str] peering_id: (Required)
@@ -154,6 +155,7 @@ class _PeeringState:
                  status_message: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Peering resources.
+
         :param pulumi.Input[_builtins.str] authorized_network: The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
         :param pulumi.Input[_builtins.str] domain_resource: Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -382,6 +384,7 @@ class Peering(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authorized_network: The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
@@ -453,6 +456,7 @@ class Peering(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param PeeringArgs args: The arguments to use to populate this resource's properties.

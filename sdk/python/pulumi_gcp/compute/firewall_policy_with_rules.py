@@ -27,6 +27,7 @@ class FirewallPolicyWithRulesArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallPolicyWithRules resource.
+
         :param pulumi.Input[_builtins.str] parent: The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesRuleArgs']]] rules: A list of firewall policy rules.
@@ -107,6 +108,7 @@ class _FirewallPolicyWithRulesState:
                  short_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallPolicyWithRules resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of the resource. This field is used internally during updates of this resource.
@@ -456,6 +458,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
         $ pulumi import gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules default {{policy_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -634,6 +637,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
         $ pulumi import gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules default locations/global/firewallPolicies/{{policy_id}}
         $ pulumi import gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules default {{policy_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallPolicyWithRulesArgs args: The arguments to use to populate this resource's properties.

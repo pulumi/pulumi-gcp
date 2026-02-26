@@ -47,6 +47,7 @@ class InstanceGroupManagerArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceGroupManager resource.
+
         :param pulumi.Input[_builtins.str] base_instance_name: The base instance name to use for
                instances in this group. The value must be a valid
                [RFC1035](https://www.ietf.org/rfc/rfc1035.txt) name. Supported characters
@@ -516,6 +517,7 @@ class _InstanceGroupManagerState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceGroupManager resources.
+
         :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
@@ -1254,6 +1256,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         $ terraform import google_compute_instance_group_manager.default {{project}}/{{name}}
         $ terraform import google_compute_instance_group_manager.default {{name}}
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceGroupManagerAllInstancesConfigArgs', 'InstanceGroupManagerAllInstancesConfigArgsDict']] all_instances_config: Properties to set on all instances in the group. After setting
@@ -1493,6 +1496,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         $ terraform import google_compute_instance_group_manager.default {{project}}/{{zone}}/{{name}}
         $ terraform import google_compute_instance_group_manager.default {{project}}/{{name}}
         $ terraform import google_compute_instance_group_manager.default {{name}}
+
 
         :param str resource_name: The name of the resource.
         :param InstanceGroupManagerArgs args: The arguments to use to populate this resource's properties.

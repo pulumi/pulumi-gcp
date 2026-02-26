@@ -33,6 +33,7 @@ class PluginArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Plugin resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name of the plugin. Max length is 50 characters (Unicode code
                points).
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -245,6 +246,7 @@ class _PluginState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Plugin resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['PluginActionsConfigArgs']]] actions_configs: The configuration of actions supported by the plugin.
                Structure is documented below.
         :param pulumi.Input['PluginConfigTemplateArgs'] config_template: ConfigTemplate represents the configuration template for a plugin.
@@ -656,6 +658,7 @@ class Plugin(pulumi.CustomResource):
         $ pulumi import gcp:apihub/plugin:Plugin default {{location}}/{{plugin_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict']]]] actions_configs: The configuration of actions supported by the plugin.
@@ -795,6 +798,7 @@ class Plugin(pulumi.CustomResource):
         $ pulumi import gcp:apihub/plugin:Plugin default {{project}}/{{location}}/{{plugin_id}}
         $ pulumi import gcp:apihub/plugin:Plugin default {{location}}/{{plugin_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PluginArgs args: The arguments to use to populate this resource's properties.

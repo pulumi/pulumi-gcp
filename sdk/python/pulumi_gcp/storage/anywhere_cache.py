@@ -25,6 +25,7 @@ class AnywhereCacheArgs:
                  ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AnywhereCache resource.
+
         :param pulumi.Input[_builtins.str] bucket: A reference to Bucket resource
         :param pulumi.Input[_builtins.str] zone: The zone in which the cache instance needs to be created. For example, `us-central1-a.`
         :param pulumi.Input[_builtins.str] admission_policy: The cache admission policy dictates whether a block should be inserted upon a cache miss.
@@ -104,6 +105,7 @@ class _AnywhereCacheState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AnywhereCache resources.
+
         :param pulumi.Input[_builtins.str] admission_policy: The cache admission policy dictates whether a block should be inserted upon a cache miss.
                Default value is `admit-on-first-miss`.
                Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
@@ -298,6 +300,7 @@ class AnywhereCache(pulumi.CustomResource):
         $ pulumi import gcp:storage/anywhereCache:AnywhereCache default {{bucket}}/{{anywhere_cache_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] admission_policy: The cache admission policy dictates whether a block should be inserted upon a cache miss.
@@ -353,6 +356,7 @@ class AnywhereCache(pulumi.CustomResource):
         $ pulumi import gcp:storage/anywhereCache:AnywhereCache default b/{{bucket}}/anywhereCaches/{{anywhere_cache_id}}
         $ pulumi import gcp:storage/anywhereCache:AnywhereCache default {{bucket}}/{{anywhere_cache_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AnywhereCacheArgs args: The arguments to use to populate this resource's properties.

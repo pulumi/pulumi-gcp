@@ -29,6 +29,7 @@ class ApiHubInstanceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiHubInstance resource.
+
         :param pulumi.Input['ApiHubInstanceConfigArgs'] config: Available configurations to provision an ApiHub Instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -158,6 +159,7 @@ class _ApiHubInstanceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiHubInstance resources.
+
         :param pulumi.Input[_builtins.str] api_hub_instance_id: Optional. Identifier to assign to the Api Hub instance. Must be unique within
                scope of the parent resource. If the field is not provided,
                system generated id will be used.
@@ -468,6 +470,7 @@ class ApiHubInstance(pulumi.CustomResource):
         $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{location}}/{{api_hub_instance_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_hub_instance_id: Optional. Identifier to assign to the Api Hub instance. Must be unique within
@@ -549,6 +552,7 @@ class ApiHubInstance(pulumi.CustomResource):
         $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{project}}/{{location}}/{{api_hub_instance_id}}
         $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{location}}/{{api_hub_instance_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApiHubInstanceArgs args: The arguments to use to populate this resource's properties.

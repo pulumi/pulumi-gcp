@@ -36,6 +36,7 @@ class SpokeArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Spoke resource.
+
         :param pulumi.Input[_builtins.str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] description: An optional description of the spoke.
@@ -277,6 +278,7 @@ class _SpokeState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Spoke resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. The time the spoke was created.
         :param pulumi.Input[_builtins.str] description: An optional description of the spoke.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1082,6 +1084,7 @@ class Spoke(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of the spoke.
@@ -1571,6 +1574,7 @@ class Spoke(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SpokeArgs args: The arguments to use to populate this resource's properties.

@@ -37,6 +37,7 @@ class JobArgs:
                  sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None):
         """
         The set of arguments for constructing a Job resource.
+
         :param pulumi.Input['JobPlacementArgs'] placement: The config of job placement.
         :param pulumi.Input[_builtins.bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
@@ -285,6 +286,7 @@ class _JobState:
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None):
         """
         Input properties used for looking up and filtering Job resources.
+
         :param pulumi.Input[_builtins.str] driver_controls_files_uri: If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
         :param pulumi.Input[_builtins.str] driver_output_resource_uri: A URI pointing to the location of the stdout of the job's driver program.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -670,6 +672,7 @@ class Job(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force_delete: By default, you can only delete inactive jobs within
@@ -754,6 +757,7 @@ class Job(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.

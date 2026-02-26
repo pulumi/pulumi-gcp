@@ -29,6 +29,7 @@ class WorkforcePoolProviderScimTenantArgs:
                  hard_delete: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a WorkforcePoolProviderScimTenant resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the resource.
         :param pulumi.Input[_builtins.str] provider_id: The ID of the provider.
         :param pulumi.Input[_builtins.str] scim_tenant_id: The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
@@ -166,6 +167,7 @@ class _WorkforcePoolProviderScimTenantState:
                  workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkforcePoolProviderScimTenant resources.
+
         :param pulumi.Input[_builtins.str] base_uri: Represents the base URI as defined in [RFC 7644, Section
                1.3](https://datatracker.ietf.org/doc/html/rfc7644#section-1.3). Clients
                must use this as the root address for managing resources under the tenant.
@@ -475,6 +477,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         $ pulumi import gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant default {{location}}/{{workforce_pool_id}}/{{provider_id}}/{{scim_tenant_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
@@ -569,6 +572,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         $ pulumi import gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}/scimTenants/{{scim_tenant_id}}
         $ pulumi import gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant default {{location}}/{{workforce_pool_id}}/{{provider_id}}/{{scim_tenant_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkforcePoolProviderScimTenantArgs args: The arguments to use to populate this resource's properties.

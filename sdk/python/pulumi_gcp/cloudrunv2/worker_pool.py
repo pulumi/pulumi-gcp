@@ -38,6 +38,7 @@ class WorkerPoolArgs:
                  scaling: Optional[pulumi.Input['WorkerPoolScalingArgs']] = None):
         """
         The set of arguments for constructing a WorkerPool resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the cloud run worker pool
         :param pulumi.Input['WorkerPoolTemplateArgs'] template: The template used to create revisions for this WorkerPool.
                Structure is documented below.
@@ -361,6 +362,7 @@ class _WorkerPoolState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkerPool resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
                All system annotations in v1 now have a corresponding field in v2 WorkerPool.
@@ -1412,6 +1414,7 @@ class WorkerPool(pulumi.CustomResource):
         $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -1906,6 +1909,7 @@ class WorkerPool(pulumi.CustomResource):
         $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkerPoolArgs args: The arguments to use to populate this resource's properties.

@@ -33,6 +33,7 @@ class DbSystemArgs:
                  properties: Optional[pulumi.Input['DbSystemPropertiesArgs']] = None):
         """
         The set of arguments for constructing a DbSystem resource.
+
         :param pulumi.Input[_builtins.str] db_system_id: The ID of the DbSystem to create. This value is
                restricted to (^a-z?$) and must be a maximum of
                63 characters in length. The value must start with a letter and end with a
@@ -233,6 +234,7 @@ class _DbSystemState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DbSystem resources.
+
         :param pulumi.Input[_builtins.str] create_time: The date and time that the DbSystem was created.
         :param pulumi.Input[_builtins.str] db_system_id: The ID of the DbSystem to create. This value is
                restricted to (^a-z?$) and must be a maximum of
@@ -623,6 +625,7 @@ class DbSystem(pulumi.CustomResource):
         $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{location}}/{{db_system_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_system_id: The ID of the DbSystem to create. This value is
@@ -752,6 +755,7 @@ class DbSystem(pulumi.CustomResource):
         $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{project}}/{{location}}/{{db_system_id}}
         $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{location}}/{{db_system_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DbSystemArgs args: The arguments to use to populate this resource's properties.

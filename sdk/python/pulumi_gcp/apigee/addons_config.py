@@ -25,6 +25,7 @@ class AddonsConfigArgs:
                  addons_config: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']] = None):
         """
         The set of arguments for constructing a AddonsConfig resource.
+
         :param pulumi.Input[_builtins.str] org: Name of the Apigee organization.
         :param pulumi.Input['AddonsConfigAddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
@@ -66,6 +67,7 @@ class _AddonsConfigState:
                  org: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddonsConfig resources.
+
         :param pulumi.Input['AddonsConfigAddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] org: Name of the Apigee organization.
@@ -213,6 +215,7 @@ class AddonsConfig(pulumi.CustomResource):
         $ pulumi import gcp:apigee/addonsConfig:AddonsConfig default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']] addons_config: Addon configurations of the Apigee organization.
@@ -327,6 +330,7 @@ class AddonsConfig(pulumi.CustomResource):
         $ pulumi import gcp:apigee/addonsConfig:AddonsConfig default organizations/{{name}}
         $ pulumi import gcp:apigee/addonsConfig:AddonsConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AddonsConfigArgs args: The arguments to use to populate this resource's properties.

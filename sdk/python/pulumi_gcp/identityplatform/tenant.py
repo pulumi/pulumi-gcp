@@ -29,6 +29,7 @@ class TenantArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Tenant resource.
+
         :param pulumi.Input[_builtins.str] display_name: Human friendly display name of the tenant.
         :param pulumi.Input[_builtins.bool] allow_password_signup: Whether to allow email/password user authentication.
         :param pulumi.Input['TenantClientArgs'] client: Options related to how clients making requests on behalf of a tenant should be configured.
@@ -141,6 +142,7 @@ class _TenantState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tenant resources.
+
         :param pulumi.Input[_builtins.bool] allow_password_signup: Whether to allow email/password user authentication.
         :param pulumi.Input['TenantClientArgs'] client: Options related to how clients making requests on behalf of a tenant should be configured.
                Structure is documented below.
@@ -309,6 +311,7 @@ class Tenant(pulumi.CustomResource):
         $ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_password_signup: Whether to allow email/password user authentication.
@@ -366,6 +369,7 @@ class Tenant(pulumi.CustomResource):
         $ pulumi import gcp:identityplatform/tenant:Tenant default {{project}}/{{name}}
         $ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TenantArgs args: The arguments to use to populate this resource's properties.

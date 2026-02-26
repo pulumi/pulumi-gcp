@@ -30,6 +30,7 @@ class ConnectClusterArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectCluster resource.
+
         :param pulumi.Input['ConnectClusterCapacityConfigArgs'] capacity_config: A capacity configuration of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connect_cluster_id: The ID to use for the Connect Cluster, which will become the final component of the connect cluster's name. This value is structured like: `my-connect-cluster-id`.
@@ -161,6 +162,7 @@ class _ConnectClusterState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectCluster resources.
+
         :param pulumi.Input['ConnectClusterCapacityConfigArgs'] capacity_config: A capacity configuration of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connect_cluster_id: The ID to use for the Connect Cluster, which will become the final component of the connect cluster's name. This value is structured like: `my-connect-cluster-id`.
@@ -455,6 +457,7 @@ class ConnectCluster(pulumi.CustomResource):
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default {{location}}/{{connect_cluster_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectClusterCapacityConfigArgs', 'ConnectClusterCapacityConfigArgsDict']] capacity_config: A capacity configuration of a Kafka cluster.
@@ -545,6 +548,7 @@ class ConnectCluster(pulumi.CustomResource):
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default {{project}}/{{location}}/{{connect_cluster_id}}
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default {{location}}/{{connect_cluster_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectClusterArgs args: The arguments to use to populate this resource's properties.

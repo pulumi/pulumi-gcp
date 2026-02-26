@@ -25,6 +25,7 @@ class SnapshotSettingsArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SnapshotSettings resource.
+
         :param pulumi.Input['SnapshotSettingsStorageLocationArgs'] storage_location: Policy of which storage location is going to be resolved, and additional data
                that particularizes how the policy is going to be carried out
                Structure is documented below.
@@ -70,6 +71,7 @@ class _SnapshotSettingsState:
                  storage_location: Optional[pulumi.Input['SnapshotSettingsStorageLocationArgs']] = None):
         """
         Input properties used for looking up and filtering SnapshotSettings resources.
+
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['SnapshotSettingsStorageLocationArgs'] storage_location: Policy of which storage location is going to be resolved, and additional data
@@ -158,6 +160,7 @@ class SnapshotSettings(pulumi.CustomResource):
         $ pulumi import gcp:compute/snapshotSettings:SnapshotSettings default {{project}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -211,6 +214,7 @@ class SnapshotSettings(pulumi.CustomResource):
         $ pulumi import gcp:compute/snapshotSettings:SnapshotSettings default projects/{{project}}/global/snapshotSettings/
         $ pulumi import gcp:compute/snapshotSettings:SnapshotSettings default {{project}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SnapshotSettingsArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class StorageBucketArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StorageBucket resource.
+
         :param pulumi.Input[_builtins.str] bucket_id: Required. Immutable. The ID of the underlying Google Cloud Storage bucket
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -66,6 +67,7 @@ class _StorageBucketState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageBucket resources.
+
         :param pulumi.Input[_builtins.str] bucket_id: Required. Immutable. The ID of the underlying Google Cloud Storage bucket
         :param pulumi.Input[_builtins.str] name: Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -171,6 +173,7 @@ class StorageBucket(pulumi.CustomResource):
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{bucket_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_id: Required. Immutable. The ID of the underlying Google Cloud Storage bucket
@@ -228,6 +231,7 @@ class StorageBucket(pulumi.CustomResource):
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{project}}/{{bucket_id}}
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{bucket_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StorageBucketArgs args: The arguments to use to populate this resource's properties.

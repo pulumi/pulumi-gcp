@@ -29,6 +29,7 @@ class EdgeCacheKeysetArgs:
                  validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]] = None):
         """
         The set of arguments for constructing a EdgeCacheKeyset resource.
+
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the EdgeCache resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -165,6 +166,7 @@ class _EdgeCacheKeysetState:
                  validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]] = None):
         """
         Input properties used for looking up and filtering EdgeCacheKeyset resources.
+
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the EdgeCache resource.
@@ -406,6 +408,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
@@ -508,6 +511,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{project}}/{{name}}
         $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EdgeCacheKeysetArgs args: The arguments to use to populate this resource's properties.

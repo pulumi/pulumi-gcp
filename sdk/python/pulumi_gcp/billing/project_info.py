@@ -23,6 +23,7 @@ class ProjectInfoArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectInfo resource.
+
         :param pulumi.Input[_builtins.str] billing_account: The ID of the billing account associated with the project, if
                any. Set to empty string to disable billing for the project.
                For example, `"012345-567890-ABCDEF"` or `""`.
@@ -68,6 +69,7 @@ class _ProjectInfoState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectInfo resources.
+
         :param pulumi.Input[_builtins.str] billing_account: The ID of the billing account associated with the project, if
                any. Set to empty string to disable billing for the project.
                For example, `"012345-567890-ABCDEF"` or `""`.
@@ -157,6 +159,7 @@ class ProjectInfo(pulumi.CustomResource):
         $ pulumi import gcp:billing/projectInfo:ProjectInfo default {{project}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_account: The ID of the billing account associated with the project, if
@@ -211,6 +214,7 @@ class ProjectInfo(pulumi.CustomResource):
         $ pulumi import gcp:billing/projectInfo:ProjectInfo default projects/{{project}}
         $ pulumi import gcp:billing/projectInfo:ProjectInfo default {{project}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectInfoArgs args: The arguments to use to populate this resource's properties.

@@ -34,6 +34,7 @@ class SloArgs:
                  windows_based_sli: Optional[pulumi.Input['SloWindowsBasedSliArgs']] = None):
         """
         The set of arguments for constructing a Slo resource.
+
         :param pulumi.Input[_builtins.float] goal: The fraction of service that must be good in order for this objective
                to be met. 0 < goal <= 0.999
         :param pulumi.Input[_builtins.str] service: ID of the service to which this SLO belongs.
@@ -277,6 +278,7 @@ class _SloState:
                  windows_based_sli: Optional[pulumi.Input['SloWindowsBasedSliArgs']] = None):
         """
         Input properties used for looking up and filtering Slo resources.
+
         :param pulumi.Input['SloBasicSliArgs'] basic_sli: Basic Service-Level Indicator (SLI) on a well-known service type.
                Performance will be computed on the basis of pre-defined metrics.
                SLIs are used to measure and calculate the quality of the Service's
@@ -739,6 +741,7 @@ class Slo(pulumi.CustomResource):
         $ pulumi import gcp:monitoring/slo:Slo default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SloBasicSliArgs', 'SloBasicSliArgsDict']] basic_sli: Basic Service-Level Indicator (SLI) on a well-known service type.
@@ -987,6 +990,7 @@ class Slo(pulumi.CustomResource):
         $ terraform import google_monitoring_slo.default "{{project}} {{name}}"
         $ pulumi import gcp:monitoring/slo:Slo default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SloArgs args: The arguments to use to populate this resource's properties.

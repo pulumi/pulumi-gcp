@@ -27,6 +27,7 @@ class RepositoryArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Repository resource.
+
         :param pulumi.Input[_builtins.str] parent_connection: The connection for the resource
         :param pulumi.Input[_builtins.str] remote_uri: Required. Git Clone HTTPS URI.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Allows clients to store small amounts of arbitrary data.
@@ -139,6 +140,7 @@ class _RepositoryState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Repository resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -430,6 +432,7 @@ class Repository(pulumi.CustomResource):
         $ pulumi import gcp:cloudbuildv2/repository:Repository default {{location}}/{{parent_connection}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Allows clients to store small amounts of arbitrary data.
@@ -566,6 +569,7 @@ class Repository(pulumi.CustomResource):
         $ pulumi import gcp:cloudbuildv2/repository:Repository default {{project}}/{{location}}/{{parent_connection}}/{{name}}
         $ pulumi import gcp:cloudbuildv2/repository:Repository default {{location}}/{{parent_connection}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RepositoryArgs args: The arguments to use to populate this resource's properties.

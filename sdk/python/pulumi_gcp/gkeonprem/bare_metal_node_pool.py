@@ -30,6 +30,7 @@ class BareMetalNodePoolArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BareMetalNodePool resource.
+
         :param pulumi.Input[_builtins.str] bare_metal_cluster: The cluster this node pool belongs to.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input['BareMetalNodePoolNodePoolConfigArgs'] node_pool_config: Node pool configuration.
@@ -180,6 +181,7 @@ class _BareMetalNodePoolState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BareMetalNodePool resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the Bare Metal Node Pool.
                This field has the same restrictions as Kubernetes annotations.
                The total size of all keys and values combined is limited to 256k.
@@ -678,6 +680,7 @@ class BareMetalNodePool(pulumi.CustomResource):
         $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default {{location}}/{{bare_metal_cluster}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the Bare Metal Node Pool.
@@ -910,6 +913,7 @@ class BareMetalNodePool(pulumi.CustomResource):
         $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default {{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}
         $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default {{location}}/{{bare_metal_cluster}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BareMetalNodePoolArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class EntryLinkArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EntryLink resource.
+
         :param pulumi.Input[_builtins.str] entry_group_id: The id of the entry group this entry link is in.
         :param pulumi.Input[_builtins.str] entry_link_id: The id of the entry link to create.
         :param pulumi.Input[_builtins.str] entry_link_type: Relative resource name of the Entry Link Type used to create this Entry Link. For example:
@@ -137,6 +138,7 @@ class _EntryLinkState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EntryLink resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the Entry Link was created.
         :param pulumi.Input[_builtins.str] entry_group_id: The id of the entry group this entry link is in.
         :param pulumi.Input[_builtins.str] entry_link_id: The id of the entry link to create.
@@ -426,6 +428,7 @@ class EntryLink(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/entryLink:EntryLink default {{location}}/{{entry_group_id}}/{{entry_link_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] entry_group_id: The id of the entry group this entry link is in.
@@ -573,6 +576,7 @@ class EntryLink(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/entryLink:EntryLink default {{project}}/{{location}}/{{entry_group_id}}/{{entry_link_id}}
         $ pulumi import gcp:dataplex/entryLink:EntryLink default {{location}}/{{entry_group_id}}/{{entry_link_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EntryLinkArgs args: The arguments to use to populate this resource's properties.

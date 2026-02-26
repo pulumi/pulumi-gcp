@@ -27,6 +27,7 @@ class V2QueuedResourceArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2QueuedResource resource.
+
         :param pulumi.Input[_builtins.str] name: The immutable name of the Queued Resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -103,6 +104,7 @@ class _V2QueuedResourceState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V2QueuedResource resources.
+
         :param pulumi.Input[_builtins.str] name: The immutable name of the Queued Resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -273,6 +275,7 @@ class V2QueuedResource(pulumi.CustomResource):
         $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The immutable name of the Queued Resource.
@@ -379,6 +382,7 @@ class V2QueuedResource(pulumi.CustomResource):
         $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{zone}}/{{name}}
         $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V2QueuedResourceArgs args: The arguments to use to populate this resource's properties.

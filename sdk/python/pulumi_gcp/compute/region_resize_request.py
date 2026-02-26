@@ -30,6 +30,7 @@ class RegionResizeRequestArgs:
                  requested_run_duration: Optional[pulumi.Input['RegionResizeRequestRequestedRunDurationArgs']] = None):
         """
         The set of arguments for constructing a RegionResizeRequest resource.
+
         :param pulumi.Input[_builtins.str] instance_group_manager: The reference of the regional instance group manager this ResizeRequest is a part of.
         :param pulumi.Input[_builtins.int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
         :param pulumi.Input[_builtins.str] description: An optional description of this resize-request.
@@ -155,6 +156,7 @@ class _RegionResizeRequestState:
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusArgs']]]] = None):
         """
         Input properties used for looking up and filtering RegionResizeRequest resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: The creation timestamp for this resize request in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resize-request.
         :param pulumi.Input[_builtins.str] instance_group_manager: The reference of the regional instance group manager this ResizeRequest is a part of.
@@ -440,6 +442,7 @@ class RegionResizeRequest(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{instance_group_manager}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resize-request.
@@ -569,6 +572,7 @@ class RegionResizeRequest(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{region}}/{{instance_group_manager}}/{{name}}
         $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{instance_group_manager}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionResizeRequestArgs args: The arguments to use to populate this resource's properties.

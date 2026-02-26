@@ -29,6 +29,7 @@ class FieldArgs:
                  ttl_config: Optional[pulumi.Input['FieldTtlConfigArgs']] = None):
         """
         The set of arguments for constructing a Field resource.
+
         :param pulumi.Input[_builtins.str] collection: The id of the collection group to configure.
         :param pulumi.Input[_builtins.str] field: The id of the field to configure.
         :param pulumi.Input[_builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
@@ -144,6 +145,7 @@ class _FieldState:
                  ttl_config: Optional[pulumi.Input['FieldTtlConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Field resources.
+
         :param pulumi.Input[_builtins.str] collection: The id of the collection group to configure.
         :param pulumi.Input[_builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[_builtins.str] field: The id of the field to configure.
@@ -423,6 +425,7 @@ class Field(pulumi.CustomResource):
         $ pulumi import gcp:firestore/field:Field default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] collection: The id of the collection group to configure.
@@ -587,6 +590,7 @@ class Field(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:firestore/field:Field default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FieldArgs args: The arguments to use to populate this resource's properties.

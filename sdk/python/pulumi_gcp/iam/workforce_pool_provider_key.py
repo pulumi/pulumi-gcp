@@ -29,6 +29,7 @@ class WorkforcePoolProviderKeyArgs:
                  workforce_pool_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a WorkforcePoolProviderKey resource.
+
         :param pulumi.Input['WorkforcePoolProviderKeyKeyDataArgs'] key_data: Immutable. Public half of the asymmetric key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] key_id: The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
@@ -134,6 +135,7 @@ class _WorkforcePoolProviderKeyState:
                  workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkforcePoolProviderKey resources.
+
         :param pulumi.Input[_builtins.str] expire_time: The time after which the key will be permanently deleted and cannot be recovered.
                Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
         :param pulumi.Input['WorkforcePoolProviderKeyKeyDataArgs'] key_data: Immutable. Public half of the asymmetric key.
@@ -351,6 +353,7 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
         $ pulumi import gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey default {{location}}/{{workforce_pool_id}}/{{provider_id}}/{{key_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']] key_data: Immutable. Public half of the asymmetric key.
@@ -425,6 +428,7 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
         $ pulumi import gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}/keys/{{key_id}}
         $ pulumi import gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey default {{location}}/{{workforce_pool_id}}/{{provider_id}}/{{key_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkforcePoolProviderKeyArgs args: The arguments to use to populate this resource's properties.

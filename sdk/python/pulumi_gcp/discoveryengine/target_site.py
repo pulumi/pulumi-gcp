@@ -29,6 +29,7 @@ class TargetSiteArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TargetSite resource.
+
         :param pulumi.Input[_builtins.str] data_store_id: The unique id of the data store.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
@@ -156,6 +157,7 @@ class _TargetSiteState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TargetSite resources.
+
         :param pulumi.Input[_builtins.str] data_store_id: The unique id of the data store.
         :param pulumi.Input[_builtins.bool] exact_match: If set to false, a uri_pattern is generated to include all pages whose
                address contains the provided_uri_pattern. If set to true, an uri_pattern
@@ -481,6 +483,7 @@ class TargetSite(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/targetSite:TargetSite default {{location}}/{{data_store_id}}/{{target_site_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_store_id: The unique id of the data store.
@@ -575,6 +578,7 @@ class TargetSite(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/targetSite:TargetSite default {{project}}/{{location}}/{{data_store_id}}/{{target_site_id}}
         $ pulumi import gcp:discoveryengine/targetSite:TargetSite default {{location}}/{{data_store_id}}/{{target_site_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TargetSiteArgs args: The arguments to use to populate this resource's properties.

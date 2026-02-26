@@ -31,6 +31,7 @@ class WorkloadArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Workload resource.
+
         :param pulumi.Input[_builtins.str] application_id: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         :param pulumi.Input[_builtins.str] discovered_workload: Immutable. The resource name of the original discovered workload.
         :param pulumi.Input[_builtins.str] location: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
@@ -174,6 +175,7 @@ class _WorkloadState:
                  workload_references: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadReferenceArgs']]]] = None):
         """
         Input properties used for looking up and filtering Workload resources.
+
         :param pulumi.Input[_builtins.str] application_id: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         :param pulumi.Input['WorkloadAttributesArgs'] attributes: Consumer provided attributes.
                Structure is documented below.
@@ -446,6 +448,7 @@ class Workload(pulumi.CustomResource):
         $ pulumi import gcp:apphub/workload:Workload default {{location}}/{{application_id}}/{{workload_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
@@ -485,6 +488,7 @@ class Workload(pulumi.CustomResource):
         $ pulumi import gcp:apphub/workload:Workload default {{project}}/{{location}}/{{application_id}}/{{workload_id}}
         $ pulumi import gcp:apphub/workload:Workload default {{location}}/{{application_id}}/{{workload_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkloadArgs args: The arguments to use to populate this resource's properties.

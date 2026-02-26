@@ -31,6 +31,7 @@ class AccessLevelConditionArgs:
                  vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]] = None):
         """
         The set of arguments for constructing a AccessLevelCondition resource.
+
         :param pulumi.Input[_builtins.str] access_level: The name of the Access Level to add this condition to.
         :param pulumi.Input['AccessLevelConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
@@ -221,6 +222,7 @@ class _AccessLevelConditionState:
                  vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]] = None):
         """
         Input properties used for looking up and filtering AccessLevelCondition resources.
+
         :param pulumi.Input[_builtins.str] access_level: The name of the Access Level to add this condition to.
         :param pulumi.Input[_builtins.str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input['AccessLevelConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
@@ -508,6 +510,7 @@ class AccessLevelCondition(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_level: The name of the Access Level to add this condition to.
@@ -631,6 +634,7 @@ class AccessLevelCondition(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param AccessLevelConditionArgs args: The arguments to use to populate this resource's properties.

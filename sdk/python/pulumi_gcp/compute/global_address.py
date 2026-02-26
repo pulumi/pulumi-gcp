@@ -31,6 +31,7 @@ class GlobalAddressArgs:
                  purpose: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlobalAddress resource.
+
         :param pulumi.Input[_builtins.str] address: The IP address or beginning of the address range represented by this
                resource. This can be supplied as an input to reserve a specific
                address or omitted to allow GCP to choose a valid one for you.
@@ -254,6 +255,7 @@ class _GlobalAddressState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalAddress resources.
+
         :param pulumi.Input[_builtins.str] address: The IP address or beginning of the address range represented by this
                resource. This can be supplied as an input to reserve a specific
                address or omitted to allow GCP to choose a valid one for you.
@@ -606,6 +608,7 @@ class GlobalAddress(pulumi.CustomResource):
         $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The IP address or beginning of the address range represented by this
@@ -702,6 +705,7 @@ class GlobalAddress(pulumi.CustomResource):
         $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{project}}/{{name}}
         $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GlobalAddressArgs args: The arguments to use to populate this resource's properties.

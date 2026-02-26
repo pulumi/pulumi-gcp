@@ -30,6 +30,7 @@ class AiEndpointWithModelGardenDeploymentArgs:
                  publisher_model_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiEndpointWithModelGardenDeployment resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigArgs'] deploy_config: The deploy config to use for the deployment.
                Structure is documented below.
@@ -168,6 +169,7 @@ class _AiEndpointWithModelGardenDeploymentState:
                  publisher_model_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiEndpointWithModelGardenDeployment resources.
+
         :param pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigArgs'] deploy_config: The deploy config to use for the deployment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deployed_model_display_name: Output only. The display name assigned to the model deployed to the endpoint.
@@ -587,6 +589,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']] deploy_config: The deploy config to use for the deployment.
@@ -840,6 +843,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param AiEndpointWithModelGardenDeploymentArgs args: The arguments to use to populate this resource's properties.

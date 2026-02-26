@@ -44,6 +44,7 @@ class StandardAppVersionArgs:
                  vpc_access_connector: Optional[pulumi.Input['StandardAppVersionVpcAccessConnectorArgs']] = None):
         """
         The set of arguments for constructing a StandardAppVersion resource.
+
         :param pulumi.Input['StandardAppVersionDeploymentArgs'] deployment: Code and application artifacts that make up this version.
                Structure is documented below.
         :param pulumi.Input['StandardAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
@@ -417,6 +418,7 @@ class _StandardAppVersionState:
                  vpc_access_connector: Optional[pulumi.Input['StandardAppVersionVpcAccessConnectorArgs']] = None):
         """
         Input properties used for looking up and filtering StandardAppVersion resources.
+
         :param pulumi.Input[_builtins.bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
         :param pulumi.Input['StandardAppVersionAutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
                Structure is documented below.
@@ -925,6 +927,7 @@ class StandardAppVersion(pulumi.CustomResource):
         $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{service}}/{{version_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
@@ -1085,6 +1088,7 @@ class StandardAppVersion(pulumi.CustomResource):
         $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{project}}/{{service}}/{{version_id}}
         $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{service}}/{{version_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StandardAppVersionArgs args: The arguments to use to populate this resource's properties.

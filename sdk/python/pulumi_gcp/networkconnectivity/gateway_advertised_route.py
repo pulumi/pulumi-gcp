@@ -30,6 +30,7 @@ class GatewayAdvertisedRouteArgs:
                  recipient: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GatewayAdvertisedRoute resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] spoke: The name of the spoke
         :param pulumi.Input[_builtins.str] description: An optional description of the gateway advertised route.
@@ -198,6 +199,7 @@ class _GatewayAdvertisedRouteState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewayAdvertisedRoute resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time the gateway advertised route was created.
         :param pulumi.Input[_builtins.str] description: An optional description of the gateway advertised route.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -539,6 +541,7 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{location}}/{{spoke}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of the gateway advertised route.
@@ -641,6 +644,7 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{project}}/{{location}}/{{spoke}}/{{name}}
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{location}}/{{spoke}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayAdvertisedRouteArgs args: The arguments to use to populate this resource's properties.

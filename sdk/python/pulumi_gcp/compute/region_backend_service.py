@@ -57,6 +57,7 @@ class RegionBackendServiceArgs:
                  tls_settings: Optional[pulumi.Input['RegionBackendServiceTlsSettingsArgs']] = None):
         """
         The set of arguments for constructing a RegionBackendService resource.
+
         :param pulumi.Input[_builtins.int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is
                GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
                only until the end of the browser session (or equivalent). The
@@ -879,6 +880,7 @@ class _RegionBackendServiceState:
                  tls_settings: Optional[pulumi.Input['RegionBackendServiceTlsSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering RegionBackendService resources.
+
         :param pulumi.Input[_builtins.int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is
                GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
                only until the end of the browser session (or equivalent). The
@@ -2261,6 +2263,7 @@ class RegionBackendService(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is
@@ -2936,6 +2939,7 @@ class RegionBackendService(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{region}}/{{name}}
         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionBackendServiceArgs args: The arguments to use to populate this resource's properties.

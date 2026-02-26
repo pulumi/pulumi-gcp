@@ -43,6 +43,7 @@ class VmwareAdminClusterArgs:
                  vcenter: Optional[pulumi.Input['VmwareAdminClusterVcenterArgs']] = None):
         """
         The set of arguments for constructing a VmwareAdminCluster resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input['VmwareAdminClusterNetworkConfigArgs'] network_config: The VMware admin cluster network configuration.
                Structure is documented below.
@@ -426,6 +427,7 @@ class _VmwareAdminClusterState:
                  vcenter: Optional[pulumi.Input['VmwareAdminClusterVcenterArgs']] = None):
         """
         Input properties used for looking up and filtering VmwareAdminCluster resources.
+
         :param pulumi.Input['VmwareAdminClusterAddonNodeArgs'] addon_node: The VMware admin cluster addon node configuration.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the VMware Admin Cluster.
@@ -1229,6 +1231,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
         $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['VmwareAdminClusterAddonNodeArgs', 'VmwareAdminClusterAddonNodeArgsDict']] addon_node: The VMware admin cluster addon node configuration.
@@ -1510,6 +1513,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
         $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VmwareAdminClusterArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class NetworkPeeringRoutesConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkPeeringRoutesConfig resource.
+
         :param pulumi.Input[_builtins.bool] export_custom_routes: Whether to export the custom routes to the peer network.
         :param pulumi.Input[_builtins.bool] import_custom_routes: Whether to import the custom routes to the peer network.
         :param pulumi.Input[_builtins.str] network: The name of the primary network for the peering.
@@ -154,6 +155,7 @@ class _NetworkPeeringRoutesConfigState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkPeeringRoutesConfig resources.
+
         :param pulumi.Input[_builtins.bool] export_custom_routes: Whether to export the custom routes to the peer network.
         :param pulumi.Input[_builtins.bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported.
                IPv4 special-use ranges are always exported to peers and
@@ -349,6 +351,7 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{network}}/{{peering}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] export_custom_routes: Whether to export the custom routes to the peer network.
@@ -432,6 +435,7 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{project}}/{{network}}/{{peering}}
         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{network}}/{{peering}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkPeeringRoutesConfigArgs args: The arguments to use to populate this resource's properties.

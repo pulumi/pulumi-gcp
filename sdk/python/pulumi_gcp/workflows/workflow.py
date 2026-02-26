@@ -35,6 +35,7 @@ class WorkflowArgs:
                  user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Workflow resource.
+
         :param pulumi.Input[_builtins.str] call_log_level: Describes the level of platform logging to apply to calls and call responses during
                executions of this workflow. If both the workflow and the execution specify a logging level,
                the execution level takes precedence.
@@ -323,6 +324,7 @@ class _WorkflowState:
                  user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Workflow resources.
+
         :param pulumi.Input[_builtins.str] call_log_level: Describes the level of platform logging to apply to calls and call responses during
                executions of this workflow. If both the workflow and the execution specify a logging level,
                the execution level takes precedence.
@@ -822,6 +824,7 @@ class Workflow(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] call_log_level: Describes the level of platform logging to apply to calls and call responses during
@@ -992,6 +995,7 @@ class Workflow(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param WorkflowArgs args: The arguments to use to populate this resource's properties.

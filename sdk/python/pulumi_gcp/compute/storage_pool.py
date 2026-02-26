@@ -35,6 +35,7 @@ class StoragePoolArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StoragePool resource.
+
         :param pulumi.Input[_builtins.str] pool_provisioned_capacity_gb: Size, in GiB, of the storage pool. For more information about the size limits,
                see https://cloud.google.com/compute/docs/disks/storage-pools.
         :param pulumi.Input[_builtins.str] pool_provisioned_throughput: Provisioned throughput, in MB/s, of the storage pool.
@@ -281,6 +282,7 @@ class _StoragePoolState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StoragePool resources.
+
         :param pulumi.Input[_builtins.str] capacity_provisioning_type: Provisioning type of the byte capacity of the pool.
                Possible values are: `STANDARD`, `ADVANCED`.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -718,6 +720,7 @@ class StoragePool(pulumi.CustomResource):
         $ pulumi import gcp:compute/storagePool:StoragePool default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] capacity_provisioning_type: Provisioning type of the byte capacity of the pool.
@@ -839,6 +842,7 @@ class StoragePool(pulumi.CustomResource):
         $ pulumi import gcp:compute/storagePool:StoragePool default {{zone}}/{{name}}
         $ pulumi import gcp:compute/storagePool:StoragePool default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StoragePoolArgs args: The arguments to use to populate this resource's properties.

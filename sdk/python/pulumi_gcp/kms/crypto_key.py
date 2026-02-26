@@ -34,6 +34,7 @@ class CryptoKeyArgs:
                  version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
         """
         The set of arguments for constructing a CryptoKey resource.
+
         :param pulumi.Input[_builtins.str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         :param pulumi.Input[_builtins.str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
@@ -270,6 +271,7 @@ class _CryptoKeyState:
                  version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
         """
         Input properties used for looking up and filtering CryptoKey resources.
+
         :param pulumi.Input[_builtins.str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         :param pulumi.Input[_builtins.str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
@@ -621,6 +623,7 @@ class CryptoKey(pulumi.CustomResource):
         $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
@@ -729,6 +732,7 @@ class CryptoKey(pulumi.CustomResource):
         $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}
         $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CryptoKeyArgs args: The arguments to use to populate this resource's properties.

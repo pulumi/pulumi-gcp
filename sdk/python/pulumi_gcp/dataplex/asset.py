@@ -33,6 +33,7 @@ class AssetArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Asset resource.
+
         :param pulumi.Input[_builtins.str] dataplex_zone: The zone for the resource
         :param pulumi.Input['AssetDiscoverySpecArgs'] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[_builtins.str] lake: The lake for the resource
@@ -211,6 +212,7 @@ class _AssetState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Asset resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the asset was created.
         :param pulumi.Input[_builtins.str] dataplex_zone: The zone for the resource
         :param pulumi.Input[_builtins.str] description: Optional. Description of the asset.
@@ -588,6 +590,7 @@ class Asset(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/asset:Asset default {{location}}/{{lake}}/{{dataplex_zone}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dataplex_zone: The zone for the resource
@@ -675,6 +678,7 @@ class Asset(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/asset:Asset default {{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}
         $ pulumi import gcp:dataplex/asset:Asset default {{location}}/{{lake}}/{{dataplex_zone}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AssetArgs args: The arguments to use to populate this resource's properties.

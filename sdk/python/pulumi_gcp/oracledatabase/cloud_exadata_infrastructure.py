@@ -31,6 +31,7 @@ class CloudExadataInfrastructureArgs:
                  properties: Optional[pulumi.Input['CloudExadataInfrastructurePropertiesArgs']] = None):
         """
         The set of arguments for constructing a CloudExadataInfrastructure resource.
+
         :param pulumi.Input[_builtins.str] cloud_exadata_infrastructure_id: The ID of the Exadata Infrastructure to create. This value is restricted
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
@@ -184,6 +185,7 @@ class _CloudExadataInfrastructureState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CloudExadataInfrastructure resources.
+
         :param pulumi.Input[_builtins.str] cloud_exadata_infrastructure_id: The ID of the Exadata Infrastructure to create. This value is restricted
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
@@ -505,6 +507,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
         $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{location}}/{{cloud_exadata_infrastructure_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_exadata_infrastructure_id: The ID of the Exadata Infrastructure to create. This value is restricted
@@ -616,6 +619,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
         $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}
         $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{location}}/{{cloud_exadata_infrastructure_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CloudExadataInfrastructureArgs args: The arguments to use to populate this resource's properties.

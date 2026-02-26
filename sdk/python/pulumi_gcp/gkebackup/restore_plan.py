@@ -31,6 +31,7 @@ class RestorePlanArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RestorePlan resource.
+
         :param pulumi.Input[_builtins.str] backup_plan: A reference to the BackupPlan from which Backups may be used
                as the source for Restores created via this RestorePlan.
         :param pulumi.Input[_builtins.str] cluster: The source cluster from which Restores will be created via this RestorePlan.
@@ -184,6 +185,7 @@ class _RestorePlanState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RestorePlan resources.
+
         :param pulumi.Input[_builtins.str] backup_plan: A reference to the BackupPlan from which Backups may be used
                as the source for Restores created via this RestorePlan.
         :param pulumi.Input[_builtins.str] cluster: The source cluster from which Restores will be created via this RestorePlan.
@@ -942,6 +944,7 @@ class RestorePlan(pulumi.CustomResource):
         $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_plan: A reference to the BackupPlan from which Backups may be used
@@ -1493,6 +1496,7 @@ class RestorePlan(pulumi.CustomResource):
         $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RestorePlanArgs args: The arguments to use to populate this resource's properties.
