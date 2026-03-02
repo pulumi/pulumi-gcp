@@ -61,6 +61,7 @@ class BackendServiceArgs:
                  tls_settings: Optional[pulumi.Input['BackendServiceTlsSettingsArgs']] = None):
         """
         The set of arguments for constructing a BackendService resource.
+
         :param pulumi.Input[_builtins.int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is
                GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
                only until the end of the browser session (or equivalent). The
@@ -981,6 +982,7 @@ class _BackendServiceState:
                  tls_settings: Optional[pulumi.Input['BackendServiceTlsSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering BackendService resources.
+
         :param pulumi.Input[_builtins.int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is
                GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
                only until the end of the browser session (or equivalent). The
@@ -2445,6 +2447,7 @@ class BackendService(pulumi.CustomResource):
         $ pulumi import gcp:compute/backendService:BackendService default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is
@@ -3125,6 +3128,7 @@ class BackendService(pulumi.CustomResource):
         $ pulumi import gcp:compute/backendService:BackendService default {{project}}/{{name}}
         $ pulumi import gcp:compute/backendService:BackendService default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackendServiceArgs args: The arguments to use to populate this resource's properties.

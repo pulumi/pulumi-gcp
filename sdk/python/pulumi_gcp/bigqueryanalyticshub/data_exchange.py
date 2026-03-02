@@ -34,6 +34,7 @@ class DataExchangeArgs:
                  sharing_environment_config: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']] = None):
         """
         The set of arguments for constructing a DataExchange resource.
+
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
         :param pulumi.Input[_builtins.str] location: The name of the location this data exchange.
@@ -225,6 +226,7 @@ class _DataExchangeState:
                  sharing_environment_config: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']] = None):
         """
         Input properties used for looking up and filtering DataExchange resources.
+
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] description: Description of the data exchange.
         :param pulumi.Input[_builtins.str] discovery_type: Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
@@ -534,6 +536,7 @@ class DataExchange(pulumi.CustomResource):
         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{data_exchange_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -640,6 +643,7 @@ class DataExchange(pulumi.CustomResource):
         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{location}}/{{data_exchange_id}}
         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{data_exchange_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataExchangeArgs args: The arguments to use to populate this resource's properties.

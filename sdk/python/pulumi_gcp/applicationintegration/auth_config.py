@@ -32,6 +32,7 @@ class AuthConfigArgs:
                  visibility: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthConfig resource.
+
         :param pulumi.Input[_builtins.str] display_name: The name of the auth config.
         :param pulumi.Input[_builtins.str] location: Location in which client needs to be provisioned.
         :param pulumi.Input['AuthConfigClientCertificateArgs'] client_certificate: Raw client certificate
@@ -205,6 +206,7 @@ class _AuthConfigState:
                  visibility: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthConfig resources.
+
         :param pulumi.Input[_builtins.str] certificate_id: Certificate id for client certificate.
         :param pulumi.Input['AuthConfigClientCertificateArgs'] client_certificate: Raw client certificate
                Structure is documented below.
@@ -593,6 +595,7 @@ class AuthConfig(pulumi.CustomResource):
         $ pulumi import gcp:applicationintegration/authConfig:AuthConfig default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']] client_certificate: Raw client certificate
@@ -665,6 +668,7 @@ class AuthConfig(pulumi.CustomResource):
         $ terraform import google_integrations_auth_config.default "{{project}} {{name}}"
         $ pulumi import gcp:applicationintegration/authConfig:AuthConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuthConfigArgs args: The arguments to use to populate this resource's properties.

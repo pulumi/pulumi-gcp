@@ -29,6 +29,7 @@ class MembershipRbacRoleBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MembershipRbacRoleBinding resource.
+
         :param pulumi.Input[_builtins.str] location: Location of the Membership
         :param pulumi.Input[_builtins.str] membership_id: Id of the membership
         :param pulumi.Input[_builtins.str] membership_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
@@ -144,6 +145,7 @@ class _MembershipRbacRoleBindingState:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MembershipRbacRoleBinding resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the RBAC Role Binding was created in UTC.
         :param pulumi.Input[_builtins.str] delete_time: Time the RBAC Role Binding was deleted in UTC.
         :param pulumi.Input[_builtins.str] location: Location of the Membership
@@ -415,6 +417,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default {{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] location: Location of the Membership
@@ -497,6 +500,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default {{project}}/{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}
         $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default {{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MembershipRbacRoleBindingArgs args: The arguments to use to populate this resource's properties.

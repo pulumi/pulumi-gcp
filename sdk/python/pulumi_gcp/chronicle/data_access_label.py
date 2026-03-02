@@ -27,6 +27,7 @@ class DataAccessLabelArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataAccessLabel resource.
+
         :param pulumi.Input[_builtins.str] data_access_label_id: Required. The ID to use for the data access label, which will become the label's
                display name and the final component of the label's resource name. The
                maximum number of characters should be 63. Regex pattern is as per AIP:
@@ -141,6 +142,7 @@ class _DataAccessLabelState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataAccessLabel resources.
+
         :param pulumi.Input[_builtins.str] author: Output only. The user who created the data access label.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which the data access label was created.
         :param pulumi.Input[_builtins.str] data_access_label_id: Required. The ID to use for the data access label, which will become the label's
@@ -390,6 +392,7 @@ class DataAccessLabel(pulumi.CustomResource):
         $ pulumi import gcp:chronicle/dataAccessLabel:DataAccessLabel default {{location}}/{{instance}}/{{data_access_label_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_access_label_id: Required. The ID to use for the data access label, which will become the label's
@@ -449,6 +452,7 @@ class DataAccessLabel(pulumi.CustomResource):
         $ pulumi import gcp:chronicle/dataAccessLabel:DataAccessLabel default {{project}}/{{location}}/{{instance}}/{{data_access_label_id}}
         $ pulumi import gcp:chronicle/dataAccessLabel:DataAccessLabel default {{location}}/{{instance}}/{{data_access_label_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataAccessLabelArgs args: The arguments to use to populate this resource's properties.

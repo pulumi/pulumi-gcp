@@ -34,6 +34,7 @@ class IndexArgs:
                  unique: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Index resource.
+
         :param pulumi.Input[_builtins.str] collection: The collection being indexed.
         :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]] fields: The fields supported by this index. The last non-stored field entry is
                always for the field path `__name__`. If, on creation, `__name__` was not
@@ -247,6 +248,7 @@ class _IndexState:
                  unique: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Index resources.
+
         :param pulumi.Input[_builtins.str] api_scope: The API scope at which a query is run.
                Default value is `ANY_API`.
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
@@ -758,6 +760,7 @@ class Index(pulumi.CustomResource):
         $ pulumi import gcp:firestore/index:Index default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_scope: The API scope at which a query is run.
@@ -1070,6 +1073,7 @@ class Index(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:firestore/index:Index default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IndexArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class ProjectMetadataArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectMetadata resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A series of key value pairs.
                
                - - -
@@ -68,6 +69,7 @@ class _ProjectMetadataState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectMetadata resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A series of key value pairs.
                
                - - -
@@ -168,6 +170,7 @@ class ProjectMetadata(pulumi.CustomResource):
         $ pulumi import gcp:compute/projectMetadata:ProjectMetadata default {{project_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A series of key value pairs.
@@ -233,6 +236,7 @@ class ProjectMetadata(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:compute/projectMetadata:ProjectMetadata default {{project_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectMetadataArgs args: The arguments to use to populate this resource's properties.

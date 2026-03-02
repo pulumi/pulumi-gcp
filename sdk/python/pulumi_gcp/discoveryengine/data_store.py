@@ -35,6 +35,7 @@ class DataStoreArgs:
                  solution_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DataStore resource.
+
         :param pulumi.Input[_builtins.str] content_config: The content config of the data store.
                Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
         :param pulumi.Input[_builtins.str] data_store_id: The unique id of the data store.
@@ -275,6 +276,7 @@ class _DataStoreState:
                  solution_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DataStore resources.
+
         :param pulumi.Input['DataStoreAdvancedSiteSearchConfigArgs'] advanced_site_search_config: Configuration data for advance site search.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] content_config: The content config of the data store.
@@ -679,6 +681,7 @@ class DataStore(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/dataStore:DataStore default {{location}}/{{data_store_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']] advanced_site_search_config: Configuration data for advance site search.
@@ -829,6 +832,7 @@ class DataStore(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/dataStore:DataStore default {{project}}/{{location}}/{{data_store_id}}
         $ pulumi import gcp:discoveryengine/dataStore:DataStore default {{location}}/{{data_store_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataStoreArgs args: The arguments to use to populate this resource's properties.

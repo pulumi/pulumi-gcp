@@ -23,6 +23,7 @@ class CryptoKeyIAMPolicyArgs:
                  policy_data: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a CryptoKeyIAMPolicy resource.
+
         :param pulumi.Input[_builtins.str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
                `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -70,6 +71,7 @@ class _CryptoKeyIAMPolicyState:
                  policy_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CryptoKeyIAMPolicy resources.
+
         :param pulumi.Input[_builtins.str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
                `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -239,6 +241,7 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
 
         ## Import
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] crypto_key_id: The crypto key ID, in the form
@@ -357,6 +360,7 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
         ```
 
         ## Import
+
 
         :param str resource_name: The name of the resource.
         :param CryptoKeyIAMPolicyArgs args: The arguments to use to populate this resource's properties.

@@ -46,6 +46,7 @@ class FlexTemplateJobArgs:
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FlexTemplateJob resource.
+
         :param pulumi.Input[_builtins.str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
                
@@ -488,6 +489,7 @@ class _FlexTemplateJobState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlexTemplateJob resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_pipeline_options: List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
         :param pulumi.Input[_builtins.str] autoscaling_algorithm: The algorithm to use for autoscaling.
@@ -1084,6 +1086,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
@@ -1213,6 +1216,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param FlexTemplateJobArgs args: The arguments to use to populate this resource's properties.

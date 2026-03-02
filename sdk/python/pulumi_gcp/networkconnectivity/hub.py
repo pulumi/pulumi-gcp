@@ -30,6 +30,7 @@ class HubArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Hub resource.
+
         :param pulumi.Input[_builtins.str] description: An optional description of the hub.
         :param pulumi.Input[_builtins.bool] export_psc: Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -167,6 +168,7 @@ class _HubState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Hub resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. The time the hub was created.
         :param pulumi.Input[_builtins.str] description: An optional description of the hub.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -502,6 +504,7 @@ class Hub(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/hub:Hub default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of the hub.
@@ -616,6 +619,7 @@ class Hub(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/hub:Hub default {{project}}/{{name}}
         $ pulumi import gcp:networkconnectivity/hub:Hub default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HubArgs args: The arguments to use to populate this resource's properties.

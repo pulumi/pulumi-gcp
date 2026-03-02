@@ -26,6 +26,7 @@ class RegionNetworkFirewallPolicyAssociationArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionNetworkFirewallPolicyAssociation resource.
+
         :param pulumi.Input[_builtins.str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[_builtins.str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[_builtins.str] name: The name for an association.
@@ -115,6 +116,7 @@ class _RegionNetworkFirewallPolicyAssociationState:
                  short_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionNetworkFirewallPolicyAssociation resources.
+
         :param pulumi.Input[_builtins.str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[_builtins.str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[_builtins.str] name: The name for an association.
@@ -273,6 +275,7 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] attachment_target: The target that the firewall policy is attached to.
@@ -338,6 +341,7 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{firewall_policy}}/{{name}}
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionNetworkFirewallPolicyAssociationArgs args: The arguments to use to populate this resource's properties.

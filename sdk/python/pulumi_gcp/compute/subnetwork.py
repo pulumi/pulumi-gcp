@@ -45,6 +45,7 @@ class SubnetworkArgs:
                  stack_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Subnetwork resource.
+
         :param pulumi.Input[_builtins.str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
         :param pulumi.Input[_builtins.bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
@@ -532,6 +533,7 @@ class _SubnetworkState:
                  subnetwork_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Subnetwork resources.
+
         :param pulumi.Input[_builtins.bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
                existing resources are dropped and prevented from leaving the VPC.
                Setting this field to true will allow these packets to match dynamic routes injected
@@ -1401,6 +1403,7 @@ class Subnetwork(pulumi.CustomResource):
         $ pulumi import gcp:compute/subnetwork:Subnetwork default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
@@ -1738,6 +1741,7 @@ class Subnetwork(pulumi.CustomResource):
         $ pulumi import gcp:compute/subnetwork:Subnetwork default {{region}}/{{name}}
         $ pulumi import gcp:compute/subnetwork:Subnetwork default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SubnetworkArgs args: The arguments to use to populate this resource's properties.

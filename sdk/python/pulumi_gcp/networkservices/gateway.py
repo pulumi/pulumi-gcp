@@ -39,6 +39,7 @@ class GatewayArgs:
                  subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
                The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
                Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
@@ -390,6 +391,7 @@ class _GatewayState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
                When no address is provided, an IP from the subnetwork is allocated.
                This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -1001,6 +1003,7 @@ class Gateway(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/gateway:Gateway default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
@@ -1237,6 +1240,7 @@ class Gateway(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/gateway:Gateway default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networkservices/gateway:Gateway default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayArgs args: The arguments to use to populate this resource's properties.

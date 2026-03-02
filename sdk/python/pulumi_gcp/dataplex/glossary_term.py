@@ -29,6 +29,7 @@ class GlossaryTermArgs:
                  term_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlossaryTerm resource.
+
         :param pulumi.Input[_builtins.str] location: The location where the glossary term should reside.
         :param pulumi.Input[_builtins.str] parent: The immediate parent of the GlossaryTerm in the resource-hierarchy. It can either be a Glossary or a Term. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/terms/{termId}
         :param pulumi.Input[_builtins.str] description: The user-mutable description of the GlossaryTerm.
@@ -177,6 +178,7 @@ class _GlossaryTermState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlossaryTerm resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time at which the GlossaryTerm was created.
         :param pulumi.Input[_builtins.str] description: The user-mutable description of the GlossaryTerm.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name of the GlossaryTerm. This is user-mutable. This will be same as the termId, if not specified.
@@ -480,6 +482,7 @@ class GlossaryTerm(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{location}}/{{glossary_id}}/{{term_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The user-mutable description of the GlossaryTerm.
@@ -565,6 +568,7 @@ class GlossaryTerm(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{project}}/{{location}}/{{glossary_id}}/{{term_id}}
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{location}}/{{glossary_id}}/{{term_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GlossaryTermArgs args: The arguments to use to populate this resource's properties.

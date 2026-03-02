@@ -26,6 +26,7 @@ class ConnectionArgs:
                  update_on_creation_fail: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
+
         :param pulumi.Input[_builtins.str] network: Name of VPC network connected with service producers using VPC peering.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] reserved_peering_ranges: Named IP address range(s) of PEERING type reserved for
                this service provider. Note that invoking this method with a different range when connection
@@ -120,6 +121,7 @@ class _ConnectionState:
                  update_on_creation_fail: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
+
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
         :param pulumi.Input[_builtins.str] network: Name of VPC network connected with service producers using VPC peering.
         :param pulumi.Input[_builtins.str] peering: (Computed) The name of the VPC Network Peering connection that was created by the service producer.
@@ -281,6 +283,7 @@ class Connection(pulumi.CustomResource):
         $ pulumi import gcp:servicenetworking/connection:Connection default /projects/{{project}}/global/networks/{{peering-network}}:{{service}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
@@ -346,6 +349,7 @@ class Connection(pulumi.CustomResource):
         $ pulumi import gcp:servicenetworking/connection:Connection default {{peering-network}}:{{service}}
         $ pulumi import gcp:servicenetworking/connection:Connection default /projects/{{project}}/global/networks/{{peering-network}}:{{service}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionArgs args: The arguments to use to populate this resource's properties.

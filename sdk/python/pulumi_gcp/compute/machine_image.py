@@ -29,6 +29,7 @@ class MachineImageArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MachineImage resource.
+
         :param pulumi.Input[_builtins.str] source_instance: The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
         :param pulumi.Input[_builtins.str] description: A text description of the resource.
         :param pulumi.Input[_builtins.bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
@@ -146,6 +147,7 @@ class _MachineImageState:
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering MachineImage resources.
+
         :param pulumi.Input[_builtins.str] description: A text description of the resource.
         :param pulumi.Input[_builtins.bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
                Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
@@ -378,6 +380,7 @@ class MachineImage(pulumi.CustomResource):
         $ pulumi import gcp:compute/machineImage:MachineImage default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A text description of the resource.
@@ -482,6 +485,7 @@ class MachineImage(pulumi.CustomResource):
         $ pulumi import gcp:compute/machineImage:MachineImage default {{project}}/{{name}}
         $ pulumi import gcp:compute/machineImage:MachineImage default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MachineImageArgs args: The arguments to use to populate this resource's properties.

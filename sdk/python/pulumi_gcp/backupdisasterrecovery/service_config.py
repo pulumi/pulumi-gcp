@@ -24,6 +24,7 @@ class ServiceConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceConfig resource.
+
         :param pulumi.Input[_builtins.str] location: The location in which the Service config is to be initialized.
         :param pulumi.Input[_builtins.str] resource_type: The resource type to which the default service config will be applied.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -80,6 +81,7 @@ class _ServiceConfigState:
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceConfig resources.
+
         :param pulumi.Input[_builtins.str] location: The location in which the Service config is to be initialized.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -164,6 +166,7 @@ class ServiceConfig(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] location: The location in which the Service config is to be initialized.
@@ -200,6 +203,7 @@ class ServiceConfig(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param ServiceConfigArgs args: The arguments to use to populate this resource's properties.

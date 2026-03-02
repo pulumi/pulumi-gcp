@@ -28,6 +28,7 @@ class ManagedZoneArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ManagedZone resource.
+
         :param pulumi.Input[_builtins.str] dns: DNS Name of the resource.
         :param pulumi.Input[_builtins.str] target_project: The name of the Target Project.
         :param pulumi.Input[_builtins.str] target_vpc: The name of the Target Project VPC Network.
@@ -157,6 +158,7 @@ class _ManagedZoneState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManagedZone resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the Namespace was created in UTC.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] dns: DNS Name of the resource.
@@ -429,6 +431,7 @@ class ManagedZone(pulumi.CustomResource):
         $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -528,6 +531,7 @@ class ManagedZone(pulumi.CustomResource):
         $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{project}}/{{name}}
         $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ManagedZoneArgs args: The arguments to use to populate this resource's properties.

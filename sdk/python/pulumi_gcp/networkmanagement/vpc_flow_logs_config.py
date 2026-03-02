@@ -36,6 +36,7 @@ class VpcFlowLogsConfigArgs:
                  vpn_tunnel: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcFlowLogsConfig resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource
                within its parent collection as described in https://google.aip.dev/122. See documentation
                for resource type `networkmanagement.googleapis.com/VpcFlowLogsConfig`.
@@ -320,6 +321,7 @@ class _VpcFlowLogsConfigState:
                  vpn_tunnel: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcFlowLogsConfig resources.
+
         :param pulumi.Input[_builtins.str] aggregation_interval: Optional. The aggregation interval for the logs. Default value is
                INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
         :param pulumi.Input[_builtins.str] create_time: Output only. The time the config was created.
@@ -834,6 +836,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
         $ pulumi import gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig default {{location}}/{{vpc_flow_logs_config_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aggregation_interval: Optional. The aggregation interval for the logs. Default value is
@@ -1003,6 +1006,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
         $ pulumi import gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig default {{project}}/{{location}}/{{vpc_flow_logs_config_id}}
         $ pulumi import gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig default {{location}}/{{vpc_flow_logs_config_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcFlowLogsConfigArgs args: The arguments to use to populate this resource's properties.

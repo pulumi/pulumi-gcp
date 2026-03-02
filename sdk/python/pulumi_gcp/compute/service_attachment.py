@@ -39,6 +39,7 @@ class ServiceAttachmentArgs:
                  tunneling_config: Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']] = None):
         """
         The set of arguments for constructing a ServiceAttachment resource.
+
         :param pulumi.Input[_builtins.str] connection_preference: The connection preference to use for this service attachment. Valid
                values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
         :param pulumi.Input[_builtins.bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP
@@ -359,6 +360,7 @@ class _ServiceAttachmentState:
                  tunneling_config: Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']] = None):
         """
         Input properties used for looking up and filtering ServiceAttachment resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]] connected_endpoints: An array of the consumer forwarding rules connected to this service
                attachment.
                Structure is documented below.
@@ -1155,6 +1157,7 @@ class ServiceAttachment(pulumi.CustomResource):
         $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_preference: The connection preference to use for this service attachment. Valid
@@ -1613,6 +1616,7 @@ class ServiceAttachment(pulumi.CustomResource):
         $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{region}}/{{name}}
         $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceAttachmentArgs args: The arguments to use to populate this resource's properties.

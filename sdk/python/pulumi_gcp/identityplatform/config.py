@@ -34,6 +34,7 @@ class ConfigArgs:
                  sms_region_config: Optional[pulumi.Input['ConfigSmsRegionConfigArgs']] = None):
         """
         The set of arguments for constructing a Config resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[_builtins.bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
         :param pulumi.Input['ConfigBlockingFunctionsArgs'] blocking_functions: Configuration related to blocking functions.
@@ -237,6 +238,7 @@ class _ConfigState:
                  sms_region_config: Optional[pulumi.Input['ConfigSmsRegionConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Config resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[_builtins.bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
         :param pulumi.Input['ConfigBlockingFunctionsArgs'] blocking_functions: Configuration related to blocking functions.
@@ -559,6 +561,7 @@ class Config(pulumi.CustomResource):
         $ pulumi import gcp:identityplatform/config:Config default {{project}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_domains: List of domains authorized for OAuth redirects.
@@ -690,6 +693,7 @@ class Config(pulumi.CustomResource):
         $ pulumi import gcp:identityplatform/config:Config default projects/{{project}}
         $ pulumi import gcp:identityplatform/config:Config default {{project}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConfigArgs args: The arguments to use to populate this resource's properties.

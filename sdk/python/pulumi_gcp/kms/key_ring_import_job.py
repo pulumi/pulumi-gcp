@@ -27,6 +27,7 @@ class KeyRingImportJobArgs:
                  protection_level: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a KeyRingImportJob resource.
+
         :param pulumi.Input[_builtins.str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
         :param pulumi.Input[_builtins.str] import_method: The wrapping method to be used for incoming key material.
                Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
@@ -108,6 +109,7 @@ class _KeyRingImportJobState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyRingImportJob resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobAttestationArgs']]] attestations: Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
                Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
                Only present if the chosen ImportMethod is one with a protection level of HSM.
@@ -305,6 +307,7 @@ class KeyRingImportJob(pulumi.CustomResource):
         $ pulumi import gcp:kms/keyRingImportJob:KeyRingImportJob default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
@@ -351,6 +354,7 @@ class KeyRingImportJob(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:kms/keyRingImportJob:KeyRingImportJob default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeyRingImportJobArgs args: The arguments to use to populate this resource's properties.

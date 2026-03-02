@@ -24,6 +24,7 @@ class NatAddressArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NatAddress resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
         :param pulumi.Input[_builtins.bool] activate: Flag that specifies whether the reserved NAT address should be activate.
@@ -83,6 +84,7 @@ class _NatAddressState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NatAddress resources.
+
         :param pulumi.Input[_builtins.bool] activate: Flag that specifies whether the reserved NAT address should be activate.
         :param pulumi.Input[_builtins.str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
@@ -306,6 +308,7 @@ class NatAddress(pulumi.CustomResource):
         $ pulumi import gcp:apigee/natAddress:NatAddress default {{instance_id}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] activate: Flag that specifies whether the reserved NAT address should be activate.
@@ -451,6 +454,7 @@ class NatAddress(pulumi.CustomResource):
         $ pulumi import gcp:apigee/natAddress:NatAddress default {{instance_id}}/natAddresses/{{name}}
         $ pulumi import gcp:apigee/natAddress:NatAddress default {{instance_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NatAddressArgs args: The arguments to use to populate this resource's properties.

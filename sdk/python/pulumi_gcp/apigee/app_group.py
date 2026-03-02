@@ -30,6 +30,7 @@ class AppGroupArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppGroup resource.
+
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee app group,
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[Sequence[pulumi.Input['AppGroupAttributeArgs']]] attributes: A list of attributes
@@ -159,6 +160,7 @@ class _AppGroupState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppGroup resources.
+
         :param pulumi.Input[_builtins.str] app_group_id: Internal identifier that cannot be edited
         :param pulumi.Input[Sequence[pulumi.Input['AppGroupAttributeArgs']]] attributes: A list of attributes
                Structure is documented below.
@@ -457,6 +459,7 @@ class AppGroup(pulumi.CustomResource):
         $ pulumi import gcp:apigee/appGroup:AppGroup default {{org_id}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupAttributeArgs', 'AppGroupAttributeArgsDict']]]] attributes: A list of attributes
@@ -585,6 +588,7 @@ class AppGroup(pulumi.CustomResource):
         $ pulumi import gcp:apigee/appGroup:AppGroup default {{org_id}}/appgroups/{{name}}
         $ pulumi import gcp:apigee/appGroup:AppGroup default {{org_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppGroupArgs args: The arguments to use to populate this resource's properties.

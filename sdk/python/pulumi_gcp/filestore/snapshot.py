@@ -27,6 +27,7 @@ class SnapshotArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
+
         :param pulumi.Input[_builtins.str] instance: The resource name of the filestore instance.
         :param pulumi.Input[_builtins.str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[_builtins.str] description: A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
@@ -154,6 +155,7 @@ class _SnapshotState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the snapshot was created in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -436,6 +438,7 @@ class Snapshot(pulumi.CustomResource):
         $ pulumi import gcp:filestore/snapshot:Snapshot default {{location}}/{{instance}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
@@ -539,6 +542,7 @@ class Snapshot(pulumi.CustomResource):
         $ pulumi import gcp:filestore/snapshot:Snapshot default {{project}}/{{location}}/{{instance}}/{{name}}
         $ pulumi import gcp:filestore/snapshot:Snapshot default {{location}}/{{instance}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SnapshotArgs args: The arguments to use to populate this resource's properties.

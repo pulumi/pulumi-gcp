@@ -29,6 +29,7 @@ class GroupArgs:
                  initial_group_config: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input['GroupGroupKeyArgs'] group_key: EntityKey of the Group.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
@@ -162,6 +163,7 @@ class _GroupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['GroupAdditionalGroupKeyArgs']]] additional_group_keys: Additional group keys associated with the Group
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time when the Group was created.
@@ -407,6 +409,7 @@ class Group(pulumi.CustomResource):
         $ pulumi import gcp:cloudidentity/group:Group default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An extended description to help users determine the purpose of a Group.
@@ -482,6 +485,7 @@ class Group(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:cloudidentity/group:Group default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

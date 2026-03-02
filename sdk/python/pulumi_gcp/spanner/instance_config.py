@@ -29,6 +29,7 @@ class InstanceConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceConfig resource.
+
         :param pulumi.Input[_builtins.str] display_name: The name of this instance configuration as it appears in UIs.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigReplicaArgs']]] replicas: The geographic placement of nodes in this instance configuration and their replication properties.
                Structure is documented below.
@@ -152,6 +153,7 @@ class _InstanceConfigState:
                  replicas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigReplicaArgs']]]] = None):
         """
         Input properties used for looking up and filtering InstanceConfig resources.
+
         :param pulumi.Input[_builtins.str] base_config: Base configuration name, e.g. nam3, based on which this configuration is created.
                Only set for user managed configurations.
                baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
@@ -351,6 +353,7 @@ class InstanceConfig(pulumi.CustomResource):
         $ pulumi import gcp:spanner/instanceConfig:InstanceConfig default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] base_config: Base configuration name, e.g. nam3, based on which this configuration is created.
@@ -402,6 +405,7 @@ class InstanceConfig(pulumi.CustomResource):
         $ pulumi import gcp:spanner/instanceConfig:InstanceConfig default {{project}}/{{name}}
         $ pulumi import gcp:spanner/instanceConfig:InstanceConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceConfigArgs args: The arguments to use to populate this resource's properties.

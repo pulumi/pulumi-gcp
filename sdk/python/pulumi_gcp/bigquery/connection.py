@@ -35,6 +35,7 @@ class ConnectionArgs:
                  spark: Optional[pulumi.Input['ConnectionSparkArgs']] = None):
         """
         The set of arguments for constructing a Connection resource.
+
         :param pulumi.Input['ConnectionAwsArgs'] aws: Connection properties specific to Amazon Web Services.
                Structure is documented below.
         :param pulumi.Input['ConnectionAzureArgs'] azure: Container for connection properties specific to Azure.
@@ -265,6 +266,7 @@ class _ConnectionState:
                  spark: Optional[pulumi.Input['ConnectionSparkArgs']] = None):
         """
         Input properties used for looking up and filtering Connection resources.
+
         :param pulumi.Input['ConnectionAwsArgs'] aws: Connection properties specific to Amazon Web Services.
                Structure is documented below.
         :param pulumi.Input['ConnectionAzureArgs'] azure: Container for connection properties specific to Azure.
@@ -784,6 +786,7 @@ class Connection(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/connection:Connection default {{location}}/{{connection_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']] aws: Connection properties specific to Amazon Web Services.
@@ -1075,6 +1078,7 @@ class Connection(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/connection:Connection default {{project}}/{{location}}/{{connection_id}}
         $ pulumi import gcp:bigquery/connection:Connection default {{location}}/{{connection_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionArgs args: The arguments to use to populate this resource's properties.

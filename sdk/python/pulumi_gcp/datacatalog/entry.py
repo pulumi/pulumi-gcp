@@ -33,6 +33,7 @@ class EntryArgs:
                  user_specified_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Entry resource.
+
         :param pulumi.Input[_builtins.str] entry_group: The name of the entry group this entry is in.
         :param pulumi.Input[_builtins.str] entry_id: The id of the entry to create.
         :param pulumi.Input[_builtins.str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents.
@@ -239,6 +240,7 @@ class _EntryState:
                  user_specified_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Entry resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['EntryBigqueryDateShardedSpecArgs']]] bigquery_date_sharded_specs: Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
                Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
                Structure is documented below.
@@ -627,6 +629,7 @@ class Entry(pulumi.CustomResource):
         $ pulumi import gcp:datacatalog/entry:Entry default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents.
@@ -775,6 +778,7 @@ class Entry(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:datacatalog/entry:Entry default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EntryArgs args: The arguments to use to populate this resource's properties.

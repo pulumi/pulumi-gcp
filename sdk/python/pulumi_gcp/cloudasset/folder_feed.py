@@ -31,6 +31,7 @@ class FolderFeedArgs:
                  content_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FolderFeed resource.
+
         :param pulumi.Input[_builtins.str] billing_project: The project whose identity will be used when sending messages to the
                destination pubsub topic. It also specifies the project for API
                enablement check, quota, and billing.
@@ -197,6 +198,7 @@ class _FolderFeedState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FolderFeed resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] asset_names: A list of the full names of the assets to receive updates. You must specify either or both of
                assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
                exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
@@ -467,6 +469,7 @@ class FolderFeed(pulumi.CustomResource):
         $ pulumi import gcp:cloudasset/folderFeed:FolderFeed default {{folder_id}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] asset_names: A list of the full names of the assets to receive updates. You must specify either or both of
@@ -567,6 +570,7 @@ class FolderFeed(pulumi.CustomResource):
         $ pulumi import gcp:cloudasset/folderFeed:FolderFeed default folders/{{folder_id}}/feeds/{{name}}
         $ pulumi import gcp:cloudasset/folderFeed:FolderFeed default {{folder_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FolderFeedArgs args: The arguments to use to populate this resource's properties.

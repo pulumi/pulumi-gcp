@@ -26,6 +26,7 @@ class LogScopeArgs:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LogScope resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_names: Names of one or more parent resources : *  \\`projects/[PROJECT_ID]\\` May alternatively be one or more views : * \\`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
         :param pulumi.Input[_builtins.str] description: Describes this log scopes.
         :param pulumi.Input[_builtins.str] location: The location of the resource. The only supported location is global so far.
@@ -115,6 +116,7 @@ class _LogScopeState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogScope resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. The creation timestamp of the log scopes.
         :param pulumi.Input[_builtins.str] description: Describes this log scopes.
         :param pulumi.Input[_builtins.str] location: The location of the resource. The only supported location is global so far.
@@ -276,6 +278,7 @@ class LogScope(pulumi.CustomResource):
         $ pulumi import gcp:logging/logScope:LogScope default {{parent}}/locations/{{location}}/logScopes/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Describes this log scopes.
@@ -330,6 +333,7 @@ class LogScope(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/logScope:LogScope default {{parent}}/locations/{{location}}/logScopes/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LogScopeArgs args: The arguments to use to populate this resource's properties.

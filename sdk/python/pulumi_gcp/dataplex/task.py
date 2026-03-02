@@ -34,6 +34,7 @@ class TaskArgs:
                  task_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Task resource.
+
         :param pulumi.Input['TaskExecutionSpecArgs'] execution_spec: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input['TaskTriggerSpecArgs'] trigger_spec: Configuration for the cluster
@@ -240,6 +241,7 @@ class _TaskState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Task resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the task was created.
         :param pulumi.Input[_builtins.str] description: User-provided description of the task.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
@@ -752,6 +754,7 @@ class Task(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/task:Task default {{location}}/{{lake}}/{{task_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User-provided description of the task.
@@ -957,6 +960,7 @@ class Task(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/task:Task default {{project}}/{{location}}/{{lake}}/{{task_id}}
         $ pulumi import gcp:dataplex/task:Task default {{location}}/{{lake}}/{{task_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TaskArgs args: The arguments to use to populate this resource's properties.

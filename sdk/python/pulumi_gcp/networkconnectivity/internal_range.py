@@ -38,6 +38,7 @@ class InternalRangeArgs:
                  target_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a InternalRange resource.
+
         :param pulumi.Input[_builtins.str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
         :param pulumi.Input[_builtins.str] peering: The type of peering set for this internal range.
                Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
@@ -318,6 +319,7 @@ class _InternalRangeState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering InternalRange resources.
+
         :param pulumi.Input['InternalRangeAllocationOptionsArgs'] allocation_options: Options for automatically allocating a free range with a size given by prefixLength.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -827,6 +829,7 @@ class InternalRange(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']] allocation_options: Options for automatically allocating a free range with a size given by prefixLength.
@@ -1042,6 +1045,7 @@ class InternalRange(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default {{project}}/{{name}}
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InternalRangeArgs args: The arguments to use to populate this resource's properties.

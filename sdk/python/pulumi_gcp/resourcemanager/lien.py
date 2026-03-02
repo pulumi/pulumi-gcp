@@ -25,6 +25,7 @@ class LienArgs:
                  restrictions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a Lien resource.
+
         :param pulumi.Input[_builtins.str] origin: A stable, user-visible/meaningful string identifying the origin
                of the Lien, intended to be inspected programmatically. Maximum length of
                200 characters.
@@ -115,6 +116,7 @@ class _LienState:
                  restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Lien resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time of creation
         :param pulumi.Input[_builtins.str] name: A system-generated unique identifier for this Lien.
         :param pulumi.Input[_builtins.str] origin: A stable, user-visible/meaningful string identifying the origin
@@ -279,6 +281,7 @@ class Lien(pulumi.CustomResource):
         $ pulumi import gcp:resourcemanager/lien:Lien default {{parent}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] origin: A stable, user-visible/meaningful string identifying the origin
@@ -341,6 +344,7 @@ class Lien(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:resourcemanager/lien:Lien default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LienArgs args: The arguments to use to populate this resource's properties.

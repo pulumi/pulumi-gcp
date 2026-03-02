@@ -33,6 +33,7 @@ class GCPolicyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GCPolicy resource.
+
         :param pulumi.Input[_builtins.str] column_family: The name of the column family.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[_builtins.str] table: The name of the table.
@@ -212,6 +213,7 @@ class _GCPolicyState:
                  table: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GCPolicy resources.
+
         :param pulumi.Input[_builtins.str] column_family: The name of the column family.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the GC policy.
                Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
@@ -520,6 +522,7 @@ class GCPolicy(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] column_family: The name of the column family.
@@ -669,6 +672,7 @@ class GCPolicy(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param GCPolicyArgs args: The arguments to use to populate this resource's properties.

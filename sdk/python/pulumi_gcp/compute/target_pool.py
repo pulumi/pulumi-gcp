@@ -31,6 +31,7 @@ class TargetPoolArgs:
                  session_affinity: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TargetPool resource.
+
         :param pulumi.Input[_builtins.str] backup_pool: URL to the backup target pool. Must also set
                failover_ratio.
         :param pulumi.Input[_builtins.str] description: Textual description field.
@@ -228,6 +229,7 @@ class _TargetPoolState:
                  session_affinity: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TargetPool resources.
+
         :param pulumi.Input[_builtins.str] backup_pool: URL to the backup target pool. Must also set
                failover_ratio.
         :param pulumi.Input[_builtins.str] description: Textual description field.
@@ -486,6 +488,7 @@ class TargetPool(pulumi.CustomResource):
         $ pulumi import gcp:compute/targetPool:TargetPool default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_pool: URL to the backup target pool. Must also set
@@ -563,6 +566,7 @@ class TargetPool(pulumi.CustomResource):
         $ pulumi import gcp:compute/targetPool:TargetPool default {{region}}/{{name}}
         $ pulumi import gcp:compute/targetPool:TargetPool default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TargetPoolArgs args: The arguments to use to populate this resource's properties.

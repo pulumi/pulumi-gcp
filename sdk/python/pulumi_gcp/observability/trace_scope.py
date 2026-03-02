@@ -26,6 +26,7 @@ class TraceScopeArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TraceScope resource.
+
         :param pulumi.Input[_builtins.str] location: GCP region the TraceScope is stored in. Only `global` is supported.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_names: Names of the projects that are included in this trace scope.
                *  `projects/[PROJECT_ID]`
@@ -122,6 +123,7 @@ class _TraceScopeState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TraceScope resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation timestamp of the trace scope.
         :param pulumi.Input[_builtins.str] description: Describes this trace scope.
                The maximum length of the description is 8000 characters.
@@ -316,6 +318,7 @@ class TraceScope(pulumi.CustomResource):
         $ pulumi import gcp:observability/traceScope:TraceScope default {{location}}/{{trace_scope_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Describes this trace scope.
@@ -380,6 +383,7 @@ class TraceScope(pulumi.CustomResource):
         $ pulumi import gcp:observability/traceScope:TraceScope default {{project}}/{{location}}/{{trace_scope_id}}
         $ pulumi import gcp:observability/traceScope:TraceScope default {{location}}/{{trace_scope_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TraceScopeArgs args: The arguments to use to populate this resource's properties.

@@ -93,47 +93,6 @@ import (
 //	}
 //
 // ```
-//
-// ### Invoking Cloud Run Endpoint
-//
-//	The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-http/sdk/go/http"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			oidc, err := serviceaccount.GetAccountIdToken(ctx, &serviceaccount.GetAccountIdTokenArgs{
-//				TargetAudience: "https://your.cloud.run.app/",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			cloudrun, err := http.GetHttp(ctx, &http.GetHttpArgs{
-//				Url: "https://your.cloud.run.app/",
-//				RequestHeaders: map[string]interface{}{
-//					"Authorization": fmt.Sprintf("Bearer %v", oidc.IdToken),
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("cloudRunResponse", cloudrun.Body)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAccountIdToken(ctx *pulumi.Context, args *GetAccountIdTokenArgs, opts ...pulumi.InvokeOption) (*GetAccountIdTokenResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountIdTokenResult

@@ -32,6 +32,7 @@ class WatchlistArgs:
                  watchlist_user_preferences: Optional[pulumi.Input['WatchlistWatchlistUserPreferencesArgs']] = None):
         """
         The set of arguments for constructing a Watchlist resource.
+
         :param pulumi.Input[_builtins.str] display_name: Required. Display name of the watchlist.
                Note that it must be at least one character and less than 63 characters
                (https://google.aip.dev/148).
@@ -204,6 +205,7 @@ class _WatchlistState:
                  watchlist_user_preferences: Optional[pulumi.Input['WatchlistWatchlistUserPreferencesArgs']] = None):
         """
         Input properties used for looking up and filtering Watchlist resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. Time the watchlist was created.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the watchlist.
         :param pulumi.Input[_builtins.str] display_name: Required. Display name of the watchlist.
@@ -511,6 +513,7 @@ class Watchlist(pulumi.CustomResource):
         $ pulumi import gcp:chronicle/watchlist:Watchlist default {{location}}/{{instance}}/{{watchlist_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the watchlist.
@@ -605,6 +608,7 @@ class Watchlist(pulumi.CustomResource):
         $ pulumi import gcp:chronicle/watchlist:Watchlist default {{project}}/{{location}}/{{instance}}/{{watchlist_id}}
         $ pulumi import gcp:chronicle/watchlist:Watchlist default {{location}}/{{instance}}/{{watchlist_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WatchlistArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class LiteSubscriptionArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LiteSubscription resource.
+
         :param pulumi.Input[_builtins.str] topic: A reference to a Topic resource.
         :param pulumi.Input['LiteSubscriptionDeliveryConfigArgs'] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
@@ -136,6 +137,7 @@ class _LiteSubscriptionState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LiteSubscription resources.
+
         :param pulumi.Input['LiteSubscriptionDeliveryConfigArgs'] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the subscription.
@@ -306,6 +308,7 @@ class LiteSubscription(pulumi.CustomResource):
         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict']] delivery_config: The settings for this subscription's message delivery.
@@ -382,6 +385,7 @@ class LiteSubscription(pulumi.CustomResource):
         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{zone}}/{{name}}
         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LiteSubscriptionArgs args: The arguments to use to populate this resource's properties.

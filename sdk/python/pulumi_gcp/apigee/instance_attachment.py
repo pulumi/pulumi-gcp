@@ -23,6 +23,7 @@ class InstanceAttachmentArgs:
                  instance_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a InstanceAttachment resource.
+
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
         :param pulumi.Input[_builtins.str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
@@ -64,6 +65,7 @@ class _InstanceAttachmentState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceAttachment resources.
+
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
         :param pulumi.Input[_builtins.str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
@@ -148,6 +150,7 @@ class InstanceAttachment(pulumi.CustomResource):
         $ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
@@ -184,6 +187,7 @@ class InstanceAttachment(pulumi.CustomResource):
         $ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/attachments/{{name}}
         $ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class VpcServiceControlsArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcServiceControls resource.
+
         :param pulumi.Input[_builtins.bool] enabled: Desired VPC Service Controls state service producer VPC network, as
                described at the top of this page.
         :param pulumi.Input[_builtins.str] network: The network that the consumer is using to connect with services.
@@ -100,6 +101,7 @@ class _VpcServiceControlsState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcServiceControls resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Desired VPC Service Controls state service producer VPC network, as
                described at the top of this page.
         :param pulumi.Input[_builtins.str] network: The network that the consumer is using to connect with services.
@@ -265,6 +267,7 @@ class VpcServiceControls(pulumi.CustomResource):
         $ pulumi import gcp:servicenetworking/vpcServiceControls:VpcServiceControls default {{service}}/{{network}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Desired VPC Service Controls state service producer VPC network, as
@@ -365,6 +368,7 @@ class VpcServiceControls(pulumi.CustomResource):
         $ pulumi import gcp:servicenetworking/vpcServiceControls:VpcServiceControls default {{service}}/{{project}}/{{network}}
         $ pulumi import gcp:servicenetworking/vpcServiceControls:VpcServiceControls default {{service}}/{{network}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcServiceControlsArgs args: The arguments to use to populate this resource's properties.

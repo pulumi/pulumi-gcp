@@ -40,6 +40,7 @@ class AuthorityArgs:
                  user_defined_access_urls: Optional[pulumi.Input['AuthorityUserDefinedAccessUrlsArgs']] = None):
         """
         The set of arguments for constructing a Authority resource.
+
         :param pulumi.Input[_builtins.str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
         :param pulumi.Input['AuthorityConfigArgs'] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
@@ -389,6 +390,7 @@ class _AuthorityState:
                  user_defined_access_urls: Optional[pulumi.Input['AuthorityUserDefinedAccessUrlsArgs']] = None):
         """
         Input properties used for looking up and filtering Authority resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]] access_urls: URLs for accessing content published by this CA, such as the CA certificate and CRLs.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
@@ -1196,6 +1198,7 @@ class Authority(pulumi.CustomResource):
         $ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{pool}}/{{certificate_authority_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
@@ -1573,6 +1576,7 @@ class Authority(pulumi.CustomResource):
         $ pulumi import gcp:certificateauthority/authority:Authority default {{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}
         $ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{pool}}/{{certificate_authority_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuthorityArgs args: The arguments to use to populate this resource's properties.

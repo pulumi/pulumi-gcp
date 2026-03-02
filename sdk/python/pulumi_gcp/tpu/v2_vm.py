@@ -40,6 +40,7 @@ class V2VmArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2Vm resource.
+
         :param pulumi.Input[_builtins.str] runtime_version: Runtime version for the TPU.
         :param pulumi.Input['V2VmAcceleratorConfigArgs'] accelerator_config: The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
                as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
@@ -367,6 +368,7 @@ class _V2VmState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V2Vm resources.
+
         :param pulumi.Input['V2VmAcceleratorConfigArgs'] accelerator_config: The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
                as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
                Structure is documented below.
@@ -960,6 +962,7 @@ class V2Vm(pulumi.CustomResource):
         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['V2VmAcceleratorConfigArgs', 'V2VmAcceleratorConfigArgsDict']] accelerator_config: The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
@@ -1119,6 +1122,7 @@ class V2Vm(pulumi.CustomResource):
         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{zone}}/{{name}}
         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V2VmArgs args: The arguments to use to populate this resource's properties.

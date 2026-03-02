@@ -31,6 +31,7 @@ class MulticastDomainActivationArgs:
                  traffic_spec: Optional[pulumi.Input['MulticastDomainActivationTrafficSpecArgs']] = None):
         """
         The set of arguments for constructing a MulticastDomainActivation resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] multicast_domain: The resource name of the multicast domain to activate.
                Use the following format:
@@ -196,6 +197,7 @@ class _MulticastDomainActivationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MulticastDomainActivation resources.
+
         :param pulumi.Input[_builtins.str] admin_network: The URL of the admin network.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the multicast domain activation was
                created.
@@ -562,6 +564,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/multicastDomainActivation:MulticastDomainActivation default {{location}}/{{multicast_domain_activation_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast domain activation.
@@ -640,6 +643,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/multicastDomainActivation:MulticastDomainActivation default {{project}}/{{location}}/{{multicast_domain_activation_id}}
         $ pulumi import gcp:networkservices/multicastDomainActivation:MulticastDomainActivation default {{location}}/{{multicast_domain_activation_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MulticastDomainActivationArgs args: The arguments to use to populate this resource's properties.

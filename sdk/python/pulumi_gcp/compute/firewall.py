@@ -41,6 +41,7 @@ class FirewallArgs:
                  target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Firewall resource.
+
         :param pulumi.Input[_builtins.str] network: The name or self_link of the network to attach this firewall to.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]] allows: The list of ALLOW rules specified by this firewall. Each rule
                specifies a protocol and port-range tuple that describes a permitted
@@ -474,6 +475,7 @@ class _FirewallState:
                  target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Firewall resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]] allows: The list of ALLOW rules specified by this firewall. Each rule
                specifies a protocol and port-range tuple that describes a permitted
                connection.
@@ -1024,6 +1026,7 @@ class Firewall(pulumi.CustomResource):
         $ pulumi import gcp:compute/firewall:Firewall default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]] allows: The list of ALLOW rules specified by this firewall. Each rule
@@ -1202,6 +1205,7 @@ class Firewall(pulumi.CustomResource):
         $ pulumi import gcp:compute/firewall:Firewall default {{project}}/{{name}}
         $ pulumi import gcp:compute/firewall:Firewall default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallArgs args: The arguments to use to populate this resource's properties.

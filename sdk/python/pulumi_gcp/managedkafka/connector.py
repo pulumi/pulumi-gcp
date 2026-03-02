@@ -29,6 +29,7 @@ class ConnectorArgs:
                  task_restart_policy: Optional[pulumi.Input['ConnectorTaskRestartPolicyArgs']] = None):
         """
         The set of arguments for constructing a Connector resource.
+
         :param pulumi.Input[_builtins.str] connect_cluster: The connect cluster name.
         :param pulumi.Input[_builtins.str] connector_id: The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
         :param pulumi.Input[_builtins.str] location: ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
@@ -136,6 +137,7 @@ class _ConnectorState:
                  task_restart_policy: Optional[pulumi.Input['ConnectorTaskRestartPolicyArgs']] = None):
         """
         Input properties used for looking up and filtering Connector resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configs: Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.
         :param pulumi.Input[_builtins.str] connect_cluster: The connect cluster name.
         :param pulumi.Input[_builtins.str] connector_id: The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
@@ -374,6 +376,7 @@ class Connector(pulumi.CustomResource):
         $ pulumi import gcp:managedkafka/connector:Connector default {{location}}/{{connect_cluster}}/{{connector_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configs: Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.
@@ -488,6 +491,7 @@ class Connector(pulumi.CustomResource):
         $ pulumi import gcp:managedkafka/connector:Connector default {{project}}/{{location}}/{{connect_cluster}}/{{connector_id}}
         $ pulumi import gcp:managedkafka/connector:Connector default {{location}}/{{connect_cluster}}/{{connector_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectorArgs args: The arguments to use to populate this resource's properties.
