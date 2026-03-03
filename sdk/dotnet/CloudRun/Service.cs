@@ -550,7 +550,6 @@ namespace Pulumi.Gcp.CloudRun
     ///         {
     ///             Annotations = 
     ///             {
-    ///                 { "run.googleapis.com/launch-stage", "BETA" },
     ///                 { "run.googleapis.com/iap-enabled", "true" },
     ///             },
     ///         },

@@ -270,6 +270,8 @@ __all__ = [
     'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes',
     'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern',
     'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsTagFilter',
     'PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthers',
     'PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadence',
     'PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadence',
@@ -13608,6 +13610,8 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection(dict):
         suggest = None
         if key == "includeRegexes":
             suggest = "include_regexes"
+        elif key == "includeTags":
+            suggest = "include_tags"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection. Access the value via the '{suggest}' property getter instead.")
@@ -13621,13 +13625,20 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 include_regexes: Optional['outputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes'] = None):
+                 include_regexes: Optional['outputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes'] = None,
+                 include_tags: Optional['outputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags'] = None):
         """
         :param 'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgs' include_regexes: A collection of regular expressions to match a resource against.
+               Structure is documented below.
+        :param 'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsArgs' include_tags: For a resource to match the tag filters, the resource must have all of the
+               provided tags attached. Tags refer to Resource Manager tags bound to the
+               resource or its ancestors.
                Structure is documented below.
         """
         if include_regexes is not None:
             pulumi.set(__self__, "include_regexes", include_regexes)
+        if include_tags is not None:
+            pulumi.set(__self__, "include_tags", include_tags)
 
     @_builtins.property
     @pulumi.getter(name="includeRegexes")
@@ -13637,6 +13648,17 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "include_regexes")
+
+    @_builtins.property
+    @pulumi.getter(name="includeTags")
+    def include_tags(self) -> Optional['outputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags']:
+        """
+        For a resource to match the tag filters, the resource must have all of the
+        provided tags attached. Tags refer to Resource Manager tags bound to the
+        resource or its ancestors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_tags")
 
 
 @pulumi.output_type
@@ -13746,6 +13768,104 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRe
         For organizations, if unset, will match all projects.
         """
         return pulumi.get(self, "project_id_regex")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagFilters":
+            suggest = "tag_filters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_filters: Optional[Sequence['outputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsTagFilter']] = None):
+        """
+        :param Sequence['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsTagFilterArgs'] tag_filters: A resource must match ALL of the specified tag filters to be included in the collection.
+               Structure is documented below.
+        """
+        if tag_filters is not None:
+            pulumi.set(__self__, "tag_filters", tag_filters)
+
+    @_builtins.property
+    @pulumi.getter(name="tagFilters")
+    def tag_filters(self) -> Optional[Sequence['outputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsTagFilter']]:
+        """
+        A resource must match ALL of the specified tag filters to be included in the collection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tag_filters")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsTagFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "namespacedTagKey":
+            suggest = "namespaced_tag_key"
+        elif key == "namespacedTagValue":
+            suggest = "namespaced_tag_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsTagFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsTagFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsTagFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 namespaced_tag_key: Optional[_builtins.str] = None,
+                 namespaced_tag_value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str namespaced_tag_key: The namespaced name for the tag key. Must be in the format
+               `{parent_id}/{tag_key_short_name}`, for example, "123456/sensitive" for
+               an organization parent, or "my-project/sensitive" for a project parent.
+        :param _builtins.str namespaced_tag_value: The namespaced name for the tag value. Must be in the format
+               `{parent_id}/{tag_key_short_name}/{short_name}`, for example,
+               "123456/environment/prod" for an organization parent, or
+               "my-project/environment/prod" for a project parent.
+        """
+        if namespaced_tag_key is not None:
+            pulumi.set(__self__, "namespaced_tag_key", namespaced_tag_key)
+        if namespaced_tag_value is not None:
+            pulumi.set(__self__, "namespaced_tag_value", namespaced_tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="namespacedTagKey")
+    def namespaced_tag_key(self) -> Optional[_builtins.str]:
+        """
+        The namespaced name for the tag key. Must be in the format
+        `{parent_id}/{tag_key_short_name}`, for example, "123456/sensitive" for
+        an organization parent, or "my-project/sensitive" for a project parent.
+        """
+        return pulumi.get(self, "namespaced_tag_key")
+
+    @_builtins.property
+    @pulumi.getter(name="namespacedTagValue")
+    def namespaced_tag_value(self) -> Optional[_builtins.str]:
+        """
+        The namespaced name for the tag value. Must be in the format
+        `{parent_id}/{tag_key_short_name}/{short_name}`, for example,
+        "123456/environment/prod" for an organization parent, or
+        "my-project/environment/prod" for a project parent.
+        """
+        return pulumi.get(self, "namespaced_tag_value")
 
 
 @pulumi.output_type

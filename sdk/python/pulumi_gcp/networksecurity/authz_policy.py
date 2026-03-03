@@ -33,6 +33,7 @@ class AuthzPolicyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthzPolicy resource.
+
         :param pulumi.Input[_builtins.str] action: When the action is CUSTOM, customProvider must be specified.
                When the action is ALLOW, only requests matching the policy will be allowed.
                When the action is DENY, only requests matching the policy will be denied.
@@ -246,6 +247,7 @@ class _AuthzPolicyState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthzPolicy resources.
+
         :param pulumi.Input[_builtins.str] action: When the action is CUSTOM, customProvider must be specified.
                When the action is ALLOW, only requests matching the policy will be allowed.
                When the action is DENY, only requests matching the policy will be denied.
@@ -586,6 +588,7 @@ class AuthzPolicy(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: When the action is CUSTOM, customProvider must be specified.
@@ -690,6 +693,7 @@ class AuthzPolicy(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{location}}/{{name}}
         $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuthzPolicyArgs args: The arguments to use to populate this resource's properties.

@@ -41,6 +41,7 @@ class InstanceArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input['InstanceFileSharesArgs'] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
@@ -405,6 +406,7 @@ class _InstanceState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
         :param pulumi.Input[_builtins.str] deletion_protection_reason: The reason for enabling deletion protection.
@@ -979,6 +981,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
@@ -1165,6 +1168,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

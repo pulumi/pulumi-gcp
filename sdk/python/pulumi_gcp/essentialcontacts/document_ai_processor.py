@@ -26,6 +26,7 @@ class DocumentAiProcessorArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DocumentAiProcessor resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name. Must be unique.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] type: The type of processor. For possible types see the [official list](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations/fetchProcessorTypes#google.cloud.documentai.v1.DocumentProcessorService.FetchProcessorTypes)
@@ -114,6 +115,7 @@ class _DocumentAiProcessorState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DocumentAiProcessor resources.
+
         :param pulumi.Input[_builtins.str] display_name: The display name. Must be unique.
         :param pulumi.Input[_builtins.str] kms_key_name: The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
@@ -260,6 +262,7 @@ class DocumentAiProcessor(pulumi.CustomResource):
         $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name. Must be unique.
@@ -313,6 +316,7 @@ class DocumentAiProcessor(pulumi.CustomResource):
         $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DocumentAiProcessorArgs args: The arguments to use to populate this resource's properties.

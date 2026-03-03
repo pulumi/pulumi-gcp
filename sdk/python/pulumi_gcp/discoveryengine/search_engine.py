@@ -29,6 +29,7 @@ class SearchEngineArgs:
                  search_engine_config: pulumi.Input['SearchEngineSearchEngineConfigArgs'],
                  app_type: Optional[pulumi.Input[_builtins.str]] = None,
                  common_config: Optional[pulumi.Input['SearchEngineCommonConfigArgs']] = None,
+                 disable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
                  features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -36,6 +37,7 @@ class SearchEngineArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SearchEngine resource.
+
         :param pulumi.Input[_builtins.str] collection_id: The collection ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
@@ -47,6 +49,7 @@ class SearchEngineArgs:
                The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
         :param pulumi.Input['SearchEngineCommonConfigArgs'] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] disable_analytics: Whether to disable analytics for searches performed on this engine.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] features: A map of the feature config for the engine to opt in or opt out of features.
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
                Default value is `GENERIC`.
@@ -71,6 +74,8 @@ class SearchEngineArgs:
             pulumi.set(__self__, "app_type", app_type)
         if common_config is not None:
             pulumi.set(__self__, "common_config", common_config)
+        if disable_analytics is not None:
+            pulumi.set(__self__, "disable_analytics", disable_analytics)
         if features is not None:
             pulumi.set(__self__, "features", features)
         if industry_vertical is not None:
@@ -182,6 +187,18 @@ class SearchEngineArgs:
         pulumi.set(self, "common_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="disableAnalytics")
+    def disable_analytics(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to disable analytics for searches performed on this engine.
+        """
+        return pulumi.get(self, "disable_analytics")
+
+    @disable_analytics.setter
+    def disable_analytics(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_analytics", value)
+
+    @_builtins.property
     @pulumi.getter
     def features(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -258,6 +275,7 @@ class _SearchEngineState:
                  common_config: Optional[pulumi.Input['SearchEngineCommonConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_id: Optional[pulumi.Input[_builtins.str]] = None,
                  features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -271,6 +289,7 @@ class _SearchEngineState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SearchEngine resources.
+
         :param pulumi.Input[_builtins.str] app_type: This is the application type this engine resource represents.
                The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID.
@@ -278,6 +297,7 @@ class _SearchEngineState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp the Engine was created at.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
+        :param pulumi.Input[_builtins.bool] disable_analytics: Whether to disable analytics for searches performed on this engine.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[_builtins.str] engine_id: Unique ID to use for Search Engine App.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] features: A map of the feature config for the engine to opt in or opt out of features.
@@ -312,6 +332,8 @@ class _SearchEngineState:
             pulumi.set(__self__, "create_time", create_time)
         if data_store_ids is not None:
             pulumi.set(__self__, "data_store_ids", data_store_ids)
+        if disable_analytics is not None:
+            pulumi.set(__self__, "disable_analytics", disable_analytics)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if engine_id is not None:
@@ -396,6 +418,18 @@ class _SearchEngineState:
     @data_store_ids.setter
     def data_store_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_store_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disableAnalytics")
+    def disable_analytics(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to disable analytics for searches performed on this engine.
+        """
+        return pulumi.get(self, "disable_analytics")
+
+    @disable_analytics.setter
+    def disable_analytics(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_analytics", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -552,6 +586,7 @@ class SearchEngine(pulumi.CustomResource):
                  collection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  common_config: Optional[pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
                  data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_id: Optional[pulumi.Input[_builtins.str]] = None,
                  features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -637,6 +672,7 @@ class SearchEngine(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{location}}/{{collection_id}}/{{engine_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_type: This is the application type this engine resource represents.
@@ -645,6 +681,7 @@ class SearchEngine(pulumi.CustomResource):
         :param pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
+        :param pulumi.Input[_builtins.bool] disable_analytics: Whether to disable analytics for searches performed on this engine.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[_builtins.str] engine_id: Unique ID to use for Search Engine App.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] features: A map of the feature config for the engine to opt in or opt out of features.
@@ -745,6 +782,7 @@ class SearchEngine(pulumi.CustomResource):
         $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{location}}/{{collection_id}}/{{engine_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param SearchEngineArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -764,6 +802,7 @@ class SearchEngine(pulumi.CustomResource):
                  collection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  common_config: Optional[pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
                  data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_id: Optional[pulumi.Input[_builtins.str]] = None,
                  features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -790,6 +829,7 @@ class SearchEngine(pulumi.CustomResource):
             if data_store_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'data_store_ids'")
             __props__.__dict__["data_store_ids"] = data_store_ids
+            __props__.__dict__["disable_analytics"] = disable_analytics
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -825,6 +865,7 @@ class SearchEngine(pulumi.CustomResource):
             common_config: Optional[pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            disable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             engine_id: Optional[pulumi.Input[_builtins.str]] = None,
             features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -850,6 +891,7 @@ class SearchEngine(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp the Engine was created at.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
+        :param pulumi.Input[_builtins.bool] disable_analytics: Whether to disable analytics for searches performed on this engine.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[_builtins.str] engine_id: Unique ID to use for Search Engine App.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] features: A map of the feature config for the engine to opt in or opt out of features.
@@ -883,6 +925,7 @@ class SearchEngine(pulumi.CustomResource):
         __props__.__dict__["common_config"] = common_config
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_store_ids"] = data_store_ids
+        __props__.__dict__["disable_analytics"] = disable_analytics
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["engine_id"] = engine_id
         __props__.__dict__["features"] = features
@@ -937,6 +980,14 @@ class SearchEngine(pulumi.CustomResource):
         The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
         """
         return pulumi.get(self, "data_store_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="disableAnalytics")
+    def disable_analytics(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to disable analytics for searches performed on this engine.
+        """
+        return pulumi.get(self, "disable_analytics")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

@@ -30,6 +30,7 @@ class RegionSslCertificateArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionSslCertificate resource.
+
         :param pulumi.Input[_builtins.str] certificate: The certificate in PEM format.
                The certificate chain must be no greater than 5 certs long.
                The chain must include at least one intermediate cert.
@@ -235,6 +236,7 @@ class _RegionSslCertificateState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionSslCertificate resources.
+
         :param pulumi.Input[_builtins.str] certificate: The certificate in PEM format.
                The certificate chain must be no greater than 5 certs long.
                The chain must include at least one intermediate cert.
@@ -533,6 +535,7 @@ class RegionSslCertificate(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate: The certificate in PEM format.
@@ -609,6 +612,7 @@ class RegionSslCertificate(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{region}}/{{name}}
         $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionSslCertificateArgs args: The arguments to use to populate this resource's properties.

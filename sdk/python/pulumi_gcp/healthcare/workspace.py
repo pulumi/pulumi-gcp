@@ -27,6 +27,7 @@ class WorkspaceArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Workspace resource.
+
         :param pulumi.Input[_builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input['WorkspaceSettingsArgs'] settings: Settings associated with this workspace.
@@ -109,6 +110,7 @@ class _WorkspaceState:
                  settings: Optional[pulumi.Input['WorkspaceSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering Workspace resources.
+
         :param pulumi.Input[_builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -268,6 +270,7 @@ class Workspace(pulumi.CustomResource):
         $ pulumi import gcp:healthcare/workspace:Workspace default {{dataset}}/dataMapperWorkspaces/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
@@ -328,6 +331,7 @@ class Workspace(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:healthcare/workspace:Workspace default {{dataset}}/dataMapperWorkspaces/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceArgs args: The arguments to use to populate this resource's properties.

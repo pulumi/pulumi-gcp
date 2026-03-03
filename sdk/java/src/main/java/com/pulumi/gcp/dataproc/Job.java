@@ -400,6 +400,20 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<List<JobStatus>> statuses() {
         return this.statuses;
     }
+    /**
+     * If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job &#39;created&#39; once it is in the `RUNNING` state.
+     * 
+     */
+    @Export(name="waitForCompletion", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> waitForCompletion;
+
+    /**
+     * @return If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job &#39;created&#39; once it is in the `RUNNING` state.
+     * 
+     */
+    public Output<Optional<Boolean>> waitForCompletion() {
+        return Codegen.optional(this.waitForCompletion);
+    }
 
     /**
      *

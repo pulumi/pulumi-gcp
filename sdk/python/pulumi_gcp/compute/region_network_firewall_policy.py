@@ -26,6 +26,7 @@ class RegionNetworkFirewallPolicyArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionNetworkFirewallPolicy resource.
+
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[_builtins.str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] policy_type: Policy type is used to determine which resources (networks) the policy can be associated with.
@@ -128,6 +129,7 @@ class _RegionNetworkFirewallPolicyState:
                  self_link_with_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionNetworkFirewallPolicy resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of the resource. This field is used internally during updates of this resource.
@@ -361,6 +363,7 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -423,6 +426,7 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{region}}/{{name}}
         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionNetworkFirewallPolicyArgs args: The arguments to use to populate this resource's properties.

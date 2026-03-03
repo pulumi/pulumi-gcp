@@ -29,6 +29,7 @@ class AccessLevelArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessLevel resource.
+
         :param pulumi.Input[_builtins.str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[_builtins.str] title: Human readable title. Must be unique within the Policy.
@@ -143,6 +144,7 @@ class _AccessLevelState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessLevel resources.
+
         :param pulumi.Input['AccessLevelBasicArgs'] basic: A set of predefined conditions for the access level and a combining function.
                Structure is documented below.
         :param pulumi.Input['AccessLevelCustomArgs'] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
@@ -321,6 +323,7 @@ class AccessLevel(pulumi.CustomResource):
         $ pulumi import gcp:accesscontextmanager/accessLevel:AccessLevel default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict']] basic: A set of predefined conditions for the access level and a combining function.
@@ -401,6 +404,7 @@ class AccessLevel(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:accesscontextmanager/accessLevel:AccessLevel default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessLevelArgs args: The arguments to use to populate this resource's properties.

@@ -339,7 +339,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     metadata: {
  *         annotations: {
- *             "run.googleapis.com/launch-stage": "BETA",
  *             "run.googleapis.com/iap-enabled": "true",
  *         },
  *     },

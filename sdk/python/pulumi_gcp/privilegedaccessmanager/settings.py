@@ -27,6 +27,7 @@ class SettingsArgs:
                  service_account_approver_settings: Optional[pulumi.Input['SettingsServiceAccountApproverSettingsArgs']] = None):
         """
         The set of arguments for constructing a Settings resource.
+
         :param pulumi.Input[_builtins.str] location: The region of the PAM settings resource.
         :param pulumi.Input[_builtins.str] parent: Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
         :param pulumi.Input['SettingsEmailNotificationSettingsArgs'] email_notification_settings: EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
@@ -105,6 +106,7 @@ class _SettingsState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Settings resources.
+
         :param pulumi.Input[_builtins.str] create_time: Create timestamp. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
                Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
         :param pulumi.Input['SettingsEmailNotificationSettingsArgs'] email_notification_settings: EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
@@ -309,6 +311,7 @@ class Settings(pulumi.CustomResource):
         $ pulumi import gcp:privilegedaccessmanager/settings:Settings default {{parent}}/locations/{{location}}/settings
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict']] email_notification_settings: EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
@@ -383,6 +386,7 @@ class Settings(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:privilegedaccessmanager/settings:Settings default {{parent}}/locations/{{location}}/settings
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SettingsArgs args: The arguments to use to populate this resource's properties.

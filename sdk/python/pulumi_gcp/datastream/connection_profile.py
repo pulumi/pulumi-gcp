@@ -40,6 +40,7 @@ class ConnectionProfileArgs:
                  sql_server_profile: Optional[pulumi.Input['ConnectionProfileSqlServerProfileArgs']] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
+
         :param pulumi.Input[_builtins.str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[_builtins.str] location: The name of the location this connection profile is located in.
@@ -350,6 +351,7 @@ class _ConnectionProfileState:
                  sql_server_profile: Optional[pulumi.Input['ConnectionProfileSqlServerProfileArgs']] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
+
         :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[_builtins.str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[_builtins.bool] create_without_validation: Create the connection profile without validating it.
@@ -1126,6 +1128,7 @@ class ConnectionProfile(pulumi.CustomResource):
         $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict']] bigquery_profile: BigQuery warehouse profile.
@@ -1583,6 +1586,7 @@ class ConnectionProfile(pulumi.CustomResource):
         $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
         $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionProfileArgs args: The arguments to use to populate this resource's properties.

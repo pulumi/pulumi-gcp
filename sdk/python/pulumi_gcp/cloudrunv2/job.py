@@ -36,6 +36,7 @@ class JobArgs:
                  start_execution_token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Job resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the cloud run job
         :param pulumi.Input['JobTemplateArgs'] template: The template used to create executions for this Job.
                Structure is documented below.
@@ -318,6 +319,7 @@ class _JobState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
                All system annotations in v1 now have a corresponding field in v2 Job.
@@ -1225,6 +1227,7 @@ class Job(pulumi.CustomResource):
         $ pulumi import gcp:cloudrunv2/job:Job default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -1622,6 +1625,7 @@ class Job(pulumi.CustomResource):
         $ pulumi import gcp:cloudrunv2/job:Job default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:cloudrunv2/job:Job default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.

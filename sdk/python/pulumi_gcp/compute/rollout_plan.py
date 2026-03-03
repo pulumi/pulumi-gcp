@@ -28,6 +28,7 @@ class RolloutPlanArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RolloutPlan resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['RolloutPlanWaveArgs']]] waves: The waves included in this rollout plan.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -124,6 +125,7 @@ class _RolloutPlanState:
                  waves: Optional[pulumi.Input[Sequence[pulumi.Input['RolloutPlanWaveArgs']]]] = None):
         """
         Input properties used for looking up and filtering RolloutPlan resources.
+
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] location_scope: The location scope of the rollout plan.
                Possible values are: `LOCATION_SCOPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
@@ -291,6 +293,7 @@ class RolloutPlan(pulumi.CustomResource):
         $ pulumi import gcp:compute/rolloutPlan:RolloutPlan default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -362,6 +365,7 @@ class RolloutPlan(pulumi.CustomResource):
         $ pulumi import gcp:compute/rolloutPlan:RolloutPlan default {{project}}/{{name}}
         $ pulumi import gcp:compute/rolloutPlan:RolloutPlan default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RolloutPlanArgs args: The arguments to use to populate this resource's properties.

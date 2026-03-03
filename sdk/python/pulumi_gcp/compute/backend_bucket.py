@@ -34,6 +34,7 @@ class BackendBucketArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackendBucket resource.
+
         :param pulumi.Input[_builtins.str] bucket_name: Cloud Storage bucket name.
         :param pulumi.Input['BackendBucketCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this Backend Bucket.
                Structure is documented below.
@@ -249,6 +250,7 @@ class _BackendBucketState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackendBucket resources.
+
         :param pulumi.Input[_builtins.str] bucket_name: Cloud Storage bucket name.
         :param pulumi.Input['BackendBucketCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this Backend Bucket.
                Structure is documented below.
@@ -604,6 +606,7 @@ class BackendBucket(pulumi.CustomResource):
         $ pulumi import gcp:compute/backendBucket:BackendBucket default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_name: Cloud Storage bucket name.
@@ -747,6 +750,7 @@ class BackendBucket(pulumi.CustomResource):
         $ pulumi import gcp:compute/backendBucket:BackendBucket default {{project}}/{{name}}
         $ pulumi import gcp:compute/backendBucket:BackendBucket default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackendBucketArgs args: The arguments to use to populate this resource's properties.

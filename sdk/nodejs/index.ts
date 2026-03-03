@@ -88,6 +88,7 @@ import * as gkebackup from "./gkebackup";
 import * as gkehub from "./gkehub";
 import * as gkeonprem from "./gkeonprem";
 import * as healthcare from "./healthcare";
+import * as hypercomputecluster from "./hypercomputecluster";
 import * as iam from "./iam";
 import * as iap from "./iap";
 import * as identityplatform from "./identityplatform";
@@ -228,6 +229,7 @@ export {
     gkehub,
     gkeonprem,
     healthcare,
+    hypercomputecluster,
     iam,
     iap,
     identityplatform,

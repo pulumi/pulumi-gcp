@@ -30,6 +30,7 @@ class TenantInboundSamlConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TenantInboundSamlConfig resource.
+
         :param pulumi.Input[_builtins.str] display_name: Human friendly display name.
         :param pulumi.Input['TenantInboundSamlConfigIdpConfigArgs'] idp_config: SAML IdP configuration when the project acts as the relying party
                Structure is documented below.
@@ -158,6 +159,7 @@ class _TenantInboundSamlConfigState:
                  tenant: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TenantInboundSamlConfig resources.
+
         :param pulumi.Input[_builtins.str] display_name: Human friendly display name.
         :param pulumi.Input[_builtins.bool] enabled: If this config allows users to sign in with the provider.
         :param pulumi.Input['TenantInboundSamlConfigIdpConfigArgs'] idp_config: SAML IdP configuration when the project acts as the relying party
@@ -343,6 +345,7 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{tenant}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Human friendly display name.
@@ -415,6 +418,7 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{project}}/{{tenant}}/{{name}}
         $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{tenant}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TenantInboundSamlConfigArgs args: The arguments to use to populate this resource's properties.

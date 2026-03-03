@@ -128,6 +128,7 @@ class ProviderArgs:
                  gkeonprem_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  google_partner_name: Optional[pulumi.Input[_builtins.str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 hypercomputecluster_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -442,6 +443,8 @@ class ProviderArgs:
             pulumi.set(__self__, "google_partner_name", google_partner_name)
         if healthcare_custom_endpoint is not None:
             pulumi.set(__self__, "healthcare_custom_endpoint", healthcare_custom_endpoint)
+        if hypercomputecluster_custom_endpoint is not None:
+            pulumi.set(__self__, "hypercomputecluster_custom_endpoint", hypercomputecluster_custom_endpoint)
         if iam2_custom_endpoint is not None:
             pulumi.set(__self__, "iam2_custom_endpoint", iam2_custom_endpoint)
         if iam3_custom_endpoint is not None:
@@ -1612,6 +1615,15 @@ class ProviderArgs:
         pulumi.set(self, "healthcare_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="hypercomputeclusterCustomEndpoint")
+    def hypercomputecluster_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "hypercomputecluster_custom_endpoint")
+
+    @hypercomputecluster_custom_endpoint.setter
+    def hypercomputecluster_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hypercomputecluster_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="iam2CustomEndpoint")
     def iam2_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "iam2_custom_endpoint")
@@ -2581,6 +2593,7 @@ class Provider(pulumi.ProviderResource):
                  gkeonprem_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  google_partner_name: Optional[pulumi.Input[_builtins.str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 hypercomputecluster_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2683,6 +2696,7 @@ class Provider(pulumi.ProviderResource):
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -2697,6 +2711,7 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
 
         :param str resource_name: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.
@@ -2821,6 +2836,7 @@ class Provider(pulumi.ProviderResource):
                  gkeonprem_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  google_partner_name: Optional[pulumi.Input[_builtins.str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 hypercomputecluster_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3033,6 +3049,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["gkeonprem_custom_endpoint"] = gkeonprem_custom_endpoint
             __props__.__dict__["google_partner_name"] = google_partner_name
             __props__.__dict__["healthcare_custom_endpoint"] = healthcare_custom_endpoint
+            __props__.__dict__["hypercomputecluster_custom_endpoint"] = hypercomputecluster_custom_endpoint
             __props__.__dict__["iam2_custom_endpoint"] = iam2_custom_endpoint
             __props__.__dict__["iam3_custom_endpoint"] = iam3_custom_endpoint
             __props__.__dict__["iam_beta_custom_endpoint"] = iam_beta_custom_endpoint
@@ -3656,6 +3673,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="healthcareCustomEndpoint")
     def healthcare_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "healthcare_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="hypercomputeclusterCustomEndpoint")
+    def hypercomputecluster_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "hypercomputecluster_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="iam2CustomEndpoint")

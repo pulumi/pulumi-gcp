@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
         private InputList<string>? _mirroringDeploymentGroups;
 
         /// <summary>
-        /// (Optional, Beta)
         /// The target downstream Mirroring Deployment Groups.
         /// This field is used for Packet Broker mirroring endpoint groups to specify
         /// the deployment groups that the packet should be mirrored to by the broker.
@@ -38,7 +37,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
         public Input<string> MirroringEndpointGroup { get; set; } = null!;
 
         /// <summary>
-        /// (Output, Beta)
+        /// (Output)
         /// The type of the mirroring endpoint group this profile is attached to.
         /// Possible values:
         /// DIRECT

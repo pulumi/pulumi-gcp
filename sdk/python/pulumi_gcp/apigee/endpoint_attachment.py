@@ -25,6 +25,7 @@ class EndpointAttachmentArgs:
                  service_attachment: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a EndpointAttachment resource.
+
         :param pulumi.Input[_builtins.str] endpoint_attachment_id: ID of the endpoint attachment.
         :param pulumi.Input[_builtins.str] location: Location of the endpoint attachment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
@@ -98,6 +99,7 @@ class _EndpointAttachmentState:
                  service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EndpointAttachment resources.
+
         :param pulumi.Input[_builtins.str] connection_state: State of the endpoint attachment connection to the service attachment.
         :param pulumi.Input[_builtins.str] endpoint_attachment_id: ID of the endpoint attachment.
         :param pulumi.Input[_builtins.str] host: Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
@@ -244,6 +246,7 @@ class EndpointAttachment(pulumi.CustomResource):
         $ pulumi import gcp:apigee/endpointAttachment:EndpointAttachment default {{org_id}}/{{endpoint_attachment_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint_attachment_id: ID of the endpoint attachment.
@@ -280,6 +283,7 @@ class EndpointAttachment(pulumi.CustomResource):
         $ pulumi import gcp:apigee/endpointAttachment:EndpointAttachment default {{org_id}}/endpointAttachments/{{endpoint_attachment_id}}
         $ pulumi import gcp:apigee/endpointAttachment:EndpointAttachment default {{org_id}}/{{endpoint_attachment_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EndpointAttachmentArgs args: The arguments to use to populate this resource's properties.

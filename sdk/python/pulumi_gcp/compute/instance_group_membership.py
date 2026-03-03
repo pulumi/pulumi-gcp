@@ -25,6 +25,7 @@ class InstanceGroupMembershipArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceGroupMembership resource.
+
         :param pulumi.Input[_builtins.str] instance: An instance being added to the InstanceGroup
         :param pulumi.Input[_builtins.str] instance_group: Represents an Instance Group resource name that the instance belongs to.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -97,6 +98,7 @@ class _InstanceGroupMembershipState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceGroupMembership resources.
+
         :param pulumi.Input[_builtins.str] instance: An instance being added to the InstanceGroup
         :param pulumi.Input[_builtins.str] instance_group: Represents an Instance Group resource name that the instance belongs to.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -237,6 +239,7 @@ class InstanceGroupMembership(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceGroupMembership:InstanceGroupMembership default {{instance_group}}/{{instance}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance: An instance being added to the InstanceGroup
@@ -314,6 +317,7 @@ class InstanceGroupMembership(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceGroupMembership:InstanceGroupMembership default {{zone}}/{{instance_group}}/{{instance}}
         $ pulumi import gcp:compute/instanceGroupMembership:InstanceGroupMembership default {{instance_group}}/{{instance}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceGroupMembershipArgs args: The arguments to use to populate this resource's properties.

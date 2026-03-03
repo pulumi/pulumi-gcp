@@ -34,6 +34,7 @@ class AppProfileArgs:
                  standard_isolation: Optional[pulumi.Input['AppProfileStandardIsolationArgs']] = None):
         """
         The set of arguments for constructing a AppProfile resource.
+
         :param pulumi.Input[_builtins.str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         :param pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs'] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
                Structure is documented below.
@@ -230,6 +231,7 @@ class _AppProfileState:
                  standard_isolation: Optional[pulumi.Input['AppProfileStandardIsolationArgs']] = None):
         """
         Input properties used for looking up and filtering AppProfile resources.
+
         :param pulumi.Input[_builtins.str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         :param pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs'] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
                Structure is documented below.
@@ -599,6 +601,7 @@ class AppProfile(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
@@ -775,6 +778,7 @@ class AppProfile(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/appProfile:AppProfile default {{project}}/{{instance}}/{{app_profile_id}}
         $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppProfileArgs args: The arguments to use to populate this resource's properties.

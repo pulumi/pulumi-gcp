@@ -28,6 +28,7 @@ class PublicAdvertisedPrefixArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PublicAdvertisedPrefix resource.
+
         :param pulumi.Input[_builtins.str] ip_cidr_range: The address range, in CIDR format, represented by this public advertised prefix.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
@@ -187,6 +188,7 @@ class _PublicAdvertisedPrefixState:
                  shared_secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublicAdvertisedPrefix resources.
+
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The address range, in CIDR format, represented by this public advertised prefix.
@@ -443,6 +445,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -543,6 +546,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default {{project}}/{{name}}
         $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PublicAdvertisedPrefixArgs args: The arguments to use to populate this resource's properties.

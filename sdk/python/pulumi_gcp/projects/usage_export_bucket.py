@@ -24,6 +24,7 @@ class UsageExportBucketArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a UsageExportBucket resource.
+
         :param pulumi.Input[_builtins.str] bucket_name: The bucket to store reports in.
                
                - - -
@@ -83,6 +84,7 @@ class _UsageExportBucketState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UsageExportBucket resources.
+
         :param pulumi.Input[_builtins.str] bucket_name: The bucket to store reports in.
                
                - - -
@@ -181,6 +183,7 @@ class UsageExportBucket(pulumi.CustomResource):
         $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_name: The bucket to store reports in.
@@ -230,6 +233,7 @@ class UsageExportBucket(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UsageExportBucketArgs args: The arguments to use to populate this resource's properties.

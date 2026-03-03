@@ -29,6 +29,7 @@ class CxTestCaseArgs:
                  test_config: Optional[pulumi.Input['CxTestCaseTestConfigArgs']] = None):
         """
         The set of arguments for constructing a CxTestCase resource.
+
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the test case, unique within the agent. Limit of 200 characters.
         :param pulumi.Input[_builtins.str] notes: Additional freeform notes about the test case. Limit of 400 characters.
         :param pulumi.Input[_builtins.str] parent: The agent to create the test case for.
@@ -143,6 +144,7 @@ class _CxTestCaseState:
                  test_config: Optional[pulumi.Input['CxTestCaseTestConfigArgs']] = None):
         """
         Input properties used for looking up and filtering CxTestCase resources.
+
         :param pulumi.Input[_builtins.str] creation_time: When the test was created. A timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the test case, unique within the agent. Limit of 200 characters.
         :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultArgs']]] last_test_results: The latest test result.
@@ -460,6 +462,7 @@ class CxTestCase(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxTestCase:CxTestCase default {{parent}}/testCases/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the test case, unique within the agent. Limit of 200 characters.
@@ -632,6 +635,7 @@ class CxTestCase(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:diagflow/cxTestCase:CxTestCase default {{parent}}/testCases/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CxTestCaseArgs args: The arguments to use to populate this resource's properties.

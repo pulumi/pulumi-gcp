@@ -307,17 +307,17 @@ index f4794cf4d..982b4019c 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index 0177e77f0..3bf6d95c9 100644
+index 5cdc4ba38..90c951a2c 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
-@@ -33,9 +33,64 @@ To get more information about Service, see:
+@@ -33,8 +33,63 @@ To get more information about Service, see:
  ~> **Warning:** We recommend using the `google_cloud_run_v2_service` resource which offers a better
  developer experience and broader support of Cloud Run features.
  
 -## Example Usage - Cloud Run Service Basic
 +## Example Usage - Cloud Run Service Pubsub
- 
- 
++
++
 +```hcl
 +resource "google_cloud_run_service" "default" {
 +    name     = "cloud_run_service_name"
@@ -370,12 +370,11 @@ index 0177e77f0..3bf6d95c9 100644
 +  }
 +}
 +```
-+
+ 
 +## Example Usage - Cloud Run Service Basic
-+
+ 
  ```hcl
  resource "google_cloud_run_service" "default" {
-   name     = "cloudrun-srv"
 @@ -118,7 +173,7 @@ resource "google_cloud_run_service" "default" {
        annotations = {
          "autoscaling.knative.dev/maxScale"      = "1000"
@@ -385,7 +384,7 @@ index 0177e77f0..3bf6d95c9 100644
        }
      }
    }
-@@ -486,7 +541,7 @@ this field is set to false, the revision name will still autogenerate.)
+@@ -484,7 +539,7 @@ this field is set to false, the revision name will still autogenerate.)
    may be set by external tools to store and retrieve arbitrary metadata.
    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -394,7 +393,7 @@ index 0177e77f0..3bf6d95c9 100644
    or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
    Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
    keys to configure features on a Revision template:
-@@ -652,7 +707,8 @@ this field is set to false, the revision name will still autogenerate.)
+@@ -650,7 +705,8 @@ this field is set to false, the revision name will still autogenerate.)
  
  * `liveness_probe` -
    (Optional)
@@ -404,7 +403,7 @@ index 0177e77f0..3bf6d95c9 100644
    Structure is [documented below](#nested_template_spec_containers_liveness_probe).
  
  
-@@ -1183,7 +1239,7 @@ this field is set to false, the revision name will still autogenerate.)
+@@ -1181,7 +1237,7 @@ this field is set to false, the revision name will still autogenerate.)
    may be set by external tools to store and retrieve arbitrary metadata.
    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.

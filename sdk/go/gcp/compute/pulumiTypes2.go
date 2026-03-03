@@ -13,6 +13,325 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRegionBackendServiceCircuitBreakerConnectTimeout struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetRegionBackendServiceCircuitBreakerConnectTimeoutInput is an input type that accepts GetRegionBackendServiceCircuitBreakerConnectTimeoutArgs and GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceCircuitBreakerConnectTimeoutInput` via:
+//
+//	GetRegionBackendServiceCircuitBreakerConnectTimeoutArgs{...}
+type GetRegionBackendServiceCircuitBreakerConnectTimeoutInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceCircuitBreakerConnectTimeoutOutput() GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput
+	ToGetRegionBackendServiceCircuitBreakerConnectTimeoutOutputWithContext(context.Context) GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput
+}
+
+type GetRegionBackendServiceCircuitBreakerConnectTimeoutArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetRegionBackendServiceCircuitBreakerConnectTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceCircuitBreakerConnectTimeout)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceCircuitBreakerConnectTimeoutArgs) ToGetRegionBackendServiceCircuitBreakerConnectTimeoutOutput() GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput {
+	return i.ToGetRegionBackendServiceCircuitBreakerConnectTimeoutOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceCircuitBreakerConnectTimeoutArgs) ToGetRegionBackendServiceCircuitBreakerConnectTimeoutOutputWithContext(ctx context.Context) GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput)
+}
+
+// GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayInput is an input type that accepts GetRegionBackendServiceCircuitBreakerConnectTimeoutArray and GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayInput` via:
+//
+//	GetRegionBackendServiceCircuitBreakerConnectTimeoutArray{ GetRegionBackendServiceCircuitBreakerConnectTimeoutArgs{...} }
+type GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput() GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput
+	ToGetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutputWithContext(context.Context) GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput
+}
+
+type GetRegionBackendServiceCircuitBreakerConnectTimeoutArray []GetRegionBackendServiceCircuitBreakerConnectTimeoutInput
+
+func (GetRegionBackendServiceCircuitBreakerConnectTimeoutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceCircuitBreakerConnectTimeout)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceCircuitBreakerConnectTimeoutArray) ToGetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput() GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput {
+	return i.ToGetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceCircuitBreakerConnectTimeoutArray) ToGetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput)
+}
+
+type GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceCircuitBreakerConnectTimeout)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput) ToGetRegionBackendServiceCircuitBreakerConnectTimeoutOutput() GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput) ToGetRegionBackendServiceCircuitBreakerConnectTimeoutOutputWithContext(ctx context.Context) GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
+func (o GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCircuitBreakerConnectTimeout) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
+func (o GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCircuitBreakerConnectTimeout) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceCircuitBreakerConnectTimeout)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput) ToGetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput() GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput) ToGetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceCircuitBreakerConnectTimeout {
+		return vs[0].([]GetRegionBackendServiceCircuitBreakerConnectTimeout)[vs[1].(int)]
+	}).(GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput)
+}
+
+type GetRegionBackendServiceConnectionTrackingPolicy struct {
+	// Specifies connection persistence when backends are unhealthy.
+	//
+	// If set to 'DEFAULT_FOR_PROTOCOL', the existing connections persist on
+	// unhealthy backends only for connection-oriented protocols (TCP and SCTP)
+	// and only if the Tracking Mode is PER_CONNECTION (default tracking mode)
+	// or the Session Affinity is configured for 5-tuple. They do not persist
+	// for UDP.
+	//
+	// If set to 'NEVER_PERSIST', after a backend becomes unhealthy, the existing
+	// connections on the unhealthy backend are never persisted on the unhealthy
+	// backend. They are always diverted to newly selected healthy backends
+	// (unless all backends are unhealthy).
+	//
+	// If set to 'ALWAYS_PERSIST', existing connections always persist on
+	// unhealthy backends regardless of protocol and session affinity. It is
+	// generally not recommended to use this mode overriding the default. Default value: "DEFAULT_FOR_PROTOCOL" Possible values: ["DEFAULT_FOR_PROTOCOL", "NEVER_PERSIST", "ALWAYS_PERSIST"]
+	ConnectionPersistenceOnUnhealthyBackends string `pulumi:"connectionPersistenceOnUnhealthyBackends"`
+	// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+	EnableStrongAffinity bool `pulumi:"enableStrongAffinity"`
+	// Specifies how long to keep a Connection Tracking entry while there is
+	// no matching traffic (in seconds).
+	//
+	// For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
+	//
+	// For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
+	IdleTimeoutSec int `pulumi:"idleTimeoutSec"`
+	// Specifies the key used for connection tracking. There are two options:
+	// 'PER_CONNECTION': The Connection Tracking is performed as per the
+	// Connection Key (default Hash Method) for the specific protocol.
+	//
+	// 'PER_SESSION': The Connection Tracking is performed as per the
+	// configured Session Affinity. It matches the configured Session Affinity. Default value: "PER_CONNECTION" Possible values: ["PER_CONNECTION", "PER_SESSION"]
+	TrackingMode string `pulumi:"trackingMode"`
+}
+
+// GetRegionBackendServiceConnectionTrackingPolicyInput is an input type that accepts GetRegionBackendServiceConnectionTrackingPolicyArgs and GetRegionBackendServiceConnectionTrackingPolicyOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceConnectionTrackingPolicyInput` via:
+//
+//	GetRegionBackendServiceConnectionTrackingPolicyArgs{...}
+type GetRegionBackendServiceConnectionTrackingPolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceConnectionTrackingPolicyOutput() GetRegionBackendServiceConnectionTrackingPolicyOutput
+	ToGetRegionBackendServiceConnectionTrackingPolicyOutputWithContext(context.Context) GetRegionBackendServiceConnectionTrackingPolicyOutput
+}
+
+type GetRegionBackendServiceConnectionTrackingPolicyArgs struct {
+	// Specifies connection persistence when backends are unhealthy.
+	//
+	// If set to 'DEFAULT_FOR_PROTOCOL', the existing connections persist on
+	// unhealthy backends only for connection-oriented protocols (TCP and SCTP)
+	// and only if the Tracking Mode is PER_CONNECTION (default tracking mode)
+	// or the Session Affinity is configured for 5-tuple. They do not persist
+	// for UDP.
+	//
+	// If set to 'NEVER_PERSIST', after a backend becomes unhealthy, the existing
+	// connections on the unhealthy backend are never persisted on the unhealthy
+	// backend. They are always diverted to newly selected healthy backends
+	// (unless all backends are unhealthy).
+	//
+	// If set to 'ALWAYS_PERSIST', existing connections always persist on
+	// unhealthy backends regardless of protocol and session affinity. It is
+	// generally not recommended to use this mode overriding the default. Default value: "DEFAULT_FOR_PROTOCOL" Possible values: ["DEFAULT_FOR_PROTOCOL", "NEVER_PERSIST", "ALWAYS_PERSIST"]
+	ConnectionPersistenceOnUnhealthyBackends pulumi.StringInput `pulumi:"connectionPersistenceOnUnhealthyBackends"`
+	// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+	EnableStrongAffinity pulumi.BoolInput `pulumi:"enableStrongAffinity"`
+	// Specifies how long to keep a Connection Tracking entry while there is
+	// no matching traffic (in seconds).
+	//
+	// For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
+	//
+	// For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
+	IdleTimeoutSec pulumi.IntInput `pulumi:"idleTimeoutSec"`
+	// Specifies the key used for connection tracking. There are two options:
+	// 'PER_CONNECTION': The Connection Tracking is performed as per the
+	// Connection Key (default Hash Method) for the specific protocol.
+	//
+	// 'PER_SESSION': The Connection Tracking is performed as per the
+	// configured Session Affinity. It matches the configured Session Affinity. Default value: "PER_CONNECTION" Possible values: ["PER_CONNECTION", "PER_SESSION"]
+	TrackingMode pulumi.StringInput `pulumi:"trackingMode"`
+}
+
+func (GetRegionBackendServiceConnectionTrackingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceConnectionTrackingPolicy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceConnectionTrackingPolicyArgs) ToGetRegionBackendServiceConnectionTrackingPolicyOutput() GetRegionBackendServiceConnectionTrackingPolicyOutput {
+	return i.ToGetRegionBackendServiceConnectionTrackingPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceConnectionTrackingPolicyArgs) ToGetRegionBackendServiceConnectionTrackingPolicyOutputWithContext(ctx context.Context) GetRegionBackendServiceConnectionTrackingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceConnectionTrackingPolicyOutput)
+}
+
+// GetRegionBackendServiceConnectionTrackingPolicyArrayInput is an input type that accepts GetRegionBackendServiceConnectionTrackingPolicyArray and GetRegionBackendServiceConnectionTrackingPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceConnectionTrackingPolicyArrayInput` via:
+//
+//	GetRegionBackendServiceConnectionTrackingPolicyArray{ GetRegionBackendServiceConnectionTrackingPolicyArgs{...} }
+type GetRegionBackendServiceConnectionTrackingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceConnectionTrackingPolicyArrayOutput() GetRegionBackendServiceConnectionTrackingPolicyArrayOutput
+	ToGetRegionBackendServiceConnectionTrackingPolicyArrayOutputWithContext(context.Context) GetRegionBackendServiceConnectionTrackingPolicyArrayOutput
+}
+
+type GetRegionBackendServiceConnectionTrackingPolicyArray []GetRegionBackendServiceConnectionTrackingPolicyInput
+
+func (GetRegionBackendServiceConnectionTrackingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceConnectionTrackingPolicy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceConnectionTrackingPolicyArray) ToGetRegionBackendServiceConnectionTrackingPolicyArrayOutput() GetRegionBackendServiceConnectionTrackingPolicyArrayOutput {
+	return i.ToGetRegionBackendServiceConnectionTrackingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceConnectionTrackingPolicyArray) ToGetRegionBackendServiceConnectionTrackingPolicyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceConnectionTrackingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceConnectionTrackingPolicyArrayOutput)
+}
+
+type GetRegionBackendServiceConnectionTrackingPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceConnectionTrackingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceConnectionTrackingPolicy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceConnectionTrackingPolicyOutput) ToGetRegionBackendServiceConnectionTrackingPolicyOutput() GetRegionBackendServiceConnectionTrackingPolicyOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceConnectionTrackingPolicyOutput) ToGetRegionBackendServiceConnectionTrackingPolicyOutputWithContext(ctx context.Context) GetRegionBackendServiceConnectionTrackingPolicyOutput {
+	return o
+}
+
+// Specifies connection persistence when backends are unhealthy.
+//
+// If set to 'DEFAULT_FOR_PROTOCOL', the existing connections persist on
+// unhealthy backends only for connection-oriented protocols (TCP and SCTP)
+// and only if the Tracking Mode is PER_CONNECTION (default tracking mode)
+// or the Session Affinity is configured for 5-tuple. They do not persist
+// for UDP.
+//
+// If set to 'NEVER_PERSIST', after a backend becomes unhealthy, the existing
+// connections on the unhealthy backend are never persisted on the unhealthy
+// backend. They are always diverted to newly selected healthy backends
+// (unless all backends are unhealthy).
+//
+// If set to 'ALWAYS_PERSIST', existing connections always persist on
+// unhealthy backends regardless of protocol and session affinity. It is
+// generally not recommended to use this mode overriding the default. Default value: "DEFAULT_FOR_PROTOCOL" Possible values: ["DEFAULT_FOR_PROTOCOL", "NEVER_PERSIST", "ALWAYS_PERSIST"]
+func (o GetRegionBackendServiceConnectionTrackingPolicyOutput) ConnectionPersistenceOnUnhealthyBackends() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceConnectionTrackingPolicy) string {
+		return v.ConnectionPersistenceOnUnhealthyBackends
+	}).(pulumi.StringOutput)
+}
+
+// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+func (o GetRegionBackendServiceConnectionTrackingPolicyOutput) EnableStrongAffinity() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceConnectionTrackingPolicy) bool { return v.EnableStrongAffinity }).(pulumi.BoolOutput)
+}
+
+// Specifies how long to keep a Connection Tracking entry while there is
+// no matching traffic (in seconds).
+//
+// For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
+//
+// For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
+func (o GetRegionBackendServiceConnectionTrackingPolicyOutput) IdleTimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceConnectionTrackingPolicy) int { return v.IdleTimeoutSec }).(pulumi.IntOutput)
+}
+
+// Specifies the key used for connection tracking. There are two options:
+// 'PER_CONNECTION': The Connection Tracking is performed as per the
+// Connection Key (default Hash Method) for the specific protocol.
+//
+// 'PER_SESSION': The Connection Tracking is performed as per the
+// configured Session Affinity. It matches the configured Session Affinity. Default value: "PER_CONNECTION" Possible values: ["PER_CONNECTION", "PER_SESSION"]
+func (o GetRegionBackendServiceConnectionTrackingPolicyOutput) TrackingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceConnectionTrackingPolicy) string { return v.TrackingMode }).(pulumi.StringOutput)
+}
+
+type GetRegionBackendServiceConnectionTrackingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceConnectionTrackingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceConnectionTrackingPolicy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceConnectionTrackingPolicyArrayOutput) ToGetRegionBackendServiceConnectionTrackingPolicyArrayOutput() GetRegionBackendServiceConnectionTrackingPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceConnectionTrackingPolicyArrayOutput) ToGetRegionBackendServiceConnectionTrackingPolicyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceConnectionTrackingPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceConnectionTrackingPolicyArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceConnectionTrackingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceConnectionTrackingPolicy {
+		return vs[0].([]GetRegionBackendServiceConnectionTrackingPolicy)[vs[1].(int)]
+	}).(GetRegionBackendServiceConnectionTrackingPolicyOutput)
+}
+
 type GetRegionBackendServiceConsistentHash struct {
 	// Hash is based on HTTP Cookie. This field describes a HTTP cookie
 	// that will be used as the hash key for the consistent hash load
@@ -25718,6 +26037,10 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCircuitBreakerConnectTimeoutInput)(nil)).Elem(), GetRegionBackendServiceCircuitBreakerConnectTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayInput)(nil)).Elem(), GetRegionBackendServiceCircuitBreakerConnectTimeoutArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceConnectionTrackingPolicyInput)(nil)).Elem(), GetRegionBackendServiceConnectionTrackingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceConnectionTrackingPolicyArrayInput)(nil)).Elem(), GetRegionBackendServiceConnectionTrackingPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceConsistentHashInput)(nil)).Elem(), GetRegionBackendServiceConsistentHashArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceConsistentHashArrayInput)(nil)).Elem(), GetRegionBackendServiceConsistentHashArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceConsistentHashHttpCookyInput)(nil)).Elem(), GetRegionBackendServiceConsistentHashHttpCookyArgs{})
@@ -26112,6 +26435,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceConnectionTrackingPolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceConnectionTrackingPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceConsistentHashOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceConsistentHashArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceConsistentHashHttpCookyOutput{})

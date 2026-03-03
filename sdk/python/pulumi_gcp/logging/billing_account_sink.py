@@ -31,6 +31,7 @@ class BillingAccountSinkArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BillingAccountSink resource.
+
         :param pulumi.Input[_builtins.str] billing_account: The billing account exported to the sink.
         :param pulumi.Input[_builtins.str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -186,6 +187,7 @@ class _BillingAccountSinkState:
                  writer_identity: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BillingAccountSink resources.
+
         :param pulumi.Input['BillingAccountSinkBigqueryOptionsArgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[_builtins.str] billing_account: The billing account exported to the sink.
         :param pulumi.Input[_builtins.str] description: A description of this sink. The maximum length of the description is 8000 characters.
@@ -403,6 +405,7 @@ class BillingAccountSink(pulumi.CustomResource):
         $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink default billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['BillingAccountSinkBigqueryOptionsArgs', 'BillingAccountSinkBigqueryOptionsArgsDict']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -471,6 +474,7 @@ class BillingAccountSink(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink default billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BillingAccountSinkArgs args: The arguments to use to populate this resource's properties.

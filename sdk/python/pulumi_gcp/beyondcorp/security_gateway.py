@@ -25,11 +25,13 @@ class SecurityGatewayArgs:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  hubs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 logging: Optional[pulumi.Input['SecurityGatewayLoggingArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  proxy_protocol_config: Optional[pulumi.Input['SecurityGatewayProxyProtocolConfigArgs']] = None,
                  service_discovery: Optional[pulumi.Input['SecurityGatewayServiceDiscoveryArgs']] = None):
         """
         The set of arguments for constructing a SecurityGateway resource.
+
         :param pulumi.Input[_builtins.str] security_gateway_id: Optional. User-settable SecurityGateway resource ID.
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
@@ -43,6 +45,7 @@ class SecurityGatewayArgs:
                Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
                
                > **Warning:** `location` is deprecated and will be removed in a future major release.
+        :param pulumi.Input['SecurityGatewayLoggingArgs'] logging: Settings related to Cloud Logging.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['SecurityGatewayProxyProtocolConfigArgs'] proxy_protocol_config: Shared proxy configuration for all apps.
@@ -60,6 +63,8 @@ class SecurityGatewayArgs:
             pulumi.log.warn("""location is deprecated: `location` is deprecated and will be removed in a future major release.""")
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if proxy_protocol_config is not None:
@@ -127,6 +132,18 @@ class SecurityGatewayArgs:
 
     @_builtins.property
     @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['SecurityGatewayLoggingArgs']]:
+        """
+        Settings related to Cloud Logging.
+        """
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['SecurityGatewayLoggingArgs']]):
+        pulumi.set(self, "logging", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -174,6 +191,7 @@ class _SecurityGatewayState:
                  external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hubs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 logging: Optional[pulumi.Input['SecurityGatewayLoggingArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  proxy_protocol_config: Optional[pulumi.Input['SecurityGatewayProxyProtocolConfigArgs']] = None,
@@ -183,6 +201,7 @@ class _SecurityGatewayState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityGateway resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. Timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] delegating_service_account: Service account used for operations that involve resources in consumer projects.
         :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the SecurityGateway.
@@ -196,6 +215,7 @@ class _SecurityGatewayState:
                Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
                
                > **Warning:** `location` is deprecated and will be removed in a future major release.
+        :param pulumi.Input['SecurityGatewayLoggingArgs'] logging: Settings related to Cloud Logging.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -233,6 +253,8 @@ class _SecurityGatewayState:
             pulumi.log.warn("""location is deprecated: `location` is deprecated and will be removed in a future major release.""")
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -327,6 +349,18 @@ class _SecurityGatewayState:
     @location.setter
     def location(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['SecurityGatewayLoggingArgs']]:
+        """
+        Settings related to Cloud Logging.
+        """
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['SecurityGatewayLoggingArgs']]):
+        pulumi.set(self, "logging", value)
 
     @_builtins.property
     @pulumi.getter
@@ -436,6 +470,7 @@ class SecurityGateway(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  hubs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 logging: Optional[pulumi.Input[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  proxy_protocol_config: Optional[pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
                  security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -458,6 +493,20 @@ class SecurityGateway(pulumi.CustomResource):
             hubs=[{
                 "region": "us-central1",
             }])
+        ```
+        ### Beyondcorp Security Gateway Logging
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_logging = gcp.beyondcorp.SecurityGateway("example-logging",
+            security_gateway_id="default-logging",
+            display_name="My Security Gateway resource with logging enabled",
+            hubs=[{
+                "region": "us-central1",
+            }],
+            logging={})
         ```
         ### Beyondcorp Security Gateway Spa
 
@@ -517,6 +566,7 @@ class SecurityGateway(pulumi.CustomResource):
         $ pulumi import gcp:beyondcorp/securityGateway:SecurityGateway default {{location}}/{{security_gateway_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the SecurityGateway.
@@ -528,6 +578,7 @@ class SecurityGateway(pulumi.CustomResource):
                Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
                
                > **Warning:** `location` is deprecated and will be removed in a future major release.
+        :param pulumi.Input[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']] logging: Settings related to Cloud Logging.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']] proxy_protocol_config: Shared proxy configuration for all apps.
@@ -563,6 +614,20 @@ class SecurityGateway(pulumi.CustomResource):
                 "region": "us-central1",
             }])
         ```
+        ### Beyondcorp Security Gateway Logging
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_logging = gcp.beyondcorp.SecurityGateway("example-logging",
+            security_gateway_id="default-logging",
+            display_name="My Security Gateway resource with logging enabled",
+            hubs=[{
+                "region": "us-central1",
+            }],
+            logging={})
+        ```
         ### Beyondcorp Security Gateway Spa
 
         ```python
@@ -621,6 +686,7 @@ class SecurityGateway(pulumi.CustomResource):
         $ pulumi import gcp:beyondcorp/securityGateway:SecurityGateway default {{location}}/{{security_gateway_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param SecurityGatewayArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -639,6 +705,7 @@ class SecurityGateway(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  hubs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 logging: Optional[pulumi.Input[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  proxy_protocol_config: Optional[pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
                  security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -655,6 +722,7 @@ class SecurityGateway(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["hubs"] = hubs
             __props__.__dict__["location"] = location
+            __props__.__dict__["logging"] = logging
             __props__.__dict__["project"] = project
             __props__.__dict__["proxy_protocol_config"] = proxy_protocol_config
             if security_gateway_id is None and not opts.urn:
@@ -683,6 +751,7 @@ class SecurityGateway(pulumi.CustomResource):
             external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             hubs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
+            logging: Optional[pulumi.Input[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             proxy_protocol_config: Optional[pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
@@ -710,6 +779,7 @@ class SecurityGateway(pulumi.CustomResource):
                Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
                
                > **Warning:** `location` is deprecated and will be removed in a future major release.
+        :param pulumi.Input[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']] logging: Settings related to Cloud Logging.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -742,6 +812,7 @@ class SecurityGateway(pulumi.CustomResource):
         __props__.__dict__["external_ips"] = external_ips
         __props__.__dict__["hubs"] = hubs
         __props__.__dict__["location"] = location
+        __props__.__dict__["logging"] = logging
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["proxy_protocol_config"] = proxy_protocol_config
@@ -806,6 +877,14 @@ class SecurityGateway(pulumi.CustomResource):
         > **Warning:** `location` is deprecated and will be removed in a future major release.
         """
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def logging(self) -> pulumi.Output[Optional['outputs.SecurityGatewayLogging']]:
+        """
+        Settings related to Cloud Logging.
+        """
+        return pulumi.get(self, "logging")
 
     @_builtins.property
     @pulumi.getter

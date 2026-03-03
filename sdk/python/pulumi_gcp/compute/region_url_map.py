@@ -34,6 +34,7 @@ class RegionUrlMapArgs:
                  tests: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapTestArgs']]]] = None):
         """
         The set of arguments for constructing a RegionUrlMap resource.
+
         :param pulumi.Input['RegionUrlMapDefaultRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
                Only one of defaultRouteAction or defaultUrlRedirect must be set.
                URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
@@ -282,6 +283,7 @@ class _RegionUrlMapState:
                  tests: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapTestArgs']]]] = None):
         """
         Input properties used for looking up and filtering RegionUrlMap resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input['RegionUrlMapDefaultRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
                Only one of defaultRouteAction or defaultUrlRedirect must be set.
@@ -1576,6 +1578,7 @@ class RegionUrlMap(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RegionUrlMapDefaultRouteActionArgs', 'RegionUrlMapDefaultRouteActionArgsDict']] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
@@ -2611,6 +2614,7 @@ class RegionUrlMap(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{region}}/{{name}}
         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionUrlMapArgs args: The arguments to use to populate this resource's properties.

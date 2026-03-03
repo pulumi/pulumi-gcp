@@ -33,6 +33,7 @@ class ExadbVmClusterArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExadbVmCluster resource.
+
         :param pulumi.Input[_builtins.str] backup_odb_subnet: The name of the backup OdbSubnet associated with the ExadbVmCluster.
                Format:
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
@@ -233,6 +234,7 @@ class _ExadbVmClusterState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ExadbVmCluster resources.
+
         :param pulumi.Input[_builtins.str] backup_odb_subnet: The name of the backup OdbSubnet associated with the ExadbVmCluster.
                Format:
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
@@ -656,6 +658,7 @@ class ExadbVmCluster(pulumi.CustomResource):
         $ pulumi import gcp:oracledatabase/exadbVmCluster:ExadbVmCluster default {{location}}/{{exadb_vm_cluster_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_odb_subnet: The name of the backup OdbSubnet associated with the ExadbVmCluster.
@@ -811,6 +814,7 @@ class ExadbVmCluster(pulumi.CustomResource):
         $ pulumi import gcp:oracledatabase/exadbVmCluster:ExadbVmCluster default {{project}}/{{location}}/{{exadb_vm_cluster_id}}
         $ pulumi import gcp:oracledatabase/exadbVmCluster:ExadbVmCluster default {{location}}/{{exadb_vm_cluster_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ExadbVmClusterArgs args: The arguments to use to populate this resource's properties.

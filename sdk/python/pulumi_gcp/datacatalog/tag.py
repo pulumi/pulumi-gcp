@@ -27,6 +27,7 @@ class TagArgs:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Tag resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
@@ -115,6 +116,7 @@ class _TagState:
                  template_displayname: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tag resources.
+
         :param pulumi.Input[_builtins.str] column: Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
                individual column based on that schema.
                For attaching a tag to a nested column, use `.` to separate the column names. Example:
@@ -519,6 +521,7 @@ class Tag(pulumi.CustomResource):
         $ pulumi import gcp:datacatalog/tag:Tag default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] column: Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
@@ -817,6 +820,7 @@ class Tag(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:datacatalog/tag:Tag default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TagArgs args: The arguments to use to populate this resource's properties.

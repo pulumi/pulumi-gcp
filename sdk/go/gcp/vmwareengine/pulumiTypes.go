@@ -4715,6 +4715,130 @@ func (o SubnetDhcpAddressRangeArrayOutput) Index(i pulumi.IntInput) SubnetDhcpAd
 	}).(SubnetDhcpAddressRangeOutput)
 }
 
+type GetAnnouncementsAnnouncement struct {
+	// Code of the announcement. Possible values include: `MAINTENANCE_SCHEDULE_NOT_AVAILABLE`, `MAINTENANCE_SCHEDULE_READY`, `MAINTENANCE_SCHEDULE_LOCKED`, `MAINTENANCE_SCHEDULE_CANCELED`, `MAINTENANCE_INPROGRESS`, `MAINTENANCE_SUCCESSFUL`, `MAINTENANCE_CANCELED`, `MAINTENANCE_PAUSED`, `MAINTENANCE_FAILED`, `IMMUTABLE_MAINTENANCE_SCHEDULE_READY`, `MAINTENANCE_STARTING_SOON`.
+	Code string `pulumi:"code"`
+	// `Additional structured details about this announcement`
+	Metadata map[string]string `pulumi:"metadata"`
+	// The resource name of the specific Announcement to retrieve. If provided, the `announcements` list will contain only this announcement.
+	Name string `pulumi:"name"`
+	// Target Resource Type defines the type of the target for the announcement.
+	TargetResourceType string `pulumi:"targetResourceType"`
+}
+
+// GetAnnouncementsAnnouncementInput is an input type that accepts GetAnnouncementsAnnouncementArgs and GetAnnouncementsAnnouncementOutput values.
+// You can construct a concrete instance of `GetAnnouncementsAnnouncementInput` via:
+//
+//	GetAnnouncementsAnnouncementArgs{...}
+type GetAnnouncementsAnnouncementInput interface {
+	pulumi.Input
+
+	ToGetAnnouncementsAnnouncementOutput() GetAnnouncementsAnnouncementOutput
+	ToGetAnnouncementsAnnouncementOutputWithContext(context.Context) GetAnnouncementsAnnouncementOutput
+}
+
+type GetAnnouncementsAnnouncementArgs struct {
+	// Code of the announcement. Possible values include: `MAINTENANCE_SCHEDULE_NOT_AVAILABLE`, `MAINTENANCE_SCHEDULE_READY`, `MAINTENANCE_SCHEDULE_LOCKED`, `MAINTENANCE_SCHEDULE_CANCELED`, `MAINTENANCE_INPROGRESS`, `MAINTENANCE_SUCCESSFUL`, `MAINTENANCE_CANCELED`, `MAINTENANCE_PAUSED`, `MAINTENANCE_FAILED`, `IMMUTABLE_MAINTENANCE_SCHEDULE_READY`, `MAINTENANCE_STARTING_SOON`.
+	Code pulumi.StringInput `pulumi:"code"`
+	// `Additional structured details about this announcement`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// The resource name of the specific Announcement to retrieve. If provided, the `announcements` list will contain only this announcement.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Target Resource Type defines the type of the target for the announcement.
+	TargetResourceType pulumi.StringInput `pulumi:"targetResourceType"`
+}
+
+func (GetAnnouncementsAnnouncementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAnnouncementsAnnouncement)(nil)).Elem()
+}
+
+func (i GetAnnouncementsAnnouncementArgs) ToGetAnnouncementsAnnouncementOutput() GetAnnouncementsAnnouncementOutput {
+	return i.ToGetAnnouncementsAnnouncementOutputWithContext(context.Background())
+}
+
+func (i GetAnnouncementsAnnouncementArgs) ToGetAnnouncementsAnnouncementOutputWithContext(ctx context.Context) GetAnnouncementsAnnouncementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAnnouncementsAnnouncementOutput)
+}
+
+// GetAnnouncementsAnnouncementArrayInput is an input type that accepts GetAnnouncementsAnnouncementArray and GetAnnouncementsAnnouncementArrayOutput values.
+// You can construct a concrete instance of `GetAnnouncementsAnnouncementArrayInput` via:
+//
+//	GetAnnouncementsAnnouncementArray{ GetAnnouncementsAnnouncementArgs{...} }
+type GetAnnouncementsAnnouncementArrayInput interface {
+	pulumi.Input
+
+	ToGetAnnouncementsAnnouncementArrayOutput() GetAnnouncementsAnnouncementArrayOutput
+	ToGetAnnouncementsAnnouncementArrayOutputWithContext(context.Context) GetAnnouncementsAnnouncementArrayOutput
+}
+
+type GetAnnouncementsAnnouncementArray []GetAnnouncementsAnnouncementInput
+
+func (GetAnnouncementsAnnouncementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAnnouncementsAnnouncement)(nil)).Elem()
+}
+
+func (i GetAnnouncementsAnnouncementArray) ToGetAnnouncementsAnnouncementArrayOutput() GetAnnouncementsAnnouncementArrayOutput {
+	return i.ToGetAnnouncementsAnnouncementArrayOutputWithContext(context.Background())
+}
+
+func (i GetAnnouncementsAnnouncementArray) ToGetAnnouncementsAnnouncementArrayOutputWithContext(ctx context.Context) GetAnnouncementsAnnouncementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAnnouncementsAnnouncementArrayOutput)
+}
+
+type GetAnnouncementsAnnouncementOutput struct{ *pulumi.OutputState }
+
+func (GetAnnouncementsAnnouncementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAnnouncementsAnnouncement)(nil)).Elem()
+}
+
+func (o GetAnnouncementsAnnouncementOutput) ToGetAnnouncementsAnnouncementOutput() GetAnnouncementsAnnouncementOutput {
+	return o
+}
+
+func (o GetAnnouncementsAnnouncementOutput) ToGetAnnouncementsAnnouncementOutputWithContext(ctx context.Context) GetAnnouncementsAnnouncementOutput {
+	return o
+}
+
+// Code of the announcement. Possible values include: `MAINTENANCE_SCHEDULE_NOT_AVAILABLE`, `MAINTENANCE_SCHEDULE_READY`, `MAINTENANCE_SCHEDULE_LOCKED`, `MAINTENANCE_SCHEDULE_CANCELED`, `MAINTENANCE_INPROGRESS`, `MAINTENANCE_SUCCESSFUL`, `MAINTENANCE_CANCELED`, `MAINTENANCE_PAUSED`, `MAINTENANCE_FAILED`, `IMMUTABLE_MAINTENANCE_SCHEDULE_READY`, `MAINTENANCE_STARTING_SOON`.
+func (o GetAnnouncementsAnnouncementOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAnnouncementsAnnouncement) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// `Additional structured details about this announcement`
+func (o GetAnnouncementsAnnouncementOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAnnouncementsAnnouncement) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the specific Announcement to retrieve. If provided, the `announcements` list will contain only this announcement.
+func (o GetAnnouncementsAnnouncementOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAnnouncementsAnnouncement) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Target Resource Type defines the type of the target for the announcement.
+func (o GetAnnouncementsAnnouncementOutput) TargetResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAnnouncementsAnnouncement) string { return v.TargetResourceType }).(pulumi.StringOutput)
+}
+
+type GetAnnouncementsAnnouncementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAnnouncementsAnnouncementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAnnouncementsAnnouncement)(nil)).Elem()
+}
+
+func (o GetAnnouncementsAnnouncementArrayOutput) ToGetAnnouncementsAnnouncementArrayOutput() GetAnnouncementsAnnouncementArrayOutput {
+	return o
+}
+
+func (o GetAnnouncementsAnnouncementArrayOutput) ToGetAnnouncementsAnnouncementArrayOutputWithContext(ctx context.Context) GetAnnouncementsAnnouncementArrayOutput {
+	return o
+}
+
+func (o GetAnnouncementsAnnouncementArrayOutput) Index(i pulumi.IntInput) GetAnnouncementsAnnouncementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAnnouncementsAnnouncement {
+		return vs[0].([]GetAnnouncementsAnnouncement)[vs[1].(int)]
+	}).(GetAnnouncementsAnnouncementOutput)
+}
+
 type GetClusterAutoscalingSetting struct {
 	// The map with autoscaling policies applied to the cluster.
 	// The key is the identifier of the policy.
@@ -8406,6 +8530,1077 @@ func (o GetSubnetDhcpAddressRangeArrayOutput) Index(i pulumi.IntInput) GetSubnet
 	}).(GetSubnetDhcpAddressRangeOutput)
 }
 
+type GetUpgradesUpgrade struct {
+	// The list of component upgrades.
+	ComponentUpgrades []GetUpgradesUpgradeComponentUpgrade `pulumi:"componentUpgrades"`
+	// Additional information about the private cloud upgrade.
+	Description string `pulumi:"description"`
+	// End of the edit window (RFC3339).
+	EndTime string `pulumi:"endTime"`
+	// The estimated total duration of the upgrade in seconds. This information can be used to plan or schedule upgrades to minimize disruptions. Please note that the estimated duration is only an estimate. The actual upgrade duration may vary. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	EstimatedDuration string `pulumi:"estimatedDuration"`
+	// The resource name of the specific Upgrade to retrieve. If provided, the 'upgrades' list will contain only this upgrade.
+	Name string `pulumi:"name"`
+	// Schedule details for the upgrade.
+	Schedules []GetUpgradesUpgradeSchedule `pulumi:"schedules"`
+	// The start version of the private cloud for this upgrade.
+	StartVersion string `pulumi:"startVersion"`
+	// Component's upgrade state.
+	State string `pulumi:"state"`
+	// The targeted version of the private cloud at the end of the upgrade.
+	TargetVersion string `pulumi:"targetVersion"`
+	// The type of upgrade. Possible values include: `VSPHERE_UPGRADE`, `VSPHERE_PATCH`, `WORKAROUND`, `FIRMWARE_UPGRADE`, `SWITCH_UPGRADE`, `OTHER`, `INFRASTRUCTURE_UPGRADE`.
+	Type string `pulumi:"type"`
+}
+
+// GetUpgradesUpgradeInput is an input type that accepts GetUpgradesUpgradeArgs and GetUpgradesUpgradeOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeInput` via:
+//
+//	GetUpgradesUpgradeArgs{...}
+type GetUpgradesUpgradeInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeOutput() GetUpgradesUpgradeOutput
+	ToGetUpgradesUpgradeOutputWithContext(context.Context) GetUpgradesUpgradeOutput
+}
+
+type GetUpgradesUpgradeArgs struct {
+	// The list of component upgrades.
+	ComponentUpgrades GetUpgradesUpgradeComponentUpgradeArrayInput `pulumi:"componentUpgrades"`
+	// Additional information about the private cloud upgrade.
+	Description pulumi.StringInput `pulumi:"description"`
+	// End of the edit window (RFC3339).
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The estimated total duration of the upgrade in seconds. This information can be used to plan or schedule upgrades to minimize disruptions. Please note that the estimated duration is only an estimate. The actual upgrade duration may vary. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	EstimatedDuration pulumi.StringInput `pulumi:"estimatedDuration"`
+	// The resource name of the specific Upgrade to retrieve. If provided, the 'upgrades' list will contain only this upgrade.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Schedule details for the upgrade.
+	Schedules GetUpgradesUpgradeScheduleArrayInput `pulumi:"schedules"`
+	// The start version of the private cloud for this upgrade.
+	StartVersion pulumi.StringInput `pulumi:"startVersion"`
+	// Component's upgrade state.
+	State pulumi.StringInput `pulumi:"state"`
+	// The targeted version of the private cloud at the end of the upgrade.
+	TargetVersion pulumi.StringInput `pulumi:"targetVersion"`
+	// The type of upgrade. Possible values include: `VSPHERE_UPGRADE`, `VSPHERE_PATCH`, `WORKAROUND`, `FIRMWARE_UPGRADE`, `SWITCH_UPGRADE`, `OTHER`, `INFRASTRUCTURE_UPGRADE`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetUpgradesUpgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgrade)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeArgs) ToGetUpgradesUpgradeOutput() GetUpgradesUpgradeOutput {
+	return i.ToGetUpgradesUpgradeOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeArgs) ToGetUpgradesUpgradeOutputWithContext(ctx context.Context) GetUpgradesUpgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeOutput)
+}
+
+// GetUpgradesUpgradeArrayInput is an input type that accepts GetUpgradesUpgradeArray and GetUpgradesUpgradeArrayOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeArrayInput` via:
+//
+//	GetUpgradesUpgradeArray{ GetUpgradesUpgradeArgs{...} }
+type GetUpgradesUpgradeArrayInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeArrayOutput() GetUpgradesUpgradeArrayOutput
+	ToGetUpgradesUpgradeArrayOutputWithContext(context.Context) GetUpgradesUpgradeArrayOutput
+}
+
+type GetUpgradesUpgradeArray []GetUpgradesUpgradeInput
+
+func (GetUpgradesUpgradeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUpgradesUpgrade)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeArray) ToGetUpgradesUpgradeArrayOutput() GetUpgradesUpgradeArrayOutput {
+	return i.ToGetUpgradesUpgradeArrayOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeArray) ToGetUpgradesUpgradeArrayOutputWithContext(ctx context.Context) GetUpgradesUpgradeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeArrayOutput)
+}
+
+type GetUpgradesUpgradeOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgrade)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeOutput) ToGetUpgradesUpgradeOutput() GetUpgradesUpgradeOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeOutput) ToGetUpgradesUpgradeOutputWithContext(ctx context.Context) GetUpgradesUpgradeOutput {
+	return o
+}
+
+// The list of component upgrades.
+func (o GetUpgradesUpgradeOutput) ComponentUpgrades() GetUpgradesUpgradeComponentUpgradeArrayOutput {
+	return o.ApplyT(func(v GetUpgradesUpgrade) []GetUpgradesUpgradeComponentUpgrade { return v.ComponentUpgrades }).(GetUpgradesUpgradeComponentUpgradeArrayOutput)
+}
+
+// Additional information about the private cloud upgrade.
+func (o GetUpgradesUpgradeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgrade) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// End of the edit window (RFC3339).
+func (o GetUpgradesUpgradeOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgrade) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The estimated total duration of the upgrade in seconds. This information can be used to plan or schedule upgrades to minimize disruptions. Please note that the estimated duration is only an estimate. The actual upgrade duration may vary. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o GetUpgradesUpgradeOutput) EstimatedDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgrade) string { return v.EstimatedDuration }).(pulumi.StringOutput)
+}
+
+// The resource name of the specific Upgrade to retrieve. If provided, the 'upgrades' list will contain only this upgrade.
+func (o GetUpgradesUpgradeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgrade) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Schedule details for the upgrade.
+func (o GetUpgradesUpgradeOutput) Schedules() GetUpgradesUpgradeScheduleArrayOutput {
+	return o.ApplyT(func(v GetUpgradesUpgrade) []GetUpgradesUpgradeSchedule { return v.Schedules }).(GetUpgradesUpgradeScheduleArrayOutput)
+}
+
+// The start version of the private cloud for this upgrade.
+func (o GetUpgradesUpgradeOutput) StartVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgrade) string { return v.StartVersion }).(pulumi.StringOutput)
+}
+
+// Component's upgrade state.
+func (o GetUpgradesUpgradeOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgrade) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The targeted version of the private cloud at the end of the upgrade.
+func (o GetUpgradesUpgradeOutput) TargetVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgrade) string { return v.TargetVersion }).(pulumi.StringOutput)
+}
+
+// The type of upgrade. Possible values include: `VSPHERE_UPGRADE`, `VSPHERE_PATCH`, `WORKAROUND`, `FIRMWARE_UPGRADE`, `SWITCH_UPGRADE`, `OTHER`, `INFRASTRUCTURE_UPGRADE`.
+func (o GetUpgradesUpgradeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgrade) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetUpgradesUpgradeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUpgradesUpgrade)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeArrayOutput) ToGetUpgradesUpgradeArrayOutput() GetUpgradesUpgradeArrayOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeArrayOutput) ToGetUpgradesUpgradeArrayOutputWithContext(ctx context.Context) GetUpgradesUpgradeArrayOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeArrayOutput) Index(i pulumi.IntInput) GetUpgradesUpgradeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUpgradesUpgrade {
+		return vs[0].([]GetUpgradesUpgrade)[vs[1].(int)]
+	}).(GetUpgradesUpgradeOutput)
+}
+
+type GetUpgradesUpgradeComponentUpgrade struct {
+	// The type of vmware component being upgraded.
+	ComponentType string `pulumi:"componentType"`
+	// Component's upgrade state.
+	State string `pulumi:"state"`
+}
+
+// GetUpgradesUpgradeComponentUpgradeInput is an input type that accepts GetUpgradesUpgradeComponentUpgradeArgs and GetUpgradesUpgradeComponentUpgradeOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeComponentUpgradeInput` via:
+//
+//	GetUpgradesUpgradeComponentUpgradeArgs{...}
+type GetUpgradesUpgradeComponentUpgradeInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeComponentUpgradeOutput() GetUpgradesUpgradeComponentUpgradeOutput
+	ToGetUpgradesUpgradeComponentUpgradeOutputWithContext(context.Context) GetUpgradesUpgradeComponentUpgradeOutput
+}
+
+type GetUpgradesUpgradeComponentUpgradeArgs struct {
+	// The type of vmware component being upgraded.
+	ComponentType pulumi.StringInput `pulumi:"componentType"`
+	// Component's upgrade state.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetUpgradesUpgradeComponentUpgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeComponentUpgrade)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeComponentUpgradeArgs) ToGetUpgradesUpgradeComponentUpgradeOutput() GetUpgradesUpgradeComponentUpgradeOutput {
+	return i.ToGetUpgradesUpgradeComponentUpgradeOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeComponentUpgradeArgs) ToGetUpgradesUpgradeComponentUpgradeOutputWithContext(ctx context.Context) GetUpgradesUpgradeComponentUpgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeComponentUpgradeOutput)
+}
+
+// GetUpgradesUpgradeComponentUpgradeArrayInput is an input type that accepts GetUpgradesUpgradeComponentUpgradeArray and GetUpgradesUpgradeComponentUpgradeArrayOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeComponentUpgradeArrayInput` via:
+//
+//	GetUpgradesUpgradeComponentUpgradeArray{ GetUpgradesUpgradeComponentUpgradeArgs{...} }
+type GetUpgradesUpgradeComponentUpgradeArrayInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeComponentUpgradeArrayOutput() GetUpgradesUpgradeComponentUpgradeArrayOutput
+	ToGetUpgradesUpgradeComponentUpgradeArrayOutputWithContext(context.Context) GetUpgradesUpgradeComponentUpgradeArrayOutput
+}
+
+type GetUpgradesUpgradeComponentUpgradeArray []GetUpgradesUpgradeComponentUpgradeInput
+
+func (GetUpgradesUpgradeComponentUpgradeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUpgradesUpgradeComponentUpgrade)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeComponentUpgradeArray) ToGetUpgradesUpgradeComponentUpgradeArrayOutput() GetUpgradesUpgradeComponentUpgradeArrayOutput {
+	return i.ToGetUpgradesUpgradeComponentUpgradeArrayOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeComponentUpgradeArray) ToGetUpgradesUpgradeComponentUpgradeArrayOutputWithContext(ctx context.Context) GetUpgradesUpgradeComponentUpgradeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeComponentUpgradeArrayOutput)
+}
+
+type GetUpgradesUpgradeComponentUpgradeOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeComponentUpgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeComponentUpgrade)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeComponentUpgradeOutput) ToGetUpgradesUpgradeComponentUpgradeOutput() GetUpgradesUpgradeComponentUpgradeOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeComponentUpgradeOutput) ToGetUpgradesUpgradeComponentUpgradeOutputWithContext(ctx context.Context) GetUpgradesUpgradeComponentUpgradeOutput {
+	return o
+}
+
+// The type of vmware component being upgraded.
+func (o GetUpgradesUpgradeComponentUpgradeOutput) ComponentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeComponentUpgrade) string { return v.ComponentType }).(pulumi.StringOutput)
+}
+
+// Component's upgrade state.
+func (o GetUpgradesUpgradeComponentUpgradeOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeComponentUpgrade) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetUpgradesUpgradeComponentUpgradeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeComponentUpgradeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUpgradesUpgradeComponentUpgrade)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeComponentUpgradeArrayOutput) ToGetUpgradesUpgradeComponentUpgradeArrayOutput() GetUpgradesUpgradeComponentUpgradeArrayOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeComponentUpgradeArrayOutput) ToGetUpgradesUpgradeComponentUpgradeArrayOutputWithContext(ctx context.Context) GetUpgradesUpgradeComponentUpgradeArrayOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeComponentUpgradeArrayOutput) Index(i pulumi.IntInput) GetUpgradesUpgradeComponentUpgradeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUpgradesUpgradeComponentUpgrade {
+		return vs[0].([]GetUpgradesUpgradeComponentUpgrade)[vs[1].(int)]
+	}).(GetUpgradesUpgradeComponentUpgradeOutput)
+}
+
+type GetUpgradesUpgradeSchedule struct {
+	// Constraints applied to the schedule.
+	Constraints GetUpgradesUpgradeScheduleConstraints `pulumi:"constraints"`
+	// The schedule is open for edits during this time interval.
+	EditWindows []GetUpgradesUpgradeScheduleEditWindow `pulumi:"editWindows"`
+	// Indicates who most recently edited the upgrade schedule. Possible values: `SYSTEM`, `USER`.
+	LastEditor string `pulumi:"lastEditor"`
+	// Start of the edit window (RFC3339).
+	StartTime string `pulumi:"startTime"`
+	// Weekly time windows for upgrade activities.
+	WeeklyWindows []GetUpgradesUpgradeScheduleWeeklyWindow `pulumi:"weeklyWindows"`
+}
+
+// GetUpgradesUpgradeScheduleInput is an input type that accepts GetUpgradesUpgradeScheduleArgs and GetUpgradesUpgradeScheduleOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeScheduleInput` via:
+//
+//	GetUpgradesUpgradeScheduleArgs{...}
+type GetUpgradesUpgradeScheduleInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeScheduleOutput() GetUpgradesUpgradeScheduleOutput
+	ToGetUpgradesUpgradeScheduleOutputWithContext(context.Context) GetUpgradesUpgradeScheduleOutput
+}
+
+type GetUpgradesUpgradeScheduleArgs struct {
+	// Constraints applied to the schedule.
+	Constraints GetUpgradesUpgradeScheduleConstraintsInput `pulumi:"constraints"`
+	// The schedule is open for edits during this time interval.
+	EditWindows GetUpgradesUpgradeScheduleEditWindowArrayInput `pulumi:"editWindows"`
+	// Indicates who most recently edited the upgrade schedule. Possible values: `SYSTEM`, `USER`.
+	LastEditor pulumi.StringInput `pulumi:"lastEditor"`
+	// Start of the edit window (RFC3339).
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// Weekly time windows for upgrade activities.
+	WeeklyWindows GetUpgradesUpgradeScheduleWeeklyWindowArrayInput `pulumi:"weeklyWindows"`
+}
+
+func (GetUpgradesUpgradeScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeSchedule)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeScheduleArgs) ToGetUpgradesUpgradeScheduleOutput() GetUpgradesUpgradeScheduleOutput {
+	return i.ToGetUpgradesUpgradeScheduleOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeScheduleArgs) ToGetUpgradesUpgradeScheduleOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeScheduleOutput)
+}
+
+// GetUpgradesUpgradeScheduleArrayInput is an input type that accepts GetUpgradesUpgradeScheduleArray and GetUpgradesUpgradeScheduleArrayOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeScheduleArrayInput` via:
+//
+//	GetUpgradesUpgradeScheduleArray{ GetUpgradesUpgradeScheduleArgs{...} }
+type GetUpgradesUpgradeScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeScheduleArrayOutput() GetUpgradesUpgradeScheduleArrayOutput
+	ToGetUpgradesUpgradeScheduleArrayOutputWithContext(context.Context) GetUpgradesUpgradeScheduleArrayOutput
+}
+
+type GetUpgradesUpgradeScheduleArray []GetUpgradesUpgradeScheduleInput
+
+func (GetUpgradesUpgradeScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUpgradesUpgradeSchedule)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeScheduleArray) ToGetUpgradesUpgradeScheduleArrayOutput() GetUpgradesUpgradeScheduleArrayOutput {
+	return i.ToGetUpgradesUpgradeScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeScheduleArray) ToGetUpgradesUpgradeScheduleArrayOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeScheduleArrayOutput)
+}
+
+type GetUpgradesUpgradeScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeSchedule)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeScheduleOutput) ToGetUpgradesUpgradeScheduleOutput() GetUpgradesUpgradeScheduleOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleOutput) ToGetUpgradesUpgradeScheduleOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleOutput {
+	return o
+}
+
+// Constraints applied to the schedule.
+func (o GetUpgradesUpgradeScheduleOutput) Constraints() GetUpgradesUpgradeScheduleConstraintsOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeSchedule) GetUpgradesUpgradeScheduleConstraints { return v.Constraints }).(GetUpgradesUpgradeScheduleConstraintsOutput)
+}
+
+// The schedule is open for edits during this time interval.
+func (o GetUpgradesUpgradeScheduleOutput) EditWindows() GetUpgradesUpgradeScheduleEditWindowArrayOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeSchedule) []GetUpgradesUpgradeScheduleEditWindow { return v.EditWindows }).(GetUpgradesUpgradeScheduleEditWindowArrayOutput)
+}
+
+// Indicates who most recently edited the upgrade schedule. Possible values: `SYSTEM`, `USER`.
+func (o GetUpgradesUpgradeScheduleOutput) LastEditor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeSchedule) string { return v.LastEditor }).(pulumi.StringOutput)
+}
+
+// Start of the edit window (RFC3339).
+func (o GetUpgradesUpgradeScheduleOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeSchedule) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Weekly time windows for upgrade activities.
+func (o GetUpgradesUpgradeScheduleOutput) WeeklyWindows() GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeSchedule) []GetUpgradesUpgradeScheduleWeeklyWindow { return v.WeeklyWindows }).(GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput)
+}
+
+type GetUpgradesUpgradeScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUpgradesUpgradeSchedule)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeScheduleArrayOutput) ToGetUpgradesUpgradeScheduleArrayOutput() GetUpgradesUpgradeScheduleArrayOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleArrayOutput) ToGetUpgradesUpgradeScheduleArrayOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleArrayOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleArrayOutput) Index(i pulumi.IntInput) GetUpgradesUpgradeScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUpgradesUpgradeSchedule {
+		return vs[0].([]GetUpgradesUpgradeSchedule)[vs[1].(int)]
+	}).(GetUpgradesUpgradeScheduleOutput)
+}
+
+type GetUpgradesUpgradeScheduleConstraints struct {
+	// A list of intervals in which maintenance windows are not allowed.
+	DisallowedIntervals GetUpgradesUpgradeScheduleConstraintsDisallowedIntervals `pulumi:"disallowedIntervals"`
+	// Minimum number of hours must be allotted for the upgrade activities for each selected day.
+	MinHoursDay int `pulumi:"minHoursDay"`
+	// The minimum number of weekly hours must be allotted for the upgrade activities.
+	MinHoursWeek int `pulumi:"minHoursWeek"`
+	// The user can only reschedule an upgrade that starts within this range.
+	RescheduleDateRange GetUpgradesUpgradeScheduleConstraintsRescheduleDateRange `pulumi:"rescheduleDateRange"`
+}
+
+// GetUpgradesUpgradeScheduleConstraintsInput is an input type that accepts GetUpgradesUpgradeScheduleConstraintsArgs and GetUpgradesUpgradeScheduleConstraintsOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeScheduleConstraintsInput` via:
+//
+//	GetUpgradesUpgradeScheduleConstraintsArgs{...}
+type GetUpgradesUpgradeScheduleConstraintsInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeScheduleConstraintsOutput() GetUpgradesUpgradeScheduleConstraintsOutput
+	ToGetUpgradesUpgradeScheduleConstraintsOutputWithContext(context.Context) GetUpgradesUpgradeScheduleConstraintsOutput
+}
+
+type GetUpgradesUpgradeScheduleConstraintsArgs struct {
+	// A list of intervals in which maintenance windows are not allowed.
+	DisallowedIntervals GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsInput `pulumi:"disallowedIntervals"`
+	// Minimum number of hours must be allotted for the upgrade activities for each selected day.
+	MinHoursDay pulumi.IntInput `pulumi:"minHoursDay"`
+	// The minimum number of weekly hours must be allotted for the upgrade activities.
+	MinHoursWeek pulumi.IntInput `pulumi:"minHoursWeek"`
+	// The user can only reschedule an upgrade that starts within this range.
+	RescheduleDateRange GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeInput `pulumi:"rescheduleDateRange"`
+}
+
+func (GetUpgradesUpgradeScheduleConstraintsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraints)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeScheduleConstraintsArgs) ToGetUpgradesUpgradeScheduleConstraintsOutput() GetUpgradesUpgradeScheduleConstraintsOutput {
+	return i.ToGetUpgradesUpgradeScheduleConstraintsOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeScheduleConstraintsArgs) ToGetUpgradesUpgradeScheduleConstraintsOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleConstraintsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeScheduleConstraintsOutput)
+}
+
+type GetUpgradesUpgradeScheduleConstraintsOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeScheduleConstraintsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraints)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsOutput) ToGetUpgradesUpgradeScheduleConstraintsOutput() GetUpgradesUpgradeScheduleConstraintsOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsOutput) ToGetUpgradesUpgradeScheduleConstraintsOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleConstraintsOutput {
+	return o
+}
+
+// A list of intervals in which maintenance windows are not allowed.
+func (o GetUpgradesUpgradeScheduleConstraintsOutput) DisallowedIntervals() GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleConstraints) GetUpgradesUpgradeScheduleConstraintsDisallowedIntervals {
+		return v.DisallowedIntervals
+	}).(GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput)
+}
+
+// Minimum number of hours must be allotted for the upgrade activities for each selected day.
+func (o GetUpgradesUpgradeScheduleConstraintsOutput) MinHoursDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleConstraints) int { return v.MinHoursDay }).(pulumi.IntOutput)
+}
+
+// The minimum number of weekly hours must be allotted for the upgrade activities.
+func (o GetUpgradesUpgradeScheduleConstraintsOutput) MinHoursWeek() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleConstraints) int { return v.MinHoursWeek }).(pulumi.IntOutput)
+}
+
+// The user can only reschedule an upgrade that starts within this range.
+func (o GetUpgradesUpgradeScheduleConstraintsOutput) RescheduleDateRange() GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleConstraints) GetUpgradesUpgradeScheduleConstraintsRescheduleDateRange {
+		return v.RescheduleDateRange
+	}).(GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput)
+}
+
+type GetUpgradesUpgradeScheduleConstraintsDisallowedIntervals struct {
+	EndDay string `pulumi:"endDay"`
+	// End of the edit window (RFC3339).
+	EndTime  GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTime `pulumi:"endTime"`
+	StartDay string                                                          `pulumi:"startDay"`
+	// Start of the edit window (RFC3339).
+	StartTime GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTime `pulumi:"startTime"`
+}
+
+// GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsInput is an input type that accepts GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsArgs and GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsInput` via:
+//
+//	GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsArgs{...}
+type GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput() GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput
+	ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutputWithContext(context.Context) GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput
+}
+
+type GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsArgs struct {
+	EndDay pulumi.StringInput `pulumi:"endDay"`
+	// End of the edit window (RFC3339).
+	EndTime  GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeInput `pulumi:"endTime"`
+	StartDay pulumi.StringInput                                                   `pulumi:"startDay"`
+	// Start of the edit window (RFC3339).
+	StartTime GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeInput `pulumi:"startTime"`
+}
+
+func (GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraintsDisallowedIntervals)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsArgs) ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput() GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput {
+	return i.ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsArgs) ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput)
+}
+
+type GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraintsDisallowedIntervals)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput) ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput() GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput) ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput) EndDay() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleConstraintsDisallowedIntervals) string { return v.EndDay }).(pulumi.StringOutput)
+}
+
+// End of the edit window (RFC3339).
+func (o GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput) EndTime() GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleConstraintsDisallowedIntervals) GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTime {
+		return v.EndTime
+	}).(GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput)
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput) StartDay() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleConstraintsDisallowedIntervals) string { return v.StartDay }).(pulumi.StringOutput)
+}
+
+// Start of the edit window (RFC3339).
+func (o GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput) StartTime() GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleConstraintsDisallowedIntervals) GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTime {
+		return v.StartTime
+	}).(GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput)
+}
+
+type GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTime struct {
+	Hours   int `pulumi:"hours"`
+	Minutes int `pulumi:"minutes"`
+}
+
+// GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeInput is an input type that accepts GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeArgs and GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeInput` via:
+//
+//	GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeArgs{...}
+type GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput() GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput
+	ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutputWithContext(context.Context) GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput
+}
+
+type GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeArgs struct {
+	Hours   pulumi.IntInput `pulumi:"hours"`
+	Minutes pulumi.IntInput `pulumi:"minutes"`
+}
+
+func (GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTime)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeArgs) ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput() GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput {
+	return i.ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeArgs) ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput)
+}
+
+type GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTime)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput) ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput() GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput) ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTime) int { return v.Hours }).(pulumi.IntOutput)
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput) Minutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTime) int { return v.Minutes }).(pulumi.IntOutput)
+}
+
+type GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTime struct {
+	Hours   int `pulumi:"hours"`
+	Minutes int `pulumi:"minutes"`
+}
+
+// GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeInput is an input type that accepts GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeArgs and GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeInput` via:
+//
+//	GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeArgs{...}
+type GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput() GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput
+	ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutputWithContext(context.Context) GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput
+}
+
+type GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeArgs struct {
+	Hours   pulumi.IntInput `pulumi:"hours"`
+	Minutes pulumi.IntInput `pulumi:"minutes"`
+}
+
+func (GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTime)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeArgs) ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput() GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput {
+	return i.ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeArgs) ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput)
+}
+
+type GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTime)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput) ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput() GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput) ToGetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTime) int { return v.Hours }).(pulumi.IntOutput)
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput) Minutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTime) int { return v.Minutes }).(pulumi.IntOutput)
+}
+
+type GetUpgradesUpgradeScheduleConstraintsRescheduleDateRange struct {
+	// End of the edit window (RFC3339).
+	EndTime string `pulumi:"endTime"`
+	// Start of the edit window (RFC3339).
+	StartTime string `pulumi:"startTime"`
+}
+
+// GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeInput is an input type that accepts GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeArgs and GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeInput` via:
+//
+//	GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeArgs{...}
+type GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput() GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput
+	ToGetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutputWithContext(context.Context) GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput
+}
+
+type GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeArgs struct {
+	// End of the edit window (RFC3339).
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Start of the edit window (RFC3339).
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraintsRescheduleDateRange)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeArgs) ToGetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput() GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput {
+	return i.ToGetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeArgs) ToGetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput)
+}
+
+type GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraintsRescheduleDateRange)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput) ToGetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput() GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput) ToGetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput {
+	return o
+}
+
+// End of the edit window (RFC3339).
+func (o GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleConstraintsRescheduleDateRange) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Start of the edit window (RFC3339).
+func (o GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleConstraintsRescheduleDateRange) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type GetUpgradesUpgradeScheduleEditWindow struct {
+	// End of the edit window (RFC3339).
+	EndTime string `pulumi:"endTime"`
+	// Start of the edit window (RFC3339).
+	StartTime string `pulumi:"startTime"`
+}
+
+// GetUpgradesUpgradeScheduleEditWindowInput is an input type that accepts GetUpgradesUpgradeScheduleEditWindowArgs and GetUpgradesUpgradeScheduleEditWindowOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeScheduleEditWindowInput` via:
+//
+//	GetUpgradesUpgradeScheduleEditWindowArgs{...}
+type GetUpgradesUpgradeScheduleEditWindowInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeScheduleEditWindowOutput() GetUpgradesUpgradeScheduleEditWindowOutput
+	ToGetUpgradesUpgradeScheduleEditWindowOutputWithContext(context.Context) GetUpgradesUpgradeScheduleEditWindowOutput
+}
+
+type GetUpgradesUpgradeScheduleEditWindowArgs struct {
+	// End of the edit window (RFC3339).
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Start of the edit window (RFC3339).
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetUpgradesUpgradeScheduleEditWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleEditWindow)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeScheduleEditWindowArgs) ToGetUpgradesUpgradeScheduleEditWindowOutput() GetUpgradesUpgradeScheduleEditWindowOutput {
+	return i.ToGetUpgradesUpgradeScheduleEditWindowOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeScheduleEditWindowArgs) ToGetUpgradesUpgradeScheduleEditWindowOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleEditWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeScheduleEditWindowOutput)
+}
+
+// GetUpgradesUpgradeScheduleEditWindowArrayInput is an input type that accepts GetUpgradesUpgradeScheduleEditWindowArray and GetUpgradesUpgradeScheduleEditWindowArrayOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeScheduleEditWindowArrayInput` via:
+//
+//	GetUpgradesUpgradeScheduleEditWindowArray{ GetUpgradesUpgradeScheduleEditWindowArgs{...} }
+type GetUpgradesUpgradeScheduleEditWindowArrayInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeScheduleEditWindowArrayOutput() GetUpgradesUpgradeScheduleEditWindowArrayOutput
+	ToGetUpgradesUpgradeScheduleEditWindowArrayOutputWithContext(context.Context) GetUpgradesUpgradeScheduleEditWindowArrayOutput
+}
+
+type GetUpgradesUpgradeScheduleEditWindowArray []GetUpgradesUpgradeScheduleEditWindowInput
+
+func (GetUpgradesUpgradeScheduleEditWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUpgradesUpgradeScheduleEditWindow)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeScheduleEditWindowArray) ToGetUpgradesUpgradeScheduleEditWindowArrayOutput() GetUpgradesUpgradeScheduleEditWindowArrayOutput {
+	return i.ToGetUpgradesUpgradeScheduleEditWindowArrayOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeScheduleEditWindowArray) ToGetUpgradesUpgradeScheduleEditWindowArrayOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleEditWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeScheduleEditWindowArrayOutput)
+}
+
+type GetUpgradesUpgradeScheduleEditWindowOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeScheduleEditWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleEditWindow)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeScheduleEditWindowOutput) ToGetUpgradesUpgradeScheduleEditWindowOutput() GetUpgradesUpgradeScheduleEditWindowOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleEditWindowOutput) ToGetUpgradesUpgradeScheduleEditWindowOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleEditWindowOutput {
+	return o
+}
+
+// End of the edit window (RFC3339).
+func (o GetUpgradesUpgradeScheduleEditWindowOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleEditWindow) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Start of the edit window (RFC3339).
+func (o GetUpgradesUpgradeScheduleEditWindowOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleEditWindow) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type GetUpgradesUpgradeScheduleEditWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeScheduleEditWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUpgradesUpgradeScheduleEditWindow)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeScheduleEditWindowArrayOutput) ToGetUpgradesUpgradeScheduleEditWindowArrayOutput() GetUpgradesUpgradeScheduleEditWindowArrayOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleEditWindowArrayOutput) ToGetUpgradesUpgradeScheduleEditWindowArrayOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleEditWindowArrayOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleEditWindowArrayOutput) Index(i pulumi.IntInput) GetUpgradesUpgradeScheduleEditWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUpgradesUpgradeScheduleEditWindow {
+		return vs[0].([]GetUpgradesUpgradeScheduleEditWindow)[vs[1].(int)]
+	}).(GetUpgradesUpgradeScheduleEditWindowOutput)
+}
+
+type GetUpgradesUpgradeScheduleWeeklyWindow struct {
+	// Day of the week for this window.
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// The duration of the window in seconds.
+	Duration string `pulumi:"duration"`
+	// Start of the edit window (RFC3339).
+	StartTimes []GetUpgradesUpgradeScheduleWeeklyWindowStartTime `pulumi:"startTimes"`
+}
+
+// GetUpgradesUpgradeScheduleWeeklyWindowInput is an input type that accepts GetUpgradesUpgradeScheduleWeeklyWindowArgs and GetUpgradesUpgradeScheduleWeeklyWindowOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeScheduleWeeklyWindowInput` via:
+//
+//	GetUpgradesUpgradeScheduleWeeklyWindowArgs{...}
+type GetUpgradesUpgradeScheduleWeeklyWindowInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeScheduleWeeklyWindowOutput() GetUpgradesUpgradeScheduleWeeklyWindowOutput
+	ToGetUpgradesUpgradeScheduleWeeklyWindowOutputWithContext(context.Context) GetUpgradesUpgradeScheduleWeeklyWindowOutput
+}
+
+type GetUpgradesUpgradeScheduleWeeklyWindowArgs struct {
+	// Day of the week for this window.
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// The duration of the window in seconds.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Start of the edit window (RFC3339).
+	StartTimes GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayInput `pulumi:"startTimes"`
+}
+
+func (GetUpgradesUpgradeScheduleWeeklyWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleWeeklyWindow)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeScheduleWeeklyWindowArgs) ToGetUpgradesUpgradeScheduleWeeklyWindowOutput() GetUpgradesUpgradeScheduleWeeklyWindowOutput {
+	return i.ToGetUpgradesUpgradeScheduleWeeklyWindowOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeScheduleWeeklyWindowArgs) ToGetUpgradesUpgradeScheduleWeeklyWindowOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleWeeklyWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeScheduleWeeklyWindowOutput)
+}
+
+// GetUpgradesUpgradeScheduleWeeklyWindowArrayInput is an input type that accepts GetUpgradesUpgradeScheduleWeeklyWindowArray and GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeScheduleWeeklyWindowArrayInput` via:
+//
+//	GetUpgradesUpgradeScheduleWeeklyWindowArray{ GetUpgradesUpgradeScheduleWeeklyWindowArgs{...} }
+type GetUpgradesUpgradeScheduleWeeklyWindowArrayInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeScheduleWeeklyWindowArrayOutput() GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput
+	ToGetUpgradesUpgradeScheduleWeeklyWindowArrayOutputWithContext(context.Context) GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput
+}
+
+type GetUpgradesUpgradeScheduleWeeklyWindowArray []GetUpgradesUpgradeScheduleWeeklyWindowInput
+
+func (GetUpgradesUpgradeScheduleWeeklyWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUpgradesUpgradeScheduleWeeklyWindow)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeScheduleWeeklyWindowArray) ToGetUpgradesUpgradeScheduleWeeklyWindowArrayOutput() GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput {
+	return i.ToGetUpgradesUpgradeScheduleWeeklyWindowArrayOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeScheduleWeeklyWindowArray) ToGetUpgradesUpgradeScheduleWeeklyWindowArrayOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput)
+}
+
+type GetUpgradesUpgradeScheduleWeeklyWindowOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeScheduleWeeklyWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleWeeklyWindow)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeScheduleWeeklyWindowOutput) ToGetUpgradesUpgradeScheduleWeeklyWindowOutput() GetUpgradesUpgradeScheduleWeeklyWindowOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleWeeklyWindowOutput) ToGetUpgradesUpgradeScheduleWeeklyWindowOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleWeeklyWindowOutput {
+	return o
+}
+
+// Day of the week for this window.
+func (o GetUpgradesUpgradeScheduleWeeklyWindowOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleWeeklyWindow) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+// The duration of the window in seconds.
+func (o GetUpgradesUpgradeScheduleWeeklyWindowOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleWeeklyWindow) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Start of the edit window (RFC3339).
+func (o GetUpgradesUpgradeScheduleWeeklyWindowOutput) StartTimes() GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleWeeklyWindow) []GetUpgradesUpgradeScheduleWeeklyWindowStartTime {
+		return v.StartTimes
+	}).(GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput)
+}
+
+type GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUpgradesUpgradeScheduleWeeklyWindow)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput) ToGetUpgradesUpgradeScheduleWeeklyWindowArrayOutput() GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput) ToGetUpgradesUpgradeScheduleWeeklyWindowArrayOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput) Index(i pulumi.IntInput) GetUpgradesUpgradeScheduleWeeklyWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUpgradesUpgradeScheduleWeeklyWindow {
+		return vs[0].([]GetUpgradesUpgradeScheduleWeeklyWindow)[vs[1].(int)]
+	}).(GetUpgradesUpgradeScheduleWeeklyWindowOutput)
+}
+
+type GetUpgradesUpgradeScheduleWeeklyWindowStartTime struct {
+	Hours   int `pulumi:"hours"`
+	Minutes int `pulumi:"minutes"`
+}
+
+// GetUpgradesUpgradeScheduleWeeklyWindowStartTimeInput is an input type that accepts GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArgs and GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeScheduleWeeklyWindowStartTimeInput` via:
+//
+//	GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArgs{...}
+type GetUpgradesUpgradeScheduleWeeklyWindowStartTimeInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput() GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput
+	ToGetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutputWithContext(context.Context) GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput
+}
+
+type GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArgs struct {
+	Hours   pulumi.IntInput `pulumi:"hours"`
+	Minutes pulumi.IntInput `pulumi:"minutes"`
+}
+
+func (GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleWeeklyWindowStartTime)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArgs) ToGetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput() GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput {
+	return i.ToGetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArgs) ToGetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput)
+}
+
+// GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayInput is an input type that accepts GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArray and GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput values.
+// You can construct a concrete instance of `GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayInput` via:
+//
+//	GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArray{ GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArgs{...} }
+type GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayInput interface {
+	pulumi.Input
+
+	ToGetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput() GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput
+	ToGetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutputWithContext(context.Context) GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput
+}
+
+type GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArray []GetUpgradesUpgradeScheduleWeeklyWindowStartTimeInput
+
+func (GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUpgradesUpgradeScheduleWeeklyWindowStartTime)(nil)).Elem()
+}
+
+func (i GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArray) ToGetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput() GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput {
+	return i.ToGetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutputWithContext(context.Background())
+}
+
+func (i GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArray) ToGetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput)
+}
+
+type GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUpgradesUpgradeScheduleWeeklyWindowStartTime)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput) ToGetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput() GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput) ToGetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleWeeklyWindowStartTime) int { return v.Hours }).(pulumi.IntOutput)
+}
+
+func (o GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput) Minutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUpgradesUpgradeScheduleWeeklyWindowStartTime) int { return v.Minutes }).(pulumi.IntOutput)
+}
+
+type GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUpgradesUpgradeScheduleWeeklyWindowStartTime)(nil)).Elem()
+}
+
+func (o GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput) ToGetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput() GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput) ToGetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutputWithContext(ctx context.Context) GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput {
+	return o
+}
+
+func (o GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput) Index(i pulumi.IntInput) GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUpgradesUpgradeScheduleWeeklyWindowStartTime {
+		return vs[0].([]GetUpgradesUpgradeScheduleWeeklyWindowStartTime)[vs[1].(int)]
+	}).(GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsInput)(nil)).Elem(), ClusterAutoscalingSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsPtrInput)(nil)).Elem(), ClusterAutoscalingSettingsArgs{})
@@ -8464,6 +9659,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudVcenterArrayInput)(nil)).Elem(), PrivateCloudVcenterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetDhcpAddressRangeInput)(nil)).Elem(), SubnetDhcpAddressRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetDhcpAddressRangeArrayInput)(nil)).Elem(), SubnetDhcpAddressRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAnnouncementsAnnouncementInput)(nil)).Elem(), GetAnnouncementsAnnouncementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAnnouncementsAnnouncementArrayInput)(nil)).Elem(), GetAnnouncementsAnnouncementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingInput)(nil)).Elem(), GetClusterAutoscalingSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingArrayInput)(nil)).Elem(), GetClusterAutoscalingSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyInput)(nil)).Elem(), GetClusterAutoscalingSettingAutoscalingPolicyArgs{})
@@ -8522,6 +9719,23 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudVcenterArrayInput)(nil)).Elem(), GetPrivateCloudVcenterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetDhcpAddressRangeInput)(nil)).Elem(), GetSubnetDhcpAddressRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetDhcpAddressRangeArrayInput)(nil)).Elem(), GetSubnetDhcpAddressRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeInput)(nil)).Elem(), GetUpgradesUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeArrayInput)(nil)).Elem(), GetUpgradesUpgradeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeComponentUpgradeInput)(nil)).Elem(), GetUpgradesUpgradeComponentUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeComponentUpgradeArrayInput)(nil)).Elem(), GetUpgradesUpgradeComponentUpgradeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeScheduleInput)(nil)).Elem(), GetUpgradesUpgradeScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeScheduleArrayInput)(nil)).Elem(), GetUpgradesUpgradeScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraintsInput)(nil)).Elem(), GetUpgradesUpgradeScheduleConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsInput)(nil)).Elem(), GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeInput)(nil)).Elem(), GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeInput)(nil)).Elem(), GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeInput)(nil)).Elem(), GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeScheduleEditWindowInput)(nil)).Elem(), GetUpgradesUpgradeScheduleEditWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeScheduleEditWindowArrayInput)(nil)).Elem(), GetUpgradesUpgradeScheduleEditWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeScheduleWeeklyWindowInput)(nil)).Elem(), GetUpgradesUpgradeScheduleWeeklyWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeScheduleWeeklyWindowArrayInput)(nil)).Elem(), GetUpgradesUpgradeScheduleWeeklyWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeScheduleWeeklyWindowStartTimeInput)(nil)).Elem(), GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayInput)(nil)).Elem(), GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArray{})
 	pulumi.RegisterOutputType(ClusterAutoscalingSettingsOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingSettingsAutoscalingPolicyOutput{})
@@ -8579,6 +9793,8 @@ func init() {
 	pulumi.RegisterOutputType(PrivateCloudVcenterArrayOutput{})
 	pulumi.RegisterOutputType(SubnetDhcpAddressRangeOutput{})
 	pulumi.RegisterOutputType(SubnetDhcpAddressRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetAnnouncementsAnnouncementOutput{})
+	pulumi.RegisterOutputType(GetAnnouncementsAnnouncementArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAutoscalingSettingOutput{})
 	pulumi.RegisterOutputType(GetClusterAutoscalingSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAutoscalingSettingAutoscalingPolicyOutput{})
@@ -8637,4 +9853,21 @@ func init() {
 	pulumi.RegisterOutputType(GetPrivateCloudVcenterArrayOutput{})
 	pulumi.RegisterOutputType(GetSubnetDhcpAddressRangeOutput{})
 	pulumi.RegisterOutputType(GetSubnetDhcpAddressRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeArrayOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeComponentUpgradeOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeComponentUpgradeArrayOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeScheduleOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeScheduleConstraintsOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeScheduleEditWindowOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeScheduleEditWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeScheduleWeeklyWindowOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeScheduleWeeklyWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeScheduleWeeklyWindowStartTimeOutput{})
+	pulumi.RegisterOutputType(GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArrayOutput{})
 }

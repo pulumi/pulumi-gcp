@@ -560,8 +560,7 @@ import (
 //				Location: pulumi.String("us-central1"),
 //				Metadata: &cloudrun.ServiceMetadataArgs{
 //					Annotations: pulumi.StringMap{
-//						"run.googleapis.com/launch-stage": pulumi.String("BETA"),
-//						"run.googleapis.com/iap-enabled":  pulumi.String("true"),
+//						"run.googleapis.com/iap-enabled": pulumi.String("true"),
 //					},
 //				},
 //				Template: &cloudrun.ServiceTemplateArgs{

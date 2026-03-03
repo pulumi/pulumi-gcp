@@ -38,6 +38,7 @@ class RepositoryArgs:
                  vulnerability_scanning_config: Optional[pulumi.Input['RepositoryVulnerabilityScanningConfigArgs']] = None):
         """
         The set of arguments for constructing a Repository resource.
+
         :param pulumi.Input[_builtins.str] format: The format of packages that are stored in the repository. Supported formats
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
@@ -358,6 +359,7 @@ class _RepositoryState:
                  vulnerability_scanning_config: Optional[pulumi.Input['RepositoryVulnerabilityScanningConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Repository resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
                certain package versions can be automatically deleted.
                Map keys are policy IDs supplied by users during policy creation. They must
@@ -1329,6 +1331,7 @@ class Repository(pulumi.CustomResource):
         $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
@@ -1945,6 +1948,7 @@ class Repository(pulumi.CustomResource):
         $ pulumi import gcp:artifactregistry/repository:Repository default {{project}}/{{location}}/{{repository_id}}
         $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RepositoryArgs args: The arguments to use to populate this resource's properties.

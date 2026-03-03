@@ -254,6 +254,7 @@ var moduleMapping = map[string]string{
 	"gke_hub":                    gcpGkeHub,
 	"gkeonprem":                  gcpGkeOnPrem,
 	"healthcare":                 gcpHealthcare,
+	"hypercomputecluster":        "HyperComputeCluster",
 	"iam":                        gcpIAM,
 	"iap":                        gcpIAP,
 	"identity_platform":          gcpIdentityPlatform,

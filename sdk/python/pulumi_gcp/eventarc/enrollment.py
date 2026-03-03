@@ -30,6 +30,7 @@ class EnrollmentArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Enrollment resource.
+
         :param pulumi.Input[_builtins.str] cel_match: A CEL expression identifying which messages this enrollment applies to.
         :param pulumi.Input[_builtins.str] destination: Destination is the Pipeline that the Enrollment is delivering to. It must
                point to the full resource name of a Pipeline. Format:
@@ -205,6 +206,7 @@ class _EnrollmentState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Enrollment resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Resource annotations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -564,6 +566,7 @@ class Enrollment(pulumi.CustomResource):
         $ pulumi import gcp:eventarc/enrollment:Enrollment default {{location}}/{{enrollment_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Resource annotations.
@@ -646,6 +649,7 @@ class Enrollment(pulumi.CustomResource):
         $ pulumi import gcp:eventarc/enrollment:Enrollment default {{project}}/{{location}}/{{enrollment_id}}
         $ pulumi import gcp:eventarc/enrollment:Enrollment default {{location}}/{{enrollment_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnrollmentArgs args: The arguments to use to populate this resource's properties.

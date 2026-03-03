@@ -105,6 +105,7 @@ class ClusterArgs:
                  workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input['ClusterAddonsConfigArgs'] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
@@ -1734,6 +1735,7 @@ class _ClusterState:
                  workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input['ClusterAddonsConfigArgs'] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
@@ -3576,6 +3578,7 @@ class Cluster(pulumi.CustomResource):
             enable_autopilot=True)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']] addons_config: The configuration for addons supported by GKE.
@@ -3903,6 +3906,7 @@ class Cluster(pulumi.CustomResource):
             location="us-central1-a",
             enable_autopilot=True)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

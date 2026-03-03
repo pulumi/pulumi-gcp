@@ -334,6 +334,21 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.statuses);
     }
 
+    /**
+     * If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job &#39;created&#39; once it is in the `RUNNING` state.
+     * 
+     */
+    @Import(name="waitForCompletion")
+    private @Nullable Output<Boolean> waitForCompletion;
+
+    /**
+     * @return If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job &#39;created&#39; once it is in the `RUNNING` state.
+     * 
+     */
+    public Optional<Output<Boolean>> waitForCompletion() {
+        return Optional.ofNullable(this.waitForCompletion);
+    }
+
     private JobState() {}
 
     private JobState(JobState $) {
@@ -356,6 +371,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.sparkConfig = $.sparkConfig;
         this.sparksqlConfig = $.sparksqlConfig;
         this.statuses = $.statuses;
+        this.waitForCompletion = $.waitForCompletion;
     }
 
     public static Builder builder() {
@@ -803,6 +819,27 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder statuses(JobStatusArgs... statuses) {
             return statuses(List.of(statuses));
+        }
+
+        /**
+         * @param waitForCompletion If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job &#39;created&#39; once it is in the `RUNNING` state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder waitForCompletion(@Nullable Output<Boolean> waitForCompletion) {
+            $.waitForCompletion = waitForCompletion;
+            return this;
+        }
+
+        /**
+         * @param waitForCompletion If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job &#39;created&#39; once it is in the `RUNNING` state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder waitForCompletion(Boolean waitForCompletion) {
+            return waitForCompletion(Output.of(waitForCompletion));
         }
 
         public JobState build() {

@@ -59,6 +59,8 @@ __all__ = [
     'SecurityGatewayIamBindingConditionArgsDict',
     'SecurityGatewayIamMemberConditionArgs',
     'SecurityGatewayIamMemberConditionArgsDict',
+    'SecurityGatewayLoggingArgs',
+    'SecurityGatewayLoggingArgsDict',
     'SecurityGatewayProxyProtocolConfigArgs',
     'SecurityGatewayProxyProtocolConfigArgsDict',
     'SecurityGatewayProxyProtocolConfigContextualHeadersArgs',
@@ -1338,6 +1340,15 @@ class SecurityGatewayIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+class SecurityGatewayLoggingArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class SecurityGatewayLoggingArgs:
+    def __init__(__self__):
+        pass
 
 
 class SecurityGatewayProxyProtocolConfigArgsDict(TypedDict):

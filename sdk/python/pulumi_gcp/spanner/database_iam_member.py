@@ -29,6 +29,7 @@ class DatabaseIAMMemberArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatabaseIAMMember resource.
+
         :param pulumi.Input[_builtins.str] database: The name of the Spanner database.
         :param pulumi.Input[_builtins.str] instance: The name of the Spanner instance the database belongs to.
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
@@ -152,6 +153,7 @@ class _DatabaseIAMMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseIAMMember resources.
+
         :param pulumi.Input['DatabaseIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] database: The name of the Spanner database.
@@ -536,6 +538,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
         * {{project}}/{{instance}}/{{database}}
         * {{instance}}/{{database}} (project is taken from provider project)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DatabaseIAMMemberConditionArgs', 'DatabaseIAMMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -802,6 +805,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
 
         * {{project}}/{{instance}}/{{database}}
         * {{instance}}/{{database}} (project is taken from provider project)
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseIAMMemberArgs args: The arguments to use to populate this resource's properties.

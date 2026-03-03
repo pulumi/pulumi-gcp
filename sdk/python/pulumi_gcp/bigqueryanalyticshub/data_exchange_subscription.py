@@ -32,6 +32,7 @@ class DataExchangeSubscriptionArgs:
                  subscriber_contact: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataExchangeSubscription resource.
+
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] data_exchange_location: The name of the location of the Data Exchange.
         :param pulumi.Input[_builtins.str] data_exchange_project: The ID of the Google Cloud project where the Data Exchange is located.
@@ -204,6 +205,7 @@ class _DataExchangeSubscriptionState:
                  subscription_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataExchangeSubscription resources.
+
         :param pulumi.Input[_builtins.str] creation_time: Timestamp when the subscription was created.
         :param pulumi.Input[_builtins.str] data_exchange: Output only. Resource name of the source Data Exchange. e.g. projects/123/locations/us/dataExchanges/456
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -657,6 +659,7 @@ class DataExchangeSubscription(pulumi.CustomResource):
         $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default {{location}}/{{subscription_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -793,6 +796,7 @@ class DataExchangeSubscription(pulumi.CustomResource):
         $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default {{project}}/{{location}}/{{subscription_id}}
         $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default {{location}}/{{subscription_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataExchangeSubscriptionArgs args: The arguments to use to populate this resource's properties.

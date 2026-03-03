@@ -28,6 +28,7 @@ class SacRealmArgs:
                  symantec_options: Optional[pulumi.Input['SacRealmSymantecOptionsArgs']] = None):
         """
         The set of arguments for constructing a SacRealm resource.
+
         :param pulumi.Input[_builtins.str] security_service: SSE service provider associated with the realm.
                Possible values are: `SECURITY_SERVICE_UNSPECIFIED`, `PALO_ALTO_PRISMA_ACCESS`, `SYMANTEC_CLOUD_SWG`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -133,6 +134,7 @@ class _SacRealmState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SacRealm resources.
+
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the realm was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -389,6 +391,7 @@ class SacRealm(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/sacRealm:SacRealm default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -468,6 +471,7 @@ class SacRealm(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/sacRealm:SacRealm default {{project}}/{{name}}
         $ pulumi import gcp:networksecurity/sacRealm:SacRealm default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SacRealmArgs args: The arguments to use to populate this resource's properties.

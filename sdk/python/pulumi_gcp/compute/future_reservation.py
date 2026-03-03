@@ -41,6 +41,7 @@ class FutureReservationArgs:
                  specific_sku_properties: Optional[pulumi.Input['FutureReservationSpecificSkuPropertiesArgs']] = None):
         """
         The set of arguments for constructing a FutureReservation resource.
+
         :param pulumi.Input['FutureReservationTimeWindowArgs'] time_window: Time window for this Future Reservation.
                Structure is documented below.
         :param pulumi.Input['FutureReservationAggregateReservationArgs'] aggregate_reservation: Aggregate reservation details for the future reservation.
@@ -375,6 +376,7 @@ class _FutureReservationState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FutureReservation resources.
+
         :param pulumi.Input['FutureReservationAggregateReservationArgs'] aggregate_reservation: Aggregate reservation details for the future reservation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] auto_created_reservations_delete_time: Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
@@ -883,6 +885,7 @@ class FutureReservation(pulumi.CustomResource):
         $ pulumi import gcp:compute/futureReservation:FutureReservation default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FutureReservationAggregateReservationArgs', 'FutureReservationAggregateReservationArgsDict']] aggregate_reservation: Aggregate reservation details for the future reservation.
@@ -1025,6 +1028,7 @@ class FutureReservation(pulumi.CustomResource):
         $ pulumi import gcp:compute/futureReservation:FutureReservation default {{zone}}/{{name}}
         $ pulumi import gcp:compute/futureReservation:FutureReservation default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FutureReservationArgs args: The arguments to use to populate this resource's properties.

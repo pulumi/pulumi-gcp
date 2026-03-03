@@ -32,6 +32,7 @@ class PublicDelegatedPrefixArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PublicDelegatedPrefix resource.
+
         :param pulumi.Input[_builtins.str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
         :param pulumi.Input[_builtins.str] parent_prefix: The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
         :param pulumi.Input[_builtins.str] region: A region where the prefix will reside.
@@ -207,6 +208,7 @@ class _PublicDelegatedPrefixState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublicDelegatedPrefix resources.
+
         :param pulumi.Input[_builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] enable_enhanced_ipv4_allocation: (Output)
@@ -597,6 +599,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
@@ -755,6 +758,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{region}}/{{name}}
         $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PublicDelegatedPrefixArgs args: The arguments to use to populate this resource's properties.

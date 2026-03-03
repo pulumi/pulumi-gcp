@@ -641,6 +641,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> healthcareCustomEndpoint() {
         return Codegen.optional(this.healthcareCustomEndpoint);
     }
+    @Export(name="hypercomputeclusterCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> hypercomputeclusterCustomEndpoint;
+
+    public Output<Optional<String>> hypercomputeclusterCustomEndpoint() {
+        return Codegen.optional(this.hypercomputeclusterCustomEndpoint);
+    }
     @Export(name="iam2CustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> iam2CustomEndpoint;
 

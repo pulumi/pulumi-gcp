@@ -29,6 +29,7 @@ class AuthorizedViewArgs:
                  subset_view: Optional[pulumi.Input['AuthorizedViewSubsetViewArgs']] = None):
         """
         The set of arguments for constructing a AuthorizedView resource.
+
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance in which the authorized view belongs.
         :param pulumi.Input[_builtins.str] table_name: The name of the Bigtable table in which the authorized view belongs.
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
@@ -139,6 +140,7 @@ class _AuthorizedViewState:
                  table_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthorizedView resources.
+
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
                If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance in which the authorized view belongs.
@@ -333,6 +335,7 @@ class AuthorizedView(pulumi.CustomResource):
         $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default {{instance_name}}/{{table_name}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
@@ -431,6 +434,7 @@ class AuthorizedView(pulumi.CustomResource):
         $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default {{project}}/{{instance_name}}/{{table_name}}/{{name}}
         $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default {{instance_name}}/{{table_name}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuthorizedViewArgs args: The arguments to use to populate this resource's properties.

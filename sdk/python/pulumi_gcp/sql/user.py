@@ -34,6 +34,7 @@ class UserArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] instance: The name of the Cloud SQL instance. Changing this
                forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user.
@@ -269,6 +270,7 @@ class _UserState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user.
                This option is only available for MySQL 8+ and PostgreSQL instances. You
                can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
@@ -671,6 +673,7 @@ class User(pulumi.CustomResource):
         $ pulumi import gcp:sql/user:User default {{project_id}}/{{instance}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user.
@@ -856,6 +859,7 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:sql/user:User default {{project_id}}/{{instance}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

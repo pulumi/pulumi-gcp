@@ -26,6 +26,7 @@ class ServiceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Service resource.
+
         :param pulumi.Input[_builtins.str] service: The service to enable.
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
                If `true`, the usage of the service to be disabled will be checked and an error
@@ -131,6 +132,7 @@ class _ServiceState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Service resources.
+
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
                If `true`, the usage of the service to be disabled will be checked and an error
                will be returned if the service to be disabled has usage in last 30 days.
@@ -285,6 +287,7 @@ class Service(pulumi.CustomResource):
         import the `projects.Service` resources or treat them as new
         infrastructure and run `pulumi up` to add them to state.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
@@ -353,6 +356,7 @@ class Service(pulumi.CustomResource):
         This means that when importing existing resources into Terraform, you can either
         import the `projects.Service` resources or treat them as new
         infrastructure and run `pulumi up` to add them to state.
+
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.

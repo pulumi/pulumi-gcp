@@ -31,6 +31,7 @@ class HttpHealthCheckArgs:
                  unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HttpHealthCheck resource.
+
         :param pulumi.Input[_builtins.int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
                seconds.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
@@ -235,6 +236,7 @@ class _HttpHealthCheckState:
                  unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HttpHealthCheck resources.
+
         :param pulumi.Input[_builtins.int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
                seconds.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -516,6 +518,7 @@ class HttpHealthCheck(pulumi.CustomResource):
         $ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
@@ -598,6 +601,7 @@ class HttpHealthCheck(pulumi.CustomResource):
         $ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default {{project}}/{{name}}
         $ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HttpHealthCheckArgs args: The arguments to use to populate this resource's properties.

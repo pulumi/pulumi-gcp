@@ -32,6 +32,7 @@ class CertificateTemplateArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CertificateTemplate resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] description: Optional. A human-readable description of scenarios this template is intended for.
         :param pulumi.Input['CertificateTemplateIdentityConstraintsArgs'] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
@@ -199,6 +200,7 @@ class _CertificateTemplateState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CertificateTemplate resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this CertificateTemplate was created.
         :param pulumi.Input[_builtins.str] description: Optional. A human-readable description of scenarios this template is intended for.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -662,6 +664,7 @@ class CertificateTemplate(pulumi.CustomResource):
         $ pulumi import gcp:certificateauthority/certificateTemplate:CertificateTemplate default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Optional. A human-readable description of scenarios this template is intended for.
@@ -920,6 +923,7 @@ class CertificateTemplate(pulumi.CustomResource):
         $ pulumi import gcp:certificateauthority/certificateTemplate:CertificateTemplate default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:certificateauthority/certificateTemplate:CertificateTemplate default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CertificateTemplateArgs args: The arguments to use to populate this resource's properties.

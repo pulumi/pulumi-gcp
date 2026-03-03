@@ -29,6 +29,7 @@ class TlsRouteArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TlsRoute resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
@@ -145,6 +146,7 @@ class _TlsRouteState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TlsRoute resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the TlsRoute was created in UTC.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] gateways: Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
@@ -439,6 +441,7 @@ class TlsRoute(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
@@ -591,6 +594,7 @@ class TlsRoute(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{name}}
         $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TlsRouteArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class ConsumerQuotaOverrideArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConsumerQuotaOverride resource.
+
         :param pulumi.Input[_builtins.str] limit: The limit on the metric, e.g. `/project/region`.
                > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
                E.g. use `/project/user` instead of `1/{project}/{user}`.
@@ -153,6 +154,7 @@ class _ConsumerQuotaOverrideState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConsumerQuotaOverride resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
         :param pulumi.Input[_builtins.bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected.
                If `force` is `true`, that safety check is ignored.
@@ -396,6 +398,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{service}}/{{metric}}/{{limit}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
@@ -513,6 +516,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
         $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{service}}/{{metric}}/{{limit}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConsumerQuotaOverrideArgs args: The arguments to use to populate this resource's properties.

@@ -31,6 +31,7 @@ class SessionTemplateArgs:
                  spark_connect_session: Optional[pulumi.Input['SessionTemplateSparkConnectSessionArgs']] = None):
         """
         The set of arguments for constructing a SessionTemplate resource.
+
         :param pulumi.Input['SessionTemplateEnvironmentConfigArgs'] environment_config: Environment configuration for the session execution.
                Structure is documented below.
         :param pulumi.Input['SessionTemplateJupyterSessionArgs'] jupyter_session: Jupyter configuration for an interactive session.
@@ -189,6 +190,7 @@ class _SessionTemplateState:
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SessionTemplate resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the session template was created.
         :param pulumi.Input[_builtins.str] creator: The email address of the user who created the session template.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -619,6 +621,7 @@ class SessionTemplate(pulumi.CustomResource):
         $ pulumi import gcp:dataproc/sessionTemplate:SessionTemplate default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict']] environment_config: Environment configuration for the session execution.
@@ -827,6 +830,7 @@ class SessionTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:dataproc/sessionTemplate:SessionTemplate default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SessionTemplateArgs args: The arguments to use to populate this resource's properties.

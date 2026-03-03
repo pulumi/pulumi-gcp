@@ -33,6 +33,7 @@ class BackupArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Backup resource.
+
         :param pulumi.Input[_builtins.str] backup_id: The ID of the alloydb backup.
         :param pulumi.Input[_builtins.str] cluster_name: The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
         :param pulumi.Input[_builtins.str] location: The location where the alloydb backup should reside.
@@ -234,6 +235,7 @@ class _BackupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Backup resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -785,6 +787,7 @@ class Backup(pulumi.CustomResource):
         $ pulumi import gcp:alloydb/backup:Backup default {{location}}/{{backup_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
@@ -916,6 +919,7 @@ class Backup(pulumi.CustomResource):
         $ pulumi import gcp:alloydb/backup:Backup default {{project}}/{{location}}/{{backup_id}}
         $ pulumi import gcp:alloydb/backup:Backup default {{location}}/{{backup_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupArgs args: The arguments to use to populate this resource's properties.

@@ -41,6 +41,7 @@ class RoutineArgs:
                  spark_options: Optional[pulumi.Input['RoutineSparkOptionsArgs']] = None):
         """
         The set of arguments for constructing a Routine resource.
+
         :param pulumi.Input[_builtins.str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[_builtins.str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
@@ -389,6 +390,7 @@ class _RoutineState:
                  spark_options: Optional[pulumi.Input['RoutineSparkOptionsArgs']] = None):
         """
         Input properties used for looking up and filtering Routine resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]] arguments: Input/output argument of a function or a stored procedure.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] creation_time: The time when this routine was created, in milliseconds since the
@@ -1050,6 +1052,7 @@ class Routine(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/routine:Routine default {{dataset_id}}/{{routine_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RoutineArgumentArgs', 'RoutineArgumentArgsDict']]]] arguments: Input/output argument of a function or a stored procedure.
@@ -1378,6 +1381,7 @@ class Routine(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/routine:Routine default {{project}}/{{dataset_id}}/{{routine_id}}
         $ pulumi import gcp:bigquery/routine:Routine default {{dataset_id}}/{{routine_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RoutineArgs args: The arguments to use to populate this resource's properties.

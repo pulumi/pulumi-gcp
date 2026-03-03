@@ -35,6 +35,7 @@ class AwsClusterArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AwsCluster resource.
+
         :param pulumi.Input['AwsClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[_builtins.str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
         :param pulumi.Input['AwsClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
@@ -244,6 +245,7 @@ class _AwsClusterState:
                  workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering AwsCluster resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -834,6 +836,7 @@ class AwsCluster(pulumi.CustomResource):
         $ pulumi import gcp:container/awsCluster:AwsCluster default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
@@ -1104,6 +1107,7 @@ class AwsCluster(pulumi.CustomResource):
         $ pulumi import gcp:container/awsCluster:AwsCluster default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:container/awsCluster:AwsCluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AwsClusterArgs args: The arguments to use to populate this resource's properties.

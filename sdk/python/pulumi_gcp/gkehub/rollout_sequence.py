@@ -28,6 +28,7 @@ class RolloutSequenceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RolloutSequence resource.
+
         :param pulumi.Input[_builtins.str] rollout_sequence_id: The user-provided identifier of the RolloutSequence.
         :param pulumi.Input[Sequence[pulumi.Input['RolloutSequenceStageArgs']]] stages: Ordered list of stages that constitute this Rollout Sequence.
                Structure is documented below.
@@ -132,6 +133,7 @@ class _RolloutSequenceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RolloutSequence resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which the Rollout Sequence was created.
         :param pulumi.Input[_builtins.str] delete_time: The timestamp at the Rollout Sequence was deleted.
         :param pulumi.Input[_builtins.str] display_name: Human readable display name of the Rollout Sequence.
@@ -382,6 +384,7 @@ class RolloutSequence(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default {{rollout_sequence_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Human readable display name of the Rollout Sequence.
@@ -428,6 +431,7 @@ class RolloutSequence(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default {{project}}/{{rollout_sequence_id}}
         $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default {{rollout_sequence_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RolloutSequenceArgs args: The arguments to use to populate this resource's properties.

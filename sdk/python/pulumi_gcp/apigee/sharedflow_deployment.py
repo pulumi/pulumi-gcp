@@ -26,6 +26,7 @@ class SharedflowDeploymentArgs:
                  service_account: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SharedflowDeployment resource.
+
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Sharedflow
         :param pulumi.Input[_builtins.str] revision: Revision of the Sharedflow to be deployed.
@@ -116,6 +117,7 @@ class _SharedflowDeploymentState:
                  sharedflow_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SharedflowDeployment resources.
+
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Sharedflow
         :param pulumi.Input[_builtins.str] revision: Revision of the Sharedflow to be deployed.
@@ -235,6 +237,7 @@ class SharedflowDeployment(pulumi.CustomResource):
         $ pulumi import gcp:apigee/sharedflowDeployment:SharedflowDeployment default {{org_id}}/{{environment}}/{{sharedflow_id}}/{{revision}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
@@ -274,6 +277,7 @@ class SharedflowDeployment(pulumi.CustomResource):
         $ pulumi import gcp:apigee/sharedflowDeployment:SharedflowDeployment default organizations/{{org_id}}/environments/{{environment}}/sharedflows/{{sharedflow_id}}/revisions/{{revision}}/deployments/{{name}}
         $ pulumi import gcp:apigee/sharedflowDeployment:SharedflowDeployment default {{org_id}}/{{environment}}/{{sharedflow_id}}/{{revision}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SharedflowDeploymentArgs args: The arguments to use to populate this resource's properties.

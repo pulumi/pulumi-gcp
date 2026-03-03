@@ -26,6 +26,7 @@ class ServiceBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceBinding resource.
+
         :param pulumi.Input[_builtins.str] service: The full Service Directory Service name of the format
                projects/*/locations/*/namespaces/*/services/*
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
@@ -125,6 +126,7 @@ class _ServiceBindingState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceBinding resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the ServiceBinding was created in UTC.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -338,6 +340,7 @@ class ServiceBinding(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/serviceBinding:ServiceBinding default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
@@ -408,6 +411,7 @@ class ServiceBinding(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/serviceBinding:ServiceBinding default {{project}}/{{name}}
         $ pulumi import gcp:networkservices/serviceBinding:ServiceBinding default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceBindingArgs args: The arguments to use to populate this resource's properties.

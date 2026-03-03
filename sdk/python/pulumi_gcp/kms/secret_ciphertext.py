@@ -24,6 +24,7 @@ class SecretCiphertextArgs:
                  additional_authenticated_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecretCiphertext resource.
+
         :param pulumi.Input[_builtins.str] crypto_key: The full name of the CryptoKey that will be used to encrypt the provided plaintext.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
         :param pulumi.Input[_builtins.str] plaintext: The plaintext to be encrypted.
@@ -85,6 +86,7 @@ class _SecretCiphertextState:
                  plaintext: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecretCiphertext resources.
+
         :param pulumi.Input[_builtins.str] additional_authenticated_data: The additional authenticated data used for integrity checks during encryption and decryption.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] ciphertext: Contains the result of encrypting the provided plaintext, encoded in base64.
@@ -218,6 +220,7 @@ class SecretCiphertext(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] additional_authenticated_data: The additional authenticated data used for integrity checks during encryption and decryption.
@@ -286,6 +289,7 @@ class SecretCiphertext(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param SecretCiphertextArgs args: The arguments to use to populate this resource's properties.

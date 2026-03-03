@@ -24,6 +24,7 @@ class EnvironmentKeyvaluemapsEntriesArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvironmentKeyvaluemapsEntries resource.
+
         :param pulumi.Input[_builtins.str] env_keyvaluemap_id: The Apigee environment keyvalumaps Id associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
         :param pulumi.Input[_builtins.str] value: Required. Data or payload that is being retrieved and associated with the unique key.
@@ -80,6 +81,7 @@ class _EnvironmentKeyvaluemapsEntriesState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvironmentKeyvaluemapsEntries resources.
+
         :param pulumi.Input[_builtins.str] env_keyvaluemap_id: The Apigee environment keyvalumaps Id associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
         :param pulumi.Input[_builtins.str] name: Required. Resource URI that can be used to identify the scope of the key value map entries.
@@ -222,6 +224,7 @@ class EnvironmentKeyvaluemapsEntries(pulumi.CustomResource):
         $ pulumi import gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries default {{env_keyvaluemap_id}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] env_keyvaluemap_id: The Apigee environment keyvalumaps Id associated with the Apigee environment,
@@ -316,6 +319,7 @@ class EnvironmentKeyvaluemapsEntries(pulumi.CustomResource):
         $ pulumi import gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries default {{env_keyvaluemap_id}}/entries/{{name}}
         $ pulumi import gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries default {{env_keyvaluemap_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvironmentKeyvaluemapsEntriesArgs args: The arguments to use to populate this resource's properties.

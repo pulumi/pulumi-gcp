@@ -25,6 +25,7 @@ class AccessLevelsArgs:
                  access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]] = None):
         """
         The set of arguments for constructing a AccessLevels resource.
+
         :param pulumi.Input[_builtins.str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]] access_levels: The desired Access Levels that should replace all existing Access Levels in the Access Policy.
@@ -68,6 +69,7 @@ class _AccessLevelsState:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessLevels resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]] access_levels: The desired Access Levels that should replace all existing Access Levels in the Access Policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The AccessPolicy this AccessLevel lives in.
@@ -200,6 +202,7 @@ class AccessLevels(pulumi.CustomResource):
         $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessLevelsAccessLevelArgs', 'AccessLevelsAccessLevelArgsDict']]]] access_levels: The desired Access Levels that should replace all existing Access Levels in the Access Policy.
@@ -298,6 +301,7 @@ class AccessLevels(pulumi.CustomResource):
         $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}/accessLevels
         $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessLevelsArgs args: The arguments to use to populate this resource's properties.

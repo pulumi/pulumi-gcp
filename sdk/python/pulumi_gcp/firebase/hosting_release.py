@@ -26,6 +26,7 @@ class HostingReleaseArgs:
                  version_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostingRelease resource.
+
         :param pulumi.Input[_builtins.str] site_id: Required. The ID of the site to which the release belongs.
         :param pulumi.Input[_builtins.str] channel_id: The ID of the channel to which the release belongs. If not provided, the release will
                belong to the default "live" channel
@@ -133,6 +134,7 @@ class _HostingReleaseState:
                  version_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostingRelease resources.
+
         :param pulumi.Input[_builtins.str] channel_id: The ID of the channel to which the release belongs. If not provided, the release will
                belong to the default "live" channel
         :param pulumi.Input[_builtins.str] message: The deploy description when the release was created. The value can be up to 512 characters.
@@ -372,6 +374,7 @@ class HostingRelease(pulumi.CustomResource):
         $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{release_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] channel_id: The ID of the channel to which the release belongs. If not provided, the release will
@@ -491,6 +494,7 @@ class HostingRelease(pulumi.CustomResource):
         $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{channel_id}}/{{release_id}}
         $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{release_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HostingReleaseArgs args: The arguments to use to populate this resource's properties.

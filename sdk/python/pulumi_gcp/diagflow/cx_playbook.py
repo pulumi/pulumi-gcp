@@ -30,6 +30,7 @@ class CxPlaybookArgs:
                  referenced_tools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CxPlaybook resource.
+
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the playbook, unique within an agent.
         :param pulumi.Input[_builtins.str] goal: High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
         :param pulumi.Input['CxPlaybookInstructionArgs'] instruction: Instruction to accomplish target goal.
@@ -162,6 +163,7 @@ class _CxPlaybookState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CxPlaybook resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp of initial playbook creation.
                Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the playbook, unique within an agent.
@@ -548,6 +550,7 @@ class CxPlaybook(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxPlaybook:CxPlaybook default {{parent}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the playbook, unique within an agent.
@@ -727,6 +730,7 @@ class CxPlaybook(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxPlaybook:CxPlaybook default {{parent}}/playbooks/{{name}}
         $ pulumi import gcp:diagflow/cxPlaybook:CxPlaybook default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CxPlaybookArgs args: The arguments to use to populate this resource's properties.

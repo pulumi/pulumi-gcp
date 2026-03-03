@@ -1558,6 +1558,14 @@ func (o SettingsAccessSettingsGcipSettingsPtrOutput) TenantIds() pulumi.StringAr
 }
 
 type SettingsAccessSettingsOauthSettings struct {
+	// OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+	ClientId *string `pulumi:"clientId"`
+	// OAuth secret paired with client ID.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// (Output)
+	// OAuth secret sha256 paired with client ID.
+	ClientSecretSha256 *string `pulumi:"clientSecretSha256"`
 	// Domain hint to send as hd=? parameter in OAuth request flow.
 	// Enables redirect to primary IDP by skipping Google's login screen.
 	// (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
@@ -1581,6 +1589,14 @@ type SettingsAccessSettingsOauthSettingsInput interface {
 }
 
 type SettingsAccessSettingsOauthSettingsArgs struct {
+	// OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// OAuth secret paired with client ID.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// (Output)
+	// OAuth secret sha256 paired with client ID.
+	ClientSecretSha256 pulumi.StringPtrInput `pulumi:"clientSecretSha256"`
 	// Domain hint to send as hd=? parameter in OAuth request flow.
 	// Enables redirect to primary IDP by skipping Google's login screen.
 	// (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
@@ -1669,6 +1685,23 @@ func (o SettingsAccessSettingsOauthSettingsOutput) ToSettingsAccessSettingsOauth
 	}).(SettingsAccessSettingsOauthSettingsPtrOutput)
 }
 
+// OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+func (o SettingsAccessSettingsOauthSettingsOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsOauthSettings) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// OAuth secret paired with client ID.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o SettingsAccessSettingsOauthSettingsOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsOauthSettings) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// OAuth secret sha256 paired with client ID.
+func (o SettingsAccessSettingsOauthSettingsOutput) ClientSecretSha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsOauthSettings) *string { return v.ClientSecretSha256 }).(pulumi.StringPtrOutput)
+}
+
 // Domain hint to send as hd=? parameter in OAuth request flow.
 // Enables redirect to primary IDP by skipping Google's login screen.
 // (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
@@ -1706,6 +1739,38 @@ func (o SettingsAccessSettingsOauthSettingsPtrOutput) Elem() SettingsAccessSetti
 		var ret SettingsAccessSettingsOauthSettings
 		return ret
 	}).(SettingsAccessSettingsOauthSettingsOutput)
+}
+
+// OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+func (o SettingsAccessSettingsOauthSettingsPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsOauthSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// OAuth secret paired with client ID.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o SettingsAccessSettingsOauthSettingsPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsOauthSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// OAuth secret sha256 paired with client ID.
+func (o SettingsAccessSettingsOauthSettingsPtrOutput) ClientSecretSha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsOauthSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecretSha256
+	}).(pulumi.StringPtrOutput)
 }
 
 // Domain hint to send as hd=? parameter in OAuth request flow.

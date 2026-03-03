@@ -30,6 +30,7 @@ class CxGeneratorArgs:
                  placeholders: Optional[pulumi.Input[Sequence[pulumi.Input['CxGeneratorPlaceholderArgs']]]] = None):
         """
         The set of arguments for constructing a CxGenerator resource.
+
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the generator, unique within the agent.
         :param pulumi.Input['CxGeneratorPromptTextArgs'] prompt_text: Prompt for the LLM model.
                Structure is documented below.
@@ -163,6 +164,7 @@ class _CxGeneratorState:
                  prompt_text: Optional[pulumi.Input['CxGeneratorPromptTextArgs']] = None):
         """
         Input properties used for looking up and filtering CxGenerator resources.
+
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the generator, unique within the agent.
         :param pulumi.Input[_builtins.str] language_code: The language to create generators for the following fields:
                * Generator.prompt_text.text
@@ -374,6 +376,7 @@ class CxGenerator(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxGenerator:CxGenerator default {{parent}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the generator, unique within the agent.
@@ -454,6 +457,7 @@ class CxGenerator(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxGenerator:CxGenerator default {{parent}}/generators/{{name}}
         $ pulumi import gcp:diagflow/cxGenerator:CxGenerator default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CxGeneratorArgs args: The arguments to use to populate this resource's properties.

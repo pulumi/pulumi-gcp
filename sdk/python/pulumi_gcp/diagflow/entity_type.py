@@ -28,6 +28,7 @@ class EntityTypeArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EntityType resource.
+
         :param pulumi.Input[_builtins.str] display_name: The name of this entity type to be displayed on the console.
         :param pulumi.Input[_builtins.str] kind: Indicates the kind of entity type.
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
@@ -129,6 +130,7 @@ class _EntityTypeState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EntityType resources.
+
         :param pulumi.Input[_builtins.str] display_name: The name of this entity type to be displayed on the console.
         :param pulumi.Input[_builtins.bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
         :param pulumi.Input[Sequence[pulumi.Input['EntityTypeEntityArgs']]] entities: The collection of entity entries associated with the entity type.
@@ -305,6 +307,7 @@ class EntityType(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The name of this entity type to be displayed on the console.
@@ -380,6 +383,7 @@ class EntityType(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EntityTypeArgs args: The arguments to use to populate this resource's properties.

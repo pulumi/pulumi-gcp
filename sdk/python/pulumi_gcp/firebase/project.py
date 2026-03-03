@@ -22,6 +22,7 @@ class ProjectArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -50,6 +51,7 @@ class _ProjectState:
                  project_number: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[_builtins.str] display_name: The GCP project display name
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -160,6 +162,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import gcp:firebase/project:Project default {{project}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -222,6 +225,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import gcp:firebase/project:Project default projects/{{project}}
         $ pulumi import gcp:firebase/project:Project default {{project}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

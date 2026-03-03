@@ -87,6 +87,8 @@ import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworksPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
 import com.pulumi.gcp.compute.inputs.GetNodeTypesPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionBackendBucketIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionBackendBucketIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyPlainArgs;
@@ -193,6 +195,7 @@ import com.pulumi.gcp.compute.outputs.GetNetworkPeeringResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkResult;
 import com.pulumi.gcp.compute.outputs.GetNetworksResult;
 import com.pulumi.gcp.compute.outputs.GetNodeTypesResult;
+import com.pulumi.gcp.compute.outputs.GetRegionBackendBucketIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceResult;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskIamPolicyResult;
@@ -11856,6 +11859,226 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetNodeTypesResult> getNodeTypesPlain(GetNodeTypesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getNodeTypes:getNodeTypes", TypeShape.of(GetNodeTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for regionbackendbucket
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionBackendBucketIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionBackendBucketIamPolicy(GetRegionBackendBucketIamPolicyArgs.builder()
+     *             .project(imageBackend.project())
+     *             .region(imageBackend.region())
+     *             .name(imageBackend.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionBackendBucketIamPolicyResult> getRegionBackendBucketIamPolicy(GetRegionBackendBucketIamPolicyArgs args) {
+        return getRegionBackendBucketIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for regionbackendbucket
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionBackendBucketIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionBackendBucketIamPolicy(GetRegionBackendBucketIamPolicyArgs.builder()
+     *             .project(imageBackend.project())
+     *             .region(imageBackend.region())
+     *             .name(imageBackend.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionBackendBucketIamPolicyResult> getRegionBackendBucketIamPolicyPlain(GetRegionBackendBucketIamPolicyPlainArgs args) {
+        return getRegionBackendBucketIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for regionbackendbucket
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionBackendBucketIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionBackendBucketIamPolicy(GetRegionBackendBucketIamPolicyArgs.builder()
+     *             .project(imageBackend.project())
+     *             .region(imageBackend.region())
+     *             .name(imageBackend.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionBackendBucketIamPolicyResult> getRegionBackendBucketIamPolicy(GetRegionBackendBucketIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionBackendBucketIamPolicy:getRegionBackendBucketIamPolicy", TypeShape.of(GetRegionBackendBucketIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for regionbackendbucket
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionBackendBucketIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionBackendBucketIamPolicy(GetRegionBackendBucketIamPolicyArgs.builder()
+     *             .project(imageBackend.project())
+     *             .region(imageBackend.region())
+     *             .name(imageBackend.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionBackendBucketIamPolicyResult> getRegionBackendBucketIamPolicy(GetRegionBackendBucketIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionBackendBucketIamPolicy:getRegionBackendBucketIamPolicy", TypeShape.of(GetRegionBackendBucketIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for regionbackendbucket
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionBackendBucketIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionBackendBucketIamPolicy(GetRegionBackendBucketIamPolicyArgs.builder()
+     *             .project(imageBackend.project())
+     *             .region(imageBackend.region())
+     *             .name(imageBackend.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionBackendBucketIamPolicyResult> getRegionBackendBucketIamPolicyPlain(GetRegionBackendBucketIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRegionBackendBucketIamPolicy:getRegionBackendBucketIamPolicy", TypeShape.of(GetRegionBackendBucketIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about a Regional Backend Service. For more information see

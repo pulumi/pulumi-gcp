@@ -29,6 +29,7 @@ class LinkedDatasetArgs:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LinkedDataset resource.
+
         :param pulumi.Input[_builtins.str] bucket: The bucket to which the linked dataset is attached.
         :param pulumi.Input[_builtins.str] link_id: The id of the linked dataset.
         :param pulumi.Input[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]] bigquery_datasets: The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along
@@ -140,6 +141,7 @@ class _LinkedDatasetState:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LinkedDataset resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]] bigquery_datasets: The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along
                with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery
                Views corresponding to the LogViews in the bucket.
@@ -362,6 +364,7 @@ class LinkedDataset(pulumi.CustomResource):
         $ pulumi import gcp:logging/linkedDataset:LinkedDataset default {{parent}}/locations/{{location}}/buckets/{{bucket}}/links/{{link_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LinkedDatasetBigqueryDatasetArgs', 'LinkedDatasetBigqueryDatasetArgsDict']]]] bigquery_datasets: The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along
@@ -438,6 +441,7 @@ class LinkedDataset(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/linkedDataset:LinkedDataset default {{parent}}/locations/{{location}}/buckets/{{bucket}}/links/{{link_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LinkedDatasetArgs args: The arguments to use to populate this resource's properties.

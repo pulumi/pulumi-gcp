@@ -28,6 +28,7 @@ class ManagementServerArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ManagementServer resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the management server (management console)
         :param pulumi.Input[_builtins.str] name: The name of management server (management console)
         :param pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]] networks: Network details to create management server (management console).
@@ -125,6 +126,7 @@ class _ManagementServerState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManagementServer resources.
+
         :param pulumi.Input[_builtins.str] location: The location for the management server (management console)
         :param pulumi.Input[Sequence[pulumi.Input['ManagementServerManagementUriArgs']]] management_uris: The management console URI
                Structure is documented below.
@@ -306,6 +308,7 @@ class ManagementServer(pulumi.CustomResource):
         $ pulumi import gcp:backupdisasterrecovery/managementServer:ManagementServer default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] location: The location for the management server (management console)
@@ -374,6 +377,7 @@ class ManagementServer(pulumi.CustomResource):
         $ pulumi import gcp:backupdisasterrecovery/managementServer:ManagementServer default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:backupdisasterrecovery/managementServer:ManagementServer default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ManagementServerArgs args: The arguments to use to populate this resource's properties.

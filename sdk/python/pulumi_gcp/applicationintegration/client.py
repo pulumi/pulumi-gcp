@@ -28,6 +28,7 @@ class ClientArgs:
                  run_as_service_account: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Client resource.
+
         :param pulumi.Input[_builtins.str] location: Location in which client needs to be provisioned.
         :param pulumi.Input['ClientCloudKmsConfigArgs'] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
                Structure is documented below.
@@ -129,6 +130,7 @@ class _ClientState:
                  run_as_service_account: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Client resources.
+
         :param pulumi.Input['ClientCloudKmsConfigArgs'] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
@@ -294,6 +296,7 @@ class Client(pulumi.CustomResource):
         $ pulumi import gcp:applicationintegration/client:Client default {{location}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
@@ -373,6 +376,7 @@ class Client(pulumi.CustomResource):
         $ pulumi import gcp:applicationintegration/client:Client default {{project}}/{{location}}
         $ pulumi import gcp:applicationintegration/client:Client default {{location}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClientArgs args: The arguments to use to populate this resource's properties.

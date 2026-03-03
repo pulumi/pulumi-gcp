@@ -25,6 +25,7 @@ class OrganizationKajPolicyConfigArgs:
                  default_key_access_justification_policy: Optional[pulumi.Input['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None):
         """
         The set of arguments for constructing a OrganizationKajPolicyConfig resource.
+
         :param pulumi.Input[_builtins.str] organization: The organization number for which to retrieve config.
         :param pulumi.Input['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs'] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
                created in this organization. This is only used when a Key Access Justifications
@@ -70,6 +71,7 @@ class _OrganizationKajPolicyConfigState:
                  organization: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationKajPolicyConfig resources.
+
         :param pulumi.Input['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs'] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
                created in this organization. This is only used when a Key Access Justifications
                policy is not provided in the CreateCryptoKeyRequest.
@@ -167,6 +169,7 @@ class OrganizationKajPolicyConfig(pulumi.CustomResource):
         $ pulumi import gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig default {{organization}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
@@ -229,6 +232,7 @@ class OrganizationKajPolicyConfig(pulumi.CustomResource):
         $ pulumi import gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig default organizations/{{organization}}/kajPolicyConfig
         $ pulumi import gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig default {{organization}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationKajPolicyConfigArgs args: The arguments to use to populate this resource's properties.

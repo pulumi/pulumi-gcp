@@ -343,6 +343,9 @@ public final class Config {
     public Optional<String> healthcareCustomEndpoint() {
         return Codegen.stringProp("healthcareCustomEndpoint").config(config).get();
     }
+    public Optional<String> hypercomputeclusterCustomEndpoint() {
+        return Codegen.stringProp("hypercomputeclusterCustomEndpoint").config(config).get();
+    }
     public Optional<String> iam2CustomEndpoint() {
         return Codegen.stringProp("iam2CustomEndpoint").config(config).get();
     }

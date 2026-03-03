@@ -14,6 +14,20 @@ namespace Pulumi.Gcp.Iap.Outputs
     public sealed class SettingsAccessSettingsOauthSettings
     {
         /// <summary>
+        /// OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+        /// </summary>
+        public readonly string? ClientId;
+        /// <summary>
+        /// OAuth secret paired with client ID.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        public readonly string? ClientSecret;
+        /// <summary>
+        /// (Output)
+        /// OAuth secret sha256 paired with client ID.
+        /// </summary>
+        public readonly string? ClientSecretSha256;
+        /// <summary>
         /// Domain hint to send as hd=? parameter in OAuth request flow.
         /// Enables redirect to primary IDP by skipping Google's login screen.
         /// (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
@@ -29,10 +43,19 @@ namespace Pulumi.Gcp.Iap.Outputs
 
         [OutputConstructor]
         private SettingsAccessSettingsOauthSettings(
+            string? clientId,
+
+            string? clientSecret,
+
+            string? clientSecretSha256,
+
             string? loginHint,
 
             ImmutableArray<string> programmaticClients)
         {
+            ClientId = clientId;
+            ClientSecret = clientSecret;
+            ClientSecretSha256 = clientSecretSha256;
             LoginHint = loginHint;
             ProgrammaticClients = programmaticClients;
         }

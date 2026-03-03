@@ -36,6 +36,7 @@ class SecretArgs:
                  version_destroy_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Secret resource.
+
         :param pulumi.Input['SecretReplicationArgs'] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
@@ -346,6 +347,7 @@ class _SecretState:
                  version_destroy_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Secret resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Custom metadata about the secret.
                Annotations are distinct from various forms of labels. Annotations exist to allow
                client tools to store their own state information without requiring a database.
@@ -843,6 +845,7 @@ class Secret(pulumi.CustomResource):
         $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Custom metadata about the secret.
@@ -1019,6 +1022,7 @@ class Secret(pulumi.CustomResource):
         $ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
         $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecretArgs args: The arguments to use to populate this resource's properties.

@@ -31,6 +31,7 @@ class ServicePerimeterArgs:
                  use_explicit_dry_run_spec: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ServicePerimeter resource.
+
         :param pulumi.Input[_builtins.str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[_builtins.str] title: Human readable title. Must be unique within the Policy.
@@ -235,6 +236,7 @@ class _ServicePerimeterState:
                  use_explicit_dry_run_spec: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeter resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the AccessPolicy was created in UTC.
         :param pulumi.Input[_builtins.str] description: Description of the ServicePerimeter and its use. Does not affect
                behavior.
@@ -674,6 +676,7 @@ class ServicePerimeter(pulumi.CustomResource):
         $ pulumi import gcp:accesscontextmanager/servicePerimeter:ServicePerimeter default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the ServicePerimeter and its use. Does not affect
@@ -927,6 +930,7 @@ class ServicePerimeter(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:accesscontextmanager/servicePerimeter:ServicePerimeter default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServicePerimeterArgs args: The arguments to use to populate this resource's properties.

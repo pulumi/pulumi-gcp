@@ -24,6 +24,7 @@ class ConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Config resource.
+
         :param pulumi.Input[_builtins.str] description: The description to associate with the runtime
                config.
         :param pulumi.Input[_builtins.str] name: The name of the runtime config.
@@ -88,6 +89,7 @@ class _ConfigState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Config resources.
+
         :param pulumi.Input[_builtins.str] description: The description to associate with the runtime
                config.
         :param pulumi.Input[_builtins.str] name: The name of the runtime config.
@@ -195,6 +197,7 @@ class Config(pulumi.CustomResource):
 
         When importing using only the name, the provider project must be set.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description to associate with the runtime
@@ -251,6 +254,7 @@ class Config(pulumi.CustomResource):
         ```
 
         When importing using only the name, the provider project must be set.
+
 
         :param str resource_name: The name of the resource.
         :param ConfigArgs args: The arguments to use to populate this resource's properties.

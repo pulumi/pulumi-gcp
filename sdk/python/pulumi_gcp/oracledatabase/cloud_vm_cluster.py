@@ -37,6 +37,7 @@ class CloudVmClusterArgs:
                  properties: Optional[pulumi.Input['CloudVmClusterPropertiesArgs']] = None):
         """
         The set of arguments for constructing a CloudVmCluster resource.
+
         :param pulumi.Input[_builtins.str] cloud_vm_cluster_id: The ID of the VM Cluster to create. This value is restricted
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
@@ -307,6 +308,7 @@ class _CloudVmClusterState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CloudVmCluster resources.
+
         :param pulumi.Input[_builtins.str] backup_odb_subnet: The name of the backup OdbSubnet associated with the VM Cluster.
                Format:
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
@@ -822,6 +824,7 @@ class CloudVmCluster(pulumi.CustomResource):
         $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{location}}/{{cloud_vm_cluster_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_odb_subnet: The name of the backup OdbSubnet associated with the VM Cluster.
@@ -1026,6 +1029,7 @@ class CloudVmCluster(pulumi.CustomResource):
         $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{project}}/{{location}}/{{cloud_vm_cluster_id}}
         $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{location}}/{{cloud_vm_cluster_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CloudVmClusterArgs args: The arguments to use to populate this resource's properties.

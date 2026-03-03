@@ -29,6 +29,7 @@ class BackendAuthenticationConfigArgs:
                  well_known_roots: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackendAuthenticationConfig resource.
+
         :param pulumi.Input[_builtins.str] client_certificate: Reference to a Certificate resource from the certificatemanager.googleapis.com namespace.
                Used by a BackendService to negotiate mTLS when the backend connection uses TLS and the backend requests a client certificate. Must have a CLIENT_AUTH scope.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
@@ -187,6 +188,7 @@ class _BackendAuthenticationConfigState:
                  well_known_roots: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackendAuthenticationConfig resources.
+
         :param pulumi.Input[_builtins.str] client_certificate: Reference to a Certificate resource from the certificatemanager.googleapis.com namespace.
                Used by a BackendService to negotiate mTLS when the backend connection uses TLS and the backend requests a client certificate. Must have a CLIENT_AUTH scope.
         :param pulumi.Input[_builtins.str] create_time: Time the BackendAuthenticationConfig was created in UTC.
@@ -521,6 +523,7 @@ class BackendAuthenticationConfig(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] client_certificate: Reference to a Certificate resource from the certificatemanager.googleapis.com namespace.
@@ -662,6 +665,7 @@ class BackendAuthenticationConfig(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackendAuthenticationConfigArgs args: The arguments to use to populate this resource's properties.

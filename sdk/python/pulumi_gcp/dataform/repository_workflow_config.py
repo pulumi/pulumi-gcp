@@ -31,6 +31,7 @@ class RepositoryWorkflowConfigArgs:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RepositoryWorkflowConfig resource.
+
         :param pulumi.Input[_builtins.str] release_config: The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
@@ -171,6 +172,7 @@ class _RepositoryWorkflowConfigState:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RepositoryWorkflowConfig resources.
+
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
@@ -442,6 +444,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{repository}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
@@ -572,6 +575,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{region}}/{{repository}}/{{name}}
         $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{repository}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RepositoryWorkflowConfigArgs args: The arguments to use to populate this resource's properties.

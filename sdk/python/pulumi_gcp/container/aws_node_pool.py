@@ -36,6 +36,7 @@ class AwsNodePoolArgs:
                  update_settings: Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']] = None):
         """
         The set of arguments for constructing a AwsNodePool resource.
+
         :param pulumi.Input['AwsNodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[_builtins.str] cluster: The awsCluster for the resource
         :param pulumi.Input['AwsNodePoolConfigArgs'] config: The configuration of the node pool.
@@ -258,6 +259,7 @@ class _AwsNodePoolState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AwsNodePool resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -980,6 +982,7 @@ class AwsNodePool(pulumi.CustomResource):
         $ pulumi import gcp:container/awsNodePool:AwsNodePool default {{location}}/{{cluster}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
@@ -1397,6 +1400,7 @@ class AwsNodePool(pulumi.CustomResource):
         $ pulumi import gcp:container/awsNodePool:AwsNodePool default {{project}}/{{location}}/{{cluster}}/{{name}}
         $ pulumi import gcp:container/awsNodePool:AwsNodePool default {{location}}/{{cluster}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AwsNodePoolArgs args: The arguments to use to populate this resource's properties.

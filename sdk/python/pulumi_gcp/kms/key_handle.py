@@ -25,6 +25,7 @@ class KeyHandleArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeyHandle resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the KeyHandle.
                A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[_builtins.str] resource_type_selector: Selector of the resource type where we want to protect resources.
@@ -102,6 +103,7 @@ class _KeyHandleState:
                  resource_type_selector: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyHandle resources.
+
         :param pulumi.Input[_builtins.str] kms_key: A reference to a Cloud KMS CryptoKey that can be used for CMEK in the requested
                product/project/location, for example
                `projects/1/locations/us-east1/keyRings/foo/cryptoKeys/bar-ffffff`
@@ -301,6 +303,7 @@ class KeyHandle(pulumi.CustomResource):
         $ pulumi import gcp:kms/keyHandle:KeyHandle default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] location: The location for the KeyHandle.
@@ -416,6 +419,7 @@ class KeyHandle(pulumi.CustomResource):
         $ pulumi import gcp:kms/keyHandle:KeyHandle default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:kms/keyHandle:KeyHandle default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeyHandleArgs args: The arguments to use to populate this resource's properties.

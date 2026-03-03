@@ -55,6 +55,7 @@ class InstanceFromMachineImageArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceFromMachineImage resource.
+
         :param pulumi.Input[_builtins.str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
                
@@ -615,6 +616,7 @@ class _InstanceFromMachineImageState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceFromMachineImage resources.
+
         :param pulumi.Input['InstanceFromMachineImageAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageAttachedDiskArgs']]] attached_disks: List of disks attached to the instance
@@ -1393,6 +1395,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceFromMachineImageAdvancedMachineFeaturesArgs', 'InstanceFromMachineImageAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Controls for advanced machine-related behavior features.
@@ -1476,6 +1479,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                 "my_key": "my_value",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceFromMachineImageArgs args: The arguments to use to populate this resource's properties.

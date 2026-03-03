@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh repo view --json nameWithOwner --jq .nameWithOwner)",
+      "Bash(upgrade-provider pulumi/pulumi-gcp --repo-path . > .pulumi/upgrade-provider-stdout.txt 2> /dev/null)"
+    ]
+  }
+}

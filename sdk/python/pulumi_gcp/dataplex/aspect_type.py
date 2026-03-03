@@ -29,6 +29,7 @@ class AspectTypeArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AspectType resource.
+
         :param pulumi.Input[_builtins.str] aspect_type_id: The aspect type id of the aspect type.
         :param pulumi.Input[_builtins.str] data_classification: Classifies the data stored by the aspect.
                `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
@@ -188,6 +189,7 @@ class _AspectTypeState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AspectType resources.
+
         :param pulumi.Input[_builtins.str] aspect_type_id: The aspect type id of the aspect type.
         :param pulumi.Input[_builtins.str] create_time: The time when the AspectType was created.
         :param pulumi.Input[_builtins.str] data_classification: Classifies the data stored by the aspect.
@@ -656,6 +658,7 @@ class AspectType(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/aspectType:AspectType default {{location}}/{{aspect_type_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aspect_type_id: The aspect type id of the aspect type.
@@ -885,6 +888,7 @@ class AspectType(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/aspectType:AspectType default {{project}}/{{location}}/{{aspect_type_id}}
         $ pulumi import gcp:dataplex/aspectType:AspectType default {{location}}/{{aspect_type_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AspectTypeArgs args: The arguments to use to populate this resource's properties.

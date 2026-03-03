@@ -45,6 +45,7 @@ __all__ = [
     'PrivateCloudNsx',
     'PrivateCloudVcenter',
     'SubnetDhcpAddressRange',
+    'GetAnnouncementsAnnouncementResult',
     'GetClusterAutoscalingSettingResult',
     'GetClusterAutoscalingSettingAutoscalingPolicyResult',
     'GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdResult',
@@ -74,6 +75,17 @@ __all__ = [
     'GetPrivateCloudNsxResult',
     'GetPrivateCloudVcenterResult',
     'GetSubnetDhcpAddressRangeResult',
+    'GetUpgradesUpgradeResult',
+    'GetUpgradesUpgradeComponentUpgradeResult',
+    'GetUpgradesUpgradeScheduleResult',
+    'GetUpgradesUpgradeScheduleConstraintsResult',
+    'GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsResult',
+    'GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeResult',
+    'GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeResult',
+    'GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeResult',
+    'GetUpgradesUpgradeScheduleEditWindowResult',
+    'GetUpgradesUpgradeScheduleWeeklyWindowResult',
+    'GetUpgradesUpgradeScheduleWeeklyWindowStartTimeResult',
 ]
 
 @pulumi.output_type
@@ -2116,6 +2128,57 @@ class SubnetDhcpAddressRange(dict):
 
 
 @pulumi.output_type
+class GetAnnouncementsAnnouncementResult(dict):
+    def __init__(__self__, *,
+                 code: _builtins.str,
+                 metadata: Mapping[str, _builtins.str],
+                 name: _builtins.str,
+                 target_resource_type: _builtins.str):
+        """
+        :param _builtins.str code: Code of the announcement. Possible values include: `MAINTENANCE_SCHEDULE_NOT_AVAILABLE`, `MAINTENANCE_SCHEDULE_READY`, `MAINTENANCE_SCHEDULE_LOCKED`, `MAINTENANCE_SCHEDULE_CANCELED`, `MAINTENANCE_INPROGRESS`, `MAINTENANCE_SUCCESSFUL`, `MAINTENANCE_CANCELED`, `MAINTENANCE_PAUSED`, `MAINTENANCE_FAILED`, `IMMUTABLE_MAINTENANCE_SCHEDULE_READY`, `MAINTENANCE_STARTING_SOON`.
+        :param Mapping[str, _builtins.str] metadata: `Additional structured details about this announcement`
+        :param _builtins.str name: The resource name of the specific Announcement to retrieve. If provided, the `announcements` list will contain only this announcement.
+        :param _builtins.str target_resource_type: Target Resource Type defines the type of the target for the announcement.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "target_resource_type", target_resource_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> _builtins.str:
+        """
+        Code of the announcement. Possible values include: `MAINTENANCE_SCHEDULE_NOT_AVAILABLE`, `MAINTENANCE_SCHEDULE_READY`, `MAINTENANCE_SCHEDULE_LOCKED`, `MAINTENANCE_SCHEDULE_CANCELED`, `MAINTENANCE_INPROGRESS`, `MAINTENANCE_SUCCESSFUL`, `MAINTENANCE_CANCELED`, `MAINTENANCE_PAUSED`, `MAINTENANCE_FAILED`, `IMMUTABLE_MAINTENANCE_SCHEDULE_READY`, `MAINTENANCE_STARTING_SOON`.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, _builtins.str]:
+        """
+        `Additional structured details about this announcement`
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The resource name of the specific Announcement to retrieve. If provided, the `announcements` list will contain only this announcement.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="targetResourceType")
+    def target_resource_type(self) -> _builtins.str:
+        """
+        Target Resource Type defines the type of the target for the announcement.
+        """
+        return pulumi.get(self, "target_resource_type")
+
+
+@pulumi.output_type
 class GetClusterAutoscalingSettingResult(dict):
     def __init__(__self__, *,
                  autoscaling_policies: Sequence['outputs.GetClusterAutoscalingSettingAutoscalingPolicyResult'],
@@ -3493,5 +3556,462 @@ class GetSubnetDhcpAddressRangeResult(dict):
         The last IP address of the range.
         """
         return pulumi.get(self, "last_address")
+
+
+@pulumi.output_type
+class GetUpgradesUpgradeResult(dict):
+    def __init__(__self__, *,
+                 component_upgrades: Sequence['outputs.GetUpgradesUpgradeComponentUpgradeResult'],
+                 description: _builtins.str,
+                 end_time: _builtins.str,
+                 estimated_duration: _builtins.str,
+                 name: _builtins.str,
+                 schedules: Sequence['outputs.GetUpgradesUpgradeScheduleResult'],
+                 start_version: _builtins.str,
+                 state: _builtins.str,
+                 target_version: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param Sequence['GetUpgradesUpgradeComponentUpgradeArgs'] component_upgrades: The list of component upgrades.
+        :param _builtins.str description: Additional information about the private cloud upgrade.
+        :param _builtins.str end_time: End of the edit window (RFC3339).
+        :param _builtins.str estimated_duration: The estimated total duration of the upgrade in seconds. This information can be used to plan or schedule upgrades to minimize disruptions. Please note that the estimated duration is only an estimate. The actual upgrade duration may vary. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param _builtins.str name: The resource name of the specific Upgrade to retrieve. If provided, the 'upgrades' list will contain only this upgrade.
+        :param Sequence['GetUpgradesUpgradeScheduleArgs'] schedules: Schedule details for the upgrade.
+        :param _builtins.str start_version: The start version of the private cloud for this upgrade.
+        :param _builtins.str state: Component's upgrade state.
+        :param _builtins.str target_version: The targeted version of the private cloud at the end of the upgrade.
+        :param _builtins.str type: The type of upgrade. Possible values include: `VSPHERE_UPGRADE`, `VSPHERE_PATCH`, `WORKAROUND`, `FIRMWARE_UPGRADE`, `SWITCH_UPGRADE`, `OTHER`, `INFRASTRUCTURE_UPGRADE`.
+        """
+        pulumi.set(__self__, "component_upgrades", component_upgrades)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "estimated_duration", estimated_duration)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "schedules", schedules)
+        pulumi.set(__self__, "start_version", start_version)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "target_version", target_version)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="componentUpgrades")
+    def component_upgrades(self) -> Sequence['outputs.GetUpgradesUpgradeComponentUpgradeResult']:
+        """
+        The list of component upgrades.
+        """
+        return pulumi.get(self, "component_upgrades")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Additional information about the private cloud upgrade.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> _builtins.str:
+        """
+        End of the edit window (RFC3339).
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="estimatedDuration")
+    def estimated_duration(self) -> _builtins.str:
+        """
+        The estimated total duration of the upgrade in seconds. This information can be used to plan or schedule upgrades to minimize disruptions. Please note that the estimated duration is only an estimate. The actual upgrade duration may vary. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "estimated_duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The resource name of the specific Upgrade to retrieve. If provided, the 'upgrades' list will contain only this upgrade.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def schedules(self) -> Sequence['outputs.GetUpgradesUpgradeScheduleResult']:
+        """
+        Schedule details for the upgrade.
+        """
+        return pulumi.get(self, "schedules")
+
+    @_builtins.property
+    @pulumi.getter(name="startVersion")
+    def start_version(self) -> _builtins.str:
+        """
+        The start version of the private cloud for this upgrade.
+        """
+        return pulumi.get(self, "start_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Component's upgrade state.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="targetVersion")
+    def target_version(self) -> _builtins.str:
+        """
+        The targeted version of the private cloud at the end of the upgrade.
+        """
+        return pulumi.get(self, "target_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of upgrade. Possible values include: `VSPHERE_UPGRADE`, `VSPHERE_PATCH`, `WORKAROUND`, `FIRMWARE_UPGRADE`, `SWITCH_UPGRADE`, `OTHER`, `INFRASTRUCTURE_UPGRADE`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetUpgradesUpgradeComponentUpgradeResult(dict):
+    def __init__(__self__, *,
+                 component_type: _builtins.str,
+                 state: _builtins.str):
+        """
+        :param _builtins.str component_type: The type of vmware component being upgraded.
+        :param _builtins.str state: Component's upgrade state.
+        """
+        pulumi.set(__self__, "component_type", component_type)
+        pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="componentType")
+    def component_type(self) -> _builtins.str:
+        """
+        The type of vmware component being upgraded.
+        """
+        return pulumi.get(self, "component_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Component's upgrade state.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetUpgradesUpgradeScheduleResult(dict):
+    def __init__(__self__, *,
+                 constraints: 'outputs.GetUpgradesUpgradeScheduleConstraintsResult',
+                 edit_windows: Sequence['outputs.GetUpgradesUpgradeScheduleEditWindowResult'],
+                 last_editor: _builtins.str,
+                 start_time: _builtins.str,
+                 weekly_windows: Sequence['outputs.GetUpgradesUpgradeScheduleWeeklyWindowResult']):
+        """
+        :param 'GetUpgradesUpgradeScheduleConstraintsArgs' constraints: Constraints applied to the schedule.
+        :param Sequence['GetUpgradesUpgradeScheduleEditWindowArgs'] edit_windows: The schedule is open for edits during this time interval.
+        :param _builtins.str last_editor: Indicates who most recently edited the upgrade schedule. Possible values: `SYSTEM`, `USER`.
+        :param _builtins.str start_time: Start of the edit window (RFC3339).
+        :param Sequence['GetUpgradesUpgradeScheduleWeeklyWindowArgs'] weekly_windows: Weekly time windows for upgrade activities.
+        """
+        pulumi.set(__self__, "constraints", constraints)
+        pulumi.set(__self__, "edit_windows", edit_windows)
+        pulumi.set(__self__, "last_editor", last_editor)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "weekly_windows", weekly_windows)
+
+    @_builtins.property
+    @pulumi.getter
+    def constraints(self) -> 'outputs.GetUpgradesUpgradeScheduleConstraintsResult':
+        """
+        Constraints applied to the schedule.
+        """
+        return pulumi.get(self, "constraints")
+
+    @_builtins.property
+    @pulumi.getter(name="editWindows")
+    def edit_windows(self) -> Sequence['outputs.GetUpgradesUpgradeScheduleEditWindowResult']:
+        """
+        The schedule is open for edits during this time interval.
+        """
+        return pulumi.get(self, "edit_windows")
+
+    @_builtins.property
+    @pulumi.getter(name="lastEditor")
+    def last_editor(self) -> _builtins.str:
+        """
+        Indicates who most recently edited the upgrade schedule. Possible values: `SYSTEM`, `USER`.
+        """
+        return pulumi.get(self, "last_editor")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> _builtins.str:
+        """
+        Start of the edit window (RFC3339).
+        """
+        return pulumi.get(self, "start_time")
+
+    @_builtins.property
+    @pulumi.getter(name="weeklyWindows")
+    def weekly_windows(self) -> Sequence['outputs.GetUpgradesUpgradeScheduleWeeklyWindowResult']:
+        """
+        Weekly time windows for upgrade activities.
+        """
+        return pulumi.get(self, "weekly_windows")
+
+
+@pulumi.output_type
+class GetUpgradesUpgradeScheduleConstraintsResult(dict):
+    def __init__(__self__, *,
+                 disallowed_intervals: 'outputs.GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsResult',
+                 min_hours_day: _builtins.int,
+                 min_hours_week: _builtins.int,
+                 reschedule_date_range: 'outputs.GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeResult'):
+        """
+        :param 'GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsArgs' disallowed_intervals: A list of intervals in which maintenance windows are not allowed.
+        :param _builtins.int min_hours_day: Minimum number of hours must be allotted for the upgrade activities for each selected day.
+        :param _builtins.int min_hours_week: The minimum number of weekly hours must be allotted for the upgrade activities.
+        :param 'GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeArgs' reschedule_date_range: The user can only reschedule an upgrade that starts within this range.
+        """
+        pulumi.set(__self__, "disallowed_intervals", disallowed_intervals)
+        pulumi.set(__self__, "min_hours_day", min_hours_day)
+        pulumi.set(__self__, "min_hours_week", min_hours_week)
+        pulumi.set(__self__, "reschedule_date_range", reschedule_date_range)
+
+    @_builtins.property
+    @pulumi.getter(name="disallowedIntervals")
+    def disallowed_intervals(self) -> 'outputs.GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsResult':
+        """
+        A list of intervals in which maintenance windows are not allowed.
+        """
+        return pulumi.get(self, "disallowed_intervals")
+
+    @_builtins.property
+    @pulumi.getter(name="minHoursDay")
+    def min_hours_day(self) -> _builtins.int:
+        """
+        Minimum number of hours must be allotted for the upgrade activities for each selected day.
+        """
+        return pulumi.get(self, "min_hours_day")
+
+    @_builtins.property
+    @pulumi.getter(name="minHoursWeek")
+    def min_hours_week(self) -> _builtins.int:
+        """
+        The minimum number of weekly hours must be allotted for the upgrade activities.
+        """
+        return pulumi.get(self, "min_hours_week")
+
+    @_builtins.property
+    @pulumi.getter(name="rescheduleDateRange")
+    def reschedule_date_range(self) -> 'outputs.GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeResult':
+        """
+        The user can only reschedule an upgrade that starts within this range.
+        """
+        return pulumi.get(self, "reschedule_date_range")
+
+
+@pulumi.output_type
+class GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsResult(dict):
+    def __init__(__self__, *,
+                 end_day: _builtins.str,
+                 end_time: 'outputs.GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeResult',
+                 start_day: _builtins.str,
+                 start_time: 'outputs.GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeResult'):
+        """
+        :param 'GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeArgs' end_time: End of the edit window (RFC3339).
+        :param 'GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeArgs' start_time: Start of the edit window (RFC3339).
+        """
+        pulumi.set(__self__, "end_day", end_day)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_day", start_day)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="endDay")
+    def end_day(self) -> _builtins.str:
+        return pulumi.get(self, "end_day")
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> 'outputs.GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeResult':
+        """
+        End of the edit window (RFC3339).
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startDay")
+    def start_day(self) -> _builtins.str:
+        return pulumi.get(self, "start_day")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> 'outputs.GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeResult':
+        """
+        Start of the edit window (RFC3339).
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsEndTimeResult(dict):
+    def __init__(__self__, *,
+                 hours: _builtins.int,
+                 minutes: _builtins.int):
+        pulumi.set(__self__, "hours", hours)
+        pulumi.set(__self__, "minutes", minutes)
+
+    @_builtins.property
+    @pulumi.getter
+    def hours(self) -> _builtins.int:
+        return pulumi.get(self, "hours")
+
+    @_builtins.property
+    @pulumi.getter
+    def minutes(self) -> _builtins.int:
+        return pulumi.get(self, "minutes")
+
+
+@pulumi.output_type
+class GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTimeResult(dict):
+    def __init__(__self__, *,
+                 hours: _builtins.int,
+                 minutes: _builtins.int):
+        pulumi.set(__self__, "hours", hours)
+        pulumi.set(__self__, "minutes", minutes)
+
+    @_builtins.property
+    @pulumi.getter
+    def hours(self) -> _builtins.int:
+        return pulumi.get(self, "hours")
+
+    @_builtins.property
+    @pulumi.getter
+    def minutes(self) -> _builtins.int:
+        return pulumi.get(self, "minutes")
+
+
+@pulumi.output_type
+class GetUpgradesUpgradeScheduleConstraintsRescheduleDateRangeResult(dict):
+    def __init__(__self__, *,
+                 end_time: _builtins.str,
+                 start_time: _builtins.str):
+        """
+        :param _builtins.str end_time: End of the edit window (RFC3339).
+        :param _builtins.str start_time: Start of the edit window (RFC3339).
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> _builtins.str:
+        """
+        End of the edit window (RFC3339).
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> _builtins.str:
+        """
+        Start of the edit window (RFC3339).
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetUpgradesUpgradeScheduleEditWindowResult(dict):
+    def __init__(__self__, *,
+                 end_time: _builtins.str,
+                 start_time: _builtins.str):
+        """
+        :param _builtins.str end_time: End of the edit window (RFC3339).
+        :param _builtins.str start_time: Start of the edit window (RFC3339).
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> _builtins.str:
+        """
+        End of the edit window (RFC3339).
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> _builtins.str:
+        """
+        Start of the edit window (RFC3339).
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetUpgradesUpgradeScheduleWeeklyWindowResult(dict):
+    def __init__(__self__, *,
+                 day_of_week: _builtins.str,
+                 duration: _builtins.str,
+                 start_times: Sequence['outputs.GetUpgradesUpgradeScheduleWeeklyWindowStartTimeResult']):
+        """
+        :param _builtins.str day_of_week: Day of the week for this window.
+        :param _builtins.str duration: The duration of the window in seconds.
+        :param Sequence['GetUpgradesUpgradeScheduleWeeklyWindowStartTimeArgs'] start_times: Start of the edit window (RFC3339).
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "start_times", start_times)
+
+    @_builtins.property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> _builtins.str:
+        """
+        Day of the week for this window.
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> _builtins.str:
+        """
+        The duration of the window in seconds.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter(name="startTimes")
+    def start_times(self) -> Sequence['outputs.GetUpgradesUpgradeScheduleWeeklyWindowStartTimeResult']:
+        """
+        Start of the edit window (RFC3339).
+        """
+        return pulumi.get(self, "start_times")
+
+
+@pulumi.output_type
+class GetUpgradesUpgradeScheduleWeeklyWindowStartTimeResult(dict):
+    def __init__(__self__, *,
+                 hours: _builtins.int,
+                 minutes: _builtins.int):
+        pulumi.set(__self__, "hours", hours)
+        pulumi.set(__self__, "minutes", minutes)
+
+    @_builtins.property
+    @pulumi.getter
+    def hours(self) -> _builtins.int:
+        return pulumi.get(self, "hours")
+
+    @_builtins.property
+    @pulumi.getter
+    def minutes(self) -> _builtins.int:
+        return pulumi.get(self, "minutes")
 
 

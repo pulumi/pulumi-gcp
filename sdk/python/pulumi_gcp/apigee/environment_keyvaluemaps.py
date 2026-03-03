@@ -23,6 +23,7 @@ class EnvironmentKeyvaluemapsArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvironmentKeyvaluemaps resource.
+
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
         :param pulumi.Input[_builtins.str] name: Required. ID of the key value map.
@@ -64,6 +65,7 @@ class _EnvironmentKeyvaluemapsState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvironmentKeyvaluemaps resources.
+
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
         :param pulumi.Input[_builtins.str] name: Required. ID of the key value map.
@@ -179,6 +181,7 @@ class EnvironmentKeyvaluemaps(pulumi.CustomResource):
         $ pulumi import gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps default {{env_id}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
@@ -261,6 +264,7 @@ class EnvironmentKeyvaluemaps(pulumi.CustomResource):
         $ pulumi import gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps default {{env_id}}/keyvaluemaps/{{name}}
         $ pulumi import gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps default {{env_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvironmentKeyvaluemapsArgs args: The arguments to use to populate this resource's properties.

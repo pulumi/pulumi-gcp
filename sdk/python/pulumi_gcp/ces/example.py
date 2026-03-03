@@ -31,6 +31,7 @@ class ExampleArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Example resource.
+
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] display_name: Display name of the example.
         :param pulumi.Input[_builtins.str] example_id: The ID to use for the example, which will become the final component of
@@ -178,6 +179,7 @@ class _ExampleState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Example resources.
+
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the example was created.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the example.
@@ -615,6 +617,7 @@ class Example(pulumi.CustomResource):
         $ pulumi import gcp:ces/example:Example default {{location}}/{{app}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -840,6 +843,7 @@ class Example(pulumi.CustomResource):
         $ pulumi import gcp:ces/example:Example default {{project}}/{{location}}/{{app}}/{{name}}
         $ pulumi import gcp:ces/example:Example default {{location}}/{{app}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ExampleArgs args: The arguments to use to populate this resource's properties.

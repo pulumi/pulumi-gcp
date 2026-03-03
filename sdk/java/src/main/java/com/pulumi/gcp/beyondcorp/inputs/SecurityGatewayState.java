@@ -6,6 +6,7 @@ package com.pulumi.gcp.beyondcorp.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayHubArgs;
+import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayLoggingArgs;
 import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayProxyProtocolConfigArgs;
 import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayServiceDiscoveryArgs;
 import java.lang.String;
@@ -129,6 +130,21 @@ public final class SecurityGatewayState extends com.pulumi.resources.ResourceArg
     @Deprecated /* `location` is deprecated and will be removed in a future major release. */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
+    }
+
+    /**
+     * Settings related to Cloud Logging.
+     * 
+     */
+    @Import(name="logging")
+    private @Nullable Output<SecurityGatewayLoggingArgs> logging;
+
+    /**
+     * @return Settings related to Cloud Logging.
+     * 
+     */
+    public Optional<Output<SecurityGatewayLoggingArgs>> logging() {
+        return Optional.ofNullable(this.logging);
     }
 
     /**
@@ -273,6 +289,7 @@ public final class SecurityGatewayState extends com.pulumi.resources.ResourceArg
         this.externalIps = $.externalIps;
         this.hubs = $.hubs;
         this.location = $.location;
+        this.logging = $.logging;
         this.name = $.name;
         this.project = $.project;
         this.proxyProtocolConfig = $.proxyProtocolConfig;
@@ -469,6 +486,27 @@ public final class SecurityGatewayState extends com.pulumi.resources.ResourceArg
         @Deprecated /* `location` is deprecated and will be removed in a future major release. */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param logging Settings related to Cloud Logging.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logging(@Nullable Output<SecurityGatewayLoggingArgs> logging) {
+            $.logging = logging;
+            return this;
+        }
+
+        /**
+         * @param logging Settings related to Cloud Logging.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logging(SecurityGatewayLoggingArgs logging) {
+            return logging(Output.of(logging));
         }
 
         /**

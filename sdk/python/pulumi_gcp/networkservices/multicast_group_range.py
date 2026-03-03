@@ -34,6 +34,7 @@ class MulticastGroupRangeArgs:
                  require_explicit_accept: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a MulticastGroupRange resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] multicast_domain: The resource name of the multicast domain in which to create this
                multicast group range.
@@ -274,6 +275,7 @@ class _MulticastGroupRangeState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MulticastGroupRange resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] consumer_accept_lists: A list of consumer projects that are allowed to subscribe to the multicast
                IP addresses within the range defined by this MulticastGroupRange. The
                project can be specified using its project ID or project number. If left
@@ -724,6 +726,7 @@ class MulticastGroupRange(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{location}}/{{multicast_group_range_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] consumer_accept_lists: A list of consumer projects that are allowed to subscribe to the multicast
@@ -827,6 +830,7 @@ class MulticastGroupRange(pulumi.CustomResource):
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{project}}/{{location}}/{{multicast_group_range_id}}
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{location}}/{{multicast_group_range_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MulticastGroupRangeArgs args: The arguments to use to populate this resource's properties.

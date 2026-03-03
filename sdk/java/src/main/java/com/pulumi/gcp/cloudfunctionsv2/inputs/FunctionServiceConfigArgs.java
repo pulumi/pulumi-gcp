@@ -87,7 +87,6 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (Optional, Beta)
      * Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
      * Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
      * 
@@ -96,8 +95,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> directVpcEgress;
 
     /**
-     * @return (Optional, Beta)
-     * Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+     * @return Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
      * Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
      * 
      */
@@ -106,7 +104,6 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (Optional, Beta)
      * The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
      * Structure is documented below.
      * 
@@ -115,8 +112,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     private @Nullable Output<List<FunctionServiceConfigDirectVpcNetworkInterfaceArgs>> directVpcNetworkInterfaces;
 
     /**
-     * @return (Optional, Beta)
-     * The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+     * @return The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
      * Structure is documented below.
      * 
      */
@@ -490,8 +486,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param directVpcEgress (Optional, Beta)
-         * Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+         * @param directVpcEgress Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
          * Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
          * 
          * @return builder
@@ -503,8 +498,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param directVpcEgress (Optional, Beta)
-         * Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+         * @param directVpcEgress Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
          * Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
          * 
          * @return builder
@@ -515,8 +509,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param directVpcNetworkInterfaces (Optional, Beta)
-         * The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+         * @param directVpcNetworkInterfaces The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
          * Structure is documented below.
          * 
          * @return builder
@@ -528,8 +521,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param directVpcNetworkInterfaces (Optional, Beta)
-         * The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+         * @param directVpcNetworkInterfaces The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
          * Structure is documented below.
          * 
          * @return builder
@@ -540,8 +532,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param directVpcNetworkInterfaces (Optional, Beta)
-         * The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+         * @param directVpcNetworkInterfaces The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
          * Structure is documented below.
          * 
          * @return builder

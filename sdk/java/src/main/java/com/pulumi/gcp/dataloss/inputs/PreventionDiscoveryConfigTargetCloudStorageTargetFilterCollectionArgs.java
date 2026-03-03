@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataloss.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,10 +33,32 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollec
         return Optional.ofNullable(this.includeRegexes);
     }
 
+    /**
+     * For a resource to match the tag filters, the resource must have all of the
+     * provided tags attached. Tags refer to Resource Manager tags bound to the
+     * resource or its ancestors.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="includeTags")
+    private @Nullable Output<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsArgs> includeTags;
+
+    /**
+     * @return For a resource to match the tag filters, the resource must have all of the
+     * provided tags attached. Tags refer to Resource Manager tags bound to the
+     * resource or its ancestors.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsArgs>> includeTags() {
+        return Optional.ofNullable(this.includeTags);
+    }
+
     private PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs() {}
 
     private PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs(PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs $) {
         this.includeRegexes = $.includeRegexes;
+        this.includeTags = $.includeTags;
     }
 
     public static Builder builder() {
@@ -77,6 +100,33 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollec
          */
         public Builder includeRegexes(PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgs includeRegexes) {
             return includeRegexes(Output.of(includeRegexes));
+        }
+
+        /**
+         * @param includeTags For a resource to match the tag filters, the resource must have all of the
+         * provided tags attached. Tags refer to Resource Manager tags bound to the
+         * resource or its ancestors.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeTags(@Nullable Output<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsArgs> includeTags) {
+            $.includeTags = includeTags;
+            return this;
+        }
+
+        /**
+         * @param includeTags For a resource to match the tag filters, the resource must have all of the
+         * provided tags attached. Tags refer to Resource Manager tags bound to the
+         * resource or its ancestors.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeTags(PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsArgs includeTags) {
+            return includeTags(Output.of(includeTags));
         }
 
         public PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs build() {

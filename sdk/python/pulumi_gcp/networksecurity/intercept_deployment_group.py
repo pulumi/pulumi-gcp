@@ -29,6 +29,7 @@ class InterceptDeploymentGroupArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InterceptDeploymentGroup resource.
+
         :param pulumi.Input[_builtins.str] intercept_deployment_group_id: The ID to use for the new deployment group, which will become the final
                component of the deployment group's resource name.
         :param pulumi.Input[_builtins.str] location: The cloud location of the deployment group, currently restricted to `global`.
@@ -153,6 +154,7 @@ class _InterceptDeploymentGroupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InterceptDeploymentGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['InterceptDeploymentGroupConnectedEndpointGroupArgs']]] connected_endpoint_groups: The list of endpoint groups that are connected to this resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
@@ -482,6 +484,7 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup default {{location}}/{{intercept_deployment_group_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User-provided description of the deployment group.
@@ -545,6 +548,7 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup default {{project}}/{{location}}/{{intercept_deployment_group_id}}
         $ pulumi import gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup default {{location}}/{{intercept_deployment_group_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InterceptDeploymentGroupArgs args: The arguments to use to populate this resource's properties.

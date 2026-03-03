@@ -31,6 +31,7 @@ class TlsInspectionPolicyArgs:
                  trust_config: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TlsInspectionPolicy resource.
+
         :param pulumi.Input[_builtins.str] ca_pool: A CA pool resource used to issue interception certificates.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_tls_features: List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
         :param pulumi.Input[_builtins.str] description: Free-text description of the resource.
@@ -210,6 +211,7 @@ class _TlsInspectionPolicyState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TlsInspectionPolicy resources.
+
         :param pulumi.Input[_builtins.str] ca_pool: A CA pool resource used to issue interception certificates.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_tls_features: List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
@@ -636,6 +638,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ca_pool: A CA pool resource used to issue interception certificates.
@@ -875,6 +878,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TlsInspectionPolicyArgs args: The arguments to use to populate this resource's properties.

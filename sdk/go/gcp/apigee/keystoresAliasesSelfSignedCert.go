@@ -76,8 +76,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
-//				CreateDuration: pulumi.String("120s"),
+//			wait300Seconds, err := time.NewSleep(ctx, "wait_300_seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("300s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				compute,
 //			}))
@@ -88,7 +88,7 @@ import (
 //				Name:    pulumi.String("apigee-network"),
 //				Project: project.ProjectId,
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				wait120Seconds,
+//				wait300Seconds,
 //			}))
 //			if err != nil {
 //				return err

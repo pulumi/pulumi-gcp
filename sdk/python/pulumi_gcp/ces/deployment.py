@@ -29,6 +29,7 @@ class DeploymentArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Deployment resource.
+
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] app_version: The resource name of the app version to deploy.
                Format:
@@ -142,6 +143,7 @@ class _DeploymentState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Deployment resources.
+
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] app_version: The resource name of the app version to deploy.
                Format:
@@ -381,6 +383,7 @@ class Deployment(pulumi.CustomResource):
         $ pulumi import gcp:ces/deployment:Deployment default {{location}}/{{app}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -455,6 +458,7 @@ class Deployment(pulumi.CustomResource):
         $ pulumi import gcp:ces/deployment:Deployment default {{project}}/{{location}}/{{app}}/{{name}}
         $ pulumi import gcp:ces/deployment:Deployment default {{location}}/{{app}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeploymentArgs args: The arguments to use to populate this resource's properties.

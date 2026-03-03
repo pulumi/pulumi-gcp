@@ -24,6 +24,7 @@ class SubAccountArgs:
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SubAccount resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name of the billing account.
         :param pulumi.Input[_builtins.str] master_billing_account: The name of the master billing account that the subaccount
                will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
@@ -87,6 +88,7 @@ class _SubAccountState:
                  open: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering SubAccount resources.
+
         :param pulumi.Input[_builtins.str] billing_account_id: The billing account id.
         :param pulumi.Input[_builtins.str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
                will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
@@ -222,6 +224,7 @@ class SubAccount(pulumi.CustomResource):
         $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
@@ -262,6 +265,7 @@ class SubAccount(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SubAccountArgs args: The arguments to use to populate this resource's properties.

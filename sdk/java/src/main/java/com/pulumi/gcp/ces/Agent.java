@@ -62,12 +62,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.inputs.GuardrailActionArgs;
  * import com.pulumi.gcp.ces.inputs.GuardrailActionRespondImmediatelyArgs;
  * import com.pulumi.gcp.ces.inputs.GuardrailModelSafetyArgs;
- * import com.pulumi.gcp.ces.inputs.AgentAfterAgentCallbackArgs;
  * import com.pulumi.gcp.ces.inputs.AgentBeforeAgentCallbackArgs;
- * import com.pulumi.gcp.ces.inputs.AgentAfterModelCallbackArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentAfterAgentCallbackArgs;
  * import com.pulumi.gcp.ces.inputs.AgentBeforeModelCallbackArgs;
- * import com.pulumi.gcp.ces.inputs.AgentAfterToolCallbackArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentAfterModelCallbackArgs;
  * import com.pulumi.gcp.ces.inputs.AgentBeforeToolCallbackArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentAfterToolCallbackArgs;
  * import com.pulumi.gcp.ces.inputs.AgentToolsetArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -151,7 +151,7 @@ import javax.annotation.Nullable;
  *             .displayName("child agent")
  *             .instruction("You are a helpful assistant for this example.")
  *             .modelSettings(AgentModelSettingsArgs.builder()
- *                 .model("gemini-1.5-flash")
+ *                 .model("gemini-2.5-flash-001")
  *                 .temperature(0.5)
  *                 .build())
  *             .llmAgent(AgentLlmAgentArgs.builder()
@@ -189,50 +189,38 @@ import javax.annotation.Nullable;
  *             .description("test agent")
  *             .instruction("You are a helpful assistant for this example.")
  *             .modelSettings(AgentModelSettingsArgs.builder()
- *                 .model("gemini-1.5-flash")
+ *                 .model("gemini-2.5-flash-001")
  *                 .temperature(0.5)
+ *                 .build())
+ *             .beforeAgentCallbacks(AgentBeforeAgentCallbackArgs.builder()
+ *                 .description("Example callback")
+ *                 .disabled(true)
+ *                 .pythonCode("def before_agent_callback(callback_context): return None")
  *                 .build())
  *             .afterAgentCallbacks(AgentAfterAgentCallbackArgs.builder()
  *                 .description("Example callback")
  *                 .disabled(true)
- *                 .pythonCode("""
- * def callback(context):
- *     return {'override': False}                """)
- *                 .build())
- *             .beforeAgentCallbacks(AgentBeforeAgentCallbackArgs.builder()
- *                 .description("Example callback")
- *                 .disabled(false)
- *                 .pythonCode("""
- * def callback(context):
- *     return {'override': False}                """)
- *                 .build())
- *             .afterModelCallbacks(AgentAfterModelCallbackArgs.builder()
- *                 .description("Example callback")
- *                 .disabled(true)
- *                 .pythonCode("""
- * def callback(context):
- *     return {'override': False}                """)
+ *                 .pythonCode("def after_agent_callback(callback_context): return None")
  *                 .build())
  *             .beforeModelCallbacks(AgentBeforeModelCallbackArgs.builder()
  *                 .description("Example callback")
  *                 .disabled(true)
- *                 .pythonCode("""
- * def callback(context):
- *     return {'override': False}                """)
+ *                 .pythonCode("def before_model_callback(callback_context, llm_request): return None")
  *                 .build())
- *             .afterToolCallbacks(AgentAfterToolCallbackArgs.builder()
+ *             .afterModelCallbacks(AgentAfterModelCallbackArgs.builder()
  *                 .description("Example callback")
  *                 .disabled(true)
- *                 .pythonCode("""
- * def callback(context):
- *     return {'override': False}                """)
+ *                 .pythonCode("def after_model_callback(callback_context, llm_response): return None")
  *                 .build())
  *             .beforeToolCallbacks(AgentBeforeToolCallbackArgs.builder()
  *                 .description("Example callback")
  *                 .disabled(true)
- *                 .pythonCode("""
- * def callback(context):
- *     return {'override': False}                """)
+ *                 .pythonCode("def before_tool_callback(tool, input, callback_context): return None")
+ *                 .build())
+ *             .afterToolCallbacks(AgentAfterToolCallbackArgs.builder()
+ *                 .description("Example callback")
+ *                 .disabled(true)
+ *                 .pythonCode("def after_tool_callback(tool, input, callback_context, tool_response): return None")
  *                 .build())
  *             .tools(cesToolForAgent.id())
  *             .guardrails(cesGuardrailForAgent.id())

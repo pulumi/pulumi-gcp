@@ -26,6 +26,7 @@ class EncryptionSpecArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EncryptionSpec resource.
+
         :param pulumi.Input['EncryptionSpecEncryptionSpecArgs'] encryption_spec: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location in which the encryptionSpec is to be initialized.
@@ -84,6 +85,7 @@ class _EncryptionSpecState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EncryptionSpec resources.
+
         :param pulumi.Input['EncryptionSpecEncryptionSpecArgs'] encryption_spec: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location in which the encryptionSpec is to be initialized.
@@ -218,6 +220,7 @@ class EncryptionSpec(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EncryptionSpecEncryptionSpecArgs', 'EncryptionSpecEncryptionSpecArgsDict']] encryption_spec: A nested object resource.
@@ -303,6 +306,7 @@ class EncryptionSpec(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param EncryptionSpecArgs args: The arguments to use to populate this resource's properties.

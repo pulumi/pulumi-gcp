@@ -34,6 +34,7 @@ class ReservationArgs:
                  secondary_location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Reservation resource.
+
         :param pulumi.Input[_builtins.int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
                unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         :param pulumi.Input['ReservationAutoscaleArgs'] autoscale: The configuration parameters for the auto scaling feature.
@@ -368,6 +369,7 @@ class _ReservationState:
                  slot_capacity: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Reservation resources.
+
         :param pulumi.Input['ReservationAutoscaleArgs'] autoscale: The configuration parameters for the auto scaling feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
@@ -810,6 +812,7 @@ class Reservation(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/reservation:Reservation default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']] autoscale: The configuration parameters for the auto scaling feature.
@@ -948,6 +951,7 @@ class Reservation(pulumi.CustomResource):
         $ pulumi import gcp:bigquery/reservation:Reservation default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:bigquery/reservation:Reservation default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReservationArgs args: The arguments to use to populate this resource's properties.

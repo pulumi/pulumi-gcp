@@ -26,6 +26,7 @@ class SettingsArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Settings resource.
+
         :param pulumi.Input['SettingsAccessSettingsArgs'] access_settings: Top level wrapper for all access related setting in IAP.
                Structure is documented below.
         :param pulumi.Input['SettingsApplicationSettingsArgs'] application_settings: Top level wrapper for all application related settings in IAP.
@@ -108,6 +109,7 @@ class _SettingsState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Settings resources.
+
         :param pulumi.Input['SettingsAccessSettingsArgs'] access_settings: Top level wrapper for all access related setting in IAP.
                Structure is documented below.
         :param pulumi.Input['SettingsApplicationSettingsArgs'] application_settings: Top level wrapper for all application related settings in IAP.
@@ -270,6 +272,35 @@ class Settings(pulumi.CustomResource):
                 },
             })
         ```
+        ### Iap Settings Oauth Storage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="iap-bs-health-check-oauth",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.RegionBackendService("default",
+            name="iap-settings-oauth",
+            region="us-central1",
+            health_checks=default_health_check.id,
+            connection_draining_timeout_sec=10,
+            session_affinity="CLIENT_IP")
+        iap_settings_oauth = gcp.iap.Settings("iap_settings_oauth",
+            name=default.name.apply(lambda name: f"projects/{project.number}/iap_web/compute-us-central1/services/{name}"),
+            access_settings={
+                "oauth_settings": {
+                    "client_id": "test-client-id",
+                    "client_secret": "test-client-secret",
+                },
+            })
+        ```
 
         ## Import
 
@@ -284,6 +315,7 @@ class Settings(pulumi.CustomResource):
         $ pulumi import gcp:iap/settings:Settings default {{name}}/iapSettings
         $ pulumi import gcp:iap/settings:Settings default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -388,6 +420,35 @@ class Settings(pulumi.CustomResource):
                 },
             })
         ```
+        ### Iap Settings Oauth Storage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="iap-bs-health-check-oauth",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.RegionBackendService("default",
+            name="iap-settings-oauth",
+            region="us-central1",
+            health_checks=default_health_check.id,
+            connection_draining_timeout_sec=10,
+            session_affinity="CLIENT_IP")
+        iap_settings_oauth = gcp.iap.Settings("iap_settings_oauth",
+            name=default.name.apply(lambda name: f"projects/{project.number}/iap_web/compute-us-central1/services/{name}"),
+            access_settings={
+                "oauth_settings": {
+                    "client_id": "test-client-id",
+                    "client_secret": "test-client-secret",
+                },
+            })
+        ```
 
         ## Import
 
@@ -402,6 +463,7 @@ class Settings(pulumi.CustomResource):
         $ pulumi import gcp:iap/settings:Settings default {{name}}/iapSettings
         $ pulumi import gcp:iap/settings:Settings default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SettingsArgs args: The arguments to use to populate this resource's properties.
