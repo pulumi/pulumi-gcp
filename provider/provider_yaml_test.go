@@ -525,7 +525,7 @@ func TestOrganizationsProjectAutoNaming(t *testing.T) {
             ],
             "autoCreateNetwork": true,
             "name": "my-proj",
-            "projectId": "my-proj-760b06d",
+            "projectId": "my-proj-d662a01",
 			"deletionPolicy": "PREVENT"
         }
     },
