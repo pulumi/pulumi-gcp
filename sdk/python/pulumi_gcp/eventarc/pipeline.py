@@ -35,6 +35,7 @@ class PipelineArgs:
                  retry_policy: Optional[pulumi.Input['PipelineRetryPolicyArgs']] = None):
         """
         The set of arguments for constructing a Pipeline resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['PipelineDestinationArgs']]] destinations: List of destinations to which messages will be forwarded. Currently,
                exactly one destination is supported per Pipeline.
                Structure is documented below.
@@ -292,6 +293,7 @@ class _PipelineState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Pipeline resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User-defined annotations. See https://google.aip.dev/128#annotations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -962,6 +964,7 @@ class Pipeline(pulumi.CustomResource):
         $ pulumi import gcp:eventarc/pipeline:Pipeline default {{location}}/{{pipeline_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User-defined annotations. See https://google.aip.dev/128#annotations.
@@ -1278,6 +1281,7 @@ class Pipeline(pulumi.CustomResource):
         $ pulumi import gcp:eventarc/pipeline:Pipeline default {{project}}/{{location}}/{{pipeline_id}}
         $ pulumi import gcp:eventarc/pipeline:Pipeline default {{location}}/{{pipeline_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PipelineArgs args: The arguments to use to populate this resource's properties.

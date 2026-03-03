@@ -38,6 +38,7 @@ __all__ = [
     'SecurityGatewayHubInternetGateway',
     'SecurityGatewayIamBindingCondition',
     'SecurityGatewayIamMemberCondition',
+    'SecurityGatewayLogging',
     'SecurityGatewayProxyProtocolConfig',
     'SecurityGatewayProxyProtocolConfigContextualHeaders',
     'SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo',
@@ -53,6 +54,7 @@ __all__ = [
     'GetAppGatewayAllocatedConnectionResult',
     'GetSecurityGatewayHubResult',
     'GetSecurityGatewayHubInternetGatewayResult',
+    'GetSecurityGatewayLoggingResult',
     'GetSecurityGatewayProxyProtocolConfigResult',
     'GetSecurityGatewayProxyProtocolConfigContextualHeaderResult',
     'GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoResult',
@@ -1064,6 +1066,12 @@ class SecurityGatewayIamMemberCondition(dict):
 
 
 @pulumi.output_type
+class SecurityGatewayLogging(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
 class SecurityGatewayProxyProtocolConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1652,6 +1660,12 @@ class GetSecurityGatewayHubInternetGatewayResult(dict):
         Output only. List of IP addresses assigned to the Cloud NAT.
         """
         return pulumi.get(self, "assigned_ips")
+
+
+@pulumi.output_type
+class GetSecurityGatewayLoggingResult(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

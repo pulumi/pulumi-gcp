@@ -29,6 +29,7 @@ class MembershipArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Membership resource.
+
         :param pulumi.Input[_builtins.str] membership_id: The client-provided identifier of the membership.
         :param pulumi.Input['MembershipAuthorityArgs'] authority: Authority encodes how Google will recognize identities from this Membership.
                See the workload identity documentation for more details:
@@ -153,6 +154,7 @@ class _MembershipState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Membership resources.
+
         :param pulumi.Input['MembershipAuthorityArgs'] authority: Authority encodes how Google will recognize identities from this Membership.
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
@@ -425,6 +427,7 @@ class Membership(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']] authority: Authority encodes how Google will recognize identities from this Membership.
@@ -549,6 +552,7 @@ class Membership(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{location}}/{{membership_id}}
         $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MembershipArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class WorkforcePoolProviderScimTokenArgs:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkforcePoolProviderScimToken resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the resource.
         :param pulumi.Input[_builtins.str] provider_id: The ID of the Provider.
         :param pulumi.Input[_builtins.str] scim_tenant_id: The ID of the SCIM Tenant.
@@ -129,6 +130,7 @@ class _WorkforcePoolProviderScimTokenState:
                  workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkforcePoolProviderScimToken resources.
+
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim token. Cannot exceed 32 characters.
         :param pulumi.Input[_builtins.str] location: The location for the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the scim token.
@@ -371,6 +373,7 @@ class WorkforcePoolProviderScimToken(pulumi.CustomResource):
         $ pulumi import gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken default {{location}}/{{workforce_pool_id}}/{{provider_id}}/{{scim_tenant_id}}/{{scim_token_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim token. Cannot exceed 32 characters.
@@ -470,6 +473,7 @@ class WorkforcePoolProviderScimToken(pulumi.CustomResource):
         $ pulumi import gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}/scimTenants/{{scim_tenant_id}}/tokens/{{scim_token_id}}
         $ pulumi import gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken default {{location}}/{{workforce_pool_id}}/{{provider_id}}/{{scim_tenant_id}}/{{scim_token_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkforcePoolProviderScimTokenArgs args: The arguments to use to populate this resource's properties.

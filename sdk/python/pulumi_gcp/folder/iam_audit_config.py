@@ -26,6 +26,7 @@ class IamAuditConfigArgs:
                  service: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a IamAuditConfig resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[_builtins.str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
@@ -80,6 +81,7 @@ class _IamAuditConfigState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IamAuditConfig resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the folder's IAM policy.
         :param pulumi.Input[_builtins.str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
@@ -375,6 +377,7 @@ class IamAuditConfig(pulumi.CustomResource):
         > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
          to include the title of condition, e.g. `terraform import google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
@@ -608,6 +611,7 @@ class IamAuditConfig(pulumi.CustomResource):
 
         > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
          to include the title of condition, e.g. `terraform import google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
+
 
         :param str resource_name: The name of the resource.
         :param IamAuditConfigArgs args: The arguments to use to populate this resource's properties.

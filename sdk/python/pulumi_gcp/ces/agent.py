@@ -43,6 +43,7 @@ class AgentArgs:
                  toolsets: Optional[pulumi.Input[Sequence[pulumi.Input['AgentToolsetArgs']]]] = None):
         """
         The set of arguments for constructing a Agent resource.
+
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] display_name: Display name of the agent.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -459,6 +460,7 @@ class _AgentState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Agent resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['AgentAfterAgentCallbackArgs']]] after_agent_callbacks: The callbacks to execute after the agent is called.
                The provided callbacks are executed sequentially in the exact order they
                are given in the list. If a callback returns an overridden response,
@@ -1031,7 +1033,7 @@ class Agent(pulumi.CustomResource):
             display_name="child agent",
             instruction="You are a helpful assistant for this example.",
             model_settings={
-                "model": "gemini-1.5-flash",
+                "model": "gemini-2.5-flash-001",
                 "temperature": 0.5,
             },
             llm_agent={})
@@ -1064,44 +1066,38 @@ class Agent(pulumi.CustomResource):
             description="test agent",
             instruction="You are a helpful assistant for this example.",
             model_settings={
-                "model": "gemini-1.5-flash",
+                "model": "gemini-2.5-flash-001",
                 "temperature": 0.5,
             },
+            before_agent_callbacks=[{
+                "description": "Example callback",
+                "disabled": True,
+                "python_code": "def before_agent_callback(callback_context): return None",
+            }],
             after_agent_callbacks=[{
                 "description": "Example callback",
                 "disabled": True,
-                "python_code": \"\"\"def callback(context):
-            return {'override': False}\"\"\",
-            }],
-            before_agent_callbacks=[{
-                "description": "Example callback",
-                "disabled": False,
-                "python_code": \"\"\"def callback(context):
-            return {'override': False}\"\"\",
-            }],
-            after_model_callbacks=[{
-                "description": "Example callback",
-                "disabled": True,
-                "python_code": \"\"\"def callback(context):
-            return {'override': False}\"\"\",
+                "python_code": "def after_agent_callback(callback_context): return None",
             }],
             before_model_callbacks=[{
                 "description": "Example callback",
                 "disabled": True,
-                "python_code": \"\"\"def callback(context):
-            return {'override': False}\"\"\",
+                "python_code": "def before_model_callback(callback_context, llm_request): return None",
             }],
-            after_tool_callbacks=[{
+            after_model_callbacks=[{
                 "description": "Example callback",
                 "disabled": True,
-                "python_code": \"\"\"def callback(context):
-            return {'override': False}\"\"\",
+                "python_code": "def after_model_callback(callback_context, llm_response): return None",
             }],
             before_tool_callbacks=[{
                 "description": "Example callback",
                 "disabled": True,
-                "python_code": \"\"\"def callback(context):
-            return {'override': False}\"\"\",
+                "python_code": "def before_tool_callback(tool, input, callback_context): return None",
+            }],
+            after_tool_callbacks=[{
+                "description": "Example callback",
+                "disabled": True,
+                "python_code": "def after_tool_callback(tool, input, callback_context, tool_response): return None",
             }],
             tools=[ces_tool_for_agent.id],
             guardrails=[ces_guardrail_for_agent.id],
@@ -1177,6 +1173,7 @@ class Agent(pulumi.CustomResource):
         $ pulumi import gcp:ces/agent:Agent default {{project}}/{{location}}/{{app}}/{{name}}
         $ pulumi import gcp:ces/agent:Agent default {{location}}/{{app}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1323,7 +1320,7 @@ class Agent(pulumi.CustomResource):
             display_name="child agent",
             instruction="You are a helpful assistant for this example.",
             model_settings={
-                "model": "gemini-1.5-flash",
+                "model": "gemini-2.5-flash-001",
                 "temperature": 0.5,
             },
             llm_agent={})
@@ -1356,44 +1353,38 @@ class Agent(pulumi.CustomResource):
             description="test agent",
             instruction="You are a helpful assistant for this example.",
             model_settings={
-                "model": "gemini-1.5-flash",
+                "model": "gemini-2.5-flash-001",
                 "temperature": 0.5,
             },
+            before_agent_callbacks=[{
+                "description": "Example callback",
+                "disabled": True,
+                "python_code": "def before_agent_callback(callback_context): return None",
+            }],
             after_agent_callbacks=[{
                 "description": "Example callback",
                 "disabled": True,
-                "python_code": \"\"\"def callback(context):
-            return {'override': False}\"\"\",
-            }],
-            before_agent_callbacks=[{
-                "description": "Example callback",
-                "disabled": False,
-                "python_code": \"\"\"def callback(context):
-            return {'override': False}\"\"\",
-            }],
-            after_model_callbacks=[{
-                "description": "Example callback",
-                "disabled": True,
-                "python_code": \"\"\"def callback(context):
-            return {'override': False}\"\"\",
+                "python_code": "def after_agent_callback(callback_context): return None",
             }],
             before_model_callbacks=[{
                 "description": "Example callback",
                 "disabled": True,
-                "python_code": \"\"\"def callback(context):
-            return {'override': False}\"\"\",
+                "python_code": "def before_model_callback(callback_context, llm_request): return None",
             }],
-            after_tool_callbacks=[{
+            after_model_callbacks=[{
                 "description": "Example callback",
                 "disabled": True,
-                "python_code": \"\"\"def callback(context):
-            return {'override': False}\"\"\",
+                "python_code": "def after_model_callback(callback_context, llm_response): return None",
             }],
             before_tool_callbacks=[{
                 "description": "Example callback",
                 "disabled": True,
-                "python_code": \"\"\"def callback(context):
-            return {'override': False}\"\"\",
+                "python_code": "def before_tool_callback(tool, input, callback_context): return None",
+            }],
+            after_tool_callbacks=[{
+                "description": "Example callback",
+                "disabled": True,
+                "python_code": "def after_tool_callback(tool, input, callback_context, tool_response): return None",
             }],
             tools=[ces_tool_for_agent.id],
             guardrails=[ces_guardrail_for_agent.id],
@@ -1469,6 +1460,7 @@ class Agent(pulumi.CustomResource):
         $ pulumi import gcp:ces/agent:Agent default {{project}}/{{location}}/{{app}}/{{name}}
         $ pulumi import gcp:ces/agent:Agent default {{location}}/{{app}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AgentArgs args: The arguments to use to populate this resource's properties.

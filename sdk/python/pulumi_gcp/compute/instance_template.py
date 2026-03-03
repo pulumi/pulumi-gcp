@@ -51,6 +51,7 @@ class InstanceTemplateArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a InstanceTemplate resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
                documented below.
@@ -605,6 +606,7 @@ class _InstanceTemplateState:
                  tags_fingerprint: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceTemplate resources.
+
         :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
@@ -1529,6 +1531,7 @@ class InstanceTemplate(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceTemplateAdvancedMachineFeaturesArgs', 'InstanceTemplateAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
@@ -1863,6 +1866,7 @@ class InstanceTemplate(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceTemplateArgs args: The arguments to use to populate this resource's properties.

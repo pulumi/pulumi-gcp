@@ -33,6 +33,7 @@ class SecurityProfileArgs:
                  url_filtering_profile: Optional[pulumi.Input['SecurityProfileUrlFilteringProfileArgs']] = None):
         """
         The set of arguments for constructing a SecurityProfile resource.
+
         :param pulumi.Input[_builtins.str] type: The type of security profile.
                Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
         :param pulumi.Input['SecurityProfileCustomInterceptProfileArgs'] custom_intercept_profile: The configuration for defining the Intercept Endpoint Group used to
@@ -232,6 +233,7 @@ class _SecurityProfileState:
                  url_filtering_profile: Optional[pulumi.Input['SecurityProfileUrlFilteringProfileArgs']] = None):
         """
         Input properties used for looking up and filtering SecurityProfile resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the security profile was created in UTC.
         :param pulumi.Input['SecurityProfileCustomInterceptProfileArgs'] custom_intercept_profile: The configuration for defining the Intercept Endpoint Group used to
                intercept traffic to third-party firewall appliances.
@@ -708,6 +710,7 @@ class SecurityProfile(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/securityProfile:SecurityProfile default {{parent}}/locations/{{location}}/securityProfiles/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict']] custom_intercept_profile: The configuration for defining the Intercept Endpoint Group used to
@@ -923,6 +926,7 @@ class SecurityProfile(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:networksecurity/securityProfile:SecurityProfile default {{parent}}/locations/{{location}}/securityProfiles/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityProfileArgs args: The arguments to use to populate this resource's properties.

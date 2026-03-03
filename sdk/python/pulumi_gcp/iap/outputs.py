@@ -532,7 +532,13 @@ class SettingsAccessSettingsOauthSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "loginHint":
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "clientSecretSha256":
+            suggest = "client_secret_sha256"
+        elif key == "loginHint":
             suggest = "login_hint"
         elif key == "programmaticClients":
             suggest = "programmatic_clients"
@@ -549,9 +555,17 @@ class SettingsAccessSettingsOauthSettings(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 client_id: Optional[_builtins.str] = None,
+                 client_secret: Optional[_builtins.str] = None,
+                 client_secret_sha256: Optional[_builtins.str] = None,
                  login_hint: Optional[_builtins.str] = None,
                  programmatic_clients: Optional[Sequence[_builtins.str]] = None):
         """
+        :param _builtins.str client_id: OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+        :param _builtins.str client_secret: OAuth secret paired with client ID.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str client_secret_sha256: (Output)
+               OAuth secret sha256 paired with client ID.
         :param _builtins.str login_hint: Domain hint to send as hd=? parameter in OAuth request flow.
                Enables redirect to primary IDP by skipping Google's login screen.
                (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
@@ -560,10 +574,42 @@ class SettingsAccessSettingsOauthSettings(dict):
                * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
         :param Sequence[_builtins.str] programmatic_clients: List of client ids allowed to use IAP programmatically.
         """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if client_secret_sha256 is not None:
+            pulumi.set(__self__, "client_secret_sha256", client_secret_sha256)
         if login_hint is not None:
             pulumi.set(__self__, "login_hint", login_hint)
         if programmatic_clients is not None:
             pulumi.set(__self__, "programmatic_clients", programmatic_clients)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[_builtins.str]:
+        """
+        OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[_builtins.str]:
+        """
+        OAuth secret paired with client ID.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecretSha256")
+    def client_secret_sha256(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        OAuth secret sha256 paired with client ID.
+        """
+        return pulumi.get(self, "client_secret_sha256")
 
     @_builtins.property
     @pulumi.getter(name="loginHint")

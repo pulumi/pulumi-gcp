@@ -23,6 +23,7 @@ class ProjectCloudArmorTierArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectCloudArmorTier resource.
+
         :param pulumi.Input[_builtins.str] cloud_armor_tier: Managed protection tier to be set.
                Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -66,6 +67,7 @@ class _ProjectCloudArmorTierState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectCloudArmorTier resources.
+
         :param pulumi.Input[_builtins.str] cloud_armor_tier: Managed protection tier to be set.
                Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -166,6 +168,7 @@ class ProjectCloudArmorTier(pulumi.CustomResource):
         $ pulumi import gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier default {{project}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_armor_tier: Managed protection tier to be set.
@@ -232,6 +235,7 @@ class ProjectCloudArmorTier(pulumi.CustomResource):
         $ pulumi import gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier default projects/{{project}}
         $ pulumi import gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier default {{project}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectCloudArmorTierArgs args: The arguments to use to populate this resource's properties.

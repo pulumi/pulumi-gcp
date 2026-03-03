@@ -27,6 +27,7 @@ class V2ProjectMuteConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2ProjectMuteConfig resource.
+
         :param pulumi.Input[_builtins.str] filter: An expression that defines the filter to apply across create/update
                events of findings. While creating a filter string, be mindful of
                the scope in which the mute configuration is being created. E.g.,
@@ -142,6 +143,7 @@ class _V2ProjectMuteConfigState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V2ProjectMuteConfig resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time at which the mute config was created. This field is set by
                the server and will be ignored if provided on config creation.
         :param pulumi.Input[_builtins.str] description: A description of the mute config.
@@ -377,6 +379,7 @@ class V2ProjectMuteConfig(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig default {{location}}/{{mute_config_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the mute config.
@@ -439,6 +442,7 @@ class V2ProjectMuteConfig(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig default {{project}}/{{location}}/{{mute_config_id}}
         $ pulumi import gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig default {{location}}/{{mute_config_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V2ProjectMuteConfigArgs args: The arguments to use to populate this resource's properties.

@@ -743,6 +743,20 @@ class SettingsAccessSettingsGcipSettingsArgs:
 
 
 class SettingsAccessSettingsOauthSettingsArgsDict(TypedDict):
+    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+    """
+    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OAuth secret paired with client ID.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    client_secret_sha256: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    OAuth secret sha256 paired with client ID.
+    """
     login_hint: NotRequired[pulumi.Input[_builtins.str]]
     """
     Domain hint to send as hd=? parameter in OAuth request flow.
@@ -760,9 +774,17 @@ class SettingsAccessSettingsOauthSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class SettingsAccessSettingsOauthSettingsArgs:
     def __init__(__self__, *,
+                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_secret_sha256: Optional[pulumi.Input[_builtins.str]] = None,
                  login_hint: Optional[pulumi.Input[_builtins.str]] = None,
                  programmatic_clients: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
+        :param pulumi.Input[_builtins.str] client_id: OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+        :param pulumi.Input[_builtins.str] client_secret: OAuth secret paired with client ID.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] client_secret_sha256: (Output)
+               OAuth secret sha256 paired with client ID.
         :param pulumi.Input[_builtins.str] login_hint: Domain hint to send as hd=? parameter in OAuth request flow.
                Enables redirect to primary IDP by skipping Google's login screen.
                (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
@@ -771,10 +793,54 @@ class SettingsAccessSettingsOauthSettingsArgs:
                * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] programmatic_clients: List of client ids allowed to use IAP programmatically.
         """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if client_secret_sha256 is not None:
+            pulumi.set(__self__, "client_secret_sha256", client_secret_sha256)
         if login_hint is not None:
             pulumi.set(__self__, "login_hint", login_hint)
         if programmatic_clients is not None:
             pulumi.set(__self__, "programmatic_clients", programmatic_clients)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        OAuth secret paired with client ID.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecretSha256")
+    def client_secret_sha256(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        OAuth secret sha256 paired with client ID.
+        """
+        return pulumi.get(self, "client_secret_sha256")
+
+    @client_secret_sha256.setter
+    def client_secret_sha256(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "client_secret_sha256", value)
 
     @_builtins.property
     @pulumi.getter(name="loginHint")

@@ -35,6 +35,7 @@ class CloudControlArgs:
                  supported_cloud_providers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CloudControl resource.
+
         :param pulumi.Input[_builtins.str] cloud_control_id: ID of the CloudControl.
                This is the last segment of the CloudControl resource name.
                Format: `^a-zA-Z{0,61}[a-zA-Z0-9]$`.
@@ -260,6 +261,7 @@ class _CloudControlState:
                  supported_target_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CloudControl resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] categories: The categories of the cloud control.
         :param pulumi.Input[_builtins.str] cloud_control_id: ID of the CloudControl.
                This is the last segment of the CloudControl resource name.
@@ -757,6 +759,7 @@ class CloudControl(pulumi.CustomResource):
         $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default {{organization}}/{{location}}/{{cloud_control_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] categories: The categories of the cloud control.
@@ -963,6 +966,7 @@ class CloudControl(pulumi.CustomResource):
         $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default organizations/{{organization}}/locations/{{location}}/cloudControls/{{cloud_control_id}}
         $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default {{organization}}/{{location}}/{{cloud_control_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CloudControlArgs args: The arguments to use to populate this resource's properties.

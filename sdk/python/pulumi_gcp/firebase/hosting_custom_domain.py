@@ -29,6 +29,7 @@ class HostingCustomDomainArgs:
                  wait_dns_verification: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a HostingCustomDomain resource.
+
         :param pulumi.Input[_builtins.str] custom_domain: The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
         :param pulumi.Input[_builtins.str] site_id: The ID of the site in which to create this custom domain association.
         :param pulumi.Input[_builtins.str] cert_preference: A field that lets you specify which SSL certificate type Hosting creates
@@ -161,6 +162,7 @@ class _HostingCustomDomainState:
                  wait_dns_verification: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering HostingCustomDomain resources.
+
         :param pulumi.Input[_builtins.str] cert_preference: A field that lets you specify which SSL certificate type Hosting creates
                for your domain name. Spark plan `CustomDomain`s only have access to the
                `GROUPED` cert type, while Blaze plan can select any option.
@@ -701,6 +703,7 @@ class HostingCustomDomain(pulumi.CustomResource):
         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{site_id}}/{{custom_domain}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cert_preference: A field that lets you specify which SSL certificate type Hosting creates
@@ -828,6 +831,7 @@ class HostingCustomDomain(pulumi.CustomResource):
         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{project}}/{{site_id}}/{{custom_domain}}
         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{site_id}}/{{custom_domain}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HostingCustomDomainArgs args: The arguments to use to populate this resource's properties.

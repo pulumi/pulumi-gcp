@@ -34,9 +34,11 @@ class JobArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  scheduling: Optional[pulumi.Input['JobSchedulingArgs']] = None,
                  spark_config: Optional[pulumi.Input['JobSparkConfigArgs']] = None,
-                 sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None):
+                 sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None,
+                 wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Job resource.
+
         :param pulumi.Input['JobPlacementArgs'] placement: The config of job placement.
         :param pulumi.Input[_builtins.bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
@@ -57,6 +59,7 @@ class JobArgs:
         :param pulumi.Input['JobSchedulingArgs'] scheduling: Optional. Job scheduling configuration.
         :param pulumi.Input['JobSparkConfigArgs'] spark_config: The config of the Spark job.
         :param pulumi.Input['JobSparksqlConfigArgs'] sparksql_config: The config of SparkSql job
+        :param pulumi.Input[_builtins.bool] wait_for_completion: If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
         """
         pulumi.set(__self__, "placement", placement)
         if force_delete is not None:
@@ -85,6 +88,8 @@ class JobArgs:
             pulumi.set(__self__, "spark_config", spark_config)
         if sparksql_config is not None:
             pulumi.set(__self__, "sparksql_config", sparksql_config)
+        if wait_for_completion is not None:
+            pulumi.set(__self__, "wait_for_completion", wait_for_completion)
 
     @_builtins.property
     @pulumi.getter
@@ -260,6 +265,18 @@ class JobArgs:
     def sparksql_config(self, value: Optional[pulumi.Input['JobSparksqlConfigArgs']]):
         pulumi.set(self, "sparksql_config", value)
 
+    @_builtins.property
+    @pulumi.getter(name="waitForCompletion")
+    def wait_for_completion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+        """
+        return pulumi.get(self, "wait_for_completion")
+
+    @wait_for_completion.setter
+    def wait_for_completion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "wait_for_completion", value)
+
 
 @pulumi.input_type
 class _JobState:
@@ -282,9 +299,11 @@ class _JobState:
                  scheduling: Optional[pulumi.Input['JobSchedulingArgs']] = None,
                  spark_config: Optional[pulumi.Input['JobSparkConfigArgs']] = None,
                  sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None):
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
+                 wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Job resources.
+
         :param pulumi.Input[_builtins.str] driver_controls_files_uri: If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
         :param pulumi.Input[_builtins.str] driver_output_resource_uri: A URI pointing to the location of the stdout of the job's driver program.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -314,6 +333,7 @@ class _JobState:
         :param pulumi.Input['JobSparkConfigArgs'] spark_config: The config of the Spark job.
         :param pulumi.Input['JobSparksqlConfigArgs'] sparksql_config: The config of SparkSql job
         :param pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]] statuses: The status of the job.
+        :param pulumi.Input[_builtins.bool] wait_for_completion: If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
         """
         if driver_controls_files_uri is not None:
             pulumi.set(__self__, "driver_controls_files_uri", driver_controls_files_uri)
@@ -353,6 +373,8 @@ class _JobState:
             pulumi.set(__self__, "sparksql_config", sparksql_config)
         if statuses is not None:
             pulumi.set(__self__, "statuses", statuses)
+        if wait_for_completion is not None:
+            pulumi.set(__self__, "wait_for_completion", wait_for_completion)
 
     @_builtins.property
     @pulumi.getter(name="driverControlsFilesUri")
@@ -592,6 +614,18 @@ class _JobState:
     def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
+    @_builtins.property
+    @pulumi.getter(name="waitForCompletion")
+    def wait_for_completion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+        """
+        return pulumi.get(self, "wait_for_completion")
+
+    @wait_for_completion.setter
+    def wait_for_completion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "wait_for_completion", value)
+
 
 @pulumi.type_token("gcp:dataproc/job:Job")
 class Job(pulumi.CustomResource):
@@ -613,6 +647,7 @@ class Job(pulumi.CustomResource):
                  scheduling: Optional[pulumi.Input[Union['JobSchedulingArgs', 'JobSchedulingArgsDict']]] = None,
                  spark_config: Optional[pulumi.Input[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict']]] = None,
                  sparksql_config: Optional[pulumi.Input[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict']]] = None,
+                 wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages a job resource within a Dataproc cluster within GCE. For more information see
@@ -670,6 +705,7 @@ class Job(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force_delete: By default, you can only delete inactive jobs within
@@ -692,6 +728,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Union['JobSchedulingArgs', 'JobSchedulingArgsDict']] scheduling: Optional. Job scheduling configuration.
         :param pulumi.Input[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict']] spark_config: The config of the Spark job.
         :param pulumi.Input[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict']] sparksql_config: The config of SparkSql job
+        :param pulumi.Input[_builtins.bool] wait_for_completion: If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
         """
         ...
     @overload
@@ -755,6 +792,7 @@ class Job(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -784,6 +822,7 @@ class Job(pulumi.CustomResource):
                  scheduling: Optional[pulumi.Input[Union['JobSchedulingArgs', 'JobSchedulingArgsDict']]] = None,
                  spark_config: Optional[pulumi.Input[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict']]] = None,
                  sparksql_config: Optional[pulumi.Input[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict']]] = None,
+                 wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -809,6 +848,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["scheduling"] = scheduling
             __props__.__dict__["spark_config"] = spark_config
             __props__.__dict__["sparksql_config"] = sparksql_config
+            __props__.__dict__["wait_for_completion"] = wait_for_completion
             __props__.__dict__["driver_controls_files_uri"] = None
             __props__.__dict__["driver_output_resource_uri"] = None
             __props__.__dict__["effective_labels"] = None
@@ -844,7 +884,8 @@ class Job(pulumi.CustomResource):
             scheduling: Optional[pulumi.Input[Union['JobSchedulingArgs', 'JobSchedulingArgsDict']]] = None,
             spark_config: Optional[pulumi.Input[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict']]] = None,
             sparksql_config: Optional[pulumi.Input[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict']]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]]]] = None) -> 'Job':
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]]]] = None,
+            wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -881,6 +922,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict']] spark_config: The config of the Spark job.
         :param pulumi.Input[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict']] sparksql_config: The config of SparkSql job
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]]] statuses: The status of the job.
+        :param pulumi.Input[_builtins.bool] wait_for_completion: If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -905,6 +947,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["spark_config"] = spark_config
         __props__.__dict__["sparksql_config"] = sparksql_config
         __props__.__dict__["statuses"] = statuses
+        __props__.__dict__["wait_for_completion"] = wait_for_completion
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1068,4 +1111,12 @@ class Job(pulumi.CustomResource):
         The status of the job.
         """
         return pulumi.get(self, "statuses")
+
+    @_builtins.property
+    @pulumi.getter(name="waitForCompletion")
+    def wait_for_completion(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+        """
+        return pulumi.get(self, "wait_for_completion")
 

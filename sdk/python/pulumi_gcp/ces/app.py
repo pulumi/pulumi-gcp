@@ -43,6 +43,7 @@ class AppArgs:
                  variable_declarations: Optional[pulumi.Input[Sequence[pulumi.Input['AppVariableDeclarationArgs']]]] = None):
         """
         The set of arguments for constructing a App resource.
+
         :param pulumi.Input[_builtins.str] app_id: The ID to use for the app, which will become the final component of
                the app's resource name. If not provided, a unique ID will be
                automatically assigned for the app.
@@ -415,6 +416,7 @@ class _AppState:
                  variable_declarations: Optional[pulumi.Input[Sequence[pulumi.Input['AppVariableDeclarationArgs']]]] = None):
         """
         Input properties used for looking up and filtering App resources.
+
         :param pulumi.Input[_builtins.str] app_id: The ID to use for the app, which will become the final component of
                the app's resource name. If not provided, a unique ID will be
                automatically assigned for the app.
@@ -1206,6 +1208,7 @@ class App(pulumi.CustomResource):
         $ pulumi import gcp:ces/app:App default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID to use for the app, which will become the final component of
@@ -1593,6 +1596,7 @@ class App(pulumi.CustomResource):
         $ pulumi import gcp:ces/app:App default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:ces/app:App default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppArgs args: The arguments to use to populate this resource's properties.

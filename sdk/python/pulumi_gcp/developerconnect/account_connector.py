@@ -29,6 +29,7 @@ class AccountConnectorArgs:
                  provider_oauth_config: Optional[pulumi.Input['AccountConnectorProviderOauthConfigArgs']] = None):
         """
         The set of arguments for constructing a AccountConnector resource.
+
         :param pulumi.Input[_builtins.str] account_connector_id: Required. The ID to use for the AccountConnector, which will become the final
                component of the AccountConnector's resource name. Its format should adhere
                to https://google.aip.dev/122#resource-id-segments Names must be unique
@@ -156,6 +157,7 @@ class _AccountConnectorState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountConnector resources.
+
         :param pulumi.Input[_builtins.str] account_connector_id: Required. The ID to use for the AccountConnector, which will become the final
                component of the AccountConnector's resource name. Its format should adhere
                to https://google.aip.dev/122#resource-id-segments Names must be unique
@@ -509,6 +511,7 @@ class AccountConnector(pulumi.CustomResource):
         $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default {{location}}/{{account_connector_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_connector_id: Required. The ID to use for the AccountConnector, which will become the final
@@ -652,6 +655,7 @@ class AccountConnector(pulumi.CustomResource):
         $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default {{project}}/{{location}}/{{account_connector_id}}
         $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default {{location}}/{{account_connector_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountConnectorArgs args: The arguments to use to populate this resource's properties.

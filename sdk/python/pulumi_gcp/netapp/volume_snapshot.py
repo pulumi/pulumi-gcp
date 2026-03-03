@@ -27,6 +27,7 @@ class VolumeSnapshotArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VolumeSnapshot resource.
+
         :param pulumi.Input[_builtins.str] location: Name of the snapshot location. Snapshots are child resources of volumes and live in the same location.
         :param pulumi.Input[_builtins.str] volume_name: The name of the volume to create the snapshot in.
         :param pulumi.Input[_builtins.str] description: Description for the snapshot.
@@ -140,6 +141,7 @@ class _VolumeSnapshotState:
                  volume_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VolumeSnapshot resources.
+
         :param pulumi.Input[_builtins.str] description: Description for the snapshot.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -360,6 +362,7 @@ class VolumeSnapshot(pulumi.CustomResource):
         $ pulumi import gcp:netapp/volumeSnapshot:VolumeSnapshot default {{location}}/{{volume_name}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description for the snapshot.
@@ -437,6 +440,7 @@ class VolumeSnapshot(pulumi.CustomResource):
         $ pulumi import gcp:netapp/volumeSnapshot:VolumeSnapshot default {{project}}/{{location}}/{{volume_name}}/{{name}}
         $ pulumi import gcp:netapp/volumeSnapshot:VolumeSnapshot default {{location}}/{{volume_name}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VolumeSnapshotArgs args: The arguments to use to populate this resource's properties.

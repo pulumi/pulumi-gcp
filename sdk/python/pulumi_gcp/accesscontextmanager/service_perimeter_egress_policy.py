@@ -27,6 +27,7 @@ class ServicePerimeterEgressPolicyArgs:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServicePerimeterEgressPolicy resource.
+
         :param pulumi.Input[_builtins.str] perimeter: The name of the Service Perimeter to add this resource to.
         :param pulumi.Input['ServicePerimeterEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
@@ -106,6 +107,7 @@ class _ServicePerimeterEgressPolicyState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeterEgressPolicy resources.
+
         :param pulumi.Input[_builtins.str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input['ServicePerimeterEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
@@ -241,6 +243,7 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServicePerimeterEgressPolicyEgressFromArgs', 'ServicePerimeterEgressPolicyEgressFromArgsDict']] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
@@ -281,6 +284,7 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
             * [Guide to Ingress and Egress Rules](https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules)
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ServicePerimeterEgressPolicyArgs args: The arguments to use to populate this resource's properties.

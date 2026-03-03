@@ -26,6 +26,7 @@ class CryptoKeyVersionArgs:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CryptoKeyVersion resource.
+
         :param pulumi.Input[_builtins.str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
         :param pulumi.Input['CryptoKeyVersionExternalProtectionLevelOptionsArgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
@@ -94,6 +95,7 @@ class _CryptoKeyVersionState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CryptoKeyVersion resources.
+
         :param pulumi.Input[_builtins.str] algorithm: The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
         :param pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]] attestations: Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
                Only provided for key versions with protectionLevel HSM.
@@ -280,6 +282,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
         $ pulumi import gcp:kms/cryptoKeyVersion:CryptoKeyVersion default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
@@ -336,6 +339,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:kms/cryptoKeyVersion:CryptoKeyVersion default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CryptoKeyVersionArgs args: The arguments to use to populate this resource's properties.

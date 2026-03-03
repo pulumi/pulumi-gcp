@@ -881,6 +881,14 @@ Object.defineProperty(exports, "healthcareCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const hypercomputeclusterCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "hypercomputeclusterCustomEndpoint", {
+    get() {
+        return __config.get("hypercomputeclusterCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const iam2CustomEndpoint: string | undefined;
 Object.defineProperty(exports, "iam2CustomEndpoint", {
     get() {

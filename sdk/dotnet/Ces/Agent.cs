@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.Ces
     ///         Instruction = "You are a helpful assistant for this example.",
     ///         ModelSettings = new Gcp.Ces.Inputs.AgentModelSettingsArgs
     ///         {
-    ///             Model = "gemini-1.5-flash",
+    ///             Model = "gemini-2.5-flash-001",
     ///             Temperature = 0.5,
     ///         },
     ///         LlmAgent = null,
@@ -160,8 +160,17 @@ namespace Pulumi.Gcp.Ces
     ///         Instruction = "You are a helpful assistant for this example.",
     ///         ModelSettings = new Gcp.Ces.Inputs.AgentModelSettingsArgs
     ///         {
-    ///             Model = "gemini-1.5-flash",
+    ///             Model = "gemini-2.5-flash-001",
     ///             Temperature = 0.5,
+    ///         },
+    ///         BeforeAgentCallbacks = new[]
+    ///         {
+    ///             new Gcp.Ces.Inputs.AgentBeforeAgentCallbackArgs
+    ///             {
+    ///                 Description = "Example callback",
+    ///                 Disabled = true,
+    ///                 PythonCode = "def before_agent_callback(callback_context): return None",
+    ///             },
     ///         },
     ///         AfterAgentCallbacks = new[]
     ///         {
@@ -169,28 +178,7 @@ namespace Pulumi.Gcp.Ces
     ///             {
     ///                 Description = "Example callback",
     ///                 Disabled = true,
-    ///                 PythonCode = @"def callback(context):
-    ///     return {'override': False}",
-    ///             },
-    ///         },
-    ///         BeforeAgentCallbacks = new[]
-    ///         {
-    ///             new Gcp.Ces.Inputs.AgentBeforeAgentCallbackArgs
-    ///             {
-    ///                 Description = "Example callback",
-    ///                 Disabled = false,
-    ///                 PythonCode = @"def callback(context):
-    ///     return {'override': False}",
-    ///             },
-    ///         },
-    ///         AfterModelCallbacks = new[]
-    ///         {
-    ///             new Gcp.Ces.Inputs.AgentAfterModelCallbackArgs
-    ///             {
-    ///                 Description = "Example callback",
-    ///                 Disabled = true,
-    ///                 PythonCode = @"def callback(context):
-    ///     return {'override': False}",
+    ///                 PythonCode = "def after_agent_callback(callback_context): return None",
     ///             },
     ///         },
     ///         BeforeModelCallbacks = new[]
@@ -199,18 +187,16 @@ namespace Pulumi.Gcp.Ces
     ///             {
     ///                 Description = "Example callback",
     ///                 Disabled = true,
-    ///                 PythonCode = @"def callback(context):
-    ///     return {'override': False}",
+    ///                 PythonCode = "def before_model_callback(callback_context, llm_request): return None",
     ///             },
     ///         },
-    ///         AfterToolCallbacks = new[]
+    ///         AfterModelCallbacks = new[]
     ///         {
-    ///             new Gcp.Ces.Inputs.AgentAfterToolCallbackArgs
+    ///             new Gcp.Ces.Inputs.AgentAfterModelCallbackArgs
     ///             {
     ///                 Description = "Example callback",
     ///                 Disabled = true,
-    ///                 PythonCode = @"def callback(context):
-    ///     return {'override': False}",
+    ///                 PythonCode = "def after_model_callback(callback_context, llm_response): return None",
     ///             },
     ///         },
     ///         BeforeToolCallbacks = new[]
@@ -219,8 +205,16 @@ namespace Pulumi.Gcp.Ces
     ///             {
     ///                 Description = "Example callback",
     ///                 Disabled = true,
-    ///                 PythonCode = @"def callback(context):
-    ///     return {'override': False}",
+    ///                 PythonCode = "def before_tool_callback(tool, input, callback_context): return None",
+    ///             },
+    ///         },
+    ///         AfterToolCallbacks = new[]
+    ///         {
+    ///             new Gcp.Ces.Inputs.AgentAfterToolCallbackArgs
+    ///             {
+    ///                 Description = "Example callback",
+    ///                 Disabled = true,
+    ///                 PythonCode = "def after_tool_callback(tool, input, callback_context, tool_response): return None",
     ///             },
     ///         },
     ///         Tools = new[]

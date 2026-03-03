@@ -29,6 +29,7 @@ class InterceptEndpointGroupArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InterceptEndpointGroup resource.
+
         :param pulumi.Input[_builtins.str] intercept_deployment_group: The deployment group that this endpoint group is connected to, for example:
                `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
                See https://google.aip.dev/124.
@@ -153,6 +154,7 @@ class _InterceptEndpointGroupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InterceptEndpointGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationArgs']]] associations: List of associations to this endpoint group.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupArgs']]] connected_deployment_groups: The endpoint group's view of a connected deployment group.
@@ -488,6 +490,7 @@ class InterceptEndpointGroup(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{location}}/{{intercept_endpoint_group_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User-provided description of the endpoint group.
@@ -557,6 +560,7 @@ class InterceptEndpointGroup(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{project}}/{{location}}/{{intercept_endpoint_group_id}}
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{location}}/{{intercept_endpoint_group_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InterceptEndpointGroupArgs args: The arguments to use to populate this resource's properties.

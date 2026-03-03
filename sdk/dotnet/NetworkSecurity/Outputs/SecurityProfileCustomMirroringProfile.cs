@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
     public sealed class SecurityProfileCustomMirroringProfile
     {
         /// <summary>
-        /// (Optional, Beta)
         /// The target downstream Mirroring Deployment Groups.
         /// This field is used for Packet Broker mirroring endpoint groups to specify
         /// the deployment groups that the packet should be mirrored to by the broker.
@@ -29,7 +28,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         /// </summary>
         public readonly string MirroringEndpointGroup;
         /// <summary>
-        /// (Output, Beta)
+        /// (Output)
         /// The type of the mirroring endpoint group this profile is attached to.
         /// Possible values:
         /// DIRECT

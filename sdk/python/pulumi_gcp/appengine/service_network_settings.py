@@ -26,6 +26,7 @@ class ServiceNetworkSettingsArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceNetworkSettings resource.
+
         :param pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs'] network_settings: Ingress settings for this service. Will apply to all versions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service: The name of the service these settings apply to.
@@ -84,6 +85,7 @@ class _ServiceNetworkSettingsState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceNetworkSettings resources.
+
         :param pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs'] network_settings: Ingress settings for this service. Will apply to all versions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -211,6 +213,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default {{service}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict']] network_settings: Ingress settings for this service. Will apply to all versions.
@@ -289,6 +292,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default {{project}}/{{service}}
         $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default {{service}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceNetworkSettingsArgs args: The arguments to use to populate this resource's properties.

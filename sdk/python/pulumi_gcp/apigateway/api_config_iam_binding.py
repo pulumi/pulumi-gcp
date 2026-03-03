@@ -29,6 +29,7 @@ class ApiConfigIamBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiConfigIamBinding resource.
+
         :param pulumi.Input[_builtins.str] api: The API to attach the config to.
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[_builtins.str] api_config: Used to find the parent resource to bind the IAM policy to
@@ -156,6 +157,7 @@ class _ApiConfigIamBindingState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiConfigIamBinding resources.
+
         :param pulumi.Input[_builtins.str] api: The API to attach the config to.
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[_builtins.str] api_config: Used to find the parent resource to bind the IAM policy to
@@ -459,6 +461,7 @@ class ApiConfigIamBinding(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api: The API to attach the config to.
@@ -643,6 +646,7 @@ class ApiConfigIamBinding(pulumi.CustomResource):
 
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param ApiConfigIamBindingArgs args: The arguments to use to populate this resource's properties.

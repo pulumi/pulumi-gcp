@@ -26,6 +26,7 @@ class MaterializedViewArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MaterializedView resource.
+
         :param pulumi.Input[_builtins.str] materialized_view_id: The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         :param pulumi.Input[_builtins.str] query: The materialized view's select query.
         :param pulumi.Input[_builtins.bool] deletion_protection: Set to true to make the MaterializedView protected against deletion.
@@ -115,6 +116,7 @@ class _MaterializedViewState:
                  query: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MaterializedView resources.
+
         :param pulumi.Input[_builtins.bool] deletion_protection: Set to true to make the MaterializedView protected against deletion.
         :param pulumi.Input[_builtins.str] instance: The name of the instance to create the materialized view within.
         :param pulumi.Input[_builtins.str] materialized_view_id: The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
@@ -279,6 +281,7 @@ class MaterializedView(pulumi.CustomResource):
         $ pulumi import gcp:bigtable/materializedView:MaterializedView default {{instance}}/{{materialized_view_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] deletion_protection: Set to true to make the MaterializedView protected against deletion.
@@ -350,6 +353,7 @@ class MaterializedView(pulumi.CustomResource):
         $ pulumi import gcp:bigtable/materializedView:MaterializedView default {{project}}/{{instance}}/{{materialized_view_id}}
         $ pulumi import gcp:bigtable/materializedView:MaterializedView default {{instance}}/{{materialized_view_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MaterializedViewArgs args: The arguments to use to populate this resource's properties.

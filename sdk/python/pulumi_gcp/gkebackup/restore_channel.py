@@ -27,6 +27,7 @@ class RestoreChannelArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RestoreChannel resource.
+
         :param pulumi.Input[_builtins.str] destination_project: The project where Backups will be restored.
                The format is `projects/{project}`.
                {project} can be project number or project id.
@@ -150,6 +151,7 @@ class _RestoreChannelState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RestoreChannel resources.
+
         :param pulumi.Input[_builtins.str] description: User specified descriptive string for this RestoreChannel.
         :param pulumi.Input[_builtins.str] destination_project: The project where Backups will be restored.
                The format is `projects/{project}`.
@@ -407,6 +409,7 @@ class RestoreChannel(pulumi.CustomResource):
         $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User specified descriptive string for this RestoreChannel.
@@ -475,6 +478,7 @@ class RestoreChannel(pulumi.CustomResource):
         $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RestoreChannelArgs args: The arguments to use to populate this resource's properties.

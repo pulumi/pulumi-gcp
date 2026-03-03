@@ -19,6 +19,15 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         [Input("includeRegexes")]
         public Input<Inputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgs>? IncludeRegexes { get; set; }
 
+        /// <summary>
+        /// For a resource to match the tag filters, the resource must have all of the
+        /// provided tags attached. Tags refer to Resource Manager tags bound to the
+        /// resource or its ancestors.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("includeTags")]
+        public Input<Inputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsArgs>? IncludeTags { get; set; }
+
         public PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs()
         {
         }

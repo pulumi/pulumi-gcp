@@ -142,6 +142,73 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Iap Settings Oauth Storage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.iap.Settings;
+ * import com.pulumi.gcp.iap.SettingsArgs;
+ * import com.pulumi.gcp.iap.inputs.SettingsAccessSettingsArgs;
+ * import com.pulumi.gcp.iap.inputs.SettingsAccessSettingsOauthSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("iap-bs-health-check-oauth")
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+ *             .name("iap-settings-oauth")
+ *             .region("us-central1")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .connectionDrainingTimeoutSec(10)
+ *             .sessionAffinity("CLIENT_IP")
+ *             .build());
+ * 
+ *         var iapSettingsOauth = new Settings("iapSettingsOauth", SettingsArgs.builder()
+ *             .name(default_.name().applyValue(_name -> String.format("projects/%s/iap_web/compute-us-central1/services/%s", project.number(),_name)))
+ *             .accessSettings(SettingsAccessSettingsArgs.builder()
+ *                 .oauthSettings(SettingsAccessSettingsOauthSettingsArgs.builder()
+ *                     .clientId("test-client-id")
+ *                     .clientSecret("test-client-secret")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

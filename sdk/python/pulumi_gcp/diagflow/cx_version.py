@@ -26,6 +26,7 @@ class CxVersionArgs:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CxVersion resource.
+
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the version. Limit of 64 characters.
         :param pulumi.Input[_builtins.str] description: The description of the version. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] parent: The Flow to create an Version for.
@@ -87,6 +88,7 @@ class _CxVersionState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CxVersion resources.
+
         :param pulumi.Input[_builtins.str] create_time: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] description: The description of the version. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the version. Limit of 64 characters.
@@ -270,6 +272,7 @@ class CxVersion(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxVersion:CxVersion default {{parent}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the version. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -337,6 +340,7 @@ class CxVersion(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/cxVersion:CxVersion default {{parent}}/versions/{{name}}
         $ pulumi import gcp:diagflow/cxVersion:CxVersion default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CxVersionArgs args: The arguments to use to populate this resource's properties.

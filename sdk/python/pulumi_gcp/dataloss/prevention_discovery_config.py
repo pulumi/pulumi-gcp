@@ -32,6 +32,7 @@ class PreventionDiscoveryConfigArgs:
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetArgs']]]] = None):
         """
         The set of arguments for constructing a PreventionDiscoveryConfig resource.
+
         :param pulumi.Input[_builtins.str] location: Location to create the discovery config in.
         :param pulumi.Input[_builtins.str] parent: The parent of the discovery config in any of the following formats:
                * `projects/{{project}}/locations/{{location}}`
@@ -201,6 +202,7 @@ class _PreventionDiscoveryConfigState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PreventionDiscoveryConfig resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigActionArgs']]] actions: Actions to execute at the completion of scanning
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The creation timestamp of a DiscoveryConfig.
@@ -471,6 +473,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
         $ pulumi import gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig default {{parent}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigActionArgs', 'PreventionDiscoveryConfigActionArgsDict']]]] actions: Actions to execute at the completion of scanning
@@ -520,6 +523,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
         $ pulumi import gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig default {{parent}}/discoveryConfigs/{{name}}
         $ pulumi import gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PreventionDiscoveryConfigArgs args: The arguments to use to populate this resource's properties.

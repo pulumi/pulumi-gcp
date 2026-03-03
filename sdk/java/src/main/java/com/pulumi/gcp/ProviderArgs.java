@@ -777,6 +777,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.healthcareCustomEndpoint);
     }
 
+    @Import(name="hypercomputeclusterCustomEndpoint")
+    private @Nullable Output<String> hypercomputeclusterCustomEndpoint;
+
+    public Optional<Output<String>> hypercomputeclusterCustomEndpoint() {
+        return Optional.ofNullable(this.hypercomputeclusterCustomEndpoint);
+    }
+
     @Import(name="iam2CustomEndpoint")
     private @Nullable Output<String> iam2CustomEndpoint;
 
@@ -1553,6 +1560,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.gkeonpremCustomEndpoint = $.gkeonpremCustomEndpoint;
         this.googlePartnerName = $.googlePartnerName;
         this.healthcareCustomEndpoint = $.healthcareCustomEndpoint;
+        this.hypercomputeclusterCustomEndpoint = $.hypercomputeclusterCustomEndpoint;
         this.iam2CustomEndpoint = $.iam2CustomEndpoint;
         this.iam3CustomEndpoint = $.iam3CustomEndpoint;
         this.iamBetaCustomEndpoint = $.iamBetaCustomEndpoint;
@@ -2638,6 +2646,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder healthcareCustomEndpoint(String healthcareCustomEndpoint) {
             return healthcareCustomEndpoint(Output.of(healthcareCustomEndpoint));
+        }
+
+        public Builder hypercomputeclusterCustomEndpoint(@Nullable Output<String> hypercomputeclusterCustomEndpoint) {
+            $.hypercomputeclusterCustomEndpoint = hypercomputeclusterCustomEndpoint;
+            return this;
+        }
+
+        public Builder hypercomputeclusterCustomEndpoint(String hypercomputeclusterCustomEndpoint) {
+            return hypercomputeclusterCustomEndpoint(Output.of(hypercomputeclusterCustomEndpoint));
         }
 
         public Builder iam2CustomEndpoint(@Nullable Output<String> iam2CustomEndpoint) {

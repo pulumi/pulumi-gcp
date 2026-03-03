@@ -47,6 +47,7 @@ class InterconnectAttachmentArgs:
                  vlan_tag8021q: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a InterconnectAttachment resource.
+
         :param pulumi.Input[_builtins.bool] admin_enabled: Whether the VLAN attachment is enabled or disabled.  When using
                PARTNER type this will Pre-Activate the interconnect attachment
         :param pulumi.Input[_builtins.str] bandwidth: Provisioned bandwidth capacity for the interconnect attachment.
@@ -608,6 +609,7 @@ class _InterconnectAttachmentState:
                  vlan_tag8021q: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering InterconnectAttachment resources.
+
         :param pulumi.Input[_builtins.bool] admin_enabled: Whether the VLAN attachment is enabled or disabled.  When using
                PARTNER type this will Pre-Activate the interconnect attachment
         :param pulumi.Input[_builtins.str] attachment_group: URL of the AttachmentGroup that includes this Attachment.
@@ -1530,6 +1532,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_enabled: Whether the VLAN attachment is enabled or disabled.  When using
@@ -1756,6 +1759,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InterconnectAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -33,6 +33,7 @@ class BackupPlanArgs:
                  retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']] = None):
         """
         The set of arguments for constructing a BackupPlan resource.
+
         :param pulumi.Input[_builtins.str] cluster: The source cluster from which Backups will be created via this BackupPlan.
         :param pulumi.Input[_builtins.str] location: The region of the Backup Plan.
         :param pulumi.Input['BackupPlanBackupConfigArgs'] backup_config: Defines the configuration of Backups created via this BackupPlan.
@@ -230,6 +231,7 @@ class _BackupPlanState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupPlan resources.
+
         :param pulumi.Input['BackupPlanBackupConfigArgs'] backup_config: Defines the configuration of Backups created via this BackupPlan.
                Structure is documented below.
         :param pulumi.Input['BackupPlanBackupScheduleArgs'] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
@@ -955,6 +957,7 @@ class BackupPlan(pulumi.CustomResource):
         $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']] backup_config: Defines the configuration of Backups created via this BackupPlan.
@@ -1399,6 +1402,7 @@ class BackupPlan(pulumi.CustomResource):
         $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupPlanArgs args: The arguments to use to populate this resource's properties.

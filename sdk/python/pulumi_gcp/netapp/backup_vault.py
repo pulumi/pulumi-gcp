@@ -31,6 +31,7 @@ class BackupVaultArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupVault resource.
+
         :param pulumi.Input[_builtins.str] location: Location (region) of the backup vault.
         :param pulumi.Input[_builtins.str] backup_region: Region in which backup is stored.
         :param pulumi.Input['BackupVaultBackupRetentionPolicyArgs'] backup_retention_policy: Backup retention policy defining the retention of the backups.
@@ -185,6 +186,7 @@ class _BackupVaultState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupVault resources.
+
         :param pulumi.Input[_builtins.str] backup_region: Region in which backup is stored.
         :param pulumi.Input['BackupVaultBackupRetentionPolicyArgs'] backup_retention_policy: Backup retention policy defining the retention of the backups.
                Structure is documented below.
@@ -485,6 +487,7 @@ class BackupVault(pulumi.CustomResource):
         $ pulumi import gcp:netapp/backupVault:BackupVault default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_region: Region in which backup is stored.
@@ -550,6 +553,7 @@ class BackupVault(pulumi.CustomResource):
         $ pulumi import gcp:netapp/backupVault:BackupVault default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:netapp/backupVault:BackupVault default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupVaultArgs args: The arguments to use to populate this resource's properties.

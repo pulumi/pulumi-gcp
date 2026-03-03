@@ -24,6 +24,7 @@ class IamMemberRemoveArgs:
                  role: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a IamMemberRemove resource.
+
         :param pulumi.Input[_builtins.str] member: The IAM principal that should not have the target role.
                Each entry can have one of the following values:
                * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -87,6 +88,7 @@ class _IamMemberRemoveState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IamMemberRemove resources.
+
         :param pulumi.Input[_builtins.str] member: The IAM principal that should not have the target role.
                Each entry can have one of the following values:
                * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -189,6 +191,7 @@ class IamMemberRemove(pulumi.CustomResource):
             member=f"serviceAccount:{target_project_google_project['number']}-compute@developer.gserviceaccount.com")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] member: The IAM principal that should not have the target role.
@@ -239,6 +242,7 @@ class IamMemberRemove(pulumi.CustomResource):
             project=target_project_google_project["projectId"],
             member=f"serviceAccount:{target_project_google_project['number']}-compute@developer.gserviceaccount.com")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IamMemberRemoveArgs args: The arguments to use to populate this resource's properties.

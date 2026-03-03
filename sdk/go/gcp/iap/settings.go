@@ -127,6 +127,68 @@ import (
 //	}
 //
 // ```
+// ### Iap Settings Oauth Storage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("iap-bs-health-check-oauth"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:                         pulumi.String("iap-settings-oauth"),
+//				Region:                       pulumi.String("us-central1"),
+//				HealthChecks:                 defaultHealthCheck.ID(),
+//				ConnectionDrainingTimeoutSec: pulumi.Int(10),
+//				SessionAffinity:              pulumi.String("CLIENT_IP"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iap.NewSettings(ctx, "iap_settings_oauth", &iap.SettingsArgs{
+//				Name: _default.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("projects/%v/iap_web/compute-us-central1/services/%v", project.Number, name), nil
+//				}).(pulumi.StringOutput),
+//				AccessSettings: &iap.SettingsAccessSettingsArgs{
+//					OauthSettings: &iap.SettingsAccessSettingsOauthSettingsArgs{
+//						ClientId:     pulumi.String("test-client-id"),
+//						ClientSecret: pulumi.String("test-client-secret"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

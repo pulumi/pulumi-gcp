@@ -38,6 +38,7 @@ class RegionNetworkFirewallPolicyRuleArgs:
                  tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RegionNetworkFirewallPolicyRule resource.
+
         :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
         :param pulumi.Input[_builtins.str] direction: The direction in which this rule applies.
                Possible values are: `INGRESS`, `EGRESS`.
@@ -318,6 +319,7 @@ class _RegionNetworkFirewallPolicyRuleState:
                  tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering RegionNetworkFirewallPolicyRule resources.
+
         :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description for this resource.
@@ -792,6 +794,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule default {{firewall_policy}}/{{priority}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
@@ -977,6 +980,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule default {{region}}/{{firewall_policy}}/{{priority}}
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule default {{firewall_policy}}/{{priority}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionNetworkFirewallPolicyRuleArgs args: The arguments to use to populate this resource's properties.

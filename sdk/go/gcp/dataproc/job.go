@@ -149,6 +149,8 @@ type Job struct {
 	SparksqlConfig JobSparksqlConfigPtrOutput `pulumi:"sparksqlConfig"`
 	// The status of the job.
 	Statuses JobStatusArrayOutput `pulumi:"statuses"`
+	// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+	WaitForCompletion pulumi.BoolPtrOutput `pulumi:"waitForCompletion"`
 }
 
 // NewJob registers a new resource with the given unique name, arguments, and options.
@@ -237,6 +239,8 @@ type jobState struct {
 	SparksqlConfig *JobSparksqlConfig `pulumi:"sparksqlConfig"`
 	// The status of the job.
 	Statuses []JobStatus `pulumi:"statuses"`
+	// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+	WaitForCompletion *bool `pulumi:"waitForCompletion"`
 }
 
 type JobState struct {
@@ -288,6 +292,8 @@ type JobState struct {
 	SparksqlConfig JobSparksqlConfigPtrInput
 	// The status of the job.
 	Statuses JobStatusArrayInput
+	// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+	WaitForCompletion pulumi.BoolPtrInput
 }
 
 func (JobState) ElementType() reflect.Type {
@@ -329,6 +335,8 @@ type jobArgs struct {
 	SparkConfig *JobSparkConfig `pulumi:"sparkConfig"`
 	// The config of SparkSql job
 	SparksqlConfig *JobSparksqlConfig `pulumi:"sparksqlConfig"`
+	// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+	WaitForCompletion *bool `pulumi:"waitForCompletion"`
 }
 
 // The set of arguments for constructing a Job resource.
@@ -367,6 +375,8 @@ type JobArgs struct {
 	SparkConfig JobSparkConfigPtrInput
 	// The config of SparkSql job
 	SparksqlConfig JobSparksqlConfigPtrInput
+	// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+	WaitForCompletion pulumi.BoolPtrInput
 }
 
 func (JobArgs) ElementType() reflect.Type {
@@ -559,6 +569,11 @@ func (o JobOutput) SparksqlConfig() JobSparksqlConfigPtrOutput {
 // The status of the job.
 func (o JobOutput) Statuses() JobStatusArrayOutput {
 	return o.ApplyT(func(v *Job) JobStatusArrayOutput { return v.Statuses }).(JobStatusArrayOutput)
+}
+
+// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+func (o JobOutput) WaitForCompletion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.WaitForCompletion }).(pulumi.BoolPtrOutput)
 }
 
 type JobArrayOutput struct{ *pulumi.OutputState }

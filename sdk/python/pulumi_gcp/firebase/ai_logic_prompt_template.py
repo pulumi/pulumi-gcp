@@ -26,6 +26,7 @@ class AiLogicPromptTemplateArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiLogicPromptTemplate resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] template_id: The unique ID of the PromptTemplate, which is the final component of the
                PromptTemplate's resource name.
@@ -121,6 +122,7 @@ class _AiLogicPromptTemplateState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiLogicPromptTemplate resources.
+
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the PromptTemplate was created.
         :param pulumi.Input[_builtins.str] display_name: The display name of the PromptTemplate.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -377,6 +379,7 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
         $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default {{location}}/{{template_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name of the PromptTemplate.
@@ -452,6 +455,7 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
         $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default {{project}}/{{location}}/{{template_id}}
         $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default {{location}}/{{template_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiLogicPromptTemplateArgs args: The arguments to use to populate this resource's properties.

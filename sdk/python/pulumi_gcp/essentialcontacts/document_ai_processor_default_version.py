@@ -23,6 +23,7 @@ class DocumentAiProcessorDefaultVersionArgs:
                  version: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DocumentAiProcessorDefaultVersion resource.
+
         :param pulumi.Input[_builtins.str] processor: The processor to set the version on.
         :param pulumi.Input[_builtins.str] version: The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
                Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
@@ -63,6 +64,7 @@ class _DocumentAiProcessorDefaultVersionState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DocumentAiProcessorDefaultVersion resources.
+
         :param pulumi.Input[_builtins.str] processor: The processor to set the version on.
         :param pulumi.Input[_builtins.str] version: The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
                Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
@@ -139,6 +141,7 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
         $ pulumi import gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion default {{processor}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] processor: The processor to set the version on.
@@ -182,6 +185,7 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion default {{processor}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DocumentAiProcessorDefaultVersionArgs args: The arguments to use to populate this resource's properties.

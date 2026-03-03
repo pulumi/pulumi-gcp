@@ -31,6 +31,7 @@ class ServiceConnectionPolicyArgs:
                  psc_config: Optional[pulumi.Input['ServiceConnectionPolicyPscConfigArgs']] = None):
         """
         The set of arguments for constructing a ServiceConnectionPolicy resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the ServiceConnectionPolicy.
         :param pulumi.Input[_builtins.str] network: The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
         :param pulumi.Input[_builtins.str] service_class: The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
@@ -183,6 +184,7 @@ class _ServiceConnectionPolicyState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceConnectionPolicy resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] description: Free-text description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -496,6 +498,7 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Free-text description of the resource.
@@ -572,6 +575,7 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceConnectionPolicyArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class BrandArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Brand resource.
+
         :param pulumi.Input[_builtins.str] application_title: Application name displayed on OAuth consent screen.
         :param pulumi.Input[_builtins.str] support_email: Support email displayed on the OAuth consent screen. Can be either a
                user or group email. When a user email is specified, the caller must
@@ -90,6 +91,7 @@ class _BrandState:
                  support_email: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Brand resources.
+
         :param pulumi.Input[_builtins.str] application_title: Application name displayed on OAuth consent screen.
         :param pulumi.Input[_builtins.str] name: Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
                NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
@@ -250,6 +252,7 @@ class Brand(pulumi.CustomResource):
         $ pulumi import gcp:iap/brand:Brand default {{project_number}}/{{brand_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_title: Application name displayed on OAuth consent screen.
@@ -322,6 +325,7 @@ class Brand(pulumi.CustomResource):
         $ pulumi import gcp:iap/brand:Brand default projects/{{project_number}}/brands/{{brand_id}}
         $ pulumi import gcp:iap/brand:Brand default {{project_number}}/{{brand_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BrandArgs args: The arguments to use to populate this resource's properties.

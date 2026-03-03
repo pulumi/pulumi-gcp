@@ -179,6 +179,10 @@ export class Job extends pulumi.CustomResource {
      * The status of the job.
      */
     declare public /*out*/ readonly statuses: pulumi.Output<outputs.dataproc.JobStatus[]>;
+    /**
+     * If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+     */
+    declare public readonly waitForCompletion: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -212,6 +216,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["sparkConfig"] = state?.sparkConfig;
             resourceInputs["sparksqlConfig"] = state?.sparksqlConfig;
             resourceInputs["statuses"] = state?.statuses;
+            resourceInputs["waitForCompletion"] = state?.waitForCompletion;
         } else {
             const args = argsOrState as JobArgs | undefined;
             if (args?.placement === undefined && !opts.urn) {
@@ -231,6 +236,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["scheduling"] = args?.scheduling;
             resourceInputs["sparkConfig"] = args?.sparkConfig;
             resourceInputs["sparksqlConfig"] = args?.sparksqlConfig;
+            resourceInputs["waitForCompletion"] = args?.waitForCompletion;
             resourceInputs["driverControlsFilesUri"] = undefined /*out*/;
             resourceInputs["driverOutputResourceUri"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -334,6 +340,10 @@ export interface JobState {
      * The status of the job.
      */
     statuses?: pulumi.Input<pulumi.Input<inputs.dataproc.JobStatus>[]>;
+    /**
+     * If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+     */
+    waitForCompletion?: pulumi.Input<boolean>;
 }
 
 /**
@@ -402,4 +412,8 @@ export interface JobArgs {
      * The config of SparkSql job
      */
     sparksqlConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfig>;
+    /**
+     * If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+     */
+    waitForCompletion?: pulumi.Input<boolean>;
 }

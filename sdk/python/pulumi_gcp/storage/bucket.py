@@ -47,6 +47,7 @@ class BucketArgs:
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
         """
         The set of arguments for constructing a Bucket resource.
+
         :param pulumi.Input[_builtins.str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
                
                - - -
@@ -451,6 +452,7 @@ class _BucketState:
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
         """
         Input properties used for looking up and filtering Bucket resources.
+
         :param pulumi.Input['BucketAutoclassArgs'] autoclass: The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
@@ -1157,6 +1159,7 @@ class Bucket(pulumi.CustomResource):
         update the value set in state. If you delete this resource before updating the
         value, objects in the bucket will not be destroyed.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['BucketAutoclassArgs', 'BucketAutoclassArgsDict']] autoclass: The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
@@ -1393,6 +1396,7 @@ class Bucket(pulumi.CustomResource):
         `false` in state. If you've set it to `true` in config, run `pulumi up` to
         update the value set in state. If you delete this resource before updating the
         value, objects in the bucket will not be destroyed.
+
 
         :param str resource_name: The name of the resource.
         :param BucketArgs args: The arguments to use to populate this resource's properties.

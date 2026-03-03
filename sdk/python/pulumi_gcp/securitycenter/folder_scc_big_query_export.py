@@ -26,6 +26,7 @@ class FolderSccBigQueryExportArgs:
                  folder: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a FolderSccBigQueryExport resource.
+
         :param pulumi.Input[_builtins.str] big_query_export_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] dataset: The dataset to write findings' updates to.
                Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
@@ -156,6 +157,7 @@ class _FolderSccBigQueryExportState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FolderSccBigQueryExport resources.
+
         :param pulumi.Input[_builtins.str] big_query_export_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] create_time: The time at which the BigQuery export was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -434,6 +436,7 @@ class FolderSccBigQueryExport(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport default {{folder}}/{{big_query_export_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] big_query_export_id: This must be unique within the organization.
@@ -527,6 +530,7 @@ class FolderSccBigQueryExport(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport default folders/{{folder}}/bigQueryExports/{{big_query_export_id}}
         $ pulumi import gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport default {{folder}}/{{big_query_export_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FolderSccBigQueryExportArgs args: The arguments to use to populate this resource's properties.

@@ -130,6 +130,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly gkeonpremCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly googlePartnerName: pulumi.Output<string | undefined>;
     declare public readonly healthcareCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly hypercomputeclusterCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly iam2CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly iam3CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly iamBetaCustomEndpoint: pulumi.Output<string | undefined>;
@@ -342,6 +343,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["gkeonpremCustomEndpoint"] = args?.gkeonpremCustomEndpoint;
             resourceInputs["googlePartnerName"] = args?.googlePartnerName;
             resourceInputs["healthcareCustomEndpoint"] = args?.healthcareCustomEndpoint;
+            resourceInputs["hypercomputeclusterCustomEndpoint"] = args?.hypercomputeclusterCustomEndpoint;
             resourceInputs["iam2CustomEndpoint"] = args?.iam2CustomEndpoint;
             resourceInputs["iam3CustomEndpoint"] = args?.iam3CustomEndpoint;
             resourceInputs["iamBetaCustomEndpoint"] = args?.iamBetaCustomEndpoint;
@@ -566,6 +568,7 @@ export interface ProviderArgs {
     gkeonpremCustomEndpoint?: pulumi.Input<string>;
     googlePartnerName?: pulumi.Input<string>;
     healthcareCustomEndpoint?: pulumi.Input<string>;
+    hypercomputeclusterCustomEndpoint?: pulumi.Input<string>;
     iam2CustomEndpoint?: pulumi.Input<string>;
     iam3CustomEndpoint?: pulumi.Input<string>;
     iamBetaCustomEndpoint?: pulumi.Input<string>;

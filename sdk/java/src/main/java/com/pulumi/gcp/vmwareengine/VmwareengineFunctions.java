@@ -9,6 +9,8 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.vmwareengine.inputs.GetAnnouncementsArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetAnnouncementsPlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetClusterArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetClusterPlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetDatastoreArgs;
@@ -29,8 +31,11 @@ import com.pulumi.gcp.vmwareengine.inputs.GetPrivateCloudArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetPrivateCloudPlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetSubnetArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetSubnetPlainArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetUpgradesArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetUpgradesPlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsPlainArgs;
+import com.pulumi.gcp.vmwareengine.outputs.GetAnnouncementsResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetClusterResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetDatastoreResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetExternalAccessRuleResult;
@@ -41,10 +46,211 @@ import com.pulumi.gcp.vmwareengine.outputs.GetNetworkResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetNsxCredentialsResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetSubnetResult;
+import com.pulumi.gcp.vmwareengine.outputs.GetUpgradesResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetVcenterCredentialsResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class VmwareengineFunctions {
+    /**
+     * Use this data source to list announcements in a region.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetAnnouncementsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getAnnouncements(GetAnnouncementsArgs.builder()
+     *             .parent("projects/my-project/locations/us-west1-a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAnnouncementsResult> getAnnouncements(GetAnnouncementsArgs args) {
+        return getAnnouncements(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list announcements in a region.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetAnnouncementsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getAnnouncements(GetAnnouncementsArgs.builder()
+     *             .parent("projects/my-project/locations/us-west1-a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAnnouncementsResult> getAnnouncementsPlain(GetAnnouncementsPlainArgs args) {
+        return getAnnouncementsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list announcements in a region.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetAnnouncementsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getAnnouncements(GetAnnouncementsArgs.builder()
+     *             .parent("projects/my-project/locations/us-west1-a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAnnouncementsResult> getAnnouncements(GetAnnouncementsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vmwareengine/getAnnouncements:getAnnouncements", TypeShape.of(GetAnnouncementsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list announcements in a region.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetAnnouncementsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getAnnouncements(GetAnnouncementsArgs.builder()
+     *             .parent("projects/my-project/locations/us-west1-a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAnnouncementsResult> getAnnouncements(GetAnnouncementsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:vmwareengine/getAnnouncements:getAnnouncements", TypeShape.of(GetAnnouncementsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list announcements in a region.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetAnnouncementsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getAnnouncements(GetAnnouncementsArgs.builder()
+     *             .parent("projects/my-project/locations/us-west1-a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAnnouncementsResult> getAnnouncementsPlain(GetAnnouncementsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getAnnouncements:getAnnouncements", TypeShape.of(GetAnnouncementsResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Use this data source to get details about a cluster resource.
      * 
@@ -2234,6 +2440,206 @@ public final class VmwareengineFunctions {
      */
     public static CompletableFuture<GetSubnetResult> getSubnetPlain(GetSubnetPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getSubnet:getSubnet", TypeShape.of(GetSubnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list upgrades for a Private Cloud.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetUpgradesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getUpgrades(GetUpgradesArgs.builder()
+     *             .parent("projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetUpgradesResult> getUpgrades(GetUpgradesArgs args) {
+        return getUpgrades(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list upgrades for a Private Cloud.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetUpgradesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getUpgrades(GetUpgradesArgs.builder()
+     *             .parent("projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetUpgradesResult> getUpgradesPlain(GetUpgradesPlainArgs args) {
+        return getUpgradesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list upgrades for a Private Cloud.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetUpgradesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getUpgrades(GetUpgradesArgs.builder()
+     *             .parent("projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetUpgradesResult> getUpgrades(GetUpgradesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vmwareengine/getUpgrades:getUpgrades", TypeShape.of(GetUpgradesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list upgrades for a Private Cloud.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetUpgradesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getUpgrades(GetUpgradesArgs.builder()
+     *             .parent("projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetUpgradesResult> getUpgrades(GetUpgradesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:vmwareengine/getUpgrades:getUpgrades", TypeShape.of(GetUpgradesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list upgrades for a Private Cloud.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetUpgradesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getUpgrades(GetUpgradesArgs.builder()
+     *             .parent("projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetUpgradesResult> getUpgradesPlain(GetUpgradesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getUpgrades:getUpgrades", TypeShape.of(GetUpgradesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get Vcenter credentials for a Private Cloud.

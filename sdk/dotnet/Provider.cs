@@ -327,6 +327,9 @@ namespace Pulumi.Gcp
         [Output("healthcareCustomEndpoint")]
         public Output<string?> HealthcareCustomEndpoint { get; private set; } = null!;
 
+        [Output("hypercomputeclusterCustomEndpoint")]
+        public Output<string?> HypercomputeclusterCustomEndpoint { get; private set; } = null!;
+
         [Output("iam2CustomEndpoint")]
         public Output<string?> Iam2CustomEndpoint { get; private set; } = null!;
 
@@ -978,6 +981,9 @@ namespace Pulumi.Gcp
 
         [Input("healthcareCustomEndpoint")]
         public Input<string>? HealthcareCustomEndpoint { get; set; }
+
+        [Input("hypercomputeclusterCustomEndpoint")]
+        public Input<string>? HypercomputeclusterCustomEndpoint { get; set; }
 
         [Input("iam2CustomEndpoint")]
         public Input<string>? Iam2CustomEndpoint { get; set; }

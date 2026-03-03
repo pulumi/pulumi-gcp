@@ -54,7 +54,7 @@ import (
 //						GroupId:     pulumi.String("analyst"),
 //						DisplayName: pulumi.String("Data Analyst"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_88722@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_39249@example.com"),
 //						},
 //					},
 //				},
@@ -100,7 +100,7 @@ import (
 //						DisplayName: pulumi.String("Data Analyst - Updated"),
 //						Description: pulumi.String("In-place update verified"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_39249@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_74391@example.com"),
 //						},
 //					},
 //					&dataplex.DataProductAccessGroupArgs{
@@ -108,7 +108,7 @@ import (
 //						GroupId:     pulumi.String("scientist"),
 //						DisplayName: pulumi.String("Data Scientist"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-scientists-_74391@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-scientists-_16511@example.com"),
 //						},
 //					},
 //				},

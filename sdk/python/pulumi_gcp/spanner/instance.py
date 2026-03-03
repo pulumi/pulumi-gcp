@@ -35,6 +35,7 @@ class InstanceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] config: The name of the instance's configuration (similar but not
                quite the same as a region) which defines the geographic placement and
                replication of your databases in this instance. It determines where your data
@@ -296,6 +297,7 @@ class _InstanceState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input['InstanceAutoscalingConfigArgs'] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
                Exactly one of either num_nodes, processing_units or autoscaling_config must be
                present in terraform except when instance_type = FREE_INSTANCE.
@@ -678,6 +680,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:spanner/instance:Instance default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
@@ -801,6 +804,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:spanner/instance:Instance default {{project}}/{{name}}
         $ pulumi import gcp:spanner/instance:Instance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

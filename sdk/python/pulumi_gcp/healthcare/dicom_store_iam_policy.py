@@ -23,6 +23,7 @@ class DicomStoreIamPolicyArgs:
                  policy_data: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DicomStoreIamPolicy resource.
+
         :param pulumi.Input[_builtins.str] dicom_store_id: The DICOM store ID, in the form
                `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
                `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
@@ -70,6 +71,7 @@ class _DicomStoreIamPolicyState:
                  policy_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DicomStoreIamPolicy resources.
+
         :param pulumi.Input[_builtins.str] dicom_store_id: The DICOM store ID, in the form
                `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
                `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
@@ -217,6 +219,7 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dicom_store_id: The DICOM store ID, in the form
@@ -313,6 +316,7 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
 
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param DicomStoreIamPolicyArgs args: The arguments to use to populate this resource's properties.

@@ -31,6 +31,7 @@ class CertificateArgs:
                  self_managed: Optional[pulumi.Input['CertificateSelfManagedArgs']] = None):
         """
         The set of arguments for constructing a Certificate resource.
+
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the Certificate resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -208,6 +209,7 @@ class _CertificateState:
                  self_managed: Optional[pulumi.Input['CertificateSelfManagedArgs']] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
+
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the Certificate resource.
@@ -735,6 +737,7 @@ class Certificate(pulumi.CustomResource):
         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
@@ -1074,6 +1077,7 @@ class Certificate(pulumi.CustomResource):
         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.

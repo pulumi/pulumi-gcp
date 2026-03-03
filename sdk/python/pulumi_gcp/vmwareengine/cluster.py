@@ -28,6 +28,7 @@ class ClusterArgs:
                  node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[_builtins.str] parent: The resource name of the private cloud to create a new cluster in.
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
@@ -138,6 +139,7 @@ class _ClusterState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input['ClusterAutoscalingSettingsArgs'] autoscaling_settings: Configuration of the autoscaling applied to this cluster
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
@@ -653,6 +655,7 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import gcp:vmwareengine/cluster:Cluster default {{parent}}/clusters/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']] autoscaling_settings: Configuration of the autoscaling applied to this cluster
@@ -997,6 +1000,7 @@ class Cluster(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:vmwareengine/cluster:Cluster default {{parent}}/clusters/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

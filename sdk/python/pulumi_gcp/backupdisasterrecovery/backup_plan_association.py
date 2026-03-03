@@ -29,6 +29,7 @@ class BackupPlanAssociationArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPlanAssociation resource.
+
         :param pulumi.Input[_builtins.str] backup_plan: The BP with which resource needs to be created
                Note:
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
@@ -145,6 +146,7 @@ class _BackupPlanAssociationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupPlanAssociation resources.
+
         :param pulumi.Input[_builtins.str] backup_plan: The BP with which resource needs to be created
                Note:
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
@@ -478,6 +480,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
         $ pulumi import gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation default {{location}}/{{backup_plan_association_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_plan: The BP with which resource needs to be created
@@ -636,6 +639,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
         $ pulumi import gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation default {{project}}/{{location}}/{{backup_plan_association_id}}
         $ pulumi import gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation default {{location}}/{{backup_plan_association_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupPlanAssociationArgs args: The arguments to use to populate this resource's properties.

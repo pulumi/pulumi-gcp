@@ -233,6 +233,8 @@ googlePartnerName: Optional[str]
 
 healthcareCustomEndpoint: Optional[str]
 
+hypercomputeclusterCustomEndpoint: Optional[str]
+
 iam2CustomEndpoint: Optional[str]
 
 iam3CustomEndpoint: Optional[str]

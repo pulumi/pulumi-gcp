@@ -154,6 +154,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Output<ImmutableArray<string>> DataStoreIds { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to disable analytics for searches performed on this engine.
+        /// </summary>
+        [Output("disableAnalytics")]
+        public Output<bool?> DisableAnalytics { get; private set; } = null!;
+
+        /// <summary>
         /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         /// </summary>
         [Output("displayName")]
@@ -310,6 +316,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
         }
 
         /// <summary>
+        /// Whether to disable analytics for searches performed on this engine.
+        /// </summary>
+        [Input("disableAnalytics")]
+        public Input<bool>? DisableAnalytics { get; set; }
+
+        /// <summary>
         /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         /// </summary>
         [Input("displayName", required: true)]
@@ -423,6 +435,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
             get => _dataStoreIds ?? (_dataStoreIds = new InputList<string>());
             set => _dataStoreIds = value;
         }
+
+        /// <summary>
+        /// Whether to disable analytics for searches performed on this engine.
+        /// </summary>
+        [Input("disableAnalytics")]
+        public Input<bool>? DisableAnalytics { get; set; }
 
         /// <summary>
         /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.

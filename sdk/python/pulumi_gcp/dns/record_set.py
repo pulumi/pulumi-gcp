@@ -30,6 +30,7 @@ class RecordSetArgs:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a RecordSet resource.
+
         :param pulumi.Input[_builtins.str] managed_zone: The name of the zone in which this record set will
                reside.
         :param pulumi.Input[_builtins.str] name: The DNS name this record set will apply to.
@@ -161,6 +162,7 @@ class _RecordSetState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RecordSet resources.
+
         :param pulumi.Input[_builtins.str] managed_zone: The name of the zone in which this record set will
                reside.
         :param pulumi.Input[_builtins.str] name: The DNS name this record set will apply to.
@@ -553,6 +555,7 @@ class RecordSet(pulumi.CustomResource):
 
         Note: The record name must include the trailing dot at the end.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] managed_zone: The name of the zone in which this record set will
@@ -831,6 +834,7 @@ class RecordSet(pulumi.CustomResource):
         ```
 
         Note: The record name must include the trailing dot at the end.
+
 
         :param str resource_name: The name of the resource.
         :param RecordSetArgs args: The arguments to use to populate this resource's properties.

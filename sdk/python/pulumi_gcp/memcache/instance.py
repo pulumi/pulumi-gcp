@@ -37,6 +37,7 @@ class InstanceArgs:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input['InstanceNodeConfigArgs'] node_config: Configuration for memcache nodes.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] node_count: Number of nodes in the memcache instance.
@@ -314,6 +315,7 @@ class _InstanceState:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
                'default' will be used.
         :param pulumi.Input[_builtins.str] create_time: Creation timestamp in RFC3339 text format.
@@ -780,6 +782,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:memcache/instance:Instance default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
@@ -903,6 +906,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import gcp:memcache/instance:Instance default {{region}}/{{name}}
         $ pulumi import gcp:memcache/instance:Instance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

@@ -45,6 +45,11 @@ export type RepositoryWorkflowConfig = import("./repositoryWorkflowConfig").Repo
 export const RepositoryWorkflowConfig: typeof import("./repositoryWorkflowConfig").RepositoryWorkflowConfig = null as any;
 utilities.lazyLoad(exports, ["RepositoryWorkflowConfig"], () => require("./repositoryWorkflowConfig"));
 
+export { TeamFolderArgs, TeamFolderState } from "./teamFolder";
+export type TeamFolder = import("./teamFolder").TeamFolder;
+export const TeamFolder: typeof import("./teamFolder").TeamFolder = null as any;
+utilities.lazyLoad(exports, ["TeamFolder"], () => require("./teamFolder"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -64,6 +69,8 @@ const _module = {
                 return new RepositoryReleaseConfig(name, <any>undefined, { urn })
             case "gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig":
                 return new RepositoryWorkflowConfig(name, <any>undefined, { urn })
+            case "gcp:dataform/teamFolder:TeamFolder":
+                return new TeamFolder(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -76,3 +83,4 @@ pulumi.runtime.registerResourceModule("gcp", "dataform/repositoryIamMember", _mo
 pulumi.runtime.registerResourceModule("gcp", "dataform/repositoryIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataform/repositoryReleaseConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataform/repositoryWorkflowConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataform/teamFolder", _module)

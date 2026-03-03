@@ -10,6 +10,7 @@ from .cluster import *
 from .datastore import *
 from .external_access_rule import *
 from .external_address import *
+from .get_announcements import *
 from .get_cluster import *
 from .get_datastore import *
 from .get_external_access_rule import *
@@ -20,6 +21,7 @@ from .get_network_policy import *
 from .get_nsx_credentials import *
 from .get_private_cloud import *
 from .get_subnet import *
+from .get_upgrades import *
 from .get_vcenter_credentials import *
 from .network import *
 from .network_peering import *

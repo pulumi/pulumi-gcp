@@ -39,7 +39,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         public Input<string>? BinaryAuthorizationPolicy { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
         /// Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
         /// </summary>
@@ -50,7 +49,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         private InputList<Inputs.FunctionServiceConfigDirectVpcNetworkInterfaceGetArgs>? _directVpcNetworkInterfaces;
 
         /// <summary>
-        /// (Optional, Beta)
         /// The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
         /// Structure is documented below.
         /// </summary>

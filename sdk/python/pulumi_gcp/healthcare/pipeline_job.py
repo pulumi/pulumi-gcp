@@ -31,6 +31,7 @@ class PipelineJobArgs:
                  reconciliation_pipeline_job: Optional[pulumi.Input['PipelineJobReconciliationPipelineJobArgs']] = None):
         """
         The set of arguments for constructing a PipelineJob resource.
+
         :param pulumi.Input[_builtins.str] dataset: Healthcare Dataset under which the Pipeline Job is to run
         :param pulumi.Input[_builtins.str] location: Location where the Pipeline Job is to run
         :param pulumi.Input['PipelineJobBackfillPipelineJobArgs'] backfill_pipeline_job: Specifies the backfill configuration.
@@ -198,6 +199,7 @@ class _PipelineJobState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PipelineJob resources.
+
         :param pulumi.Input['PipelineJobBackfillPipelineJobArgs'] backfill_pipeline_job: Specifies the backfill configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset: Healthcare Dataset under which the Pipeline Job is to run
@@ -675,6 +677,7 @@ class PipelineJob(pulumi.CustomResource):
         $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict']] backfill_pipeline_job: Specifies the backfill configuration.
@@ -968,6 +971,7 @@ class PipelineJob(pulumi.CustomResource):
         $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{dataset}}/pipelineJobs?pipelineJobId={{name}}
         $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PipelineJobArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class LogViewArgs:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LogView resource.
+
         :param pulumi.Input[_builtins.str] bucket: The bucket of the resource
         :param pulumi.Input[_builtins.str] description: Describes this view.
         :param pulumi.Input[_builtins.str] filter: Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
@@ -132,6 +133,7 @@ class _LogViewState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogView resources.
+
         :param pulumi.Input[_builtins.str] bucket: The bucket of the resource
         :param pulumi.Input[_builtins.str] create_time: Output only. The creation timestamp of the view.
         :param pulumi.Input[_builtins.str] description: Describes this view.
@@ -309,6 +311,7 @@ class LogView(pulumi.CustomResource):
         $ pulumi import gcp:logging/logView:LogView default {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The bucket of the resource
@@ -364,6 +367,7 @@ class LogView(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/logView:LogView default {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LogViewArgs args: The arguments to use to populate this resource's properties.

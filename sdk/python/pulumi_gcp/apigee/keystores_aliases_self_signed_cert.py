@@ -32,6 +32,7 @@ class KeystoresAliasesSelfSignedCertArgs:
                  subject_alternative_dns_names: Optional[pulumi.Input['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs']] = None):
         """
         The set of arguments for constructing a KeystoresAliasesSelfSignedCert resource.
+
         :param pulumi.Input[_builtins.str] alias: Alias for the key/certificate pair. Values must match the regular expression [\\w\\s-.]{1,255}.
                This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
                this parameter or the JSON body.
@@ -188,6 +189,7 @@ class _KeystoresAliasesSelfSignedCertState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeystoresAliasesSelfSignedCert resources.
+
         :param pulumi.Input[_builtins.str] alias: Alias for the key/certificate pair. Values must match the regular expression [\\w\\s-.]{1,255}.
                This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
                this parameter or the JSON body.
@@ -417,12 +419,12 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             project=project.project_id,
             service="compute.googleapis.com",
             opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait300_seconds = time.Sleep("wait_300_seconds", create_duration="300s",
         opts = pulumi.ResourceOptions(depends_on=[compute]))
         apigee_network = gcp.compute.Network("apigee_network",
             name="apigee-network",
             project=project.project_id,
-            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
+            opts = pulumi.ResourceOptions(depends_on=[wait300_seconds]))
         apigee_range = gcp.compute.GlobalAddress("apigee_range",
             name="apigee-range",
             purpose="VPC_PEERING",
@@ -481,6 +483,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         $ pulumi import gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
         $ pulumi import gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -539,12 +542,12 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             project=project.project_id,
             service="compute.googleapis.com",
             opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait300_seconds = time.Sleep("wait_300_seconds", create_duration="300s",
         opts = pulumi.ResourceOptions(depends_on=[compute]))
         apigee_network = gcp.compute.Network("apigee_network",
             name="apigee-network",
             project=project.project_id,
-            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
+            opts = pulumi.ResourceOptions(depends_on=[wait300_seconds]))
         apigee_range = gcp.compute.GlobalAddress("apigee_range",
             name="apigee-range",
             purpose="VPC_PEERING",
@@ -603,6 +606,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         $ pulumi import gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
         $ pulumi import gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeystoresAliasesSelfSignedCertArgs args: The arguments to use to populate this resource's properties.

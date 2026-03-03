@@ -27,6 +27,7 @@ class IAMMemberArgs:
                  condition: Optional[pulumi.Input['IAMMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a IAMMember resource.
+
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
                Each entry can have one of the following values:
                * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -115,6 +116,7 @@ class _IAMMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IAMMember resources.
+
         :param pulumi.Input['IAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the project's IAM policy.
@@ -487,6 +489,7 @@ class IAMMember(pulumi.CustomResource):
         > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
          to include the title of condition, e.g. `terraform import google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['IAMMemberConditionArgs', 'IAMMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -773,6 +776,7 @@ class IAMMember(pulumi.CustomResource):
 
         > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
          to include the title of condition, e.g. `terraform import google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
+
 
         :param str resource_name: The name of the resource.
         :param IAMMemberArgs args: The arguments to use to populate this resource's properties.

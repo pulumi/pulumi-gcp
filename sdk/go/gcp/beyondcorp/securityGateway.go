@@ -47,6 +47,38 @@ import (
 //	}
 //
 // ```
+// ### Beyondcorp Security Gateway Logging
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := beyondcorp.NewSecurityGateway(ctx, "example-logging", &beyondcorp.SecurityGatewayArgs{
+//				SecurityGatewayId: pulumi.String("default-logging"),
+//				DisplayName:       pulumi.String("My Security Gateway resource with logging enabled"),
+//				Hubs: beyondcorp.SecurityGatewayHubArray{
+//					&beyondcorp.SecurityGatewayHubArgs{
+//						Region: pulumi.String("us-central1"),
+//					},
+//				},
+//				Logging: &beyondcorp.SecurityGatewayLoggingArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Beyondcorp Security Gateway Spa
 //
 // ```go
@@ -144,6 +176,8 @@ type SecurityGateway struct {
 	//
 	// Deprecated: `location` is deprecated and will be removed in a future major release.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// Settings related to Cloud Logging.
+	Logging SecurityGatewayLoggingPtrOutput `pulumi:"logging"`
 	// Identifier. Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -228,6 +262,8 @@ type securityGatewayState struct {
 	//
 	// Deprecated: `location` is deprecated and will be removed in a future major release.
 	Location *string `pulumi:"location"`
+	// Settings related to Cloud Logging.
+	Logging *SecurityGatewayLogging `pulumi:"logging"`
 	// Identifier. Name of the resource.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -280,6 +316,8 @@ type SecurityGatewayState struct {
 	//
 	// Deprecated: `location` is deprecated and will be removed in a future major release.
 	Location pulumi.StringPtrInput
+	// Settings related to Cloud Logging.
+	Logging SecurityGatewayLoggingPtrInput
 	// Identifier. Name of the resource.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -329,6 +367,8 @@ type securityGatewayArgs struct {
 	//
 	// Deprecated: `location` is deprecated and will be removed in a future major release.
 	Location *string `pulumi:"location"`
+	// Settings related to Cloud Logging.
+	Logging *SecurityGatewayLogging `pulumi:"logging"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -361,6 +401,8 @@ type SecurityGatewayArgs struct {
 	//
 	// Deprecated: `location` is deprecated and will be removed in a future major release.
 	Location pulumi.StringPtrInput
+	// Settings related to Cloud Logging.
+	Logging SecurityGatewayLoggingPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -501,6 +543,11 @@ func (o SecurityGatewayOutput) Hubs() SecurityGatewayHubArrayOutput {
 // Deprecated: `location` is deprecated and will be removed in a future major release.
 func (o SecurityGatewayOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGateway) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Settings related to Cloud Logging.
+func (o SecurityGatewayOutput) Logging() SecurityGatewayLoggingPtrOutput {
+	return o.ApplyT(func(v *SecurityGateway) SecurityGatewayLoggingPtrOutput { return v.Logging }).(SecurityGatewayLoggingPtrOutput)
 }
 
 // Identifier. Name of the resource.

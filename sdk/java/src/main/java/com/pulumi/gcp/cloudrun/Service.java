@@ -594,10 +594,7 @@ import javax.annotation.Nullable;
  *             .name("cloudrun-srv")
  *             .location("us-central1")
  *             .metadata(ServiceMetadataArgs.builder()
- *                 .annotations(Map.ofEntries(
- *                     Map.entry("run.googleapis.com/launch-stage", "BETA"),
- *                     Map.entry("run.googleapis.com/iap-enabled", "true")
- *                 ))
+ *                 .annotations(Map.of("run.googleapis.com/iap-enabled", "true"))
  *                 .build())
  *             .template(ServiceTemplateArgs.builder()
  *                 .spec(ServiceTemplateSpecArgs.builder()

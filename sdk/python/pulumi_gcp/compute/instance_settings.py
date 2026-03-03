@@ -26,6 +26,7 @@ class InstanceSettingsArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceSettings resource.
+
         :param pulumi.Input[_builtins.str] zone: A reference to the zone where the machine resides.
         :param pulumi.Input['InstanceSettingsMetadataArgs'] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
                Structure is documented below.
@@ -86,6 +87,7 @@ class _InstanceSettingsState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceSettings resources.
+
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input['InstanceSettingsMetadataArgs'] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
@@ -207,6 +209,7 @@ class InstanceSettings(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceSettings:InstanceSettings default {{zone}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
@@ -262,6 +265,7 @@ class InstanceSettings(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceSettings:InstanceSettings default {{project}}/{{zone}}
         $ pulumi import gcp:compute/instanceSettings:InstanceSettings default {{zone}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceSettingsArgs args: The arguments to use to populate this resource's properties.

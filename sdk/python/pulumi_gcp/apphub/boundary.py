@@ -24,6 +24,7 @@ class BoundaryArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Boundary resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the Boundary resource. Must be global.
         :param pulumi.Input[_builtins.str] crm_node: Optional. The resource name of the CRM node being attached to the
                boundary.
@@ -89,6 +90,7 @@ class _BoundaryState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Boundary resources.
+
         :param pulumi.Input[_builtins.str] create_time: Create time.
         :param pulumi.Input[_builtins.str] crm_node: Optional. The resource name of the CRM node being attached to the
                boundary.
@@ -253,6 +255,7 @@ class Boundary(pulumi.CustomResource):
         $ pulumi import gcp:apphub/boundary:Boundary default {{location}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] crm_node: Optional. The resource name of the CRM node being attached to the
@@ -305,6 +308,7 @@ class Boundary(pulumi.CustomResource):
         $ pulumi import gcp:apphub/boundary:Boundary default {{project}}/{{location}}
         $ pulumi import gcp:apphub/boundary:Boundary default {{location}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BoundaryArgs args: The arguments to use to populate this resource's properties.

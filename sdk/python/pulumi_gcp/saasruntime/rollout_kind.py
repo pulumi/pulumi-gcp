@@ -33,6 +33,7 @@ class RolloutKindArgs:
                  update_unit_kind_strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RolloutKind resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] rollout_kind_id: The ID value for the new rollout kind.
         :param pulumi.Input[_builtins.str] unit_kind: UnitKind that this rollout kind corresponds to. Rollouts stemming from this
@@ -255,6 +256,7 @@ class _RolloutKindState:
                  update_unit_kind_strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RolloutKind resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations is an unstructured key-value map stored with a resource that
                may be set by external tools to store and retrieve arbitrary metadata.
                They are not queryable and should be preserved when modifying objects.
@@ -649,6 +651,7 @@ class RolloutKind(pulumi.CustomResource):
         $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default {{location}}/{{rollout_kind_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations is an unstructured key-value map stored with a resource that
@@ -743,6 +746,7 @@ class RolloutKind(pulumi.CustomResource):
         $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default {{project}}/{{location}}/{{rollout_kind_id}}
         $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default {{location}}/{{rollout_kind_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RolloutKindArgs args: The arguments to use to populate this resource's properties.

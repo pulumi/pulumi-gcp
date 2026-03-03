@@ -44,6 +44,7 @@ class VPNTunnelArgs:
                  vpn_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a VPNTunnel resource.
+
         :param pulumi.Input['VPNTunnelCipherSuiteArgs'] cipher_suite: User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -464,6 +465,7 @@ class _VPNTunnelState:
                  vpn_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering VPNTunnel resources.
+
         :param pulumi.Input['VPNTunnelCipherSuiteArgs'] cipher_suite: User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -1145,6 +1147,7 @@ class VPNTunnel(pulumi.CustomResource):
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']] cipher_suite: User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
@@ -1351,6 +1354,7 @@ class VPNTunnel(pulumi.CustomResource):
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{region}}/{{name}}
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VPNTunnelArgs args: The arguments to use to populate this resource's properties.

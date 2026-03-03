@@ -23,6 +23,7 @@ class KeyRingIAMPolicyArgs:
                  policy_data: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a KeyRingIAMPolicy resource.
+
         :param pulumi.Input[_builtins.str] key_ring_id: The key ring ID, in the form
                `{project_id}/{location_name}/{key_ring_name}` or
                `{location_name}/{key_ring_name}`. In the second form, the provider's
@@ -70,6 +71,7 @@ class _KeyRingIAMPolicyState:
                  policy_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyRingIAMPolicy resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the key ring's IAM policy.
         :param pulumi.Input[_builtins.str] key_ring_id: The key ring ID, in the form
                `{project_id}/{location_name}/{key_ring_name}` or
@@ -305,6 +307,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
 
         ## Import
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key_ring_id: The key ring ID, in the form
@@ -489,6 +492,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         ```
 
         ## Import
+
 
         :param str resource_name: The name of the resource.
         :param KeyRingIAMPolicyArgs args: The arguments to use to populate this resource's properties.

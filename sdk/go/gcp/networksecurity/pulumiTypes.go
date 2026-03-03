@@ -10050,7 +10050,6 @@ func (o SecurityProfileCustomInterceptProfilePtrOutput) InterceptEndpointGroup()
 }
 
 type SecurityProfileCustomMirroringProfile struct {
-	// (Optional, Beta)
 	// The target downstream Mirroring Deployment Groups.
 	// This field is used for Packet Broker mirroring endpoint groups to specify
 	// the deployment groups that the packet should be mirrored to by the broker.
@@ -10061,7 +10060,7 @@ type SecurityProfileCustomMirroringProfile struct {
 	// a replica will be mirrored to the location-local target in this group.
 	// Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
 	MirroringEndpointGroup string `pulumi:"mirroringEndpointGroup"`
-	// (Output, Beta)
+	// (Output)
 	// The type of the mirroring endpoint group this profile is attached to.
 	// Possible values:
 	// DIRECT
@@ -10081,7 +10080,6 @@ type SecurityProfileCustomMirroringProfileInput interface {
 }
 
 type SecurityProfileCustomMirroringProfileArgs struct {
-	// (Optional, Beta)
 	// The target downstream Mirroring Deployment Groups.
 	// This field is used for Packet Broker mirroring endpoint groups to specify
 	// the deployment groups that the packet should be mirrored to by the broker.
@@ -10092,7 +10090,7 @@ type SecurityProfileCustomMirroringProfileArgs struct {
 	// a replica will be mirrored to the location-local target in this group.
 	// Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
 	MirroringEndpointGroup pulumi.StringInput `pulumi:"mirroringEndpointGroup"`
-	// (Output, Beta)
+	// (Output)
 	// The type of the mirroring endpoint group this profile is attached to.
 	// Possible values:
 	// DIRECT
@@ -10177,7 +10175,6 @@ func (o SecurityProfileCustomMirroringProfileOutput) ToSecurityProfileCustomMirr
 	}).(SecurityProfileCustomMirroringProfilePtrOutput)
 }
 
-// (Optional, Beta)
 // The target downstream Mirroring Deployment Groups.
 // This field is used for Packet Broker mirroring endpoint groups to specify
 // the deployment groups that the packet should be mirrored to by the broker.
@@ -10194,7 +10191,7 @@ func (o SecurityProfileCustomMirroringProfileOutput) MirroringEndpointGroup() pu
 	return o.ApplyT(func(v SecurityProfileCustomMirroringProfile) string { return v.MirroringEndpointGroup }).(pulumi.StringOutput)
 }
 
-// (Output, Beta)
+// (Output)
 // The type of the mirroring endpoint group this profile is attached to.
 // Possible values:
 // DIRECT
@@ -10227,7 +10224,6 @@ func (o SecurityProfileCustomMirroringProfilePtrOutput) Elem() SecurityProfileCu
 	}).(SecurityProfileCustomMirroringProfileOutput)
 }
 
-// (Optional, Beta)
 // The target downstream Mirroring Deployment Groups.
 // This field is used for Packet Broker mirroring endpoint groups to specify
 // the deployment groups that the packet should be mirrored to by the broker.
@@ -10254,7 +10250,7 @@ func (o SecurityProfileCustomMirroringProfilePtrOutput) MirroringEndpointGroup()
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Output, Beta)
+// (Output)
 // The type of the mirroring endpoint group this profile is attached to.
 // Possible values:
 // DIRECT

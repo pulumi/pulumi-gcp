@@ -25,6 +25,7 @@ class ViewArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a View resource.
+
         :param pulumi.Input[_builtins.str] location: Location of the resource.
         :param pulumi.Input[_builtins.str] display_name: The human-readable display name of the view.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -105,6 +106,7 @@ class _ViewState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering View resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this view was created.
         :param pulumi.Input[_builtins.str] display_name: The human-readable display name of the view.
         :param pulumi.Input[_builtins.str] location: Location of the resource.
@@ -278,6 +280,7 @@ class View(pulumi.CustomResource):
         $ pulumi import gcp:contactcenterinsights/view:View default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The human-readable display name of the view.
@@ -341,6 +344,7 @@ class View(pulumi.CustomResource):
         $ pulumi import gcp:contactcenterinsights/view:View default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:contactcenterinsights/view:View default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ViewArgs args: The arguments to use to populate this resource's properties.

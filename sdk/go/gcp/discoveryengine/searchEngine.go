@@ -148,6 +148,8 @@ type SearchEngine struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
 	DataStoreIds pulumi.StringArrayOutput `pulumi:"dataStoreIds"`
+	// Whether to disable analytics for searches performed on this engine.
+	DisableAnalytics pulumi.BoolPtrOutput `pulumi:"disableAnalytics"`
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Unique ID to use for Search Engine App.
@@ -244,6 +246,8 @@ type searchEngineState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
 	DataStoreIds []string `pulumi:"dataStoreIds"`
+	// Whether to disable analytics for searches performed on this engine.
+	DisableAnalytics *bool `pulumi:"disableAnalytics"`
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// Unique ID to use for Search Engine App.
@@ -293,6 +297,8 @@ type SearchEngineState struct {
 	CreateTime pulumi.StringPtrInput
 	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
 	DataStoreIds pulumi.StringArrayInput
+	// Whether to disable analytics for searches performed on this engine.
+	DisableAnalytics pulumi.BoolPtrInput
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName pulumi.StringPtrInput
 	// Unique ID to use for Search Engine App.
@@ -344,6 +350,8 @@ type searchEngineArgs struct {
 	CommonConfig *SearchEngineCommonConfig `pulumi:"commonConfig"`
 	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
 	DataStoreIds []string `pulumi:"dataStoreIds"`
+	// Whether to disable analytics for searches performed on this engine.
+	DisableAnalytics *bool `pulumi:"disableAnalytics"`
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName string `pulumi:"displayName"`
 	// Unique ID to use for Search Engine App.
@@ -385,6 +393,8 @@ type SearchEngineArgs struct {
 	CommonConfig SearchEngineCommonConfigPtrInput
 	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
 	DataStoreIds pulumi.StringArrayInput
+	// Whether to disable analytics for searches performed on this engine.
+	DisableAnalytics pulumi.BoolPtrInput
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName pulumi.StringInput
 	// Unique ID to use for Search Engine App.
@@ -526,6 +536,11 @@ func (o SearchEngineOutput) CreateTime() pulumi.StringOutput {
 // The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
 func (o SearchEngineOutput) DataStoreIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SearchEngine) pulumi.StringArrayOutput { return v.DataStoreIds }).(pulumi.StringArrayOutput)
+}
+
+// Whether to disable analytics for searches performed on this engine.
+func (o SearchEngineOutput) DisableAnalytics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SearchEngine) pulumi.BoolPtrOutput { return v.DisableAnalytics }).(pulumi.BoolPtrOutput)
 }
 
 // Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.

@@ -27,6 +27,7 @@ class RepositoryArgs:
                  pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None):
         """
         The set of arguments for constructing a Repository resource.
+
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If set to true, skip repository creation if a repository with the same name already exists.
         :param pulumi.Input[_builtins.str] name: Resource name of the repository, of the form `{{repo}}`.
                The repo name may contain slashes. eg, `name/with/slash`
@@ -109,6 +110,7 @@ class _RepositoryState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Repository resources.
+
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If set to true, skip repository creation if a repository with the same name already exists.
         :param pulumi.Input[_builtins.str] name: Resource name of the repository, of the form `{{repo}}`.
                The repo name may contain slashes. eg, `name/with/slash`
@@ -273,6 +275,7 @@ class Repository(pulumi.CustomResource):
         $ pulumi import gcp:sourcerepo/repository:Repository default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If set to true, skip repository creation if a repository with the same name already exists.
@@ -341,6 +344,7 @@ class Repository(pulumi.CustomResource):
         $ pulumi import gcp:sourcerepo/repository:Repository default projects/{{project}}/repos/{{name}}
         $ pulumi import gcp:sourcerepo/repository:Repository default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RepositoryArgs args: The arguments to use to populate this resource's properties.

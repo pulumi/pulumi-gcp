@@ -31,6 +31,7 @@ class ClientTlsPolicyArgs:
                  sni: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientTlsPolicy resource.
+
         :param pulumi.Input['ClientTlsPolicyClientCertificateArgs'] client_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
@@ -183,6 +184,7 @@ class _ClientTlsPolicyState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClientTlsPolicy resources.
+
         :param pulumi.Input['ClientTlsPolicyClientCertificateArgs'] client_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time the ClientTlsPolicy was created in UTC.
@@ -460,6 +462,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ClientTlsPolicyClientCertificateArgs', 'ClientTlsPolicyClientCertificateArgsDict']] client_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
@@ -547,6 +550,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClientTlsPolicyArgs args: The arguments to use to populate this resource's properties.

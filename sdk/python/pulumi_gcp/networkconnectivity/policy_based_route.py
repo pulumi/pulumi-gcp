@@ -34,6 +34,7 @@ class PolicyBasedRouteArgs:
                  virtual_machine: Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArgs']] = None):
         """
         The set of arguments for constructing a PolicyBasedRoute resource.
+
         :param pulumi.Input['PolicyBasedRouteFilterArgs'] filter: The filter to match L4 traffic.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
@@ -238,6 +239,7 @@ class _PolicyBasedRouteState:
                  warnings: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyBasedRouteWarningArgs']]]] = None):
         """
         Input properties used for looking up and filtering PolicyBasedRoute resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time when the policy-based route was created.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -611,6 +613,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -715,6 +718,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{project}}/{{name}}
         $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyBasedRouteArgs args: The arguments to use to populate this resource's properties.

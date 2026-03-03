@@ -32,6 +32,7 @@ class SQuotaPreferenceArgs:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SQuotaPreference resource.
+
         :param pulumi.Input['SQuotaPreferenceQuotaConfigArgs'] quota_config: The preferred quota configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] contact_email: An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
@@ -201,6 +202,7 @@ class _SQuotaPreferenceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SQuotaPreference resources.
+
         :param pulumi.Input[_builtins.str] contact_email: An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
                The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
         :param pulumi.Input[_builtins.str] create_time: Create time stamp.
@@ -476,6 +478,7 @@ class SQuotaPreference(pulumi.CustomResource):
         $ pulumi import gcp:cloudquota/sQuotaPreference:SQuotaPreference default {{parent}}/locations/global/quotaPreferences/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] contact_email: An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
@@ -543,6 +546,7 @@ class SQuotaPreference(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:cloudquota/sQuotaPreference:SQuotaPreference default {{parent}}/locations/global/quotaPreferences/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SQuotaPreferenceArgs args: The arguments to use to populate this resource's properties.

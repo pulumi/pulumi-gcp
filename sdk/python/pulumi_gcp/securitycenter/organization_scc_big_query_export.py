@@ -26,6 +26,7 @@ class OrganizationSccBigQueryExportArgs:
                  filter: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrganizationSccBigQueryExport resource.
+
         :param pulumi.Input[_builtins.str] big_query_export_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] organization: The organization whose Cloud Security Command Center the Big Query Export
                Config lives in.
@@ -159,6 +160,7 @@ class _OrganizationSccBigQueryExportState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationSccBigQueryExport resources.
+
         :param pulumi.Input[_builtins.str] big_query_export_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] create_time: The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -435,6 +437,7 @@ class OrganizationSccBigQueryExport(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport default {{organization}}/{{big_query_export_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] big_query_export_id: This must be unique within the organization.
@@ -524,6 +527,7 @@ class OrganizationSccBigQueryExport(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport default organizations/{{organization}}/bigQueryExports/{{big_query_export_id}}
         $ pulumi import gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport default {{organization}}/{{big_query_export_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationSccBigQueryExportArgs args: The arguments to use to populate this resource's properties.

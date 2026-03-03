@@ -33,6 +33,7 @@ class PacketMirroringArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PacketMirroring resource.
+
         :param pulumi.Input['PacketMirroringCollectorIlbArgs'] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
                that will be used as collector for mirrored traffic. The
                specified forwarding rule must have is_mirroring_collector
@@ -228,6 +229,7 @@ class _PacketMirroringState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PacketMirroring resources.
+
         :param pulumi.Input['PacketMirroringCollectorIlbArgs'] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
                that will be used as collector for mirrored traffic. The
                specified forwarding rule must have is_mirroring_collector
@@ -529,6 +531,7 @@ class PacketMirroring(pulumi.CustomResource):
         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
@@ -663,6 +666,7 @@ class PacketMirroring(pulumi.CustomResource):
         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{region}}/{{name}}
         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PacketMirroringArgs args: The arguments to use to populate this resource's properties.

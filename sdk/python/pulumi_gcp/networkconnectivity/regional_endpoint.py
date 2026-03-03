@@ -31,6 +31,7 @@ class RegionalEndpointArgs:
                  subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionalEndpoint resource.
+
         :param pulumi.Input[_builtins.str] access_type: The access type of this regional endpoint. This field is reflected in the PSC Forwarding Rule configuration to enable global access.
                Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[_builtins.str] location: The location of the RegionalEndpoint.
@@ -213,6 +214,7 @@ class _RegionalEndpointState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionalEndpoint resources.
+
         :param pulumi.Input[_builtins.str] access_type: The access type of this regional endpoint. This field is reflected in the PSC Forwarding Rule configuration to enable global access.
                Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[_builtins.str] address: The IP Address of the Regional Endpoint. When no address is provided, an IP from the subnetwork is allocated. Use one of the following formats: * IPv4 address as in `10.0.0.1` * Address resource URI as in `projects/{project}/regions/{region}/addresses/{address_name}`
@@ -550,6 +552,7 @@ class RegionalEndpoint(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_type: The access type of this regional endpoint. This field is reflected in the PSC Forwarding Rule configuration to enable global access.
@@ -652,6 +655,7 @@ class RegionalEndpoint(pulumi.CustomResource):
         $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionalEndpointArgs args: The arguments to use to populate this resource's properties.

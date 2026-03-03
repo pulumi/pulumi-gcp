@@ -30,6 +30,7 @@ class SecurityFeedbackArgs:
                  reason: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityFeedback resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['SecurityFeedbackFeedbackContextArgs']]] feedback_contexts: One or more attribute/value pairs for constraining the feedback.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] feedback_id: Resource ID of the security feedback.
@@ -157,6 +158,7 @@ class _SecurityFeedbackState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityFeedback resources.
+
         :param pulumi.Input[_builtins.str] comment: Optional text the user can provide for additional, unstructured context.
         :param pulumi.Input[_builtins.str] create_time: The time when this specific feedback id was created.
         :param pulumi.Input[_builtins.str] display_name: The display name of the feedback.
@@ -413,6 +415,7 @@ class SecurityFeedback(pulumi.CustomResource):
         $ pulumi import gcp:apigee/securityFeedback:SecurityFeedback default {{org_id}}/{{feedback_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Optional text the user can provide for additional, unstructured context.
@@ -511,6 +514,7 @@ class SecurityFeedback(pulumi.CustomResource):
         $ pulumi import gcp:apigee/securityFeedback:SecurityFeedback default {{org_id}}/securityFeedback/{{feedback_id}}
         $ pulumi import gcp:apigee/securityFeedback:SecurityFeedback default {{org_id}}/{{feedback_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityFeedbackArgs args: The arguments to use to populate this resource's properties.

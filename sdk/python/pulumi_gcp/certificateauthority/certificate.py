@@ -33,6 +33,7 @@ class CertificateArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
+
         :param pulumi.Input[_builtins.str] location: Location of the Certificate. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
         :param pulumi.Input[_builtins.str] pool: The name of the CaPool this Certificate belongs to.
@@ -238,6 +239,7 @@ class _CertificateState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
+
         :param pulumi.Input[_builtins.str] certificate_authority: The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
                a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
                argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
@@ -1069,6 +1071,7 @@ class Certificate(pulumi.CustomResource):
         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{pool}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_authority: The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
@@ -1586,6 +1589,7 @@ class Certificate(pulumi.CustomResource):
         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{pool}}/{{name}}
         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{pool}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.

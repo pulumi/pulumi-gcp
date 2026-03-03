@@ -25,6 +25,7 @@ class WebResourceArgs:
                  verification_method: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a WebResource resource.
+
         :param pulumi.Input['WebResourceSiteArgs'] site: Container for the address and type of a site for which a verification token will be verified.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] verification_method: The verification method for the Site Verification system to use to verify
@@ -71,6 +72,7 @@ class _WebResourceState:
                  web_resource_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebResource resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: The email addresses of all direct, verified owners of this exact property. Indirect owners —
                for example verified owners of the containing domain—are not included in this list.
         :param pulumi.Input['WebResourceSiteArgs'] site: Container for the address and type of a site for which a verification token will be verified.
@@ -208,6 +210,7 @@ class WebResource(pulumi.CustomResource):
         $ pulumi import gcp:siteverification/webResource:WebResource default {{web_resource_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict']] site: Container for the address and type of a site for which a verification token will be verified.
@@ -278,6 +281,7 @@ class WebResource(pulumi.CustomResource):
         $ pulumi import gcp:siteverification/webResource:WebResource default webResource/{{web_resource_id}}
         $ pulumi import gcp:siteverification/webResource:WebResource default {{web_resource_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WebResourceArgs args: The arguments to use to populate this resource's properties.

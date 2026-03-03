@@ -31,6 +31,7 @@ class NetworkPolicyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkPolicy resource.
+
         :param pulumi.Input[_builtins.str] edge_services_cidr: IP address range in CIDR notation used to create internet access and external IP access.
                An RFC 1918 CIDR block, with a "/26" prefix, is required. The range cannot overlap with any
                prefixes either in the consumer VPC network or in use by the private clouds attached to that VPC network.
@@ -188,6 +189,7 @@ class _NetworkPolicyState:
                  vmware_engine_network_canonical: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkPolicy resources.
+
         :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -483,6 +485,7 @@ class NetworkPolicy(pulumi.CustomResource):
         $ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User-provided description for this network policy.
@@ -576,6 +579,7 @@ class NetworkPolicy(pulumi.CustomResource):
         $ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkPolicyArgs args: The arguments to use to populate this resource's properties.

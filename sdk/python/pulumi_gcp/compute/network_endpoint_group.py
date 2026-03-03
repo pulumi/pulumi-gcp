@@ -29,6 +29,7 @@ class NetworkEndpointGroupArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkEndpointGroup resource.
+
         :param pulumi.Input[_builtins.str] network: The network to which all network endpoints in the NEG belong.
                Uses "default" project network if unspecified.
         :param pulumi.Input[_builtins.int] default_port: The default port used if the port number is not specified in the
@@ -205,6 +206,7 @@ class _NetworkEndpointGroupState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkEndpointGroup resources.
+
         :param pulumi.Input[_builtins.int] default_port: The default port used if the port number is not specified in the
                network endpoint.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
@@ -508,6 +510,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] default_port: The default port used if the port number is not specified in the
@@ -625,6 +628,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{zone}}/{{name}}
         $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkEndpointGroupArgs args: The arguments to use to populate this resource's properties.

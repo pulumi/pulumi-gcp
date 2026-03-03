@@ -56,6 +56,7 @@ class FunctionArgs:
                  vpc_connector_egress_settings: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Function resource.
+
         :param pulumi.Input[_builtins.str] runtime: The runtime in which the function is going to run.
                Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
                
@@ -617,6 +618,7 @@ class _FunctionState:
                  vpc_connector_egress_settings: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Function resources.
+
         :param pulumi.Input['FunctionAutomaticUpdatePolicyArgs'] automatic_update_policy: Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
         :param pulumi.Input[_builtins.int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] build_environment_variables: A set of key/value environment variable pairs available during build time.
@@ -1336,6 +1338,7 @@ class Function(pulumi.CustomResource):
         $ pulumi import gcp:cloudfunctions/function:Function default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict']] automatic_update_policy: Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
@@ -1487,6 +1490,7 @@ class Function(pulumi.CustomResource):
         $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/{{name}}
         $ pulumi import gcp:cloudfunctions/function:Function default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FunctionArgs args: The arguments to use to populate this resource's properties.

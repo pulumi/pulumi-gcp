@@ -25,6 +25,7 @@ class DiskAsyncReplicationArgs:
                  secondary_disk: pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']):
         """
         The set of arguments for constructing a DiskAsyncReplication resource.
+
         :param pulumi.Input[_builtins.str] primary_disk: The primary disk (source of replication).
         :param pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs'] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
                
@@ -67,6 +68,7 @@ class _DiskAsyncReplicationState:
                  secondary_disk: Optional[pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']] = None):
         """
         Input properties used for looking up and filtering DiskAsyncReplication resources.
+
         :param pulumi.Input[_builtins.str] primary_disk: The primary disk (source of replication).
         :param pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs'] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
                
@@ -144,6 +146,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] primary_disk: The primary disk (source of replication).
@@ -187,6 +190,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
                 "disk": secondary_disk.id,
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiskAsyncReplicationArgs args: The arguments to use to populate this resource's properties.

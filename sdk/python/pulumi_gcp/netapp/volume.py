@@ -50,6 +50,7 @@ class VolumeArgs:
                  unix_permissions: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Volume resource.
+
         :param pulumi.Input[_builtins.str] capacity_gib: Capacity of the volume (in GiB).
         :param pulumi.Input[_builtins.str] location: Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
@@ -555,6 +556,7 @@ class _VolumeState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
+
         :param pulumi.Input[_builtins.str] active_directory: Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
         :param pulumi.Input['VolumeBackupConfigArgs'] backup_config: Backup configuration for the volume.
                Structure is documented below.
@@ -1391,6 +1393,7 @@ class Volume(pulumi.CustomResource):
         $ pulumi import gcp:netapp/volume:Volume default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['VolumeBackupConfigArgs', 'VolumeBackupConfigArgsDict']] backup_config: Backup configuration for the volume.
@@ -1506,6 +1509,7 @@ class Volume(pulumi.CustomResource):
         $ pulumi import gcp:netapp/volume:Volume default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:netapp/volume:Volume default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VolumeArgs args: The arguments to use to populate this resource's properties.

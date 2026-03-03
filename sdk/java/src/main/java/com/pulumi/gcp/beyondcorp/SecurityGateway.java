@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.beyondcorp.SecurityGatewayArgs;
 import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayState;
 import com.pulumi.gcp.beyondcorp.outputs.SecurityGatewayHub;
+import com.pulumi.gcp.beyondcorp.outputs.SecurityGatewayLogging;
 import com.pulumi.gcp.beyondcorp.outputs.SecurityGatewayProxyProtocolConfig;
 import com.pulumi.gcp.beyondcorp.outputs.SecurityGatewayServiceDiscovery;
 import java.lang.String;
@@ -53,6 +54,46 @@ import javax.annotation.Nullable;
  *             .displayName("My Security Gateway resource")
  *             .hubs(SecurityGatewayHubArgs.builder()
  *                 .region("us-central1")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Beyondcorp Security Gateway Logging
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.beyondcorp.SecurityGateway;
+ * import com.pulumi.gcp.beyondcorp.SecurityGatewayArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayHubArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayLoggingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example_logging = new SecurityGateway("example-logging", SecurityGatewayArgs.builder()
+ *             .securityGatewayId("default-logging")
+ *             .displayName("My Security Gateway resource with logging enabled")
+ *             .hubs(SecurityGatewayHubArgs.builder()
+ *                 .region("us-central1")
+ *                 .build())
+ *             .logging(SecurityGatewayLoggingArgs.builder()
  *                 .build())
  *             .build());
  * 
@@ -252,6 +293,20 @@ public class SecurityGateway extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> location() {
         return Codegen.optional(this.location);
+    }
+    /**
+     * Settings related to Cloud Logging.
+     * 
+     */
+    @Export(name="logging", refs={SecurityGatewayLogging.class}, tree="[0]")
+    private Output</* @Nullable */ SecurityGatewayLogging> logging;
+
+    /**
+     * @return Settings related to Cloud Logging.
+     * 
+     */
+    public Output<Optional<SecurityGatewayLogging>> logging() {
+        return Codegen.optional(this.logging);
     }
     /**
      * Identifier. Name of the resource.

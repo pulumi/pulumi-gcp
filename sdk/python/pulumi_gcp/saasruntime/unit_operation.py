@@ -33,6 +33,7 @@ class UnitOperationArgs:
                  wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a UnitOperation resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] unit: The Unit a given UnitOperation will act upon.
         :param pulumi.Input[_builtins.str] unit_operation_id: The ID value for the new unit operation.
@@ -246,6 +247,7 @@ class _UnitOperationState:
                  wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering UnitOperation resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations is an unstructured key-value map stored with a resource that
                may be set by external tools to store and retrieve arbitrary metadata.
                They are not queryable and should be preserved when modifying objects.
@@ -861,6 +863,7 @@ class UnitOperation(pulumi.CustomResource):
         $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default {{location}}/{{unit_operation_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations is an unstructured key-value map stored with a resource that
@@ -1070,6 +1073,7 @@ class UnitOperation(pulumi.CustomResource):
         $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default {{project}}/{{location}}/{{unit_operation_id}}
         $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default {{location}}/{{unit_operation_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UnitOperationArgs args: The arguments to use to populate this resource's properties.

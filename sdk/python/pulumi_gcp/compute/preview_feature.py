@@ -27,6 +27,7 @@ class PreviewFeatureArgs:
                  rollout_operation: Optional[pulumi.Input['PreviewFeatureRolloutOperationArgs']] = None):
         """
         The set of arguments for constructing a PreviewFeature resource.
+
         :param pulumi.Input[_builtins.str] activation_status: The activation status of the preview feature.
                Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
         :param pulumi.Input[_builtins.str] name: The name of the preview feature.
@@ -104,6 +105,7 @@ class _PreviewFeatureState:
                  rollout_operation: Optional[pulumi.Input['PreviewFeatureRolloutOperationArgs']] = None):
         """
         Input properties used for looking up and filtering PreviewFeature resources.
+
         :param pulumi.Input[_builtins.str] activation_status: The activation status of the preview feature.
                Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
         :param pulumi.Input[_builtins.str] name: The name of the preview feature.
@@ -227,6 +229,7 @@ class PreviewFeature(pulumi.CustomResource):
         $ pulumi import gcp:compute/previewFeature:PreviewFeature default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] activation_status: The activation status of the preview feature.
@@ -285,6 +288,7 @@ class PreviewFeature(pulumi.CustomResource):
         $ pulumi import gcp:compute/previewFeature:PreviewFeature default {{project}}/{{name}}
         $ pulumi import gcp:compute/previewFeature:PreviewFeature default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PreviewFeatureArgs args: The arguments to use to populate this resource's properties.

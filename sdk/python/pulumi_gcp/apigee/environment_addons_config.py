@@ -23,6 +23,7 @@ class EnvironmentAddonsConfigArgs:
                  analytics_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EnvironmentAddonsConfig resource.
+
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
         :param pulumi.Input[_builtins.bool] analytics_enabled: Flag to enable/disable Analytics.
@@ -64,6 +65,7 @@ class _EnvironmentAddonsConfigState:
                  env_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvironmentAddonsConfig resources.
+
         :param pulumi.Input[_builtins.bool] analytics_enabled: Flag to enable/disable Analytics.
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
@@ -131,6 +133,7 @@ class EnvironmentAddonsConfig(pulumi.CustomResource):
         $ pulumi import gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig default {{env_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] analytics_enabled: Flag to enable/disable Analytics.
@@ -165,6 +168,7 @@ class EnvironmentAddonsConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig default {{env_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvironmentAddonsConfigArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class TargetInstanceArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TargetInstance resource.
+
         :param pulumi.Input[_builtins.str] instance: The Compute instance VM handling traffic for this target instance.
                Accepts the instance self-link, relative path
                (e.g. `projects/project/zones/zone/instances/instance`) or name. If
@@ -200,6 +201,7 @@ class _TargetInstanceState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TargetInstance resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] instance: The Compute instance VM handling traffic for this target instance.
@@ -545,6 +547,7 @@ class TargetInstance(pulumi.CustomResource):
         $ pulumi import gcp:compute/targetInstance:TargetInstance default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -721,6 +724,7 @@ class TargetInstance(pulumi.CustomResource):
         $ pulumi import gcp:compute/targetInstance:TargetInstance default {{zone}}/{{name}}
         $ pulumi import gcp:compute/targetInstance:TargetInstance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TargetInstanceArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class AttachedDiskArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AttachedDisk resource.
+
         :param pulumi.Input[_builtins.str] disk: `name` or `self_link` of the disk that will be attached.
                
                
@@ -206,6 +207,7 @@ class _AttachedDiskState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AttachedDisk resources.
+
         :param pulumi.Input[_builtins.str] device_name: Specifies a unique device name of your choice that is
                reflected into the /dev/disk/by-id/google-* tree of a Linux operating
                system running within the instance. This name can be used to
@@ -440,6 +442,7 @@ class AttachedDisk(pulumi.CustomResource):
         $ pulumi import gcp:compute/attachedDisk:AttachedDisk default {{project}}/{{zone}}/{{instance.name}}/{{disk.name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] device_name: Specifies a unique device name of your choice that is
@@ -537,6 +540,7 @@ class AttachedDisk(pulumi.CustomResource):
         $ pulumi import gcp:compute/attachedDisk:AttachedDisk default projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}
         $ pulumi import gcp:compute/attachedDisk:AttachedDisk default {{project}}/{{zone}}/{{instance.name}}/{{disk.name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AttachedDiskArgs args: The arguments to use to populate this resource's properties.

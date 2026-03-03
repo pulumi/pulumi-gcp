@@ -28,6 +28,7 @@ class GroupMembershipArgs:
                  preferred_member_key: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']] = None):
         """
         The set of arguments for constructing a GroupMembership resource.
+
         :param pulumi.Input[_builtins.str] group: The name of the Group to create this membership in.
         :param pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
@@ -128,6 +129,7 @@ class _GroupMembershipState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupMembership resources.
+
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
         :param pulumi.Input[_builtins.str] create_time: The time when the Membership was created.
         :param pulumi.Input[_builtins.str] group: The name of the Group to create this membership in.
@@ -380,6 +382,7 @@ class GroupMembership(pulumi.CustomResource):
         $ pulumi import gcp:cloudidentity/groupMembership:GroupMembership default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
@@ -490,6 +493,7 @@ class GroupMembership(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:cloudidentity/groupMembership:GroupMembership default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupMembershipArgs args: The arguments to use to populate this resource's properties.

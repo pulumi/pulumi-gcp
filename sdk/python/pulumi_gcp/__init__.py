@@ -165,6 +165,8 @@ if typing.TYPE_CHECKING:
     gkeonprem = __gkeonprem
     import pulumi_gcp.healthcare as __healthcare
     healthcare = __healthcare
+    import pulumi_gcp.hypercomputecluster as __hypercomputecluster
+    hypercomputecluster = __hypercomputecluster
     import pulumi_gcp.iam as __iam
     iam = __iam
     import pulumi_gcp.iap as __iap
@@ -363,6 +365,7 @@ else:
     gkehub = _utilities.lazy_import('pulumi_gcp.gkehub')
     gkeonprem = _utilities.lazy_import('pulumi_gcp.gkeonprem')
     healthcare = _utilities.lazy_import('pulumi_gcp.healthcare')
+    hypercomputecluster = _utilities.lazy_import('pulumi_gcp.hypercomputecluster')
     iam = _utilities.lazy_import('pulumi_gcp.iam')
     iap = _utilities.lazy_import('pulumi_gcp.iap')
     identityplatform = _utilities.lazy_import('pulumi_gcp.identityplatform')
@@ -3629,6 +3632,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/regionBackendBucket",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionBackendBucket:RegionBackendBucket": "RegionBackendBucket"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionBackendBucketIamBinding",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionBackendBucketIamBinding:RegionBackendBucketIamBinding": "RegionBackendBucketIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionBackendBucketIamMember",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionBackendBucketIamMember:RegionBackendBucketIamMember": "RegionBackendBucketIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionBackendBucketIamPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionBackendBucketIamPolicy:RegionBackendBucketIamPolicy": "RegionBackendBucketIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/regionBackendService",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -4609,6 +4644,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.dataform",
   "classes": {
    "gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig": "RepositoryWorkflowConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataform/teamFolder",
+  "fqn": "pulumi_gcp.dataform",
+  "classes": {
+   "gcp:dataform/teamFolder:TeamFolder": "TeamFolder"
   }
  },
  {
@@ -6833,6 +6876,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.healthcare",
   "classes": {
    "gcp:healthcare/workspace:Workspace": "Workspace"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "hypercomputecluster/cluster",
+  "fqn": "pulumi_gcp.hypercomputecluster",
+  "classes": {
+   "gcp:hypercomputecluster/cluster:Cluster": "Cluster"
   }
  },
  {

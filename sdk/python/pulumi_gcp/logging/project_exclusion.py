@@ -26,6 +26,7 @@ class ProjectExclusionArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectExclusion resource.
+
         :param pulumi.Input[_builtins.str] filter: The filter to apply when excluding logs. Only log entries that match the filter are excluded.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
                write a filter.
@@ -121,6 +122,7 @@ class _ProjectExclusionState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectExclusion resources.
+
         :param pulumi.Input[_builtins.str] description: A human-readable description.
         :param pulumi.Input[_builtins.bool] disabled: Whether this exclusion rule should be disabled or not. This defaults to
                false.
@@ -252,6 +254,7 @@ class ProjectExclusion(pulumi.CustomResource):
         $ pulumi import gcp:logging/projectExclusion:ProjectExclusion default projects/{{project_id}}/exclusions/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A human-readable description.
@@ -302,6 +305,7 @@ class ProjectExclusion(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/projectExclusion:ProjectExclusion default projects/{{project_id}}/exclusions/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectExclusionArgs args: The arguments to use to populate this resource's properties.

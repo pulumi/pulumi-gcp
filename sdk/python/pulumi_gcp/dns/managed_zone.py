@@ -37,6 +37,7 @@ class ManagedZoneArgs:
                  visibility: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ManagedZone resource.
+
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input['ManagedZoneCloudLoggingConfigArgs'] cloud_logging_config: Cloud logging configuration
                Structure is documented below.
@@ -319,6 +320,7 @@ class _ManagedZoneState:
                  visibility: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManagedZone resources.
+
         :param pulumi.Input['ManagedZoneCloudLoggingConfigArgs'] cloud_logging_config: Cloud logging configuration
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_time: The time that this resource was created on the server.
@@ -952,6 +954,7 @@ class ManagedZone(pulumi.CustomResource):
         $ pulumi import gcp:dns/managedZone:ManagedZone default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ManagedZoneCloudLoggingConfigArgs', 'ManagedZoneCloudLoggingConfigArgsDict']] cloud_logging_config: Cloud logging configuration
@@ -1268,6 +1271,7 @@ class ManagedZone(pulumi.CustomResource):
         $ pulumi import gcp:dns/managedZone:ManagedZone default {{project}}/{{name}}
         $ pulumi import gcp:dns/managedZone:ManagedZone default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ManagedZoneArgs args: The arguments to use to populate this resource's properties.

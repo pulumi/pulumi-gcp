@@ -121,6 +121,7 @@ type Provider struct {
 	GkeonpremCustomEndpoint                pulumi.StringPtrOutput `pulumi:"gkeonpremCustomEndpoint"`
 	GooglePartnerName                      pulumi.StringPtrOutput `pulumi:"googlePartnerName"`
 	HealthcareCustomEndpoint               pulumi.StringPtrOutput `pulumi:"healthcareCustomEndpoint"`
+	HypercomputeclusterCustomEndpoint      pulumi.StringPtrOutput `pulumi:"hypercomputeclusterCustomEndpoint"`
 	Iam2CustomEndpoint                     pulumi.StringPtrOutput `pulumi:"iam2CustomEndpoint"`
 	Iam3CustomEndpoint                     pulumi.StringPtrOutput `pulumi:"iam3CustomEndpoint"`
 	IamBetaCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"iamBetaCustomEndpoint"`
@@ -362,6 +363,7 @@ type providerArgs struct {
 	GkeonpremCustomEndpoint                *string                      `pulumi:"gkeonpremCustomEndpoint"`
 	GooglePartnerName                      *string                      `pulumi:"googlePartnerName"`
 	HealthcareCustomEndpoint               *string                      `pulumi:"healthcareCustomEndpoint"`
+	HypercomputeclusterCustomEndpoint      *string                      `pulumi:"hypercomputeclusterCustomEndpoint"`
 	Iam2CustomEndpoint                     *string                      `pulumi:"iam2CustomEndpoint"`
 	Iam3CustomEndpoint                     *string                      `pulumi:"iam3CustomEndpoint"`
 	IamBetaCustomEndpoint                  *string                      `pulumi:"iamBetaCustomEndpoint"`
@@ -569,6 +571,7 @@ type ProviderArgs struct {
 	GkeonpremCustomEndpoint                pulumi.StringPtrInput
 	GooglePartnerName                      pulumi.StringPtrInput
 	HealthcareCustomEndpoint               pulumi.StringPtrInput
+	HypercomputeclusterCustomEndpoint      pulumi.StringPtrInput
 	Iam2CustomEndpoint                     pulumi.StringPtrInput
 	Iam3CustomEndpoint                     pulumi.StringPtrInput
 	IamBetaCustomEndpoint                  pulumi.StringPtrInput
@@ -1136,6 +1139,10 @@ func (o ProviderOutput) GooglePartnerName() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) HealthcareCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.HealthcareCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) HypercomputeclusterCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.HypercomputeclusterCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Iam2CustomEndpoint() pulumi.StringPtrOutput {

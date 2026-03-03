@@ -31,6 +31,7 @@ class SavedQueryArgs:
                  ops_analytics_query: Optional[pulumi.Input['SavedQueryOpsAnalyticsQueryArgs']] = None):
         """
         The set of arguments for constructing a SavedQuery resource.
+
         :param pulumi.Input[_builtins.str] display_name: The user-visible display name of the saved query.
         :param pulumi.Input[_builtins.str] location: The location of the resource see
                [supported regions](https://docs.cloud.google.com/logging/docs/region-support#bucket-regions).
@@ -173,6 +174,7 @@ class _SavedQueryState:
                  visibility: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SavedQuery resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. The creation timestamp of the saved query.
         :param pulumi.Input[_builtins.str] description: A description of the saved query.
         :param pulumi.Input[_builtins.str] display_name: The user-visible display name of the saved query.
@@ -460,6 +462,7 @@ class SavedQuery(pulumi.CustomResource):
         $ pulumi import gcp:logging/savedQuery:SavedQuery default {{parent}}/locations/{{location}}/savedQueries/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the saved query.
@@ -591,6 +594,7 @@ class SavedQuery(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/savedQuery:SavedQuery default {{parent}}/locations/{{location}}/savedQueries/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SavedQueryArgs args: The arguments to use to populate this resource's properties.

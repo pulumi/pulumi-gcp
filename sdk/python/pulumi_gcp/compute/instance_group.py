@@ -30,6 +30,7 @@ class InstanceGroupArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceGroup resource.
+
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The list of instances in the group, in `self_link` format.
@@ -176,6 +177,7 @@ class _InstanceGroupState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceGroup resources.
+
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The list of instances in the group, in `self_link` format.
@@ -414,6 +416,7 @@ class InstanceGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceGroup:InstanceGroup default projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
@@ -503,6 +506,7 @@ class InstanceGroup(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceGroup:InstanceGroup default {{project_id}}/{{zone}}/{{instance_group_id}}
         $ pulumi import gcp:compute/instanceGroup:InstanceGroup default projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceGroupArgs args: The arguments to use to populate this resource's properties.

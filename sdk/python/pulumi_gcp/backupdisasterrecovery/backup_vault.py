@@ -39,6 +39,7 @@ class BackupVaultArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupVault resource.
+
         :param pulumi.Input[_builtins.str] backup_minimum_enforced_retention_duration: Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
         :param pulumi.Input[_builtins.str] backup_vault_id: Required. ID of the requesting object.
         :param pulumi.Input[_builtins.str] location: The GCP location for the backup vault.
@@ -357,6 +358,7 @@ class _BackupVaultState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupVault resources.
+
         :param pulumi.Input[_builtins.str] access_restriction: Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
                Default value is `WITHIN_ORGANIZATION`.
                Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
@@ -954,6 +956,7 @@ class BackupVault(pulumi.CustomResource):
         $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{location}}/{{backup_vault_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_restriction: Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
@@ -1076,6 +1079,7 @@ class BackupVault(pulumi.CustomResource):
         $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{project}}/{{location}}/{{backup_vault_id}}
         $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{location}}/{{backup_vault_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupVaultArgs args: The arguments to use to populate this resource's properties.

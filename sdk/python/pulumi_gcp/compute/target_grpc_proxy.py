@@ -26,6 +26,7 @@ class TargetGrpcProxyArgs:
                  validate_for_proxyless: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a TargetGrpcProxy resource.
+
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource
                is created. The name must be 1-63 characters long, and comply
@@ -154,6 +155,7 @@ class _TargetGrpcProxyState:
                  validate_for_proxyless: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering TargetGrpcProxy resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in
@@ -471,6 +473,7 @@ class TargetGrpcProxy(pulumi.CustomResource):
         $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -621,6 +624,7 @@ class TargetGrpcProxy(pulumi.CustomResource):
         $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{project}}/{{name}}
         $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TargetGrpcProxyArgs args: The arguments to use to populate this resource's properties.

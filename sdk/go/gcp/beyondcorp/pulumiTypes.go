@@ -3438,6 +3438,124 @@ func (o SecurityGatewayIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type SecurityGatewayLogging struct {
+}
+
+// SecurityGatewayLoggingInput is an input type that accepts SecurityGatewayLoggingArgs and SecurityGatewayLoggingOutput values.
+// You can construct a concrete instance of `SecurityGatewayLoggingInput` via:
+//
+//	SecurityGatewayLoggingArgs{...}
+type SecurityGatewayLoggingInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayLoggingOutput() SecurityGatewayLoggingOutput
+	ToSecurityGatewayLoggingOutputWithContext(context.Context) SecurityGatewayLoggingOutput
+}
+
+type SecurityGatewayLoggingArgs struct {
+}
+
+func (SecurityGatewayLoggingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayLogging)(nil)).Elem()
+}
+
+func (i SecurityGatewayLoggingArgs) ToSecurityGatewayLoggingOutput() SecurityGatewayLoggingOutput {
+	return i.ToSecurityGatewayLoggingOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayLoggingArgs) ToSecurityGatewayLoggingOutputWithContext(ctx context.Context) SecurityGatewayLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayLoggingOutput)
+}
+
+func (i SecurityGatewayLoggingArgs) ToSecurityGatewayLoggingPtrOutput() SecurityGatewayLoggingPtrOutput {
+	return i.ToSecurityGatewayLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayLoggingArgs) ToSecurityGatewayLoggingPtrOutputWithContext(ctx context.Context) SecurityGatewayLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayLoggingOutput).ToSecurityGatewayLoggingPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayLoggingPtrInput is an input type that accepts SecurityGatewayLoggingArgs, SecurityGatewayLoggingPtr and SecurityGatewayLoggingPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayLoggingPtrInput` via:
+//
+//	        SecurityGatewayLoggingArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayLoggingPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayLoggingPtrOutput() SecurityGatewayLoggingPtrOutput
+	ToSecurityGatewayLoggingPtrOutputWithContext(context.Context) SecurityGatewayLoggingPtrOutput
+}
+
+type securityGatewayLoggingPtrType SecurityGatewayLoggingArgs
+
+func SecurityGatewayLoggingPtr(v *SecurityGatewayLoggingArgs) SecurityGatewayLoggingPtrInput {
+	return (*securityGatewayLoggingPtrType)(v)
+}
+
+func (*securityGatewayLoggingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayLogging)(nil)).Elem()
+}
+
+func (i *securityGatewayLoggingPtrType) ToSecurityGatewayLoggingPtrOutput() SecurityGatewayLoggingPtrOutput {
+	return i.ToSecurityGatewayLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayLoggingPtrType) ToSecurityGatewayLoggingPtrOutputWithContext(ctx context.Context) SecurityGatewayLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayLoggingPtrOutput)
+}
+
+type SecurityGatewayLoggingOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayLogging)(nil)).Elem()
+}
+
+func (o SecurityGatewayLoggingOutput) ToSecurityGatewayLoggingOutput() SecurityGatewayLoggingOutput {
+	return o
+}
+
+func (o SecurityGatewayLoggingOutput) ToSecurityGatewayLoggingOutputWithContext(ctx context.Context) SecurityGatewayLoggingOutput {
+	return o
+}
+
+func (o SecurityGatewayLoggingOutput) ToSecurityGatewayLoggingPtrOutput() SecurityGatewayLoggingPtrOutput {
+	return o.ToSecurityGatewayLoggingPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayLoggingOutput) ToSecurityGatewayLoggingPtrOutputWithContext(ctx context.Context) SecurityGatewayLoggingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayLogging) *SecurityGatewayLogging {
+		return &v
+	}).(SecurityGatewayLoggingPtrOutput)
+}
+
+type SecurityGatewayLoggingPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayLoggingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayLogging)(nil)).Elem()
+}
+
+func (o SecurityGatewayLoggingPtrOutput) ToSecurityGatewayLoggingPtrOutput() SecurityGatewayLoggingPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayLoggingPtrOutput) ToSecurityGatewayLoggingPtrOutputWithContext(ctx context.Context) SecurityGatewayLoggingPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayLoggingPtrOutput) Elem() SecurityGatewayLoggingOutput {
+	return o.ApplyT(func(v *SecurityGatewayLogging) SecurityGatewayLogging {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayLogging
+		return ret
+	}).(SecurityGatewayLoggingOutput)
+}
+
 type SecurityGatewayProxyProtocolConfig struct {
 	// The configuration for the proxy.
 	AllowedClientHeaders []string `pulumi:"allowedClientHeaders"`
@@ -5477,6 +5595,94 @@ func (o GetSecurityGatewayHubInternetGatewayArrayOutput) Index(i pulumi.IntInput
 	}).(GetSecurityGatewayHubInternetGatewayOutput)
 }
 
+type GetSecurityGatewayLogging struct {
+}
+
+// GetSecurityGatewayLoggingInput is an input type that accepts GetSecurityGatewayLoggingArgs and GetSecurityGatewayLoggingOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayLoggingInput` via:
+//
+//	GetSecurityGatewayLoggingArgs{...}
+type GetSecurityGatewayLoggingInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayLoggingOutput() GetSecurityGatewayLoggingOutput
+	ToGetSecurityGatewayLoggingOutputWithContext(context.Context) GetSecurityGatewayLoggingOutput
+}
+
+type GetSecurityGatewayLoggingArgs struct {
+}
+
+func (GetSecurityGatewayLoggingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayLogging)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayLoggingArgs) ToGetSecurityGatewayLoggingOutput() GetSecurityGatewayLoggingOutput {
+	return i.ToGetSecurityGatewayLoggingOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayLoggingArgs) ToGetSecurityGatewayLoggingOutputWithContext(ctx context.Context) GetSecurityGatewayLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayLoggingOutput)
+}
+
+// GetSecurityGatewayLoggingArrayInput is an input type that accepts GetSecurityGatewayLoggingArray and GetSecurityGatewayLoggingArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayLoggingArrayInput` via:
+//
+//	GetSecurityGatewayLoggingArray{ GetSecurityGatewayLoggingArgs{...} }
+type GetSecurityGatewayLoggingArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayLoggingArrayOutput() GetSecurityGatewayLoggingArrayOutput
+	ToGetSecurityGatewayLoggingArrayOutputWithContext(context.Context) GetSecurityGatewayLoggingArrayOutput
+}
+
+type GetSecurityGatewayLoggingArray []GetSecurityGatewayLoggingInput
+
+func (GetSecurityGatewayLoggingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayLogging)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayLoggingArray) ToGetSecurityGatewayLoggingArrayOutput() GetSecurityGatewayLoggingArrayOutput {
+	return i.ToGetSecurityGatewayLoggingArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayLoggingArray) ToGetSecurityGatewayLoggingArrayOutputWithContext(ctx context.Context) GetSecurityGatewayLoggingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayLoggingArrayOutput)
+}
+
+type GetSecurityGatewayLoggingOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayLogging)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayLoggingOutput) ToGetSecurityGatewayLoggingOutput() GetSecurityGatewayLoggingOutput {
+	return o
+}
+
+func (o GetSecurityGatewayLoggingOutput) ToGetSecurityGatewayLoggingOutputWithContext(ctx context.Context) GetSecurityGatewayLoggingOutput {
+	return o
+}
+
+type GetSecurityGatewayLoggingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayLoggingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayLogging)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayLoggingArrayOutput) ToGetSecurityGatewayLoggingArrayOutput() GetSecurityGatewayLoggingArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayLoggingArrayOutput) ToGetSecurityGatewayLoggingArrayOutputWithContext(ctx context.Context) GetSecurityGatewayLoggingArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayLoggingArrayOutput) Index(i pulumi.IntInput) GetSecurityGatewayLoggingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGatewayLogging {
+		return vs[0].([]GetSecurityGatewayLogging)[vs[1].(int)]
+	}).(GetSecurityGatewayLoggingOutput)
+}
+
 type GetSecurityGatewayProxyProtocolConfig struct {
 	// The configuration for the proxy.
 	AllowedClientHeaders []string `pulumi:"allowedClientHeaders"`
@@ -6387,6 +6593,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayIamBindingConditionPtrInput)(nil)).Elem(), SecurityGatewayIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayIamMemberConditionInput)(nil)).Elem(), SecurityGatewayIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayIamMemberConditionPtrInput)(nil)).Elem(), SecurityGatewayIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayLoggingInput)(nil)).Elem(), SecurityGatewayLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayLoggingPtrInput)(nil)).Elem(), SecurityGatewayLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayProxyProtocolConfigInput)(nil)).Elem(), SecurityGatewayProxyProtocolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayProxyProtocolConfigPtrInput)(nil)).Elem(), SecurityGatewayProxyProtocolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersInput)(nil)).Elem(), SecurityGatewayProxyProtocolConfigContextualHeadersArgs{})
@@ -6417,6 +6625,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayHubArrayInput)(nil)).Elem(), GetSecurityGatewayHubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayHubInternetGatewayInput)(nil)).Elem(), GetSecurityGatewayHubInternetGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayHubInternetGatewayArrayInput)(nil)).Elem(), GetSecurityGatewayHubInternetGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayLoggingInput)(nil)).Elem(), GetSecurityGatewayLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayLoggingArrayInput)(nil)).Elem(), GetSecurityGatewayLoggingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigInput)(nil)).Elem(), GetSecurityGatewayProxyProtocolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigArrayInput)(nil)).Elem(), GetSecurityGatewayProxyProtocolConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderInput)(nil)).Elem(), GetSecurityGatewayProxyProtocolConfigContextualHeaderArgs{})
@@ -6477,6 +6687,8 @@ func init() {
 	pulumi.RegisterOutputType(SecurityGatewayIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayLoggingOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayLoggingPtrOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayProxyProtocolConfigOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayProxyProtocolConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayProxyProtocolConfigContextualHeadersOutput{})
@@ -6507,6 +6719,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSecurityGatewayHubArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGatewayHubInternetGatewayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGatewayHubInternetGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayLoggingOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayLoggingArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGatewayProxyProtocolConfigOutput{})
 	pulumi.RegisterOutputType(GetSecurityGatewayProxyProtocolConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput{})

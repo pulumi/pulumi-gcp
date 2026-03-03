@@ -43,6 +43,7 @@ class BareMetalClusterArgs:
                  upgrade_policy: Optional[pulumi.Input['BareMetalClusterUpgradePolicyArgs']] = None):
         """
         The set of arguments for constructing a BareMetalCluster resource.
+
         :param pulumi.Input[_builtins.str] admin_cluster_membership: The Admin Cluster this Bare Metal User Cluster belongs to.
                This is the full resource name of the Admin Cluster's hub membership.
         :param pulumi.Input[_builtins.str] bare_metal_version: A human readable description of this Bare Metal User Cluster.
@@ -427,6 +428,7 @@ class _BareMetalClusterState:
                  validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckArgs']]]] = None):
         """
         Input properties used for looking up and filtering BareMetalCluster resources.
+
         :param pulumi.Input[_builtins.str] admin_cluster_membership: The Admin Cluster this Bare Metal User Cluster belongs to.
                This is the full resource name of the Admin Cluster's hub membership.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the Bare Metal User Cluster.
@@ -1356,6 +1358,7 @@ class BareMetalCluster(pulumi.CustomResource):
         $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default {{location}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] admin_cluster_membership: The Admin Cluster this Bare Metal User Cluster belongs to.
@@ -1717,6 +1720,7 @@ class BareMetalCluster(pulumi.CustomResource):
         $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default {{project}}/{{location}}/{{name}}
         $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BareMetalClusterArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class FolderKajPolicyConfigArgs:
                  default_key_access_justification_policy: Optional[pulumi.Input['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None):
         """
         The set of arguments for constructing a FolderKajPolicyConfig resource.
+
         :param pulumi.Input[_builtins.str] folder: The numeric folder number for which to retrieve config.
         :param pulumi.Input['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs'] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
                created in this folder. This is only used when a Key Access Justifications
@@ -70,6 +71,7 @@ class _FolderKajPolicyConfigState:
                  folder: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FolderKajPolicyConfig resources.
+
         :param pulumi.Input['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs'] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
                created in this folder. This is only used when a Key Access Justifications
                policy is not provided in the CreateCryptoKeyRequest.
@@ -193,6 +195,7 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
         $ pulumi import gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig default {{folder}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
@@ -281,6 +284,7 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
         $ pulumi import gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig default folders/{{folder}}/kajPolicyConfig
         $ pulumi import gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig default {{folder}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FolderKajPolicyConfigArgs args: The arguments to use to populate this resource's properties.

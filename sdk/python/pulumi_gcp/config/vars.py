@@ -458,6 +458,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('healthcareCustomEndpoint')
 
     @_builtins.property
+    def hypercomputecluster_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('hypercomputeclusterCustomEndpoint')
+
+    @_builtins.property
     def iam2_custom_endpoint(self) -> Optional[str]:
         return __config__.get('iam2CustomEndpoint')
 

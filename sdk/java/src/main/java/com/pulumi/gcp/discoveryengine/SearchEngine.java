@@ -13,6 +13,7 @@ import com.pulumi.gcp.discoveryengine.inputs.SearchEngineState;
 import com.pulumi.gcp.discoveryengine.outputs.SearchEngineCommonConfig;
 import com.pulumi.gcp.discoveryengine.outputs.SearchEngineKnowledgeGraphConfig;
 import com.pulumi.gcp.discoveryengine.outputs.SearchEngineSearchEngineConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -230,6 +231,20 @@ public class SearchEngine extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> dataStoreIds() {
         return this.dataStoreIds;
+    }
+    /**
+     * Whether to disable analytics for searches performed on this engine.
+     * 
+     */
+    @Export(name="disableAnalytics", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> disableAnalytics;
+
+    /**
+     * @return Whether to disable analytics for searches performed on this engine.
+     * 
+     */
+    public Output<Optional<Boolean>> disableAnalytics() {
+        return Codegen.optional(this.disableAnalytics);
     }
     /**
      * Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
