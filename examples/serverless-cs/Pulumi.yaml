@@ -1,3 +1,0 @@
-name: serverless-cs
-description: "A minimal C# Pulumi program using Google Cloud Functions."
-runtime: dotnet
