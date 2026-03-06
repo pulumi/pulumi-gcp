@@ -992,7 +992,7 @@ class ConnectionProfile(pulumi.CustomResource):
             settings={
                 "tier": "db-f1-micro",
                 "ip_configuration": {
-                    "authorized_networks": [{"key": k, "value": v} for k, v in datastream_ips.static_ips].apply(lambda entries: [{
+                    "authorized_networks": [{"key": k, "value": v} for k, v in datastream_ips.static_ips.items()].apply(lambda entries: [{
                         "name": std.format(input="datastream-%d",
                             args=[entry["key"]]).result,
                         "value": entry["value"],
@@ -1451,7 +1451,7 @@ class ConnectionProfile(pulumi.CustomResource):
             settings={
                 "tier": "db-f1-micro",
                 "ip_configuration": {
-                    "authorized_networks": [{"key": k, "value": v} for k, v in datastream_ips.static_ips].apply(lambda entries: [{
+                    "authorized_networks": [{"key": k, "value": v} for k, v in datastream_ips.static_ips.items()].apply(lambda entries: [{
                         "name": std.format(input="datastream-%d",
                             args=[entry["key"]]).result,
                         "value": entry["value"],
