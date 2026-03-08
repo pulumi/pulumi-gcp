@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class ConnectionGithubEnterpriseConfigServiceDirectoryConfig {
     /**
-     * @return Required. The Service Directory service name.
+     * @return The Service Directory service name.
      * Format:
      * projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
      * 
@@ -20,7 +20,7 @@ public final class ConnectionGithubEnterpriseConfigServiceDirectoryConfig {
 
     private ConnectionGithubEnterpriseConfigServiceDirectoryConfig() {}
     /**
-     * @return Required. The Service Directory service name.
+     * @return The Service Directory service name.
      * Format:
      * projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
      * 

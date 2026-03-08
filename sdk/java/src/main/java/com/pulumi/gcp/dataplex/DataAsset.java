@@ -18,6 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Warning:** `gcp.dataplex.DataAsset` is deprecated and will be removed in a future major release. Please use `gcp.dataplex.DataProductDataAsset` resource instead.
+ * 
  * A data asset resource that can be packaged and shared via a data product.
  * 
  * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
@@ -64,7 +66,7 @@ import javax.annotation.Nullable;
  *         var example = new DataProduct("example", DataProductArgs.builder()
  *             .project("my-project-name")
  *             .location("us-central1")
- *             .dataProductId("tf-test-dp-_64336")
+ *             .dataProductId("tf-test-dp-_34962")
  *             .displayName("Parent Data Product")
  *             .ownerEmails("gterraformtestuser}{@literal @}{@code gmail.com")
  *             .accessGroups(DataProductAccessGroupArgs.builder()
@@ -72,14 +74,14 @@ import javax.annotation.Nullable;
  *                 .groupId("analyst")
  *                 .displayName("Data Analyst")
  *                 .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                     .googleGroup("tf-test-analysts-_34962}{@literal @}{@code example.com")
+ *                     .googleGroup("tf-test-analysts-_74000}{@literal @}{@code example.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         var exampleDataset = new Dataset("exampleDataset", DatasetArgs.builder()
  *             .project("my-project-name")
- *             .datasetId("tf_test_dataset__74000")
+ *             .datasetId("tf_test_dataset__75125")
  *             .location("us-central1")
  *             .build());
  * 
@@ -133,7 +135,7 @@ import javax.annotation.Nullable;
  *         var example = new DataProduct("example", DataProductArgs.builder()
  *             .project("my-project-name")
  *             .location("us-central1")
- *             .dataProductId("tf-test-dp-_75125")
+ *             .dataProductId("tf-test-dp-_88722")
  *             .displayName("Full Example Parent DP")
  *             .ownerEmails("gterraformtestuser}{@literal @}{@code gmail.com")
  *             .accessGroups(            
@@ -157,7 +159,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleDataset = new Dataset("exampleDataset", DatasetArgs.builder()
  *             .project("my-project-name")
- *             .datasetId("tf_test_dataset__88722")
+ *             .datasetId("tf_test_dataset__39249")
  *             .location("us-central1")
  *             .build());
  * 

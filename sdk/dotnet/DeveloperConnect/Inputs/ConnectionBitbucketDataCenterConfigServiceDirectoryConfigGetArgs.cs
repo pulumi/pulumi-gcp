@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.DeveloperConnect.Inputs
     public sealed class ConnectionBitbucketDataCenterConfigServiceDirectoryConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The Service Directory service name.
+        /// The Service Directory service name.
         /// Format:
         /// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
         /// </summary>

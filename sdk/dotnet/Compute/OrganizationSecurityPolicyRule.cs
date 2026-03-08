@@ -12,18 +12,52 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// A rule for the OrganizationSecurityPolicy.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// To get more information about OrganizationSecurityPolicyRule, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
     /// * How-to Guides
-    ///     * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+    ///     * [Configure hierarchical security policies](https://docs.cloud.google.com/armor/docs/hierarchical-policies-using)
     /// 
     /// ## Example Usage
     /// 
     /// ### Organization Security Policy Rule Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
+    ///     {
+    ///         ShortName = "tf-test_52865",
+    ///         Parent = "organizations/123456789",
+    ///         Type = "CLOUD_ARMOR",
+    ///     });
+    /// 
+    ///     var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policy", new()
+    ///     {
+    ///         PolicyId = policy.Id,
+    ///         Action = "allow",
+    ///         Match = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchArgs
+    ///         {
+    ///             Config = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigArgs
+    ///             {
+    ///                 SrcIpRanges = new[]
+    ///                 {
+    ///                     "192.168.0.0/16",
+    ///                 },
+    ///             },
+    ///             VersionedExpr = "SRC_IPS_V1",
+    ///         },
+    ///         Priority = 100,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Organization Security Policy Rule Firewall
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,16 +141,20 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        /// This field may only be specified when the versionedExpr is set to FIREWALL.
         /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>
         [Output("direction")]
         public Output<string?> Direction { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Denotes whether to enable logging for a particular rule.
         /// If logging is enabled, logs will be exported to the
         /// configured export destination in Stackdriver.
+        /// This field may only be specified when the versionedExpr is set to FIREWALL.
         /// </summary>
         [Output("enableLogging")]
         public Output<bool?> EnableLogging { get; private set; } = null!;
@@ -149,6 +187,7 @@ namespace Pulumi.Gcp.Compute
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// A list of network resource URLs to which this rule applies.
         /// This field allows you to control which network's VMs get
         /// this rule. If this field is left blank, all VMs
@@ -158,6 +197,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> TargetResources { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// A list of service accounts indicating the sets of
         /// instances that are applied with this rule.
         /// </summary>
@@ -224,16 +264,20 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        /// This field may only be specified when the versionedExpr is set to FIREWALL.
         /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Denotes whether to enable logging for a particular rule.
         /// If logging is enabled, logs will be exported to the
         /// configured export destination in Stackdriver.
+        /// This field may only be specified when the versionedExpr is set to FIREWALL.
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
@@ -269,6 +313,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _targetResources;
 
         /// <summary>
+        /// (Optional, Beta)
         /// A list of network resource URLs to which this rule applies.
         /// This field allows you to control which network's VMs get
         /// this rule. If this field is left blank, all VMs
@@ -284,6 +329,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _targetServiceAccounts;
 
         /// <summary>
+        /// (Optional, Beta)
         /// A list of service accounts indicating the sets of
         /// instances that are applied with this rule.
         /// </summary>
@@ -315,16 +361,20 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        /// This field may only be specified when the versionedExpr is set to FIREWALL.
         /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Denotes whether to enable logging for a particular rule.
         /// If logging is enabled, logs will be exported to the
         /// configured export destination in Stackdriver.
+        /// This field may only be specified when the versionedExpr is set to FIREWALL.
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
@@ -360,6 +410,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _targetResources;
 
         /// <summary>
+        /// (Optional, Beta)
         /// A list of network resource URLs to which this rule applies.
         /// This field allows you to control which network's VMs get
         /// this rule. If this field is left blank, all VMs
@@ -375,6 +426,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _targetServiceAccounts;
 
         /// <summary>
+        /// (Optional, Beta)
         /// A list of service accounts indicating the sets of
         /// instances that are applied with this rule.
         /// </summary>

@@ -206,6 +206,105 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Firewall Policy Rule Network Context
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Folder;
+ * import com.pulumi.gcp.organizations.FolderArgs;
+ * import com.pulumi.gcp.compute.FirewallPolicy;
+ * import com.pulumi.gcp.compute.FirewallPolicyArgs;
+ * import com.pulumi.gcp.compute.FirewallPolicyRule;
+ * import com.pulumi.gcp.compute.FirewallPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var folder = new Folder("folder", FolderArgs.builder()
+ *             .displayName("folder")
+ *             .parent("organizations/123456789")
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var default_ = new FirewallPolicy("default", FirewallPolicyArgs.builder()
+ *             .parent(folder.id())
+ *             .shortName("fw-policy")
+ *             .description("Firewall policy")
+ *             .build());
+ * 
+ *         var primary = new FirewallPolicyRule("primary", FirewallPolicyRuleArgs.builder()
+ *             .firewallPolicy(default_.name())
+ *             .description("Firewall policy rule with network context")
+ *             .priority(8000)
+ *             .action("allow")
+ *             .direction("INGRESS")
+ *             .disabled(false)
+ *             .match(FirewallPolicyRuleMatchArgs.builder()
+ *                 .srcIpRanges("11.100.0.1/32")
+ *                 .srcNetworkContext("INTERNET")
+ *                 .layer4Configs(                
+ *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                         .ipProtocol("tcp")
+ *                         .ports("8080")
+ *                         .build(),
+ *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                         .ipProtocol("udp")
+ *                         .ports("22")
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var egress_primary = new FirewallPolicyRule("egress-primary", FirewallPolicyRuleArgs.builder()
+ *             .firewallPolicy(default_.name())
+ *             .description("Firewall policy rule with network context")
+ *             .priority(9000)
+ *             .action("allow")
+ *             .direction("EGRESS")
+ *             .disabled(false)
+ *             .match(FirewallPolicyRuleMatchArgs.builder()
+ *                 .destIpRanges("11.100.0.1/32")
+ *                 .destNetworkContext("NON_INTERNET")
+ *                 .layer4Configs(FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                     .ipProtocol("tcp")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var unset_primary = new FirewallPolicyRule("unset-primary", FirewallPolicyRuleArgs.builder()
+ *             .firewallPolicy(default_.name())
+ *             .description("Firewall policy rule with network context")
+ *             .priority(10000)
+ *             .action("allow")
+ *             .direction("EGRESS")
+ *             .disabled(false)
+ *             .match(FirewallPolicyRuleMatchArgs.builder()
+ *                 .destIpRanges("11.100.0.1/32")
+ *                 .destNetworkContext("UNSPECIFIED")
+ *                 .layer4Configs(FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                     .ipProtocol("tcp")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Firewall Policy Rule Secure Tags
  * 
  * <pre>

@@ -121,6 +121,8 @@ __all__ = [
     'FeatureSpecMulticlusteringressArgsDict',
     'FeatureSpecRbacrolebindingactuationArgs',
     'FeatureSpecRbacrolebindingactuationArgsDict',
+    'FeatureSpecWorkloadidentityArgs',
+    'FeatureSpecWorkloadidentityArgsDict',
     'FeatureStateArgs',
     'FeatureStateArgsDict',
     'FeatureStateStateArgs',
@@ -3607,6 +3609,11 @@ class FeatureSpecArgsDict(TypedDict):
     RBACRolebinding Actuation feature spec.
     Structure is documented below.
     """
+    workloadidentity: NotRequired[pulumi.Input['FeatureSpecWorkloadidentityArgsDict']]
+    """
+    Workload Identity feature spec.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class FeatureSpecArgs:
@@ -3614,7 +3621,8 @@ class FeatureSpecArgs:
                  clusterupgrade: Optional[pulumi.Input['FeatureSpecClusterupgradeArgs']] = None,
                  fleetobservability: Optional[pulumi.Input['FeatureSpecFleetobservabilityArgs']] = None,
                  multiclusteringress: Optional[pulumi.Input['FeatureSpecMulticlusteringressArgs']] = None,
-                 rbacrolebindingactuation: Optional[pulumi.Input['FeatureSpecRbacrolebindingactuationArgs']] = None):
+                 rbacrolebindingactuation: Optional[pulumi.Input['FeatureSpecRbacrolebindingactuationArgs']] = None,
+                 workloadidentity: Optional[pulumi.Input['FeatureSpecWorkloadidentityArgs']] = None):
         """
         :param pulumi.Input['FeatureSpecClusterupgradeArgs'] clusterupgrade: Clusterupgrade feature spec.
                Structure is documented below.
@@ -3623,6 +3631,8 @@ class FeatureSpecArgs:
         :param pulumi.Input['FeatureSpecMulticlusteringressArgs'] multiclusteringress: Multicluster Ingress-specific spec.
                Structure is documented below.
         :param pulumi.Input['FeatureSpecRbacrolebindingactuationArgs'] rbacrolebindingactuation: RBACRolebinding Actuation feature spec.
+               Structure is documented below.
+        :param pulumi.Input['FeatureSpecWorkloadidentityArgs'] workloadidentity: Workload Identity feature spec.
                Structure is documented below.
         """
         if clusterupgrade is not None:
@@ -3633,6 +3643,8 @@ class FeatureSpecArgs:
             pulumi.set(__self__, "multiclusteringress", multiclusteringress)
         if rbacrolebindingactuation is not None:
             pulumi.set(__self__, "rbacrolebindingactuation", rbacrolebindingactuation)
+        if workloadidentity is not None:
+            pulumi.set(__self__, "workloadidentity", workloadidentity)
 
     @_builtins.property
     @pulumi.getter
@@ -3685,6 +3697,19 @@ class FeatureSpecArgs:
     @rbacrolebindingactuation.setter
     def rbacrolebindingactuation(self, value: Optional[pulumi.Input['FeatureSpecRbacrolebindingactuationArgs']]):
         pulumi.set(self, "rbacrolebindingactuation", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def workloadidentity(self) -> Optional[pulumi.Input['FeatureSpecWorkloadidentityArgs']]:
+        """
+        Workload Identity feature spec.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "workloadidentity")
+
+    @workloadidentity.setter
+    def workloadidentity(self, value: Optional[pulumi.Input['FeatureSpecWorkloadidentityArgs']]):
+        pulumi.set(self, "workloadidentity", value)
 
 
 class FeatureSpecClusterupgradeArgsDict(TypedDict):
@@ -4123,6 +4148,34 @@ class FeatureSpecRbacrolebindingactuationArgs:
     @allowed_custom_roles.setter
     def allowed_custom_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_custom_roles", value)
+
+
+class FeatureSpecWorkloadidentityArgsDict(TypedDict):
+    scope_tenancy_pool: pulumi.Input[_builtins.str]
+    """
+    Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+    """
+
+@pulumi.input_type
+class FeatureSpecWorkloadidentityArgs:
+    def __init__(__self__, *,
+                 scope_tenancy_pool: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] scope_tenancy_pool: Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+        """
+        pulumi.set(__self__, "scope_tenancy_pool", scope_tenancy_pool)
+
+    @_builtins.property
+    @pulumi.getter(name="scopeTenancyPool")
+    def scope_tenancy_pool(self) -> pulumi.Input[_builtins.str]:
+        """
+        Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+        """
+        return pulumi.get(self, "scope_tenancy_pool")
+
+    @scope_tenancy_pool.setter
+    def scope_tenancy_pool(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "scope_tenancy_pool", value)
 
 
 class FeatureStateArgsDict(TypedDict):

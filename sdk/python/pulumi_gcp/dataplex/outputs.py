@@ -31,6 +31,7 @@ __all__ = [
     'DataAssetAccessGroupConfig',
     'DataProductAccessGroup',
     'DataProductAccessGroupPrincipal',
+    'DataProductDataAssetAccessGroupConfig',
     'DatascanData',
     'DatascanDataDiscoverySpec',
     'DatascanDataDiscoverySpecBigqueryPublishingConfig',
@@ -976,6 +977,55 @@ class DataProductAccessGroupPrincipal(dict):
         Email of the Google Group.
         """
         return pulumi.get(self, "google_group")
+
+
+@pulumi.output_type
+class DataProductDataAssetAccessGroupConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessGroup":
+            suggest = "access_group"
+        elif key == "iamRoles":
+            suggest = "iam_roles"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataProductDataAssetAccessGroupConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataProductDataAssetAccessGroupConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataProductDataAssetAccessGroupConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_group: _builtins.str,
+                 iam_roles: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str access_group: The identifier for this object. Format specified above.
+        :param Sequence[_builtins.str] iam_roles: IAM roles granted on the resource.
+        """
+        pulumi.set(__self__, "access_group", access_group)
+        if iam_roles is not None:
+            pulumi.set(__self__, "iam_roles", iam_roles)
+
+    @_builtins.property
+    @pulumi.getter(name="accessGroup")
+    def access_group(self) -> _builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "access_group")
+
+    @_builtins.property
+    @pulumi.getter(name="iamRoles")
+    def iam_roles(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        IAM roles granted on the resource.
+        """
+        return pulumi.get(self, "iam_roles")
 
 
 @pulumi.output_type

@@ -4784,6 +4784,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/dataProductDataAsset",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/dataProductDataAsset:DataProductDataAsset": "DataProductDataAsset"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataplex/datascan",
   "fqn": "pulumi_gcp.dataplex",
   "classes": {

@@ -724,7 +724,8 @@ class Entry(pulumi.CustomResource):
                 "aspect": {
                     "data": "           {\\\\\\"content\\\\\\": \\\\\\"Term Content\\\\\\"    }\\n",
                 },
-            }])
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[example_glossary_term]))
         ```
 
         ## Import
@@ -1087,7 +1088,8 @@ class Entry(pulumi.CustomResource):
                 "aspect": {
                     "data": "           {\\\\\\"content\\\\\\": \\\\\\"Term Content\\\\\\"    }\\n",
                 },
-            }])
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[example_glossary_term]))
         ```
 
         ## Import

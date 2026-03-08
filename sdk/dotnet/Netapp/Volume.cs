@@ -214,6 +214,16 @@ namespace Pulumi.Gcp.Netapp
         public Output<bool?> LargeCapacity { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Configuration for a Large Capacity Volume. A Large Capacity Volume
+        /// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+        /// internal constituents, and must be created in a large capacity pool.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("largeCapacityConfig")]
+        public Output<Outputs.VolumeLargeCapacityConfig?> LargeCapacityConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
         /// </summary>
         [Output("ldapEnabled")]
@@ -532,6 +542,16 @@ namespace Pulumi.Gcp.Netapp
         public Input<bool>? LargeCapacity { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Configuration for a Large Capacity Volume. A Large Capacity Volume
+        /// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+        /// internal constituents, and must be created in a large capacity pool.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("largeCapacityConfig")]
+        public Input<Inputs.VolumeLargeCapacityConfigArgs>? LargeCapacityConfig { get; set; }
+
+        /// <summary>
         /// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
         /// </summary>
         [Input("location", required: true)]
@@ -813,6 +833,16 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("largeCapacity")]
         public Input<bool>? LargeCapacity { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Configuration for a Large Capacity Volume. A Large Capacity Volume
+        /// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+        /// internal constituents, and must be created in a large capacity pool.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("largeCapacityConfig")]
+        public Input<Inputs.VolumeLargeCapacityConfigGetArgs>? LargeCapacityConfig { get; set; }
 
         /// <summary>
         /// Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.

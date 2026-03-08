@@ -114,6 +114,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetRegionDiskDiskEncryptionKeyResult> DiskEncryptionKeys;
         public readonly string DiskId;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
+        public readonly bool EraseWindowsVssSignature;
         public readonly ImmutableArray<Outputs.GetRegionDiskGuestOsFeatureResult> GuestOsFeatures;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -162,6 +163,8 @@ namespace Pulumi.Gcp.Compute
             string diskId,
 
             ImmutableDictionary<string, string> effectiveLabels,
+
+            bool eraseWindowsVssSignature,
 
             ImmutableArray<Outputs.GetRegionDiskGuestOsFeatureResult> guestOsFeatures,
 
@@ -222,6 +225,7 @@ namespace Pulumi.Gcp.Compute
             DiskEncryptionKeys = diskEncryptionKeys;
             DiskId = diskId;
             EffectiveLabels = effectiveLabels;
+            EraseWindowsVssSignature = eraseWindowsVssSignature;
             GuestOsFeatures = guestOsFeatures;
             Id = id;
             Interface = @interface;

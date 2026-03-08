@@ -65,9 +65,26 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * Network context of the traffic destination.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    @Import(name="destNetworkContext")
+    private @Nullable Output<String> destNetworkContext;
+
+    /**
+     * @return Network context of the traffic destination.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    public Optional<Output<String>> destNetworkContext() {
+        return Optional.ofNullable(this.destNetworkContext);
+    }
+
+    /**
      * (Optional, Beta)
      * Network scope of the traffic destination.
-     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
      * 
      */
     @Import(name="destNetworkScope")
@@ -76,7 +93,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     /**
      * @return (Optional, Beta)
      * Network scope of the traffic destination.
-     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
      * 
      */
     public Optional<Output<String>> destNetworkScope() {
@@ -176,9 +193,26 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * Network context of the traffic source.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    @Import(name="srcNetworkContext")
+    private @Nullable Output<String> srcNetworkContext;
+
+    /**
+     * @return Network context of the traffic source.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    public Optional<Output<String>> srcNetworkContext() {
+        return Optional.ofNullable(this.srcNetworkContext);
+    }
+
+    /**
      * (Optional, Beta)
      * Network scope of the traffic source.
-     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
      * 
      */
     @Import(name="srcNetworkScope")
@@ -187,7 +221,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     /**
      * @return (Optional, Beta)
      * Network scope of the traffic source.
-     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
      * 
      */
     public Optional<Output<String>> srcNetworkScope() {
@@ -195,7 +229,6 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * (Optional, Beta)
      * Networks of the traffic source. It can be either a full or partial url.
      * 
      */
@@ -203,8 +236,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     private @Nullable Output<List<String>> srcNetworks;
 
     /**
-     * @return (Optional, Beta)
-     * Networks of the traffic source. It can be either a full or partial url.
+     * @return Networks of the traffic source. It can be either a full or partial url.
      * 
      */
     public Optional<Output<List<String>>> srcNetworks() {
@@ -268,6 +300,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         this.destAddressGroups = $.destAddressGroups;
         this.destFqdns = $.destFqdns;
         this.destIpRanges = $.destIpRanges;
+        this.destNetworkContext = $.destNetworkContext;
         this.destNetworkScope = $.destNetworkScope;
         this.destRegionCodes = $.destRegionCodes;
         this.destThreatIntelligences = $.destThreatIntelligences;
@@ -275,6 +308,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         this.srcAddressGroups = $.srcAddressGroups;
         this.srcFqdns = $.srcFqdns;
         this.srcIpRanges = $.srcIpRanges;
+        this.srcNetworkContext = $.srcNetworkContext;
         this.srcNetworkScope = $.srcNetworkScope;
         this.srcNetworks = $.srcNetworks;
         this.srcRegionCodes = $.srcRegionCodes;
@@ -394,9 +428,32 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param destNetworkContext Network context of the traffic destination.
+         * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destNetworkContext(@Nullable Output<String> destNetworkContext) {
+            $.destNetworkContext = destNetworkContext;
+            return this;
+        }
+
+        /**
+         * @param destNetworkContext Network context of the traffic destination.
+         * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destNetworkContext(String destNetworkContext) {
+            return destNetworkContext(Output.of(destNetworkContext));
+        }
+
+        /**
          * @param destNetworkScope (Optional, Beta)
          * Network scope of the traffic destination.
-         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
          * 
          * @return builder
          * 
@@ -409,7 +466,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         /**
          * @param destNetworkScope (Optional, Beta)
          * Network scope of the traffic destination.
-         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
          * 
          * @return builder
          * 
@@ -608,9 +665,32 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param srcNetworkContext Network context of the traffic source.
+         * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcNetworkContext(@Nullable Output<String> srcNetworkContext) {
+            $.srcNetworkContext = srcNetworkContext;
+            return this;
+        }
+
+        /**
+         * @param srcNetworkContext Network context of the traffic source.
+         * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcNetworkContext(String srcNetworkContext) {
+            return srcNetworkContext(Output.of(srcNetworkContext));
+        }
+
+        /**
          * @param srcNetworkScope (Optional, Beta)
          * Network scope of the traffic source.
-         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
          * 
          * @return builder
          * 
@@ -623,7 +703,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         /**
          * @param srcNetworkScope (Optional, Beta)
          * Network scope of the traffic source.
-         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
          * 
          * @return builder
          * 
@@ -633,8 +713,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcNetworks (Optional, Beta)
-         * Networks of the traffic source. It can be either a full or partial url.
+         * @param srcNetworks Networks of the traffic source. It can be either a full or partial url.
          * 
          * @return builder
          * 
@@ -645,8 +724,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcNetworks (Optional, Beta)
-         * Networks of the traffic source. It can be either a full or partial url.
+         * @param srcNetworks Networks of the traffic source. It can be either a full or partial url.
          * 
          * @return builder
          * 
@@ -656,8 +734,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcNetworks (Optional, Beta)
-         * Networks of the traffic source. It can be either a full or partial url.
+         * @param srcNetworks Networks of the traffic source. It can be either a full or partial url.
          * 
          * @return builder
          * 

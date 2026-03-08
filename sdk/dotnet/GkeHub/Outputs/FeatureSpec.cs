@@ -33,6 +33,11 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureSpecRbacrolebindingactuation? Rbacrolebindingactuation;
+        /// <summary>
+        /// Workload Identity feature spec.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.FeatureSpecWorkloadidentity? Workloadidentity;
 
         [OutputConstructor]
         private FeatureSpec(
@@ -42,12 +47,15 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             Outputs.FeatureSpecMulticlusteringress? multiclusteringress,
 
-            Outputs.FeatureSpecRbacrolebindingactuation? rbacrolebindingactuation)
+            Outputs.FeatureSpecRbacrolebindingactuation? rbacrolebindingactuation,
+
+            Outputs.FeatureSpecWorkloadidentity? workloadidentity)
         {
             Clusterupgrade = clusterupgrade;
             Fleetobservability = fleetobservability;
             Multiclusteringress = multiclusteringress;
             Rbacrolebindingactuation = rbacrolebindingactuation;
+            Workloadidentity = workloadidentity;
         }
     }
 }

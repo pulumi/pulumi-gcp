@@ -315,7 +315,7 @@ export class Gateway extends pulumi.CustomResource {
     declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * One or more port numbers (1-65535), on which the Gateway will receive traffic.
-     * The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+     * The proxy binds to the specified ports.
      * Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      */
     declare public readonly ports: pulumi.Output<number[]>;
@@ -514,7 +514,7 @@ export interface GatewayState {
     network?: pulumi.Input<string>;
     /**
      * One or more port numbers (1-65535), on which the Gateway will receive traffic.
-     * The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+     * The proxy binds to the specified ports.
      * Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      */
     ports?: pulumi.Input<pulumi.Input<number>[]>;
@@ -631,7 +631,7 @@ export interface GatewayArgs {
     network?: pulumi.Input<string>;
     /**
      * One or more port numbers (1-65535), on which the Gateway will receive traffic.
-     * The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+     * The proxy binds to the specified ports.
      * Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      */
     ports: pulumi.Input<pulumi.Input<number>[]>;

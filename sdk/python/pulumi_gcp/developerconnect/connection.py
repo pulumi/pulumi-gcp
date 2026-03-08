@@ -33,6 +33,7 @@ class ConnectionArgs:
                  github_enterprise_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']] = None,
                  gitlab_config: Optional[pulumi.Input['ConnectionGitlabConfigArgs']] = None,
                  gitlab_enterprise_config: Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigArgs']] = None,
+                 http_config: Optional[pulumi.Input['ConnectionHttpConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -66,6 +67,8 @@ class ConnectionArgs:
                Structure is documented below.
         :param pulumi.Input['ConnectionGitlabEnterpriseConfigArgs'] gitlab_enterprise_config: Configuration for connections to an instance of GitLab Enterprise.
                Structure is documented below.
+        :param pulumi.Input['ConnectionHttpConfigArgs'] http_config: Configuration for connections to an HTTP service provider.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels as key value pairs
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -94,6 +97,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "gitlab_config", gitlab_config)
         if gitlab_enterprise_config is not None:
             pulumi.set(__self__, "gitlab_enterprise_config", gitlab_enterprise_config)
+        if http_config is not None:
+            pulumi.set(__self__, "http_config", http_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -260,6 +265,19 @@ class ConnectionArgs:
         pulumi.set(self, "gitlab_enterprise_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="httpConfig")
+    def http_config(self) -> Optional[pulumi.Input['ConnectionHttpConfigArgs']]:
+        """
+        Configuration for connections to an HTTP service provider.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_config")
+
+    @http_config.setter
+    def http_config(self, value: Optional[pulumi.Input['ConnectionHttpConfigArgs']]):
+        pulumi.set(self, "http_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -305,6 +323,7 @@ class _ConnectionState:
                  github_enterprise_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']] = None,
                  gitlab_config: Optional[pulumi.Input['ConnectionGitlabConfigArgs']] = None,
                  gitlab_enterprise_config: Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigArgs']] = None,
+                 http_config: Optional[pulumi.Input['ConnectionHttpConfigArgs']] = None,
                  installation_states: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -347,6 +366,8 @@ class _ConnectionState:
         :param pulumi.Input['ConnectionGitlabConfigArgs'] gitlab_config: Configuration for connections to gitlab.com.
                Structure is documented below.
         :param pulumi.Input['ConnectionGitlabEnterpriseConfigArgs'] gitlab_enterprise_config: Configuration for connections to an instance of GitLab Enterprise.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionHttpConfigArgs'] http_config: Configuration for connections to an HTTP service provider.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]] installation_states: Describes stage and necessary actions to be taken by the
                user to complete the installation. Used for GitHub and GitHub Enterprise
@@ -397,6 +418,8 @@ class _ConnectionState:
             pulumi.set(__self__, "gitlab_config", gitlab_config)
         if gitlab_enterprise_config is not None:
             pulumi.set(__self__, "gitlab_enterprise_config", gitlab_enterprise_config)
+        if http_config is not None:
+            pulumi.set(__self__, "http_config", http_config)
         if installation_states is not None:
             pulumi.set(__self__, "installation_states", installation_states)
         if labels is not None:
@@ -613,6 +636,19 @@ class _ConnectionState:
         pulumi.set(self, "gitlab_enterprise_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="httpConfig")
+    def http_config(self) -> Optional[pulumi.Input['ConnectionHttpConfigArgs']]:
+        """
+        Configuration for connections to an HTTP service provider.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_config")
+
+    @http_config.setter
+    def http_config(self, value: Optional[pulumi.Input['ConnectionHttpConfigArgs']]):
+        pulumi.set(self, "http_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="installationStates")
     def installation_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]]:
         """
@@ -747,6 +783,7 @@ class Connection(pulumi.CustomResource):
                  github_enterprise_config: Optional[pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
                  gitlab_config: Optional[pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
                  gitlab_enterprise_config: Optional[pulumi.Input[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']]] = None,
+                 http_config: Optional[pulumi.Input[Union['ConnectionHttpConfigArgs', 'ConnectionHttpConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1027,6 +1064,40 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+        ### Developer Connect Connection Http Conn Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            http_config={
+                "basic_authentication": {
+                    "username": "devconnectprober@gmail.com",
+                    "password_secret_version": "projects/devconnect-terraform-creds/secrets/http-basic-auth/versions/latest",
+                },
+                "host_uri": "https://devconnectprober.atlassian.net",
+            })
+        ```
+        ### Developer Connect Connection Http Conn Bearer
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            http_config={
+                "host_uri": "https://devconnectprober.atlassian.net",
+                "bearer_token_authentication": {
+                    "token_secret_version": "projects/devconnect-terraform-creds/secrets/http-bearer-token/versions/latest",
+                },
+            })
+        ```
+
         ## Import
 
         Connection can be imported using any of these accepted formats:
@@ -1072,6 +1143,8 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']] gitlab_config: Configuration for connections to gitlab.com.
                Structure is documented below.
         :param pulumi.Input[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']] gitlab_enterprise_config: Configuration for connections to an instance of GitLab Enterprise.
+               Structure is documented below.
+        :param pulumi.Input[Union['ConnectionHttpConfigArgs', 'ConnectionHttpConfigArgsDict']] http_config: Configuration for connections to an HTTP service provider.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels as key value pairs
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1362,6 +1435,40 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+        ### Developer Connect Connection Http Conn Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            http_config={
+                "basic_authentication": {
+                    "username": "devconnectprober@gmail.com",
+                    "password_secret_version": "projects/devconnect-terraform-creds/secrets/http-basic-auth/versions/latest",
+                },
+                "host_uri": "https://devconnectprober.atlassian.net",
+            })
+        ```
+        ### Developer Connect Connection Http Conn Bearer
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            http_config={
+                "host_uri": "https://devconnectprober.atlassian.net",
+                "bearer_token_authentication": {
+                    "token_secret_version": "projects/devconnect-terraform-creds/secrets/http-bearer-token/versions/latest",
+                },
+            })
+        ```
+
         ## Import
 
         Connection can be imported using any of these accepted formats:
@@ -1405,6 +1512,7 @@ class Connection(pulumi.CustomResource):
                  github_enterprise_config: Optional[pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
                  gitlab_config: Optional[pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
                  gitlab_enterprise_config: Optional[pulumi.Input[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']]] = None,
+                 http_config: Optional[pulumi.Input[Union['ConnectionHttpConfigArgs', 'ConnectionHttpConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1430,6 +1538,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["github_enterprise_config"] = github_enterprise_config
             __props__.__dict__["gitlab_config"] = gitlab_config
             __props__.__dict__["gitlab_enterprise_config"] = gitlab_enterprise_config
+            __props__.__dict__["http_config"] = http_config
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -1472,6 +1581,7 @@ class Connection(pulumi.CustomResource):
             github_enterprise_config: Optional[pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
             gitlab_config: Optional[pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
             gitlab_enterprise_config: Optional[pulumi.Input[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']]] = None,
+            http_config: Optional[pulumi.Input[Union['ConnectionHttpConfigArgs', 'ConnectionHttpConfigArgsDict']]] = None,
             installation_states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1519,6 +1629,8 @@ class Connection(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']] gitlab_enterprise_config: Configuration for connections to an instance of GitLab Enterprise.
                Structure is documented below.
+        :param pulumi.Input[Union['ConnectionHttpConfigArgs', 'ConnectionHttpConfigArgsDict']] http_config: Configuration for connections to an HTTP service provider.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]] installation_states: Describes stage and necessary actions to be taken by the
                user to complete the installation. Used for GitHub and GitHub Enterprise
                based connections.
@@ -1557,6 +1669,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["github_enterprise_config"] = github_enterprise_config
         __props__.__dict__["gitlab_config"] = gitlab_config
         __props__.__dict__["gitlab_enterprise_config"] = gitlab_enterprise_config
+        __props__.__dict__["http_config"] = http_config
         __props__.__dict__["installation_states"] = installation_states
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -1703,6 +1816,15 @@ class Connection(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "gitlab_enterprise_config")
+
+    @_builtins.property
+    @pulumi.getter(name="httpConfig")
+    def http_config(self) -> pulumi.Output[Optional['outputs.ConnectionHttpConfig']]:
+        """
+        Configuration for connections to an HTTP service provider.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_config")
 
     @_builtins.property
     @pulumi.getter(name="installationStates")

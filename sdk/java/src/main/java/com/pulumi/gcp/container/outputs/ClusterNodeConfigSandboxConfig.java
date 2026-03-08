@@ -4,31 +4,58 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeConfigSandboxConfig {
     /**
-     * @return Which sandbox to use for pods in the node pool.
+     * @return Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
      * Accepted values are:
      * 
      * * `&#34;gvisor&#34;`: Pods run within a gVisor sandbox.
      * 
+     * @deprecated
+     * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+     * 
      */
-    private String sandboxType;
-
-    private ClusterNodeConfigSandboxConfig() {}
+    @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+    private @Nullable String sandboxType;
     /**
      * @return Which sandbox to use for pods in the node pool.
      * Accepted values are:
      * 
-     * * `&#34;gvisor&#34;`: Pods run within a gVisor sandbox.
+     * * `&#34;GVISOR&#34;`: Pods run within a gVisor sandbox.
      * 
      */
-    public String sandboxType() {
-        return this.sandboxType;
+    private @Nullable String type;
+
+    private ClusterNodeConfigSandboxConfig() {}
+    /**
+     * @return Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+     * Accepted values are:
+     * 
+     * * `&#34;gvisor&#34;`: Pods run within a gVisor sandbox.
+     * 
+     * @deprecated
+     * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+     * 
+     */
+    @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+    public Optional<String> sandboxType() {
+        return Optional.ofNullable(this.sandboxType);
+    }
+    /**
+     * @return Which sandbox to use for pods in the node pool.
+     * Accepted values are:
+     * 
+     * * `&#34;GVISOR&#34;`: Pods run within a gVisor sandbox.
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
 
     public static Builder builder() {
@@ -40,24 +67,31 @@ public final class ClusterNodeConfigSandboxConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String sandboxType;
+        private @Nullable String sandboxType;
+        private @Nullable String type;
         public Builder() {}
         public Builder(ClusterNodeConfigSandboxConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sandboxType = defaults.sandboxType;
+    	      this.type = defaults.type;
         }
 
         @CustomType.Setter
-        public Builder sandboxType(String sandboxType) {
-            if (sandboxType == null) {
-              throw new MissingRequiredPropertyException("ClusterNodeConfigSandboxConfig", "sandboxType");
-            }
+        public Builder sandboxType(@Nullable String sandboxType) {
+
             this.sandboxType = sandboxType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder type(@Nullable String type) {
+
+            this.type = type;
             return this;
         }
         public ClusterNodeConfigSandboxConfig build() {
             final var _resultValue = new ClusterNodeConfigSandboxConfig();
             _resultValue.sandboxType = sandboxType;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

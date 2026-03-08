@@ -438,6 +438,12 @@ namespace Pulumi.Gcp.DataPlex
     ///                 },
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             example_glossary_term,
+    ///         },
     ///     });
     /// 
     /// });

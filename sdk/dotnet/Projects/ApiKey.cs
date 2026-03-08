@@ -280,7 +280,7 @@ namespace Pulumi.Gcp.Projects
         public Output<Outputs.ApiKeyRestrictions?> Restrictions { get; private set; } = null!;
 
         /// <summary>
-        /// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+        /// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
         /// </summary>
         [Output("serviceAccountEmail")]
         public Output<string?> ServiceAccountEmail { get; private set; } = null!;
@@ -370,7 +370,7 @@ namespace Pulumi.Gcp.Projects
         public Input<Inputs.ApiKeyRestrictionsArgs>? Restrictions { get; set; }
 
         /// <summary>
-        /// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+        /// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
@@ -428,7 +428,7 @@ namespace Pulumi.Gcp.Projects
         public Input<Inputs.ApiKeyRestrictionsGetArgs>? Restrictions { get; set; }
 
         /// <summary>
-        /// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+        /// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }

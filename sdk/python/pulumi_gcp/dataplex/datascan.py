@@ -904,7 +904,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_8493",
+            name="tf-test-bucket-name-_2605",
             location="us-west1",
             uniform_bucket_level_access=True)
         basic_discovery = gcp.dataplex.Datascan("basic_discovery",
@@ -932,13 +932,13 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_9106",
+            name="tf-test-bucket-name-_34535",
             location="us-west1",
             uniform_bucket_level_access=True)
         tf_test_connection = gcp.bigquery.Connection("tf_test_connection",
-            connection_id="tf-test-connection-_27169",
+            connection_id="tf-test-connection-_22375",
             location="us-central1",
-            friendly_name="tf-test-connection-_75223",
+            friendly_name="tf-test-connection-_29439",
             description="a bigquery connection for tf test",
             cloud_resource={})
         full_discovery = gcp.dataplex.Datascan("full_discovery",
@@ -1006,7 +1006,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_41819",
+            name="tf-test-bucket-name-_87786",
             location="us-west1",
             uniform_bucket_level_access=True)
         onetime_discovery = gcp.dataplex.Datascan("onetime_discovery",
@@ -1036,11 +1036,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__75092",
+            dataset_id="tf_dataplex_test_dataset_id__2067",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__2605",
+            table_id="tf_dataplex_test_table_id__40785",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1117,11 +1117,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__34535",
+            dataset_id="tf_dataplex_test_dataset_id__79169",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__22375",
+            table_id="tf_dataplex_test_table_id__56529",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1528,7 +1528,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_8493",
+            name="tf-test-bucket-name-_2605",
             location="us-west1",
             uniform_bucket_level_access=True)
         basic_discovery = gcp.dataplex.Datascan("basic_discovery",
@@ -1556,13 +1556,13 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_9106",
+            name="tf-test-bucket-name-_34535",
             location="us-west1",
             uniform_bucket_level_access=True)
         tf_test_connection = gcp.bigquery.Connection("tf_test_connection",
-            connection_id="tf-test-connection-_27169",
+            connection_id="tf-test-connection-_22375",
             location="us-central1",
-            friendly_name="tf-test-connection-_75223",
+            friendly_name="tf-test-connection-_29439",
             description="a bigquery connection for tf test",
             cloud_resource={})
         full_discovery = gcp.dataplex.Datascan("full_discovery",
@@ -1630,7 +1630,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_41819",
+            name="tf-test-bucket-name-_87786",
             location="us-west1",
             uniform_bucket_level_access=True)
         onetime_discovery = gcp.dataplex.Datascan("onetime_discovery",
@@ -1660,11 +1660,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__75092",
+            dataset_id="tf_dataplex_test_dataset_id__2067",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__2605",
+            table_id="tf_dataplex_test_table_id__40785",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1741,11 +1741,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__34535",
+            dataset_id="tf_dataplex_test_dataset_id__79169",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__22375",
+            table_id="tf_dataplex_test_table_id__56529",
             deletion_protection=False,
             schema=\"\"\"    [
             {

@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var categoryTestId = new Glossary("categoryTestId", GlossaryArgs.builder()
- *             .glossaryId("tf-test-glossary_13293")
+ *             .glossaryId("tf-test-glossary_41150")
  *             .location("us-central1")
  *             .build());
  * 
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             }))
  *             .glossaryId(categoryTestId.glossaryId())
  *             .location("us-central1")
- *             .categoryId("tf-test-category-basic_40289")
+ *             .categoryId("tf-test-category-basic_89313")
  *             .build());
  * 
  *     }
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var categoryTestIdFull = new Glossary("categoryTestIdFull", GlossaryArgs.builder()
- *             .glossaryId("tf-test-glossary_33395")
+ *             .glossaryId("tf-test-glossary_60646")
  *             .location("us-central1")
  *             .build());
  * 
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *             }))
  *             .glossaryId(categoryTestIdFull.glossaryId())
  *             .location("us-central1")
- *             .categoryId("tf-test-category-full_76044")
+ *             .categoryId("tf-test-category-full_9394")
  *             .labels(Map.of("tag", "test-tf"))
  *             .displayName("terraform category")
  *             .description("category created by Terraform")

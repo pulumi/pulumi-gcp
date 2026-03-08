@@ -58,6 +58,9 @@ class GetDataSourcesResult:
     @_builtins.property
     @pulumi.getter(name="dataSources")
     def data_sources(self) -> Sequence['outputs.GetDataSourcesDataSourceResult']:
+        """
+        A list of Data Sources matching the criteria.
+        """
         return pulumi.get(self, "data_sources")
 
     @_builtins.property
@@ -76,6 +79,9 @@ class GetDataSourcesResult:
     @_builtins.property
     @pulumi.getter
     def location(self) -> _builtins.str:
+        """
+        The location of the GCP resource.
+        """
         return pulumi.get(self, "location")
 
     @_builtins.property
@@ -111,7 +117,25 @@ def get_data_sources(backup_vault_id: Optional[_builtins.str] = None,
                      project: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataSourcesResult:
     """
-    Use this data source to access information about an existing resource.
+    A Backup and DR Data Sources.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.backupdisasterrecovery.get_data_sources(location="us-central1",
+        project="project-test",
+        backup_vault_id="bv-test")
+    ```
+
+
+    :param _builtins.str backup_vault_id: The ID of the Backup Vault in which the Data Source belongs.
+    :param _builtins.str filter: An expression to filter the results. For example, data_source_gcp_resource.type="compute.googleapis.com/Instance"
+    :param _builtins.str location: The location in which the Data Source belongs.
+    :param _builtins.str order_by: An expression to order the results. For example, create_time desc
+    :param _builtins.str project: The Google Cloud Project in which the Data Source belongs.
     """
     __args__ = dict()
     __args__['backupVaultId'] = backup_vault_id
@@ -137,7 +161,25 @@ def get_data_sources_output(backup_vault_id: Optional[pulumi.Input[_builtins.str
                             project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataSourcesResult]:
     """
-    Use this data source to access information about an existing resource.
+    A Backup and DR Data Sources.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.backupdisasterrecovery.get_data_sources(location="us-central1",
+        project="project-test",
+        backup_vault_id="bv-test")
+    ```
+
+
+    :param _builtins.str backup_vault_id: The ID of the Backup Vault in which the Data Source belongs.
+    :param _builtins.str filter: An expression to filter the results. For example, data_source_gcp_resource.type="compute.googleapis.com/Instance"
+    :param _builtins.str location: The location in which the Data Source belongs.
+    :param _builtins.str order_by: An expression to order the results. For example, create_time desc
+    :param _builtins.str project: The Google Cloud Project in which the Data Source belongs.
     """
     __args__ = dict()
     __args__['backupVaultId'] = backup_vault_id

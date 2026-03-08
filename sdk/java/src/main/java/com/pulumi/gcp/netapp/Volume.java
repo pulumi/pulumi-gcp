@@ -15,6 +15,7 @@ import com.pulumi.gcp.netapp.outputs.VolumeBlockDevice;
 import com.pulumi.gcp.netapp.outputs.VolumeCacheParameters;
 import com.pulumi.gcp.netapp.outputs.VolumeExportPolicy;
 import com.pulumi.gcp.netapp.outputs.VolumeHybridReplicationParameters;
+import com.pulumi.gcp.netapp.outputs.VolumeLargeCapacityConfig;
 import com.pulumi.gcp.netapp.outputs.VolumeMountOption;
 import com.pulumi.gcp.netapp.outputs.VolumeRestoreParameters;
 import com.pulumi.gcp.netapp.outputs.VolumeSnapshotPolicy;
@@ -410,6 +411,28 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> largeCapacity() {
         return Codegen.optional(this.largeCapacity);
+    }
+    /**
+     * (Optional, Beta)
+     * Configuration for a Large Capacity Volume. A Large Capacity Volume
+     * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+     * internal constituents, and must be created in a large capacity pool.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="largeCapacityConfig", refs={VolumeLargeCapacityConfig.class}, tree="[0]")
+    private Output</* @Nullable */ VolumeLargeCapacityConfig> largeCapacityConfig;
+
+    /**
+     * @return (Optional, Beta)
+     * Configuration for a Large Capacity Volume. A Large Capacity Volume
+     * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+     * internal constituents, and must be created in a large capacity pool.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<VolumeLargeCapacityConfig>> largeCapacityConfig() {
+        return Codegen.optional(this.largeCapacityConfig);
     }
     /**
      * Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.

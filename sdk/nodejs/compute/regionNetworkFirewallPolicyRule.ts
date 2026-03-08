@@ -141,6 +141,68 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Region Network Firewall Policy Rule Network Context Egress
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", {
+ *     name: "fw-policy",
+ *     description: "Sample regional network firewall policy",
+ *     project: "my-project-name",
+ *     region: "us-west1",
+ * });
+ * const primary = new gcp.compute.RegionNetworkFirewallPolicyRule("primary", {
+ *     action: "allow",
+ *     description: "This is a simple rule description",
+ *     direction: "EGRESS",
+ *     disabled: false,
+ *     enableLogging: true,
+ *     firewallPolicy: basicRegionalNetworkFirewallPolicy.name,
+ *     priority: 1000,
+ *     region: "us-west1",
+ *     ruleName: "test-rule",
+ *     match: {
+ *         destIpRanges: ["10.100.0.1/32"],
+ *         destNetworkContext: "INTERNET",
+ *         layer4Configs: [{
+ *             ipProtocol: "all",
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Region Network Firewall Policy Rule Network Context Ingress
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", {
+ *     name: "fw-policy",
+ *     description: "Sample regional network firewall policy",
+ *     project: "my-project-name",
+ *     region: "us-west1",
+ * });
+ * const primary = new gcp.compute.RegionNetworkFirewallPolicyRule("primary", {
+ *     action: "allow",
+ *     description: "This is a simple rule description",
+ *     direction: "INGRESS",
+ *     disabled: false,
+ *     enableLogging: true,
+ *     firewallPolicy: basicRegionalNetworkFirewallPolicy.name,
+ *     priority: 1000,
+ *     region: "us-west1",
+ *     ruleName: "test-rule",
+ *     match: {
+ *         srcIpRanges: ["10.100.0.1/32"],
+ *         srcNetworkContext: "INTERNET",
+ *         layer4Configs: [{
+ *             ipProtocol: "all",
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

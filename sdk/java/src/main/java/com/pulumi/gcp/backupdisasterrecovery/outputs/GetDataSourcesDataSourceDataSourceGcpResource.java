@@ -18,18 +18,17 @@ public final class GetDataSourcesDataSourceDataSourceGcpResource {
      */
     private List<GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty> computeInstanceDataSourceProperties;
     /**
-     * @return Full resource pathname URL of the source Google Cloud resource.
+     * @return The full name of the GCP resource.
      * 
      */
     private String gcpResourcename;
     /**
-     * @return Location of the resource: &lt;region&gt;/&lt;zone&gt;/&#34;global&#34;/&#34;unspecified&#34;.
+     * @return The location in which the Data Source belongs.
      * 
      */
     private String location;
     /**
-     * @return The type of the Google Cloud resource. Use the Unified Resource Type,
-     * 					eg. compute.googleapis.com/Instance.
+     * @return The type of the GCP resource.
      * 
      */
     private String type;
@@ -43,22 +42,21 @@ public final class GetDataSourcesDataSourceDataSourceGcpResource {
         return this.computeInstanceDataSourceProperties;
     }
     /**
-     * @return Full resource pathname URL of the source Google Cloud resource.
+     * @return The full name of the GCP resource.
      * 
      */
     public String gcpResourcename() {
         return this.gcpResourcename;
     }
     /**
-     * @return Location of the resource: &lt;region&gt;/&lt;zone&gt;/&#34;global&#34;/&#34;unspecified&#34;.
+     * @return The location in which the Data Source belongs.
      * 
      */
     public String location() {
         return this.location;
     }
     /**
-     * @return The type of the Google Cloud resource. Use the Unified Resource Type,
-     * 					eg. compute.googleapis.com/Instance.
+     * @return The type of the GCP resource.
      * 
      */
     public String type() {

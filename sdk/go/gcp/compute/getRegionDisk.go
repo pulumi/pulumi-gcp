@@ -50,6 +50,7 @@ type LookupRegionDiskResult struct {
 	DiskEncryptionKeys                []GetRegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
 	DiskId                            string                           `pulumi:"diskId"`
 	EffectiveLabels                   map[string]string                `pulumi:"effectiveLabels"`
+	EraseWindowsVssSignature          bool                             `pulumi:"eraseWindowsVssSignature"`
 	GuestOsFeatures                   []GetRegionDiskGuestOsFeature    `pulumi:"guestOsFeatures"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                           string                                     `pulumi:"id"`
@@ -153,6 +154,10 @@ func (o LookupRegionDiskResultOutput) DiskId() pulumi.StringOutput {
 
 func (o LookupRegionDiskResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupRegionDiskResultOutput) EraseWindowsVssSignature() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) bool { return v.EraseWindowsVssSignature }).(pulumi.BoolOutput)
 }
 
 func (o LookupRegionDiskResultOutput) GuestOsFeatures() GetRegionDiskGuestOsFeatureArrayOutput {

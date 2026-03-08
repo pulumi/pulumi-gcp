@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Sql.Inputs
     public sealed class DatabaseInstanceSettingsInsightsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// True if Enhanced Query Insights feature is enabled.
+        /// </summary>
+        [Input("enhancedQueryInsightsEnabled")]
+        public Input<bool>? EnhancedQueryInsightsEnabled { get; set; }
+
+        /// <summary>
         /// True if Query Insights feature is enabled.
         /// </summary>
         [Input("queryInsightsEnabled")]

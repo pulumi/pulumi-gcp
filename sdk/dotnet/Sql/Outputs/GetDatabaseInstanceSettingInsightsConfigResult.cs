@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class GetDatabaseInstanceSettingInsightsConfigResult
     {
         /// <summary>
+        /// True if Enhanced Query Insights feature is enabled.
+        /// </summary>
+        public readonly bool EnhancedQueryInsightsEnabled;
+        /// <summary>
         /// True if Query Insights feature is enabled.
         /// </summary>
         public readonly bool QueryInsightsEnabled;
@@ -22,7 +26,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly int QueryPlansPerMinute;
         /// <summary>
-        /// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
+        /// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1024 to 100000.
         /// </summary>
         public readonly int QueryStringLength;
         /// <summary>
@@ -36,6 +40,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
         [OutputConstructor]
         private GetDatabaseInstanceSettingInsightsConfigResult(
+            bool enhancedQueryInsightsEnabled,
+
             bool queryInsightsEnabled,
 
             int queryPlansPerMinute,
@@ -46,6 +52,7 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             bool recordClientAddress)
         {
+            EnhancedQueryInsightsEnabled = enhancedQueryInsightsEnabled;
             QueryInsightsEnabled = queryInsightsEnabled;
             QueryPlansPerMinute = queryPlansPerMinute;
             QueryStringLength = queryStringLength;

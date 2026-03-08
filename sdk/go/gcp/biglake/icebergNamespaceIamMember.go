@@ -28,6 +28,234 @@ import (
 //
 // ## biglake.IcebergNamespaceIamPolicy
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/biglake.editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = biglake.NewIcebergNamespaceIamPolicy(ctx, "policy", &biglake.IcebergNamespaceIamPolicyArgs{
+//				Project:     pulumi.Any(myIcebergNamespace.Project),
+//				Catalog:     pulumi.Any(myIcebergNamespace.Catalog),
+//				NamespaceId: pulumi.Any(myIcebergNamespace.Id),
+//				PolicyData:  pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## biglake.IcebergNamespaceIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := biglake.NewIcebergNamespaceIamBinding(ctx, "binding", &biglake.IcebergNamespaceIamBindingArgs{
+//				Project:     pulumi.Any(myIcebergNamespace.Project),
+//				Catalog:     pulumi.Any(myIcebergNamespace.Catalog),
+//				NamespaceId: pulumi.Any(myIcebergNamespace.Id),
+//				Role:        pulumi.String("roles/biglake.editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## biglake.IcebergNamespaceIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := biglake.NewIcebergNamespaceIamMember(ctx, "member", &biglake.IcebergNamespaceIamMemberArgs{
+//				Project:     pulumi.Any(myIcebergNamespace.Project),
+//				Catalog:     pulumi.Any(myIcebergNamespace.Catalog),
+//				NamespaceId: pulumi.Any(myIcebergNamespace.Id),
+//				Role:        pulumi.String("roles/biglake.editor"),
+//				Member:      pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Biglake IcebergNamespace
+//
+// Three different resources help you manage your IAM policy for Biglake IcebergNamespace. Each of these resources serves a different use case:
+//
+// * `biglake.IcebergNamespaceIamPolicy`: Authoritative. Sets the IAM policy for the icebergnamespace and replaces any existing policy already attached.
+// * `biglake.IcebergNamespaceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the icebergnamespace are preserved.
+// * `biglake.IcebergNamespaceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the icebergnamespace are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `biglake.IcebergNamespaceIamPolicy`: Retrieves the IAM policy for the icebergnamespace
+//
+// > **Note:** `biglake.IcebergNamespaceIamPolicy` **cannot** be used in conjunction with `biglake.IcebergNamespaceIamBinding` and `biglake.IcebergNamespaceIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `biglake.IcebergNamespaceIamBinding` resources **can be** used in conjunction with `biglake.IcebergNamespaceIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## biglake.IcebergNamespaceIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/biglake.editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = biglake.NewIcebergNamespaceIamPolicy(ctx, "policy", &biglake.IcebergNamespaceIamPolicyArgs{
+//				Project:     pulumi.Any(myIcebergNamespace.Project),
+//				Catalog:     pulumi.Any(myIcebergNamespace.Catalog),
+//				NamespaceId: pulumi.Any(myIcebergNamespace.Id),
+//				PolicyData:  pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## biglake.IcebergNamespaceIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := biglake.NewIcebergNamespaceIamBinding(ctx, "binding", &biglake.IcebergNamespaceIamBindingArgs{
+//				Project:     pulumi.Any(myIcebergNamespace.Project),
+//				Catalog:     pulumi.Any(myIcebergNamespace.Catalog),
+//				NamespaceId: pulumi.Any(myIcebergNamespace.Id),
+//				Role:        pulumi.String("roles/biglake.editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## biglake.IcebergNamespaceIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := biglake.NewIcebergNamespaceIamMember(ctx, "member", &biglake.IcebergNamespaceIamMemberArgs{
+//				Project:     pulumi.Any(myIcebergNamespace.Project),
+//				Catalog:     pulumi.Any(myIcebergNamespace.Catalog),
+//				NamespaceId: pulumi.Any(myIcebergNamespace.Id),
+//				Role:        pulumi.String("roles/biglake.editor"),
+//				Member:      pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:

@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -19,16 +18,18 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
     public static final OrganizationSecurityPolicyRuleMatchConfigArgs Empty = new OrganizationSecurityPolicyRuleMatchConfigArgs();
 
     /**
-     * Destination IP address range in CIDR format. Required for
-     * EGRESS rules.
+     * (Optional, Beta)
+     * Destination IP address range in CIDR format. Required for EGRESS rules.
+     * This field may only be specified when versionedExpr is set to FIREWALL.
      * 
      */
     @Import(name="destIpRanges")
     private @Nullable Output<List<String>> destIpRanges;
 
     /**
-     * @return Destination IP address range in CIDR format. Required for
-     * EGRESS rules.
+     * @return (Optional, Beta)
+     * Destination IP address range in CIDR format. Required for EGRESS rules.
+     * This field may only be specified when versionedExpr is set to FIREWALL.
      * 
      */
     public Optional<Output<List<String>>> destIpRanges() {
@@ -36,24 +37,28 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
     }
 
     /**
+     * (Optional, Beta)
      * Pairs of IP protocols and ports that the rule should match.
+     * This field may only be specified when versionedExpr is set to FIREWALL.
      * Structure is documented below.
      * 
      * &lt;a name=&#34;nestedMatchConfigLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
      * 
      */
-    @Import(name="layer4Configs", required=true)
-    private Output<List<OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs>> layer4Configs;
+    @Import(name="layer4Configs")
+    private @Nullable Output<List<OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs>> layer4Configs;
 
     /**
-     * @return Pairs of IP protocols and ports that the rule should match.
+     * @return (Optional, Beta)
+     * Pairs of IP protocols and ports that the rule should match.
+     * This field may only be specified when versionedExpr is set to FIREWALL.
      * Structure is documented below.
      * 
      * &lt;a name=&#34;nestedMatchConfigLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
      * 
      */
-    public Output<List<OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs>> layer4Configs() {
-        return this.layer4Configs;
+    public Optional<Output<List<OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs>>> layer4Configs() {
+        return Optional.ofNullable(this.layer4Configs);
     }
 
     /**
@@ -100,8 +105,9 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
         }
 
         /**
-         * @param destIpRanges Destination IP address range in CIDR format. Required for
-         * EGRESS rules.
+         * @param destIpRanges (Optional, Beta)
+         * Destination IP address range in CIDR format. Required for EGRESS rules.
+         * This field may only be specified when versionedExpr is set to FIREWALL.
          * 
          * @return builder
          * 
@@ -112,8 +118,9 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
         }
 
         /**
-         * @param destIpRanges Destination IP address range in CIDR format. Required for
-         * EGRESS rules.
+         * @param destIpRanges (Optional, Beta)
+         * Destination IP address range in CIDR format. Required for EGRESS rules.
+         * This field may only be specified when versionedExpr is set to FIREWALL.
          * 
          * @return builder
          * 
@@ -123,8 +130,9 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
         }
 
         /**
-         * @param destIpRanges Destination IP address range in CIDR format. Required for
-         * EGRESS rules.
+         * @param destIpRanges (Optional, Beta)
+         * Destination IP address range in CIDR format. Required for EGRESS rules.
+         * This field may only be specified when versionedExpr is set to FIREWALL.
          * 
          * @return builder
          * 
@@ -134,7 +142,9 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
         }
 
         /**
-         * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
+         * @param layer4Configs (Optional, Beta)
+         * Pairs of IP protocols and ports that the rule should match.
+         * This field may only be specified when versionedExpr is set to FIREWALL.
          * Structure is documented below.
          * 
          * &lt;a name=&#34;nestedMatchConfigLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
@@ -142,13 +152,15 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
          * @return builder
          * 
          */
-        public Builder layer4Configs(Output<List<OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs>> layer4Configs) {
+        public Builder layer4Configs(@Nullable Output<List<OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs>> layer4Configs) {
             $.layer4Configs = layer4Configs;
             return this;
         }
 
         /**
-         * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
+         * @param layer4Configs (Optional, Beta)
+         * Pairs of IP protocols and ports that the rule should match.
+         * This field may only be specified when versionedExpr is set to FIREWALL.
          * Structure is documented below.
          * 
          * &lt;a name=&#34;nestedMatchConfigLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
@@ -161,7 +173,9 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
         }
 
         /**
-         * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
+         * @param layer4Configs (Optional, Beta)
+         * Pairs of IP protocols and ports that the rule should match.
+         * This field may only be specified when versionedExpr is set to FIREWALL.
          * Structure is documented below.
          * 
          * &lt;a name=&#34;nestedMatchConfigLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
@@ -208,9 +222,6 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
         }
 
         public OrganizationSecurityPolicyRuleMatchConfigArgs build() {
-            if ($.layer4Configs == null) {
-                throw new MissingRequiredPropertyException("OrganizationSecurityPolicyRuleMatchConfigArgs", "layer4Configs");
-            }
             return $;
         }
     }

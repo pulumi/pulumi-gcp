@@ -36,6 +36,7 @@ class StoragePoolArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  qos_type: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  total_iops: Optional[pulumi.Input[_builtins.str]] = None,
                  total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -74,6 +75,10 @@ class StoragePoolArgs:
                Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        :param pulumi.Input[_builtins.str] scale_tier: (Optional, Beta)
+               The effective scale tier of the storage pool. If `scale_tier` is not
+               specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+               Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
         :param pulumi.Input[_builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
         :param pulumi.Input[_builtins.str] total_throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
         :param pulumi.Input[_builtins.str] type: Type of the storage pool.
@@ -114,6 +119,8 @@ class StoragePoolArgs:
             pulumi.set(__self__, "qos_type", qos_type)
         if replica_zone is not None:
             pulumi.set(__self__, "replica_zone", replica_zone)
+        if scale_tier is not None:
+            pulumi.set(__self__, "scale_tier", scale_tier)
         if total_iops is not None:
             pulumi.set(__self__, "total_iops", total_iops)
         if total_throughput_mibps is not None:
@@ -342,6 +349,21 @@ class StoragePoolArgs:
         pulumi.set(self, "replica_zone", value)
 
     @_builtins.property
+    @pulumi.getter(name="scaleTier")
+    def scale_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Beta)
+        The effective scale tier of the storage pool. If `scale_tier` is not
+        specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+        Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+        """
+        return pulumi.get(self, "scale_tier")
+
+    @scale_tier.setter
+    def scale_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scale_tier", value)
+
+    @_builtins.property
     @pulumi.getter(name="totalIops")
     def total_iops(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -420,6 +442,7 @@ class _StoragePoolState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  qos_type: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  service_level: Optional[pulumi.Input[_builtins.str]] = None,
                  total_iops: Optional[pulumi.Input[_builtins.str]] = None,
                  total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
@@ -466,6 +489,10 @@ class _StoragePoolState:
                Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        :param pulumi.Input[_builtins.str] scale_tier: (Optional, Beta)
+               The effective scale tier of the storage pool. If `scale_tier` is not
+               specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+               Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
         :param pulumi.Input[_builtins.str] service_level: Service level of the storage pool.
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[_builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
@@ -524,6 +551,8 @@ class _StoragePoolState:
             pulumi.set(__self__, "qos_type", qos_type)
         if replica_zone is not None:
             pulumi.set(__self__, "replica_zone", replica_zone)
+        if scale_tier is not None:
+            pulumi.set(__self__, "scale_tier", scale_tier)
         if service_level is not None:
             pulumi.set(__self__, "service_level", service_level)
         if total_iops is not None:
@@ -818,6 +847,21 @@ class _StoragePoolState:
         pulumi.set(self, "replica_zone", value)
 
     @_builtins.property
+    @pulumi.getter(name="scaleTier")
+    def scale_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Beta)
+        The effective scale tier of the storage pool. If `scale_tier` is not
+        specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+        Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+        """
+        return pulumi.get(self, "scale_tier")
+
+    @scale_tier.setter
+    def scale_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scale_tier", value)
+
+    @_builtins.property
     @pulumi.getter(name="serviceLevel")
     def service_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -930,6 +974,7 @@ class StoragePool(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  qos_type: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  service_level: Optional[pulumi.Input[_builtins.str]] = None,
                  total_iops: Optional[pulumi.Input[_builtins.str]] = None,
                  total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1055,6 +1100,10 @@ class StoragePool(pulumi.CustomResource):
                Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        :param pulumi.Input[_builtins.str] scale_tier: (Optional, Beta)
+               The effective scale tier of the storage pool. If `scale_tier` is not
+               specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+               Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
         :param pulumi.Input[_builtins.str] service_level: Service level of the storage pool.
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[_builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
@@ -1192,6 +1241,7 @@ class StoragePool(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  qos_type: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  service_level: Optional[pulumi.Input[_builtins.str]] = None,
                  total_iops: Optional[pulumi.Input[_builtins.str]] = None,
                  total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1228,6 +1278,7 @@ class StoragePool(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["qos_type"] = qos_type
             __props__.__dict__["replica_zone"] = replica_zone
+            __props__.__dict__["scale_tier"] = scale_tier
             if service_level is None and not opts.urn:
                 raise TypeError("Missing required property 'service_level'")
             __props__.__dict__["service_level"] = service_level
@@ -1277,6 +1328,7 @@ class StoragePool(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             qos_type: Optional[pulumi.Input[_builtins.str]] = None,
             replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
+            scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
             service_level: Optional[pulumi.Input[_builtins.str]] = None,
             total_iops: Optional[pulumi.Input[_builtins.str]] = None,
             total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1327,6 +1379,10 @@ class StoragePool(pulumi.CustomResource):
                Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        :param pulumi.Input[_builtins.str] scale_tier: (Optional, Beta)
+               The effective scale tier of the storage pool. If `scale_tier` is not
+               specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+               Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
         :param pulumi.Input[_builtins.str] service_level: Service level of the storage pool.
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[_builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
@@ -1367,6 +1423,7 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["qos_type"] = qos_type
         __props__.__dict__["replica_zone"] = replica_zone
+        __props__.__dict__["scale_tier"] = scale_tier
         __props__.__dict__["service_level"] = service_level
         __props__.__dict__["total_iops"] = total_iops
         __props__.__dict__["total_throughput_mibps"] = total_throughput_mibps
@@ -1565,6 +1622,17 @@ class StoragePool(pulumi.CustomResource):
         [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         """
         return pulumi.get(self, "replica_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="scaleTier")
+    def scale_tier(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Optional, Beta)
+        The effective scale tier of the storage pool. If `scale_tier` is not
+        specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+        Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+        """
+        return pulumi.get(self, "scale_tier")
 
     @_builtins.property
     @pulumi.getter(name="serviceLevel")

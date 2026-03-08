@@ -18,7 +18,9 @@ type AccountConnectorProviderOauthConfig struct {
 	// In the event of changing scopes, user records under AccountConnector will
 	// be deleted and users will re-auth again.
 	Scopes []string `pulumi:"scopes"`
-	// List of providers that are owned by Developer Connect.
+	// List of providers that are owned by Developer Connect. Creation of
+	// new non-SCM providers Account Connectors is not possible at this
+	// time.
 	// Possible values:
 	// GITHUB
 	// GITLAB
@@ -46,7 +48,9 @@ type AccountConnectorProviderOauthConfigArgs struct {
 	// In the event of changing scopes, user records under AccountConnector will
 	// be deleted and users will re-auth again.
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-	// List of providers that are owned by Developer Connect.
+	// List of providers that are owned by Developer Connect. Creation of
+	// new non-SCM providers Account Connectors is not possible at this
+	// time.
 	// Possible values:
 	// GITHUB
 	// GITLAB
@@ -142,7 +146,9 @@ func (o AccountConnectorProviderOauthConfigOutput) Scopes() pulumi.StringArrayOu
 	return o.ApplyT(func(v AccountConnectorProviderOauthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-// List of providers that are owned by Developer Connect.
+// List of providers that are owned by Developer Connect. Creation of
+// new non-SCM providers Account Connectors is not possible at this
+// time.
 // Possible values:
 // GITHUB
 // GITLAB
@@ -191,7 +197,9 @@ func (o AccountConnectorProviderOauthConfigPtrOutput) Scopes() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of providers that are owned by Developer Connect.
+// List of providers that are owned by Developer Connect. Creation of
+// new non-SCM providers Account Connectors is not possible at this
+// time.
 // Possible values:
 // GITHUB
 // GITLAB
@@ -1405,7 +1413,7 @@ func (o ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput) Us
 }
 
 type ConnectionBitbucketDataCenterConfigServiceDirectoryConfig struct {
-	// Required. The Service Directory service name.
+	// The Service Directory service name.
 	// Format:
 	// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 	Service string `pulumi:"service"`
@@ -1423,7 +1431,7 @@ type ConnectionBitbucketDataCenterConfigServiceDirectoryConfigInput interface {
 }
 
 type ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs struct {
-	// Required. The Service Directory service name.
+	// The Service Directory service name.
 	// Format:
 	// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 	Service pulumi.StringInput `pulumi:"service"`
@@ -1506,7 +1514,7 @@ func (o ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput) ToConne
 	}).(ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput)
 }
 
-// Required. The Service Directory service name.
+// The Service Directory service name.
 // Format:
 // projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 func (o ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
@@ -1537,7 +1545,7 @@ func (o ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput) Elem
 	}).(ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput)
 }
 
-// Required. The Service Directory service name.
+// The Service Directory service name.
 // Format:
 // projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 func (o ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput) Service() pulumi.StringPtrOutput {
@@ -2433,7 +2441,7 @@ func (o ConnectionGithubEnterpriseConfigPtrOutput) WebhookSecretSecretVersion() 
 }
 
 type ConnectionGithubEnterpriseConfigServiceDirectoryConfig struct {
-	// Required. The Service Directory service name.
+	// The Service Directory service name.
 	// Format:
 	// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 	Service string `pulumi:"service"`
@@ -2451,7 +2459,7 @@ type ConnectionGithubEnterpriseConfigServiceDirectoryConfigInput interface {
 }
 
 type ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs struct {
-	// Required. The Service Directory service name.
+	// The Service Directory service name.
 	// Format:
 	// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 	Service pulumi.StringInput `pulumi:"service"`
@@ -2534,7 +2542,7 @@ func (o ConnectionGithubEnterpriseConfigServiceDirectoryConfigOutput) ToConnecti
 	}).(ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput)
 }
 
-// Required. The Service Directory service name.
+// The Service Directory service name.
 // Format:
 // projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 func (o ConnectionGithubEnterpriseConfigServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
@@ -2565,7 +2573,7 @@ func (o ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput) Elem() 
 	}).(ConnectionGithubEnterpriseConfigServiceDirectoryConfigOutput)
 }
 
-// Required. The Service Directory service name.
+// The Service Directory service name.
 // Format:
 // projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 func (o ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput) Service() pulumi.StringPtrOutput {
@@ -3752,7 +3760,7 @@ func (o ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialPtrOutput) Usern
 }
 
 type ConnectionGitlabEnterpriseConfigServiceDirectoryConfig struct {
-	// Required. The Service Directory service name.
+	// The Service Directory service name.
 	// Format:
 	// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 	Service string `pulumi:"service"`
@@ -3770,7 +3778,7 @@ type ConnectionGitlabEnterpriseConfigServiceDirectoryConfigInput interface {
 }
 
 type ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs struct {
-	// Required. The Service Directory service name.
+	// The Service Directory service name.
 	// Format:
 	// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 	Service pulumi.StringInput `pulumi:"service"`
@@ -3853,7 +3861,7 @@ func (o ConnectionGitlabEnterpriseConfigServiceDirectoryConfigOutput) ToConnecti
 	}).(ConnectionGitlabEnterpriseConfigServiceDirectoryConfigPtrOutput)
 }
 
-// Required. The Service Directory service name.
+// The Service Directory service name.
 // Format:
 // projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 func (o ConnectionGitlabEnterpriseConfigServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
@@ -3884,11 +3892,682 @@ func (o ConnectionGitlabEnterpriseConfigServiceDirectoryConfigPtrOutput) Elem() 
 	}).(ConnectionGitlabEnterpriseConfigServiceDirectoryConfigOutput)
 }
 
-// Required. The Service Directory service name.
+// The Service Directory service name.
 // Format:
 // projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 func (o ConnectionGitlabEnterpriseConfigServiceDirectoryConfigPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionGitlabEnterpriseConfigServiceDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionHttpConfig struct {
+	// Basic authentication with username and password.
+	// Structure is documented below.
+	BasicAuthentication *ConnectionHttpConfigBasicAuthentication `pulumi:"basicAuthentication"`
+	// Bearer token authentication with a token.
+	// Structure is documented below.
+	BearerTokenAuthentication *ConnectionHttpConfigBearerTokenAuthentication `pulumi:"bearerTokenAuthentication"`
+	// The service provider's https endpoint.
+	HostUri string `pulumi:"hostUri"`
+	// ServiceDirectoryConfig represents Service Directory configuration for a
+	// connection.
+	// Structure is documented below.
+	ServiceDirectoryConfig *ConnectionHttpConfigServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
+	// The SSL certificate to use for requests to the HTTP service provider.
+	SslCaCertificate *string `pulumi:"sslCaCertificate"`
+}
+
+// ConnectionHttpConfigInput is an input type that accepts ConnectionHttpConfigArgs and ConnectionHttpConfigOutput values.
+// You can construct a concrete instance of `ConnectionHttpConfigInput` via:
+//
+//	ConnectionHttpConfigArgs{...}
+type ConnectionHttpConfigInput interface {
+	pulumi.Input
+
+	ToConnectionHttpConfigOutput() ConnectionHttpConfigOutput
+	ToConnectionHttpConfigOutputWithContext(context.Context) ConnectionHttpConfigOutput
+}
+
+type ConnectionHttpConfigArgs struct {
+	// Basic authentication with username and password.
+	// Structure is documented below.
+	BasicAuthentication ConnectionHttpConfigBasicAuthenticationPtrInput `pulumi:"basicAuthentication"`
+	// Bearer token authentication with a token.
+	// Structure is documented below.
+	BearerTokenAuthentication ConnectionHttpConfigBearerTokenAuthenticationPtrInput `pulumi:"bearerTokenAuthentication"`
+	// The service provider's https endpoint.
+	HostUri pulumi.StringInput `pulumi:"hostUri"`
+	// ServiceDirectoryConfig represents Service Directory configuration for a
+	// connection.
+	// Structure is documented below.
+	ServiceDirectoryConfig ConnectionHttpConfigServiceDirectoryConfigPtrInput `pulumi:"serviceDirectoryConfig"`
+	// The SSL certificate to use for requests to the HTTP service provider.
+	SslCaCertificate pulumi.StringPtrInput `pulumi:"sslCaCertificate"`
+}
+
+func (ConnectionHttpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionHttpConfig)(nil)).Elem()
+}
+
+func (i ConnectionHttpConfigArgs) ToConnectionHttpConfigOutput() ConnectionHttpConfigOutput {
+	return i.ToConnectionHttpConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionHttpConfigArgs) ToConnectionHttpConfigOutputWithContext(ctx context.Context) ConnectionHttpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHttpConfigOutput)
+}
+
+func (i ConnectionHttpConfigArgs) ToConnectionHttpConfigPtrOutput() ConnectionHttpConfigPtrOutput {
+	return i.ToConnectionHttpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionHttpConfigArgs) ToConnectionHttpConfigPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHttpConfigOutput).ToConnectionHttpConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionHttpConfigPtrInput is an input type that accepts ConnectionHttpConfigArgs, ConnectionHttpConfigPtr and ConnectionHttpConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionHttpConfigPtrInput` via:
+//
+//	        ConnectionHttpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionHttpConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionHttpConfigPtrOutput() ConnectionHttpConfigPtrOutput
+	ToConnectionHttpConfigPtrOutputWithContext(context.Context) ConnectionHttpConfigPtrOutput
+}
+
+type connectionHttpConfigPtrType ConnectionHttpConfigArgs
+
+func ConnectionHttpConfigPtr(v *ConnectionHttpConfigArgs) ConnectionHttpConfigPtrInput {
+	return (*connectionHttpConfigPtrType)(v)
+}
+
+func (*connectionHttpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionHttpConfig)(nil)).Elem()
+}
+
+func (i *connectionHttpConfigPtrType) ToConnectionHttpConfigPtrOutput() ConnectionHttpConfigPtrOutput {
+	return i.ToConnectionHttpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionHttpConfigPtrType) ToConnectionHttpConfigPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHttpConfigPtrOutput)
+}
+
+type ConnectionHttpConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionHttpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionHttpConfig)(nil)).Elem()
+}
+
+func (o ConnectionHttpConfigOutput) ToConnectionHttpConfigOutput() ConnectionHttpConfigOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigOutput) ToConnectionHttpConfigOutputWithContext(ctx context.Context) ConnectionHttpConfigOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigOutput) ToConnectionHttpConfigPtrOutput() ConnectionHttpConfigPtrOutput {
+	return o.ToConnectionHttpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionHttpConfigOutput) ToConnectionHttpConfigPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionHttpConfig) *ConnectionHttpConfig {
+		return &v
+	}).(ConnectionHttpConfigPtrOutput)
+}
+
+// Basic authentication with username and password.
+// Structure is documented below.
+func (o ConnectionHttpConfigOutput) BasicAuthentication() ConnectionHttpConfigBasicAuthenticationPtrOutput {
+	return o.ApplyT(func(v ConnectionHttpConfig) *ConnectionHttpConfigBasicAuthentication { return v.BasicAuthentication }).(ConnectionHttpConfigBasicAuthenticationPtrOutput)
+}
+
+// Bearer token authentication with a token.
+// Structure is documented below.
+func (o ConnectionHttpConfigOutput) BearerTokenAuthentication() ConnectionHttpConfigBearerTokenAuthenticationPtrOutput {
+	return o.ApplyT(func(v ConnectionHttpConfig) *ConnectionHttpConfigBearerTokenAuthentication {
+		return v.BearerTokenAuthentication
+	}).(ConnectionHttpConfigBearerTokenAuthenticationPtrOutput)
+}
+
+// The service provider's https endpoint.
+func (o ConnectionHttpConfigOutput) HostUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionHttpConfig) string { return v.HostUri }).(pulumi.StringOutput)
+}
+
+// ServiceDirectoryConfig represents Service Directory configuration for a
+// connection.
+// Structure is documented below.
+func (o ConnectionHttpConfigOutput) ServiceDirectoryConfig() ConnectionHttpConfigServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionHttpConfig) *ConnectionHttpConfigServiceDirectoryConfig {
+		return v.ServiceDirectoryConfig
+	}).(ConnectionHttpConfigServiceDirectoryConfigPtrOutput)
+}
+
+// The SSL certificate to use for requests to the HTTP service provider.
+func (o ConnectionHttpConfigOutput) SslCaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionHttpConfig) *string { return v.SslCaCertificate }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionHttpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionHttpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionHttpConfig)(nil)).Elem()
+}
+
+func (o ConnectionHttpConfigPtrOutput) ToConnectionHttpConfigPtrOutput() ConnectionHttpConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigPtrOutput) ToConnectionHttpConfigPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigPtrOutput) Elem() ConnectionHttpConfigOutput {
+	return o.ApplyT(func(v *ConnectionHttpConfig) ConnectionHttpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionHttpConfig
+		return ret
+	}).(ConnectionHttpConfigOutput)
+}
+
+// Basic authentication with username and password.
+// Structure is documented below.
+func (o ConnectionHttpConfigPtrOutput) BasicAuthentication() ConnectionHttpConfigBasicAuthenticationPtrOutput {
+	return o.ApplyT(func(v *ConnectionHttpConfig) *ConnectionHttpConfigBasicAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.BasicAuthentication
+	}).(ConnectionHttpConfigBasicAuthenticationPtrOutput)
+}
+
+// Bearer token authentication with a token.
+// Structure is documented below.
+func (o ConnectionHttpConfigPtrOutput) BearerTokenAuthentication() ConnectionHttpConfigBearerTokenAuthenticationPtrOutput {
+	return o.ApplyT(func(v *ConnectionHttpConfig) *ConnectionHttpConfigBearerTokenAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.BearerTokenAuthentication
+	}).(ConnectionHttpConfigBearerTokenAuthenticationPtrOutput)
+}
+
+// The service provider's https endpoint.
+func (o ConnectionHttpConfigPtrOutput) HostUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionHttpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HostUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceDirectoryConfig represents Service Directory configuration for a
+// connection.
+// Structure is documented below.
+func (o ConnectionHttpConfigPtrOutput) ServiceDirectoryConfig() ConnectionHttpConfigServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionHttpConfig) *ConnectionHttpConfigServiceDirectoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDirectoryConfig
+	}).(ConnectionHttpConfigServiceDirectoryConfigPtrOutput)
+}
+
+// The SSL certificate to use for requests to the HTTP service provider.
+func (o ConnectionHttpConfigPtrOutput) SslCaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionHttpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCaCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionHttpConfigBasicAuthentication struct {
+	// The password SecretManager secret version to authenticate as.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// The username to authenticate as.
+	Username string `pulumi:"username"`
+}
+
+// ConnectionHttpConfigBasicAuthenticationInput is an input type that accepts ConnectionHttpConfigBasicAuthenticationArgs and ConnectionHttpConfigBasicAuthenticationOutput values.
+// You can construct a concrete instance of `ConnectionHttpConfigBasicAuthenticationInput` via:
+//
+//	ConnectionHttpConfigBasicAuthenticationArgs{...}
+type ConnectionHttpConfigBasicAuthenticationInput interface {
+	pulumi.Input
+
+	ToConnectionHttpConfigBasicAuthenticationOutput() ConnectionHttpConfigBasicAuthenticationOutput
+	ToConnectionHttpConfigBasicAuthenticationOutputWithContext(context.Context) ConnectionHttpConfigBasicAuthenticationOutput
+}
+
+type ConnectionHttpConfigBasicAuthenticationArgs struct {
+	// The password SecretManager secret version to authenticate as.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// The username to authenticate as.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (ConnectionHttpConfigBasicAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionHttpConfigBasicAuthentication)(nil)).Elem()
+}
+
+func (i ConnectionHttpConfigBasicAuthenticationArgs) ToConnectionHttpConfigBasicAuthenticationOutput() ConnectionHttpConfigBasicAuthenticationOutput {
+	return i.ToConnectionHttpConfigBasicAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ConnectionHttpConfigBasicAuthenticationArgs) ToConnectionHttpConfigBasicAuthenticationOutputWithContext(ctx context.Context) ConnectionHttpConfigBasicAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHttpConfigBasicAuthenticationOutput)
+}
+
+func (i ConnectionHttpConfigBasicAuthenticationArgs) ToConnectionHttpConfigBasicAuthenticationPtrOutput() ConnectionHttpConfigBasicAuthenticationPtrOutput {
+	return i.ToConnectionHttpConfigBasicAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionHttpConfigBasicAuthenticationArgs) ToConnectionHttpConfigBasicAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigBasicAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHttpConfigBasicAuthenticationOutput).ToConnectionHttpConfigBasicAuthenticationPtrOutputWithContext(ctx)
+}
+
+// ConnectionHttpConfigBasicAuthenticationPtrInput is an input type that accepts ConnectionHttpConfigBasicAuthenticationArgs, ConnectionHttpConfigBasicAuthenticationPtr and ConnectionHttpConfigBasicAuthenticationPtrOutput values.
+// You can construct a concrete instance of `ConnectionHttpConfigBasicAuthenticationPtrInput` via:
+//
+//	        ConnectionHttpConfigBasicAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionHttpConfigBasicAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToConnectionHttpConfigBasicAuthenticationPtrOutput() ConnectionHttpConfigBasicAuthenticationPtrOutput
+	ToConnectionHttpConfigBasicAuthenticationPtrOutputWithContext(context.Context) ConnectionHttpConfigBasicAuthenticationPtrOutput
+}
+
+type connectionHttpConfigBasicAuthenticationPtrType ConnectionHttpConfigBasicAuthenticationArgs
+
+func ConnectionHttpConfigBasicAuthenticationPtr(v *ConnectionHttpConfigBasicAuthenticationArgs) ConnectionHttpConfigBasicAuthenticationPtrInput {
+	return (*connectionHttpConfigBasicAuthenticationPtrType)(v)
+}
+
+func (*connectionHttpConfigBasicAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionHttpConfigBasicAuthentication)(nil)).Elem()
+}
+
+func (i *connectionHttpConfigBasicAuthenticationPtrType) ToConnectionHttpConfigBasicAuthenticationPtrOutput() ConnectionHttpConfigBasicAuthenticationPtrOutput {
+	return i.ToConnectionHttpConfigBasicAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionHttpConfigBasicAuthenticationPtrType) ToConnectionHttpConfigBasicAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigBasicAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHttpConfigBasicAuthenticationPtrOutput)
+}
+
+type ConnectionHttpConfigBasicAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ConnectionHttpConfigBasicAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionHttpConfigBasicAuthentication)(nil)).Elem()
+}
+
+func (o ConnectionHttpConfigBasicAuthenticationOutput) ToConnectionHttpConfigBasicAuthenticationOutput() ConnectionHttpConfigBasicAuthenticationOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigBasicAuthenticationOutput) ToConnectionHttpConfigBasicAuthenticationOutputWithContext(ctx context.Context) ConnectionHttpConfigBasicAuthenticationOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigBasicAuthenticationOutput) ToConnectionHttpConfigBasicAuthenticationPtrOutput() ConnectionHttpConfigBasicAuthenticationPtrOutput {
+	return o.ToConnectionHttpConfigBasicAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionHttpConfigBasicAuthenticationOutput) ToConnectionHttpConfigBasicAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigBasicAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionHttpConfigBasicAuthentication) *ConnectionHttpConfigBasicAuthentication {
+		return &v
+	}).(ConnectionHttpConfigBasicAuthenticationPtrOutput)
+}
+
+// The password SecretManager secret version to authenticate as.
+func (o ConnectionHttpConfigBasicAuthenticationOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionHttpConfigBasicAuthentication) *string { return v.PasswordSecretVersion }).(pulumi.StringPtrOutput)
+}
+
+// The username to authenticate as.
+func (o ConnectionHttpConfigBasicAuthenticationOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionHttpConfigBasicAuthentication) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type ConnectionHttpConfigBasicAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionHttpConfigBasicAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionHttpConfigBasicAuthentication)(nil)).Elem()
+}
+
+func (o ConnectionHttpConfigBasicAuthenticationPtrOutput) ToConnectionHttpConfigBasicAuthenticationPtrOutput() ConnectionHttpConfigBasicAuthenticationPtrOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigBasicAuthenticationPtrOutput) ToConnectionHttpConfigBasicAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigBasicAuthenticationPtrOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigBasicAuthenticationPtrOutput) Elem() ConnectionHttpConfigBasicAuthenticationOutput {
+	return o.ApplyT(func(v *ConnectionHttpConfigBasicAuthentication) ConnectionHttpConfigBasicAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionHttpConfigBasicAuthentication
+		return ret
+	}).(ConnectionHttpConfigBasicAuthenticationOutput)
+}
+
+// The password SecretManager secret version to authenticate as.
+func (o ConnectionHttpConfigBasicAuthenticationPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionHttpConfigBasicAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to authenticate as.
+func (o ConnectionHttpConfigBasicAuthenticationPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionHttpConfigBasicAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionHttpConfigBearerTokenAuthentication struct {
+	// The token SecretManager secret version to authenticate as.
+	TokenSecretVersion *string `pulumi:"tokenSecretVersion"`
+}
+
+// ConnectionHttpConfigBearerTokenAuthenticationInput is an input type that accepts ConnectionHttpConfigBearerTokenAuthenticationArgs and ConnectionHttpConfigBearerTokenAuthenticationOutput values.
+// You can construct a concrete instance of `ConnectionHttpConfigBearerTokenAuthenticationInput` via:
+//
+//	ConnectionHttpConfigBearerTokenAuthenticationArgs{...}
+type ConnectionHttpConfigBearerTokenAuthenticationInput interface {
+	pulumi.Input
+
+	ToConnectionHttpConfigBearerTokenAuthenticationOutput() ConnectionHttpConfigBearerTokenAuthenticationOutput
+	ToConnectionHttpConfigBearerTokenAuthenticationOutputWithContext(context.Context) ConnectionHttpConfigBearerTokenAuthenticationOutput
+}
+
+type ConnectionHttpConfigBearerTokenAuthenticationArgs struct {
+	// The token SecretManager secret version to authenticate as.
+	TokenSecretVersion pulumi.StringPtrInput `pulumi:"tokenSecretVersion"`
+}
+
+func (ConnectionHttpConfigBearerTokenAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionHttpConfigBearerTokenAuthentication)(nil)).Elem()
+}
+
+func (i ConnectionHttpConfigBearerTokenAuthenticationArgs) ToConnectionHttpConfigBearerTokenAuthenticationOutput() ConnectionHttpConfigBearerTokenAuthenticationOutput {
+	return i.ToConnectionHttpConfigBearerTokenAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ConnectionHttpConfigBearerTokenAuthenticationArgs) ToConnectionHttpConfigBearerTokenAuthenticationOutputWithContext(ctx context.Context) ConnectionHttpConfigBearerTokenAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHttpConfigBearerTokenAuthenticationOutput)
+}
+
+func (i ConnectionHttpConfigBearerTokenAuthenticationArgs) ToConnectionHttpConfigBearerTokenAuthenticationPtrOutput() ConnectionHttpConfigBearerTokenAuthenticationPtrOutput {
+	return i.ToConnectionHttpConfigBearerTokenAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionHttpConfigBearerTokenAuthenticationArgs) ToConnectionHttpConfigBearerTokenAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigBearerTokenAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHttpConfigBearerTokenAuthenticationOutput).ToConnectionHttpConfigBearerTokenAuthenticationPtrOutputWithContext(ctx)
+}
+
+// ConnectionHttpConfigBearerTokenAuthenticationPtrInput is an input type that accepts ConnectionHttpConfigBearerTokenAuthenticationArgs, ConnectionHttpConfigBearerTokenAuthenticationPtr and ConnectionHttpConfigBearerTokenAuthenticationPtrOutput values.
+// You can construct a concrete instance of `ConnectionHttpConfigBearerTokenAuthenticationPtrInput` via:
+//
+//	        ConnectionHttpConfigBearerTokenAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionHttpConfigBearerTokenAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToConnectionHttpConfigBearerTokenAuthenticationPtrOutput() ConnectionHttpConfigBearerTokenAuthenticationPtrOutput
+	ToConnectionHttpConfigBearerTokenAuthenticationPtrOutputWithContext(context.Context) ConnectionHttpConfigBearerTokenAuthenticationPtrOutput
+}
+
+type connectionHttpConfigBearerTokenAuthenticationPtrType ConnectionHttpConfigBearerTokenAuthenticationArgs
+
+func ConnectionHttpConfigBearerTokenAuthenticationPtr(v *ConnectionHttpConfigBearerTokenAuthenticationArgs) ConnectionHttpConfigBearerTokenAuthenticationPtrInput {
+	return (*connectionHttpConfigBearerTokenAuthenticationPtrType)(v)
+}
+
+func (*connectionHttpConfigBearerTokenAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionHttpConfigBearerTokenAuthentication)(nil)).Elem()
+}
+
+func (i *connectionHttpConfigBearerTokenAuthenticationPtrType) ToConnectionHttpConfigBearerTokenAuthenticationPtrOutput() ConnectionHttpConfigBearerTokenAuthenticationPtrOutput {
+	return i.ToConnectionHttpConfigBearerTokenAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionHttpConfigBearerTokenAuthenticationPtrType) ToConnectionHttpConfigBearerTokenAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigBearerTokenAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHttpConfigBearerTokenAuthenticationPtrOutput)
+}
+
+type ConnectionHttpConfigBearerTokenAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ConnectionHttpConfigBearerTokenAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionHttpConfigBearerTokenAuthentication)(nil)).Elem()
+}
+
+func (o ConnectionHttpConfigBearerTokenAuthenticationOutput) ToConnectionHttpConfigBearerTokenAuthenticationOutput() ConnectionHttpConfigBearerTokenAuthenticationOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigBearerTokenAuthenticationOutput) ToConnectionHttpConfigBearerTokenAuthenticationOutputWithContext(ctx context.Context) ConnectionHttpConfigBearerTokenAuthenticationOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigBearerTokenAuthenticationOutput) ToConnectionHttpConfigBearerTokenAuthenticationPtrOutput() ConnectionHttpConfigBearerTokenAuthenticationPtrOutput {
+	return o.ToConnectionHttpConfigBearerTokenAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionHttpConfigBearerTokenAuthenticationOutput) ToConnectionHttpConfigBearerTokenAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigBearerTokenAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionHttpConfigBearerTokenAuthentication) *ConnectionHttpConfigBearerTokenAuthentication {
+		return &v
+	}).(ConnectionHttpConfigBearerTokenAuthenticationPtrOutput)
+}
+
+// The token SecretManager secret version to authenticate as.
+func (o ConnectionHttpConfigBearerTokenAuthenticationOutput) TokenSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionHttpConfigBearerTokenAuthentication) *string { return v.TokenSecretVersion }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionHttpConfigBearerTokenAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionHttpConfigBearerTokenAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionHttpConfigBearerTokenAuthentication)(nil)).Elem()
+}
+
+func (o ConnectionHttpConfigBearerTokenAuthenticationPtrOutput) ToConnectionHttpConfigBearerTokenAuthenticationPtrOutput() ConnectionHttpConfigBearerTokenAuthenticationPtrOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigBearerTokenAuthenticationPtrOutput) ToConnectionHttpConfigBearerTokenAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigBearerTokenAuthenticationPtrOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigBearerTokenAuthenticationPtrOutput) Elem() ConnectionHttpConfigBearerTokenAuthenticationOutput {
+	return o.ApplyT(func(v *ConnectionHttpConfigBearerTokenAuthentication) ConnectionHttpConfigBearerTokenAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionHttpConfigBearerTokenAuthentication
+		return ret
+	}).(ConnectionHttpConfigBearerTokenAuthenticationOutput)
+}
+
+// The token SecretManager secret version to authenticate as.
+func (o ConnectionHttpConfigBearerTokenAuthenticationPtrOutput) TokenSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionHttpConfigBearerTokenAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionHttpConfigServiceDirectoryConfig struct {
+	// The Service Directory service name.
+	// Format:
+	// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+	Service string `pulumi:"service"`
+}
+
+// ConnectionHttpConfigServiceDirectoryConfigInput is an input type that accepts ConnectionHttpConfigServiceDirectoryConfigArgs and ConnectionHttpConfigServiceDirectoryConfigOutput values.
+// You can construct a concrete instance of `ConnectionHttpConfigServiceDirectoryConfigInput` via:
+//
+//	ConnectionHttpConfigServiceDirectoryConfigArgs{...}
+type ConnectionHttpConfigServiceDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToConnectionHttpConfigServiceDirectoryConfigOutput() ConnectionHttpConfigServiceDirectoryConfigOutput
+	ToConnectionHttpConfigServiceDirectoryConfigOutputWithContext(context.Context) ConnectionHttpConfigServiceDirectoryConfigOutput
+}
+
+type ConnectionHttpConfigServiceDirectoryConfigArgs struct {
+	// The Service Directory service name.
+	// Format:
+	// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (ConnectionHttpConfigServiceDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionHttpConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i ConnectionHttpConfigServiceDirectoryConfigArgs) ToConnectionHttpConfigServiceDirectoryConfigOutput() ConnectionHttpConfigServiceDirectoryConfigOutput {
+	return i.ToConnectionHttpConfigServiceDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionHttpConfigServiceDirectoryConfigArgs) ToConnectionHttpConfigServiceDirectoryConfigOutputWithContext(ctx context.Context) ConnectionHttpConfigServiceDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHttpConfigServiceDirectoryConfigOutput)
+}
+
+func (i ConnectionHttpConfigServiceDirectoryConfigArgs) ToConnectionHttpConfigServiceDirectoryConfigPtrOutput() ConnectionHttpConfigServiceDirectoryConfigPtrOutput {
+	return i.ToConnectionHttpConfigServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionHttpConfigServiceDirectoryConfigArgs) ToConnectionHttpConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHttpConfigServiceDirectoryConfigOutput).ToConnectionHttpConfigServiceDirectoryConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionHttpConfigServiceDirectoryConfigPtrInput is an input type that accepts ConnectionHttpConfigServiceDirectoryConfigArgs, ConnectionHttpConfigServiceDirectoryConfigPtr and ConnectionHttpConfigServiceDirectoryConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionHttpConfigServiceDirectoryConfigPtrInput` via:
+//
+//	        ConnectionHttpConfigServiceDirectoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionHttpConfigServiceDirectoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionHttpConfigServiceDirectoryConfigPtrOutput() ConnectionHttpConfigServiceDirectoryConfigPtrOutput
+	ToConnectionHttpConfigServiceDirectoryConfigPtrOutputWithContext(context.Context) ConnectionHttpConfigServiceDirectoryConfigPtrOutput
+}
+
+type connectionHttpConfigServiceDirectoryConfigPtrType ConnectionHttpConfigServiceDirectoryConfigArgs
+
+func ConnectionHttpConfigServiceDirectoryConfigPtr(v *ConnectionHttpConfigServiceDirectoryConfigArgs) ConnectionHttpConfigServiceDirectoryConfigPtrInput {
+	return (*connectionHttpConfigServiceDirectoryConfigPtrType)(v)
+}
+
+func (*connectionHttpConfigServiceDirectoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionHttpConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i *connectionHttpConfigServiceDirectoryConfigPtrType) ToConnectionHttpConfigServiceDirectoryConfigPtrOutput() ConnectionHttpConfigServiceDirectoryConfigPtrOutput {
+	return i.ToConnectionHttpConfigServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionHttpConfigServiceDirectoryConfigPtrType) ToConnectionHttpConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHttpConfigServiceDirectoryConfigPtrOutput)
+}
+
+type ConnectionHttpConfigServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionHttpConfigServiceDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionHttpConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ConnectionHttpConfigServiceDirectoryConfigOutput) ToConnectionHttpConfigServiceDirectoryConfigOutput() ConnectionHttpConfigServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigServiceDirectoryConfigOutput) ToConnectionHttpConfigServiceDirectoryConfigOutputWithContext(ctx context.Context) ConnectionHttpConfigServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigServiceDirectoryConfigOutput) ToConnectionHttpConfigServiceDirectoryConfigPtrOutput() ConnectionHttpConfigServiceDirectoryConfigPtrOutput {
+	return o.ToConnectionHttpConfigServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionHttpConfigServiceDirectoryConfigOutput) ToConnectionHttpConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigServiceDirectoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionHttpConfigServiceDirectoryConfig) *ConnectionHttpConfigServiceDirectoryConfig {
+		return &v
+	}).(ConnectionHttpConfigServiceDirectoryConfigPtrOutput)
+}
+
+// The Service Directory service name.
+// Format:
+// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+func (o ConnectionHttpConfigServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionHttpConfigServiceDirectoryConfig) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type ConnectionHttpConfigServiceDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionHttpConfigServiceDirectoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionHttpConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ConnectionHttpConfigServiceDirectoryConfigPtrOutput) ToConnectionHttpConfigServiceDirectoryConfigPtrOutput() ConnectionHttpConfigServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigServiceDirectoryConfigPtrOutput) ToConnectionHttpConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ConnectionHttpConfigServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionHttpConfigServiceDirectoryConfigPtrOutput) Elem() ConnectionHttpConfigServiceDirectoryConfigOutput {
+	return o.ApplyT(func(v *ConnectionHttpConfigServiceDirectoryConfig) ConnectionHttpConfigServiceDirectoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionHttpConfigServiceDirectoryConfig
+		return ret
+	}).(ConnectionHttpConfigServiceDirectoryConfigOutput)
+}
+
+// The Service Directory service name.
+// Format:
+// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+func (o ConnectionHttpConfigServiceDirectoryConfigPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionHttpConfigServiceDirectoryConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5403,6 +6082,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialPtrInput)(nil)).Elem(), ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabEnterpriseConfigServiceDirectoryConfigInput)(nil)).Elem(), ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabEnterpriseConfigServiceDirectoryConfigPtrInput)(nil)).Elem(), ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionHttpConfigInput)(nil)).Elem(), ConnectionHttpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionHttpConfigPtrInput)(nil)).Elem(), ConnectionHttpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionHttpConfigBasicAuthenticationInput)(nil)).Elem(), ConnectionHttpConfigBasicAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionHttpConfigBasicAuthenticationPtrInput)(nil)).Elem(), ConnectionHttpConfigBasicAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionHttpConfigBearerTokenAuthenticationInput)(nil)).Elem(), ConnectionHttpConfigBearerTokenAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionHttpConfigBearerTokenAuthenticationPtrInput)(nil)).Elem(), ConnectionHttpConfigBearerTokenAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionHttpConfigServiceDirectoryConfigInput)(nil)).Elem(), ConnectionHttpConfigServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionHttpConfigServiceDirectoryConfigPtrInput)(nil)).Elem(), ConnectionHttpConfigServiceDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionInstallationStateInput)(nil)).Elem(), ConnectionInstallationStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionInstallationStateArrayInput)(nil)).Elem(), ConnectionInstallationStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigArtifactConfigInput)(nil)).Elem(), InsightsConfigArtifactConfigArgs{})
@@ -5463,6 +6150,14 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionGitlabEnterpriseConfigServiceDirectoryConfigOutput{})
 	pulumi.RegisterOutputType(ConnectionGitlabEnterpriseConfigServiceDirectoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionHttpConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionHttpConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionHttpConfigBasicAuthenticationOutput{})
+	pulumi.RegisterOutputType(ConnectionHttpConfigBasicAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionHttpConfigBearerTokenAuthenticationOutput{})
+	pulumi.RegisterOutputType(ConnectionHttpConfigBearerTokenAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionHttpConfigServiceDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionHttpConfigServiceDirectoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionInstallationStateOutput{})
 	pulumi.RegisterOutputType(ConnectionInstallationStateArrayOutput{})
 	pulumi.RegisterOutputType(InsightsConfigArtifactConfigOutput{})

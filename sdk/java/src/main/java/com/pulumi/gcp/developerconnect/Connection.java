@@ -17,6 +17,7 @@ import com.pulumi.gcp.developerconnect.outputs.ConnectionGithubConfig;
 import com.pulumi.gcp.developerconnect.outputs.ConnectionGithubEnterpriseConfig;
 import com.pulumi.gcp.developerconnect.outputs.ConnectionGitlabConfig;
 import com.pulumi.gcp.developerconnect.outputs.ConnectionGitlabEnterpriseConfig;
+import com.pulumi.gcp.developerconnect.outputs.ConnectionHttpConfig;
 import com.pulumi.gcp.developerconnect.outputs.ConnectionInstallationState;
 import java.lang.Boolean;
 import java.lang.String;
@@ -670,6 +671,90 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Developer Connect Connection Http Conn Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.developerconnect.Connection;
+ * import com.pulumi.gcp.developerconnect.ConnectionArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionHttpConfigArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionHttpConfigBasicAuthenticationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
+ *             .location("us-central1")
+ *             .connectionId("tf-test-connection")
+ *             .httpConfig(ConnectionHttpConfigArgs.builder()
+ *                 .basicAuthentication(ConnectionHttpConfigBasicAuthenticationArgs.builder()
+ *                     .username("devconnectprober}{@literal @}{@code gmail.com")
+ *                     .passwordSecretVersion("projects/devconnect-terraform-creds/secrets/http-basic-auth/versions/latest")
+ *                     .build())
+ *                 .hostUri("https://devconnectprober.atlassian.net")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### Developer Connect Connection Http Conn Bearer
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.developerconnect.Connection;
+ * import com.pulumi.gcp.developerconnect.ConnectionArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionHttpConfigArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionHttpConfigBearerTokenAuthenticationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
+ *             .location("us-central1")
+ *             .connectionId("tf-test-connection")
+ *             .httpConfig(ConnectionHttpConfigArgs.builder()
+ *                 .hostUri("https://devconnectprober.atlassian.net")
+ *                 .bearerTokenAuthentication(ConnectionHttpConfigBearerTokenAuthenticationArgs.builder()
+ *                     .tokenSecretVersion("projects/devconnect-terraform-creds/secrets/http-bearer-token/versions/latest")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Connection can be imported using any of these accepted formats:
@@ -930,6 +1015,22 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ConnectionGitlabEnterpriseConfig>> gitlabEnterpriseConfig() {
         return Codegen.optional(this.gitlabEnterpriseConfig);
+    }
+    /**
+     * Configuration for connections to an HTTP service provider.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="httpConfig", refs={ConnectionHttpConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionHttpConfig> httpConfig;
+
+    /**
+     * @return Configuration for connections to an HTTP service provider.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionHttpConfig>> httpConfig() {
+        return Codegen.optional(this.httpConfig);
     }
     /**
      * Describes stage and necessary actions to be taken by the

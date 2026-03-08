@@ -37,7 +37,9 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
     }
 
     /**
-     * List of providers that are owned by Developer Connect.
+     * List of providers that are owned by Developer Connect. Creation of
+     * new non-SCM providers Account Connectors is not possible at this
+     * time.
      * Possible values:
      * GITHUB
      * GITLAB
@@ -52,7 +54,9 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
     private @Nullable Output<String> systemProviderId;
 
     /**
-     * @return List of providers that are owned by Developer Connect.
+     * @return List of providers that are owned by Developer Connect. Creation of
+     * new non-SCM providers Account Connectors is not possible at this
+     * time.
      * Possible values:
      * GITHUB
      * GITLAB
@@ -130,7 +134,9 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param systemProviderId List of providers that are owned by Developer Connect.
+         * @param systemProviderId List of providers that are owned by Developer Connect. Creation of
+         * new non-SCM providers Account Connectors is not possible at this
+         * time.
          * Possible values:
          * GITHUB
          * GITLAB
@@ -149,7 +155,9 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param systemProviderId List of providers that are owned by Developer Connect.
+         * @param systemProviderId List of providers that are owned by Developer Connect. Creation of
+         * new non-SCM providers Account Connectors is not possible at this
+         * time.
          * Possible values:
          * GITHUB
          * GITLAB

@@ -13,10 +13,16 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class NodePoolNodeConfigSandboxConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Type of the sandbox to use for the node (e.g. 'gvisor')
+        /// Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
         /// </summary>
-        [Input("sandboxType", required: true)]
-        public Input<string> SandboxType { get; set; } = null!;
+        [Input("sandboxType")]
+        public Input<string>? SandboxType { get; set; }
+
+        /// <summary>
+        /// Type of the sandbox to use for the node (e.g. 'GVISOR').
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public NodePoolNodeConfigSandboxConfigArgs()
         {

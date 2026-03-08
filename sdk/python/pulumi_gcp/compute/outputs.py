@@ -5822,6 +5822,8 @@ class FirewallPolicyRuleMatch(dict):
             suggest = "dest_fqdns"
         elif key == "destIpRanges":
             suggest = "dest_ip_ranges"
+        elif key == "destNetworkContext":
+            suggest = "dest_network_context"
         elif key == "destNetworkScope":
             suggest = "dest_network_scope"
         elif key == "destRegionCodes":
@@ -5834,6 +5836,8 @@ class FirewallPolicyRuleMatch(dict):
             suggest = "src_fqdns"
         elif key == "srcIpRanges":
             suggest = "src_ip_ranges"
+        elif key == "srcNetworkContext":
+            suggest = "src_network_context"
         elif key == "srcNetworkScope":
             suggest = "src_network_scope"
         elif key == "srcNetworks":
@@ -5861,12 +5865,14 @@ class FirewallPolicyRuleMatch(dict):
                  dest_address_groups: Optional[Sequence[_builtins.str]] = None,
                  dest_fqdns: Optional[Sequence[_builtins.str]] = None,
                  dest_ip_ranges: Optional[Sequence[_builtins.str]] = None,
+                 dest_network_context: Optional[_builtins.str] = None,
                  dest_network_scope: Optional[_builtins.str] = None,
                  dest_region_codes: Optional[Sequence[_builtins.str]] = None,
                  dest_threat_intelligences: Optional[Sequence[_builtins.str]] = None,
                  src_address_groups: Optional[Sequence[_builtins.str]] = None,
                  src_fqdns: Optional[Sequence[_builtins.str]] = None,
                  src_ip_ranges: Optional[Sequence[_builtins.str]] = None,
+                 src_network_context: Optional[_builtins.str] = None,
                  src_network_scope: Optional[_builtins.str] = None,
                  src_networks: Optional[Sequence[_builtins.str]] = None,
                  src_region_codes: Optional[Sequence[_builtins.str]] = None,
@@ -5878,19 +5884,22 @@ class FirewallPolicyRuleMatch(dict):
         :param Sequence[_builtins.str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         :param Sequence[_builtins.str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param Sequence[_builtins.str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param _builtins.str dest_network_context: Network context of the traffic destination.
+               Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param _builtins.str dest_network_scope: (Optional, Beta)
                Network scope of the traffic destination.
-               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+               Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param Sequence[_builtins.str] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param Sequence[_builtins.str] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param Sequence[_builtins.str] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         :param Sequence[_builtins.str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param Sequence[_builtins.str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param _builtins.str src_network_context: Network context of the traffic source.
+               Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param _builtins.str src_network_scope: (Optional, Beta)
                Network scope of the traffic source.
-               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
-        :param Sequence[_builtins.str] src_networks: (Optional, Beta)
-               Networks of the traffic source. It can be either a full or partial url.
+               Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        :param Sequence[_builtins.str] src_networks: Networks of the traffic source. It can be either a full or partial url.
         :param Sequence[_builtins.str] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param Sequence['FirewallPolicyRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
                Structure is documented below.
@@ -5906,6 +5915,8 @@ class FirewallPolicyRuleMatch(dict):
             pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_network_context is not None:
+            pulumi.set(__self__, "dest_network_context", dest_network_context)
         if dest_network_scope is not None:
             pulumi.set(__self__, "dest_network_scope", dest_network_scope)
         if dest_region_codes is not None:
@@ -5918,6 +5929,8 @@ class FirewallPolicyRuleMatch(dict):
             pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_network_context is not None:
+            pulumi.set(__self__, "src_network_context", src_network_context)
         if src_network_scope is not None:
             pulumi.set(__self__, "src_network_scope", src_network_scope)
         if src_networks is not None:
@@ -5963,12 +5976,21 @@ class FirewallPolicyRuleMatch(dict):
         return pulumi.get(self, "dest_ip_ranges")
 
     @_builtins.property
+    @pulumi.getter(name="destNetworkContext")
+    def dest_network_context(self) -> Optional[_builtins.str]:
+        """
+        Network context of the traffic destination.
+        Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "dest_network_context")
+
+    @_builtins.property
     @pulumi.getter(name="destNetworkScope")
     def dest_network_scope(self) -> Optional[_builtins.str]:
         """
         (Optional, Beta)
         Network scope of the traffic destination.
-        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
         return pulumi.get(self, "dest_network_scope")
 
@@ -6013,12 +6035,21 @@ class FirewallPolicyRuleMatch(dict):
         return pulumi.get(self, "src_ip_ranges")
 
     @_builtins.property
+    @pulumi.getter(name="srcNetworkContext")
+    def src_network_context(self) -> Optional[_builtins.str]:
+        """
+        Network context of the traffic source.
+        Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "src_network_context")
+
+    @_builtins.property
     @pulumi.getter(name="srcNetworkScope")
     def src_network_scope(self) -> Optional[_builtins.str]:
         """
         (Optional, Beta)
         Network scope of the traffic source.
-        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
         return pulumi.get(self, "src_network_scope")
 
@@ -6026,7 +6057,6 @@ class FirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcNetworks")
     def src_networks(self) -> Optional[Sequence[_builtins.str]]:
         """
-        (Optional, Beta)
         Networks of the traffic source. It can be either a full or partial url.
         """
         return pulumi.get(self, "src_networks")
@@ -24450,6 +24480,8 @@ class NetworkFirewallPolicyRuleMatch(dict):
             suggest = "dest_fqdns"
         elif key == "destIpRanges":
             suggest = "dest_ip_ranges"
+        elif key == "destNetworkContext":
+            suggest = "dest_network_context"
         elif key == "destNetworkScope":
             suggest = "dest_network_scope"
         elif key == "destRegionCodes":
@@ -24462,6 +24494,8 @@ class NetworkFirewallPolicyRuleMatch(dict):
             suggest = "src_fqdns"
         elif key == "srcIpRanges":
             suggest = "src_ip_ranges"
+        elif key == "srcNetworkContext":
+            suggest = "src_network_context"
         elif key == "srcNetworkScope":
             suggest = "src_network_scope"
         elif key == "srcNetworks":
@@ -24489,12 +24523,14 @@ class NetworkFirewallPolicyRuleMatch(dict):
                  dest_address_groups: Optional[Sequence[_builtins.str]] = None,
                  dest_fqdns: Optional[Sequence[_builtins.str]] = None,
                  dest_ip_ranges: Optional[Sequence[_builtins.str]] = None,
+                 dest_network_context: Optional[_builtins.str] = None,
                  dest_network_scope: Optional[_builtins.str] = None,
                  dest_region_codes: Optional[Sequence[_builtins.str]] = None,
                  dest_threat_intelligences: Optional[Sequence[_builtins.str]] = None,
                  src_address_groups: Optional[Sequence[_builtins.str]] = None,
                  src_fqdns: Optional[Sequence[_builtins.str]] = None,
                  src_ip_ranges: Optional[Sequence[_builtins.str]] = None,
+                 src_network_context: Optional[_builtins.str] = None,
                  src_network_scope: Optional[_builtins.str] = None,
                  src_networks: Optional[Sequence[_builtins.str]] = None,
                  src_region_codes: Optional[Sequence[_builtins.str]] = None,
@@ -24506,19 +24542,22 @@ class NetworkFirewallPolicyRuleMatch(dict):
         :param Sequence[_builtins.str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         :param Sequence[_builtins.str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param Sequence[_builtins.str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param _builtins.str dest_network_context: Network context of the traffic destination.
+               Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param _builtins.str dest_network_scope: (Optional, Beta)
                Network scope of the traffic destination.
-               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+               Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param Sequence[_builtins.str] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param Sequence[_builtins.str] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param Sequence[_builtins.str] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         :param Sequence[_builtins.str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param Sequence[_builtins.str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param _builtins.str src_network_context: Network context of the traffic source.
+               Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param _builtins.str src_network_scope: (Optional, Beta)
                Network scope of the traffic source.
-               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
-        :param Sequence[_builtins.str] src_networks: (Optional, Beta)
-               Networks of the traffic source. It can be either a full or partial url.
+               Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        :param Sequence[_builtins.str] src_networks: Networks of the traffic source. It can be either a full or partial url.
         :param Sequence[_builtins.str] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param Sequence['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
                Structure is documented below.
@@ -24534,6 +24573,8 @@ class NetworkFirewallPolicyRuleMatch(dict):
             pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_network_context is not None:
+            pulumi.set(__self__, "dest_network_context", dest_network_context)
         if dest_network_scope is not None:
             pulumi.set(__self__, "dest_network_scope", dest_network_scope)
         if dest_region_codes is not None:
@@ -24546,6 +24587,8 @@ class NetworkFirewallPolicyRuleMatch(dict):
             pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_network_context is not None:
+            pulumi.set(__self__, "src_network_context", src_network_context)
         if src_network_scope is not None:
             pulumi.set(__self__, "src_network_scope", src_network_scope)
         if src_networks is not None:
@@ -24591,12 +24634,21 @@ class NetworkFirewallPolicyRuleMatch(dict):
         return pulumi.get(self, "dest_ip_ranges")
 
     @_builtins.property
+    @pulumi.getter(name="destNetworkContext")
+    def dest_network_context(self) -> Optional[_builtins.str]:
+        """
+        Network context of the traffic destination.
+        Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "dest_network_context")
+
+    @_builtins.property
     @pulumi.getter(name="destNetworkScope")
     def dest_network_scope(self) -> Optional[_builtins.str]:
         """
         (Optional, Beta)
         Network scope of the traffic destination.
-        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
         return pulumi.get(self, "dest_network_scope")
 
@@ -24641,12 +24693,21 @@ class NetworkFirewallPolicyRuleMatch(dict):
         return pulumi.get(self, "src_ip_ranges")
 
     @_builtins.property
+    @pulumi.getter(name="srcNetworkContext")
+    def src_network_context(self) -> Optional[_builtins.str]:
+        """
+        Network context of the traffic source.
+        Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "src_network_context")
+
+    @_builtins.property
     @pulumi.getter(name="srcNetworkScope")
     def src_network_scope(self) -> Optional[_builtins.str]:
         """
         (Optional, Beta)
         Network scope of the traffic source.
-        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
         return pulumi.get(self, "src_network_scope")
 
@@ -24654,7 +24715,6 @@ class NetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcNetworks")
     def src_networks(self) -> Optional[Sequence[_builtins.str]]:
         """
-        (Optional, Beta)
         Networks of the traffic source. It can be either a full or partial url.
         """
         return pulumi.get(self, "src_networks")
@@ -26604,9 +26664,8 @@ class OrganizationSecurityPolicyRuleMatch(dict):
                Structure is documented below.
         :param _builtins.str description: A description of the rule.
         :param _builtins.str versioned_expr: Preconfigured versioned expression. For organization security policy rules,
-               the only supported type is "FIREWALL".
-               Default value is `FIREWALL`.
-               Possible values are: `FIREWALL`.
+               the only supported type is "SRC_IPS_V1".
+               **NOTE** : 'FIREWALL' type is deprecated. Please use 'google_compute_firewall_policy_rule' resource instead.
         """
         pulumi.set(__self__, "config", config)
         if description is not None:
@@ -26636,9 +26695,8 @@ class OrganizationSecurityPolicyRuleMatch(dict):
     def versioned_expr(self) -> Optional[_builtins.str]:
         """
         Preconfigured versioned expression. For organization security policy rules,
-        the only supported type is "FIREWALL".
-        Default value is `FIREWALL`.
-        Possible values are: `FIREWALL`.
+        the only supported type is "SRC_IPS_V1".
+        **NOTE** : 'FIREWALL' type is deprecated. Please use 'google_compute_firewall_policy_rule' resource instead.
         """
         return pulumi.get(self, "versioned_expr")
 
@@ -26648,10 +26706,10 @@ class OrganizationSecurityPolicyRuleMatchConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "layer4Configs":
-            suggest = "layer4_configs"
-        elif key == "destIpRanges":
+        if key == "destIpRanges":
             suggest = "dest_ip_ranges"
+        elif key == "layer4Configs":
+            suggest = "layer4_configs"
         elif key == "srcIpRanges":
             suggest = "src_ip_ranges"
 
@@ -26667,46 +26725,53 @@ class OrganizationSecurityPolicyRuleMatchConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 layer4_configs: Sequence['outputs.OrganizationSecurityPolicyRuleMatchConfigLayer4Config'],
                  dest_ip_ranges: Optional[Sequence[_builtins.str]] = None,
+                 layer4_configs: Optional[Sequence['outputs.OrganizationSecurityPolicyRuleMatchConfigLayer4Config']] = None,
                  src_ip_ranges: Optional[Sequence[_builtins.str]] = None):
         """
-        :param Sequence['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param Sequence[_builtins.str] dest_ip_ranges: (Optional, Beta)
+               Destination IP address range in CIDR format. Required for EGRESS rules.
+               This field may only be specified when versionedExpr is set to FIREWALL.
+        :param Sequence['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs'] layer4_configs: (Optional, Beta)
+               Pairs of IP protocols and ports that the rule should match.
+               This field may only be specified when versionedExpr is set to FIREWALL.
                Structure is documented below.
                
                
                <a name="nested_match_config_layer4_config"></a>The `layer4_config` block supports:
-        :param Sequence[_builtins.str] dest_ip_ranges: Destination IP address range in CIDR format. Required for
-               EGRESS rules.
         :param Sequence[_builtins.str] src_ip_ranges: Source IP address range in CIDR format. Required for
                INGRESS rules.
         """
-        pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if layer4_configs is not None:
+            pulumi.set(__self__, "layer4_configs", layer4_configs)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
 
     @_builtins.property
-    @pulumi.getter(name="layer4Configs")
-    def layer4_configs(self) -> Sequence['outputs.OrganizationSecurityPolicyRuleMatchConfigLayer4Config']:
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Optional[Sequence[_builtins.str]]:
         """
+        (Optional, Beta)
+        Destination IP address range in CIDR format. Required for EGRESS rules.
+        This field may only be specified when versionedExpr is set to FIREWALL.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="layer4Configs")
+    def layer4_configs(self) -> Optional[Sequence['outputs.OrganizationSecurityPolicyRuleMatchConfigLayer4Config']]:
+        """
+        (Optional, Beta)
         Pairs of IP protocols and ports that the rule should match.
+        This field may only be specified when versionedExpr is set to FIREWALL.
         Structure is documented below.
 
 
         <a name="nested_match_config_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "layer4_configs")
-
-    @_builtins.property
-    @pulumi.getter(name="destIpRanges")
-    def dest_ip_ranges(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Destination IP address range in CIDR format. Required for
-        EGRESS rules.
-        """
-        return pulumi.get(self, "dest_ip_ranges")
 
     @_builtins.property
     @pulumi.getter(name="srcIpRanges")
@@ -36627,6 +36692,8 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
             suggest = "dest_fqdns"
         elif key == "destIpRanges":
             suggest = "dest_ip_ranges"
+        elif key == "destNetworkContext":
+            suggest = "dest_network_context"
         elif key == "destNetworkScope":
             suggest = "dest_network_scope"
         elif key == "destRegionCodes":
@@ -36639,6 +36706,8 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
             suggest = "src_fqdns"
         elif key == "srcIpRanges":
             suggest = "src_ip_ranges"
+        elif key == "srcNetworkContext":
+            suggest = "src_network_context"
         elif key == "srcNetworkScope":
             suggest = "src_network_scope"
         elif key == "srcNetworks":
@@ -36666,12 +36735,14 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
                  dest_address_groups: Optional[Sequence[_builtins.str]] = None,
                  dest_fqdns: Optional[Sequence[_builtins.str]] = None,
                  dest_ip_ranges: Optional[Sequence[_builtins.str]] = None,
+                 dest_network_context: Optional[_builtins.str] = None,
                  dest_network_scope: Optional[_builtins.str] = None,
                  dest_region_codes: Optional[Sequence[_builtins.str]] = None,
                  dest_threat_intelligences: Optional[Sequence[_builtins.str]] = None,
                  src_address_groups: Optional[Sequence[_builtins.str]] = None,
                  src_fqdns: Optional[Sequence[_builtins.str]] = None,
                  src_ip_ranges: Optional[Sequence[_builtins.str]] = None,
+                 src_network_context: Optional[_builtins.str] = None,
                  src_network_scope: Optional[_builtins.str] = None,
                  src_networks: Optional[Sequence[_builtins.str]] = None,
                  src_region_codes: Optional[Sequence[_builtins.str]] = None,
@@ -36683,19 +36754,22 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
         :param Sequence[_builtins.str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         :param Sequence[_builtins.str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param Sequence[_builtins.str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param _builtins.str dest_network_context: Network context of the traffic destination.
+               Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param _builtins.str dest_network_scope: (Optional, Beta)
                Network scope of the traffic destination.
-               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+               Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param Sequence[_builtins.str] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param Sequence[_builtins.str] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param Sequence[_builtins.str] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         :param Sequence[_builtins.str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param Sequence[_builtins.str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param _builtins.str src_network_context: Network context of the traffic source.
+               Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param _builtins.str src_network_scope: (Optional, Beta)
                Network scope of the traffic source.
-               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
-        :param Sequence[_builtins.str] src_networks: (Optional, Beta)
-               Networks of the traffic source. It can be either a full or partial url.
+               Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        :param Sequence[_builtins.str] src_networks: Networks of the traffic source. It can be either a full or partial url.
         :param Sequence[_builtins.str] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param Sequence['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
                Structure is documented below.
@@ -36711,6 +36785,8 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
             pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_network_context is not None:
+            pulumi.set(__self__, "dest_network_context", dest_network_context)
         if dest_network_scope is not None:
             pulumi.set(__self__, "dest_network_scope", dest_network_scope)
         if dest_region_codes is not None:
@@ -36723,6 +36799,8 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
             pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_network_context is not None:
+            pulumi.set(__self__, "src_network_context", src_network_context)
         if src_network_scope is not None:
             pulumi.set(__self__, "src_network_scope", src_network_scope)
         if src_networks is not None:
@@ -36768,12 +36846,21 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
         return pulumi.get(self, "dest_ip_ranges")
 
     @_builtins.property
+    @pulumi.getter(name="destNetworkContext")
+    def dest_network_context(self) -> Optional[_builtins.str]:
+        """
+        Network context of the traffic destination.
+        Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "dest_network_context")
+
+    @_builtins.property
     @pulumi.getter(name="destNetworkScope")
     def dest_network_scope(self) -> Optional[_builtins.str]:
         """
         (Optional, Beta)
         Network scope of the traffic destination.
-        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
         return pulumi.get(self, "dest_network_scope")
 
@@ -36818,12 +36905,21 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
         return pulumi.get(self, "src_ip_ranges")
 
     @_builtins.property
+    @pulumi.getter(name="srcNetworkContext")
+    def src_network_context(self) -> Optional[_builtins.str]:
+        """
+        Network context of the traffic source.
+        Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "src_network_context")
+
+    @_builtins.property
     @pulumi.getter(name="srcNetworkScope")
     def src_network_scope(self) -> Optional[_builtins.str]:
         """
         (Optional, Beta)
         Network scope of the traffic source.
-        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
         return pulumi.get(self, "src_network_scope")
 
@@ -36831,7 +36927,6 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcNetworks")
     def src_networks(self) -> Optional[Sequence[_builtins.str]]:
         """
-        (Optional, Beta)
         Networks of the traffic source. It can be either a full or partial url.
         """
         return pulumi.get(self, "src_networks")
@@ -55256,6 +55351,8 @@ class ServiceAttachmentConsumerAcceptList(dict):
         suggest = None
         if key == "connectionLimit":
             suggest = "connection_limit"
+        elif key == "endpointUrl":
+            suggest = "endpoint_url"
         elif key == "networkUrl":
             suggest = "network_url"
         elif key == "projectIdOrNum":
@@ -55274,17 +55371,23 @@ class ServiceAttachmentConsumerAcceptList(dict):
 
     def __init__(__self__, *,
                  connection_limit: _builtins.int,
+                 endpoint_url: Optional[_builtins.str] = None,
                  network_url: Optional[_builtins.str] = None,
                  project_id_or_num: Optional[_builtins.str] = None):
         """
         :param _builtins.int connection_limit: The number of consumer forwarding rules the consumer project can
                create.
+        :param _builtins.str endpoint_url: (Optional, Beta)
+               The endpoint that is allowed to connect to this service attachment.
+               Only one of project_id_or_num, network_url and endpoint_url may be set.
         :param _builtins.str network_url: The network that is allowed to connect to this service attachment.
                Only one of project_id_or_num and network_url may be set.
         :param _builtins.str project_id_or_num: A project that is allowed to connect to this service attachment.
                Only one of project_id_or_num and network_url may be set.
         """
         pulumi.set(__self__, "connection_limit", connection_limit)
+        if endpoint_url is not None:
+            pulumi.set(__self__, "endpoint_url", endpoint_url)
         if network_url is not None:
             pulumi.set(__self__, "network_url", network_url)
         if project_id_or_num is not None:
@@ -55298,6 +55401,16 @@ class ServiceAttachmentConsumerAcceptList(dict):
         create.
         """
         return pulumi.get(self, "connection_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="endpointUrl")
+    def endpoint_url(self) -> Optional[_builtins.str]:
+        """
+        (Optional, Beta)
+        The endpoint that is allowed to connect to this service attachment.
+        Only one of project_id_or_num, network_url and endpoint_url may be set.
+        """
+        return pulumi.get(self, "endpoint_url")
 
     @_builtins.property
     @pulumi.getter(name="networkUrl")

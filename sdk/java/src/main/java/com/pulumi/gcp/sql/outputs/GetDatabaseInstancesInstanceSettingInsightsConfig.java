@@ -12,6 +12,11 @@ import java.util.Objects;
 @CustomType
 public final class GetDatabaseInstancesInstanceSettingInsightsConfig {
     /**
+     * @return True if Enhanced Query Insights feature is enabled.
+     * 
+     */
+    private Boolean enhancedQueryInsightsEnabled;
+    /**
      * @return True if Query Insights feature is enabled.
      * 
      */
@@ -22,7 +27,7 @@ public final class GetDatabaseInstancesInstanceSettingInsightsConfig {
      */
     private Integer queryPlansPerMinute;
     /**
-     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
+     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1024 to 100000.
      * 
      */
     private Integer queryStringLength;
@@ -39,6 +44,13 @@ public final class GetDatabaseInstancesInstanceSettingInsightsConfig {
 
     private GetDatabaseInstancesInstanceSettingInsightsConfig() {}
     /**
+     * @return True if Enhanced Query Insights feature is enabled.
+     * 
+     */
+    public Boolean enhancedQueryInsightsEnabled() {
+        return this.enhancedQueryInsightsEnabled;
+    }
+    /**
      * @return True if Query Insights feature is enabled.
      * 
      */
@@ -53,7 +65,7 @@ public final class GetDatabaseInstancesInstanceSettingInsightsConfig {
         return this.queryPlansPerMinute;
     }
     /**
-     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
+     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1024 to 100000.
      * 
      */
     public Integer queryStringLength() {
@@ -83,6 +95,7 @@ public final class GetDatabaseInstancesInstanceSettingInsightsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean enhancedQueryInsightsEnabled;
         private Boolean queryInsightsEnabled;
         private Integer queryPlansPerMinute;
         private Integer queryStringLength;
@@ -91,6 +104,7 @@ public final class GetDatabaseInstancesInstanceSettingInsightsConfig {
         public Builder() {}
         public Builder(GetDatabaseInstancesInstanceSettingInsightsConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enhancedQueryInsightsEnabled = defaults.enhancedQueryInsightsEnabled;
     	      this.queryInsightsEnabled = defaults.queryInsightsEnabled;
     	      this.queryPlansPerMinute = defaults.queryPlansPerMinute;
     	      this.queryStringLength = defaults.queryStringLength;
@@ -98,6 +112,14 @@ public final class GetDatabaseInstancesInstanceSettingInsightsConfig {
     	      this.recordClientAddress = defaults.recordClientAddress;
         }
 
+        @CustomType.Setter
+        public Builder enhancedQueryInsightsEnabled(Boolean enhancedQueryInsightsEnabled) {
+            if (enhancedQueryInsightsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingInsightsConfig", "enhancedQueryInsightsEnabled");
+            }
+            this.enhancedQueryInsightsEnabled = enhancedQueryInsightsEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder queryInsightsEnabled(Boolean queryInsightsEnabled) {
             if (queryInsightsEnabled == null) {
@@ -140,6 +162,7 @@ public final class GetDatabaseInstancesInstanceSettingInsightsConfig {
         }
         public GetDatabaseInstancesInstanceSettingInsightsConfig build() {
             final var _resultValue = new GetDatabaseInstancesInstanceSettingInsightsConfig();
+            _resultValue.enhancedQueryInsightsEnabled = enhancedQueryInsightsEnabled;
             _resultValue.queryInsightsEnabled = queryInsightsEnabled;
             _resultValue.queryPlansPerMinute = queryPlansPerMinute;
             _resultValue.queryStringLength = queryStringLength;

@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DatabaseInstanceSettingsInsightsConfig {
     /**
+     * @return True if Enhanced Query Insights feature is enabled.
+     * 
+     */
+    private @Nullable Boolean enhancedQueryInsightsEnabled;
+    /**
      * @return True if Query Insights feature is enabled.
      * 
      */
@@ -39,6 +44,13 @@ public final class DatabaseInstanceSettingsInsightsConfig {
     private @Nullable Boolean recordClientAddress;
 
     private DatabaseInstanceSettingsInsightsConfig() {}
+    /**
+     * @return True if Enhanced Query Insights feature is enabled.
+     * 
+     */
+    public Optional<Boolean> enhancedQueryInsightsEnabled() {
+        return Optional.ofNullable(this.enhancedQueryInsightsEnabled);
+    }
     /**
      * @return True if Query Insights feature is enabled.
      * 
@@ -84,6 +96,7 @@ public final class DatabaseInstanceSettingsInsightsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean enhancedQueryInsightsEnabled;
         private @Nullable Boolean queryInsightsEnabled;
         private @Nullable Integer queryPlansPerMinute;
         private @Nullable Integer queryStringLength;
@@ -92,6 +105,7 @@ public final class DatabaseInstanceSettingsInsightsConfig {
         public Builder() {}
         public Builder(DatabaseInstanceSettingsInsightsConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enhancedQueryInsightsEnabled = defaults.enhancedQueryInsightsEnabled;
     	      this.queryInsightsEnabled = defaults.queryInsightsEnabled;
     	      this.queryPlansPerMinute = defaults.queryPlansPerMinute;
     	      this.queryStringLength = defaults.queryStringLength;
@@ -99,6 +113,12 @@ public final class DatabaseInstanceSettingsInsightsConfig {
     	      this.recordClientAddress = defaults.recordClientAddress;
         }
 
+        @CustomType.Setter
+        public Builder enhancedQueryInsightsEnabled(@Nullable Boolean enhancedQueryInsightsEnabled) {
+
+            this.enhancedQueryInsightsEnabled = enhancedQueryInsightsEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder queryInsightsEnabled(@Nullable Boolean queryInsightsEnabled) {
 
@@ -131,6 +151,7 @@ public final class DatabaseInstanceSettingsInsightsConfig {
         }
         public DatabaseInstanceSettingsInsightsConfig build() {
             final var _resultValue = new DatabaseInstanceSettingsInsightsConfig();
+            _resultValue.enhancedQueryInsightsEnabled = enhancedQueryInsightsEnabled;
             _resultValue.queryInsightsEnabled = queryInsightsEnabled;
             _resultValue.queryPlansPerMinute = queryPlansPerMinute;
             _resultValue.queryStringLength = queryStringLength;

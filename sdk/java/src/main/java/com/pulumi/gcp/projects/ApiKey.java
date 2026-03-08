@@ -378,14 +378,14 @@ public class ApiKey extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.restrictions);
     }
     /**
-     * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+     * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
      * 
      */
     @Export(name="serviceAccountEmail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccountEmail;
 
     /**
-     * @return The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+     * @return The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
      * 
      */
     public Output<Optional<String>> serviceAccountEmail() {

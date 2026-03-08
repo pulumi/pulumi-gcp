@@ -29,6 +29,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// RBACRolebinding Actuation feature spec.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureSpecRbacrolebindingactuationResult> Rbacrolebindingactuations;
+        /// <summary>
+        /// Workload Identity feature spec.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetFeatureSpecWorkloadidentityResult> Workloadidentities;
 
         [OutputConstructor]
         private GetFeatureSpecResult(
@@ -38,12 +42,15 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             ImmutableArray<Outputs.GetFeatureSpecMulticlusteringressResult> multiclusteringresses,
 
-            ImmutableArray<Outputs.GetFeatureSpecRbacrolebindingactuationResult> rbacrolebindingactuations)
+            ImmutableArray<Outputs.GetFeatureSpecRbacrolebindingactuationResult> rbacrolebindingactuations,
+
+            ImmutableArray<Outputs.GetFeatureSpecWorkloadidentityResult> workloadidentities)
         {
             Clusterupgrades = clusterupgrades;
             Fleetobservabilities = fleetobservabilities;
             Multiclusteringresses = multiclusteringresses;
             Rbacrolebindingactuations = rbacrolebindingactuations;
+            Workloadidentities = workloadidentities;
         }
     }
 }

@@ -27,9 +27,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Preconfigured versioned expression. For organization security policy rules,
-        /// the only supported type is "FIREWALL".
-        /// Default value is `FIREWALL`.
-        /// Possible values are: `FIREWALL`.
+        /// the only supported type is "SRC_IPS_V1".
+        /// **NOTE** : 'FIREWALL' type is deprecated. Please use 'google_compute_firewall_policy_rule' resource instead.
         /// </summary>
         [Input("versionedExpr")]
         public Input<string>? VersionedExpr { get; set; }

@@ -694,6 +694,70 @@ class FirewallPolicyRule(pulumi.CustomResource):
                 ],
             })
         ```
+        ### Firewall Policy Rule Network Context
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.organizations.Folder("folder",
+            display_name="folder",
+            parent="organizations/123456789",
+            deletion_protection=False)
+        default = gcp.compute.FirewallPolicy("default",
+            parent=folder.id,
+            short_name="fw-policy",
+            description="Firewall policy")
+        primary = gcp.compute.FirewallPolicyRule("primary",
+            firewall_policy=default.name,
+            description="Firewall policy rule with network context",
+            priority=8000,
+            action="allow",
+            direction="INGRESS",
+            disabled=False,
+            match={
+                "src_ip_ranges": ["11.100.0.1/32"],
+                "src_network_context": "INTERNET",
+                "layer4_configs": [
+                    {
+                        "ip_protocol": "tcp",
+                        "ports": ["8080"],
+                    },
+                    {
+                        "ip_protocol": "udp",
+                        "ports": ["22"],
+                    },
+                ],
+            })
+        egress_primary = gcp.compute.FirewallPolicyRule("egress-primary",
+            firewall_policy=default.name,
+            description="Firewall policy rule with network context",
+            priority=9000,
+            action="allow",
+            direction="EGRESS",
+            disabled=False,
+            match={
+                "dest_ip_ranges": ["11.100.0.1/32"],
+                "dest_network_context": "NON_INTERNET",
+                "layer4_configs": [{
+                    "ip_protocol": "tcp",
+                }],
+            })
+        unset_primary = gcp.compute.FirewallPolicyRule("unset-primary",
+            firewall_policy=default.name,
+            description="Firewall policy rule with network context",
+            priority=10000,
+            action="allow",
+            direction="EGRESS",
+            disabled=False,
+            match={
+                "dest_ip_ranges": ["11.100.0.1/32"],
+                "dest_network_context": "UNSPECIFIED",
+                "layer4_configs": [{
+                    "ip_protocol": "tcp",
+                }],
+            })
+        ```
         ### Firewall Policy Rule Secure Tags
 
         ```python
@@ -912,6 +976,70 @@ class FirewallPolicyRule(pulumi.CustomResource):
                         "ports": ["22"],
                     },
                 ],
+            })
+        ```
+        ### Firewall Policy Rule Network Context
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.organizations.Folder("folder",
+            display_name="folder",
+            parent="organizations/123456789",
+            deletion_protection=False)
+        default = gcp.compute.FirewallPolicy("default",
+            parent=folder.id,
+            short_name="fw-policy",
+            description="Firewall policy")
+        primary = gcp.compute.FirewallPolicyRule("primary",
+            firewall_policy=default.name,
+            description="Firewall policy rule with network context",
+            priority=8000,
+            action="allow",
+            direction="INGRESS",
+            disabled=False,
+            match={
+                "src_ip_ranges": ["11.100.0.1/32"],
+                "src_network_context": "INTERNET",
+                "layer4_configs": [
+                    {
+                        "ip_protocol": "tcp",
+                        "ports": ["8080"],
+                    },
+                    {
+                        "ip_protocol": "udp",
+                        "ports": ["22"],
+                    },
+                ],
+            })
+        egress_primary = gcp.compute.FirewallPolicyRule("egress-primary",
+            firewall_policy=default.name,
+            description="Firewall policy rule with network context",
+            priority=9000,
+            action="allow",
+            direction="EGRESS",
+            disabled=False,
+            match={
+                "dest_ip_ranges": ["11.100.0.1/32"],
+                "dest_network_context": "NON_INTERNET",
+                "layer4_configs": [{
+                    "ip_protocol": "tcp",
+                }],
+            })
+        unset_primary = gcp.compute.FirewallPolicyRule("unset-primary",
+            firewall_policy=default.name,
+            description="Firewall policy rule with network context",
+            priority=10000,
+            action="allow",
+            direction="EGRESS",
+            disabled=False,
+            match={
+                "dest_ip_ranges": ["11.100.0.1/32"],
+                "dest_network_context": "UNSPECIFIED",
+                "layer4_configs": [{
+                    "ip_protocol": "tcp",
+                }],
             })
         ```
         ### Firewall Policy Rule Secure Tags

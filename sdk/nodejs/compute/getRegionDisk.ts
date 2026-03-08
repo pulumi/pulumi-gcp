@@ -56,6 +56,7 @@ export interface GetRegionDiskResult {
     readonly diskEncryptionKeys: outputs.compute.GetRegionDiskDiskEncryptionKey[];
     readonly diskId: string;
     readonly effectiveLabels: {[key: string]: string};
+    readonly eraseWindowsVssSignature: boolean;
     readonly guestOsFeatures: outputs.compute.GetRegionDiskGuestOsFeature[];
     /**
      * The provider-assigned unique ID for this managed resource.

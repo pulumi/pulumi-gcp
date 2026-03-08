@@ -369,6 +369,12 @@ class InstanceFileSharesArgsDict(TypedDict):
     projects/{projectId}/locations/{locationId}/backups/{backupId},
     that this file share has been restored from.
     """
+    source_backupdr_backup: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource name of the BackupDR backup, in the format
+    `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+    that this file share has been restored from.
+    """
 
 @pulumi.input_type
 class InstanceFileSharesArgs:
@@ -376,7 +382,8 @@ class InstanceFileSharesArgs:
                  capacity_gb: pulumi.Input[_builtins.int],
                  name: pulumi.Input[_builtins.str],
                  nfs_export_options: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]] = None,
-                 source_backup: Optional[pulumi.Input[_builtins.str]] = None):
+                 source_backup: Optional[pulumi.Input[_builtins.str]] = None,
+                 source_backupdr_backup: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] capacity_gb: File share capacity in GiB. This must be at least 1024 GiB
                for the standard tier, or 2560 GiB for the premium tier.
@@ -386,6 +393,9 @@ class InstanceFileSharesArgs:
         :param pulumi.Input[_builtins.str] source_backup: The resource name of the backup, in the format
                projects/{projectId}/locations/{locationId}/backups/{backupId},
                that this file share has been restored from.
+        :param pulumi.Input[_builtins.str] source_backupdr_backup: The resource name of the BackupDR backup, in the format
+               `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+               that this file share has been restored from.
         """
         pulumi.set(__self__, "capacity_gb", capacity_gb)
         pulumi.set(__self__, "name", name)
@@ -393,6 +403,8 @@ class InstanceFileSharesArgs:
             pulumi.set(__self__, "nfs_export_options", nfs_export_options)
         if source_backup is not None:
             pulumi.set(__self__, "source_backup", source_backup)
+        if source_backupdr_backup is not None:
+            pulumi.set(__self__, "source_backupdr_backup", source_backupdr_backup)
 
     @_builtins.property
     @pulumi.getter(name="capacityGb")
@@ -445,6 +457,20 @@ class InstanceFileSharesArgs:
     @source_backup.setter
     def source_backup(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "source_backup", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceBackupdrBackup")
+    def source_backupdr_backup(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource name of the BackupDR backup, in the format
+        `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+        that this file share has been restored from.
+        """
+        return pulumi.get(self, "source_backupdr_backup")
+
+    @source_backupdr_backup.setter
+    def source_backupdr_backup(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_backupdr_backup", value)
 
 
 class InstanceFileSharesNfsExportOptionArgsDict(TypedDict):

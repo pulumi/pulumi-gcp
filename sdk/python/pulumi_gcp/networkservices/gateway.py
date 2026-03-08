@@ -41,7 +41,7 @@ class GatewayArgs:
         The set of arguments for constructing a Gateway resource.
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
-               The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+               The proxy binds to the specified ports.
                Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         :param pulumi.Input[_builtins.str] type: Immutable. The type of the customer managed gateway.
                Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
@@ -125,7 +125,7 @@ class GatewayArgs:
     def ports(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]:
         """
         One or more port numbers (1-65535), on which the Gateway will receive traffic.
-        The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+        The proxy binds to the specified ports.
         Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         """
         return pulumi.get(self, "ports")
@@ -423,7 +423,7 @@ class _GatewayState:
                For example: 'projects/*/global/networks/network-1'.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
-               The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+               The proxy binds to the specified ports.
                Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -668,7 +668,7 @@ class _GatewayState:
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         One or more port numbers (1-65535), on which the Gateway will receive traffic.
-        The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+        The proxy binds to the specified ports.
         Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         """
         return pulumi.get(self, "ports")
@@ -1035,7 +1035,7 @@ class Gateway(pulumi.CustomResource):
                For example: 'projects/*/global/networks/network-1'.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
-               The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+               The proxy binds to the specified ports.
                Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1384,7 +1384,7 @@ class Gateway(pulumi.CustomResource):
                For example: 'projects/*/global/networks/network-1'.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
-               The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+               The proxy binds to the specified ports.
                Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1559,7 +1559,7 @@ class Gateway(pulumi.CustomResource):
     def ports(self) -> pulumi.Output[Sequence[_builtins.int]]:
         """
         One or more port numbers (1-65535), on which the Gateway will receive traffic.
-        The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+        The proxy binds to the specified ports.
         Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         """
         return pulumi.get(self, "ports")

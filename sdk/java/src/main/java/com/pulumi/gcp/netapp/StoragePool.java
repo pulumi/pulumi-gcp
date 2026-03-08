@@ -486,6 +486,26 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.replicaZone);
     }
     /**
+     * (Optional, Beta)
+     * The effective scale tier of the storage pool. If `scaleTier` is not
+     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     * 
+     */
+    @Export(name="scaleTier", refs={String.class}, tree="[0]")
+    private Output<String> scaleTier;
+
+    /**
+     * @return (Optional, Beta)
+     * The effective scale tier of the storage pool. If `scaleTier` is not
+     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     * 
+     */
+    public Output<String> scaleTier() {
+        return this.scaleTier;
+    }
+    /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      * 

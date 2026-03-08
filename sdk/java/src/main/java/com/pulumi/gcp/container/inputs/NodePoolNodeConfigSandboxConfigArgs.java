@@ -5,9 +5,10 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class NodePoolNodeConfigSandboxConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,24 +16,48 @@ public final class NodePoolNodeConfigSandboxConfigArgs extends com.pulumi.resour
     public static final NodePoolNodeConfigSandboxConfigArgs Empty = new NodePoolNodeConfigSandboxConfigArgs();
 
     /**
-     * Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;)
+     * Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;). Deprecated in favor of type.
+     * 
+     * @deprecated
+     * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
      * 
      */
-    @Import(name="sandboxType", required=true)
-    private Output<String> sandboxType;
+    @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+    @Import(name="sandboxType")
+    private @Nullable Output<String> sandboxType;
 
     /**
-     * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;)
+     * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;). Deprecated in favor of type.
+     * 
+     * @deprecated
+     * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
      * 
      */
-    public Output<String> sandboxType() {
-        return this.sandboxType;
+    @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+    public Optional<Output<String>> sandboxType() {
+        return Optional.ofNullable(this.sandboxType);
+    }
+
+    /**
+     * Type of the sandbox to use for the node (e.g. &#39;GVISOR&#39;).
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Type of the sandbox to use for the node (e.g. &#39;GVISOR&#39;).
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private NodePoolNodeConfigSandboxConfigArgs() {}
 
     private NodePoolNodeConfigSandboxConfigArgs(NodePoolNodeConfigSandboxConfigArgs $) {
         this.sandboxType = $.sandboxType;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -54,30 +79,56 @@ public final class NodePoolNodeConfigSandboxConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param sandboxType Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;)
+         * @param sandboxType Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;). Deprecated in favor of type.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+         * 
          */
-        public Builder sandboxType(Output<String> sandboxType) {
+        @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+        public Builder sandboxType(@Nullable Output<String> sandboxType) {
             $.sandboxType = sandboxType;
             return this;
         }
 
         /**
-         * @param sandboxType Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;)
+         * @param sandboxType Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;). Deprecated in favor of type.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+         * 
          */
+        @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
         public Builder sandboxType(String sandboxType) {
             return sandboxType(Output.of(sandboxType));
         }
 
+        /**
+         * @param type Type of the sandbox to use for the node (e.g. &#39;GVISOR&#39;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Type of the sandbox to use for the node (e.g. &#39;GVISOR&#39;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
         public NodePoolNodeConfigSandboxConfigArgs build() {
-            if ($.sandboxType == null) {
-                throw new MissingRequiredPropertyException("NodePoolNodeConfigSandboxConfigArgs", "sandboxType");
-            }
             return $;
         }
     }

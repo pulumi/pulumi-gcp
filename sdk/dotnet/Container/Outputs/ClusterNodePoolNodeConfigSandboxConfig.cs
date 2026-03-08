@@ -14,17 +14,28 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolNodeConfigSandboxConfig
     {
         /// <summary>
-        /// Which sandbox to use for pods in the node pool.
+        /// Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
         /// Accepted values are:
         /// 
         /// * `"gvisor"`: Pods run within a gVisor sandbox.
         /// </summary>
-        public readonly string SandboxType;
+        public readonly string? SandboxType;
+        /// <summary>
+        /// Which sandbox to use for pods in the node pool.
+        /// Accepted values are:
+        /// 
+        /// * `"GVISOR"`: Pods run within a gVisor sandbox.
+        /// </summary>
+        public readonly string? Type;
 
         [OutputConstructor]
-        private ClusterNodePoolNodeConfigSandboxConfig(string sandboxType)
+        private ClusterNodePoolNodeConfigSandboxConfig(
+            string? sandboxType,
+
+            string? type)
         {
             SandboxType = sandboxType;
+            Type = type;
         }
     }
 }
