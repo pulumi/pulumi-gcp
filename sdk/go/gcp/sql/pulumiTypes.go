@@ -1619,6 +1619,13 @@ type DatabaseInstanceSettings struct {
 	ActivationPolicy        *string                                          `pulumi:"activationPolicy"`
 	ActiveDirectoryConfig   *DatabaseInstanceSettingsActiveDirectoryConfig   `pulumi:"activeDirectoryConfig"`
 	AdvancedMachineFeatures *DatabaseInstanceSettingsAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
+	// Enables
+	// [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+	// feature. When this field is set to `true`, Automatic Upgrade is enabled for
+	// `MYSQL_8_0` based minor versions. The `databaseVersion` must be
+	// `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can't be unset or
+	// changed if set to `true`.
+	AutoUpgradeEnabled *bool `pulumi:"autoUpgradeEnabled"`
 	// The availability type of the Cloud SQL
 	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
 	// `settings.backup_configuration.enabled` is set to `true`.
@@ -1635,6 +1642,8 @@ type DatabaseInstanceSettings struct {
 	ConnectionPoolConfigs []DatabaseInstanceSettingsConnectionPoolConfig `pulumi:"connectionPoolConfigs"`
 	// Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement *string `pulumi:"connectorEnforcement"`
+	// Configures ExecuteSql API's access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
+	DataApiAccess *string `pulumi:"dataApiAccess"`
 	// Data cache configurations.
 	DataCacheConfig *DatabaseInstanceSettingsDataCacheConfig `pulumi:"dataCacheConfig"`
 	// Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
@@ -1711,6 +1720,13 @@ type DatabaseInstanceSettingsArgs struct {
 	ActivationPolicy        pulumi.StringPtrInput                                   `pulumi:"activationPolicy"`
 	ActiveDirectoryConfig   DatabaseInstanceSettingsActiveDirectoryConfigPtrInput   `pulumi:"activeDirectoryConfig"`
 	AdvancedMachineFeatures DatabaseInstanceSettingsAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
+	// Enables
+	// [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+	// feature. When this field is set to `true`, Automatic Upgrade is enabled for
+	// `MYSQL_8_0` based minor versions. The `databaseVersion` must be
+	// `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can't be unset or
+	// changed if set to `true`.
+	AutoUpgradeEnabled pulumi.BoolPtrInput `pulumi:"autoUpgradeEnabled"`
 	// The availability type of the Cloud SQL
 	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
 	// `settings.backup_configuration.enabled` is set to `true`.
@@ -1727,6 +1743,8 @@ type DatabaseInstanceSettingsArgs struct {
 	ConnectionPoolConfigs DatabaseInstanceSettingsConnectionPoolConfigArrayInput `pulumi:"connectionPoolConfigs"`
 	// Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement pulumi.StringPtrInput `pulumi:"connectorEnforcement"`
+	// Configures ExecuteSql API's access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
+	DataApiAccess pulumi.StringPtrInput `pulumi:"dataApiAccess"`
 	// Data cache configurations.
 	DataCacheConfig DatabaseInstanceSettingsDataCacheConfigPtrInput `pulumi:"dataCacheConfig"`
 	// Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
@@ -1881,6 +1899,16 @@ func (o DatabaseInstanceSettingsOutput) AdvancedMachineFeatures() DatabaseInstan
 	}).(DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput)
 }
 
+// Enables
+// [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+// feature. When this field is set to `true`, Automatic Upgrade is enabled for
+// `MYSQL_8_0` based minor versions. The `databaseVersion` must be
+// `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can't be unset or
+// changed if set to `true`.
+func (o DatabaseInstanceSettingsOutput) AutoUpgradeEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.AutoUpgradeEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // The availability type of the Cloud SQL
 // instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
 // `settings.backup_configuration.enabled` is set to `true`.
@@ -1914,6 +1942,11 @@ func (o DatabaseInstanceSettingsOutput) ConnectionPoolConfigs() DatabaseInstance
 // Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
 func (o DatabaseInstanceSettingsOutput) ConnectorEnforcement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.ConnectorEnforcement }).(pulumi.StringPtrOutput)
+}
+
+// Configures ExecuteSql API's access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
+func (o DatabaseInstanceSettingsOutput) DataApiAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.DataApiAccess }).(pulumi.StringPtrOutput)
 }
 
 // Data cache configurations.
@@ -2124,6 +2157,21 @@ func (o DatabaseInstanceSettingsPtrOutput) AdvancedMachineFeatures() DatabaseIns
 	}).(DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput)
 }
 
+// Enables
+// [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+// feature. When this field is set to `true`, Automatic Upgrade is enabled for
+// `MYSQL_8_0` based minor versions. The `databaseVersion` must be
+// `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can't be unset or
+// changed if set to `true`.
+func (o DatabaseInstanceSettingsPtrOutput) AutoUpgradeEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoUpgradeEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The availability type of the Cloud SQL
 // instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
 // `settings.backup_configuration.enabled` is set to `true`.
@@ -2177,6 +2225,16 @@ func (o DatabaseInstanceSettingsPtrOutput) ConnectorEnforcement() pulumi.StringP
 			return nil
 		}
 		return v.ConnectorEnforcement
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configures ExecuteSql API's access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
+func (o DatabaseInstanceSettingsPtrOutput) DataApiAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataApiAccess
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3972,6 +4030,8 @@ func (o DatabaseInstanceSettingsFinalBackupConfigPtrOutput) RetentionDays() pulu
 }
 
 type DatabaseInstanceSettingsInsightsConfig struct {
+	// True if Enhanced Query Insights feature is enabled.
+	EnhancedQueryInsightsEnabled *bool `pulumi:"enhancedQueryInsightsEnabled"`
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled *bool `pulumi:"queryInsightsEnabled"`
 	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
@@ -3996,6 +4056,8 @@ type DatabaseInstanceSettingsInsightsConfigInput interface {
 }
 
 type DatabaseInstanceSettingsInsightsConfigArgs struct {
+	// True if Enhanced Query Insights feature is enabled.
+	EnhancedQueryInsightsEnabled pulumi.BoolPtrInput `pulumi:"enhancedQueryInsightsEnabled"`
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled pulumi.BoolPtrInput `pulumi:"queryInsightsEnabled"`
 	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
@@ -4085,6 +4147,11 @@ func (o DatabaseInstanceSettingsInsightsConfigOutput) ToDatabaseInstanceSettings
 	}).(DatabaseInstanceSettingsInsightsConfigPtrOutput)
 }
 
+// True if Enhanced Query Insights feature is enabled.
+func (o DatabaseInstanceSettingsInsightsConfigOutput) EnhancedQueryInsightsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *bool { return v.EnhancedQueryInsightsEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // True if Query Insights feature is enabled.
 func (o DatabaseInstanceSettingsInsightsConfigOutput) QueryInsightsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *bool { return v.QueryInsightsEnabled }).(pulumi.BoolPtrOutput)
@@ -4132,6 +4199,16 @@ func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) Elem() DatabaseInstance
 		var ret DatabaseInstanceSettingsInsightsConfig
 		return ret
 	}).(DatabaseInstanceSettingsInsightsConfigOutput)
+}
+
+// True if Enhanced Query Insights feature is enabled.
+func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) EnhancedQueryInsightsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnhancedQueryInsightsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // True if Query Insights feature is enabled.
@@ -7639,6 +7716,8 @@ type GetDatabaseInstanceSetting struct {
 	ActivationPolicy        string                                             `pulumi:"activationPolicy"`
 	ActiveDirectoryConfigs  []GetDatabaseInstanceSettingActiveDirectoryConfig  `pulumi:"activeDirectoryConfigs"`
 	AdvancedMachineFeatures []GetDatabaseInstanceSettingAdvancedMachineFeature `pulumi:"advancedMachineFeatures"`
+	// Enables Automatic Version Upgrade feature. Can be used with MySQL only.
+	AutoUpgradeEnabled bool `pulumi:"autoUpgradeEnabled"`
 	// The availability type of the Cloud SQL instance, high availability
 	// (REGIONAL) or single zone (ZONAL). For all instances, ensure that
 	// settings.backup_configuration.enabled is set to true.
@@ -7655,6 +7734,8 @@ type GetDatabaseInstanceSetting struct {
 	ConnectionPoolConfigs []GetDatabaseInstanceSettingConnectionPoolConfig `pulumi:"connectionPoolConfigs"`
 	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement string `pulumi:"connectorEnforcement"`
+	// Allows using ExecuteSql API to connect to the instance. Disallowed when unspecified.
+	DataApiAccess string `pulumi:"dataApiAccess"`
 	// Data cache configurations.
 	DataCacheConfigs []GetDatabaseInstanceSettingDataCacheConfig `pulumi:"dataCacheConfigs"`
 	// Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
@@ -7725,6 +7806,8 @@ type GetDatabaseInstanceSettingArgs struct {
 	ActivationPolicy        pulumi.StringInput                                         `pulumi:"activationPolicy"`
 	ActiveDirectoryConfigs  GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput  `pulumi:"activeDirectoryConfigs"`
 	AdvancedMachineFeatures GetDatabaseInstanceSettingAdvancedMachineFeatureArrayInput `pulumi:"advancedMachineFeatures"`
+	// Enables Automatic Version Upgrade feature. Can be used with MySQL only.
+	AutoUpgradeEnabled pulumi.BoolInput `pulumi:"autoUpgradeEnabled"`
 	// The availability type of the Cloud SQL instance, high availability
 	// (REGIONAL) or single zone (ZONAL). For all instances, ensure that
 	// settings.backup_configuration.enabled is set to true.
@@ -7741,6 +7824,8 @@ type GetDatabaseInstanceSettingArgs struct {
 	ConnectionPoolConfigs GetDatabaseInstanceSettingConnectionPoolConfigArrayInput `pulumi:"connectionPoolConfigs"`
 	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement pulumi.StringInput `pulumi:"connectorEnforcement"`
+	// Allows using ExecuteSql API to connect to the instance. Disallowed when unspecified.
+	DataApiAccess pulumi.StringInput `pulumi:"dataApiAccess"`
 	// Data cache configurations.
 	DataCacheConfigs GetDatabaseInstanceSettingDataCacheConfigArrayInput `pulumi:"dataCacheConfigs"`
 	// Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
@@ -7863,6 +7948,11 @@ func (o GetDatabaseInstanceSettingOutput) AdvancedMachineFeatures() GetDatabaseI
 	}).(GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput)
 }
 
+// Enables Automatic Version Upgrade feature. Can be used with MySQL only.
+func (o GetDatabaseInstanceSettingOutput) AutoUpgradeEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) bool { return v.AutoUpgradeEnabled }).(pulumi.BoolOutput)
+}
+
 // The availability type of the Cloud SQL instance, high availability
 // (REGIONAL) or single zone (ZONAL). For all instances, ensure that
 // settings.backup_configuration.enabled is set to true.
@@ -7896,6 +7986,11 @@ func (o GetDatabaseInstanceSettingOutput) ConnectionPoolConfigs() GetDatabaseIns
 // Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 func (o GetDatabaseInstanceSettingOutput) ConnectorEnforcement() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.ConnectorEnforcement }).(pulumi.StringOutput)
+}
+
+// Allows using ExecuteSql API to connect to the instance. Disallowed when unspecified.
+func (o GetDatabaseInstanceSettingOutput) DataApiAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.DataApiAccess }).(pulumi.StringOutput)
 }
 
 // Data cache configurations.
@@ -9176,11 +9271,13 @@ func (o GetDatabaseInstanceSettingFinalBackupConfigArrayOutput) Index(i pulumi.I
 }
 
 type GetDatabaseInstanceSettingInsightsConfig struct {
+	// True if Enhanced Query Insights feature is enabled.
+	EnhancedQueryInsightsEnabled bool `pulumi:"enhancedQueryInsightsEnabled"`
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled bool `pulumi:"queryInsightsEnabled"`
 	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
 	QueryPlansPerMinute int `pulumi:"queryPlansPerMinute"`
-	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
+	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1024 to 100000.
 	QueryStringLength int `pulumi:"queryStringLength"`
 	// True if Query Insights will record application tags from query when enabled.
 	RecordApplicationTags bool `pulumi:"recordApplicationTags"`
@@ -9200,11 +9297,13 @@ type GetDatabaseInstanceSettingInsightsConfigInput interface {
 }
 
 type GetDatabaseInstanceSettingInsightsConfigArgs struct {
+	// True if Enhanced Query Insights feature is enabled.
+	EnhancedQueryInsightsEnabled pulumi.BoolInput `pulumi:"enhancedQueryInsightsEnabled"`
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled pulumi.BoolInput `pulumi:"queryInsightsEnabled"`
 	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
 	QueryPlansPerMinute pulumi.IntInput `pulumi:"queryPlansPerMinute"`
-	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
+	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1024 to 100000.
 	QueryStringLength pulumi.IntInput `pulumi:"queryStringLength"`
 	// True if Query Insights will record application tags from query when enabled.
 	RecordApplicationTags pulumi.BoolInput `pulumi:"recordApplicationTags"`
@@ -9263,6 +9362,11 @@ func (o GetDatabaseInstanceSettingInsightsConfigOutput) ToGetDatabaseInstanceSet
 	return o
 }
 
+// True if Enhanced Query Insights feature is enabled.
+func (o GetDatabaseInstanceSettingInsightsConfigOutput) EnhancedQueryInsightsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) bool { return v.EnhancedQueryInsightsEnabled }).(pulumi.BoolOutput)
+}
+
 // True if Query Insights feature is enabled.
 func (o GetDatabaseInstanceSettingInsightsConfigOutput) QueryInsightsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) bool { return v.QueryInsightsEnabled }).(pulumi.BoolOutput)
@@ -9273,7 +9377,7 @@ func (o GetDatabaseInstanceSettingInsightsConfigOutput) QueryPlansPerMinute() pu
 	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) int { return v.QueryPlansPerMinute }).(pulumi.IntOutput)
 }
 
-// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
+// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1024 to 100000.
 func (o GetDatabaseInstanceSettingInsightsConfigOutput) QueryStringLength() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) int { return v.QueryStringLength }).(pulumi.IntOutput)
 }
@@ -12056,6 +12160,8 @@ type GetDatabaseInstancesInstanceSetting struct {
 	ActivationPolicy        string                                                      `pulumi:"activationPolicy"`
 	ActiveDirectoryConfigs  []GetDatabaseInstancesInstanceSettingActiveDirectoryConfig  `pulumi:"activeDirectoryConfigs"`
 	AdvancedMachineFeatures []GetDatabaseInstancesInstanceSettingAdvancedMachineFeature `pulumi:"advancedMachineFeatures"`
+	// Enables Automatic Version Upgrade feature. Can be used with MySQL only.
+	AutoUpgradeEnabled bool `pulumi:"autoUpgradeEnabled"`
 	// The availability type of the Cloud SQL instance, high availability
 	// (REGIONAL) or single zone (ZONAL). For all instances, ensure that
 	// settings.backup_configuration.enabled is set to true.
@@ -12072,6 +12178,8 @@ type GetDatabaseInstancesInstanceSetting struct {
 	ConnectionPoolConfigs []GetDatabaseInstancesInstanceSettingConnectionPoolConfig `pulumi:"connectionPoolConfigs"`
 	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement string `pulumi:"connectorEnforcement"`
+	// Allows using ExecuteSql API to connect to the instance. Disallowed when unspecified.
+	DataApiAccess string `pulumi:"dataApiAccess"`
 	// Data cache configurations.
 	DataCacheConfigs []GetDatabaseInstancesInstanceSettingDataCacheConfig `pulumi:"dataCacheConfigs"`
 	// Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
@@ -12142,6 +12250,8 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	ActivationPolicy        pulumi.StringInput                                                  `pulumi:"activationPolicy"`
 	ActiveDirectoryConfigs  GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayInput  `pulumi:"activeDirectoryConfigs"`
 	AdvancedMachineFeatures GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayInput `pulumi:"advancedMachineFeatures"`
+	// Enables Automatic Version Upgrade feature. Can be used with MySQL only.
+	AutoUpgradeEnabled pulumi.BoolInput `pulumi:"autoUpgradeEnabled"`
 	// The availability type of the Cloud SQL instance, high availability
 	// (REGIONAL) or single zone (ZONAL). For all instances, ensure that
 	// settings.backup_configuration.enabled is set to true.
@@ -12158,6 +12268,8 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	ConnectionPoolConfigs GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayInput `pulumi:"connectionPoolConfigs"`
 	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement pulumi.StringInput `pulumi:"connectorEnforcement"`
+	// Allows using ExecuteSql API to connect to the instance. Disallowed when unspecified.
+	DataApiAccess pulumi.StringInput `pulumi:"dataApiAccess"`
 	// Data cache configurations.
 	DataCacheConfigs GetDatabaseInstancesInstanceSettingDataCacheConfigArrayInput `pulumi:"dataCacheConfigs"`
 	// Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
@@ -12280,6 +12392,11 @@ func (o GetDatabaseInstancesInstanceSettingOutput) AdvancedMachineFeatures() Get
 	}).(GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput)
 }
 
+// Enables Automatic Version Upgrade feature. Can be used with MySQL only.
+func (o GetDatabaseInstancesInstanceSettingOutput) AutoUpgradeEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) bool { return v.AutoUpgradeEnabled }).(pulumi.BoolOutput)
+}
+
 // The availability type of the Cloud SQL instance, high availability
 // (REGIONAL) or single zone (ZONAL). For all instances, ensure that
 // settings.backup_configuration.enabled is set to true.
@@ -12313,6 +12430,11 @@ func (o GetDatabaseInstancesInstanceSettingOutput) ConnectionPoolConfigs() GetDa
 // Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 func (o GetDatabaseInstancesInstanceSettingOutput) ConnectorEnforcement() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.ConnectorEnforcement }).(pulumi.StringOutput)
+}
+
+// Allows using ExecuteSql API to connect to the instance. Disallowed when unspecified.
+func (o GetDatabaseInstancesInstanceSettingOutput) DataApiAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.DataApiAccess }).(pulumi.StringOutput)
 }
 
 // Data cache configurations.
@@ -13601,11 +13723,13 @@ func (o GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput) Index(i
 }
 
 type GetDatabaseInstancesInstanceSettingInsightsConfig struct {
+	// True if Enhanced Query Insights feature is enabled.
+	EnhancedQueryInsightsEnabled bool `pulumi:"enhancedQueryInsightsEnabled"`
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled bool `pulumi:"queryInsightsEnabled"`
 	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
 	QueryPlansPerMinute int `pulumi:"queryPlansPerMinute"`
-	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
+	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1024 to 100000.
 	QueryStringLength int `pulumi:"queryStringLength"`
 	// True if Query Insights will record application tags from query when enabled.
 	RecordApplicationTags bool `pulumi:"recordApplicationTags"`
@@ -13625,11 +13749,13 @@ type GetDatabaseInstancesInstanceSettingInsightsConfigInput interface {
 }
 
 type GetDatabaseInstancesInstanceSettingInsightsConfigArgs struct {
+	// True if Enhanced Query Insights feature is enabled.
+	EnhancedQueryInsightsEnabled pulumi.BoolInput `pulumi:"enhancedQueryInsightsEnabled"`
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled pulumi.BoolInput `pulumi:"queryInsightsEnabled"`
 	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
 	QueryPlansPerMinute pulumi.IntInput `pulumi:"queryPlansPerMinute"`
-	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
+	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1024 to 100000.
 	QueryStringLength pulumi.IntInput `pulumi:"queryStringLength"`
 	// True if Query Insights will record application tags from query when enabled.
 	RecordApplicationTags pulumi.BoolInput `pulumi:"recordApplicationTags"`
@@ -13688,6 +13814,11 @@ func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) ToGetDatabaseIn
 	return o
 }
 
+// True if Enhanced Query Insights feature is enabled.
+func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) EnhancedQueryInsightsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingInsightsConfig) bool { return v.EnhancedQueryInsightsEnabled }).(pulumi.BoolOutput)
+}
+
 // True if Query Insights feature is enabled.
 func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) QueryInsightsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingInsightsConfig) bool { return v.QueryInsightsEnabled }).(pulumi.BoolOutput)
@@ -13698,7 +13829,7 @@ func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) QueryPlansPerMi
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingInsightsConfig) int { return v.QueryPlansPerMinute }).(pulumi.IntOutput)
 }
 
-// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
+// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1024 to 100000.
 func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) QueryStringLength() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingInsightsConfig) int { return v.QueryStringLength }).(pulumi.IntOutput)
 }

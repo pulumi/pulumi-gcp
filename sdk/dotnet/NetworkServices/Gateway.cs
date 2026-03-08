@@ -427,7 +427,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// One or more port numbers (1-65535), on which the Gateway will receive traffic.
-        /// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+        /// The proxy binds to the specified ports.
         /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         /// </summary>
         [Output("ports")]
@@ -652,7 +652,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// One or more port numbers (1-65535), on which the Gateway will receive traffic.
-        /// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+        /// The proxy binds to the specified ports.
         /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         /// </summary>
         public InputList<int> Ports
@@ -840,7 +840,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// One or more port numbers (1-65535), on which the Gateway will receive traffic.
-        /// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+        /// The proxy binds to the specified ports.
         /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         /// </summary>
         public InputList<int> Ports

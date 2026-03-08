@@ -650,7 +650,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion = &#34;1.12.7-gke.17&#34;` or later to use it.
+     * [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion = &#34;1.12.7-gke.17&#34;` or later to use it.
      * Structure is documented below.
      * 
      */
@@ -658,7 +658,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<ClusterNodeConfigSandboxConfigArgs> sandboxConfig;
 
     /**
-     * @return ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion = &#34;1.12.7-gke.17&#34;` or later to use it.
+     * @return [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion = &#34;1.12.7-gke.17&#34;` or later to use it.
      * Structure is documented below.
      * 
      */
@@ -1762,7 +1762,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sandboxConfig ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion = &#34;1.12.7-gke.17&#34;` or later to use it.
+         * @param sandboxConfig [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion = &#34;1.12.7-gke.17&#34;` or later to use it.
          * Structure is documented below.
          * 
          * @return builder
@@ -1774,7 +1774,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sandboxConfig ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion = &#34;1.12.7-gke.17&#34;` or later to use it.
+         * @param sandboxConfig [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion = &#34;1.12.7-gke.17&#34;` or later to use it.
          * Structure is documented below.
          * 
          * @return builder

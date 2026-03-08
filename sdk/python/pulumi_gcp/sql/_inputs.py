@@ -1041,6 +1041,15 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     """
     active_directory_config: NotRequired[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgsDict']]
     advanced_machine_features: NotRequired[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArgsDict']]
+    auto_upgrade_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables
+    [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+    feature. When this field is set to `true`, Automatic Upgrade is enabled for
+    `MYSQL_8_0` based minor versions. The `database_version` must be
+    `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can't be unset or
+    changed if set to `true`.
+    """
     availability_type: NotRequired[pulumi.Input[_builtins.str]]
     """
     The availability type of the Cloud SQL
@@ -1064,6 +1073,10 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     connector_enforcement: NotRequired[pulumi.Input[_builtins.str]]
     """
     Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
+    """
+    data_api_access: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Configures ExecuteSql API's access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
     """
     data_cache_config: NotRequired[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgsDict']]
     """
@@ -1168,11 +1181,13 @@ class DatabaseInstanceSettingsArgs:
                  activation_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  active_directory_config: Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgs']] = None,
                  advanced_machine_features: Optional[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']] = None,
+                 auto_upgrade_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  availability_type: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']] = None,
                  collation: Optional[pulumi.Input[_builtins.str]] = None,
                  connection_pool_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigArgs']]]] = None,
                  connector_enforcement: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_api_access: Optional[pulumi.Input[_builtins.str]] = None,
                  data_cache_config: Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs']] = None,
                  data_disk_provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
                  data_disk_provisioned_throughput: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1206,6 +1221,12 @@ class DatabaseInstanceSettingsArgs:
                and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
         :param pulumi.Input[_builtins.str] activation_policy: This specifies when the instance should be
                active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+        :param pulumi.Input[_builtins.bool] auto_upgrade_enabled: Enables
+               [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+               feature. When this field is set to `true`, Automatic Upgrade is enabled for
+               `MYSQL_8_0` based minor versions. The `database_version` must be
+               `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can't be unset or
+               changed if set to `true`.
         :param pulumi.Input[_builtins.str] availability_type: The availability type of the Cloud SQL
                instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
                `settings.backup_configuration.enabled` is set to `true`.
@@ -1217,6 +1238,7 @@ class DatabaseInstanceSettingsArgs:
         :param pulumi.Input[_builtins.str] collation: The name of server instance collation.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigArgs']]] connection_pool_configs: The managed connection pool setting for a Cloud SQL instance.
         :param pulumi.Input[_builtins.str] connector_enforcement: Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
+        :param pulumi.Input[_builtins.str] data_api_access: Configures ExecuteSql API's access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
         :param pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs'] data_cache_config: Data cache configurations.
         :param pulumi.Input[_builtins.int] data_disk_provisioned_iops: Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
         :param pulumi.Input[_builtins.int] data_disk_provisioned_throughput: Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
@@ -1251,6 +1273,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "active_directory_config", active_directory_config)
         if advanced_machine_features is not None:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
+        if auto_upgrade_enabled is not None:
+            pulumi.set(__self__, "auto_upgrade_enabled", auto_upgrade_enabled)
         if availability_type is not None:
             pulumi.set(__self__, "availability_type", availability_type)
         if backup_configuration is not None:
@@ -1261,6 +1285,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "connection_pool_configs", connection_pool_configs)
         if connector_enforcement is not None:
             pulumi.set(__self__, "connector_enforcement", connector_enforcement)
+        if data_api_access is not None:
+            pulumi.set(__self__, "data_api_access", data_api_access)
         if data_cache_config is not None:
             pulumi.set(__self__, "data_cache_config", data_cache_config)
         if data_disk_provisioned_iops is not None:
@@ -1362,6 +1388,23 @@ class DatabaseInstanceSettingsArgs:
         pulumi.set(self, "advanced_machine_features", value)
 
     @_builtins.property
+    @pulumi.getter(name="autoUpgradeEnabled")
+    def auto_upgrade_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables
+        [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+        feature. When this field is set to `true`, Automatic Upgrade is enabled for
+        `MYSQL_8_0` based minor versions. The `database_version` must be
+        `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can't be unset or
+        changed if set to `true`.
+        """
+        return pulumi.get(self, "auto_upgrade_enabled")
+
+    @auto_upgrade_enabled.setter
+    def auto_upgrade_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "auto_upgrade_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="availabilityType")
     def availability_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1424,6 +1467,18 @@ class DatabaseInstanceSettingsArgs:
     @connector_enforcement.setter
     def connector_enforcement(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "connector_enforcement", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataApiAccess")
+    def data_api_access(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Configures ExecuteSql API's access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
+        """
+        return pulumi.get(self, "data_api_access")
+
+    @data_api_access.setter
+    def data_api_access(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "data_api_access", value)
 
     @_builtins.property
     @pulumi.getter(name="dataCacheConfig")
@@ -2311,6 +2366,10 @@ class DatabaseInstanceSettingsFinalBackupConfigArgs:
 
 
 class DatabaseInstanceSettingsInsightsConfigArgsDict(TypedDict):
+    enhanced_query_insights_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    True if Enhanced Query Insights feature is enabled.
+    """
     query_insights_enabled: NotRequired[pulumi.Input[_builtins.bool]]
     """
     True if Query Insights feature is enabled.
@@ -2335,18 +2394,22 @@ class DatabaseInstanceSettingsInsightsConfigArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceSettingsInsightsConfigArgs:
     def __init__(__self__, *,
+                 enhanced_query_insights_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  query_insights_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  query_plans_per_minute: Optional[pulumi.Input[_builtins.int]] = None,
                  query_string_length: Optional[pulumi.Input[_builtins.int]] = None,
                  record_application_tags: Optional[pulumi.Input[_builtins.bool]] = None,
                  record_client_address: Optional[pulumi.Input[_builtins.bool]] = None):
         """
+        :param pulumi.Input[_builtins.bool] enhanced_query_insights_enabled: True if Enhanced Query Insights feature is enabled.
         :param pulumi.Input[_builtins.bool] query_insights_enabled: True if Query Insights feature is enabled.
         :param pulumi.Input[_builtins.int] query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
         :param pulumi.Input[_builtins.int] query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
         :param pulumi.Input[_builtins.bool] record_application_tags: True if Query Insights will record application tags from query when enabled.
         :param pulumi.Input[_builtins.bool] record_client_address: True if Query Insights will record client address when enabled.
         """
+        if enhanced_query_insights_enabled is not None:
+            pulumi.set(__self__, "enhanced_query_insights_enabled", enhanced_query_insights_enabled)
         if query_insights_enabled is not None:
             pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
         if query_plans_per_minute is not None:
@@ -2357,6 +2420,18 @@ class DatabaseInstanceSettingsInsightsConfigArgs:
             pulumi.set(__self__, "record_application_tags", record_application_tags)
         if record_client_address is not None:
             pulumi.set(__self__, "record_client_address", record_client_address)
+
+    @_builtins.property
+    @pulumi.getter(name="enhancedQueryInsightsEnabled")
+    def enhanced_query_insights_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        True if Enhanced Query Insights feature is enabled.
+        """
+        return pulumi.get(self, "enhanced_query_insights_enabled")
+
+    @enhanced_query_insights_enabled.setter
+    def enhanced_query_insights_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enhanced_query_insights_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="queryInsightsEnabled")

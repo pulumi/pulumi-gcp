@@ -648,6 +648,10 @@ type InstanceFileShares struct {
 	// projects/{projectId}/locations/{locationId}/backups/{backupId},
 	// that this file share has been restored from.
 	SourceBackup *string `pulumi:"sourceBackup"`
+	// The resource name of the BackupDR backup, in the format
+	// `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+	// that this file share has been restored from.
+	SourceBackupdrBackup *string `pulumi:"sourceBackupdrBackup"`
 }
 
 // InstanceFileSharesInput is an input type that accepts InstanceFileSharesArgs and InstanceFileSharesOutput values.
@@ -674,6 +678,10 @@ type InstanceFileSharesArgs struct {
 	// projects/{projectId}/locations/{locationId}/backups/{backupId},
 	// that this file share has been restored from.
 	SourceBackup pulumi.StringPtrInput `pulumi:"sourceBackup"`
+	// The resource name of the BackupDR backup, in the format
+	// `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+	// that this file share has been restored from.
+	SourceBackupdrBackup pulumi.StringPtrInput `pulumi:"sourceBackupdrBackup"`
 }
 
 func (InstanceFileSharesArgs) ElementType() reflect.Type {
@@ -777,6 +785,13 @@ func (o InstanceFileSharesOutput) SourceBackup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceFileShares) *string { return v.SourceBackup }).(pulumi.StringPtrOutput)
 }
 
+// The resource name of the BackupDR backup, in the format
+// `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+// that this file share has been restored from.
+func (o InstanceFileSharesOutput) SourceBackupdrBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFileShares) *string { return v.SourceBackupdrBackup }).(pulumi.StringPtrOutput)
+}
+
 type InstanceFileSharesPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceFileSharesPtrOutput) ElementType() reflect.Type {
@@ -842,6 +857,18 @@ func (o InstanceFileSharesPtrOutput) SourceBackup() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SourceBackup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the BackupDR backup, in the format
+// `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+// that this file share has been restored from.
+func (o InstanceFileSharesPtrOutput) SourceBackupdrBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFileShares) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceBackupdrBackup
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2583,6 +2610,10 @@ type GetInstanceFileShare struct {
 	// projects/{projectId}/locations/{locationId}/backups/{backupId},
 	// that this file share has been restored from.
 	SourceBackup string `pulumi:"sourceBackup"`
+	// The resource name of the BackupDR backup, in the format
+	// 'projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}',
+	// that this file share has been restored from.
+	SourceBackupdrBackup string `pulumi:"sourceBackupdrBackup"`
 }
 
 // GetInstanceFileShareInput is an input type that accepts GetInstanceFileShareArgs and GetInstanceFileShareOutput values.
@@ -2610,6 +2641,10 @@ type GetInstanceFileShareArgs struct {
 	// projects/{projectId}/locations/{locationId}/backups/{backupId},
 	// that this file share has been restored from.
 	SourceBackup pulumi.StringInput `pulumi:"sourceBackup"`
+	// The resource name of the BackupDR backup, in the format
+	// 'projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}',
+	// that this file share has been restored from.
+	SourceBackupdrBackup pulumi.StringInput `pulumi:"sourceBackupdrBackup"`
 }
 
 func (GetInstanceFileShareArgs) ElementType() reflect.Type {
@@ -2686,6 +2721,13 @@ func (o GetInstanceFileShareOutput) NfsExportOptions() GetInstanceFileShareNfsEx
 // that this file share has been restored from.
 func (o GetInstanceFileShareOutput) SourceBackup() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceFileShare) string { return v.SourceBackup }).(pulumi.StringOutput)
+}
+
+// The resource name of the BackupDR backup, in the format
+// 'projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}',
+// that this file share has been restored from.
+func (o GetInstanceFileShareOutput) SourceBackupdrBackup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceFileShare) string { return v.SourceBackupdrBackup }).(pulumi.StringOutput)
 }
 
 type GetInstanceFileShareArrayOutput struct{ *pulumi.OutputState }

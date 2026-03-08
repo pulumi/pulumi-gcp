@@ -128,7 +128,8 @@ type ServiceConnectionPolicy struct {
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
-	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, google-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+	// For a list of supported services, see [Supported Services](https://docs.cloud.google.com/vpc/docs/about-service-connectivity-automation#supported-services).
 	ServiceClass pulumi.StringOutput `pulumi:"serviceClass"`
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -212,7 +213,8 @@ type serviceConnectionPolicyState struct {
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
-	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, google-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+	// For a list of supported services, see [Supported Services](https://docs.cloud.google.com/vpc/docs/about-service-connectivity-automation#supported-services).
 	ServiceClass *string `pulumi:"serviceClass"`
 	// The timestamp when the resource was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -253,7 +255,8 @@ type ServiceConnectionPolicyState struct {
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
-	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, google-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+	// For a list of supported services, see [Supported Services](https://docs.cloud.google.com/vpc/docs/about-service-connectivity-automation#supported-services).
 	ServiceClass pulumi.StringPtrInput
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -284,7 +287,8 @@ type serviceConnectionPolicyArgs struct {
 	// Structure is documented below.
 	PscConfig *ServiceConnectionPolicyPscConfig `pulumi:"pscConfig"`
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
-	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, google-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+	// For a list of supported services, see [Supported Services](https://docs.cloud.google.com/vpc/docs/about-service-connectivity-automation#supported-services).
 	ServiceClass string `pulumi:"serviceClass"`
 }
 
@@ -310,7 +314,8 @@ type ServiceConnectionPolicyArgs struct {
 	// Structure is documented below.
 	PscConfig ServiceConnectionPolicyPscConfigPtrInput
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
-	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, google-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+	// For a list of supported services, see [Supported Services](https://docs.cloud.google.com/vpc/docs/about-service-connectivity-automation#supported-services).
 	ServiceClass pulumi.StringInput
 }
 
@@ -477,7 +482,8 @@ func (o ServiceConnectionPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
-// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+// It is provided by the Service Producer. Google services have a prefix of gcp. For example, google-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+// For a list of supported services, see [Supported Services](https://docs.cloud.google.com/vpc/docs/about-service-connectivity-automation#supported-services).
 func (o ServiceConnectionPolicyOutput) ServiceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringOutput { return v.ServiceClass }).(pulumi.StringOutput)
 }

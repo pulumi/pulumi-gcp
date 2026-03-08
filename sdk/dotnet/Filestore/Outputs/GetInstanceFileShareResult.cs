@@ -34,6 +34,12 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// that this file share has been restored from.
         /// </summary>
         public readonly string SourceBackup;
+        /// <summary>
+        /// The resource name of the BackupDR backup, in the format
+        /// 'projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}',
+        /// that this file share has been restored from.
+        /// </summary>
+        public readonly string SourceBackupdrBackup;
 
         [OutputConstructor]
         private GetInstanceFileShareResult(
@@ -43,12 +49,15 @@ namespace Pulumi.Gcp.Filestore.Outputs
 
             ImmutableArray<Outputs.GetInstanceFileShareNfsExportOptionResult> nfsExportOptions,
 
-            string sourceBackup)
+            string sourceBackup,
+
+            string sourceBackupdrBackup)
         {
             CapacityGb = capacityGb;
             Name = name;
             NfsExportOptions = nfsExportOptions;
             SourceBackup = sourceBackup;
+            SourceBackupdrBackup = sourceBackupdrBackup;
         }
     }
 }

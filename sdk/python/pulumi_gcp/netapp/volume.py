@@ -35,6 +35,7 @@ class VolumeArgs:
                  kerberos_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  large_capacity: Optional[pulumi.Input[_builtins.bool]] = None,
+                 large_capacity_config: Optional[pulumi.Input['VolumeLargeCapacityConfigArgs']] = None,
                  multiple_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -80,6 +81,11 @@ class VolumeArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.bool] large_capacity: Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+        :param pulumi.Input['VolumeLargeCapacityConfigArgs'] large_capacity_config: (Optional, Beta)
+               Configuration for a Large Capacity Volume. A Large Capacity Volume
+               supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+               internal constituents, and must be created in a large capacity pool.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] multiple_endpoints: Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
                Only the volume with largeCapacity will be allowed to have multiple endpoints.
         :param pulumi.Input[_builtins.str] name: The name of the volume. Needs to be unique per location.
@@ -128,6 +134,8 @@ class VolumeArgs:
             pulumi.set(__self__, "labels", labels)
         if large_capacity is not None:
             pulumi.set(__self__, "large_capacity", large_capacity)
+        if large_capacity_config is not None:
+            pulumi.set(__self__, "large_capacity_config", large_capacity_config)
         if multiple_endpoints is not None:
             pulumi.set(__self__, "multiple_endpoints", multiple_endpoints)
         if name is not None:
@@ -339,6 +347,22 @@ class VolumeArgs:
         pulumi.set(self, "large_capacity", value)
 
     @_builtins.property
+    @pulumi.getter(name="largeCapacityConfig")
+    def large_capacity_config(self) -> Optional[pulumi.Input['VolumeLargeCapacityConfigArgs']]:
+        """
+        (Optional, Beta)
+        Configuration for a Large Capacity Volume. A Large Capacity Volume
+        supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+        internal constituents, and must be created in a large capacity pool.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "large_capacity_config")
+
+    @large_capacity_config.setter
+    def large_capacity_config(self, value: Optional[pulumi.Input['VolumeLargeCapacityConfigArgs']]):
+        pulumi.set(self, "large_capacity_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="multipleEndpoints")
     def multiple_endpoints(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -527,6 +551,7 @@ class _VolumeState:
                  kms_config: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  large_capacity: Optional[pulumi.Input[_builtins.bool]] = None,
+                 large_capacity_config: Optional[pulumi.Input['VolumeLargeCapacityConfigArgs']] = None,
                  ldap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  mount_options: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeMountOptionArgs']]]] = None,
@@ -590,6 +615,11 @@ class _VolumeState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.bool] large_capacity: Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+        :param pulumi.Input['VolumeLargeCapacityConfigArgs'] large_capacity_config: (Optional, Beta)
+               Configuration for a Large Capacity Volume. A Large Capacity Volume
+               supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+               internal constituents, and must be created in a large capacity pool.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] ldap_enabled: Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
         :param pulumi.Input[_builtins.str] location: Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
         :param pulumi.Input[Sequence[pulumi.Input['VolumeMountOptionArgs']]] mount_options: Reports mount instructions for this volume.
@@ -669,6 +699,8 @@ class _VolumeState:
             pulumi.set(__self__, "labels", labels)
         if large_capacity is not None:
             pulumi.set(__self__, "large_capacity", large_capacity)
+        if large_capacity_config is not None:
+            pulumi.set(__self__, "large_capacity_config", large_capacity_config)
         if ldap_enabled is not None:
             pulumi.set(__self__, "ldap_enabled", ldap_enabled)
         if location is not None:
@@ -965,6 +997,22 @@ class _VolumeState:
     @large_capacity.setter
     def large_capacity(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "large_capacity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="largeCapacityConfig")
+    def large_capacity_config(self) -> Optional[pulumi.Input['VolumeLargeCapacityConfigArgs']]:
+        """
+        (Optional, Beta)
+        Configuration for a Large Capacity Volume. A Large Capacity Volume
+        supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+        internal constituents, and must be created in a large capacity pool.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "large_capacity_config")
+
+    @large_capacity_config.setter
+    def large_capacity_config(self, value: Optional[pulumi.Input['VolumeLargeCapacityConfigArgs']]):
+        pulumi.set(self, "large_capacity_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapEnabled")
@@ -1321,6 +1369,7 @@ class Volume(pulumi.CustomResource):
                  kerberos_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  large_capacity: Optional[pulumi.Input[_builtins.bool]] = None,
+                 large_capacity_config: Optional[pulumi.Input[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  multiple_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1421,6 +1470,11 @@ class Volume(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.bool] large_capacity: Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+        :param pulumi.Input[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict']] large_capacity_config: (Optional, Beta)
+               Configuration for a Large Capacity Volume. A Large Capacity Volume
+               supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+               internal constituents, and must be created in a large capacity pool.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
         :param pulumi.Input[_builtins.bool] multiple_endpoints: Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
                Only the volume with largeCapacity will be allowed to have multiple endpoints.
@@ -1537,6 +1591,7 @@ class Volume(pulumi.CustomResource):
                  kerberos_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  large_capacity: Optional[pulumi.Input[_builtins.bool]] = None,
+                 large_capacity_config: Optional[pulumi.Input[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  multiple_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1575,6 +1630,7 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["kerberos_enabled"] = kerberos_enabled
             __props__.__dict__["labels"] = labels
             __props__.__dict__["large_capacity"] = large_capacity
+            __props__.__dict__["large_capacity_config"] = large_capacity_config
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -1647,6 +1703,7 @@ class Volume(pulumi.CustomResource):
             kms_config: Optional[pulumi.Input[_builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             large_capacity: Optional[pulumi.Input[_builtins.bool]] = None,
+            large_capacity_config: Optional[pulumi.Input[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict']]] = None,
             ldap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeMountOptionArgs', 'VolumeMountOptionArgsDict']]]]] = None,
@@ -1714,6 +1771,11 @@ class Volume(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.bool] large_capacity: Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+        :param pulumi.Input[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict']] large_capacity_config: (Optional, Beta)
+               Configuration for a Large Capacity Volume. A Large Capacity Volume
+               supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+               internal constituents, and must be created in a large capacity pool.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] ldap_enabled: Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
         :param pulumi.Input[_builtins.str] location: Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeMountOptionArgs', 'VolumeMountOptionArgsDict']]]] mount_options: Reports mount instructions for this volume.
@@ -1778,6 +1840,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["kms_config"] = kms_config
         __props__.__dict__["labels"] = labels
         __props__.__dict__["large_capacity"] = large_capacity
+        __props__.__dict__["large_capacity_config"] = large_capacity_config
         __props__.__dict__["ldap_enabled"] = ldap_enabled
         __props__.__dict__["location"] = location
         __props__.__dict__["mount_options"] = mount_options
@@ -1972,6 +2035,18 @@ class Volume(pulumi.CustomResource):
         Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
         """
         return pulumi.get(self, "large_capacity")
+
+    @_builtins.property
+    @pulumi.getter(name="largeCapacityConfig")
+    def large_capacity_config(self) -> pulumi.Output[Optional['outputs.VolumeLargeCapacityConfig']]:
+        """
+        (Optional, Beta)
+        Configuration for a Large Capacity Volume. A Large Capacity Volume
+        supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+        internal constituents, and must be created in a large capacity pool.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "large_capacity_config")
 
     @_builtins.property
     @pulumi.getter(name="ldapEnabled")

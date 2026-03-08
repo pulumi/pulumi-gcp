@@ -20,7 +20,9 @@ namespace Pulumi.Gcp.DeveloperConnect.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
         /// <summary>
-        /// List of providers that are owned by Developer Connect.
+        /// List of providers that are owned by Developer Connect. Creation of
+        /// new non-SCM providers Account Connectors is not possible at this
+        /// time.
         /// Possible values:
         /// GITHUB
         /// GITLAB

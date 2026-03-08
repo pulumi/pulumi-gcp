@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * const dataformTeamFolderBasic = new gcp.dataform.TeamFolder("dataform_team_folder_basic", {
  *     region: "us-central1",
- *     displayName: "Basic TeamFolder-_95154",
+ *     displayName: "Basic TeamFolder-_64336",
  * });
  * ```
  *

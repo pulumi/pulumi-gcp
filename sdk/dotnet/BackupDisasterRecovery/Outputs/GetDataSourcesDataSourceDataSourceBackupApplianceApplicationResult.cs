@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// The type of the application. e.g. VMBackup
+        /// The type of the GCP resource.
         /// </summary>
         public readonly string Type;
 

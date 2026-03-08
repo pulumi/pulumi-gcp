@@ -239,6 +239,11 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * (Optional, Beta)
+     * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+     */
+    declare public readonly eraseWindowsVssSignature: pulumi.Output<boolean | undefined>;
+    /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.
      * Structure is documented below.
@@ -413,6 +418,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["diskEncryptionKey"] = state?.diskEncryptionKey;
             resourceInputs["diskId"] = state?.diskId;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["eraseWindowsVssSignature"] = state?.eraseWindowsVssSignature;
             resourceInputs["guestOsFeatures"] = state?.guestOsFeatures;
             resourceInputs["interface"] = state?.interface;
             resourceInputs["labelFingerprint"] = state?.labelFingerprint;
@@ -448,6 +454,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["createSnapshotBeforeDestroyPrefix"] = args?.createSnapshotBeforeDestroyPrefix;
             resourceInputs["description"] = args?.description;
             resourceInputs["diskEncryptionKey"] = args?.diskEncryptionKey;
+            resourceInputs["eraseWindowsVssSignature"] = args?.eraseWindowsVssSignature;
             resourceInputs["guestOsFeatures"] = args?.guestOsFeatures;
             resourceInputs["interface"] = args?.interface;
             resourceInputs["labels"] = args?.labels;
@@ -541,6 +548,11 @@ export interface RegionDiskState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * (Optional, Beta)
+     * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+     */
+    eraseWindowsVssSignature?: pulumi.Input<boolean>;
     /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.
@@ -741,6 +753,11 @@ export interface RegionDiskArgs {
      * Structure is documented below.
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskDiskEncryptionKey>;
+    /**
+     * (Optional, Beta)
+     * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+     */
+    eraseWindowsVssSignature?: pulumi.Input<boolean>;
     /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.

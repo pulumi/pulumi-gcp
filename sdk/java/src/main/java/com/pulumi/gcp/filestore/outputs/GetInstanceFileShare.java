@@ -38,6 +38,13 @@ public final class GetInstanceFileShare {
      * 
      */
     private String sourceBackup;
+    /**
+     * @return The resource name of the BackupDR backup, in the format
+     * &#39;projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}&#39;,
+     * that this file share has been restored from.
+     * 
+     */
+    private String sourceBackupdrBackup;
 
     private GetInstanceFileShare() {}
     /**
@@ -73,6 +80,15 @@ public final class GetInstanceFileShare {
     public String sourceBackup() {
         return this.sourceBackup;
     }
+    /**
+     * @return The resource name of the BackupDR backup, in the format
+     * &#39;projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}&#39;,
+     * that this file share has been restored from.
+     * 
+     */
+    public String sourceBackupdrBackup() {
+        return this.sourceBackupdrBackup;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -87,6 +103,7 @@ public final class GetInstanceFileShare {
         private String name;
         private List<GetInstanceFileShareNfsExportOption> nfsExportOptions;
         private String sourceBackup;
+        private String sourceBackupdrBackup;
         public Builder() {}
         public Builder(GetInstanceFileShare defaults) {
     	      Objects.requireNonNull(defaults);
@@ -94,6 +111,7 @@ public final class GetInstanceFileShare {
     	      this.name = defaults.name;
     	      this.nfsExportOptions = defaults.nfsExportOptions;
     	      this.sourceBackup = defaults.sourceBackup;
+    	      this.sourceBackupdrBackup = defaults.sourceBackupdrBackup;
         }
 
         @CustomType.Setter
@@ -131,12 +149,21 @@ public final class GetInstanceFileShare {
             this.sourceBackup = sourceBackup;
             return this;
         }
+        @CustomType.Setter
+        public Builder sourceBackupdrBackup(String sourceBackupdrBackup) {
+            if (sourceBackupdrBackup == null) {
+              throw new MissingRequiredPropertyException("GetInstanceFileShare", "sourceBackupdrBackup");
+            }
+            this.sourceBackupdrBackup = sourceBackupdrBackup;
+            return this;
+        }
         public GetInstanceFileShare build() {
             final var _resultValue = new GetInstanceFileShare();
             _resultValue.capacityGb = capacityGb;
             _resultValue.name = name;
             _resultValue.nfsExportOptions = nfsExportOptions;
             _resultValue.sourceBackup = sourceBackup;
+            _resultValue.sourceBackupdrBackup = sourceBackupdrBackup;
             return _resultValue;
         }
     }

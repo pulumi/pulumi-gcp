@@ -8,6 +8,7 @@ import com.pulumi.gcp.gkehub.outputs.FeatureSpecClusterupgrade;
 import com.pulumi.gcp.gkehub.outputs.FeatureSpecFleetobservability;
 import com.pulumi.gcp.gkehub.outputs.FeatureSpecMulticlusteringress;
 import com.pulumi.gcp.gkehub.outputs.FeatureSpecRbacrolebindingactuation;
+import com.pulumi.gcp.gkehub.outputs.FeatureSpecWorkloadidentity;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -38,6 +39,12 @@ public final class FeatureSpec {
      * 
      */
     private @Nullable FeatureSpecRbacrolebindingactuation rbacrolebindingactuation;
+    /**
+     * @return Workload Identity feature spec.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable FeatureSpecWorkloadidentity workloadidentity;
 
     private FeatureSpec() {}
     /**
@@ -72,6 +79,14 @@ public final class FeatureSpec {
     public Optional<FeatureSpecRbacrolebindingactuation> rbacrolebindingactuation() {
         return Optional.ofNullable(this.rbacrolebindingactuation);
     }
+    /**
+     * @return Workload Identity feature spec.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<FeatureSpecWorkloadidentity> workloadidentity() {
+        return Optional.ofNullable(this.workloadidentity);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -86,6 +101,7 @@ public final class FeatureSpec {
         private @Nullable FeatureSpecFleetobservability fleetobservability;
         private @Nullable FeatureSpecMulticlusteringress multiclusteringress;
         private @Nullable FeatureSpecRbacrolebindingactuation rbacrolebindingactuation;
+        private @Nullable FeatureSpecWorkloadidentity workloadidentity;
         public Builder() {}
         public Builder(FeatureSpec defaults) {
     	      Objects.requireNonNull(defaults);
@@ -93,6 +109,7 @@ public final class FeatureSpec {
     	      this.fleetobservability = defaults.fleetobservability;
     	      this.multiclusteringress = defaults.multiclusteringress;
     	      this.rbacrolebindingactuation = defaults.rbacrolebindingactuation;
+    	      this.workloadidentity = defaults.workloadidentity;
         }
 
         @CustomType.Setter
@@ -119,12 +136,19 @@ public final class FeatureSpec {
             this.rbacrolebindingactuation = rbacrolebindingactuation;
             return this;
         }
+        @CustomType.Setter
+        public Builder workloadidentity(@Nullable FeatureSpecWorkloadidentity workloadidentity) {
+
+            this.workloadidentity = workloadidentity;
+            return this;
+        }
         public FeatureSpec build() {
             final var _resultValue = new FeatureSpec();
             _resultValue.clusterupgrade = clusterupgrade;
             _resultValue.fleetobservability = fleetobservability;
             _resultValue.multiclusteringress = multiclusteringress;
             _resultValue.rbacrolebindingactuation = rbacrolebindingactuation;
+            _resultValue.workloadidentity = workloadidentity;
             return _resultValue;
         }
     }

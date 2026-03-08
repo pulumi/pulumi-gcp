@@ -11,18 +11,30 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterNodeConfigSandboxConfig {
     /**
-     * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;)
+     * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;). Deprecated in favor of type.
      * 
      */
     private String sandboxType;
+    /**
+     * @return Type of the sandbox to use for the node (e.g. &#39;GVISOR&#39;).
+     * 
+     */
+    private String type;
 
     private GetClusterNodeConfigSandboxConfig() {}
     /**
-     * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;)
+     * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;). Deprecated in favor of type.
      * 
      */
     public String sandboxType() {
         return this.sandboxType;
+    }
+    /**
+     * @return Type of the sandbox to use for the node (e.g. &#39;GVISOR&#39;).
+     * 
+     */
+    public String type() {
+        return this.type;
     }
 
     public static Builder builder() {
@@ -35,10 +47,12 @@ public final class GetClusterNodeConfigSandboxConfig {
     @CustomType.Builder
     public static final class Builder {
         private String sandboxType;
+        private String type;
         public Builder() {}
         public Builder(GetClusterNodeConfigSandboxConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sandboxType = defaults.sandboxType;
+    	      this.type = defaults.type;
         }
 
         @CustomType.Setter
@@ -49,9 +63,18 @@ public final class GetClusterNodeConfigSandboxConfig {
             this.sandboxType = sandboxType;
             return this;
         }
+        @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigSandboxConfig", "type");
+            }
+            this.type = type;
+            return this;
+        }
         public GetClusterNodeConfigSandboxConfig build() {
             final var _resultValue = new GetClusterNodeConfigSandboxConfig();
             _resultValue.sandboxType = sandboxType;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

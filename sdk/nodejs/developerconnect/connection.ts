@@ -320,6 +320,42 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Developer Connect Connection Http Conn Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_connection = new gcp.developerconnect.Connection("my-connection", {
+ *     location: "us-central1",
+ *     connectionId: "tf-test-connection",
+ *     httpConfig: {
+ *         basicAuthentication: {
+ *             username: "devconnectprober@gmail.com",
+ *             passwordSecretVersion: "projects/devconnect-terraform-creds/secrets/http-basic-auth/versions/latest",
+ *         },
+ *         hostUri: "https://devconnectprober.atlassian.net",
+ *     },
+ * });
+ * ```
+ * ### Developer Connect Connection Http Conn Bearer
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_connection = new gcp.developerconnect.Connection("my-connection", {
+ *     location: "us-central1",
+ *     connectionId: "tf-test-connection",
+ *     httpConfig: {
+ *         hostUri: "https://devconnectprober.atlassian.net",
+ *         bearerTokenAuthentication: {
+ *             tokenSecretVersion: "projects/devconnect-terraform-creds/secrets/http-bearer-token/versions/latest",
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Connection can be imported using any of these accepted formats:
@@ -441,6 +477,11 @@ export class Connection extends pulumi.CustomResource {
      */
     declare public readonly gitlabEnterpriseConfig: pulumi.Output<outputs.developerconnect.ConnectionGitlabEnterpriseConfig | undefined>;
     /**
+     * Configuration for connections to an HTTP service provider.
+     * Structure is documented below.
+     */
+    declare public readonly httpConfig: pulumi.Output<outputs.developerconnect.ConnectionHttpConfig | undefined>;
+    /**
      * Describes stage and necessary actions to be taken by the
      * user to complete the installation. Used for GitHub and GitHub Enterprise
      * based connections.
@@ -514,6 +555,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["githubEnterpriseConfig"] = state?.githubEnterpriseConfig;
             resourceInputs["gitlabConfig"] = state?.gitlabConfig;
             resourceInputs["gitlabEnterpriseConfig"] = state?.gitlabEnterpriseConfig;
+            resourceInputs["httpConfig"] = state?.httpConfig;
             resourceInputs["installationStates"] = state?.installationStates;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
@@ -542,6 +584,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["githubEnterpriseConfig"] = args?.githubEnterpriseConfig;
             resourceInputs["gitlabConfig"] = args?.gitlabConfig;
             resourceInputs["gitlabEnterpriseConfig"] = args?.gitlabEnterpriseConfig;
+            resourceInputs["httpConfig"] = args?.httpConfig;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
@@ -643,6 +686,11 @@ export interface ConnectionState {
      * Structure is documented below.
      */
     gitlabEnterpriseConfig?: pulumi.Input<inputs.developerconnect.ConnectionGitlabEnterpriseConfig>;
+    /**
+     * Configuration for connections to an HTTP service provider.
+     * Structure is documented below.
+     */
+    httpConfig?: pulumi.Input<inputs.developerconnect.ConnectionHttpConfig>;
     /**
      * Describes stage and necessary actions to be taken by the
      * user to complete the installation. Used for GitHub and GitHub Enterprise
@@ -754,6 +802,11 @@ export interface ConnectionArgs {
      * Structure is documented below.
      */
     gitlabEnterpriseConfig?: pulumi.Input<inputs.developerconnect.ConnectionGitlabEnterpriseConfig>;
+    /**
+     * Configuration for connections to an HTTP service provider.
+     * Structure is documented below.
+     */
+    httpConfig?: pulumi.Input<inputs.developerconnect.ConnectionHttpConfig>;
     /**
      * Optional. Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

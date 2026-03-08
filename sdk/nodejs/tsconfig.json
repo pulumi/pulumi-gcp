@@ -813,6 +813,7 @@
         "dataplex/assetIamPolicy.ts",
         "dataplex/dataAsset.ts",
         "dataplex/dataProduct.ts",
+        "dataplex/dataProductDataAsset.ts",
         "dataplex/datascan.ts",
         "dataplex/datascanIamBinding.ts",
         "dataplex/datascanIamMember.ts",

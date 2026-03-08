@@ -27,7 +27,7 @@ class GetRegionDiskResult:
     """
     A collection of values returned by getRegionDisk.
     """
-    def __init__(__self__, access_mode=None, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, guest_os_features=None, id=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, region=None, replica_zones=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None):
+    def __init__(__self__, access_mode=None, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, erase_windows_vss_signature=None, guest_os_features=None, id=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, region=None, replica_zones=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None):
         if access_mode and not isinstance(access_mode, str):
             raise TypeError("Expected argument 'access_mode' to be a str")
         pulumi.set(__self__, "access_mode", access_mode)
@@ -55,6 +55,9 @@ class GetRegionDiskResult:
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
+        if erase_windows_vss_signature and not isinstance(erase_windows_vss_signature, bool):
+            raise TypeError("Expected argument 'erase_windows_vss_signature' to be a bool")
+        pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
         if guest_os_features and not isinstance(guest_os_features, list):
             raise TypeError("Expected argument 'guest_os_features' to be a list")
         pulumi.set(__self__, "guest_os_features", guest_os_features)
@@ -175,6 +178,11 @@ class GetRegionDiskResult:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> _builtins.bool:
+        return pulumi.get(self, "erase_windows_vss_signature")
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")
@@ -320,6 +328,7 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             disk_encryption_keys=self.disk_encryption_keys,
             disk_id=self.disk_id,
             effective_labels=self.effective_labels,
+            erase_windows_vss_signature=self.erase_windows_vss_signature,
             guest_os_features=self.guest_os_features,
             id=self.id,
             interface=self.interface,
@@ -383,6 +392,7 @@ def get_region_disk(name: Optional[_builtins.str] = None,
         disk_encryption_keys=pulumi.get(__ret__, 'disk_encryption_keys'),
         disk_id=pulumi.get(__ret__, 'disk_id'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
+        erase_windows_vss_signature=pulumi.get(__ret__, 'erase_windows_vss_signature'),
         guest_os_features=pulumi.get(__ret__, 'guest_os_features'),
         id=pulumi.get(__ret__, 'id'),
         interface=pulumi.get(__ret__, 'interface'),
@@ -443,6 +453,7 @@ def get_region_disk_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         disk_encryption_keys=pulumi.get(__response__, 'disk_encryption_keys'),
         disk_id=pulumi.get(__response__, 'disk_id'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
+        erase_windows_vss_signature=pulumi.get(__response__, 'erase_windows_vss_signature'),
         guest_os_features=pulumi.get(__response__, 'guest_os_features'),
         id=pulumi.get(__response__, 'id'),
         interface=pulumi.get(__response__, 'interface'),

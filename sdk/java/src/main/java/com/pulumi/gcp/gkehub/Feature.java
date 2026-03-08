@@ -682,6 +682,53 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Gkehub Feature Workload Identity
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPool;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecWorkloadidentityArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
+ *             .workloadIdentityPoolId("example-pool")
+ *             .mode("TRUST_DOMAIN")
+ *             .build());
+ * 
+ *         var feature = new Feature("feature", FeatureArgs.builder()
+ *             .name("workloadidentity")
+ *             .location("global")
+ *             .spec(FeatureSpecArgs.builder()
+ *                 .workloadidentity(FeatureSpecWorkloadidentityArgs.builder()
+ *                     .scopeTenancyPool(pool.name())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

@@ -41,7 +41,7 @@ public final class GetDataSourcesDataSourceDataSourceBackupApplianceApplication 
      */
     private String hostname;
     /**
-     * @return The type of the application. e.g. VMBackup
+     * @return The type of the GCP resource.
      * 
      */
     private String type;
@@ -90,7 +90,7 @@ public final class GetDataSourcesDataSourceDataSourceBackupApplianceApplication 
         return this.hostname;
     }
     /**
-     * @return The type of the application. e.g. VMBackup
+     * @return The type of the GCP resource.
      * 
      */
     public String type() {

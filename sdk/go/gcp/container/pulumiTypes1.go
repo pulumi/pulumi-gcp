@@ -3638,8 +3638,10 @@ func (o GetClusterNodePoolNodeConfigReservationAffinityArrayOutput) Index(i pulu
 }
 
 type GetClusterNodePoolNodeConfigSandboxConfig struct {
-	// Type of the sandbox to use for the node (e.g. 'gvisor')
+	// Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
 	SandboxType string `pulumi:"sandboxType"`
+	// Type of the sandbox to use for the node (e.g. 'GVISOR').
+	Type string `pulumi:"type"`
 }
 
 // GetClusterNodePoolNodeConfigSandboxConfigInput is an input type that accepts GetClusterNodePoolNodeConfigSandboxConfigArgs and GetClusterNodePoolNodeConfigSandboxConfigOutput values.
@@ -3654,8 +3656,10 @@ type GetClusterNodePoolNodeConfigSandboxConfigInput interface {
 }
 
 type GetClusterNodePoolNodeConfigSandboxConfigArgs struct {
-	// Type of the sandbox to use for the node (e.g. 'gvisor')
+	// Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
 	SandboxType pulumi.StringInput `pulumi:"sandboxType"`
+	// Type of the sandbox to use for the node (e.g. 'GVISOR').
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetClusterNodePoolNodeConfigSandboxConfigArgs) ElementType() reflect.Type {
@@ -3709,9 +3713,14 @@ func (o GetClusterNodePoolNodeConfigSandboxConfigOutput) ToGetClusterNodePoolNod
 	return o
 }
 
-// Type of the sandbox to use for the node (e.g. 'gvisor')
+// Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
 func (o GetClusterNodePoolNodeConfigSandboxConfigOutput) SandboxType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
+}
+
+// Type of the sandbox to use for the node (e.g. 'GVISOR').
+func (o GetClusterNodePoolNodeConfigSandboxConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigSandboxConfig) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GetClusterNodePoolNodeConfigSandboxConfigArrayOutput struct{ *pulumi.OutputState }

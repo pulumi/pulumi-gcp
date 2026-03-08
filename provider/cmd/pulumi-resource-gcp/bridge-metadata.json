@@ -19984,6 +19984,22 @@
                     }
                 }
             },
+            "google_dataplex_data_product_data_asset": {
+                "current": "gcp:dataplex/dataProductDataAsset:DataProductDataAsset",
+                "majorVersion": 9,
+                "fields": {
+                    "access_group_configs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "iam_roles": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_dataplex_datascan": {
                 "current": "gcp:dataplex/datascan:Datascan",
                 "majorVersion": 9,
@@ -22904,6 +22920,22 @@
                                     "maxItemsOne": true
                                 },
                                 "read_authorizer_credential": {
+                                    "maxItemsOne": true
+                                },
+                                "service_directory_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "http_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "basic_authentication": {
+                                    "maxItemsOne": true
+                                },
+                                "bearer_token_authentication": {
                                     "maxItemsOne": true
                                 },
                                 "service_directory_config": {
@@ -26993,6 +27025,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "workloadidentity": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -31658,6 +31693,9 @@
                                 }
                             }
                         }
+                    },
+                    "large_capacity_config": {
+                        "maxItemsOne": true
                     },
                     "mount_options": {
                         "maxItemsOne": false
@@ -48406,6 +48444,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "workloadidentity": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -52207,6 +52248,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_dataplex_data_product_data_asset": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_dataplex_datascan": [
                 "effective_labels",
                 "terraform_labels"
@@ -53928,6 +53973,7 @@
             "gcp:dataplex/assetIamPolicy:AssetIamPolicy": 0,
             "gcp:dataplex/dataAsset:DataAsset": 0,
             "gcp:dataplex/dataProduct:DataProduct": 0,
+            "gcp:dataplex/dataProductDataAsset:DataProductDataAsset": 0,
             "gcp:dataplex/datascan:Datascan": 0,
             "gcp:dataplex/datascanIamBinding:DatascanIamBinding": 0,
             "gcp:dataplex/datascanIamMember:DatascanIamMember": 0,

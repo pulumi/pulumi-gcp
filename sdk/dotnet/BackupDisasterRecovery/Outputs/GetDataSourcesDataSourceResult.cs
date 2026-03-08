@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
     public sealed class GetDataSourcesDataSourceResult
     {
         /// <summary>
-        /// Details of how the resource is configured for backup.
+        /// An object containing information about the backup configuration.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDataSourcesDataSourceBackupConfigInfoResult> BackupConfigInfos;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly string BackupCount;
         /// <summary>
-        /// The backup configuration state.
+        /// The configuration state of the DataSource.
         /// </summary>
         public readonly string ConfigState;
         /// <summary>
-        /// The time when the instance was created.
+        /// Timestamp of when the DataSource was created.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -34,10 +34,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDataSourcesDataSourceDataSourceBackupApplianceApplicationResult> DataSourceBackupApplianceApplications;
         /// <summary>
-        /// The backed up resource is a Google Cloud resource.
-        /// 		The word 'DataSource' was included in the names to indicate that this is
-        /// 		the representation of the Google Cloud resource used within the
-        /// 		DataSource object.
+        /// An object containing details about the underlying GCP resource being backed up.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDataSourcesDataSourceDataSourceGcpResourceResult> DataSourceGcpResources;
         /// <summary>
@@ -49,13 +46,11 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Name of the datasource to create.
-        /// 		It must have the format "projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}".
-        /// 		'{datasource}' cannot be changed after creation. It must be between 3-63 characters long and must be unique within the backup vault.
+        /// The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The DataSource resource instance state.
+        /// The current state of the DataSource (e.g., ACTIVE, CREATING, DELETING).
         /// </summary>
         public readonly string State;
         /// <summary>
@@ -63,7 +58,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly string TotalStoredBytes;
         /// <summary>
-        /// The time when the instance was updated.
+        /// Timestamp of when the DataSource was last updated.
         /// </summary>
         public readonly string UpdateTime;
 

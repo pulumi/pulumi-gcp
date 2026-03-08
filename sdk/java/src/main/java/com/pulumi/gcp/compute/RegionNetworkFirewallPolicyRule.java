@@ -249,6 +249,120 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Region Network Firewall Policy Rule Network Context Egress
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicy;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRule;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", RegionNetworkFirewallPolicyArgs.builder()
+ *             .name("fw-policy")
+ *             .description("Sample regional network firewall policy")
+ *             .project("my-project-name")
+ *             .region("us-west1")
+ *             .build());
+ * 
+ *         var primary = new RegionNetworkFirewallPolicyRule("primary", RegionNetworkFirewallPolicyRuleArgs.builder()
+ *             .action("allow")
+ *             .description("This is a simple rule description")
+ *             .direction("EGRESS")
+ *             .disabled(false)
+ *             .enableLogging(true)
+ *             .firewallPolicy(basicRegionalNetworkFirewallPolicy.name())
+ *             .priority(1000)
+ *             .region("us-west1")
+ *             .ruleName("test-rule")
+ *             .match(RegionNetworkFirewallPolicyRuleMatchArgs.builder()
+ *                 .destIpRanges("10.100.0.1/32")
+ *                 .destNetworkContext("INTERNET")
+ *                 .layer4Configs(RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                     .ipProtocol("all")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Region Network Firewall Policy Rule Network Context Ingress
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicy;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRule;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", RegionNetworkFirewallPolicyArgs.builder()
+ *             .name("fw-policy")
+ *             .description("Sample regional network firewall policy")
+ *             .project("my-project-name")
+ *             .region("us-west1")
+ *             .build());
+ * 
+ *         var primary = new RegionNetworkFirewallPolicyRule("primary", RegionNetworkFirewallPolicyRuleArgs.builder()
+ *             .action("allow")
+ *             .description("This is a simple rule description")
+ *             .direction("INGRESS")
+ *             .disabled(false)
+ *             .enableLogging(true)
+ *             .firewallPolicy(basicRegionalNetworkFirewallPolicy.name())
+ *             .priority(1000)
+ *             .region("us-west1")
+ *             .ruleName("test-rule")
+ *             .match(RegionNetworkFirewallPolicyRuleMatchArgs.builder()
+ *                 .srcIpRanges("10.100.0.1/32")
+ *                 .srcNetworkContext("INTERNET")
+ *                 .layer4Configs(RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                     .ipProtocol("all")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

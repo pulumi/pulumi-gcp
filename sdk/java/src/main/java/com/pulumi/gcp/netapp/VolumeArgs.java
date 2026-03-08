@@ -11,6 +11,7 @@ import com.pulumi.gcp.netapp.inputs.VolumeBlockDeviceArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeCacheParametersArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeExportPolicyArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeHybridReplicationParametersArgs;
+import com.pulumi.gcp.netapp.inputs.VolumeLargeCapacityConfigArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeRestoreParametersArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeSnapshotPolicyArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeTieringPolicyArgs;
@@ -219,6 +220,29 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> largeCapacity() {
         return Optional.ofNullable(this.largeCapacity);
+    }
+
+    /**
+     * (Optional, Beta)
+     * Configuration for a Large Capacity Volume. A Large Capacity Volume
+     * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+     * internal constituents, and must be created in a large capacity pool.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="largeCapacityConfig")
+    private @Nullable Output<VolumeLargeCapacityConfigArgs> largeCapacityConfig;
+
+    /**
+     * @return (Optional, Beta)
+     * Configuration for a Large Capacity Volume. A Large Capacity Volume
+     * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+     * internal constituents, and must be created in a large capacity pool.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VolumeLargeCapacityConfigArgs>> largeCapacityConfig() {
+        return Optional.ofNullable(this.largeCapacityConfig);
     }
 
     /**
@@ -497,6 +521,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         this.kerberosEnabled = $.kerberosEnabled;
         this.labels = $.labels;
         this.largeCapacity = $.largeCapacity;
+        this.largeCapacityConfig = $.largeCapacityConfig;
         this.location = $.location;
         this.multipleEndpoints = $.multipleEndpoints;
         this.name = $.name;
@@ -802,6 +827,35 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder largeCapacity(Boolean largeCapacity) {
             return largeCapacity(Output.of(largeCapacity));
+        }
+
+        /**
+         * @param largeCapacityConfig (Optional, Beta)
+         * Configuration for a Large Capacity Volume. A Large Capacity Volume
+         * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+         * internal constituents, and must be created in a large capacity pool.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder largeCapacityConfig(@Nullable Output<VolumeLargeCapacityConfigArgs> largeCapacityConfig) {
+            $.largeCapacityConfig = largeCapacityConfig;
+            return this;
+        }
+
+        /**
+         * @param largeCapacityConfig (Optional, Beta)
+         * Configuration for a Large Capacity Volume. A Large Capacity Volume
+         * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+         * internal constituents, and must be created in a large capacity pool.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder largeCapacityConfig(VolumeLargeCapacityConfigArgs largeCapacityConfig) {
+            return largeCapacityConfig(Output.of(largeCapacityConfig));
         }
 
         /**

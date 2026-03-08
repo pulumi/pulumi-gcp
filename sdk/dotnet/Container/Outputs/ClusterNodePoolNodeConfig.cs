@@ -204,7 +204,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ResourceManagerTags;
         /// <summary>
-        /// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `ImageType = "COS_CONTAINERD"` and `NodeVersion = "1.12.7-gke.17"` or later to use it.
+        /// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `ImageType = "COS_CONTAINERD"` and `NodeVersion = "1.12.7-gke.17"` or later to use it.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigSandboxConfig? SandboxConfig;

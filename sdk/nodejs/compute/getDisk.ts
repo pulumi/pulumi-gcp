@@ -78,6 +78,7 @@ export interface GetDiskResult {
     readonly diskId: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly enableConfidentialCompute: boolean;
+    readonly eraseWindowsVssSignature: boolean;
     readonly guestOsFeatures: outputs.compute.GetDiskGuestOsFeature[];
     /**
      * The provider-assigned unique ID for this managed resource.

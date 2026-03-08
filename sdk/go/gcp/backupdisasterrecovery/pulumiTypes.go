@@ -10291,34 +10291,29 @@ func (o GetDataSourceReferencesDataSourceReferenceArrayOutput) Index(i pulumi.In
 }
 
 type GetDataSourcesDataSource struct {
-	// Details of how the resource is configured for backup.
+	// An object containing information about the backup configuration.
 	BackupConfigInfos []GetDataSourcesDataSourceBackupConfigInfo `pulumi:"backupConfigInfos"`
 	// Number of backups in the data source.
 	BackupCount string `pulumi:"backupCount"`
-	// The backup configuration state.
+	// The configuration state of the DataSource.
 	ConfigState string `pulumi:"configState"`
-	// The time when the instance was created.
+	// Timestamp of when the DataSource was created.
 	CreateTime string `pulumi:"createTime"`
 	// The backed up resource is a backup appliance application.
 	DataSourceBackupApplianceApplications []GetDataSourcesDataSourceDataSourceBackupApplianceApplication `pulumi:"dataSourceBackupApplianceApplications"`
-	// The backed up resource is a Google Cloud resource.
-	// 		The word 'DataSource' was included in the names to indicate that this is
-	// 		the representation of the Google Cloud resource used within the
-	// 		DataSource object.
+	// An object containing details about the underlying GCP resource being backed up.
 	DataSourceGcpResources []GetDataSourcesDataSourceDataSourceGcpResource `pulumi:"dataSourceGcpResources"`
 	// Server specified ETag for the ManagementServer resource to prevent simultaneous updates from overwiting each other.
 	Etag string `pulumi:"etag"`
 	// Resource labels to represent user provided metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the datasource to create.
-	// 		It must have the format "projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}".
-	// 		'{datasource}' cannot be changed after creation. It must be between 3-63 characters long and must be unique within the backup vault.
+	// The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
 	Name string `pulumi:"name"`
-	// The DataSource resource instance state.
+	// The current state of the DataSource (e.g., ACTIVE, CREATING, DELETING).
 	State string `pulumi:"state"`
 	// The number of bytes (metadata and data) stored in this datasource.
 	TotalStoredBytes string `pulumi:"totalStoredBytes"`
-	// The time when the instance was updated.
+	// Timestamp of when the DataSource was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -10334,34 +10329,29 @@ type GetDataSourcesDataSourceInput interface {
 }
 
 type GetDataSourcesDataSourceArgs struct {
-	// Details of how the resource is configured for backup.
+	// An object containing information about the backup configuration.
 	BackupConfigInfos GetDataSourcesDataSourceBackupConfigInfoArrayInput `pulumi:"backupConfigInfos"`
 	// Number of backups in the data source.
 	BackupCount pulumi.StringInput `pulumi:"backupCount"`
-	// The backup configuration state.
+	// The configuration state of the DataSource.
 	ConfigState pulumi.StringInput `pulumi:"configState"`
-	// The time when the instance was created.
+	// Timestamp of when the DataSource was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The backed up resource is a backup appliance application.
 	DataSourceBackupApplianceApplications GetDataSourcesDataSourceDataSourceBackupApplianceApplicationArrayInput `pulumi:"dataSourceBackupApplianceApplications"`
-	// The backed up resource is a Google Cloud resource.
-	// 		The word 'DataSource' was included in the names to indicate that this is
-	// 		the representation of the Google Cloud resource used within the
-	// 		DataSource object.
+	// An object containing details about the underlying GCP resource being backed up.
 	DataSourceGcpResources GetDataSourcesDataSourceDataSourceGcpResourceArrayInput `pulumi:"dataSourceGcpResources"`
 	// Server specified ETag for the ManagementServer resource to prevent simultaneous updates from overwiting each other.
 	Etag pulumi.StringInput `pulumi:"etag"`
 	// Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Name of the datasource to create.
-	// 		It must have the format "projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}".
-	// 		'{datasource}' cannot be changed after creation. It must be between 3-63 characters long and must be unique within the backup vault.
+	// The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The DataSource resource instance state.
+	// The current state of the DataSource (e.g., ACTIVE, CREATING, DELETING).
 	State pulumi.StringInput `pulumi:"state"`
 	// The number of bytes (metadata and data) stored in this datasource.
 	TotalStoredBytes pulumi.StringInput `pulumi:"totalStoredBytes"`
-	// The time when the instance was updated.
+	// Timestamp of when the DataSource was last updated.
 	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
 
@@ -10416,7 +10406,7 @@ func (o GetDataSourcesDataSourceOutput) ToGetDataSourcesDataSourceOutputWithCont
 	return o
 }
 
-// Details of how the resource is configured for backup.
+// An object containing information about the backup configuration.
 func (o GetDataSourcesDataSourceOutput) BackupConfigInfos() GetDataSourcesDataSourceBackupConfigInfoArrayOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSource) []GetDataSourcesDataSourceBackupConfigInfo {
 		return v.BackupConfigInfos
@@ -10428,12 +10418,12 @@ func (o GetDataSourcesDataSourceOutput) BackupCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSource) string { return v.BackupCount }).(pulumi.StringOutput)
 }
 
-// The backup configuration state.
+// The configuration state of the DataSource.
 func (o GetDataSourcesDataSourceOutput) ConfigState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSource) string { return v.ConfigState }).(pulumi.StringOutput)
 }
 
-// The time when the instance was created.
+// Timestamp of when the DataSource was created.
 func (o GetDataSourcesDataSourceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSource) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -10445,11 +10435,7 @@ func (o GetDataSourcesDataSourceOutput) DataSourceBackupApplianceApplications() 
 	}).(GetDataSourcesDataSourceDataSourceBackupApplianceApplicationArrayOutput)
 }
 
-// The backed up resource is a Google Cloud resource.
-//
-//	The word 'DataSource' was included in the names to indicate that this is
-//	the representation of the Google Cloud resource used within the
-//	DataSource object.
+// An object containing details about the underlying GCP resource being backed up.
 func (o GetDataSourcesDataSourceOutput) DataSourceGcpResources() GetDataSourcesDataSourceDataSourceGcpResourceArrayOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSource) []GetDataSourcesDataSourceDataSourceGcpResource {
 		return v.DataSourceGcpResources
@@ -10466,15 +10452,12 @@ func (o GetDataSourcesDataSourceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSource) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name of the datasource to create.
-//
-//	It must have the format "projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}".
-//	'{datasource}' cannot be changed after creation. It must be between 3-63 characters long and must be unique within the backup vault.
+// The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
 func (o GetDataSourcesDataSourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSource) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The DataSource resource instance state.
+// The current state of the DataSource (e.g., ACTIVE, CREATING, DELETING).
 func (o GetDataSourcesDataSourceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSource) string { return v.State }).(pulumi.StringOutput)
 }
@@ -10484,7 +10467,7 @@ func (o GetDataSourcesDataSourceOutput) TotalStoredBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSource) string { return v.TotalStoredBytes }).(pulumi.StringOutput)
 }
 
-// The time when the instance was updated.
+// Timestamp of when the DataSource was last updated.
 func (o GetDataSourcesDataSourceOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSource) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
@@ -10516,9 +10499,9 @@ type GetDataSourcesDataSourceBackupConfigInfo struct {
 	GcpBackupConfigs []GetDataSourcesDataSourceBackupConfigInfoGcpBackupConfig `pulumi:"gcpBackupConfigs"`
 	// If the last backup failed, this field has the error message.
 	LastBackupError map[string]string `pulumi:"lastBackupError"`
-	// LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+	// The state of the last backup attempt.
 	LastBackupState string `pulumi:"lastBackupState"`
-	// If the last backup were successful, this field has the consistency date.
+	// The consistency time of the last successful backup.
 	LastSuccessfulBackupConsistencyTime string `pulumi:"lastSuccessfulBackupConsistencyTime"`
 }
 
@@ -10540,9 +10523,9 @@ type GetDataSourcesDataSourceBackupConfigInfoArgs struct {
 	GcpBackupConfigs GetDataSourcesDataSourceBackupConfigInfoGcpBackupConfigArrayInput `pulumi:"gcpBackupConfigs"`
 	// If the last backup failed, this field has the error message.
 	LastBackupError pulumi.StringMapInput `pulumi:"lastBackupError"`
-	// LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+	// The state of the last backup attempt.
 	LastBackupState pulumi.StringInput `pulumi:"lastBackupState"`
-	// If the last backup were successful, this field has the consistency date.
+	// The consistency time of the last successful backup.
 	LastSuccessfulBackupConsistencyTime pulumi.StringInput `pulumi:"lastSuccessfulBackupConsistencyTime"`
 }
 
@@ -10616,12 +10599,12 @@ func (o GetDataSourcesDataSourceBackupConfigInfoOutput) LastBackupError() pulumi
 	return o.ApplyT(func(v GetDataSourcesDataSourceBackupConfigInfo) map[string]string { return v.LastBackupError }).(pulumi.StringMapOutput)
 }
 
-// LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+// The state of the last backup attempt.
 func (o GetDataSourcesDataSourceBackupConfigInfoOutput) LastBackupState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSourceBackupConfigInfo) string { return v.LastBackupState }).(pulumi.StringOutput)
 }
 
-// If the last backup were successful, this field has the consistency date.
+// The consistency time of the last successful backup.
 func (o GetDataSourcesDataSourceBackupConfigInfoOutput) LastSuccessfulBackupConsistencyTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSourceBackupConfigInfo) string { return v.LastSuccessfulBackupConsistencyTime }).(pulumi.StringOutput)
 }
@@ -10940,7 +10923,7 @@ type GetDataSourcesDataSourceDataSourceBackupApplianceApplication struct {
 	HostId string `pulumi:"hostId"`
 	// Hostname of the host where the application is running.
 	Hostname string `pulumi:"hostname"`
-	// The type of the application. e.g. VMBackup
+	// The type of the GCP resource.
 	Type string `pulumi:"type"`
 }
 
@@ -10968,7 +10951,7 @@ type GetDataSourcesDataSourceDataSourceBackupApplianceApplicationArgs struct {
 	HostId pulumi.StringInput `pulumi:"hostId"`
 	// Hostname of the host where the application is running.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
-	// The type of the application. e.g. VMBackup
+	// The type of the GCP resource.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -11053,7 +11036,7 @@ func (o GetDataSourcesDataSourceDataSourceBackupApplianceApplicationOutput) Host
 	return o.ApplyT(func(v GetDataSourcesDataSourceDataSourceBackupApplianceApplication) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// The type of the application. e.g. VMBackup
+// The type of the GCP resource.
 func (o GetDataSourcesDataSourceDataSourceBackupApplianceApplicationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSourceDataSourceBackupApplianceApplication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -11081,12 +11064,11 @@ func (o GetDataSourcesDataSourceDataSourceBackupApplianceApplicationArrayOutput)
 type GetDataSourcesDataSourceDataSourceGcpResource struct {
 	// ComputeInstanceDataSourceProperties has a subset of Compute Instance properties that are useful at the Datasource level.
 	ComputeInstanceDataSourceProperties []GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty `pulumi:"computeInstanceDataSourceProperties"`
-	// Full resource pathname URL of the source Google Cloud resource.
+	// The full name of the GCP resource.
 	GcpResourcename string `pulumi:"gcpResourcename"`
-	// Location of the resource: <region>/<zone>/"global"/"unspecified".
+	// The location in which the Data Source belongs.
 	Location string `pulumi:"location"`
-	// The type of the Google Cloud resource. Use the Unified Resource Type,
-	// 					eg. compute.googleapis.com/Instance.
+	// The type of the GCP resource.
 	Type string `pulumi:"type"`
 }
 
@@ -11104,12 +11086,11 @@ type GetDataSourcesDataSourceDataSourceGcpResourceInput interface {
 type GetDataSourcesDataSourceDataSourceGcpResourceArgs struct {
 	// ComputeInstanceDataSourceProperties has a subset of Compute Instance properties that are useful at the Datasource level.
 	ComputeInstanceDataSourceProperties GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayInput `pulumi:"computeInstanceDataSourceProperties"`
-	// Full resource pathname URL of the source Google Cloud resource.
+	// The full name of the GCP resource.
 	GcpResourcename pulumi.StringInput `pulumi:"gcpResourcename"`
-	// Location of the resource: <region>/<zone>/"global"/"unspecified".
+	// The location in which the Data Source belongs.
 	Location pulumi.StringInput `pulumi:"location"`
-	// The type of the Google Cloud resource. Use the Unified Resource Type,
-	// 					eg. compute.googleapis.com/Instance.
+	// The type of the GCP resource.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -11171,19 +11152,17 @@ func (o GetDataSourcesDataSourceDataSourceGcpResourceOutput) ComputeInstanceData
 	}).(GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput)
 }
 
-// Full resource pathname URL of the source Google Cloud resource.
+// The full name of the GCP resource.
 func (o GetDataSourcesDataSourceDataSourceGcpResourceOutput) GcpResourcename() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSourceDataSourceGcpResource) string { return v.GcpResourcename }).(pulumi.StringOutput)
 }
 
-// Location of the resource: <region>/<zone>/"global"/"unspecified".
+// The location in which the Data Source belongs.
 func (o GetDataSourcesDataSourceDataSourceGcpResourceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSourceDataSourceGcpResource) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The type of the Google Cloud resource. Use the Unified Resource Type,
-//
-//	eg. compute.googleapis.com/Instance.
+// The type of the GCP resource.
 func (o GetDataSourcesDataSourceDataSourceGcpResourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSourceDataSourceGcpResource) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -11213,7 +11192,7 @@ type GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourcePrope
 	Description string `pulumi:"description"`
 	// The machine type of the instance.
 	MachineType string `pulumi:"machineType"`
-	// Name of the compute instance backed up by the datasource.
+	// The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
 	Name string `pulumi:"name"`
 	// The total number of disks attached to the Instance.
 	TotalDiskCount string `pulumi:"totalDiskCount"`
@@ -11237,7 +11216,7 @@ type GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourcePrope
 	Description pulumi.StringInput `pulumi:"description"`
 	// The machine type of the instance.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
-	// Name of the compute instance backed up by the datasource.
+	// The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The total number of disks attached to the Instance.
 	TotalDiskCount pulumi.StringInput `pulumi:"totalDiskCount"`
@@ -11310,7 +11289,7 @@ func (o GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourcePr
 	}).(pulumi.StringOutput)
 }
 
-// Name of the compute instance backed up by the datasource.
+// The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
 func (o GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty) string {
 		return v.Name

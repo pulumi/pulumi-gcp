@@ -503,6 +503,60 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// ### Developer Connect Connection Http Conn Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_connection = new Gcp.DeveloperConnect.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionId = "tf-test-connection",
+    ///         HttpConfig = new Gcp.DeveloperConnect.Inputs.ConnectionHttpConfigArgs
+    ///         {
+    ///             BasicAuthentication = new Gcp.DeveloperConnect.Inputs.ConnectionHttpConfigBasicAuthenticationArgs
+    ///             {
+    ///                 Username = "devconnectprober@gmail.com",
+    ///                 PasswordSecretVersion = "projects/devconnect-terraform-creds/secrets/http-basic-auth/versions/latest",
+    ///             },
+    ///             HostUri = "https://devconnectprober.atlassian.net",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Developer Connect Connection Http Conn Bearer
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_connection = new Gcp.DeveloperConnect.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionId = "tf-test-connection",
+    ///         HttpConfig = new Gcp.DeveloperConnect.Inputs.ConnectionHttpConfigArgs
+    ///         {
+    ///             HostUri = "https://devconnectprober.atlassian.net",
+    ///             BearerTokenAuthentication = new Gcp.DeveloperConnect.Inputs.ConnectionHttpConfigBearerTokenAuthenticationArgs
+    ///             {
+    ///                 TokenSecretVersion = "projects/devconnect-terraform-creds/secrets/http-bearer-token/versions/latest",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Connection can be imported using any of these accepted formats:
@@ -627,6 +681,13 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// </summary>
         [Output("gitlabEnterpriseConfig")]
         public Output<Outputs.ConnectionGitlabEnterpriseConfig?> GitlabEnterpriseConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for connections to an HTTP service provider.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("httpConfig")]
+        public Output<Outputs.ConnectionHttpConfig?> HttpConfig { get; private set; } = null!;
 
         /// <summary>
         /// Describes stage and necessary actions to be taken by the
@@ -830,6 +891,13 @@ namespace Pulumi.Gcp.DeveloperConnect
         [Input("gitlabEnterpriseConfig")]
         public Input<Inputs.ConnectionGitlabEnterpriseConfigArgs>? GitlabEnterpriseConfig { get; set; }
 
+        /// <summary>
+        /// Configuration for connections to an HTTP service provider.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("httpConfig")]
+        public Input<Inputs.ConnectionHttpConfigArgs>? HttpConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -992,6 +1060,13 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// </summary>
         [Input("gitlabEnterpriseConfig")]
         public Input<Inputs.ConnectionGitlabEnterpriseConfigGetArgs>? GitlabEnterpriseConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for connections to an HTTP service provider.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("httpConfig")]
+        public Input<Inputs.ConnectionHttpConfigGetArgs>? HttpConfig { get; set; }
 
         [Input("installationStates")]
         private InputList<Inputs.ConnectionInstallationStateGetArgs>? _installationStates;

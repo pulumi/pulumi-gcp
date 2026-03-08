@@ -235,6 +235,102 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Network Firewall Policy Rule Network Context Egress
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basicRegionalNetworkFirewallPolicy = new Gcp.Compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", new()
+    ///     {
+    ///         Name = "fw-policy",
+    ///         Description = "Sample regional network firewall policy",
+    ///         Project = "my-project-name",
+    ///         Region = "us-west1",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Compute.RegionNetworkFirewallPolicyRule("primary", new()
+    ///     {
+    ///         Action = "allow",
+    ///         Description = "This is a simple rule description",
+    ///         Direction = "EGRESS",
+    ///         Disabled = false,
+    ///         EnableLogging = true,
+    ///         FirewallPolicy = basicRegionalNetworkFirewallPolicy.Name,
+    ///         Priority = 1000,
+    ///         Region = "us-west1",
+    ///         RuleName = "test-rule",
+    ///         Match = new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyRuleMatchArgs
+    ///         {
+    ///             DestIpRanges = new[]
+    ///             {
+    ///                 "10.100.0.1/32",
+    ///             },
+    ///             DestNetworkContext = "INTERNET",
+    ///             Layer4Configs = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "all",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Network Firewall Policy Rule Network Context Ingress
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basicRegionalNetworkFirewallPolicy = new Gcp.Compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", new()
+    ///     {
+    ///         Name = "fw-policy",
+    ///         Description = "Sample regional network firewall policy",
+    ///         Project = "my-project-name",
+    ///         Region = "us-west1",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Compute.RegionNetworkFirewallPolicyRule("primary", new()
+    ///     {
+    ///         Action = "allow",
+    ///         Description = "This is a simple rule description",
+    ///         Direction = "INGRESS",
+    ///         Disabled = false,
+    ///         EnableLogging = true,
+    ///         FirewallPolicy = basicRegionalNetworkFirewallPolicy.Name,
+    ///         Priority = 1000,
+    ///         Region = "us-west1",
+    ///         RuleName = "test-rule",
+    ///         Match = new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyRuleMatchArgs
+    ///         {
+    ///             SrcIpRanges = new[]
+    ///             {
+    ///                 "10.100.0.1/32",
+    ///             },
+    ///             SrcNetworkContext = "INTERNET",
+    ///             Layer4Configs = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "all",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -465,7 +465,7 @@ class DataProduct(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_39249@example.com",
+                    "google_group": "tf-test-analysts-_74391@example.com",
                 },
             }])
         ```
@@ -492,7 +492,7 @@ class DataProduct(pulumi.CustomResource):
                     "display_name": "Data Analyst - Updated",
                     "description": "In-place update verified",
                     "principal": {
-                        "google_group": "tf-test-analysts-_74391@example.com",
+                        "google_group": "tf-test-analysts-_16511@example.com",
                     },
                 },
                 {
@@ -500,7 +500,7 @@ class DataProduct(pulumi.CustomResource):
                     "group_id": "scientist",
                     "display_name": "Data Scientist",
                     "principal": {
-                        "google_group": "tf-test-scientists-_16511@example.com",
+                        "google_group": "tf-test-scientists-_8493@example.com",
                     },
                 },
             ])
@@ -576,7 +576,7 @@ class DataProduct(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_39249@example.com",
+                    "google_group": "tf-test-analysts-_74391@example.com",
                 },
             }])
         ```
@@ -603,7 +603,7 @@ class DataProduct(pulumi.CustomResource):
                     "display_name": "Data Analyst - Updated",
                     "description": "In-place update verified",
                     "principal": {
-                        "google_group": "tf-test-analysts-_74391@example.com",
+                        "google_group": "tf-test-analysts-_16511@example.com",
                     },
                 },
                 {
@@ -611,7 +611,7 @@ class DataProduct(pulumi.CustomResource):
                     "group_id": "scientist",
                     "display_name": "Data Scientist",
                     "principal": {
-                        "google_group": "tf-test-scientists-_16511@example.com",
+                        "google_group": "tf-test-scientists-_8493@example.com",
                     },
                 },
             ])

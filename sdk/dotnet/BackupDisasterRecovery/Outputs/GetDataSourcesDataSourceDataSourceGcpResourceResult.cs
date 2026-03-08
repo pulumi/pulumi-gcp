@@ -18,16 +18,15 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyResult> ComputeInstanceDataSourceProperties;
         /// <summary>
-        /// Full resource pathname URL of the source Google Cloud resource.
+        /// The full name of the GCP resource.
         /// </summary>
         public readonly string GcpResourcename;
         /// <summary>
-        /// Location of the resource: &lt;region&gt;/&lt;zone&gt;/"global"/"unspecified".
+        /// The location in which the Data Source belongs.
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// The type of the Google Cloud resource. Use the Unified Resource Type,
-        /// 					eg. compute.googleapis.com/Instance.
+        /// The type of the GCP resource.
         /// </summary>
         public readonly string Type;
 

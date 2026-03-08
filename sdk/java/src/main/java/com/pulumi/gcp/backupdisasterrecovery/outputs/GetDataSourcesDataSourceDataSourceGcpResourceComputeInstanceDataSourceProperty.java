@@ -21,7 +21,7 @@ public final class GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceD
      */
     private String machineType;
     /**
-     * @return Name of the compute instance backed up by the datasource.
+     * @return The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
      * 
      */
     private String name;
@@ -52,7 +52,7 @@ public final class GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceD
         return this.machineType;
     }
     /**
-     * @return Name of the compute instance backed up by the datasource.
+     * @return The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
      * 
      */
     public String name() {

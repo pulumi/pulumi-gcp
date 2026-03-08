@@ -378,6 +378,27 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
+     * The effective scale tier of the storage pool. If `scaleTier` is not
+     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     * 
+     */
+    @Import(name="scaleTier")
+    private @Nullable Output<String> scaleTier;
+
+    /**
+     * @return (Optional, Beta)
+     * The effective scale tier of the storage pool. If `scaleTier` is not
+     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     * 
+     */
+    public Optional<Output<String>> scaleTier() {
+        return Optional.ofNullable(this.scaleTier);
+    }
+
+    /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      * 
@@ -519,6 +540,7 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         this.pulumiLabels = $.pulumiLabels;
         this.qosType = $.qosType;
         this.replicaZone = $.replicaZone;
+        this.scaleTier = $.scaleTier;
         this.serviceLevel = $.serviceLevel;
         this.totalIops = $.totalIops;
         this.totalThroughputMibps = $.totalThroughputMibps;
@@ -1034,6 +1056,33 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder replicaZone(String replicaZone) {
             return replicaZone(Output.of(replicaZone));
+        }
+
+        /**
+         * @param scaleTier (Optional, Beta)
+         * The effective scale tier of the storage pool. If `scaleTier` is not
+         * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+         * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleTier(@Nullable Output<String> scaleTier) {
+            $.scaleTier = scaleTier;
+            return this;
+        }
+
+        /**
+         * @param scaleTier (Optional, Beta)
+         * The effective scale tier of the storage pool. If `scaleTier` is not
+         * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+         * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleTier(String scaleTier) {
+            return scaleTier(Output.of(scaleTier));
         }
 
         /**

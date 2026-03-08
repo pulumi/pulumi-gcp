@@ -1786,6 +1786,147 @@ func (o VolumeHybridReplicationParametersPtrOutput) ReplicationSchedule() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+type VolumeLargeCapacityConfig struct {
+	// The number of internal constituents (e.g., FlexVols) for this large volume.
+	// The minimum number of constituents is 2.
+	ConstituentCount *int `pulumi:"constituentCount"`
+}
+
+// VolumeLargeCapacityConfigInput is an input type that accepts VolumeLargeCapacityConfigArgs and VolumeLargeCapacityConfigOutput values.
+// You can construct a concrete instance of `VolumeLargeCapacityConfigInput` via:
+//
+//	VolumeLargeCapacityConfigArgs{...}
+type VolumeLargeCapacityConfigInput interface {
+	pulumi.Input
+
+	ToVolumeLargeCapacityConfigOutput() VolumeLargeCapacityConfigOutput
+	ToVolumeLargeCapacityConfigOutputWithContext(context.Context) VolumeLargeCapacityConfigOutput
+}
+
+type VolumeLargeCapacityConfigArgs struct {
+	// The number of internal constituents (e.g., FlexVols) for this large volume.
+	// The minimum number of constituents is 2.
+	ConstituentCount pulumi.IntPtrInput `pulumi:"constituentCount"`
+}
+
+func (VolumeLargeCapacityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeLargeCapacityConfig)(nil)).Elem()
+}
+
+func (i VolumeLargeCapacityConfigArgs) ToVolumeLargeCapacityConfigOutput() VolumeLargeCapacityConfigOutput {
+	return i.ToVolumeLargeCapacityConfigOutputWithContext(context.Background())
+}
+
+func (i VolumeLargeCapacityConfigArgs) ToVolumeLargeCapacityConfigOutputWithContext(ctx context.Context) VolumeLargeCapacityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeLargeCapacityConfigOutput)
+}
+
+func (i VolumeLargeCapacityConfigArgs) ToVolumeLargeCapacityConfigPtrOutput() VolumeLargeCapacityConfigPtrOutput {
+	return i.ToVolumeLargeCapacityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VolumeLargeCapacityConfigArgs) ToVolumeLargeCapacityConfigPtrOutputWithContext(ctx context.Context) VolumeLargeCapacityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeLargeCapacityConfigOutput).ToVolumeLargeCapacityConfigPtrOutputWithContext(ctx)
+}
+
+// VolumeLargeCapacityConfigPtrInput is an input type that accepts VolumeLargeCapacityConfigArgs, VolumeLargeCapacityConfigPtr and VolumeLargeCapacityConfigPtrOutput values.
+// You can construct a concrete instance of `VolumeLargeCapacityConfigPtrInput` via:
+//
+//	        VolumeLargeCapacityConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VolumeLargeCapacityConfigPtrInput interface {
+	pulumi.Input
+
+	ToVolumeLargeCapacityConfigPtrOutput() VolumeLargeCapacityConfigPtrOutput
+	ToVolumeLargeCapacityConfigPtrOutputWithContext(context.Context) VolumeLargeCapacityConfigPtrOutput
+}
+
+type volumeLargeCapacityConfigPtrType VolumeLargeCapacityConfigArgs
+
+func VolumeLargeCapacityConfigPtr(v *VolumeLargeCapacityConfigArgs) VolumeLargeCapacityConfigPtrInput {
+	return (*volumeLargeCapacityConfigPtrType)(v)
+}
+
+func (*volumeLargeCapacityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeLargeCapacityConfig)(nil)).Elem()
+}
+
+func (i *volumeLargeCapacityConfigPtrType) ToVolumeLargeCapacityConfigPtrOutput() VolumeLargeCapacityConfigPtrOutput {
+	return i.ToVolumeLargeCapacityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *volumeLargeCapacityConfigPtrType) ToVolumeLargeCapacityConfigPtrOutputWithContext(ctx context.Context) VolumeLargeCapacityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeLargeCapacityConfigPtrOutput)
+}
+
+type VolumeLargeCapacityConfigOutput struct{ *pulumi.OutputState }
+
+func (VolumeLargeCapacityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeLargeCapacityConfig)(nil)).Elem()
+}
+
+func (o VolumeLargeCapacityConfigOutput) ToVolumeLargeCapacityConfigOutput() VolumeLargeCapacityConfigOutput {
+	return o
+}
+
+func (o VolumeLargeCapacityConfigOutput) ToVolumeLargeCapacityConfigOutputWithContext(ctx context.Context) VolumeLargeCapacityConfigOutput {
+	return o
+}
+
+func (o VolumeLargeCapacityConfigOutput) ToVolumeLargeCapacityConfigPtrOutput() VolumeLargeCapacityConfigPtrOutput {
+	return o.ToVolumeLargeCapacityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeLargeCapacityConfigOutput) ToVolumeLargeCapacityConfigPtrOutputWithContext(ctx context.Context) VolumeLargeCapacityConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeLargeCapacityConfig) *VolumeLargeCapacityConfig {
+		return &v
+	}).(VolumeLargeCapacityConfigPtrOutput)
+}
+
+// The number of internal constituents (e.g., FlexVols) for this large volume.
+// The minimum number of constituents is 2.
+func (o VolumeLargeCapacityConfigOutput) ConstituentCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VolumeLargeCapacityConfig) *int { return v.ConstituentCount }).(pulumi.IntPtrOutput)
+}
+
+type VolumeLargeCapacityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeLargeCapacityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeLargeCapacityConfig)(nil)).Elem()
+}
+
+func (o VolumeLargeCapacityConfigPtrOutput) ToVolumeLargeCapacityConfigPtrOutput() VolumeLargeCapacityConfigPtrOutput {
+	return o
+}
+
+func (o VolumeLargeCapacityConfigPtrOutput) ToVolumeLargeCapacityConfigPtrOutputWithContext(ctx context.Context) VolumeLargeCapacityConfigPtrOutput {
+	return o
+}
+
+func (o VolumeLargeCapacityConfigPtrOutput) Elem() VolumeLargeCapacityConfigOutput {
+	return o.ApplyT(func(v *VolumeLargeCapacityConfig) VolumeLargeCapacityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeLargeCapacityConfig
+		return ret
+	}).(VolumeLargeCapacityConfigOutput)
+}
+
+// The number of internal constituents (e.g., FlexVols) for this large volume.
+// The minimum number of constituents is 2.
+func (o VolumeLargeCapacityConfigPtrOutput) ConstituentCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VolumeLargeCapacityConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConstituentCount
+	}).(pulumi.IntPtrOutput)
+}
+
 type VolumeMountOption struct {
 	// (Output)
 	// Export path of the volume.
@@ -4124,6 +4265,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeExportPolicyRuleArrayInput)(nil)).Elem(), VolumeExportPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeHybridReplicationParametersInput)(nil)).Elem(), VolumeHybridReplicationParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeHybridReplicationParametersPtrInput)(nil)).Elem(), VolumeHybridReplicationParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeLargeCapacityConfigInput)(nil)).Elem(), VolumeLargeCapacityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeLargeCapacityConfigPtrInput)(nil)).Elem(), VolumeLargeCapacityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountOptionInput)(nil)).Elem(), VolumeMountOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountOptionArrayInput)(nil)).Elem(), VolumeMountOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationDestinationVolumeParametersInput)(nil)).Elem(), VolumeReplicationDestinationVolumeParametersArgs{})
@@ -4166,6 +4309,8 @@ func init() {
 	pulumi.RegisterOutputType(VolumeExportPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(VolumeHybridReplicationParametersOutput{})
 	pulumi.RegisterOutputType(VolumeHybridReplicationParametersPtrOutput{})
+	pulumi.RegisterOutputType(VolumeLargeCapacityConfigOutput{})
+	pulumi.RegisterOutputType(VolumeLargeCapacityConfigPtrOutput{})
 	pulumi.RegisterOutputType(VolumeMountOptionOutput{})
 	pulumi.RegisterOutputType(VolumeMountOptionArrayOutput{})
 	pulumi.RegisterOutputType(VolumeReplicationDestinationVolumeParametersOutput{})
