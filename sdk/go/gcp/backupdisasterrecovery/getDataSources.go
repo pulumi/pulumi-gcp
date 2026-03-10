@@ -11,6 +11,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Backup and DR Data Sources.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := backupdisasterrecovery.GetDataSources(ctx, &backupdisasterrecovery.GetDataSourcesArgs{
+//				Location:      "us-central1",
+//				Project:       pulumi.StringRef("project-test"),
+//				BackupVaultId: "bv-test",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDataSources(ctx *pulumi.Context, args *GetDataSourcesArgs, opts ...pulumi.InvokeOption) (*GetDataSourcesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDataSourcesResult
@@ -23,20 +52,27 @@ func GetDataSources(ctx *pulumi.Context, args *GetDataSourcesArgs, opts ...pulum
 
 // A collection of arguments for invoking getDataSources.
 type GetDataSourcesArgs struct {
-	BackupVaultId string  `pulumi:"backupVaultId"`
-	Filter        *string `pulumi:"filter"`
-	Location      string  `pulumi:"location"`
-	OrderBy       *string `pulumi:"orderBy"`
-	Project       *string `pulumi:"project"`
+	// The ID of the Backup Vault in which the Data Source belongs.
+	BackupVaultId string `pulumi:"backupVaultId"`
+	// An expression to filter the results. For example, data_source_gcp_resource.type="compute.googleapis.com/Instance"
+	Filter *string `pulumi:"filter"`
+	// The location in which the Data Source belongs.
+	Location string `pulumi:"location"`
+	// An expression to order the results. For example, createTime desc
+	OrderBy *string `pulumi:"orderBy"`
+	// The Google Cloud Project in which the Data Source belongs.
+	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getDataSources.
 type GetDataSourcesResult struct {
-	BackupVaultId string                     `pulumi:"backupVaultId"`
-	DataSources   []GetDataSourcesDataSource `pulumi:"dataSources"`
-	Filter        *string                    `pulumi:"filter"`
+	BackupVaultId string `pulumi:"backupVaultId"`
+	// A list of Data Sources matching the criteria.
+	DataSources []GetDataSourcesDataSource `pulumi:"dataSources"`
+	Filter      *string                    `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The location of the GCP resource.
 	Location string  `pulumi:"location"`
 	OrderBy  *string `pulumi:"orderBy"`
 	Project  string  `pulumi:"project"`
@@ -53,11 +89,16 @@ func GetDataSourcesOutput(ctx *pulumi.Context, args GetDataSourcesOutputArgs, op
 
 // A collection of arguments for invoking getDataSources.
 type GetDataSourcesOutputArgs struct {
-	BackupVaultId pulumi.StringInput    `pulumi:"backupVaultId"`
-	Filter        pulumi.StringPtrInput `pulumi:"filter"`
-	Location      pulumi.StringInput    `pulumi:"location"`
-	OrderBy       pulumi.StringPtrInput `pulumi:"orderBy"`
-	Project       pulumi.StringPtrInput `pulumi:"project"`
+	// The ID of the Backup Vault in which the Data Source belongs.
+	BackupVaultId pulumi.StringInput `pulumi:"backupVaultId"`
+	// An expression to filter the results. For example, data_source_gcp_resource.type="compute.googleapis.com/Instance"
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// The location in which the Data Source belongs.
+	Location pulumi.StringInput `pulumi:"location"`
+	// An expression to order the results. For example, createTime desc
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
+	// The Google Cloud Project in which the Data Source belongs.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (GetDataSourcesOutputArgs) ElementType() reflect.Type {
@@ -83,6 +124,7 @@ func (o GetDataSourcesResultOutput) BackupVaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesResult) string { return v.BackupVaultId }).(pulumi.StringOutput)
 }
 
+// A list of Data Sources matching the criteria.
 func (o GetDataSourcesResultOutput) DataSources() GetDataSourcesDataSourceArrayOutput {
 	return o.ApplyT(func(v GetDataSourcesResult) []GetDataSourcesDataSource { return v.DataSources }).(GetDataSourcesDataSourceArrayOutput)
 }
@@ -96,6 +138,7 @@ func (o GetDataSourcesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the GCP resource.
 func (o GetDataSourcesResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourcesResult) string { return v.Location }).(pulumi.StringOutput)
 }

@@ -270,6 +270,15 @@ namespace Pulumi.Gcp.Netapp
         public Output<string?> ReplicaZone { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
+        /// The effective scale tier of the storage pool. If `ScaleTier` is not
+        /// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+        /// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+        /// </summary>
+        [Output("scaleTier")]
+        public Output<string> ScaleTier { get; private set; } = null!;
+
+        /// <summary>
         /// Service level of the storage pool.
         /// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         /// </summary>
@@ -482,6 +491,15 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("replicaZone")]
         public Input<string>? ReplicaZone { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The effective scale tier of the storage pool. If `ScaleTier` is not
+        /// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+        /// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+        /// </summary>
+        [Input("scaleTier")]
+        public Input<string>? ScaleTier { get; set; }
 
         /// <summary>
         /// Service level of the storage pool.
@@ -698,6 +716,15 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("replicaZone")]
         public Input<string>? ReplicaZone { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The effective scale tier of the storage pool. If `ScaleTier` is not
+        /// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+        /// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+        /// </summary>
+        [Input("scaleTier")]
+        public Input<string>? ScaleTier { get; set; }
 
         /// <summary>
         /// Service level of the storage pool.

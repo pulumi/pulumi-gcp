@@ -31,6 +31,8 @@ __all__ = [
     'VolumeExportPolicyRuleArgsDict',
     'VolumeHybridReplicationParametersArgs',
     'VolumeHybridReplicationParametersArgsDict',
+    'VolumeLargeCapacityConfigArgs',
+    'VolumeLargeCapacityConfigArgsDict',
     'VolumeMountOptionArgs',
     'VolumeMountOptionArgsDict',
     'VolumeReplicationDestinationVolumeParametersArgs',
@@ -1231,6 +1233,38 @@ class VolumeHybridReplicationParametersArgs:
     @replication_schedule.setter
     def replication_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "replication_schedule", value)
+
+
+class VolumeLargeCapacityConfigArgsDict(TypedDict):
+    constituent_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of internal constituents (e.g., FlexVols) for this large volume.
+    The minimum number of constituents is 2.
+    """
+
+@pulumi.input_type
+class VolumeLargeCapacityConfigArgs:
+    def __init__(__self__, *,
+                 constituent_count: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] constituent_count: The number of internal constituents (e.g., FlexVols) for this large volume.
+               The minimum number of constituents is 2.
+        """
+        if constituent_count is not None:
+            pulumi.set(__self__, "constituent_count", constituent_count)
+
+    @_builtins.property
+    @pulumi.getter(name="constituentCount")
+    def constituent_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of internal constituents (e.g., FlexVols) for this large volume.
+        The minimum number of constituents is 2.
+        """
+        return pulumi.get(self, "constituent_count")
+
+    @constituent_count.setter
+    def constituent_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "constituent_count", value)
 
 
 class VolumeMountOptionArgsDict(TypedDict):

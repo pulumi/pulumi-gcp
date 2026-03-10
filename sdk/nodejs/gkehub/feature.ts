@@ -338,6 +338,26 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Gkehub Feature Workload Identity
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkloadIdentityPool("pool", {
+ *     workloadIdentityPoolId: "example-pool",
+ *     mode: "TRUST_DOMAIN",
+ * });
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "workloadidentity",
+ *     location: "global",
+ *     spec: {
+ *         workloadidentity: {
+ *             scopeTenancyPool: pool.name,
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

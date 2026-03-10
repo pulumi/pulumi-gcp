@@ -372,6 +372,131 @@ import (
 //	}
 //
 // ```
+// ### Iam Workforce Pool Provider Extra Attributes Display Name Oauth2 Config Client Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkforcePool(ctx, "pool", &iam.WorkforcePoolArgs{
+//				WorkforcePoolId: pulumi.String("example-pool"),
+//				Parent:          pulumi.String("organizations/123456789"),
+//				Location:        pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkforcePoolProvider(ctx, "example", &iam.WorkforcePoolProviderArgs{
+//				WorkforcePoolId: pool.WorkforcePoolId,
+//				Location:        pool.Location,
+//				ProviderId:      pulumi.String("example-prvdr"),
+//				AttributeMapping: pulumi.StringMap{
+//					"google.subject": pulumi.String("assertion.sub"),
+//				},
+//				Oidc: &iam.WorkforcePoolProviderOidcArgs{
+//					IssuerUri: pulumi.String("https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/"),
+//					ClientId:  pulumi.String("https://analysis.windows.net/powerbi/connector/GoogleBigQuery"),
+//					WebSsoConfig: &iam.WorkforcePoolProviderOidcWebSsoConfigArgs{
+//						ResponseType:            pulumi.String("CODE"),
+//						AssertionClaimsBehavior: pulumi.String("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS"),
+//					},
+//					ClientSecret: &iam.WorkforcePoolProviderOidcClientSecretArgs{
+//						Value: &iam.WorkforcePoolProviderOidcClientSecretValueArgs{
+//							PlainText: pulumi.String("client-secret"),
+//						},
+//					},
+//				},
+//				ExtraAttributesOauth2Client: &iam.WorkforcePoolProviderExtraAttributesOauth2ClientArgs{
+//					IssuerUri: pulumi.String("https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0"),
+//					ClientId:  pulumi.String("client-id"),
+//					ClientSecret: &iam.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs{
+//						Value: &iam.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs{
+//							PlainText: pulumi.String("client-secret"),
+//						},
+//					},
+//					AttributesType: pulumi.String("AZURE_AD_GROUPS_DISPLAY_NAME"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Iam Workforce Pool Provider Extra Attributes Display Name Oauth2 Config Client Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkforcePool(ctx, "pool", &iam.WorkforcePoolArgs{
+//				WorkforcePoolId: pulumi.String("example-pool"),
+//				Parent:          pulumi.String("organizations/123456789"),
+//				Location:        pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkforcePoolProvider(ctx, "example", &iam.WorkforcePoolProviderArgs{
+//				WorkforcePoolId: pool.WorkforcePoolId,
+//				Location:        pool.Location,
+//				ProviderId:      pulumi.String("example-prvdr"),
+//				AttributeMapping: pulumi.StringMap{
+//					"google.subject": pulumi.String("assertion.sub"),
+//				},
+//				Oidc: &iam.WorkforcePoolProviderOidcArgs{
+//					IssuerUri: pulumi.String("https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/"),
+//					ClientId:  pulumi.String("https://analysis.windows.net/powerbi/connector/GoogleBigQuery"),
+//					ClientSecret: &iam.WorkforcePoolProviderOidcClientSecretArgs{
+//						Value: &iam.WorkforcePoolProviderOidcClientSecretValueArgs{
+//							PlainText: pulumi.String("client-secret"),
+//						},
+//					},
+//					WebSsoConfig: &iam.WorkforcePoolProviderOidcWebSsoConfigArgs{
+//						ResponseType:            pulumi.String("CODE"),
+//						AssertionClaimsBehavior: pulumi.String("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS"),
+//					},
+//				},
+//				ExtraAttributesOauth2Client: &iam.WorkforcePoolProviderExtraAttributesOauth2ClientArgs{
+//					IssuerUri: pulumi.String("https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0"),
+//					ClientId:  pulumi.String("client-id"),
+//					ClientSecret: &iam.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs{
+//						Value: &iam.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs{
+//							PlainText: pulumi.String("client-secret"),
+//						},
+//					},
+//					AttributesType: pulumi.String("AZURE_AD_GROUPS_DISPLAY_NAME"),
+//					QueryParameters: &iam.WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs{
+//						Filter: pulumi.String("displayName:gcp"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Basic
 //
 // ```go

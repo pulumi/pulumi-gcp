@@ -226,6 +226,13 @@ export class StoragePool extends pulumi.CustomResource {
      */
     declare public readonly replicaZone: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Beta)
+     * The effective scale tier of the storage pool. If `scaleTier` is not
+     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     */
+    declare public readonly scaleTier: pulumi.Output<string>;
+    /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      */
@@ -295,6 +302,7 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["qosType"] = state?.qosType;
             resourceInputs["replicaZone"] = state?.replicaZone;
+            resourceInputs["scaleTier"] = state?.scaleTier;
             resourceInputs["serviceLevel"] = state?.serviceLevel;
             resourceInputs["totalIops"] = state?.totalIops;
             resourceInputs["totalThroughputMibps"] = state?.totalThroughputMibps;
@@ -332,6 +340,7 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["qosType"] = args?.qosType;
             resourceInputs["replicaZone"] = args?.replicaZone;
+            resourceInputs["scaleTier"] = args?.scaleTier;
             resourceInputs["serviceLevel"] = args?.serviceLevel;
             resourceInputs["totalIops"] = args?.totalIops;
             resourceInputs["totalThroughputMibps"] = args?.totalThroughputMibps;
@@ -460,6 +469,13 @@ export interface StoragePoolState {
      */
     replicaZone?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
+     * The effective scale tier of the storage pool. If `scaleTier` is not
+     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     */
+    scaleTier?: pulumi.Input<string>;
+    /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      */
@@ -576,6 +592,13 @@ export interface StoragePoolArgs {
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      */
     replicaZone?: pulumi.Input<string>;
+    /**
+     * (Optional, Beta)
+     * The effective scale tier of the storage pool. If `scaleTier` is not
+     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     */
+    scaleTier?: pulumi.Input<string>;
     /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.

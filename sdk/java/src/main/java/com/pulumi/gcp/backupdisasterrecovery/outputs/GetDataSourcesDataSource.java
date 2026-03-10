@@ -16,7 +16,7 @@ import java.util.Objects;
 @CustomType
 public final class GetDataSourcesDataSource {
     /**
-     * @return Details of how the resource is configured for backup.
+     * @return An object containing information about the backup configuration.
      * 
      */
     private List<GetDataSourcesDataSourceBackupConfigInfo> backupConfigInfos;
@@ -26,12 +26,12 @@ public final class GetDataSourcesDataSource {
      */
     private String backupCount;
     /**
-     * @return The backup configuration state.
+     * @return The configuration state of the DataSource.
      * 
      */
     private String configState;
     /**
-     * @return The time when the instance was created.
+     * @return Timestamp of when the DataSource was created.
      * 
      */
     private String createTime;
@@ -41,10 +41,7 @@ public final class GetDataSourcesDataSource {
      */
     private List<GetDataSourcesDataSourceDataSourceBackupApplianceApplication> dataSourceBackupApplianceApplications;
     /**
-     * @return The backed up resource is a Google Cloud resource.
-     * 		The word &#39;DataSource&#39; was included in the names to indicate that this is
-     * 		the representation of the Google Cloud resource used within the
-     * 		DataSource object.
+     * @return An object containing details about the underlying GCP resource being backed up.
      * 
      */
     private List<GetDataSourcesDataSourceDataSourceGcpResource> dataSourceGcpResources;
@@ -59,14 +56,12 @@ public final class GetDataSourcesDataSource {
      */
     private Map<String,String> labels;
     /**
-     * @return Name of the datasource to create.
-     * 		It must have the format &#34;projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}&#34;.
-     * 		&#39;{datasource}&#39; cannot be changed after creation. It must be between 3-63 characters long and must be unique within the backup vault.
+     * @return The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
      * 
      */
     private String name;
     /**
-     * @return The DataSource resource instance state.
+     * @return The current state of the DataSource (e.g., ACTIVE, CREATING, DELETING).
      * 
      */
     private String state;
@@ -76,14 +71,14 @@ public final class GetDataSourcesDataSource {
      */
     private String totalStoredBytes;
     /**
-     * @return The time when the instance was updated.
+     * @return Timestamp of when the DataSource was last updated.
      * 
      */
     private String updateTime;
 
     private GetDataSourcesDataSource() {}
     /**
-     * @return Details of how the resource is configured for backup.
+     * @return An object containing information about the backup configuration.
      * 
      */
     public List<GetDataSourcesDataSourceBackupConfigInfo> backupConfigInfos() {
@@ -97,14 +92,14 @@ public final class GetDataSourcesDataSource {
         return this.backupCount;
     }
     /**
-     * @return The backup configuration state.
+     * @return The configuration state of the DataSource.
      * 
      */
     public String configState() {
         return this.configState;
     }
     /**
-     * @return The time when the instance was created.
+     * @return Timestamp of when the DataSource was created.
      * 
      */
     public String createTime() {
@@ -118,10 +113,7 @@ public final class GetDataSourcesDataSource {
         return this.dataSourceBackupApplianceApplications;
     }
     /**
-     * @return The backed up resource is a Google Cloud resource.
-     * 		The word &#39;DataSource&#39; was included in the names to indicate that this is
-     * 		the representation of the Google Cloud resource used within the
-     * 		DataSource object.
+     * @return An object containing details about the underlying GCP resource being backed up.
      * 
      */
     public List<GetDataSourcesDataSourceDataSourceGcpResource> dataSourceGcpResources() {
@@ -142,16 +134,14 @@ public final class GetDataSourcesDataSource {
         return this.labels;
     }
     /**
-     * @return Name of the datasource to create.
-     * 		It must have the format &#34;projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}&#34;.
-     * 		&#39;{datasource}&#39; cannot be changed after creation. It must be between 3-63 characters long and must be unique within the backup vault.
+     * @return The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The DataSource resource instance state.
+     * @return The current state of the DataSource (e.g., ACTIVE, CREATING, DELETING).
      * 
      */
     public String state() {
@@ -165,7 +155,7 @@ public final class GetDataSourcesDataSource {
         return this.totalStoredBytes;
     }
     /**
-     * @return The time when the instance was updated.
+     * @return Timestamp of when the DataSource was last updated.
      * 
      */
     public String updateTime() {

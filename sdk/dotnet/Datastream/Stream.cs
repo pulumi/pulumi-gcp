@@ -1291,8 +1291,8 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var cross_project_dataset = new Gcp.Organizations.Project("cross-project-dataset", new()
     ///     {
-    ///         ProjectId = "tf-test_33052",
-    ///         Name = "tf-test_3684",
+    ///         ProjectId = "tf-test_50610",
+    ///         Name = "tf-test_77124",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",

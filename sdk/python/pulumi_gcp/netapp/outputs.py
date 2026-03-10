@@ -24,6 +24,7 @@ __all__ = [
     'VolumeExportPolicy',
     'VolumeExportPolicyRule',
     'VolumeHybridReplicationParameters',
+    'VolumeLargeCapacityConfig',
     'VolumeMountOption',
     'VolumeReplicationDestinationVolumeParameters',
     'VolumeReplicationDestinationVolumeParametersTieringPolicy',
@@ -945,6 +946,44 @@ class VolumeHybridReplicationParameters(dict):
         Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
         """
         return pulumi.get(self, "replication_schedule")
+
+
+@pulumi.output_type
+class VolumeLargeCapacityConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "constituentCount":
+            suggest = "constituent_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeLargeCapacityConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeLargeCapacityConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeLargeCapacityConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 constituent_count: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int constituent_count: The number of internal constituents (e.g., FlexVols) for this large volume.
+               The minimum number of constituents is 2.
+        """
+        if constituent_count is not None:
+            pulumi.set(__self__, "constituent_count", constituent_count)
+
+    @_builtins.property
+    @pulumi.getter(name="constituentCount")
+    def constituent_count(self) -> Optional[_builtins.int]:
+        """
+        The number of internal constituents (e.g., FlexVols) for this large volume.
+        The minimum number of constituents is 2.
+        """
+        return pulumi.get(self, "constituent_count")
 
 
 @pulumi.output_type

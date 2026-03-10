@@ -32,12 +32,12 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var scope = new Gcp.GkeHub.Scope("scope", new()
     ///     {
-    ///         ScopeId = "tf-test-scope_16178",
+    ///         ScopeId = "tf-test-scope_9329",
     ///     });
     /// 
     ///     var scopeRbacRoleBinding = new Gcp.GkeHub.ScopeRbacRoleBinding("scope_rbac_role_binding", new()
     ///     {
-    ///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_26317",
+    ///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_37135",
     ///         ScopeId = scope.ScopeId,
     ///         User = "test-email@gmail.com",
     ///         Role = new Gcp.GkeHub.Inputs.ScopeRbacRoleBindingRoleArgs
@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var scope = new Gcp.GkeHub.Scope("scope", new()
     ///     {
-    ///         ScopeId = "tf-test-scope_4866",
+    ///         ScopeId = "tf-test-scope_42503",
     ///     });
     /// 
     ///     var rbacrolebindingactuation = new Gcp.GkeHub.Feature("rbacrolebindingactuation", new()
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var scopeRbacRoleBinding = new Gcp.GkeHub.ScopeRbacRoleBinding("scope_rbac_role_binding", new()
     ///     {
-    ///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_12618",
+    ///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_9991",
     ///         ScopeId = scope.ScopeId,
     ///         User = "test-email@gmail.com",
     ///         Role = new Gcp.GkeHub.Inputs.ScopeRbacRoleBindingRoleArgs

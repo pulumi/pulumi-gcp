@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly string MachineType;
         /// <summary>
-        /// Name of the compute instance backed up by the datasource.
+        /// The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
         /// </summary>
         public readonly string Name;
         /// <summary>

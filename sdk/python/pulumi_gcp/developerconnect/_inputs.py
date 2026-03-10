@@ -55,6 +55,14 @@ __all__ = [
     'ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgsDict',
     'ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs',
     'ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgsDict',
+    'ConnectionHttpConfigArgs',
+    'ConnectionHttpConfigArgsDict',
+    'ConnectionHttpConfigBasicAuthenticationArgs',
+    'ConnectionHttpConfigBasicAuthenticationArgsDict',
+    'ConnectionHttpConfigBearerTokenAuthenticationArgs',
+    'ConnectionHttpConfigBearerTokenAuthenticationArgsDict',
+    'ConnectionHttpConfigServiceDirectoryConfigArgs',
+    'ConnectionHttpConfigServiceDirectoryConfigArgsDict',
     'ConnectionInstallationStateArgs',
     'ConnectionInstallationStateArgsDict',
     'InsightsConfigArtifactConfigArgs',
@@ -86,7 +94,9 @@ class AccountConnectorProviderOauthConfigArgsDict(TypedDict):
     """
     system_provider_id: NotRequired[pulumi.Input[_builtins.str]]
     """
-    List of providers that are owned by Developer Connect.
+    List of providers that are owned by Developer Connect. Creation of
+    new non-SCM providers Account Connectors is not possible at this
+    time.
     Possible values:
     GITHUB
     GITLAB
@@ -106,7 +116,9 @@ class AccountConnectorProviderOauthConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Required. User selected scopes to apply to the Oauth config
                In the event of changing scopes, user records under AccountConnector will
                be deleted and users will re-auth again.
-        :param pulumi.Input[_builtins.str] system_provider_id: List of providers that are owned by Developer Connect.
+        :param pulumi.Input[_builtins.str] system_provider_id: List of providers that are owned by Developer Connect. Creation of
+               new non-SCM providers Account Connectors is not possible at this
+               time.
                Possible values:
                GITHUB
                GITLAB
@@ -138,7 +150,9 @@ class AccountConnectorProviderOauthConfigArgs:
     @pulumi.getter(name="systemProviderId")
     def system_provider_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        List of providers that are owned by Developer Connect.
+        List of providers that are owned by Developer Connect. Creation of
+        new non-SCM providers Account Connectors is not possible at this
+        time.
         Possible values:
         GITHUB
         GITLAB
@@ -664,7 +678,7 @@ class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs:
 class ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgsDict(TypedDict):
     service: pulumi.Input[_builtins.str]
     """
-    Required. The Service Directory service name.
+    The Service Directory service name.
     Format:
     projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
     """
@@ -674,7 +688,7 @@ class ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs:
     def __init__(__self__, *,
                  service: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] service: Required. The Service Directory service name.
+        :param pulumi.Input[_builtins.str] service: The Service Directory service name.
                Format:
                projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
         """
@@ -684,7 +698,7 @@ class ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[_builtins.str]:
         """
-        Required. The Service Directory service name.
+        The Service Directory service name.
         Format:
         projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
         """
@@ -1133,7 +1147,7 @@ class ConnectionGithubEnterpriseConfigArgs:
 class ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgsDict(TypedDict):
     service: pulumi.Input[_builtins.str]
     """
-    Required. The Service Directory service name.
+    The Service Directory service name.
     Format:
     projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
     """
@@ -1143,7 +1157,7 @@ class ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs:
     def __init__(__self__, *,
                  service: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] service: Required. The Service Directory service name.
+        :param pulumi.Input[_builtins.str] service: The Service Directory service name.
                Format:
                projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
         """
@@ -1153,7 +1167,7 @@ class ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[_builtins.str]:
         """
-        Required. The Service Directory service name.
+        The Service Directory service name.
         Format:
         projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
         """
@@ -1654,7 +1668,7 @@ class ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs:
 class ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgsDict(TypedDict):
     service: pulumi.Input[_builtins.str]
     """
-    Required. The Service Directory service name.
+    The Service Directory service name.
     Format:
     projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
     """
@@ -1664,7 +1678,7 @@ class ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs:
     def __init__(__self__, *,
                  service: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] service: Required. The Service Directory service name.
+        :param pulumi.Input[_builtins.str] service: The Service Directory service name.
                Format:
                projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
         """
@@ -1674,7 +1688,238 @@ class ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[_builtins.str]:
         """
-        Required. The Service Directory service name.
+        The Service Directory service name.
+        Format:
+        projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "service", value)
+
+
+class ConnectionHttpConfigArgsDict(TypedDict):
+    host_uri: pulumi.Input[_builtins.str]
+    """
+    The service provider's https endpoint.
+    """
+    basic_authentication: NotRequired[pulumi.Input['ConnectionHttpConfigBasicAuthenticationArgsDict']]
+    """
+    Basic authentication with username and password.
+    Structure is documented below.
+    """
+    bearer_token_authentication: NotRequired[pulumi.Input['ConnectionHttpConfigBearerTokenAuthenticationArgsDict']]
+    """
+    Bearer token authentication with a token.
+    Structure is documented below.
+    """
+    service_directory_config: NotRequired[pulumi.Input['ConnectionHttpConfigServiceDirectoryConfigArgsDict']]
+    """
+    ServiceDirectoryConfig represents Service Directory configuration for a
+    connection.
+    Structure is documented below.
+    """
+    ssl_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SSL certificate to use for requests to the HTTP service provider.
+    """
+
+@pulumi.input_type
+class ConnectionHttpConfigArgs:
+    def __init__(__self__, *,
+                 host_uri: pulumi.Input[_builtins.str],
+                 basic_authentication: Optional[pulumi.Input['ConnectionHttpConfigBasicAuthenticationArgs']] = None,
+                 bearer_token_authentication: Optional[pulumi.Input['ConnectionHttpConfigBearerTokenAuthenticationArgs']] = None,
+                 service_directory_config: Optional[pulumi.Input['ConnectionHttpConfigServiceDirectoryConfigArgs']] = None,
+                 ssl_ca_certificate: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host_uri: The service provider's https endpoint.
+        :param pulumi.Input['ConnectionHttpConfigBasicAuthenticationArgs'] basic_authentication: Basic authentication with username and password.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionHttpConfigBearerTokenAuthenticationArgs'] bearer_token_authentication: Bearer token authentication with a token.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionHttpConfigServiceDirectoryConfigArgs'] service_directory_config: ServiceDirectoryConfig represents Service Directory configuration for a
+               connection.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] ssl_ca_certificate: The SSL certificate to use for requests to the HTTP service provider.
+        """
+        pulumi.set(__self__, "host_uri", host_uri)
+        if basic_authentication is not None:
+            pulumi.set(__self__, "basic_authentication", basic_authentication)
+        if bearer_token_authentication is not None:
+            pulumi.set(__self__, "bearer_token_authentication", bearer_token_authentication)
+        if service_directory_config is not None:
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
+        if ssl_ca_certificate is not None:
+            pulumi.set(__self__, "ssl_ca_certificate", ssl_ca_certificate)
+
+    @_builtins.property
+    @pulumi.getter(name="hostUri")
+    def host_uri(self) -> pulumi.Input[_builtins.str]:
+        """
+        The service provider's https endpoint.
+        """
+        return pulumi.get(self, "host_uri")
+
+    @host_uri.setter
+    def host_uri(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "host_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="basicAuthentication")
+    def basic_authentication(self) -> Optional[pulumi.Input['ConnectionHttpConfigBasicAuthenticationArgs']]:
+        """
+        Basic authentication with username and password.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "basic_authentication")
+
+    @basic_authentication.setter
+    def basic_authentication(self, value: Optional[pulumi.Input['ConnectionHttpConfigBasicAuthenticationArgs']]):
+        pulumi.set(self, "basic_authentication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bearerTokenAuthentication")
+    def bearer_token_authentication(self) -> Optional[pulumi.Input['ConnectionHttpConfigBearerTokenAuthenticationArgs']]:
+        """
+        Bearer token authentication with a token.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bearer_token_authentication")
+
+    @bearer_token_authentication.setter
+    def bearer_token_authentication(self, value: Optional[pulumi.Input['ConnectionHttpConfigBearerTokenAuthenticationArgs']]):
+        pulumi.set(self, "bearer_token_authentication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> Optional[pulumi.Input['ConnectionHttpConfigServiceDirectoryConfigArgs']]:
+        """
+        ServiceDirectoryConfig represents Service Directory configuration for a
+        connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @service_directory_config.setter
+    def service_directory_config(self, value: Optional[pulumi.Input['ConnectionHttpConfigServiceDirectoryConfigArgs']]):
+        pulumi.set(self, "service_directory_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sslCaCertificate")
+    def ssl_ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The SSL certificate to use for requests to the HTTP service provider.
+        """
+        return pulumi.get(self, "ssl_ca_certificate")
+
+    @ssl_ca_certificate.setter
+    def ssl_ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ssl_ca_certificate", value)
+
+
+class ConnectionHttpConfigBasicAuthenticationArgsDict(TypedDict):
+    username: pulumi.Input[_builtins.str]
+    """
+    The username to authenticate as.
+    """
+    password_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password SecretManager secret version to authenticate as.
+    """
+
+@pulumi.input_type
+class ConnectionHttpConfigBasicAuthenticationArgs:
+    def __init__(__self__, *,
+                 username: pulumi.Input[_builtins.str],
+                 password_secret_version: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] username: The username to authenticate as.
+        :param pulumi.Input[_builtins.str] password_secret_version: The password SecretManager secret version to authenticate as.
+        """
+        pulumi.set(__self__, "username", username)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[_builtins.str]:
+        """
+        The username to authenticate as.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "username", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The password SecretManager secret version to authenticate as.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @password_secret_version.setter
+    def password_secret_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password_secret_version", value)
+
+
+class ConnectionHttpConfigBearerTokenAuthenticationArgsDict(TypedDict):
+    token_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The token SecretManager secret version to authenticate as.
+    """
+
+@pulumi.input_type
+class ConnectionHttpConfigBearerTokenAuthenticationArgs:
+    def __init__(__self__, *,
+                 token_secret_version: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] token_secret_version: The token SecretManager secret version to authenticate as.
+        """
+        if token_secret_version is not None:
+            pulumi.set(__self__, "token_secret_version", token_secret_version)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenSecretVersion")
+    def token_secret_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The token SecretManager secret version to authenticate as.
+        """
+        return pulumi.get(self, "token_secret_version")
+
+    @token_secret_version.setter
+    def token_secret_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "token_secret_version", value)
+
+
+class ConnectionHttpConfigServiceDirectoryConfigArgsDict(TypedDict):
+    service: pulumi.Input[_builtins.str]
+    """
+    The Service Directory service name.
+    Format:
+    projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+    """
+
+@pulumi.input_type
+class ConnectionHttpConfigServiceDirectoryConfigArgs:
+    def __init__(__self__, *,
+                 service: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] service: The Service Directory service name.
+               Format:
+               projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Service Directory service name.
         Format:
         projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
         """

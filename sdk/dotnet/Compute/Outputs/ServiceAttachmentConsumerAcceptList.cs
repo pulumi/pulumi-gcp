@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int ConnectionLimit;
         /// <summary>
+        /// (Optional, Beta)
+        /// The endpoint that is allowed to connect to this service attachment.
+        /// Only one of project_id_or_num, NetworkUrl and EndpointUrl may be set.
+        /// </summary>
+        public readonly string? EndpointUrl;
+        /// <summary>
         /// The network that is allowed to connect to this service attachment.
         /// Only one of ProjectIdOrNum and NetworkUrl may be set.
         /// </summary>
@@ -33,11 +39,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         private ServiceAttachmentConsumerAcceptList(
             int connectionLimit,
 
+            string? endpointUrl,
+
             string? networkUrl,
 
             string? projectIdOrNum)
         {
             ConnectionLimit = connectionLimit;
+            EndpointUrl = endpointUrl;
             NetworkUrl = networkUrl;
             ProjectIdOrNum = projectIdOrNum;
         }

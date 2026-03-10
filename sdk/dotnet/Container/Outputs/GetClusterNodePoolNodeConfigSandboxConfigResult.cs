@@ -14,14 +14,22 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterNodePoolNodeConfigSandboxConfigResult
     {
         /// <summary>
-        /// Type of the sandbox to use for the node (e.g. 'gvisor')
+        /// Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
         /// </summary>
         public readonly string SandboxType;
+        /// <summary>
+        /// Type of the sandbox to use for the node (e.g. 'GVISOR').
+        /// </summary>
+        public readonly string Type;
 
         [OutputConstructor]
-        private GetClusterNodePoolNodeConfigSandboxConfigResult(string sandboxType)
+        private GetClusterNodePoolNodeConfigSandboxConfigResult(
+            string sandboxType,
+
+            string type)
         {
             SandboxType = sandboxType;
+            Type = type;
         }
     }
 }

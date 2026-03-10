@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 DisplayName = "Data Analyst",
     ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
     ///                 {
-    ///                     GoogleGroup = "tf-test-analysts-_39249@example.com",
+    ///                     GoogleGroup = "tf-test-analysts-_74391@example.com",
     ///                 },
     ///             },
     ///         },
@@ -96,7 +96,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 Description = "In-place update verified",
     ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
     ///                 {
-    ///                     GoogleGroup = "tf-test-analysts-_74391@example.com",
+    ///                     GoogleGroup = "tf-test-analysts-_16511@example.com",
     ///                 },
     ///             },
     ///             new Gcp.DataPlex.Inputs.DataProductAccessGroupArgs
@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 DisplayName = "Data Scientist",
     ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
     ///                 {
-    ///                     GoogleGroup = "tf-test-scientists-_16511@example.com",
+    ///                     GoogleGroup = "tf-test-scientists-_8493@example.com",
     ///                 },
     ///             },
     ///         },

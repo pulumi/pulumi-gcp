@@ -446,6 +446,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.EntryArgs;
  * import com.pulumi.gcp.dataplex.inputs.EntryAspectArgs;
  * import com.pulumi.gcp.dataplex.inputs.EntryAspectAspectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -490,7 +491,9 @@ import javax.annotation.Nullable;
  *                     """)
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(example_glossary_term)
+ *                 .build());
  * 
  *     }}{@code
  * }}{@code

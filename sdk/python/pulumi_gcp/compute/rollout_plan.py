@@ -261,7 +261,7 @@ class RolloutPlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.RolloutPlan("default",
-            name="tf-test-rollout-plan-_52865",
+            name="tf-test-rollout-plan-_85840",
             description="A test rollout plan",
             location_scope="ZONAL",
             waves=[{
@@ -334,7 +334,7 @@ class RolloutPlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.RolloutPlan("default",
-            name="tf-test-rollout-plan-_52865",
+            name="tf-test-rollout-plan-_85840",
             description="A test rollout plan",
             location_scope="ZONAL",
             waves=[{

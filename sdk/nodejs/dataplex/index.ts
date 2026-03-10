@@ -55,6 +55,11 @@ export type DataProduct = import("./dataProduct").DataProduct;
 export const DataProduct: typeof import("./dataProduct").DataProduct = null as any;
 utilities.lazyLoad(exports, ["DataProduct"], () => require("./dataProduct"));
 
+export { DataProductDataAssetArgs, DataProductDataAssetState } from "./dataProductDataAsset";
+export type DataProductDataAsset = import("./dataProductDataAsset").DataProductDataAsset;
+export const DataProductDataAsset: typeof import("./dataProductDataAsset").DataProductDataAsset = null as any;
+utilities.lazyLoad(exports, ["DataProductDataAsset"], () => require("./dataProductDataAsset"));
+
 export { DatascanArgs, DatascanState } from "./datascan";
 export type Datascan = import("./datascan").Datascan;
 export const Datascan: typeof import("./datascan").Datascan = null as any;
@@ -290,6 +295,8 @@ const _module = {
                 return new DataAsset(name, <any>undefined, { urn })
             case "gcp:dataplex/dataProduct:DataProduct":
                 return new DataProduct(name, <any>undefined, { urn })
+            case "gcp:dataplex/dataProductDataAsset:DataProductDataAsset":
+                return new DataProductDataAsset(name, <any>undefined, { urn })
             case "gcp:dataplex/datascan:Datascan":
                 return new Datascan(name, <any>undefined, { urn })
             case "gcp:dataplex/datascanIamBinding:DatascanIamBinding":
@@ -369,6 +376,7 @@ pulumi.runtime.registerResourceModule("gcp", "dataplex/assetIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/assetIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/dataAsset", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/dataProduct", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/dataProductDataAsset", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/datascan", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/datascanIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/datascanIamMember", _module)

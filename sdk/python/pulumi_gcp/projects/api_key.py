@@ -37,7 +37,7 @@ class ApiKeyArgs:
                - - -
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input['ApiKeyRestrictionsArgs'] restrictions: Key restrictions.
-        :param pulumi.Input[_builtins.str] service_account_email: The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+        :param pulumi.Input[_builtins.str] service_account_email: The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -106,7 +106,7 @@ class ApiKeyArgs:
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+        The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
         """
         return pulumi.get(self, "service_account_email")
 
@@ -137,7 +137,7 @@ class _ApiKeyState:
                - - -
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input['ApiKeyRestrictionsArgs'] restrictions: Key restrictions.
-        :param pulumi.Input[_builtins.str] service_account_email: The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+        :param pulumi.Input[_builtins.str] service_account_email: The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
         :param pulumi.Input[_builtins.str] uid: Output only. Unique id in UUID4 format.
         """
         if display_name is not None:
@@ -223,7 +223,7 @@ class _ApiKeyState:
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+        The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
         """
         return pulumi.get(self, "service_account_email")
 
@@ -397,7 +397,7 @@ class ApiKey(pulumi.CustomResource):
                - - -
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']] restrictions: Key restrictions.
-        :param pulumi.Input[_builtins.str] service_account_email: The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+        :param pulumi.Input[_builtins.str] service_account_email: The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
         """
         ...
     @overload
@@ -607,7 +607,7 @@ class ApiKey(pulumi.CustomResource):
                - - -
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']] restrictions: Key restrictions.
-        :param pulumi.Input[_builtins.str] service_account_email: The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+        :param pulumi.Input[_builtins.str] service_account_email: The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
         :param pulumi.Input[_builtins.str] uid: Output only. Unique id in UUID4 format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -671,7 +671,7 @@ class ApiKey(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+        The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
         """
         return pulumi.get(self, "service_account_email")
 

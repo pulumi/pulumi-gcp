@@ -9035,7 +9035,7 @@ class ClusterNodeConfigArgsDict(TypedDict):
     """
     sandbox_config: NotRequired[pulumi.Input['ClusterNodeConfigSandboxConfigArgsDict']]
     """
-    ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+    [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
     Structure is documented below.
     """
     secondary_boot_disks: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigSecondaryBootDiskArgsDict']]]]
@@ -9226,7 +9226,7 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
-        :param pulumi.Input['ClusterNodeConfigSandboxConfigArgs'] sandbox_config: ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        :param pulumi.Input['ClusterNodeConfigSandboxConfigArgs'] sandbox_config: [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigSecondaryBootDiskArgs']]] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param pulumi.Input[_builtins.str] service_account: The service account to be used by the Node VMs.
@@ -9818,7 +9818,7 @@ class ClusterNodeConfigArgs:
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional[pulumi.Input['ClusterNodeConfigSandboxConfigArgs']]:
         """
-        ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
         Structure is documented below.
         """
         return pulumi.get(self, "sandbox_config")
@@ -12524,31 +12524,50 @@ class ClusterNodeConfigReservationAffinityArgs:
 
 
 class ClusterNodeConfigSandboxConfigArgsDict(TypedDict):
-    sandbox_type: pulumi.Input[_builtins.str]
+    sandbox_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+    Accepted values are:
+
+    * `"gvisor"`: Pods run within a gVisor sandbox.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
     """
     Which sandbox to use for pods in the node pool.
     Accepted values are:
 
-    * `"gvisor"`: Pods run within a gVisor sandbox.
+    * `"GVISOR"`: Pods run within a gVisor sandbox.
     """
 
 @pulumi.input_type
 class ClusterNodeConfigSandboxConfigArgs:
     def __init__(__self__, *,
-                 sandbox_type: pulumi.Input[_builtins.str]):
+                 sandbox_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] sandbox_type: Which sandbox to use for pods in the node pool.
+        :param pulumi.Input[_builtins.str] sandbox_type: Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
                Accepted values are:
                
                * `"gvisor"`: Pods run within a gVisor sandbox.
+        :param pulumi.Input[_builtins.str] type: Which sandbox to use for pods in the node pool.
+               Accepted values are:
+               
+               * `"GVISOR"`: Pods run within a gVisor sandbox.
         """
-        pulumi.set(__self__, "sandbox_type", sandbox_type)
+        if sandbox_type is not None:
+            warnings.warn("""`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""sandbox_type is deprecated: `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.""")
+        if sandbox_type is not None:
+            pulumi.set(__self__, "sandbox_type", sandbox_type)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="sandboxType")
-    def sandbox_type(self) -> pulumi.Input[_builtins.str]:
+    @_utilities.deprecated("""`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.""")
+    def sandbox_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Which sandbox to use for pods in the node pool.
+        Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
         Accepted values are:
 
         * `"gvisor"`: Pods run within a gVisor sandbox.
@@ -12556,8 +12575,23 @@ class ClusterNodeConfigSandboxConfigArgs:
         return pulumi.get(self, "sandbox_type")
 
     @sandbox_type.setter
-    def sandbox_type(self, value: pulumi.Input[_builtins.str]):
+    def sandbox_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "sandbox_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Which sandbox to use for pods in the node pool.
+        Accepted values are:
+
+        * `"GVISOR"`: Pods run within a gVisor sandbox.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class ClusterNodeConfigSecondaryBootDiskArgsDict(TypedDict):
@@ -15093,7 +15127,7 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     """
     sandbox_config: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArgsDict']]
     """
-    ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+    [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
     Structure is documented below.
     """
     secondary_boot_disks: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSecondaryBootDiskArgsDict']]]]
@@ -15284,7 +15318,7 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
-        :param pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArgs'] sandbox_config: ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        :param pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArgs'] sandbox_config: [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSecondaryBootDiskArgs']]] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param pulumi.Input[_builtins.str] service_account: The service account to be used by the Node VMs.
@@ -15876,7 +15910,7 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArgs']]:
         """
-        ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
         Structure is documented below.
         """
         return pulumi.get(self, "sandbox_config")
@@ -18582,31 +18616,50 @@ class ClusterNodePoolNodeConfigReservationAffinityArgs:
 
 
 class ClusterNodePoolNodeConfigSandboxConfigArgsDict(TypedDict):
-    sandbox_type: pulumi.Input[_builtins.str]
+    sandbox_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+    Accepted values are:
+
+    * `"gvisor"`: Pods run within a gVisor sandbox.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
     """
     Which sandbox to use for pods in the node pool.
     Accepted values are:
 
-    * `"gvisor"`: Pods run within a gVisor sandbox.
+    * `"GVISOR"`: Pods run within a gVisor sandbox.
     """
 
 @pulumi.input_type
 class ClusterNodePoolNodeConfigSandboxConfigArgs:
     def __init__(__self__, *,
-                 sandbox_type: pulumi.Input[_builtins.str]):
+                 sandbox_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] sandbox_type: Which sandbox to use for pods in the node pool.
+        :param pulumi.Input[_builtins.str] sandbox_type: Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
                Accepted values are:
                
                * `"gvisor"`: Pods run within a gVisor sandbox.
+        :param pulumi.Input[_builtins.str] type: Which sandbox to use for pods in the node pool.
+               Accepted values are:
+               
+               * `"GVISOR"`: Pods run within a gVisor sandbox.
         """
-        pulumi.set(__self__, "sandbox_type", sandbox_type)
+        if sandbox_type is not None:
+            warnings.warn("""`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""sandbox_type is deprecated: `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.""")
+        if sandbox_type is not None:
+            pulumi.set(__self__, "sandbox_type", sandbox_type)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="sandboxType")
-    def sandbox_type(self) -> pulumi.Input[_builtins.str]:
+    @_utilities.deprecated("""`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.""")
+    def sandbox_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Which sandbox to use for pods in the node pool.
+        Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
         Accepted values are:
 
         * `"gvisor"`: Pods run within a gVisor sandbox.
@@ -18614,8 +18667,23 @@ class ClusterNodePoolNodeConfigSandboxConfigArgs:
         return pulumi.get(self, "sandbox_type")
 
     @sandbox_type.setter
-    def sandbox_type(self, value: pulumi.Input[_builtins.str]):
+    def sandbox_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "sandbox_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Which sandbox to use for pods in the node pool.
+        Accepted values are:
+
+        * `"GVISOR"`: Pods run within a gVisor sandbox.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class ClusterNodePoolNodeConfigSecondaryBootDiskArgsDict(TypedDict):
@@ -24651,31 +24719,56 @@ class NodePoolNodeConfigReservationAffinityArgs:
 
 
 class NodePoolNodeConfigSandboxConfigArgsDict(TypedDict):
-    sandbox_type: pulumi.Input[_builtins.str]
+    sandbox_type: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Type of the sandbox to use for the node (e.g. 'gvisor')
+    Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of the sandbox to use for the node (e.g. 'GVISOR').
     """
 
 @pulumi.input_type
 class NodePoolNodeConfigSandboxConfigArgs:
     def __init__(__self__, *,
-                 sandbox_type: pulumi.Input[_builtins.str]):
+                 sandbox_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] sandbox_type: Type of the sandbox to use for the node (e.g. 'gvisor')
+        :param pulumi.Input[_builtins.str] sandbox_type: Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
+        :param pulumi.Input[_builtins.str] type: Type of the sandbox to use for the node (e.g. 'GVISOR').
         """
-        pulumi.set(__self__, "sandbox_type", sandbox_type)
+        if sandbox_type is not None:
+            warnings.warn("""`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""sandbox_type is deprecated: `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.""")
+        if sandbox_type is not None:
+            pulumi.set(__self__, "sandbox_type", sandbox_type)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="sandboxType")
-    def sandbox_type(self) -> pulumi.Input[_builtins.str]:
+    @_utilities.deprecated("""`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.""")
+    def sandbox_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of the sandbox to use for the node (e.g. 'gvisor')
+        Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
         """
         return pulumi.get(self, "sandbox_type")
 
     @sandbox_type.setter
-    def sandbox_type(self, value: pulumi.Input[_builtins.str]):
+    def sandbox_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "sandbox_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the sandbox to use for the node (e.g. 'GVISOR').
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class NodePoolNodeConfigSecondaryBootDiskArgsDict(TypedDict):

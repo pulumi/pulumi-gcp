@@ -559,6 +559,45 @@ import (
 //	}
 //
 // ```
+// ### Gkehub Feature Workload Identity
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
+//				WorkloadIdentityPoolId: pulumi.String("example-pool"),
+//				Mode:                   pulumi.String("TRUST_DOMAIN"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("workloadidentity"),
+//				Location: pulumi.String("global"),
+//				Spec: &gkehub.FeatureSpecArgs{
+//					Workloadidentity: &gkehub.FeatureSpecWorkloadidentityArgs{
+//						ScopeTenancyPool: pool.Name,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

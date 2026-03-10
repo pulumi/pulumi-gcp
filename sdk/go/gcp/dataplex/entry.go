@@ -463,7 +463,9 @@ import (
 //						},
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				example_glossary_term,
+//			}))
 //			if err != nil {
 //				return err
 //			}

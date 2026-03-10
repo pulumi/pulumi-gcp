@@ -109,7 +109,7 @@ type SourceRepresentationInstance struct {
 	ClientCertificate pulumi.StringPtrOutput `pulumi:"clientCertificate"`
 	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
-	// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17. Database Version Policies includes an up-to-date reference of supported versions.
+	// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18. Database Version Policies includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrOutput `pulumi:"dumpFilePath"`
@@ -182,7 +182,7 @@ type sourceRepresentationInstanceState struct {
 	ClientCertificate *string `pulumi:"clientCertificate"`
 	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
 	ClientKey *string `pulumi:"clientKey"`
-	// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17. Database Version Policies includes an up-to-date reference of supported versions.
+	// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18. Database Version Policies includes an up-to-date reference of supported versions.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath *string `pulumi:"dumpFilePath"`
@@ -213,7 +213,7 @@ type SourceRepresentationInstanceState struct {
 	ClientCertificate pulumi.StringPtrInput
 	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
 	ClientKey pulumi.StringPtrInput
-	// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17. Database Version Policies includes an up-to-date reference of supported versions.
+	// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18. Database Version Policies includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrInput
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrInput
@@ -248,7 +248,7 @@ type sourceRepresentationInstanceArgs struct {
 	ClientCertificate *string `pulumi:"clientCertificate"`
 	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
 	ClientKey *string `pulumi:"clientKey"`
-	// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17. Database Version Policies includes an up-to-date reference of supported versions.
+	// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18. Database Version Policies includes an up-to-date reference of supported versions.
 	DatabaseVersion string `pulumi:"databaseVersion"`
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath *string `pulumi:"dumpFilePath"`
@@ -280,7 +280,7 @@ type SourceRepresentationInstanceArgs struct {
 	ClientCertificate pulumi.StringPtrInput
 	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
 	ClientKey pulumi.StringPtrInput
-	// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17. Database Version Policies includes an up-to-date reference of supported versions.
+	// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18. Database Version Policies includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringInput
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrInput
@@ -406,7 +406,7 @@ func (o SourceRepresentationInstanceOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringPtrOutput { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
-// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17. Database Version Policies includes an up-to-date reference of supported versions.
+// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18. Database Version Policies includes an up-to-date reference of supported versions.
 func (o SourceRepresentationInstanceOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringOutput { return v.DatabaseVersion }).(pulumi.StringOutput)
 }

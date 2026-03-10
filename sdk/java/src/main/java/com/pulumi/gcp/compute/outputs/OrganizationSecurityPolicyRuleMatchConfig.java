@@ -4,7 +4,6 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.OrganizationSecurityPolicyRuleMatchConfigLayer4Config;
 import java.lang.String;
 import java.util.List;
@@ -14,19 +13,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OrganizationSecurityPolicyRuleMatchConfig {
     /**
-     * @return Destination IP address range in CIDR format. Required for
-     * EGRESS rules.
+     * @return (Optional, Beta)
+     * Destination IP address range in CIDR format. Required for EGRESS rules.
+     * This field may only be specified when versionedExpr is set to FIREWALL.
      * 
      */
     private @Nullable List<String> destIpRanges;
     /**
-     * @return Pairs of IP protocols and ports that the rule should match.
+     * @return (Optional, Beta)
+     * Pairs of IP protocols and ports that the rule should match.
+     * This field may only be specified when versionedExpr is set to FIREWALL.
      * Structure is documented below.
      * 
      * &lt;a name=&#34;nestedMatchConfigLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
      * 
      */
-    private List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs;
+    private @Nullable List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs;
     /**
      * @return Source IP address range in CIDR format. Required for
      * INGRESS rules.
@@ -36,22 +38,25 @@ public final class OrganizationSecurityPolicyRuleMatchConfig {
 
     private OrganizationSecurityPolicyRuleMatchConfig() {}
     /**
-     * @return Destination IP address range in CIDR format. Required for
-     * EGRESS rules.
+     * @return (Optional, Beta)
+     * Destination IP address range in CIDR format. Required for EGRESS rules.
+     * This field may only be specified when versionedExpr is set to FIREWALL.
      * 
      */
     public List<String> destIpRanges() {
         return this.destIpRanges == null ? List.of() : this.destIpRanges;
     }
     /**
-     * @return Pairs of IP protocols and ports that the rule should match.
+     * @return (Optional, Beta)
+     * Pairs of IP protocols and ports that the rule should match.
+     * This field may only be specified when versionedExpr is set to FIREWALL.
      * Structure is documented below.
      * 
      * &lt;a name=&#34;nestedMatchConfigLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
      * 
      */
     public List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs() {
-        return this.layer4Configs;
+        return this.layer4Configs == null ? List.of() : this.layer4Configs;
     }
     /**
      * @return Source IP address range in CIDR format. Required for
@@ -72,7 +77,7 @@ public final class OrganizationSecurityPolicyRuleMatchConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> destIpRanges;
-        private List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs;
+        private @Nullable List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs;
         private @Nullable List<String> srcIpRanges;
         public Builder() {}
         public Builder(OrganizationSecurityPolicyRuleMatchConfig defaults) {
@@ -92,10 +97,8 @@ public final class OrganizationSecurityPolicyRuleMatchConfig {
             return destIpRanges(List.of(destIpRanges));
         }
         @CustomType.Setter
-        public Builder layer4Configs(List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs) {
-            if (layer4Configs == null) {
-              throw new MissingRequiredPropertyException("OrganizationSecurityPolicyRuleMatchConfig", "layer4Configs");
-            }
+        public Builder layer4Configs(@Nullable List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs) {
+
             this.layer4Configs = layer4Configs;
             return this;
         }

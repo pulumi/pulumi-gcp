@@ -29,6 +29,7 @@ public final class GetRegionDiskResult {
     private List<GetRegionDiskDiskEncryptionKey> diskEncryptionKeys;
     private String diskId;
     private Map<String,String> effectiveLabels;
+    private Boolean eraseWindowsVssSignature;
     private List<GetRegionDiskGuestOsFeature> guestOsFeatures;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -86,6 +87,9 @@ public final class GetRegionDiskResult {
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    public Boolean eraseWindowsVssSignature() {
+        return this.eraseWindowsVssSignature;
     }
     public List<GetRegionDiskGuestOsFeature> guestOsFeatures() {
         return this.guestOsFeatures;
@@ -185,6 +189,7 @@ public final class GetRegionDiskResult {
         private List<GetRegionDiskDiskEncryptionKey> diskEncryptionKeys;
         private String diskId;
         private Map<String,String> effectiveLabels;
+        private Boolean eraseWindowsVssSignature;
         private List<GetRegionDiskGuestOsFeature> guestOsFeatures;
         private String id;
         private String interface_;
@@ -222,6 +227,7 @@ public final class GetRegionDiskResult {
     	      this.diskEncryptionKeys = defaults.diskEncryptionKeys;
     	      this.diskId = defaults.diskId;
     	      this.effectiveLabels = defaults.effectiveLabels;
+    	      this.eraseWindowsVssSignature = defaults.eraseWindowsVssSignature;
     	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.id = defaults.id;
     	      this.interface_ = defaults.interface_;
@@ -325,6 +331,14 @@ public final class GetRegionDiskResult {
               throw new MissingRequiredPropertyException("GetRegionDiskResult", "effectiveLabels");
             }
             this.effectiveLabels = effectiveLabels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder eraseWindowsVssSignature(Boolean eraseWindowsVssSignature) {
+            if (eraseWindowsVssSignature == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "eraseWindowsVssSignature");
+            }
+            this.eraseWindowsVssSignature = eraseWindowsVssSignature;
             return this;
         }
         @CustomType.Setter
@@ -549,6 +563,7 @@ public final class GetRegionDiskResult {
             _resultValue.diskEncryptionKeys = diskEncryptionKeys;
             _resultValue.diskId = diskId;
             _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.eraseWindowsVssSignature = eraseWindowsVssSignature;
             _resultValue.guestOsFeatures = guestOsFeatures;
             _resultValue.id = id;
             _resultValue.interface_ = interface_;

@@ -386,7 +386,6 @@ type SecurityProfile struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Time the security profile was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// (Optional, Beta)
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile SecurityProfileUrlFilteringProfilePtrOutput `pulumi:"urlFilteringProfile"`
@@ -474,7 +473,6 @@ type securityProfileState struct {
 	Type *string `pulumi:"type"`
 	// Time the security profile was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
-	// (Optional, Beta)
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile *SecurityProfileUrlFilteringProfile `pulumi:"urlFilteringProfile"`
@@ -525,7 +523,6 @@ type SecurityProfileState struct {
 	Type pulumi.StringPtrInput
 	// Time the security profile was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
-	// (Optional, Beta)
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile SecurityProfileUrlFilteringProfilePtrInput
@@ -565,7 +562,6 @@ type securityProfileArgs struct {
 	// The type of security profile.
 	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
 	Type string `pulumi:"type"`
-	// (Optional, Beta)
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile *SecurityProfileUrlFilteringProfile `pulumi:"urlFilteringProfile"`
@@ -602,7 +598,6 @@ type SecurityProfileArgs struct {
 	// The type of security profile.
 	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
 	Type pulumi.StringInput
-	// (Optional, Beta)
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile SecurityProfileUrlFilteringProfilePtrInput
@@ -791,7 +786,6 @@ func (o SecurityProfileOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityProfile) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // The url filtering configuration for the security profile.
 // Structure is documented below.
 func (o SecurityProfileOutput) UrlFilteringProfile() SecurityProfileUrlFilteringProfilePtrOutput {

@@ -699,6 +699,24 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+        ### Gkehub Feature Workload Identity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkloadIdentityPool("pool",
+            workload_identity_pool_id="example-pool",
+            mode="TRUST_DOMAIN")
+        feature = gcp.gkehub.Feature("feature",
+            name="workloadidentity",
+            location="global",
+            spec={
+                "workloadidentity": {
+                    "scope_tenancy_pool": pool.name,
+                },
+            })
+        ```
 
         ## Import
 
@@ -1051,6 +1069,24 @@ class Feature(pulumi.CustomResource):
                         "custom-role2",
                         "custom-role3",
                     ],
+                },
+            })
+        ```
+        ### Gkehub Feature Workload Identity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkloadIdentityPool("pool",
+            workload_identity_pool_id="example-pool",
+            mode="TRUST_DOMAIN")
+        feature = gcp.gkehub.Feature("feature",
+            name="workloadidentity",
+            location="global",
+            spec={
+                "workloadidentity": {
+                    "scope_tenancy_pool": pool.name,
                 },
             })
         ```

@@ -1058,6 +1058,91 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 },
             })
         ```
+        ### Iam Workforce Pool Provider Extra Attributes Display Name Oauth2 Config Client Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkforcePool("pool",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global")
+        example = gcp.iam.WorkforcePoolProvider("example",
+            workforce_pool_id=pool.workforce_pool_id,
+            location=pool.location,
+            provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc={
+                "issuer_uri": "https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/",
+                "client_id": "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+                "web_sso_config": {
+                    "response_type": "CODE",
+                    "assertion_claims_behavior": "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                },
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+            },
+            extra_attributes_oauth2_client={
+                "issuer_uri": "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                "client_id": "client-id",
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+                "attributes_type": "AZURE_AD_GROUPS_DISPLAY_NAME",
+            })
+        ```
+        ### Iam Workforce Pool Provider Extra Attributes Display Name Oauth2 Config Client Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkforcePool("pool",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global")
+        example = gcp.iam.WorkforcePoolProvider("example",
+            workforce_pool_id=pool.workforce_pool_id,
+            location=pool.location,
+            provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc={
+                "issuer_uri": "https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/",
+                "client_id": "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+                "web_sso_config": {
+                    "response_type": "CODE",
+                    "assertion_claims_behavior": "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                },
+            },
+            extra_attributes_oauth2_client={
+                "issuer_uri": "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                "client_id": "client-id",
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+                "attributes_type": "AZURE_AD_GROUPS_DISPLAY_NAME",
+                "query_parameters": {
+                    "filter": "displayName:gcp",
+                },
+            })
+        ```
         ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Basic
 
         ```python
@@ -1495,6 +1580,91 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 "attributes_type": "AZURE_AD_GROUPS_MAIL",
                 "query_parameters": {
                     "filter": "mail:gcp",
+                },
+            })
+        ```
+        ### Iam Workforce Pool Provider Extra Attributes Display Name Oauth2 Config Client Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkforcePool("pool",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global")
+        example = gcp.iam.WorkforcePoolProvider("example",
+            workforce_pool_id=pool.workforce_pool_id,
+            location=pool.location,
+            provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc={
+                "issuer_uri": "https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/",
+                "client_id": "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+                "web_sso_config": {
+                    "response_type": "CODE",
+                    "assertion_claims_behavior": "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                },
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+            },
+            extra_attributes_oauth2_client={
+                "issuer_uri": "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                "client_id": "client-id",
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+                "attributes_type": "AZURE_AD_GROUPS_DISPLAY_NAME",
+            })
+        ```
+        ### Iam Workforce Pool Provider Extra Attributes Display Name Oauth2 Config Client Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkforcePool("pool",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global")
+        example = gcp.iam.WorkforcePoolProvider("example",
+            workforce_pool_id=pool.workforce_pool_id,
+            location=pool.location,
+            provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc={
+                "issuer_uri": "https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/",
+                "client_id": "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+                "web_sso_config": {
+                    "response_type": "CODE",
+                    "assertion_claims_behavior": "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                },
+            },
+            extra_attributes_oauth2_client={
+                "issuer_uri": "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                "client_id": "client-id",
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+                "attributes_type": "AZURE_AD_GROUPS_DISPLAY_NAME",
+                "query_parameters": {
+                    "filter": "displayName:gcp",
                 },
             })
         ```

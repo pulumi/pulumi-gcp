@@ -127,6 +127,75 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Firewall Policy Rule Network Context
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.organizations.Folder("folder", {
+ *     displayName: "folder",
+ *     parent: "organizations/123456789",
+ *     deletionProtection: false,
+ * });
+ * const _default = new gcp.compute.FirewallPolicy("default", {
+ *     parent: folder.id,
+ *     shortName: "fw-policy",
+ *     description: "Firewall policy",
+ * });
+ * const primary = new gcp.compute.FirewallPolicyRule("primary", {
+ *     firewallPolicy: _default.name,
+ *     description: "Firewall policy rule with network context",
+ *     priority: 8000,
+ *     action: "allow",
+ *     direction: "INGRESS",
+ *     disabled: false,
+ *     match: {
+ *         srcIpRanges: ["11.100.0.1/32"],
+ *         srcNetworkContext: "INTERNET",
+ *         layer4Configs: [
+ *             {
+ *                 ipProtocol: "tcp",
+ *                 ports: ["8080"],
+ *             },
+ *             {
+ *                 ipProtocol: "udp",
+ *                 ports: ["22"],
+ *             },
+ *         ],
+ *     },
+ * });
+ * const egress_primary = new gcp.compute.FirewallPolicyRule("egress-primary", {
+ *     firewallPolicy: _default.name,
+ *     description: "Firewall policy rule with network context",
+ *     priority: 9000,
+ *     action: "allow",
+ *     direction: "EGRESS",
+ *     disabled: false,
+ *     match: {
+ *         destIpRanges: ["11.100.0.1/32"],
+ *         destNetworkContext: "NON_INTERNET",
+ *         layer4Configs: [{
+ *             ipProtocol: "tcp",
+ *         }],
+ *     },
+ * });
+ * const unset_primary = new gcp.compute.FirewallPolicyRule("unset-primary", {
+ *     firewallPolicy: _default.name,
+ *     description: "Firewall policy rule with network context",
+ *     priority: 10000,
+ *     action: "allow",
+ *     direction: "EGRESS",
+ *     disabled: false,
+ *     match: {
+ *         destIpRanges: ["11.100.0.1/32"],
+ *         destNetworkContext: "UNSPECIFIED",
+ *         layer4Configs: [{
+ *             ipProtocol: "tcp",
+ *         }],
+ *     },
+ * });
+ * ```
  * ### Firewall Policy Rule Secure Tags
  *
  * ```typescript

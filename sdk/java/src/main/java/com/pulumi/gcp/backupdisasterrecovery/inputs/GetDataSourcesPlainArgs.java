@@ -15,37 +15,77 @@ public final class GetDataSourcesPlainArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetDataSourcesPlainArgs Empty = new GetDataSourcesPlainArgs();
 
+    /**
+     * The ID of the Backup Vault in which the Data Source belongs.
+     * 
+     */
     @Import(name="backupVaultId", required=true)
     private String backupVaultId;
 
+    /**
+     * @return The ID of the Backup Vault in which the Data Source belongs.
+     * 
+     */
     public String backupVaultId() {
         return this.backupVaultId;
     }
 
+    /**
+     * An expression to filter the results. For example, data_source_gcp_resource.type=&#34;compute.googleapis.com/Instance&#34;
+     * 
+     */
     @Import(name="filter")
     private @Nullable String filter;
 
+    /**
+     * @return An expression to filter the results. For example, data_source_gcp_resource.type=&#34;compute.googleapis.com/Instance&#34;
+     * 
+     */
     public Optional<String> filter() {
         return Optional.ofNullable(this.filter);
     }
 
+    /**
+     * The location in which the Data Source belongs.
+     * 
+     */
     @Import(name="location", required=true)
     private String location;
 
+    /**
+     * @return The location in which the Data Source belongs.
+     * 
+     */
     public String location() {
         return this.location;
     }
 
+    /**
+     * An expression to order the results. For example, createTime desc
+     * 
+     */
     @Import(name="orderBy")
     private @Nullable String orderBy;
 
+    /**
+     * @return An expression to order the results. For example, createTime desc
+     * 
+     */
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
 
+    /**
+     * The Google Cloud Project in which the Data Source belongs.
+     * 
+     */
     @Import(name="project")
     private @Nullable String project;
 
+    /**
+     * @return The Google Cloud Project in which the Data Source belongs.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -78,26 +118,56 @@ public final class GetDataSourcesPlainArgs extends com.pulumi.resources.InvokeAr
             $ = new GetDataSourcesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param backupVaultId The ID of the Backup Vault in which the Data Source belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupVaultId(String backupVaultId) {
             $.backupVaultId = backupVaultId;
             return this;
         }
 
+        /**
+         * @param filter An expression to filter the results. For example, data_source_gcp_resource.type=&#34;compute.googleapis.com/Instance&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(@Nullable String filter) {
             $.filter = filter;
             return this;
         }
 
+        /**
+         * @param location The location in which the Data Source belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param orderBy An expression to order the results. For example, createTime desc
+         * 
+         * @return builder
+         * 
+         */
         public Builder orderBy(@Nullable String orderBy) {
             $.orderBy = orderBy;
             return this;
         }
 
+        /**
+         * @param project The Google Cloud Project in which the Data Source belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;

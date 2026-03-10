@@ -148,13 +148,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         Name = "tf-test-network_12125",
+    ///         Name = "tf-test-network_9723",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
     ///     {
-    ///         Name = "tf-test-subnet_82749",
+    ///         Name = "tf-test-subnet_22061",
     ///         IpCidrRange = "10.0.0.0/28",
     ///         Region = "us-central1",
     ///         Network = network.SelfLink,
@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var instance = new Gcp.Compute.Instance("instance", new()
     ///     {
-    ///         Name = "tf-test-instance_15022",
+    ///         Name = "tf-test-instance_60461",
     ///         MachineType = "e2-medium",
     ///         CanIpForward = true,
     ///         Zone = "us-central1-a",
@@ -192,7 +192,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
     ///     {
-    ///         Name = "tf-test-hub_89648",
+    ///         Name = "tf-test-hub_45397",
     ///         Description = "A sample hub",
     ///         Labels = 
     ///         {
@@ -202,7 +202,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
     ///     {
-    ///         Name = "tf-test-name_64612",
+    ///         Name = "tf-test-name_16451",
     ///         Location = "us-central1",
     ///         Description = "A sample spoke with a linked routher appliance instance",
     ///         Labels = 
@@ -594,8 +594,8 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///         {
     ///             AutoAcceptProjects = new[]
     ///             {
-    ///                 "foo_34242",
-    ///                 "bar_9723",
+    ///                 "foo_3686",
+    ///                 "bar_54136",
     ///             },
     ///         },
     ///     });
@@ -686,7 +686,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
     ///     {
-    ///         Name = "tf-test-subnet_22061",
+    ///         Name = "tf-test-subnet_11171",
     ///         IpCidrRange = "10.0.0.0/28",
     ///         Region = "us-central1",
     ///         Network = network.SelfLink,

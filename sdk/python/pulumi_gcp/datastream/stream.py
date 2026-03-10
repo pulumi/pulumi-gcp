@@ -1378,8 +1378,8 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-            project_id="tf-test_33052",
-            name="tf-test_3684",
+            project_id="tf-test_50610",
+            name="tf-test_77124",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -2649,8 +2649,8 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-            project_id="tf-test_33052",
-            name="tf-test_3684",
+            project_id="tf-test_50610",
+            name="tf-test_77124",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")

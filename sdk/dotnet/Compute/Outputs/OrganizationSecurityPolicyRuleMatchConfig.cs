@@ -14,12 +14,15 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class OrganizationSecurityPolicyRuleMatchConfig
     {
         /// <summary>
-        /// Destination IP address range in CIDR format. Required for
-        /// EGRESS rules.
+        /// (Optional, Beta)
+        /// Destination IP address range in CIDR format. Required for EGRESS rules.
+        /// This field may only be specified when versionedExpr is set to FIREWALL.
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
         /// <summary>
+        /// (Optional, Beta)
         /// Pairs of IP protocols and ports that the rule should match.
+        /// This field may only be specified when versionedExpr is set to FIREWALL.
         /// Structure is documented below.
         /// 
         /// 
