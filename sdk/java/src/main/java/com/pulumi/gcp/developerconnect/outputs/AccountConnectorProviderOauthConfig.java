@@ -21,7 +21,9 @@ public final class AccountConnectorProviderOauthConfig {
      */
     private List<String> scopes;
     /**
-     * @return List of providers that are owned by Developer Connect.
+     * @return List of providers that are owned by Developer Connect. Creation of
+     * new non-SCM providers Account Connectors is not possible at this
+     * time.
      * Possible values:
      * GITHUB
      * GITLAB
@@ -45,7 +47,9 @@ public final class AccountConnectorProviderOauthConfig {
         return this.scopes;
     }
     /**
-     * @return List of providers that are owned by Developer Connect.
+     * @return List of providers that are owned by Developer Connect. Creation of
+     * new non-SCM providers Account Connectors is not possible at this
+     * time.
      * Possible values:
      * GITHUB
      * GITLAB

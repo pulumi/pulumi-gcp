@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigAvroConfigArgs;
+import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigTextConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -182,6 +183,23 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.state);
     }
 
+    /**
+     * If set, message data will be written to Cloud Storage in text format.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="textConfig")
+    private @Nullable Output<SubscriptionCloudStorageConfigTextConfigArgs> textConfig;
+
+    /**
+     * @return If set, message data will be written to Cloud Storage in text format.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SubscriptionCloudStorageConfigTextConfigArgs>> textConfig() {
+        return Optional.ofNullable(this.textConfig);
+    }
+
     private SubscriptionCloudStorageConfigArgs() {}
 
     private SubscriptionCloudStorageConfigArgs(SubscriptionCloudStorageConfigArgs $) {
@@ -195,6 +213,7 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
         this.maxMessages = $.maxMessages;
         this.serviceAccountEmail = $.serviceAccountEmail;
         this.state = $.state;
+        this.textConfig = $.textConfig;
     }
 
     public static Builder builder() {
@@ -437,6 +456,29 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param textConfig If set, message data will be written to Cloud Storage in text format.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder textConfig(@Nullable Output<SubscriptionCloudStorageConfigTextConfigArgs> textConfig) {
+            $.textConfig = textConfig;
+            return this;
+        }
+
+        /**
+         * @param textConfig If set, message data will be written to Cloud Storage in text format.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder textConfig(SubscriptionCloudStorageConfigTextConfigArgs textConfig) {
+            return textConfig(Output.of(textConfig));
         }
 
         public SubscriptionCloudStorageConfigArgs build() {

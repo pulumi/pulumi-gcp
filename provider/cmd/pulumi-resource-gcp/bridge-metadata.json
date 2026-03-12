@@ -1096,6 +1096,9 @@
                             }
                         }
                     },
+                    "dataplex_config": {
+                        "maxItemsOne": true
+                    },
                     "encryption_config": {
                         "maxItemsOne": true
                     },
@@ -10189,6 +10192,9 @@
                                 },
                                 "on_instance_stop_action": {
                                     "maxItemsOne": true
+                                },
+                                "preemption_notice_duration": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -10332,6 +10338,9 @@
                                     }
                                 },
                                 "on_instance_stop_action": {
+                                    "maxItemsOne": true
+                                },
+                                "preemption_notice_duration": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -10479,6 +10488,9 @@
                                     }
                                 },
                                 "on_instance_stop_action": {
+                                    "maxItemsOne": true
+                                },
+                                "preemption_notice_duration": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -10746,6 +10758,9 @@
                                     }
                                 },
                                 "on_instance_stop_action": {
+                                    "maxItemsOne": true
+                                },
+                                "preemption_notice_duration": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -12304,6 +12319,9 @@
                                     }
                                 },
                                 "on_instance_stop_action": {
+                                    "maxItemsOne": true
+                                },
+                                "preemption_notice_duration": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -13904,6 +13922,15 @@
             "google_compute_router_interface": {
                 "current": "gcp:compute/routerInterface:RouterInterface",
                 "majorVersion": 9
+            },
+            "google_compute_router_named_set": {
+                "current": "gcp:compute/routerNamedSet:RouterNamedSet",
+                "majorVersion": 9,
+                "fields": {
+                    "elements": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_compute_router_nat": {
                 "current": "gcp:compute/routerNat:RouterNat",
@@ -16802,6 +16829,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "control_plane_disk_encryption_key_versions": {
+                                    "maxItemsOne": false
+                                },
                                 "service_account_signing_keys": {
                                     "maxItemsOne": false
                                 },
@@ -18350,6 +18380,9 @@
                                         "fields": {
                                             "profile_table": {
                                                 "maxItemsOne": true
+                                            },
+                                            "sample_findings_table": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
@@ -18378,7 +18411,13 @@
                                         }
                                     }
                                 },
+                                "publish_to_chronicle": {
+                                    "maxItemsOne": true
+                                },
                                 "publish_to_dataplex_catalog": {
+                                    "maxItemsOne": true
+                                },
+                                "publish_to_scc": {
                                     "maxItemsOne": true
                                 },
                                 "tag_resources": {
@@ -19751,6 +19790,10 @@
                     }
                 }
             },
+            "google_dataform_config": {
+                "current": "gcp:dataform/config:Config",
+                "majorVersion": 9
+            },
             "google_dataform_folder": {
                 "current": "gcp:dataform/folder:Folder",
                 "majorVersion": 9
@@ -19981,6 +20024,22 @@
                     },
                     "owner_emails": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "google_dataplex_data_product_data_asset": {
+                "current": "gcp:dataplex/dataProductDataAsset:DataProductDataAsset",
+                "majorVersion": 9,
+                "fields": {
+                    "access_group_configs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "iam_roles": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -22912,6 +22971,22 @@
                             }
                         }
                     },
+                    "http_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "basic_authentication": {
+                                    "maxItemsOne": true
+                                },
+                                "bearer_token_authentication": {
+                                    "maxItemsOne": true
+                                },
+                                "service_directory_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "installation_state": {
                         "maxItemsOne": false
                     }
@@ -24685,11 +24760,37 @@
                 "current": "gcp:discoveryengine/dataConnector:DataConnector",
                 "majorVersion": 9,
                 "fields": {
+                    "action_config": {
+                        "maxItemsOne": true
+                    },
+                    "bap_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "enabled_actions": {
+                                    "maxItemsOne": false
+                                },
+                                "supported_connector_modes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "blocking_reasons": {
                         "maxItemsOne": false
                     },
                     "connector_modes": {
                         "maxItemsOne": false
+                    },
+                    "destination_configs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "destinations": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "entities": {
                         "maxItemsOne": false
@@ -26993,6 +27094,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "workloadidentity": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -31659,6 +31763,9 @@
                             }
                         }
                     },
+                    "large_capacity_config": {
+                        "maxItemsOne": true
+                    },
                     "mount_options": {
                         "maxItemsOne": false
                     },
@@ -33655,6 +33762,18 @@
             },
             "google_notebooks_runtime_iam_policy": {
                 "current": "gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy",
+                "majorVersion": 9
+            },
+            "google_observability_folder_settings": {
+                "current": "gcp:observability/folderSettings:FolderSettings",
+                "majorVersion": 9
+            },
+            "google_observability_organization_settings": {
+                "current": "gcp:observability/organizationSettings:OrganizationSettings",
+                "majorVersion": 9
+            },
+            "google_observability_project_settings": {
+                "current": "gcp:observability/projectSettings:ProjectSettings",
                 "majorVersion": 9
             },
             "google_observability_trace_scope": {
@@ -36965,6 +37084,9 @@
                         "elem": {
                             "fields": {
                                 "avro_config": {
+                                    "maxItemsOne": true
+                                },
+                                "text_config": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -41614,6 +41736,9 @@
                             }
                         }
                     },
+                    "dataplex_config": {
+                        "maxItemsOne": false
+                    },
                     "encryption_config": {
                         "maxItemsOne": false
                     },
@@ -44825,6 +44950,9 @@
                                 },
                                 "on_instance_stop_action": {
                                     "maxItemsOne": false
+                                },
+                                "preemption_notice_duration": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -45066,6 +45194,9 @@
                                     }
                                 },
                                 "on_instance_stop_action": {
+                                    "maxItemsOne": false
+                                },
+                                "preemption_notice_duration": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -45668,6 +45799,9 @@
                                     }
                                 },
                                 "on_instance_stop_action": {
+                                    "maxItemsOne": false
+                                },
+                                "preemption_notice_duration": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -47692,6 +47826,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "control_plane_disk_encryption_key_versions": {
+                                    "maxItemsOne": false
+                                },
                                 "service_account_signing_keys": {
                                     "maxItemsOne": false
                                 },
@@ -48406,6 +48543,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "workloadidentity": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -49214,6 +49354,18 @@
                 "current": "gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy",
                 "majorVersion": 9
             },
+            "google_observability_folder_settings": {
+                "current": "gcp:observability/getFolderSettings:getFolderSettings",
+                "majorVersion": 9
+            },
+            "google_observability_organization_settings": {
+                "current": "gcp:observability/getOrganizationSettings:getOrganizationSettings",
+                "majorVersion": 9
+            },
+            "google_observability_project_settings": {
+                "current": "gcp:observability/getProjectSettings:getProjectSettings",
+                "majorVersion": 9
+            },
             "google_oracle_database_autonomous_database": {
                 "current": "gcp:oracledatabase/getAutonomousDatabase:getAutonomousDatabase",
                 "majorVersion": 9,
@@ -49537,6 +49689,14 @@
                         }
                     }
                 }
+            },
+            "google_oracle_database_odb_network": {
+                "current": "gcp:oracledatabase/getOdbNetwork:getOdbNetwork",
+                "majorVersion": 9
+            },
+            "google_oracle_database_odb_subnet": {
+                "current": "gcp:oracledatabase/getOdbSubnet:getOdbSubnet",
+                "majorVersion": 9
             },
             "google_organization": {
                 "current": "gcp:organizations/getOrganization:getOrganization",
@@ -50038,6 +50198,9 @@
                         "elem": {
                             "fields": {
                                 "avro_config": {
+                                    "maxItemsOne": false
+                                },
+                                "text_config": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -52207,6 +52370,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_dataplex_data_product_data_asset": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_dataplex_datascan": [
                 "effective_labels",
                 "terraform_labels"
@@ -53297,6 +53464,14 @@
                 "cloud_vm_clusters.$.effective_labels",
                 "cloud_vm_clusters.$.terraform_labels"
             ],
+            "google_oracle_database_odb_network": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_oracle_database_odb_subnet": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_parameter_manager_parameter": [
                 "effective_labels",
                 "terraform_labels"
@@ -53828,6 +54003,7 @@
             "gcp:compute/route:Route": 0,
             "gcp:compute/router:Router": 0,
             "gcp:compute/routerInterface:RouterInterface": 0,
+            "gcp:compute/routerNamedSet:RouterNamedSet": 0,
             "gcp:compute/routerNat:RouterNat": 0,
             "gcp:compute/routerNatAddress:RouterNatAddress": 0,
             "gcp:compute/routerPeer:RouterPeer": 0,
@@ -53904,6 +54080,7 @@
             "gcp:dataflow/flexTemplateJob:FlexTemplateJob": 0,
             "gcp:dataflow/job:Job": 0,
             "gcp:dataflow/pipeline:Pipeline": 0,
+            "gcp:dataform/config:Config": 0,
             "gcp:dataform/folder:Folder": 0,
             "gcp:dataform/repository:Repository": 0,
             "gcp:dataform/repositoryIamBinding:RepositoryIamBinding": 0,
@@ -53928,6 +54105,7 @@
             "gcp:dataplex/assetIamPolicy:AssetIamPolicy": 0,
             "gcp:dataplex/dataAsset:DataAsset": 0,
             "gcp:dataplex/dataProduct:DataProduct": 0,
+            "gcp:dataplex/dataProductDataAsset:DataProductDataAsset": 0,
             "gcp:dataplex/datascan:Datascan": 0,
             "gcp:dataplex/datascanIamBinding:DatascanIamBinding": 0,
             "gcp:dataplex/datascanIamMember:DatascanIamMember": 0,
@@ -54424,6 +54602,9 @@
             "gcp:notebooks/runtimeIamBinding:RuntimeIamBinding": 0,
             "gcp:notebooks/runtimeIamMember:RuntimeIamMember": 0,
             "gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy": 0,
+            "gcp:observability/folderSettings:FolderSettings": 0,
+            "gcp:observability/organizationSettings:OrganizationSettings": 0,
+            "gcp:observability/projectSettings:ProjectSettings": 0,
             "gcp:observability/traceScope:TraceScope": 0,
             "gcp:oracledatabase/autonomousDatabase:AutonomousDatabase": 0,
             "gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure": 0,
@@ -55015,6 +55196,9 @@
             "gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy": 0,
             "gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy": 0,
             "gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy": 0,
+            "gcp:observability/getFolderSettings:getFolderSettings": 0,
+            "gcp:observability/getOrganizationSettings:getOrganizationSettings": 0,
+            "gcp:observability/getProjectSettings:getProjectSettings": 0,
             "gcp:oracledatabase/getAutonomousDatabase:getAutonomousDatabase": 0,
             "gcp:oracledatabase/getAutonomousDatabases:getAutonomousDatabases": 0,
             "gcp:oracledatabase/getCloudExadataInfrastructure:getCloudExadataInfrastructure": 0,
@@ -55023,6 +55207,8 @@
             "gcp:oracledatabase/getCloudVmClusters:getCloudVmClusters": 0,
             "gcp:oracledatabase/getDbNodes:getDbNodes": 0,
             "gcp:oracledatabase/getDbServers:getDbServers": 0,
+            "gcp:oracledatabase/getOdbNetwork:getOdbNetwork": 0,
+            "gcp:oracledatabase/getOdbSubnet:getOdbSubnet": 0,
             "gcp:organizations/getActiveFolder:getActiveFolder": 0,
             "gcp:organizations/getBillingAccount:getBillingAccount": 0,
             "gcp:organizations/getClientConfig:getClientConfig": 1,

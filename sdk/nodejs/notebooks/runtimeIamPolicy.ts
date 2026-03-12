@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** The parent resource has been deprecated: `gcp.notebooks.Runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+ *
  * Three different resources help you manage your IAM policy for Cloud AI Notebooks Runtime. Each of these resources serves a different use case:
  *
  * * `gcp.notebooks.RuntimeIamPolicy`: Authoritative. Sets the IAM policy for the runtime and replaces any existing policy already attached.
@@ -74,6 +76,7 @@ import * as utilities from "../utilities";
  * - 
  *
  * # IAM policy for Cloud AI Notebooks Runtime
+ * > **Warning:** The parent resource has been deprecated: `gcp.notebooks.Runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
  *
  * Three different resources help you manage your IAM policy for Cloud AI Notebooks Runtime. Each of these resources serves a different use case:
  *

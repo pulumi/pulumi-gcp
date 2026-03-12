@@ -184,6 +184,14 @@ export class Volume extends pulumi.CustomResource {
      */
     declare public readonly largeCapacity: pulumi.Output<boolean | undefined>;
     /**
+     * (Optional, Beta)
+     * Configuration for a Large Capacity Volume. A Large Capacity Volume
+     * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+     * internal constituents, and must be created in a large capacity pool.
+     * Structure is documented below.
+     */
+    declare public readonly largeCapacityConfig: pulumi.Output<outputs.netapp.VolumeLargeCapacityConfig | undefined>;
+    /**
      * Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
      */
     declare public /*out*/ readonly ldapEnabled: pulumi.Output<boolean>;
@@ -337,6 +345,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["kmsConfig"] = state?.kmsConfig;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["largeCapacity"] = state?.largeCapacity;
+            resourceInputs["largeCapacityConfig"] = state?.largeCapacityConfig;
             resourceInputs["ldapEnabled"] = state?.ldapEnabled;
             resourceInputs["location"] = state?.location;
             resourceInputs["mountOptions"] = state?.mountOptions;
@@ -389,6 +398,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["kerberosEnabled"] = args?.kerberosEnabled;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["largeCapacity"] = args?.largeCapacity;
+            resourceInputs["largeCapacityConfig"] = args?.largeCapacityConfig;
             resourceInputs["location"] = args?.location;
             resourceInputs["multipleEndpoints"] = args?.multipleEndpoints;
             resourceInputs["name"] = args?.name;
@@ -526,6 +536,14 @@ export interface VolumeState {
      * Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
      */
     largeCapacity?: pulumi.Input<boolean>;
+    /**
+     * (Optional, Beta)
+     * Configuration for a Large Capacity Volume. A Large Capacity Volume
+     * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+     * internal constituents, and must be created in a large capacity pool.
+     * Structure is documented below.
+     */
+    largeCapacityConfig?: pulumi.Input<inputs.netapp.VolumeLargeCapacityConfig>;
     /**
      * Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
      */
@@ -711,6 +729,14 @@ export interface VolumeArgs {
      * Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
      */
     largeCapacity?: pulumi.Input<boolean>;
+    /**
+     * (Optional, Beta)
+     * Configuration for a Large Capacity Volume. A Large Capacity Volume
+     * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+     * internal constituents, and must be created in a large capacity pool.
+     * Structure is documented below.
+     */
+    largeCapacityConfig?: pulumi.Input<inputs.netapp.VolumeLargeCapacityConfig>;
     /**
      * Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
      */

@@ -62,6 +62,21 @@ public final class ClusterUserManagedKeysConfigArgs extends com.pulumi.resources
     }
 
     /**
+     * The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+     * 
+     */
+    @Import(name="controlPlaneDiskEncryptionKeyVersions")
+    private @Nullable Output<List<String>> controlPlaneDiskEncryptionKeyVersions;
+
+    /**
+     * @return The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+     * 
+     */
+    public Optional<Output<List<String>>> controlPlaneDiskEncryptionKeyVersions() {
+        return Optional.ofNullable(this.controlPlaneDiskEncryptionKeyVersions);
+    }
+
+    /**
      * The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
      * 
      */
@@ -142,6 +157,7 @@ public final class ClusterUserManagedKeysConfigArgs extends com.pulumi.resources
         this.aggregationCa = $.aggregationCa;
         this.clusterCa = $.clusterCa;
         this.controlPlaneDiskEncryptionKey = $.controlPlaneDiskEncryptionKey;
+        this.controlPlaneDiskEncryptionKeyVersions = $.controlPlaneDiskEncryptionKeyVersions;
         this.etcdApiCa = $.etcdApiCa;
         this.etcdPeerCa = $.etcdPeerCa;
         this.gkeopsEtcdBackupEncryptionKey = $.gkeopsEtcdBackupEncryptionKey;
@@ -228,6 +244,37 @@ public final class ClusterUserManagedKeysConfigArgs extends com.pulumi.resources
          */
         public Builder controlPlaneDiskEncryptionKey(String controlPlaneDiskEncryptionKey) {
             return controlPlaneDiskEncryptionKey(Output.of(controlPlaneDiskEncryptionKey));
+        }
+
+        /**
+         * @param controlPlaneDiskEncryptionKeyVersions The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneDiskEncryptionKeyVersions(@Nullable Output<List<String>> controlPlaneDiskEncryptionKeyVersions) {
+            $.controlPlaneDiskEncryptionKeyVersions = controlPlaneDiskEncryptionKeyVersions;
+            return this;
+        }
+
+        /**
+         * @param controlPlaneDiskEncryptionKeyVersions The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneDiskEncryptionKeyVersions(List<String> controlPlaneDiskEncryptionKeyVersions) {
+            return controlPlaneDiskEncryptionKeyVersions(Output.of(controlPlaneDiskEncryptionKeyVersions));
+        }
+
+        /**
+         * @param controlPlaneDiskEncryptionKeyVersions The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneDiskEncryptionKeyVersions(String... controlPlaneDiskEncryptionKeyVersions) {
+            return controlPlaneDiskEncryptionKeyVersions(List.of(controlPlaneDiskEncryptionKeyVersions));
         }
 
         /**

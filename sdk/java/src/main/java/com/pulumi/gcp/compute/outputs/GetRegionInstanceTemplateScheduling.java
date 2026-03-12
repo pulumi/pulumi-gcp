@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingLocalSs
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingNodeAffinity;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingOnInstanceStopAction;
+import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -95,6 +96,11 @@ public final class GetRegionInstanceTemplateScheduling {
      * 
      */
     private Boolean preemptible;
+    /**
+     * @return The duration of the notice that the instance will receive before it is preempted.
+     * 
+     */
+    private List<GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration> preemptionNoticeDurations;
     /**
      * @return Describe the type of preemptible VM.
      * 
@@ -218,6 +224,13 @@ public final class GetRegionInstanceTemplateScheduling {
         return this.preemptible;
     }
     /**
+     * @return The duration of the notice that the instance will receive before it is preempted.
+     * 
+     */
+    public List<GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration> preemptionNoticeDurations() {
+        return this.preemptionNoticeDurations;
+    }
+    /**
      * @return Describe the type of preemptible VM.
      * 
      */
@@ -263,6 +276,7 @@ public final class GetRegionInstanceTemplateScheduling {
         private String onHostMaintenance;
         private List<GetRegionInstanceTemplateSchedulingOnInstanceStopAction> onInstanceStopActions;
         private Boolean preemptible;
+        private List<GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration> preemptionNoticeDurations;
         private String provisioningModel;
         private Boolean skipGuestOsShutdown;
         private String terminationTime;
@@ -282,6 +296,7 @@ public final class GetRegionInstanceTemplateScheduling {
     	      this.onHostMaintenance = defaults.onHostMaintenance;
     	      this.onInstanceStopActions = defaults.onInstanceStopActions;
     	      this.preemptible = defaults.preemptible;
+    	      this.preemptionNoticeDurations = defaults.preemptionNoticeDurations;
     	      this.provisioningModel = defaults.provisioningModel;
     	      this.skipGuestOsShutdown = defaults.skipGuestOsShutdown;
     	      this.terminationTime = defaults.terminationTime;
@@ -407,6 +422,17 @@ public final class GetRegionInstanceTemplateScheduling {
             return this;
         }
         @CustomType.Setter
+        public Builder preemptionNoticeDurations(List<GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration> preemptionNoticeDurations) {
+            if (preemptionNoticeDurations == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateScheduling", "preemptionNoticeDurations");
+            }
+            this.preemptionNoticeDurations = preemptionNoticeDurations;
+            return this;
+        }
+        public Builder preemptionNoticeDurations(GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration... preemptionNoticeDurations) {
+            return preemptionNoticeDurations(List.of(preemptionNoticeDurations));
+        }
+        @CustomType.Setter
         public Builder provisioningModel(String provisioningModel) {
             if (provisioningModel == null) {
               throw new MissingRequiredPropertyException("GetRegionInstanceTemplateScheduling", "provisioningModel");
@@ -445,6 +471,7 @@ public final class GetRegionInstanceTemplateScheduling {
             _resultValue.onHostMaintenance = onHostMaintenance;
             _resultValue.onInstanceStopActions = onInstanceStopActions;
             _resultValue.preemptible = preemptible;
+            _resultValue.preemptionNoticeDurations = preemptionNoticeDurations;
             _resultValue.provisioningModel = provisioningModel;
             _resultValue.skipGuestOsShutdown = skipGuestOsShutdown;
             _resultValue.terminationTime = terminationTime;

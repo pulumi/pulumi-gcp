@@ -732,6 +732,62 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Network Firewall Policy Rule Network Context Egress
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_network_firewall_policy = gcp.compute.NetworkFirewallPolicy("basic_network_firewall_policy",
+            name="fw-policy",
+            description="Sample global network firewall policy",
+            project="my-project-name")
+        primary = gcp.compute.NetworkFirewallPolicyRule("primary",
+            action="allow",
+            description="This is a simple rule description",
+            direction="EGRESS",
+            disabled=False,
+            enable_logging=True,
+            firewall_policy=basic_network_firewall_policy.name,
+            priority=1000,
+            rule_name="test-rule",
+            match={
+                "dest_ip_ranges": ["10.100.0.1/32"],
+                "dest_network_context": "INTERNET",
+                "layer4_configs": [{
+                    "ip_protocol": "all",
+                }],
+            })
+        ```
+        ### Network Firewall Policy Rule Network Context Ingress
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_network_firewall_policy = gcp.compute.NetworkFirewallPolicy("basic_network_firewall_policy",
+            name="fw-policy",
+            description="Sample global network firewall policy",
+            project="my-project-name")
+        network = gcp.compute.Network("network", name="network")
+        primary = gcp.compute.NetworkFirewallPolicyRule("primary",
+            action="allow",
+            description="This is a simple rule description",
+            direction="INGRESS",
+            disabled=False,
+            enable_logging=True,
+            firewall_policy=basic_network_firewall_policy.name,
+            priority=1000,
+            rule_name="test-rule",
+            match={
+                "src_ip_ranges": ["11.100.0.1/32"],
+                "src_network_context": "VPC_NETWORKS",
+                "src_networks": [network.id],
+                "layer4_configs": [{
+                    "ip_protocol": "all",
+                }],
+            })
+        ```
 
         ## Import
 
@@ -903,6 +959,62 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             match={
                 "src_ip_ranges": ["11.100.0.1/32"],
                 "src_network_scope": "VPC_NETWORKS",
+                "src_networks": [network.id],
+                "layer4_configs": [{
+                    "ip_protocol": "all",
+                }],
+            })
+        ```
+        ### Network Firewall Policy Rule Network Context Egress
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_network_firewall_policy = gcp.compute.NetworkFirewallPolicy("basic_network_firewall_policy",
+            name="fw-policy",
+            description="Sample global network firewall policy",
+            project="my-project-name")
+        primary = gcp.compute.NetworkFirewallPolicyRule("primary",
+            action="allow",
+            description="This is a simple rule description",
+            direction="EGRESS",
+            disabled=False,
+            enable_logging=True,
+            firewall_policy=basic_network_firewall_policy.name,
+            priority=1000,
+            rule_name="test-rule",
+            match={
+                "dest_ip_ranges": ["10.100.0.1/32"],
+                "dest_network_context": "INTERNET",
+                "layer4_configs": [{
+                    "ip_protocol": "all",
+                }],
+            })
+        ```
+        ### Network Firewall Policy Rule Network Context Ingress
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_network_firewall_policy = gcp.compute.NetworkFirewallPolicy("basic_network_firewall_policy",
+            name="fw-policy",
+            description="Sample global network firewall policy",
+            project="my-project-name")
+        network = gcp.compute.Network("network", name="network")
+        primary = gcp.compute.NetworkFirewallPolicyRule("primary",
+            action="allow",
+            description="This is a simple rule description",
+            direction="INGRESS",
+            disabled=False,
+            enable_logging=True,
+            firewall_policy=basic_network_firewall_policy.name,
+            priority=1000,
+            rule_name="test-rule",
+            match={
+                "src_ip_ranges": ["11.100.0.1/32"],
+                "src_network_context": "VPC_NETWORKS",
                 "src_networks": [network.id],
                 "layer4_configs": [{
                     "ip_protocol": "all",

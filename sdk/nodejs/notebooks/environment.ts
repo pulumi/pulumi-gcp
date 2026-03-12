@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** `gcp.notebooks.Environment` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+ *
  * A Cloud AI Platform Notebook environment.
  *
  * To get more information about Environment, see:

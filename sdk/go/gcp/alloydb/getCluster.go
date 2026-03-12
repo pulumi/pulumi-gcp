@@ -70,6 +70,7 @@ type LookupClusterResult struct {
 	ContinuousBackupConfigs []GetClusterContinuousBackupConfig `pulumi:"continuousBackupConfigs"`
 	ContinuousBackupInfos   []GetClusterContinuousBackupInfo   `pulumi:"continuousBackupInfos"`
 	DatabaseVersion         string                             `pulumi:"databaseVersion"`
+	DataplexConfigs         []GetClusterDataplexConfig         `pulumi:"dataplexConfigs"`
 	DeletionPolicy          string                             `pulumi:"deletionPolicy"`
 	DeletionProtection      bool                               `pulumi:"deletionProtection"`
 	DisplayName             string                             `pulumi:"displayName"`
@@ -178,6 +179,10 @@ func (o LookupClusterResultOutput) ContinuousBackupInfos() GetClusterContinuousB
 
 func (o LookupClusterResultOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.DatabaseVersion }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) DataplexConfigs() GetClusterDataplexConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterDataplexConfig { return v.DataplexConfigs }).(GetClusterDataplexConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) DeletionPolicy() pulumi.StringOutput {

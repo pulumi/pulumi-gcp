@@ -242,6 +242,13 @@ namespace Pulumi.Gcp.Compute
         public Output<bool> EnableConfidentialCompute { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+        /// </summary>
+        [Output("eraseWindowsVssSignature")]
+        public Output<bool?> EraseWindowsVssSignature { get; private set; } = null!;
+
+        /// <summary>
         /// A list of features to enable on the guest operating system.
         /// Applicable only for bootable disks.
         /// Structure is documented below.
@@ -656,6 +663,13 @@ namespace Pulumi.Gcp.Compute
         [Input("enableConfidentialCompute")]
         public Input<bool>? EnableConfidentialCompute { get; set; }
 
+        /// <summary>
+        /// (Optional, Beta)
+        /// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+        /// </summary>
+        [Input("eraseWindowsVssSignature")]
+        public Input<bool>? EraseWindowsVssSignature { get; set; }
+
         [Input("guestOsFeatures")]
         private InputList<Inputs.DiskGuestOsFeatureArgs>? _guestOsFeatures;
 
@@ -1001,6 +1015,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("enableConfidentialCompute")]
         public Input<bool>? EnableConfidentialCompute { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+        /// </summary>
+        [Input("eraseWindowsVssSignature")]
+        public Input<bool>? EraseWindowsVssSignature { get; set; }
 
         [Input("guestOsFeatures")]
         private InputList<Inputs.DiskGuestOsFeatureGetArgs>? _guestOsFeatures;

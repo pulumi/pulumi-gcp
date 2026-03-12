@@ -106,6 +106,8 @@ def get_instance_iam_policy(instance_name: Optional[_builtins.str] = None,
                             project: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceIamPolicyResult:
     """
+    > **Warning:** The parent resource has been deprecated: `notebooks.Instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+
     Retrieves the current IAM policy data for instance
 
     ## Example Usage
@@ -146,6 +148,8 @@ def get_instance_iam_policy_output(instance_name: Optional[pulumi.Input[_builtin
                                    project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceIamPolicyResult]:
     """
+    > **Warning:** The parent resource has been deprecated: `notebooks.Instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+
     Retrieves the current IAM policy data for instance
 
     ## Example Usage

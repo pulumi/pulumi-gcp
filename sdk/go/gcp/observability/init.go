@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:observability/folderSettings:FolderSettings":
+		r = &FolderSettings{}
+	case "gcp:observability/organizationSettings:OrganizationSettings":
+		r = &OrganizationSettings{}
+	case "gcp:observability/projectSettings:ProjectSettings":
+		r = &ProjectSettings{}
 	case "gcp:observability/traceScope:TraceScope":
 		r = &TraceScope{}
 	default:
@@ -36,6 +42,21 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"observability/folderSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"observability/organizationSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"observability/projectSettings",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"observability/traceScope",

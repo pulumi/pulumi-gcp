@@ -609,6 +609,7 @@ class PatchDeployment(pulumi.CustomResource):
             },
             patch_config={
                 "mig_instances_allowed": True,
+                "skip_unpatchable_vms": True,
                 "reboot_config": "ALWAYS",
                 "apt": {
                     "type": "DIST",
@@ -893,6 +894,7 @@ class PatchDeployment(pulumi.CustomResource):
             },
             patch_config={
                 "mig_instances_allowed": True,
+                "skip_unpatchable_vms": True,
                 "reboot_config": "ALWAYS",
                 "apt": {
                     "type": "DIST",

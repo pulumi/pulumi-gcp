@@ -26,8 +26,12 @@ class DataConnectorArgs:
                  data_source: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  refresh_interval: pulumi.Input[_builtins.str],
+                 action_config: Optional[pulumi.Input['DataConnectorActionConfigArgs']] = None,
                  auto_run_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bap_config: Optional[pulumi.Input['DataConnectorBapConfigArgs']] = None,
                  connector_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_source_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorEntityArgs']]]] = None,
                  incremental_refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
                  incremental_sync_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -59,10 +63,21 @@ class DataConnectorArgs:
                minimum is 30 minutes and maximum is 7 days. When the refresh interval is
                set to the same value as the incremental refresh interval, incremental
                sync will be disabled.
+        :param pulumi.Input['DataConnectorActionConfigArgs'] action_config: Action configuration for the data connector. Configures action
+               capabilities for connectors that support the ACTIONS connector mode.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] auto_run_disabled: Indicates whether full syncs are paused for this connector
+        :param pulumi.Input['DataConnectorBapConfigArgs'] bap_config: BAP (Business Application Platform) configuration for the data
+               connector. Controls which actions are enabled for connectors
+               using the ACTIONS connector mode.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connector_modes: The modes enabled for this connector. The possible value can be:
                'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
                'EUA', 'FEDERATED_AND_EUA'.
+        :param pulumi.Input[_builtins.int] data_source_version: The version of the data source. For example, `3` for Jira v3.
+        :param pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]] destination_configs: Destination connector configurations for the data connector,
+               used to configure where data is served.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DataConnectorEntityArgs']]] entities: List of entities from the connected data source to ingest.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] incremental_refresh_interval: The refresh interval specifically for incremental data syncs. If unset,
@@ -90,10 +105,18 @@ class DataConnectorArgs:
         pulumi.set(__self__, "data_source", data_source)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "refresh_interval", refresh_interval)
+        if action_config is not None:
+            pulumi.set(__self__, "action_config", action_config)
         if auto_run_disabled is not None:
             pulumi.set(__self__, "auto_run_disabled", auto_run_disabled)
+        if bap_config is not None:
+            pulumi.set(__self__, "bap_config", bap_config)
         if connector_modes is not None:
             pulumi.set(__self__, "connector_modes", connector_modes)
+        if data_source_version is not None:
+            pulumi.set(__self__, "data_source_version", data_source_version)
+        if destination_configs is not None:
+            pulumi.set(__self__, "destination_configs", destination_configs)
         if entities is not None:
             pulumi.set(__self__, "entities", entities)
         if incremental_refresh_interval is not None:
@@ -188,6 +211,20 @@ class DataConnectorArgs:
         pulumi.set(self, "refresh_interval", value)
 
     @_builtins.property
+    @pulumi.getter(name="actionConfig")
+    def action_config(self) -> Optional[pulumi.Input['DataConnectorActionConfigArgs']]:
+        """
+        Action configuration for the data connector. Configures action
+        capabilities for connectors that support the ACTIONS connector mode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "action_config")
+
+    @action_config.setter
+    def action_config(self, value: Optional[pulumi.Input['DataConnectorActionConfigArgs']]):
+        pulumi.set(self, "action_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="autoRunDisabled")
     def auto_run_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -198,6 +235,21 @@ class DataConnectorArgs:
     @auto_run_disabled.setter
     def auto_run_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "auto_run_disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bapConfig")
+    def bap_config(self) -> Optional[pulumi.Input['DataConnectorBapConfigArgs']]:
+        """
+        BAP (Business Application Platform) configuration for the data
+        connector. Controls which actions are enabled for connectors
+        using the ACTIONS connector mode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bap_config")
+
+    @bap_config.setter
+    def bap_config(self, value: Optional[pulumi.Input['DataConnectorBapConfigArgs']]):
+        pulumi.set(self, "bap_config", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorModes")
@@ -212,6 +264,32 @@ class DataConnectorArgs:
     @connector_modes.setter
     def connector_modes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "connector_modes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceVersion")
+    def data_source_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The version of the data source. For example, `3` for Jira v3.
+        """
+        return pulumi.get(self, "data_source_version")
+
+    @data_source_version.setter
+    def data_source_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "data_source_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationConfigs")
+    def destination_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]]:
+        """
+        Destination connector configurations for the data connector,
+        used to configure where data is served.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destination_configs")
+
+    @destination_configs.setter
+    def destination_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]]):
+        pulumi.set(self, "destination_configs", value)
 
     @_builtins.property
     @pulumi.getter
@@ -337,8 +415,10 @@ class DataConnectorArgs:
 @pulumi.input_type
 class _DataConnectorState:
     def __init__(__self__, *,
+                 action_config: Optional[pulumi.Input['DataConnectorActionConfigArgs']] = None,
                  action_state: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_run_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bap_config: Optional[pulumi.Input['DataConnectorBapConfigArgs']] = None,
                  blocking_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  collection_display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  collection_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -346,6 +426,8 @@ class _DataConnectorState:
                  connector_type: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  data_source: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorEntityArgs']]]] = None,
                  errors: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorErrorArgs']]]] = None,
                  incremental_refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
@@ -369,11 +451,18 @@ class _DataConnectorState:
         """
         Input properties used for looking up and filtering DataConnector resources.
 
+        :param pulumi.Input['DataConnectorActionConfigArgs'] action_config: Action configuration for the data connector. Configures action
+               capabilities for connectors that support the ACTIONS connector mode.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] action_state: State of the action connector. This reflects whether the action connector
                is initializing, active or has encountered errors. The possible value can be:
                'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
                'INITIALIZATION_FAILED', 'UPDATING'.
         :param pulumi.Input[_builtins.bool] auto_run_disabled: Indicates whether full syncs are paused for this connector
+        :param pulumi.Input['DataConnectorBapConfigArgs'] bap_config: BAP (Business Application Platform) configuration for the data
+               connector. Controls which actions are enabled for connectors
+               using the ACTIONS connector mode.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocking_reasons: User actions that must be completed before the connector can start syncing data.
                The possible values can be: 'ALLOWLIST_STATIC_IP', 'ALLOWLIST_IN_SERVICE_ATTACHMENT'.
         :param pulumi.Input[_builtins.str] collection_display_name: The display name of the Collection.
@@ -398,6 +487,10 @@ class _DataConnectorState:
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the DataConnector was created.
         :param pulumi.Input[_builtins.str] data_source: The name of the data source.
                Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        :param pulumi.Input[_builtins.int] data_source_version: The version of the data source. For example, `3` for Jira v3.
+        :param pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]] destination_configs: Destination connector configurations for the data connector,
+               used to configure where data is served.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DataConnectorEntityArgs']]] entities: List of entities from the connected data source to ingest.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DataConnectorErrorArgs']]] errors: The errors from initialization or from the latest connector run.
@@ -449,10 +542,14 @@ class _DataConnectorState:
                'PERIODIC', 'STREAMING'.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the DataConnector was updated.
         """
+        if action_config is not None:
+            pulumi.set(__self__, "action_config", action_config)
         if action_state is not None:
             pulumi.set(__self__, "action_state", action_state)
         if auto_run_disabled is not None:
             pulumi.set(__self__, "auto_run_disabled", auto_run_disabled)
+        if bap_config is not None:
+            pulumi.set(__self__, "bap_config", bap_config)
         if blocking_reasons is not None:
             pulumi.set(__self__, "blocking_reasons", blocking_reasons)
         if collection_display_name is not None:
@@ -467,6 +564,10 @@ class _DataConnectorState:
             pulumi.set(__self__, "create_time", create_time)
         if data_source is not None:
             pulumi.set(__self__, "data_source", data_source)
+        if data_source_version is not None:
+            pulumi.set(__self__, "data_source_version", data_source_version)
+        if destination_configs is not None:
+            pulumi.set(__self__, "destination_configs", destination_configs)
         if entities is not None:
             pulumi.set(__self__, "entities", entities)
         if errors is not None:
@@ -509,6 +610,20 @@ class _DataConnectorState:
             pulumi.set(__self__, "update_time", update_time)
 
     @_builtins.property
+    @pulumi.getter(name="actionConfig")
+    def action_config(self) -> Optional[pulumi.Input['DataConnectorActionConfigArgs']]:
+        """
+        Action configuration for the data connector. Configures action
+        capabilities for connectors that support the ACTIONS connector mode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "action_config")
+
+    @action_config.setter
+    def action_config(self, value: Optional[pulumi.Input['DataConnectorActionConfigArgs']]):
+        pulumi.set(self, "action_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="actionState")
     def action_state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -534,6 +649,21 @@ class _DataConnectorState:
     @auto_run_disabled.setter
     def auto_run_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "auto_run_disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bapConfig")
+    def bap_config(self) -> Optional[pulumi.Input['DataConnectorBapConfigArgs']]:
+        """
+        BAP (Business Application Platform) configuration for the data
+        connector. Controls which actions are enabled for connectors
+        using the ACTIONS connector mode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bap_config")
+
+    @bap_config.setter
+    def bap_config(self, value: Optional[pulumi.Input['DataConnectorBapConfigArgs']]):
+        pulumi.set(self, "bap_config", value)
 
     @_builtins.property
     @pulumi.getter(name="blockingReasons")
@@ -635,6 +765,32 @@ class _DataConnectorState:
     @data_source.setter
     def data_source(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "data_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceVersion")
+    def data_source_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The version of the data source. For example, `3` for Jira v3.
+        """
+        return pulumi.get(self, "data_source_version")
+
+    @data_source_version.setter
+    def data_source_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "data_source_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationConfigs")
+    def destination_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]]:
+        """
+        Destination connector configurations for the data connector,
+        used to configure where data is served.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destination_configs")
+
+    @destination_configs.setter
+    def destination_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]]):
+        pulumi.set(self, "destination_configs", value)
 
     @_builtins.property
     @pulumi.getter
@@ -913,11 +1069,15 @@ class DataConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 action_config: Optional[pulumi.Input[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']]] = None,
                  auto_run_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bap_config: Optional[pulumi.Input[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']]] = None,
                  collection_display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  collection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  connector_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  data_source: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
                  incremental_refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
                  incremental_sync_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -997,6 +1157,77 @@ class DataConnector(pulumi.CustomResource):
             connector_modes=["DATA_INGESTION"],
             sync_mode="PERIODIC")
         ```
+        ### Discoveryengine Dataconnector Jira With Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        jira_with_actions = gcp.discoveryengine.DataConnector("jira-with-actions",
+            location="global",
+            collection_id="collection-id",
+            collection_display_name="Jira Federated",
+            data_source="jira",
+            data_source_version=3,
+            params={
+                "instance_uri": "https://example.atlassian.net",
+                "instance_id": "SECRET_MANAGER_RESOURCE_NAME",
+                "client_id": "SECRET_MANAGER_RESOURCE_NAME",
+                "client_secret": "SECRET_MANAGER_RESOURCE_NAME",
+                "refresh_token": "SECRET_MANAGER_RESOURCE_NAME",
+                "auth_type": "OAUTH",
+            },
+            refresh_interval="86400s",
+            entities=[
+                {
+                    "entity_name": "project",
+                },
+                {
+                    "entity_name": "issue",
+                },
+                {
+                    "entity_name": "comment",
+                },
+                {
+                    "entity_name": "attachment",
+                },
+            ],
+            static_ip_enabled=False,
+            destination_configs=[{
+                "key": "url",
+                "destinations": [{
+                    "host": "https://example.atlassian.net",
+                }],
+            }],
+            connector_modes=[
+                "FEDERATED",
+                "ACTIONS",
+            ],
+            sync_mode="PERIODIC",
+            auto_run_disabled=True,
+            incremental_sync_disabled=True,
+            action_config={
+                "action_params": {
+                    "instance_uri": "https://example.atlassian.net",
+                    "instance_id": "SECRET_MANAGER_RESOURCE_NAME",
+                    "client_id": "SECRET_MANAGER_RESOURCE_NAME",
+                    "client_secret": "SECRET_MANAGER_RESOURCE_NAME",
+                    "auth_type": "OAUTH",
+                },
+                "create_bap_connection": True,
+            },
+            bap_config={
+                "supported_connector_modes": ["ACTIONS"],
+                "enabled_actions": [
+                    "create_issue",
+                    "update_issue",
+                    "change_issue_status",
+                    "create_comment",
+                    "update_comment",
+                    "upload_attachment",
+                ],
+            })
+        ```
 
         ## Import
 
@@ -1017,7 +1248,14 @@ class DataConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']] action_config: Action configuration for the data connector. Configures action
+               capabilities for connectors that support the ACTIONS connector mode.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] auto_run_disabled: Indicates whether full syncs are paused for this connector
+        :param pulumi.Input[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']] bap_config: BAP (Business Application Platform) configuration for the data
+               connector. Controls which actions are enabled for connectors
+               using the ACTIONS connector mode.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] collection_display_name: The display name of the Collection.
                Should be human readable, used to display collections in the Console
                Dashboard. UTF-8 encoded string with limit of 1024 characters.
@@ -1033,6 +1271,10 @@ class DataConnector(pulumi.CustomResource):
                'EUA', 'FEDERATED_AND_EUA'.
         :param pulumi.Input[_builtins.str] data_source: The name of the data source.
                Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        :param pulumi.Input[_builtins.int] data_source_version: The version of the data source. For example, `3` for Jira v3.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]] destination_configs: Destination connector configurations for the data connector,
+               used to configure where data is served.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]] entities: List of entities from the connected data source to ingest.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] incremental_refresh_interval: The refresh interval specifically for incremental data syncs. If unset,
@@ -1135,6 +1377,77 @@ class DataConnector(pulumi.CustomResource):
             connector_modes=["DATA_INGESTION"],
             sync_mode="PERIODIC")
         ```
+        ### Discoveryengine Dataconnector Jira With Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        jira_with_actions = gcp.discoveryengine.DataConnector("jira-with-actions",
+            location="global",
+            collection_id="collection-id",
+            collection_display_name="Jira Federated",
+            data_source="jira",
+            data_source_version=3,
+            params={
+                "instance_uri": "https://example.atlassian.net",
+                "instance_id": "SECRET_MANAGER_RESOURCE_NAME",
+                "client_id": "SECRET_MANAGER_RESOURCE_NAME",
+                "client_secret": "SECRET_MANAGER_RESOURCE_NAME",
+                "refresh_token": "SECRET_MANAGER_RESOURCE_NAME",
+                "auth_type": "OAUTH",
+            },
+            refresh_interval="86400s",
+            entities=[
+                {
+                    "entity_name": "project",
+                },
+                {
+                    "entity_name": "issue",
+                },
+                {
+                    "entity_name": "comment",
+                },
+                {
+                    "entity_name": "attachment",
+                },
+            ],
+            static_ip_enabled=False,
+            destination_configs=[{
+                "key": "url",
+                "destinations": [{
+                    "host": "https://example.atlassian.net",
+                }],
+            }],
+            connector_modes=[
+                "FEDERATED",
+                "ACTIONS",
+            ],
+            sync_mode="PERIODIC",
+            auto_run_disabled=True,
+            incremental_sync_disabled=True,
+            action_config={
+                "action_params": {
+                    "instance_uri": "https://example.atlassian.net",
+                    "instance_id": "SECRET_MANAGER_RESOURCE_NAME",
+                    "client_id": "SECRET_MANAGER_RESOURCE_NAME",
+                    "client_secret": "SECRET_MANAGER_RESOURCE_NAME",
+                    "auth_type": "OAUTH",
+                },
+                "create_bap_connection": True,
+            },
+            bap_config={
+                "supported_connector_modes": ["ACTIONS"],
+                "enabled_actions": [
+                    "create_issue",
+                    "update_issue",
+                    "change_issue_status",
+                    "create_comment",
+                    "update_comment",
+                    "upload_attachment",
+                ],
+            })
+        ```
 
         ## Import
 
@@ -1168,11 +1481,15 @@ class DataConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 action_config: Optional[pulumi.Input[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']]] = None,
                  auto_run_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bap_config: Optional[pulumi.Input[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']]] = None,
                  collection_display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  collection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  connector_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  data_source: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
                  incremental_refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
                  incremental_sync_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1193,7 +1510,9 @@ class DataConnector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DataConnectorArgs.__new__(DataConnectorArgs)
 
+            __props__.__dict__["action_config"] = action_config
             __props__.__dict__["auto_run_disabled"] = auto_run_disabled
+            __props__.__dict__["bap_config"] = bap_config
             if collection_display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'collection_display_name'")
             __props__.__dict__["collection_display_name"] = collection_display_name
@@ -1204,6 +1523,8 @@ class DataConnector(pulumi.CustomResource):
             if data_source is None and not opts.urn:
                 raise TypeError("Missing required property 'data_source'")
             __props__.__dict__["data_source"] = data_source
+            __props__.__dict__["data_source_version"] = data_source_version
+            __props__.__dict__["destination_configs"] = destination_configs
             __props__.__dict__["entities"] = entities
             __props__.__dict__["incremental_refresh_interval"] = incremental_refresh_interval
             __props__.__dict__["incremental_sync_disabled"] = incremental_sync_disabled
@@ -1242,8 +1563,10 @@ class DataConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            action_config: Optional[pulumi.Input[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']]] = None,
             action_state: Optional[pulumi.Input[_builtins.str]] = None,
             auto_run_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            bap_config: Optional[pulumi.Input[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']]] = None,
             blocking_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             collection_display_name: Optional[pulumi.Input[_builtins.str]] = None,
             collection_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1251,6 +1574,8 @@ class DataConnector(pulumi.CustomResource):
             connector_type: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             data_source: Optional[pulumi.Input[_builtins.str]] = None,
+            data_source_version: Optional[pulumi.Input[_builtins.int]] = None,
+            destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
             entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
             errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorErrorArgs', 'DataConnectorErrorArgsDict']]]]] = None,
             incremental_refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1278,11 +1603,18 @@ class DataConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']] action_config: Action configuration for the data connector. Configures action
+               capabilities for connectors that support the ACTIONS connector mode.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] action_state: State of the action connector. This reflects whether the action connector
                is initializing, active or has encountered errors. The possible value can be:
                'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
                'INITIALIZATION_FAILED', 'UPDATING'.
         :param pulumi.Input[_builtins.bool] auto_run_disabled: Indicates whether full syncs are paused for this connector
+        :param pulumi.Input[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']] bap_config: BAP (Business Application Platform) configuration for the data
+               connector. Controls which actions are enabled for connectors
+               using the ACTIONS connector mode.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocking_reasons: User actions that must be completed before the connector can start syncing data.
                The possible values can be: 'ALLOWLIST_STATIC_IP', 'ALLOWLIST_IN_SERVICE_ATTACHMENT'.
         :param pulumi.Input[_builtins.str] collection_display_name: The display name of the Collection.
@@ -1307,6 +1639,10 @@ class DataConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the DataConnector was created.
         :param pulumi.Input[_builtins.str] data_source: The name of the data source.
                Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        :param pulumi.Input[_builtins.int] data_source_version: The version of the data source. For example, `3` for Jira v3.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]] destination_configs: Destination connector configurations for the data connector,
+               used to configure where data is served.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]] entities: List of entities from the connected data source to ingest.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorErrorArgs', 'DataConnectorErrorArgsDict']]]] errors: The errors from initialization or from the latest connector run.
@@ -1362,8 +1698,10 @@ class DataConnector(pulumi.CustomResource):
 
         __props__ = _DataConnectorState.__new__(_DataConnectorState)
 
+        __props__.__dict__["action_config"] = action_config
         __props__.__dict__["action_state"] = action_state
         __props__.__dict__["auto_run_disabled"] = auto_run_disabled
+        __props__.__dict__["bap_config"] = bap_config
         __props__.__dict__["blocking_reasons"] = blocking_reasons
         __props__.__dict__["collection_display_name"] = collection_display_name
         __props__.__dict__["collection_id"] = collection_id
@@ -1371,6 +1709,8 @@ class DataConnector(pulumi.CustomResource):
         __props__.__dict__["connector_type"] = connector_type
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_source"] = data_source
+        __props__.__dict__["data_source_version"] = data_source_version
+        __props__.__dict__["destination_configs"] = destination_configs
         __props__.__dict__["entities"] = entities
         __props__.__dict__["errors"] = errors
         __props__.__dict__["incremental_refresh_interval"] = incremental_refresh_interval
@@ -1394,6 +1734,16 @@ class DataConnector(pulumi.CustomResource):
         return DataConnector(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="actionConfig")
+    def action_config(self) -> pulumi.Output[Optional['outputs.DataConnectorActionConfig']]:
+        """
+        Action configuration for the data connector. Configures action
+        capabilities for connectors that support the ACTIONS connector mode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "action_config")
+
+    @_builtins.property
     @pulumi.getter(name="actionState")
     def action_state(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1411,6 +1761,17 @@ class DataConnector(pulumi.CustomResource):
         Indicates whether full syncs are paused for this connector
         """
         return pulumi.get(self, "auto_run_disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="bapConfig")
+    def bap_config(self) -> pulumi.Output[Optional['outputs.DataConnectorBapConfig']]:
+        """
+        BAP (Business Application Platform) configuration for the data
+        connector. Controls which actions are enabled for connectors
+        using the ACTIONS connector mode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bap_config")
 
     @_builtins.property
     @pulumi.getter(name="blockingReasons")
@@ -1484,6 +1845,24 @@ class DataConnector(pulumi.CustomResource):
         Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
         """
         return pulumi.get(self, "data_source")
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceVersion")
+    def data_source_version(self) -> pulumi.Output[_builtins.int]:
+        """
+        The version of the data source. For example, `3` for Jira v3.
+        """
+        return pulumi.get(self, "data_source_version")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationConfigs")
+    def destination_configs(self) -> pulumi.Output[Optional[Sequence['outputs.DataConnectorDestinationConfig']]]:
+        """
+        Destination connector configurations for the data connector,
+        used to configure where data is served.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destination_configs")
 
     @_builtins.property
     @pulumi.getter

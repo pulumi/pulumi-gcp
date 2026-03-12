@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.DataCatalog
     public static class GetTagTemplateIamPolicy
     {
         /// <summary>
+        /// &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `gcp.dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+        /// 
         /// Retrieves the current IAM policy data for tagtemplate
         /// 
         /// 
@@ -37,6 +39,8 @@ namespace Pulumi.Gcp.DataCatalog
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagTemplateIamPolicyResult>("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", args ?? new GetTagTemplateIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `gcp.dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+        /// 
         /// Retrieves the current IAM policy data for tagtemplate
         /// 
         /// 
@@ -62,6 +66,8 @@ namespace Pulumi.Gcp.DataCatalog
             => global::Pulumi.Deployment.Instance.Invoke<GetTagTemplateIamPolicyResult>("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", args ?? new GetTagTemplateIamPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `gcp.dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+        /// 
         /// Retrieves the current IAM policy data for tagtemplate
         /// 
         /// 

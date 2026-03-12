@@ -33,6 +33,13 @@ namespace Pulumi.Gcp.BigQuery
     ///     var exampleTable = new Gcp.BigQuery.Table("example", new()
     ///     {
     ///         DeletionProtection = false,
+    ///         Schema = @"[
+    ///   {
+    ///     \""name\"": \""nullable_field\"",
+    ///     \""type\"": \""STRING\""
+    ///   }
+    /// ]
+    /// ",
     ///         DatasetId = example.DatasetId,
     ///         TableId = "table_id",
     ///     });

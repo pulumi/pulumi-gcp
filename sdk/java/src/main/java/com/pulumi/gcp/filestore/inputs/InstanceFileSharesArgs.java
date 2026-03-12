@@ -87,6 +87,25 @@ public final class InstanceFileSharesArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.sourceBackup);
     }
 
+    /**
+     * The resource name of the BackupDR backup, in the format
+     * `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+     * that this file share has been restored from.
+     * 
+     */
+    @Import(name="sourceBackupdrBackup")
+    private @Nullable Output<String> sourceBackupdrBackup;
+
+    /**
+     * @return The resource name of the BackupDR backup, in the format
+     * `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+     * that this file share has been restored from.
+     * 
+     */
+    public Optional<Output<String>> sourceBackupdrBackup() {
+        return Optional.ofNullable(this.sourceBackupdrBackup);
+    }
+
     private InstanceFileSharesArgs() {}
 
     private InstanceFileSharesArgs(InstanceFileSharesArgs $) {
@@ -94,6 +113,7 @@ public final class InstanceFileSharesArgs extends com.pulumi.resources.ResourceA
         this.name = $.name;
         this.nfsExportOptions = $.nfsExportOptions;
         this.sourceBackup = $.sourceBackup;
+        this.sourceBackupdrBackup = $.sourceBackupdrBackup;
     }
 
     public static Builder builder() {
@@ -215,6 +235,31 @@ public final class InstanceFileSharesArgs extends com.pulumi.resources.ResourceA
          */
         public Builder sourceBackup(String sourceBackup) {
             return sourceBackup(Output.of(sourceBackup));
+        }
+
+        /**
+         * @param sourceBackupdrBackup The resource name of the BackupDR backup, in the format
+         * `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+         * that this file share has been restored from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceBackupdrBackup(@Nullable Output<String> sourceBackupdrBackup) {
+            $.sourceBackupdrBackup = sourceBackupdrBackup;
+            return this;
+        }
+
+        /**
+         * @param sourceBackupdrBackup The resource name of the BackupDR backup, in the format
+         * `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+         * that this file share has been restored from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceBackupdrBackup(String sourceBackupdrBackup) {
+            return sourceBackupdrBackup(Output.of(sourceBackupdrBackup));
         }
 
         public InstanceFileSharesArgs build() {

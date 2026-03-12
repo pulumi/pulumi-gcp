@@ -493,7 +493,7 @@ index 47be7baa3..a3c9d9f61 100644
      * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  
 diff --git a/website/docs/r/compute_disk.html.markdown b/website/docs/r/compute_disk.html.markdown
-index 0897832a7..f9b7949bc 100644
+index 4438c5b26..487351d8b 100644
 --- a/website/docs/r/compute_disk.html.markdown
 +++ b/website/docs/r/compute_disk.html.markdown
 @@ -212,7 +212,7 @@ The following arguments are supported:
@@ -547,7 +547,7 @@ index c761850a1..3cc5c8944 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 140964850..edfc61bec 100644
+index 8007cf9bb..3e598f7dc 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -154,7 +154,7 @@ The following arguments are supported:
@@ -691,7 +691,7 @@ index 5938de616..7717ff951 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index e202accec..f46539136 100644
+index 7274e34da..75cb17847 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -197,12 +197,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -755,7 +755,7 @@ index e202accec..f46539136 100644
  
  * `name_prefix` - (Optional) Creates a unique name beginning with the specified
    prefix. Conflicts with `name`. Max length is 54 characters.
-@@ -601,7 +601,7 @@ The following arguments are supported:
+@@ -606,7 +606,7 @@ The following arguments are supported:
  * `access_config` - (Optional) Access configurations, i.e. IPs via which this
      instance can be accessed via the Internet. Omit to ensure that the instance
      is not accessible from the Internet (this means that ssh provisioners will
@@ -844,10 +844,10 @@ index 8ad96324c..41a279952 100644
    policy_id     = google_compute_organization_security_policy.policy.id
  }
 diff --git a/website/docs/r/compute_organization_security_policy_rule.html.markdown b/website/docs/r/compute_organization_security_policy_rule.html.markdown
-index 7b1b475f5..0c7f824c7 100644
+index e7fcc5011..c019a9c62 100644
 --- a/website/docs/r/compute_organization_security_policy_rule.html.markdown
 +++ b/website/docs/r/compute_organization_security_policy_rule.html.markdown
-@@ -38,7 +38,7 @@ To get more information about OrganizationSecurityPolicyRule, see:
+@@ -59,7 +59,7 @@ resource "google_compute_organization_security_policy_rule" "policy" {
  ```hcl
  resource "google_compute_organization_security_policy" "policy" {
    provider     = google-beta
@@ -1319,7 +1319,7 @@ index 19e798c12..35d919713 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 3ecf85c8d..4ea8a21cb 100644
+index b659c403f..7b7fad51c 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,9 +27,7 @@ To get more information about GKE clusters, see:
@@ -1455,7 +1455,7 @@ index 3ecf85c8d..4ea8a21cb 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1515,9 +1531,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1520,9 +1536,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -2876,7 +2876,7 @@ index 7c5a0fe0d..451daf51f 100644
    goal = 0.9
    rolling_period_days = 20
 diff --git a/website/docs/r/notebooks_instance.html.markdown b/website/docs/r/notebooks_instance.html.markdown
-index 20c2cb77d..4f99b12c2 100644
+index 9e153fd3f..3659cefc2 100644
 --- a/website/docs/r/notebooks_instance.html.markdown
 +++ b/website/docs/r/notebooks_instance.html.markdown
 @@ -90,7 +90,6 @@ resource "google_notebooks_instance" "instance" {
@@ -2957,7 +2957,7 @@ index 94c3db9d4..091d0e9ac 100644
  * `default_time_zone` - (Optional) The default time zone for the database. The default time zone must be a valid name
  from the tz database. Default value is "America/Los_angeles".
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index cce8f1572..76c39b7a4 100644
+index f21fd7a74..ca690794f 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -24,12 +24,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3026,7 +3026,7 @@ index cce8f1572..76c39b7a4 100644
      configuration is detailed below.
  
  * `point_in_time_restore_context` - (Optional) The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
-@@ -734,7 +732,7 @@ The optional `clone` block supports:
+@@ -746,7 +744,7 @@ The optional `clone` block supports:
      A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
  
  The optional `restore_backup_context` block supports:
@@ -3035,7 +3035,7 @@ index cce8f1572..76c39b7a4 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -800,21 +798,13 @@ instance.
+@@ -812,21 +810,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  

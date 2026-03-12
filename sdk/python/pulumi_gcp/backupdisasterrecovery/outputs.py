@@ -4530,23 +4530,18 @@ class GetDataSourcesDataSourceResult(dict):
                  total_stored_bytes: _builtins.str,
                  update_time: _builtins.str):
         """
-        :param Sequence['GetDataSourcesDataSourceBackupConfigInfoArgs'] backup_config_infos: Details of how the resource is configured for backup.
+        :param Sequence['GetDataSourcesDataSourceBackupConfigInfoArgs'] backup_config_infos: An object containing information about the backup configuration.
         :param _builtins.str backup_count: Number of backups in the data source.
-        :param _builtins.str config_state: The backup configuration state.
-        :param _builtins.str create_time: The time when the instance was created.
+        :param _builtins.str config_state: The configuration state of the DataSource.
+        :param _builtins.str create_time: Timestamp of when the DataSource was created.
         :param Sequence['GetDataSourcesDataSourceDataSourceBackupApplianceApplicationArgs'] data_source_backup_appliance_applications: The backed up resource is a backup appliance application.
-        :param Sequence['GetDataSourcesDataSourceDataSourceGcpResourceArgs'] data_source_gcp_resources: The backed up resource is a Google Cloud resource.
-               		The word 'DataSource' was included in the names to indicate that this is
-               		the representation of the Google Cloud resource used within the
-               		DataSource object.
+        :param Sequence['GetDataSourcesDataSourceDataSourceGcpResourceArgs'] data_source_gcp_resources: An object containing details about the underlying GCP resource being backed up.
         :param _builtins.str etag: Server specified ETag for the ManagementServer resource to prevent simultaneous updates from overwiting each other.
         :param Mapping[str, _builtins.str] labels: Resource labels to represent user provided metadata.
-        :param _builtins.str name: Name of the datasource to create.
-               		It must have the format "projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}".
-               		'{datasource}' cannot be changed after creation. It must be between 3-63 characters long and must be unique within the backup vault.
-        :param _builtins.str state: The DataSource resource instance state.
+        :param _builtins.str name: The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
+        :param _builtins.str state: The current state of the DataSource (e.g., ACTIVE, CREATING, DELETING).
         :param _builtins.str total_stored_bytes: The number of bytes (metadata and data) stored in this datasource.
-        :param _builtins.str update_time: The time when the instance was updated.
+        :param _builtins.str update_time: Timestamp of when the DataSource was last updated.
         """
         pulumi.set(__self__, "backup_config_infos", backup_config_infos)
         pulumi.set(__self__, "backup_count", backup_count)
@@ -4565,7 +4560,7 @@ class GetDataSourcesDataSourceResult(dict):
     @pulumi.getter(name="backupConfigInfos")
     def backup_config_infos(self) -> Sequence['outputs.GetDataSourcesDataSourceBackupConfigInfoResult']:
         """
-        Details of how the resource is configured for backup.
+        An object containing information about the backup configuration.
         """
         return pulumi.get(self, "backup_config_infos")
 
@@ -4581,7 +4576,7 @@ class GetDataSourcesDataSourceResult(dict):
     @pulumi.getter(name="configState")
     def config_state(self) -> _builtins.str:
         """
-        The backup configuration state.
+        The configuration state of the DataSource.
         """
         return pulumi.get(self, "config_state")
 
@@ -4589,7 +4584,7 @@ class GetDataSourcesDataSourceResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         """
-        The time when the instance was created.
+        Timestamp of when the DataSource was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -4605,10 +4600,7 @@ class GetDataSourcesDataSourceResult(dict):
     @pulumi.getter(name="dataSourceGcpResources")
     def data_source_gcp_resources(self) -> Sequence['outputs.GetDataSourcesDataSourceDataSourceGcpResourceResult']:
         """
-        The backed up resource is a Google Cloud resource.
-        		The word 'DataSource' was included in the names to indicate that this is
-        		the representation of the Google Cloud resource used within the
-        		DataSource object.
+        An object containing details about the underlying GCP resource being backed up.
         """
         return pulumi.get(self, "data_source_gcp_resources")
 
@@ -4632,9 +4624,7 @@ class GetDataSourcesDataSourceResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the datasource to create.
-        		It must have the format "projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}".
-        		'{datasource}' cannot be changed after creation. It must be between 3-63 characters long and must be unique within the backup vault.
+        The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
         """
         return pulumi.get(self, "name")
 
@@ -4642,7 +4632,7 @@ class GetDataSourcesDataSourceResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The DataSource resource instance state.
+        The current state of the DataSource (e.g., ACTIVE, CREATING, DELETING).
         """
         return pulumi.get(self, "state")
 
@@ -4658,7 +4648,7 @@ class GetDataSourcesDataSourceResult(dict):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> _builtins.str:
         """
-        The time when the instance was updated.
+        Timestamp of when the DataSource was last updated.
         """
         return pulumi.get(self, "update_time")
 
@@ -4675,8 +4665,8 @@ class GetDataSourcesDataSourceBackupConfigInfoResult(dict):
         :param Sequence['GetDataSourcesDataSourceBackupConfigInfoBackupApplianceBackupConfigArgs'] backup_appliance_backup_configs: Configuration for an application backed up by a Backup Appliance.
         :param Sequence['GetDataSourcesDataSourceBackupConfigInfoGcpBackupConfigArgs'] gcp_backup_configs: Configuration for a Google Cloud resource.
         :param Mapping[str, _builtins.str] last_backup_error: If the last backup failed, this field has the error message.
-        :param _builtins.str last_backup_state: LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
-        :param _builtins.str last_successful_backup_consistency_time: If the last backup were successful, this field has the consistency date.
+        :param _builtins.str last_backup_state: The state of the last backup attempt.
+        :param _builtins.str last_successful_backup_consistency_time: The consistency time of the last successful backup.
         """
         pulumi.set(__self__, "backup_appliance_backup_configs", backup_appliance_backup_configs)
         pulumi.set(__self__, "gcp_backup_configs", gcp_backup_configs)
@@ -4712,7 +4702,7 @@ class GetDataSourcesDataSourceBackupConfigInfoResult(dict):
     @pulumi.getter(name="lastBackupState")
     def last_backup_state(self) -> _builtins.str:
         """
-        LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+        The state of the last backup attempt.
         """
         return pulumi.get(self, "last_backup_state")
 
@@ -4720,7 +4710,7 @@ class GetDataSourcesDataSourceBackupConfigInfoResult(dict):
     @pulumi.getter(name="lastSuccessfulBackupConsistencyTime")
     def last_successful_backup_consistency_time(self) -> _builtins.str:
         """
-        If the last backup were successful, this field has the consistency date.
+        The consistency time of the last successful backup.
         """
         return pulumi.get(self, "last_successful_backup_consistency_time")
 
@@ -4877,7 +4867,7 @@ class GetDataSourcesDataSourceDataSourceBackupApplianceApplicationResult(dict):
         :param _builtins.str backup_appliance: Appliance name.
         :param _builtins.str host_id: Hostid of the application host.
         :param _builtins.str hostname: Hostname of the host where the application is running.
-        :param _builtins.str type: The type of the application. e.g. VMBackup
+        :param _builtins.str type: The type of the GCP resource.
         """
         pulumi.set(__self__, "appliance_id", appliance_id)
         pulumi.set(__self__, "application_id", application_id)
@@ -4939,7 +4929,7 @@ class GetDataSourcesDataSourceDataSourceBackupApplianceApplicationResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The type of the application. e.g. VMBackup
+        The type of the GCP resource.
         """
         return pulumi.get(self, "type")
 
@@ -4953,10 +4943,9 @@ class GetDataSourcesDataSourceDataSourceGcpResourceResult(dict):
                  type: _builtins.str):
         """
         :param Sequence['GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArgs'] compute_instance_data_source_properties: ComputeInstanceDataSourceProperties has a subset of Compute Instance properties that are useful at the Datasource level.
-        :param _builtins.str gcp_resourcename: Full resource pathname URL of the source Google Cloud resource.
-        :param _builtins.str location: Location of the resource: <region>/<zone>/"global"/"unspecified".
-        :param _builtins.str type: The type of the Google Cloud resource. Use the Unified Resource Type,
-               					eg. compute.googleapis.com/Instance.
+        :param _builtins.str gcp_resourcename: The full name of the GCP resource.
+        :param _builtins.str location: The location in which the Data Source belongs.
+        :param _builtins.str type: The type of the GCP resource.
         """
         pulumi.set(__self__, "compute_instance_data_source_properties", compute_instance_data_source_properties)
         pulumi.set(__self__, "gcp_resourcename", gcp_resourcename)
@@ -4975,7 +4964,7 @@ class GetDataSourcesDataSourceDataSourceGcpResourceResult(dict):
     @pulumi.getter(name="gcpResourcename")
     def gcp_resourcename(self) -> _builtins.str:
         """
-        Full resource pathname URL of the source Google Cloud resource.
+        The full name of the GCP resource.
         """
         return pulumi.get(self, "gcp_resourcename")
 
@@ -4983,7 +4972,7 @@ class GetDataSourcesDataSourceDataSourceGcpResourceResult(dict):
     @pulumi.getter
     def location(self) -> _builtins.str:
         """
-        Location of the resource: <region>/<zone>/"global"/"unspecified".
+        The location in which the Data Source belongs.
         """
         return pulumi.get(self, "location")
 
@@ -4991,8 +4980,7 @@ class GetDataSourcesDataSourceDataSourceGcpResourceResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The type of the Google Cloud resource. Use the Unified Resource Type,
-        					eg. compute.googleapis.com/Instance.
+        The type of the GCP resource.
         """
         return pulumi.get(self, "type")
 
@@ -5008,7 +4996,7 @@ class GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourceProp
         """
         :param _builtins.str description: The description of the Compute Engine instance.
         :param _builtins.str machine_type: The machine type of the instance.
-        :param _builtins.str name: Name of the compute instance backed up by the datasource.
+        :param _builtins.str name: The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
         :param _builtins.str total_disk_count: The total number of disks attached to the Instance.
         :param _builtins.str total_disk_size_gb: The sum of all the disk sizes.
         """
@@ -5038,7 +5026,7 @@ class GetDataSourcesDataSourceDataSourceGcpResourceComputeInstanceDataSourceProp
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the compute instance backed up by the datasource.
+        The full resource name of the DataSource, in the format projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}.
         """
         return pulumi.get(self, "name")
 

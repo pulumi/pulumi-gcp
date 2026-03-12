@@ -255,7 +255,7 @@ public final class ClusterNodeConfig {
      */
     private @Nullable Map<String,String> resourceManagerTags;
     /**
-     * @return ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion = &#34;1.12.7-gke.17&#34;` or later to use it.
+     * @return [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion = &#34;1.12.7-gke.17&#34;` or later to use it.
      * Structure is documented below.
      * 
      */
@@ -611,7 +611,7 @@ public final class ClusterNodeConfig {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }
     /**
-     * @return ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion = &#34;1.12.7-gke.17&#34;` or later to use it.
+     * @return [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion = &#34;1.12.7-gke.17&#34;` or later to use it.
      * Structure is documented below.
      * 
      */

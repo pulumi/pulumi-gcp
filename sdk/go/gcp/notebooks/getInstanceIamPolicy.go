@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves the current IAM policy data for instance
+// > **Warning:** The parent resource has been deprecated: `notebooks.Instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+//
+// # Retrieves the current IAM policy data for instance
 //
 // ## Example Usage
 //

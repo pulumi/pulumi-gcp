@@ -400,11 +400,68 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_11171",
+    ///             FilenameSuffix = "-_40816",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
     ///             MaxMessages = 1000,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             example,
+    ///             admin,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Subscription Push Cloudstorage Text
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.Storage.Bucket("example", new()
+    ///     {
+    ///         Name = "example-bucket",
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var exampleTopic = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var admin = new Gcp.Storage.BucketIAMMember("admin", new()
+    ///     {
+    ///         Bucket = example.Name,
+    ///         Role = "roles/storage.admin",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+    ///     {
+    ///         Name = "example-subscription",
+    ///         Topic = exampleTopic.Id,
+    ///         CloudStorageConfig = new Gcp.PubSub.Inputs.SubscriptionCloudStorageConfigArgs
+    ///         {
+    ///             Bucket = example.Name,
+    ///             FilenamePrefix = "pre-",
+    ///             FilenameSuffix = "-_94690",
+    ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
+    ///             MaxBytes = 1000,
+    ///             MaxDuration = "300s",
+    ///             MaxMessages = 1000,
+    ///             TextConfig = null,
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
@@ -456,7 +513,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_40472",
+    ///             FilenameSuffix = "-_29947",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
@@ -521,7 +578,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_44339",
+    ///             FilenameSuffix = "-_28257",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",

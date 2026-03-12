@@ -76,6 +76,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? Preemptible;
         /// <summary>
+        /// Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.InstanceSchedulingPreemptionNoticeDuration? PreemptionNoticeDuration;
+        /// <summary>
         /// Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
         /// `Preemptible` should be `True` and `AutomaticRestart` should be
         /// `False`. For more info about
@@ -119,6 +123,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             bool? preemptible,
 
+            Outputs.InstanceSchedulingPreemptionNoticeDuration? preemptionNoticeDuration,
+
             string? provisioningModel,
 
             bool? skipGuestOsShutdown,
@@ -138,6 +144,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             OnHostMaintenance = onHostMaintenance;
             OnInstanceStopAction = onInstanceStopAction;
             Preemptible = preemptible;
+            PreemptionNoticeDuration = preemptionNoticeDuration;
             ProvisioningModel = provisioningModel;
             SkipGuestOsShutdown = skipGuestOsShutdown;
             TerminationTime = terminationTime;

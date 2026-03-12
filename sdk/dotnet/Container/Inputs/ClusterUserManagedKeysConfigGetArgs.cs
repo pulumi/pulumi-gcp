@@ -30,6 +30,18 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("controlPlaneDiskEncryptionKey")]
         public Input<string>? ControlPlaneDiskEncryptionKey { get; set; }
 
+        [Input("controlPlaneDiskEncryptionKeyVersions")]
+        private InputList<string>? _controlPlaneDiskEncryptionKeyVersions;
+
+        /// <summary>
+        /// The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+        /// </summary>
+        public InputList<string> ControlPlaneDiskEncryptionKeyVersions
+        {
+            get => _controlPlaneDiskEncryptionKeyVersions ?? (_controlPlaneDiskEncryptionKeyVersions = new InputList<string>());
+            set => _controlPlaneDiskEncryptionKeyVersions = value;
+        }
+
         /// <summary>
         /// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
         /// </summary>

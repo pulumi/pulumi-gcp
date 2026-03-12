@@ -205,6 +205,119 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Firewall Policy Rule Network Context
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Organizations.Folder("folder", new()
+    ///     {
+    ///         DisplayName = "folder",
+    ///         Parent = "organizations/123456789",
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.FirewallPolicy("default", new()
+    ///     {
+    ///         Parent = folder.Id,
+    ///         ShortName = "fw-policy",
+    ///         Description = "Firewall policy",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Compute.FirewallPolicyRule("primary", new()
+    ///     {
+    ///         FirewallPolicy = @default.Name,
+    ///         Description = "Firewall policy rule with network context",
+    ///         Priority = 8000,
+    ///         Action = "allow",
+    ///         Direction = "INGRESS",
+    ///         Disabled = false,
+    ///         Match = new Gcp.Compute.Inputs.FirewallPolicyRuleMatchArgs
+    ///         {
+    ///             SrcIpRanges = new[]
+    ///             {
+    ///                 "11.100.0.1/32",
+    ///             },
+    ///             SrcNetworkContext = "INTERNET",
+    ///             Layer4Configs = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "tcp",
+    ///                     Ports = new[]
+    ///                     {
+    ///                         "8080",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "udp",
+    ///                     Ports = new[]
+    ///                     {
+    ///                         "22",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var egress_primary = new Gcp.Compute.FirewallPolicyRule("egress-primary", new()
+    ///     {
+    ///         FirewallPolicy = @default.Name,
+    ///         Description = "Firewall policy rule with network context",
+    ///         Priority = 9000,
+    ///         Action = "allow",
+    ///         Direction = "EGRESS",
+    ///         Disabled = false,
+    ///         Match = new Gcp.Compute.Inputs.FirewallPolicyRuleMatchArgs
+    ///         {
+    ///             DestIpRanges = new[]
+    ///             {
+    ///                 "11.100.0.1/32",
+    ///             },
+    ///             DestNetworkContext = "NON_INTERNET",
+    ///             Layer4Configs = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "tcp",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var unset_primary = new Gcp.Compute.FirewallPolicyRule("unset-primary", new()
+    ///     {
+    ///         FirewallPolicy = @default.Name,
+    ///         Description = "Firewall policy rule with network context",
+    ///         Priority = 10000,
+    ///         Action = "allow",
+    ///         Direction = "EGRESS",
+    ///         Disabled = false,
+    ///         Match = new Gcp.Compute.Inputs.FirewallPolicyRuleMatchArgs
+    ///         {
+    ///             DestIpRanges = new[]
+    ///             {
+    ///                 "11.100.0.1/32",
+    ///             },
+    ///             DestNetworkContext = "UNSPECIFIED",
+    ///             Layer4Configs = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "tcp",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Firewall Policy Rule Secure Tags
     /// 
     /// ```csharp

@@ -53,7 +53,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
      */
     private @Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfig> pscConfigs;
     /**
-     * @return Specify how the server certificate&#39;s Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
+     * @return Specify how the server certificate&#39;s Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA`, `GOOGLE_MANAGED_CAS_CA`, and `CUSTOMER_MANAGED_CAS_CA`.
      * 
      */
     private @Nullable String serverCaMode;
@@ -121,7 +121,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         return this.pscConfigs == null ? List.of() : this.pscConfigs;
     }
     /**
-     * @return Specify how the server certificate&#39;s Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
+     * @return Specify how the server certificate&#39;s Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA`, `GOOGLE_MANAGED_CAS_CA`, and `CUSTOMER_MANAGED_CAS_CA`.
      * 
      */
     public Optional<String> serverCaMode() {

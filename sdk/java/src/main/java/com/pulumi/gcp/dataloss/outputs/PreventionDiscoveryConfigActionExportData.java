@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigActionExportDataProfileTable;
+import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigActionExportDataSampleFindingsTable;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,20 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDiscoveryConfigActionExportData {
     /**
-     * @return Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+     * @return Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+     * The system will create a new dataset and table for you if none are are provided. The dataset will be named `sensitiveDataProtectionDiscovery`
+     * and table will be named `discoveryProfiles`. This table will be placed in the same project as the container project running the scan.
      * Structure is documented below.
      * 
      */
     private @Nullable PreventionDiscoveryConfigActionExportDataProfileTable profileTable;
+    /**
+     * @return Store sample findings in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDiscoveryConfigActionExportDataSampleFindingsTable sampleFindingsTable;
 
     private PreventionDiscoveryConfigActionExportData() {}
     /**
-     * @return Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+     * @return Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+     * The system will create a new dataset and table for you if none are are provided. The dataset will be named `sensitiveDataProtectionDiscovery`
+     * and table will be named `discoveryProfiles`. This table will be placed in the same project as the container project running the scan.
      * Structure is documented below.
      * 
      */
     public Optional<PreventionDiscoveryConfigActionExportDataProfileTable> profileTable() {
         return Optional.ofNullable(this.profileTable);
+    }
+    /**
+     * @return Store sample findings in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDiscoveryConfigActionExportDataSampleFindingsTable> sampleFindingsTable() {
+        return Optional.ofNullable(this.sampleFindingsTable);
     }
 
     public static Builder builder() {
@@ -38,10 +57,12 @@ public final class PreventionDiscoveryConfigActionExportData {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionDiscoveryConfigActionExportDataProfileTable profileTable;
+        private @Nullable PreventionDiscoveryConfigActionExportDataSampleFindingsTable sampleFindingsTable;
         public Builder() {}
         public Builder(PreventionDiscoveryConfigActionExportData defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.profileTable = defaults.profileTable;
+    	      this.sampleFindingsTable = defaults.sampleFindingsTable;
         }
 
         @CustomType.Setter
@@ -50,9 +71,16 @@ public final class PreventionDiscoveryConfigActionExportData {
             this.profileTable = profileTable;
             return this;
         }
+        @CustomType.Setter
+        public Builder sampleFindingsTable(@Nullable PreventionDiscoveryConfigActionExportDataSampleFindingsTable sampleFindingsTable) {
+
+            this.sampleFindingsTable = sampleFindingsTable;
+            return this;
+        }
         public PreventionDiscoveryConfigActionExportData build() {
             final var _resultValue = new PreventionDiscoveryConfigActionExportData();
             _resultValue.profileTable = profileTable;
+            _resultValue.sampleFindingsTable = sampleFindingsTable;
             return _resultValue;
         }
     }

@@ -12,6 +12,34 @@ import (
 )
 
 // Retrieves the current IAM policy data for icebergnamespace
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := biglake.LookupIcebergNamespaceIamPolicy(ctx, &biglake.LookupIcebergNamespaceIamPolicyArgs{
+//				Project:     pulumi.StringRef(myIcebergNamespace.Project),
+//				Catalog:     myIcebergNamespace.Catalog,
+//				NamespaceId: myIcebergNamespace.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupIcebergNamespaceIamPolicy(ctx *pulumi.Context, args *LookupIcebergNamespaceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupIcebergNamespaceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIcebergNamespaceIamPolicyResult

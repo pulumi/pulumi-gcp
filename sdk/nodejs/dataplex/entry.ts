@@ -332,6 +332,8 @@ import * as utilities from "../utilities";
  *             data: "           {\\\"content\\\": \\\"Term Content\\\"    }\n",
  *         },
  *     }],
+ * }, {
+ *     dependsOn: [example_glossary_term],
  * });
  * ```
  *

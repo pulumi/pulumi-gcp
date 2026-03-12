@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** `gcp.dataplex.DataAsset` is deprecated and will be removed in a future major release. Please use `gcp.dataplex.DataProductDataAsset` resource instead.
+ *
  * A data asset resource that can be packaged and shared via a data product.
  *
  * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
@@ -29,7 +31,7 @@ import * as utilities from "../utilities";
  * const example = new gcp.dataplex.DataProduct("example", {
  *     project: "my-project-name",
  *     location: "us-central1",
- *     dataProductId: "tf-test-dp-_64336",
+ *     dataProductId: "tf-test-dp-_34962",
  *     displayName: "Parent Data Product",
  *     ownerEmails: ["gterraformtestuser@gmail.com"],
  *     accessGroups: [{
@@ -37,13 +39,13 @@ import * as utilities from "../utilities";
  *         groupId: "analyst",
  *         displayName: "Data Analyst",
  *         principal: {
- *             googleGroup: "tf-test-analysts-_34962@example.com",
+ *             googleGroup: "tf-test-analysts-_74000@example.com",
  *         },
  *     }],
  * });
  * const exampleDataset = new gcp.bigquery.Dataset("example", {
  *     project: "my-project-name",
- *     datasetId: "tf_test_dataset__74000",
+ *     datasetId: "tf_test_dataset__75125",
  *     location: "us-central1",
  * });
  * const exampleDataAsset = new gcp.dataplex.DataAsset("example", {
@@ -63,7 +65,7 @@ import * as utilities from "../utilities";
  * const example = new gcp.dataplex.DataProduct("example", {
  *     project: "my-project-name",
  *     location: "us-central1",
- *     dataProductId: "tf-test-dp-_75125",
+ *     dataProductId: "tf-test-dp-_88722",
  *     displayName: "Full Example Parent DP",
  *     ownerEmails: ["gterraformtestuser@gmail.com"],
  *     accessGroups: [
@@ -87,7 +89,7 @@ import * as utilities from "../utilities";
  * });
  * const exampleDataset = new gcp.bigquery.Dataset("example", {
  *     project: "my-project-name",
- *     datasetId: "tf_test_dataset__88722",
+ *     datasetId: "tf_test_dataset__39249",
  *     location: "us-central1",
  * });
  * const exampleDataAsset = new gcp.dataplex.DataAsset("example", {

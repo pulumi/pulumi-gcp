@@ -219,6 +219,21 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+     * 
+     */
+    @Import(name="protectedNamespaceCount")
+    private @Nullable Output<Integer> protectedNamespaceCount;
+
+    /**
+     * @return The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+     * 
+     */
+    public Optional<Output<Integer>> protectedNamespaceCount() {
+        return Optional.ofNullable(this.protectedNamespaceCount);
+    }
+
+    /**
      * The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
      * 
      */
@@ -326,6 +341,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
+        this.protectedNamespaceCount = $.protectedNamespaceCount;
         this.protectedPodCount = $.protectedPodCount;
         this.pulumiLabels = $.pulumiLabels;
         this.retentionPolicy = $.retentionPolicy;
@@ -613,6 +629,27 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param protectedNamespaceCount The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectedNamespaceCount(@Nullable Output<Integer> protectedNamespaceCount) {
+            $.protectedNamespaceCount = protectedNamespaceCount;
+            return this;
+        }
+
+        /**
+         * @param protectedNamespaceCount The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectedNamespaceCount(Integer protectedNamespaceCount) {
+            return protectedNamespaceCount(Output.of(protectedNamespaceCount));
         }
 
         /**

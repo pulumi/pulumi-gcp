@@ -28,6 +28,7 @@ class ClusterArgs:
                  cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
                  continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
                  database_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataplex_config: Optional[pulumi.Input['ClusterDataplexConfigArgs']] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -66,6 +67,8 @@ class ClusterArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time.
                Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
+        :param pulumi.Input['ClusterDataplexConfigArgs'] dataplex_config: Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -119,6 +122,8 @@ class ClusterArgs:
             pulumi.set(__self__, "continuous_backup_config", continuous_backup_config)
         if database_version is not None:
             pulumi.set(__self__, "database_version", database_version)
+        if dataplex_config is not None:
+            pulumi.set(__self__, "dataplex_config", dataplex_config)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
@@ -249,6 +254,19 @@ class ClusterArgs:
     @database_version.setter
     def database_version(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "database_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataplexConfig")
+    def dataplex_config(self) -> Optional[pulumi.Input['ClusterDataplexConfigArgs']]:
+        """
+        Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataplex_config")
+
+    @dataplex_config.setter
+    def dataplex_config(self, value: Optional[pulumi.Input['ClusterDataplexConfigArgs']]):
+        pulumi.set(self, "dataplex_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -501,6 +519,7 @@ class _ClusterState:
                  continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
                  continuous_backup_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoArgs']]]] = None,
                  database_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataplex_config: Optional[pulumi.Input['ClusterDataplexConfigArgs']] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -555,6 +574,8 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time.
                Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
+        :param pulumi.Input['ClusterDataplexConfigArgs'] dataplex_config: Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -632,6 +653,8 @@ class _ClusterState:
             pulumi.set(__self__, "continuous_backup_infos", continuous_backup_infos)
         if database_version is not None:
             pulumi.set(__self__, "database_version", database_version)
+        if dataplex_config is not None:
+            pulumi.set(__self__, "dataplex_config", dataplex_config)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
@@ -811,6 +834,19 @@ class _ClusterState:
     @database_version.setter
     def database_version(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "database_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataplexConfig")
+    def dataplex_config(self) -> Optional[pulumi.Input['ClusterDataplexConfigArgs']]:
+        """
+        Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataplex_config")
+
+    @dataplex_config.setter
+    def dataplex_config(self, value: Optional[pulumi.Input['ClusterDataplexConfigArgs']]):
+        pulumi.set(self, "dataplex_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -1202,6 +1238,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
                  continuous_backup_config: Optional[pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']]] = None,
                  database_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataplex_config: Optional[pulumi.Input[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict']]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1511,6 +1548,8 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time.
                Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
+        :param pulumi.Input[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict']] dataplex_config: Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -1851,6 +1890,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
                  continuous_backup_config: Optional[pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']]] = None,
                  database_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataplex_config: Optional[pulumi.Input[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict']]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1887,6 +1927,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["cluster_type"] = cluster_type
             __props__.__dict__["continuous_backup_config"] = continuous_backup_config
             __props__.__dict__["database_version"] = database_version
+            __props__.__dict__["dataplex_config"] = dataplex_config
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["display_name"] = display_name
@@ -1942,6 +1983,7 @@ class Cluster(pulumi.CustomResource):
             continuous_backup_config: Optional[pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']]] = None,
             continuous_backup_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterContinuousBackupInfoArgs', 'ClusterContinuousBackupInfoArgsDict']]]]] = None,
             database_version: Optional[pulumi.Input[_builtins.str]] = None,
+            dataplex_config: Optional[pulumi.Input[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict']]] = None,
             deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
             deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2000,6 +2042,8 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time.
                Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
+        :param pulumi.Input[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict']] dataplex_config: Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -2072,6 +2116,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["continuous_backup_config"] = continuous_backup_config
         __props__.__dict__["continuous_backup_infos"] = continuous_backup_infos
         __props__.__dict__["database_version"] = database_version
+        __props__.__dict__["dataplex_config"] = dataplex_config
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["display_name"] = display_name
@@ -2187,6 +2232,15 @@ class Cluster(pulumi.CustomResource):
         Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
         """
         return pulumi.get(self, "database_version")
+
+    @_builtins.property
+    @pulumi.getter(name="dataplexConfig")
+    def dataplex_config(self) -> pulumi.Output['outputs.ClusterDataplexConfig']:
+        """
+        Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataplex_config")
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")

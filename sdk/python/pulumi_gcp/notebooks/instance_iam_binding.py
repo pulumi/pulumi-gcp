@@ -311,6 +311,8 @@ class InstanceIamBinding(pulumi.CustomResource):
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **Warning:** The parent resource has been deprecated: `notebooks.Instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+
         Three different resources help you manage your IAM policy for Cloud AI Notebooks Instance. Each of these resources serves a different use case:
 
         * `notebooks.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
@@ -375,6 +377,7 @@ class InstanceIamBinding(pulumi.CustomResource):
         - 
 
         # IAM policy for Cloud AI Notebooks Instance
+        > **Warning:** The parent resource has been deprecated: `notebooks.Instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
 
         Three different resources help you manage your IAM policy for Cloud AI Notebooks Instance. Each of these resources serves a different use case:
 
@@ -498,6 +501,8 @@ class InstanceIamBinding(pulumi.CustomResource):
                  args: InstanceIamBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** The parent resource has been deprecated: `notebooks.Instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+
         Three different resources help you manage your IAM policy for Cloud AI Notebooks Instance. Each of these resources serves a different use case:
 
         * `notebooks.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
@@ -562,6 +567,7 @@ class InstanceIamBinding(pulumi.CustomResource):
         - 
 
         # IAM policy for Cloud AI Notebooks Instance
+        > **Warning:** The parent resource has been deprecated: `notebooks.Instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
 
         Three different resources help you manage your IAM policy for Cloud AI Notebooks Instance. Each of these resources serves a different use case:
 

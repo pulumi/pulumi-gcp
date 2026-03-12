@@ -44,6 +44,8 @@ class TagKeyIamBindingArgs:
                `tags.TagKeyIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[_builtins.str] tag_key: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input['TagKeyIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         """
         pulumi.set(__self__, "members", members)
         pulumi.set(__self__, "role", role)
@@ -103,6 +105,10 @@ class TagKeyIamBindingArgs:
     @_builtins.property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['TagKeyIamBindingConditionArgs']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -121,6 +127,8 @@ class _TagKeyIamBindingState:
         """
         Input properties used for looking up and filtering TagKeyIamBinding resources.
 
+        :param pulumi.Input['TagKeyIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -153,6 +161,10 @@ class _TagKeyIamBindingState:
     @_builtins.property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['TagKeyIamBindingConditionArgs']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -247,6 +259,8 @@ class TagKeyIamBinding(pulumi.CustomResource):
 
         > **Note:** `tags.TagKeyIamBinding` resources **can be** used in conjunction with `tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
 
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
         ## tags.TagKeyIamPolicy
 
         ```python
@@ -262,6 +276,25 @@ class TagKeyIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.tags.TagKeyIamPolicy("policy",
+            tag_key=key["name"],
+            policy_data=admin.policy_data)
+        ```
         ## tags.TagKeyIamBinding
 
         ```python
@@ -274,6 +307,22 @@ class TagKeyIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.tags.TagKeyIamBinding("binding",
+            tag_key=key["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
         ## tags.TagKeyIamMember
 
         ```python
@@ -284,6 +333,23 @@ class TagKeyIamBinding(pulumi.CustomResource):
             tag_key=key["name"],
             role="roles/viewer",
             member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.tags.TagKeyIamMember("member",
+            tag_key=key["name"],
+            role="roles/viewer",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
@@ -307,6 +373,8 @@ class TagKeyIamBinding(pulumi.CustomResource):
 
         > **Note:** `tags.TagKeyIamBinding` resources **can be** used in conjunction with `tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
 
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
         ## tags.TagKeyIamPolicy
 
         ```python
@@ -322,6 +390,25 @@ class TagKeyIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.tags.TagKeyIamPolicy("policy",
+            tag_key=key["name"],
+            policy_data=admin.policy_data)
+        ```
         ## tags.TagKeyIamBinding
 
         ```python
@@ -334,6 +421,22 @@ class TagKeyIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.tags.TagKeyIamBinding("binding",
+            tag_key=key["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
         ## tags.TagKeyIamMember
 
         ```python
@@ -344,6 +447,23 @@ class TagKeyIamBinding(pulumi.CustomResource):
             tag_key=key["name"],
             role="roles/viewer",
             member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.tags.TagKeyIamMember("member",
+            tag_key=key["name"],
+            role="roles/viewer",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import
@@ -378,6 +498,8 @@ class TagKeyIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['TagKeyIamBindingConditionArgs', 'TagKeyIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -416,6 +538,8 @@ class TagKeyIamBinding(pulumi.CustomResource):
 
         > **Note:** `tags.TagKeyIamBinding` resources **can be** used in conjunction with `tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
 
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
         ## tags.TagKeyIamPolicy
 
         ```python
@@ -431,6 +555,25 @@ class TagKeyIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.tags.TagKeyIamPolicy("policy",
+            tag_key=key["name"],
+            policy_data=admin.policy_data)
+        ```
         ## tags.TagKeyIamBinding
 
         ```python
@@ -443,6 +586,22 @@ class TagKeyIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.tags.TagKeyIamBinding("binding",
+            tag_key=key["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
         ## tags.TagKeyIamMember
 
         ```python
@@ -453,6 +612,23 @@ class TagKeyIamBinding(pulumi.CustomResource):
             tag_key=key["name"],
             role="roles/viewer",
             member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.tags.TagKeyIamMember("member",
+            tag_key=key["name"],
+            role="roles/viewer",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
@@ -476,6 +652,8 @@ class TagKeyIamBinding(pulumi.CustomResource):
 
         > **Note:** `tags.TagKeyIamBinding` resources **can be** used in conjunction with `tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
 
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
         ## tags.TagKeyIamPolicy
 
         ```python
@@ -491,6 +669,25 @@ class TagKeyIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.tags.TagKeyIamPolicy("policy",
+            tag_key=key["name"],
+            policy_data=admin.policy_data)
+        ```
         ## tags.TagKeyIamBinding
 
         ```python
@@ -503,6 +700,22 @@ class TagKeyIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.tags.TagKeyIamBinding("binding",
+            tag_key=key["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
         ## tags.TagKeyIamMember
 
         ```python
@@ -513,6 +726,23 @@ class TagKeyIamBinding(pulumi.CustomResource):
             tag_key=key["name"],
             role="roles/viewer",
             member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.tags.TagKeyIamMember("member",
+            tag_key=key["name"],
+            role="roles/viewer",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import
@@ -606,6 +836,8 @@ class TagKeyIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['TagKeyIamBindingConditionArgs', 'TagKeyIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -638,6 +870,10 @@ class TagKeyIamBinding(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.TagKeyIamBindingCondition']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @_builtins.property

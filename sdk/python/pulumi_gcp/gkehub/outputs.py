@@ -69,6 +69,7 @@ __all__ = [
     'FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig',
     'FeatureSpecMulticlusteringress',
     'FeatureSpecRbacrolebindingactuation',
+    'FeatureSpecWorkloadidentity',
     'FeatureState',
     'FeatureStateState',
     'FleetDefaultClusterConfig',
@@ -122,6 +123,7 @@ __all__ = [
     'GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigResult',
     'GetFeatureSpecMulticlusteringressResult',
     'GetFeatureSpecRbacrolebindingactuationResult',
+    'GetFeatureSpecWorkloadidentityResult',
     'GetFeatureStateResult',
     'GetFeatureStateStateResult',
     'GetMembershipAuthorityResult',
@@ -1989,7 +1991,7 @@ class FeatureMembershipConfigmanagementPolicyController(dict):
                  referential_rules_enabled: Optional[_builtins.bool] = None,
                  template_library_installed: Optional[_builtins.bool] = None):
         """
-        :param _builtins.str audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        :param _builtins.str audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
         :param _builtins.bool enabled: Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
         :param Sequence[_builtins.str] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         :param _builtins.bool log_denies_enabled: Logs all denies and dry run failures.
@@ -2019,7 +2021,7 @@ class FeatureMembershipConfigmanagementPolicyController(dict):
     @pulumi.getter(name="auditIntervalSeconds")
     def audit_interval_seconds(self) -> Optional[_builtins.str]:
         """
-        Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
         """
         return pulumi.get(self, "audit_interval_seconds")
 
@@ -2789,7 +2791,8 @@ class FeatureSpec(dict):
                  clusterupgrade: Optional['outputs.FeatureSpecClusterupgrade'] = None,
                  fleetobservability: Optional['outputs.FeatureSpecFleetobservability'] = None,
                  multiclusteringress: Optional['outputs.FeatureSpecMulticlusteringress'] = None,
-                 rbacrolebindingactuation: Optional['outputs.FeatureSpecRbacrolebindingactuation'] = None):
+                 rbacrolebindingactuation: Optional['outputs.FeatureSpecRbacrolebindingactuation'] = None,
+                 workloadidentity: Optional['outputs.FeatureSpecWorkloadidentity'] = None):
         """
         :param 'FeatureSpecClusterupgradeArgs' clusterupgrade: Clusterupgrade feature spec.
                Structure is documented below.
@@ -2798,6 +2801,8 @@ class FeatureSpec(dict):
         :param 'FeatureSpecMulticlusteringressArgs' multiclusteringress: Multicluster Ingress-specific spec.
                Structure is documented below.
         :param 'FeatureSpecRbacrolebindingactuationArgs' rbacrolebindingactuation: RBACRolebinding Actuation feature spec.
+               Structure is documented below.
+        :param 'FeatureSpecWorkloadidentityArgs' workloadidentity: Workload Identity feature spec.
                Structure is documented below.
         """
         if clusterupgrade is not None:
@@ -2808,6 +2813,8 @@ class FeatureSpec(dict):
             pulumi.set(__self__, "multiclusteringress", multiclusteringress)
         if rbacrolebindingactuation is not None:
             pulumi.set(__self__, "rbacrolebindingactuation", rbacrolebindingactuation)
+        if workloadidentity is not None:
+            pulumi.set(__self__, "workloadidentity", workloadidentity)
 
     @_builtins.property
     @pulumi.getter
@@ -2844,6 +2851,15 @@ class FeatureSpec(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "rbacrolebindingactuation")
+
+    @_builtins.property
+    @pulumi.getter
+    def workloadidentity(self) -> Optional['outputs.FeatureSpecWorkloadidentity']:
+        """
+        Workload Identity feature spec.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "workloadidentity")
 
 
 @pulumi.output_type
@@ -3231,6 +3247,41 @@ class FeatureSpecRbacrolebindingactuation(dict):
         The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
         """
         return pulumi.get(self, "allowed_custom_roles")
+
+
+@pulumi.output_type
+class FeatureSpecWorkloadidentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scopeTenancyPool":
+            suggest = "scope_tenancy_pool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureSpecWorkloadidentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureSpecWorkloadidentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureSpecWorkloadidentity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 scope_tenancy_pool: _builtins.str):
+        """
+        :param _builtins.str scope_tenancy_pool: Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+        """
+        pulumi.set(__self__, "scope_tenancy_pool", scope_tenancy_pool)
+
+    @_builtins.property
+    @pulumi.getter(name="scopeTenancyPool")
+    def scope_tenancy_pool(self) -> _builtins.str:
+        """
+        Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+        """
+        return pulumi.get(self, "scope_tenancy_pool")
 
 
 @pulumi.output_type
@@ -4841,17 +4892,20 @@ class GetFeatureSpecResult(dict):
                  clusterupgrades: Sequence['outputs.GetFeatureSpecClusterupgradeResult'],
                  fleetobservabilities: Sequence['outputs.GetFeatureSpecFleetobservabilityResult'],
                  multiclusteringresses: Sequence['outputs.GetFeatureSpecMulticlusteringressResult'],
-                 rbacrolebindingactuations: Sequence['outputs.GetFeatureSpecRbacrolebindingactuationResult']):
+                 rbacrolebindingactuations: Sequence['outputs.GetFeatureSpecRbacrolebindingactuationResult'],
+                 workloadidentities: Sequence['outputs.GetFeatureSpecWorkloadidentityResult']):
         """
         :param Sequence['GetFeatureSpecClusterupgradeArgs'] clusterupgrades: Clusterupgrade feature spec.
         :param Sequence['GetFeatureSpecFleetobservabilityArgs'] fleetobservabilities: Fleet Observability feature spec.
         :param Sequence['GetFeatureSpecMulticlusteringressArgs'] multiclusteringresses: Multicluster Ingress-specific spec.
         :param Sequence['GetFeatureSpecRbacrolebindingactuationArgs'] rbacrolebindingactuations: RBACRolebinding Actuation feature spec.
+        :param Sequence['GetFeatureSpecWorkloadidentityArgs'] workloadidentities: Workload Identity feature spec.
         """
         pulumi.set(__self__, "clusterupgrades", clusterupgrades)
         pulumi.set(__self__, "fleetobservabilities", fleetobservabilities)
         pulumi.set(__self__, "multiclusteringresses", multiclusteringresses)
         pulumi.set(__self__, "rbacrolebindingactuations", rbacrolebindingactuations)
+        pulumi.set(__self__, "workloadidentities", workloadidentities)
 
     @_builtins.property
     @pulumi.getter
@@ -4884,6 +4938,14 @@ class GetFeatureSpecResult(dict):
         RBACRolebinding Actuation feature spec.
         """
         return pulumi.get(self, "rbacrolebindingactuations")
+
+    @_builtins.property
+    @pulumi.getter
+    def workloadidentities(self) -> Sequence['outputs.GetFeatureSpecWorkloadidentityResult']:
+        """
+        Workload Identity feature spec.
+        """
+        return pulumi.get(self, "workloadidentities")
 
 
 @pulumi.output_type
@@ -5137,6 +5199,24 @@ class GetFeatureSpecRbacrolebindingactuationResult(dict):
         The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
         """
         return pulumi.get(self, "allowed_custom_roles")
+
+
+@pulumi.output_type
+class GetFeatureSpecWorkloadidentityResult(dict):
+    def __init__(__self__, *,
+                 scope_tenancy_pool: _builtins.str):
+        """
+        :param _builtins.str scope_tenancy_pool: Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+        """
+        pulumi.set(__self__, "scope_tenancy_pool", scope_tenancy_pool)
+
+    @_builtins.property
+    @pulumi.getter(name="scopeTenancyPool")
+    def scope_tenancy_pool(self) -> _builtins.str:
+        """
+        Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+        """
+        return pulumi.get(self, "scope_tenancy_pool")
 
 
 @pulumi.output_type

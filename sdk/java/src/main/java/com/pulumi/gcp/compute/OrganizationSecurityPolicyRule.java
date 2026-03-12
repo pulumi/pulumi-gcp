@@ -21,18 +21,65 @@ import javax.annotation.Nullable;
 /**
  * A rule for the OrganizationSecurityPolicy.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * To get more information about OrganizationSecurityPolicyRule, see:
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
  * * How-to Guides
- *     * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+ *     * [Configure hierarchical security policies](https://docs.cloud.google.com/armor/docs/hierarchical-policies-using)
  * 
  * ## Example Usage
  * 
  * ### Organization Security Policy Rule Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicy;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRule;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
+ *             .shortName("tf-test_52865")
+ *             .parent("organizations/123456789")
+ *             .type("CLOUD_ARMOR")
+ *             .build());
+ * 
+ *         var policyOrganizationSecurityPolicyRule = new OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", OrganizationSecurityPolicyRuleArgs.builder()
+ *             .policyId(policy.id())
+ *             .action("allow")
+ *             .match(OrganizationSecurityPolicyRuleMatchArgs.builder()
+ *                 .config(OrganizationSecurityPolicyRuleMatchConfigArgs.builder()
+ *                     .srcIpRanges("192.168.0.0/16")
+ *                     .build())
+ *                 .versionedExpr("SRC_IPS_V1")
+ *                 .build())
+ *             .priority(100)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Organization Security Policy Rule Firewall
  * 
  * <pre>
  * {@code
@@ -140,7 +187,9 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
         return Codegen.optional(this.description);
     }
     /**
+     * (Optional, Beta)
      * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+     * This field may only be specified when the versionedExpr is set to FIREWALL.
      * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
@@ -148,7 +197,9 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
     private Output</* @Nullable */ String> direction;
 
     /**
-     * @return The direction in which this rule applies. If unspecified an INGRESS rule is created.
+     * @return (Optional, Beta)
+     * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+     * This field may only be specified when the versionedExpr is set to FIREWALL.
      * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
@@ -156,18 +207,22 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
         return Codegen.optional(this.direction);
     }
     /**
+     * (Optional, Beta)
      * Denotes whether to enable logging for a particular rule.
      * If logging is enabled, logs will be exported to the
      * configured export destination in Stackdriver.
+     * This field may only be specified when the versionedExpr is set to FIREWALL.
      * 
      */
     @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableLogging;
 
     /**
-     * @return Denotes whether to enable logging for a particular rule.
+     * @return (Optional, Beta)
+     * Denotes whether to enable logging for a particular rule.
      * If logging is enabled, logs will be exported to the
      * configured export destination in Stackdriver.
+     * This field may only be specified when the versionedExpr is set to FIREWALL.
      * 
      */
     public Output<Optional<Boolean>> enableLogging() {
@@ -236,6 +291,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
         return this.priority;
     }
     /**
+     * (Optional, Beta)
      * A list of network resource URLs to which this rule applies.
      * This field allows you to control which network&#39;s VMs get
      * this rule. If this field is left blank, all VMs
@@ -246,7 +302,8 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
     private Output</* @Nullable */ List<String>> targetResources;
 
     /**
-     * @return A list of network resource URLs to which this rule applies.
+     * @return (Optional, Beta)
+     * A list of network resource URLs to which this rule applies.
      * This field allows you to control which network&#39;s VMs get
      * this rule. If this field is left blank, all VMs
      * within the organization will receive the rule.
@@ -256,6 +313,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
         return Codegen.optional(this.targetResources);
     }
     /**
+     * (Optional, Beta)
      * A list of service accounts indicating the sets of
      * instances that are applied with this rule.
      * 
@@ -264,7 +322,8 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
     private Output</* @Nullable */ List<String>> targetServiceAccounts;
 
     /**
-     * @return A list of service accounts indicating the sets of
+     * @return (Optional, Beta)
+     * A list of service accounts indicating the sets of
      * instances that are applied with this rule.
      * 
      */

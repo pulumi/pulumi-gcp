@@ -19,14 +19,14 @@ public final class FeatureMembershipConfigmanagementPolicyControllerArgs extends
     public static final FeatureMembershipConfigmanagementPolicyControllerArgs Empty = new FeatureMembershipConfigmanagementPolicyControllerArgs();
 
     /**
-     * Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+     * Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
      * 
      */
     @Import(name="auditIntervalSeconds")
     private @Nullable Output<String> auditIntervalSeconds;
 
     /**
-     * @return Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+     * @return Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
      * 
      */
     public Optional<Output<String>> auditIntervalSeconds() {
@@ -170,7 +170,7 @@ public final class FeatureMembershipConfigmanagementPolicyControllerArgs extends
         }
 
         /**
-         * @param auditIntervalSeconds Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+         * @param auditIntervalSeconds Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class FeatureMembershipConfigmanagementPolicyControllerArgs extends
         }
 
         /**
-         * @param auditIntervalSeconds Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+         * @param auditIntervalSeconds Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
          * 
          * @return builder
          * 

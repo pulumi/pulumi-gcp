@@ -644,6 +644,8 @@ type BackupPlan struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+	ProtectedNamespaceCount pulumi.IntOutput `pulumi:"protectedNamespaceCount"`
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount pulumi.IntOutput `pulumi:"protectedPodCount"`
 	// The combination of labels configured directly on the resource
@@ -739,6 +741,8 @@ type backupPlanState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+	ProtectedNamespaceCount *int `pulumi:"protectedNamespaceCount"`
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount *int `pulumi:"protectedPodCount"`
 	// The combination of labels configured directly on the resource
@@ -794,6 +798,8 @@ type BackupPlanState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+	ProtectedNamespaceCount pulumi.IntPtrInput
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount pulumi.IntPtrInput
 	// The combination of labels configured directly on the resource
@@ -1041,6 +1047,11 @@ func (o BackupPlanOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o BackupPlanOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+func (o BackupPlanOutput) ProtectedNamespaceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.IntOutput { return v.ProtectedNamespaceCount }).(pulumi.IntOutput)
 }
 
 // The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.

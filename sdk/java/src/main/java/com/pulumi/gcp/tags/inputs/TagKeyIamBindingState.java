@@ -17,9 +17,19 @@ public final class TagKeyIamBindingState extends com.pulumi.resources.ResourceAr
 
     public static final TagKeyIamBindingState Empty = new TagKeyIamBindingState();
 
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="condition")
     private @Nullable Output<TagKeyIamBindingConditionArgs> condition;
 
+    /**
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<TagKeyIamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -138,11 +148,25 @@ public final class TagKeyIamBindingState extends com.pulumi.resources.ResourceAr
             $ = new TagKeyIamBindingState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(@Nullable Output<TagKeyIamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
+        /**
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(TagKeyIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }

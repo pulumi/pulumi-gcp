@@ -10,9 +10,13 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.discoveryengine.DataConnectorArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataConnectorState;
+import com.pulumi.gcp.discoveryengine.outputs.DataConnectorActionConfig;
+import com.pulumi.gcp.discoveryengine.outputs.DataConnectorBapConfig;
+import com.pulumi.gcp.discoveryengine.outputs.DataConnectorDestinationConfig;
 import com.pulumi.gcp.discoveryengine.outputs.DataConnectorEntity;
 import com.pulumi.gcp.discoveryengine.outputs.DataConnectorError;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -112,6 +116,101 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * ### Discoveryengine Dataconnector Jira With Actions
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.discoveryengine.DataConnector;
+ * import com.pulumi.gcp.discoveryengine.DataConnectorArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorEntityArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorDestinationConfigArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorActionConfigArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorBapConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var jira_with_actions = new DataConnector("jira-with-actions", DataConnectorArgs.builder()
+ *             .location("global")
+ *             .collectionId("collection-id")
+ *             .collectionDisplayName("Jira Federated")
+ *             .dataSource("jira")
+ *             .dataSourceVersion(3)
+ *             .params(Map.ofEntries(
+ *                 Map.entry("instance_uri", "https://example.atlassian.net"),
+ *                 Map.entry("instance_id", "SECRET_MANAGER_RESOURCE_NAME"),
+ *                 Map.entry("client_id", "SECRET_MANAGER_RESOURCE_NAME"),
+ *                 Map.entry("client_secret", "SECRET_MANAGER_RESOURCE_NAME"),
+ *                 Map.entry("refresh_token", "SECRET_MANAGER_RESOURCE_NAME"),
+ *                 Map.entry("auth_type", "OAUTH")
+ *             ))
+ *             .refreshInterval("86400s")
+ *             .entities(            
+ *                 DataConnectorEntityArgs.builder()
+ *                     .entityName("project")
+ *                     .build(),
+ *                 DataConnectorEntityArgs.builder()
+ *                     .entityName("issue")
+ *                     .build(),
+ *                 DataConnectorEntityArgs.builder()
+ *                     .entityName("comment")
+ *                     .build(),
+ *                 DataConnectorEntityArgs.builder()
+ *                     .entityName("attachment")
+ *                     .build())
+ *             .staticIpEnabled(false)
+ *             .destinationConfigs(DataConnectorDestinationConfigArgs.builder()
+ *                 .key("url")
+ *                 .destinations(DataConnectorDestinationConfigDestinationArgs.builder()
+ *                     .host("https://example.atlassian.net")
+ *                     .build())
+ *                 .build())
+ *             .connectorModes(            
+ *                 "FEDERATED",
+ *                 "ACTIONS")
+ *             .syncMode("PERIODIC")
+ *             .autoRunDisabled(true)
+ *             .incrementalSyncDisabled(true)
+ *             .actionConfig(DataConnectorActionConfigArgs.builder()
+ *                 .actionParams(Map.ofEntries(
+ *                     Map.entry("instance_uri", "https://example.atlassian.net"),
+ *                     Map.entry("instance_id", "SECRET_MANAGER_RESOURCE_NAME"),
+ *                     Map.entry("client_id", "SECRET_MANAGER_RESOURCE_NAME"),
+ *                     Map.entry("client_secret", "SECRET_MANAGER_RESOURCE_NAME"),
+ *                     Map.entry("auth_type", "OAUTH")
+ *                 ))
+ *                 .createBapConnection(true)
+ *                 .build())
+ *             .bapConfig(DataConnectorBapConfigArgs.builder()
+ *                 .supportedConnectorModes("ACTIONS")
+ *                 .enabledActions(                
+ *                     "create_issue",
+ *                     "update_issue",
+ *                     "change_issue_status",
+ *                     "create_comment",
+ *                     "update_comment",
+ *                     "upload_attachment")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -132,6 +231,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:discoveryengine/dataConnector:DataConnector")
 public class DataConnector extends com.pulumi.resources.CustomResource {
+    /**
+     * Action configuration for the data connector. Configures action
+     * capabilities for connectors that support the ACTIONS connector mode.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="actionConfig", refs={DataConnectorActionConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DataConnectorActionConfig> actionConfig;
+
+    /**
+     * @return Action configuration for the data connector. Configures action
+     * capabilities for connectors that support the ACTIONS connector mode.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DataConnectorActionConfig>> actionConfig() {
+        return Codegen.optional(this.actionConfig);
+    }
     /**
      * State of the action connector. This reflects whether the action connector
      * is initializing, active or has encountered errors. The possible value can be:
@@ -165,6 +282,26 @@ public class DataConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> autoRunDisabled() {
         return Codegen.optional(this.autoRunDisabled);
+    }
+    /**
+     * BAP (Business Application Platform) configuration for the data
+     * connector. Controls which actions are enabled for connectors
+     * using the ACTIONS connector mode.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="bapConfig", refs={DataConnectorBapConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DataConnectorBapConfig> bapConfig;
+
+    /**
+     * @return BAP (Business Application Platform) configuration for the data
+     * connector. Controls which actions are enabled for connectors
+     * using the ACTIONS connector mode.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DataConnectorBapConfig>> bapConfig() {
+        return Codegen.optional(this.bapConfig);
     }
     /**
      * User actions that must be completed before the connector can start syncing data.
@@ -297,6 +434,38 @@ public class DataConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<String> dataSource() {
         return this.dataSource;
+    }
+    /**
+     * The version of the data source. For example, `3` for Jira v3.
+     * 
+     */
+    @Export(name="dataSourceVersion", refs={Integer.class}, tree="[0]")
+    private Output<Integer> dataSourceVersion;
+
+    /**
+     * @return The version of the data source. For example, `3` for Jira v3.
+     * 
+     */
+    public Output<Integer> dataSourceVersion() {
+        return this.dataSourceVersion;
+    }
+    /**
+     * Destination connector configurations for the data connector,
+     * used to configure where data is served.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="destinationConfigs", refs={List.class,DataConnectorDestinationConfig.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<DataConnectorDestinationConfig>> destinationConfigs;
+
+    /**
+     * @return Destination connector configurations for the data connector,
+     * used to configure where data is served.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<DataConnectorDestinationConfig>>> destinationConfigs() {
+        return Codegen.optional(this.destinationConfigs);
     }
     /**
      * List of entities from the connected data source to ingest.

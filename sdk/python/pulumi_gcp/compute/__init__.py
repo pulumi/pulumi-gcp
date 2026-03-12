@@ -221,6 +221,7 @@ from .rollout_plan import *
 from .route import *
 from .router import *
 from .router_interface import *
+from .router_named_set import *
 from .router_nat import *
 from .router_nat_address import *
 from .router_peer import *

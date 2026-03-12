@@ -39,8 +39,7 @@ class VPNGatewayArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input['VPNGatewayParamsArgs'] params: (Optional, Beta)
-               Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input['VPNGatewayParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -104,7 +103,6 @@ class VPNGatewayArgs:
     @pulumi.getter
     def params(self) -> Optional[pulumi.Input['VPNGatewayParamsArgs']]:
         """
-        (Optional, Beta)
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
         """
@@ -166,8 +164,7 @@ class _VPNGatewayState:
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
-        :param pulumi.Input['VPNGatewayParamsArgs'] params: (Optional, Beta)
-               Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input['VPNGatewayParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -263,7 +260,6 @@ class _VPNGatewayState:
     @pulumi.getter
     def params(self) -> Optional[pulumi.Input['VPNGatewayParamsArgs']]:
         """
-        (Optional, Beta)
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
         """
@@ -382,6 +378,67 @@ class VPNGateway(pulumi.CustomResource):
             priority=1000,
             next_hop_vpn_tunnel=tunnel1.id)
         ```
+        ### Target Vpn Gateway Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        tag_key1 = gcp.tags.TagKey("tag_key1",
+            parent="organizations/123456789",
+            short_name="tagkey")
+        tag_value1 = gcp.tags.TagValue("tag_value1",
+            parent=tag_key1.id,
+            short_name="tagvalue")
+        network1 = gcp.compute.Network("network1", name="network-1")
+        target_gateway_tags = gcp.compute.VPNGateway("target_gateway_tags",
+            name="vpn-1",
+            network=network1.id,
+            params={
+                "resource_manager_tags": pulumi.Output.all(
+                    tagKey1Id=tag_key1.id,
+                    tagValue1Id=tag_value1.id
+        ).apply(lambda resolved_outputs: {
+                    resolved_outputs['tagKey1Id']: resolved_outputs['tagValue1Id'],
+                })
+        ,
+            })
+        vpn_static_ip = gcp.compute.Address("vpn_static_ip", name="vpn-static-ip")
+        fr_esp = gcp.compute.ForwardingRule("fr_esp",
+            name="fr-esp",
+            ip_protocol="ESP",
+            ip_address=vpn_static_ip.address,
+            target=target_gateway_tags.id)
+        fr_udp500 = gcp.compute.ForwardingRule("fr_udp500",
+            name="fr-udp500",
+            ip_protocol="UDP",
+            port_range="500",
+            ip_address=vpn_static_ip.address,
+            target=target_gateway_tags.id)
+        fr_udp4500 = gcp.compute.ForwardingRule("fr_udp4500",
+            name="fr-udp4500",
+            ip_protocol="UDP",
+            port_range="4500",
+            ip_address=vpn_static_ip.address,
+            target=target_gateway_tags.id)
+        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
+            name="tunnel1",
+            peer_ip="15.0.0.120",
+            shared_secret="a secret message",
+            target_vpn_gateway=target_gateway_tags.id,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    fr_esp,
+                    fr_udp500,
+                    fr_udp4500,
+                ]))
+        route1 = gcp.compute.Route("route1",
+            name="route1",
+            network=network1.name,
+            dest_range="15.0.0.0/24",
+            priority=1000,
+            next_hop_vpn_tunnel=tunnel1.id)
+        ```
 
         ## Import
 
@@ -413,8 +470,7 @@ class VPNGateway(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
-        :param pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']] params: (Optional, Beta)
-               Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -472,6 +528,67 @@ class VPNGateway(pulumi.CustomResource):
             peer_ip="15.0.0.120",
             shared_secret="a secret message",
             target_vpn_gateway=target_gateway.id,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    fr_esp,
+                    fr_udp500,
+                    fr_udp4500,
+                ]))
+        route1 = gcp.compute.Route("route1",
+            name="route1",
+            network=network1.name,
+            dest_range="15.0.0.0/24",
+            priority=1000,
+            next_hop_vpn_tunnel=tunnel1.id)
+        ```
+        ### Target Vpn Gateway Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        tag_key1 = gcp.tags.TagKey("tag_key1",
+            parent="organizations/123456789",
+            short_name="tagkey")
+        tag_value1 = gcp.tags.TagValue("tag_value1",
+            parent=tag_key1.id,
+            short_name="tagvalue")
+        network1 = gcp.compute.Network("network1", name="network-1")
+        target_gateway_tags = gcp.compute.VPNGateway("target_gateway_tags",
+            name="vpn-1",
+            network=network1.id,
+            params={
+                "resource_manager_tags": pulumi.Output.all(
+                    tagKey1Id=tag_key1.id,
+                    tagValue1Id=tag_value1.id
+        ).apply(lambda resolved_outputs: {
+                    resolved_outputs['tagKey1Id']: resolved_outputs['tagValue1Id'],
+                })
+        ,
+            })
+        vpn_static_ip = gcp.compute.Address("vpn_static_ip", name="vpn-static-ip")
+        fr_esp = gcp.compute.ForwardingRule("fr_esp",
+            name="fr-esp",
+            ip_protocol="ESP",
+            ip_address=vpn_static_ip.address,
+            target=target_gateway_tags.id)
+        fr_udp500 = gcp.compute.ForwardingRule("fr_udp500",
+            name="fr-udp500",
+            ip_protocol="UDP",
+            port_range="500",
+            ip_address=vpn_static_ip.address,
+            target=target_gateway_tags.id)
+        fr_udp4500 = gcp.compute.ForwardingRule("fr_udp4500",
+            name="fr-udp4500",
+            ip_protocol="UDP",
+            port_range="4500",
+            ip_address=vpn_static_ip.address,
+            target=target_gateway_tags.id)
+        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
+            name="tunnel1",
+            peer_ip="15.0.0.120",
+            shared_secret="a secret message",
+            target_vpn_gateway=target_gateway_tags.id,
             opts = pulumi.ResourceOptions(depends_on=[
                     fr_esp,
                     fr_udp500,
@@ -582,8 +699,7 @@ class VPNGateway(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
-        :param pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']] params: (Optional, Beta)
-               Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -655,7 +771,6 @@ class VPNGateway(pulumi.CustomResource):
     @pulumi.getter
     def params(self) -> pulumi.Output[Optional['outputs.VPNGatewayParams']]:
         """
-        (Optional, Beta)
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
         """

@@ -246,6 +246,7 @@ namespace Pulumi.Gcp.OsConfig
     ///         PatchConfig = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigArgs
     ///         {
     ///             MigInstancesAllowed = true,
+    ///             SkipUnpatchableVms = true,
     ///             RebootConfig = "ALWAYS",
     ///             Apt = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigAptArgs
     ///             {

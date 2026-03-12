@@ -78,6 +78,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? Preemptible;
         /// <summary>
+        /// The duration of the notice that the instance will receive before it is preempted.
+        /// </summary>
+        public readonly Outputs.RegionInstanceTemplateSchedulingPreemptionNoticeDuration? PreemptionNoticeDuration;
+        /// <summary>
         /// Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
         /// `Preemptible` should be `True` and `AutomaticRestart` should be
         /// `False`. For more info about
@@ -121,6 +125,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             bool? preemptible,
 
+            Outputs.RegionInstanceTemplateSchedulingPreemptionNoticeDuration? preemptionNoticeDuration,
+
             string? provisioningModel,
 
             bool? skipGuestOsShutdown,
@@ -140,6 +146,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             OnHostMaintenance = onHostMaintenance;
             OnInstanceStopAction = onInstanceStopAction;
             Preemptible = preemptible;
+            PreemptionNoticeDuration = preemptionNoticeDuration;
             ProvisioningModel = provisioningModel;
             SkipGuestOsShutdown = skipGuestOsShutdown;
             TerminationTime = terminationTime;

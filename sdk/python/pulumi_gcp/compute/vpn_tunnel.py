@@ -65,8 +65,7 @@ class VPNTunnelArgs:
                must be a lowercase letter, and all following characters must
                be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input['VPNTunnelParamsArgs'] params: (Optional, Beta)
-               Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input['VPNTunnelParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[_builtins.int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected.
@@ -234,7 +233,6 @@ class VPNTunnelArgs:
     @pulumi.getter
     def params(self) -> Optional[pulumi.Input['VPNTunnelParamsArgs']]:
         """
-        (Optional, Beta)
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
         """
@@ -491,8 +489,7 @@ class _VPNTunnelState:
                must be a lowercase letter, and all following characters must
                be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input['VPNTunnelParamsArgs'] params: (Optional, Beta)
-               Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input['VPNTunnelParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[_builtins.int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected.
@@ -730,7 +727,6 @@ class _VPNTunnelState:
     @pulumi.getter
     def params(self) -> Optional[pulumi.Input['VPNTunnelParamsArgs']]:
         """
-        (Optional, Beta)
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
         """
@@ -1170,8 +1166,7 @@ class VPNTunnel(pulumi.CustomResource):
                must be a lowercase letter, and all following characters must
                be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']] params: (Optional, Beta)
-               Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[_builtins.int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected.
@@ -1503,8 +1498,7 @@ class VPNTunnel(pulumi.CustomResource):
                must be a lowercase letter, and all following characters must
                be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']] params: (Optional, Beta)
-               Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[_builtins.int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected.
@@ -1678,7 +1672,6 @@ class VPNTunnel(pulumi.CustomResource):
     @pulumi.getter
     def params(self) -> pulumi.Output[Optional['outputs.VPNTunnelParams']]:
         """
-        (Optional, Beta)
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
         """

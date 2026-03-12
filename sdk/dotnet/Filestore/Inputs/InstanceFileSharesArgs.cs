@@ -46,6 +46,14 @@ namespace Pulumi.Gcp.Filestore.Inputs
         [Input("sourceBackup")]
         public Input<string>? SourceBackup { get; set; }
 
+        /// <summary>
+        /// The resource name of the BackupDR backup, in the format
+        /// `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+        /// that this file share has been restored from.
+        /// </summary>
+        [Input("sourceBackupdrBackup")]
+        public Input<string>? SourceBackupdrBackup { get; set; }
+
         public InstanceFileSharesArgs()
         {
         }

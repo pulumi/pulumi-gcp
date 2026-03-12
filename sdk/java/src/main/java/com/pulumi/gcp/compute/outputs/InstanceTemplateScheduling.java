@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.outputs.InstanceTemplateSchedulingLocalSsdRecovery
 import com.pulumi.gcp.compute.outputs.InstanceTemplateSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.InstanceTemplateSchedulingNodeAffinity;
 import com.pulumi.gcp.compute.outputs.InstanceTemplateSchedulingOnInstanceStopAction;
+import com.pulumi.gcp.compute.outputs.InstanceTemplateSchedulingPreemptionNoticeDuration;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -93,6 +94,11 @@ public final class InstanceTemplateScheduling {
      * 
      */
     private @Nullable Boolean preemptible;
+    /**
+     * @return Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+     * 
+     */
+    private @Nullable InstanceTemplateSchedulingPreemptionNoticeDuration preemptionNoticeDuration;
     /**
      * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
      * `preemptible` should be `true` and `automaticRestart` should be
@@ -214,6 +220,13 @@ public final class InstanceTemplateScheduling {
         return Optional.ofNullable(this.preemptible);
     }
     /**
+     * @return Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+     * 
+     */
+    public Optional<InstanceTemplateSchedulingPreemptionNoticeDuration> preemptionNoticeDuration() {
+        return Optional.ofNullable(this.preemptionNoticeDuration);
+    }
+    /**
      * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
      * `preemptible` should be `true` and `automaticRestart` should be
      * `false`. For more info about
@@ -260,6 +273,7 @@ public final class InstanceTemplateScheduling {
         private @Nullable String onHostMaintenance;
         private @Nullable InstanceTemplateSchedulingOnInstanceStopAction onInstanceStopAction;
         private @Nullable Boolean preemptible;
+        private @Nullable InstanceTemplateSchedulingPreemptionNoticeDuration preemptionNoticeDuration;
         private @Nullable String provisioningModel;
         private @Nullable Boolean skipGuestOsShutdown;
         private @Nullable String terminationTime;
@@ -279,6 +293,7 @@ public final class InstanceTemplateScheduling {
     	      this.onHostMaintenance = defaults.onHostMaintenance;
     	      this.onInstanceStopAction = defaults.onInstanceStopAction;
     	      this.preemptible = defaults.preemptible;
+    	      this.preemptionNoticeDuration = defaults.preemptionNoticeDuration;
     	      this.provisioningModel = defaults.provisioningModel;
     	      this.skipGuestOsShutdown = defaults.skipGuestOsShutdown;
     	      this.terminationTime = defaults.terminationTime;
@@ -369,6 +384,12 @@ public final class InstanceTemplateScheduling {
             return this;
         }
         @CustomType.Setter
+        public Builder preemptionNoticeDuration(@Nullable InstanceTemplateSchedulingPreemptionNoticeDuration preemptionNoticeDuration) {
+
+            this.preemptionNoticeDuration = preemptionNoticeDuration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder provisioningModel(@Nullable String provisioningModel) {
 
             this.provisioningModel = provisioningModel;
@@ -401,6 +422,7 @@ public final class InstanceTemplateScheduling {
             _resultValue.onHostMaintenance = onHostMaintenance;
             _resultValue.onInstanceStopAction = onInstanceStopAction;
             _resultValue.preemptible = preemptible;
+            _resultValue.preemptionNoticeDuration = preemptionNoticeDuration;
             _resultValue.provisioningModel = provisioningModel;
             _resultValue.skipGuestOsShutdown = skipGuestOsShutdown;
             _resultValue.terminationTime = terminationTime;

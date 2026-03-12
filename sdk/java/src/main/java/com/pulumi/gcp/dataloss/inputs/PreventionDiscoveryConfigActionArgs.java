@@ -7,7 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionExportDataArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionPubSubNotificationArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionPublishToChronicleArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionPublishToSccArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionTagResourcesArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -53,6 +55,21 @@ public final class PreventionDiscoveryConfigActionArgs extends com.pulumi.resour
     }
 
     /**
+     * Publishes generated data profiles to Google Security Operations. For more information, see [Use Sensitive Data Protection data in context-aware analytics](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
+     * 
+     */
+    @Import(name="publishToChronicle")
+    private @Nullable Output<PreventionDiscoveryConfigActionPublishToChronicleArgs> publishToChronicle;
+
+    /**
+     * @return Publishes generated data profiles to Google Security Operations. For more information, see [Use Sensitive Data Protection data in context-aware analytics](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
+     * 
+     */
+    public Optional<Output<PreventionDiscoveryConfigActionPublishToChronicleArgs>> publishToChronicle() {
+        return Optional.ofNullable(this.publishToChronicle);
+    }
+
+    /**
      * Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
      * 
      */
@@ -65,6 +82,21 @@ public final class PreventionDiscoveryConfigActionArgs extends com.pulumi.resour
      */
     public Optional<Output<PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs>> publishToDataplexCatalog() {
         return Optional.ofNullable(this.publishToDataplexCatalog);
+    }
+
+    /**
+     * Publishes findings to Security Command Center for each data profile.
+     * 
+     */
+    @Import(name="publishToScc")
+    private @Nullable Output<PreventionDiscoveryConfigActionPublishToSccArgs> publishToScc;
+
+    /**
+     * @return Publishes findings to Security Command Center for each data profile.
+     * 
+     */
+    public Optional<Output<PreventionDiscoveryConfigActionPublishToSccArgs>> publishToScc() {
+        return Optional.ofNullable(this.publishToScc);
     }
 
     /**
@@ -89,7 +121,9 @@ public final class PreventionDiscoveryConfigActionArgs extends com.pulumi.resour
     private PreventionDiscoveryConfigActionArgs(PreventionDiscoveryConfigActionArgs $) {
         this.exportData = $.exportData;
         this.pubSubNotification = $.pubSubNotification;
+        this.publishToChronicle = $.publishToChronicle;
         this.publishToDataplexCatalog = $.publishToDataplexCatalog;
+        this.publishToScc = $.publishToScc;
         this.tagResources = $.tagResources;
     }
 
@@ -158,6 +192,27 @@ public final class PreventionDiscoveryConfigActionArgs extends com.pulumi.resour
         }
 
         /**
+         * @param publishToChronicle Publishes generated data profiles to Google Security Operations. For more information, see [Use Sensitive Data Protection data in context-aware analytics](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publishToChronicle(@Nullable Output<PreventionDiscoveryConfigActionPublishToChronicleArgs> publishToChronicle) {
+            $.publishToChronicle = publishToChronicle;
+            return this;
+        }
+
+        /**
+         * @param publishToChronicle Publishes generated data profiles to Google Security Operations. For more information, see [Use Sensitive Data Protection data in context-aware analytics](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publishToChronicle(PreventionDiscoveryConfigActionPublishToChronicleArgs publishToChronicle) {
+            return publishToChronicle(Output.of(publishToChronicle));
+        }
+
+        /**
          * @param publishToDataplexCatalog Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
          * 
          * @return builder
@@ -176,6 +231,27 @@ public final class PreventionDiscoveryConfigActionArgs extends com.pulumi.resour
          */
         public Builder publishToDataplexCatalog(PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs publishToDataplexCatalog) {
             return publishToDataplexCatalog(Output.of(publishToDataplexCatalog));
+        }
+
+        /**
+         * @param publishToScc Publishes findings to Security Command Center for each data profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publishToScc(@Nullable Output<PreventionDiscoveryConfigActionPublishToSccArgs> publishToScc) {
+            $.publishToScc = publishToScc;
+            return this;
+        }
+
+        /**
+         * @param publishToScc Publishes findings to Security Command Center for each data profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publishToScc(PreventionDiscoveryConfigActionPublishToSccArgs publishToScc) {
+            return publishToScc(Output.of(publishToScc));
         }
 
         /**

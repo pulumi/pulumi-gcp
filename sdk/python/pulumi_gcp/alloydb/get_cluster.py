@@ -27,7 +27,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, annotations=None, automated_backup_policies=None, backup_sources=None, backupdr_backup_sources=None, cluster_id=None, cluster_type=None, continuous_backup_configs=None, continuous_backup_infos=None, database_version=None, deletion_policy=None, deletion_protection=None, display_name=None, effective_annotations=None, effective_labels=None, encryption_configs=None, encryption_infos=None, etag=None, id=None, initial_users=None, labels=None, location=None, maintenance_update_policies=None, migration_sources=None, name=None, network_configs=None, project=None, psc_configs=None, pulumi_labels=None, reconciling=None, restore_backup_sources=None, restore_backupdr_backup_sources=None, restore_backupdr_pitr_sources=None, restore_continuous_backup_sources=None, secondary_configs=None, skip_await_major_version_upgrade=None, state=None, subscription_type=None, trial_metadatas=None, uid=None):
+    def __init__(__self__, annotations=None, automated_backup_policies=None, backup_sources=None, backupdr_backup_sources=None, cluster_id=None, cluster_type=None, continuous_backup_configs=None, continuous_backup_infos=None, database_version=None, dataplex_configs=None, deletion_policy=None, deletion_protection=None, display_name=None, effective_annotations=None, effective_labels=None, encryption_configs=None, encryption_infos=None, etag=None, id=None, initial_users=None, labels=None, location=None, maintenance_update_policies=None, migration_sources=None, name=None, network_configs=None, project=None, psc_configs=None, pulumi_labels=None, reconciling=None, restore_backup_sources=None, restore_backupdr_backup_sources=None, restore_backupdr_pitr_sources=None, restore_continuous_backup_sources=None, secondary_configs=None, skip_await_major_version_upgrade=None, state=None, subscription_type=None, trial_metadatas=None, uid=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -55,6 +55,9 @@ class GetClusterResult:
         if database_version and not isinstance(database_version, str):
             raise TypeError("Expected argument 'database_version' to be a str")
         pulumi.set(__self__, "database_version", database_version)
+        if dataplex_configs and not isinstance(dataplex_configs, list):
+            raise TypeError("Expected argument 'dataplex_configs' to be a list")
+        pulumi.set(__self__, "dataplex_configs", dataplex_configs)
         if deletion_policy and not isinstance(deletion_policy, str):
             raise TypeError("Expected argument 'deletion_policy' to be a str")
         pulumi.set(__self__, "deletion_policy", deletion_policy)
@@ -190,6 +193,11 @@ class GetClusterResult:
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> _builtins.str:
         return pulumi.get(self, "database_version")
+
+    @_builtins.property
+    @pulumi.getter(name="dataplexConfigs")
+    def dataplex_configs(self) -> Sequence['outputs.GetClusterDataplexConfigResult']:
+        return pulumi.get(self, "dataplex_configs")
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -360,6 +368,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             continuous_backup_configs=self.continuous_backup_configs,
             continuous_backup_infos=self.continuous_backup_infos,
             database_version=self.database_version,
+            dataplex_configs=self.dataplex_configs,
             deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
             display_name=self.display_name,
@@ -433,6 +442,7 @@ def get_cluster(cluster_id: Optional[_builtins.str] = None,
         continuous_backup_configs=pulumi.get(__ret__, 'continuous_backup_configs'),
         continuous_backup_infos=pulumi.get(__ret__, 'continuous_backup_infos'),
         database_version=pulumi.get(__ret__, 'database_version'),
+        dataplex_configs=pulumi.get(__ret__, 'dataplex_configs'),
         deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         display_name=pulumi.get(__ret__, 'display_name'),
@@ -503,6 +513,7 @@ def get_cluster_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
         continuous_backup_configs=pulumi.get(__response__, 'continuous_backup_configs'),
         continuous_backup_infos=pulumi.get(__response__, 'continuous_backup_infos'),
         database_version=pulumi.get(__response__, 'database_version'),
+        dataplex_configs=pulumi.get(__response__, 'dataplex_configs'),
         deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         display_name=pulumi.get(__response__, 'display_name'),

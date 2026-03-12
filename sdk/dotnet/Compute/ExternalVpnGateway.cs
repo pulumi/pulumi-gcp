@@ -216,7 +216,6 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Additional params passed with the request, but not persisted as part of resource payload
         /// Structure is documented below.
         /// </summary>
@@ -347,7 +346,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Additional params passed with the request, but not persisted as part of resource payload
         /// Structure is documented below.
         /// </summary>
@@ -445,7 +443,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Additional params passed with the request, but not persisted as part of resource payload
         /// Structure is documented below.
         /// </summary>

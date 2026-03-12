@@ -1252,7 +1252,15 @@ class WorkforcePoolProviderExtraAttributesOauth2Client(dict):
                for more details on 'microsoft.graph.group' properties. The
                group IDs obtained from Azure AD are present in 'assertion.groups' for
                OIDC providers and 'assertion.attributes.groups' for SAML providers for
-               attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID"]
+               attribute mapping.
+               * AZURE_AD_GROUPS_DISPLAY_NAME: Used to get the user's group claims from the Azure AD identity provider
+               using configuration provided in ExtraAttributesOAuth2Client and 'displayName' property
+               of the 'microsoft.graph.group' object is used for claim mapping. See
+               https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+               for more details on 'microsoft.graph.group' properties. The
+               group displayNames obtained from Azure AD are present in 'assertion.groups' for
+               OIDC providers and 'assertion.attributes.groups' for SAML providers for
+               attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID", "AZURE_AD_GROUPS_DISPLAY_NAME"]
         :param _builtins.str client_id: The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
         :param 'WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs' client_secret: The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
         :param _builtins.str issuer_uri: The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
@@ -1281,7 +1289,15 @@ class WorkforcePoolProviderExtraAttributesOauth2Client(dict):
         for more details on 'microsoft.graph.group' properties. The
         group IDs obtained from Azure AD are present in 'assertion.groups' for
         OIDC providers and 'assertion.attributes.groups' for SAML providers for
-        attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID"]
+        attribute mapping.
+        * AZURE_AD_GROUPS_DISPLAY_NAME: Used to get the user's group claims from the Azure AD identity provider
+        using configuration provided in ExtraAttributesOAuth2Client and 'displayName' property
+        of the 'microsoft.graph.group' object is used for claim mapping. See
+        https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+        for more details on 'microsoft.graph.group' properties. The
+        group displayNames obtained from Azure AD are present in 'assertion.groups' for
+        OIDC providers and 'assertion.attributes.groups' for SAML providers for
+        attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID", "AZURE_AD_GROUPS_DISPLAY_NAME"]
         """
         return pulumi.get(self, "attributes_type")
 

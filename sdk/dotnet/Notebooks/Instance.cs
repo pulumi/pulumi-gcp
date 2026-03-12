@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks
 {
     /// <summary>
-    /// &gt; **Warning:** `GoogleNotebookInstance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+    /// &gt; **Warning:** `gcp.notebooks.Instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
     /// 
     /// A Cloud AI Platform Notebook instance.
     /// 

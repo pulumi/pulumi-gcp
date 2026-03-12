@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class DatabaseInstanceSettingsInsightsConfig
     {
         /// <summary>
+        /// True if Enhanced Query Insights feature is enabled.
+        /// </summary>
+        public readonly bool? EnhancedQueryInsightsEnabled;
+        /// <summary>
         /// True if Query Insights feature is enabled.
         /// </summary>
         public readonly bool? QueryInsightsEnabled;
@@ -36,6 +40,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
         [OutputConstructor]
         private DatabaseInstanceSettingsInsightsConfig(
+            bool? enhancedQueryInsightsEnabled,
+
             bool? queryInsightsEnabled,
 
             int? queryPlansPerMinute,
@@ -46,6 +52,7 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             bool? recordClientAddress)
         {
+            EnhancedQueryInsightsEnabled = enhancedQueryInsightsEnabled;
             QueryInsightsEnabled = queryInsightsEnabled;
             QueryPlansPerMinute = queryPlansPerMinute;
             QueryStringLength = queryStringLength;

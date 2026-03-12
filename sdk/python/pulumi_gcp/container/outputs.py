@@ -7844,7 +7844,7 @@ class ClusterNodeConfig(dict):
         :param Mapping[str, _builtins.str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
         :param Mapping[str, _builtins.str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
-        :param 'ClusterNodeConfigSandboxConfigArgs' sandbox_config: ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        :param 'ClusterNodeConfigSandboxConfigArgs' sandbox_config: [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
                Structure is documented below.
         :param Sequence['ClusterNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param _builtins.str service_account: The service account to be used by the Node VMs.
@@ -8296,7 +8296,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional['outputs.ClusterNodeConfigSandboxConfig']:
         """
-        ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
         Structure is documented below.
         """
         return pulumi.get(self, "sandbox_config")
@@ -10536,25 +10536,45 @@ class ClusterNodeConfigSandboxConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 sandbox_type: _builtins.str):
+                 sandbox_type: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
         """
-        :param _builtins.str sandbox_type: Which sandbox to use for pods in the node pool.
+        :param _builtins.str sandbox_type: Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
                Accepted values are:
                
                * `"gvisor"`: Pods run within a gVisor sandbox.
+        :param _builtins.str type: Which sandbox to use for pods in the node pool.
+               Accepted values are:
+               
+               * `"GVISOR"`: Pods run within a gVisor sandbox.
         """
-        pulumi.set(__self__, "sandbox_type", sandbox_type)
+        if sandbox_type is not None:
+            pulumi.set(__self__, "sandbox_type", sandbox_type)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="sandboxType")
-    def sandbox_type(self) -> _builtins.str:
+    @_utilities.deprecated("""`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.""")
+    def sandbox_type(self) -> Optional[_builtins.str]:
         """
-        Which sandbox to use for pods in the node pool.
+        Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
         Accepted values are:
 
         * `"gvisor"`: Pods run within a gVisor sandbox.
         """
         return pulumi.get(self, "sandbox_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Which sandbox to use for pods in the node pool.
+        Accepted values are:
+
+        * `"GVISOR"`: Pods run within a gVisor sandbox.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -12696,7 +12716,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param Mapping[str, _builtins.str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
         :param Mapping[str, _builtins.str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
-        :param 'ClusterNodePoolNodeConfigSandboxConfigArgs' sandbox_config: ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        :param 'ClusterNodePoolNodeConfigSandboxConfigArgs' sandbox_config: [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
                Structure is documented below.
         :param Sequence['ClusterNodePoolNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param _builtins.str service_account: The service account to be used by the Node VMs.
@@ -13148,7 +13168,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigSandboxConfig']:
         """
-        ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
         Structure is documented below.
         """
         return pulumi.get(self, "sandbox_config")
@@ -15388,25 +15408,45 @@ class ClusterNodePoolNodeConfigSandboxConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 sandbox_type: _builtins.str):
+                 sandbox_type: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
         """
-        :param _builtins.str sandbox_type: Which sandbox to use for pods in the node pool.
+        :param _builtins.str sandbox_type: Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
                Accepted values are:
                
                * `"gvisor"`: Pods run within a gVisor sandbox.
+        :param _builtins.str type: Which sandbox to use for pods in the node pool.
+               Accepted values are:
+               
+               * `"GVISOR"`: Pods run within a gVisor sandbox.
         """
-        pulumi.set(__self__, "sandbox_type", sandbox_type)
+        if sandbox_type is not None:
+            pulumi.set(__self__, "sandbox_type", sandbox_type)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="sandboxType")
-    def sandbox_type(self) -> _builtins.str:
+    @_utilities.deprecated("""`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.""")
+    def sandbox_type(self) -> Optional[_builtins.str]:
         """
-        Which sandbox to use for pods in the node pool.
+        Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
         Accepted values are:
 
         * `"gvisor"`: Pods run within a gVisor sandbox.
         """
         return pulumi.get(self, "sandbox_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Which sandbox to use for pods in the node pool.
+        Accepted values are:
+
+        * `"GVISOR"`: Pods run within a gVisor sandbox.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -17008,6 +17048,8 @@ class ClusterUserManagedKeysConfig(dict):
             suggest = "cluster_ca"
         elif key == "controlPlaneDiskEncryptionKey":
             suggest = "control_plane_disk_encryption_key"
+        elif key == "controlPlaneDiskEncryptionKeyVersions":
+            suggest = "control_plane_disk_encryption_key_versions"
         elif key == "etcdApiCa":
             suggest = "etcd_api_ca"
         elif key == "etcdPeerCa":
@@ -17034,6 +17076,7 @@ class ClusterUserManagedKeysConfig(dict):
                  aggregation_ca: Optional[_builtins.str] = None,
                  cluster_ca: Optional[_builtins.str] = None,
                  control_plane_disk_encryption_key: Optional[_builtins.str] = None,
+                 control_plane_disk_encryption_key_versions: Optional[Sequence[_builtins.str]] = None,
                  etcd_api_ca: Optional[_builtins.str] = None,
                  etcd_peer_ca: Optional[_builtins.str] = None,
                  gkeops_etcd_backup_encryption_key: Optional[_builtins.str] = None,
@@ -17043,6 +17086,7 @@ class ClusterUserManagedKeysConfig(dict):
         :param _builtins.str aggregation_ca: The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
         :param _builtins.str cluster_ca: The Certificate Authority Service caPool to use for the cluster CA in this cluster.
         :param _builtins.str control_plane_disk_encryption_key: The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+        :param Sequence[_builtins.str] control_plane_disk_encryption_key_versions: The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
         :param _builtins.str etcd_api_ca: The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
         :param _builtins.str etcd_peer_ca: The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
         :param _builtins.str gkeops_etcd_backup_encryption_key: Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
@@ -17055,6 +17099,8 @@ class ClusterUserManagedKeysConfig(dict):
             pulumi.set(__self__, "cluster_ca", cluster_ca)
         if control_plane_disk_encryption_key is not None:
             pulumi.set(__self__, "control_plane_disk_encryption_key", control_plane_disk_encryption_key)
+        if control_plane_disk_encryption_key_versions is not None:
+            pulumi.set(__self__, "control_plane_disk_encryption_key_versions", control_plane_disk_encryption_key_versions)
         if etcd_api_ca is not None:
             pulumi.set(__self__, "etcd_api_ca", etcd_api_ca)
         if etcd_peer_ca is not None:
@@ -17089,6 +17135,14 @@ class ClusterUserManagedKeysConfig(dict):
         The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
         """
         return pulumi.get(self, "control_plane_disk_encryption_key")
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlaneDiskEncryptionKeyVersions")
+    def control_plane_disk_encryption_key_versions(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+        """
+        return pulumi.get(self, "control_plane_disk_encryption_key_versions")
 
     @_builtins.property
     @pulumi.getter(name="etcdApiCa")
@@ -20402,19 +20456,33 @@ class NodePoolNodeConfigSandboxConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 sandbox_type: _builtins.str):
+                 sandbox_type: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
         """
-        :param _builtins.str sandbox_type: Type of the sandbox to use for the node (e.g. 'gvisor')
+        :param _builtins.str sandbox_type: Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
+        :param _builtins.str type: Type of the sandbox to use for the node (e.g. 'GVISOR').
         """
-        pulumi.set(__self__, "sandbox_type", sandbox_type)
+        if sandbox_type is not None:
+            pulumi.set(__self__, "sandbox_type", sandbox_type)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="sandboxType")
-    def sandbox_type(self) -> _builtins.str:
+    @_utilities.deprecated("""`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.""")
+    def sandbox_type(self) -> Optional[_builtins.str]:
         """
-        Type of the sandbox to use for the node (e.g. 'gvisor')
+        Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
         """
         return pulumi.get(self, "sandbox_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Type of the sandbox to use for the node (e.g. 'GVISOR').
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -25208,19 +25276,30 @@ class GetClusterNodeConfigReservationAffinityResult(dict):
 @pulumi.output_type
 class GetClusterNodeConfigSandboxConfigResult(dict):
     def __init__(__self__, *,
-                 sandbox_type: _builtins.str):
+                 sandbox_type: _builtins.str,
+                 type: _builtins.str):
         """
-        :param _builtins.str sandbox_type: Type of the sandbox to use for the node (e.g. 'gvisor')
+        :param _builtins.str sandbox_type: Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
+        :param _builtins.str type: Type of the sandbox to use for the node (e.g. 'GVISOR').
         """
         pulumi.set(__self__, "sandbox_type", sandbox_type)
+        pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="sandboxType")
     def sandbox_type(self) -> _builtins.str:
         """
-        Type of the sandbox to use for the node (e.g. 'gvisor')
+        Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
         """
         return pulumi.get(self, "sandbox_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the sandbox to use for the node (e.g. 'GVISOR').
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -28441,19 +28520,30 @@ class GetClusterNodePoolNodeConfigReservationAffinityResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolNodeConfigSandboxConfigResult(dict):
     def __init__(__self__, *,
-                 sandbox_type: _builtins.str):
+                 sandbox_type: _builtins.str,
+                 type: _builtins.str):
         """
-        :param _builtins.str sandbox_type: Type of the sandbox to use for the node (e.g. 'gvisor')
+        :param _builtins.str sandbox_type: Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
+        :param _builtins.str type: Type of the sandbox to use for the node (e.g. 'GVISOR').
         """
         pulumi.set(__self__, "sandbox_type", sandbox_type)
+        pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="sandboxType")
     def sandbox_type(self) -> _builtins.str:
         """
-        Type of the sandbox to use for the node (e.g. 'gvisor')
+        Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
         """
         return pulumi.get(self, "sandbox_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the sandbox to use for the node (e.g. 'GVISOR').
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -29486,6 +29576,7 @@ class GetClusterUserManagedKeysConfigResult(dict):
                  aggregation_ca: _builtins.str,
                  cluster_ca: _builtins.str,
                  control_plane_disk_encryption_key: _builtins.str,
+                 control_plane_disk_encryption_key_versions: Sequence[_builtins.str],
                  etcd_api_ca: _builtins.str,
                  etcd_peer_ca: _builtins.str,
                  gkeops_etcd_backup_encryption_key: _builtins.str,
@@ -29495,6 +29586,7 @@ class GetClusterUserManagedKeysConfigResult(dict):
         :param _builtins.str aggregation_ca: The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
         :param _builtins.str cluster_ca: The Certificate Authority Service caPool to use for the cluster CA in this cluster.
         :param _builtins.str control_plane_disk_encryption_key: The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+        :param Sequence[_builtins.str] control_plane_disk_encryption_key_versions: The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
         :param _builtins.str etcd_api_ca: The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
         :param _builtins.str etcd_peer_ca: The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
         :param _builtins.str gkeops_etcd_backup_encryption_key: Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
@@ -29504,6 +29596,7 @@ class GetClusterUserManagedKeysConfigResult(dict):
         pulumi.set(__self__, "aggregation_ca", aggregation_ca)
         pulumi.set(__self__, "cluster_ca", cluster_ca)
         pulumi.set(__self__, "control_plane_disk_encryption_key", control_plane_disk_encryption_key)
+        pulumi.set(__self__, "control_plane_disk_encryption_key_versions", control_plane_disk_encryption_key_versions)
         pulumi.set(__self__, "etcd_api_ca", etcd_api_ca)
         pulumi.set(__self__, "etcd_peer_ca", etcd_peer_ca)
         pulumi.set(__self__, "gkeops_etcd_backup_encryption_key", gkeops_etcd_backup_encryption_key)
@@ -29533,6 +29626,14 @@ class GetClusterUserManagedKeysConfigResult(dict):
         The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
         """
         return pulumi.get(self, "control_plane_disk_encryption_key")
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlaneDiskEncryptionKeyVersions")
+    def control_plane_disk_encryption_key_versions(self) -> Sequence[_builtins.str]:
+        """
+        The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+        """
+        return pulumi.get(self, "control_plane_disk_encryption_key_versions")
 
     @_builtins.property
     @pulumi.getter(name="etcdApiCa")

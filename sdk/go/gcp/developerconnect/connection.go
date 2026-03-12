@@ -577,6 +577,72 @@ import (
 //	}
 //
 // ```
+// ### Developer Connect Connection Http Conn Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := developerconnect.NewConnection(ctx, "my-connection", &developerconnect.ConnectionArgs{
+//				Location:     pulumi.String("us-central1"),
+//				ConnectionId: pulumi.String("tf-test-connection"),
+//				HttpConfig: &developerconnect.ConnectionHttpConfigArgs{
+//					BasicAuthentication: &developerconnect.ConnectionHttpConfigBasicAuthenticationArgs{
+//						Username:              pulumi.String("devconnectprober@gmail.com"),
+//						PasswordSecretVersion: pulumi.String("projects/devconnect-terraform-creds/secrets/http-basic-auth/versions/latest"),
+//					},
+//					HostUri: pulumi.String("https://devconnectprober.atlassian.net"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Developer Connect Connection Http Conn Bearer
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := developerconnect.NewConnection(ctx, "my-connection", &developerconnect.ConnectionArgs{
+//				Location:     pulumi.String("us-central1"),
+//				ConnectionId: pulumi.String("tf-test-connection"),
+//				HttpConfig: &developerconnect.ConnectionHttpConfigArgs{
+//					HostUri: pulumi.String("https://devconnectprober.atlassian.net"),
+//					BearerTokenAuthentication: &developerconnect.ConnectionHttpConfigBearerTokenAuthenticationArgs{
+//						TokenSecretVersion: pulumi.String("projects/devconnect-terraform-creds/secrets/http-bearer-token/versions/latest"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Connection can be imported using any of these accepted formats:
@@ -641,6 +707,9 @@ type Connection struct {
 	// Configuration for connections to an instance of GitLab Enterprise.
 	// Structure is documented below.
 	GitlabEnterpriseConfig ConnectionGitlabEnterpriseConfigPtrOutput `pulumi:"gitlabEnterpriseConfig"`
+	// Configuration for connections to an HTTP service provider.
+	// Structure is documented below.
+	HttpConfig ConnectionHttpConfigPtrOutput `pulumi:"httpConfig"`
 	// Describes stage and necessary actions to be taken by the
 	// user to complete the installation. Used for GitHub and GitHub Enterprise
 	// based connections.
@@ -757,6 +826,9 @@ type connectionState struct {
 	// Configuration for connections to an instance of GitLab Enterprise.
 	// Structure is documented below.
 	GitlabEnterpriseConfig *ConnectionGitlabEnterpriseConfig `pulumi:"gitlabEnterpriseConfig"`
+	// Configuration for connections to an HTTP service provider.
+	// Structure is documented below.
+	HttpConfig *ConnectionHttpConfig `pulumi:"httpConfig"`
 	// Describes stage and necessary actions to be taken by the
 	// user to complete the installation. Used for GitHub and GitHub Enterprise
 	// based connections.
@@ -833,6 +905,9 @@ type ConnectionState struct {
 	// Configuration for connections to an instance of GitLab Enterprise.
 	// Structure is documented below.
 	GitlabEnterpriseConfig ConnectionGitlabEnterpriseConfigPtrInput
+	// Configuration for connections to an HTTP service provider.
+	// Structure is documented below.
+	HttpConfig ConnectionHttpConfigPtrInput
 	// Describes stage and necessary actions to be taken by the
 	// user to complete the installation. Used for GitHub and GitHub Enterprise
 	// based connections.
@@ -905,6 +980,9 @@ type connectionArgs struct {
 	// Configuration for connections to an instance of GitLab Enterprise.
 	// Structure is documented below.
 	GitlabEnterpriseConfig *ConnectionGitlabEnterpriseConfig `pulumi:"gitlabEnterpriseConfig"`
+	// Configuration for connections to an HTTP service provider.
+	// Structure is documented below.
+	HttpConfig *ConnectionHttpConfig `pulumi:"httpConfig"`
 	// Optional. Labels as key value pairs
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -956,6 +1034,9 @@ type ConnectionArgs struct {
 	// Configuration for connections to an instance of GitLab Enterprise.
 	// Structure is documented below.
 	GitlabEnterpriseConfig ConnectionGitlabEnterpriseConfigPtrInput
+	// Configuration for connections to an HTTP service provider.
+	// Structure is documented below.
+	HttpConfig ConnectionHttpConfigPtrInput
 	// Optional. Labels as key value pairs
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -1143,6 +1224,12 @@ func (o ConnectionOutput) GitlabConfig() ConnectionGitlabConfigPtrOutput {
 // Structure is documented below.
 func (o ConnectionOutput) GitlabEnterpriseConfig() ConnectionGitlabEnterpriseConfigPtrOutput {
 	return o.ApplyT(func(v *Connection) ConnectionGitlabEnterpriseConfigPtrOutput { return v.GitlabEnterpriseConfig }).(ConnectionGitlabEnterpriseConfigPtrOutput)
+}
+
+// Configuration for connections to an HTTP service provider.
+// Structure is documented below.
+func (o ConnectionOutput) HttpConfig() ConnectionHttpConfigPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionHttpConfigPtrOutput { return v.HttpConfig }).(ConnectionHttpConfigPtrOutput)
 }
 
 // Describes stage and necessary actions to be taken by the

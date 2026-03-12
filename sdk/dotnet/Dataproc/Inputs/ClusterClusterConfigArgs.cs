@@ -49,6 +49,12 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<string>? ClusterTier { get; set; }
 
         /// <summary>
+        /// The type of the cluster.
+        /// </summary>
+        [Input("clusterType")]
+        public Input<string>? ClusterType { get; set; }
+
+        /// <summary>
         /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
         /// Structure defined below.
         /// </summary>

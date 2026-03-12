@@ -49,9 +49,16 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
+        /// Network context of the traffic destination.
+        /// Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        /// </summary>
+        [Input("destNetworkContext")]
+        public Input<string>? DestNetworkContext { get; set; }
+
+        /// <summary>
         /// (Optional, Beta)
         /// Network scope of the traffic destination.
-        /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        /// Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         /// </summary>
         [Input("destNetworkScope")]
         public Input<string>? DestNetworkScope { get; set; }
@@ -130,9 +137,16 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
+        /// Network context of the traffic source.
+        /// Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        /// </summary>
+        [Input("srcNetworkContext")]
+        public Input<string>? SrcNetworkContext { get; set; }
+
+        /// <summary>
         /// (Optional, Beta)
         /// Network scope of the traffic source.
-        /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        /// Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         /// </summary>
         [Input("srcNetworkScope")]
         public Input<string>? SrcNetworkScope { get; set; }
@@ -141,7 +155,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _srcNetworks;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Networks of the traffic source. It can be either a full or partial url.
         /// </summary>
         public InputList<string> SrcNetworks

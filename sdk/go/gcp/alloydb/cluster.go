@@ -524,6 +524,9 @@ type Cluster struct {
 	// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
 	// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
+	// Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+	// Structure is documented below.
+	DataplexConfig ClusterDataplexConfigOutput `pulumi:"dataplexConfig"`
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -685,6 +688,9 @@ type clusterState struct {
 	// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
 	// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
+	// Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+	// Structure is documented below.
+	DataplexConfig *ClusterDataplexConfig `pulumi:"dataplexConfig"`
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -806,6 +812,9 @@ type ClusterState struct {
 	// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
 	// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
 	DatabaseVersion pulumi.StringPtrInput
+	// Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+	// Structure is documented below.
+	DataplexConfig ClusterDataplexConfigPtrInput
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -922,6 +931,9 @@ type clusterArgs struct {
 	// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
 	// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
+	// Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+	// Structure is documented below.
+	DataplexConfig *ClusterDataplexConfig `pulumi:"dataplexConfig"`
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -1008,6 +1020,9 @@ type ClusterArgs struct {
 	// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
 	// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
 	DatabaseVersion pulumi.StringPtrInput
+	// Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+	// Structure is documented below.
+	DataplexConfig ClusterDataplexConfigPtrInput
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -1213,6 +1228,12 @@ func (o ClusterOutput) ContinuousBackupInfos() ClusterContinuousBackupInfoArrayO
 // Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
 func (o ClusterOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DatabaseVersion }).(pulumi.StringOutput)
+}
+
+// Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+// Structure is documented below.
+func (o ClusterOutput) DataplexConfig() ClusterDataplexConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterDataplexConfigOutput { return v.DataplexConfig }).(ClusterDataplexConfigOutput)
 }
 
 // Policy to determine if the cluster should be deleted forcefully.

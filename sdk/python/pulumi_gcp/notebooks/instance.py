@@ -1371,7 +1371,7 @@ class Instance(pulumi.CustomResource):
                  vm_image: Optional[pulumi.Input[Union['InstanceVmImageArgs', 'InstanceVmImageArgsDict']]] = None,
                  __props__=None):
         """
-        > **Warning:** `google_notebook_instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+        > **Warning:** `notebooks.Instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
 
         A Cloud AI Platform Notebook instance.
 
@@ -1605,7 +1605,7 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Warning:** `google_notebook_instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+        > **Warning:** `notebooks.Instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
 
         A Cloud AI Platform Notebook instance.
 

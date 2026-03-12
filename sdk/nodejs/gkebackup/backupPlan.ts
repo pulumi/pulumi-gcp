@@ -527,6 +527,10 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+     */
+    declare public /*out*/ readonly protectedNamespaceCount: pulumi.Output<number>;
+    /**
      * The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
      */
     declare public /*out*/ readonly protectedPodCount: pulumi.Output<number>;
@@ -577,6 +581,7 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["protectedNamespaceCount"] = state?.protectedNamespaceCount;
             resourceInputs["protectedPodCount"] = state?.protectedPodCount;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["retentionPolicy"] = state?.retentionPolicy;
@@ -603,6 +608,7 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["retentionPolicy"] = args?.retentionPolicy;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["protectedNamespaceCount"] = undefined /*out*/;
             resourceInputs["protectedPodCount"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -680,6 +686,10 @@ export interface BackupPlanState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+     */
+    protectedNamespaceCount?: pulumi.Input<number>;
     /**
      * The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
      */

@@ -13648,6 +13648,13 @@ type PatchDeploymentPatchConfig struct {
 	// Post-patch reboot settings.
 	// Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
 	RebootConfig *string `pulumi:"rebootConfig"`
+	// Enables enhanced reporting for the patch job:
+	// 1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
+	// * The instance runs Container-Optimized OS (COS), which cannot be patched.
+	// * The instance is part of a managed instance group (MIG), and patching MIG instances is disabled in the patch job's configuration (`migInstancesAllowed` is false).
+	// 2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
+	// 3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
+	SkipUnpatchableVms *bool `pulumi:"skipUnpatchableVms"`
 	// Windows update settings. Use this setting to override the default Windows patch rules.
 	// Structure is documented below.
 	WindowsUpdate *PatchDeploymentPatchConfigWindowsUpdate `pulumi:"windowsUpdate"`
@@ -13688,6 +13695,13 @@ type PatchDeploymentPatchConfigArgs struct {
 	// Post-patch reboot settings.
 	// Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
 	RebootConfig pulumi.StringPtrInput `pulumi:"rebootConfig"`
+	// Enables enhanced reporting for the patch job:
+	// 1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
+	// * The instance runs Container-Optimized OS (COS), which cannot be patched.
+	// * The instance is part of a managed instance group (MIG), and patching MIG instances is disabled in the patch job's configuration (`migInstancesAllowed` is false).
+	// 2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
+	// 3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
+	SkipUnpatchableVms pulumi.BoolPtrInput `pulumi:"skipUnpatchableVms"`
 	// Windows update settings. Use this setting to override the default Windows patch rules.
 	// Structure is documented below.
 	WindowsUpdate PatchDeploymentPatchConfigWindowsUpdatePtrInput `pulumi:"windowsUpdate"`
@@ -13811,6 +13825,16 @@ func (o PatchDeploymentPatchConfigOutput) RebootConfig() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v PatchDeploymentPatchConfig) *string { return v.RebootConfig }).(pulumi.StringPtrOutput)
 }
 
+// Enables enhanced reporting for the patch job:
+// 1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
+// * The instance runs Container-Optimized OS (COS), which cannot be patched.
+// * The instance is part of a managed instance group (MIG), and patching MIG instances is disabled in the patch job's configuration (`migInstancesAllowed` is false).
+// 2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
+// 3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
+func (o PatchDeploymentPatchConfigOutput) SkipUnpatchableVms() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PatchDeploymentPatchConfig) *bool { return v.SkipUnpatchableVms }).(pulumi.BoolPtrOutput)
+}
+
 // Windows update settings. Use this setting to override the default Windows patch rules.
 // Structure is documented below.
 func (o PatchDeploymentPatchConfigOutput) WindowsUpdate() PatchDeploymentPatchConfigWindowsUpdatePtrOutput {
@@ -13916,6 +13940,21 @@ func (o PatchDeploymentPatchConfigPtrOutput) RebootConfig() pulumi.StringPtrOutp
 		}
 		return v.RebootConfig
 	}).(pulumi.StringPtrOutput)
+}
+
+// Enables enhanced reporting for the patch job:
+// 1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
+// * The instance runs Container-Optimized OS (COS), which cannot be patched.
+// * The instance is part of a managed instance group (MIG), and patching MIG instances is disabled in the patch job's configuration (`migInstancesAllowed` is false).
+// 2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
+// 3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
+func (o PatchDeploymentPatchConfigPtrOutput) SkipUnpatchableVms() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PatchDeploymentPatchConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipUnpatchableVms
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Windows update settings. Use this setting to override the default Windows patch rules.

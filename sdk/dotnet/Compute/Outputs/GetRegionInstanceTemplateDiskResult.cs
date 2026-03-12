@@ -132,6 +132,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyResult> SourceSnapshotEncryptionKeys;
         /// <summary>
+        /// The SelfLink or ID of the Storage Pool to create this disk in.
+        /// </summary>
+        public readonly string StoragePool;
+        /// <summary>
         /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         /// </summary>
         public readonly string Type;
@@ -180,6 +184,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyResult> sourceSnapshotEncryptionKeys,
 
+            string storagePool,
+
             string type)
         {
             Architecture = architecture;
@@ -203,6 +209,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             SourceImageEncryptionKeys = sourceImageEncryptionKeys;
             SourceSnapshot = sourceSnapshot;
             SourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
+            StoragePool = storagePool;
             Type = type;
         }
     }

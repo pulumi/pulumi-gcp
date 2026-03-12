@@ -17,6 +17,21 @@ public final class DatabaseInstanceSettingsInsightsConfigArgs extends com.pulumi
     public static final DatabaseInstanceSettingsInsightsConfigArgs Empty = new DatabaseInstanceSettingsInsightsConfigArgs();
 
     /**
+     * True if Enhanced Query Insights feature is enabled.
+     * 
+     */
+    @Import(name="enhancedQueryInsightsEnabled")
+    private @Nullable Output<Boolean> enhancedQueryInsightsEnabled;
+
+    /**
+     * @return True if Enhanced Query Insights feature is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> enhancedQueryInsightsEnabled() {
+        return Optional.ofNullable(this.enhancedQueryInsightsEnabled);
+    }
+
+    /**
      * True if Query Insights feature is enabled.
      * 
      */
@@ -94,6 +109,7 @@ public final class DatabaseInstanceSettingsInsightsConfigArgs extends com.pulumi
     private DatabaseInstanceSettingsInsightsConfigArgs() {}
 
     private DatabaseInstanceSettingsInsightsConfigArgs(DatabaseInstanceSettingsInsightsConfigArgs $) {
+        this.enhancedQueryInsightsEnabled = $.enhancedQueryInsightsEnabled;
         this.queryInsightsEnabled = $.queryInsightsEnabled;
         this.queryPlansPerMinute = $.queryPlansPerMinute;
         this.queryStringLength = $.queryStringLength;
@@ -117,6 +133,27 @@ public final class DatabaseInstanceSettingsInsightsConfigArgs extends com.pulumi
 
         public Builder(DatabaseInstanceSettingsInsightsConfigArgs defaults) {
             $ = new DatabaseInstanceSettingsInsightsConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param enhancedQueryInsightsEnabled True if Enhanced Query Insights feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enhancedQueryInsightsEnabled(@Nullable Output<Boolean> enhancedQueryInsightsEnabled) {
+            $.enhancedQueryInsightsEnabled = enhancedQueryInsightsEnabled;
+            return this;
+        }
+
+        /**
+         * @param enhancedQueryInsightsEnabled True if Enhanced Query Insights feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enhancedQueryInsightsEnabled(Boolean enhancedQueryInsightsEnabled) {
+            return enhancedQueryInsightsEnabled(Output.of(enhancedQueryInsightsEnabled));
         }
 
         /**

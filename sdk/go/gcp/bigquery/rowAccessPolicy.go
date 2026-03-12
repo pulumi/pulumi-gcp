@@ -39,8 +39,17 @@ import (
 //			}
 //			exampleTable, err := bigquery.NewTable(ctx, "example", &bigquery.TableArgs{
 //				DeletionProtection: pulumi.Bool(false),
-//				DatasetId:          example.DatasetId,
-//				TableId:            pulumi.String("table_id"),
+//				Schema: pulumi.String(`[
+//	  {
+//	    \"name\": \"nullable_field\",
+//	    \"type\": \"STRING\"
+//	  }
+//
+// ]
+// `),
+//
+//				DatasetId: example.DatasetId,
+//				TableId:   pulumi.String("table_id"),
 //			})
 //			if err != nil {
 //				return err

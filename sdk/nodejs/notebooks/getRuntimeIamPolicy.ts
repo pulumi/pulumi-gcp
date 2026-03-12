@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** The parent resource has been deprecated: `gcp.notebooks.Runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+ *
  * Retrieves the current IAM policy data for runtime
  *
  * ## Example Usage
@@ -72,6 +74,8 @@ export interface GetRuntimeIamPolicyResult {
     readonly runtimeName: string;
 }
 /**
+ * > **Warning:** The parent resource has been deprecated: `gcp.notebooks.Runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+ *
  * Retrieves the current IAM policy data for runtime
  *
  * ## Example Usage

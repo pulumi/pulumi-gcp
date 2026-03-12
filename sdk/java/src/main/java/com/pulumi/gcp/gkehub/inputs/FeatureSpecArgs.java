@@ -9,6 +9,7 @@ import com.pulumi.gcp.gkehub.inputs.FeatureSpecClusterupgradeArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureSpecFleetobservabilityArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureSpecMulticlusteringressArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureSpecRbacrolebindingactuationArgs;
+import com.pulumi.gcp.gkehub.inputs.FeatureSpecWorkloadidentityArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -86,6 +87,23 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rbacrolebindingactuation);
     }
 
+    /**
+     * Workload Identity feature spec.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="workloadidentity")
+    private @Nullable Output<FeatureSpecWorkloadidentityArgs> workloadidentity;
+
+    /**
+     * @return Workload Identity feature spec.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FeatureSpecWorkloadidentityArgs>> workloadidentity() {
+        return Optional.ofNullable(this.workloadidentity);
+    }
+
     private FeatureSpecArgs() {}
 
     private FeatureSpecArgs(FeatureSpecArgs $) {
@@ -93,6 +111,7 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
         this.fleetobservability = $.fleetobservability;
         this.multiclusteringress = $.multiclusteringress;
         this.rbacrolebindingactuation = $.rbacrolebindingactuation;
+        this.workloadidentity = $.workloadidentity;
     }
 
     public static Builder builder() {
@@ -203,6 +222,29 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rbacrolebindingactuation(FeatureSpecRbacrolebindingactuationArgs rbacrolebindingactuation) {
             return rbacrolebindingactuation(Output.of(rbacrolebindingactuation));
+        }
+
+        /**
+         * @param workloadidentity Workload Identity feature spec.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadidentity(@Nullable Output<FeatureSpecWorkloadidentityArgs> workloadidentity) {
+            $.workloadidentity = workloadidentity;
+            return this;
+        }
+
+        /**
+         * @param workloadidentity Workload Identity feature spec.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadidentity(FeatureSpecWorkloadidentityArgs workloadidentity) {
+            return workloadidentity(Output.of(workloadidentity));
         }
 
         public FeatureSpecArgs build() {

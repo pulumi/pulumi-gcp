@@ -39,6 +39,10 @@ __all__ = [
     'ControlPromoteActionSearchLinkPromotion',
     'ControlRedirectAction',
     'ControlSynonymsAction',
+    'DataConnectorActionConfig',
+    'DataConnectorBapConfig',
+    'DataConnectorDestinationConfig',
+    'DataConnectorDestinationConfigDestination',
     'DataConnectorEntity',
     'DataConnectorError',
     'DataStoreAdvancedSiteSearchConfig',
@@ -1350,6 +1354,192 @@ class ControlSynonymsAction(dict):
         The synonyms to apply to the search results.
         """
         return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class DataConnectorActionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionParams":
+            suggest = "action_params"
+        elif key == "createBapConnection":
+            suggest = "create_bap_connection"
+        elif key == "isActionConfigured":
+            suggest = "is_action_configured"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataConnectorActionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataConnectorActionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataConnectorActionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action_params: Optional[Mapping[str, _builtins.str]] = None,
+                 create_bap_connection: Optional[_builtins.bool] = None,
+                 is_action_configured: Optional[_builtins.bool] = None):
+        """
+        :param Mapping[str, _builtins.str] action_params: Params needed to configure the actions in the format of
+               String-to-String (Key, Value) pairs. Contains connection
+               credentials and configuration for the action connector.
+        :param _builtins.bool create_bap_connection: Whether to create a BAP (Business Application Platform) connection
+               for this action connector.
+        :param _builtins.bool is_action_configured: (Output)
+               Whether the action connector is fully configured. Set by the system
+               after the action configuration is validated.
+        """
+        if action_params is not None:
+            pulumi.set(__self__, "action_params", action_params)
+        if create_bap_connection is not None:
+            pulumi.set(__self__, "create_bap_connection", create_bap_connection)
+        if is_action_configured is not None:
+            pulumi.set(__self__, "is_action_configured", is_action_configured)
+
+    @_builtins.property
+    @pulumi.getter(name="actionParams")
+    def action_params(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Params needed to configure the actions in the format of
+        String-to-String (Key, Value) pairs. Contains connection
+        credentials and configuration for the action connector.
+        """
+        return pulumi.get(self, "action_params")
+
+    @_builtins.property
+    @pulumi.getter(name="createBapConnection")
+    def create_bap_connection(self) -> Optional[_builtins.bool]:
+        """
+        Whether to create a BAP (Business Application Platform) connection
+        for this action connector.
+        """
+        return pulumi.get(self, "create_bap_connection")
+
+    @_builtins.property
+    @pulumi.getter(name="isActionConfigured")
+    def is_action_configured(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Whether the action connector is fully configured. Set by the system
+        after the action configuration is validated.
+        """
+        return pulumi.get(self, "is_action_configured")
+
+
+@pulumi.output_type
+class DataConnectorBapConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enabledActions":
+            suggest = "enabled_actions"
+        elif key == "supportedConnectorModes":
+            suggest = "supported_connector_modes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataConnectorBapConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataConnectorBapConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataConnectorBapConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled_actions: Optional[Sequence[_builtins.str]] = None,
+                 supported_connector_modes: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] enabled_actions: The list of enabled actions for this connector. Supported
+               values include: `create_issue`, `update_issue`,
+               `change_issue_status`, `create_comment`, `update_comment`,
+               `upload_attachment`.
+        :param Sequence[_builtins.str] supported_connector_modes: The connector modes supported by the BAP configuration.
+               The possible values include: `ACTIONS`.
+        """
+        if enabled_actions is not None:
+            pulumi.set(__self__, "enabled_actions", enabled_actions)
+        if supported_connector_modes is not None:
+            pulumi.set(__self__, "supported_connector_modes", supported_connector_modes)
+
+    @_builtins.property
+    @pulumi.getter(name="enabledActions")
+    def enabled_actions(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of enabled actions for this connector. Supported
+        values include: `create_issue`, `update_issue`,
+        `change_issue_status`, `create_comment`, `update_comment`,
+        `upload_attachment`.
+        """
+        return pulumi.get(self, "enabled_actions")
+
+    @_builtins.property
+    @pulumi.getter(name="supportedConnectorModes")
+    def supported_connector_modes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The connector modes supported by the BAP configuration.
+        The possible values include: `ACTIONS`.
+        """
+        return pulumi.get(self, "supported_connector_modes")
+
+
+@pulumi.output_type
+class DataConnectorDestinationConfig(dict):
+    def __init__(__self__, *,
+                 destinations: Optional[Sequence['outputs.DataConnectorDestinationConfigDestination']] = None,
+                 key: Optional[_builtins.str] = None):
+        """
+        :param Sequence['DataConnectorDestinationConfigDestinationArgs'] destinations: The list of destinations for this configuration.
+               Structure is documented below.
+        :param _builtins.str key: The key of the destination configuration, for example `url`.
+        """
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @_builtins.property
+    @pulumi.getter
+    def destinations(self) -> Optional[Sequence['outputs.DataConnectorDestinationConfigDestination']]:
+        """
+        The list of destinations for this configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destinations")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        The key of the destination configuration, for example `url`.
+        """
+        return pulumi.get(self, "key")
+
+
+@pulumi.output_type
+class DataConnectorDestinationConfigDestination(dict):
+    def __init__(__self__, *,
+                 host: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str host: The host of the destination, for example
+               `https://example.atlassian.net`.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        The host of the destination, for example
+        `https://example.atlassian.net`.
+        """
+        return pulumi.get(self, "host")
 
 
 @pulumi.output_type

@@ -35,6 +35,8 @@ __all__ = [
     'SubscriptionCloudStorageConfigArgsDict',
     'SubscriptionCloudStorageConfigAvroConfigArgs',
     'SubscriptionCloudStorageConfigAvroConfigArgsDict',
+    'SubscriptionCloudStorageConfigTextConfigArgs',
+    'SubscriptionCloudStorageConfigTextConfigArgsDict',
     'SubscriptionDeadLetterPolicyArgs',
     'SubscriptionDeadLetterPolicyArgsDict',
     'SubscriptionExpirationPolicyArgs',
@@ -595,6 +597,11 @@ class SubscriptionCloudStorageConfigArgsDict(TypedDict):
     (Output)
     An output-only field that indicates whether or not the subscription can receive messages.
     """
+    text_config: NotRequired[pulumi.Input['SubscriptionCloudStorageConfigTextConfigArgsDict']]
+    """
+    If set, message data will be written to Cloud Storage in text format.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SubscriptionCloudStorageConfigArgs:
@@ -608,7 +615,8 @@ class SubscriptionCloudStorageConfigArgs:
                  max_duration: Optional[pulumi.Input[_builtins.str]] = None,
                  max_messages: Optional[pulumi.Input[_builtins.int]] = None,
                  service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 state: Optional[pulumi.Input[_builtins.str]] = None,
+                 text_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigTextConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
         :param pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs'] avro_config: If set, message data will be written to Cloud Storage in Avro format.
@@ -627,6 +635,8 @@ class SubscriptionCloudStorageConfigArgs:
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
         :param pulumi.Input[_builtins.str] state: (Output)
                An output-only field that indicates whether or not the subscription can receive messages.
+        :param pulumi.Input['SubscriptionCloudStorageConfigTextConfigArgs'] text_config: If set, message data will be written to Cloud Storage in text format.
+               Structure is documented below.
         """
         pulumi.set(__self__, "bucket", bucket)
         if avro_config is not None:
@@ -647,6 +657,8 @@ class SubscriptionCloudStorageConfigArgs:
             pulumi.set(__self__, "service_account_email", service_account_email)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if text_config is not None:
+            pulumi.set(__self__, "text_config", text_config)
 
     @_builtins.property
     @pulumi.getter
@@ -775,6 +787,19 @@ class SubscriptionCloudStorageConfigArgs:
     def state(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "state", value)
 
+    @_builtins.property
+    @pulumi.getter(name="textConfig")
+    def text_config(self) -> Optional[pulumi.Input['SubscriptionCloudStorageConfigTextConfigArgs']]:
+        """
+        If set, message data will be written to Cloud Storage in text format.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "text_config")
+
+    @text_config.setter
+    def text_config(self, value: Optional[pulumi.Input['SubscriptionCloudStorageConfigTextConfigArgs']]):
+        pulumi.set(self, "text_config", value)
+
 
 class SubscriptionCloudStorageConfigAvroConfigArgsDict(TypedDict):
     use_topic_schema: NotRequired[pulumi.Input[_builtins.bool]]
@@ -823,6 +848,38 @@ class SubscriptionCloudStorageConfigAvroConfigArgs:
     @write_metadata.setter
     def write_metadata(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "write_metadata", value)
+
+
+class SubscriptionCloudStorageConfigTextConfigArgsDict(TypedDict):
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Placeholder to allow the empty text_config block.
+    """
+
+@pulumi.input_type
+class SubscriptionCloudStorageConfigTextConfigArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] state: (Output)
+               Output only. Placeholder to allow the empty text_config block.
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Output only. Placeholder to allow the empty text_config block.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
 
 class SubscriptionDeadLetterPolicyArgsDict(TypedDict):

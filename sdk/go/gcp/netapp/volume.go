@@ -148,6 +148,12 @@ type Volume struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
 	LargeCapacity pulumi.BoolPtrOutput `pulumi:"largeCapacity"`
+	// (Optional, Beta)
+	// Configuration for a Large Capacity Volume. A Large Capacity Volume
+	// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+	// internal constituents, and must be created in a large capacity pool.
+	// Structure is documented below.
+	LargeCapacityConfig VolumeLargeCapacityConfigPtrOutput `pulumi:"largeCapacityConfig"`
 	// Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
 	LdapEnabled pulumi.BoolOutput `pulumi:"ldapEnabled"`
 	// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
@@ -316,6 +322,12 @@ type volumeState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
 	LargeCapacity *bool `pulumi:"largeCapacity"`
+	// (Optional, Beta)
+	// Configuration for a Large Capacity Volume. A Large Capacity Volume
+	// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+	// internal constituents, and must be created in a large capacity pool.
+	// Structure is documented below.
+	LargeCapacityConfig *VolumeLargeCapacityConfig `pulumi:"largeCapacityConfig"`
 	// Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
 	LdapEnabled *bool `pulumi:"ldapEnabled"`
 	// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
@@ -438,6 +450,12 @@ type VolumeState struct {
 	Labels pulumi.StringMapInput
 	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
 	LargeCapacity pulumi.BoolPtrInput
+	// (Optional, Beta)
+	// Configuration for a Large Capacity Volume. A Large Capacity Volume
+	// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+	// internal constituents, and must be created in a large capacity pool.
+	// Structure is documented below.
+	LargeCapacityConfig VolumeLargeCapacityConfigPtrInput
 	// Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
 	LdapEnabled pulumi.BoolPtrInput
 	// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
@@ -548,6 +566,12 @@ type volumeArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
 	LargeCapacity *bool `pulumi:"largeCapacity"`
+	// (Optional, Beta)
+	// Configuration for a Large Capacity Volume. A Large Capacity Volume
+	// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+	// internal constituents, and must be created in a large capacity pool.
+	// Structure is documented below.
+	LargeCapacityConfig *VolumeLargeCapacityConfig `pulumi:"largeCapacityConfig"`
 	// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
 	Location string `pulumi:"location"`
 	// Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
@@ -631,6 +655,12 @@ type VolumeArgs struct {
 	Labels pulumi.StringMapInput
 	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
 	LargeCapacity pulumi.BoolPtrInput
+	// (Optional, Beta)
+	// Configuration for a Large Capacity Volume. A Large Capacity Volume
+	// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+	// internal constituents, and must be created in a large capacity pool.
+	// Structure is documented below.
+	LargeCapacityConfig VolumeLargeCapacityConfigPtrInput
 	// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
 	Location pulumi.StringInput
 	// Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
@@ -870,6 +900,15 @@ func (o VolumeOutput) Labels() pulumi.StringMapOutput {
 // Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
 func (o VolumeOutput) LargeCapacity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.BoolPtrOutput { return v.LargeCapacity }).(pulumi.BoolPtrOutput)
+}
+
+// (Optional, Beta)
+// Configuration for a Large Capacity Volume. A Large Capacity Volume
+// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+// internal constituents, and must be created in a large capacity pool.
+// Structure is documented below.
+func (o VolumeOutput) LargeCapacityConfig() VolumeLargeCapacityConfigPtrOutput {
+	return o.ApplyT(func(v *Volume) VolumeLargeCapacityConfigPtrOutput { return v.LargeCapacityConfig }).(VolumeLargeCapacityConfigPtrOutput)
 }
 
 // Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.

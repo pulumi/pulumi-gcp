@@ -278,6 +278,31 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
+     * Mode of the storage pool.
+     * The operational mode of the storage pool. ONTAP mode enables operations
+     * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+     * If not specified during creation, the mode defaults to DEFAULT.
+     * Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+     * 
+     */
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    /**
+     * @return (Optional, Beta)
+     * Mode of the storage pool.
+     * The operational mode of the storage pool. ONTAP mode enables operations
+     * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+     * If not specified during creation, the mode defaults to DEFAULT.
+     * Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+     * 
+     */
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+
+    /**
      * The resource name of the storage pool. Needs to be unique per location/region.
      * 
      */
@@ -375,6 +400,27 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> replicaZone() {
         return Optional.ofNullable(this.replicaZone);
+    }
+
+    /**
+     * (Optional, Beta)
+     * The effective scale tier of the storage pool. If `scaleTier` is not
+     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     * 
+     */
+    @Import(name="scaleTier")
+    private @Nullable Output<String> scaleTier;
+
+    /**
+     * @return (Optional, Beta)
+     * The effective scale tier of the storage pool. If `scaleTier` is not
+     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     * 
+     */
+    public Optional<Output<String>> scaleTier() {
+        return Optional.ofNullable(this.scaleTier);
     }
 
     /**
@@ -513,12 +559,14 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.ldapEnabled = $.ldapEnabled;
         this.location = $.location;
+        this.mode = $.mode;
         this.name = $.name;
         this.network = $.network;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.qosType = $.qosType;
         this.replicaZone = $.replicaZone;
+        this.scaleTier = $.scaleTier;
         this.serviceLevel = $.serviceLevel;
         this.totalIops = $.totalIops;
         this.totalThroughputMibps = $.totalThroughputMibps;
@@ -901,6 +949,37 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param mode (Optional, Beta)
+         * Mode of the storage pool.
+         * The operational mode of the storage pool. ONTAP mode enables operations
+         * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+         * If not specified during creation, the mode defaults to DEFAULT.
+         * Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        /**
+         * @param mode (Optional, Beta)
+         * Mode of the storage pool.
+         * The operational mode of the storage pool. ONTAP mode enables operations
+         * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+         * If not specified during creation, the mode defaults to DEFAULT.
+         * Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
+        }
+
+        /**
          * @param name The resource name of the storage pool. Needs to be unique per location/region.
          * 
          * @return builder
@@ -1034,6 +1113,33 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder replicaZone(String replicaZone) {
             return replicaZone(Output.of(replicaZone));
+        }
+
+        /**
+         * @param scaleTier (Optional, Beta)
+         * The effective scale tier of the storage pool. If `scaleTier` is not
+         * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+         * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleTier(@Nullable Output<String> scaleTier) {
+            $.scaleTier = scaleTier;
+            return this;
+        }
+
+        /**
+         * @param scaleTier (Optional, Beta)
+         * The effective scale tier of the storage pool. If `scaleTier` is not
+         * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+         * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleTier(String scaleTier) {
+            return scaleTier(Output.of(scaleTier));
         }
 
         /**

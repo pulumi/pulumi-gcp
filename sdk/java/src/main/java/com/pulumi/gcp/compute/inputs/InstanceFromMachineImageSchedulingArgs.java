@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingLocalSsdR
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingNodeAffinityArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingOnInstanceStopActionArgs;
+import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingPreemptionNoticeDurationArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -217,6 +218,21 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
     }
 
     /**
+     * The duration of the notice that the instance will receive before it is preempted.
+     * 
+     */
+    @Import(name="preemptionNoticeDuration")
+    private @Nullable Output<InstanceFromMachineImageSchedulingPreemptionNoticeDurationArgs> preemptionNoticeDuration;
+
+    /**
+     * @return The duration of the notice that the instance will receive before it is preempted.
+     * 
+     */
+    public Optional<Output<InstanceFromMachineImageSchedulingPreemptionNoticeDurationArgs>> preemptionNoticeDuration() {
+        return Optional.ofNullable(this.preemptionNoticeDuration);
+    }
+
+    /**
      * Whether the instance is spot. If this is set as SPOT.
      * 
      */
@@ -281,6 +297,7 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
         this.onHostMaintenance = $.onHostMaintenance;
         this.onInstanceStopAction = $.onInstanceStopAction;
         this.preemptible = $.preemptible;
+        this.preemptionNoticeDuration = $.preemptionNoticeDuration;
         this.provisioningModel = $.provisioningModel;
         this.skipGuestOsShutdown = $.skipGuestOsShutdown;
         this.terminationTime = $.terminationTime;
@@ -579,6 +596,27 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
          */
         public Builder preemptible(Boolean preemptible) {
             return preemptible(Output.of(preemptible));
+        }
+
+        /**
+         * @param preemptionNoticeDuration The duration of the notice that the instance will receive before it is preempted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preemptionNoticeDuration(@Nullable Output<InstanceFromMachineImageSchedulingPreemptionNoticeDurationArgs> preemptionNoticeDuration) {
+            $.preemptionNoticeDuration = preemptionNoticeDuration;
+            return this;
+        }
+
+        /**
+         * @param preemptionNoticeDuration The duration of the notice that the instance will receive before it is preempted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preemptionNoticeDuration(InstanceFromMachineImageSchedulingPreemptionNoticeDurationArgs preemptionNoticeDuration) {
+            return preemptionNoticeDuration(Output.of(preemptionNoticeDuration));
         }
 
         /**

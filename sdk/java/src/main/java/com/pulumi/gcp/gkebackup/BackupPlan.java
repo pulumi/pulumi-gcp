@@ -892,6 +892,20 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+     * 
+     */
+    @Export(name="protectedNamespaceCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> protectedNamespaceCount;
+
+    /**
+     * @return The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+     * 
+     */
+    public Output<Integer> protectedNamespaceCount() {
+        return this.protectedNamespaceCount;
+    }
+    /**
      * The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
      * 
      */

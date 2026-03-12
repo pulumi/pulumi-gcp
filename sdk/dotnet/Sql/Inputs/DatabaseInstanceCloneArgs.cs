@@ -58,6 +58,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("sourceInstanceName", required: true)]
         public Input<string> SourceInstanceName { get; set; } = null!;
 
+        /// <summary>
+        /// Id of source project where source instances exits, required for cross project clone scenario.
+        /// </summary>
+        [Input("sourceProject")]
+        public Input<string>? SourceProject { get; set; }
+
         public DatabaseInstanceCloneArgs()
         {
         }

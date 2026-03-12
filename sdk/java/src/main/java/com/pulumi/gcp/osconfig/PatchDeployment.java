@@ -327,6 +327,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .patchConfig(PatchDeploymentPatchConfigArgs.builder()
  *                 .migInstancesAllowed(true)
+ *                 .skipUnpatchableVms(true)
  *                 .rebootConfig("ALWAYS")
  *                 .apt(PatchDeploymentPatchConfigAptArgs.builder()
  *                     .type("DIST")

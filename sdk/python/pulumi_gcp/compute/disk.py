@@ -29,6 +29,7 @@ class DiskArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
                  enable_confidential_compute: Optional[pulumi.Input[_builtins.bool]] = None,
+                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]] = None,
                  image: Optional[pulumi.Input[_builtins.str]] = None,
                  interface: Optional[pulumi.Input[_builtins.str]] = None,
@@ -82,6 +83,8 @@ class DiskArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
                Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+        :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: (Optional, Beta)
+               Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -203,6 +206,8 @@ class DiskArgs:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
         if enable_confidential_compute is not None:
             pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+        if erase_windows_vss_signature is not None:
+            pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
         if image is not None:
@@ -367,6 +372,19 @@ class DiskArgs:
     @enable_confidential_compute.setter
     def enable_confidential_compute(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enable_confidential_compute", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Optional, Beta)
+        Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+        """
+        return pulumi.get(self, "erase_windows_vss_signature")
+
+    @erase_windows_vss_signature.setter
+    def erase_windows_vss_signature(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "erase_windows_vss_signature", value)
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")
@@ -741,6 +759,7 @@ class _DiskState:
                  disk_id: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[_builtins.bool]] = None,
+                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]] = None,
                  image: Optional[pulumi.Input[_builtins.str]] = None,
                  interface: Optional[pulumi.Input[_builtins.str]] = None,
@@ -807,6 +826,8 @@ class _DiskState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
                Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+        :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: (Optional, Beta)
+               Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -962,6 +983,8 @@ class _DiskState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_confidential_compute is not None:
             pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+        if erase_windows_vss_signature is not None:
+            pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
         if image is not None:
@@ -1182,6 +1205,19 @@ class _DiskState:
     @enable_confidential_compute.setter
     def enable_confidential_compute(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enable_confidential_compute", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Optional, Beta)
+        Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+        """
+        return pulumi.get(self, "erase_windows_vss_signature")
+
+    @erase_windows_vss_signature.setter
+    def erase_windows_vss_signature(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "erase_windows_vss_signature", value)
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")
@@ -1694,6 +1730,7 @@ class Disk(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[_builtins.bool]] = None,
+                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]]] = None,
                  image: Optional[pulumi.Input[_builtins.str]] = None,
                  interface: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1855,6 +1892,8 @@ class Disk(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
                Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+        :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: (Optional, Beta)
+               Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -2097,6 +2136,7 @@ class Disk(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[_builtins.bool]] = None,
+                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]]] = None,
                  image: Optional[pulumi.Input[_builtins.str]] = None,
                  interface: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2137,6 +2177,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
             __props__.__dict__["enable_confidential_compute"] = enable_confidential_compute
+            __props__.__dict__["erase_windows_vss_signature"] = erase_windows_vss_signature
             __props__.__dict__["guest_os_features"] = guest_os_features
             __props__.__dict__["image"] = image
             __props__.__dict__["interface"] = interface
@@ -2196,6 +2237,7 @@ class Disk(pulumi.CustomResource):
             disk_id: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_confidential_compute: Optional[pulumi.Input[_builtins.bool]] = None,
+            erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
             guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]]] = None,
             image: Optional[pulumi.Input[_builtins.str]] = None,
             interface: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2266,6 +2308,8 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
                Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+        :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: (Optional, Beta)
+               Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -2414,6 +2458,7 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["disk_id"] = disk_id
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_confidential_compute"] = enable_confidential_compute
+        __props__.__dict__["erase_windows_vss_signature"] = erase_windows_vss_signature
         __props__.__dict__["guest_os_features"] = guest_os_features
         __props__.__dict__["image"] = image
         __props__.__dict__["interface"] = interface
@@ -2555,6 +2600,15 @@ class Disk(pulumi.CustomResource):
         Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         """
         return pulumi.get(self, "enable_confidential_compute")
+
+    @_builtins.property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        (Optional, Beta)
+        Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+        """
+        return pulumi.get(self, "erase_windows_vss_signature")
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")

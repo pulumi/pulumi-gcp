@@ -13,6 +13,1513 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetMachineTypesMachineTypeDeprecated struct {
+	// The URL of the suggested replacement for a deprecated machine type.
+	Replacement string `pulumi:"replacement"`
+	// The deprecation state of this resource. This can be `ACTIVE`, `DEPRECATED`, `OBSOLETE`, or `DELETED`.
+	State string `pulumi:"state"`
+}
+
+// GetMachineTypesMachineTypeDeprecatedInput is an input type that accepts GetMachineTypesMachineTypeDeprecatedArgs and GetMachineTypesMachineTypeDeprecatedOutput values.
+// You can construct a concrete instance of `GetMachineTypesMachineTypeDeprecatedInput` via:
+//
+//	GetMachineTypesMachineTypeDeprecatedArgs{...}
+type GetMachineTypesMachineTypeDeprecatedInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesMachineTypeDeprecatedOutput() GetMachineTypesMachineTypeDeprecatedOutput
+	ToGetMachineTypesMachineTypeDeprecatedOutputWithContext(context.Context) GetMachineTypesMachineTypeDeprecatedOutput
+}
+
+type GetMachineTypesMachineTypeDeprecatedArgs struct {
+	// The URL of the suggested replacement for a deprecated machine type.
+	Replacement pulumi.StringInput `pulumi:"replacement"`
+	// The deprecation state of this resource. This can be `ACTIVE`, `DEPRECATED`, `OBSOLETE`, or `DELETED`.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetMachineTypesMachineTypeDeprecatedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesMachineTypeDeprecated)(nil)).Elem()
+}
+
+func (i GetMachineTypesMachineTypeDeprecatedArgs) ToGetMachineTypesMachineTypeDeprecatedOutput() GetMachineTypesMachineTypeDeprecatedOutput {
+	return i.ToGetMachineTypesMachineTypeDeprecatedOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesMachineTypeDeprecatedArgs) ToGetMachineTypesMachineTypeDeprecatedOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeDeprecatedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesMachineTypeDeprecatedOutput)
+}
+
+// GetMachineTypesMachineTypeDeprecatedArrayInput is an input type that accepts GetMachineTypesMachineTypeDeprecatedArray and GetMachineTypesMachineTypeDeprecatedArrayOutput values.
+// You can construct a concrete instance of `GetMachineTypesMachineTypeDeprecatedArrayInput` via:
+//
+//	GetMachineTypesMachineTypeDeprecatedArray{ GetMachineTypesMachineTypeDeprecatedArgs{...} }
+type GetMachineTypesMachineTypeDeprecatedArrayInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesMachineTypeDeprecatedArrayOutput() GetMachineTypesMachineTypeDeprecatedArrayOutput
+	ToGetMachineTypesMachineTypeDeprecatedArrayOutputWithContext(context.Context) GetMachineTypesMachineTypeDeprecatedArrayOutput
+}
+
+type GetMachineTypesMachineTypeDeprecatedArray []GetMachineTypesMachineTypeDeprecatedInput
+
+func (GetMachineTypesMachineTypeDeprecatedArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesMachineTypeDeprecated)(nil)).Elem()
+}
+
+func (i GetMachineTypesMachineTypeDeprecatedArray) ToGetMachineTypesMachineTypeDeprecatedArrayOutput() GetMachineTypesMachineTypeDeprecatedArrayOutput {
+	return i.ToGetMachineTypesMachineTypeDeprecatedArrayOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesMachineTypeDeprecatedArray) ToGetMachineTypesMachineTypeDeprecatedArrayOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeDeprecatedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesMachineTypeDeprecatedArrayOutput)
+}
+
+type GetMachineTypesMachineTypeDeprecatedOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesMachineTypeDeprecatedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesMachineTypeDeprecated)(nil)).Elem()
+}
+
+func (o GetMachineTypesMachineTypeDeprecatedOutput) ToGetMachineTypesMachineTypeDeprecatedOutput() GetMachineTypesMachineTypeDeprecatedOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeDeprecatedOutput) ToGetMachineTypesMachineTypeDeprecatedOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeDeprecatedOutput {
+	return o
+}
+
+// The URL of the suggested replacement for a deprecated machine type.
+func (o GetMachineTypesMachineTypeDeprecatedOutput) Replacement() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineTypeDeprecated) string { return v.Replacement }).(pulumi.StringOutput)
+}
+
+// The deprecation state of this resource. This can be `ACTIVE`, `DEPRECATED`, `OBSOLETE`, or `DELETED`.
+func (o GetMachineTypesMachineTypeDeprecatedOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineTypeDeprecated) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetMachineTypesMachineTypeDeprecatedArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesMachineTypeDeprecatedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesMachineTypeDeprecated)(nil)).Elem()
+}
+
+func (o GetMachineTypesMachineTypeDeprecatedArrayOutput) ToGetMachineTypesMachineTypeDeprecatedArrayOutput() GetMachineTypesMachineTypeDeprecatedArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeDeprecatedArrayOutput) ToGetMachineTypesMachineTypeDeprecatedArrayOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeDeprecatedArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeDeprecatedArrayOutput) Index(i pulumi.IntInput) GetMachineTypesMachineTypeDeprecatedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMachineTypesMachineTypeDeprecated {
+		return vs[0].([]GetMachineTypesMachineTypeDeprecated)[vs[1].(int)]
+	}).(GetMachineTypesMachineTypeDeprecatedOutput)
+}
+
+type GetNetworkAttachmentConnectionEndpoint struct {
+	// The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+	IpAddress string `pulumi:"ipAddress"`
+	// The project id or number of the interface to which the IP was assigned.
+	ProjectIdOrNum string `pulumi:"projectIdOrNum"`
+	// Alias IP ranges from the same subnetwork.
+	SecondaryIpCidrRanges string `pulumi:"secondaryIpCidrRanges"`
+	// The status of a connected endpoint to this network attachment.
+	Status string `pulumi:"status"`
+	// The subnetwork used to assign the IP to the producer instance network interface.
+	Subnetwork string `pulumi:"subnetwork"`
+}
+
+// GetNetworkAttachmentConnectionEndpointInput is an input type that accepts GetNetworkAttachmentConnectionEndpointArgs and GetNetworkAttachmentConnectionEndpointOutput values.
+// You can construct a concrete instance of `GetNetworkAttachmentConnectionEndpointInput` via:
+//
+//	GetNetworkAttachmentConnectionEndpointArgs{...}
+type GetNetworkAttachmentConnectionEndpointInput interface {
+	pulumi.Input
+
+	ToGetNetworkAttachmentConnectionEndpointOutput() GetNetworkAttachmentConnectionEndpointOutput
+	ToGetNetworkAttachmentConnectionEndpointOutputWithContext(context.Context) GetNetworkAttachmentConnectionEndpointOutput
+}
+
+type GetNetworkAttachmentConnectionEndpointArgs struct {
+	// The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The project id or number of the interface to which the IP was assigned.
+	ProjectIdOrNum pulumi.StringInput `pulumi:"projectIdOrNum"`
+	// Alias IP ranges from the same subnetwork.
+	SecondaryIpCidrRanges pulumi.StringInput `pulumi:"secondaryIpCidrRanges"`
+	// The status of a connected endpoint to this network attachment.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The subnetwork used to assign the IP to the producer instance network interface.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+}
+
+func (GetNetworkAttachmentConnectionEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAttachmentConnectionEndpoint)(nil)).Elem()
+}
+
+func (i GetNetworkAttachmentConnectionEndpointArgs) ToGetNetworkAttachmentConnectionEndpointOutput() GetNetworkAttachmentConnectionEndpointOutput {
+	return i.ToGetNetworkAttachmentConnectionEndpointOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAttachmentConnectionEndpointArgs) ToGetNetworkAttachmentConnectionEndpointOutputWithContext(ctx context.Context) GetNetworkAttachmentConnectionEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAttachmentConnectionEndpointOutput)
+}
+
+// GetNetworkAttachmentConnectionEndpointArrayInput is an input type that accepts GetNetworkAttachmentConnectionEndpointArray and GetNetworkAttachmentConnectionEndpointArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAttachmentConnectionEndpointArrayInput` via:
+//
+//	GetNetworkAttachmentConnectionEndpointArray{ GetNetworkAttachmentConnectionEndpointArgs{...} }
+type GetNetworkAttachmentConnectionEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAttachmentConnectionEndpointArrayOutput() GetNetworkAttachmentConnectionEndpointArrayOutput
+	ToGetNetworkAttachmentConnectionEndpointArrayOutputWithContext(context.Context) GetNetworkAttachmentConnectionEndpointArrayOutput
+}
+
+type GetNetworkAttachmentConnectionEndpointArray []GetNetworkAttachmentConnectionEndpointInput
+
+func (GetNetworkAttachmentConnectionEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAttachmentConnectionEndpoint)(nil)).Elem()
+}
+
+func (i GetNetworkAttachmentConnectionEndpointArray) ToGetNetworkAttachmentConnectionEndpointArrayOutput() GetNetworkAttachmentConnectionEndpointArrayOutput {
+	return i.ToGetNetworkAttachmentConnectionEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAttachmentConnectionEndpointArray) ToGetNetworkAttachmentConnectionEndpointArrayOutputWithContext(ctx context.Context) GetNetworkAttachmentConnectionEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAttachmentConnectionEndpointArrayOutput)
+}
+
+type GetNetworkAttachmentConnectionEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAttachmentConnectionEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAttachmentConnectionEndpoint)(nil)).Elem()
+}
+
+func (o GetNetworkAttachmentConnectionEndpointOutput) ToGetNetworkAttachmentConnectionEndpointOutput() GetNetworkAttachmentConnectionEndpointOutput {
+	return o
+}
+
+func (o GetNetworkAttachmentConnectionEndpointOutput) ToGetNetworkAttachmentConnectionEndpointOutputWithContext(ctx context.Context) GetNetworkAttachmentConnectionEndpointOutput {
+	return o
+}
+
+// The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+func (o GetNetworkAttachmentConnectionEndpointOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAttachmentConnectionEndpoint) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The project id or number of the interface to which the IP was assigned.
+func (o GetNetworkAttachmentConnectionEndpointOutput) ProjectIdOrNum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAttachmentConnectionEndpoint) string { return v.ProjectIdOrNum }).(pulumi.StringOutput)
+}
+
+// Alias IP ranges from the same subnetwork.
+func (o GetNetworkAttachmentConnectionEndpointOutput) SecondaryIpCidrRanges() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAttachmentConnectionEndpoint) string { return v.SecondaryIpCidrRanges }).(pulumi.StringOutput)
+}
+
+// The status of a connected endpoint to this network attachment.
+func (o GetNetworkAttachmentConnectionEndpointOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAttachmentConnectionEndpoint) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The subnetwork used to assign the IP to the producer instance network interface.
+func (o GetNetworkAttachmentConnectionEndpointOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAttachmentConnectionEndpoint) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type GetNetworkAttachmentConnectionEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAttachmentConnectionEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAttachmentConnectionEndpoint)(nil)).Elem()
+}
+
+func (o GetNetworkAttachmentConnectionEndpointArrayOutput) ToGetNetworkAttachmentConnectionEndpointArrayOutput() GetNetworkAttachmentConnectionEndpointArrayOutput {
+	return o
+}
+
+func (o GetNetworkAttachmentConnectionEndpointArrayOutput) ToGetNetworkAttachmentConnectionEndpointArrayOutputWithContext(ctx context.Context) GetNetworkAttachmentConnectionEndpointArrayOutput {
+	return o
+}
+
+func (o GetNetworkAttachmentConnectionEndpointArrayOutput) Index(i pulumi.IntInput) GetNetworkAttachmentConnectionEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAttachmentConnectionEndpoint {
+		return vs[0].([]GetNetworkAttachmentConnectionEndpoint)[vs[1].(int)]
+	}).(GetNetworkAttachmentConnectionEndpointOutput)
+}
+
+type GetRegionBackendServiceBackend struct {
+	// Specifies the balancing mode for this backend.
+	//
+	// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+	// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS"]
+	BalancingMode string `pulumi:"balancingMode"`
+	// A multiplier applied to the group's maximum servicing capacity
+	// (based on UTILIZATION, RATE or CONNECTION).
+	//
+	// ~>**NOTE**: This field cannot be set for
+	// INTERNAL region backend services (default loadBalancingScheme),
+	// but is required for non-INTERNAL backend service. The total
+	// capacityScaler for all backends must be non-zero.
+	//
+	// A setting of 0 means the group is completely drained, offering
+	// 0% of its available Capacity. Valid range is [0.0,1.0].
+	CapacityScaler float64 `pulumi:"capacityScaler"`
+	// The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+	CustomMetrics []GetRegionBackendServiceBackendCustomMetric `pulumi:"customMetrics"`
+	// An optional description of this resource.
+	// Provide this property when you create the resource.
+	Description string `pulumi:"description"`
+	// This field designates whether this is a failover backend. More
+	// than one failover backend can be configured for a given RegionBackendService.
+	Failover bool `pulumi:"failover"`
+	// The fully-qualified URL of an Instance Group or Network Endpoint
+	// Group resource. In case of instance group this defines the list
+	// of instances that serve traffic. Member virtual machine
+	// instances from each instance group must live in the same zone as
+	// the instance group itself. No two backends in a backend service
+	// are allowed to use same Instance Group resource.
+	//
+	// For Network Endpoint Groups this defines list of endpoints. All
+	// endpoints of Network Endpoint Group must be hosted on instances
+	// located in the same zone as the Network Endpoint Group.
+	//
+	// Backend services cannot mix Instance Group and
+	// Network Endpoint Group backends.
+	//
+	// When the 'load_balancing_scheme' is INTERNAL, only instance groups
+	// are supported.
+	//
+	// Note that you must specify an Instance Group or Network Endpoint
+	// Group resource using the fully-qualified URL, rather than a
+	// partial URL.
+	Group string `pulumi:"group"`
+	// The max number of simultaneous connections for the group. Can
+	// be used with either CONNECTION or UTILIZATION balancing modes.
+	// Cannot be set for INTERNAL backend services.
+	//
+	// For CONNECTION mode, either maxConnections or one
+	// of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+	// as appropriate for group type, must be set.
+	MaxConnections int `pulumi:"maxConnections"`
+	// The max number of simultaneous connections that a single backend
+	// network endpoint can handle. Cannot be set
+	// for INTERNAL backend services.
+	//
+	// This is used to calculate the capacity of the group. Can be
+	// used in either CONNECTION or UTILIZATION balancing modes. For
+	// CONNECTION mode, either maxConnections or
+	// maxConnectionsPerEndpoint must be set.
+	MaxConnectionsPerEndpoint int `pulumi:"maxConnectionsPerEndpoint"`
+	// The max number of simultaneous connections that a single
+	// backend instance can handle. Cannot be set for INTERNAL backend
+	// services.
+	//
+	// This is used to calculate the capacity of the group.
+	// Can be used in either CONNECTION or UTILIZATION balancing modes.
+	// For CONNECTION mode, either maxConnections or
+	// maxConnectionsPerInstance must be set.
+	MaxConnectionsPerInstance int `pulumi:"maxConnectionsPerInstance"`
+	// Defines a maximum number of in-flight requests for the whole NEG
+	// or instance group. Not available if backend's balancingMode is RATE
+	// or CONNECTION.
+	MaxInFlightRequests int `pulumi:"maxInFlightRequests"`
+	// Defines a maximum number of in-flight requests for a single endpoint.
+	// Not available if backend's balancingMode is RATE or CONNECTION.
+	MaxInFlightRequestsPerEndpoint int `pulumi:"maxInFlightRequestsPerEndpoint"`
+	// Defines a maximum number of in-flight requests for a single VM.
+	// Not available if backend's balancingMode is RATE or CONNECTION.
+	MaxInFlightRequestsPerInstance int `pulumi:"maxInFlightRequestsPerInstance"`
+	// The max requests per second (RPS) of the group. Cannot be set
+	// for INTERNAL backend services.
+	//
+	// Can be used with either RATE or UTILIZATION balancing modes,
+	// but required if RATE mode. Either maxRate or one
+	// of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+	// group type, must be set.
+	MaxRate int `pulumi:"maxRate"`
+	// The max requests per second (RPS) that a single backend network
+	// endpoint can handle. This is used to calculate the capacity of
+	// the group. Can be used in either balancing mode. For RATE mode,
+	// either maxRate or maxRatePerEndpoint must be set. Cannot be set
+	// for INTERNAL backend services.
+	MaxRatePerEndpoint float64 `pulumi:"maxRatePerEndpoint"`
+	// The max requests per second (RPS) that a single backend
+	// instance can handle. This is used to calculate the capacity of
+	// the group. Can be used in either balancing mode. For RATE mode,
+	// either maxRate or maxRatePerInstance must be set. Cannot be set
+	// for INTERNAL backend services.
+	MaxRatePerInstance float64 `pulumi:"maxRatePerInstance"`
+	// Used when balancingMode is UTILIZATION. This ratio defines the
+	// CPU utilization target for the group. Valid range is [0.0, 1.0].
+	// Cannot be set for INTERNAL backend services.
+	MaxUtilization float64 `pulumi:"maxUtilization"`
+	// This field specifies how long a connection should be kept alive for:
+	// - LONG: Most of the requests are expected to take more than multiple
+	//   seconds to finish.
+	// - SHORT: Most requests are expected to finish with a sub-second latency. Possible values: ["LONG", "SHORT"]
+	TrafficDuration string `pulumi:"trafficDuration"`
+}
+
+// GetRegionBackendServiceBackendInput is an input type that accepts GetRegionBackendServiceBackendArgs and GetRegionBackendServiceBackendOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceBackendInput` via:
+//
+//	GetRegionBackendServiceBackendArgs{...}
+type GetRegionBackendServiceBackendInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceBackendOutput() GetRegionBackendServiceBackendOutput
+	ToGetRegionBackendServiceBackendOutputWithContext(context.Context) GetRegionBackendServiceBackendOutput
+}
+
+type GetRegionBackendServiceBackendArgs struct {
+	// Specifies the balancing mode for this backend.
+	//
+	// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+	// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS"]
+	BalancingMode pulumi.StringInput `pulumi:"balancingMode"`
+	// A multiplier applied to the group's maximum servicing capacity
+	// (based on UTILIZATION, RATE or CONNECTION).
+	//
+	// ~>**NOTE**: This field cannot be set for
+	// INTERNAL region backend services (default loadBalancingScheme),
+	// but is required for non-INTERNAL backend service. The total
+	// capacityScaler for all backends must be non-zero.
+	//
+	// A setting of 0 means the group is completely drained, offering
+	// 0% of its available Capacity. Valid range is [0.0,1.0].
+	CapacityScaler pulumi.Float64Input `pulumi:"capacityScaler"`
+	// The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+	CustomMetrics GetRegionBackendServiceBackendCustomMetricArrayInput `pulumi:"customMetrics"`
+	// An optional description of this resource.
+	// Provide this property when you create the resource.
+	Description pulumi.StringInput `pulumi:"description"`
+	// This field designates whether this is a failover backend. More
+	// than one failover backend can be configured for a given RegionBackendService.
+	Failover pulumi.BoolInput `pulumi:"failover"`
+	// The fully-qualified URL of an Instance Group or Network Endpoint
+	// Group resource. In case of instance group this defines the list
+	// of instances that serve traffic. Member virtual machine
+	// instances from each instance group must live in the same zone as
+	// the instance group itself. No two backends in a backend service
+	// are allowed to use same Instance Group resource.
+	//
+	// For Network Endpoint Groups this defines list of endpoints. All
+	// endpoints of Network Endpoint Group must be hosted on instances
+	// located in the same zone as the Network Endpoint Group.
+	//
+	// Backend services cannot mix Instance Group and
+	// Network Endpoint Group backends.
+	//
+	// When the 'load_balancing_scheme' is INTERNAL, only instance groups
+	// are supported.
+	//
+	// Note that you must specify an Instance Group or Network Endpoint
+	// Group resource using the fully-qualified URL, rather than a
+	// partial URL.
+	Group pulumi.StringInput `pulumi:"group"`
+	// The max number of simultaneous connections for the group. Can
+	// be used with either CONNECTION or UTILIZATION balancing modes.
+	// Cannot be set for INTERNAL backend services.
+	//
+	// For CONNECTION mode, either maxConnections or one
+	// of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+	// as appropriate for group type, must be set.
+	MaxConnections pulumi.IntInput `pulumi:"maxConnections"`
+	// The max number of simultaneous connections that a single backend
+	// network endpoint can handle. Cannot be set
+	// for INTERNAL backend services.
+	//
+	// This is used to calculate the capacity of the group. Can be
+	// used in either CONNECTION or UTILIZATION balancing modes. For
+	// CONNECTION mode, either maxConnections or
+	// maxConnectionsPerEndpoint must be set.
+	MaxConnectionsPerEndpoint pulumi.IntInput `pulumi:"maxConnectionsPerEndpoint"`
+	// The max number of simultaneous connections that a single
+	// backend instance can handle. Cannot be set for INTERNAL backend
+	// services.
+	//
+	// This is used to calculate the capacity of the group.
+	// Can be used in either CONNECTION or UTILIZATION balancing modes.
+	// For CONNECTION mode, either maxConnections or
+	// maxConnectionsPerInstance must be set.
+	MaxConnectionsPerInstance pulumi.IntInput `pulumi:"maxConnectionsPerInstance"`
+	// Defines a maximum number of in-flight requests for the whole NEG
+	// or instance group. Not available if backend's balancingMode is RATE
+	// or CONNECTION.
+	MaxInFlightRequests pulumi.IntInput `pulumi:"maxInFlightRequests"`
+	// Defines a maximum number of in-flight requests for a single endpoint.
+	// Not available if backend's balancingMode is RATE or CONNECTION.
+	MaxInFlightRequestsPerEndpoint pulumi.IntInput `pulumi:"maxInFlightRequestsPerEndpoint"`
+	// Defines a maximum number of in-flight requests for a single VM.
+	// Not available if backend's balancingMode is RATE or CONNECTION.
+	MaxInFlightRequestsPerInstance pulumi.IntInput `pulumi:"maxInFlightRequestsPerInstance"`
+	// The max requests per second (RPS) of the group. Cannot be set
+	// for INTERNAL backend services.
+	//
+	// Can be used with either RATE or UTILIZATION balancing modes,
+	// but required if RATE mode. Either maxRate or one
+	// of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+	// group type, must be set.
+	MaxRate pulumi.IntInput `pulumi:"maxRate"`
+	// The max requests per second (RPS) that a single backend network
+	// endpoint can handle. This is used to calculate the capacity of
+	// the group. Can be used in either balancing mode. For RATE mode,
+	// either maxRate or maxRatePerEndpoint must be set. Cannot be set
+	// for INTERNAL backend services.
+	MaxRatePerEndpoint pulumi.Float64Input `pulumi:"maxRatePerEndpoint"`
+	// The max requests per second (RPS) that a single backend
+	// instance can handle. This is used to calculate the capacity of
+	// the group. Can be used in either balancing mode. For RATE mode,
+	// either maxRate or maxRatePerInstance must be set. Cannot be set
+	// for INTERNAL backend services.
+	MaxRatePerInstance pulumi.Float64Input `pulumi:"maxRatePerInstance"`
+	// Used when balancingMode is UTILIZATION. This ratio defines the
+	// CPU utilization target for the group. Valid range is [0.0, 1.0].
+	// Cannot be set for INTERNAL backend services.
+	MaxUtilization pulumi.Float64Input `pulumi:"maxUtilization"`
+	// This field specifies how long a connection should be kept alive for:
+	// - LONG: Most of the requests are expected to take more than multiple
+	//   seconds to finish.
+	// - SHORT: Most requests are expected to finish with a sub-second latency. Possible values: ["LONG", "SHORT"]
+	TrafficDuration pulumi.StringInput `pulumi:"trafficDuration"`
+}
+
+func (GetRegionBackendServiceBackendArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceBackend)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceBackendArgs) ToGetRegionBackendServiceBackendOutput() GetRegionBackendServiceBackendOutput {
+	return i.ToGetRegionBackendServiceBackendOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceBackendArgs) ToGetRegionBackendServiceBackendOutputWithContext(ctx context.Context) GetRegionBackendServiceBackendOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceBackendOutput)
+}
+
+// GetRegionBackendServiceBackendArrayInput is an input type that accepts GetRegionBackendServiceBackendArray and GetRegionBackendServiceBackendArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceBackendArrayInput` via:
+//
+//	GetRegionBackendServiceBackendArray{ GetRegionBackendServiceBackendArgs{...} }
+type GetRegionBackendServiceBackendArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceBackendArrayOutput() GetRegionBackendServiceBackendArrayOutput
+	ToGetRegionBackendServiceBackendArrayOutputWithContext(context.Context) GetRegionBackendServiceBackendArrayOutput
+}
+
+type GetRegionBackendServiceBackendArray []GetRegionBackendServiceBackendInput
+
+func (GetRegionBackendServiceBackendArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceBackend)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceBackendArray) ToGetRegionBackendServiceBackendArrayOutput() GetRegionBackendServiceBackendArrayOutput {
+	return i.ToGetRegionBackendServiceBackendArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceBackendArray) ToGetRegionBackendServiceBackendArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceBackendArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceBackendArrayOutput)
+}
+
+type GetRegionBackendServiceBackendOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceBackendOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceBackend)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceBackendOutput) ToGetRegionBackendServiceBackendOutput() GetRegionBackendServiceBackendOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceBackendOutput) ToGetRegionBackendServiceBackendOutputWithContext(ctx context.Context) GetRegionBackendServiceBackendOutput {
+	return o
+}
+
+// Specifies the balancing mode for this backend.
+//
+// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS"]
+func (o GetRegionBackendServiceBackendOutput) BalancingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) string { return v.BalancingMode }).(pulumi.StringOutput)
+}
+
+// A multiplier applied to the group's maximum servicing capacity
+// (based on UTILIZATION, RATE or CONNECTION).
+//
+// ~>**NOTE**: This field cannot be set for
+// INTERNAL region backend services (default loadBalancingScheme),
+// but is required for non-INTERNAL backend service. The total
+// capacityScaler for all backends must be non-zero.
+//
+// A setting of 0 means the group is completely drained, offering
+// 0% of its available Capacity. Valid range is [0.0,1.0].
+func (o GetRegionBackendServiceBackendOutput) CapacityScaler() pulumi.Float64Output {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) float64 { return v.CapacityScaler }).(pulumi.Float64Output)
+}
+
+// The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+func (o GetRegionBackendServiceBackendOutput) CustomMetrics() GetRegionBackendServiceBackendCustomMetricArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) []GetRegionBackendServiceBackendCustomMetric {
+		return v.CustomMetrics
+	}).(GetRegionBackendServiceBackendCustomMetricArrayOutput)
+}
+
+// An optional description of this resource.
+// Provide this property when you create the resource.
+func (o GetRegionBackendServiceBackendOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// This field designates whether this is a failover backend. More
+// than one failover backend can be configured for a given RegionBackendService.
+func (o GetRegionBackendServiceBackendOutput) Failover() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) bool { return v.Failover }).(pulumi.BoolOutput)
+}
+
+// The fully-qualified URL of an Instance Group or Network Endpoint
+// Group resource. In case of instance group this defines the list
+// of instances that serve traffic. Member virtual machine
+// instances from each instance group must live in the same zone as
+// the instance group itself. No two backends in a backend service
+// are allowed to use same Instance Group resource.
+//
+// For Network Endpoint Groups this defines list of endpoints. All
+// endpoints of Network Endpoint Group must be hosted on instances
+// located in the same zone as the Network Endpoint Group.
+//
+// Backend services cannot mix Instance Group and
+// Network Endpoint Group backends.
+//
+// When the 'load_balancing_scheme' is INTERNAL, only instance groups
+// are supported.
+//
+// Note that you must specify an Instance Group or Network Endpoint
+// Group resource using the fully-qualified URL, rather than a
+// partial URL.
+func (o GetRegionBackendServiceBackendOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) string { return v.Group }).(pulumi.StringOutput)
+}
+
+// The max number of simultaneous connections for the group. Can
+// be used with either CONNECTION or UTILIZATION balancing modes.
+// Cannot be set for INTERNAL backend services.
+//
+// For CONNECTION mode, either maxConnections or one
+// of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+// as appropriate for group type, must be set.
+func (o GetRegionBackendServiceBackendOutput) MaxConnections() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) int { return v.MaxConnections }).(pulumi.IntOutput)
+}
+
+// The max number of simultaneous connections that a single backend
+// network endpoint can handle. Cannot be set
+// for INTERNAL backend services.
+//
+// This is used to calculate the capacity of the group. Can be
+// used in either CONNECTION or UTILIZATION balancing modes. For
+// CONNECTION mode, either maxConnections or
+// maxConnectionsPerEndpoint must be set.
+func (o GetRegionBackendServiceBackendOutput) MaxConnectionsPerEndpoint() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) int { return v.MaxConnectionsPerEndpoint }).(pulumi.IntOutput)
+}
+
+// The max number of simultaneous connections that a single
+// backend instance can handle. Cannot be set for INTERNAL backend
+// services.
+//
+// This is used to calculate the capacity of the group.
+// Can be used in either CONNECTION or UTILIZATION balancing modes.
+// For CONNECTION mode, either maxConnections or
+// maxConnectionsPerInstance must be set.
+func (o GetRegionBackendServiceBackendOutput) MaxConnectionsPerInstance() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) int { return v.MaxConnectionsPerInstance }).(pulumi.IntOutput)
+}
+
+// Defines a maximum number of in-flight requests for the whole NEG
+// or instance group. Not available if backend's balancingMode is RATE
+// or CONNECTION.
+func (o GetRegionBackendServiceBackendOutput) MaxInFlightRequests() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) int { return v.MaxInFlightRequests }).(pulumi.IntOutput)
+}
+
+// Defines a maximum number of in-flight requests for a single endpoint.
+// Not available if backend's balancingMode is RATE or CONNECTION.
+func (o GetRegionBackendServiceBackendOutput) MaxInFlightRequestsPerEndpoint() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) int { return v.MaxInFlightRequestsPerEndpoint }).(pulumi.IntOutput)
+}
+
+// Defines a maximum number of in-flight requests for a single VM.
+// Not available if backend's balancingMode is RATE or CONNECTION.
+func (o GetRegionBackendServiceBackendOutput) MaxInFlightRequestsPerInstance() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) int { return v.MaxInFlightRequestsPerInstance }).(pulumi.IntOutput)
+}
+
+// The max requests per second (RPS) of the group. Cannot be set
+// for INTERNAL backend services.
+//
+// Can be used with either RATE or UTILIZATION balancing modes,
+// but required if RATE mode. Either maxRate or one
+// of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+// group type, must be set.
+func (o GetRegionBackendServiceBackendOutput) MaxRate() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) int { return v.MaxRate }).(pulumi.IntOutput)
+}
+
+// The max requests per second (RPS) that a single backend network
+// endpoint can handle. This is used to calculate the capacity of
+// the group. Can be used in either balancing mode. For RATE mode,
+// either maxRate or maxRatePerEndpoint must be set. Cannot be set
+// for INTERNAL backend services.
+func (o GetRegionBackendServiceBackendOutput) MaxRatePerEndpoint() pulumi.Float64Output {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) float64 { return v.MaxRatePerEndpoint }).(pulumi.Float64Output)
+}
+
+// The max requests per second (RPS) that a single backend
+// instance can handle. This is used to calculate the capacity of
+// the group. Can be used in either balancing mode. For RATE mode,
+// either maxRate or maxRatePerInstance must be set. Cannot be set
+// for INTERNAL backend services.
+func (o GetRegionBackendServiceBackendOutput) MaxRatePerInstance() pulumi.Float64Output {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) float64 { return v.MaxRatePerInstance }).(pulumi.Float64Output)
+}
+
+// Used when balancingMode is UTILIZATION. This ratio defines the
+// CPU utilization target for the group. Valid range is [0.0, 1.0].
+// Cannot be set for INTERNAL backend services.
+func (o GetRegionBackendServiceBackendOutput) MaxUtilization() pulumi.Float64Output {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) float64 { return v.MaxUtilization }).(pulumi.Float64Output)
+}
+
+// This field specifies how long a connection should be kept alive for:
+//   - LONG: Most of the requests are expected to take more than multiple
+//     seconds to finish.
+//   - SHORT: Most requests are expected to finish with a sub-second latency. Possible values: ["LONG", "SHORT"]
+func (o GetRegionBackendServiceBackendOutput) TrafficDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackend) string { return v.TrafficDuration }).(pulumi.StringOutput)
+}
+
+type GetRegionBackendServiceBackendArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceBackendArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceBackend)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceBackendArrayOutput) ToGetRegionBackendServiceBackendArrayOutput() GetRegionBackendServiceBackendArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceBackendArrayOutput) ToGetRegionBackendServiceBackendArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceBackendArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceBackendArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceBackendOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceBackend {
+		return vs[0].([]GetRegionBackendServiceBackend)[vs[1].(int)]
+	}).(GetRegionBackendServiceBackendOutput)
+}
+
+type GetRegionBackendServiceBackendCustomMetric struct {
+	// If true, the metric data is collected and reported to Cloud
+	// Monitoring, but is not used for load balancing.
+	DryRun bool `pulumi:"dryRun"`
+	// Optional parameter to define a target utilization for the Custom Metrics
+	// balancing mode. The valid range is <code>[0.0, 1.0]</code>.
+	MaxUtilization float64 `pulumi:"maxUtilization"`
+	// The name of the regional backend service.
+	Name string `pulumi:"name"`
+}
+
+// GetRegionBackendServiceBackendCustomMetricInput is an input type that accepts GetRegionBackendServiceBackendCustomMetricArgs and GetRegionBackendServiceBackendCustomMetricOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceBackendCustomMetricInput` via:
+//
+//	GetRegionBackendServiceBackendCustomMetricArgs{...}
+type GetRegionBackendServiceBackendCustomMetricInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceBackendCustomMetricOutput() GetRegionBackendServiceBackendCustomMetricOutput
+	ToGetRegionBackendServiceBackendCustomMetricOutputWithContext(context.Context) GetRegionBackendServiceBackendCustomMetricOutput
+}
+
+type GetRegionBackendServiceBackendCustomMetricArgs struct {
+	// If true, the metric data is collected and reported to Cloud
+	// Monitoring, but is not used for load balancing.
+	DryRun pulumi.BoolInput `pulumi:"dryRun"`
+	// Optional parameter to define a target utilization for the Custom Metrics
+	// balancing mode. The valid range is <code>[0.0, 1.0]</code>.
+	MaxUtilization pulumi.Float64Input `pulumi:"maxUtilization"`
+	// The name of the regional backend service.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRegionBackendServiceBackendCustomMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceBackendCustomMetric)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceBackendCustomMetricArgs) ToGetRegionBackendServiceBackendCustomMetricOutput() GetRegionBackendServiceBackendCustomMetricOutput {
+	return i.ToGetRegionBackendServiceBackendCustomMetricOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceBackendCustomMetricArgs) ToGetRegionBackendServiceBackendCustomMetricOutputWithContext(ctx context.Context) GetRegionBackendServiceBackendCustomMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceBackendCustomMetricOutput)
+}
+
+// GetRegionBackendServiceBackendCustomMetricArrayInput is an input type that accepts GetRegionBackendServiceBackendCustomMetricArray and GetRegionBackendServiceBackendCustomMetricArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceBackendCustomMetricArrayInput` via:
+//
+//	GetRegionBackendServiceBackendCustomMetricArray{ GetRegionBackendServiceBackendCustomMetricArgs{...} }
+type GetRegionBackendServiceBackendCustomMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceBackendCustomMetricArrayOutput() GetRegionBackendServiceBackendCustomMetricArrayOutput
+	ToGetRegionBackendServiceBackendCustomMetricArrayOutputWithContext(context.Context) GetRegionBackendServiceBackendCustomMetricArrayOutput
+}
+
+type GetRegionBackendServiceBackendCustomMetricArray []GetRegionBackendServiceBackendCustomMetricInput
+
+func (GetRegionBackendServiceBackendCustomMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceBackendCustomMetric)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceBackendCustomMetricArray) ToGetRegionBackendServiceBackendCustomMetricArrayOutput() GetRegionBackendServiceBackendCustomMetricArrayOutput {
+	return i.ToGetRegionBackendServiceBackendCustomMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceBackendCustomMetricArray) ToGetRegionBackendServiceBackendCustomMetricArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceBackendCustomMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceBackendCustomMetricArrayOutput)
+}
+
+type GetRegionBackendServiceBackendCustomMetricOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceBackendCustomMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceBackendCustomMetric)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceBackendCustomMetricOutput) ToGetRegionBackendServiceBackendCustomMetricOutput() GetRegionBackendServiceBackendCustomMetricOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceBackendCustomMetricOutput) ToGetRegionBackendServiceBackendCustomMetricOutputWithContext(ctx context.Context) GetRegionBackendServiceBackendCustomMetricOutput {
+	return o
+}
+
+// If true, the metric data is collected and reported to Cloud
+// Monitoring, but is not used for load balancing.
+func (o GetRegionBackendServiceBackendCustomMetricOutput) DryRun() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackendCustomMetric) bool { return v.DryRun }).(pulumi.BoolOutput)
+}
+
+// Optional parameter to define a target utilization for the Custom Metrics
+// balancing mode. The valid range is <code>[0.0, 1.0]</code>.
+func (o GetRegionBackendServiceBackendCustomMetricOutput) MaxUtilization() pulumi.Float64Output {
+	return o.ApplyT(func(v GetRegionBackendServiceBackendCustomMetric) float64 { return v.MaxUtilization }).(pulumi.Float64Output)
+}
+
+// The name of the regional backend service.
+func (o GetRegionBackendServiceBackendCustomMetricOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceBackendCustomMetric) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetRegionBackendServiceBackendCustomMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceBackendCustomMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceBackendCustomMetric)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceBackendCustomMetricArrayOutput) ToGetRegionBackendServiceBackendCustomMetricArrayOutput() GetRegionBackendServiceBackendCustomMetricArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceBackendCustomMetricArrayOutput) ToGetRegionBackendServiceBackendCustomMetricArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceBackendCustomMetricArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceBackendCustomMetricArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceBackendCustomMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceBackendCustomMetric {
+		return vs[0].([]GetRegionBackendServiceBackendCustomMetric)[vs[1].(int)]
+	}).(GetRegionBackendServiceBackendCustomMetricOutput)
+}
+
+type GetRegionBackendServiceCdnPolicy struct {
+	// The CacheKeyPolicy for this CdnPolicy.
+	CacheKeyPolicies []GetRegionBackendServiceCdnPolicyCacheKeyPolicy `pulumi:"cacheKeyPolicies"`
+	// Specifies the cache setting for all responses from this backend.
+	// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", "CACHE_ALL_STATIC"]
+	CacheMode string `pulumi:"cacheMode"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	ClientTtl int `pulumi:"clientTtl"`
+	// Specifies the default TTL for cached content served by this origin for responses
+	// that do not have an existing valid TTL (max-age or s-max-age).
+	DefaultTtl int `pulumi:"defaultTtl"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	MaxTtl int `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+	NegativeCaching bool `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+	// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+	NegativeCachingPolicies []GetRegionBackendServiceCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicies"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+	ServeWhileStale int `pulumi:"serveWhileStale"`
+	// Maximum number of seconds the response to a signed URL request
+	// will be considered fresh, defaults to 1hr (3600s). After this
+	// time period, the response will be revalidated before
+	// being served.
+	//
+	// When serving responses to signed URL requests, Cloud CDN will
+	// internally behave as though all responses from this backend had a
+	// "Cache-Control: public, max-age=[TTL]" header, regardless of any
+	// existing Cache-Control header. The actual headers served in
+	// responses will not be altered.
+	SignedUrlCacheMaxAgeSec int `pulumi:"signedUrlCacheMaxAgeSec"`
+}
+
+// GetRegionBackendServiceCdnPolicyInput is an input type that accepts GetRegionBackendServiceCdnPolicyArgs and GetRegionBackendServiceCdnPolicyOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceCdnPolicyInput` via:
+//
+//	GetRegionBackendServiceCdnPolicyArgs{...}
+type GetRegionBackendServiceCdnPolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceCdnPolicyOutput() GetRegionBackendServiceCdnPolicyOutput
+	ToGetRegionBackendServiceCdnPolicyOutputWithContext(context.Context) GetRegionBackendServiceCdnPolicyOutput
+}
+
+type GetRegionBackendServiceCdnPolicyArgs struct {
+	// The CacheKeyPolicy for this CdnPolicy.
+	CacheKeyPolicies GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayInput `pulumi:"cacheKeyPolicies"`
+	// Specifies the cache setting for all responses from this backend.
+	// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", "CACHE_ALL_STATIC"]
+	CacheMode pulumi.StringInput `pulumi:"cacheMode"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	ClientTtl pulumi.IntInput `pulumi:"clientTtl"`
+	// Specifies the default TTL for cached content served by this origin for responses
+	// that do not have an existing valid TTL (max-age or s-max-age).
+	DefaultTtl pulumi.IntInput `pulumi:"defaultTtl"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	MaxTtl pulumi.IntInput `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+	NegativeCaching pulumi.BoolInput `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+	// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+	NegativeCachingPolicies GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicies"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+	ServeWhileStale pulumi.IntInput `pulumi:"serveWhileStale"`
+	// Maximum number of seconds the response to a signed URL request
+	// will be considered fresh, defaults to 1hr (3600s). After this
+	// time period, the response will be revalidated before
+	// being served.
+	//
+	// When serving responses to signed URL requests, Cloud CDN will
+	// internally behave as though all responses from this backend had a
+	// "Cache-Control: public, max-age=[TTL]" header, regardless of any
+	// existing Cache-Control header. The actual headers served in
+	// responses will not be altered.
+	SignedUrlCacheMaxAgeSec pulumi.IntInput `pulumi:"signedUrlCacheMaxAgeSec"`
+}
+
+func (GetRegionBackendServiceCdnPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceCdnPolicy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceCdnPolicyArgs) ToGetRegionBackendServiceCdnPolicyOutput() GetRegionBackendServiceCdnPolicyOutput {
+	return i.ToGetRegionBackendServiceCdnPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceCdnPolicyArgs) ToGetRegionBackendServiceCdnPolicyOutputWithContext(ctx context.Context) GetRegionBackendServiceCdnPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceCdnPolicyOutput)
+}
+
+// GetRegionBackendServiceCdnPolicyArrayInput is an input type that accepts GetRegionBackendServiceCdnPolicyArray and GetRegionBackendServiceCdnPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceCdnPolicyArrayInput` via:
+//
+//	GetRegionBackendServiceCdnPolicyArray{ GetRegionBackendServiceCdnPolicyArgs{...} }
+type GetRegionBackendServiceCdnPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceCdnPolicyArrayOutput() GetRegionBackendServiceCdnPolicyArrayOutput
+	ToGetRegionBackendServiceCdnPolicyArrayOutputWithContext(context.Context) GetRegionBackendServiceCdnPolicyArrayOutput
+}
+
+type GetRegionBackendServiceCdnPolicyArray []GetRegionBackendServiceCdnPolicyInput
+
+func (GetRegionBackendServiceCdnPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceCdnPolicy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceCdnPolicyArray) ToGetRegionBackendServiceCdnPolicyArrayOutput() GetRegionBackendServiceCdnPolicyArrayOutput {
+	return i.ToGetRegionBackendServiceCdnPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceCdnPolicyArray) ToGetRegionBackendServiceCdnPolicyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceCdnPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceCdnPolicyArrayOutput)
+}
+
+type GetRegionBackendServiceCdnPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceCdnPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceCdnPolicy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceCdnPolicyOutput) ToGetRegionBackendServiceCdnPolicyOutput() GetRegionBackendServiceCdnPolicyOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCdnPolicyOutput) ToGetRegionBackendServiceCdnPolicyOutputWithContext(ctx context.Context) GetRegionBackendServiceCdnPolicyOutput {
+	return o
+}
+
+// The CacheKeyPolicy for this CdnPolicy.
+func (o GetRegionBackendServiceCdnPolicyOutput) CacheKeyPolicies() GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicy) []GetRegionBackendServiceCdnPolicyCacheKeyPolicy {
+		return v.CacheKeyPolicies
+	}).(GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput)
+}
+
+// Specifies the cache setting for all responses from this backend.
+// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", "CACHE_ALL_STATIC"]
+func (o GetRegionBackendServiceCdnPolicyOutput) CacheMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicy) string { return v.CacheMode }).(pulumi.StringOutput)
+}
+
+// Specifies the maximum allowed TTL for cached content served by this origin.
+func (o GetRegionBackendServiceCdnPolicyOutput) ClientTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicy) int { return v.ClientTtl }).(pulumi.IntOutput)
+}
+
+// Specifies the default TTL for cached content served by this origin for responses
+// that do not have an existing valid TTL (max-age or s-max-age).
+func (o GetRegionBackendServiceCdnPolicyOutput) DefaultTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicy) int { return v.DefaultTtl }).(pulumi.IntOutput)
+}
+
+// Specifies the maximum allowed TTL for cached content served by this origin.
+func (o GetRegionBackendServiceCdnPolicyOutput) MaxTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicy) int { return v.MaxTtl }).(pulumi.IntOutput)
+}
+
+// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+func (o GetRegionBackendServiceCdnPolicyOutput) NegativeCaching() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicy) bool { return v.NegativeCaching }).(pulumi.BoolOutput)
+}
+
+// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+func (o GetRegionBackendServiceCdnPolicyOutput) NegativeCachingPolicies() GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicy) []GetRegionBackendServiceCdnPolicyNegativeCachingPolicy {
+		return v.NegativeCachingPolicies
+	}).(GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+func (o GetRegionBackendServiceCdnPolicyOutput) ServeWhileStale() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicy) int { return v.ServeWhileStale }).(pulumi.IntOutput)
+}
+
+// Maximum number of seconds the response to a signed URL request
+// will be considered fresh, defaults to 1hr (3600s). After this
+// time period, the response will be revalidated before
+// being served.
+//
+// When serving responses to signed URL requests, Cloud CDN will
+// internally behave as though all responses from this backend had a
+// "Cache-Control: public, max-age=[TTL]" header, regardless of any
+// existing Cache-Control header. The actual headers served in
+// responses will not be altered.
+func (o GetRegionBackendServiceCdnPolicyOutput) SignedUrlCacheMaxAgeSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicy) int { return v.SignedUrlCacheMaxAgeSec }).(pulumi.IntOutput)
+}
+
+type GetRegionBackendServiceCdnPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceCdnPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceCdnPolicy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceCdnPolicyArrayOutput) ToGetRegionBackendServiceCdnPolicyArrayOutput() GetRegionBackendServiceCdnPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCdnPolicyArrayOutput) ToGetRegionBackendServiceCdnPolicyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceCdnPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCdnPolicyArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceCdnPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceCdnPolicy {
+		return vs[0].([]GetRegionBackendServiceCdnPolicy)[vs[1].(int)]
+	}).(GetRegionBackendServiceCdnPolicyOutput)
+}
+
+type GetRegionBackendServiceCdnPolicyCacheKeyPolicy struct {
+	// If true requests to different hosts will be cached separately.
+	IncludeHost bool `pulumi:"includeHost"`
+	// Names of cookies to include in cache keys.
+	IncludeNamedCookies []string `pulumi:"includeNamedCookies"`
+	// If true, http and https requests will be cached separately.
+	IncludeProtocol bool `pulumi:"includeProtocol"`
+	// If true, include query string parameters in the cache key
+	// according to queryStringWhitelist and
+	// query_string_blacklist. If neither is set, the entire query
+	// string will be included.
+	//
+	// If false, the query string will be excluded from the cache
+	// key entirely.
+	IncludeQueryString bool `pulumi:"includeQueryString"`
+	// Names of query string parameters to exclude in cache keys.
+	//
+	// All other parameters will be included. Either specify
+	// queryStringWhitelist or query_string_blacklist, not both.
+	// '&' and '=' will be percent encoded and not treated as
+	// delimiters.
+	QueryStringBlacklists []string `pulumi:"queryStringBlacklists"`
+	// Names of query string parameters to include in cache keys.
+	//
+	// All other parameters will be excluded. Either specify
+	// queryStringWhitelist or query_string_blacklist, not both.
+	// '&' and '=' will be percent encoded and not treated as
+	// delimiters.
+	QueryStringWhitelists []string `pulumi:"queryStringWhitelists"`
+}
+
+// GetRegionBackendServiceCdnPolicyCacheKeyPolicyInput is an input type that accepts GetRegionBackendServiceCdnPolicyCacheKeyPolicyArgs and GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceCdnPolicyCacheKeyPolicyInput` via:
+//
+//	GetRegionBackendServiceCdnPolicyCacheKeyPolicyArgs{...}
+type GetRegionBackendServiceCdnPolicyCacheKeyPolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput() GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput
+	ToGetRegionBackendServiceCdnPolicyCacheKeyPolicyOutputWithContext(context.Context) GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput
+}
+
+type GetRegionBackendServiceCdnPolicyCacheKeyPolicyArgs struct {
+	// If true requests to different hosts will be cached separately.
+	IncludeHost pulumi.BoolInput `pulumi:"includeHost"`
+	// Names of cookies to include in cache keys.
+	IncludeNamedCookies pulumi.StringArrayInput `pulumi:"includeNamedCookies"`
+	// If true, http and https requests will be cached separately.
+	IncludeProtocol pulumi.BoolInput `pulumi:"includeProtocol"`
+	// If true, include query string parameters in the cache key
+	// according to queryStringWhitelist and
+	// query_string_blacklist. If neither is set, the entire query
+	// string will be included.
+	//
+	// If false, the query string will be excluded from the cache
+	// key entirely.
+	IncludeQueryString pulumi.BoolInput `pulumi:"includeQueryString"`
+	// Names of query string parameters to exclude in cache keys.
+	//
+	// All other parameters will be included. Either specify
+	// queryStringWhitelist or query_string_blacklist, not both.
+	// '&' and '=' will be percent encoded and not treated as
+	// delimiters.
+	QueryStringBlacklists pulumi.StringArrayInput `pulumi:"queryStringBlacklists"`
+	// Names of query string parameters to include in cache keys.
+	//
+	// All other parameters will be excluded. Either specify
+	// queryStringWhitelist or query_string_blacklist, not both.
+	// '&' and '=' will be percent encoded and not treated as
+	// delimiters.
+	QueryStringWhitelists pulumi.StringArrayInput `pulumi:"queryStringWhitelists"`
+}
+
+func (GetRegionBackendServiceCdnPolicyCacheKeyPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceCdnPolicyCacheKeyPolicy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceCdnPolicyCacheKeyPolicyArgs) ToGetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput() GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput {
+	return i.ToGetRegionBackendServiceCdnPolicyCacheKeyPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceCdnPolicyCacheKeyPolicyArgs) ToGetRegionBackendServiceCdnPolicyCacheKeyPolicyOutputWithContext(ctx context.Context) GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput)
+}
+
+// GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayInput is an input type that accepts GetRegionBackendServiceCdnPolicyCacheKeyPolicyArray and GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayInput` via:
+//
+//	GetRegionBackendServiceCdnPolicyCacheKeyPolicyArray{ GetRegionBackendServiceCdnPolicyCacheKeyPolicyArgs{...} }
+type GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput() GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput
+	ToGetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutputWithContext(context.Context) GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput
+}
+
+type GetRegionBackendServiceCdnPolicyCacheKeyPolicyArray []GetRegionBackendServiceCdnPolicyCacheKeyPolicyInput
+
+func (GetRegionBackendServiceCdnPolicyCacheKeyPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceCdnPolicyCacheKeyPolicy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceCdnPolicyCacheKeyPolicyArray) ToGetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput() GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput {
+	return i.ToGetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceCdnPolicyCacheKeyPolicyArray) ToGetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput)
+}
+
+type GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceCdnPolicyCacheKeyPolicy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput) ToGetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput() GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput) ToGetRegionBackendServiceCdnPolicyCacheKeyPolicyOutputWithContext(ctx context.Context) GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput {
+	return o
+}
+
+// If true requests to different hosts will be cached separately.
+func (o GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput) IncludeHost() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicyCacheKeyPolicy) bool { return v.IncludeHost }).(pulumi.BoolOutput)
+}
+
+// Names of cookies to include in cache keys.
+func (o GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput) IncludeNamedCookies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicyCacheKeyPolicy) []string { return v.IncludeNamedCookies }).(pulumi.StringArrayOutput)
+}
+
+// If true, http and https requests will be cached separately.
+func (o GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput) IncludeProtocol() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicyCacheKeyPolicy) bool { return v.IncludeProtocol }).(pulumi.BoolOutput)
+}
+
+// If true, include query string parameters in the cache key
+// according to queryStringWhitelist and
+// query_string_blacklist. If neither is set, the entire query
+// string will be included.
+//
+// If false, the query string will be excluded from the cache
+// key entirely.
+func (o GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput) IncludeQueryString() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicyCacheKeyPolicy) bool { return v.IncludeQueryString }).(pulumi.BoolOutput)
+}
+
+// Names of query string parameters to exclude in cache keys.
+//
+// All other parameters will be included. Either specify
+// queryStringWhitelist or query_string_blacklist, not both.
+// '&' and '=' will be percent encoded and not treated as
+// delimiters.
+func (o GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput) QueryStringBlacklists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicyCacheKeyPolicy) []string { return v.QueryStringBlacklists }).(pulumi.StringArrayOutput)
+}
+
+// Names of query string parameters to include in cache keys.
+//
+// All other parameters will be excluded. Either specify
+// queryStringWhitelist or query_string_blacklist, not both.
+// '&' and '=' will be percent encoded and not treated as
+// delimiters.
+func (o GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput) QueryStringWhitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicyCacheKeyPolicy) []string { return v.QueryStringWhitelists }).(pulumi.StringArrayOutput)
+}
+
+type GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceCdnPolicyCacheKeyPolicy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput) ToGetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput() GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput) ToGetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceCdnPolicyCacheKeyPolicy {
+		return vs[0].([]GetRegionBackendServiceCdnPolicyCacheKeyPolicy)[vs[1].(int)]
+	}).(GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput)
+}
+
+type GetRegionBackendServiceCdnPolicyNegativeCachingPolicy struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+	// can be specified as values, and you cannot specify a status code more than once.
+	Code int `pulumi:"code"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl int `pulumi:"ttl"`
+}
+
+// GetRegionBackendServiceCdnPolicyNegativeCachingPolicyInput is an input type that accepts GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArgs and GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceCdnPolicyNegativeCachingPolicyInput` via:
+//
+//	GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArgs{...}
+type GetRegionBackendServiceCdnPolicyNegativeCachingPolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput() GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput
+	ToGetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(context.Context) GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput
+}
+
+type GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArgs struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+	// can be specified as values, and you cannot specify a status code more than once.
+	Code pulumi.IntInput `pulumi:"code"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+}
+
+func (GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArgs) ToGetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput() GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return i.ToGetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArgs) ToGetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput)
+}
+
+// GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayInput is an input type that accepts GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArray and GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayInput` via:
+//
+//	GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArray{ GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArgs{...} }
+type GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput
+	ToGetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Context) GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput
+}
+
+type GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArray []GetRegionBackendServiceCdnPolicyNegativeCachingPolicyInput
+
+func (GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArray) ToGetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return i.ToGetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArray) ToGetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+type GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput) ToGetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput() GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput) ToGetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+// can be specified as values, and you cannot specify a status code more than once.
+func (o GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicyNegativeCachingPolicy) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+func (o GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCdnPolicyNegativeCachingPolicy) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+type GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ToGetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ToGetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceCdnPolicyNegativeCachingPolicy {
+		return vs[0].([]GetRegionBackendServiceCdnPolicyNegativeCachingPolicy)[vs[1].(int)]
+	}).(GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput)
+}
+
+type GetRegionBackendServiceCircuitBreaker struct {
+	// The timeout for new network connections to hosts.
+	ConnectTimeouts []GetRegionBackendServiceCircuitBreakerConnectTimeout `pulumi:"connectTimeouts"`
+	// The maximum number of connections to the backend cluster.
+	// Defaults to 1024.
+	MaxConnections int `pulumi:"maxConnections"`
+	// The maximum number of pending requests to the backend cluster.
+	// Defaults to 1024.
+	MaxPendingRequests int `pulumi:"maxPendingRequests"`
+	// The maximum number of parallel requests to the backend cluster.
+	// Defaults to 1024.
+	MaxRequests int `pulumi:"maxRequests"`
+	// Maximum requests for a single backend connection. This parameter
+	// is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+	// not specified, there is no limit. Setting this parameter to 1
+	// will effectively disable keep alive.
+	MaxRequestsPerConnection int `pulumi:"maxRequestsPerConnection"`
+	// The maximum number of parallel retries to the backend cluster.
+	// Defaults to 3.
+	MaxRetries int `pulumi:"maxRetries"`
+}
+
+// GetRegionBackendServiceCircuitBreakerInput is an input type that accepts GetRegionBackendServiceCircuitBreakerArgs and GetRegionBackendServiceCircuitBreakerOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceCircuitBreakerInput` via:
+//
+//	GetRegionBackendServiceCircuitBreakerArgs{...}
+type GetRegionBackendServiceCircuitBreakerInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceCircuitBreakerOutput() GetRegionBackendServiceCircuitBreakerOutput
+	ToGetRegionBackendServiceCircuitBreakerOutputWithContext(context.Context) GetRegionBackendServiceCircuitBreakerOutput
+}
+
+type GetRegionBackendServiceCircuitBreakerArgs struct {
+	// The timeout for new network connections to hosts.
+	ConnectTimeouts GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayInput `pulumi:"connectTimeouts"`
+	// The maximum number of connections to the backend cluster.
+	// Defaults to 1024.
+	MaxConnections pulumi.IntInput `pulumi:"maxConnections"`
+	// The maximum number of pending requests to the backend cluster.
+	// Defaults to 1024.
+	MaxPendingRequests pulumi.IntInput `pulumi:"maxPendingRequests"`
+	// The maximum number of parallel requests to the backend cluster.
+	// Defaults to 1024.
+	MaxRequests pulumi.IntInput `pulumi:"maxRequests"`
+	// Maximum requests for a single backend connection. This parameter
+	// is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+	// not specified, there is no limit. Setting this parameter to 1
+	// will effectively disable keep alive.
+	MaxRequestsPerConnection pulumi.IntInput `pulumi:"maxRequestsPerConnection"`
+	// The maximum number of parallel retries to the backend cluster.
+	// Defaults to 3.
+	MaxRetries pulumi.IntInput `pulumi:"maxRetries"`
+}
+
+func (GetRegionBackendServiceCircuitBreakerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceCircuitBreaker)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceCircuitBreakerArgs) ToGetRegionBackendServiceCircuitBreakerOutput() GetRegionBackendServiceCircuitBreakerOutput {
+	return i.ToGetRegionBackendServiceCircuitBreakerOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceCircuitBreakerArgs) ToGetRegionBackendServiceCircuitBreakerOutputWithContext(ctx context.Context) GetRegionBackendServiceCircuitBreakerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceCircuitBreakerOutput)
+}
+
+// GetRegionBackendServiceCircuitBreakerArrayInput is an input type that accepts GetRegionBackendServiceCircuitBreakerArray and GetRegionBackendServiceCircuitBreakerArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceCircuitBreakerArrayInput` via:
+//
+//	GetRegionBackendServiceCircuitBreakerArray{ GetRegionBackendServiceCircuitBreakerArgs{...} }
+type GetRegionBackendServiceCircuitBreakerArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceCircuitBreakerArrayOutput() GetRegionBackendServiceCircuitBreakerArrayOutput
+	ToGetRegionBackendServiceCircuitBreakerArrayOutputWithContext(context.Context) GetRegionBackendServiceCircuitBreakerArrayOutput
+}
+
+type GetRegionBackendServiceCircuitBreakerArray []GetRegionBackendServiceCircuitBreakerInput
+
+func (GetRegionBackendServiceCircuitBreakerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceCircuitBreaker)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceCircuitBreakerArray) ToGetRegionBackendServiceCircuitBreakerArrayOutput() GetRegionBackendServiceCircuitBreakerArrayOutput {
+	return i.ToGetRegionBackendServiceCircuitBreakerArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceCircuitBreakerArray) ToGetRegionBackendServiceCircuitBreakerArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceCircuitBreakerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceCircuitBreakerArrayOutput)
+}
+
+type GetRegionBackendServiceCircuitBreakerOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceCircuitBreakerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceCircuitBreaker)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceCircuitBreakerOutput) ToGetRegionBackendServiceCircuitBreakerOutput() GetRegionBackendServiceCircuitBreakerOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCircuitBreakerOutput) ToGetRegionBackendServiceCircuitBreakerOutputWithContext(ctx context.Context) GetRegionBackendServiceCircuitBreakerOutput {
+	return o
+}
+
+// The timeout for new network connections to hosts.
+func (o GetRegionBackendServiceCircuitBreakerOutput) ConnectTimeouts() GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCircuitBreaker) []GetRegionBackendServiceCircuitBreakerConnectTimeout {
+		return v.ConnectTimeouts
+	}).(GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput)
+}
+
+// The maximum number of connections to the backend cluster.
+// Defaults to 1024.
+func (o GetRegionBackendServiceCircuitBreakerOutput) MaxConnections() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCircuitBreaker) int { return v.MaxConnections }).(pulumi.IntOutput)
+}
+
+// The maximum number of pending requests to the backend cluster.
+// Defaults to 1024.
+func (o GetRegionBackendServiceCircuitBreakerOutput) MaxPendingRequests() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCircuitBreaker) int { return v.MaxPendingRequests }).(pulumi.IntOutput)
+}
+
+// The maximum number of parallel requests to the backend cluster.
+// Defaults to 1024.
+func (o GetRegionBackendServiceCircuitBreakerOutput) MaxRequests() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCircuitBreaker) int { return v.MaxRequests }).(pulumi.IntOutput)
+}
+
+// Maximum requests for a single backend connection. This parameter
+// is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+// not specified, there is no limit. Setting this parameter to 1
+// will effectively disable keep alive.
+func (o GetRegionBackendServiceCircuitBreakerOutput) MaxRequestsPerConnection() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCircuitBreaker) int { return v.MaxRequestsPerConnection }).(pulumi.IntOutput)
+}
+
+// The maximum number of parallel retries to the backend cluster.
+// Defaults to 3.
+func (o GetRegionBackendServiceCircuitBreakerOutput) MaxRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCircuitBreaker) int { return v.MaxRetries }).(pulumi.IntOutput)
+}
+
+type GetRegionBackendServiceCircuitBreakerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceCircuitBreakerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceCircuitBreaker)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceCircuitBreakerArrayOutput) ToGetRegionBackendServiceCircuitBreakerArrayOutput() GetRegionBackendServiceCircuitBreakerArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCircuitBreakerArrayOutput) ToGetRegionBackendServiceCircuitBreakerArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceCircuitBreakerArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCircuitBreakerArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceCircuitBreakerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceCircuitBreaker {
+		return vs[0].([]GetRegionBackendServiceCircuitBreaker)[vs[1].(int)]
+	}).(GetRegionBackendServiceCircuitBreakerOutput)
+}
+
 type GetRegionBackendServiceCircuitBreakerConnectTimeout struct {
 	// Span of time that's a fraction of a second at nanosecond
 	// resolution. Durations less than one second are represented
@@ -7424,6 +8931,8 @@ type GetRegionInstanceTemplateDisk struct {
 	SourceSnapshot string `pulumi:"sourceSnapshot"`
 	// The customer-supplied encryption key of the source snapshot.
 	SourceSnapshotEncryptionKeys []GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKeys"`
+	// The selfLink or ID of the Storage Pool to create this disk in.
+	StoragePool string `pulumi:"storagePool"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type string `pulumi:"type"`
 }
@@ -7516,6 +9025,8 @@ type GetRegionInstanceTemplateDiskArgs struct {
 	SourceSnapshot pulumi.StringInput `pulumi:"sourceSnapshot"`
 	// The customer-supplied encryption key of the source snapshot.
 	SourceSnapshotEncryptionKeys GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayInput `pulumi:"sourceSnapshotEncryptionKeys"`
+	// The selfLink or ID of the Storage Pool to create this disk in.
+	StoragePool pulumi.StringInput `pulumi:"storagePool"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -7714,6 +9225,11 @@ func (o GetRegionInstanceTemplateDiskOutput) SourceSnapshotEncryptionKeys() GetR
 	return o.ApplyT(func(v GetRegionInstanceTemplateDisk) []GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey {
 		return v.SourceSnapshotEncryptionKeys
 	}).(GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput)
+}
+
+// The selfLink or ID of the Storage Pool to create this disk in.
+func (o GetRegionInstanceTemplateDiskOutput) StoragePool() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateDisk) string { return v.StoragePool }).(pulumi.StringOutput)
 }
 
 // The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
@@ -9247,6 +10763,8 @@ type GetRegionInstanceTemplateScheduling struct {
 	// false. Read more on this
 	// [here](https://cloud.google.com/compute/docs/instances/preemptible).
 	Preemptible bool `pulumi:"preemptible"`
+	// The duration of the notice that the instance will receive before it is preempted.
+	PreemptionNoticeDurations []GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration `pulumi:"preemptionNoticeDurations"`
 	// Describe the type of preemptible VM.
 	ProvisioningModel string `pulumi:"provisioningModel"`
 	// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
@@ -9307,6 +10825,8 @@ type GetRegionInstanceTemplateSchedulingArgs struct {
 	// false. Read more on this
 	// [here](https://cloud.google.com/compute/docs/instances/preemptible).
 	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
+	// The duration of the notice that the instance will receive before it is preempted.
+	PreemptionNoticeDurations GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayInput `pulumi:"preemptionNoticeDurations"`
 	// Describe the type of preemptible VM.
 	ProvisioningModel pulumi.StringInput `pulumi:"provisioningModel"`
 	// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
@@ -9454,6 +10974,13 @@ func (o GetRegionInstanceTemplateSchedulingOutput) OnInstanceStopActions() GetRe
 // [here](https://cloud.google.com/compute/docs/instances/preemptible).
 func (o GetRegionInstanceTemplateSchedulingOutput) Preemptible() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) bool { return v.Preemptible }).(pulumi.BoolOutput)
+}
+
+// The duration of the notice that the instance will receive before it is preempted.
+func (o GetRegionInstanceTemplateSchedulingOutput) PreemptionNoticeDurations() GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) []GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration {
+		return v.PreemptionNoticeDurations
+	}).(GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput)
 }
 
 // Describe the type of preemptible VM.
@@ -10174,6 +11701,112 @@ func (o GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput) Inde
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateSchedulingOnInstanceStopAction {
 		return vs[0].([]GetRegionInstanceTemplateSchedulingOnInstanceStopAction)[vs[1].(int)]
 	}).(GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationInput is an input type that accepts GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs and GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs{...}
+type GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput() GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput
+	ToGetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput
+}
+
+type GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs) ToGetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput() GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs) ToGetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput)
+}
+
+// GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayInput is an input type that accepts GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArray and GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArray{ GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs{...} }
+type GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput() GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput
+	ToGetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput
+}
+
+type GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArray []GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationInput
+
+func (GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArray) ToGetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput() GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArray) ToGetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput) ToGetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput() GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput) ToGetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+func (o GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput) ToGetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput() GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput) ToGetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration {
+		return vs[0].([]GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput)
 }
 
 type GetRegionInstanceTemplateServiceAccount struct {
@@ -26037,6 +27670,22 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeDeprecatedInput)(nil)).Elem(), GetMachineTypesMachineTypeDeprecatedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeDeprecatedArrayInput)(nil)).Elem(), GetMachineTypesMachineTypeDeprecatedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAttachmentConnectionEndpointInput)(nil)).Elem(), GetNetworkAttachmentConnectionEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAttachmentConnectionEndpointArrayInput)(nil)).Elem(), GetNetworkAttachmentConnectionEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceBackendInput)(nil)).Elem(), GetRegionBackendServiceBackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceBackendArrayInput)(nil)).Elem(), GetRegionBackendServiceBackendArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceBackendCustomMetricInput)(nil)).Elem(), GetRegionBackendServiceBackendCustomMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceBackendCustomMetricArrayInput)(nil)).Elem(), GetRegionBackendServiceBackendCustomMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCdnPolicyInput)(nil)).Elem(), GetRegionBackendServiceCdnPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCdnPolicyArrayInput)(nil)).Elem(), GetRegionBackendServiceCdnPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCdnPolicyCacheKeyPolicyInput)(nil)).Elem(), GetRegionBackendServiceCdnPolicyCacheKeyPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayInput)(nil)).Elem(), GetRegionBackendServiceCdnPolicyCacheKeyPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCdnPolicyNegativeCachingPolicyInput)(nil)).Elem(), GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayInput)(nil)).Elem(), GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCircuitBreakerInput)(nil)).Elem(), GetRegionBackendServiceCircuitBreakerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCircuitBreakerArrayInput)(nil)).Elem(), GetRegionBackendServiceCircuitBreakerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCircuitBreakerConnectTimeoutInput)(nil)).Elem(), GetRegionBackendServiceCircuitBreakerConnectTimeoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayInput)(nil)).Elem(), GetRegionBackendServiceCircuitBreakerConnectTimeoutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceConnectionTrackingPolicyInput)(nil)).Elem(), GetRegionBackendServiceConnectionTrackingPolicyArgs{})
@@ -26193,6 +27842,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingNodeAffinityArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingNodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingOnInstanceStopActionInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateServiceAccountInput)(nil)).Elem(), GetRegionInstanceTemplateServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateServiceAccountArrayInput)(nil)).Elem(), GetRegionInstanceTemplateServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateShieldedInstanceConfigInput)(nil)).Elem(), GetRegionInstanceTemplateShieldedInstanceConfigArgs{})
@@ -26435,6 +28086,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetMachineTypesMachineTypeDeprecatedOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesMachineTypeDeprecatedArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAttachmentConnectionEndpointOutput{})
+	pulumi.RegisterOutputType(GetNetworkAttachmentConnectionEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceBackendOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceBackendArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceBackendCustomMetricOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceBackendCustomMetricArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceCdnPolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceCdnPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceCdnPolicyCacheKeyPolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceCdnPolicyCacheKeyPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceCircuitBreakerOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceCircuitBreakerArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceCircuitBreakerConnectTimeoutOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceCircuitBreakerConnectTimeoutArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceConnectionTrackingPolicyOutput{})
@@ -26591,6 +28258,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateServiceAccountOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateShieldedInstanceConfigOutput{})

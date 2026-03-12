@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly string DatasetId;
         /// <summary>
+        /// The Google Cloud project ID of the project containing the table.
+        /// If omitted, the project ID is inferred from the parent project.
+        /// This field is required if the parent resource is an organization.
+        /// </summary>
+        public readonly string? ProjectId;
+        /// <summary>
         /// Name of the table.
         /// </summary>
         public readonly string TableId;
@@ -26,9 +32,12 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         private PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference(
             string datasetId,
 
+            string? projectId,
+
             string tableId)
         {
             DatasetId = datasetId;
+            ProjectId = projectId;
             TableId = tableId;
         }
     }

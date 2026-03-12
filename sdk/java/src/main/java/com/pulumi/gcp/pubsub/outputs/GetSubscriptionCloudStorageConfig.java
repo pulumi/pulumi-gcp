@@ -6,6 +6,7 @@ package com.pulumi.gcp.pubsub.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionCloudStorageConfigAvroConfig;
+import com.pulumi.gcp.pubsub.outputs.GetSubscriptionCloudStorageConfigTextConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -68,6 +69,11 @@ public final class GetSubscriptionCloudStorageConfig {
      * 
      */
     private String state;
+    /**
+     * @return If set, message data will be written to Cloud Storage in text format.
+     * 
+     */
+    private List<GetSubscriptionCloudStorageConfigTextConfig> textConfigs;
 
     private GetSubscriptionCloudStorageConfig() {}
     /**
@@ -145,6 +151,13 @@ public final class GetSubscriptionCloudStorageConfig {
     public String state() {
         return this.state;
     }
+    /**
+     * @return If set, message data will be written to Cloud Storage in text format.
+     * 
+     */
+    public List<GetSubscriptionCloudStorageConfigTextConfig> textConfigs() {
+        return this.textConfigs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -165,6 +178,7 @@ public final class GetSubscriptionCloudStorageConfig {
         private Integer maxMessages;
         private String serviceAccountEmail;
         private String state;
+        private List<GetSubscriptionCloudStorageConfigTextConfig> textConfigs;
         public Builder() {}
         public Builder(GetSubscriptionCloudStorageConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -178,6 +192,7 @@ public final class GetSubscriptionCloudStorageConfig {
     	      this.maxMessages = defaults.maxMessages;
     	      this.serviceAccountEmail = defaults.serviceAccountEmail;
     	      this.state = defaults.state;
+    	      this.textConfigs = defaults.textConfigs;
         }
 
         @CustomType.Setter
@@ -263,6 +278,17 @@ public final class GetSubscriptionCloudStorageConfig {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
+        public Builder textConfigs(List<GetSubscriptionCloudStorageConfigTextConfig> textConfigs) {
+            if (textConfigs == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionCloudStorageConfig", "textConfigs");
+            }
+            this.textConfigs = textConfigs;
+            return this;
+        }
+        public Builder textConfigs(GetSubscriptionCloudStorageConfigTextConfig... textConfigs) {
+            return textConfigs(List.of(textConfigs));
+        }
         public GetSubscriptionCloudStorageConfig build() {
             final var _resultValue = new GetSubscriptionCloudStorageConfig();
             _resultValue.avroConfigs = avroConfigs;
@@ -275,6 +301,7 @@ public final class GetSubscriptionCloudStorageConfig {
             _resultValue.maxMessages = maxMessages;
             _resultValue.serviceAccountEmail = serviceAccountEmail;
             _resultValue.state = state;
+            _resultValue.textConfigs = textConfigs;
             return _resultValue;
         }
     }

@@ -416,6 +416,27 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
     }
 
     /**
+     * The URL of the storage pool in which the new disk is created.
+     * For example:
+     * * `https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+     * * `/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+     * 
+     */
+    @Import(name="storagePool")
+    private @Nullable Output<String> storagePool;
+
+    /**
+     * @return The URL of the storage pool in which the new disk is created.
+     * For example:
+     * * `https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+     * * `/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+     * 
+     */
+    public Optional<Output<String>> storagePool() {
+        return Optional.ofNullable(this.storagePool);
+    }
+
+    /**
      * The type of GCE disk, can be either `&#34;SCRATCH&#34;` or
      * `&#34;PERSISTENT&#34;`.
      * 
@@ -456,6 +477,7 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
         this.sourceImageEncryptionKey = $.sourceImageEncryptionKey;
         this.sourceSnapshot = $.sourceSnapshot;
         this.sourceSnapshotEncryptionKey = $.sourceSnapshotEncryptionKey;
+        this.storagePool = $.storagePool;
         this.type = $.type;
     }
 
@@ -1004,6 +1026,33 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
          */
         public Builder sourceSnapshotEncryptionKey(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs sourceSnapshotEncryptionKey) {
             return sourceSnapshotEncryptionKey(Output.of(sourceSnapshotEncryptionKey));
+        }
+
+        /**
+         * @param storagePool The URL of the storage pool in which the new disk is created.
+         * For example:
+         * * `https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+         * * `/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePool(@Nullable Output<String> storagePool) {
+            $.storagePool = storagePool;
+            return this;
+        }
+
+        /**
+         * @param storagePool The URL of the storage pool in which the new disk is created.
+         * For example:
+         * * `https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+         * * `/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePool(String storagePool) {
+            return storagePool(Output.of(storagePool));
         }
 
         /**

@@ -40,6 +40,13 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         [Input("rbacrolebindingactuation")]
         public Input<Inputs.FeatureSpecRbacrolebindingactuationGetArgs>? Rbacrolebindingactuation { get; set; }
 
+        /// <summary>
+        /// Workload Identity feature spec.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("workloadidentity")]
+        public Input<Inputs.FeatureSpecWorkloadidentityGetArgs>? Workloadidentity { get; set; }
+
         public FeatureSpecGetArgs()
         {
         }

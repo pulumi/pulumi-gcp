@@ -9,18 +9,38 @@ import * as utilities from "../utilities";
 /**
  * A rule for the OrganizationSecurityPolicy.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about OrganizationSecurityPolicyRule, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
  * * How-to Guides
- *     * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+ *     * [Configure hierarchical security policies](https://docs.cloud.google.com/armor/docs/hierarchical-policies-using)
  *
  * ## Example Usage
  *
  * ### Organization Security Policy Rule Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
+ *     shortName: "tf-test_52865",
+ *     parent: "organizations/123456789",
+ *     type: "CLOUD_ARMOR",
+ * });
+ * const policyOrganizationSecurityPolicyRule = new gcp.compute.OrganizationSecurityPolicyRule("policy", {
+ *     policyId: policy.id,
+ *     action: "allow",
+ *     match: {
+ *         config: {
+ *             srcIpRanges: ["192.168.0.0/16"],
+ *         },
+ *         versionedExpr: "SRC_IPS_V1",
+ *     },
+ *     priority: 100,
+ * });
+ * ```
+ * ### Organization Security Policy Rule Firewall
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -107,14 +127,18 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Beta)
      * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+     * This field may only be specified when the versionedExpr is set to FIREWALL.
      * Possible values are: `INGRESS`, `EGRESS`.
      */
     declare public readonly direction: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Beta)
      * Denotes whether to enable logging for a particular rule.
      * If logging is enabled, logs will be exported to the
      * configured export destination in Stackdriver.
+     * This field may only be specified when the versionedExpr is set to FIREWALL.
      */
     declare public readonly enableLogging: pulumi.Output<boolean | undefined>;
     /**
@@ -137,6 +161,7 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
      */
     declare public readonly priority: pulumi.Output<number>;
     /**
+     * (Optional, Beta)
      * A list of network resource URLs to which this rule applies.
      * This field allows you to control which network's VMs get
      * this rule. If this field is left blank, all VMs
@@ -144,6 +169,7 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
      */
     declare public readonly targetResources: pulumi.Output<string[] | undefined>;
     /**
+     * (Optional, Beta)
      * A list of service accounts indicating the sets of
      * instances that are applied with this rule.
      */
@@ -216,14 +242,18 @@ export interface OrganizationSecurityPolicyRuleState {
      */
     description?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+     * This field may only be specified when the versionedExpr is set to FIREWALL.
      * Possible values are: `INGRESS`, `EGRESS`.
      */
     direction?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Denotes whether to enable logging for a particular rule.
      * If logging is enabled, logs will be exported to the
      * configured export destination in Stackdriver.
+     * This field may only be specified when the versionedExpr is set to FIREWALL.
      */
     enableLogging?: pulumi.Input<boolean>;
     /**
@@ -246,6 +276,7 @@ export interface OrganizationSecurityPolicyRuleState {
      */
     priority?: pulumi.Input<number>;
     /**
+     * (Optional, Beta)
      * A list of network resource URLs to which this rule applies.
      * This field allows you to control which network's VMs get
      * this rule. If this field is left blank, all VMs
@@ -253,6 +284,7 @@ export interface OrganizationSecurityPolicyRuleState {
      */
     targetResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * (Optional, Beta)
      * A list of service accounts indicating the sets of
      * instances that are applied with this rule.
      */
@@ -273,14 +305,18 @@ export interface OrganizationSecurityPolicyRuleArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+     * This field may only be specified when the versionedExpr is set to FIREWALL.
      * Possible values are: `INGRESS`, `EGRESS`.
      */
     direction?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Denotes whether to enable logging for a particular rule.
      * If logging is enabled, logs will be exported to the
      * configured export destination in Stackdriver.
+     * This field may only be specified when the versionedExpr is set to FIREWALL.
      */
     enableLogging?: pulumi.Input<boolean>;
     /**
@@ -303,6 +339,7 @@ export interface OrganizationSecurityPolicyRuleArgs {
      */
     priority: pulumi.Input<number>;
     /**
+     * (Optional, Beta)
      * A list of network resource URLs to which this rule applies.
      * This field allows you to control which network's VMs get
      * this rule. If this field is left blank, all VMs
@@ -310,6 +347,7 @@ export interface OrganizationSecurityPolicyRuleArgs {
      */
     targetResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * (Optional, Beta)
      * A list of service accounts indicating the sets of
      * instances that are applied with this rule.
      */

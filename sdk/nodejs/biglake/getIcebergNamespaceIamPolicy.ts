@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for icebergnamespace
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.biglake.getIcebergNamespaceIamPolicy({
+ *     project: myIcebergNamespace.project,
+ *     catalog: myIcebergNamespace.catalog,
+ *     namespaceId: myIcebergNamespace.id,
+ * });
+ * ```
  */
 export function getIcebergNamespaceIamPolicy(args: GetIcebergNamespaceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIcebergNamespaceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,6 +72,19 @@ export interface GetIcebergNamespaceIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for icebergnamespace
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.biglake.getIcebergNamespaceIamPolicy({
+ *     project: myIcebergNamespace.project,
+ *     catalog: myIcebergNamespace.catalog,
+ *     namespaceId: myIcebergNamespace.id,
+ * });
+ * ```
  */
 export function getIcebergNamespaceIamPolicyOutput(args: GetIcebergNamespaceIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIcebergNamespaceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

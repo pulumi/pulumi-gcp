@@ -130,7 +130,6 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
     }
 
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      * 
@@ -139,8 +138,7 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
     private @Nullable Output<ExternalVpnGatewayParamsArgs> params;
 
     /**
-     * @return (Optional, Beta)
-     * Additional params passed with the request, but not persisted as part of resource payload
+     * @return Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      * 
      */
@@ -406,8 +404,7 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param params (Optional, Beta)
-         * Additional params passed with the request, but not persisted as part of resource payload
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
          * Structure is documented below.
          * 
          * @return builder
@@ -419,8 +416,7 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param params (Optional, Beta)
-         * Additional params passed with the request, but not persisted as part of resource payload
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
          * Structure is documented below.
          * 
          * @return builder

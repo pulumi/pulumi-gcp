@@ -24,6 +24,7 @@ class IcebergCatalogArgs:
                  catalog_type: pulumi.Input[_builtins.str],
                  credential_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary_location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IcebergCatalog resource.
@@ -36,6 +37,9 @@ class IcebergCatalogArgs:
                For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
                exact same value of the GCS bucket's name. For example, for a bucket:
                gs://bucket-name, the catalog name will be exactly "bucket-name".
+        :param pulumi.Input[_builtins.str] primary_location: The primary location for mirroring the remote catalog metadata. It must be
+               a BigLake-supported location, and it should be proximate to the remote
+               catalog's location.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -44,6 +48,8 @@ class IcebergCatalogArgs:
             pulumi.set(__self__, "credential_mode", credential_mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if primary_location is not None:
+            pulumi.set(__self__, "primary_location", primary_location)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -89,6 +95,20 @@ class IcebergCatalogArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="primaryLocation")
+    def primary_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The primary location for mirroring the remote catalog metadata. It must be
+        a BigLake-supported location, and it should be proximate to the remote
+        catalog's location.
+        """
+        return pulumi.get(self, "primary_location")
+
+    @primary_location.setter
+    def primary_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "primary_location", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -111,6 +131,7 @@ class _IcebergCatalogState:
                  credential_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  default_location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary_location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  replicas: Optional[pulumi.Input[Sequence[pulumi.Input['IcebergCatalogReplicaArgs']]]] = None,
                  storage_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -129,6 +150,9 @@ class _IcebergCatalogState:
                For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
                exact same value of the GCS bucket's name. For example, for a bucket:
                gs://bucket-name, the catalog name will be exactly "bucket-name".
+        :param pulumi.Input[_builtins.str] primary_location: The primary location for mirroring the remote catalog metadata. It must be
+               a BigLake-supported location, and it should be proximate to the remote
+               catalog's location.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['IcebergCatalogReplicaArgs']]] replicas: Output only. The replicas for the catalog metadata.
@@ -148,6 +172,8 @@ class _IcebergCatalogState:
             pulumi.set(__self__, "default_location", default_location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if primary_location is not None:
+            pulumi.set(__self__, "primary_location", primary_location)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if replicas is not None:
@@ -235,6 +261,20 @@ class _IcebergCatalogState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="primaryLocation")
+    def primary_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The primary location for mirroring the remote catalog metadata. It must be
+        a BigLake-supported location, and it should be proximate to the remote
+        catalog's location.
+        """
+        return pulumi.get(self, "primary_location")
+
+    @primary_location.setter
+    def primary_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "primary_location", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -294,6 +334,7 @@ class IcebergCatalog(pulumi.CustomResource):
                  catalog_type: Optional[pulumi.Input[_builtins.str]] = None,
                  credential_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary_location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -328,6 +369,24 @@ class IcebergCatalog(pulumi.CustomResource):
             credential_mode="CREDENTIAL_MODE_VENDED_CREDENTIALS",
             opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_iceberg_catalog]))
         ```
+        ### Biglake Iceberg Catalog Primary Location
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket_for_my_iceberg_catalog = gcp.storage.Bucket("bucket_for_my_iceberg_catalog",
+            name="my_iceberg_catalog",
+            location="us-central1",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        my_iceberg_catalog = gcp.biglake.IcebergCatalog("my_iceberg_catalog",
+            name=bucket_for_my_iceberg_catalog.name,
+            catalog_type="CATALOG_TYPE_GCS_BUCKET",
+            credential_mode="CREDENTIAL_MODE_VENDED_CREDENTIALS",
+            primary_location="us-central1",
+            opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_iceberg_catalog]))
+        ```
 
         ## Import
 
@@ -356,6 +415,9 @@ class IcebergCatalog(pulumi.CustomResource):
                For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
                exact same value of the GCS bucket's name. For example, for a bucket:
                gs://bucket-name, the catalog name will be exactly "bucket-name".
+        :param pulumi.Input[_builtins.str] primary_location: The primary location for mirroring the remote catalog metadata. It must be
+               a BigLake-supported location, and it should be proximate to the remote
+               catalog's location.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -397,6 +459,24 @@ class IcebergCatalog(pulumi.CustomResource):
             credential_mode="CREDENTIAL_MODE_VENDED_CREDENTIALS",
             opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_iceberg_catalog]))
         ```
+        ### Biglake Iceberg Catalog Primary Location
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket_for_my_iceberg_catalog = gcp.storage.Bucket("bucket_for_my_iceberg_catalog",
+            name="my_iceberg_catalog",
+            location="us-central1",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        my_iceberg_catalog = gcp.biglake.IcebergCatalog("my_iceberg_catalog",
+            name=bucket_for_my_iceberg_catalog.name,
+            catalog_type="CATALOG_TYPE_GCS_BUCKET",
+            credential_mode="CREDENTIAL_MODE_VENDED_CREDENTIALS",
+            primary_location="us-central1",
+            opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_iceberg_catalog]))
+        ```
 
         ## Import
 
@@ -433,6 +513,7 @@ class IcebergCatalog(pulumi.CustomResource):
                  catalog_type: Optional[pulumi.Input[_builtins.str]] = None,
                  credential_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary_location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -448,6 +529,7 @@ class IcebergCatalog(pulumi.CustomResource):
             __props__.__dict__["catalog_type"] = catalog_type
             __props__.__dict__["credential_mode"] = credential_mode
             __props__.__dict__["name"] = name
+            __props__.__dict__["primary_location"] = primary_location
             __props__.__dict__["project"] = project
             __props__.__dict__["biglake_service_account"] = None
             __props__.__dict__["create_time"] = None
@@ -471,6 +553,7 @@ class IcebergCatalog(pulumi.CustomResource):
             credential_mode: Optional[pulumi.Input[_builtins.str]] = None,
             default_location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            primary_location: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             replicas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IcebergCatalogReplicaArgs', 'IcebergCatalogReplicaArgsDict']]]]] = None,
             storage_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -493,6 +576,9 @@ class IcebergCatalog(pulumi.CustomResource):
                For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
                exact same value of the GCS bucket's name. For example, for a bucket:
                gs://bucket-name, the catalog name will be exactly "bucket-name".
+        :param pulumi.Input[_builtins.str] primary_location: The primary location for mirroring the remote catalog metadata. It must be
+               a BigLake-supported location, and it should be proximate to the remote
+               catalog's location.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IcebergCatalogReplicaArgs', 'IcebergCatalogReplicaArgsDict']]]] replicas: Output only. The replicas for the catalog metadata.
@@ -510,6 +596,7 @@ class IcebergCatalog(pulumi.CustomResource):
         __props__.__dict__["credential_mode"] = credential_mode
         __props__.__dict__["default_location"] = default_location
         __props__.__dict__["name"] = name
+        __props__.__dict__["primary_location"] = primary_location
         __props__.__dict__["project"] = project
         __props__.__dict__["replicas"] = replicas
         __props__.__dict__["storage_regions"] = storage_regions
@@ -568,6 +655,16 @@ class IcebergCatalog(pulumi.CustomResource):
         gs://bucket-name, the catalog name will be exactly "bucket-name".
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryLocation")
+    def primary_location(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The primary location for mirroring the remote catalog metadata. It must be
+        a BigLake-supported location, and it should be proximate to the remote
+        catalog's location.
+        """
+        return pulumi.get(self, "primary_location")
 
     @_builtins.property
     @pulumi.getter

@@ -55,6 +55,14 @@ import javax.annotation.Nullable;
  * 
  *         var exampleTable = new Table("exampleTable", TableArgs.builder()
  *             .deletionProtection(false)
+ *             .schema("""
+ * [
+ *   {
+ *     \"name\": \"nullable_field\",
+ *     \"type\": \"STRING\"
+ *   }
+ * ]
+ *             """)
  *             .datasetId(example.datasetId())
  *             .tableId("table_id")
  *             .build());

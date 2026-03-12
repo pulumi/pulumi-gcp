@@ -14,9 +14,16 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type TagKeyIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // TagKeyIamBindingConditionInput is an input type that accepts TagKeyIamBindingConditionArgs and TagKeyIamBindingConditionOutput values.
@@ -31,9 +38,16 @@ type TagKeyIamBindingConditionInput interface {
 }
 
 type TagKeyIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (TagKeyIamBindingConditionArgs) ElementType() reflect.Type {
@@ -113,14 +127,21 @@ func (o TagKeyIamBindingConditionOutput) ToTagKeyIamBindingConditionPtrOutputWit
 	}).(TagKeyIamBindingConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o TagKeyIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagKeyIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o TagKeyIamBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v TagKeyIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o TagKeyIamBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v TagKeyIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -149,6 +170,11 @@ func (o TagKeyIamBindingConditionPtrOutput) Elem() TagKeyIamBindingConditionOutp
 	}).(TagKeyIamBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o TagKeyIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagKeyIamBindingCondition) *string {
 		if v == nil {
@@ -158,6 +184,7 @@ func (o TagKeyIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o TagKeyIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagKeyIamBindingCondition) *string {
 		if v == nil {
@@ -167,6 +194,7 @@ func (o TagKeyIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o TagKeyIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagKeyIamBindingCondition) *string {
 		if v == nil {
@@ -177,9 +205,16 @@ func (o TagKeyIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type TagKeyIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // TagKeyIamMemberConditionInput is an input type that accepts TagKeyIamMemberConditionArgs and TagKeyIamMemberConditionOutput values.
@@ -194,9 +229,16 @@ type TagKeyIamMemberConditionInput interface {
 }
 
 type TagKeyIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (TagKeyIamMemberConditionArgs) ElementType() reflect.Type {
@@ -276,14 +318,21 @@ func (o TagKeyIamMemberConditionOutput) ToTagKeyIamMemberConditionPtrOutputWithC
 	}).(TagKeyIamMemberConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o TagKeyIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagKeyIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o TagKeyIamMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v TagKeyIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o TagKeyIamMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v TagKeyIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -312,6 +361,11 @@ func (o TagKeyIamMemberConditionPtrOutput) Elem() TagKeyIamMemberConditionOutput
 	}).(TagKeyIamMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o TagKeyIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagKeyIamMemberCondition) *string {
 		if v == nil {
@@ -321,6 +375,7 @@ func (o TagKeyIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o TagKeyIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagKeyIamMemberCondition) *string {
 		if v == nil {
@@ -330,6 +385,7 @@ func (o TagKeyIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o TagKeyIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagKeyIamMemberCondition) *string {
 		if v == nil {
@@ -340,9 +396,16 @@ func (o TagKeyIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type TagValueIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // TagValueIamBindingConditionInput is an input type that accepts TagValueIamBindingConditionArgs and TagValueIamBindingConditionOutput values.
@@ -357,9 +420,16 @@ type TagValueIamBindingConditionInput interface {
 }
 
 type TagValueIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (TagValueIamBindingConditionArgs) ElementType() reflect.Type {
@@ -439,14 +509,21 @@ func (o TagValueIamBindingConditionOutput) ToTagValueIamBindingConditionPtrOutpu
 	}).(TagValueIamBindingConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o TagValueIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagValueIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o TagValueIamBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v TagValueIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o TagValueIamBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v TagValueIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -475,6 +552,11 @@ func (o TagValueIamBindingConditionPtrOutput) Elem() TagValueIamBindingCondition
 	}).(TagValueIamBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o TagValueIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagValueIamBindingCondition) *string {
 		if v == nil {
@@ -484,6 +566,7 @@ func (o TagValueIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o TagValueIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagValueIamBindingCondition) *string {
 		if v == nil {
@@ -493,6 +576,7 @@ func (o TagValueIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o TagValueIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagValueIamBindingCondition) *string {
 		if v == nil {
@@ -503,9 +587,16 @@ func (o TagValueIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type TagValueIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // TagValueIamMemberConditionInput is an input type that accepts TagValueIamMemberConditionArgs and TagValueIamMemberConditionOutput values.
@@ -520,9 +611,16 @@ type TagValueIamMemberConditionInput interface {
 }
 
 type TagValueIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (TagValueIamMemberConditionArgs) ElementType() reflect.Type {
@@ -602,14 +700,21 @@ func (o TagValueIamMemberConditionOutput) ToTagValueIamMemberConditionPtrOutputW
 	}).(TagValueIamMemberConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o TagValueIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagValueIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o TagValueIamMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v TagValueIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o TagValueIamMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v TagValueIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -638,6 +743,11 @@ func (o TagValueIamMemberConditionPtrOutput) Elem() TagValueIamMemberConditionOu
 	}).(TagValueIamMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o TagValueIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagValueIamMemberCondition) *string {
 		if v == nil {
@@ -647,6 +757,7 @@ func (o TagValueIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o TagValueIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagValueIamMemberCondition) *string {
 		if v == nil {
@@ -656,6 +767,7 @@ func (o TagValueIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o TagValueIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagValueIamMemberCondition) *string {
 		if v == nil {

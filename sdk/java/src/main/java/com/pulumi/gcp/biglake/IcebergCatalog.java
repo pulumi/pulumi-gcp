@@ -13,6 +13,7 @@ import com.pulumi.gcp.biglake.inputs.IcebergCatalogState;
 import com.pulumi.gcp.biglake.outputs.IcebergCatalogReplica;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -68,6 +69,53 @@ import javax.annotation.Nullable;
  *             .name(bucketForMyIcebergCatalog.name())
  *             .catalogType("CATALOG_TYPE_GCS_BUCKET")
  *             .credentialMode("CREDENTIAL_MODE_VENDED_CREDENTIALS")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(bucketForMyIcebergCatalog)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Biglake Iceberg Catalog Primary Location
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.biglake.IcebergCatalog;
+ * import com.pulumi.gcp.biglake.IcebergCatalogArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bucketForMyIcebergCatalog = new Bucket("bucketForMyIcebergCatalog", BucketArgs.builder()
+ *             .name("my_iceberg_catalog")
+ *             .location("us-central1")
+ *             .forceDestroy(true)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var myIcebergCatalog = new IcebergCatalog("myIcebergCatalog", IcebergCatalogArgs.builder()
+ *             .name(bucketForMyIcebergCatalog.name())
+ *             .catalogType("CATALOG_TYPE_GCS_BUCKET")
+ *             .credentialMode("CREDENTIAL_MODE_VENDED_CREDENTIALS")
+ *             .primaryLocation("us-central1")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(bucketForMyIcebergCatalog)
  *                 .build());
@@ -189,6 +237,24 @@ public class IcebergCatalog extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The primary location for mirroring the remote catalog metadata. It must be
+     * a BigLake-supported location, and it should be proximate to the remote
+     * catalog&#39;s location.
+     * 
+     */
+    @Export(name="primaryLocation", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> primaryLocation;
+
+    /**
+     * @return The primary location for mirroring the remote catalog metadata. It must be
+     * a BigLake-supported location, and it should be proximate to the remote
+     * catalog&#39;s location.
+     * 
+     */
+    public Output<Optional<String>> primaryLocation() {
+        return Codegen.optional(this.primaryLocation);
     }
     /**
      * The ID of the project in which the resource belongs.

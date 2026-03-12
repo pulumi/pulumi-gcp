@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ConfigArgs, ConfigState } from "./config";
+export type Config = import("./config").Config;
+export const Config: typeof import("./config").Config = null as any;
+utilities.lazyLoad(exports, ["Config"], () => require("./config"));
+
 export { FolderArgs, FolderState } from "./folder";
 export type Folder = import("./folder").Folder;
 export const Folder: typeof import("./folder").Folder = null as any;
@@ -55,6 +60,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:dataform/config:Config":
+                return new Config(name, <any>undefined, { urn })
             case "gcp:dataform/folder:Folder":
                 return new Folder(name, <any>undefined, { urn })
             case "gcp:dataform/repository:Repository":
@@ -76,6 +83,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "dataform/config", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataform/folder", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataform/repository", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataform/repositoryIamBinding", _module)

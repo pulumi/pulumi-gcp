@@ -106,6 +106,8 @@ def get_runtime_iam_policy(location: Optional[_builtins.str] = None,
                            runtime_name: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuntimeIamPolicyResult:
     """
+    > **Warning:** The parent resource has been deprecated: `notebooks.Runtime` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+
     Retrieves the current IAM policy data for runtime
 
     ## Example Usage
@@ -146,6 +148,8 @@ def get_runtime_iam_policy_output(location: Optional[pulumi.Input[Optional[_buil
                                   runtime_name: Optional[pulumi.Input[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuntimeIamPolicyResult]:
     """
+    > **Warning:** The parent resource has been deprecated: `notebooks.Runtime` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+
     Retrieves the current IAM policy data for runtime
 
     ## Example Usage

@@ -192,7 +192,6 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
@@ -301,7 +300,6 @@ export interface ExternalVpnGatewayState {
      */
     name?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
@@ -357,7 +355,6 @@ export interface ExternalVpnGatewayArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */

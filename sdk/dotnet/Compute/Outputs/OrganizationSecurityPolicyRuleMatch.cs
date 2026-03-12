@@ -24,9 +24,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? Description;
         /// <summary>
         /// Preconfigured versioned expression. For organization security policy rules,
-        /// the only supported type is "FIREWALL".
-        /// Default value is `FIREWALL`.
-        /// Possible values are: `FIREWALL`.
+        /// the only supported type is "SRC_IPS_V1".
+        /// **NOTE** : 'FIREWALL' type is deprecated. Please use 'google_compute_firewall_policy_rule' resource instead.
         /// </summary>
         public readonly string? VersionedExpr;
 

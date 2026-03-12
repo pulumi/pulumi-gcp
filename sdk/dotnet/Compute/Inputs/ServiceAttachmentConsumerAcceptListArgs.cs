@@ -20,6 +20,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int> ConnectionLimit { get; set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
+        /// The endpoint that is allowed to connect to this service attachment.
+        /// Only one of project_id_or_num, NetworkUrl and EndpointUrl may be set.
+        /// </summary>
+        [Input("endpointUrl")]
+        public Input<string>? EndpointUrl { get; set; }
+
+        /// <summary>
         /// The network that is allowed to connect to this service attachment.
         /// Only one of ProjectIdOrNum and NetworkUrl may be set.
         /// </summary>

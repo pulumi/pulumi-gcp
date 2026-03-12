@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * const dataformFolderBasic = new gcp.dataform.Folder("dataform_folder_basic", {
  *     region: "us-central1",
- *     displayName: "Basic Folder-_56730",
+ *     displayName: "Basic Folder-_95154",
  * });
  * ```
  * ### Dataform Folder Full

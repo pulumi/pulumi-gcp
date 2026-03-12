@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.inputs.InstanceTemplateSchedulingLocalSsdRecoveryT
 import com.pulumi.gcp.compute.inputs.InstanceTemplateSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.InstanceTemplateSchedulingNodeAffinityArgs;
 import com.pulumi.gcp.compute.inputs.InstanceTemplateSchedulingOnInstanceStopActionArgs;
+import com.pulumi.gcp.compute.inputs.InstanceTemplateSchedulingPreemptionNoticeDurationArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -237,6 +238,21 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+     * 
+     */
+    @Import(name="preemptionNoticeDuration")
+    private @Nullable Output<InstanceTemplateSchedulingPreemptionNoticeDurationArgs> preemptionNoticeDuration;
+
+    /**
+     * @return Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceTemplateSchedulingPreemptionNoticeDurationArgs>> preemptionNoticeDuration() {
+        return Optional.ofNullable(this.preemptionNoticeDuration);
+    }
+
+    /**
      * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
      * `preemptible` should be `true` and `automaticRestart` should be
      * `false`. For more info about
@@ -303,6 +319,7 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
         this.onHostMaintenance = $.onHostMaintenance;
         this.onInstanceStopAction = $.onInstanceStopAction;
         this.preemptible = $.preemptible;
+        this.preemptionNoticeDuration = $.preemptionNoticeDuration;
         this.provisioningModel = $.provisioningModel;
         this.skipGuestOsShutdown = $.skipGuestOsShutdown;
         this.terminationTime = $.terminationTime;
@@ -639,6 +656,27 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
          */
         public Builder preemptible(Boolean preemptible) {
             return preemptible(Output.of(preemptible));
+        }
+
+        /**
+         * @param preemptionNoticeDuration Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preemptionNoticeDuration(@Nullable Output<InstanceTemplateSchedulingPreemptionNoticeDurationArgs> preemptionNoticeDuration) {
+            $.preemptionNoticeDuration = preemptionNoticeDuration;
+            return this;
+        }
+
+        /**
+         * @param preemptionNoticeDuration Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preemptionNoticeDuration(InstanceTemplateSchedulingPreemptionNoticeDurationArgs preemptionNoticeDuration) {
+            return preemptionNoticeDuration(Output.of(preemptionNoticeDuration));
         }
 
         /**

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     public sealed class FeatureMembershipConfigmanagementPolicyControllerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
         /// </summary>
         [Input("auditIntervalSeconds")]
         public Input<string>? AuditIntervalSeconds { get; set; }

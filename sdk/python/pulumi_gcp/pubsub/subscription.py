@@ -1206,11 +1206,45 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_11171",
+                "filename_suffix": "-_40816",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
                 "max_messages": 1000,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    example,
+                    admin,
+                ]))
+        ```
+        ### Pubsub Subscription Push Cloudstorage Text
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.storage.Bucket("example",
+            name="example-bucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        example_topic = gcp.pubsub.Topic("example", name="example-topic")
+        project = gcp.organizations.get_project()
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=example.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example_topic.id,
+            cloud_storage_config={
+                "bucket": example.name,
+                "filename_prefix": "pre-",
+                "filename_suffix": "-_94690",
+                "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
+                "max_bytes": 1000,
+                "max_duration": "300s",
+                "max_messages": 1000,
+                "text_config": {},
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     example,
@@ -1239,7 +1273,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_40472",
+                "filename_suffix": "-_29947",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1278,7 +1312,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_44339",
+                "filename_suffix": "-_28257",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1735,11 +1769,45 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_11171",
+                "filename_suffix": "-_40816",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
                 "max_messages": 1000,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    example,
+                    admin,
+                ]))
+        ```
+        ### Pubsub Subscription Push Cloudstorage Text
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.storage.Bucket("example",
+            name="example-bucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        example_topic = gcp.pubsub.Topic("example", name="example-topic")
+        project = gcp.organizations.get_project()
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=example.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example_topic.id,
+            cloud_storage_config={
+                "bucket": example.name,
+                "filename_prefix": "pre-",
+                "filename_suffix": "-_94690",
+                "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
+                "max_bytes": 1000,
+                "max_duration": "300s",
+                "max_messages": 1000,
+                "text_config": {},
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     example,
@@ -1768,7 +1836,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_40472",
+                "filename_suffix": "-_29947",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1807,7 +1875,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_44339",
+                "filename_suffix": "-_28257",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",

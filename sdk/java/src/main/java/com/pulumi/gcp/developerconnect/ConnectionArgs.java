@@ -13,6 +13,7 @@ import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubConfigArgs;
 import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubEnterpriseConfigArgs;
 import com.pulumi.gcp.developerconnect.inputs.ConnectionGitlabConfigArgs;
 import com.pulumi.gcp.developerconnect.inputs.ConnectionGitlabEnterpriseConfigArgs;
+import com.pulumi.gcp.developerconnect.inputs.ConnectionHttpConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -223,6 +224,23 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for connections to an HTTP service provider.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="httpConfig")
+    private @Nullable Output<ConnectionHttpConfigArgs> httpConfig;
+
+    /**
+     * @return Configuration for connections to an HTTP service provider.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionHttpConfigArgs>> httpConfig() {
+        return Optional.ofNullable(this.httpConfig);
+    }
+
+    /**
      * Optional. Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -287,6 +305,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         this.githubEnterpriseConfig = $.githubEnterpriseConfig;
         this.gitlabConfig = $.gitlabConfig;
         this.gitlabEnterpriseConfig = $.gitlabEnterpriseConfig;
+        this.httpConfig = $.httpConfig;
         this.labels = $.labels;
         this.location = $.location;
         this.project = $.project;
@@ -571,6 +590,29 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gitlabEnterpriseConfig(ConnectionGitlabEnterpriseConfigArgs gitlabEnterpriseConfig) {
             return gitlabEnterpriseConfig(Output.of(gitlabEnterpriseConfig));
+        }
+
+        /**
+         * @param httpConfig Configuration for connections to an HTTP service provider.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpConfig(@Nullable Output<ConnectionHttpConfigArgs> httpConfig) {
+            $.httpConfig = httpConfig;
+            return this;
+        }
+
+        /**
+         * @param httpConfig Configuration for connections to an HTTP service provider.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpConfig(ConnectionHttpConfigArgs httpConfig) {
+            return httpConfig(Output.of(httpConfig));
         }
 
         /**

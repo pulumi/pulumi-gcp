@@ -6,6 +6,7 @@ package com.pulumi.gcp.pubsub.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionCloudStorageConfigAvroConfig;
+import com.pulumi.gcp.pubsub.outputs.SubscriptionCloudStorageConfigTextConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,6 +72,12 @@ public final class SubscriptionCloudStorageConfig {
      * 
      */
     private @Nullable String state;
+    /**
+     * @return If set, message data will be written to Cloud Storage in text format.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable SubscriptionCloudStorageConfigTextConfig textConfig;
 
     private SubscriptionCloudStorageConfig() {}
     /**
@@ -150,6 +157,14 @@ public final class SubscriptionCloudStorageConfig {
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }
+    /**
+     * @return If set, message data will be written to Cloud Storage in text format.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<SubscriptionCloudStorageConfigTextConfig> textConfig() {
+        return Optional.ofNullable(this.textConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -170,6 +185,7 @@ public final class SubscriptionCloudStorageConfig {
         private @Nullable Integer maxMessages;
         private @Nullable String serviceAccountEmail;
         private @Nullable String state;
+        private @Nullable SubscriptionCloudStorageConfigTextConfig textConfig;
         public Builder() {}
         public Builder(SubscriptionCloudStorageConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -183,6 +199,7 @@ public final class SubscriptionCloudStorageConfig {
     	      this.maxMessages = defaults.maxMessages;
     	      this.serviceAccountEmail = defaults.serviceAccountEmail;
     	      this.state = defaults.state;
+    	      this.textConfig = defaults.textConfig;
         }
 
         @CustomType.Setter
@@ -247,6 +264,12 @@ public final class SubscriptionCloudStorageConfig {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
+        public Builder textConfig(@Nullable SubscriptionCloudStorageConfigTextConfig textConfig) {
+
+            this.textConfig = textConfig;
+            return this;
+        }
         public SubscriptionCloudStorageConfig build() {
             final var _resultValue = new SubscriptionCloudStorageConfig();
             _resultValue.avroConfig = avroConfig;
@@ -259,6 +282,7 @@ public final class SubscriptionCloudStorageConfig {
             _resultValue.maxMessages = maxMessages;
             _resultValue.serviceAccountEmail = serviceAccountEmail;
             _resultValue.state = state;
+            _resultValue.textConfig = textConfig;
             return _resultValue;
         }
     }

@@ -1397,6 +1397,9 @@ type SubscriptionCloudStorageConfig struct {
 	// (Output)
 	// An output-only field that indicates whether or not the subscription can receive messages.
 	State *string `pulumi:"state"`
+	// If set, message data will be written to Cloud Storage in text format.
+	// Structure is documented below.
+	TextConfig *SubscriptionCloudStorageConfigTextConfig `pulumi:"textConfig"`
 }
 
 // SubscriptionCloudStorageConfigInput is an input type that accepts SubscriptionCloudStorageConfigArgs and SubscriptionCloudStorageConfigOutput values.
@@ -1438,6 +1441,9 @@ type SubscriptionCloudStorageConfigArgs struct {
 	// (Output)
 	// An output-only field that indicates whether or not the subscription can receive messages.
 	State pulumi.StringPtrInput `pulumi:"state"`
+	// If set, message data will be written to Cloud Storage in text format.
+	// Structure is documented below.
+	TextConfig SubscriptionCloudStorageConfigTextConfigPtrInput `pulumi:"textConfig"`
 }
 
 func (SubscriptionCloudStorageConfigArgs) ElementType() reflect.Type {
@@ -1574,6 +1580,12 @@ func (o SubscriptionCloudStorageConfigOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// If set, message data will be written to Cloud Storage in text format.
+// Structure is documented below.
+func (o SubscriptionCloudStorageConfigOutput) TextConfig() SubscriptionCloudStorageConfigTextConfigPtrOutput {
+	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *SubscriptionCloudStorageConfigTextConfig { return v.TextConfig }).(SubscriptionCloudStorageConfigTextConfigPtrOutput)
+}
+
 type SubscriptionCloudStorageConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionCloudStorageConfigPtrOutput) ElementType() reflect.Type {
@@ -1703,6 +1715,17 @@ func (o SubscriptionCloudStorageConfigPtrOutput) State() pulumi.StringPtrOutput 
 		}
 		return v.State
 	}).(pulumi.StringPtrOutput)
+}
+
+// If set, message data will be written to Cloud Storage in text format.
+// Structure is documented below.
+func (o SubscriptionCloudStorageConfigPtrOutput) TextConfig() SubscriptionCloudStorageConfigTextConfigPtrOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfig) *SubscriptionCloudStorageConfigTextConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TextConfig
+	}).(SubscriptionCloudStorageConfigTextConfigPtrOutput)
 }
 
 type SubscriptionCloudStorageConfigAvroConfig struct {
@@ -1859,6 +1882,147 @@ func (o SubscriptionCloudStorageConfigAvroConfigPtrOutput) WriteMetadata() pulum
 		}
 		return v.WriteMetadata
 	}).(pulumi.BoolPtrOutput)
+}
+
+type SubscriptionCloudStorageConfigTextConfig struct {
+	// (Output)
+	// Output only. Placeholder to allow the empty textConfig block.
+	State *string `pulumi:"state"`
+}
+
+// SubscriptionCloudStorageConfigTextConfigInput is an input type that accepts SubscriptionCloudStorageConfigTextConfigArgs and SubscriptionCloudStorageConfigTextConfigOutput values.
+// You can construct a concrete instance of `SubscriptionCloudStorageConfigTextConfigInput` via:
+//
+//	SubscriptionCloudStorageConfigTextConfigArgs{...}
+type SubscriptionCloudStorageConfigTextConfigInput interface {
+	pulumi.Input
+
+	ToSubscriptionCloudStorageConfigTextConfigOutput() SubscriptionCloudStorageConfigTextConfigOutput
+	ToSubscriptionCloudStorageConfigTextConfigOutputWithContext(context.Context) SubscriptionCloudStorageConfigTextConfigOutput
+}
+
+type SubscriptionCloudStorageConfigTextConfigArgs struct {
+	// (Output)
+	// Output only. Placeholder to allow the empty textConfig block.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (SubscriptionCloudStorageConfigTextConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionCloudStorageConfigTextConfig)(nil)).Elem()
+}
+
+func (i SubscriptionCloudStorageConfigTextConfigArgs) ToSubscriptionCloudStorageConfigTextConfigOutput() SubscriptionCloudStorageConfigTextConfigOutput {
+	return i.ToSubscriptionCloudStorageConfigTextConfigOutputWithContext(context.Background())
+}
+
+func (i SubscriptionCloudStorageConfigTextConfigArgs) ToSubscriptionCloudStorageConfigTextConfigOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigTextConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionCloudStorageConfigTextConfigOutput)
+}
+
+func (i SubscriptionCloudStorageConfigTextConfigArgs) ToSubscriptionCloudStorageConfigTextConfigPtrOutput() SubscriptionCloudStorageConfigTextConfigPtrOutput {
+	return i.ToSubscriptionCloudStorageConfigTextConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionCloudStorageConfigTextConfigArgs) ToSubscriptionCloudStorageConfigTextConfigPtrOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigTextConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionCloudStorageConfigTextConfigOutput).ToSubscriptionCloudStorageConfigTextConfigPtrOutputWithContext(ctx)
+}
+
+// SubscriptionCloudStorageConfigTextConfigPtrInput is an input type that accepts SubscriptionCloudStorageConfigTextConfigArgs, SubscriptionCloudStorageConfigTextConfigPtr and SubscriptionCloudStorageConfigTextConfigPtrOutput values.
+// You can construct a concrete instance of `SubscriptionCloudStorageConfigTextConfigPtrInput` via:
+//
+//	        SubscriptionCloudStorageConfigTextConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubscriptionCloudStorageConfigTextConfigPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionCloudStorageConfigTextConfigPtrOutput() SubscriptionCloudStorageConfigTextConfigPtrOutput
+	ToSubscriptionCloudStorageConfigTextConfigPtrOutputWithContext(context.Context) SubscriptionCloudStorageConfigTextConfigPtrOutput
+}
+
+type subscriptionCloudStorageConfigTextConfigPtrType SubscriptionCloudStorageConfigTextConfigArgs
+
+func SubscriptionCloudStorageConfigTextConfigPtr(v *SubscriptionCloudStorageConfigTextConfigArgs) SubscriptionCloudStorageConfigTextConfigPtrInput {
+	return (*subscriptionCloudStorageConfigTextConfigPtrType)(v)
+}
+
+func (*subscriptionCloudStorageConfigTextConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionCloudStorageConfigTextConfig)(nil)).Elem()
+}
+
+func (i *subscriptionCloudStorageConfigTextConfigPtrType) ToSubscriptionCloudStorageConfigTextConfigPtrOutput() SubscriptionCloudStorageConfigTextConfigPtrOutput {
+	return i.ToSubscriptionCloudStorageConfigTextConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionCloudStorageConfigTextConfigPtrType) ToSubscriptionCloudStorageConfigTextConfigPtrOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigTextConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionCloudStorageConfigTextConfigPtrOutput)
+}
+
+type SubscriptionCloudStorageConfigTextConfigOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionCloudStorageConfigTextConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionCloudStorageConfigTextConfig)(nil)).Elem()
+}
+
+func (o SubscriptionCloudStorageConfigTextConfigOutput) ToSubscriptionCloudStorageConfigTextConfigOutput() SubscriptionCloudStorageConfigTextConfigOutput {
+	return o
+}
+
+func (o SubscriptionCloudStorageConfigTextConfigOutput) ToSubscriptionCloudStorageConfigTextConfigOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigTextConfigOutput {
+	return o
+}
+
+func (o SubscriptionCloudStorageConfigTextConfigOutput) ToSubscriptionCloudStorageConfigTextConfigPtrOutput() SubscriptionCloudStorageConfigTextConfigPtrOutput {
+	return o.ToSubscriptionCloudStorageConfigTextConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionCloudStorageConfigTextConfigOutput) ToSubscriptionCloudStorageConfigTextConfigPtrOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigTextConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionCloudStorageConfigTextConfig) *SubscriptionCloudStorageConfigTextConfig {
+		return &v
+	}).(SubscriptionCloudStorageConfigTextConfigPtrOutput)
+}
+
+// (Output)
+// Output only. Placeholder to allow the empty textConfig block.
+func (o SubscriptionCloudStorageConfigTextConfigOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionCloudStorageConfigTextConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type SubscriptionCloudStorageConfigTextConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionCloudStorageConfigTextConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionCloudStorageConfigTextConfig)(nil)).Elem()
+}
+
+func (o SubscriptionCloudStorageConfigTextConfigPtrOutput) ToSubscriptionCloudStorageConfigTextConfigPtrOutput() SubscriptionCloudStorageConfigTextConfigPtrOutput {
+	return o
+}
+
+func (o SubscriptionCloudStorageConfigTextConfigPtrOutput) ToSubscriptionCloudStorageConfigTextConfigPtrOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigTextConfigPtrOutput {
+	return o
+}
+
+func (o SubscriptionCloudStorageConfigTextConfigPtrOutput) Elem() SubscriptionCloudStorageConfigTextConfigOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfigTextConfig) SubscriptionCloudStorageConfigTextConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionCloudStorageConfigTextConfig
+		return ret
+	}).(SubscriptionCloudStorageConfigTextConfigOutput)
+}
+
+// (Output)
+// Output only. Placeholder to allow the empty textConfig block.
+func (o SubscriptionCloudStorageConfigTextConfigPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfigTextConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
 }
 
 type SubscriptionDeadLetterPolicy struct {
@@ -6772,6 +6936,8 @@ type GetSubscriptionCloudStorageConfig struct {
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 	// An output-only field that indicates whether or not the subscription can receive messages.
 	State string `pulumi:"state"`
+	// If set, message data will be written to Cloud Storage in text format.
+	TextConfigs []GetSubscriptionCloudStorageConfigTextConfig `pulumi:"textConfigs"`
 }
 
 // GetSubscriptionCloudStorageConfigInput is an input type that accepts GetSubscriptionCloudStorageConfigArgs and GetSubscriptionCloudStorageConfigOutput values.
@@ -6811,6 +6977,8 @@ type GetSubscriptionCloudStorageConfigArgs struct {
 	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
 	// An output-only field that indicates whether or not the subscription can receive messages.
 	State pulumi.StringInput `pulumi:"state"`
+	// If set, message data will be written to Cloud Storage in text format.
+	TextConfigs GetSubscriptionCloudStorageConfigTextConfigArrayInput `pulumi:"textConfigs"`
 }
 
 func (GetSubscriptionCloudStorageConfigArgs) ElementType() reflect.Type {
@@ -6919,6 +7087,13 @@ func (o GetSubscriptionCloudStorageConfigOutput) ServiceAccountEmail() pulumi.St
 // An output-only field that indicates whether or not the subscription can receive messages.
 func (o GetSubscriptionCloudStorageConfigOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.State }).(pulumi.StringOutput)
+}
+
+// If set, message data will be written to Cloud Storage in text format.
+func (o GetSubscriptionCloudStorageConfigOutput) TextConfigs() GetSubscriptionCloudStorageConfigTextConfigArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) []GetSubscriptionCloudStorageConfigTextConfig {
+		return v.TextConfigs
+	}).(GetSubscriptionCloudStorageConfigTextConfigArrayOutput)
 }
 
 type GetSubscriptionCloudStorageConfigArrayOutput struct{ *pulumi.OutputState }
@@ -7045,6 +7220,103 @@ func (o GetSubscriptionCloudStorageConfigAvroConfigArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionCloudStorageConfigAvroConfig {
 		return vs[0].([]GetSubscriptionCloudStorageConfigAvroConfig)[vs[1].(int)]
 	}).(GetSubscriptionCloudStorageConfigAvroConfigOutput)
+}
+
+type GetSubscriptionCloudStorageConfigTextConfig struct {
+	// Output only. Placeholder to allow the empty textConfig block.
+	State string `pulumi:"state"`
+}
+
+// GetSubscriptionCloudStorageConfigTextConfigInput is an input type that accepts GetSubscriptionCloudStorageConfigTextConfigArgs and GetSubscriptionCloudStorageConfigTextConfigOutput values.
+// You can construct a concrete instance of `GetSubscriptionCloudStorageConfigTextConfigInput` via:
+//
+//	GetSubscriptionCloudStorageConfigTextConfigArgs{...}
+type GetSubscriptionCloudStorageConfigTextConfigInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionCloudStorageConfigTextConfigOutput() GetSubscriptionCloudStorageConfigTextConfigOutput
+	ToGetSubscriptionCloudStorageConfigTextConfigOutputWithContext(context.Context) GetSubscriptionCloudStorageConfigTextConfigOutput
+}
+
+type GetSubscriptionCloudStorageConfigTextConfigArgs struct {
+	// Output only. Placeholder to allow the empty textConfig block.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetSubscriptionCloudStorageConfigTextConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionCloudStorageConfigTextConfig)(nil)).Elem()
+}
+
+func (i GetSubscriptionCloudStorageConfigTextConfigArgs) ToGetSubscriptionCloudStorageConfigTextConfigOutput() GetSubscriptionCloudStorageConfigTextConfigOutput {
+	return i.ToGetSubscriptionCloudStorageConfigTextConfigOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionCloudStorageConfigTextConfigArgs) ToGetSubscriptionCloudStorageConfigTextConfigOutputWithContext(ctx context.Context) GetSubscriptionCloudStorageConfigTextConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionCloudStorageConfigTextConfigOutput)
+}
+
+// GetSubscriptionCloudStorageConfigTextConfigArrayInput is an input type that accepts GetSubscriptionCloudStorageConfigTextConfigArray and GetSubscriptionCloudStorageConfigTextConfigArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionCloudStorageConfigTextConfigArrayInput` via:
+//
+//	GetSubscriptionCloudStorageConfigTextConfigArray{ GetSubscriptionCloudStorageConfigTextConfigArgs{...} }
+type GetSubscriptionCloudStorageConfigTextConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionCloudStorageConfigTextConfigArrayOutput() GetSubscriptionCloudStorageConfigTextConfigArrayOutput
+	ToGetSubscriptionCloudStorageConfigTextConfigArrayOutputWithContext(context.Context) GetSubscriptionCloudStorageConfigTextConfigArrayOutput
+}
+
+type GetSubscriptionCloudStorageConfigTextConfigArray []GetSubscriptionCloudStorageConfigTextConfigInput
+
+func (GetSubscriptionCloudStorageConfigTextConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionCloudStorageConfigTextConfig)(nil)).Elem()
+}
+
+func (i GetSubscriptionCloudStorageConfigTextConfigArray) ToGetSubscriptionCloudStorageConfigTextConfigArrayOutput() GetSubscriptionCloudStorageConfigTextConfigArrayOutput {
+	return i.ToGetSubscriptionCloudStorageConfigTextConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionCloudStorageConfigTextConfigArray) ToGetSubscriptionCloudStorageConfigTextConfigArrayOutputWithContext(ctx context.Context) GetSubscriptionCloudStorageConfigTextConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionCloudStorageConfigTextConfigArrayOutput)
+}
+
+type GetSubscriptionCloudStorageConfigTextConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionCloudStorageConfigTextConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionCloudStorageConfigTextConfig)(nil)).Elem()
+}
+
+func (o GetSubscriptionCloudStorageConfigTextConfigOutput) ToGetSubscriptionCloudStorageConfigTextConfigOutput() GetSubscriptionCloudStorageConfigTextConfigOutput {
+	return o
+}
+
+func (o GetSubscriptionCloudStorageConfigTextConfigOutput) ToGetSubscriptionCloudStorageConfigTextConfigOutputWithContext(ctx context.Context) GetSubscriptionCloudStorageConfigTextConfigOutput {
+	return o
+}
+
+// Output only. Placeholder to allow the empty textConfig block.
+func (o GetSubscriptionCloudStorageConfigTextConfigOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionCloudStorageConfigTextConfig) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetSubscriptionCloudStorageConfigTextConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionCloudStorageConfigTextConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionCloudStorageConfigTextConfig)(nil)).Elem()
+}
+
+func (o GetSubscriptionCloudStorageConfigTextConfigArrayOutput) ToGetSubscriptionCloudStorageConfigTextConfigArrayOutput() GetSubscriptionCloudStorageConfigTextConfigArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionCloudStorageConfigTextConfigArrayOutput) ToGetSubscriptionCloudStorageConfigTextConfigArrayOutputWithContext(ctx context.Context) GetSubscriptionCloudStorageConfigTextConfigArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionCloudStorageConfigTextConfigArrayOutput) Index(i pulumi.IntInput) GetSubscriptionCloudStorageConfigTextConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionCloudStorageConfigTextConfig {
+		return vs[0].([]GetSubscriptionCloudStorageConfigTextConfig)[vs[1].(int)]
+	}).(GetSubscriptionCloudStorageConfigTextConfigOutput)
 }
 
 type GetSubscriptionDeadLetterPolicy struct {
@@ -10043,6 +10315,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionCloudStorageConfigPtrInput)(nil)).Elem(), SubscriptionCloudStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionCloudStorageConfigAvroConfigInput)(nil)).Elem(), SubscriptionCloudStorageConfigAvroConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionCloudStorageConfigAvroConfigPtrInput)(nil)).Elem(), SubscriptionCloudStorageConfigAvroConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionCloudStorageConfigTextConfigInput)(nil)).Elem(), SubscriptionCloudStorageConfigTextConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionCloudStorageConfigTextConfigPtrInput)(nil)).Elem(), SubscriptionCloudStorageConfigTextConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionDeadLetterPolicyInput)(nil)).Elem(), SubscriptionDeadLetterPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionDeadLetterPolicyPtrInput)(nil)).Elem(), SubscriptionDeadLetterPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionExpirationPolicyInput)(nil)).Elem(), SubscriptionExpirationPolicyArgs{})
@@ -10101,6 +10375,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionCloudStorageConfigArrayInput)(nil)).Elem(), GetSubscriptionCloudStorageConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionCloudStorageConfigAvroConfigInput)(nil)).Elem(), GetSubscriptionCloudStorageConfigAvroConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionCloudStorageConfigAvroConfigArrayInput)(nil)).Elem(), GetSubscriptionCloudStorageConfigAvroConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionCloudStorageConfigTextConfigInput)(nil)).Elem(), GetSubscriptionCloudStorageConfigTextConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionCloudStorageConfigTextConfigArrayInput)(nil)).Elem(), GetSubscriptionCloudStorageConfigTextConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionDeadLetterPolicyInput)(nil)).Elem(), GetSubscriptionDeadLetterPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionDeadLetterPolicyArrayInput)(nil)).Elem(), GetSubscriptionDeadLetterPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionExpirationPolicyInput)(nil)).Elem(), GetSubscriptionExpirationPolicyArgs{})
@@ -10165,6 +10441,8 @@ func init() {
 	pulumi.RegisterOutputType(SubscriptionCloudStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionCloudStorageConfigAvroConfigOutput{})
 	pulumi.RegisterOutputType(SubscriptionCloudStorageConfigAvroConfigPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionCloudStorageConfigTextConfigOutput{})
+	pulumi.RegisterOutputType(SubscriptionCloudStorageConfigTextConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionDeadLetterPolicyOutput{})
 	pulumi.RegisterOutputType(SubscriptionDeadLetterPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionExpirationPolicyOutput{})
@@ -10223,6 +10501,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSubscriptionCloudStorageConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionCloudStorageConfigAvroConfigOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionCloudStorageConfigAvroConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionCloudStorageConfigTextConfigOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionCloudStorageConfigTextConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionDeadLetterPolicyOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionDeadLetterPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionExpirationPolicyOutput{})

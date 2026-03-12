@@ -19,6 +19,8 @@ import java.util.concurrent.CompletableFuture;
 
 public final class NotebooksFunctions {
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+     * 
      * Retrieves the current IAM policy data for instance
      * 
      * ## Example Usage
@@ -61,6 +63,8 @@ public final class NotebooksFunctions {
         return getInstanceIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+     * 
      * Retrieves the current IAM policy data for instance
      * 
      * ## Example Usage
@@ -103,6 +107,8 @@ public final class NotebooksFunctions {
         return getInstanceIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+     * 
      * Retrieves the current IAM policy data for instance
      * 
      * ## Example Usage
@@ -145,6 +151,8 @@ public final class NotebooksFunctions {
         return Deployment.getInstance().invoke("gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+     * 
      * Retrieves the current IAM policy data for instance
      * 
      * ## Example Usage
@@ -187,6 +195,8 @@ public final class NotebooksFunctions {
         return Deployment.getInstance().invoke("gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+     * 
      * Retrieves the current IAM policy data for instance
      * 
      * ## Example Usage
@@ -229,6 +239,8 @@ public final class NotebooksFunctions {
         return Deployment.getInstance().invokeAsync("gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+     * 
      * Retrieves the current IAM policy data for runtime
      * 
      * ## Example Usage
@@ -271,6 +283,8 @@ public final class NotebooksFunctions {
         return getRuntimeIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+     * 
      * Retrieves the current IAM policy data for runtime
      * 
      * ## Example Usage
@@ -313,6 +327,8 @@ public final class NotebooksFunctions {
         return getRuntimeIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+     * 
      * Retrieves the current IAM policy data for runtime
      * 
      * ## Example Usage
@@ -355,6 +371,8 @@ public final class NotebooksFunctions {
         return Deployment.getInstance().invoke("gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy", TypeShape.of(GetRuntimeIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+     * 
      * Retrieves the current IAM policy data for runtime
      * 
      * ## Example Usage
@@ -397,6 +415,8 @@ public final class NotebooksFunctions {
         return Deployment.getInstance().invoke("gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy", TypeShape.of(GetRuntimeIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+     * 
      * Retrieves the current IAM policy data for runtime
      * 
      * ## Example Usage

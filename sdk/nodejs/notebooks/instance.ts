@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * > **Warning:** `googleNotebookInstance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+ * > **Warning:** `gcp.notebooks.Instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
  *
  * A Cloud AI Platform Notebook instance.
  *

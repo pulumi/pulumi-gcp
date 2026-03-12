@@ -13,13 +13,22 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodeConfigSandboxConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Which sandbox to use for pods in the node pool.
+        /// Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
         /// Accepted values are:
         /// 
         /// * `"gvisor"`: Pods run within a gVisor sandbox.
         /// </summary>
-        [Input("sandboxType", required: true)]
-        public Input<string> SandboxType { get; set; } = null!;
+        [Input("sandboxType")]
+        public Input<string>? SandboxType { get; set; }
+
+        /// <summary>
+        /// Which sandbox to use for pods in the node pool.
+        /// Accepted values are:
+        /// 
+        /// * `"GVISOR"`: Pods run within a gVisor sandbox.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public ClusterNodeConfigSandboxConfigGetArgs()
         {

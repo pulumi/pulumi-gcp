@@ -51,8 +51,7 @@ class HaVpnGatewayArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input['HaVpnGatewayParamsArgs'] params: (Optional, Beta)
-               Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input['HaVpnGatewayParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -160,7 +159,6 @@ class HaVpnGatewayArgs:
     @pulumi.getter
     def params(self) -> Optional[pulumi.Input['HaVpnGatewayParamsArgs']]:
         """
-        (Optional, Beta)
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
         """
@@ -267,8 +265,7 @@ class _HaVpnGatewayState:
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
-        :param pulumi.Input['HaVpnGatewayParamsArgs'] params: (Optional, Beta)
-               Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input['HaVpnGatewayParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -416,7 +413,6 @@ class _HaVpnGatewayState:
     @pulumi.getter
     def params(self) -> Optional[pulumi.Input['HaVpnGatewayParamsArgs']]:
         """
-        (Optional, Beta)
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
         """
@@ -665,8 +661,7 @@ class HaVpnGateway(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
-        :param pulumi.Input[Union['HaVpnGatewayParamsArgs', 'HaVpnGatewayParamsArgsDict']] params: (Optional, Beta)
-               Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['HaVpnGatewayParamsArgs', 'HaVpnGatewayParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -914,8 +909,7 @@ class HaVpnGateway(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
-        :param pulumi.Input[Union['HaVpnGatewayParamsArgs', 'HaVpnGatewayParamsArgsDict']] params: (Optional, Beta)
-               Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['HaVpnGatewayParamsArgs', 'HaVpnGatewayParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1026,7 +1020,6 @@ class HaVpnGateway(pulumi.CustomResource):
     @pulumi.getter
     def params(self) -> pulumi.Output[Optional['outputs.HaVpnGatewayParams']]:
         """
-        (Optional, Beta)
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
         """

@@ -106,6 +106,8 @@ def get_entry_group_iam_policy(entry_group: Optional[_builtins.str] = None,
                                region: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEntryGroupIamPolicyResult:
     """
+    > **Warning:** The parent resource has been deprecated: `datacatalog.EntryGroup` is deprecated and will be removed in a future major release. Use `dataplex.EntryGroup` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+
     Retrieves the current IAM policy data for entrygroup
 
     ## Example Usage
@@ -145,6 +147,8 @@ def get_entry_group_iam_policy_output(entry_group: Optional[pulumi.Input[_builti
                                       region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntryGroupIamPolicyResult]:
     """
+    > **Warning:** The parent resource has been deprecated: `datacatalog.EntryGroup` is deprecated and will be removed in a future major release. Use `dataplex.EntryGroup` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+
     Retrieves the current IAM policy data for entrygroup
 
     ## Example Usage

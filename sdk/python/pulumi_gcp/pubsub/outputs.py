@@ -26,6 +26,7 @@ __all__ = [
     'SubscriptionBigqueryConfig',
     'SubscriptionCloudStorageConfig',
     'SubscriptionCloudStorageConfigAvroConfig',
+    'SubscriptionCloudStorageConfigTextConfig',
     'SubscriptionDeadLetterPolicy',
     'SubscriptionExpirationPolicy',
     'SubscriptionIAMBindingCondition',
@@ -55,6 +56,7 @@ __all__ = [
     'GetSubscriptionBigqueryConfigResult',
     'GetSubscriptionCloudStorageConfigResult',
     'GetSubscriptionCloudStorageConfigAvroConfigResult',
+    'GetSubscriptionCloudStorageConfigTextConfigResult',
     'GetSubscriptionDeadLetterPolicyResult',
     'GetSubscriptionExpirationPolicyResult',
     'GetSubscriptionMessageTransformResult',
@@ -481,6 +483,8 @@ class SubscriptionCloudStorageConfig(dict):
             suggest = "max_messages"
         elif key == "serviceAccountEmail":
             suggest = "service_account_email"
+        elif key == "textConfig":
+            suggest = "text_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SubscriptionCloudStorageConfig. Access the value via the '{suggest}' property getter instead.")
@@ -503,7 +507,8 @@ class SubscriptionCloudStorageConfig(dict):
                  max_duration: Optional[_builtins.str] = None,
                  max_messages: Optional[_builtins.int] = None,
                  service_account_email: Optional[_builtins.str] = None,
-                 state: Optional[_builtins.str] = None):
+                 state: Optional[_builtins.str] = None,
+                 text_config: Optional['outputs.SubscriptionCloudStorageConfigTextConfig'] = None):
         """
         :param _builtins.str bucket: User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
         :param 'SubscriptionCloudStorageConfigAvroConfigArgs' avro_config: If set, message data will be written to Cloud Storage in Avro format.
@@ -522,6 +527,8 @@ class SubscriptionCloudStorageConfig(dict):
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
         :param _builtins.str state: (Output)
                An output-only field that indicates whether or not the subscription can receive messages.
+        :param 'SubscriptionCloudStorageConfigTextConfigArgs' text_config: If set, message data will be written to Cloud Storage in text format.
+               Structure is documented below.
         """
         pulumi.set(__self__, "bucket", bucket)
         if avro_config is not None:
@@ -542,6 +549,8 @@ class SubscriptionCloudStorageConfig(dict):
             pulumi.set(__self__, "service_account_email", service_account_email)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if text_config is not None:
+            pulumi.set(__self__, "text_config", text_config)
 
     @_builtins.property
     @pulumi.getter
@@ -630,6 +639,15 @@ class SubscriptionCloudStorageConfig(dict):
         """
         return pulumi.get(self, "state")
 
+    @_builtins.property
+    @pulumi.getter(name="textConfig")
+    def text_config(self) -> Optional['outputs.SubscriptionCloudStorageConfigTextConfig']:
+        """
+        If set, message data will be written to Cloud Storage in text format.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "text_config")
+
 
 @pulumi.output_type
 class SubscriptionCloudStorageConfigAvroConfig(dict):
@@ -679,6 +697,27 @@ class SubscriptionCloudStorageConfigAvroConfig(dict):
         When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
         """
         return pulumi.get(self, "write_metadata")
+
+
+@pulumi.output_type
+class SubscriptionCloudStorageConfigTextConfig(dict):
+    def __init__(__self__, *,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str state: (Output)
+               Output only. Placeholder to allow the empty text_config block.
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Output only. Placeholder to allow the empty text_config block.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -2373,7 +2412,8 @@ class GetSubscriptionCloudStorageConfigResult(dict):
                  max_duration: _builtins.str,
                  max_messages: _builtins.int,
                  service_account_email: _builtins.str,
-                 state: _builtins.str):
+                 state: _builtins.str,
+                 text_configs: Sequence['outputs.GetSubscriptionCloudStorageConfigTextConfigResult']):
         """
         :param Sequence['GetSubscriptionCloudStorageConfigAvroConfigArgs'] avro_configs: If set, message data will be written to Cloud Storage in Avro format.
         :param _builtins.str bucket: User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
@@ -2390,6 +2430,7 @@ class GetSubscriptionCloudStorageConfigResult(dict):
                [service agent](https://cloud.google.com/iam/docs/service-agents),
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
         :param _builtins.str state: An output-only field that indicates whether or not the subscription can receive messages.
+        :param Sequence['GetSubscriptionCloudStorageConfigTextConfigArgs'] text_configs: If set, message data will be written to Cloud Storage in text format.
         """
         pulumi.set(__self__, "avro_configs", avro_configs)
         pulumi.set(__self__, "bucket", bucket)
@@ -2401,6 +2442,7 @@ class GetSubscriptionCloudStorageConfigResult(dict):
         pulumi.set(__self__, "max_messages", max_messages)
         pulumi.set(__self__, "service_account_email", service_account_email)
         pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "text_configs", text_configs)
 
     @_builtins.property
     @pulumi.getter(name="avroConfigs")
@@ -2487,6 +2529,14 @@ class GetSubscriptionCloudStorageConfigResult(dict):
         """
         return pulumi.get(self, "state")
 
+    @_builtins.property
+    @pulumi.getter(name="textConfigs")
+    def text_configs(self) -> Sequence['outputs.GetSubscriptionCloudStorageConfigTextConfigResult']:
+        """
+        If set, message data will be written to Cloud Storage in text format.
+        """
+        return pulumi.get(self, "text_configs")
+
 
 @pulumi.output_type
 class GetSubscriptionCloudStorageConfigAvroConfigResult(dict):
@@ -2515,6 +2565,24 @@ class GetSubscriptionCloudStorageConfigAvroConfigResult(dict):
         When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
         """
         return pulumi.get(self, "write_metadata")
+
+
+@pulumi.output_type
+class GetSubscriptionCloudStorageConfigTextConfigResult(dict):
+    def __init__(__self__, *,
+                 state: _builtins.str):
+        """
+        :param _builtins.str state: Output only. Placeholder to allow the empty text_config block.
+        """
+        pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Output only. Placeholder to allow the empty text_config block.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

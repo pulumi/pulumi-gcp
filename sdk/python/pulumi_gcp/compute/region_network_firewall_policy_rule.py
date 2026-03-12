@@ -775,6 +775,64 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Region Network Firewall Policy Rule Network Context Egress
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy",
+            name="fw-policy",
+            description="Sample regional network firewall policy",
+            project="my-project-name",
+            region="us-west1")
+        primary = gcp.compute.RegionNetworkFirewallPolicyRule("primary",
+            action="allow",
+            description="This is a simple rule description",
+            direction="EGRESS",
+            disabled=False,
+            enable_logging=True,
+            firewall_policy=basic_regional_network_firewall_policy.name,
+            priority=1000,
+            region="us-west1",
+            rule_name="test-rule",
+            match={
+                "dest_ip_ranges": ["10.100.0.1/32"],
+                "dest_network_context": "INTERNET",
+                "layer4_configs": [{
+                    "ip_protocol": "all",
+                }],
+            })
+        ```
+        ### Region Network Firewall Policy Rule Network Context Ingress
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy",
+            name="fw-policy",
+            description="Sample regional network firewall policy",
+            project="my-project-name",
+            region="us-west1")
+        primary = gcp.compute.RegionNetworkFirewallPolicyRule("primary",
+            action="allow",
+            description="This is a simple rule description",
+            direction="INGRESS",
+            disabled=False,
+            enable_logging=True,
+            firewall_policy=basic_regional_network_firewall_policy.name,
+            priority=1000,
+            region="us-west1",
+            rule_name="test-rule",
+            match={
+                "src_ip_ranges": ["10.100.0.1/32"],
+                "src_network_context": "INTERNET",
+                "layer4_configs": [{
+                    "ip_protocol": "all",
+                }],
+            })
+        ```
 
         ## Import
 
@@ -957,6 +1015,64 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                 "src_ip_ranges": ["10.100.0.1/32"],
                 "src_network_scope": "VPC_NETWORKS",
                 "src_networks": [network.id],
+                "layer4_configs": [{
+                    "ip_protocol": "all",
+                }],
+            })
+        ```
+        ### Region Network Firewall Policy Rule Network Context Egress
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy",
+            name="fw-policy",
+            description="Sample regional network firewall policy",
+            project="my-project-name",
+            region="us-west1")
+        primary = gcp.compute.RegionNetworkFirewallPolicyRule("primary",
+            action="allow",
+            description="This is a simple rule description",
+            direction="EGRESS",
+            disabled=False,
+            enable_logging=True,
+            firewall_policy=basic_regional_network_firewall_policy.name,
+            priority=1000,
+            region="us-west1",
+            rule_name="test-rule",
+            match={
+                "dest_ip_ranges": ["10.100.0.1/32"],
+                "dest_network_context": "INTERNET",
+                "layer4_configs": [{
+                    "ip_protocol": "all",
+                }],
+            })
+        ```
+        ### Region Network Firewall Policy Rule Network Context Ingress
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy",
+            name="fw-policy",
+            description="Sample regional network firewall policy",
+            project="my-project-name",
+            region="us-west1")
+        primary = gcp.compute.RegionNetworkFirewallPolicyRule("primary",
+            action="allow",
+            description="This is a simple rule description",
+            direction="INGRESS",
+            disabled=False,
+            enable_logging=True,
+            firewall_policy=basic_regional_network_firewall_policy.name,
+            priority=1000,
+            region="us-west1",
+            rule_name="test-rule",
+            match={
+                "src_ip_ranges": ["10.100.0.1/32"],
+                "src_network_context": "INTERNET",
                 "layer4_configs": [{
                     "ip_protocol": "all",
                 }],

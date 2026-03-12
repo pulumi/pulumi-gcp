@@ -214,6 +214,9 @@ type Disk struct {
 	// Whether this disk is using confidential compute mode.
 	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute pulumi.BoolOutput `pulumi:"enableConfidentialCompute"`
+	// (Optional, Beta)
+	// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+	EraseWindowsVssSignature pulumi.BoolPtrOutput `pulumi:"eraseWindowsVssSignature"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -459,6 +462,9 @@ type diskState struct {
 	// Whether this disk is using confidential compute mode.
 	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
+	// (Optional, Beta)
+	// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+	EraseWindowsVssSignature *bool `pulumi:"eraseWindowsVssSignature"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -670,6 +676,9 @@ type DiskState struct {
 	// Whether this disk is using confidential compute mode.
 	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute pulumi.BoolPtrInput
+	// (Optional, Beta)
+	// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+	EraseWindowsVssSignature pulumi.BoolPtrInput
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -879,6 +888,9 @@ type diskArgs struct {
 	// Whether this disk is using confidential compute mode.
 	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
+	// (Optional, Beta)
+	// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+	EraseWindowsVssSignature *bool `pulumi:"eraseWindowsVssSignature"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -1047,6 +1059,9 @@ type DiskArgs struct {
 	// Whether this disk is using confidential compute mode.
 	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute pulumi.BoolPtrInput
+	// (Optional, Beta)
+	// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+	EraseWindowsVssSignature pulumi.BoolPtrInput
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -1337,6 +1352,12 @@ func (o DiskOutput) EffectiveLabels() pulumi.StringMapOutput {
 // Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 func (o DiskOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Disk) pulumi.BoolOutput { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
+// (Optional, Beta)
+// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+func (o DiskOutput) EraseWindowsVssSignature() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.BoolPtrOutput { return v.EraseWindowsVssSignature }).(pulumi.BoolPtrOutput)
 }
 
 // A list of features to enable on the guest operating system.

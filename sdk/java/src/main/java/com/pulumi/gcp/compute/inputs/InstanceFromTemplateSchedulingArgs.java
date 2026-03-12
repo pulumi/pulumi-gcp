@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.inputs.InstanceFromTemplateSchedulingLocalSsdRecov
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateSchedulingNodeAffinityArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateSchedulingOnInstanceStopActionArgs;
+import com.pulumi.gcp.compute.inputs.InstanceFromTemplateSchedulingPreemptionNoticeDurationArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -217,6 +218,21 @@ public final class InstanceFromTemplateSchedulingArgs extends com.pulumi.resourc
     }
 
     /**
+     * The duration of the notice that the instance will receive before it is preempted.
+     * 
+     */
+    @Import(name="preemptionNoticeDuration")
+    private @Nullable Output<InstanceFromTemplateSchedulingPreemptionNoticeDurationArgs> preemptionNoticeDuration;
+
+    /**
+     * @return The duration of the notice that the instance will receive before it is preempted.
+     * 
+     */
+    public Optional<Output<InstanceFromTemplateSchedulingPreemptionNoticeDurationArgs>> preemptionNoticeDuration() {
+        return Optional.ofNullable(this.preemptionNoticeDuration);
+    }
+
+    /**
      * Whether the instance is spot. If this is set as SPOT.
      * 
      */
@@ -281,6 +297,7 @@ public final class InstanceFromTemplateSchedulingArgs extends com.pulumi.resourc
         this.onHostMaintenance = $.onHostMaintenance;
         this.onInstanceStopAction = $.onInstanceStopAction;
         this.preemptible = $.preemptible;
+        this.preemptionNoticeDuration = $.preemptionNoticeDuration;
         this.provisioningModel = $.provisioningModel;
         this.skipGuestOsShutdown = $.skipGuestOsShutdown;
         this.terminationTime = $.terminationTime;
@@ -579,6 +596,27 @@ public final class InstanceFromTemplateSchedulingArgs extends com.pulumi.resourc
          */
         public Builder preemptible(Boolean preemptible) {
             return preemptible(Output.of(preemptible));
+        }
+
+        /**
+         * @param preemptionNoticeDuration The duration of the notice that the instance will receive before it is preempted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preemptionNoticeDuration(@Nullable Output<InstanceFromTemplateSchedulingPreemptionNoticeDurationArgs> preemptionNoticeDuration) {
+            $.preemptionNoticeDuration = preemptionNoticeDuration;
+            return this;
+        }
+
+        /**
+         * @param preemptionNoticeDuration The duration of the notice that the instance will receive before it is preempted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preemptionNoticeDuration(InstanceFromTemplateSchedulingPreemptionNoticeDurationArgs preemptionNoticeDuration) {
+            return preemptionNoticeDuration(Output.of(preemptionNoticeDuration));
         }
 
         /**

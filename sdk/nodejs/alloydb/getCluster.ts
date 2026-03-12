@@ -61,6 +61,7 @@ export interface GetClusterResult {
     readonly continuousBackupConfigs: outputs.alloydb.GetClusterContinuousBackupConfig[];
     readonly continuousBackupInfos: outputs.alloydb.GetClusterContinuousBackupInfo[];
     readonly databaseVersion: string;
+    readonly dataplexConfigs: outputs.alloydb.GetClusterDataplexConfig[];
     readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly displayName: string;

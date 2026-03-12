@@ -79,6 +79,13 @@ namespace Pulumi.Gcp.PubSub.Inputs
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// If set, message data will be written to Cloud Storage in text format.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("textConfig")]
+        public Input<Inputs.SubscriptionCloudStorageConfigTextConfigGetArgs>? TextConfig { get; set; }
+
         public SubscriptionCloudStorageConfigGetArgs()
         {
         }

@@ -41,6 +41,11 @@ public final class GetDatabaseInstanceClone {
      * 
      */
     private String sourceInstanceName;
+    /**
+     * @return The project ID of the source project
+     * 
+     */
+    private String sourceProject;
 
     private GetDatabaseInstanceClone() {}
     /**
@@ -85,6 +90,13 @@ public final class GetDatabaseInstanceClone {
     public String sourceInstanceName() {
         return this.sourceInstanceName;
     }
+    /**
+     * @return The project ID of the source project
+     * 
+     */
+    public String sourceProject() {
+        return this.sourceProject;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -101,6 +113,7 @@ public final class GetDatabaseInstanceClone {
         private String preferredZone;
         private String sourceInstanceDeletionTime;
         private String sourceInstanceName;
+        private String sourceProject;
         public Builder() {}
         public Builder(GetDatabaseInstanceClone defaults) {
     	      Objects.requireNonNull(defaults);
@@ -110,6 +123,7 @@ public final class GetDatabaseInstanceClone {
     	      this.preferredZone = defaults.preferredZone;
     	      this.sourceInstanceDeletionTime = defaults.sourceInstanceDeletionTime;
     	      this.sourceInstanceName = defaults.sourceInstanceName;
+    	      this.sourceProject = defaults.sourceProject;
         }
 
         @CustomType.Setter
@@ -163,6 +177,14 @@ public final class GetDatabaseInstanceClone {
             this.sourceInstanceName = sourceInstanceName;
             return this;
         }
+        @CustomType.Setter
+        public Builder sourceProject(String sourceProject) {
+            if (sourceProject == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceClone", "sourceProject");
+            }
+            this.sourceProject = sourceProject;
+            return this;
+        }
         public GetDatabaseInstanceClone build() {
             final var _resultValue = new GetDatabaseInstanceClone();
             _resultValue.allocatedIpRange = allocatedIpRange;
@@ -171,6 +193,7 @@ public final class GetDatabaseInstanceClone {
             _resultValue.preferredZone = preferredZone;
             _resultValue.sourceInstanceDeletionTime = sourceInstanceDeletionTime;
             _resultValue.sourceInstanceName = sourceInstanceName;
+            _resultValue.sourceProject = sourceProject;
             return _resultValue;
         }
     }

@@ -4,25 +4,46 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfigSandboxConfig {
     /**
-     * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;)
+     * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;). Deprecated in favor of type.
+     * 
+     * @deprecated
+     * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
      * 
      */
-    private String sandboxType;
+    @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+    private @Nullable String sandboxType;
+    /**
+     * @return Type of the sandbox to use for the node (e.g. &#39;GVISOR&#39;).
+     * 
+     */
+    private @Nullable String type;
 
     private NodePoolNodeConfigSandboxConfig() {}
     /**
-     * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;)
+     * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;). Deprecated in favor of type.
+     * 
+     * @deprecated
+     * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
      * 
      */
-    public String sandboxType() {
-        return this.sandboxType;
+    @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+    public Optional<String> sandboxType() {
+        return Optional.ofNullable(this.sandboxType);
+    }
+    /**
+     * @return Type of the sandbox to use for the node (e.g. &#39;GVISOR&#39;).
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
 
     public static Builder builder() {
@@ -34,24 +55,31 @@ public final class NodePoolNodeConfigSandboxConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String sandboxType;
+        private @Nullable String sandboxType;
+        private @Nullable String type;
         public Builder() {}
         public Builder(NodePoolNodeConfigSandboxConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sandboxType = defaults.sandboxType;
+    	      this.type = defaults.type;
         }
 
         @CustomType.Setter
-        public Builder sandboxType(String sandboxType) {
-            if (sandboxType == null) {
-              throw new MissingRequiredPropertyException("NodePoolNodeConfigSandboxConfig", "sandboxType");
-            }
+        public Builder sandboxType(@Nullable String sandboxType) {
+
             this.sandboxType = sandboxType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder type(@Nullable String type) {
+
+            this.type = type;
             return this;
         }
         public NodePoolNodeConfigSandboxConfig build() {
             final var _resultValue = new NodePoolNodeConfigSandboxConfig();
             _resultValue.sandboxType = sandboxType;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

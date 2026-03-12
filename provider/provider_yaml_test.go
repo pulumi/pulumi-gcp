@@ -247,8 +247,11 @@ func TestAutoExtractedProgramsUpgrade(t *testing.T) {
 		//TODO: This upgrade represents a breaking change v7->v8.
 		// Must be re-recorded on new baseline: https://github.com/pulumi/pulumi-gcp/issues/2378
 		//{"cloudrunv2-service-7"},
-		{"compute-disk-1"},
-		{"compute-disk-3"},
+		//TODO: Upstream added erase_windows_vss_signature with ForceNew in v7.22.0.
+		// Since Pulumi doesn't refresh before diff, existing disks show a spurious replace.
+		// Must be re-recorded on new baseline: https://github.com/pulumi/pulumi-gcp/issues/3650
+		//{"compute-disk-1"},
+		//{"compute-disk-3"},
 	}
 
 	for _, tc := range testCases {

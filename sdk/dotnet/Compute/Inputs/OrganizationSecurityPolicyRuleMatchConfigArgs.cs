@@ -16,8 +16,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _destIpRanges;
 
         /// <summary>
-        /// Destination IP address range in CIDR format. Required for
-        /// EGRESS rules.
+        /// (Optional, Beta)
+        /// Destination IP address range in CIDR format. Required for EGRESS rules.
+        /// This field may only be specified when versionedExpr is set to FIREWALL.
         /// </summary>
         public InputList<string> DestIpRanges
         {
@@ -25,11 +26,13 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _destIpRanges = value;
         }
 
-        [Input("layer4Configs", required: true)]
+        [Input("layer4Configs")]
         private InputList<Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs>? _layer4Configs;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Pairs of IP protocols and ports that the rule should match.
+        /// This field may only be specified when versionedExpr is set to FIREWALL.
         /// Structure is documented below.
         /// 
         /// 

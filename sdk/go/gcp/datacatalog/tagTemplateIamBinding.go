@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** The parent resource has been deprecated: `datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+//
 // Three different resources help you manage your IAM policy for Data Catalog TagTemplate. Each of these resources serves a different use case:
 //
 // * `datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.
@@ -130,6 +132,7 @@ import (
 // -
 //
 // # IAM policy for Data Catalog TagTemplate
+// > **Warning:** The parent resource has been deprecated: `datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
 //
 // Three different resources help you manage your IAM policy for Data Catalog TagTemplate. Each of these resources serves a different use case:
 //

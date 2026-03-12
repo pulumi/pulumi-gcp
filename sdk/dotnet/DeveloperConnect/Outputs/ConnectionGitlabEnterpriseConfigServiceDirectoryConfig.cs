@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DeveloperConnect.Outputs
     public sealed class ConnectionGitlabEnterpriseConfigServiceDirectoryConfig
     {
         /// <summary>
-        /// Required. The Service Directory service name.
+        /// The Service Directory service name.
         /// Format:
         /// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
         /// </summary>

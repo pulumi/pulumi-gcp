@@ -204,6 +204,8 @@ class RuntimeIamPolicy(pulumi.CustomResource):
                  runtime_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **Warning:** The parent resource has been deprecated: `notebooks.Runtime` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+
         Three different resources help you manage your IAM policy for Cloud AI Notebooks Runtime. Each of these resources serves a different use case:
 
         * `notebooks.RuntimeIamPolicy`: Authoritative. Sets the IAM policy for the runtime and replaces any existing policy already attached.
@@ -268,6 +270,7 @@ class RuntimeIamPolicy(pulumi.CustomResource):
         - 
 
         # IAM policy for Cloud AI Notebooks Runtime
+        > **Warning:** The parent resource has been deprecated: `notebooks.Runtime` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
 
         Three different resources help you manage your IAM policy for Cloud AI Notebooks Runtime. Each of these resources serves a different use case:
 
@@ -378,6 +381,8 @@ class RuntimeIamPolicy(pulumi.CustomResource):
                  args: RuntimeIamPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** The parent resource has been deprecated: `notebooks.Runtime` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+
         Three different resources help you manage your IAM policy for Cloud AI Notebooks Runtime. Each of these resources serves a different use case:
 
         * `notebooks.RuntimeIamPolicy`: Authoritative. Sets the IAM policy for the runtime and replaces any existing policy already attached.
@@ -442,6 +447,7 @@ class RuntimeIamPolicy(pulumi.CustomResource):
         - 
 
         # IAM policy for Cloud AI Notebooks Runtime
+        > **Warning:** The parent resource has been deprecated: `notebooks.Runtime` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
 
         Three different resources help you manage your IAM policy for Cloud AI Notebooks Runtime. Each of these resources serves a different use case:
 
