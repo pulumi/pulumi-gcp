@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingLocalSsdRec
 import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingNodeAffinityArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingOnInstanceStopActionArgs;
+import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -243,6 +244,21 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
     }
 
     /**
+     * The duration of the notice that the instance will receive before it is preempted.
+     * 
+     */
+    @Import(name="preemptionNoticeDuration")
+    private @Nullable Output<RegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs> preemptionNoticeDuration;
+
+    /**
+     * @return The duration of the notice that the instance will receive before it is preempted.
+     * 
+     */
+    public Optional<Output<RegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs>> preemptionNoticeDuration() {
+        return Optional.ofNullable(this.preemptionNoticeDuration);
+    }
+
+    /**
      * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
      * `preemptible` should be `true` and `automaticRestart` should be
      * `false`. For more info about
@@ -309,6 +325,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         this.onHostMaintenance = $.onHostMaintenance;
         this.onInstanceStopAction = $.onInstanceStopAction;
         this.preemptible = $.preemptible;
+        this.preemptionNoticeDuration = $.preemptionNoticeDuration;
         this.provisioningModel = $.provisioningModel;
         this.skipGuestOsShutdown = $.skipGuestOsShutdown;
         this.terminationTime = $.terminationTime;
@@ -654,6 +671,27 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
          */
         public Builder preemptible(Boolean preemptible) {
             return preemptible(Output.of(preemptible));
+        }
+
+        /**
+         * @param preemptionNoticeDuration The duration of the notice that the instance will receive before it is preempted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preemptionNoticeDuration(@Nullable Output<RegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs> preemptionNoticeDuration) {
+            $.preemptionNoticeDuration = preemptionNoticeDuration;
+            return this;
+        }
+
+        /**
+         * @param preemptionNoticeDuration The duration of the notice that the instance will receive before it is preempted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preemptionNoticeDuration(RegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs preemptionNoticeDuration) {
+            return preemptionNoticeDuration(Output.of(preemptionNoticeDuration));
         }
 
         /**

@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Dataform
     ///     var dataformTeamFolderBasic = new Gcp.Dataform.TeamFolder("dataform_team_folder_basic", new()
     ///     {
     ///         Region = "us-central1",
-    ///         DisplayName = "Basic TeamFolder-_95154",
+    ///         DisplayName = "Basic TeamFolder-_64336",
     ///     });
     /// 
     /// });

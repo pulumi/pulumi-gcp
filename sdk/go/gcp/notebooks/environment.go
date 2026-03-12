@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** `notebooks.Environment` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+//
 // A Cloud AI Platform Notebook environment.
 //
 // To get more information about Environment, see:

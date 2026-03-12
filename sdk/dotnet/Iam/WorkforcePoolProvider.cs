@@ -356,6 +356,130 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// ### Iam Workforce Pool Provider Extra Attributes Display Name Oauth2 Config Client Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pool = new Gcp.Iam.WorkforcePool("pool", new()
+    ///     {
+    ///         WorkforcePoolId = "example-pool",
+    ///         Parent = "organizations/123456789",
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Iam.WorkforcePoolProvider("example", new()
+    ///     {
+    ///         WorkforcePoolId = pool.WorkforcePoolId,
+    ///         Location = pool.Location,
+    ///         ProviderId = "example-prvdr",
+    ///         AttributeMapping = 
+    ///         {
+    ///             { "google.subject", "assertion.sub" },
+    ///         },
+    ///         Oidc = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcArgs
+    ///         {
+    ///             IssuerUri = "https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/",
+    ///             ClientId = "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+    ///             WebSsoConfig = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcWebSsoConfigArgs
+    ///             {
+    ///                 ResponseType = "CODE",
+    ///                 AssertionClaimsBehavior = "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+    ///             },
+    ///             ClientSecret = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretArgs
+    ///             {
+    ///                 Value = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretValueArgs
+    ///                 {
+    ///                     PlainText = "client-secret",
+    ///                 },
+    ///             },
+    ///         },
+    ///         ExtraAttributesOauth2Client = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientArgs
+    ///         {
+    ///             IssuerUri = "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+    ///             ClientId = "client-id",
+    ///             ClientSecret = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs
+    ///             {
+    ///                 Value = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs
+    ///                 {
+    ///                     PlainText = "client-secret",
+    ///                 },
+    ///             },
+    ///             AttributesType = "AZURE_AD_GROUPS_DISPLAY_NAME",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Iam Workforce Pool Provider Extra Attributes Display Name Oauth2 Config Client Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pool = new Gcp.Iam.WorkforcePool("pool", new()
+    ///     {
+    ///         WorkforcePoolId = "example-pool",
+    ///         Parent = "organizations/123456789",
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Iam.WorkforcePoolProvider("example", new()
+    ///     {
+    ///         WorkforcePoolId = pool.WorkforcePoolId,
+    ///         Location = pool.Location,
+    ///         ProviderId = "example-prvdr",
+    ///         AttributeMapping = 
+    ///         {
+    ///             { "google.subject", "assertion.sub" },
+    ///         },
+    ///         Oidc = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcArgs
+    ///         {
+    ///             IssuerUri = "https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/",
+    ///             ClientId = "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+    ///             ClientSecret = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretArgs
+    ///             {
+    ///                 Value = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretValueArgs
+    ///                 {
+    ///                     PlainText = "client-secret",
+    ///                 },
+    ///             },
+    ///             WebSsoConfig = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcWebSsoConfigArgs
+    ///             {
+    ///                 ResponseType = "CODE",
+    ///                 AssertionClaimsBehavior = "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+    ///             },
+    ///         },
+    ///         ExtraAttributesOauth2Client = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientArgs
+    ///         {
+    ///             IssuerUri = "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+    ///             ClientId = "client-id",
+    ///             ClientSecret = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs
+    ///             {
+    ///                 Value = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs
+    ///                 {
+    ///                     PlainText = "client-secret",
+    ///                 },
+    ///             },
+    ///             AttributesType = "AZURE_AD_GROUPS_DISPLAY_NAME",
+    ///             QueryParameters = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs
+    ///             {
+    ///                 Filter = "displayName:gcp",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Basic
     /// 
     /// ```csharp

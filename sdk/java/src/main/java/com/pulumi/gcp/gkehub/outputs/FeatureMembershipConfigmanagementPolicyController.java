@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureMembershipConfigmanagementPolicyController {
     /**
-     * @return Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+     * @return Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
      * 
      */
     private @Nullable String auditIntervalSeconds;
@@ -57,7 +57,7 @@ public final class FeatureMembershipConfigmanagementPolicyController {
 
     private FeatureMembershipConfigmanagementPolicyController() {}
     /**
-     * @return Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+     * @return Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
      * 
      */
     public Optional<String> auditIntervalSeconds() {

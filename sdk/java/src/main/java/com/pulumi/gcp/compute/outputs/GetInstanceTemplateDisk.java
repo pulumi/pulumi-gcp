@@ -157,6 +157,11 @@ public final class GetInstanceTemplateDisk {
      */
     private List<GetInstanceTemplateDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
     /**
+     * @return The selfLink or ID of the Storage Pool to create this disk in.
+     * 
+     */
+    private String storagePool;
+    /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
@@ -345,6 +350,13 @@ public final class GetInstanceTemplateDisk {
         return this.sourceSnapshotEncryptionKeys;
     }
     /**
+     * @return The selfLink or ID of the Storage Pool to create this disk in.
+     * 
+     */
+    public String storagePool() {
+        return this.storagePool;
+    }
+    /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
@@ -382,6 +394,7 @@ public final class GetInstanceTemplateDisk {
         private List<GetInstanceTemplateDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
         private String sourceSnapshot;
         private List<GetInstanceTemplateDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
+        private String storagePool;
         private String type;
         public Builder() {}
         public Builder(GetInstanceTemplateDisk defaults) {
@@ -407,6 +420,7 @@ public final class GetInstanceTemplateDisk {
     	      this.sourceImageEncryptionKeys = defaults.sourceImageEncryptionKeys;
     	      this.sourceSnapshot = defaults.sourceSnapshot;
     	      this.sourceSnapshotEncryptionKeys = defaults.sourceSnapshotEncryptionKeys;
+    	      this.storagePool = defaults.storagePool;
     	      this.type = defaults.type;
         }
 
@@ -594,6 +608,14 @@ public final class GetInstanceTemplateDisk {
             return sourceSnapshotEncryptionKeys(List.of(sourceSnapshotEncryptionKeys));
         }
         @CustomType.Setter
+        public Builder storagePool(String storagePool) {
+            if (storagePool == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "storagePool");
+            }
+            this.storagePool = storagePool;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "type");
@@ -624,6 +646,7 @@ public final class GetInstanceTemplateDisk {
             _resultValue.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
             _resultValue.sourceSnapshot = sourceSnapshot;
             _resultValue.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
+            _resultValue.storagePool = storagePool;
             _resultValue.type = type;
             return _resultValue;
         }

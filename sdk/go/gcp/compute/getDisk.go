@@ -88,6 +88,7 @@ type LookupDiskResult struct {
 	DiskId                    string                     `pulumi:"diskId"`
 	EffectiveLabels           map[string]string          `pulumi:"effectiveLabels"`
 	EnableConfidentialCompute bool                       `pulumi:"enableConfidentialCompute"`
+	EraseWindowsVssSignature  bool                       `pulumi:"eraseWindowsVssSignature"`
 	GuestOsFeatures           []GetDiskGuestOsFeature    `pulumi:"guestOsFeatures"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -238,6 +239,10 @@ func (o LookupDiskResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 
 func (o LookupDiskResultOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDiskResult) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
+func (o LookupDiskResultOutput) EraseWindowsVssSignature() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDiskResult) bool { return v.EraseWindowsVssSignature }).(pulumi.BoolOutput)
 }
 
 func (o LookupDiskResultOutput) GuestOsFeatures() GetDiskGuestOsFeatureArrayOutput {

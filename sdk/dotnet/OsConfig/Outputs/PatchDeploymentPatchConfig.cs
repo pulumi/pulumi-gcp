@@ -43,6 +43,15 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly string? RebootConfig;
         /// <summary>
+        /// Enables enhanced reporting for the patch job:
+        /// 1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
+        /// * The instance runs Container-Optimized OS (COS), which cannot be patched.
+        /// * The instance is part of a managed instance group (MIG), and patching MIG instances is disabled in the patch job's configuration (`MigInstancesAllowed` is false).
+        /// 2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
+        /// 3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
+        /// </summary>
+        public readonly bool? SkipUnpatchableVms;
+        /// <summary>
         /// Windows update settings. Use this setting to override the default Windows patch rules.
         /// Structure is documented below.
         /// </summary>
@@ -72,6 +81,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
 
             string? rebootConfig,
 
+            bool? skipUnpatchableVms,
+
             Outputs.PatchDeploymentPatchConfigWindowsUpdate? windowsUpdate,
 
             Outputs.PatchDeploymentPatchConfigYum? yum,
@@ -84,6 +95,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
             PostStep = postStep;
             PreStep = preStep;
             RebootConfig = rebootConfig;
+            SkipUnpatchableVms = skipUnpatchableVms;
             WindowsUpdate = windowsUpdate;
             Yum = yum;
             Zypper = zypper;

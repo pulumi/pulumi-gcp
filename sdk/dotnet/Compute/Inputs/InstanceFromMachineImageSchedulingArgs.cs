@@ -97,6 +97,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<bool>? Preemptible { get; set; }
 
         /// <summary>
+        /// The duration of the notice that the instance will receive before it is preempted.
+        /// </summary>
+        [Input("preemptionNoticeDuration")]
+        public Input<Inputs.InstanceFromMachineImageSchedulingPreemptionNoticeDurationArgs>? PreemptionNoticeDuration { get; set; }
+
+        /// <summary>
         /// Whether the instance is spot. If this is set as SPOT.
         /// </summary>
         [Input("provisioningModel")]

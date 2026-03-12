@@ -101,6 +101,111 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Target Vpn Gateway Tags
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var tagKey1 = new Gcp.Tags.TagKey("tag_key1", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         ShortName = "tagkey",
+    ///     });
+    /// 
+    ///     var tagValue1 = new Gcp.Tags.TagValue("tag_value1", new()
+    ///     {
+    ///         Parent = tagKey1.Id,
+    ///         ShortName = "tagvalue",
+    ///     });
+    /// 
+    ///     var network1 = new Gcp.Compute.Network("network1", new()
+    ///     {
+    ///         Name = "network-1",
+    ///     });
+    /// 
+    ///     var targetGatewayTags = new Gcp.Compute.VPNGateway("target_gateway_tags", new()
+    ///     {
+    ///         Name = "vpn-1",
+    ///         Network = network1.Id,
+    ///         Params = new Gcp.Compute.Inputs.VPNGatewayParamsArgs
+    ///         {
+    ///             ResourceManagerTags = Output.Tuple(tagKey1.Id, tagValue1.Id).Apply(values =&gt;
+    ///             {
+    ///                 var tagKey1Id = values.Item1;
+    ///                 var tagValue1Id = values.Item2;
+    ///                 return 
+    ///                 {
+    ///                     { tagKey1Id, tagValue1Id },
+    ///                 };
+    ///             }),
+    ///         },
+    ///     });
+    /// 
+    ///     var vpnStaticIp = new Gcp.Compute.Address("vpn_static_ip", new()
+    ///     {
+    ///         Name = "vpn-static-ip",
+    ///     });
+    /// 
+    ///     var frEsp = new Gcp.Compute.ForwardingRule("fr_esp", new()
+    ///     {
+    ///         Name = "fr-esp",
+    ///         IpProtocol = "ESP",
+    ///         IpAddress = vpnStaticIp.IPAddress,
+    ///         Target = targetGatewayTags.Id,
+    ///     });
+    /// 
+    ///     var frUdp500 = new Gcp.Compute.ForwardingRule("fr_udp500", new()
+    ///     {
+    ///         Name = "fr-udp500",
+    ///         IpProtocol = "UDP",
+    ///         PortRange = "500",
+    ///         IpAddress = vpnStaticIp.IPAddress,
+    ///         Target = targetGatewayTags.Id,
+    ///     });
+    /// 
+    ///     var frUdp4500 = new Gcp.Compute.ForwardingRule("fr_udp4500", new()
+    ///     {
+    ///         Name = "fr-udp4500",
+    ///         IpProtocol = "UDP",
+    ///         PortRange = "4500",
+    ///         IpAddress = vpnStaticIp.IPAddress,
+    ///         Target = targetGatewayTags.Id,
+    ///     });
+    /// 
+    ///     var tunnel1 = new Gcp.Compute.VPNTunnel("tunnel1", new()
+    ///     {
+    ///         Name = "tunnel1",
+    ///         PeerIp = "15.0.0.120",
+    ///         SharedSecret = "a secret message",
+    ///         TargetVpnGateway = targetGatewayTags.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             frEsp,
+    ///             frUdp500,
+    ///             frUdp4500,
+    ///         },
+    ///     });
+    /// 
+    ///     var route1 = new Gcp.Compute.Route("route1", new()
+    ///     {
+    ///         Name = "route1",
+    ///         Network = network1.Name,
+    ///         DestRange = "15.0.0.0/24",
+    ///         Priority = 1000,
+    ///         NextHopVpnTunnel = tunnel1.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -160,7 +265,6 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Additional params passed with the request, but not persisted as part of resource payload
         /// Structure is documented below.
         /// </summary>
@@ -257,7 +361,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Additional params passed with the request, but not persisted as part of resource payload
         /// Structure is documented below.
         /// </summary>
@@ -322,7 +425,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Additional params passed with the request, but not persisted as part of resource payload
         /// Structure is documented below.
         /// </summary>

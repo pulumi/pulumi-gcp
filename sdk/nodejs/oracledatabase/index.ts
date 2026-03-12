@@ -75,6 +75,16 @@ export const getDbServers: typeof import("./getDbServers").getDbServers = null a
 export const getDbServersOutput: typeof import("./getDbServers").getDbServersOutput = null as any;
 utilities.lazyLoad(exports, ["getDbServers","getDbServersOutput"], () => require("./getDbServers"));
 
+export { GetOdbNetworkArgs, GetOdbNetworkResult, GetOdbNetworkOutputArgs } from "./getOdbNetwork";
+export const getOdbNetwork: typeof import("./getOdbNetwork").getOdbNetwork = null as any;
+export const getOdbNetworkOutput: typeof import("./getOdbNetwork").getOdbNetworkOutput = null as any;
+utilities.lazyLoad(exports, ["getOdbNetwork","getOdbNetworkOutput"], () => require("./getOdbNetwork"));
+
+export { GetOdbSubnetArgs, GetOdbSubnetResult, GetOdbSubnetOutputArgs } from "./getOdbSubnet";
+export const getOdbSubnet: typeof import("./getOdbSubnet").getOdbSubnet = null as any;
+export const getOdbSubnetOutput: typeof import("./getOdbSubnet").getOdbSubnetOutput = null as any;
+utilities.lazyLoad(exports, ["getOdbSubnet","getOdbSubnetOutput"], () => require("./getOdbSubnet"));
+
 export { OdbNetworkArgs, OdbNetworkState } from "./odbNetwork";
 export type OdbNetwork = import("./odbNetwork").OdbNetwork;
 export const OdbNetwork: typeof import("./odbNetwork").OdbNetwork = null as any;

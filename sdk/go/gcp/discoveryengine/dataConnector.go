@@ -118,6 +118,99 @@ import (
 //	}
 //
 // ```
+// ### Discoveryengine Dataconnector Jira With Actions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := discoveryengine.NewDataConnector(ctx, "jira-with-actions", &discoveryengine.DataConnectorArgs{
+//				Location:              pulumi.String("global"),
+//				CollectionId:          pulumi.String("collection-id"),
+//				CollectionDisplayName: pulumi.String("Jira Federated"),
+//				DataSource:            pulumi.String("jira"),
+//				DataSourceVersion:     pulumi.Int(3),
+//				Params: pulumi.StringMap{
+//					"instance_uri":  pulumi.String("https://example.atlassian.net"),
+//					"instance_id":   pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
+//					"client_id":     pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
+//					"client_secret": pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
+//					"refresh_token": pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
+//					"auth_type":     pulumi.String("OAUTH"),
+//				},
+//				RefreshInterval: pulumi.String("86400s"),
+//				Entities: discoveryengine.DataConnectorEntityArray{
+//					&discoveryengine.DataConnectorEntityArgs{
+//						EntityName: pulumi.String("project"),
+//					},
+//					&discoveryengine.DataConnectorEntityArgs{
+//						EntityName: pulumi.String("issue"),
+//					},
+//					&discoveryengine.DataConnectorEntityArgs{
+//						EntityName: pulumi.String("comment"),
+//					},
+//					&discoveryengine.DataConnectorEntityArgs{
+//						EntityName: pulumi.String("attachment"),
+//					},
+//				},
+//				StaticIpEnabled: pulumi.Bool(false),
+//				DestinationConfigs: discoveryengine.DataConnectorDestinationConfigArray{
+//					&discoveryengine.DataConnectorDestinationConfigArgs{
+//						Key: pulumi.String("url"),
+//						Destinations: discoveryengine.DataConnectorDestinationConfigDestinationArray{
+//							&discoveryengine.DataConnectorDestinationConfigDestinationArgs{
+//								Host: pulumi.String("https://example.atlassian.net"),
+//							},
+//						},
+//					},
+//				},
+//				ConnectorModes: pulumi.StringArray{
+//					pulumi.String("FEDERATED"),
+//					pulumi.String("ACTIONS"),
+//				},
+//				SyncMode:                pulumi.String("PERIODIC"),
+//				AutoRunDisabled:         pulumi.Bool(true),
+//				IncrementalSyncDisabled: pulumi.Bool(true),
+//				ActionConfig: &discoveryengine.DataConnectorActionConfigArgs{
+//					ActionParams: pulumi.StringMap{
+//						"instance_uri":  pulumi.String("https://example.atlassian.net"),
+//						"instance_id":   pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
+//						"client_id":     pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
+//						"client_secret": pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
+//						"auth_type":     pulumi.String("OAUTH"),
+//					},
+//					CreateBapConnection: pulumi.Bool(true),
+//				},
+//				BapConfig: &discoveryengine.DataConnectorBapConfigArgs{
+//					SupportedConnectorModes: pulumi.StringArray{
+//						pulumi.String("ACTIONS"),
+//					},
+//					EnabledActions: pulumi.StringArray{
+//						pulumi.String("create_issue"),
+//						pulumi.String("update_issue"),
+//						pulumi.String("change_issue_status"),
+//						pulumi.String("create_comment"),
+//						pulumi.String("update_comment"),
+//						pulumi.String("upload_attachment"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -137,6 +230,10 @@ import (
 type DataConnector struct {
 	pulumi.CustomResourceState
 
+	// Action configuration for the data connector. Configures action
+	// capabilities for connectors that support the ACTIONS connector mode.
+	// Structure is documented below.
+	ActionConfig DataConnectorActionConfigPtrOutput `pulumi:"actionConfig"`
 	// State of the action connector. This reflects whether the action connector
 	// is initializing, active or has encountered errors. The possible value can be:
 	// 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
@@ -144,6 +241,11 @@ type DataConnector struct {
 	ActionState pulumi.StringOutput `pulumi:"actionState"`
 	// Indicates whether full syncs are paused for this connector
 	AutoRunDisabled pulumi.BoolPtrOutput `pulumi:"autoRunDisabled"`
+	// BAP (Business Application Platform) configuration for the data
+	// connector. Controls which actions are enabled for connectors
+	// using the ACTIONS connector mode.
+	// Structure is documented below.
+	BapConfig DataConnectorBapConfigPtrOutput `pulumi:"bapConfig"`
 	// User actions that must be completed before the connector can start syncing data.
 	// The possible values can be: 'ALLOWLIST_STATIC_IP', 'ALLOWLIST_IN_SERVICE_ATTACHMENT'.
 	BlockingReasons pulumi.StringArrayOutput `pulumi:"blockingReasons"`
@@ -175,6 +277,12 @@ type DataConnector struct {
 	// The name of the data source.
 	// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
 	DataSource pulumi.StringOutput `pulumi:"dataSource"`
+	// The version of the data source. For example, `3` for Jira v3.
+	DataSourceVersion pulumi.IntOutput `pulumi:"dataSourceVersion"`
+	// Destination connector configurations for the data connector,
+	// used to configure where data is served.
+	// Structure is documented below.
+	DestinationConfigs DataConnectorDestinationConfigArrayOutput `pulumi:"destinationConfigs"`
 	// List of entities from the connected data source to ingest.
 	// Structure is documented below.
 	Entities DataConnectorEntityArrayOutput `pulumi:"entities"`
@@ -292,6 +400,10 @@ func GetDataConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DataConnector resources.
 type dataConnectorState struct {
+	// Action configuration for the data connector. Configures action
+	// capabilities for connectors that support the ACTIONS connector mode.
+	// Structure is documented below.
+	ActionConfig *DataConnectorActionConfig `pulumi:"actionConfig"`
 	// State of the action connector. This reflects whether the action connector
 	// is initializing, active or has encountered errors. The possible value can be:
 	// 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
@@ -299,6 +411,11 @@ type dataConnectorState struct {
 	ActionState *string `pulumi:"actionState"`
 	// Indicates whether full syncs are paused for this connector
 	AutoRunDisabled *bool `pulumi:"autoRunDisabled"`
+	// BAP (Business Application Platform) configuration for the data
+	// connector. Controls which actions are enabled for connectors
+	// using the ACTIONS connector mode.
+	// Structure is documented below.
+	BapConfig *DataConnectorBapConfig `pulumi:"bapConfig"`
 	// User actions that must be completed before the connector can start syncing data.
 	// The possible values can be: 'ALLOWLIST_STATIC_IP', 'ALLOWLIST_IN_SERVICE_ATTACHMENT'.
 	BlockingReasons []string `pulumi:"blockingReasons"`
@@ -330,6 +447,12 @@ type dataConnectorState struct {
 	// The name of the data source.
 	// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
 	DataSource *string `pulumi:"dataSource"`
+	// The version of the data source. For example, `3` for Jira v3.
+	DataSourceVersion *int `pulumi:"dataSourceVersion"`
+	// Destination connector configurations for the data connector,
+	// used to configure where data is served.
+	// Structure is documented below.
+	DestinationConfigs []DataConnectorDestinationConfig `pulumi:"destinationConfigs"`
 	// List of entities from the connected data source to ingest.
 	// Structure is documented below.
 	Entities []DataConnectorEntity `pulumi:"entities"`
@@ -403,6 +526,10 @@ type dataConnectorState struct {
 }
 
 type DataConnectorState struct {
+	// Action configuration for the data connector. Configures action
+	// capabilities for connectors that support the ACTIONS connector mode.
+	// Structure is documented below.
+	ActionConfig DataConnectorActionConfigPtrInput
 	// State of the action connector. This reflects whether the action connector
 	// is initializing, active or has encountered errors. The possible value can be:
 	// 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
@@ -410,6 +537,11 @@ type DataConnectorState struct {
 	ActionState pulumi.StringPtrInput
 	// Indicates whether full syncs are paused for this connector
 	AutoRunDisabled pulumi.BoolPtrInput
+	// BAP (Business Application Platform) configuration for the data
+	// connector. Controls which actions are enabled for connectors
+	// using the ACTIONS connector mode.
+	// Structure is documented below.
+	BapConfig DataConnectorBapConfigPtrInput
 	// User actions that must be completed before the connector can start syncing data.
 	// The possible values can be: 'ALLOWLIST_STATIC_IP', 'ALLOWLIST_IN_SERVICE_ATTACHMENT'.
 	BlockingReasons pulumi.StringArrayInput
@@ -441,6 +573,12 @@ type DataConnectorState struct {
 	// The name of the data source.
 	// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
 	DataSource pulumi.StringPtrInput
+	// The version of the data source. For example, `3` for Jira v3.
+	DataSourceVersion pulumi.IntPtrInput
+	// Destination connector configurations for the data connector,
+	// used to configure where data is served.
+	// Structure is documented below.
+	DestinationConfigs DataConnectorDestinationConfigArrayInput
 	// List of entities from the connected data source to ingest.
 	// Structure is documented below.
 	Entities DataConnectorEntityArrayInput
@@ -518,8 +656,17 @@ func (DataConnectorState) ElementType() reflect.Type {
 }
 
 type dataConnectorArgs struct {
+	// Action configuration for the data connector. Configures action
+	// capabilities for connectors that support the ACTIONS connector mode.
+	// Structure is documented below.
+	ActionConfig *DataConnectorActionConfig `pulumi:"actionConfig"`
 	// Indicates whether full syncs are paused for this connector
 	AutoRunDisabled *bool `pulumi:"autoRunDisabled"`
+	// BAP (Business Application Platform) configuration for the data
+	// connector. Controls which actions are enabled for connectors
+	// using the ACTIONS connector mode.
+	// Structure is documented below.
+	BapConfig *DataConnectorBapConfig `pulumi:"bapConfig"`
 	// The display name of the Collection.
 	// Should be human readable, used to display collections in the Console
 	// Dashboard. UTF-8 encoded string with limit of 1024 characters.
@@ -539,6 +686,12 @@ type dataConnectorArgs struct {
 	// The name of the data source.
 	// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
 	DataSource string `pulumi:"dataSource"`
+	// The version of the data source. For example, `3` for Jira v3.
+	DataSourceVersion *int `pulumi:"dataSourceVersion"`
+	// Destination connector configurations for the data connector,
+	// used to configure where data is served.
+	// Structure is documented below.
+	DestinationConfigs []DataConnectorDestinationConfig `pulumi:"destinationConfigs"`
 	// List of entities from the connected data source to ingest.
 	// Structure is documented below.
 	Entities []DataConnectorEntity `pulumi:"entities"`
@@ -582,8 +735,17 @@ type dataConnectorArgs struct {
 
 // The set of arguments for constructing a DataConnector resource.
 type DataConnectorArgs struct {
+	// Action configuration for the data connector. Configures action
+	// capabilities for connectors that support the ACTIONS connector mode.
+	// Structure is documented below.
+	ActionConfig DataConnectorActionConfigPtrInput
 	// Indicates whether full syncs are paused for this connector
 	AutoRunDisabled pulumi.BoolPtrInput
+	// BAP (Business Application Platform) configuration for the data
+	// connector. Controls which actions are enabled for connectors
+	// using the ACTIONS connector mode.
+	// Structure is documented below.
+	BapConfig DataConnectorBapConfigPtrInput
 	// The display name of the Collection.
 	// Should be human readable, used to display collections in the Console
 	// Dashboard. UTF-8 encoded string with limit of 1024 characters.
@@ -603,6 +765,12 @@ type DataConnectorArgs struct {
 	// The name of the data source.
 	// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
 	DataSource pulumi.StringInput
+	// The version of the data source. For example, `3` for Jira v3.
+	DataSourceVersion pulumi.IntPtrInput
+	// Destination connector configurations for the data connector,
+	// used to configure where data is served.
+	// Structure is documented below.
+	DestinationConfigs DataConnectorDestinationConfigArrayInput
 	// List of entities from the connected data source to ingest.
 	// Structure is documented below.
 	Entities DataConnectorEntityArrayInput
@@ -731,6 +899,13 @@ func (o DataConnectorOutput) ToDataConnectorOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Action configuration for the data connector. Configures action
+// capabilities for connectors that support the ACTIONS connector mode.
+// Structure is documented below.
+func (o DataConnectorOutput) ActionConfig() DataConnectorActionConfigPtrOutput {
+	return o.ApplyT(func(v *DataConnector) DataConnectorActionConfigPtrOutput { return v.ActionConfig }).(DataConnectorActionConfigPtrOutput)
+}
+
 // State of the action connector. This reflects whether the action connector
 // is initializing, active or has encountered errors. The possible value can be:
 // 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
@@ -742,6 +917,14 @@ func (o DataConnectorOutput) ActionState() pulumi.StringOutput {
 // Indicates whether full syncs are paused for this connector
 func (o DataConnectorOutput) AutoRunDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DataConnector) pulumi.BoolPtrOutput { return v.AutoRunDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// BAP (Business Application Platform) configuration for the data
+// connector. Controls which actions are enabled for connectors
+// using the ACTIONS connector mode.
+// Structure is documented below.
+func (o DataConnectorOutput) BapConfig() DataConnectorBapConfigPtrOutput {
+	return o.ApplyT(func(v *DataConnector) DataConnectorBapConfigPtrOutput { return v.BapConfig }).(DataConnectorBapConfigPtrOutput)
 }
 
 // User actions that must be completed before the connector can start syncing data.
@@ -794,6 +977,18 @@ func (o DataConnectorOutput) CreateTime() pulumi.StringOutput {
 // Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
 func (o DataConnectorOutput) DataSource() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataConnector) pulumi.StringOutput { return v.DataSource }).(pulumi.StringOutput)
+}
+
+// The version of the data source. For example, `3` for Jira v3.
+func (o DataConnectorOutput) DataSourceVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v *DataConnector) pulumi.IntOutput { return v.DataSourceVersion }).(pulumi.IntOutput)
+}
+
+// Destination connector configurations for the data connector,
+// used to configure where data is served.
+// Structure is documented below.
+func (o DataConnectorOutput) DestinationConfigs() DataConnectorDestinationConfigArrayOutput {
+	return o.ApplyT(func(v *DataConnector) DataConnectorDestinationConfigArrayOutput { return v.DestinationConfigs }).(DataConnectorDestinationConfigArrayOutput)
 }
 
 // List of entities from the connected data source to ingest.

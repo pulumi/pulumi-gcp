@@ -209,6 +209,11 @@ export class Disk extends pulumi.CustomResource {
      */
     declare public readonly enableConfidentialCompute: pulumi.Output<boolean>;
     /**
+     * (Optional, Beta)
+     * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+     */
+    declare public readonly eraseWindowsVssSignature: pulumi.Output<boolean | undefined>;
+    /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.
      * Structure is documented below.
@@ -466,6 +471,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["diskId"] = state?.diskId;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["enableConfidentialCompute"] = state?.enableConfidentialCompute;
+            resourceInputs["eraseWindowsVssSignature"] = state?.eraseWindowsVssSignature;
             resourceInputs["guestOsFeatures"] = state?.guestOsFeatures;
             resourceInputs["image"] = state?.image;
             resourceInputs["interface"] = state?.interface;
@@ -509,6 +515,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["diskEncryptionKey"] = args?.diskEncryptionKey;
             resourceInputs["enableConfidentialCompute"] = args?.enableConfidentialCompute;
+            resourceInputs["eraseWindowsVssSignature"] = args?.eraseWindowsVssSignature;
             resourceInputs["guestOsFeatures"] = args?.guestOsFeatures;
             resourceInputs["image"] = args?.image;
             resourceInputs["interface"] = args?.interface;
@@ -620,6 +627,11 @@ export interface DiskState {
      * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      */
     enableConfidentialCompute?: pulumi.Input<boolean>;
+    /**
+     * (Optional, Beta)
+     * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+     */
+    eraseWindowsVssSignature?: pulumi.Input<boolean>;
     /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.
@@ -910,6 +922,11 @@ export interface DiskArgs {
      * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      */
     enableConfidentialCompute?: pulumi.Input<boolean>;
+    /**
+     * (Optional, Beta)
+     * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+     */
+    eraseWindowsVssSignature?: pulumi.Input<boolean>;
     /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.

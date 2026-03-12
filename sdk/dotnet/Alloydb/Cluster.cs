@@ -521,6 +521,13 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> DatabaseVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("dataplexConfig")]
+        public Output<Outputs.ClusterDataplexConfig> DataplexConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Policy to determine if the cluster should be deleted forcefully.
         /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
         /// Deleting a Secondary cluster with a secondary instance REQUIRES setting DeletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -827,6 +834,13 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? DatabaseVersion { get; set; }
 
         /// <summary>
+        /// Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dataplexConfig")]
+        public Input<Inputs.ClusterDataplexConfigArgs>? DataplexConfig { get; set; }
+
+        /// <summary>
         /// Policy to determine if the cluster should be deleted forcefully.
         /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
         /// Deleting a Secondary cluster with a secondary instance REQUIRES setting DeletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -1066,6 +1080,13 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
+
+        /// <summary>
+        /// Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dataplexConfig")]
+        public Input<Inputs.ClusterDataplexConfigGetArgs>? DataplexConfig { get; set; }
 
         /// <summary>
         /// Policy to determine if the cluster should be deleted forcefully.

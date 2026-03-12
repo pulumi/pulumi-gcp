@@ -67,6 +67,31 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Enables
+     * [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+     * feature. When this field is set to `true`, Automatic Upgrade is enabled for
+     * `MYSQL_8_0` based minor versions. The `databaseVersion` must be
+     * `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can&#39;t be unset or
+     * changed if set to `true`.
+     * 
+     */
+    @Import(name="autoUpgradeEnabled")
+    private @Nullable Output<Boolean> autoUpgradeEnabled;
+
+    /**
+     * @return Enables
+     * [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+     * feature. When this field is set to `true`, Automatic Upgrade is enabled for
+     * `MYSQL_8_0` based minor versions. The `databaseVersion` must be
+     * `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can&#39;t be unset or
+     * changed if set to `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> autoUpgradeEnabled() {
+        return Optional.ofNullable(this.autoUpgradeEnabled);
+    }
+
+    /**
      * The availability type of the Cloud SQL
      * instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
      * `settings.backup_configuration.enabled` is set to `true`.
@@ -145,6 +170,21 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<String>> connectorEnforcement() {
         return Optional.ofNullable(this.connectorEnforcement);
+    }
+
+    /**
+     * Configures ExecuteSql API&#39;s access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
+     * 
+     */
+    @Import(name="dataApiAccess")
+    private @Nullable Output<String> dataApiAccess;
+
+    /**
+     * @return Configures ExecuteSql API&#39;s access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
+     * 
+     */
+    public Optional<Output<String>> dataApiAccess() {
+        return Optional.ofNullable(this.dataApiAccess);
     }
 
     /**
@@ -539,11 +579,13 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.activationPolicy = $.activationPolicy;
         this.activeDirectoryConfig = $.activeDirectoryConfig;
         this.advancedMachineFeatures = $.advancedMachineFeatures;
+        this.autoUpgradeEnabled = $.autoUpgradeEnabled;
         this.availabilityType = $.availabilityType;
         this.backupConfiguration = $.backupConfiguration;
         this.collation = $.collation;
         this.connectionPoolConfigs = $.connectionPoolConfigs;
         this.connectorEnforcement = $.connectorEnforcement;
+        this.dataApiAccess = $.dataApiAccess;
         this.dataCacheConfig = $.dataCacheConfig;
         this.dataDiskProvisionedIops = $.dataDiskProvisionedIops;
         this.dataDiskProvisionedThroughput = $.dataDiskProvisionedThroughput;
@@ -631,6 +673,37 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
 
         public Builder advancedMachineFeatures(DatabaseInstanceSettingsAdvancedMachineFeaturesArgs advancedMachineFeatures) {
             return advancedMachineFeatures(Output.of(advancedMachineFeatures));
+        }
+
+        /**
+         * @param autoUpgradeEnabled Enables
+         * [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+         * feature. When this field is set to `true`, Automatic Upgrade is enabled for
+         * `MYSQL_8_0` based minor versions. The `databaseVersion` must be
+         * `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can&#39;t be unset or
+         * changed if set to `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgradeEnabled(@Nullable Output<Boolean> autoUpgradeEnabled) {
+            $.autoUpgradeEnabled = autoUpgradeEnabled;
+            return this;
+        }
+
+        /**
+         * @param autoUpgradeEnabled Enables
+         * [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+         * feature. When this field is set to `true`, Automatic Upgrade is enabled for
+         * `MYSQL_8_0` based minor versions. The `databaseVersion` must be
+         * `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can&#39;t be unset or
+         * changed if set to `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgradeEnabled(Boolean autoUpgradeEnabled) {
+            return autoUpgradeEnabled(Output.of(autoUpgradeEnabled));
         }
 
         /**
@@ -748,6 +821,27 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder connectorEnforcement(String connectorEnforcement) {
             return connectorEnforcement(Output.of(connectorEnforcement));
+        }
+
+        /**
+         * @param dataApiAccess Configures ExecuteSql API&#39;s access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataApiAccess(@Nullable Output<String> dataApiAccess) {
+            $.dataApiAccess = dataApiAccess;
+            return this;
+        }
+
+        /**
+         * @param dataApiAccess Configures ExecuteSql API&#39;s access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataApiAccess(String dataApiAccess) {
+            return dataApiAccess(Output.of(dataApiAccess));
         }
 
         /**

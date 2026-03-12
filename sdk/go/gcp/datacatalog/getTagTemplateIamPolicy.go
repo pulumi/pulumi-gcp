@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves the current IAM policy data for tagtemplate
+// > **Warning:** The parent resource has been deprecated: `datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+//
+// # Retrieves the current IAM policy data for tagtemplate
 //
 // ## Example Usage
 //

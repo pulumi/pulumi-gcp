@@ -137,6 +137,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.InstanceTemplateDiskSourceSnapshotEncryptionKey? SourceSnapshotEncryptionKey;
         /// <summary>
+        /// The URL of the storage pool in which the new disk is created.
+        /// For example:
+        /// * `https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+        /// * `/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+        /// </summary>
+        public readonly string? StoragePool;
+        /// <summary>
         /// The type of GCE disk, can be either `"SCRATCH"` or
         /// `"PERSISTENT"`.
         /// </summary>
@@ -186,6 +193,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             Outputs.InstanceTemplateDiskSourceSnapshotEncryptionKey? sourceSnapshotEncryptionKey,
 
+            string? storagePool,
+
             string? type)
         {
             Architecture = architecture;
@@ -209,6 +218,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             SourceImageEncryptionKey = sourceImageEncryptionKey;
             SourceSnapshot = sourceSnapshot;
             SourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
+            StoragePool = storagePool;
             Type = type;
         }
     }

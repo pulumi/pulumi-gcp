@@ -65,6 +65,46 @@ import (
 //	}
 //
 // ```
+// ### Biglake Iceberg Catalog Primary Location
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bucketForMyIcebergCatalog, err := storage.NewBucket(ctx, "bucket_for_my_iceberg_catalog", &storage.BucketArgs{
+//				Name:                     pulumi.String("my_iceberg_catalog"),
+//				Location:                 pulumi.String("us-central1"),
+//				ForceDestroy:             pulumi.Bool(true),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = biglake.NewIcebergCatalog(ctx, "my_iceberg_catalog", &biglake.IcebergCatalogArgs{
+//				Name:            bucketForMyIcebergCatalog.Name,
+//				CatalogType:     pulumi.String("CATALOG_TYPE_GCS_BUCKET"),
+//				CredentialMode:  pulumi.String("CREDENTIAL_MODE_VENDED_CREDENTIALS"),
+//				PrimaryLocation: pulumi.String("us-central1"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				bucketForMyIcebergCatalog,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -101,6 +141,10 @@ type IcebergCatalog struct {
 	// exact same value of the GCS bucket's name. For example, for a bucket:
 	// gs://bucket-name, the catalog name will be exactly "bucket-name".
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The primary location for mirroring the remote catalog metadata. It must be
+	// a BigLake-supported location, and it should be proximate to the remote
+	// catalog's location.
+	PrimaryLocation pulumi.StringPtrOutput `pulumi:"primaryLocation"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -163,6 +207,10 @@ type icebergCatalogState struct {
 	// exact same value of the GCS bucket's name. For example, for a bucket:
 	// gs://bucket-name, the catalog name will be exactly "bucket-name".
 	Name *string `pulumi:"name"`
+	// The primary location for mirroring the remote catalog metadata. It must be
+	// a BigLake-supported location, and it should be proximate to the remote
+	// catalog's location.
+	PrimaryLocation *string `pulumi:"primaryLocation"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -193,6 +241,10 @@ type IcebergCatalogState struct {
 	// exact same value of the GCS bucket's name. For example, for a bucket:
 	// gs://bucket-name, the catalog name will be exactly "bucket-name".
 	Name pulumi.StringPtrInput
+	// The primary location for mirroring the remote catalog metadata. It must be
+	// a BigLake-supported location, and it should be proximate to the remote
+	// catalog's location.
+	PrimaryLocation pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -221,6 +273,10 @@ type icebergCatalogArgs struct {
 	// exact same value of the GCS bucket's name. For example, for a bucket:
 	// gs://bucket-name, the catalog name will be exactly "bucket-name".
 	Name *string `pulumi:"name"`
+	// The primary location for mirroring the remote catalog metadata. It must be
+	// a BigLake-supported location, and it should be proximate to the remote
+	// catalog's location.
+	PrimaryLocation *string `pulumi:"primaryLocation"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -239,6 +295,10 @@ type IcebergCatalogArgs struct {
 	// exact same value of the GCS bucket's name. For example, for a bucket:
 	// gs://bucket-name, the catalog name will be exactly "bucket-name".
 	Name pulumi.StringPtrInput
+	// The primary location for mirroring the remote catalog metadata. It must be
+	// a BigLake-supported location, and it should be proximate to the remote
+	// catalog's location.
+	PrimaryLocation pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -364,6 +424,13 @@ func (o IcebergCatalogOutput) DefaultLocation() pulumi.StringOutput {
 // gs://bucket-name, the catalog name will be exactly "bucket-name".
 func (o IcebergCatalogOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IcebergCatalog) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The primary location for mirroring the remote catalog metadata. It must be
+// a BigLake-supported location, and it should be proximate to the remote
+// catalog's location.
+func (o IcebergCatalogOutput) PrimaryLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalog) pulumi.StringPtrOutput { return v.PrimaryLocation }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

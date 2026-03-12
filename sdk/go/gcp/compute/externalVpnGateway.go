@@ -211,7 +211,6 @@ type ExternalVpnGateway struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params ExternalVpnGatewayParamsPtrOutput `pulumi:"params"`
@@ -285,7 +284,6 @@ type externalVpnGatewayState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params *ExternalVpnGatewayParams `pulumi:"params"`
@@ -325,7 +323,6 @@ type ExternalVpnGatewayState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params ExternalVpnGatewayParamsPtrInput
@@ -364,7 +361,6 @@ type externalVpnGatewayArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params *ExternalVpnGatewayParams `pulumi:"params"`
@@ -395,7 +391,6 @@ type ExternalVpnGatewayArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params ExternalVpnGatewayParamsPtrInput
@@ -534,7 +529,6 @@ func (o ExternalVpnGatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // Additional params passed with the request, but not persisted as part of resource payload
 // Structure is documented below.
 func (o ExternalVpnGatewayOutput) Params() ExternalVpnGatewayParamsPtrOutput {

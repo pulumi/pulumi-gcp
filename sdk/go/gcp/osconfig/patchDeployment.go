@@ -254,6 +254,7 @@ import (
 //				},
 //				PatchConfig: &osconfig.PatchDeploymentPatchConfigArgs{
 //					MigInstancesAllowed: pulumi.Bool(true),
+//					SkipUnpatchableVms:  pulumi.Bool(true),
 //					RebootConfig:        pulumi.String("ALWAYS"),
 //					Apt: &osconfig.PatchDeploymentPatchConfigAptArgs{
 //						Type: pulumi.String("DIST"),

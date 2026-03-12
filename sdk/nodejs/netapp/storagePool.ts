@@ -197,6 +197,15 @@ export class StoragePool extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
+     * Mode of the storage pool.
+     * The operational mode of the storage pool. ONTAP mode enables operations
+     * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+     * If not specified during creation, the mode defaults to DEFAULT.
+     * Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+     */
+    declare public readonly mode: pulumi.Output<string>;
+    /**
      * The resource name of the storage pool. Needs to be unique per location/region.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -225,6 +234,13 @@ export class StoragePool extends pulumi.CustomResource {
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      */
     declare public readonly replicaZone: pulumi.Output<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * The effective scale tier of the storage pool. If `scaleTier` is not
+     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     */
+    declare public readonly scaleTier: pulumi.Output<string>;
     /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
@@ -289,12 +305,14 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["labels"] = state?.labels;
             resourceInputs["ldapEnabled"] = state?.ldapEnabled;
             resourceInputs["location"] = state?.location;
+            resourceInputs["mode"] = state?.mode;
             resourceInputs["name"] = state?.name;
             resourceInputs["network"] = state?.network;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["qosType"] = state?.qosType;
             resourceInputs["replicaZone"] = state?.replicaZone;
+            resourceInputs["scaleTier"] = state?.scaleTier;
             resourceInputs["serviceLevel"] = state?.serviceLevel;
             resourceInputs["totalIops"] = state?.totalIops;
             resourceInputs["totalThroughputMibps"] = state?.totalThroughputMibps;
@@ -327,11 +345,13 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["ldapEnabled"] = args?.ldapEnabled;
             resourceInputs["location"] = args?.location;
+            resourceInputs["mode"] = args?.mode;
             resourceInputs["name"] = args?.name;
             resourceInputs["network"] = args?.network;
             resourceInputs["project"] = args?.project;
             resourceInputs["qosType"] = args?.qosType;
             resourceInputs["replicaZone"] = args?.replicaZone;
+            resourceInputs["scaleTier"] = args?.scaleTier;
             resourceInputs["serviceLevel"] = args?.serviceLevel;
             resourceInputs["totalIops"] = args?.totalIops;
             resourceInputs["totalThroughputMibps"] = args?.totalThroughputMibps;
@@ -431,6 +451,15 @@ export interface StoragePoolState {
      */
     location?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
+     * Mode of the storage pool.
+     * The operational mode of the storage pool. ONTAP mode enables operations
+     * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+     * If not specified during creation, the mode defaults to DEFAULT.
+     * Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+     */
+    mode?: pulumi.Input<string>;
+    /**
      * The resource name of the storage pool. Needs to be unique per location/region.
      */
     name?: pulumi.Input<string>;
@@ -459,6 +488,13 @@ export interface StoragePoolState {
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      */
     replicaZone?: pulumi.Input<string>;
+    /**
+     * (Optional, Beta)
+     * The effective scale tier of the storage pool. If `scaleTier` is not
+     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     */
+    scaleTier?: pulumi.Input<string>;
     /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
@@ -553,6 +589,15 @@ export interface StoragePoolArgs {
      */
     location: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
+     * Mode of the storage pool.
+     * The operational mode of the storage pool. ONTAP mode enables operations
+     * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+     * If not specified during creation, the mode defaults to DEFAULT.
+     * Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+     */
+    mode?: pulumi.Input<string>;
+    /**
      * The resource name of the storage pool. Needs to be unique per location/region.
      */
     name?: pulumi.Input<string>;
@@ -576,6 +621,13 @@ export interface StoragePoolArgs {
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      */
     replicaZone?: pulumi.Input<string>;
+    /**
+     * (Optional, Beta)
+     * The effective scale tier of the storage pool. If `scaleTier` is not
+     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     */
+    scaleTier?: pulumi.Input<string>;
     /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.

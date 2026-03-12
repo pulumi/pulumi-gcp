@@ -55,6 +55,16 @@ public final class PatchDeploymentPatchConfig {
      */
     private @Nullable String rebootConfig;
     /**
+     * @return Enables enhanced reporting for the patch job:
+     * 1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
+     * * The instance runs Container-Optimized OS (COS), which cannot be patched.
+     * * The instance is part of a managed instance group (MIG), and patching MIG instances is disabled in the patch job&#39;s configuration (`migInstancesAllowed` is false).
+     * 2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
+     * 3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
+     * 
+     */
+    private @Nullable Boolean skipUnpatchableVms;
+    /**
      * @return Windows update settings. Use this setting to override the default Windows patch rules.
      * Structure is documented below.
      * 
@@ -122,6 +132,18 @@ public final class PatchDeploymentPatchConfig {
         return Optional.ofNullable(this.rebootConfig);
     }
     /**
+     * @return Enables enhanced reporting for the patch job:
+     * 1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
+     * * The instance runs Container-Optimized OS (COS), which cannot be patched.
+     * * The instance is part of a managed instance group (MIG), and patching MIG instances is disabled in the patch job&#39;s configuration (`migInstancesAllowed` is false).
+     * 2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
+     * 3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
+     * 
+     */
+    public Optional<Boolean> skipUnpatchableVms() {
+        return Optional.ofNullable(this.skipUnpatchableVms);
+    }
+    /**
      * @return Windows update settings. Use this setting to override the default Windows patch rules.
      * Structure is documented below.
      * 
@@ -161,6 +183,7 @@ public final class PatchDeploymentPatchConfig {
         private @Nullable PatchDeploymentPatchConfigPostStep postStep;
         private @Nullable PatchDeploymentPatchConfigPreStep preStep;
         private @Nullable String rebootConfig;
+        private @Nullable Boolean skipUnpatchableVms;
         private @Nullable PatchDeploymentPatchConfigWindowsUpdate windowsUpdate;
         private @Nullable PatchDeploymentPatchConfigYum yum;
         private @Nullable PatchDeploymentPatchConfigZypper zypper;
@@ -173,6 +196,7 @@ public final class PatchDeploymentPatchConfig {
     	      this.postStep = defaults.postStep;
     	      this.preStep = defaults.preStep;
     	      this.rebootConfig = defaults.rebootConfig;
+    	      this.skipUnpatchableVms = defaults.skipUnpatchableVms;
     	      this.windowsUpdate = defaults.windowsUpdate;
     	      this.yum = defaults.yum;
     	      this.zypper = defaults.zypper;
@@ -215,6 +239,12 @@ public final class PatchDeploymentPatchConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder skipUnpatchableVms(@Nullable Boolean skipUnpatchableVms) {
+
+            this.skipUnpatchableVms = skipUnpatchableVms;
+            return this;
+        }
+        @CustomType.Setter
         public Builder windowsUpdate(@Nullable PatchDeploymentPatchConfigWindowsUpdate windowsUpdate) {
 
             this.windowsUpdate = windowsUpdate;
@@ -240,6 +270,7 @@ public final class PatchDeploymentPatchConfig {
             _resultValue.postStep = postStep;
             _resultValue.preStep = preStep;
             _resultValue.rebootConfig = rebootConfig;
+            _resultValue.skipUnpatchableVms = skipUnpatchableVms;
             _resultValue.windowsUpdate = windowsUpdate;
             _resultValue.yum = yum;
             _resultValue.zypper = zypper;

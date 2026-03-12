@@ -41,6 +41,27 @@ import * as utilities from "../utilities";
  *     dependsOn: [bucketForMyIcebergCatalog],
  * });
  * ```
+ * ### Biglake Iceberg Catalog Primary Location
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucketForMyIcebergCatalog = new gcp.storage.Bucket("bucket_for_my_iceberg_catalog", {
+ *     name: "my_iceberg_catalog",
+ *     location: "us-central1",
+ *     forceDestroy: true,
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const myIcebergCatalog = new gcp.biglake.IcebergCatalog("my_iceberg_catalog", {
+ *     name: bucketForMyIcebergCatalog.name,
+ *     catalogType: "CATALOG_TYPE_GCS_BUCKET",
+ *     credentialMode: "CREDENTIAL_MODE_VENDED_CREDENTIALS",
+ *     primaryLocation: "us-central1",
+ * }, {
+ *     dependsOn: [bucketForMyIcebergCatalog],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -116,6 +137,12 @@ export class IcebergCatalog extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * The primary location for mirroring the remote catalog metadata. It must be
+     * a BigLake-supported location, and it should be proximate to the remote
+     * catalog's location.
+     */
+    declare public readonly primaryLocation: pulumi.Output<string | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -153,6 +180,7 @@ export class IcebergCatalog extends pulumi.CustomResource {
             resourceInputs["credentialMode"] = state?.credentialMode;
             resourceInputs["defaultLocation"] = state?.defaultLocation;
             resourceInputs["name"] = state?.name;
+            resourceInputs["primaryLocation"] = state?.primaryLocation;
             resourceInputs["project"] = state?.project;
             resourceInputs["replicas"] = state?.replicas;
             resourceInputs["storageRegions"] = state?.storageRegions;
@@ -165,6 +193,7 @@ export class IcebergCatalog extends pulumi.CustomResource {
             resourceInputs["catalogType"] = args?.catalogType;
             resourceInputs["credentialMode"] = args?.credentialMode;
             resourceInputs["name"] = args?.name;
+            resourceInputs["primaryLocation"] = args?.primaryLocation;
             resourceInputs["project"] = args?.project;
             resourceInputs["biglakeServiceAccount"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -212,6 +241,12 @@ export interface IcebergCatalogState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The primary location for mirroring the remote catalog metadata. It must be
+     * a BigLake-supported location, and it should be proximate to the remote
+     * catalog's location.
+     */
+    primaryLocation?: pulumi.Input<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -252,6 +287,12 @@ export interface IcebergCatalogArgs {
      * gs://bucket-name, the catalog name will be exactly "bucket-name".
      */
     name?: pulumi.Input<string>;
+    /**
+     * The primary location for mirroring the remote catalog metadata. It must be
+     * a BigLake-supported location, and it should be proximate to the remote
+     * catalog's location.
+     */
+    primaryLocation?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

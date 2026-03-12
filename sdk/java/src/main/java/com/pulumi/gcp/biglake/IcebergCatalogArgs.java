@@ -72,6 +72,25 @@ public final class IcebergCatalogArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The primary location for mirroring the remote catalog metadata. It must be
+     * a BigLake-supported location, and it should be proximate to the remote
+     * catalog&#39;s location.
+     * 
+     */
+    @Import(name="primaryLocation")
+    private @Nullable Output<String> primaryLocation;
+
+    /**
+     * @return The primary location for mirroring the remote catalog metadata. It must be
+     * a BigLake-supported location, and it should be proximate to the remote
+     * catalog&#39;s location.
+     * 
+     */
+    public Optional<Output<String>> primaryLocation() {
+        return Optional.ofNullable(this.primaryLocation);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -94,6 +113,7 @@ public final class IcebergCatalogArgs extends com.pulumi.resources.ResourceArgs 
         this.catalogType = $.catalogType;
         this.credentialMode = $.credentialMode;
         this.name = $.name;
+        this.primaryLocation = $.primaryLocation;
         this.project = $.project;
     }
 
@@ -186,6 +206,31 @@ public final class IcebergCatalogArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param primaryLocation The primary location for mirroring the remote catalog metadata. It must be
+         * a BigLake-supported location, and it should be proximate to the remote
+         * catalog&#39;s location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryLocation(@Nullable Output<String> primaryLocation) {
+            $.primaryLocation = primaryLocation;
+            return this;
+        }
+
+        /**
+         * @param primaryLocation The primary location for mirroring the remote catalog metadata. It must be
+         * a BigLake-supported location, and it should be proximate to the remote
+         * catalog&#39;s location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryLocation(String primaryLocation) {
+            return primaryLocation(Output.of(primaryLocation));
         }
 
         /**

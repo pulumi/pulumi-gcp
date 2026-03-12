@@ -6736,6 +6736,15 @@ class PatchDeploymentPatchConfigArgsDict(TypedDict):
     Post-patch reboot settings.
     Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
     """
+    skip_unpatchable_vms: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables enhanced reporting for the patch job:
+    1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
+    * The instance runs Container-Optimized OS (COS), which cannot be patched.
+    * The instance is part of a managed instance group (MIG), and patching MIG instances is disabled in the patch job's configuration (`mig_instances_allowed` is false).
+    2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
+    3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
+    """
     windows_update: NotRequired[pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArgsDict']]
     """
     Windows update settings. Use this setting to override the default Windows patch rules.
@@ -6761,6 +6770,7 @@ class PatchDeploymentPatchConfigArgs:
                  post_step: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepArgs']] = None,
                  pre_step: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepArgs']] = None,
                  reboot_config: Optional[pulumi.Input[_builtins.str]] = None,
+                 skip_unpatchable_vms: Optional[pulumi.Input[_builtins.bool]] = None,
                  windows_update: Optional[pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArgs']] = None,
                  yum: Optional[pulumi.Input['PatchDeploymentPatchConfigYumArgs']] = None,
                  zypper: Optional[pulumi.Input['PatchDeploymentPatchConfigZypperArgs']] = None):
@@ -6776,6 +6786,12 @@ class PatchDeploymentPatchConfigArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] reboot_config: Post-patch reboot settings.
                Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
+        :param pulumi.Input[_builtins.bool] skip_unpatchable_vms: Enables enhanced reporting for the patch job:
+               1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
+               * The instance runs Container-Optimized OS (COS), which cannot be patched.
+               * The instance is part of a managed instance group (MIG), and patching MIG instances is disabled in the patch job's configuration (`mig_instances_allowed` is false).
+               2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
+               3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
         :param pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArgs'] windows_update: Windows update settings. Use this setting to override the default Windows patch rules.
                Structure is documented below.
         :param pulumi.Input['PatchDeploymentPatchConfigYumArgs'] yum: Yum update settings. Use this setting to override the default yum patch rules.
@@ -6795,6 +6811,8 @@ class PatchDeploymentPatchConfigArgs:
             pulumi.set(__self__, "pre_step", pre_step)
         if reboot_config is not None:
             pulumi.set(__self__, "reboot_config", reboot_config)
+        if skip_unpatchable_vms is not None:
+            pulumi.set(__self__, "skip_unpatchable_vms", skip_unpatchable_vms)
         if windows_update is not None:
             pulumi.set(__self__, "windows_update", windows_update)
         if yum is not None:
@@ -6878,6 +6896,23 @@ class PatchDeploymentPatchConfigArgs:
     @reboot_config.setter
     def reboot_config(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "reboot_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skipUnpatchableVms")
+    def skip_unpatchable_vms(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables enhanced reporting for the patch job:
+        1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
+        * The instance runs Container-Optimized OS (COS), which cannot be patched.
+        * The instance is part of a managed instance group (MIG), and patching MIG instances is disabled in the patch job's configuration (`mig_instances_allowed` is false).
+        2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
+        3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
+        """
+        return pulumi.get(self, "skip_unpatchable_vms")
+
+    @skip_unpatchable_vms.setter
+    def skip_unpatchable_vms(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "skip_unpatchable_vms", value)
 
     @_builtins.property
     @pulumi.getter(name="windowsUpdate")

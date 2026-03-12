@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.Notebooks
     public static class GetInstanceIamPolicy
     {
         /// <summary>
+        /// &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+        /// 
         /// Retrieves the current IAM policy data for instance
         /// 
         /// 
@@ -39,6 +41,8 @@ namespace Pulumi.Gcp.Notebooks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceIamPolicyResult>("gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy", args ?? new GetInstanceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+        /// 
         /// Retrieves the current IAM policy data for instance
         /// 
         /// 
@@ -66,6 +70,8 @@ namespace Pulumi.Gcp.Notebooks
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceIamPolicyResult>("gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy", args ?? new GetInstanceIamPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+        /// 
         /// Retrieves the current IAM policy data for instance
         /// 
         /// 

@@ -200,6 +200,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string DiskId;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly bool EnableConfidentialCompute;
+        public readonly bool EraseWindowsVssSignature;
         public readonly ImmutableArray<Outputs.GetDiskGuestOsFeatureResult> GuestOsFeatures;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -322,6 +323,8 @@ namespace Pulumi.Gcp.Compute
 
             bool enableConfidentialCompute,
 
+            bool eraseWindowsVssSignature,
+
             ImmutableArray<Outputs.GetDiskGuestOsFeatureResult> guestOsFeatures,
 
             string id,
@@ -401,6 +404,7 @@ namespace Pulumi.Gcp.Compute
             DiskId = diskId;
             EffectiveLabels = effectiveLabels;
             EnableConfidentialCompute = enableConfidentialCompute;
+            EraseWindowsVssSignature = eraseWindowsVssSignature;
             GuestOsFeatures = guestOsFeatures;
             Id = id;
             Image = image;

@@ -21,6 +21,13 @@ import * as utilities from "../utilities";
  * });
  * const exampleTable = new gcp.bigquery.Table("example", {
  *     deletionProtection: false,
+ *     schema: `[
+ *   {
+ *     \\"name\\": \\"nullable_field\\",
+ *     \\"type\\": \\"STRING\\"
+ *   }
+ * ]
+ * `,
  *     datasetId: example.datasetId,
  *     tableId: "table_id",
  * });

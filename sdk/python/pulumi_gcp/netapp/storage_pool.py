@@ -32,10 +32,12 @@ class StoragePoolArgs:
                  kms_config: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  ldap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  qos_type: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  total_iops: Optional[pulumi.Input[_builtins.str]] = None,
                  total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -66,6 +68,12 @@ class StoragePoolArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.bool] ldap_enabled: When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
+        :param pulumi.Input[_builtins.str] mode: (Optional, Beta)
+               Mode of the storage pool.
+               The operational mode of the storage pool. ONTAP mode enables operations
+               via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+               If not specified during creation, the mode defaults to DEFAULT.
+               Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
         :param pulumi.Input[_builtins.str] name: The resource name of the storage pool. Needs to be unique per location/region.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -74,6 +82,10 @@ class StoragePoolArgs:
                Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        :param pulumi.Input[_builtins.str] scale_tier: (Optional, Beta)
+               The effective scale tier of the storage pool. If `scale_tier` is not
+               specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+               Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
         :param pulumi.Input[_builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
         :param pulumi.Input[_builtins.str] total_throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
         :param pulumi.Input[_builtins.str] type: Type of the storage pool.
@@ -106,6 +118,8 @@ class StoragePoolArgs:
             pulumi.set(__self__, "labels", labels)
         if ldap_enabled is not None:
             pulumi.set(__self__, "ldap_enabled", ldap_enabled)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -114,6 +128,8 @@ class StoragePoolArgs:
             pulumi.set(__self__, "qos_type", qos_type)
         if replica_zone is not None:
             pulumi.set(__self__, "replica_zone", replica_zone)
+        if scale_tier is not None:
+            pulumi.set(__self__, "scale_tier", scale_tier)
         if total_iops is not None:
             pulumi.set(__self__, "total_iops", total_iops)
         if total_throughput_mibps is not None:
@@ -291,6 +307,23 @@ class StoragePoolArgs:
 
     @_builtins.property
     @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Beta)
+        Mode of the storage pool.
+        The operational mode of the storage pool. ONTAP mode enables operations
+        via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+        If not specified during creation, the mode defaults to DEFAULT.
+        Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The resource name of the storage pool. Needs to be unique per location/region.
@@ -340,6 +373,21 @@ class StoragePoolArgs:
     @replica_zone.setter
     def replica_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "replica_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scaleTier")
+    def scale_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Beta)
+        The effective scale tier of the storage pool. If `scale_tier` is not
+        specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+        Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+        """
+        return pulumi.get(self, "scale_tier")
+
+    @scale_tier.setter
+    def scale_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scale_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="totalIops")
@@ -414,12 +462,14 @@ class _StoragePoolState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  ldap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  qos_type: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  service_level: Optional[pulumi.Input[_builtins.str]] = None,
                  total_iops: Optional[pulumi.Input[_builtins.str]] = None,
                  total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
@@ -455,6 +505,12 @@ class _StoragePoolState:
         :param pulumi.Input[_builtins.bool] ldap_enabled: When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
         :param pulumi.Input[_builtins.str] location: Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
+        :param pulumi.Input[_builtins.str] mode: (Optional, Beta)
+               Mode of the storage pool.
+               The operational mode of the storage pool. ONTAP mode enables operations
+               via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+               If not specified during creation, the mode defaults to DEFAULT.
+               Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
         :param pulumi.Input[_builtins.str] name: The resource name of the storage pool. Needs to be unique per location/region.
         :param pulumi.Input[_builtins.str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -466,6 +522,10 @@ class _StoragePoolState:
                Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        :param pulumi.Input[_builtins.str] scale_tier: (Optional, Beta)
+               The effective scale tier of the storage pool. If `scale_tier` is not
+               specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+               Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
         :param pulumi.Input[_builtins.str] service_level: Service level of the storage pool.
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[_builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
@@ -512,6 +572,8 @@ class _StoragePoolState:
             pulumi.set(__self__, "ldap_enabled", ldap_enabled)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -524,6 +586,8 @@ class _StoragePoolState:
             pulumi.set(__self__, "qos_type", qos_type)
         if replica_zone is not None:
             pulumi.set(__self__, "replica_zone", replica_zone)
+        if scale_tier is not None:
+            pulumi.set(__self__, "scale_tier", scale_tier)
         if service_level is not None:
             pulumi.set(__self__, "service_level", service_level)
         if total_iops is not None:
@@ -742,6 +806,23 @@ class _StoragePoolState:
 
     @_builtins.property
     @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Beta)
+        Mode of the storage pool.
+        The operational mode of the storage pool. ONTAP mode enables operations
+        via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+        If not specified during creation, the mode defaults to DEFAULT.
+        Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The resource name of the storage pool. Needs to be unique per location/region.
@@ -816,6 +897,21 @@ class _StoragePoolState:
     @replica_zone.setter
     def replica_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "replica_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scaleTier")
+    def scale_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Beta)
+        The effective scale tier of the storage pool. If `scale_tier` is not
+        specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+        Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+        """
+        return pulumi.get(self, "scale_tier")
+
+    @scale_tier.setter
+    def scale_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scale_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceLevel")
@@ -925,11 +1021,13 @@ class StoragePool(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  ldap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  qos_type: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  service_level: Optional[pulumi.Input[_builtins.str]] = None,
                  total_iops: Optional[pulumi.Input[_builtins.str]] = None,
                  total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1046,6 +1144,12 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] ldap_enabled: When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
         :param pulumi.Input[_builtins.str] location: Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
+        :param pulumi.Input[_builtins.str] mode: (Optional, Beta)
+               Mode of the storage pool.
+               The operational mode of the storage pool. ONTAP mode enables operations
+               via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+               If not specified during creation, the mode defaults to DEFAULT.
+               Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
         :param pulumi.Input[_builtins.str] name: The resource name of the storage pool. Needs to be unique per location/region.
         :param pulumi.Input[_builtins.str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -1055,6 +1159,10 @@ class StoragePool(pulumi.CustomResource):
                Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        :param pulumi.Input[_builtins.str] scale_tier: (Optional, Beta)
+               The effective scale tier of the storage pool. If `scale_tier` is not
+               specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+               Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
         :param pulumi.Input[_builtins.str] service_level: Service level of the storage pool.
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[_builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
@@ -1187,11 +1295,13 @@ class StoragePool(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  ldap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  qos_type: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  service_level: Optional[pulumi.Input[_builtins.str]] = None,
                  total_iops: Optional[pulumi.Input[_builtins.str]] = None,
                  total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1221,6 +1331,7 @@ class StoragePool(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["mode"] = mode
             __props__.__dict__["name"] = name
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
@@ -1228,6 +1339,7 @@ class StoragePool(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["qos_type"] = qos_type
             __props__.__dict__["replica_zone"] = replica_zone
+            __props__.__dict__["scale_tier"] = scale_tier
             if service_level is None and not opts.urn:
                 raise TypeError("Missing required property 'service_level'")
             __props__.__dict__["service_level"] = service_level
@@ -1271,12 +1383,14 @@ class StoragePool(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             ldap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
+            mode: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             network: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             qos_type: Optional[pulumi.Input[_builtins.str]] = None,
             replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
+            scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
             service_level: Optional[pulumi.Input[_builtins.str]] = None,
             total_iops: Optional[pulumi.Input[_builtins.str]] = None,
             total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1316,6 +1430,12 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] ldap_enabled: When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
         :param pulumi.Input[_builtins.str] location: Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
+        :param pulumi.Input[_builtins.str] mode: (Optional, Beta)
+               Mode of the storage pool.
+               The operational mode of the storage pool. ONTAP mode enables operations
+               via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+               If not specified during creation, the mode defaults to DEFAULT.
+               Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
         :param pulumi.Input[_builtins.str] name: The resource name of the storage pool. Needs to be unique per location/region.
         :param pulumi.Input[_builtins.str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -1327,6 +1447,10 @@ class StoragePool(pulumi.CustomResource):
                Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        :param pulumi.Input[_builtins.str] scale_tier: (Optional, Beta)
+               The effective scale tier of the storage pool. If `scale_tier` is not
+               specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+               Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
         :param pulumi.Input[_builtins.str] service_level: Service level of the storage pool.
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[_builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
@@ -1361,12 +1485,14 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["ldap_enabled"] = ldap_enabled
         __props__.__dict__["location"] = location
+        __props__.__dict__["mode"] = mode
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["qos_type"] = qos_type
         __props__.__dict__["replica_zone"] = replica_zone
+        __props__.__dict__["scale_tier"] = scale_tier
         __props__.__dict__["service_level"] = service_level
         __props__.__dict__["total_iops"] = total_iops
         __props__.__dict__["total_throughput_mibps"] = total_throughput_mibps
@@ -1515,6 +1641,19 @@ class StoragePool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Optional, Beta)
+        Mode of the storage pool.
+        The operational mode of the storage pool. ONTAP mode enables operations
+        via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+        If not specified during creation, the mode defaults to DEFAULT.
+        Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         The resource name of the storage pool. Needs to be unique per location/region.
@@ -1565,6 +1704,17 @@ class StoragePool(pulumi.CustomResource):
         [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         """
         return pulumi.get(self, "replica_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="scaleTier")
+    def scale_tier(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Optional, Beta)
+        The effective scale tier of the storage pool. If `scale_tier` is not
+        specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+        Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+        """
+        return pulumi.get(self, "scale_tier")
 
     @_builtins.property
     @pulumi.getter(name="serviceLevel")

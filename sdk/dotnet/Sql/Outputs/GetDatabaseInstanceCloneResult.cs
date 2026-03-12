@@ -37,6 +37,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The name of the instance from which the point in time should be restored.
         /// </summary>
         public readonly string SourceInstanceName;
+        /// <summary>
+        /// The project ID of the source project
+        /// </summary>
+        public readonly string SourceProject;
 
         [OutputConstructor]
         private GetDatabaseInstanceCloneResult(
@@ -50,7 +54,9 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string sourceInstanceDeletionTime,
 
-            string sourceInstanceName)
+            string sourceInstanceName,
+
+            string sourceProject)
         {
             AllocatedIpRange = allocatedIpRange;
             DatabaseNames = databaseNames;
@@ -58,6 +64,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             PreferredZone = preferredZone;
             SourceInstanceDeletionTime = sourceInstanceDeletionTime;
             SourceInstanceName = sourceInstanceName;
+            SourceProject = sourceProject;
         }
     }
 }

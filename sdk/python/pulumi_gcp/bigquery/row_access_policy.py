@@ -411,6 +411,13 @@ class RowAccessPolicy(pulumi.CustomResource):
             location="US")
         example_table = gcp.bigquery.Table("example",
             deletion_protection=False,
+            schema=\"\"\"[
+          {
+            \\"name\\": \\"nullable_field\\",
+            \\"type\\": \\"STRING\\"
+          }
+        ]
+        \"\"\",
             dataset_id=example.dataset_id,
             table_id="table_id")
         example_row_access_policy = gcp.bigquery.RowAccessPolicy("example",
@@ -500,6 +507,13 @@ class RowAccessPolicy(pulumi.CustomResource):
             location="US")
         example_table = gcp.bigquery.Table("example",
             deletion_protection=False,
+            schema=\"\"\"[
+          {
+            \\"name\\": \\"nullable_field\\",
+            \\"type\\": \\"STRING\\"
+          }
+        ]
+        \"\"\",
             dataset_id=example.dataset_id,
             table_id="table_id")
         example_row_access_policy = gcp.bigquery.RowAccessPolicy("example",

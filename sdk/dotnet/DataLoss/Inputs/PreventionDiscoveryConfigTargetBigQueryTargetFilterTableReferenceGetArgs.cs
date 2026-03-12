@@ -19,6 +19,14 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
+        /// The Google Cloud project ID of the project containing the table.
+        /// If omitted, the project ID is inferred from the parent project.
+        /// This field is required if the parent resource is an organization.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// Name of the table.
         /// </summary>
         [Input("tableId", required: true)]

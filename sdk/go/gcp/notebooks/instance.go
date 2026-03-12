@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Warning:** `googleNotebookInstance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+// > **Warning:** `notebooks.Instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
 //
 // A Cloud AI Platform Notebook instance.
 //

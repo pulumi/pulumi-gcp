@@ -13,11 +13,20 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionDiscoveryConfigActionExportDataGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+        /// Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+        /// The system will create a new dataset and table for you if none are are provided. The dataset will be named `SensitiveDataProtectionDiscovery`
+        /// and table will be named `DiscoveryProfiles`. This table will be placed in the same project as the container project running the scan.
         /// Structure is documented below.
         /// </summary>
         [Input("profileTable")]
         public Input<Inputs.PreventionDiscoveryConfigActionExportDataProfileTableGetArgs>? ProfileTable { get; set; }
+
+        /// <summary>
+        /// Store sample findings in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sampleFindingsTable")]
+        public Input<Inputs.PreventionDiscoveryConfigActionExportDataSampleFindingsTableGetArgs>? SampleFindingsTable { get; set; }
 
         public PreventionDiscoveryConfigActionExportDataGetArgs()
         {

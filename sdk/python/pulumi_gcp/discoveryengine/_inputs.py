@@ -61,6 +61,14 @@ __all__ = [
     'ControlRedirectActionArgsDict',
     'ControlSynonymsActionArgs',
     'ControlSynonymsActionArgsDict',
+    'DataConnectorActionConfigArgs',
+    'DataConnectorActionConfigArgsDict',
+    'DataConnectorBapConfigArgs',
+    'DataConnectorBapConfigArgsDict',
+    'DataConnectorDestinationConfigArgs',
+    'DataConnectorDestinationConfigArgsDict',
+    'DataConnectorDestinationConfigDestinationArgs',
+    'DataConnectorDestinationConfigDestinationArgsDict',
     'DataConnectorEntityArgs',
     'DataConnectorEntityArgsDict',
     'DataConnectorErrorArgs',
@@ -1508,6 +1516,235 @@ class ControlSynonymsActionArgs:
     @synonyms.setter
     def synonyms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "synonyms", value)
+
+
+class DataConnectorActionConfigArgsDict(TypedDict):
+    action_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Params needed to configure the actions in the format of
+    String-to-String (Key, Value) pairs. Contains connection
+    credentials and configuration for the action connector.
+    """
+    create_bap_connection: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to create a BAP (Business Application Platform) connection
+    for this action connector.
+    """
+    is_action_configured: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the action connector is fully configured. Set by the system
+    after the action configuration is validated.
+    """
+
+@pulumi.input_type
+class DataConnectorActionConfigArgs:
+    def __init__(__self__, *,
+                 action_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 create_bap_connection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_action_configured: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] action_params: Params needed to configure the actions in the format of
+               String-to-String (Key, Value) pairs. Contains connection
+               credentials and configuration for the action connector.
+        :param pulumi.Input[_builtins.bool] create_bap_connection: Whether to create a BAP (Business Application Platform) connection
+               for this action connector.
+        :param pulumi.Input[_builtins.bool] is_action_configured: (Output)
+               Whether the action connector is fully configured. Set by the system
+               after the action configuration is validated.
+        """
+        if action_params is not None:
+            pulumi.set(__self__, "action_params", action_params)
+        if create_bap_connection is not None:
+            pulumi.set(__self__, "create_bap_connection", create_bap_connection)
+        if is_action_configured is not None:
+            pulumi.set(__self__, "is_action_configured", is_action_configured)
+
+    @_builtins.property
+    @pulumi.getter(name="actionParams")
+    def action_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Params needed to configure the actions in the format of
+        String-to-String (Key, Value) pairs. Contains connection
+        credentials and configuration for the action connector.
+        """
+        return pulumi.get(self, "action_params")
+
+    @action_params.setter
+    def action_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "action_params", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createBapConnection")
+    def create_bap_connection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to create a BAP (Business Application Platform) connection
+        for this action connector.
+        """
+        return pulumi.get(self, "create_bap_connection")
+
+    @create_bap_connection.setter
+    def create_bap_connection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "create_bap_connection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isActionConfigured")
+    def is_action_configured(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Output)
+        Whether the action connector is fully configured. Set by the system
+        after the action configuration is validated.
+        """
+        return pulumi.get(self, "is_action_configured")
+
+    @is_action_configured.setter
+    def is_action_configured(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_action_configured", value)
+
+
+class DataConnectorBapConfigArgsDict(TypedDict):
+    enabled_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of enabled actions for this connector. Supported
+    values include: `create_issue`, `update_issue`,
+    `change_issue_status`, `create_comment`, `update_comment`,
+    `upload_attachment`.
+    """
+    supported_connector_modes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The connector modes supported by the BAP configuration.
+    The possible values include: `ACTIONS`.
+    """
+
+@pulumi.input_type
+class DataConnectorBapConfigArgs:
+    def __init__(__self__, *,
+                 enabled_actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 supported_connector_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_actions: The list of enabled actions for this connector. Supported
+               values include: `create_issue`, `update_issue`,
+               `change_issue_status`, `create_comment`, `update_comment`,
+               `upload_attachment`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_connector_modes: The connector modes supported by the BAP configuration.
+               The possible values include: `ACTIONS`.
+        """
+        if enabled_actions is not None:
+            pulumi.set(__self__, "enabled_actions", enabled_actions)
+        if supported_connector_modes is not None:
+            pulumi.set(__self__, "supported_connector_modes", supported_connector_modes)
+
+    @_builtins.property
+    @pulumi.getter(name="enabledActions")
+    def enabled_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of enabled actions for this connector. Supported
+        values include: `create_issue`, `update_issue`,
+        `change_issue_status`, `create_comment`, `update_comment`,
+        `upload_attachment`.
+        """
+        return pulumi.get(self, "enabled_actions")
+
+    @enabled_actions.setter
+    def enabled_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "enabled_actions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="supportedConnectorModes")
+    def supported_connector_modes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The connector modes supported by the BAP configuration.
+        The possible values include: `ACTIONS`.
+        """
+        return pulumi.get(self, "supported_connector_modes")
+
+    @supported_connector_modes.setter
+    def supported_connector_modes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "supported_connector_modes", value)
+
+
+class DataConnectorDestinationConfigArgsDict(TypedDict):
+    destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigDestinationArgsDict']]]]
+    """
+    The list of destinations for this configuration.
+    Structure is documented below.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key of the destination configuration, for example `url`.
+    """
+
+@pulumi.input_type
+class DataConnectorDestinationConfigArgs:
+    def __init__(__self__, *,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigDestinationArgs']]]] = None,
+                 key: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigDestinationArgs']]] destinations: The list of destinations for this configuration.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] key: The key of the destination configuration, for example `url`.
+        """
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @_builtins.property
+    @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigDestinationArgs']]]]:
+        """
+        The list of destinations for this configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigDestinationArgs']]]]):
+        pulumi.set(self, "destinations", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The key of the destination configuration, for example `url`.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+
+class DataConnectorDestinationConfigDestinationArgsDict(TypedDict):
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The host of the destination, for example
+    `https://example.atlassian.net`.
+    """
+
+@pulumi.input_type
+class DataConnectorDestinationConfigDestinationArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: The host of the destination, for example
+               `https://example.atlassian.net`.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The host of the destination, for example
+        `https://example.atlassian.net`.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
 
 
 class DataConnectorEntityArgsDict(TypedDict):

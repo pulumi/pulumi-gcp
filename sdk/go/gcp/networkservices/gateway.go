@@ -412,7 +412,7 @@ type Gateway struct {
 	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
-	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+	// The proxy binds to the specified ports.
 	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
 	Ports pulumi.IntArrayOutput `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
@@ -528,7 +528,7 @@ type gatewayState struct {
 	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	Network *string `pulumi:"network"`
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
-	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+	// The proxy binds to the specified ports.
 	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
 	Ports []int `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
@@ -604,7 +604,7 @@ type GatewayState struct {
 	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	Network pulumi.StringPtrInput
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
-	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+	// The proxy binds to the specified ports.
 	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
 	Ports pulumi.IntArrayInput
 	// The ID of the project in which the resource belongs.
@@ -680,7 +680,7 @@ type gatewayArgs struct {
 	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	Network *string `pulumi:"network"`
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
-	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+	// The proxy binds to the specified ports.
 	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
 	Ports []int `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
@@ -746,7 +746,7 @@ type GatewayArgs struct {
 	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	Network pulumi.StringPtrInput
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
-	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+	// The proxy binds to the specified ports.
 	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
 	Ports pulumi.IntArrayInput
 	// The ID of the project in which the resource belongs.
@@ -940,7 +940,7 @@ func (o GatewayOutput) Network() pulumi.StringPtrOutput {
 }
 
 // One or more port numbers (1-65535), on which the Gateway will receive traffic.
-// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+// The proxy binds to the specified ports.
 // Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
 func (o GatewayOutput) Ports() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.IntArrayOutput { return v.Ports }).(pulumi.IntArrayOutput)

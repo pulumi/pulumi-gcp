@@ -17,6 +17,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Warning:** `gcp.notebooks.Environment` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+ * 
  * A Cloud AI Platform Notebook environment.
  * 
  * To get more information about Environment, see:

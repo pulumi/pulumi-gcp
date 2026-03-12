@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? ControlPlaneDiskEncryptionKey;
         /// <summary>
+        /// The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+        /// </summary>
+        public readonly ImmutableArray<string> ControlPlaneDiskEncryptionKeyVersions;
+        /// <summary>
         /// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
         /// </summary>
         public readonly string? EtcdApiCa;
@@ -54,6 +58,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? controlPlaneDiskEncryptionKey,
 
+            ImmutableArray<string> controlPlaneDiskEncryptionKeyVersions,
+
             string? etcdApiCa,
 
             string? etcdPeerCa,
@@ -67,6 +73,7 @@ namespace Pulumi.Gcp.Container.Outputs
             AggregationCa = aggregationCa;
             ClusterCa = clusterCa;
             ControlPlaneDiskEncryptionKey = controlPlaneDiskEncryptionKey;
+            ControlPlaneDiskEncryptionKeyVersions = controlPlaneDiskEncryptionKeyVersions;
             EtcdApiCa = etcdApiCa;
             EtcdPeerCa = etcdPeerCa;
             GkeopsEtcdBackupEncryptionKey = gkeopsEtcdBackupEncryptionKey;

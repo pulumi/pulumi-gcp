@@ -23,6 +23,124 @@ import * as utilities from "../utilities";
  *
  * ## gcp.biglake.IcebergNamespaceIamPolicy
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/biglake.editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.biglake.IcebergNamespaceIamPolicy("policy", {
+ *     project: myIcebergNamespace.project,
+ *     catalog: myIcebergNamespace.catalog,
+ *     namespaceId: myIcebergNamespace.id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## gcp.biglake.IcebergNamespaceIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.biglake.IcebergNamespaceIamBinding("binding", {
+ *     project: myIcebergNamespace.project,
+ *     catalog: myIcebergNamespace.catalog,
+ *     namespaceId: myIcebergNamespace.id,
+ *     role: "roles/biglake.editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## gcp.biglake.IcebergNamespaceIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.biglake.IcebergNamespaceIamMember("member", {
+ *     project: myIcebergNamespace.project,
+ *     catalog: myIcebergNamespace.catalog,
+ *     namespaceId: myIcebergNamespace.id,
+ *     role: "roles/biglake.editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * ## This resource supports User Project Overrides.
+ *
+ * - 
+ *
+ * # IAM policy for Biglake IcebergNamespace
+ *
+ * Three different resources help you manage your IAM policy for Biglake IcebergNamespace. Each of these resources serves a different use case:
+ *
+ * * `gcp.biglake.IcebergNamespaceIamPolicy`: Authoritative. Sets the IAM policy for the icebergnamespace and replaces any existing policy already attached.
+ * * `gcp.biglake.IcebergNamespaceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the icebergnamespace are preserved.
+ * * `gcp.biglake.IcebergNamespaceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the icebergnamespace are preserved.
+ *
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ *
+ * * `gcp.biglake.IcebergNamespaceIamPolicy`: Retrieves the IAM policy for the icebergnamespace
+ *
+ * > **Note:** `gcp.biglake.IcebergNamespaceIamPolicy` **cannot** be used in conjunction with `gcp.biglake.IcebergNamespaceIamBinding` and `gcp.biglake.IcebergNamespaceIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.biglake.IcebergNamespaceIamBinding` resources **can be** used in conjunction with `gcp.biglake.IcebergNamespaceIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## gcp.biglake.IcebergNamespaceIamPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/biglake.editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.biglake.IcebergNamespaceIamPolicy("policy", {
+ *     project: myIcebergNamespace.project,
+ *     catalog: myIcebergNamespace.catalog,
+ *     namespaceId: myIcebergNamespace.id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## gcp.biglake.IcebergNamespaceIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.biglake.IcebergNamespaceIamBinding("binding", {
+ *     project: myIcebergNamespace.project,
+ *     catalog: myIcebergNamespace.catalog,
+ *     namespaceId: myIcebergNamespace.id,
+ *     role: "roles/biglake.editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## gcp.biglake.IcebergNamespaceIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.biglake.IcebergNamespaceIamMember("member", {
+ *     project: myIcebergNamespace.project,
+ *     catalog: myIcebergNamespace.catalog,
+ *     namespaceId: myIcebergNamespace.id,
+ *     role: "roles/biglake.editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:

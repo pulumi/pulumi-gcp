@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataloss.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionExportDataProfileTableArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionExportDataSampleFindingsTableArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,7 +17,9 @@ public final class PreventionDiscoveryConfigActionExportDataArgs extends com.pul
     public static final PreventionDiscoveryConfigActionExportDataArgs Empty = new PreventionDiscoveryConfigActionExportDataArgs();
 
     /**
-     * Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+     * Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+     * The system will create a new dataset and table for you if none are are provided. The dataset will be named `sensitiveDataProtectionDiscovery`
+     * and table will be named `discoveryProfiles`. This table will be placed in the same project as the container project running the scan.
      * Structure is documented below.
      * 
      */
@@ -24,7 +27,9 @@ public final class PreventionDiscoveryConfigActionExportDataArgs extends com.pul
     private @Nullable Output<PreventionDiscoveryConfigActionExportDataProfileTableArgs> profileTable;
 
     /**
-     * @return Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+     * @return Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+     * The system will create a new dataset and table for you if none are are provided. The dataset will be named `sensitiveDataProtectionDiscovery`
+     * and table will be named `discoveryProfiles`. This table will be placed in the same project as the container project running the scan.
      * Structure is documented below.
      * 
      */
@@ -32,10 +37,28 @@ public final class PreventionDiscoveryConfigActionExportDataArgs extends com.pul
         return Optional.ofNullable(this.profileTable);
     }
 
+    /**
+     * Store sample findings in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sampleFindingsTable")
+    private @Nullable Output<PreventionDiscoveryConfigActionExportDataSampleFindingsTableArgs> sampleFindingsTable;
+
+    /**
+     * @return Store sample findings in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDiscoveryConfigActionExportDataSampleFindingsTableArgs>> sampleFindingsTable() {
+        return Optional.ofNullable(this.sampleFindingsTable);
+    }
+
     private PreventionDiscoveryConfigActionExportDataArgs() {}
 
     private PreventionDiscoveryConfigActionExportDataArgs(PreventionDiscoveryConfigActionExportDataArgs $) {
         this.profileTable = $.profileTable;
+        this.sampleFindingsTable = $.sampleFindingsTable;
     }
 
     public static Builder builder() {
@@ -57,7 +80,9 @@ public final class PreventionDiscoveryConfigActionExportDataArgs extends com.pul
         }
 
         /**
-         * @param profileTable Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+         * @param profileTable Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+         * The system will create a new dataset and table for you if none are are provided. The dataset will be named `sensitiveDataProtectionDiscovery`
+         * and table will be named `discoveryProfiles`. This table will be placed in the same project as the container project running the scan.
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +94,9 @@ public final class PreventionDiscoveryConfigActionExportDataArgs extends com.pul
         }
 
         /**
-         * @param profileTable Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+         * @param profileTable Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+         * The system will create a new dataset and table for you if none are are provided. The dataset will be named `sensitiveDataProtectionDiscovery`
+         * and table will be named `discoveryProfiles`. This table will be placed in the same project as the container project running the scan.
          * Structure is documented below.
          * 
          * @return builder
@@ -77,6 +104,29 @@ public final class PreventionDiscoveryConfigActionExportDataArgs extends com.pul
          */
         public Builder profileTable(PreventionDiscoveryConfigActionExportDataProfileTableArgs profileTable) {
             return profileTable(Output.of(profileTable));
+        }
+
+        /**
+         * @param sampleFindingsTable Store sample findings in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sampleFindingsTable(@Nullable Output<PreventionDiscoveryConfigActionExportDataSampleFindingsTableArgs> sampleFindingsTable) {
+            $.sampleFindingsTable = sampleFindingsTable;
+            return this;
+        }
+
+        /**
+         * @param sampleFindingsTable Store sample findings in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sampleFindingsTable(PreventionDiscoveryConfigActionExportDataSampleFindingsTableArgs sampleFindingsTable) {
+            return sampleFindingsTable(Output.of(sampleFindingsTable));
         }
 
         public PreventionDiscoveryConfigActionExportDataArgs build() {

@@ -229,6 +229,107 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Network Firewall Policy Rule Network Context Egress
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basicNetworkFirewallPolicy = new Gcp.Compute.NetworkFirewallPolicy("basic_network_firewall_policy", new()
+    ///     {
+    ///         Name = "fw-policy",
+    ///         Description = "Sample global network firewall policy",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Compute.NetworkFirewallPolicyRule("primary", new()
+    ///     {
+    ///         Action = "allow",
+    ///         Description = "This is a simple rule description",
+    ///         Direction = "EGRESS",
+    ///         Disabled = false,
+    ///         EnableLogging = true,
+    ///         FirewallPolicy = basicNetworkFirewallPolicy.Name,
+    ///         Priority = 1000,
+    ///         RuleName = "test-rule",
+    ///         Match = new Gcp.Compute.Inputs.NetworkFirewallPolicyRuleMatchArgs
+    ///         {
+    ///             DestIpRanges = new[]
+    ///             {
+    ///                 "10.100.0.1/32",
+    ///             },
+    ///             DestNetworkContext = "INTERNET",
+    ///             Layer4Configs = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "all",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Firewall Policy Rule Network Context Ingress
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basicNetworkFirewallPolicy = new Gcp.Compute.NetworkFirewallPolicy("basic_network_firewall_policy", new()
+    ///     {
+    ///         Name = "fw-policy",
+    ///         Description = "Sample global network firewall policy",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "network",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Compute.NetworkFirewallPolicyRule("primary", new()
+    ///     {
+    ///         Action = "allow",
+    ///         Description = "This is a simple rule description",
+    ///         Direction = "INGRESS",
+    ///         Disabled = false,
+    ///         EnableLogging = true,
+    ///         FirewallPolicy = basicNetworkFirewallPolicy.Name,
+    ///         Priority = 1000,
+    ///         RuleName = "test-rule",
+    ///         Match = new Gcp.Compute.Inputs.NetworkFirewallPolicyRuleMatchArgs
+    ///         {
+    ///             SrcIpRanges = new[]
+    ///             {
+    ///                 "11.100.0.1/32",
+    ///             },
+    ///             SrcNetworkContext = "VPC_NETWORKS",
+    ///             SrcNetworks = new[]
+    ///             {
+    ///                 network.Id,
+    ///             },
+    ///             Layer4Configs = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "all",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

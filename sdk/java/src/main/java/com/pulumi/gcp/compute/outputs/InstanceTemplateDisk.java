@@ -163,6 +163,14 @@ public final class InstanceTemplateDisk {
      */
     private @Nullable InstanceTemplateDiskSourceSnapshotEncryptionKey sourceSnapshotEncryptionKey;
     /**
+     * @return The URL of the storage pool in which the new disk is created.
+     * For example:
+     * * `https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+     * * `/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+     * 
+     */
+    private @Nullable String storagePool;
+    /**
      * @return The type of GCE disk, can be either `&#34;SCRATCH&#34;` or
      * `&#34;PERSISTENT&#34;`.
      * 
@@ -357,6 +365,16 @@ public final class InstanceTemplateDisk {
         return Optional.ofNullable(this.sourceSnapshotEncryptionKey);
     }
     /**
+     * @return The URL of the storage pool in which the new disk is created.
+     * For example:
+     * * `https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+     * * `/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+     * 
+     */
+    public Optional<String> storagePool() {
+        return Optional.ofNullable(this.storagePool);
+    }
+    /**
      * @return The type of GCE disk, can be either `&#34;SCRATCH&#34;` or
      * `&#34;PERSISTENT&#34;`.
      * 
@@ -395,6 +413,7 @@ public final class InstanceTemplateDisk {
         private @Nullable InstanceTemplateDiskSourceImageEncryptionKey sourceImageEncryptionKey;
         private @Nullable String sourceSnapshot;
         private @Nullable InstanceTemplateDiskSourceSnapshotEncryptionKey sourceSnapshotEncryptionKey;
+        private @Nullable String storagePool;
         private @Nullable String type;
         public Builder() {}
         public Builder(InstanceTemplateDisk defaults) {
@@ -420,6 +439,7 @@ public final class InstanceTemplateDisk {
     	      this.sourceImageEncryptionKey = defaults.sourceImageEncryptionKey;
     	      this.sourceSnapshot = defaults.sourceSnapshot;
     	      this.sourceSnapshotEncryptionKey = defaults.sourceSnapshotEncryptionKey;
+    	      this.storagePool = defaults.storagePool;
     	      this.type = defaults.type;
         }
 
@@ -553,6 +573,12 @@ public final class InstanceTemplateDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder storagePool(@Nullable String storagePool) {
+
+            this.storagePool = storagePool;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
 
             this.type = type;
@@ -581,6 +607,7 @@ public final class InstanceTemplateDisk {
             _resultValue.sourceImageEncryptionKey = sourceImageEncryptionKey;
             _resultValue.sourceSnapshot = sourceSnapshot;
             _resultValue.sourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
+            _resultValue.storagePool = storagePool;
             _resultValue.type = type;
             return _resultValue;
         }

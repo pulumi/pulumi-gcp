@@ -45,6 +45,8 @@ __all__ = [
     'ClusterContinuousBackupInfoArgsDict',
     'ClusterContinuousBackupInfoEncryptionInfoArgs',
     'ClusterContinuousBackupInfoEncryptionInfoArgsDict',
+    'ClusterDataplexConfigArgs',
+    'ClusterDataplexConfigArgsDict',
     'ClusterEncryptionConfigArgs',
     'ClusterEncryptionConfigArgsDict',
     'ClusterEncryptionInfoArgs',
@@ -979,6 +981,34 @@ class ClusterContinuousBackupInfoEncryptionInfoArgs:
     @kms_key_versions.setter
     def kms_key_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_key_versions", value)
+
+
+class ClusterDataplexConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Indicates whether Dataplex integration is enabled for the cluster.
+    """
+
+@pulumi.input_type
+class ClusterDataplexConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Indicates whether Dataplex integration is enabled for the cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Indicates whether Dataplex integration is enabled for the cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
 
 
 class ClusterEncryptionConfigArgsDict(TypedDict):

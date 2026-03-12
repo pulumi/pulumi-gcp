@@ -2404,6 +2404,10 @@ class ClusterClusterConfigArgsDict(TypedDict):
     """
     The tier of the cluster.
     """
+    cluster_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the cluster.
+    """
     dataproc_metric_config: NotRequired[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgsDict']]
     """
     The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
@@ -2491,6 +2495,7 @@ class ClusterClusterConfigArgs:
                  auxiliary_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupArgs']]]] = None,
                  bucket: Optional[pulumi.Input[_builtins.str]] = None,
                  cluster_tier: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
                  dataproc_metric_config: Optional[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgs']] = None,
                  encryption_config: Optional[pulumi.Input['ClusterClusterConfigEncryptionConfigArgs']] = None,
                  endpoint_config: Optional[pulumi.Input['ClusterClusterConfigEndpointConfigArgs']] = None,
@@ -2516,6 +2521,7 @@ class ClusterClusterConfigArgs:
                for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
                it will be the auto generated name.
         :param pulumi.Input[_builtins.str] cluster_tier: The tier of the cluster.
+        :param pulumi.Input[_builtins.str] cluster_type: The type of the cluster.
         :param pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgs'] dataproc_metric_config: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
                Structure defined below.
         :param pulumi.Input['ClusterClusterConfigEncryptionConfigArgs'] encryption_config: The Customer managed encryption keys settings for the cluster.
@@ -2562,6 +2568,8 @@ class ClusterClusterConfigArgs:
             pulumi.set(__self__, "bucket", bucket)
         if cluster_tier is not None:
             pulumi.set(__self__, "cluster_tier", cluster_tier)
+        if cluster_type is not None:
+            pulumi.set(__self__, "cluster_type", cluster_type)
         if dataproc_metric_config is not None:
             pulumi.set(__self__, "dataproc_metric_config", dataproc_metric_config)
         if encryption_config is not None:
@@ -2644,6 +2652,18 @@ class ClusterClusterConfigArgs:
     @cluster_tier.setter
     def cluster_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "cluster_tier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the cluster.
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @cluster_type.setter
+    def cluster_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cluster_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dataprocMetricConfig")

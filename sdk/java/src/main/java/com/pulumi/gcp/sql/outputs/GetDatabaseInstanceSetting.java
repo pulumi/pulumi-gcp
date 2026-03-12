@@ -37,6 +37,11 @@ public final class GetDatabaseInstanceSetting {
     private List<GetDatabaseInstanceSettingActiveDirectoryConfig> activeDirectoryConfigs;
     private List<GetDatabaseInstanceSettingAdvancedMachineFeature> advancedMachineFeatures;
     /**
+     * @return Enables Automatic Version Upgrade feature. Can be used with MySQL only.
+     * 
+     */
+    private Boolean autoUpgradeEnabled;
+    /**
      * @return The availability type of the Cloud SQL instance, high availability
      * (REGIONAL) or single zone (ZONAL). For all instances, ensure that
      * settings.backup_configuration.enabled is set to true.
@@ -64,6 +69,11 @@ public final class GetDatabaseInstanceSetting {
      * 
      */
     private String connectorEnforcement;
+    /**
+     * @return Allows using ExecuteSql API to connect to the instance. Disallowed when unspecified.
+     * 
+     */
+    private String dataApiAccess;
     /**
      * @return Data cache configurations.
      * 
@@ -198,6 +208,13 @@ public final class GetDatabaseInstanceSetting {
         return this.advancedMachineFeatures;
     }
     /**
+     * @return Enables Automatic Version Upgrade feature. Can be used with MySQL only.
+     * 
+     */
+    public Boolean autoUpgradeEnabled() {
+        return this.autoUpgradeEnabled;
+    }
+    /**
      * @return The availability type of the Cloud SQL instance, high availability
      * (REGIONAL) or single zone (ZONAL). For all instances, ensure that
      * settings.backup_configuration.enabled is set to true.
@@ -234,6 +251,13 @@ public final class GetDatabaseInstanceSetting {
      */
     public String connectorEnforcement() {
         return this.connectorEnforcement;
+    }
+    /**
+     * @return Allows using ExecuteSql API to connect to the instance. Disallowed when unspecified.
+     * 
+     */
+    public String dataApiAccess() {
+        return this.dataApiAccess;
     }
     /**
      * @return Data cache configurations.
@@ -422,11 +446,13 @@ public final class GetDatabaseInstanceSetting {
         private String activationPolicy;
         private List<GetDatabaseInstanceSettingActiveDirectoryConfig> activeDirectoryConfigs;
         private List<GetDatabaseInstanceSettingAdvancedMachineFeature> advancedMachineFeatures;
+        private Boolean autoUpgradeEnabled;
         private String availabilityType;
         private List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations;
         private String collation;
         private List<GetDatabaseInstanceSettingConnectionPoolConfig> connectionPoolConfigs;
         private String connectorEnforcement;
+        private String dataApiAccess;
         private List<GetDatabaseInstanceSettingDataCacheConfig> dataCacheConfigs;
         private Integer dataDiskProvisionedIops;
         private Integer dataDiskProvisionedThroughput;
@@ -461,11 +487,13 @@ public final class GetDatabaseInstanceSetting {
     	      this.activationPolicy = defaults.activationPolicy;
     	      this.activeDirectoryConfigs = defaults.activeDirectoryConfigs;
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
+    	      this.autoUpgradeEnabled = defaults.autoUpgradeEnabled;
     	      this.availabilityType = defaults.availabilityType;
     	      this.backupConfigurations = defaults.backupConfigurations;
     	      this.collation = defaults.collation;
     	      this.connectionPoolConfigs = defaults.connectionPoolConfigs;
     	      this.connectorEnforcement = defaults.connectorEnforcement;
+    	      this.dataApiAccess = defaults.dataApiAccess;
     	      this.dataCacheConfigs = defaults.dataCacheConfigs;
     	      this.dataDiskProvisionedIops = defaults.dataDiskProvisionedIops;
     	      this.dataDiskProvisionedThroughput = defaults.dataDiskProvisionedThroughput;
@@ -527,6 +555,14 @@ public final class GetDatabaseInstanceSetting {
             return advancedMachineFeatures(List.of(advancedMachineFeatures));
         }
         @CustomType.Setter
+        public Builder autoUpgradeEnabled(Boolean autoUpgradeEnabled) {
+            if (autoUpgradeEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "autoUpgradeEnabled");
+            }
+            this.autoUpgradeEnabled = autoUpgradeEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder availabilityType(String availabilityType) {
             if (availabilityType == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "availabilityType");
@@ -570,6 +606,14 @@ public final class GetDatabaseInstanceSetting {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "connectorEnforcement");
             }
             this.connectorEnforcement = connectorEnforcement;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dataApiAccess(String dataApiAccess) {
+            if (dataApiAccess == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "dataApiAccess");
+            }
+            this.dataApiAccess = dataApiAccess;
             return this;
         }
         @CustomType.Setter
@@ -834,11 +878,13 @@ public final class GetDatabaseInstanceSetting {
             _resultValue.activationPolicy = activationPolicy;
             _resultValue.activeDirectoryConfigs = activeDirectoryConfigs;
             _resultValue.advancedMachineFeatures = advancedMachineFeatures;
+            _resultValue.autoUpgradeEnabled = autoUpgradeEnabled;
             _resultValue.availabilityType = availabilityType;
             _resultValue.backupConfigurations = backupConfigurations;
             _resultValue.collation = collation;
             _resultValue.connectionPoolConfigs = connectionPoolConfigs;
             _resultValue.connectorEnforcement = connectorEnforcement;
+            _resultValue.dataApiAccess = dataApiAccess;
             _resultValue.dataCacheConfigs = dataCacheConfigs;
             _resultValue.dataDiskProvisionedIops = dataDiskProvisionedIops;
             _resultValue.dataDiskProvisionedThroughput = dataDiskProvisionedThroughput;

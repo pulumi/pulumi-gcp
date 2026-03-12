@@ -4936,7 +4936,7 @@ func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) Enabled()
 }
 
 type FeatureMembershipConfigmanagementPolicyController struct {
-	// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+	// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
 	AuditIntervalSeconds *string `pulumi:"auditIntervalSeconds"`
 	// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
 	Enabled *bool `pulumi:"enabled"`
@@ -4966,7 +4966,7 @@ type FeatureMembershipConfigmanagementPolicyControllerInput interface {
 }
 
 type FeatureMembershipConfigmanagementPolicyControllerArgs struct {
-	// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+	// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
 	AuditIntervalSeconds pulumi.StringPtrInput `pulumi:"auditIntervalSeconds"`
 	// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -5061,7 +5061,7 @@ func (o FeatureMembershipConfigmanagementPolicyControllerOutput) ToFeatureMember
 	}).(FeatureMembershipConfigmanagementPolicyControllerPtrOutput)
 }
 
-// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
 func (o FeatureMembershipConfigmanagementPolicyControllerOutput) AuditIntervalSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *string { return v.AuditIntervalSeconds }).(pulumi.StringPtrOutput)
 }
@@ -5127,7 +5127,7 @@ func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) Elem() Featu
 	}).(FeatureMembershipConfigmanagementPolicyControllerOutput)
 }
 
-// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
 func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) AuditIntervalSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) *string {
 		if v == nil {
@@ -7417,6 +7417,9 @@ type FeatureSpec struct {
 	// RBACRolebinding Actuation feature spec.
 	// Structure is documented below.
 	Rbacrolebindingactuation *FeatureSpecRbacrolebindingactuation `pulumi:"rbacrolebindingactuation"`
+	// Workload Identity feature spec.
+	// Structure is documented below.
+	Workloadidentity *FeatureSpecWorkloadidentity `pulumi:"workloadidentity"`
 }
 
 // FeatureSpecInput is an input type that accepts FeatureSpecArgs and FeatureSpecOutput values.
@@ -7443,6 +7446,9 @@ type FeatureSpecArgs struct {
 	// RBACRolebinding Actuation feature spec.
 	// Structure is documented below.
 	Rbacrolebindingactuation FeatureSpecRbacrolebindingactuationPtrInput `pulumi:"rbacrolebindingactuation"`
+	// Workload Identity feature spec.
+	// Structure is documented below.
+	Workloadidentity FeatureSpecWorkloadidentityPtrInput `pulumi:"workloadidentity"`
 }
 
 func (FeatureSpecArgs) ElementType() reflect.Type {
@@ -7546,6 +7552,12 @@ func (o FeatureSpecOutput) Rbacrolebindingactuation() FeatureSpecRbacrolebinding
 	return o.ApplyT(func(v FeatureSpec) *FeatureSpecRbacrolebindingactuation { return v.Rbacrolebindingactuation }).(FeatureSpecRbacrolebindingactuationPtrOutput)
 }
 
+// Workload Identity feature spec.
+// Structure is documented below.
+func (o FeatureSpecOutput) Workloadidentity() FeatureSpecWorkloadidentityPtrOutput {
+	return o.ApplyT(func(v FeatureSpec) *FeatureSpecWorkloadidentity { return v.Workloadidentity }).(FeatureSpecWorkloadidentityPtrOutput)
+}
+
 type FeatureSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (FeatureSpecPtrOutput) ElementType() reflect.Type {
@@ -7612,6 +7624,17 @@ func (o FeatureSpecPtrOutput) Rbacrolebindingactuation() FeatureSpecRbacrolebind
 		}
 		return v.Rbacrolebindingactuation
 	}).(FeatureSpecRbacrolebindingactuationPtrOutput)
+}
+
+// Workload Identity feature spec.
+// Structure is documented below.
+func (o FeatureSpecPtrOutput) Workloadidentity() FeatureSpecWorkloadidentityPtrOutput {
+	return o.ApplyT(func(v *FeatureSpec) *FeatureSpecWorkloadidentity {
+		if v == nil {
+			return nil
+		}
+		return v.Workloadidentity
+	}).(FeatureSpecWorkloadidentityPtrOutput)
 }
 
 type FeatureSpecClusterupgrade struct {
@@ -9030,6 +9053,143 @@ func (o FeatureSpecRbacrolebindingactuationPtrOutput) AllowedCustomRoles() pulum
 		}
 		return v.AllowedCustomRoles
 	}).(pulumi.StringArrayOutput)
+}
+
+type FeatureSpecWorkloadidentity struct {
+	// Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+	ScopeTenancyPool string `pulumi:"scopeTenancyPool"`
+}
+
+// FeatureSpecWorkloadidentityInput is an input type that accepts FeatureSpecWorkloadidentityArgs and FeatureSpecWorkloadidentityOutput values.
+// You can construct a concrete instance of `FeatureSpecWorkloadidentityInput` via:
+//
+//	FeatureSpecWorkloadidentityArgs{...}
+type FeatureSpecWorkloadidentityInput interface {
+	pulumi.Input
+
+	ToFeatureSpecWorkloadidentityOutput() FeatureSpecWorkloadidentityOutput
+	ToFeatureSpecWorkloadidentityOutputWithContext(context.Context) FeatureSpecWorkloadidentityOutput
+}
+
+type FeatureSpecWorkloadidentityArgs struct {
+	// Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+	ScopeTenancyPool pulumi.StringInput `pulumi:"scopeTenancyPool"`
+}
+
+func (FeatureSpecWorkloadidentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecWorkloadidentity)(nil)).Elem()
+}
+
+func (i FeatureSpecWorkloadidentityArgs) ToFeatureSpecWorkloadidentityOutput() FeatureSpecWorkloadidentityOutput {
+	return i.ToFeatureSpecWorkloadidentityOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecWorkloadidentityArgs) ToFeatureSpecWorkloadidentityOutputWithContext(ctx context.Context) FeatureSpecWorkloadidentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecWorkloadidentityOutput)
+}
+
+func (i FeatureSpecWorkloadidentityArgs) ToFeatureSpecWorkloadidentityPtrOutput() FeatureSpecWorkloadidentityPtrOutput {
+	return i.ToFeatureSpecWorkloadidentityPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecWorkloadidentityArgs) ToFeatureSpecWorkloadidentityPtrOutputWithContext(ctx context.Context) FeatureSpecWorkloadidentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecWorkloadidentityOutput).ToFeatureSpecWorkloadidentityPtrOutputWithContext(ctx)
+}
+
+// FeatureSpecWorkloadidentityPtrInput is an input type that accepts FeatureSpecWorkloadidentityArgs, FeatureSpecWorkloadidentityPtr and FeatureSpecWorkloadidentityPtrOutput values.
+// You can construct a concrete instance of `FeatureSpecWorkloadidentityPtrInput` via:
+//
+//	        FeatureSpecWorkloadidentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureSpecWorkloadidentityPtrInput interface {
+	pulumi.Input
+
+	ToFeatureSpecWorkloadidentityPtrOutput() FeatureSpecWorkloadidentityPtrOutput
+	ToFeatureSpecWorkloadidentityPtrOutputWithContext(context.Context) FeatureSpecWorkloadidentityPtrOutput
+}
+
+type featureSpecWorkloadidentityPtrType FeatureSpecWorkloadidentityArgs
+
+func FeatureSpecWorkloadidentityPtr(v *FeatureSpecWorkloadidentityArgs) FeatureSpecWorkloadidentityPtrInput {
+	return (*featureSpecWorkloadidentityPtrType)(v)
+}
+
+func (*featureSpecWorkloadidentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecWorkloadidentity)(nil)).Elem()
+}
+
+func (i *featureSpecWorkloadidentityPtrType) ToFeatureSpecWorkloadidentityPtrOutput() FeatureSpecWorkloadidentityPtrOutput {
+	return i.ToFeatureSpecWorkloadidentityPtrOutputWithContext(context.Background())
+}
+
+func (i *featureSpecWorkloadidentityPtrType) ToFeatureSpecWorkloadidentityPtrOutputWithContext(ctx context.Context) FeatureSpecWorkloadidentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecWorkloadidentityPtrOutput)
+}
+
+type FeatureSpecWorkloadidentityOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecWorkloadidentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecWorkloadidentity)(nil)).Elem()
+}
+
+func (o FeatureSpecWorkloadidentityOutput) ToFeatureSpecWorkloadidentityOutput() FeatureSpecWorkloadidentityOutput {
+	return o
+}
+
+func (o FeatureSpecWorkloadidentityOutput) ToFeatureSpecWorkloadidentityOutputWithContext(ctx context.Context) FeatureSpecWorkloadidentityOutput {
+	return o
+}
+
+func (o FeatureSpecWorkloadidentityOutput) ToFeatureSpecWorkloadidentityPtrOutput() FeatureSpecWorkloadidentityPtrOutput {
+	return o.ToFeatureSpecWorkloadidentityPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecWorkloadidentityOutput) ToFeatureSpecWorkloadidentityPtrOutputWithContext(ctx context.Context) FeatureSpecWorkloadidentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpecWorkloadidentity) *FeatureSpecWorkloadidentity {
+		return &v
+	}).(FeatureSpecWorkloadidentityPtrOutput)
+}
+
+// Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+func (o FeatureSpecWorkloadidentityOutput) ScopeTenancyPool() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureSpecWorkloadidentity) string { return v.ScopeTenancyPool }).(pulumi.StringOutput)
+}
+
+type FeatureSpecWorkloadidentityPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecWorkloadidentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecWorkloadidentity)(nil)).Elem()
+}
+
+func (o FeatureSpecWorkloadidentityPtrOutput) ToFeatureSpecWorkloadidentityPtrOutput() FeatureSpecWorkloadidentityPtrOutput {
+	return o
+}
+
+func (o FeatureSpecWorkloadidentityPtrOutput) ToFeatureSpecWorkloadidentityPtrOutputWithContext(ctx context.Context) FeatureSpecWorkloadidentityPtrOutput {
+	return o
+}
+
+func (o FeatureSpecWorkloadidentityPtrOutput) Elem() FeatureSpecWorkloadidentityOutput {
+	return o.ApplyT(func(v *FeatureSpecWorkloadidentity) FeatureSpecWorkloadidentity {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureSpecWorkloadidentity
+		return ret
+	}).(FeatureSpecWorkloadidentityOutput)
+}
+
+// Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+func (o FeatureSpecWorkloadidentityPtrOutput) ScopeTenancyPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureSpecWorkloadidentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ScopeTenancyPool
+	}).(pulumi.StringPtrOutput)
 }
 
 type FeatureStateType struct {
@@ -14338,6 +14498,8 @@ type GetFeatureSpec struct {
 	Multiclusteringresses []GetFeatureSpecMulticlusteringress `pulumi:"multiclusteringresses"`
 	// RBACRolebinding Actuation feature spec.
 	Rbacrolebindingactuations []GetFeatureSpecRbacrolebindingactuation `pulumi:"rbacrolebindingactuations"`
+	// Workload Identity feature spec.
+	Workloadidentities []GetFeatureSpecWorkloadidentity `pulumi:"workloadidentities"`
 }
 
 // GetFeatureSpecInput is an input type that accepts GetFeatureSpecArgs and GetFeatureSpecOutput values.
@@ -14360,6 +14522,8 @@ type GetFeatureSpecArgs struct {
 	Multiclusteringresses GetFeatureSpecMulticlusteringressArrayInput `pulumi:"multiclusteringresses"`
 	// RBACRolebinding Actuation feature spec.
 	Rbacrolebindingactuations GetFeatureSpecRbacrolebindingactuationArrayInput `pulumi:"rbacrolebindingactuations"`
+	// Workload Identity feature spec.
+	Workloadidentities GetFeatureSpecWorkloadidentityArrayInput `pulumi:"workloadidentities"`
 }
 
 func (GetFeatureSpecArgs) ElementType() reflect.Type {
@@ -14431,6 +14595,11 @@ func (o GetFeatureSpecOutput) Multiclusteringresses() GetFeatureSpecMulticluster
 // RBACRolebinding Actuation feature spec.
 func (o GetFeatureSpecOutput) Rbacrolebindingactuations() GetFeatureSpecRbacrolebindingactuationArrayOutput {
 	return o.ApplyT(func(v GetFeatureSpec) []GetFeatureSpecRbacrolebindingactuation { return v.Rbacrolebindingactuations }).(GetFeatureSpecRbacrolebindingactuationArrayOutput)
+}
+
+// Workload Identity feature spec.
+func (o GetFeatureSpecOutput) Workloadidentities() GetFeatureSpecWorkloadidentityArrayOutput {
+	return o.ApplyT(func(v GetFeatureSpec) []GetFeatureSpecWorkloadidentity { return v.Workloadidentities }).(GetFeatureSpecWorkloadidentityArrayOutput)
 }
 
 type GetFeatureSpecArrayOutput struct{ *pulumi.OutputState }
@@ -15579,6 +15748,103 @@ func (o GetFeatureSpecRbacrolebindingactuationArrayOutput) Index(i pulumi.IntInp
 	}).(GetFeatureSpecRbacrolebindingactuationOutput)
 }
 
+type GetFeatureSpecWorkloadidentity struct {
+	// Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+	ScopeTenancyPool string `pulumi:"scopeTenancyPool"`
+}
+
+// GetFeatureSpecWorkloadidentityInput is an input type that accepts GetFeatureSpecWorkloadidentityArgs and GetFeatureSpecWorkloadidentityOutput values.
+// You can construct a concrete instance of `GetFeatureSpecWorkloadidentityInput` via:
+//
+//	GetFeatureSpecWorkloadidentityArgs{...}
+type GetFeatureSpecWorkloadidentityInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecWorkloadidentityOutput() GetFeatureSpecWorkloadidentityOutput
+	ToGetFeatureSpecWorkloadidentityOutputWithContext(context.Context) GetFeatureSpecWorkloadidentityOutput
+}
+
+type GetFeatureSpecWorkloadidentityArgs struct {
+	// Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+	ScopeTenancyPool pulumi.StringInput `pulumi:"scopeTenancyPool"`
+}
+
+func (GetFeatureSpecWorkloadidentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecWorkloadidentity)(nil)).Elem()
+}
+
+func (i GetFeatureSpecWorkloadidentityArgs) ToGetFeatureSpecWorkloadidentityOutput() GetFeatureSpecWorkloadidentityOutput {
+	return i.ToGetFeatureSpecWorkloadidentityOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecWorkloadidentityArgs) ToGetFeatureSpecWorkloadidentityOutputWithContext(ctx context.Context) GetFeatureSpecWorkloadidentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecWorkloadidentityOutput)
+}
+
+// GetFeatureSpecWorkloadidentityArrayInput is an input type that accepts GetFeatureSpecWorkloadidentityArray and GetFeatureSpecWorkloadidentityArrayOutput values.
+// You can construct a concrete instance of `GetFeatureSpecWorkloadidentityArrayInput` via:
+//
+//	GetFeatureSpecWorkloadidentityArray{ GetFeatureSpecWorkloadidentityArgs{...} }
+type GetFeatureSpecWorkloadidentityArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecWorkloadidentityArrayOutput() GetFeatureSpecWorkloadidentityArrayOutput
+	ToGetFeatureSpecWorkloadidentityArrayOutputWithContext(context.Context) GetFeatureSpecWorkloadidentityArrayOutput
+}
+
+type GetFeatureSpecWorkloadidentityArray []GetFeatureSpecWorkloadidentityInput
+
+func (GetFeatureSpecWorkloadidentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecWorkloadidentity)(nil)).Elem()
+}
+
+func (i GetFeatureSpecWorkloadidentityArray) ToGetFeatureSpecWorkloadidentityArrayOutput() GetFeatureSpecWorkloadidentityArrayOutput {
+	return i.ToGetFeatureSpecWorkloadidentityArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecWorkloadidentityArray) ToGetFeatureSpecWorkloadidentityArrayOutputWithContext(ctx context.Context) GetFeatureSpecWorkloadidentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecWorkloadidentityArrayOutput)
+}
+
+type GetFeatureSpecWorkloadidentityOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecWorkloadidentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecWorkloadidentity)(nil)).Elem()
+}
+
+func (o GetFeatureSpecWorkloadidentityOutput) ToGetFeatureSpecWorkloadidentityOutput() GetFeatureSpecWorkloadidentityOutput {
+	return o
+}
+
+func (o GetFeatureSpecWorkloadidentityOutput) ToGetFeatureSpecWorkloadidentityOutputWithContext(ctx context.Context) GetFeatureSpecWorkloadidentityOutput {
+	return o
+}
+
+// Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+func (o GetFeatureSpecWorkloadidentityOutput) ScopeTenancyPool() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureSpecWorkloadidentity) string { return v.ScopeTenancyPool }).(pulumi.StringOutput)
+}
+
+type GetFeatureSpecWorkloadidentityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecWorkloadidentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecWorkloadidentity)(nil)).Elem()
+}
+
+func (o GetFeatureSpecWorkloadidentityArrayOutput) ToGetFeatureSpecWorkloadidentityArrayOutput() GetFeatureSpecWorkloadidentityArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecWorkloadidentityArrayOutput) ToGetFeatureSpecWorkloadidentityArrayOutputWithContext(ctx context.Context) GetFeatureSpecWorkloadidentityArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecWorkloadidentityArrayOutput) Index(i pulumi.IntInput) GetFeatureSpecWorkloadidentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureSpecWorkloadidentity {
+		return vs[0].([]GetFeatureSpecWorkloadidentity)[vs[1].(int)]
+	}).(GetFeatureSpecWorkloadidentityOutput)
+}
+
 type GetFeatureState struct {
 	// Output only. The "running state" of the Feature in this Hub.
 	States []GetFeatureStateState `pulumi:"states"`
@@ -16299,6 +16565,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecMulticlusteringressPtrInput)(nil)).Elem(), FeatureSpecMulticlusteringressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecRbacrolebindingactuationInput)(nil)).Elem(), FeatureSpecRbacrolebindingactuationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecRbacrolebindingactuationPtrInput)(nil)).Elem(), FeatureSpecRbacrolebindingactuationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecWorkloadidentityInput)(nil)).Elem(), FeatureSpecWorkloadidentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecWorkloadidentityPtrInput)(nil)).Elem(), FeatureSpecWorkloadidentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateTypeInput)(nil)).Elem(), FeatureStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateTypeArrayInput)(nil)).Elem(), FeatureStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateStateInput)(nil)).Elem(), FeatureStateStateArgs{})
@@ -16405,6 +16673,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecMulticlusteringressArrayInput)(nil)).Elem(), GetFeatureSpecMulticlusteringressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecRbacrolebindingactuationInput)(nil)).Elem(), GetFeatureSpecRbacrolebindingactuationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecRbacrolebindingactuationArrayInput)(nil)).Elem(), GetFeatureSpecRbacrolebindingactuationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecWorkloadidentityInput)(nil)).Elem(), GetFeatureSpecWorkloadidentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecWorkloadidentityArrayInput)(nil)).Elem(), GetFeatureSpecWorkloadidentityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureStateInput)(nil)).Elem(), GetFeatureStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureStateArrayInput)(nil)).Elem(), GetFeatureStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureStateStateInput)(nil)).Elem(), GetFeatureStateStateArgs{})
@@ -16521,6 +16791,8 @@ func init() {
 	pulumi.RegisterOutputType(FeatureSpecMulticlusteringressPtrOutput{})
 	pulumi.RegisterOutputType(FeatureSpecRbacrolebindingactuationOutput{})
 	pulumi.RegisterOutputType(FeatureSpecRbacrolebindingactuationPtrOutput{})
+	pulumi.RegisterOutputType(FeatureSpecWorkloadidentityOutput{})
+	pulumi.RegisterOutputType(FeatureSpecWorkloadidentityPtrOutput{})
 	pulumi.RegisterOutputType(FeatureStateTypeOutput{})
 	pulumi.RegisterOutputType(FeatureStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(FeatureStateStateOutput{})
@@ -16627,6 +16899,8 @@ func init() {
 	pulumi.RegisterOutputType(GetFeatureSpecMulticlusteringressArrayOutput{})
 	pulumi.RegisterOutputType(GetFeatureSpecRbacrolebindingactuationOutput{})
 	pulumi.RegisterOutputType(GetFeatureSpecRbacrolebindingactuationArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecWorkloadidentityOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecWorkloadidentityArrayOutput{})
 	pulumi.RegisterOutputType(GetFeatureStateOutput{})
 	pulumi.RegisterOutputType(GetFeatureStateArrayOutput{})
 	pulumi.RegisterOutputType(GetFeatureStateStateOutput{})

@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgs extends com.pulumi.resources.ResourceArgs {
@@ -30,6 +32,25 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableRefer
     }
 
     /**
+     * The Google Cloud project ID of the project containing the table.
+     * If omitted, the project ID is inferred from the parent project.
+     * This field is required if the parent resource is an organization.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return The Google Cloud project ID of the project containing the table.
+     * If omitted, the project ID is inferred from the parent project.
+     * This field is required if the parent resource is an organization.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * Name of the table.
      * 
      */
@@ -48,6 +69,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableRefer
 
     private PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgs(PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgs $) {
         this.datasetId = $.datasetId;
+        this.projectId = $.projectId;
         this.tableId = $.tableId;
     }
 
@@ -88,6 +110,31 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableRefer
          */
         public Builder datasetId(String datasetId) {
             return datasetId(Output.of(datasetId));
+        }
+
+        /**
+         * @param projectId The Google Cloud project ID of the project containing the table.
+         * If omitted, the project ID is inferred from the parent project.
+         * This field is required if the parent resource is an organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId The Google Cloud project ID of the project containing the table.
+         * If omitted, the project ID is inferred from the parent project.
+         * This field is required if the parent resource is an organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         /**

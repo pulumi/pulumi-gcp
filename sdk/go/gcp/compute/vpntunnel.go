@@ -294,7 +294,6 @@ type VPNTunnel struct {
 	// be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params VPNTunnelParamsPtrOutput `pulumi:"params"`
@@ -433,7 +432,6 @@ type vpntunnelState struct {
 	// be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params *VPNTunnelParams `pulumi:"params"`
@@ -530,7 +528,6 @@ type VPNTunnelState struct {
 	// be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params VPNTunnelParamsPtrInput
@@ -622,7 +619,6 @@ type vpntunnelArgs struct {
 	// be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params *VPNTunnelParams `pulumi:"params"`
@@ -702,7 +698,6 @@ type VPNTunnelArgs struct {
 	// be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params VPNTunnelParamsPtrInput
@@ -906,7 +901,6 @@ func (o VPNTunnelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // Additional params passed with the request, but not persisted as part of resource payload
 // Structure is documented below.
 func (o VPNTunnelOutput) Params() VPNTunnelParamsPtrOutput {

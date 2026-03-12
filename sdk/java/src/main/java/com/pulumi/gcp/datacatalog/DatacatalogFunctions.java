@@ -25,6 +25,8 @@ import java.util.concurrent.CompletableFuture;
 
 public final class DatacatalogFunctions {
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.EntryGroup` is deprecated and will be removed in a future major release. Use `gcp.dataplex.EntryGroup` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+     * 
      * Retrieves the current IAM policy data for entrygroup
      * 
      * ## Example Usage
@@ -65,6 +67,8 @@ public final class DatacatalogFunctions {
         return getEntryGroupIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.EntryGroup` is deprecated and will be removed in a future major release. Use `gcp.dataplex.EntryGroup` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+     * 
      * Retrieves the current IAM policy data for entrygroup
      * 
      * ## Example Usage
@@ -105,6 +109,8 @@ public final class DatacatalogFunctions {
         return getEntryGroupIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.EntryGroup` is deprecated and will be removed in a future major release. Use `gcp.dataplex.EntryGroup` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+     * 
      * Retrieves the current IAM policy data for entrygroup
      * 
      * ## Example Usage
@@ -145,6 +151,8 @@ public final class DatacatalogFunctions {
         return Deployment.getInstance().invoke("gcp:datacatalog/getEntryGroupIamPolicy:getEntryGroupIamPolicy", TypeShape.of(GetEntryGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.EntryGroup` is deprecated and will be removed in a future major release. Use `gcp.dataplex.EntryGroup` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+     * 
      * Retrieves the current IAM policy data for entrygroup
      * 
      * ## Example Usage
@@ -185,6 +193,8 @@ public final class DatacatalogFunctions {
         return Deployment.getInstance().invoke("gcp:datacatalog/getEntryGroupIamPolicy:getEntryGroupIamPolicy", TypeShape.of(GetEntryGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.EntryGroup` is deprecated and will be removed in a future major release. Use `gcp.dataplex.EntryGroup` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+     * 
      * Retrieves the current IAM policy data for entrygroup
      * 
      * ## Example Usage
@@ -425,6 +435,8 @@ public final class DatacatalogFunctions {
         return Deployment.getInstance().invokeAsync("gcp:datacatalog/getPolicyTagIamPolicy:getPolicyTagIamPolicy", TypeShape.of(GetPolicyTagIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `gcp.dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+     * 
      * Retrieves the current IAM policy data for tagtemplate
      * 
      * ## Example Usage
@@ -465,6 +477,8 @@ public final class DatacatalogFunctions {
         return getTagTemplateIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `gcp.dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+     * 
      * Retrieves the current IAM policy data for tagtemplate
      * 
      * ## Example Usage
@@ -505,6 +519,8 @@ public final class DatacatalogFunctions {
         return getTagTemplateIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `gcp.dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+     * 
      * Retrieves the current IAM policy data for tagtemplate
      * 
      * ## Example Usage
@@ -545,6 +561,8 @@ public final class DatacatalogFunctions {
         return Deployment.getInstance().invoke("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", TypeShape.of(GetTagTemplateIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `gcp.dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+     * 
      * Retrieves the current IAM policy data for tagtemplate
      * 
      * ## Example Usage
@@ -585,6 +603,8 @@ public final class DatacatalogFunctions {
         return Deployment.getInstance().invoke("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", TypeShape.of(GetTagTemplateIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `gcp.dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+     * 
      * Retrieves the current IAM policy data for tagtemplate
      * 
      * ## Example Usage

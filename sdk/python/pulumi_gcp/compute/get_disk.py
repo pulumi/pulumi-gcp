@@ -27,7 +27,7 @@ class GetDiskResult:
     """
     A collection of values returned by getDisk.
     """
-    def __init__(__self__, access_mode=None, architecture=None, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, enable_confidential_compute=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, params=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, source_storage_object=None, storage_pool=None, type=None, users=None, zone=None):
+    def __init__(__self__, access_mode=None, architecture=None, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, enable_confidential_compute=None, erase_windows_vss_signature=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, params=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, source_storage_object=None, storage_pool=None, type=None, users=None, zone=None):
         if access_mode and not isinstance(access_mode, str):
             raise TypeError("Expected argument 'access_mode' to be a str")
         pulumi.set(__self__, "access_mode", access_mode)
@@ -61,6 +61,9 @@ class GetDiskResult:
         if enable_confidential_compute and not isinstance(enable_confidential_compute, bool):
             raise TypeError("Expected argument 'enable_confidential_compute' to be a bool")
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+        if erase_windows_vss_signature and not isinstance(erase_windows_vss_signature, bool):
+            raise TypeError("Expected argument 'erase_windows_vss_signature' to be a bool")
+        pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
         if guest_os_features and not isinstance(guest_os_features, list):
             raise TypeError("Expected argument 'guest_os_features' to be a list")
         pulumi.set(__self__, "guest_os_features", guest_os_features)
@@ -224,6 +227,11 @@ class GetDiskResult:
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> _builtins.bool:
         return pulumi.get(self, "enable_confidential_compute")
+
+    @_builtins.property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> _builtins.bool:
+        return pulumi.get(self, "erase_windows_vss_signature")
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")
@@ -476,6 +484,7 @@ class AwaitableGetDiskResult(GetDiskResult):
             disk_id=self.disk_id,
             effective_labels=self.effective_labels,
             enable_confidential_compute=self.enable_confidential_compute,
+            erase_windows_vss_signature=self.erase_windows_vss_signature,
             guest_os_features=self.guest_os_features,
             id=self.id,
             image=self.image,
@@ -562,6 +571,7 @@ def get_disk(name: Optional[_builtins.str] = None,
         disk_id=pulumi.get(__ret__, 'disk_id'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         enable_confidential_compute=pulumi.get(__ret__, 'enable_confidential_compute'),
+        erase_windows_vss_signature=pulumi.get(__ret__, 'erase_windows_vss_signature'),
         guest_os_features=pulumi.get(__ret__, 'guest_os_features'),
         id=pulumi.get(__ret__, 'id'),
         image=pulumi.get(__ret__, 'image'),
@@ -645,6 +655,7 @@ def get_disk_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         disk_id=pulumi.get(__response__, 'disk_id'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         enable_confidential_compute=pulumi.get(__response__, 'enable_confidential_compute'),
+        erase_windows_vss_signature=pulumi.get(__response__, 'erase_windows_vss_signature'),
         guest_os_features=pulumi.get(__response__, 'guest_os_features'),
         id=pulumi.get(__response__, 'id'),
         image=pulumi.get(__response__, 'image'),

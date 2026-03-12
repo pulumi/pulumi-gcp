@@ -243,11 +243,49 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_11171",
+ *         filenameSuffix: "-_40816",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
  *         maxMessages: 1000,
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         example,
+ *         admin,
+ *     ],
+ * });
+ * ```
+ * ### Pubsub Subscription Push Cloudstorage Text
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.storage.Bucket("example", {
+ *     name: "example-bucket",
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const exampleTopic = new gcp.pubsub.Topic("example", {name: "example-topic"});
+ * const project = gcp.organizations.getProject({});
+ * const admin = new gcp.storage.BucketIAMMember("admin", {
+ *     bucket: example.name,
+ *     role: "roles/storage.admin",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+ * });
+ * const exampleSubscription = new gcp.pubsub.Subscription("example", {
+ *     name: "example-subscription",
+ *     topic: exampleTopic.id,
+ *     cloudStorageConfig: {
+ *         bucket: example.name,
+ *         filenamePrefix: "pre-",
+ *         filenameSuffix: "-_94690",
+ *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
+ *         maxBytes: 1000,
+ *         maxDuration: "300s",
+ *         maxMessages: 1000,
+ *         textConfig: {},
  *     },
  * }, {
  *     dependsOn: [
@@ -280,7 +318,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_40472",
+ *         filenameSuffix: "-_29947",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -324,7 +362,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_44339",
+ *         filenameSuffix: "-_28257",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",

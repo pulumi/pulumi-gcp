@@ -270,6 +270,9 @@ type RegionDisk struct {
 	DiskId pulumi.StringOutput `pulumi:"diskId"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// (Optional, Beta)
+	// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+	EraseWindowsVssSignature pulumi.BoolPtrOutput `pulumi:"eraseWindowsVssSignature"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -450,6 +453,9 @@ type regionDiskState struct {
 	DiskId *string `pulumi:"diskId"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// (Optional, Beta)
+	// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+	EraseWindowsVssSignature *bool `pulumi:"eraseWindowsVssSignature"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -593,6 +599,9 @@ type RegionDiskState struct {
 	DiskId pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// (Optional, Beta)
+	// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+	EraseWindowsVssSignature pulumi.BoolPtrInput
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -734,6 +743,9 @@ type regionDiskArgs struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *RegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
+	// (Optional, Beta)
+	// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+	EraseWindowsVssSignature *bool `pulumi:"eraseWindowsVssSignature"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -846,6 +858,9 @@ type RegionDiskArgs struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrInput
+	// (Optional, Beta)
+	// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+	EraseWindowsVssSignature pulumi.BoolPtrInput
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -1074,6 +1089,12 @@ func (o RegionDiskOutput) DiskId() pulumi.StringOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o RegionDiskOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// (Optional, Beta)
+// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+func (o RegionDiskOutput) EraseWindowsVssSignature() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.BoolPtrOutput { return v.EraseWindowsVssSignature }).(pulumi.BoolPtrOutput)
 }
 
 // A list of features to enable on the guest operating system.

@@ -3984,6 +3984,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/routerNamedSet",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/routerNamedSet:RouterNamedSet": "RouterNamedSet"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/routerNat",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -4592,6 +4600,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataform/config",
+  "fqn": "pulumi_gcp.dataform",
+  "classes": {
+   "gcp:dataform/config:Config": "Config"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataform/folder",
   "fqn": "pulumi_gcp.dataform",
   "classes": {
@@ -4780,6 +4796,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
    "gcp:dataplex/dataProduct:DataProduct": "DataProduct"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/dataProductDataAsset",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/dataProductDataAsset:DataProductDataAsset": "DataProductDataAsset"
   }
  },
  {
@@ -8748,6 +8772,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.notebooks",
   "classes": {
    "gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy": "RuntimeIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "observability/folderSettings",
+  "fqn": "pulumi_gcp.observability",
+  "classes": {
+   "gcp:observability/folderSettings:FolderSettings": "FolderSettings"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "observability/organizationSettings",
+  "fqn": "pulumi_gcp.observability",
+  "classes": {
+   "gcp:observability/organizationSettings:OrganizationSettings": "OrganizationSettings"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "observability/projectSettings",
+  "fqn": "pulumi_gcp.observability",
+  "classes": {
+   "gcp:observability/projectSettings:ProjectSettings": "ProjectSettings"
   }
  },
  {

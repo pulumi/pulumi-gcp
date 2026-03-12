@@ -395,6 +395,22 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return this.enableConfidentialCompute;
     }
     /**
+     * (Optional, Beta)
+     * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+     * 
+     */
+    @Export(name="eraseWindowsVssSignature", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> eraseWindowsVssSignature;
+
+    /**
+     * @return (Optional, Beta)
+     * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+     * 
+     */
+    public Output<Optional<Boolean>> eraseWindowsVssSignature() {
+        return Codegen.optional(this.eraseWindowsVssSignature);
+    }
+    /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.
      * Structure is documented below.

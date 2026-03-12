@@ -15,6 +15,7 @@ import com.pulumi.gcp.alloydb.outputs.ClusterBackupSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterBackupdrBackupSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterContinuousBackupConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterContinuousBackupInfo;
+import com.pulumi.gcp.alloydb.outputs.ClusterDataplexConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterEncryptionConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterEncryptionInfo;
 import com.pulumi.gcp.alloydb.outputs.ClusterInitialUser;
@@ -709,6 +710,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> databaseVersion() {
         return this.databaseVersion;
+    }
+    /**
+     * Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="dataplexConfig", refs={ClusterDataplexConfig.class}, tree="[0]")
+    private Output<ClusterDataplexConfig> dataplexConfig;
+
+    /**
+     * @return Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+     * Structure is documented below.
+     * 
+     */
+    public Output<ClusterDataplexConfig> dataplexConfig() {
+        return this.dataplexConfig;
     }
     /**
      * Policy to determine if the cluster should be deleted forcefully.

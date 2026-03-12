@@ -618,7 +618,6 @@ public class SecurityProfile extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
-     * (Optional, Beta)
      * The url filtering configuration for the security profile.
      * Structure is documented below.
      * 
@@ -627,8 +626,7 @@ public class SecurityProfile extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ SecurityProfileUrlFilteringProfile> urlFilteringProfile;
 
     /**
-     * @return (Optional, Beta)
-     * The url filtering configuration for the security profile.
+     * @return The url filtering configuration for the security profile.
      * Structure is documented below.
      * 
      */

@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.tags.TagKeyIamBinding` resources **can be** used in conjunction with `gcp.tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ *
  * ## gcp.tags.TagKeyIamPolicy
  *
  * ```typescript
@@ -39,6 +41,28 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.tags.TagKeyIamPolicy("policy", {
+ *     tagKey: key.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
  * ## gcp.tags.TagKeyIamBinding
  *
  * ```typescript
@@ -52,6 +76,23 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.tags.TagKeyIamBinding("binding", {
+ *     tagKey: key.name,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
  * ## gcp.tags.TagKeyIamMember
  *
  * ```typescript
@@ -62,6 +103,24 @@ import * as utilities from "../utilities";
  *     tagKey: key.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.tags.TagKeyIamMember("member", {
+ *     tagKey: key.name,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
  * });
  * ```
  *
@@ -86,6 +145,8 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.tags.TagKeyIamBinding` resources **can be** used in conjunction with `gcp.tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ *
  * ## gcp.tags.TagKeyIamPolicy
  *
  * ```typescript
@@ -104,6 +165,28 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.tags.TagKeyIamPolicy("policy", {
+ *     tagKey: key.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
  * ## gcp.tags.TagKeyIamBinding
  *
  * ```typescript
@@ -117,6 +200,23 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.tags.TagKeyIamBinding("binding", {
+ *     tagKey: key.name,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
  * ## gcp.tags.TagKeyIamMember
  *
  * ```typescript
@@ -127,6 +227,24 @@ import * as utilities from "../utilities";
  *     tagKey: key.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.tags.TagKeyIamMember("member", {
+ *     tagKey: key.name,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
  * });
  * ```
  *
@@ -187,6 +305,10 @@ export class TagKeyIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === TagKeyIamMember.__pulumiType;
     }
 
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     declare public readonly condition: pulumi.Output<outputs.tags.TagKeyIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -262,6 +384,10 @@ export class TagKeyIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TagKeyIamMember resources.
  */
 export interface TagKeyIamMemberState {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.tags.TagKeyIamMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -298,6 +424,10 @@ export interface TagKeyIamMemberState {
  * The set of arguments for constructing a TagKeyIamMember resource.
  */
 export interface TagKeyIamMemberArgs {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.tags.TagKeyIamMemberCondition>;
     /**
      * Identities that will be granted the privilege in `role`.

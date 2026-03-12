@@ -1080,6 +1080,11 @@ export type RouterInterface = import("./routerInterface").RouterInterface;
 export const RouterInterface: typeof import("./routerInterface").RouterInterface = null as any;
 utilities.lazyLoad(exports, ["RouterInterface"], () => require("./routerInterface"));
 
+export { RouterNamedSetArgs, RouterNamedSetState } from "./routerNamedSet";
+export type RouterNamedSet = import("./routerNamedSet").RouterNamedSet;
+export const RouterNamedSet: typeof import("./routerNamedSet").RouterNamedSet = null as any;
+utilities.lazyLoad(exports, ["RouterNamedSet"], () => require("./routerNamedSet"));
+
 export { RouterNatArgs, RouterNatState } from "./routerNat";
 export type RouterNat = import("./routerNat").RouterNat;
 export const RouterNat: typeof import("./routerNat").RouterNat = null as any;
@@ -1554,6 +1559,8 @@ const _module = {
                 return new Router(name, <any>undefined, { urn })
             case "gcp:compute/routerInterface:RouterInterface":
                 return new RouterInterface(name, <any>undefined, { urn })
+            case "gcp:compute/routerNamedSet:RouterNamedSet":
+                return new RouterNamedSet(name, <any>undefined, { urn })
             case "gcp:compute/routerNat:RouterNat":
                 return new RouterNat(name, <any>undefined, { urn })
             case "gcp:compute/routerNatAddress:RouterNatAddress":
@@ -1773,6 +1780,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/rolloutPlan", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/route", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/router", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/routerInterface", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/routerNamedSet", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/routerNat", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/routerNatAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/routerPeer", _module)

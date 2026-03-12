@@ -132,6 +132,8 @@ class DatabaseInstanceClone(dict):
             suggest = "preferred_zone"
         elif key == "sourceInstanceDeletionTime":
             suggest = "source_instance_deletion_time"
+        elif key == "sourceProject":
+            suggest = "source_project"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceClone. Access the value via the '{suggest}' property getter instead.")
@@ -150,7 +152,8 @@ class DatabaseInstanceClone(dict):
                  database_names: Optional[Sequence[_builtins.str]] = None,
                  point_in_time: Optional[_builtins.str] = None,
                  preferred_zone: Optional[_builtins.str] = None,
-                 source_instance_deletion_time: Optional[_builtins.str] = None):
+                 source_instance_deletion_time: Optional[_builtins.str] = None,
+                 source_project: Optional[_builtins.str] = None):
         """
         :param _builtins.str source_instance_name: Name of the source instance which will be cloned.
         :param _builtins.str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -162,6 +165,7 @@ class DatabaseInstanceClone(dict):
         :param _builtins.str source_instance_deletion_time: The timestamp of when the source instance was deleted for a clone from a deleted instance.
                
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param _builtins.str source_project: Id of source project where source instances exits, required for cross project clone scenario.
         """
         pulumi.set(__self__, "source_instance_name", source_instance_name)
         if allocated_ip_range is not None:
@@ -174,6 +178,8 @@ class DatabaseInstanceClone(dict):
             pulumi.set(__self__, "preferred_zone", preferred_zone)
         if source_instance_deletion_time is not None:
             pulumi.set(__self__, "source_instance_deletion_time", source_instance_deletion_time)
+        if source_project is not None:
+            pulumi.set(__self__, "source_project", source_project)
 
     @_builtins.property
     @pulumi.getter(name="sourceInstanceName")
@@ -226,6 +232,14 @@ class DatabaseInstanceClone(dict):
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "source_instance_deletion_time")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceProject")
+    def source_project(self) -> Optional[_builtins.str]:
+        """
+        Id of source project where source instances exits, required for cross project clone scenario.
+        """
+        return pulumi.get(self, "source_project")
 
 
 @pulumi.output_type
@@ -895,6 +909,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "active_directory_config"
         elif key == "advancedMachineFeatures":
             suggest = "advanced_machine_features"
+        elif key == "autoUpgradeEnabled":
+            suggest = "auto_upgrade_enabled"
         elif key == "availabilityType":
             suggest = "availability_type"
         elif key == "backupConfiguration":
@@ -903,6 +919,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "connection_pool_configs"
         elif key == "connectorEnforcement":
             suggest = "connector_enforcement"
+        elif key == "dataApiAccess":
+            suggest = "data_api_access"
         elif key == "dataCacheConfig":
             suggest = "data_cache_config"
         elif key == "dataDiskProvisionedIops":
@@ -970,11 +988,13 @@ class DatabaseInstanceSettings(dict):
                  activation_policy: Optional[_builtins.str] = None,
                  active_directory_config: Optional['outputs.DatabaseInstanceSettingsActiveDirectoryConfig'] = None,
                  advanced_machine_features: Optional['outputs.DatabaseInstanceSettingsAdvancedMachineFeatures'] = None,
+                 auto_upgrade_enabled: Optional[_builtins.bool] = None,
                  availability_type: Optional[_builtins.str] = None,
                  backup_configuration: Optional['outputs.DatabaseInstanceSettingsBackupConfiguration'] = None,
                  collation: Optional[_builtins.str] = None,
                  connection_pool_configs: Optional[Sequence['outputs.DatabaseInstanceSettingsConnectionPoolConfig']] = None,
                  connector_enforcement: Optional[_builtins.str] = None,
+                 data_api_access: Optional[_builtins.str] = None,
                  data_cache_config: Optional['outputs.DatabaseInstanceSettingsDataCacheConfig'] = None,
                  data_disk_provisioned_iops: Optional[_builtins.int] = None,
                  data_disk_provisioned_throughput: Optional[_builtins.int] = None,
@@ -1008,6 +1028,12 @@ class DatabaseInstanceSettings(dict):
                and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
         :param _builtins.str activation_policy: This specifies when the instance should be
                active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+        :param _builtins.bool auto_upgrade_enabled: Enables
+               [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+               feature. When this field is set to `true`, Automatic Upgrade is enabled for
+               `MYSQL_8_0` based minor versions. The `database_version` must be
+               `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can't be unset or
+               changed if set to `true`.
         :param _builtins.str availability_type: The availability type of the Cloud SQL
                instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
                `settings.backup_configuration.enabled` is set to `true`.
@@ -1019,6 +1045,7 @@ class DatabaseInstanceSettings(dict):
         :param _builtins.str collation: The name of server instance collation.
         :param Sequence['DatabaseInstanceSettingsConnectionPoolConfigArgs'] connection_pool_configs: The managed connection pool setting for a Cloud SQL instance.
         :param _builtins.str connector_enforcement: Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
+        :param _builtins.str data_api_access: Configures ExecuteSql API's access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
         :param 'DatabaseInstanceSettingsDataCacheConfigArgs' data_cache_config: Data cache configurations.
         :param _builtins.int data_disk_provisioned_iops: Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
         :param _builtins.int data_disk_provisioned_throughput: Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
@@ -1053,6 +1080,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "active_directory_config", active_directory_config)
         if advanced_machine_features is not None:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
+        if auto_upgrade_enabled is not None:
+            pulumi.set(__self__, "auto_upgrade_enabled", auto_upgrade_enabled)
         if availability_type is not None:
             pulumi.set(__self__, "availability_type", availability_type)
         if backup_configuration is not None:
@@ -1063,6 +1092,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "connection_pool_configs", connection_pool_configs)
         if connector_enforcement is not None:
             pulumi.set(__self__, "connector_enforcement", connector_enforcement)
+        if data_api_access is not None:
+            pulumi.set(__self__, "data_api_access", data_api_access)
         if data_cache_config is not None:
             pulumi.set(__self__, "data_cache_config", data_cache_config)
         if data_disk_provisioned_iops is not None:
@@ -1148,6 +1179,19 @@ class DatabaseInstanceSettings(dict):
         return pulumi.get(self, "advanced_machine_features")
 
     @_builtins.property
+    @pulumi.getter(name="autoUpgradeEnabled")
+    def auto_upgrade_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enables
+        [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+        feature. When this field is set to `true`, Automatic Upgrade is enabled for
+        `MYSQL_8_0` based minor versions. The `database_version` must be
+        `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can't be unset or
+        changed if set to `true`.
+        """
+        return pulumi.get(self, "auto_upgrade_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="availabilityType")
     def availability_type(self) -> Optional[_builtins.str]:
         """
@@ -1190,6 +1234,14 @@ class DatabaseInstanceSettings(dict):
         Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
         """
         return pulumi.get(self, "connector_enforcement")
+
+    @_builtins.property
+    @pulumi.getter(name="dataApiAccess")
+    def data_api_access(self) -> Optional[_builtins.str]:
+        """
+        Configures ExecuteSql API's access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
+        """
+        return pulumi.get(self, "data_api_access")
 
     @_builtins.property
     @pulumi.getter(name="dataCacheConfig")
@@ -1890,7 +1942,9 @@ class DatabaseInstanceSettingsInsightsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "queryInsightsEnabled":
+        if key == "enhancedQueryInsightsEnabled":
+            suggest = "enhanced_query_insights_enabled"
+        elif key == "queryInsightsEnabled":
             suggest = "query_insights_enabled"
         elif key == "queryPlansPerMinute":
             suggest = "query_plans_per_minute"
@@ -1913,18 +1967,22 @@ class DatabaseInstanceSettingsInsightsConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 enhanced_query_insights_enabled: Optional[_builtins.bool] = None,
                  query_insights_enabled: Optional[_builtins.bool] = None,
                  query_plans_per_minute: Optional[_builtins.int] = None,
                  query_string_length: Optional[_builtins.int] = None,
                  record_application_tags: Optional[_builtins.bool] = None,
                  record_client_address: Optional[_builtins.bool] = None):
         """
+        :param _builtins.bool enhanced_query_insights_enabled: True if Enhanced Query Insights feature is enabled.
         :param _builtins.bool query_insights_enabled: True if Query Insights feature is enabled.
         :param _builtins.int query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
         :param _builtins.int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
         :param _builtins.bool record_application_tags: True if Query Insights will record application tags from query when enabled.
         :param _builtins.bool record_client_address: True if Query Insights will record client address when enabled.
         """
+        if enhanced_query_insights_enabled is not None:
+            pulumi.set(__self__, "enhanced_query_insights_enabled", enhanced_query_insights_enabled)
         if query_insights_enabled is not None:
             pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
         if query_plans_per_minute is not None:
@@ -1935,6 +1993,14 @@ class DatabaseInstanceSettingsInsightsConfig(dict):
             pulumi.set(__self__, "record_application_tags", record_application_tags)
         if record_client_address is not None:
             pulumi.set(__self__, "record_client_address", record_client_address)
+
+    @_builtins.property
+    @pulumi.getter(name="enhancedQueryInsightsEnabled")
+    def enhanced_query_insights_enabled(self) -> Optional[_builtins.bool]:
+        """
+        True if Enhanced Query Insights feature is enabled.
+        """
+        return pulumi.get(self, "enhanced_query_insights_enabled")
 
     @_builtins.property
     @pulumi.getter(name="queryInsightsEnabled")
@@ -2038,7 +2104,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
                At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
                This setting can be updated, but it cannot be removed after it is set.
         :param Sequence['DatabaseInstanceSettingsIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
-        :param _builtins.str server_ca_mode: Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
+        :param _builtins.str server_ca_mode: Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA`, `GOOGLE_MANAGED_CAS_CA`, and `CUSTOMER_MANAGED_CAS_CA`.
         :param _builtins.str server_ca_pool: The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
         :param _builtins.str ssl_mode: Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
         """
@@ -2126,7 +2192,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
     @pulumi.getter(name="serverCaMode")
     def server_ca_mode(self) -> Optional[_builtins.str]:
         """
-        Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
+        Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA`, `GOOGLE_MANAGED_CAS_CA`, and `CUSTOMER_MANAGED_CAS_CA`.
         """
         return pulumi.get(self, "server_ca_mode")
 
@@ -3088,7 +3154,8 @@ class GetDatabaseInstanceCloneResult(dict):
                  point_in_time: _builtins.str,
                  preferred_zone: _builtins.str,
                  source_instance_deletion_time: _builtins.str,
-                 source_instance_name: _builtins.str):
+                 source_instance_name: _builtins.str,
+                 source_project: _builtins.str):
         """
         :param _builtins.str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         :param Sequence[_builtins.str] database_names: (SQL Server only, use with point_in_time) clone only the specified databases from the source instance. Clone all databases if empty.
@@ -3096,6 +3163,7 @@ class GetDatabaseInstanceCloneResult(dict):
         :param _builtins.str preferred_zone: (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
         :param _builtins.str source_instance_deletion_time: The timestamp of when the source instance was deleted for a clone from a deleted instance.
         :param _builtins.str source_instance_name: The name of the instance from which the point in time should be restored.
+        :param _builtins.str source_project: The project ID of the source project
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "database_names", database_names)
@@ -3103,6 +3171,7 @@ class GetDatabaseInstanceCloneResult(dict):
         pulumi.set(__self__, "preferred_zone", preferred_zone)
         pulumi.set(__self__, "source_instance_deletion_time", source_instance_deletion_time)
         pulumi.set(__self__, "source_instance_name", source_instance_name)
+        pulumi.set(__self__, "source_project", source_project)
 
     @_builtins.property
     @pulumi.getter(name="allocatedIpRange")
@@ -3151,6 +3220,14 @@ class GetDatabaseInstanceCloneResult(dict):
         The name of the instance from which the point in time should be restored.
         """
         return pulumi.get(self, "source_instance_name")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceProject")
+    def source_project(self) -> _builtins.str:
+        """
+        The project ID of the source project
+        """
+        return pulumi.get(self, "source_project")
 
 
 @pulumi.output_type
@@ -3560,11 +3637,13 @@ class GetDatabaseInstanceSettingResult(dict):
                  activation_policy: _builtins.str,
                  active_directory_configs: Sequence['outputs.GetDatabaseInstanceSettingActiveDirectoryConfigResult'],
                  advanced_machine_features: Sequence['outputs.GetDatabaseInstanceSettingAdvancedMachineFeatureResult'],
+                 auto_upgrade_enabled: _builtins.bool,
                  availability_type: _builtins.str,
                  backup_configurations: Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationResult'],
                  collation: _builtins.str,
                  connection_pool_configs: Sequence['outputs.GetDatabaseInstanceSettingConnectionPoolConfigResult'],
                  connector_enforcement: _builtins.str,
+                 data_api_access: _builtins.str,
                  data_cache_configs: Sequence['outputs.GetDatabaseInstanceSettingDataCacheConfigResult'],
                  data_disk_provisioned_iops: _builtins.int,
                  data_disk_provisioned_throughput: _builtins.int,
@@ -3595,6 +3674,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  version: _builtins.int):
         """
         :param _builtins.str activation_policy: This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND.
+        :param _builtins.bool auto_upgrade_enabled: Enables Automatic Version Upgrade feature. Can be used with MySQL only.
         :param _builtins.str availability_type: The availability type of the Cloud SQL instance, high availability
                (REGIONAL) or single zone (ZONAL). For all instances, ensure that
                settings.backup_configuration.enabled is set to true.
@@ -3606,6 +3686,7 @@ class GetDatabaseInstanceSettingResult(dict):
         :param _builtins.str collation: The name of server instance collation.
         :param Sequence['GetDatabaseInstanceSettingConnectionPoolConfigArgs'] connection_pool_configs: The managed connection pool setting for a Cloud SQL instance.
         :param _builtins.str connector_enforcement: Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
+        :param _builtins.str data_api_access: Allows using ExecuteSql API to connect to the instance. Disallowed when unspecified.
         :param Sequence['GetDatabaseInstanceSettingDataCacheConfigArgs'] data_cache_configs: Data cache configurations.
         :param _builtins.int data_disk_provisioned_iops: Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
         :param _builtins.int data_disk_provisioned_throughput: Provisioned throughput measured in MiB per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
@@ -3634,11 +3715,13 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "activation_policy", activation_policy)
         pulumi.set(__self__, "active_directory_configs", active_directory_configs)
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
+        pulumi.set(__self__, "auto_upgrade_enabled", auto_upgrade_enabled)
         pulumi.set(__self__, "availability_type", availability_type)
         pulumi.set(__self__, "backup_configurations", backup_configurations)
         pulumi.set(__self__, "collation", collation)
         pulumi.set(__self__, "connection_pool_configs", connection_pool_configs)
         pulumi.set(__self__, "connector_enforcement", connector_enforcement)
+        pulumi.set(__self__, "data_api_access", data_api_access)
         pulumi.set(__self__, "data_cache_configs", data_cache_configs)
         pulumi.set(__self__, "data_disk_provisioned_iops", data_disk_provisioned_iops)
         pulumi.set(__self__, "data_disk_provisioned_throughput", data_disk_provisioned_throughput)
@@ -3687,6 +3770,14 @@ class GetDatabaseInstanceSettingResult(dict):
         return pulumi.get(self, "advanced_machine_features")
 
     @_builtins.property
+    @pulumi.getter(name="autoUpgradeEnabled")
+    def auto_upgrade_enabled(self) -> _builtins.bool:
+        """
+        Enables Automatic Version Upgrade feature. Can be used with MySQL only.
+        """
+        return pulumi.get(self, "auto_upgrade_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="availabilityType")
     def availability_type(self) -> _builtins.str:
         """
@@ -3729,6 +3820,14 @@ class GetDatabaseInstanceSettingResult(dict):
         Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         """
         return pulumi.get(self, "connector_enforcement")
+
+    @_builtins.property
+    @pulumi.getter(name="dataApiAccess")
+    def data_api_access(self) -> _builtins.str:
+        """
+        Allows using ExecuteSql API to connect to the instance. Disallowed when unspecified.
+        """
+        return pulumi.get(self, "data_api_access")
 
     @_builtins.property
     @pulumi.getter(name="dataCacheConfigs")
@@ -4272,23 +4371,34 @@ class GetDatabaseInstanceSettingFinalBackupConfigResult(dict):
 @pulumi.output_type
 class GetDatabaseInstanceSettingInsightsConfigResult(dict):
     def __init__(__self__, *,
+                 enhanced_query_insights_enabled: _builtins.bool,
                  query_insights_enabled: _builtins.bool,
                  query_plans_per_minute: _builtins.int,
                  query_string_length: _builtins.int,
                  record_application_tags: _builtins.bool,
                  record_client_address: _builtins.bool):
         """
+        :param _builtins.bool enhanced_query_insights_enabled: True if Enhanced Query Insights feature is enabled.
         :param _builtins.bool query_insights_enabled: True if Query Insights feature is enabled.
         :param _builtins.int query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
-        :param _builtins.int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
+        :param _builtins.int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1024 to 100000.
         :param _builtins.bool record_application_tags: True if Query Insights will record application tags from query when enabled.
         :param _builtins.bool record_client_address: True if Query Insights will record client address when enabled.
         """
+        pulumi.set(__self__, "enhanced_query_insights_enabled", enhanced_query_insights_enabled)
         pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
         pulumi.set(__self__, "query_plans_per_minute", query_plans_per_minute)
         pulumi.set(__self__, "query_string_length", query_string_length)
         pulumi.set(__self__, "record_application_tags", record_application_tags)
         pulumi.set(__self__, "record_client_address", record_client_address)
+
+    @_builtins.property
+    @pulumi.getter(name="enhancedQueryInsightsEnabled")
+    def enhanced_query_insights_enabled(self) -> _builtins.bool:
+        """
+        True if Enhanced Query Insights feature is enabled.
+        """
+        return pulumi.get(self, "enhanced_query_insights_enabled")
 
     @_builtins.property
     @pulumi.getter(name="queryInsightsEnabled")
@@ -4310,7 +4420,7 @@ class GetDatabaseInstanceSettingInsightsConfigResult(dict):
     @pulumi.getter(name="queryStringLength")
     def query_string_length(self) -> _builtins.int:
         """
-        Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
+        Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1024 to 100000.
         """
         return pulumi.get(self, "query_string_length")
 
@@ -5270,7 +5380,8 @@ class GetDatabaseInstancesInstanceCloneResult(dict):
                  point_in_time: _builtins.str,
                  preferred_zone: _builtins.str,
                  source_instance_deletion_time: _builtins.str,
-                 source_instance_name: _builtins.str):
+                 source_instance_name: _builtins.str,
+                 source_project: _builtins.str):
         """
         :param _builtins.str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         :param Sequence[_builtins.str] database_names: (SQL Server only, use with point_in_time) clone only the specified databases from the source instance. Clone all databases if empty.
@@ -5278,6 +5389,7 @@ class GetDatabaseInstancesInstanceCloneResult(dict):
         :param _builtins.str preferred_zone: (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
         :param _builtins.str source_instance_deletion_time: The timestamp of when the source instance was deleted for a clone from a deleted instance.
         :param _builtins.str source_instance_name: The name of the instance from which the point in time should be restored.
+        :param _builtins.str source_project: The project ID of the source project
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "database_names", database_names)
@@ -5285,6 +5397,7 @@ class GetDatabaseInstancesInstanceCloneResult(dict):
         pulumi.set(__self__, "preferred_zone", preferred_zone)
         pulumi.set(__self__, "source_instance_deletion_time", source_instance_deletion_time)
         pulumi.set(__self__, "source_instance_name", source_instance_name)
+        pulumi.set(__self__, "source_project", source_project)
 
     @_builtins.property
     @pulumi.getter(name="allocatedIpRange")
@@ -5333,6 +5446,14 @@ class GetDatabaseInstancesInstanceCloneResult(dict):
         The name of the instance from which the point in time should be restored.
         """
         return pulumi.get(self, "source_instance_name")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceProject")
+    def source_project(self) -> _builtins.str:
+        """
+        The project ID of the source project
+        """
+        return pulumi.get(self, "source_project")
 
 
 @pulumi.output_type
@@ -5736,11 +5857,13 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                  activation_policy: _builtins.str,
                  active_directory_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult'],
                  advanced_machine_features: Sequence['outputs.GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult'],
+                 auto_upgrade_enabled: _builtins.bool,
                  availability_type: _builtins.str,
                  backup_configurations: Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationResult'],
                  collation: _builtins.str,
                  connection_pool_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingConnectionPoolConfigResult'],
                  connector_enforcement: _builtins.str,
+                 data_api_access: _builtins.str,
                  data_cache_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingDataCacheConfigResult'],
                  data_disk_provisioned_iops: _builtins.int,
                  data_disk_provisioned_throughput: _builtins.int,
@@ -5771,6 +5894,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                  version: _builtins.int):
         """
         :param _builtins.str activation_policy: This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND.
+        :param _builtins.bool auto_upgrade_enabled: Enables Automatic Version Upgrade feature. Can be used with MySQL only.
         :param _builtins.str availability_type: The availability type of the Cloud SQL instance, high availability
                (REGIONAL) or single zone (ZONAL). For all instances, ensure that
                settings.backup_configuration.enabled is set to true.
@@ -5782,6 +5906,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         :param _builtins.str collation: The name of server instance collation.
         :param Sequence['GetDatabaseInstancesInstanceSettingConnectionPoolConfigArgs'] connection_pool_configs: The managed connection pool setting for a Cloud SQL instance.
         :param _builtins.str connector_enforcement: Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
+        :param _builtins.str data_api_access: Allows using ExecuteSql API to connect to the instance. Disallowed when unspecified.
         :param Sequence['GetDatabaseInstancesInstanceSettingDataCacheConfigArgs'] data_cache_configs: Data cache configurations.
         :param _builtins.int data_disk_provisioned_iops: Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
         :param _builtins.int data_disk_provisioned_throughput: Provisioned throughput measured in MiB per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
@@ -5810,11 +5935,13 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         pulumi.set(__self__, "activation_policy", activation_policy)
         pulumi.set(__self__, "active_directory_configs", active_directory_configs)
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
+        pulumi.set(__self__, "auto_upgrade_enabled", auto_upgrade_enabled)
         pulumi.set(__self__, "availability_type", availability_type)
         pulumi.set(__self__, "backup_configurations", backup_configurations)
         pulumi.set(__self__, "collation", collation)
         pulumi.set(__self__, "connection_pool_configs", connection_pool_configs)
         pulumi.set(__self__, "connector_enforcement", connector_enforcement)
+        pulumi.set(__self__, "data_api_access", data_api_access)
         pulumi.set(__self__, "data_cache_configs", data_cache_configs)
         pulumi.set(__self__, "data_disk_provisioned_iops", data_disk_provisioned_iops)
         pulumi.set(__self__, "data_disk_provisioned_throughput", data_disk_provisioned_throughput)
@@ -5863,6 +5990,14 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         return pulumi.get(self, "advanced_machine_features")
 
     @_builtins.property
+    @pulumi.getter(name="autoUpgradeEnabled")
+    def auto_upgrade_enabled(self) -> _builtins.bool:
+        """
+        Enables Automatic Version Upgrade feature. Can be used with MySQL only.
+        """
+        return pulumi.get(self, "auto_upgrade_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="availabilityType")
     def availability_type(self) -> _builtins.str:
         """
@@ -5905,6 +6040,14 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         """
         return pulumi.get(self, "connector_enforcement")
+
+    @_builtins.property
+    @pulumi.getter(name="dataApiAccess")
+    def data_api_access(self) -> _builtins.str:
+        """
+        Allows using ExecuteSql API to connect to the instance. Disallowed when unspecified.
+        """
+        return pulumi.get(self, "data_api_access")
 
     @_builtins.property
     @pulumi.getter(name="dataCacheConfigs")
@@ -6448,23 +6591,34 @@ class GetDatabaseInstancesInstanceSettingFinalBackupConfigResult(dict):
 @pulumi.output_type
 class GetDatabaseInstancesInstanceSettingInsightsConfigResult(dict):
     def __init__(__self__, *,
+                 enhanced_query_insights_enabled: _builtins.bool,
                  query_insights_enabled: _builtins.bool,
                  query_plans_per_minute: _builtins.int,
                  query_string_length: _builtins.int,
                  record_application_tags: _builtins.bool,
                  record_client_address: _builtins.bool):
         """
+        :param _builtins.bool enhanced_query_insights_enabled: True if Enhanced Query Insights feature is enabled.
         :param _builtins.bool query_insights_enabled: True if Query Insights feature is enabled.
         :param _builtins.int query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
-        :param _builtins.int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
+        :param _builtins.int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1024 to 100000.
         :param _builtins.bool record_application_tags: True if Query Insights will record application tags from query when enabled.
         :param _builtins.bool record_client_address: True if Query Insights will record client address when enabled.
         """
+        pulumi.set(__self__, "enhanced_query_insights_enabled", enhanced_query_insights_enabled)
         pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
         pulumi.set(__self__, "query_plans_per_minute", query_plans_per_minute)
         pulumi.set(__self__, "query_string_length", query_string_length)
         pulumi.set(__self__, "record_application_tags", record_application_tags)
         pulumi.set(__self__, "record_client_address", record_client_address)
+
+    @_builtins.property
+    @pulumi.getter(name="enhancedQueryInsightsEnabled")
+    def enhanced_query_insights_enabled(self) -> _builtins.bool:
+        """
+        True if Enhanced Query Insights feature is enabled.
+        """
+        return pulumi.get(self, "enhanced_query_insights_enabled")
 
     @_builtins.property
     @pulumi.getter(name="queryInsightsEnabled")
@@ -6486,7 +6640,7 @@ class GetDatabaseInstancesInstanceSettingInsightsConfigResult(dict):
     @pulumi.getter(name="queryStringLength")
     def query_string_length(self) -> _builtins.int:
         """
-        Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
+        Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1024 to 100000.
         """
         return pulumi.get(self, "query_string_length")
 

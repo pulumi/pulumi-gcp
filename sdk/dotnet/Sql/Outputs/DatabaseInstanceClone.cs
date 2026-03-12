@@ -41,6 +41,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// Name of the source instance which will be cloned.
         /// </summary>
         public readonly string SourceInstanceName;
+        /// <summary>
+        /// Id of source project where source instances exits, required for cross project clone scenario.
+        /// </summary>
+        public readonly string? SourceProject;
 
         [OutputConstructor]
         private DatabaseInstanceClone(
@@ -54,7 +58,9 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? sourceInstanceDeletionTime,
 
-            string sourceInstanceName)
+            string sourceInstanceName,
+
+            string? sourceProject)
         {
             AllocatedIpRange = allocatedIpRange;
             DatabaseNames = databaseNames;
@@ -62,6 +68,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             PreferredZone = preferredZone;
             SourceInstanceDeletionTime = sourceInstanceDeletionTime;
             SourceInstanceName = sourceInstanceName;
+            SourceProject = sourceProject;
         }
     }
 }

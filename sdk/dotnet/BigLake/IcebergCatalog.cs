@@ -57,6 +57,40 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// });
     /// ```
+    /// ### Biglake Iceberg Catalog Primary Location
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucketForMyIcebergCatalog = new Gcp.Storage.Bucket("bucket_for_my_iceberg_catalog", new()
+    ///     {
+    ///         Name = "my_iceberg_catalog",
+    ///         Location = "us-central1",
+    ///         ForceDestroy = true,
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var myIcebergCatalog = new Gcp.BigLake.IcebergCatalog("my_iceberg_catalog", new()
+    ///     {
+    ///         Name = bucketForMyIcebergCatalog.Name,
+    ///         CatalogType = "CATALOG_TYPE_GCS_BUCKET",
+    ///         CredentialMode = "CREDENTIAL_MODE_VENDED_CREDENTIALS",
+    ///         PrimaryLocation = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             bucketForMyIcebergCatalog,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -117,6 +151,14 @@ namespace Pulumi.Gcp.BigLake
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The primary location for mirroring the remote catalog metadata. It must be
+        /// a BigLake-supported location, and it should be proximate to the remote
+        /// catalog's location.
+        /// </summary>
+        [Output("primaryLocation")]
+        public Output<string?> PrimaryLocation { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -214,6 +256,14 @@ namespace Pulumi.Gcp.BigLake
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The primary location for mirroring the remote catalog metadata. It must be
+        /// a BigLake-supported location, and it should be proximate to the remote
+        /// catalog's location.
+        /// </summary>
+        [Input("primaryLocation")]
+        public Input<string>? PrimaryLocation { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -268,6 +318,14 @@ namespace Pulumi.Gcp.BigLake
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The primary location for mirroring the remote catalog metadata. It must be
+        /// a BigLake-supported location, and it should be proximate to the remote
+        /// catalog's location.
+        /// </summary>
+        [Input("primaryLocation")]
+        public Input<string>? PrimaryLocation { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

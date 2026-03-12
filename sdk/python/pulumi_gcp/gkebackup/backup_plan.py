@@ -223,6 +223,7 @@ class _BackupPlanState:
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 protected_namespace_count: Optional[pulumi.Input[_builtins.int]] = None,
                  protected_pod_count: Optional[pulumi.Input[_builtins.int]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']] = None,
@@ -259,6 +260,7 @@ class _BackupPlanState:
         :param pulumi.Input[_builtins.str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.int] protected_namespace_count: The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
         :param pulumi.Input[_builtins.int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
@@ -290,6 +292,8 @@ class _BackupPlanState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if protected_namespace_count is not None:
+            pulumi.set(__self__, "protected_namespace_count", protected_namespace_count)
         if protected_pod_count is not None:
             pulumi.set(__self__, "protected_pod_count", protected_pod_count)
         if pulumi_labels is not None:
@@ -450,6 +454,18 @@ class _BackupPlanState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protectedNamespaceCount")
+    def protected_namespace_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+        """
+        return pulumi.get(self, "protected_namespace_count")
+
+    @protected_namespace_count.setter
+    def protected_namespace_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "protected_namespace_count", value)
 
     @_builtins.property
     @pulumi.getter(name="protectedPodCount")
@@ -1454,6 +1470,7 @@ class BackupPlan(pulumi.CustomResource):
             __props__.__dict__["retention_policy"] = retention_policy
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
+            __props__.__dict__["protected_namespace_count"] = None
             __props__.__dict__["protected_pod_count"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
@@ -1482,6 +1499,7 @@ class BackupPlan(pulumi.CustomResource):
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
+            protected_namespace_count: Optional[pulumi.Input[_builtins.int]] = None,
             protected_pod_count: Optional[pulumi.Input[_builtins.int]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             retention_policy: Optional[pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']]] = None,
@@ -1522,6 +1540,7 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.int] protected_namespace_count: The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
         :param pulumi.Input[_builtins.int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
@@ -1546,6 +1565,7 @@ class BackupPlan(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["protected_namespace_count"] = protected_namespace_count
         __props__.__dict__["protected_pod_count"] = protected_pod_count
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["retention_policy"] = retention_policy
@@ -1657,6 +1677,14 @@ class BackupPlan(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="protectedNamespaceCount")
+    def protected_namespace_count(self) -> pulumi.Output[_builtins.int]:
+        """
+        The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+        """
+        return pulumi.get(self, "protected_namespace_count")
 
     @_builtins.property
     @pulumi.getter(name="protectedPodCount")

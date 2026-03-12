@@ -10,6 +10,7 @@ import com.pulumi.gcp.alloydb.outputs.GetClusterBackupSource;
 import com.pulumi.gcp.alloydb.outputs.GetClusterBackupdrBackupSource;
 import com.pulumi.gcp.alloydb.outputs.GetClusterContinuousBackupConfig;
 import com.pulumi.gcp.alloydb.outputs.GetClusterContinuousBackupInfo;
+import com.pulumi.gcp.alloydb.outputs.GetClusterDataplexConfig;
 import com.pulumi.gcp.alloydb.outputs.GetClusterEncryptionConfig;
 import com.pulumi.gcp.alloydb.outputs.GetClusterEncryptionInfo;
 import com.pulumi.gcp.alloydb.outputs.GetClusterInitialUser;
@@ -42,6 +43,7 @@ public final class GetClusterResult {
     private List<GetClusterContinuousBackupConfig> continuousBackupConfigs;
     private List<GetClusterContinuousBackupInfo> continuousBackupInfos;
     private String databaseVersion;
+    private List<GetClusterDataplexConfig> dataplexConfigs;
     private String deletionPolicy;
     private Boolean deletionProtection;
     private String displayName;
@@ -104,6 +106,9 @@ public final class GetClusterResult {
     }
     public String databaseVersion() {
         return this.databaseVersion;
+    }
+    public List<GetClusterDataplexConfig> dataplexConfigs() {
+        return this.dataplexConfigs;
     }
     public String deletionPolicy() {
         return this.deletionPolicy;
@@ -218,6 +223,7 @@ public final class GetClusterResult {
         private List<GetClusterContinuousBackupConfig> continuousBackupConfigs;
         private List<GetClusterContinuousBackupInfo> continuousBackupInfos;
         private String databaseVersion;
+        private List<GetClusterDataplexConfig> dataplexConfigs;
         private String deletionPolicy;
         private Boolean deletionProtection;
         private String displayName;
@@ -260,6 +266,7 @@ public final class GetClusterResult {
     	      this.continuousBackupConfigs = defaults.continuousBackupConfigs;
     	      this.continuousBackupInfos = defaults.continuousBackupInfos;
     	      this.databaseVersion = defaults.databaseVersion;
+    	      this.dataplexConfigs = defaults.dataplexConfigs;
     	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
@@ -378,6 +385,17 @@ public final class GetClusterResult {
             }
             this.databaseVersion = databaseVersion;
             return this;
+        }
+        @CustomType.Setter
+        public Builder dataplexConfigs(List<GetClusterDataplexConfig> dataplexConfigs) {
+            if (dataplexConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "dataplexConfigs");
+            }
+            this.dataplexConfigs = dataplexConfigs;
+            return this;
+        }
+        public Builder dataplexConfigs(GetClusterDataplexConfig... dataplexConfigs) {
+            return dataplexConfigs(List.of(dataplexConfigs));
         }
         @CustomType.Setter
         public Builder deletionPolicy(String deletionPolicy) {
@@ -665,6 +683,7 @@ public final class GetClusterResult {
             _resultValue.continuousBackupConfigs = continuousBackupConfigs;
             _resultValue.continuousBackupInfos = continuousBackupInfos;
             _resultValue.databaseVersion = databaseVersion;
+            _resultValue.dataplexConfigs = dataplexConfigs;
             _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;

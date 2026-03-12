@@ -213,7 +213,6 @@ export class HaVpnGateway extends pulumi.CustomResource {
      */
     declare public readonly network: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
@@ -352,7 +351,6 @@ export interface HaVpnGatewayState {
      */
     network?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
@@ -426,7 +424,6 @@ export interface HaVpnGatewayArgs {
      */
     network: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */

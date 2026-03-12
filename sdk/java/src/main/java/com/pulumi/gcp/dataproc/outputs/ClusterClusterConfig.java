@@ -53,6 +53,11 @@ public final class ClusterClusterConfig {
      */
     private @Nullable String clusterTier;
     /**
+     * @return The type of the cluster.
+     * 
+     */
+    private @Nullable String clusterType;
+    /**
      * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
      * Structure defined below.
      * 
@@ -180,6 +185,13 @@ public final class ClusterClusterConfig {
      */
     public Optional<String> clusterTier() {
         return Optional.ofNullable(this.clusterTier);
+    }
+    /**
+     * @return The type of the cluster.
+     * 
+     */
+    public Optional<String> clusterType() {
+        return Optional.ofNullable(this.clusterType);
     }
     /**
      * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
@@ -316,6 +328,7 @@ public final class ClusterClusterConfig {
         private @Nullable List<ClusterClusterConfigAuxiliaryNodeGroup> auxiliaryNodeGroups;
         private @Nullable String bucket;
         private @Nullable String clusterTier;
+        private @Nullable String clusterType;
         private @Nullable ClusterClusterConfigDataprocMetricConfig dataprocMetricConfig;
         private @Nullable ClusterClusterConfigEncryptionConfig encryptionConfig;
         private @Nullable ClusterClusterConfigEndpointConfig endpointConfig;
@@ -337,6 +350,7 @@ public final class ClusterClusterConfig {
     	      this.auxiliaryNodeGroups = defaults.auxiliaryNodeGroups;
     	      this.bucket = defaults.bucket;
     	      this.clusterTier = defaults.clusterTier;
+    	      this.clusterType = defaults.clusterType;
     	      this.dataprocMetricConfig = defaults.dataprocMetricConfig;
     	      this.encryptionConfig = defaults.encryptionConfig;
     	      this.endpointConfig = defaults.endpointConfig;
@@ -378,6 +392,12 @@ public final class ClusterClusterConfig {
         public Builder clusterTier(@Nullable String clusterTier) {
 
             this.clusterTier = clusterTier;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clusterType(@Nullable String clusterType) {
+
+            this.clusterType = clusterType;
             return this;
         }
         @CustomType.Setter
@@ -473,6 +493,7 @@ public final class ClusterClusterConfig {
             _resultValue.auxiliaryNodeGroups = auxiliaryNodeGroups;
             _resultValue.bucket = bucket;
             _resultValue.clusterTier = clusterTier;
+            _resultValue.clusterType = clusterType;
             _resultValue.dataprocMetricConfig = dataprocMetricConfig;
             _resultValue.encryptionConfig = encryptionConfig;
             _resultValue.endpointConfig = endpointConfig;

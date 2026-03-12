@@ -197,7 +197,7 @@ export class ApiKey extends pulumi.CustomResource {
      */
     declare public readonly restrictions: pulumi.Output<outputs.projects.ApiKeyRestrictions | undefined>;
     /**
-     * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+     * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
      */
     declare public readonly serviceAccountEmail: pulumi.Output<string | undefined>;
     /**
@@ -271,7 +271,7 @@ export interface ApiKeyState {
      */
     restrictions?: pulumi.Input<inputs.projects.ApiKeyRestrictions>;
     /**
-     * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+     * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
      */
     serviceAccountEmail?: pulumi.Input<string>;
     /**
@@ -305,7 +305,7 @@ export interface ApiKeyArgs {
      */
     restrictions?: pulumi.Input<inputs.projects.ApiKeyRestrictions>;
     /**
-     * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+     * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
      */
     serviceAccountEmail?: pulumi.Input<string>;
 }

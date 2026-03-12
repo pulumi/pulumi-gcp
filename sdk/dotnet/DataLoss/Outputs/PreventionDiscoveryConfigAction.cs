@@ -24,9 +24,17 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigActionPubSubNotification? PubSubNotification;
         /// <summary>
+        /// Publishes generated data profiles to Google Security Operations. For more information, see [Use Sensitive Data Protection data in context-aware analytics](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
+        /// </summary>
+        public readonly Outputs.PreventionDiscoveryConfigActionPublishToChronicle? PublishToChronicle;
+        /// <summary>
         /// Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigActionPublishToDataplexCatalog? PublishToDataplexCatalog;
+        /// <summary>
+        /// Publishes findings to Security Command Center for each data profile.
+        /// </summary>
+        public readonly Outputs.PreventionDiscoveryConfigActionPublishToScc? PublishToScc;
         /// <summary>
         /// Tag the profiled resources with the specified tag values.
         /// Structure is documented below.
@@ -39,13 +47,19 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionDiscoveryConfigActionPubSubNotification? pubSubNotification,
 
+            Outputs.PreventionDiscoveryConfigActionPublishToChronicle? publishToChronicle,
+
             Outputs.PreventionDiscoveryConfigActionPublishToDataplexCatalog? publishToDataplexCatalog,
+
+            Outputs.PreventionDiscoveryConfigActionPublishToScc? publishToScc,
 
             Outputs.PreventionDiscoveryConfigActionTagResources? tagResources)
         {
             ExportData = exportData;
             PubSubNotification = pubSubNotification;
+            PublishToChronicle = publishToChronicle;
             PublishToDataplexCatalog = publishToDataplexCatalog;
+            PublishToScc = publishToScc;
             TagResources = tagResources;
         }
     }

@@ -253,6 +253,112 @@ import (
 //	}
 //
 // ```
+// ### Region Network Firewall Policy Rule Network Context Egress
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basicRegionalNetworkFirewallPolicy, err := compute.NewRegionNetworkFirewallPolicy(ctx, "basic_regional_network_firewall_policy", &compute.RegionNetworkFirewallPolicyArgs{
+//				Name:        pulumi.String("fw-policy"),
+//				Description: pulumi.String("Sample regional network firewall policy"),
+//				Project:     pulumi.String("my-project-name"),
+//				Region:      pulumi.String("us-west1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionNetworkFirewallPolicyRule(ctx, "primary", &compute.RegionNetworkFirewallPolicyRuleArgs{
+//				Action:         pulumi.String("allow"),
+//				Description:    pulumi.String("This is a simple rule description"),
+//				Direction:      pulumi.String("EGRESS"),
+//				Disabled:       pulumi.Bool(false),
+//				EnableLogging:  pulumi.Bool(true),
+//				FirewallPolicy: basicRegionalNetworkFirewallPolicy.Name,
+//				Priority:       pulumi.Int(1000),
+//				Region:         pulumi.String("us-west1"),
+//				RuleName:       pulumi.String("test-rule"),
+//				Match: &compute.RegionNetworkFirewallPolicyRuleMatchArgs{
+//					DestIpRanges: pulumi.StringArray{
+//						pulumi.String("10.100.0.1/32"),
+//					},
+//					DestNetworkContext: pulumi.String("INTERNET"),
+//					Layer4Configs: compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArray{
+//						&compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs{
+//							IpProtocol: pulumi.String("all"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Region Network Firewall Policy Rule Network Context Ingress
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basicRegionalNetworkFirewallPolicy, err := compute.NewRegionNetworkFirewallPolicy(ctx, "basic_regional_network_firewall_policy", &compute.RegionNetworkFirewallPolicyArgs{
+//				Name:        pulumi.String("fw-policy"),
+//				Description: pulumi.String("Sample regional network firewall policy"),
+//				Project:     pulumi.String("my-project-name"),
+//				Region:      pulumi.String("us-west1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionNetworkFirewallPolicyRule(ctx, "primary", &compute.RegionNetworkFirewallPolicyRuleArgs{
+//				Action:         pulumi.String("allow"),
+//				Description:    pulumi.String("This is a simple rule description"),
+//				Direction:      pulumi.String("INGRESS"),
+//				Disabled:       pulumi.Bool(false),
+//				EnableLogging:  pulumi.Bool(true),
+//				FirewallPolicy: basicRegionalNetworkFirewallPolicy.Name,
+//				Priority:       pulumi.Int(1000),
+//				Region:         pulumi.String("us-west1"),
+//				RuleName:       pulumi.String("test-rule"),
+//				Match: &compute.RegionNetworkFirewallPolicyRuleMatchArgs{
+//					SrcIpRanges: pulumi.StringArray{
+//						pulumi.String("10.100.0.1/32"),
+//					},
+//					SrcNetworkContext: pulumi.String("INTERNET"),
+//					Layer4Configs: compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArray{
+//						&compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs{
+//							IpProtocol: pulumi.String("all"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

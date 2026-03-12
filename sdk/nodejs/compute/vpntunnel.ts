@@ -247,7 +247,6 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
@@ -485,7 +484,6 @@ export interface VPNTunnelState {
      */
     name?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
@@ -626,7 +624,6 @@ export interface VPNTunnelArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */

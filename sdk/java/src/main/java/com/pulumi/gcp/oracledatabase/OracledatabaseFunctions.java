@@ -25,6 +25,10 @@ import com.pulumi.gcp.oracledatabase.inputs.GetDbNodesArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetDbNodesPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetDbServersArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetDbServersPlainArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkPlainArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetOdbSubnetArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetOdbSubnetPlainArgs;
 import com.pulumi.gcp.oracledatabase.outputs.GetAutonomousDatabaseResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetAutonomousDatabasesResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetCloudExadataInfrastructureResult;
@@ -33,6 +37,8 @@ import com.pulumi.gcp.oracledatabase.outputs.GetCloudVmClusterResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetCloudVmClustersResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetDbNodesResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetDbServersResult;
+import com.pulumi.gcp.oracledatabase.outputs.GetOdbNetworkResult;
+import com.pulumi.gcp.oracledatabase.outputs.GetOdbSubnetResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class OracledatabaseFunctions {
@@ -2180,5 +2186,490 @@ public final class OracledatabaseFunctions {
      */
     public static CompletableFuture<GetDbServersResult> getDbServersPlain(GetDbServersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getDbServers:getDbServers", TypeShape.of(GetDbServersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an ODB Network.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-network = OracledatabaseFunctions.getOdbNetwork(GetOdbNetworkArgs.builder()
+     *             .location("us-east4")
+     *             .odbNetworkId("my-network-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * See gcp.oracledatabase.OdbNetwork resource for details of the available attributes.
+     * 
+     */
+    public static Output<GetOdbNetworkResult> getOdbNetwork(GetOdbNetworkArgs args) {
+        return getOdbNetwork(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an ODB Network.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-network = OracledatabaseFunctions.getOdbNetwork(GetOdbNetworkArgs.builder()
+     *             .location("us-east4")
+     *             .odbNetworkId("my-network-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * See gcp.oracledatabase.OdbNetwork resource for details of the available attributes.
+     * 
+     */
+    public static CompletableFuture<GetOdbNetworkResult> getOdbNetworkPlain(GetOdbNetworkPlainArgs args) {
+        return getOdbNetworkPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an ODB Network.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-network = OracledatabaseFunctions.getOdbNetwork(GetOdbNetworkArgs.builder()
+     *             .location("us-east4")
+     *             .odbNetworkId("my-network-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * See gcp.oracledatabase.OdbNetwork resource for details of the available attributes.
+     * 
+     */
+    public static Output<GetOdbNetworkResult> getOdbNetwork(GetOdbNetworkArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getOdbNetwork:getOdbNetwork", TypeShape.of(GetOdbNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an ODB Network.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-network = OracledatabaseFunctions.getOdbNetwork(GetOdbNetworkArgs.builder()
+     *             .location("us-east4")
+     *             .odbNetworkId("my-network-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * See gcp.oracledatabase.OdbNetwork resource for details of the available attributes.
+     * 
+     */
+    public static Output<GetOdbNetworkResult> getOdbNetwork(GetOdbNetworkArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getOdbNetwork:getOdbNetwork", TypeShape.of(GetOdbNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an ODB Network.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-network = OracledatabaseFunctions.getOdbNetwork(GetOdbNetworkArgs.builder()
+     *             .location("us-east4")
+     *             .odbNetworkId("my-network-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * See gcp.oracledatabase.OdbNetwork resource for details of the available attributes.
+     * 
+     */
+    public static CompletableFuture<GetOdbNetworkResult> getOdbNetworkPlain(GetOdbNetworkPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getOdbNetwork:getOdbNetwork", TypeShape.of(GetOdbNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an ODB Subnet.
+     * 
+     * For more information see the
+     * * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbSubnets)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-subnet = OracledatabaseFunctions.getOdbSubnet(GetOdbSubnetArgs.builder()
+     *             .location("us-east4")
+     *             .odbnetwork("my-network-id")
+     *             .odbSubnetId("my-subnet-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * See gcp.oracledatabase.OdbSubnet resource for details of the available attributes.
+     * 
+     */
+    public static Output<GetOdbSubnetResult> getOdbSubnet(GetOdbSubnetArgs args) {
+        return getOdbSubnet(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an ODB Subnet.
+     * 
+     * For more information see the
+     * * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbSubnets)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-subnet = OracledatabaseFunctions.getOdbSubnet(GetOdbSubnetArgs.builder()
+     *             .location("us-east4")
+     *             .odbnetwork("my-network-id")
+     *             .odbSubnetId("my-subnet-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * See gcp.oracledatabase.OdbSubnet resource for details of the available attributes.
+     * 
+     */
+    public static CompletableFuture<GetOdbSubnetResult> getOdbSubnetPlain(GetOdbSubnetPlainArgs args) {
+        return getOdbSubnetPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an ODB Subnet.
+     * 
+     * For more information see the
+     * * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbSubnets)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-subnet = OracledatabaseFunctions.getOdbSubnet(GetOdbSubnetArgs.builder()
+     *             .location("us-east4")
+     *             .odbnetwork("my-network-id")
+     *             .odbSubnetId("my-subnet-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * See gcp.oracledatabase.OdbSubnet resource for details of the available attributes.
+     * 
+     */
+    public static Output<GetOdbSubnetResult> getOdbSubnet(GetOdbSubnetArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getOdbSubnet:getOdbSubnet", TypeShape.of(GetOdbSubnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an ODB Subnet.
+     * 
+     * For more information see the
+     * * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbSubnets)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-subnet = OracledatabaseFunctions.getOdbSubnet(GetOdbSubnetArgs.builder()
+     *             .location("us-east4")
+     *             .odbnetwork("my-network-id")
+     *             .odbSubnetId("my-subnet-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * See gcp.oracledatabase.OdbSubnet resource for details of the available attributes.
+     * 
+     */
+    public static Output<GetOdbSubnetResult> getOdbSubnet(GetOdbSubnetArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getOdbSubnet:getOdbSubnet", TypeShape.of(GetOdbSubnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an ODB Subnet.
+     * 
+     * For more information see the
+     * * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbSubnets)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-subnet = OracledatabaseFunctions.getOdbSubnet(GetOdbSubnetArgs.builder()
+     *             .location("us-east4")
+     *             .odbnetwork("my-network-id")
+     *             .odbSubnetId("my-subnet-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * See gcp.oracledatabase.OdbSubnet resource for details of the available attributes.
+     * 
+     */
+    public static CompletableFuture<GetOdbSubnetResult> getOdbSubnetPlain(GetOdbSubnetPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getOdbSubnet:getOdbSubnet", TypeShape.of(GetOdbSubnetResult.class), args, Utilities.withVersion(options));
     }
 }

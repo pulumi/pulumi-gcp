@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.outputs.RegionInstanceTemplateSchedulingLocalSsdRe
 import com.pulumi.gcp.compute.outputs.RegionInstanceTemplateSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.RegionInstanceTemplateSchedulingNodeAffinity;
 import com.pulumi.gcp.compute.outputs.RegionInstanceTemplateSchedulingOnInstanceStopAction;
+import com.pulumi.gcp.compute.outputs.RegionInstanceTemplateSchedulingPreemptionNoticeDuration;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -96,6 +97,11 @@ public final class RegionInstanceTemplateScheduling {
      * 
      */
     private @Nullable Boolean preemptible;
+    /**
+     * @return The duration of the notice that the instance will receive before it is preempted.
+     * 
+     */
+    private @Nullable RegionInstanceTemplateSchedulingPreemptionNoticeDuration preemptionNoticeDuration;
     /**
      * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
      * `preemptible` should be `true` and `automaticRestart` should be
@@ -220,6 +226,13 @@ public final class RegionInstanceTemplateScheduling {
         return Optional.ofNullable(this.preemptible);
     }
     /**
+     * @return The duration of the notice that the instance will receive before it is preempted.
+     * 
+     */
+    public Optional<RegionInstanceTemplateSchedulingPreemptionNoticeDuration> preemptionNoticeDuration() {
+        return Optional.ofNullable(this.preemptionNoticeDuration);
+    }
+    /**
      * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
      * `preemptible` should be `true` and `automaticRestart` should be
      * `false`. For more info about
@@ -266,6 +279,7 @@ public final class RegionInstanceTemplateScheduling {
         private @Nullable String onHostMaintenance;
         private @Nullable RegionInstanceTemplateSchedulingOnInstanceStopAction onInstanceStopAction;
         private @Nullable Boolean preemptible;
+        private @Nullable RegionInstanceTemplateSchedulingPreemptionNoticeDuration preemptionNoticeDuration;
         private @Nullable String provisioningModel;
         private @Nullable Boolean skipGuestOsShutdown;
         private @Nullable String terminationTime;
@@ -285,6 +299,7 @@ public final class RegionInstanceTemplateScheduling {
     	      this.onHostMaintenance = defaults.onHostMaintenance;
     	      this.onInstanceStopAction = defaults.onInstanceStopAction;
     	      this.preemptible = defaults.preemptible;
+    	      this.preemptionNoticeDuration = defaults.preemptionNoticeDuration;
     	      this.provisioningModel = defaults.provisioningModel;
     	      this.skipGuestOsShutdown = defaults.skipGuestOsShutdown;
     	      this.terminationTime = defaults.terminationTime;
@@ -375,6 +390,12 @@ public final class RegionInstanceTemplateScheduling {
             return this;
         }
         @CustomType.Setter
+        public Builder preemptionNoticeDuration(@Nullable RegionInstanceTemplateSchedulingPreemptionNoticeDuration preemptionNoticeDuration) {
+
+            this.preemptionNoticeDuration = preemptionNoticeDuration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder provisioningModel(@Nullable String provisioningModel) {
 
             this.provisioningModel = provisioningModel;
@@ -407,6 +428,7 @@ public final class RegionInstanceTemplateScheduling {
             _resultValue.onHostMaintenance = onHostMaintenance;
             _resultValue.onInstanceStopAction = onInstanceStopAction;
             _resultValue.preemptible = preemptible;
+            _resultValue.preemptionNoticeDuration = preemptionNoticeDuration;
             _resultValue.provisioningModel = provisioningModel;
             _resultValue.skipGuestOsShutdown = skipGuestOsShutdown;
             _resultValue.terminationTime = terminationTime;

@@ -382,6 +382,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly databaseVersion: pulumi.Output<string>;
     /**
+     * Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+     * Structure is documented below.
+     */
+    declare public readonly dataplexConfig: pulumi.Output<outputs.alloydb.ClusterDataplexConfig>;
+    /**
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -549,6 +554,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["continuousBackupConfig"] = state?.continuousBackupConfig;
             resourceInputs["continuousBackupInfos"] = state?.continuousBackupInfos;
             resourceInputs["databaseVersion"] = state?.databaseVersion;
+            resourceInputs["dataplexConfig"] = state?.dataplexConfig;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["displayName"] = state?.displayName;
@@ -592,6 +598,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterType"] = args?.clusterType;
             resourceInputs["continuousBackupConfig"] = args?.continuousBackupConfig;
             resourceInputs["databaseVersion"] = args?.databaseVersion;
+            resourceInputs["dataplexConfig"] = args?.dataplexConfig;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["displayName"] = args?.displayName;
@@ -685,6 +692,11 @@ export interface ClusterState {
      * Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
      */
     databaseVersion?: pulumi.Input<string>;
+    /**
+     * Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+     * Structure is documented below.
+     */
+    dataplexConfig?: pulumi.Input<inputs.alloydb.ClusterDataplexConfig>;
     /**
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
@@ -870,6 +882,11 @@ export interface ClusterArgs {
      * Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
      */
     databaseVersion?: pulumi.Input<string>;
+    /**
+     * Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+     * Structure is documented below.
+     */
+    dataplexConfig?: pulumi.Input<inputs.alloydb.ClusterDataplexConfig>;
     /**
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.

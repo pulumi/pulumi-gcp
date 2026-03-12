@@ -115,6 +115,21 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
         return this.sourceInstanceName;
     }
 
+    /**
+     * Id of source project where source instances exits, required for cross project clone scenario.
+     * 
+     */
+    @Import(name="sourceProject")
+    private @Nullable Output<String> sourceProject;
+
+    /**
+     * @return Id of source project where source instances exits, required for cross project clone scenario.
+     * 
+     */
+    public Optional<Output<String>> sourceProject() {
+        return Optional.ofNullable(this.sourceProject);
+    }
+
     private DatabaseInstanceCloneArgs() {}
 
     private DatabaseInstanceCloneArgs(DatabaseInstanceCloneArgs $) {
@@ -124,6 +139,7 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
         this.preferredZone = $.preferredZone;
         this.sourceInstanceDeletionTime = $.sourceInstanceDeletionTime;
         this.sourceInstanceName = $.sourceInstanceName;
+        this.sourceProject = $.sourceProject;
     }
 
     public static Builder builder() {
@@ -286,6 +302,27 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
          */
         public Builder sourceInstanceName(String sourceInstanceName) {
             return sourceInstanceName(Output.of(sourceInstanceName));
+        }
+
+        /**
+         * @param sourceProject Id of source project where source instances exits, required for cross project clone scenario.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceProject(@Nullable Output<String> sourceProject) {
+            $.sourceProject = sourceProject;
+            return this;
+        }
+
+        /**
+         * @param sourceProject Id of source project where source instances exits, required for cross project clone scenario.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceProject(String sourceProject) {
+            return sourceProject(Output.of(sourceProject));
         }
 
         public DatabaseInstanceCloneArgs build() {

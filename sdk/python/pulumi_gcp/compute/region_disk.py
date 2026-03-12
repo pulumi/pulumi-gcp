@@ -28,6 +28,7 @@ class RegionDiskArgs:
                  create_snapshot_before_destroy_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']] = None,
+                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]] = None,
                  interface: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -71,6 +72,8 @@ class RegionDiskArgs:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: (Optional, Beta)
+               Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -144,6 +147,8 @@ class RegionDiskArgs:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if erase_windows_vss_signature is not None:
+            pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
         if interface is not None:
@@ -279,6 +284,19 @@ class RegionDiskArgs:
     @disk_encryption_key.setter
     def disk_encryption_key(self, value: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']]):
         pulumi.set(self, "disk_encryption_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Optional, Beta)
+        Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+        """
+        return pulumi.get(self, "erase_windows_vss_signature")
+
+    @erase_windows_vss_signature.setter
+    def erase_windows_vss_signature(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "erase_windows_vss_signature", value)
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")
@@ -518,6 +536,7 @@ class _RegionDiskState:
                  disk_encryption_key: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']] = None,
                  disk_id: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]] = None,
                  interface: Optional[pulumi.Input[_builtins.str]] = None,
                  label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -572,6 +591,8 @@ class _RegionDiskState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] disk_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: (Optional, Beta)
+               Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -669,6 +690,8 @@ class _RegionDiskState:
             pulumi.set(__self__, "disk_id", disk_id)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if erase_windows_vss_signature is not None:
+            pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
         if interface is not None:
@@ -846,6 +869,19 @@ class _RegionDiskState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Optional, Beta)
+        Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+        """
+        return pulumi.get(self, "erase_windows_vss_signature")
+
+    @erase_windows_vss_signature.setter
+    def erase_windows_vss_signature(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "erase_windows_vss_signature", value)
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")
@@ -1203,6 +1239,7 @@ class RegionDisk(pulumi.CustomResource):
                  create_snapshot_before_destroy_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[Union['RegionDiskDiskEncryptionKeyArgs', 'RegionDiskDiskEncryptionKeyArgsDict']]] = None,
+                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]]] = None,
                  interface: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1390,6 +1427,8 @@ class RegionDisk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: (Optional, Beta)
+               Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -1622,6 +1661,7 @@ class RegionDisk(pulumi.CustomResource):
                  create_snapshot_before_destroy_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[Union['RegionDiskDiskEncryptionKeyArgs', 'RegionDiskDiskEncryptionKeyArgsDict']]] = None,
+                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]]] = None,
                  interface: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1653,6 +1693,7 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["create_snapshot_before_destroy_prefix"] = create_snapshot_before_destroy_prefix
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+            __props__.__dict__["erase_windows_vss_signature"] = erase_windows_vss_signature
             __props__.__dict__["guest_os_features"] = guest_os_features
             __props__.__dict__["interface"] = interface
             __props__.__dict__["labels"] = labels
@@ -1703,6 +1744,7 @@ class RegionDisk(pulumi.CustomResource):
             disk_encryption_key: Optional[pulumi.Input[Union['RegionDiskDiskEncryptionKeyArgs', 'RegionDiskDiskEncryptionKeyArgsDict']]] = None,
             disk_id: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
             guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]]] = None,
             interface: Optional[pulumi.Input[_builtins.str]] = None,
             label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1761,6 +1803,8 @@ class RegionDisk(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] disk_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: (Optional, Beta)
+               Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -1853,6 +1897,7 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["disk_encryption_key"] = disk_encryption_key
         __props__.__dict__["disk_id"] = disk_id
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["erase_windows_vss_signature"] = erase_windows_vss_signature
         __props__.__dict__["guest_os_features"] = guest_os_features
         __props__.__dict__["interface"] = interface
         __props__.__dict__["label_fingerprint"] = label_fingerprint
@@ -1968,6 +2013,15 @@ class RegionDisk(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        (Optional, Beta)
+        Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+        """
+        return pulumi.get(self, "erase_windows_vss_signature")
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")

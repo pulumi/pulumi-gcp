@@ -15,7 +15,7 @@ public final class ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs ex
     public static final ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs Empty = new ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs();
 
     /**
-     * Required. The Service Directory service name.
+     * The Service Directory service name.
      * Format:
      * projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
      * 
@@ -24,7 +24,7 @@ public final class ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs ex
     private Output<String> service;
 
     /**
-     * @return Required. The Service Directory service name.
+     * @return The Service Directory service name.
      * Format:
      * projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
      * 
@@ -58,7 +58,7 @@ public final class ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs ex
         }
 
         /**
-         * @param service Required. The Service Directory service name.
+         * @param service The Service Directory service name.
          * Format:
          * projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
          * 
@@ -71,7 +71,7 @@ public final class ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs ex
         }
 
         /**
-         * @param service Required. The Service Directory service name.
+         * @param service The Service Directory service name.
          * Format:
          * projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
          * 

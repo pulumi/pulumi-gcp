@@ -103,6 +103,21 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The type of the cluster.
+     * 
+     */
+    @Import(name="clusterType")
+    private @Nullable Output<String> clusterType;
+
+    /**
+     * @return The type of the cluster.
+     * 
+     */
+    public Optional<Output<String>> clusterType() {
+        return Optional.ofNullable(this.clusterType);
+    }
+
+    /**
      * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
      * Structure defined below.
      * 
@@ -365,6 +380,7 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
         this.auxiliaryNodeGroups = $.auxiliaryNodeGroups;
         this.bucket = $.bucket;
         this.clusterTier = $.clusterTier;
+        this.clusterType = $.clusterType;
         this.dataprocMetricConfig = $.dataprocMetricConfig;
         this.encryptionConfig = $.encryptionConfig;
         this.endpointConfig = $.endpointConfig;
@@ -504,6 +520,27 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder clusterTier(String clusterTier) {
             return clusterTier(Output.of(clusterTier));
+        }
+
+        /**
+         * @param clusterType The type of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterType(@Nullable Output<String> clusterType) {
+            $.clusterType = clusterType;
+            return this;
+        }
+
+        /**
+         * @param clusterType The type of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterType(String clusterType) {
+            return clusterType(Output.of(clusterType));
         }
 
         /**

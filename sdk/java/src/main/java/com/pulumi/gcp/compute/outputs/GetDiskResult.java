@@ -41,6 +41,7 @@ public final class GetDiskResult {
     private String diskId;
     private Map<String,String> effectiveLabels;
     private Boolean enableConfidentialCompute;
+    private Boolean eraseWindowsVssSignature;
     private List<GetDiskGuestOsFeature> guestOsFeatures;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -197,6 +198,9 @@ public final class GetDiskResult {
     }
     public Boolean enableConfidentialCompute() {
         return this.enableConfidentialCompute;
+    }
+    public Boolean eraseWindowsVssSignature() {
+        return this.eraseWindowsVssSignature;
     }
     public List<GetDiskGuestOsFeature> guestOsFeatures() {
         return this.guestOsFeatures;
@@ -401,6 +405,7 @@ public final class GetDiskResult {
         private String diskId;
         private Map<String,String> effectiveLabels;
         private Boolean enableConfidentialCompute;
+        private Boolean eraseWindowsVssSignature;
         private List<GetDiskGuestOsFeature> guestOsFeatures;
         private String id;
         private String image;
@@ -449,6 +454,7 @@ public final class GetDiskResult {
     	      this.diskId = defaults.diskId;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
+    	      this.eraseWindowsVssSignature = defaults.eraseWindowsVssSignature;
     	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.id = defaults.id;
     	      this.image = defaults.image;
@@ -577,6 +583,14 @@ public final class GetDiskResult {
               throw new MissingRequiredPropertyException("GetDiskResult", "enableConfidentialCompute");
             }
             this.enableConfidentialCompute = enableConfidentialCompute;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder eraseWindowsVssSignature(Boolean eraseWindowsVssSignature) {
+            if (eraseWindowsVssSignature == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "eraseWindowsVssSignature");
+            }
+            this.eraseWindowsVssSignature = eraseWindowsVssSignature;
             return this;
         }
         @CustomType.Setter
@@ -881,6 +895,7 @@ public final class GetDiskResult {
             _resultValue.diskId = diskId;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.enableConfidentialCompute = enableConfidentialCompute;
+            _resultValue.eraseWindowsVssSignature = eraseWindowsVssSignature;
             _resultValue.guestOsFeatures = guestOsFeatures;
             _resultValue.id = id;
             _resultValue.image = image;

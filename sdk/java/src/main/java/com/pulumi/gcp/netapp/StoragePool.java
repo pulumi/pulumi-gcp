@@ -392,6 +392,30 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
+     * (Optional, Beta)
+     * Mode of the storage pool.
+     * The operational mode of the storage pool. ONTAP mode enables operations
+     * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+     * If not specified during creation, the mode defaults to DEFAULT.
+     * Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+     * 
+     */
+    @Export(name="mode", refs={String.class}, tree="[0]")
+    private Output<String> mode;
+
+    /**
+     * @return (Optional, Beta)
+     * Mode of the storage pool.
+     * The operational mode of the storage pool. ONTAP mode enables operations
+     * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+     * If not specified during creation, the mode defaults to DEFAULT.
+     * Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+     * 
+     */
+    public Output<String> mode() {
+        return this.mode;
+    }
+    /**
      * The resource name of the storage pool. Needs to be unique per location/region.
      * 
      */
@@ -484,6 +508,26 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> replicaZone() {
         return Codegen.optional(this.replicaZone);
+    }
+    /**
+     * (Optional, Beta)
+     * The effective scale tier of the storage pool. If `scaleTier` is not
+     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     * 
+     */
+    @Export(name="scaleTier", refs={String.class}, tree="[0]")
+    private Output<String> scaleTier;
+
+    /**
+     * @return (Optional, Beta)
+     * The effective scale tier of the storage pool. If `scaleTier` is not
+     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     * 
+     */
+    public Output<String> scaleTier() {
+        return this.scaleTier;
     }
     /**
      * Service level of the storage pool.

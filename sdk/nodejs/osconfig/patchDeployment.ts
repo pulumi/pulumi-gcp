@@ -164,6 +164,7 @@ import * as utilities from "../utilities";
  *     },
  *     patchConfig: {
  *         migInstancesAllowed: true,
+ *         skipUnpatchableVms: true,
  *         rebootConfig: "ALWAYS",
  *         apt: {
  *             type: "DIST",

@@ -107,6 +107,107 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// });
     /// ```
+    /// ### Discoveryengine Dataconnector Jira With Actions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var jira_with_actions = new Gcp.DiscoveryEngine.DataConnector("jira-with-actions", new()
+    ///     {
+    ///         Location = "global",
+    ///         CollectionId = "collection-id",
+    ///         CollectionDisplayName = "Jira Federated",
+    ///         DataSource = "jira",
+    ///         DataSourceVersion = 3,
+    ///         Params = 
+    ///         {
+    ///             { "instance_uri", "https://example.atlassian.net" },
+    ///             { "instance_id", "SECRET_MANAGER_RESOURCE_NAME" },
+    ///             { "client_id", "SECRET_MANAGER_RESOURCE_NAME" },
+    ///             { "client_secret", "SECRET_MANAGER_RESOURCE_NAME" },
+    ///             { "refresh_token", "SECRET_MANAGER_RESOURCE_NAME" },
+    ///             { "auth_type", "OAUTH" },
+    ///         },
+    ///         RefreshInterval = "86400s",
+    ///         Entities = new[]
+    ///         {
+    ///             new Gcp.DiscoveryEngine.Inputs.DataConnectorEntityArgs
+    ///             {
+    ///                 EntityName = "project",
+    ///             },
+    ///             new Gcp.DiscoveryEngine.Inputs.DataConnectorEntityArgs
+    ///             {
+    ///                 EntityName = "issue",
+    ///             },
+    ///             new Gcp.DiscoveryEngine.Inputs.DataConnectorEntityArgs
+    ///             {
+    ///                 EntityName = "comment",
+    ///             },
+    ///             new Gcp.DiscoveryEngine.Inputs.DataConnectorEntityArgs
+    ///             {
+    ///                 EntityName = "attachment",
+    ///             },
+    ///         },
+    ///         StaticIpEnabled = false,
+    ///         DestinationConfigs = new[]
+    ///         {
+    ///             new Gcp.DiscoveryEngine.Inputs.DataConnectorDestinationConfigArgs
+    ///             {
+    ///                 Key = "url",
+    ///                 Destinations = new[]
+    ///                 {
+    ///                     new Gcp.DiscoveryEngine.Inputs.DataConnectorDestinationConfigDestinationArgs
+    ///                     {
+    ///                         Host = "https://example.atlassian.net",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         ConnectorModes = new[]
+    ///         {
+    ///             "FEDERATED",
+    ///             "ACTIONS",
+    ///         },
+    ///         SyncMode = "PERIODIC",
+    ///         AutoRunDisabled = true,
+    ///         IncrementalSyncDisabled = true,
+    ///         ActionConfig = new Gcp.DiscoveryEngine.Inputs.DataConnectorActionConfigArgs
+    ///         {
+    ///             ActionParams = 
+    ///             {
+    ///                 { "instance_uri", "https://example.atlassian.net" },
+    ///                 { "instance_id", "SECRET_MANAGER_RESOURCE_NAME" },
+    ///                 { "client_id", "SECRET_MANAGER_RESOURCE_NAME" },
+    ///                 { "client_secret", "SECRET_MANAGER_RESOURCE_NAME" },
+    ///                 { "auth_type", "OAUTH" },
+    ///             },
+    ///             CreateBapConnection = true,
+    ///         },
+    ///         BapConfig = new Gcp.DiscoveryEngine.Inputs.DataConnectorBapConfigArgs
+    ///         {
+    ///             SupportedConnectorModes = new[]
+    ///             {
+    ///                 "ACTIONS",
+    ///             },
+    ///             EnabledActions = new[]
+    ///             {
+    ///                 "create_issue",
+    ///                 "update_issue",
+    ///                 "change_issue_status",
+    ///                 "create_comment",
+    ///                 "update_comment",
+    ///                 "upload_attachment",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -128,6 +229,14 @@ namespace Pulumi.Gcp.DiscoveryEngine
     public partial class DataConnector : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Action configuration for the data connector. Configures action
+        /// capabilities for connectors that support the ACTIONS connector mode.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("actionConfig")]
+        public Output<Outputs.DataConnectorActionConfig?> ActionConfig { get; private set; } = null!;
+
+        /// <summary>
         /// State of the action connector. This reflects whether the action connector
         /// is initializing, active or has encountered errors. The possible value can be:
         /// 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
@@ -141,6 +250,15 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Output("autoRunDisabled")]
         public Output<bool?> AutoRunDisabled { get; private set; } = null!;
+
+        /// <summary>
+        /// BAP (Business Application Platform) configuration for the data
+        /// connector. Controls which actions are enabled for connectors
+        /// using the ACTIONS connector mode.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("bapConfig")]
+        public Output<Outputs.DataConnectorBapConfig?> BapConfig { get; private set; } = null!;
 
         /// <summary>
         /// User actions that must be completed before the connector can start syncing data.
@@ -200,6 +318,20 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Output("dataSource")]
         public Output<string> DataSource { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the data source. For example, `3` for Jira v3.
+        /// </summary>
+        [Output("dataSourceVersion")]
+        public Output<int> DataSourceVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Destination connector configurations for the data connector,
+        /// used to configure where data is served.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("destinationConfigs")]
+        public Output<ImmutableArray<Outputs.DataConnectorDestinationConfig>> DestinationConfigs { get; private set; } = null!;
 
         /// <summary>
         /// List of entities from the connected data source to ingest.
@@ -398,10 +530,27 @@ namespace Pulumi.Gcp.DiscoveryEngine
     public sealed class DataConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Action configuration for the data connector. Configures action
+        /// capabilities for connectors that support the ACTIONS connector mode.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("actionConfig")]
+        public Input<Inputs.DataConnectorActionConfigArgs>? ActionConfig { get; set; }
+
+        /// <summary>
         /// Indicates whether full syncs are paused for this connector
         /// </summary>
         [Input("autoRunDisabled")]
         public Input<bool>? AutoRunDisabled { get; set; }
+
+        /// <summary>
+        /// BAP (Business Application Platform) configuration for the data
+        /// connector. Controls which actions are enabled for connectors
+        /// using the ACTIONS connector mode.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bapConfig")]
+        public Input<Inputs.DataConnectorBapConfigArgs>? BapConfig { get; set; }
 
         /// <summary>
         /// The display name of the Collection.
@@ -443,6 +592,26 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("dataSource", required: true)]
         public Input<string> DataSource { get; set; } = null!;
+
+        /// <summary>
+        /// The version of the data source. For example, `3` for Jira v3.
+        /// </summary>
+        [Input("dataSourceVersion")]
+        public Input<int>? DataSourceVersion { get; set; }
+
+        [Input("destinationConfigs")]
+        private InputList<Inputs.DataConnectorDestinationConfigArgs>? _destinationConfigs;
+
+        /// <summary>
+        /// Destination connector configurations for the data connector,
+        /// used to configure where data is served.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.DataConnectorDestinationConfigArgs> DestinationConfigs
+        {
+            get => _destinationConfigs ?? (_destinationConfigs = new InputList<Inputs.DataConnectorDestinationConfigArgs>());
+            set => _destinationConfigs = value;
+        }
 
         [Input("entities")]
         private InputList<Inputs.DataConnectorEntityArgs>? _entities;
@@ -548,6 +717,14 @@ namespace Pulumi.Gcp.DiscoveryEngine
     public sealed class DataConnectorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Action configuration for the data connector. Configures action
+        /// capabilities for connectors that support the ACTIONS connector mode.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("actionConfig")]
+        public Input<Inputs.DataConnectorActionConfigGetArgs>? ActionConfig { get; set; }
+
+        /// <summary>
         /// State of the action connector. This reflects whether the action connector
         /// is initializing, active or has encountered errors. The possible value can be:
         /// 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
@@ -561,6 +738,15 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("autoRunDisabled")]
         public Input<bool>? AutoRunDisabled { get; set; }
+
+        /// <summary>
+        /// BAP (Business Application Platform) configuration for the data
+        /// connector. Controls which actions are enabled for connectors
+        /// using the ACTIONS connector mode.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bapConfig")]
+        public Input<Inputs.DataConnectorBapConfigGetArgs>? BapConfig { get; set; }
 
         [Input("blockingReasons")]
         private InputList<string>? _blockingReasons;
@@ -632,6 +818,26 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("dataSource")]
         public Input<string>? DataSource { get; set; }
+
+        /// <summary>
+        /// The version of the data source. For example, `3` for Jira v3.
+        /// </summary>
+        [Input("dataSourceVersion")]
+        public Input<int>? DataSourceVersion { get; set; }
+
+        [Input("destinationConfigs")]
+        private InputList<Inputs.DataConnectorDestinationConfigGetArgs>? _destinationConfigs;
+
+        /// <summary>
+        /// Destination connector configurations for the data connector,
+        /// used to configure where data is served.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.DataConnectorDestinationConfigGetArgs> DestinationConfigs
+        {
+            get => _destinationConfigs ?? (_destinationConfigs = new InputList<Inputs.DataConnectorDestinationConfigGetArgs>());
+            set => _destinationConfigs = value;
+        }
 
         [Input("entities")]
         private InputList<Inputs.DataConnectorEntityGetArgs>? _entities;

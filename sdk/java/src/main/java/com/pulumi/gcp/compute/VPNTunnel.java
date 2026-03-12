@@ -435,7 +435,6 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      * 
@@ -444,8 +443,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ VPNTunnelParams> params;
 
     /**
-     * @return (Optional, Beta)
-     * Additional params passed with the request, but not persisted as part of resource payload
+     * @return Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      * 
      */

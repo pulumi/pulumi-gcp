@@ -135,6 +135,66 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Network Firewall Policy Rule Network Context Egress
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicNetworkFirewallPolicy = new gcp.compute.NetworkFirewallPolicy("basic_network_firewall_policy", {
+ *     name: "fw-policy",
+ *     description: "Sample global network firewall policy",
+ *     project: "my-project-name",
+ * });
+ * const primary = new gcp.compute.NetworkFirewallPolicyRule("primary", {
+ *     action: "allow",
+ *     description: "This is a simple rule description",
+ *     direction: "EGRESS",
+ *     disabled: false,
+ *     enableLogging: true,
+ *     firewallPolicy: basicNetworkFirewallPolicy.name,
+ *     priority: 1000,
+ *     ruleName: "test-rule",
+ *     match: {
+ *         destIpRanges: ["10.100.0.1/32"],
+ *         destNetworkContext: "INTERNET",
+ *         layer4Configs: [{
+ *             ipProtocol: "all",
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Network Firewall Policy Rule Network Context Ingress
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicNetworkFirewallPolicy = new gcp.compute.NetworkFirewallPolicy("basic_network_firewall_policy", {
+ *     name: "fw-policy",
+ *     description: "Sample global network firewall policy",
+ *     project: "my-project-name",
+ * });
+ * const network = new gcp.compute.Network("network", {name: "network"});
+ * const primary = new gcp.compute.NetworkFirewallPolicyRule("primary", {
+ *     action: "allow",
+ *     description: "This is a simple rule description",
+ *     direction: "INGRESS",
+ *     disabled: false,
+ *     enableLogging: true,
+ *     firewallPolicy: basicNetworkFirewallPolicy.name,
+ *     priority: 1000,
+ *     ruleName: "test-rule",
+ *     match: {
+ *         srcIpRanges: ["11.100.0.1/32"],
+ *         srcNetworkContext: "VPC_NETWORKS",
+ *         srcNetworks: [network.id],
+ *         layer4Configs: [{
+ *             ipProtocol: "all",
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

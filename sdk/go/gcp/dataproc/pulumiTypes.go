@@ -4025,6 +4025,8 @@ type ClusterClusterConfig struct {
 	Bucket *string `pulumi:"bucket"`
 	// The tier of the cluster.
 	ClusterTier *string `pulumi:"clusterTier"`
+	// The type of the cluster.
+	ClusterType *string `pulumi:"clusterType"`
 	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
 	// Structure defined below.
 	DataprocMetricConfig *ClusterClusterConfigDataprocMetricConfig `pulumi:"dataprocMetricConfig"`
@@ -4104,6 +4106,8 @@ type ClusterClusterConfigArgs struct {
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
 	// The tier of the cluster.
 	ClusterTier pulumi.StringPtrInput `pulumi:"clusterTier"`
+	// The type of the cluster.
+	ClusterType pulumi.StringPtrInput `pulumi:"clusterType"`
 	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
 	// Structure defined below.
 	DataprocMetricConfig ClusterClusterConfigDataprocMetricConfigPtrInput `pulumi:"dataprocMetricConfig"`
@@ -4258,6 +4262,11 @@ func (o ClusterClusterConfigOutput) Bucket() pulumi.StringPtrOutput {
 // The tier of the cluster.
 func (o ClusterClusterConfigOutput) ClusterTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *string { return v.ClusterTier }).(pulumi.StringPtrOutput)
+}
+
+// The type of the cluster.
+func (o ClusterClusterConfigOutput) ClusterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfig) *string { return v.ClusterType }).(pulumi.StringPtrOutput)
 }
 
 // The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
@@ -4424,6 +4433,16 @@ func (o ClusterClusterConfigPtrOutput) ClusterTier() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ClusterTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the cluster.
+func (o ClusterClusterConfigPtrOutput) ClusterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterType
 	}).(pulumi.StringPtrOutput)
 }
 

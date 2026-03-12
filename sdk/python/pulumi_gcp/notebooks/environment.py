@@ -343,6 +343,8 @@ class Environment(pulumi.CustomResource):
                  vm_image: Optional[pulumi.Input[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict']]] = None,
                  __props__=None):
         """
+        > **Warning:** `notebooks.Environment` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+
         A Cloud AI Platform Notebook environment.
 
         To get more information about Environment, see:
@@ -407,6 +409,8 @@ class Environment(pulumi.CustomResource):
                  args: EnvironmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** `notebooks.Environment` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+
         A Cloud AI Platform Notebook environment.
 
         To get more information about Environment, see:

@@ -250,7 +250,6 @@ type HaVpnGateway struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network this VPN gateway is accepting traffic for.
 	Network pulumi.StringOutput `pulumi:"network"`
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params HaVpnGatewayParamsPtrOutput `pulumi:"params"`
@@ -342,7 +341,6 @@ type haVpnGatewayState struct {
 	Name *string `pulumi:"name"`
 	// The network this VPN gateway is accepting traffic for.
 	Network *string `pulumi:"network"`
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params *HaVpnGatewayParams `pulumi:"params"`
@@ -397,7 +395,6 @@ type HaVpnGatewayState struct {
 	Name pulumi.StringPtrInput
 	// The network this VPN gateway is accepting traffic for.
 	Network pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params HaVpnGatewayParamsPtrInput
@@ -448,7 +445,6 @@ type haVpnGatewayArgs struct {
 	Name *string `pulumi:"name"`
 	// The network this VPN gateway is accepting traffic for.
 	Network string `pulumi:"network"`
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params *HaVpnGatewayParams `pulumi:"params"`
@@ -491,7 +487,6 @@ type HaVpnGatewayArgs struct {
 	Name pulumi.StringPtrInput
 	// The network this VPN gateway is accepting traffic for.
 	Network pulumi.StringInput
-	// (Optional, Beta)
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params HaVpnGatewayParamsPtrInput
@@ -648,7 +643,6 @@ func (o HaVpnGatewayOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *HaVpnGateway) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // Additional params passed with the request, but not persisted as part of resource payload
 // Structure is documented below.
 func (o HaVpnGatewayOutput) Params() HaVpnGatewayParamsPtrOutput {

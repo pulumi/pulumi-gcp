@@ -41,6 +41,11 @@ public final class GetDatabaseInstancesInstanceClone {
      * 
      */
     private String sourceInstanceName;
+    /**
+     * @return The project ID of the source project
+     * 
+     */
+    private String sourceProject;
 
     private GetDatabaseInstancesInstanceClone() {}
     /**
@@ -85,6 +90,13 @@ public final class GetDatabaseInstancesInstanceClone {
     public String sourceInstanceName() {
         return this.sourceInstanceName;
     }
+    /**
+     * @return The project ID of the source project
+     * 
+     */
+    public String sourceProject() {
+        return this.sourceProject;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -101,6 +113,7 @@ public final class GetDatabaseInstancesInstanceClone {
         private String preferredZone;
         private String sourceInstanceDeletionTime;
         private String sourceInstanceName;
+        private String sourceProject;
         public Builder() {}
         public Builder(GetDatabaseInstancesInstanceClone defaults) {
     	      Objects.requireNonNull(defaults);
@@ -110,6 +123,7 @@ public final class GetDatabaseInstancesInstanceClone {
     	      this.preferredZone = defaults.preferredZone;
     	      this.sourceInstanceDeletionTime = defaults.sourceInstanceDeletionTime;
     	      this.sourceInstanceName = defaults.sourceInstanceName;
+    	      this.sourceProject = defaults.sourceProject;
         }
 
         @CustomType.Setter
@@ -163,6 +177,14 @@ public final class GetDatabaseInstancesInstanceClone {
             this.sourceInstanceName = sourceInstanceName;
             return this;
         }
+        @CustomType.Setter
+        public Builder sourceProject(String sourceProject) {
+            if (sourceProject == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceClone", "sourceProject");
+            }
+            this.sourceProject = sourceProject;
+            return this;
+        }
         public GetDatabaseInstancesInstanceClone build() {
             final var _resultValue = new GetDatabaseInstancesInstanceClone();
             _resultValue.allocatedIpRange = allocatedIpRange;
@@ -171,6 +193,7 @@ public final class GetDatabaseInstancesInstanceClone {
             _resultValue.preferredZone = preferredZone;
             _resultValue.sourceInstanceDeletionTime = sourceInstanceDeletionTime;
             _resultValue.sourceInstanceName = sourceInstanceName;
+            _resultValue.sourceProject = sourceProject;
             return _resultValue;
         }
     }

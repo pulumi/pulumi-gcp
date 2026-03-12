@@ -221,7 +221,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * One or more port numbers (1-65535), on which the Gateway will receive traffic.
-     * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are limited to 1 port.
+     * The proxy binds to the specified ports.
      * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      * 
      */
@@ -230,7 +230,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return One or more port numbers (1-65535), on which the Gateway will receive traffic.
-     * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are limited to 1 port.
+     * The proxy binds to the specified ports.
      * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      * 
      */
@@ -674,7 +674,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ports One or more port numbers (1-65535), on which the Gateway will receive traffic.
-         * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are limited to 1 port.
+         * The proxy binds to the specified ports.
          * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
          * 
          * @return builder
@@ -687,7 +687,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ports One or more port numbers (1-65535), on which the Gateway will receive traffic.
-         * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are limited to 1 port.
+         * The proxy binds to the specified ports.
          * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
          * 
          * @return builder
@@ -699,7 +699,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ports One or more port numbers (1-65535), on which the Gateway will receive traffic.
-         * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are limited to 1 port.
+         * The proxy binds to the specified ports.
          * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
          * 
          * @return builder

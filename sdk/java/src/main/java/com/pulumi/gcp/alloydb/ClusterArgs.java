@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupConfigArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterDataplexConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterEncryptionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterMaintenanceUpdatePolicyArgs;
@@ -138,6 +139,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> databaseVersion() {
         return Optional.ofNullable(this.databaseVersion);
+    }
+
+    /**
+     * Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dataplexConfig")
+    private @Nullable Output<ClusterDataplexConfigArgs> dataplexConfig;
+
+    /**
+     * @return Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterDataplexConfigArgs>> dataplexConfig() {
+        return Optional.ofNullable(this.dataplexConfig);
     }
 
     /**
@@ -478,6 +496,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.clusterType = $.clusterType;
         this.continuousBackupConfig = $.continuousBackupConfig;
         this.databaseVersion = $.databaseVersion;
+        this.dataplexConfig = $.dataplexConfig;
         this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
         this.displayName = $.displayName;
@@ -661,6 +680,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder databaseVersion(String databaseVersion) {
             return databaseVersion(Output.of(databaseVersion));
+        }
+
+        /**
+         * @param dataplexConfig Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataplexConfig(@Nullable Output<ClusterDataplexConfigArgs> dataplexConfig) {
+            $.dataplexConfig = dataplexConfig;
+            return this;
+        }
+
+        /**
+         * @param dataplexConfig Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataplexConfig(ClusterDataplexConfigArgs dataplexConfig) {
+            return dataplexConfig(Output.of(dataplexConfig));
         }
 
         /**

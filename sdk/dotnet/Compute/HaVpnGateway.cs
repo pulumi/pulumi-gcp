@@ -253,7 +253,6 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Additional params passed with the request, but not persisted as part of resource payload
         /// Structure is documented below.
         /// </summary>
@@ -402,7 +401,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Additional params passed with the request, but not persisted as part of resource payload
         /// Structure is documented below.
         /// </summary>
@@ -527,7 +525,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Additional params passed with the request, but not persisted as part of resource payload
         /// Structure is documented below.
         /// </summary>

@@ -5,9 +5,13 @@ package com.pulumi.gcp.discoveryengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.discoveryengine.inputs.DataConnectorActionConfigArgs;
+import com.pulumi.gcp.discoveryengine.inputs.DataConnectorBapConfigArgs;
+import com.pulumi.gcp.discoveryengine.inputs.DataConnectorDestinationConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataConnectorEntityArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataConnectorErrorArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +23,25 @@ import javax.annotation.Nullable;
 public final class DataConnectorState extends com.pulumi.resources.ResourceArgs {
 
     public static final DataConnectorState Empty = new DataConnectorState();
+
+    /**
+     * Action configuration for the data connector. Configures action
+     * capabilities for connectors that support the ACTIONS connector mode.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="actionConfig")
+    private @Nullable Output<DataConnectorActionConfigArgs> actionConfig;
+
+    /**
+     * @return Action configuration for the data connector. Configures action
+     * capabilities for connectors that support the ACTIONS connector mode.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DataConnectorActionConfigArgs>> actionConfig() {
+        return Optional.ofNullable(this.actionConfig);
+    }
 
     /**
      * State of the action connector. This reflects whether the action connector
@@ -54,6 +77,27 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<Boolean>> autoRunDisabled() {
         return Optional.ofNullable(this.autoRunDisabled);
+    }
+
+    /**
+     * BAP (Business Application Platform) configuration for the data
+     * connector. Controls which actions are enabled for connectors
+     * using the ACTIONS connector mode.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="bapConfig")
+    private @Nullable Output<DataConnectorBapConfigArgs> bapConfig;
+
+    /**
+     * @return BAP (Business Application Platform) configuration for the data
+     * connector. Controls which actions are enabled for connectors
+     * using the ACTIONS connector mode.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DataConnectorBapConfigArgs>> bapConfig() {
+        return Optional.ofNullable(this.bapConfig);
     }
 
     /**
@@ -193,6 +237,40 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> dataSource() {
         return Optional.ofNullable(this.dataSource);
+    }
+
+    /**
+     * The version of the data source. For example, `3` for Jira v3.
+     * 
+     */
+    @Import(name="dataSourceVersion")
+    private @Nullable Output<Integer> dataSourceVersion;
+
+    /**
+     * @return The version of the data source. For example, `3` for Jira v3.
+     * 
+     */
+    public Optional<Output<Integer>> dataSourceVersion() {
+        return Optional.ofNullable(this.dataSourceVersion);
+    }
+
+    /**
+     * Destination connector configurations for the data connector,
+     * used to configure where data is served.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="destinationConfigs")
+    private @Nullable Output<List<DataConnectorDestinationConfigArgs>> destinationConfigs;
+
+    /**
+     * @return Destination connector configurations for the data connector,
+     * used to configure where data is served.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<DataConnectorDestinationConfigArgs>>> destinationConfigs() {
+        return Optional.ofNullable(this.destinationConfigs);
     }
 
     /**
@@ -558,8 +636,10 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
     private DataConnectorState() {}
 
     private DataConnectorState(DataConnectorState $) {
+        this.actionConfig = $.actionConfig;
         this.actionState = $.actionState;
         this.autoRunDisabled = $.autoRunDisabled;
+        this.bapConfig = $.bapConfig;
         this.blockingReasons = $.blockingReasons;
         this.collectionDisplayName = $.collectionDisplayName;
         this.collectionId = $.collectionId;
@@ -567,6 +647,8 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
         this.connectorType = $.connectorType;
         this.createTime = $.createTime;
         this.dataSource = $.dataSource;
+        this.dataSourceVersion = $.dataSourceVersion;
+        this.destinationConfigs = $.destinationConfigs;
         this.entities = $.entities;
         this.errors = $.errors;
         this.incrementalRefreshInterval = $.incrementalRefreshInterval;
@@ -605,6 +687,31 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
 
         public Builder(DataConnectorState defaults) {
             $ = new DataConnectorState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param actionConfig Action configuration for the data connector. Configures action
+         * capabilities for connectors that support the ACTIONS connector mode.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder actionConfig(@Nullable Output<DataConnectorActionConfigArgs> actionConfig) {
+            $.actionConfig = actionConfig;
+            return this;
+        }
+
+        /**
+         * @param actionConfig Action configuration for the data connector. Configures action
+         * capabilities for connectors that support the ACTIONS connector mode.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder actionConfig(DataConnectorActionConfigArgs actionConfig) {
+            return actionConfig(Output.of(actionConfig));
         }
 
         /**
@@ -653,6 +760,33 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder autoRunDisabled(Boolean autoRunDisabled) {
             return autoRunDisabled(Output.of(autoRunDisabled));
+        }
+
+        /**
+         * @param bapConfig BAP (Business Application Platform) configuration for the data
+         * connector. Controls which actions are enabled for connectors
+         * using the ACTIONS connector mode.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bapConfig(@Nullable Output<DataConnectorBapConfigArgs> bapConfig) {
+            $.bapConfig = bapConfig;
+            return this;
+        }
+
+        /**
+         * @param bapConfig BAP (Business Application Platform) configuration for the data
+         * connector. Controls which actions are enabled for connectors
+         * using the ACTIONS connector mode.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bapConfig(DataConnectorBapConfigArgs bapConfig) {
+            return bapConfig(Output.of(bapConfig));
         }
 
         /**
@@ -857,6 +991,64 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder dataSource(String dataSource) {
             return dataSource(Output.of(dataSource));
+        }
+
+        /**
+         * @param dataSourceVersion The version of the data source. For example, `3` for Jira v3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataSourceVersion(@Nullable Output<Integer> dataSourceVersion) {
+            $.dataSourceVersion = dataSourceVersion;
+            return this;
+        }
+
+        /**
+         * @param dataSourceVersion The version of the data source. For example, `3` for Jira v3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataSourceVersion(Integer dataSourceVersion) {
+            return dataSourceVersion(Output.of(dataSourceVersion));
+        }
+
+        /**
+         * @param destinationConfigs Destination connector configurations for the data connector,
+         * used to configure where data is served.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationConfigs(@Nullable Output<List<DataConnectorDestinationConfigArgs>> destinationConfigs) {
+            $.destinationConfigs = destinationConfigs;
+            return this;
+        }
+
+        /**
+         * @param destinationConfigs Destination connector configurations for the data connector,
+         * used to configure where data is served.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationConfigs(List<DataConnectorDestinationConfigArgs> destinationConfigs) {
+            return destinationConfigs(Output.of(destinationConfigs));
+        }
+
+        /**
+         * @param destinationConfigs Destination connector configurations for the data connector,
+         * used to configure where data is served.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationConfigs(DataConnectorDestinationConfigArgs... destinationConfigs) {
+            return destinationConfigs(List.of(destinationConfigs));
         }
 
         /**

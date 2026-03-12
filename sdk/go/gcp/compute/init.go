@@ -305,6 +305,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Router{}
 	case "gcp:compute/routerInterface:RouterInterface":
 		r = &RouterInterface{}
+	case "gcp:compute/routerNamedSet:RouterNamedSet":
+		r = &RouterNamedSet{}
 	case "gcp:compute/routerNat:RouterNat":
 		r = &RouterNat{}
 	case "gcp:compute/routerNatAddress:RouterNatAddress":
@@ -1098,6 +1100,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/routerInterface",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/routerNamedSet",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

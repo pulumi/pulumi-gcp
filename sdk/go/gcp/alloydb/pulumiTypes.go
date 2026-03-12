@@ -2150,6 +2150,143 @@ func (o ClusterContinuousBackupInfoEncryptionInfoArrayOutput) Index(i pulumi.Int
 	}).(ClusterContinuousBackupInfoEncryptionInfoOutput)
 }
 
+type ClusterDataplexConfig struct {
+	// Indicates whether Dataplex integration is enabled for the cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterDataplexConfigInput is an input type that accepts ClusterDataplexConfigArgs and ClusterDataplexConfigOutput values.
+// You can construct a concrete instance of `ClusterDataplexConfigInput` via:
+//
+//	ClusterDataplexConfigArgs{...}
+type ClusterDataplexConfigInput interface {
+	pulumi.Input
+
+	ToClusterDataplexConfigOutput() ClusterDataplexConfigOutput
+	ToClusterDataplexConfigOutputWithContext(context.Context) ClusterDataplexConfigOutput
+}
+
+type ClusterDataplexConfigArgs struct {
+	// Indicates whether Dataplex integration is enabled for the cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterDataplexConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDataplexConfig)(nil)).Elem()
+}
+
+func (i ClusterDataplexConfigArgs) ToClusterDataplexConfigOutput() ClusterDataplexConfigOutput {
+	return i.ToClusterDataplexConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterDataplexConfigArgs) ToClusterDataplexConfigOutputWithContext(ctx context.Context) ClusterDataplexConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDataplexConfigOutput)
+}
+
+func (i ClusterDataplexConfigArgs) ToClusterDataplexConfigPtrOutput() ClusterDataplexConfigPtrOutput {
+	return i.ToClusterDataplexConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterDataplexConfigArgs) ToClusterDataplexConfigPtrOutputWithContext(ctx context.Context) ClusterDataplexConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDataplexConfigOutput).ToClusterDataplexConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterDataplexConfigPtrInput is an input type that accepts ClusterDataplexConfigArgs, ClusterDataplexConfigPtr and ClusterDataplexConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterDataplexConfigPtrInput` via:
+//
+//	        ClusterDataplexConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterDataplexConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterDataplexConfigPtrOutput() ClusterDataplexConfigPtrOutput
+	ToClusterDataplexConfigPtrOutputWithContext(context.Context) ClusterDataplexConfigPtrOutput
+}
+
+type clusterDataplexConfigPtrType ClusterDataplexConfigArgs
+
+func ClusterDataplexConfigPtr(v *ClusterDataplexConfigArgs) ClusterDataplexConfigPtrInput {
+	return (*clusterDataplexConfigPtrType)(v)
+}
+
+func (*clusterDataplexConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterDataplexConfig)(nil)).Elem()
+}
+
+func (i *clusterDataplexConfigPtrType) ToClusterDataplexConfigPtrOutput() ClusterDataplexConfigPtrOutput {
+	return i.ToClusterDataplexConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterDataplexConfigPtrType) ToClusterDataplexConfigPtrOutputWithContext(ctx context.Context) ClusterDataplexConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDataplexConfigPtrOutput)
+}
+
+type ClusterDataplexConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterDataplexConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDataplexConfig)(nil)).Elem()
+}
+
+func (o ClusterDataplexConfigOutput) ToClusterDataplexConfigOutput() ClusterDataplexConfigOutput {
+	return o
+}
+
+func (o ClusterDataplexConfigOutput) ToClusterDataplexConfigOutputWithContext(ctx context.Context) ClusterDataplexConfigOutput {
+	return o
+}
+
+func (o ClusterDataplexConfigOutput) ToClusterDataplexConfigPtrOutput() ClusterDataplexConfigPtrOutput {
+	return o.ToClusterDataplexConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterDataplexConfigOutput) ToClusterDataplexConfigPtrOutputWithContext(ctx context.Context) ClusterDataplexConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterDataplexConfig) *ClusterDataplexConfig {
+		return &v
+	}).(ClusterDataplexConfigPtrOutput)
+}
+
+// Indicates whether Dataplex integration is enabled for the cluster.
+func (o ClusterDataplexConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterDataplexConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterDataplexConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterDataplexConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterDataplexConfig)(nil)).Elem()
+}
+
+func (o ClusterDataplexConfigPtrOutput) ToClusterDataplexConfigPtrOutput() ClusterDataplexConfigPtrOutput {
+	return o
+}
+
+func (o ClusterDataplexConfigPtrOutput) ToClusterDataplexConfigPtrOutputWithContext(ctx context.Context) ClusterDataplexConfigPtrOutput {
+	return o
+}
+
+func (o ClusterDataplexConfigPtrOutput) Elem() ClusterDataplexConfigOutput {
+	return o.ApplyT(func(v *ClusterDataplexConfig) ClusterDataplexConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterDataplexConfig
+		return ret
+	}).(ClusterDataplexConfigOutput)
+}
+
+// Indicates whether Dataplex integration is enabled for the cluster.
+func (o ClusterDataplexConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterDataplexConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClusterEncryptionConfig struct {
 	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -7735,6 +7872,103 @@ func (o GetClusterContinuousBackupInfoEncryptionInfoArrayOutput) Index(i pulumi.
 	}).(GetClusterContinuousBackupInfoEncryptionInfoOutput)
 }
 
+type GetClusterDataplexConfig struct {
+	// Indicates whether Dataplex integration is enabled for the cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterDataplexConfigInput is an input type that accepts GetClusterDataplexConfigArgs and GetClusterDataplexConfigOutput values.
+// You can construct a concrete instance of `GetClusterDataplexConfigInput` via:
+//
+//	GetClusterDataplexConfigArgs{...}
+type GetClusterDataplexConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterDataplexConfigOutput() GetClusterDataplexConfigOutput
+	ToGetClusterDataplexConfigOutputWithContext(context.Context) GetClusterDataplexConfigOutput
+}
+
+type GetClusterDataplexConfigArgs struct {
+	// Indicates whether Dataplex integration is enabled for the cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterDataplexConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterDataplexConfig)(nil)).Elem()
+}
+
+func (i GetClusterDataplexConfigArgs) ToGetClusterDataplexConfigOutput() GetClusterDataplexConfigOutput {
+	return i.ToGetClusterDataplexConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterDataplexConfigArgs) ToGetClusterDataplexConfigOutputWithContext(ctx context.Context) GetClusterDataplexConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterDataplexConfigOutput)
+}
+
+// GetClusterDataplexConfigArrayInput is an input type that accepts GetClusterDataplexConfigArray and GetClusterDataplexConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterDataplexConfigArrayInput` via:
+//
+//	GetClusterDataplexConfigArray{ GetClusterDataplexConfigArgs{...} }
+type GetClusterDataplexConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterDataplexConfigArrayOutput() GetClusterDataplexConfigArrayOutput
+	ToGetClusterDataplexConfigArrayOutputWithContext(context.Context) GetClusterDataplexConfigArrayOutput
+}
+
+type GetClusterDataplexConfigArray []GetClusterDataplexConfigInput
+
+func (GetClusterDataplexConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterDataplexConfig)(nil)).Elem()
+}
+
+func (i GetClusterDataplexConfigArray) ToGetClusterDataplexConfigArrayOutput() GetClusterDataplexConfigArrayOutput {
+	return i.ToGetClusterDataplexConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterDataplexConfigArray) ToGetClusterDataplexConfigArrayOutputWithContext(ctx context.Context) GetClusterDataplexConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterDataplexConfigArrayOutput)
+}
+
+type GetClusterDataplexConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterDataplexConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterDataplexConfig)(nil)).Elem()
+}
+
+func (o GetClusterDataplexConfigOutput) ToGetClusterDataplexConfigOutput() GetClusterDataplexConfigOutput {
+	return o
+}
+
+func (o GetClusterDataplexConfigOutput) ToGetClusterDataplexConfigOutputWithContext(ctx context.Context) GetClusterDataplexConfigOutput {
+	return o
+}
+
+// Indicates whether Dataplex integration is enabled for the cluster.
+func (o GetClusterDataplexConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterDataplexConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterDataplexConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterDataplexConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterDataplexConfig)(nil)).Elem()
+}
+
+func (o GetClusterDataplexConfigArrayOutput) ToGetClusterDataplexConfigArrayOutput() GetClusterDataplexConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterDataplexConfigArrayOutput) ToGetClusterDataplexConfigArrayOutputWithContext(ctx context.Context) GetClusterDataplexConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterDataplexConfigArrayOutput) Index(i pulumi.IntInput) GetClusterDataplexConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterDataplexConfig {
+		return vs[0].([]GetClusterDataplexConfig)[vs[1].(int)]
+	}).(GetClusterDataplexConfigOutput)
+}
+
 type GetClusterEncryptionConfig struct {
 	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
 	KmsKeyName string `pulumi:"kmsKeyName"`
@@ -11295,6 +11529,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterContinuousBackupInfoArrayInput)(nil)).Elem(), ClusterContinuousBackupInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterContinuousBackupInfoEncryptionInfoInput)(nil)).Elem(), ClusterContinuousBackupInfoEncryptionInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterContinuousBackupInfoEncryptionInfoArrayInput)(nil)).Elem(), ClusterContinuousBackupInfoEncryptionInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDataplexConfigInput)(nil)).Elem(), ClusterDataplexConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDataplexConfigPtrInput)(nil)).Elem(), ClusterDataplexConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEncryptionConfigInput)(nil)).Elem(), ClusterEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEncryptionConfigPtrInput)(nil)).Elem(), ClusterEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEncryptionInfoInput)(nil)).Elem(), ClusterEncryptionInfoArgs{})
@@ -11372,6 +11608,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterContinuousBackupInfoArrayInput)(nil)).Elem(), GetClusterContinuousBackupInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterContinuousBackupInfoEncryptionInfoInput)(nil)).Elem(), GetClusterContinuousBackupInfoEncryptionInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterContinuousBackupInfoEncryptionInfoArrayInput)(nil)).Elem(), GetClusterContinuousBackupInfoEncryptionInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDataplexConfigInput)(nil)).Elem(), GetClusterDataplexConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDataplexConfigArrayInput)(nil)).Elem(), GetClusterDataplexConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterEncryptionConfigInput)(nil)).Elem(), GetClusterEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterEncryptionConfigArrayInput)(nil)).Elem(), GetClusterEncryptionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterEncryptionInfoInput)(nil)).Elem(), GetClusterEncryptionInfoArgs{})
@@ -11462,6 +11700,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterContinuousBackupInfoArrayOutput{})
 	pulumi.RegisterOutputType(ClusterContinuousBackupInfoEncryptionInfoOutput{})
 	pulumi.RegisterOutputType(ClusterContinuousBackupInfoEncryptionInfoArrayOutput{})
+	pulumi.RegisterOutputType(ClusterDataplexConfigOutput{})
+	pulumi.RegisterOutputType(ClusterDataplexConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(ClusterEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterEncryptionInfoOutput{})
@@ -11539,6 +11779,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterContinuousBackupInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterContinuousBackupInfoEncryptionInfoOutput{})
 	pulumi.RegisterOutputType(GetClusterContinuousBackupInfoEncryptionInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterDataplexConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterDataplexConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterEncryptionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterEncryptionInfoOutput{})

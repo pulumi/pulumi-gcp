@@ -115,6 +115,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<bool>? Preemptible { get; set; }
 
         /// <summary>
+        /// The duration of the notice that the instance will receive before it is preempted.
+        /// </summary>
+        [Input("preemptionNoticeDuration")]
+        public Input<Inputs.RegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs>? PreemptionNoticeDuration { get; set; }
+
+        /// <summary>
         /// Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
         /// `Preemptible` should be `True` and `AutomaticRestart` should be
         /// `False`. For more info about

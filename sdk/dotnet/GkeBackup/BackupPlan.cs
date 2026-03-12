@@ -678,6 +678,12 @@ namespace Pulumi.Gcp.GkeBackup
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+        /// </summary>
+        [Output("protectedNamespaceCount")]
+        public Output<int> ProtectedNamespaceCount { get; private set; } = null!;
+
+        /// <summary>
         /// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         /// </summary>
         [Output("protectedPodCount")]
@@ -949,6 +955,12 @@ namespace Pulumi.Gcp.GkeBackup
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+        /// </summary>
+        [Input("protectedNamespaceCount")]
+        public Input<int>? ProtectedNamespaceCount { get; set; }
 
         /// <summary>
         /// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.

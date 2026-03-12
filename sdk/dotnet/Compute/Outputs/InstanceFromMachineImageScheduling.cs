@@ -66,6 +66,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? Preemptible;
         /// <summary>
+        /// The duration of the notice that the instance will receive before it is preempted.
+        /// </summary>
+        public readonly Outputs.InstanceFromMachineImageSchedulingPreemptionNoticeDuration? PreemptionNoticeDuration;
+        /// <summary>
         /// Whether the instance is spot. If this is set as SPOT.
         /// </summary>
         public readonly string? ProvisioningModel;
@@ -108,6 +112,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             bool? preemptible,
 
+            Outputs.InstanceFromMachineImageSchedulingPreemptionNoticeDuration? preemptionNoticeDuration,
+
             string? provisioningModel,
 
             bool? skipGuestOsShutdown,
@@ -127,6 +133,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             OnHostMaintenance = onHostMaintenance;
             OnInstanceStopAction = onInstanceStopAction;
             Preemptible = preemptible;
+            PreemptionNoticeDuration = preemptionNoticeDuration;
             ProvisioningModel = provisioningModel;
             SkipGuestOsShutdown = skipGuestOsShutdown;
             TerminationTime = terminationTime;

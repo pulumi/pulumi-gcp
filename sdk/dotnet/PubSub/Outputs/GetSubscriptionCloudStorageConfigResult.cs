@@ -58,6 +58,10 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// An output-only field that indicates whether or not the subscription can receive messages.
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// If set, message data will be written to Cloud Storage in text format.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetSubscriptionCloudStorageConfigTextConfigResult> TextConfigs;
 
         [OutputConstructor]
         private GetSubscriptionCloudStorageConfigResult(
@@ -79,7 +83,9 @@ namespace Pulumi.Gcp.PubSub.Outputs
 
             string serviceAccountEmail,
 
-            string state)
+            string state,
+
+            ImmutableArray<Outputs.GetSubscriptionCloudStorageConfigTextConfigResult> textConfigs)
         {
             AvroConfigs = avroConfigs;
             Bucket = bucket;
@@ -91,6 +97,7 @@ namespace Pulumi.Gcp.PubSub.Outputs
             MaxMessages = maxMessages;
             ServiceAccountEmail = serviceAccountEmail;
             State = state;
+            TextConfigs = textConfigs;
         }
     }
 }

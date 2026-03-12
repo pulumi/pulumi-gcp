@@ -5140,6 +5140,8 @@ class PatchDeploymentPatchConfig(dict):
             suggest = "pre_step"
         elif key == "rebootConfig":
             suggest = "reboot_config"
+        elif key == "skipUnpatchableVms":
+            suggest = "skip_unpatchable_vms"
         elif key == "windowsUpdate":
             suggest = "windows_update"
 
@@ -5161,6 +5163,7 @@ class PatchDeploymentPatchConfig(dict):
                  post_step: Optional['outputs.PatchDeploymentPatchConfigPostStep'] = None,
                  pre_step: Optional['outputs.PatchDeploymentPatchConfigPreStep'] = None,
                  reboot_config: Optional[_builtins.str] = None,
+                 skip_unpatchable_vms: Optional[_builtins.bool] = None,
                  windows_update: Optional['outputs.PatchDeploymentPatchConfigWindowsUpdate'] = None,
                  yum: Optional['outputs.PatchDeploymentPatchConfigYum'] = None,
                  zypper: Optional['outputs.PatchDeploymentPatchConfigZypper'] = None):
@@ -5176,6 +5179,12 @@ class PatchDeploymentPatchConfig(dict):
                Structure is documented below.
         :param _builtins.str reboot_config: Post-patch reboot settings.
                Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
+        :param _builtins.bool skip_unpatchable_vms: Enables enhanced reporting for the patch job:
+               1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
+               * The instance runs Container-Optimized OS (COS), which cannot be patched.
+               * The instance is part of a managed instance group (MIG), and patching MIG instances is disabled in the patch job's configuration (`mig_instances_allowed` is false).
+               2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
+               3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
         :param 'PatchDeploymentPatchConfigWindowsUpdateArgs' windows_update: Windows update settings. Use this setting to override the default Windows patch rules.
                Structure is documented below.
         :param 'PatchDeploymentPatchConfigYumArgs' yum: Yum update settings. Use this setting to override the default yum patch rules.
@@ -5195,6 +5204,8 @@ class PatchDeploymentPatchConfig(dict):
             pulumi.set(__self__, "pre_step", pre_step)
         if reboot_config is not None:
             pulumi.set(__self__, "reboot_config", reboot_config)
+        if skip_unpatchable_vms is not None:
+            pulumi.set(__self__, "skip_unpatchable_vms", skip_unpatchable_vms)
         if windows_update is not None:
             pulumi.set(__self__, "windows_update", windows_update)
         if yum is not None:
@@ -5254,6 +5265,19 @@ class PatchDeploymentPatchConfig(dict):
         Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
         """
         return pulumi.get(self, "reboot_config")
+
+    @_builtins.property
+    @pulumi.getter(name="skipUnpatchableVms")
+    def skip_unpatchable_vms(self) -> Optional[_builtins.bool]:
+        """
+        Enables enhanced reporting for the patch job:
+        1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
+        * The instance runs Container-Optimized OS (COS), which cannot be patched.
+        * The instance is part of a managed instance group (MIG), and patching MIG instances is disabled in the patch job's configuration (`mig_instances_allowed` is false).
+        2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
+        3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
+        """
+        return pulumi.get(self, "skip_unpatchable_vms")
 
     @_builtins.property
     @pulumi.getter(name="windowsUpdate")

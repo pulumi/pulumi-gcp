@@ -31,9 +31,15 @@ public final class NetworkFirewallPolicyRuleMatch {
      */
     private @Nullable List<String> destIpRanges;
     /**
+     * @return Network context of the traffic destination.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    private @Nullable String destNetworkContext;
+    /**
      * @return (Optional, Beta)
      * Network scope of the traffic destination.
-     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
      * 
      */
     private @Nullable String destNetworkScope;
@@ -69,15 +75,20 @@ public final class NetworkFirewallPolicyRuleMatch {
      */
     private @Nullable List<String> srcIpRanges;
     /**
+     * @return Network context of the traffic source.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    private @Nullable String srcNetworkContext;
+    /**
      * @return (Optional, Beta)
      * Network scope of the traffic source.
-     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
      * 
      */
     private @Nullable String srcNetworkScope;
     /**
-     * @return (Optional, Beta)
-     * Networks of the traffic source. It can be either a full or partial url.
+     * @return Networks of the traffic source. It can be either a full or partial url.
      * 
      */
     private @Nullable List<String> srcNetworks;
@@ -123,9 +134,17 @@ public final class NetworkFirewallPolicyRuleMatch {
         return this.destIpRanges == null ? List.of() : this.destIpRanges;
     }
     /**
+     * @return Network context of the traffic destination.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    public Optional<String> destNetworkContext() {
+        return Optional.ofNullable(this.destNetworkContext);
+    }
+    /**
      * @return (Optional, Beta)
      * Network scope of the traffic destination.
-     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
      * 
      */
     public Optional<String> destNetworkScope() {
@@ -175,17 +194,24 @@ public final class NetworkFirewallPolicyRuleMatch {
         return this.srcIpRanges == null ? List.of() : this.srcIpRanges;
     }
     /**
+     * @return Network context of the traffic source.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    public Optional<String> srcNetworkContext() {
+        return Optional.ofNullable(this.srcNetworkContext);
+    }
+    /**
      * @return (Optional, Beta)
      * Network scope of the traffic source.
-     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
      * 
      */
     public Optional<String> srcNetworkScope() {
         return Optional.ofNullable(this.srcNetworkScope);
     }
     /**
-     * @return (Optional, Beta)
-     * Networks of the traffic source. It can be either a full or partial url.
+     * @return Networks of the traffic source. It can be either a full or partial url.
      * 
      */
     public List<String> srcNetworks() {
@@ -228,6 +254,7 @@ public final class NetworkFirewallPolicyRuleMatch {
         private @Nullable List<String> destAddressGroups;
         private @Nullable List<String> destFqdns;
         private @Nullable List<String> destIpRanges;
+        private @Nullable String destNetworkContext;
         private @Nullable String destNetworkScope;
         private @Nullable List<String> destRegionCodes;
         private @Nullable List<String> destThreatIntelligences;
@@ -235,6 +262,7 @@ public final class NetworkFirewallPolicyRuleMatch {
         private @Nullable List<String> srcAddressGroups;
         private @Nullable List<String> srcFqdns;
         private @Nullable List<String> srcIpRanges;
+        private @Nullable String srcNetworkContext;
         private @Nullable String srcNetworkScope;
         private @Nullable List<String> srcNetworks;
         private @Nullable List<String> srcRegionCodes;
@@ -246,6 +274,7 @@ public final class NetworkFirewallPolicyRuleMatch {
     	      this.destAddressGroups = defaults.destAddressGroups;
     	      this.destFqdns = defaults.destFqdns;
     	      this.destIpRanges = defaults.destIpRanges;
+    	      this.destNetworkContext = defaults.destNetworkContext;
     	      this.destNetworkScope = defaults.destNetworkScope;
     	      this.destRegionCodes = defaults.destRegionCodes;
     	      this.destThreatIntelligences = defaults.destThreatIntelligences;
@@ -253,6 +282,7 @@ public final class NetworkFirewallPolicyRuleMatch {
     	      this.srcAddressGroups = defaults.srcAddressGroups;
     	      this.srcFqdns = defaults.srcFqdns;
     	      this.srcIpRanges = defaults.srcIpRanges;
+    	      this.srcNetworkContext = defaults.srcNetworkContext;
     	      this.srcNetworkScope = defaults.srcNetworkScope;
     	      this.srcNetworks = defaults.srcNetworks;
     	      this.srcRegionCodes = defaults.srcRegionCodes;
@@ -286,6 +316,12 @@ public final class NetworkFirewallPolicyRuleMatch {
         }
         public Builder destIpRanges(String... destIpRanges) {
             return destIpRanges(List.of(destIpRanges));
+        }
+        @CustomType.Setter
+        public Builder destNetworkContext(@Nullable String destNetworkContext) {
+
+            this.destNetworkContext = destNetworkContext;
+            return this;
         }
         @CustomType.Setter
         public Builder destNetworkScope(@Nullable String destNetworkScope) {
@@ -350,6 +386,12 @@ public final class NetworkFirewallPolicyRuleMatch {
             return srcIpRanges(List.of(srcIpRanges));
         }
         @CustomType.Setter
+        public Builder srcNetworkContext(@Nullable String srcNetworkContext) {
+
+            this.srcNetworkContext = srcNetworkContext;
+            return this;
+        }
+        @CustomType.Setter
         public Builder srcNetworkScope(@Nullable String srcNetworkScope) {
 
             this.srcNetworkScope = srcNetworkScope;
@@ -396,6 +438,7 @@ public final class NetworkFirewallPolicyRuleMatch {
             _resultValue.destAddressGroups = destAddressGroups;
             _resultValue.destFqdns = destFqdns;
             _resultValue.destIpRanges = destIpRanges;
+            _resultValue.destNetworkContext = destNetworkContext;
             _resultValue.destNetworkScope = destNetworkScope;
             _resultValue.destRegionCodes = destRegionCodes;
             _resultValue.destThreatIntelligences = destThreatIntelligences;
@@ -403,6 +446,7 @@ public final class NetworkFirewallPolicyRuleMatch {
             _resultValue.srcAddressGroups = srcAddressGroups;
             _resultValue.srcFqdns = srcFqdns;
             _resultValue.srcIpRanges = srcIpRanges;
+            _resultValue.srcNetworkContext = srcNetworkContext;
             _resultValue.srcNetworkScope = srcNetworkScope;
             _resultValue.srcNetworks = srcNetworks;
             _resultValue.srcRegionCodes = srcRegionCodes;

@@ -35,6 +35,25 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
     }
 
     /**
+     * (Optional, Beta)
+     * The endpoint that is allowed to connect to this service attachment.
+     * Only one of project_id_or_num, networkUrl and endpointUrl may be set.
+     * 
+     */
+    @Import(name="endpointUrl")
+    private @Nullable Output<String> endpointUrl;
+
+    /**
+     * @return (Optional, Beta)
+     * The endpoint that is allowed to connect to this service attachment.
+     * Only one of project_id_or_num, networkUrl and endpointUrl may be set.
+     * 
+     */
+    public Optional<Output<String>> endpointUrl() {
+        return Optional.ofNullable(this.endpointUrl);
+    }
+
+    /**
      * The network that is allowed to connect to this service attachment.
      * Only one of projectIdOrNum and networkUrl may be set.
      * 
@@ -72,6 +91,7 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
 
     private ServiceAttachmentConsumerAcceptListArgs(ServiceAttachmentConsumerAcceptListArgs $) {
         this.connectionLimit = $.connectionLimit;
+        this.endpointUrl = $.endpointUrl;
         this.networkUrl = $.networkUrl;
         this.projectIdOrNum = $.projectIdOrNum;
     }
@@ -115,6 +135,31 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
          */
         public Builder connectionLimit(Integer connectionLimit) {
             return connectionLimit(Output.of(connectionLimit));
+        }
+
+        /**
+         * @param endpointUrl (Optional, Beta)
+         * The endpoint that is allowed to connect to this service attachment.
+         * Only one of project_id_or_num, networkUrl and endpointUrl may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointUrl(@Nullable Output<String> endpointUrl) {
+            $.endpointUrl = endpointUrl;
+            return this;
+        }
+
+        /**
+         * @param endpointUrl (Optional, Beta)
+         * The endpoint that is allowed to connect to this service attachment.
+         * Only one of project_id_or_num, networkUrl and endpointUrl may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointUrl(String endpointUrl) {
+            return endpointUrl(Output.of(endpointUrl));
         }
 
         /**

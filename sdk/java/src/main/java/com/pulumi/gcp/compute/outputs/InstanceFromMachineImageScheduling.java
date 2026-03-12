@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageSchedulingLocalSsd
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageSchedulingNodeAffinity;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageSchedulingOnInstanceStopAction;
+import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageSchedulingPreemptionNoticeDuration;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -83,6 +84,11 @@ public final class InstanceFromMachineImageScheduling {
      * 
      */
     private @Nullable Boolean preemptible;
+    /**
+     * @return The duration of the notice that the instance will receive before it is preempted.
+     * 
+     */
+    private @Nullable InstanceFromMachineImageSchedulingPreemptionNoticeDuration preemptionNoticeDuration;
     /**
      * @return Whether the instance is spot. If this is set as SPOT.
      * 
@@ -193,6 +199,13 @@ public final class InstanceFromMachineImageScheduling {
         return Optional.ofNullable(this.preemptible);
     }
     /**
+     * @return The duration of the notice that the instance will receive before it is preempted.
+     * 
+     */
+    public Optional<InstanceFromMachineImageSchedulingPreemptionNoticeDuration> preemptionNoticeDuration() {
+        return Optional.ofNullable(this.preemptionNoticeDuration);
+    }
+    /**
      * @return Whether the instance is spot. If this is set as SPOT.
      * 
      */
@@ -238,6 +251,7 @@ public final class InstanceFromMachineImageScheduling {
         private @Nullable String onHostMaintenance;
         private @Nullable InstanceFromMachineImageSchedulingOnInstanceStopAction onInstanceStopAction;
         private @Nullable Boolean preemptible;
+        private @Nullable InstanceFromMachineImageSchedulingPreemptionNoticeDuration preemptionNoticeDuration;
         private @Nullable String provisioningModel;
         private @Nullable Boolean skipGuestOsShutdown;
         private @Nullable String terminationTime;
@@ -257,6 +271,7 @@ public final class InstanceFromMachineImageScheduling {
     	      this.onHostMaintenance = defaults.onHostMaintenance;
     	      this.onInstanceStopAction = defaults.onInstanceStopAction;
     	      this.preemptible = defaults.preemptible;
+    	      this.preemptionNoticeDuration = defaults.preemptionNoticeDuration;
     	      this.provisioningModel = defaults.provisioningModel;
     	      this.skipGuestOsShutdown = defaults.skipGuestOsShutdown;
     	      this.terminationTime = defaults.terminationTime;
@@ -344,6 +359,12 @@ public final class InstanceFromMachineImageScheduling {
             return this;
         }
         @CustomType.Setter
+        public Builder preemptionNoticeDuration(@Nullable InstanceFromMachineImageSchedulingPreemptionNoticeDuration preemptionNoticeDuration) {
+
+            this.preemptionNoticeDuration = preemptionNoticeDuration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder provisioningModel(@Nullable String provisioningModel) {
 
             this.provisioningModel = provisioningModel;
@@ -376,6 +397,7 @@ public final class InstanceFromMachineImageScheduling {
             _resultValue.onHostMaintenance = onHostMaintenance;
             _resultValue.onInstanceStopAction = onInstanceStopAction;
             _resultValue.preemptible = preemptible;
+            _resultValue.preemptionNoticeDuration = preemptionNoticeDuration;
             _resultValue.provisioningModel = provisioningModel;
             _resultValue.skipGuestOsShutdown = skipGuestOsShutdown;
             _resultValue.terminationTime = terminationTime;

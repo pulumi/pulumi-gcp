@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.outputs.InstanceSchedulingLocalSsdRecoveryTimeout;
 import com.pulumi.gcp.compute.outputs.InstanceSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.InstanceSchedulingNodeAffinity;
 import com.pulumi.gcp.compute.outputs.InstanceSchedulingOnInstanceStopAction;
+import com.pulumi.gcp.compute.outputs.InstanceSchedulingPreemptionNoticeDuration;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -94,6 +95,11 @@ public final class InstanceScheduling {
      * 
      */
     private @Nullable Boolean preemptible;
+    /**
+     * @return Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+     * 
+     */
+    private @Nullable InstanceSchedulingPreemptionNoticeDuration preemptionNoticeDuration;
     /**
      * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
      * `preemptible` should be `true` and `automaticRestart` should be
@@ -216,6 +222,13 @@ public final class InstanceScheduling {
         return Optional.ofNullable(this.preemptible);
     }
     /**
+     * @return Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+     * 
+     */
+    public Optional<InstanceSchedulingPreemptionNoticeDuration> preemptionNoticeDuration() {
+        return Optional.ofNullable(this.preemptionNoticeDuration);
+    }
+    /**
      * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
      * `preemptible` should be `true` and `automaticRestart` should be
      * `false`. For more info about
@@ -262,6 +275,7 @@ public final class InstanceScheduling {
         private @Nullable String onHostMaintenance;
         private @Nullable InstanceSchedulingOnInstanceStopAction onInstanceStopAction;
         private @Nullable Boolean preemptible;
+        private @Nullable InstanceSchedulingPreemptionNoticeDuration preemptionNoticeDuration;
         private @Nullable String provisioningModel;
         private @Nullable Boolean skipGuestOsShutdown;
         private @Nullable String terminationTime;
@@ -281,6 +295,7 @@ public final class InstanceScheduling {
     	      this.onHostMaintenance = defaults.onHostMaintenance;
     	      this.onInstanceStopAction = defaults.onInstanceStopAction;
     	      this.preemptible = defaults.preemptible;
+    	      this.preemptionNoticeDuration = defaults.preemptionNoticeDuration;
     	      this.provisioningModel = defaults.provisioningModel;
     	      this.skipGuestOsShutdown = defaults.skipGuestOsShutdown;
     	      this.terminationTime = defaults.terminationTime;
@@ -368,6 +383,12 @@ public final class InstanceScheduling {
             return this;
         }
         @CustomType.Setter
+        public Builder preemptionNoticeDuration(@Nullable InstanceSchedulingPreemptionNoticeDuration preemptionNoticeDuration) {
+
+            this.preemptionNoticeDuration = preemptionNoticeDuration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder provisioningModel(@Nullable String provisioningModel) {
 
             this.provisioningModel = provisioningModel;
@@ -400,6 +421,7 @@ public final class InstanceScheduling {
             _resultValue.onHostMaintenance = onHostMaintenance;
             _resultValue.onInstanceStopAction = onInstanceStopAction;
             _resultValue.preemptible = preemptible;
+            _resultValue.preemptionNoticeDuration = preemptionNoticeDuration;
             _resultValue.provisioningModel = provisioningModel;
             _resultValue.skipGuestOsShutdown = skipGuestOsShutdown;
             _resultValue.terminationTime = terminationTime;

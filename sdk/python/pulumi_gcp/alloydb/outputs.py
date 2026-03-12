@@ -31,6 +31,7 @@ __all__ = [
     'ClusterContinuousBackupConfigEncryptionConfig',
     'ClusterContinuousBackupInfo',
     'ClusterContinuousBackupInfoEncryptionInfo',
+    'ClusterDataplexConfig',
     'ClusterEncryptionConfig',
     'ClusterEncryptionInfo',
     'ClusterInitialUser',
@@ -70,6 +71,7 @@ __all__ = [
     'GetClusterContinuousBackupConfigEncryptionConfigResult',
     'GetClusterContinuousBackupInfoResult',
     'GetClusterContinuousBackupInfoEncryptionInfoResult',
+    'GetClusterDataplexConfigResult',
     'GetClusterEncryptionConfigResult',
     'GetClusterEncryptionInfoResult',
     'GetClusterInitialUserResult',
@@ -883,6 +885,24 @@ class ClusterContinuousBackupInfoEncryptionInfo(dict):
         Output only. Cloud KMS key versions that are being used to protect the database or the backup.
         """
         return pulumi.get(self, "kms_key_versions")
+
+
+@pulumi.output_type
+class ClusterDataplexConfig(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Indicates whether Dataplex integration is enabled for the cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Indicates whether Dataplex integration is enabled for the cluster.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -2919,6 +2939,24 @@ class GetClusterContinuousBackupInfoEncryptionInfoResult(dict):
         Output only. Cloud KMS key versions that are being used to protect the database or the backup.
         """
         return pulumi.get(self, "kms_key_versions")
+
+
+@pulumi.output_type
+class GetClusterDataplexConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Indicates whether Dataplex integration is enabled for the cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Indicates whether Dataplex integration is enabled for the cluster.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

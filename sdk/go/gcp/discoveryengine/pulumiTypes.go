@@ -3585,6 +3585,584 @@ func (o ControlSynonymsActionPtrOutput) Synonyms() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+type DataConnectorActionConfig struct {
+	// Params needed to configure the actions in the format of
+	// String-to-String (Key, Value) pairs. Contains connection
+	// credentials and configuration for the action connector.
+	ActionParams map[string]string `pulumi:"actionParams"`
+	// Whether to create a BAP (Business Application Platform) connection
+	// for this action connector.
+	CreateBapConnection *bool `pulumi:"createBapConnection"`
+	// (Output)
+	// Whether the action connector is fully configured. Set by the system
+	// after the action configuration is validated.
+	IsActionConfigured *bool `pulumi:"isActionConfigured"`
+}
+
+// DataConnectorActionConfigInput is an input type that accepts DataConnectorActionConfigArgs and DataConnectorActionConfigOutput values.
+// You can construct a concrete instance of `DataConnectorActionConfigInput` via:
+//
+//	DataConnectorActionConfigArgs{...}
+type DataConnectorActionConfigInput interface {
+	pulumi.Input
+
+	ToDataConnectorActionConfigOutput() DataConnectorActionConfigOutput
+	ToDataConnectorActionConfigOutputWithContext(context.Context) DataConnectorActionConfigOutput
+}
+
+type DataConnectorActionConfigArgs struct {
+	// Params needed to configure the actions in the format of
+	// String-to-String (Key, Value) pairs. Contains connection
+	// credentials and configuration for the action connector.
+	ActionParams pulumi.StringMapInput `pulumi:"actionParams"`
+	// Whether to create a BAP (Business Application Platform) connection
+	// for this action connector.
+	CreateBapConnection pulumi.BoolPtrInput `pulumi:"createBapConnection"`
+	// (Output)
+	// Whether the action connector is fully configured. Set by the system
+	// after the action configuration is validated.
+	IsActionConfigured pulumi.BoolPtrInput `pulumi:"isActionConfigured"`
+}
+
+func (DataConnectorActionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnectorActionConfig)(nil)).Elem()
+}
+
+func (i DataConnectorActionConfigArgs) ToDataConnectorActionConfigOutput() DataConnectorActionConfigOutput {
+	return i.ToDataConnectorActionConfigOutputWithContext(context.Background())
+}
+
+func (i DataConnectorActionConfigArgs) ToDataConnectorActionConfigOutputWithContext(ctx context.Context) DataConnectorActionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorActionConfigOutput)
+}
+
+func (i DataConnectorActionConfigArgs) ToDataConnectorActionConfigPtrOutput() DataConnectorActionConfigPtrOutput {
+	return i.ToDataConnectorActionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataConnectorActionConfigArgs) ToDataConnectorActionConfigPtrOutputWithContext(ctx context.Context) DataConnectorActionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorActionConfigOutput).ToDataConnectorActionConfigPtrOutputWithContext(ctx)
+}
+
+// DataConnectorActionConfigPtrInput is an input type that accepts DataConnectorActionConfigArgs, DataConnectorActionConfigPtr and DataConnectorActionConfigPtrOutput values.
+// You can construct a concrete instance of `DataConnectorActionConfigPtrInput` via:
+//
+//	        DataConnectorActionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataConnectorActionConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataConnectorActionConfigPtrOutput() DataConnectorActionConfigPtrOutput
+	ToDataConnectorActionConfigPtrOutputWithContext(context.Context) DataConnectorActionConfigPtrOutput
+}
+
+type dataConnectorActionConfigPtrType DataConnectorActionConfigArgs
+
+func DataConnectorActionConfigPtr(v *DataConnectorActionConfigArgs) DataConnectorActionConfigPtrInput {
+	return (*dataConnectorActionConfigPtrType)(v)
+}
+
+func (*dataConnectorActionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataConnectorActionConfig)(nil)).Elem()
+}
+
+func (i *dataConnectorActionConfigPtrType) ToDataConnectorActionConfigPtrOutput() DataConnectorActionConfigPtrOutput {
+	return i.ToDataConnectorActionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataConnectorActionConfigPtrType) ToDataConnectorActionConfigPtrOutputWithContext(ctx context.Context) DataConnectorActionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorActionConfigPtrOutput)
+}
+
+type DataConnectorActionConfigOutput struct{ *pulumi.OutputState }
+
+func (DataConnectorActionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnectorActionConfig)(nil)).Elem()
+}
+
+func (o DataConnectorActionConfigOutput) ToDataConnectorActionConfigOutput() DataConnectorActionConfigOutput {
+	return o
+}
+
+func (o DataConnectorActionConfigOutput) ToDataConnectorActionConfigOutputWithContext(ctx context.Context) DataConnectorActionConfigOutput {
+	return o
+}
+
+func (o DataConnectorActionConfigOutput) ToDataConnectorActionConfigPtrOutput() DataConnectorActionConfigPtrOutput {
+	return o.ToDataConnectorActionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataConnectorActionConfigOutput) ToDataConnectorActionConfigPtrOutputWithContext(ctx context.Context) DataConnectorActionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataConnectorActionConfig) *DataConnectorActionConfig {
+		return &v
+	}).(DataConnectorActionConfigPtrOutput)
+}
+
+// Params needed to configure the actions in the format of
+// String-to-String (Key, Value) pairs. Contains connection
+// credentials and configuration for the action connector.
+func (o DataConnectorActionConfigOutput) ActionParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DataConnectorActionConfig) map[string]string { return v.ActionParams }).(pulumi.StringMapOutput)
+}
+
+// Whether to create a BAP (Business Application Platform) connection
+// for this action connector.
+func (o DataConnectorActionConfigOutput) CreateBapConnection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataConnectorActionConfig) *bool { return v.CreateBapConnection }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Whether the action connector is fully configured. Set by the system
+// after the action configuration is validated.
+func (o DataConnectorActionConfigOutput) IsActionConfigured() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataConnectorActionConfig) *bool { return v.IsActionConfigured }).(pulumi.BoolPtrOutput)
+}
+
+type DataConnectorActionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataConnectorActionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataConnectorActionConfig)(nil)).Elem()
+}
+
+func (o DataConnectorActionConfigPtrOutput) ToDataConnectorActionConfigPtrOutput() DataConnectorActionConfigPtrOutput {
+	return o
+}
+
+func (o DataConnectorActionConfigPtrOutput) ToDataConnectorActionConfigPtrOutputWithContext(ctx context.Context) DataConnectorActionConfigPtrOutput {
+	return o
+}
+
+func (o DataConnectorActionConfigPtrOutput) Elem() DataConnectorActionConfigOutput {
+	return o.ApplyT(func(v *DataConnectorActionConfig) DataConnectorActionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataConnectorActionConfig
+		return ret
+	}).(DataConnectorActionConfigOutput)
+}
+
+// Params needed to configure the actions in the format of
+// String-to-String (Key, Value) pairs. Contains connection
+// credentials and configuration for the action connector.
+func (o DataConnectorActionConfigPtrOutput) ActionParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DataConnectorActionConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionParams
+	}).(pulumi.StringMapOutput)
+}
+
+// Whether to create a BAP (Business Application Platform) connection
+// for this action connector.
+func (o DataConnectorActionConfigPtrOutput) CreateBapConnection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataConnectorActionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CreateBapConnection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Whether the action connector is fully configured. Set by the system
+// after the action configuration is validated.
+func (o DataConnectorActionConfigPtrOutput) IsActionConfigured() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataConnectorActionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsActionConfigured
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DataConnectorBapConfig struct {
+	// The list of enabled actions for this connector. Supported
+	// values include: `createIssue`, `updateIssue`,
+	// `changeIssueStatus`, `createComment`, `updateComment`,
+	// `uploadAttachment`.
+	EnabledActions []string `pulumi:"enabledActions"`
+	// The connector modes supported by the BAP configuration.
+	// The possible values include: `ACTIONS`.
+	SupportedConnectorModes []string `pulumi:"supportedConnectorModes"`
+}
+
+// DataConnectorBapConfigInput is an input type that accepts DataConnectorBapConfigArgs and DataConnectorBapConfigOutput values.
+// You can construct a concrete instance of `DataConnectorBapConfigInput` via:
+//
+//	DataConnectorBapConfigArgs{...}
+type DataConnectorBapConfigInput interface {
+	pulumi.Input
+
+	ToDataConnectorBapConfigOutput() DataConnectorBapConfigOutput
+	ToDataConnectorBapConfigOutputWithContext(context.Context) DataConnectorBapConfigOutput
+}
+
+type DataConnectorBapConfigArgs struct {
+	// The list of enabled actions for this connector. Supported
+	// values include: `createIssue`, `updateIssue`,
+	// `changeIssueStatus`, `createComment`, `updateComment`,
+	// `uploadAttachment`.
+	EnabledActions pulumi.StringArrayInput `pulumi:"enabledActions"`
+	// The connector modes supported by the BAP configuration.
+	// The possible values include: `ACTIONS`.
+	SupportedConnectorModes pulumi.StringArrayInput `pulumi:"supportedConnectorModes"`
+}
+
+func (DataConnectorBapConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnectorBapConfig)(nil)).Elem()
+}
+
+func (i DataConnectorBapConfigArgs) ToDataConnectorBapConfigOutput() DataConnectorBapConfigOutput {
+	return i.ToDataConnectorBapConfigOutputWithContext(context.Background())
+}
+
+func (i DataConnectorBapConfigArgs) ToDataConnectorBapConfigOutputWithContext(ctx context.Context) DataConnectorBapConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorBapConfigOutput)
+}
+
+func (i DataConnectorBapConfigArgs) ToDataConnectorBapConfigPtrOutput() DataConnectorBapConfigPtrOutput {
+	return i.ToDataConnectorBapConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataConnectorBapConfigArgs) ToDataConnectorBapConfigPtrOutputWithContext(ctx context.Context) DataConnectorBapConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorBapConfigOutput).ToDataConnectorBapConfigPtrOutputWithContext(ctx)
+}
+
+// DataConnectorBapConfigPtrInput is an input type that accepts DataConnectorBapConfigArgs, DataConnectorBapConfigPtr and DataConnectorBapConfigPtrOutput values.
+// You can construct a concrete instance of `DataConnectorBapConfigPtrInput` via:
+//
+//	        DataConnectorBapConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataConnectorBapConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataConnectorBapConfigPtrOutput() DataConnectorBapConfigPtrOutput
+	ToDataConnectorBapConfigPtrOutputWithContext(context.Context) DataConnectorBapConfigPtrOutput
+}
+
+type dataConnectorBapConfigPtrType DataConnectorBapConfigArgs
+
+func DataConnectorBapConfigPtr(v *DataConnectorBapConfigArgs) DataConnectorBapConfigPtrInput {
+	return (*dataConnectorBapConfigPtrType)(v)
+}
+
+func (*dataConnectorBapConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataConnectorBapConfig)(nil)).Elem()
+}
+
+func (i *dataConnectorBapConfigPtrType) ToDataConnectorBapConfigPtrOutput() DataConnectorBapConfigPtrOutput {
+	return i.ToDataConnectorBapConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataConnectorBapConfigPtrType) ToDataConnectorBapConfigPtrOutputWithContext(ctx context.Context) DataConnectorBapConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorBapConfigPtrOutput)
+}
+
+type DataConnectorBapConfigOutput struct{ *pulumi.OutputState }
+
+func (DataConnectorBapConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnectorBapConfig)(nil)).Elem()
+}
+
+func (o DataConnectorBapConfigOutput) ToDataConnectorBapConfigOutput() DataConnectorBapConfigOutput {
+	return o
+}
+
+func (o DataConnectorBapConfigOutput) ToDataConnectorBapConfigOutputWithContext(ctx context.Context) DataConnectorBapConfigOutput {
+	return o
+}
+
+func (o DataConnectorBapConfigOutput) ToDataConnectorBapConfigPtrOutput() DataConnectorBapConfigPtrOutput {
+	return o.ToDataConnectorBapConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataConnectorBapConfigOutput) ToDataConnectorBapConfigPtrOutputWithContext(ctx context.Context) DataConnectorBapConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataConnectorBapConfig) *DataConnectorBapConfig {
+		return &v
+	}).(DataConnectorBapConfigPtrOutput)
+}
+
+// The list of enabled actions for this connector. Supported
+// values include: `createIssue`, `updateIssue`,
+// `changeIssueStatus`, `createComment`, `updateComment`,
+// `uploadAttachment`.
+func (o DataConnectorBapConfigOutput) EnabledActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataConnectorBapConfig) []string { return v.EnabledActions }).(pulumi.StringArrayOutput)
+}
+
+// The connector modes supported by the BAP configuration.
+// The possible values include: `ACTIONS`.
+func (o DataConnectorBapConfigOutput) SupportedConnectorModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataConnectorBapConfig) []string { return v.SupportedConnectorModes }).(pulumi.StringArrayOutput)
+}
+
+type DataConnectorBapConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataConnectorBapConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataConnectorBapConfig)(nil)).Elem()
+}
+
+func (o DataConnectorBapConfigPtrOutput) ToDataConnectorBapConfigPtrOutput() DataConnectorBapConfigPtrOutput {
+	return o
+}
+
+func (o DataConnectorBapConfigPtrOutput) ToDataConnectorBapConfigPtrOutputWithContext(ctx context.Context) DataConnectorBapConfigPtrOutput {
+	return o
+}
+
+func (o DataConnectorBapConfigPtrOutput) Elem() DataConnectorBapConfigOutput {
+	return o.ApplyT(func(v *DataConnectorBapConfig) DataConnectorBapConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataConnectorBapConfig
+		return ret
+	}).(DataConnectorBapConfigOutput)
+}
+
+// The list of enabled actions for this connector. Supported
+// values include: `createIssue`, `updateIssue`,
+// `changeIssueStatus`, `createComment`, `updateComment`,
+// `uploadAttachment`.
+func (o DataConnectorBapConfigPtrOutput) EnabledActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataConnectorBapConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledActions
+	}).(pulumi.StringArrayOutput)
+}
+
+// The connector modes supported by the BAP configuration.
+// The possible values include: `ACTIONS`.
+func (o DataConnectorBapConfigPtrOutput) SupportedConnectorModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataConnectorBapConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SupportedConnectorModes
+	}).(pulumi.StringArrayOutput)
+}
+
+type DataConnectorDestinationConfig struct {
+	// The list of destinations for this configuration.
+	// Structure is documented below.
+	Destinations []DataConnectorDestinationConfigDestination `pulumi:"destinations"`
+	// The key of the destination configuration, for example `url`.
+	Key *string `pulumi:"key"`
+}
+
+// DataConnectorDestinationConfigInput is an input type that accepts DataConnectorDestinationConfigArgs and DataConnectorDestinationConfigOutput values.
+// You can construct a concrete instance of `DataConnectorDestinationConfigInput` via:
+//
+//	DataConnectorDestinationConfigArgs{...}
+type DataConnectorDestinationConfigInput interface {
+	pulumi.Input
+
+	ToDataConnectorDestinationConfigOutput() DataConnectorDestinationConfigOutput
+	ToDataConnectorDestinationConfigOutputWithContext(context.Context) DataConnectorDestinationConfigOutput
+}
+
+type DataConnectorDestinationConfigArgs struct {
+	// The list of destinations for this configuration.
+	// Structure is documented below.
+	Destinations DataConnectorDestinationConfigDestinationArrayInput `pulumi:"destinations"`
+	// The key of the destination configuration, for example `url`.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+}
+
+func (DataConnectorDestinationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnectorDestinationConfig)(nil)).Elem()
+}
+
+func (i DataConnectorDestinationConfigArgs) ToDataConnectorDestinationConfigOutput() DataConnectorDestinationConfigOutput {
+	return i.ToDataConnectorDestinationConfigOutputWithContext(context.Background())
+}
+
+func (i DataConnectorDestinationConfigArgs) ToDataConnectorDestinationConfigOutputWithContext(ctx context.Context) DataConnectorDestinationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorDestinationConfigOutput)
+}
+
+// DataConnectorDestinationConfigArrayInput is an input type that accepts DataConnectorDestinationConfigArray and DataConnectorDestinationConfigArrayOutput values.
+// You can construct a concrete instance of `DataConnectorDestinationConfigArrayInput` via:
+//
+//	DataConnectorDestinationConfigArray{ DataConnectorDestinationConfigArgs{...} }
+type DataConnectorDestinationConfigArrayInput interface {
+	pulumi.Input
+
+	ToDataConnectorDestinationConfigArrayOutput() DataConnectorDestinationConfigArrayOutput
+	ToDataConnectorDestinationConfigArrayOutputWithContext(context.Context) DataConnectorDestinationConfigArrayOutput
+}
+
+type DataConnectorDestinationConfigArray []DataConnectorDestinationConfigInput
+
+func (DataConnectorDestinationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataConnectorDestinationConfig)(nil)).Elem()
+}
+
+func (i DataConnectorDestinationConfigArray) ToDataConnectorDestinationConfigArrayOutput() DataConnectorDestinationConfigArrayOutput {
+	return i.ToDataConnectorDestinationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i DataConnectorDestinationConfigArray) ToDataConnectorDestinationConfigArrayOutputWithContext(ctx context.Context) DataConnectorDestinationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorDestinationConfigArrayOutput)
+}
+
+type DataConnectorDestinationConfigOutput struct{ *pulumi.OutputState }
+
+func (DataConnectorDestinationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnectorDestinationConfig)(nil)).Elem()
+}
+
+func (o DataConnectorDestinationConfigOutput) ToDataConnectorDestinationConfigOutput() DataConnectorDestinationConfigOutput {
+	return o
+}
+
+func (o DataConnectorDestinationConfigOutput) ToDataConnectorDestinationConfigOutputWithContext(ctx context.Context) DataConnectorDestinationConfigOutput {
+	return o
+}
+
+// The list of destinations for this configuration.
+// Structure is documented below.
+func (o DataConnectorDestinationConfigOutput) Destinations() DataConnectorDestinationConfigDestinationArrayOutput {
+	return o.ApplyT(func(v DataConnectorDestinationConfig) []DataConnectorDestinationConfigDestination {
+		return v.Destinations
+	}).(DataConnectorDestinationConfigDestinationArrayOutput)
+}
+
+// The key of the destination configuration, for example `url`.
+func (o DataConnectorDestinationConfigOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataConnectorDestinationConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type DataConnectorDestinationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (DataConnectorDestinationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataConnectorDestinationConfig)(nil)).Elem()
+}
+
+func (o DataConnectorDestinationConfigArrayOutput) ToDataConnectorDestinationConfigArrayOutput() DataConnectorDestinationConfigArrayOutput {
+	return o
+}
+
+func (o DataConnectorDestinationConfigArrayOutput) ToDataConnectorDestinationConfigArrayOutputWithContext(ctx context.Context) DataConnectorDestinationConfigArrayOutput {
+	return o
+}
+
+func (o DataConnectorDestinationConfigArrayOutput) Index(i pulumi.IntInput) DataConnectorDestinationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataConnectorDestinationConfig {
+		return vs[0].([]DataConnectorDestinationConfig)[vs[1].(int)]
+	}).(DataConnectorDestinationConfigOutput)
+}
+
+type DataConnectorDestinationConfigDestination struct {
+	// The host of the destination, for example
+	// `https://example.atlassian.net`.
+	Host *string `pulumi:"host"`
+}
+
+// DataConnectorDestinationConfigDestinationInput is an input type that accepts DataConnectorDestinationConfigDestinationArgs and DataConnectorDestinationConfigDestinationOutput values.
+// You can construct a concrete instance of `DataConnectorDestinationConfigDestinationInput` via:
+//
+//	DataConnectorDestinationConfigDestinationArgs{...}
+type DataConnectorDestinationConfigDestinationInput interface {
+	pulumi.Input
+
+	ToDataConnectorDestinationConfigDestinationOutput() DataConnectorDestinationConfigDestinationOutput
+	ToDataConnectorDestinationConfigDestinationOutputWithContext(context.Context) DataConnectorDestinationConfigDestinationOutput
+}
+
+type DataConnectorDestinationConfigDestinationArgs struct {
+	// The host of the destination, for example
+	// `https://example.atlassian.net`.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+}
+
+func (DataConnectorDestinationConfigDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnectorDestinationConfigDestination)(nil)).Elem()
+}
+
+func (i DataConnectorDestinationConfigDestinationArgs) ToDataConnectorDestinationConfigDestinationOutput() DataConnectorDestinationConfigDestinationOutput {
+	return i.ToDataConnectorDestinationConfigDestinationOutputWithContext(context.Background())
+}
+
+func (i DataConnectorDestinationConfigDestinationArgs) ToDataConnectorDestinationConfigDestinationOutputWithContext(ctx context.Context) DataConnectorDestinationConfigDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorDestinationConfigDestinationOutput)
+}
+
+// DataConnectorDestinationConfigDestinationArrayInput is an input type that accepts DataConnectorDestinationConfigDestinationArray and DataConnectorDestinationConfigDestinationArrayOutput values.
+// You can construct a concrete instance of `DataConnectorDestinationConfigDestinationArrayInput` via:
+//
+//	DataConnectorDestinationConfigDestinationArray{ DataConnectorDestinationConfigDestinationArgs{...} }
+type DataConnectorDestinationConfigDestinationArrayInput interface {
+	pulumi.Input
+
+	ToDataConnectorDestinationConfigDestinationArrayOutput() DataConnectorDestinationConfigDestinationArrayOutput
+	ToDataConnectorDestinationConfigDestinationArrayOutputWithContext(context.Context) DataConnectorDestinationConfigDestinationArrayOutput
+}
+
+type DataConnectorDestinationConfigDestinationArray []DataConnectorDestinationConfigDestinationInput
+
+func (DataConnectorDestinationConfigDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataConnectorDestinationConfigDestination)(nil)).Elem()
+}
+
+func (i DataConnectorDestinationConfigDestinationArray) ToDataConnectorDestinationConfigDestinationArrayOutput() DataConnectorDestinationConfigDestinationArrayOutput {
+	return i.ToDataConnectorDestinationConfigDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i DataConnectorDestinationConfigDestinationArray) ToDataConnectorDestinationConfigDestinationArrayOutputWithContext(ctx context.Context) DataConnectorDestinationConfigDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorDestinationConfigDestinationArrayOutput)
+}
+
+type DataConnectorDestinationConfigDestinationOutput struct{ *pulumi.OutputState }
+
+func (DataConnectorDestinationConfigDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnectorDestinationConfigDestination)(nil)).Elem()
+}
+
+func (o DataConnectorDestinationConfigDestinationOutput) ToDataConnectorDestinationConfigDestinationOutput() DataConnectorDestinationConfigDestinationOutput {
+	return o
+}
+
+func (o DataConnectorDestinationConfigDestinationOutput) ToDataConnectorDestinationConfigDestinationOutputWithContext(ctx context.Context) DataConnectorDestinationConfigDestinationOutput {
+	return o
+}
+
+// The host of the destination, for example
+// `https://example.atlassian.net`.
+func (o DataConnectorDestinationConfigDestinationOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataConnectorDestinationConfigDestination) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+type DataConnectorDestinationConfigDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (DataConnectorDestinationConfigDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataConnectorDestinationConfigDestination)(nil)).Elem()
+}
+
+func (o DataConnectorDestinationConfigDestinationArrayOutput) ToDataConnectorDestinationConfigDestinationArrayOutput() DataConnectorDestinationConfigDestinationArrayOutput {
+	return o
+}
+
+func (o DataConnectorDestinationConfigDestinationArrayOutput) ToDataConnectorDestinationConfigDestinationArrayOutputWithContext(ctx context.Context) DataConnectorDestinationConfigDestinationArrayOutput {
+	return o
+}
+
+func (o DataConnectorDestinationConfigDestinationArrayOutput) Index(i pulumi.IntInput) DataConnectorDestinationConfigDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataConnectorDestinationConfigDestination {
+		return vs[0].([]DataConnectorDestinationConfigDestination)[vs[1].(int)]
+	}).(DataConnectorDestinationConfigDestinationOutput)
+}
+
 type DataConnectorEntity struct {
 	// (Output)
 	// The full resource name of the associated data store for the source
@@ -10416,6 +10994,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlRedirectActionPtrInput)(nil)).Elem(), ControlRedirectActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlSynonymsActionInput)(nil)).Elem(), ControlSynonymsActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlSynonymsActionPtrInput)(nil)).Elem(), ControlSynonymsActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorActionConfigInput)(nil)).Elem(), DataConnectorActionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorActionConfigPtrInput)(nil)).Elem(), DataConnectorActionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorBapConfigInput)(nil)).Elem(), DataConnectorBapConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorBapConfigPtrInput)(nil)).Elem(), DataConnectorBapConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorDestinationConfigInput)(nil)).Elem(), DataConnectorDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorDestinationConfigArrayInput)(nil)).Elem(), DataConnectorDestinationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorDestinationConfigDestinationInput)(nil)).Elem(), DataConnectorDestinationConfigDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorDestinationConfigDestinationArrayInput)(nil)).Elem(), DataConnectorDestinationConfigDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorEntityInput)(nil)).Elem(), DataConnectorEntityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorEntityArrayInput)(nil)).Elem(), DataConnectorEntityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorErrorInput)(nil)).Elem(), DataConnectorErrorArgs{})
@@ -10542,6 +11128,14 @@ func init() {
 	pulumi.RegisterOutputType(ControlRedirectActionPtrOutput{})
 	pulumi.RegisterOutputType(ControlSynonymsActionOutput{})
 	pulumi.RegisterOutputType(ControlSynonymsActionPtrOutput{})
+	pulumi.RegisterOutputType(DataConnectorActionConfigOutput{})
+	pulumi.RegisterOutputType(DataConnectorActionConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataConnectorBapConfigOutput{})
+	pulumi.RegisterOutputType(DataConnectorBapConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataConnectorDestinationConfigOutput{})
+	pulumi.RegisterOutputType(DataConnectorDestinationConfigArrayOutput{})
+	pulumi.RegisterOutputType(DataConnectorDestinationConfigDestinationOutput{})
+	pulumi.RegisterOutputType(DataConnectorDestinationConfigDestinationArrayOutput{})
 	pulumi.RegisterOutputType(DataConnectorEntityOutput{})
 	pulumi.RegisterOutputType(DataConnectorEntityArrayOutput{})
 	pulumi.RegisterOutputType(DataConnectorErrorOutput{})

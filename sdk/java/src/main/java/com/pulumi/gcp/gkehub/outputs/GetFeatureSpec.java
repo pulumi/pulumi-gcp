@@ -9,6 +9,7 @@ import com.pulumi.gcp.gkehub.outputs.GetFeatureSpecClusterupgrade;
 import com.pulumi.gcp.gkehub.outputs.GetFeatureSpecFleetobservability;
 import com.pulumi.gcp.gkehub.outputs.GetFeatureSpecMulticlusteringress;
 import com.pulumi.gcp.gkehub.outputs.GetFeatureSpecRbacrolebindingactuation;
+import com.pulumi.gcp.gkehub.outputs.GetFeatureSpecWorkloadidentity;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,6 +35,11 @@ public final class GetFeatureSpec {
      * 
      */
     private List<GetFeatureSpecRbacrolebindingactuation> rbacrolebindingactuations;
+    /**
+     * @return Workload Identity feature spec.
+     * 
+     */
+    private List<GetFeatureSpecWorkloadidentity> workloadidentities;
 
     private GetFeatureSpec() {}
     /**
@@ -64,6 +70,13 @@ public final class GetFeatureSpec {
     public List<GetFeatureSpecRbacrolebindingactuation> rbacrolebindingactuations() {
         return this.rbacrolebindingactuations;
     }
+    /**
+     * @return Workload Identity feature spec.
+     * 
+     */
+    public List<GetFeatureSpecWorkloadidentity> workloadidentities() {
+        return this.workloadidentities;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -78,6 +91,7 @@ public final class GetFeatureSpec {
         private List<GetFeatureSpecFleetobservability> fleetobservabilities;
         private List<GetFeatureSpecMulticlusteringress> multiclusteringresses;
         private List<GetFeatureSpecRbacrolebindingactuation> rbacrolebindingactuations;
+        private List<GetFeatureSpecWorkloadidentity> workloadidentities;
         public Builder() {}
         public Builder(GetFeatureSpec defaults) {
     	      Objects.requireNonNull(defaults);
@@ -85,6 +99,7 @@ public final class GetFeatureSpec {
     	      this.fleetobservabilities = defaults.fleetobservabilities;
     	      this.multiclusteringresses = defaults.multiclusteringresses;
     	      this.rbacrolebindingactuations = defaults.rbacrolebindingactuations;
+    	      this.workloadidentities = defaults.workloadidentities;
         }
 
         @CustomType.Setter
@@ -131,12 +146,24 @@ public final class GetFeatureSpec {
         public Builder rbacrolebindingactuations(GetFeatureSpecRbacrolebindingactuation... rbacrolebindingactuations) {
             return rbacrolebindingactuations(List.of(rbacrolebindingactuations));
         }
+        @CustomType.Setter
+        public Builder workloadidentities(List<GetFeatureSpecWorkloadidentity> workloadidentities) {
+            if (workloadidentities == null) {
+              throw new MissingRequiredPropertyException("GetFeatureSpec", "workloadidentities");
+            }
+            this.workloadidentities = workloadidentities;
+            return this;
+        }
+        public Builder workloadidentities(GetFeatureSpecWorkloadidentity... workloadidentities) {
+            return workloadidentities(List.of(workloadidentities));
+        }
         public GetFeatureSpec build() {
             final var _resultValue = new GetFeatureSpec();
             _resultValue.clusterupgrades = clusterupgrades;
             _resultValue.fleetobservabilities = fleetobservabilities;
             _resultValue.multiclusteringresses = multiclusteringresses;
             _resultValue.rbacrolebindingactuations = rbacrolebindingactuations;
+            _resultValue.workloadidentities = workloadidentities;
             return _resultValue;
         }
     }

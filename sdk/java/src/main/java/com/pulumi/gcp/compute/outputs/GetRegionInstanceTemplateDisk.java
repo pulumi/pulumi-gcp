@@ -157,6 +157,11 @@ public final class GetRegionInstanceTemplateDisk {
      */
     private List<GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
     /**
+     * @return The selfLink or ID of the Storage Pool to create this disk in.
+     * 
+     */
+    private String storagePool;
+    /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
@@ -345,6 +350,13 @@ public final class GetRegionInstanceTemplateDisk {
         return this.sourceSnapshotEncryptionKeys;
     }
     /**
+     * @return The selfLink or ID of the Storage Pool to create this disk in.
+     * 
+     */
+    public String storagePool() {
+        return this.storagePool;
+    }
+    /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
@@ -382,6 +394,7 @@ public final class GetRegionInstanceTemplateDisk {
         private List<GetRegionInstanceTemplateDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
         private String sourceSnapshot;
         private List<GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
+        private String storagePool;
         private String type;
         public Builder() {}
         public Builder(GetRegionInstanceTemplateDisk defaults) {
@@ -407,6 +420,7 @@ public final class GetRegionInstanceTemplateDisk {
     	      this.sourceImageEncryptionKeys = defaults.sourceImageEncryptionKeys;
     	      this.sourceSnapshot = defaults.sourceSnapshot;
     	      this.sourceSnapshotEncryptionKeys = defaults.sourceSnapshotEncryptionKeys;
+    	      this.storagePool = defaults.storagePool;
     	      this.type = defaults.type;
         }
 
@@ -594,6 +608,14 @@ public final class GetRegionInstanceTemplateDisk {
             return sourceSnapshotEncryptionKeys(List.of(sourceSnapshotEncryptionKeys));
         }
         @CustomType.Setter
+        public Builder storagePool(String storagePool) {
+            if (storagePool == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "storagePool");
+            }
+            this.storagePool = storagePool;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "type");
@@ -624,6 +646,7 @@ public final class GetRegionInstanceTemplateDisk {
             _resultValue.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
             _resultValue.sourceSnapshot = sourceSnapshot;
             _resultValue.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
+            _resultValue.storagePool = storagePool;
             _resultValue.type = type;
             return _resultValue;
         }

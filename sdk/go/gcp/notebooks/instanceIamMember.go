@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** The parent resource has been deprecated: `notebooks.Instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+//
 // Three different resources help you manage your IAM policy for Cloud AI Notebooks Instance. Each of these resources serves a different use case:
 //
 // * `notebooks.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
@@ -136,6 +138,7 @@ import (
 // -
 //
 // # IAM policy for Cloud AI Notebooks Instance
+// > **Warning:** The parent resource has been deprecated: `notebooks.Instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
 //
 // Three different resources help you manage your IAM policy for Cloud AI Notebooks Instance. Each of these resources serves a different use case:
 //

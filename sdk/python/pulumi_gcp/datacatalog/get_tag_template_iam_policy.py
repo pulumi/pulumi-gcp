@@ -106,6 +106,8 @@ def get_tag_template_iam_policy(project: Optional[_builtins.str] = None,
                                 tag_template: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagTemplateIamPolicyResult:
     """
+    > **Warning:** The parent resource has been deprecated: `datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+
     Retrieves the current IAM policy data for tagtemplate
 
     ## Example Usage
@@ -145,6 +147,8 @@ def get_tag_template_iam_policy_output(project: Optional[pulumi.Input[Optional[_
                                        tag_template: Optional[pulumi.Input[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagTemplateIamPolicyResult]:
     """
+    > **Warning:** The parent resource has been deprecated: `datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+
     Retrieves the current IAM policy data for tagtemplate
 
     ## Example Usage

@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDataSourcesResult {
     private String backupVaultId;
+    /**
+     * @return A list of Data Sources matching the criteria.
+     * 
+     */
     private List<GetDataSourcesDataSource> dataSources;
     private @Nullable String filter;
     /**
@@ -22,6 +26,10 @@ public final class GetDataSourcesResult {
      * 
      */
     private String id;
+    /**
+     * @return The location of the GCP resource.
+     * 
+     */
     private String location;
     private @Nullable String orderBy;
     private String project;
@@ -30,6 +38,10 @@ public final class GetDataSourcesResult {
     public String backupVaultId() {
         return this.backupVaultId;
     }
+    /**
+     * @return A list of Data Sources matching the criteria.
+     * 
+     */
     public List<GetDataSourcesDataSource> dataSources() {
         return this.dataSources;
     }
@@ -43,6 +55,10 @@ public final class GetDataSourcesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The location of the GCP resource.
+     * 
+     */
     public String location() {
         return this.location;
     }

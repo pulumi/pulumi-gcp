@@ -78,6 +78,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool Preemptible;
         /// <summary>
+        /// The duration of the notice that the instance will receive before it is preempted.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationResult> PreemptionNoticeDurations;
+        /// <summary>
         /// Describe the type of preemptible VM.
         /// </summary>
         public readonly string ProvisioningModel;
@@ -120,6 +124,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             bool preemptible,
 
+            ImmutableArray<Outputs.GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationResult> preemptionNoticeDurations,
+
             string provisioningModel,
 
             bool skipGuestOsShutdown,
@@ -139,6 +145,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             OnHostMaintenance = onHostMaintenance;
             OnInstanceStopActions = onInstanceStopActions;
             Preemptible = preemptible;
+            PreemptionNoticeDurations = preemptionNoticeDurations;
             ProvisioningModel = provisioningModel;
             SkipGuestOsShutdown = skipGuestOsShutdown;
             TerminationTime = terminationTime;

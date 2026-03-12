@@ -13,18 +13,81 @@ namespace Pulumi.Gcp.BigLake
     {
         /// <summary>
         /// Retrieves the current IAM policy data for icebergnamespace
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigLake.GetIcebergNamespaceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = myIcebergNamespace.Project,
+        ///         Catalog = myIcebergNamespace.Catalog,
+        ///         NamespaceId = myIcebergNamespace.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetIcebergNamespaceIamPolicyResult> InvokeAsync(GetIcebergNamespaceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIcebergNamespaceIamPolicyResult>("gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy", args ?? new GetIcebergNamespaceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for icebergnamespace
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigLake.GetIcebergNamespaceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = myIcebergNamespace.Project,
+        ///         Catalog = myIcebergNamespace.Catalog,
+        ///         NamespaceId = myIcebergNamespace.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetIcebergNamespaceIamPolicyResult> Invoke(GetIcebergNamespaceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIcebergNamespaceIamPolicyResult>("gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy", args ?? new GetIcebergNamespaceIamPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for icebergnamespace
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigLake.GetIcebergNamespaceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = myIcebergNamespace.Project,
+        ///         Catalog = myIcebergNamespace.Catalog,
+        ///         NamespaceId = myIcebergNamespace.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetIcebergNamespaceIamPolicyResult> Invoke(GetIcebergNamespaceIamPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetIcebergNamespaceIamPolicyResult>("gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy", args ?? new GetIcebergNamespaceIamPolicyInvokeArgs(), options.WithDefaults());

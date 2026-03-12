@@ -26,9 +26,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
         /// <summary>
+        /// Network context of the traffic destination.
+        /// Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        /// </summary>
+        public readonly string? DestNetworkContext;
+        /// <summary>
         /// (Optional, Beta)
         /// Network scope of the traffic destination.
-        /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        /// Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         /// </summary>
         public readonly string? DestNetworkScope;
         /// <summary>
@@ -57,13 +62,17 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
         /// <summary>
+        /// Network context of the traffic source.
+        /// Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        /// </summary>
+        public readonly string? SrcNetworkContext;
+        /// <summary>
         /// (Optional, Beta)
         /// Network scope of the traffic source.
-        /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        /// Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         /// </summary>
         public readonly string? SrcNetworkScope;
         /// <summary>
-        /// (Optional, Beta)
         /// Networks of the traffic source. It can be either a full or partial url.
         /// </summary>
         public readonly ImmutableArray<string> SrcNetworks;
@@ -92,6 +101,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<string> destIpRanges,
 
+            string? destNetworkContext,
+
             string? destNetworkScope,
 
             ImmutableArray<string> destRegionCodes,
@@ -106,6 +117,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<string> srcIpRanges,
 
+            string? srcNetworkContext,
+
             string? srcNetworkScope,
 
             ImmutableArray<string> srcNetworks,
@@ -119,6 +132,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             DestAddressGroups = destAddressGroups;
             DestFqdns = destFqdns;
             DestIpRanges = destIpRanges;
+            DestNetworkContext = destNetworkContext;
             DestNetworkScope = destNetworkScope;
             DestRegionCodes = destRegionCodes;
             DestThreatIntelligences = destThreatIntelligences;
@@ -126,6 +140,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             SrcAddressGroups = srcAddressGroups;
             SrcFqdns = srcFqdns;
             SrcIpRanges = srcIpRanges;
+            SrcNetworkContext = srcNetworkContext;
             SrcNetworkScope = srcNetworkScope;
             SrcNetworks = srcNetworks;
             SrcRegionCodes = srcRegionCodes;

@@ -509,6 +509,37 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// ### Gkehub Feature Workload Identity
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = "example-pool",
+    ///         Mode = "TRUST_DOMAIN",
+    ///     });
+    /// 
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Name = "workloadidentity",
+    ///         Location = "global",
+    ///         Spec = new Gcp.GkeHub.Inputs.FeatureSpecArgs
+    ///         {
+    ///             Workloadidentity = new Gcp.GkeHub.Inputs.FeatureSpecWorkloadidentityArgs
+    ///             {
+    ///                 ScopeTenancyPool = pool.Name,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

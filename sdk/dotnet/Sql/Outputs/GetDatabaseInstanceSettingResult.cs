@@ -20,6 +20,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingActiveDirectoryConfigResult> ActiveDirectoryConfigs;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingAdvancedMachineFeatureResult> AdvancedMachineFeatures;
         /// <summary>
+        /// Enables Automatic Version Upgrade feature. Can be used with MySQL only.
+        /// </summary>
+        public readonly bool AutoUpgradeEnabled;
+        /// <summary>
         /// The availability type of the Cloud SQL instance, high availability
         /// (REGIONAL) or single zone (ZONAL). For all instances, ensure that
         /// settings.backup_configuration.enabled is set to true.
@@ -43,6 +47,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         /// </summary>
         public readonly string ConnectorEnforcement;
+        /// <summary>
+        /// Allows using ExecuteSql API to connect to the instance. Disallowed when unspecified.
+        /// </summary>
+        public readonly string DataApiAccess;
         /// <summary>
         /// Data cache configurations.
         /// </summary>
@@ -148,6 +156,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingAdvancedMachineFeatureResult> advancedMachineFeatures,
 
+            bool autoUpgradeEnabled,
+
             string availabilityType,
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingBackupConfigurationResult> backupConfigurations,
@@ -157,6 +167,8 @@ namespace Pulumi.Gcp.Sql.Outputs
             ImmutableArray<Outputs.GetDatabaseInstanceSettingConnectionPoolConfigResult> connectionPoolConfigs,
 
             string connectorEnforcement,
+
+            string dataApiAccess,
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingDataCacheConfigResult> dataCacheConfigs,
 
@@ -217,11 +229,13 @@ namespace Pulumi.Gcp.Sql.Outputs
             ActivationPolicy = activationPolicy;
             ActiveDirectoryConfigs = activeDirectoryConfigs;
             AdvancedMachineFeatures = advancedMachineFeatures;
+            AutoUpgradeEnabled = autoUpgradeEnabled;
             AvailabilityType = availabilityType;
             BackupConfigurations = backupConfigurations;
             Collation = collation;
             ConnectionPoolConfigs = connectionPoolConfigs;
             ConnectorEnforcement = connectorEnforcement;
+            DataApiAccess = dataApiAccess;
             DataCacheConfigs = dataCacheConfigs;
             DataDiskProvisionedIops = dataDiskProvisionedIops;
             DataDiskProvisionedThroughput = dataDiskProvisionedThroughput;

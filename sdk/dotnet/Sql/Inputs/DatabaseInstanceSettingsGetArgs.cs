@@ -26,6 +26,17 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<Inputs.DatabaseInstanceSettingsAdvancedMachineFeaturesGetArgs>? AdvancedMachineFeatures { get; set; }
 
         /// <summary>
+        /// Enables
+        /// [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+        /// feature. When this field is set to `True`, Automatic Upgrade is enabled for
+        /// `MYSQL_8_0` based minor versions. The `DatabaseVersion` must be
+        /// `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can't be unset or
+        /// changed if set to `True`.
+        /// </summary>
+        [Input("autoUpgradeEnabled")]
+        public Input<bool>? AutoUpgradeEnabled { get; set; }
+
+        /// <summary>
         /// The availability type of the Cloud SQL
         /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
         /// `settings.backup_configuration.enabled` is set to `True`.
@@ -64,6 +75,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         /// </summary>
         [Input("connectorEnforcement")]
         public Input<string>? ConnectorEnforcement { get; set; }
+
+        /// <summary>
+        /// Configures ExecuteSql API's access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
+        /// </summary>
+        [Input("dataApiAccess")]
+        public Input<string>? DataApiAccess { get; set; }
 
         /// <summary>
         /// Data cache configurations.

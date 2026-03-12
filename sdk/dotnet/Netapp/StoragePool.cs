@@ -229,6 +229,17 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Mode of the storage pool.
+        /// The operational mode of the storage pool. ONTAP mode enables operations
+        /// via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+        /// If not specified during creation, the mode defaults to DEFAULT.
+        /// Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+        /// </summary>
+        [Output("mode")]
+        public Output<string> Mode { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name of the storage pool. Needs to be unique per location/region.
         /// </summary>
         [Output("name")]
@@ -268,6 +279,15 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Output("replicaZone")]
         public Output<string?> ReplicaZone { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The effective scale tier of the storage pool. If `ScaleTier` is not
+        /// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+        /// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+        /// </summary>
+        [Output("scaleTier")]
+        public Output<string> ScaleTier { get; private set; } = null!;
 
         /// <summary>
         /// Service level of the storage pool.
@@ -450,6 +470,17 @@ namespace Pulumi.Gcp.Netapp
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Mode of the storage pool.
+        /// The operational mode of the storage pool. ONTAP mode enables operations
+        /// via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+        /// If not specified during creation, the mode defaults to DEFAULT.
+        /// Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        /// <summary>
         /// The resource name of the storage pool. Needs to be unique per location/region.
         /// </summary>
         [Input("name")]
@@ -482,6 +513,15 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("replicaZone")]
         public Input<string>? ReplicaZone { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The effective scale tier of the storage pool. If `ScaleTier` is not
+        /// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+        /// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+        /// </summary>
+        [Input("scaleTier")]
+        public Input<string>? ScaleTier { get; set; }
 
         /// <summary>
         /// Service level of the storage pool.
@@ -649,6 +689,17 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Mode of the storage pool.
+        /// The operational mode of the storage pool. ONTAP mode enables operations
+        /// via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+        /// If not specified during creation, the mode defaults to DEFAULT.
+        /// Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        /// <summary>
         /// The resource name of the storage pool. Needs to be unique per location/region.
         /// </summary>
         [Input("name")]
@@ -698,6 +749,15 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("replicaZone")]
         public Input<string>? ReplicaZone { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The effective scale tier of the storage pool. If `ScaleTier` is not
+        /// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+        /// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+        /// </summary>
+        [Input("scaleTier")]
+        public Input<string>? ScaleTier { get; set; }
 
         /// <summary>
         /// Service level of the storage pool.

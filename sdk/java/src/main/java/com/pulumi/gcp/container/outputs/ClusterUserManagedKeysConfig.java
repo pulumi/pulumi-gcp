@@ -28,6 +28,11 @@ public final class ClusterUserManagedKeysConfig {
      */
     private @Nullable String controlPlaneDiskEncryptionKey;
     /**
+     * @return The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+     * 
+     */
+    private @Nullable List<String> controlPlaneDiskEncryptionKeyVersions;
+    /**
      * @return The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
      * 
      */
@@ -74,6 +79,13 @@ public final class ClusterUserManagedKeysConfig {
      */
     public Optional<String> controlPlaneDiskEncryptionKey() {
         return Optional.ofNullable(this.controlPlaneDiskEncryptionKey);
+    }
+    /**
+     * @return The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+     * 
+     */
+    public List<String> controlPlaneDiskEncryptionKeyVersions() {
+        return this.controlPlaneDiskEncryptionKeyVersions == null ? List.of() : this.controlPlaneDiskEncryptionKeyVersions;
     }
     /**
      * @return The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
@@ -123,6 +135,7 @@ public final class ClusterUserManagedKeysConfig {
         private @Nullable String aggregationCa;
         private @Nullable String clusterCa;
         private @Nullable String controlPlaneDiskEncryptionKey;
+        private @Nullable List<String> controlPlaneDiskEncryptionKeyVersions;
         private @Nullable String etcdApiCa;
         private @Nullable String etcdPeerCa;
         private @Nullable String gkeopsEtcdBackupEncryptionKey;
@@ -134,6 +147,7 @@ public final class ClusterUserManagedKeysConfig {
     	      this.aggregationCa = defaults.aggregationCa;
     	      this.clusterCa = defaults.clusterCa;
     	      this.controlPlaneDiskEncryptionKey = defaults.controlPlaneDiskEncryptionKey;
+    	      this.controlPlaneDiskEncryptionKeyVersions = defaults.controlPlaneDiskEncryptionKeyVersions;
     	      this.etcdApiCa = defaults.etcdApiCa;
     	      this.etcdPeerCa = defaults.etcdPeerCa;
     	      this.gkeopsEtcdBackupEncryptionKey = defaults.gkeopsEtcdBackupEncryptionKey;
@@ -158,6 +172,15 @@ public final class ClusterUserManagedKeysConfig {
 
             this.controlPlaneDiskEncryptionKey = controlPlaneDiskEncryptionKey;
             return this;
+        }
+        @CustomType.Setter
+        public Builder controlPlaneDiskEncryptionKeyVersions(@Nullable List<String> controlPlaneDiskEncryptionKeyVersions) {
+
+            this.controlPlaneDiskEncryptionKeyVersions = controlPlaneDiskEncryptionKeyVersions;
+            return this;
+        }
+        public Builder controlPlaneDiskEncryptionKeyVersions(String... controlPlaneDiskEncryptionKeyVersions) {
+            return controlPlaneDiskEncryptionKeyVersions(List.of(controlPlaneDiskEncryptionKeyVersions));
         }
         @CustomType.Setter
         public Builder etcdApiCa(@Nullable String etcdApiCa) {
@@ -200,6 +223,7 @@ public final class ClusterUserManagedKeysConfig {
             _resultValue.aggregationCa = aggregationCa;
             _resultValue.clusterCa = clusterCa;
             _resultValue.controlPlaneDiskEncryptionKey = controlPlaneDiskEncryptionKey;
+            _resultValue.controlPlaneDiskEncryptionKeyVersions = controlPlaneDiskEncryptionKeyVersions;
             _resultValue.etcdApiCa = etcdApiCa;
             _resultValue.etcdPeerCa = etcdPeerCa;
             _resultValue.gkeopsEtcdBackupEncryptionKey = gkeopsEtcdBackupEncryptionKey;

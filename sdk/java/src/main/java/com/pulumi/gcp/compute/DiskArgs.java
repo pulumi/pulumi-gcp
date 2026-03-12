@@ -184,6 +184,23 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
+     * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+     * 
+     */
+    @Import(name="eraseWindowsVssSignature")
+    private @Nullable Output<Boolean> eraseWindowsVssSignature;
+
+    /**
+     * @return (Optional, Beta)
+     * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+     * 
+     */
+    public Optional<Output<Boolean>> eraseWindowsVssSignature() {
+        return Optional.ofNullable(this.eraseWindowsVssSignature);
+    }
+
+    /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.
      * Structure is documented below.
@@ -709,6 +726,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.diskEncryptionKey = $.diskEncryptionKey;
         this.enableConfidentialCompute = $.enableConfidentialCompute;
+        this.eraseWindowsVssSignature = $.eraseWindowsVssSignature;
         this.guestOsFeatures = $.guestOsFeatures;
         this.image = $.image;
         this.interface_ = $.interface_;
@@ -956,6 +974,29 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
             return enableConfidentialCompute(Output.of(enableConfidentialCompute));
+        }
+
+        /**
+         * @param eraseWindowsVssSignature (Optional, Beta)
+         * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eraseWindowsVssSignature(@Nullable Output<Boolean> eraseWindowsVssSignature) {
+            $.eraseWindowsVssSignature = eraseWindowsVssSignature;
+            return this;
+        }
+
+        /**
+         * @param eraseWindowsVssSignature (Optional, Beta)
+         * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eraseWindowsVssSignature(Boolean eraseWindowsVssSignature) {
+            return eraseWindowsVssSignature(Output.of(eraseWindowsVssSignature));
         }
 
         /**

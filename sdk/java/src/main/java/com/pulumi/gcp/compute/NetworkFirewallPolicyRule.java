@@ -243,6 +243,123 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Firewall Policy Rule Network Context Egress
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicy;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyArgs;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyRule;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyRuleMatchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basicNetworkFirewallPolicy = new NetworkFirewallPolicy("basicNetworkFirewallPolicy", NetworkFirewallPolicyArgs.builder()
+ *             .name("fw-policy")
+ *             .description("Sample global network firewall policy")
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *         var primary = new NetworkFirewallPolicyRule("primary", NetworkFirewallPolicyRuleArgs.builder()
+ *             .action("allow")
+ *             .description("This is a simple rule description")
+ *             .direction("EGRESS")
+ *             .disabled(false)
+ *             .enableLogging(true)
+ *             .firewallPolicy(basicNetworkFirewallPolicy.name())
+ *             .priority(1000)
+ *             .ruleName("test-rule")
+ *             .match(NetworkFirewallPolicyRuleMatchArgs.builder()
+ *                 .destIpRanges("10.100.0.1/32")
+ *                 .destNetworkContext("INTERNET")
+ *                 .layer4Configs(NetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                     .ipProtocol("all")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Network Firewall Policy Rule Network Context Ingress
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicy;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyRule;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyRuleMatchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basicNetworkFirewallPolicy = new NetworkFirewallPolicy("basicNetworkFirewallPolicy", NetworkFirewallPolicyArgs.builder()
+ *             .name("fw-policy")
+ *             .description("Sample global network firewall policy")
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("network")
+ *             .build());
+ * 
+ *         var primary = new NetworkFirewallPolicyRule("primary", NetworkFirewallPolicyRuleArgs.builder()
+ *             .action("allow")
+ *             .description("This is a simple rule description")
+ *             .direction("INGRESS")
+ *             .disabled(false)
+ *             .enableLogging(true)
+ *             .firewallPolicy(basicNetworkFirewallPolicy.name())
+ *             .priority(1000)
+ *             .ruleName("test-rule")
+ *             .match(NetworkFirewallPolicyRuleMatchArgs.builder()
+ *                 .srcIpRanges("11.100.0.1/32")
+ *                 .srcNetworkContext("VPC_NETWORKS")
+ *                 .srcNetworks(network.id())
+ *                 .layer4Configs(NetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                     .ipProtocol("all")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

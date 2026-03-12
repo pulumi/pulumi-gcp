@@ -39,6 +39,13 @@ public final class InstanceFileShares {
      * 
      */
     private @Nullable String sourceBackup;
+    /**
+     * @return The resource name of the BackupDR backup, in the format
+     * `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+     * that this file share has been restored from.
+     * 
+     */
+    private @Nullable String sourceBackupdrBackup;
 
     private InstanceFileShares() {}
     /**
@@ -73,6 +80,15 @@ public final class InstanceFileShares {
     public Optional<String> sourceBackup() {
         return Optional.ofNullable(this.sourceBackup);
     }
+    /**
+     * @return The resource name of the BackupDR backup, in the format
+     * `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+     * that this file share has been restored from.
+     * 
+     */
+    public Optional<String> sourceBackupdrBackup() {
+        return Optional.ofNullable(this.sourceBackupdrBackup);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -87,6 +103,7 @@ public final class InstanceFileShares {
         private String name;
         private @Nullable List<InstanceFileSharesNfsExportOption> nfsExportOptions;
         private @Nullable String sourceBackup;
+        private @Nullable String sourceBackupdrBackup;
         public Builder() {}
         public Builder(InstanceFileShares defaults) {
     	      Objects.requireNonNull(defaults);
@@ -94,6 +111,7 @@ public final class InstanceFileShares {
     	      this.name = defaults.name;
     	      this.nfsExportOptions = defaults.nfsExportOptions;
     	      this.sourceBackup = defaults.sourceBackup;
+    	      this.sourceBackupdrBackup = defaults.sourceBackupdrBackup;
         }
 
         @CustomType.Setter
@@ -127,12 +145,19 @@ public final class InstanceFileShares {
             this.sourceBackup = sourceBackup;
             return this;
         }
+        @CustomType.Setter
+        public Builder sourceBackupdrBackup(@Nullable String sourceBackupdrBackup) {
+
+            this.sourceBackupdrBackup = sourceBackupdrBackup;
+            return this;
+        }
         public InstanceFileShares build() {
             final var _resultValue = new InstanceFileShares();
             _resultValue.capacityGb = capacityGb;
             _resultValue.name = name;
             _resultValue.nfsExportOptions = nfsExportOptions;
             _resultValue.sourceBackup = sourceBackup;
+            _resultValue.sourceBackupdrBackup = sourceBackupdrBackup;
             return _resultValue;
         }
     }

@@ -26,9 +26,8 @@ public final class OrganizationSecurityPolicyRuleMatch {
     private @Nullable String description;
     /**
      * @return Preconfigured versioned expression. For organization security policy rules,
-     * the only supported type is &#34;FIREWALL&#34;.
-     * Default value is `FIREWALL`.
-     * Possible values are: `FIREWALL`.
+     * the only supported type is &#34;SRC_IPS_V1&#34;.
+     * **NOTE** : &#39;FIREWALL&#39; type is deprecated. Please use &#39;google_compute_firewall_policy_rule&#39; resource instead.
      * 
      */
     private @Nullable String versionedExpr;
@@ -51,9 +50,8 @@ public final class OrganizationSecurityPolicyRuleMatch {
     }
     /**
      * @return Preconfigured versioned expression. For organization security policy rules,
-     * the only supported type is &#34;FIREWALL&#34;.
-     * Default value is `FIREWALL`.
-     * Possible values are: `FIREWALL`.
+     * the only supported type is &#34;SRC_IPS_V1&#34;.
+     * **NOTE** : &#39;FIREWALL&#39; type is deprecated. Please use &#39;google_compute_firewall_policy_rule&#39; resource instead.
      * 
      */
     public Optional<String> versionedExpr() {

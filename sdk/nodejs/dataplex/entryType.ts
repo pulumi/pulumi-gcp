@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const testEntryTypeFull = new gcp.dataplex.AspectType("test_entry_type_full", {
- *     aspectTypeId: "tf-test-aspect-type_80332",
+ *     aspectTypeId: "tf-test-aspect-type_8270",
  *     location: "us-central1",
  *     project: "my-project-name",
  *     metadataTemplate: `{

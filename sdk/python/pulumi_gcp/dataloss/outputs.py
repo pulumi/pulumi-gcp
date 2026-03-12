@@ -217,11 +217,14 @@ __all__ = [
     'PreventionDiscoveryConfigAction',
     'PreventionDiscoveryConfigActionExportData',
     'PreventionDiscoveryConfigActionExportDataProfileTable',
+    'PreventionDiscoveryConfigActionExportDataSampleFindingsTable',
     'PreventionDiscoveryConfigActionPubSubNotification',
     'PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition',
     'PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions',
     'PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition',
+    'PreventionDiscoveryConfigActionPublishToChronicle',
     'PreventionDiscoveryConfigActionPublishToDataplexCatalog',
+    'PreventionDiscoveryConfigActionPublishToScc',
     'PreventionDiscoveryConfigActionTagResources',
     'PreventionDiscoveryConfigActionTagResourcesTagCondition',
     'PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore',
@@ -11197,8 +11200,12 @@ class PreventionDiscoveryConfigAction(dict):
             suggest = "export_data"
         elif key == "pubSubNotification":
             suggest = "pub_sub_notification"
+        elif key == "publishToChronicle":
+            suggest = "publish_to_chronicle"
         elif key == "publishToDataplexCatalog":
             suggest = "publish_to_dataplex_catalog"
+        elif key == "publishToScc":
+            suggest = "publish_to_scc"
         elif key == "tagResources":
             suggest = "tag_resources"
 
@@ -11216,14 +11223,18 @@ class PreventionDiscoveryConfigAction(dict):
     def __init__(__self__, *,
                  export_data: Optional['outputs.PreventionDiscoveryConfigActionExportData'] = None,
                  pub_sub_notification: Optional['outputs.PreventionDiscoveryConfigActionPubSubNotification'] = None,
+                 publish_to_chronicle: Optional['outputs.PreventionDiscoveryConfigActionPublishToChronicle'] = None,
                  publish_to_dataplex_catalog: Optional['outputs.PreventionDiscoveryConfigActionPublishToDataplexCatalog'] = None,
+                 publish_to_scc: Optional['outputs.PreventionDiscoveryConfigActionPublishToScc'] = None,
                  tag_resources: Optional['outputs.PreventionDiscoveryConfigActionTagResources'] = None):
         """
         :param 'PreventionDiscoveryConfigActionExportDataArgs' export_data: Export data profiles into a provided location
                Structure is documented below.
         :param 'PreventionDiscoveryConfigActionPubSubNotificationArgs' pub_sub_notification: Publish a message into the Pub/Sub topic.
                Structure is documented below.
+        :param 'PreventionDiscoveryConfigActionPublishToChronicleArgs' publish_to_chronicle: Publishes generated data profiles to Google Security Operations. For more information, see [Use Sensitive Data Protection data in context-aware analytics](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
         :param 'PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs' publish_to_dataplex_catalog: Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+        :param 'PreventionDiscoveryConfigActionPublishToSccArgs' publish_to_scc: Publishes findings to Security Command Center for each data profile.
         :param 'PreventionDiscoveryConfigActionTagResourcesArgs' tag_resources: Tag the profiled resources with the specified tag values.
                Structure is documented below.
         """
@@ -11231,8 +11242,12 @@ class PreventionDiscoveryConfigAction(dict):
             pulumi.set(__self__, "export_data", export_data)
         if pub_sub_notification is not None:
             pulumi.set(__self__, "pub_sub_notification", pub_sub_notification)
+        if publish_to_chronicle is not None:
+            pulumi.set(__self__, "publish_to_chronicle", publish_to_chronicle)
         if publish_to_dataplex_catalog is not None:
             pulumi.set(__self__, "publish_to_dataplex_catalog", publish_to_dataplex_catalog)
+        if publish_to_scc is not None:
+            pulumi.set(__self__, "publish_to_scc", publish_to_scc)
         if tag_resources is not None:
             pulumi.set(__self__, "tag_resources", tag_resources)
 
@@ -11255,12 +11270,28 @@ class PreventionDiscoveryConfigAction(dict):
         return pulumi.get(self, "pub_sub_notification")
 
     @_builtins.property
+    @pulumi.getter(name="publishToChronicle")
+    def publish_to_chronicle(self) -> Optional['outputs.PreventionDiscoveryConfigActionPublishToChronicle']:
+        """
+        Publishes generated data profiles to Google Security Operations. For more information, see [Use Sensitive Data Protection data in context-aware analytics](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
+        """
+        return pulumi.get(self, "publish_to_chronicle")
+
+    @_builtins.property
     @pulumi.getter(name="publishToDataplexCatalog")
     def publish_to_dataplex_catalog(self) -> Optional['outputs.PreventionDiscoveryConfigActionPublishToDataplexCatalog']:
         """
         Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
         """
         return pulumi.get(self, "publish_to_dataplex_catalog")
+
+    @_builtins.property
+    @pulumi.getter(name="publishToScc")
+    def publish_to_scc(self) -> Optional['outputs.PreventionDiscoveryConfigActionPublishToScc']:
+        """
+        Publishes findings to Security Command Center for each data profile.
+        """
+        return pulumi.get(self, "publish_to_scc")
 
     @_builtins.property
     @pulumi.getter(name="tagResources")
@@ -11279,6 +11310,8 @@ class PreventionDiscoveryConfigActionExportData(dict):
         suggest = None
         if key == "profileTable":
             suggest = "profile_table"
+        elif key == "sampleFindingsTable":
+            suggest = "sample_findings_table"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigActionExportData. Access the value via the '{suggest}' property getter instead.")
@@ -11292,22 +11325,40 @@ class PreventionDiscoveryConfigActionExportData(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 profile_table: Optional['outputs.PreventionDiscoveryConfigActionExportDataProfileTable'] = None):
+                 profile_table: Optional['outputs.PreventionDiscoveryConfigActionExportDataProfileTable'] = None,
+                 sample_findings_table: Optional['outputs.PreventionDiscoveryConfigActionExportDataSampleFindingsTable'] = None):
         """
-        :param 'PreventionDiscoveryConfigActionExportDataProfileTableArgs' profile_table: Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+        :param 'PreventionDiscoveryConfigActionExportDataProfileTableArgs' profile_table: Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+               The system will create a new dataset and table for you if none are are provided. The dataset will be named `sensitive_data_protection_discovery`
+               and table will be named `discovery_profiles`. This table will be placed in the same project as the container project running the scan.
+               Structure is documented below.
+        :param 'PreventionDiscoveryConfigActionExportDataSampleFindingsTableArgs' sample_findings_table: Store sample findings in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
                Structure is documented below.
         """
         if profile_table is not None:
             pulumi.set(__self__, "profile_table", profile_table)
+        if sample_findings_table is not None:
+            pulumi.set(__self__, "sample_findings_table", sample_findings_table)
 
     @_builtins.property
     @pulumi.getter(name="profileTable")
     def profile_table(self) -> Optional['outputs.PreventionDiscoveryConfigActionExportDataProfileTable']:
         """
-        Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+        Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+        The system will create a new dataset and table for you if none are are provided. The dataset will be named `sensitive_data_protection_discovery`
+        and table will be named `discovery_profiles`. This table will be placed in the same project as the container project running the scan.
         Structure is documented below.
         """
         return pulumi.get(self, "profile_table")
+
+    @_builtins.property
+    @pulumi.getter(name="sampleFindingsTable")
+    def sample_findings_table(self) -> Optional['outputs.PreventionDiscoveryConfigActionExportDataSampleFindingsTable']:
+        """
+        Store sample findings in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sample_findings_table")
 
 
 @pulumi.output_type
@@ -11331,6 +11382,70 @@ class PreventionDiscoveryConfigActionExportDataProfileTable(dict):
 
     def get(self, key: str, default = None) -> Any:
         PreventionDiscoveryConfigActionExportDataProfileTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: Optional[_builtins.str] = None,
+                 project_id: Optional[_builtins.str] = None,
+                 table_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str dataset_id: Dataset Id of the table
+        :param _builtins.str project_id: The Google Cloud Platform project ID of the project containing the table. If omitted, the project ID is inferred from the API call.
+        :param _builtins.str table_id: Name of the table
+        """
+        if dataset_id is not None:
+            pulumi.set(__self__, "dataset_id", dataset_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if table_id is not None:
+            pulumi.set(__self__, "table_id", table_id)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> Optional[_builtins.str]:
+        """
+        Dataset Id of the table
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[_builtins.str]:
+        """
+        The Google Cloud Platform project ID of the project containing the table. If omitted, the project ID is inferred from the API call.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> Optional[_builtins.str]:
+        """
+        Name of the table
+        """
+        return pulumi.get(self, "table_id")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigActionExportDataSampleFindingsTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigActionExportDataSampleFindingsTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigActionExportDataSampleFindingsTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigActionExportDataSampleFindingsTable.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -11582,7 +11697,19 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
 
 
 @pulumi.output_type
+class PreventionDiscoveryConfigActionPublishToChronicle(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
 class PreventionDiscoveryConfigActionPublishToDataplexCatalog(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigActionPublishToScc(dict):
     def __init__(__self__):
         pass
 
@@ -12587,6 +12714,8 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference(dict):
             suggest = "dataset_id"
         elif key == "tableId":
             suggest = "table_id"
+        elif key == "projectId":
+            suggest = "project_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference. Access the value via the '{suggest}' property getter instead.")
@@ -12601,13 +12730,19 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference(dict):
 
     def __init__(__self__, *,
                  dataset_id: _builtins.str,
-                 table_id: _builtins.str):
+                 table_id: _builtins.str,
+                 project_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str dataset_id: Dataset ID of the table.
         :param _builtins.str table_id: Name of the table.
+        :param _builtins.str project_id: The Google Cloud project ID of the project containing the table.
+               If omitted, the project ID is inferred from the parent project.
+               This field is required if the parent resource is an organization.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "table_id", table_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
@@ -12624,6 +12759,16 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference(dict):
         Name of the table.
         """
         return pulumi.get(self, "table_id")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[_builtins.str]:
+        """
+        The Google Cloud project ID of the project containing the table.
+        If omitted, the project ID is inferred from the parent project.
+        This field is required if the parent resource is an organization.
+        """
+        return pulumi.get(self, "project_id")
 
 
 @pulumi.output_type

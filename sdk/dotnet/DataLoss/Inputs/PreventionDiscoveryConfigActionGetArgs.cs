@@ -27,10 +27,22 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionDiscoveryConfigActionPubSubNotificationGetArgs>? PubSubNotification { get; set; }
 
         /// <summary>
+        /// Publishes generated data profiles to Google Security Operations. For more information, see [Use Sensitive Data Protection data in context-aware analytics](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
+        /// </summary>
+        [Input("publishToChronicle")]
+        public Input<Inputs.PreventionDiscoveryConfigActionPublishToChronicleGetArgs>? PublishToChronicle { get; set; }
+
+        /// <summary>
         /// Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
         /// </summary>
         [Input("publishToDataplexCatalog")]
         public Input<Inputs.PreventionDiscoveryConfigActionPublishToDataplexCatalogGetArgs>? PublishToDataplexCatalog { get; set; }
+
+        /// <summary>
+        /// Publishes findings to Security Command Center for each data profile.
+        /// </summary>
+        [Input("publishToScc")]
+        public Input<Inputs.PreventionDiscoveryConfigActionPublishToSccGetArgs>? PublishToScc { get; set; }
 
         /// <summary>
         /// Tag the profiled resources with the specified tag values.

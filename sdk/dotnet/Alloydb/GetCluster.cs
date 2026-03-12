@@ -147,6 +147,7 @@ namespace Pulumi.Gcp.Alloydb
         public readonly ImmutableArray<Outputs.GetClusterContinuousBackupConfigResult> ContinuousBackupConfigs;
         public readonly ImmutableArray<Outputs.GetClusterContinuousBackupInfoResult> ContinuousBackupInfos;
         public readonly string DatabaseVersion;
+        public readonly ImmutableArray<Outputs.GetClusterDataplexConfigResult> DataplexConfigs;
         public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly string DisplayName;
@@ -200,6 +201,8 @@ namespace Pulumi.Gcp.Alloydb
             ImmutableArray<Outputs.GetClusterContinuousBackupInfoResult> continuousBackupInfos,
 
             string databaseVersion,
+
+            ImmutableArray<Outputs.GetClusterDataplexConfigResult> dataplexConfigs,
 
             string deletionPolicy,
 
@@ -270,6 +273,7 @@ namespace Pulumi.Gcp.Alloydb
             ContinuousBackupConfigs = continuousBackupConfigs;
             ContinuousBackupInfos = continuousBackupInfos;
             DatabaseVersion = databaseVersion;
+            DataplexConfigs = dataplexConfigs;
             DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             DisplayName = displayName;

@@ -40,6 +40,16 @@ public final class DatabaseInstanceSettings {
     private @Nullable DatabaseInstanceSettingsActiveDirectoryConfig activeDirectoryConfig;
     private @Nullable DatabaseInstanceSettingsAdvancedMachineFeatures advancedMachineFeatures;
     /**
+     * @return Enables
+     * [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+     * feature. When this field is set to `true`, Automatic Upgrade is enabled for
+     * `MYSQL_8_0` based minor versions. The `databaseVersion` must be
+     * `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can&#39;t be unset or
+     * changed if set to `true`.
+     * 
+     */
+    private @Nullable Boolean autoUpgradeEnabled;
+    /**
      * @return The availability type of the Cloud SQL
      * instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
      * `settings.backup_configuration.enabled` is set to `true`.
@@ -67,6 +77,11 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private @Nullable String connectorEnforcement;
+    /**
+     * @return Configures ExecuteSql API&#39;s access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
+     * 
+     */
+    private @Nullable String dataApiAccess;
     /**
      * @return Data cache configurations.
      * 
@@ -207,6 +222,18 @@ public final class DatabaseInstanceSettings {
         return Optional.ofNullable(this.advancedMachineFeatures);
     }
     /**
+     * @return Enables
+     * [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
+     * feature. When this field is set to `true`, Automatic Upgrade is enabled for
+     * `MYSQL_8_0` based minor versions. The `databaseVersion` must be
+     * `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can&#39;t be unset or
+     * changed if set to `true`.
+     * 
+     */
+    public Optional<Boolean> autoUpgradeEnabled() {
+        return Optional.ofNullable(this.autoUpgradeEnabled);
+    }
+    /**
      * @return The availability type of the Cloud SQL
      * instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
      * `settings.backup_configuration.enabled` is set to `true`.
@@ -243,6 +270,13 @@ public final class DatabaseInstanceSettings {
      */
     public Optional<String> connectorEnforcement() {
         return Optional.ofNullable(this.connectorEnforcement);
+    }
+    /**
+     * @return Configures ExecuteSql API&#39;s access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
+     * 
+     */
+    public Optional<String> dataApiAccess() {
+        return Optional.ofNullable(this.dataApiAccess);
     }
     /**
      * @return Data cache configurations.
@@ -436,11 +470,13 @@ public final class DatabaseInstanceSettings {
         private @Nullable String activationPolicy;
         private @Nullable DatabaseInstanceSettingsActiveDirectoryConfig activeDirectoryConfig;
         private @Nullable DatabaseInstanceSettingsAdvancedMachineFeatures advancedMachineFeatures;
+        private @Nullable Boolean autoUpgradeEnabled;
         private @Nullable String availabilityType;
         private @Nullable DatabaseInstanceSettingsBackupConfiguration backupConfiguration;
         private @Nullable String collation;
         private @Nullable List<DatabaseInstanceSettingsConnectionPoolConfig> connectionPoolConfigs;
         private @Nullable String connectorEnforcement;
+        private @Nullable String dataApiAccess;
         private @Nullable DatabaseInstanceSettingsDataCacheConfig dataCacheConfig;
         private @Nullable Integer dataDiskProvisionedIops;
         private @Nullable Integer dataDiskProvisionedThroughput;
@@ -475,11 +511,13 @@ public final class DatabaseInstanceSettings {
     	      this.activationPolicy = defaults.activationPolicy;
     	      this.activeDirectoryConfig = defaults.activeDirectoryConfig;
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
+    	      this.autoUpgradeEnabled = defaults.autoUpgradeEnabled;
     	      this.availabilityType = defaults.availabilityType;
     	      this.backupConfiguration = defaults.backupConfiguration;
     	      this.collation = defaults.collation;
     	      this.connectionPoolConfigs = defaults.connectionPoolConfigs;
     	      this.connectorEnforcement = defaults.connectorEnforcement;
+    	      this.dataApiAccess = defaults.dataApiAccess;
     	      this.dataCacheConfig = defaults.dataCacheConfig;
     	      this.dataDiskProvisionedIops = defaults.dataDiskProvisionedIops;
     	      this.dataDiskProvisionedThroughput = defaults.dataDiskProvisionedThroughput;
@@ -529,6 +567,12 @@ public final class DatabaseInstanceSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder autoUpgradeEnabled(@Nullable Boolean autoUpgradeEnabled) {
+
+            this.autoUpgradeEnabled = autoUpgradeEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder availabilityType(@Nullable String availabilityType) {
 
             this.availabilityType = availabilityType;
@@ -559,6 +603,12 @@ public final class DatabaseInstanceSettings {
         public Builder connectorEnforcement(@Nullable String connectorEnforcement) {
 
             this.connectorEnforcement = connectorEnforcement;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dataApiAccess(@Nullable String dataApiAccess) {
+
+            this.dataApiAccess = dataApiAccess;
             return this;
         }
         @CustomType.Setter
@@ -739,11 +789,13 @@ public final class DatabaseInstanceSettings {
             _resultValue.activationPolicy = activationPolicy;
             _resultValue.activeDirectoryConfig = activeDirectoryConfig;
             _resultValue.advancedMachineFeatures = advancedMachineFeatures;
+            _resultValue.autoUpgradeEnabled = autoUpgradeEnabled;
             _resultValue.availabilityType = availabilityType;
             _resultValue.backupConfiguration = backupConfiguration;
             _resultValue.collation = collation;
             _resultValue.connectionPoolConfigs = connectionPoolConfigs;
             _resultValue.connectorEnforcement = connectorEnforcement;
+            _resultValue.dataApiAccess = dataApiAccess;
             _resultValue.dataCacheConfig = dataCacheConfig;
             _resultValue.dataDiskProvisionedIops = dataDiskProvisionedIops;
             _resultValue.dataDiskProvisionedThroughput = dataDiskProvisionedThroughput;

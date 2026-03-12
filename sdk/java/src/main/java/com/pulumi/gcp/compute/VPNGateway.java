@@ -124,6 +124,128 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Target Vpn Gateway Tags
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.tags.TagKey;
+ * import com.pulumi.gcp.tags.TagKeyArgs;
+ * import com.pulumi.gcp.tags.TagValue;
+ * import com.pulumi.gcp.tags.TagValueArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.VPNGateway;
+ * import com.pulumi.gcp.compute.VPNGatewayArgs;
+ * import com.pulumi.gcp.compute.inputs.VPNGatewayParamsArgs;
+ * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.VPNTunnel;
+ * import com.pulumi.gcp.compute.VPNTunnelArgs;
+ * import com.pulumi.gcp.compute.Route;
+ * import com.pulumi.gcp.compute.RouteArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var tagKey1 = new TagKey("tagKey1", TagKeyArgs.builder()
+ *             .parent("organizations/123456789")
+ *             .shortName("tagkey")
+ *             .build());
+ * 
+ *         var tagValue1 = new TagValue("tagValue1", TagValueArgs.builder()
+ *             .parent(tagKey1.id())
+ *             .shortName("tagvalue")
+ *             .build());
+ * 
+ *         var network1 = new Network("network1", NetworkArgs.builder()
+ *             .name("network-1")
+ *             .build());
+ * 
+ *         var targetGatewayTags = new VPNGateway("targetGatewayTags", VPNGatewayArgs.builder()
+ *             .name("vpn-1")
+ *             .network(network1.id())
+ *             .params(VPNGatewayParamsArgs.builder()
+ *                 .resourceManagerTags(Output.tuple(tagKey1.id(), tagValue1.id()).applyValue(values -> {
+ *                     var tagKey1Id = values.t1;
+ *                     var tagValue1Id = values.t2;
+ *                     return Map.of(tagKey1Id, tagValue1Id);
+ *                 }))
+ *                 .build())
+ *             .build());
+ * 
+ *         var vpnStaticIp = new Address("vpnStaticIp", AddressArgs.builder()
+ *             .name("vpn-static-ip")
+ *             .build());
+ * 
+ *         var frEsp = new ForwardingRule("frEsp", ForwardingRuleArgs.builder()
+ *             .name("fr-esp")
+ *             .ipProtocol("ESP")
+ *             .ipAddress(vpnStaticIp.address())
+ *             .target(targetGatewayTags.id())
+ *             .build());
+ * 
+ *         var frUdp500 = new ForwardingRule("frUdp500", ForwardingRuleArgs.builder()
+ *             .name("fr-udp500")
+ *             .ipProtocol("UDP")
+ *             .portRange("500")
+ *             .ipAddress(vpnStaticIp.address())
+ *             .target(targetGatewayTags.id())
+ *             .build());
+ * 
+ *         var frUdp4500 = new ForwardingRule("frUdp4500", ForwardingRuleArgs.builder()
+ *             .name("fr-udp4500")
+ *             .ipProtocol("UDP")
+ *             .portRange("4500")
+ *             .ipAddress(vpnStaticIp.address())
+ *             .target(targetGatewayTags.id())
+ *             .build());
+ * 
+ *         var tunnel1 = new VPNTunnel("tunnel1", VPNTunnelArgs.builder()
+ *             .name("tunnel1")
+ *             .peerIp("15.0.0.120")
+ *             .sharedSecret("a secret message")
+ *             .targetVpnGateway(targetGatewayTags.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     frEsp,
+ *                     frUdp500,
+ *                     frUdp4500)
+ *                 .build());
+ * 
+ *         var route1 = new Route("route1", RouteArgs.builder()
+ *             .name("route1")
+ *             .network(network1.name())
+ *             .destRange("15.0.0.0/24")
+ *             .priority(1000)
+ *             .nextHopVpnTunnel(tunnel1.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -229,7 +351,6 @@ public class VPNGateway extends com.pulumi.resources.CustomResource {
         return this.network;
     }
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      * 
@@ -238,8 +359,7 @@ public class VPNGateway extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ VPNGatewayParams> params;
 
     /**
-     * @return (Optional, Beta)
-     * Additional params passed with the request, but not persisted as part of resource payload
+     * @return Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      * 
      */

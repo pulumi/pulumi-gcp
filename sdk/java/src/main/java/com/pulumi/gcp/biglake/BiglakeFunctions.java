@@ -226,12 +226,82 @@ public final class BiglakeFunctions {
     /**
      * Retrieves the current IAM policy data for icebergnamespace
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.biglake.BiglakeFunctions;
+     * import com.pulumi.gcp.biglake.inputs.GetIcebergNamespaceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BiglakeFunctions.getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs.builder()
+     *             .project(myIcebergNamespace.project())
+     *             .catalog(myIcebergNamespace.catalog())
+     *             .namespaceId(myIcebergNamespace.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs args) {
         return getIcebergNamespaceIamPolicy(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves the current IAM policy data for icebergnamespace
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.biglake.BiglakeFunctions;
+     * import com.pulumi.gcp.biglake.inputs.GetIcebergNamespaceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BiglakeFunctions.getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs.builder()
+     *             .project(myIcebergNamespace.project())
+     *             .catalog(myIcebergNamespace.catalog())
+     *             .namespaceId(myIcebergNamespace.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicyPlain(GetIcebergNamespaceIamPolicyPlainArgs args) {
@@ -240,6 +310,41 @@ public final class BiglakeFunctions {
     /**
      * Retrieves the current IAM policy data for icebergnamespace
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.biglake.BiglakeFunctions;
+     * import com.pulumi.gcp.biglake.inputs.GetIcebergNamespaceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BiglakeFunctions.getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs.builder()
+     *             .project(myIcebergNamespace.project())
+     *             .catalog(myIcebergNamespace.catalog())
+     *             .namespaceId(myIcebergNamespace.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy", TypeShape.of(GetIcebergNamespaceIamPolicyResult.class), args, Utilities.withVersion(options));
@@ -247,12 +352,82 @@ public final class BiglakeFunctions {
     /**
      * Retrieves the current IAM policy data for icebergnamespace
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.biglake.BiglakeFunctions;
+     * import com.pulumi.gcp.biglake.inputs.GetIcebergNamespaceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BiglakeFunctions.getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs.builder()
+     *             .project(myIcebergNamespace.project())
+     *             .catalog(myIcebergNamespace.catalog())
+     *             .namespaceId(myIcebergNamespace.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy", TypeShape.of(GetIcebergNamespaceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for icebergnamespace
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.biglake.BiglakeFunctions;
+     * import com.pulumi.gcp.biglake.inputs.GetIcebergNamespaceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BiglakeFunctions.getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs.builder()
+     *             .project(myIcebergNamespace.project())
+     *             .catalog(myIcebergNamespace.catalog())
+     *             .namespaceId(myIcebergNamespace.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicyPlain(GetIcebergNamespaceIamPolicyPlainArgs args, InvokeOptions options) {

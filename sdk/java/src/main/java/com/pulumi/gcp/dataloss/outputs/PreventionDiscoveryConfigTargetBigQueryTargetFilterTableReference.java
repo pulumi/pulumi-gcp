@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference {
@@ -15,6 +17,13 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableRefer
      * 
      */
     private String datasetId;
+    /**
+     * @return The Google Cloud project ID of the project containing the table.
+     * If omitted, the project ID is inferred from the parent project.
+     * This field is required if the parent resource is an organization.
+     * 
+     */
+    private @Nullable String projectId;
     /**
      * @return Name of the table.
      * 
@@ -28,6 +37,15 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableRefer
      */
     public String datasetId() {
         return this.datasetId;
+    }
+    /**
+     * @return The Google Cloud project ID of the project containing the table.
+     * If omitted, the project ID is inferred from the parent project.
+     * This field is required if the parent resource is an organization.
+     * 
+     */
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
     /**
      * @return Name of the table.
@@ -47,11 +65,13 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableRefer
     @CustomType.Builder
     public static final class Builder {
         private String datasetId;
+        private @Nullable String projectId;
         private String tableId;
         public Builder() {}
         public Builder(PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasetId = defaults.datasetId;
+    	      this.projectId = defaults.projectId;
     	      this.tableId = defaults.tableId;
         }
 
@@ -61,6 +81,12 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableRefer
               throw new MissingRequiredPropertyException("PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference", "datasetId");
             }
             this.datasetId = datasetId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder projectId(@Nullable String projectId) {
+
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +100,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableRefer
         public PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference build() {
             final var _resultValue = new PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference();
             _resultValue.datasetId = datasetId;
+            _resultValue.projectId = projectId;
             _resultValue.tableId = tableId;
             return _resultValue;
         }

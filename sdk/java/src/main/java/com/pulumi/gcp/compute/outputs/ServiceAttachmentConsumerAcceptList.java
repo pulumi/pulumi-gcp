@@ -20,6 +20,13 @@ public final class ServiceAttachmentConsumerAcceptList {
      */
     private Integer connectionLimit;
     /**
+     * @return (Optional, Beta)
+     * The endpoint that is allowed to connect to this service attachment.
+     * Only one of project_id_or_num, networkUrl and endpointUrl may be set.
+     * 
+     */
+    private @Nullable String endpointUrl;
+    /**
      * @return The network that is allowed to connect to this service attachment.
      * Only one of projectIdOrNum and networkUrl may be set.
      * 
@@ -40,6 +47,15 @@ public final class ServiceAttachmentConsumerAcceptList {
      */
     public Integer connectionLimit() {
         return this.connectionLimit;
+    }
+    /**
+     * @return (Optional, Beta)
+     * The endpoint that is allowed to connect to this service attachment.
+     * Only one of project_id_or_num, networkUrl and endpointUrl may be set.
+     * 
+     */
+    public Optional<String> endpointUrl() {
+        return Optional.ofNullable(this.endpointUrl);
     }
     /**
      * @return The network that is allowed to connect to this service attachment.
@@ -68,12 +84,14 @@ public final class ServiceAttachmentConsumerAcceptList {
     @CustomType.Builder
     public static final class Builder {
         private Integer connectionLimit;
+        private @Nullable String endpointUrl;
         private @Nullable String networkUrl;
         private @Nullable String projectIdOrNum;
         public Builder() {}
         public Builder(ServiceAttachmentConsumerAcceptList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionLimit = defaults.connectionLimit;
+    	      this.endpointUrl = defaults.endpointUrl;
     	      this.networkUrl = defaults.networkUrl;
     	      this.projectIdOrNum = defaults.projectIdOrNum;
         }
@@ -84,6 +102,12 @@ public final class ServiceAttachmentConsumerAcceptList {
               throw new MissingRequiredPropertyException("ServiceAttachmentConsumerAcceptList", "connectionLimit");
             }
             this.connectionLimit = connectionLimit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder endpointUrl(@Nullable String endpointUrl) {
+
+            this.endpointUrl = endpointUrl;
             return this;
         }
         @CustomType.Setter
@@ -101,6 +125,7 @@ public final class ServiceAttachmentConsumerAcceptList {
         public ServiceAttachmentConsumerAcceptList build() {
             final var _resultValue = new ServiceAttachmentConsumerAcceptList();
             _resultValue.connectionLimit = connectionLimit;
+            _resultValue.endpointUrl = endpointUrl;
             _resultValue.networkUrl = networkUrl;
             _resultValue.projectIdOrNum = projectIdOrNum;
             return _resultValue;

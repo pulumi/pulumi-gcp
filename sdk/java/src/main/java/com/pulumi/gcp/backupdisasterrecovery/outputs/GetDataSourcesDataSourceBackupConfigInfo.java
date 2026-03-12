@@ -30,12 +30,12 @@ public final class GetDataSourcesDataSourceBackupConfigInfo {
      */
     private Map<String,String> lastBackupError;
     /**
-     * @return LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+     * @return The state of the last backup attempt.
      * 
      */
     private String lastBackupState;
     /**
-     * @return If the last backup were successful, this field has the consistency date.
+     * @return The consistency time of the last successful backup.
      * 
      */
     private String lastSuccessfulBackupConsistencyTime;
@@ -63,14 +63,14 @@ public final class GetDataSourcesDataSourceBackupConfigInfo {
         return this.lastBackupError;
     }
     /**
-     * @return LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+     * @return The state of the last backup attempt.
      * 
      */
     public String lastBackupState() {
         return this.lastBackupState;
     }
     /**
-     * @return If the last backup were successful, this field has the consistency date.
+     * @return The consistency time of the last successful backup.
      * 
      */
     public String lastSuccessfulBackupConsistencyTime() {

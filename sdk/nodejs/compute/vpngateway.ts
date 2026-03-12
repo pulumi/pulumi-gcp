@@ -71,6 +71,72 @@ import * as utilities from "../utilities";
  *     nextHopVpnTunnel: tunnel1.id,
  * });
  * ```
+ * ### Target Vpn Gateway Tags
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const tagKey1 = new gcp.tags.TagKey("tag_key1", {
+ *     parent: "organizations/123456789",
+ *     shortName: "tagkey",
+ * });
+ * const tagValue1 = new gcp.tags.TagValue("tag_value1", {
+ *     parent: tagKey1.id,
+ *     shortName: "tagvalue",
+ * });
+ * const network1 = new gcp.compute.Network("network1", {name: "network-1"});
+ * const targetGatewayTags = new gcp.compute.VPNGateway("target_gateway_tags", {
+ *     name: "vpn-1",
+ *     network: network1.id,
+ *     params: {
+ *         resourceManagerTags: pulumi.all([tagKey1.id, tagValue1.id]).apply(([tagKey1Id, tagValue1Id]) => {
+ *             [tagKey1Id]: tagValue1Id,
+ *         }),
+ *     },
+ * });
+ * const vpnStaticIp = new gcp.compute.Address("vpn_static_ip", {name: "vpn-static-ip"});
+ * const frEsp = new gcp.compute.ForwardingRule("fr_esp", {
+ *     name: "fr-esp",
+ *     ipProtocol: "ESP",
+ *     ipAddress: vpnStaticIp.address,
+ *     target: targetGatewayTags.id,
+ * });
+ * const frUdp500 = new gcp.compute.ForwardingRule("fr_udp500", {
+ *     name: "fr-udp500",
+ *     ipProtocol: "UDP",
+ *     portRange: "500",
+ *     ipAddress: vpnStaticIp.address,
+ *     target: targetGatewayTags.id,
+ * });
+ * const frUdp4500 = new gcp.compute.ForwardingRule("fr_udp4500", {
+ *     name: "fr-udp4500",
+ *     ipProtocol: "UDP",
+ *     portRange: "4500",
+ *     ipAddress: vpnStaticIp.address,
+ *     target: targetGatewayTags.id,
+ * });
+ * const tunnel1 = new gcp.compute.VPNTunnel("tunnel1", {
+ *     name: "tunnel1",
+ *     peerIp: "15.0.0.120",
+ *     sharedSecret: "a secret message",
+ *     targetVpnGateway: targetGatewayTags.id,
+ * }, {
+ *     dependsOn: [
+ *         frEsp,
+ *         frUdp500,
+ *         frUdp4500,
+ *     ],
+ * });
+ * const route1 = new gcp.compute.Route("route1", {
+ *     name: "route1",
+ *     network: network1.name,
+ *     destRange: "15.0.0.0/24",
+ *     priority: 1000,
+ *     nextHopVpnTunnel: tunnel1.id,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -145,7 +211,6 @@ export class VPNGateway extends pulumi.CustomResource {
      */
     declare public readonly network: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
@@ -237,7 +302,6 @@ export interface VPNGatewayState {
      */
     network?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
@@ -280,7 +344,6 @@ export interface VPNGatewayArgs {
      */
     network: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */

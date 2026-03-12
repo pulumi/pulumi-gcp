@@ -3638,8 +3638,10 @@ func (o GetClusterNodePoolNodeConfigReservationAffinityArrayOutput) Index(i pulu
 }
 
 type GetClusterNodePoolNodeConfigSandboxConfig struct {
-	// Type of the sandbox to use for the node (e.g. 'gvisor')
+	// Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
 	SandboxType string `pulumi:"sandboxType"`
+	// Type of the sandbox to use for the node (e.g. 'GVISOR').
+	Type string `pulumi:"type"`
 }
 
 // GetClusterNodePoolNodeConfigSandboxConfigInput is an input type that accepts GetClusterNodePoolNodeConfigSandboxConfigArgs and GetClusterNodePoolNodeConfigSandboxConfigOutput values.
@@ -3654,8 +3656,10 @@ type GetClusterNodePoolNodeConfigSandboxConfigInput interface {
 }
 
 type GetClusterNodePoolNodeConfigSandboxConfigArgs struct {
-	// Type of the sandbox to use for the node (e.g. 'gvisor')
+	// Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
 	SandboxType pulumi.StringInput `pulumi:"sandboxType"`
+	// Type of the sandbox to use for the node (e.g. 'GVISOR').
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetClusterNodePoolNodeConfigSandboxConfigArgs) ElementType() reflect.Type {
@@ -3709,9 +3713,14 @@ func (o GetClusterNodePoolNodeConfigSandboxConfigOutput) ToGetClusterNodePoolNod
 	return o
 }
 
-// Type of the sandbox to use for the node (e.g. 'gvisor')
+// Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
 func (o GetClusterNodePoolNodeConfigSandboxConfigOutput) SandboxType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
+}
+
+// Type of the sandbox to use for the node (e.g. 'GVISOR').
+func (o GetClusterNodePoolNodeConfigSandboxConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigSandboxConfig) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GetClusterNodePoolNodeConfigSandboxConfigArrayOutput struct{ *pulumi.OutputState }
@@ -7414,6 +7423,8 @@ type GetClusterUserManagedKeysConfig struct {
 	ClusterCa string `pulumi:"clusterCa"`
 	// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
 	ControlPlaneDiskEncryptionKey string `pulumi:"controlPlaneDiskEncryptionKey"`
+	// The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+	ControlPlaneDiskEncryptionKeyVersions []string `pulumi:"controlPlaneDiskEncryptionKeyVersions"`
 	// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
 	EtcdApiCa string `pulumi:"etcdApiCa"`
 	// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
@@ -7444,6 +7455,8 @@ type GetClusterUserManagedKeysConfigArgs struct {
 	ClusterCa pulumi.StringInput `pulumi:"clusterCa"`
 	// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
 	ControlPlaneDiskEncryptionKey pulumi.StringInput `pulumi:"controlPlaneDiskEncryptionKey"`
+	// The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+	ControlPlaneDiskEncryptionKeyVersions pulumi.StringArrayInput `pulumi:"controlPlaneDiskEncryptionKeyVersions"`
 	// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
 	EtcdApiCa pulumi.StringInput `pulumi:"etcdApiCa"`
 	// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
@@ -7520,6 +7533,11 @@ func (o GetClusterUserManagedKeysConfigOutput) ClusterCa() pulumi.StringOutput {
 // The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
 func (o GetClusterUserManagedKeysConfigOutput) ControlPlaneDiskEncryptionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) string { return v.ControlPlaneDiskEncryptionKey }).(pulumi.StringOutput)
+}
+
+// The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+func (o GetClusterUserManagedKeysConfigOutput) ControlPlaneDiskEncryptionKeyVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) []string { return v.ControlPlaneDiskEncryptionKeyVersions }).(pulumi.StringArrayOutput)
 }
 
 // The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
